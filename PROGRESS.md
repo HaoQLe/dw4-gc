@@ -6,6 +6,7 @@ Updated: 2026-09-29. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 - Current state: no source task in progress; verified UART work is integrated into `work` and published. The fork-first policy and this progress ledger are established.
 - Next proposed target: inspect the two existing Alchemy functions in `src/Alchemy/src/igGap.cpp`. Neither is an exact match in the latest local report. This is a candidate, not work already started.
+- Ready-to-use next-session prompt: [igGap handoff](docs/handoffs/next-ig-gap.md). Preparing this prompt does not start the source task.
 - Before editing: inspect Git status/recent commits, read the completed-work table and linked notes, then check current source and regenerated unit progress. Preserve user edits and avoid repeating completed recovery.
 
 ## Completed work
@@ -21,7 +22,7 @@ The UART work also has historical [upstream PR #3](https://github.com/ivanno4317
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, generated and checked on 2026-09-29 for the source changes in `bd5b375` (equivalent delivery commit `c6140ac`). The code is unchanged by subsequent documentation commits. These numbers include inherited upstream matches, not just our own contributions.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-09-29 at `1634dcb`; latest functional source change is `bd5b375` (equivalent delivery commit `c6140ac`). The code is unchanged by subsequent documentation commits. These numbers include inherited upstream matches, not just our own contributions.
 
 | Metric | Verified value |
 | --- | --- |
@@ -32,6 +33,14 @@ Source: local `build/GDJEB2/report.json`, generated and checked on 2026-09-29 fo
 | Matched data | 165,232 / 1,503,801 bytes (10.987624%) |
 
 Verification: `ninja all_source progress build/GDJEB2/report.json` passed on both development and upstream-delivery branches. DOL SHA-1: `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. The checksum is for `main.dol`, not the disc container.
+
+## User-facing progress updates
+
+At each completed-task handoff, show this fork's aggregate **matched code**, **fully linked code** and **matched data** percentages from the local report, with the source revision/date. These correspond to `.measures.matched_code_percent`, `.complete_code_percent` and `.matched_data_percent`; fuzzy similarity is not decompiled progress. Use two decimals for dashboard-style totals.
+
+For source-recovery tasks, show each metric as `before% → after% (change in percentage points)` and include exact matched/linked byte gains. Calculate from unrounded totals; use enough decimal places for a small nonzero change to remain visible. Also identify newly matched functions/completed units. If the denominator or reporting configuration changed, flag the comparison instead of attributing all movement to recovery.
+
+For documentation-only tasks, show the current verified totals and label progress unchanged. If fresh verification is unavailable, label the numbers as the last verified snapshot. The upstream decomp.dev dashboard tracks a different repository/revision and is not authoritative for our fork. Keep this ledger's snapshot current; Git history preserves previous checkpoints.
 
 ## Open findings and constraints
 

@@ -1,8 +1,10 @@
-# Digimon World 4 development and contribution workflow
+# Digimon World 4 personal-fork workflow
 
 ## Objective and references
 
 Recover matching C/C++ for the supported GameCube version using the existing project toolchain. A native PC port is a separate task. Read `README.md` for setup, `configure.py` for current tool/compiler settings, and `config/GDJEB2/` for symbols, splits and the expected executable checksum.
+
+At the start of every session, read [PROGRESS.md](PROGRESS.md), inspect the working tree and recent commits, and identify completed work before selecting a target. The ledger is the durable handoff across sessions; chat history is supplementary.
 
 For initial setup or target selection, read [the starting plan](docs/research/2026-09-29-starting-plan.md). For analysis tools, compiler learning or Alchemy metadata investigation, read [the resource guide](docs/research/2026-09-29-resources.md). Their progress numbers are dated snapshots; inspect current configuration and regenerate reports before using them as current facts.
 
@@ -11,15 +13,17 @@ For initial setup or target selection, read [the starting plan](docs/research/20
 - `origin`: our fork, `https://github.com/HaoQLe/dw4-gc.git`.
 - `upstream`: original project, `https://github.com/ivanno4317/dw4-gc.git`.
 - `main`: reference branch tracking upstream history; keep fork-specific work on other branches.
-- `work`: our continuing development branch and the fork's default branch, published to `origin/work`. It includes locally accepted work even when upstream PRs are pending or declined.
+- `work`: our continuing development branch and the fork's default branch, published to `origin/work`. Locally verified work is accepted here independently of upstream.
 - `task/<topic>`: focused development branch created from `work` when isolation is useful.
-- `contrib/<topic>`: upstream delivery branch containing only the relevant contribution and its required dependencies.
+- `contrib/<topic>`: optional delivery branch used only when the user explicitly requests an upstream contribution.
 
 Confirm the current branch, remotes, working tree and recent commits before editing. Preserve existing user changes. Push our branches explicitly to `origin`; the checkout's default push remote should be `origin`.
 
-## Continue independently
+## Fork-first policy
 
-Upstream review is asynchronous. Once a task passes applicable local checks, commit it and integrate it into `work`; continue with the next authorized task without waiting for a maintainer response. A pending, closed or declined PR does not invalidate locally verified work. Record unresolved review feedback and assess it against actual code and checks before making changes.
+Default to implementing, verifying, committing and publishing work in `HaoQLe/dw4-gc`. Create or update a PR in `ivanno4317/dw4-gc` only when the user explicitly requests that action; earlier upstream-contribution instructions are superseded by this policy. Existing PRs are historical records, not standing authorization for upstream writes.
+
+Once a task passes applicable local checks, commit it and integrate it into `work`; continue with the next authorized task without waiting for upstream acceptance. Publishing to our fork does not require an upstream PR or a PR within our fork.
 
 Keep matching contributions separate from experiments. Unverified code, proposed type layouts and compiler experiments belong on a task/experiment branch until their required checks pass. Documentation and setup work can proceed while a missing game image blocks binary verification; report the missing verification explicitly. Never label unbuilt code as matching.
 
@@ -27,11 +31,13 @@ Fork-specific workflow documentation, including this file, stays on our developm
 
 ## Per-task execution
 
-1. State the intended behavior or recovery target, assumptions and completion checks. Inspect the current source, symbols, splits, report and relevant upstream issues/PRs to avoid duplicate work. Maintainer coordination can be useful for large changes, but is not a prerequisite for local development.
+1. State the intended behavior or recovery target, assumptions and completion checks. Inspect `PROGRESS.md`, current source, symbols, splits and the report to avoid repeating completed work. Consult upstream history when relevant; maintainer coordination is not a prerequisite for local development.
 2. Start from `work` or create `task/<topic>` from it. Make the smallest change that solves the task, matching surrounding style. Include only necessary header, symbol, split and configuration changes. Preserve uncertain field names/offsets as explicit hypotheses until supported by assembly or runtime evidence.
 3. Run checks appropriate to the change. For matching source, use the exact configured compiler and flags, inspect object code/data and relevant relocations in objdiff, and run whole-executable verification. For documentation-only changes, inspect the diff and links; a game build is not required.
 4. Commit the focused result with validation evidence. If using a task branch, integrate the verified result into `work` and rerun affected checks after integration. Push the relevant branches to `origin` when publishing is within the task's authorized scope.
-5. If contributing upstream is part of the task, prepare the focused delivery branch and PR described below. Report the local result and PR status separately; keep `work` usable while review proceeds.
+5. Update `PROGRESS.md` before handoff: completed unit/function and functional commit, checks and results, current task/branch, unresolved findings and a concrete next target. Refresh its numeric snapshot after code changes using the generated report. Commit and publish the handoff with the task when authorized; record local-only commits explicitly if publishing is unavailable.
+
+Use `complete` only for work that passed its required checks; distinguish partial matches, research and experiments. Link detailed notes from the ledger rather than duplicating investigations there. A proposed next target is not automatic authorization to start it.
 
 ## Matching-build verification
 
@@ -43,7 +49,7 @@ ninja
 ninja all_source progress build/GDJEB2/report.json
 ```
 
-On the current Mac, the login shell selects Python 3.7, which fails importing `TypedDict`; `/opt/homebrew/bin/python3` is Python 3.14 and passes `configure.py --help`. Use that interpreter explicitly for configuration until shell resolution is corrected. This establishes script loading, not a verified game build.
+On the current Mac, the login shell selects Python 3.7, which fails importing `TypedDict`; use `/opt/homebrew/bin/python3` explicitly until shell resolution is corrected. The host's matching-build baseline is recorded in `PROGRESS.md`.
 
 Use the normal matching configuration. Treat the compiler/tool pins in `configure.py` as authoritative; change them only for an explicit toolchain task. Verify macOS wibo/compiler execution before diagnosing compiler-host failures as game-code bugs.
 
@@ -51,7 +57,9 @@ Completion of a matching unit requires matching code/data plus the normal build'
 
 The inherited GitHub workflow uses a private upstream build container. Fork CI access is not assumed; local build evidence is the verification baseline when that container is unavailable. If an image, tool or dependency is missing, identify the missing input and continue independent authorized work.
 
-## Upstream delivery
+## Explicitly requested upstream delivery
+
+Apply this section only after the user explicitly requests an upstream contribution. It is not part of the default completion workflow.
 
 Fetch `upstream` and inspect changes before preparing a PR. For an independent contribution, create `contrib/<topic>` from `upstream/main` and cherry-pick only the relevant functional commits from our development history. Inspect the entire diff against `upstream/main`, then run the applicable checks on that branch. Exclude fork-only setup, unrelated work and original game inputs.
 
@@ -59,7 +67,7 @@ For a contribution depending on an unmerged PR, continue developing and validati
 
 Push the delivery branch to `origin` and target `ivanno4317/dw4-gc:main`. Describe the recovered behavior or concrete problem, changed functions/units, local match results, whole-build verification, and material limitations. A PR prepared without required binary checks must be draft and state which checks remain. Keep subsequent PR fixes focused and incorporate verified fixes into `work` too.
 
-Maintain this short branch/PR record in handoff notes: task, development branch, delivery branch/PR, dependency, verification and upstream status. Review outstanding PRs when relevant to the current task; waiting on unchanged review status is not a work item by itself.
+Record any explicitly requested delivery branch/PR and dependencies in `PROGRESS.md`. Existing upstream review status does not determine whether our local task is complete.
 
 ## Synchronization and data boundaries
 

@@ -749,6 +749,9 @@ config.libs = [
             Object(Matching, "Alchemy/src/igCore/igArkCore.cpp"),
             Object(Matching, "Alchemy/src/igCore/igArkCoreCallbacks.cpp"),
             Object(Matching, "Alchemy/src/igCore/igArkCoreAllocation.cpp"),
+            Object(Matching, "Alchemy/src/igCore/unknown8003EA0C.cpp"),
+            Object(Matching, "Alchemy/src/igCore/unknown8003EAE8.cpp"),
+            Object(Matching, "Alchemy/src/igCore/unknown8003EB7C.cpp"),
         ],        
     },
 ]

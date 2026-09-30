@@ -34,6 +34,15 @@ Alchemy/src/igCore/igArkCoreCallbacks.cpp:
 Alchemy/src/igCore/igArkCoreAllocation.cpp:
 	.text       start:0x8003E974 end:0x8003E9B4
 
+Alchemy/src/igCore/unknown8003EA0C.cpp:
+	.text       start:0x8003EA0C end:0x8003EA18
+
+Alchemy/src/igCore/unknown8003EAE8.cpp:
+	.text       start:0x8003EAE8 end:0x8003EB7C
+
+Alchemy/src/igCore/unknown8003EB7C.cpp:
+	.text       start:0x8003EB7C end:0x8003ED10
+
 Runtime/MSL/Common/abort_exit.c:
 	.text       start:0x80094948 end:0x80094AD4
 	.bss        start:0x804F2728 end:0x804F2828

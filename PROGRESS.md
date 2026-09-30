@@ -6,7 +6,6 @@ Updated: 2026-09-29. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 - Current state: no source task in progress; verified UART work is integrated into `work` and published. The fork-first policy and this progress ledger are established.
 - Next proposed target: inspect the two existing Alchemy functions in `src/Alchemy/src/igGap.cpp`. Neither is an exact match in the latest local report. This is a candidate, not work already started.
-- Ready-to-use next-session prompt: [igGap handoff](docs/handoffs/next-ig-gap.md). Preparing this prompt does not start the source task.
 - Before editing: inspect Git status/recent commits, read the completed-work table and linked notes, then check current source and regenerated unit progress. Preserve user edits and avoid repeating completed recovery.
 
 ## Completed work

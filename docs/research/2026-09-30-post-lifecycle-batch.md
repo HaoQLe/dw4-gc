@@ -104,8 +104,11 @@ Symbol-table entry order is irrelevant; original/source function metadata
 is compared in address order. No target renaming or artifact subtraction
 is needed in these new units, and their source text has no extra functions.
 
-All configured source compilation passes. The map confirms all twelve
-functions link from these source objects and the unmatched functions remain
+Independent review recompiled all three partitions with the exact configured
+compiler and flags, reproduced strict matches and confirmed source ELF
+contents, the verifier, map, checksum and report deltas; no blocking issues
+were found. All configured source compilation passes. The map confirms all
+twelve functions link from these source objects and the unmatched functions remain
 original. Original and rebuilt DOL SHA-1 both equal
 `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`.
 

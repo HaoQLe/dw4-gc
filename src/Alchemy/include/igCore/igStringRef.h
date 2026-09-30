@@ -15,6 +15,7 @@ namespace Gap {
                 inline void release() const { if (isPooled()) getId()->release(); }
         
             public:
+                inline igStringRef() : _string(NULL) {}
             
                 inline igStringPoolItemId getId() const
                 {

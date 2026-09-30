@@ -18,7 +18,7 @@ Alchemy/src/igGap.cpp:
 	.sbss       start:0x80562108 end:0x80562110
 
 Alchemy/src/igCore/igArkCore.cpp:
-	.text       start:0x8003D1C8 end:0x8003D234
+	.text       start:0x8003D1C8 end:0x8003D2F8
 	.data       start:0x80468CF8 end:0x80468E51
 	.sbss       start:0x80562118 end:0x80562119
 

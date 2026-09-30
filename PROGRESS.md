@@ -5,7 +5,8 @@ Updated: 2026-09-29. Development repository: [HaoQLe/dw4-gc](https://github.com/
 ## Resume here
 
 - Current state: no source task in progress; verified bootstrap recovery is integrated into `work` as `40b83bf`. The `igArkCore.cpp` split now includes `checkAlchemyVersion(int)`, the constructor and the 420-byte `initBootstrap()`, with exact original code/data/relevant relocations, source linking and checksum verification. Other class methods remain original. UART and Alchemy lifecycle recovery are preserved.
-- Next proposed target: investigate `Gap::Core::igArkCore::exitBootstrap()` at `0x8003E29C` (436 bytes). Inspect reference-count operations, call targets and additional virtual slots before configuring a separate split; intervening methods remain unrecovered. This is a candidate, not work already started.
+- Next proposed batch: the remaining `igArkCore` lifecycle cluster at `0x8003D49C..0x8003E450`: nine functions totaling 4,020 code bytes, including the two path getters, `fn_8003D4AC`, `initCore`, `dtor_8003DC20`, `preExit`, `exit`, `fn_8003E224` and `exitBootstrap`. Reuse the verified opaque layout, string references and bootstrap calling conventions. Inspect additional dependencies, reference-count operations and virtual slots before configuring splits; the contiguous range is a candidate region, not an established source-unit boundary. Retain independently verified subsets if larger methods stall. This batch is proposed, not started.
+- Scope escalation: inspect the nearby `0x8003E450..0x8003E9B4` helper region (17 functions, 1,380 bytes) if it resolves dependencies or exposes repeatable matching patterns. It is also unrecovered; include it only when justified by the active task's authorized scope. Target selection follows [AGENTS.md](AGENTS.md#recovery-throughput).
 - Before editing: inspect Git status/recent commits, read the completed-work table and linked notes, then check current source and regenerated unit progress. Preserve user edits and avoid repeating completed recovery.
 
 ## Completed work
@@ -22,6 +23,8 @@ Updated: 2026-09-29. Development repository: [HaoQLe/dw4-gc](https://github.com/
 | Alchemy bootstrap (`igArkCore.cpp`) | **Complete and linked from source.** `initBootstrap()` matches all 420 bytes and 45 relocation records. The extended split preserves the earlier code, diagnostic data and five relocations. Shared globals remain original; field meanings and virtual-slot semantics remain unnamed. All configured source compiles and whole-DOL checksum passes; independent review found no issues. | Functional commit `40b83bf`; [bootstrap handoff](docs/research/2026-09-29-igarkcore-bootstrap.md) |
 
 The UART work also has historical [upstream PR #3](https://github.com/ivanno4317/dw4-gc/pull/3), created before the fork-first policy. Its review/merge status is independent of the verified fork result. This policy change does not modify that PR.
+
+Throughput preference updated on 2026-09-29: select larger coherent batches when existing evidence supports them, amortize investigation and verification across related functions, and preserve the exact matching/publication gates. The next-batch byte counts above were checked against `config/GDJEB2/symbols.txt`. Original assembly shows that `initCore` has 53 distinct direct-call targets and `exit` has 20, so the larger scope requires dependency inspection rather than assuming that all methods are easy. This documentation-only update recovers no additional bytes; the verified numeric snapshot below is unchanged.
 
 ## Verified numeric snapshot
 

@@ -29,6 +29,20 @@ Keep matching contributions separate from experiments. Unverified code, proposed
 
 Fork-specific workflow documentation, including this file, stays on our development branches and is excluded from unrelated upstream PRs.
 
+## Recovery throughput
+
+The user prefers faster aggregate recovery and larger pieces of work when evidence supports them. Select coherent batches by expected verified bytes per unit of effort, dependency reuse and confidence in the calling convention; function size alone is insufficient. Single-function tasks remain useful for new compiler patterns or uncertain layouts, but are not the default once those uncertainties have been resolved.
+
+Before selecting a batch, inspect several candidates in symbols, original assembly and the current report. Record its functions/ranges, exact potential code bytes, shared dependencies and principal unknowns in `PROGRESS.md`. Favor clusters that reuse recovered offsets, reference-count patterns, allocation conventions or virtual slots. Treat address adjacency as a candidate region, not proof of an original translation-unit boundary. Reconsider the next scope after each verified batch using what the recovery established.
+
+During an authorized recovery task, work through related functions within the agreed batch without a new approval per function. Respect explicit user limits and stop conditions; proposing a larger next batch does not start it. Keep unknown meanings unnamed, and expand shared declarations only when supported by evidence.
+
+Use targeted object compilation and strict objdiff for the inner matching loop. Reuse byte/relocation comparison tools when their assumptions still apply. Run all configured source compilation, exact code/data/relevant relocation checks and source-linked DOL checksum verification at batch publication and after integration. Repeat broad checks during iteration only when a change or failure warrants them. Accuracy gates and compiler pins remain unchanged.
+
+Preserve independently verified subsets if a difficult function blocks a batch. Keep unfinished code NonMatching on the task/experiment branch, and split only along justified boundaries so verified source can link independently. After repeated attempts produce no new evidence or match improvement, record the concrete mismatch and try another function in scope. Avoid spending the whole batch on a small register-allocation mismatch unless it unlocks substantial source linking.
+
+Report exact matched and linked byte gains for the batch. Track investigation time and persistent blockers when useful for improving subsequent selection; a larger byte target is a planning estimate, not a completion claim. Keep handoff notes focused on reusable findings and unresolved constraints, with one aggregate progress update per batch.
+
 ## Per-task execution
 
 1. State the intended behavior or recovery target, assumptions and completion checks. Inspect `PROGRESS.md`, current source, symbols, splits and the report to avoid repeating completed work. For source recovery, regenerate the normal report and record its aggregate percentages and byte counts before editing as the comparison baseline. Consult upstream history when relevant; maintainer coordination is not a prerequisite for local development.

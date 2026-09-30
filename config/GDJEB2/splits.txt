@@ -28,14 +28,26 @@ auto_10_8056211C_sbss:
 auto_07_80468E54_data:
 	.data       start:0x80468E54 end:0x80477158 align:4
 
+Alchemy/src/igCore/unknown8003E4FC.cpp:
+	.text       start:0x8003E4FC end:0x8003E574
+
 Alchemy/src/igCore/igArkCoreCallbacks.cpp:
 	.text       start:0x8003E574 end:0x8003E8B8
+
+Alchemy/src/igCore/unknown8003E8B8.cpp:
+	.text       start:0x8003E8B8 end:0x8003E974
 
 Alchemy/src/igCore/igArkCoreAllocation.cpp:
 	.text       start:0x8003E974 end:0x8003E9B4
 
+Alchemy/src/igCore/unknown8003E9B4.cpp:
+	.text       start:0x8003E9B4 end:0x8003EA0C
+
 Alchemy/src/igCore/unknown8003EA0C.cpp:
 	.text       start:0x8003EA0C end:0x8003EA18
+
+Alchemy/src/igCore/unknown8003EA18.cpp:
+	.text       start:0x8003EA18 end:0x8003EAE8
 
 Alchemy/src/igCore/unknown8003EAE8.cpp:
 	.text       start:0x8003EAE8 end:0x8003EB7C
@@ -46,11 +58,20 @@ Alchemy/src/igCore/unknown8003EB7C.cpp:
 Alchemy/src/igCore/unknown8003ED10.cpp:
 	.text       start:0x8003ED10 end:0x8003EF94
 
+Alchemy/src/igCore/unknown8003EF94.cpp:
+	.text       start:0x8003EF94 end:0x8003F070
+
 Alchemy/src/igCore/unknown8003F070.cpp:
 	.text       start:0x8003F070 end:0x8003F0D8
 
+Alchemy/src/igCore/unknown8003F3FC.cpp:
+	.text       start:0x8003F3FC end:0x8003F5B4
+
 Alchemy/src/igCore/unknown8003F620.cpp:
 	.text       start:0x8003F620 end:0x8003F858
+
+Alchemy/src/igCore/unknown8003F858.cpp:
+	.text       start:0x8003F858 end:0x8003FD38
 
 Alchemy/src/igCore/unknown8003FD38.cpp:
 	.text       start:0x8003FD38 end:0x8003FD40

@@ -320,6 +320,8 @@ cflags_engine = [
     
 ]
 
+cflags_engine_size = ["-O4,s" if flag == "-O4,p" else flag for flag in cflags_engine]
+
 # REL flags
 cflags_rel = [
     *cflags_base,
@@ -756,6 +758,13 @@ config.libs = [
             Object(Matching, "Alchemy/src/igCore/unknown8003F070.cpp"),
             Object(Matching, "Alchemy/src/igCore/unknown8003F620.cpp"),
             Object(Matching, "Alchemy/src/igCore/unknown8003FD38.cpp"),
+            Object(Matching, "Alchemy/src/igCore/unknown8003E4FC.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igCore/unknown8003E8B8.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igCore/unknown8003E9B4.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igCore/unknown8003EA18.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igCore/unknown8003EF94.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igCore/unknown8003F3FC.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igCore/unknown8003F858.cpp", cflags=cflags_engine_size),
         ],        
     },
 ]

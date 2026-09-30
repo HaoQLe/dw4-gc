@@ -44,6 +44,9 @@ public:
     virtual Gap::igInt slot68(const Gap::igUnsignedInt *);
     virtual void slot6C();
     virtual Gap::igInt slot70(const Gap::igUnsignedInt *);
+    virtual Gap::igInt slot74(const Gap::igUnsignedInt *);
+    virtual Gap::igBool slot78(const Gap::igUnsignedInt *, Gap::igInt);
+    virtual void slot7C(Gap::igInt);
     Gap::igUnsignedInt unknown04;
     Gap::igInt unknown08;
     Gap::igInt unknown0C;

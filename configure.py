@@ -746,7 +746,7 @@ config.libs = [
         "progress_category": "engine",
         "objects": [
             Object(Matching, "Alchemy/src/igGap.cpp"),
-            Object(NonMatching, "Alchemy/src/igCore/igArkCore.cpp"),
+            Object(Matching, "Alchemy/src/igCore/igArkCore.cpp"),
         ],        
     },
 ]

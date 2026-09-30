@@ -1,7 +1,7 @@
 #ifndef _IGGAP_H_F4505F75_
 #define _IGGAP_H_F4505F75_
 
-#define IG_ALCHEMY_VERSION 5000
+#define IG_ALCHEMY_VERSION 3200
 
 #define NULL 0
 

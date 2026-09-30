@@ -745,7 +745,7 @@ config.libs = [
         "cflags": cflags_engine,
         "progress_category": "engine",
         "objects": [
-            Object(NonMatching, "Alchemy/src/igGap.cpp"),
+            Object(Matching, "Alchemy/src/igGap.cpp"),
             Object(NonMatching, "Alchemy/src/igCore/igArkCore.cpp"),
         ],        
     },

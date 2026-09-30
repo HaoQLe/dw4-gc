@@ -7,7 +7,7 @@ namespace Gap{
 
         igUnsignedLong _initialized;
  
-        static igArkCore *_arkCore;
+        extern igArkCore *_arkCore;
 
         inline igArkCore *ArkCore_function(){
             return _arkCore;
@@ -16,14 +16,13 @@ namespace Gap{
     }
 
 
-    static igResult kSuccess;
-    static igResult kFailure;
+    extern igResult kSuccess;
+    extern igResult kFailure;
 
     void igRefAlchemy(igInt alchemyVersion){
         
         if (!Core::_initialized++)
         {
-            // i'll leave them like this. The code matches btw
             kSuccess = 0; 
             kFailure = 1;
 

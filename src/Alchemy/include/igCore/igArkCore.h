@@ -39,9 +39,12 @@ namespace Gap{
 			    { return _preExitStarted; }
 
             protected:
+                igChar              _unknown14;
                 igBool			_preExitStarted;
 
             private:
+                // Unrecovered fields at 0x16..0x397; string offsets verified in the DOL.
+                igChar _unknown16[0x382];
                 igStringRef _alchemyPath;
 			    igStringRef _applicationPath;
 

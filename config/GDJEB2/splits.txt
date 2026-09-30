@@ -18,7 +18,7 @@ Alchemy/src/igGap.cpp:
 	.sbss       start:0x80562108 end:0x80562110
 
 Alchemy/src/igCore/igArkCore.cpp:
-	.text       start:0x8003D1C8 end:0x8003D49C
+	.text       start:0x8003D1C8 end:0x8003E4FC
 	.data       start:0x80468CF8 end:0x80468E51
 	.sbss       start:0x80562118 end:0x80562119
 
@@ -27,6 +27,12 @@ auto_10_8056211C_sbss:
 
 auto_07_80468E54_data:
 	.data       start:0x80468E54 end:0x80477158 align:4
+
+Alchemy/src/igCore/igArkCoreCallbacks.cpp:
+	.text       start:0x8003E574 end:0x8003E8B8
+
+Alchemy/src/igCore/igArkCoreAllocation.cpp:
+	.text       start:0x8003E974 end:0x8003E9B4
 
 Runtime/MSL/Common/abort_exit.c:
 	.text       start:0x80094948 end:0x80094AD4

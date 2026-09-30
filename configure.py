@@ -755,6 +755,7 @@ config.libs = [
             Object(Matching, "Alchemy/src/igCore/unknown8003ED10.cpp"),
             Object(Matching, "Alchemy/src/igCore/unknown8003F070.cpp"),
             Object(Matching, "Alchemy/src/igCore/unknown8003F620.cpp"),
+            Object(Matching, "Alchemy/src/igCore/unknown8003FD38.cpp"),
         ],        
     },
 ]

@@ -1,7 +1,8 @@
 # Alchemy igArkCore constructor recovery
 
 Verified on 2026-09-29 from baseline `839a7f2`, on
-`task/igarkcore-constructor`, for integration into personal-fork `work`.
+`task/igarkcore-constructor`, integrated into personal-fork `work`.
+Functional commit: `62ef4b4`.
 Scope: `Gap::Core::igArkCore::igArkCore()` at `0x8003D234`, 196 bytes.
 The existing version-check split now also owns this constructor; other
 class methods remain original. UART and lifecycle recovery are preserved.

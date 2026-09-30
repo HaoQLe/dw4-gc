@@ -4,8 +4,8 @@ Updated: 2026-09-29. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- Current state: no source task in progress; verified UART, Alchemy lifecycle and version-check work are integrated into `work`. The bounded `checkAlchemyVersion(int)` split is complete, including code/data/relocations, source linking and checksum verification. Other `igArkCore` methods remain original.
-- Next proposed target: investigate `Gap::Core::igArkCore::igArkCore()` at `0x8003D234` (196 bytes). Establish constructor field-offset evidence while preserving unknown meanings; inspect string initialization and relocations before extending the configured split. This is a candidate, not work already started.
+- Current state: no source task in progress; the verified constructor recovery is integrated into `work` as `62ef4b4`. The `igArkCore.cpp` split now includes `checkAlchemyVersion(int)` and the 196-byte constructor, with exact original code/data/relevant relocations, source linking and checksum verification. Other class methods remain original. UART and Alchemy lifecycle recovery are preserved.
+- Next proposed target: investigate `Gap::Core::igArkCore::initBootstrap()` at `0x8003D2F8` (420 bytes). Inspect call targets and global storage before extending the configured split. This is a candidate, not work already started.
 - Before editing: inspect Git status/recent commits, read the completed-work table and linked notes, then check current source and regenerated unit progress. Preserve user edits and avoid repeating completed recovery.
 
 ## Completed work
@@ -18,30 +18,31 @@ Updated: 2026-09-29. Development repository: [HaoQLe/dw4-gc](https://github.com/
 | UART console runtime unit | **Complete and linked from source.** Recovered `fn_8009F35C`; made initializer static inline. All three functions, 224 code bytes and 8 data bytes match. Strict objdiff and whole-DOL verification passed; independent review found no issues. | Functional commit `bd5b375`; [UART handoff](docs/research/2026-09-29-uart-console.md) |
 | Alchemy lifecycle unit (`igGap.cpp`) | **Complete and linked from source.** `igRefAlchemy(int)` and `igReleaseAlchemy()` match: 416 code bytes, 8 owned BSS bytes, all 34 relocation records. Corrected class layout, five registrar targets and shared-global references; corrected the synthetic BSS split. All configured source compiles and whole-DOL checksum passes; independent review found no blocking issues. | Functional commit `6ac6304`; [Alchemy handoff](docs/research/2026-09-29-alchemy-lifecycle.md) |
 | Alchemy version-check split (`igArkCore.cpp`) | **Complete and linked from source.** `checkAlchemyVersion(int)` matches: 108 code bytes, 345 diagnostic bytes, one suppression BSS byte and all five relocations. Corrected version, opaque-byte gate, diagnostic and report target; preserved unknown class fields. All configured source compiles and whole-DOL checksum passes; independent review found no blocking issues. Other class methods remain original. | Functional commit `c586318`; [version-check handoff](docs/research/2026-09-29-alchemy-version-check.md) |
+| Alchemy constructor (`igArkCore.cpp`) | **Complete and linked from source.** `igArkCore()` matches all 196 bytes and has no relocations. The expanded split preserves the original version-check code/data and all five relocations. Null string initialization and observed opaque-storage writes are recovered without semantic field names. All configured source compiles and whole-DOL checksum passes; independent review found no blocking issues. | Functional commit `62ef4b4`; [constructor handoff](docs/research/2026-09-29-igarkcore-constructor.md) |
 
 The UART work also has historical [upstream PR #3](https://github.com/ivanno4317/dw4-gc/pull/3), created before the fork-first policy. Its review/merge status is independent of the verified fork result. This policy change does not modify that PR.
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-09-29 for functional revision `c586318`, compared with the pre-edit report at `89032ae`. Percentages below are calculated from exact byte totals, avoiding report floating-point rounding. These numbers include inherited upstream matches, not just our own contributions.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-09-29 for functional revision `62ef4b4`, compared with the pre-edit report at `839a7f2`. Percentages below are calculated from exact byte totals, avoiding report floating-point rounding. These numbers include inherited upstream matches, not just our own contributions.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 359,492 / 4,141,552 bytes (8.680128%) |
-| Fully linked source code | 345,404 / 4,141,552 bytes (8.339965%) |
-| Matched functions | 1,187 / 23,334 |
+| Matched executable code | 359,688 / 4,141,552 bytes (8.684860%) |
+| Fully linked source code | 345,600 / 4,141,552 bytes (8.344698%) |
+| Matched functions | 1,188 / 23,334 |
 | Completed units | 174 / 5,134 |
 | Matched data | 165,586 / 1,503,795 bytes (11.011208%) |
 
-Verification: `/opt/homebrew/bin/python3 configure.py --version GDJEB2 --map` and `/opt/homebrew/bin/ninja all_source progress build/GDJEB2/report.json` passed. Strict objdiff (`functionRelocDiffs=data_value`) reports 100% code/data/BSS; a separate ELF comparison confirms all five relocation types, offsets, targets, addends, bindings, visibility and definition/value/size/type agree, as do section bytes/type/flags/size/alignment. The link rule uses the compiled `igArkCore.o`; source-linked DOL SHA-1: `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`, identical to the original and expected checksum. Independent review found no blocking issues.
+Verification: `/opt/homebrew/bin/python3 configure.py --version GDJEB2 --map` and `/opt/homebrew/bin/ninja all_source progress build/GDJEB2/report.json` passed, including after integration into `work`. Strict objdiff (`functionRelocDiffs=data_value`) reports 100% for both functions and original code/data/BSS. A separate ELF comparison confirms all 304 original code bytes, 345 data bytes, one BSS byte and all five original relocation records, including target metadata. Section types, flags and alignment match. **Compiler artifact:** the source object additionally emits a 116-byte string destructor and two relocations; the map labels it `UNUSED`, and it contributes no executable bytes or reported recovery. The complete ELF objects therefore differ only by this discarded artifact. The compiled `igArkCore.o` supplies the constructor at `0x8003D234`; source-linked DOL SHA-1: `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`, identical to the original and expected checksum. Independent review found no blocking issues.
 
-| Version-check task metric | Before → after | Delta | Exact gain |
+| Constructor task metric | Before → after | Delta | Exact gain |
 | --- | --- | --- | --- |
-| Matched code | 8.677519925% → 8.680127643% | +0.002607718 percentage points | +108 bytes |
-| Fully linked code | 8.337357590% → 8.339965308% | +0.002607718 percentage points | +108 bytes |
-| Matched data | 10.988156013% → 11.011208310% | +0.023052297 percentage points | +346 bytes |
+| Matched code | 8.680127643% → 8.684860168% | +0.004732525 percentage points | +196 bytes |
+| Fully linked code | 8.339965308% → 8.344697833% | +0.004732525 percentage points | +196 bytes |
+| Matched data | 11.011208310% → 11.011208310% | 0 percentage points | 0 bytes |
 
-One newly matched function and one completed configured unit. **Denominator changes:** code remains 4,141,552 bytes; data decreases from 1,503,801 to 1,503,795 bytes because six zero alignment bytes around the diagnostic and suppression flag are now supplied by the linker. Recovery contributes +0.023008363 data percentage points at the old denominator; the denominator reduction contributes +0.000043934. Unit count rises from 5,132 to 5,134 because two original storage objects are split around the recovered bytes. The original remainder storage stays unrecovered. The configured engine category now contains 524 code bytes and 354 data bytes; its 100% applies only to the two configured units. Earlier lifecycle progress is preserved in [its detailed notes](docs/research/2026-09-29-alchemy-lifecycle.md).
+One newly matched function; completed units remain 174 because the existing Matching split was extended. **No denominator changes:** code remains 4,141,552 bytes; data remains 1,503,795 bytes; function and unit totals remain 23,334 and 5,134. The configured engine category now contains 720 code bytes and 354 data bytes; its 100% applies only to the two configured units. Earlier task comparisons and split changes are preserved in the [version-check notes](docs/research/2026-09-29-alchemy-version-check.md) and [lifecycle notes](docs/research/2026-09-29-alchemy-lifecycle.md).
 
 ## User-facing progress updates
 
@@ -54,7 +55,7 @@ For documentation-only tasks, show the current verified totals and label progres
 ## Open findings and constraints
 
 - The UART stub's semantic name/parameter list remains unknown. Its return-zero behavior is verified; retain the existing address-based name until there is stronger evidence.
-- Alchemy `igGap.cpp` and the configured version-check split in `igArkCore.cpp` are complete; all other `igArkCore` methods remain unrecovered. The `igArkCore` bytes at `0x14` and `0x16..0x397` are explicitly unnamed; the full class semantics and constructor are unrecovered. Shared `_arkCore`, `kSuccess` and `kFailure` storage remains original. The configured game category contains zero bytes; its displayed 100% is not completed gameplay recovery.
+- Alchemy `igGap.cpp` and the configured version-check/constructor split in `igArkCore.cpp` are complete; all other `igArkCore` methods remain unrecovered. The `igArkCore` bytes at `0x14` and `0x16..0x397` remain explicitly unnamed. Constructor write widths, offsets and values are verified; the full class layout and semantic meanings remain unrecovered. Shared `_arkCore`, `kSuccess` and `kFailure` storage remains original. The configured game category contains zero bytes; its displayed 100% is not completed gameplay recovery.
 - The current Mac needs `/opt/homebrew/bin/python3` because the login shell selects Python 3.7. Homebrew Python and pinned wibo/compiler execution were verified during the baseline build.
 - The existing `FILE_POS.C` case warning is unchanged. Configuration also warns about the two explicit original remainder splits having no source configuration; they intentionally link generated original objects. The supplied image's header says GDJEB2 revision 0 despite the README's revision label; its DOL matches the project's pinned checksum.
 - The inherited CI uses a private upstream container. Local checks establish completion; upstream CI availability is not required for work in our fork.

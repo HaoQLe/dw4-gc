@@ -23,8 +23,8 @@ The external seam is one command:
 
 It exposes three commands:
 
-- `scratch <unit>` copies the unit's current source into a private temporary
-  directory, compiles it with the exact generated Ninja rule, compares it to
+- `scratch <unit>` reads the unit's current source in place, compiles it with
+  the exact generated Ninja rule into a private temporary directory, compares it to
   the target object with strict objdiff settings, and retains the temporary
   directory only when requested.
 - `verify <target.o> <candidate.o>` compares allocated ELF sections, function
@@ -46,8 +46,8 @@ has only Ninja-generated Metrowerks commands.
    suffix. Ambiguous and missing selectors fail before compilation.
 2. Read the unit's `target_path` and `base_path` from `objdiff.json` and locate
    the generated source-object edge in `build.ninja`.
-3. Copy the source file to a temporary directory and expand that edge's rule
-   using its effective variables.
+3. Expand that edge's rule using its effective variables. Keep the source path
+   in its checkout so quoted includes resolve beside the translation unit.
 4. Rewrite only the input, object output, depfile, `basedir`, and `basefile` to
    private paths. Run the otherwise unchanged compiler/wrapper/post-processing
    command from the repository root.
@@ -57,7 +57,9 @@ has only Ninja-generated Metrowerks commands.
 The command never overwrites a configured source object, target object,
 dependency file, source file, or generated configuration. A worker may edit a
 file in its own worktree and invoke `scratch` repeatedly without contending on
-shared outputs.
+shared outputs. `--source` may select the same-named translation unit from a
+worker worktree while using the coordinator checkout's immutable generated
+configuration, toolchain and headers.
 
 ## Exact verifier
 
@@ -81,14 +83,18 @@ Ranking uses only generated report facts and therefore remains explainable.
 The default order is:
 
 1. partial units, by exact unmatched code bytes descending, then name;
-2. missing source units, by total code bytes descending, then name;
-3. exact-but-unlinked units, by matched code bytes descending, then name.
+2. single-function missing units, by total code bytes descending, then name;
+3. multi-function missing remainder regions, by total code bytes descending,
+   then name;
+4. exact-but-unlinked units, by matched code bytes descending, then name.
 
 Rows show category, unit, total code bytes, exact matched bytes, fuzzy percent,
 and function counts. `--kind`, `--category`, and `--limit` narrow the output;
 `--json` provides stable machine-readable results. The tool does not invent a
-confidence score for dependency reuse or compiler difficulty. Humans combine
-the ranked facts with assembly and domain evidence when selecting a batch.
+confidence score for dependency reuse or compiler difficulty. Preferring
+single-function entries keeps very large generated remainder partitions from
+obscuring actionable targets. Humans combine the ranked facts with assembly
+and domain evidence when selecting a batch.
 
 ## Agent workflow
 

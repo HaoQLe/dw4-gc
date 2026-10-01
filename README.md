@@ -77,6 +77,25 @@ Download the latest release from [encounter/objdiff](https://github.com/encounte
 
 Select an object from the left sidebar to begin diffing. Changes to the project will rebuild automatically: changes to source files, headers, `configure.py`, `splits.txt` or `symbols.txt`.
 
+For a faster command-line loop on configured source units, compile and compare
+one unit without changing its normal build object:
+
+```sh
+python tools/decomp.py scratch <unit-or-unique-suffix>
+```
+
+The same tool can independently verify an exact object pair or rank candidates
+from the current report:
+
+```sh
+python tools/decomp.py verify <target.o> <candidate.o>
+python tools/decomp.py rank --limit 30
+```
+
+See [the matching playbook](docs/decomp/matching-playbook.md) for mismatch
+triage and exact publication gates. Coordinated worktree batches use the
+[parallel workflow](docs/decomp/parallel-workflow.md).
+
 
 Progress
 =======

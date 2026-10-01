@@ -60,18 +60,30 @@ class _ElfObject:
 
 def _read_elf(path):
     data = Path(path).read_bytes()
-    if data[:6] != b"\x7fELF\x01\x02":
+    if data[:7] != b"\x7fELF\x01\x02\x01":
         raise VerificationError("%s is not a 32-bit big-endian ELF object" % path)
     try:
         header = struct.unpack_from(">16sHHIIIIIHHHHHH", data)
-        raw_sections = tuple(
-            struct.unpack_from(">10I", data, header[6] + index * header[11])
-            for index in range(header[12])
-        )
     except struct.error as error:
         raise VerificationError("%s has a truncated ELF header" % path) from error
 
-    def section_data(section):
+    if header[1:4] != (1, 20, 1):
+        raise VerificationError("%s is not a relocatable PowerPC ELF object" % path)
+    if header[8] != 52 or header[11] != 40 or not header[12]:
+        raise VerificationError("%s has an invalid ELF header layout" % path)
+    section_table_end = header[6] + header[11] * header[12]
+    if header[6] < header[8] or section_table_end > len(data):
+        raise VerificationError("%s has a truncated section table" % path)
+    if header[13] >= header[12]:
+        raise VerificationError("%s has an invalid section-name table index" % path)
+    raw_sections = tuple(
+        struct.unpack_from(">10I", data, header[6] + index * header[11])
+        for index in range(header[12])
+    )
+
+    def section_data(section, name):
+        if section[1] != 8 and section[4] + section[5] > len(data):
+            raise VerificationError("section %s extends past end of %s" % (name, path))
         return data[section[4] : section[4] + section[5]]
 
     def read_string(table, offset):
@@ -80,17 +92,38 @@ def _read_elf(path):
         except (ValueError, UnicodeDecodeError) as error:
             raise VerificationError("%s has an invalid ELF string table" % path) from error
 
-    section_names = section_data(raw_sections[header[13]])
+    raw_name_table = raw_sections[header[13]]
+    if raw_name_table[1] != 3:
+        raise VerificationError("%s has an invalid section-name table" % path)
+    section_names = section_data(raw_name_table, ".shstrtab")
+    names = tuple(read_string(section_names, section[0]) for section in raw_sections)
+
+    for index, section in enumerate(raw_sections):
+        name = names[index] or "<null>"
+        section_data(section, name)
+        if section[1] == 2:
+            if section[9] != 16 or section[5] % 16:
+                raise VerificationError("%s symbol table entry size is invalid" % name)
+            if section[6] >= len(raw_sections) or raw_sections[section[6]][1] != 3:
+                raise VerificationError("%s has an invalid string-table link" % name)
+        elif section[1] == 4:
+            if section[9] != 12 or section[5] % 12:
+                raise VerificationError("%s relocation entry size is invalid" % name)
+            if section[6] >= len(raw_sections) or raw_sections[section[6]][1] != 2:
+                raise VerificationError("%s has an invalid symbol-table link" % name)
+            if section[7] >= len(raw_sections):
+                raise VerificationError("%s has an invalid target-section index" % name)
+
     sections = []
-    for section in raw_sections:
+    for index, section in enumerate(raw_sections):
         sections.append(
             {
-                "name": read_string(section_names, section[0]),
+                "name": names[index],
                 "type": section[1],
                 "flags": section[2],
                 "size": section[5],
                 "align": section[8],
-                "data": b"" if section[1] == 8 else section_data(section),
+                "data": b"" if section[1] == 8 else section_data(section, names[index]),
             }
         )
 
@@ -98,12 +131,14 @@ def _read_elf(path):
     for section_index, section in enumerate(raw_sections):
         if section[1] != 2:
             continue
-        strings = section_data(raw_sections[section[6]])
+        strings = section_data(raw_sections[section[6]], names[section[6]])
         symbols = []
         for offset in range(section[4], section[4] + section[5], section[9]):
             name, value, size, info, other, index = struct.unpack_from(
                 ">IIIBBH", data, offset
             )
+            if len(sections) <= index < 0xFF00:
+                raise VerificationError("%s has an invalid symbol section index" % path)
             symbols.append(
                 (
                     read_string(strings, name),
@@ -123,13 +158,16 @@ def _read_elf(path):
             continue
         for offset in range(section[4], section[4] + section[5], section[9]):
             address, info, addend = struct.unpack_from(">IIi", data, offset)
+            symbol_index = info >> 8
+            if symbol_index >= len(symbol_tables[section[6]]):
+                raise VerificationError("%s has an invalid relocation symbol index" % path)
             relocations.append(
                 (
                     sections[section[7]]["name"],
                     address,
                     info & 255,
                     addend,
-                    symbol_tables[section[6]][info >> 8],
+                    symbol_tables[section[6]][symbol_index],
                 )
             )
 
@@ -171,9 +209,31 @@ def verify_objects(target_path, candidate_path):
         if left[5] != right[5]:
             raise VerificationError("allocated section %s bytes differ" % left[0])
     if target.functions != candidate.functions:
-        raise VerificationError("function symbols differ")
+        for left, right in zip(target.functions, candidate.functions):
+            if left != right:
+                raise VerificationError(
+                    "function symbols differ: target %r; candidate %r" % (left, right)
+                )
+        if len(target.functions) < len(candidate.functions):
+            raise VerificationError(
+                "function symbol %s is extra" % candidate.functions[len(target.functions)][0]
+            )
+        raise VerificationError(
+            "function symbol %s is missing" % target.functions[len(candidate.functions)][0]
+        )
     if target.relocations != candidate.relocations:
-        raise VerificationError("relocation records differ")
+        for left, right in zip(target.relocations, candidate.relocations):
+            if left != right:
+                section, offset = left[:2]
+                raise VerificationError(
+                    "relocation %s+0x%X differs: target %r; candidate %r"
+                    % (section, offset, left, right)
+                )
+        if len(target.relocations) < len(candidate.relocations):
+            section, offset = candidate.relocations[len(target.relocations)][:2]
+            raise VerificationError("relocation %s+0x%X is extra" % (section, offset))
+        section, offset = target.relocations[len(candidate.relocations)][:2]
+        raise VerificationError("relocation %s+0x%X is missing" % (section, offset))
 
     return VerificationSummary(
         allocated_sections=len(target.sections),
@@ -230,7 +290,11 @@ def private_compile_command(command, unit, scratch_source, scratch_dir):
     if Path(scratch_source).stem != Path(base_path).stem:
         raise UserInputError("scratch source name must match the configured object name")
 
-    rewritten = command.replace(base, str(Path(scratch_dir) / Path(base).name))
+    scratch_base = str(Path(scratch_dir) / Path(base).name)
+    rewritten = command
+    for suffix in (".o", ".d"):
+        rewritten = rewritten.replace(base + suffix, shlex.quote(scratch_base + suffix))
+    rewritten = rewritten.replace(base, shlex.quote(scratch_base))
     rewritten = rewritten.replace(source, shlex.quote(scratch_source))
     rewritten = rewritten.replace(basedir, shlex.quote(scratch_dir))
     if rewritten == command:
@@ -478,7 +542,15 @@ def main(argv=None):
                 print(json.dumps([asdict(row) for row in rows], indent=2))
             else:
                 _print_rank_table(rows)
-    except (UserInputError, VerificationError, subprocess.CalledProcessError) as error:
+    except subprocess.CalledProcessError as error:
+        print("error: %s" % error, file=sys.stderr)
+        detail = error.stderr or error.stdout
+        if isinstance(detail, bytes):
+            detail = detail.decode(errors="replace")
+        if detail and detail.strip():
+            print(detail.strip(), file=sys.stderr)
+        return 1
+    except (UserInputError, VerificationError, OSError) as error:
         print("error: %s" % error, file=sys.stderr)
         return 1
     return 0

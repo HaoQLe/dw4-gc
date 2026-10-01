@@ -1,6 +1,7 @@
 import contextlib
 import io
 import json
+import shlex
 import struct
 import tempfile
 import unittest
@@ -50,7 +51,7 @@ def make_elf(
     strtab_offset = add(strings)
     function_symbols = [(1, 0, len(text))]
     if extra_function:
-        function_symbols = [(1, 0, 2), (6, 2, 2)]
+        function_symbols = [(1, 0, len(text)), (6, len(text), 0)]
     if reverse_functions:
         function_symbols.reverse()
     symbol_parts = [b"\0" * 16]
@@ -155,7 +156,14 @@ class VerifyObjectsTests(unittest.TestCase):
         make_elf(self.target)
         make_elf(self.candidate, target_name="other")
 
-        with self.assertRaisesRegex(VerificationError, "relocation records differ"):
+        with self.assertRaisesRegex(VerificationError, r"relocation \.text\+0x0 differs"):
+            verify_objects(self.target, self.candidate)
+
+    def test_changed_function_symbols_name_the_first_difference(self):
+        make_elf(self.target)
+        make_elf(self.candidate, extra_function=True)
+
+        with self.assertRaisesRegex(VerificationError, "function symbol func2 is extra"):
             verify_objects(self.target, self.candidate)
 
     def test_function_symbol_table_order_does_not_affect_verification(self):
@@ -165,6 +173,38 @@ class VerifyObjectsTests(unittest.TestCase):
         summary = verify_objects(self.target, self.candidate)
 
         self.assertEqual(summary.functions, 2)
+
+    def test_rejects_non_powerpc_relocatable_object(self):
+        make_elf(self.target)
+        make_elf(self.candidate)
+        data = bytearray(self.candidate.read_bytes())
+        struct.pack_into(">HH", data, 16, 2, 40)
+        self.candidate.write_bytes(data)
+
+        with self.assertRaisesRegex(VerificationError, "relocatable PowerPC"):
+            verify_objects(self.target, self.candidate)
+
+    def test_rejects_section_payload_outside_file(self):
+        make_elf(self.target)
+        make_elf(self.candidate)
+        data = bytearray(self.candidate.read_bytes())
+        section_offset = struct.unpack_from(">I", data, 32)[0]
+        struct.pack_into(">I", data, section_offset + 40 + 16, len(data) + 4)
+        self.candidate.write_bytes(data)
+
+        with self.assertRaisesRegex(VerificationError, r"section \.text extends past"):
+            verify_objects(self.target, self.candidate)
+
+    def test_rejects_invalid_symbol_entry_size_as_verification_error(self):
+        make_elf(self.target)
+        make_elf(self.candidate)
+        data = bytearray(self.candidate.read_bytes())
+        section_offset = struct.unpack_from(">I", data, 32)[0]
+        struct.pack_into(">I", data, section_offset + 3 * 40 + 36, 0)
+        self.candidate.write_bytes(data)
+
+        with self.assertRaisesRegex(VerificationError, "symbol table entry size"):
+            verify_objects(self.target, self.candidate)
 
 
 class UnitSelectionTests(unittest.TestCase):
@@ -216,6 +256,21 @@ class UnitSelectionTests(unittest.TestCase):
         self.assertIn("-c /tmp/private/foo.cpp", rewritten)
         self.assertIn("-o /tmp/private", rewritten)
         self.assertEqual(rewritten.count("/tmp/private/foo.d"), 2)
+        self.assertNotIn("build/G/src/lib", rewritten)
+
+    def test_private_command_shell_quotes_every_private_path(self):
+        command = (
+            'wibo mwcc -c src/lib/foo.cpp -o build/G/src/lib '
+            '&& dtk build/G/src/lib/foo.o build/G/src/lib/foo.o '
+            '&& python transform.py build/G/src/lib/foo.d build/G/src/lib/foo.d'
+        )
+        directory = Path("/tmp/private dir;$(bad)'s")
+        source = directory / "foo.cpp"
+
+        rewritten = private_compile_command(command, self.units[0], source, directory)
+
+        for path in (source, directory, directory / "foo.o", directory / "foo.d"):
+            self.assertIn(shlex.quote(str(path)), rewritten)
         self.assertNotIn("build/G/src/lib", rewritten)
 
 
@@ -319,6 +374,34 @@ class CommandTests(unittest.TestCase):
         self.assertEqual(status, 1)
         self.assertIn(".text bytes differ", errors.getvalue())
 
+    def test_verify_command_reports_missing_file_without_traceback(self):
+        errors = io.StringIO()
+
+        with contextlib.redirect_stderr(errors):
+            status = main(["verify", str(self.root / "missing.o"), "other.o"])
+
+        self.assertEqual(status, 1)
+        self.assertIn("missing.o", errors.getvalue())
+
+    def test_scratch_reports_captured_ninja_diagnostic(self):
+        source = self.root / "src/foo.cpp"
+        source.parent.mkdir(parents=True)
+        source.write_text("int foo;")
+        unit = {
+            "name": "main/foo",
+            "target_path": "target.o",
+            "base_path": "candidate.o",
+            "metadata": {"source_path": "src/foo.cpp"},
+        }
+        (self.root / "objdiff.json").write_text(json.dumps({"units": [unit]}))
+        errors = io.StringIO()
+
+        with contextlib.redirect_stderr(errors):
+            status = main(["scratch", "main/foo", "--root", str(self.root)])
+
+        self.assertEqual(status, 1)
+        self.assertIn("No such file or directory", errors.getvalue())
+
     def test_rank_command_emits_stable_json(self):
         report = self.root / "report.json"
         config = self.root / "objdiff.json"
@@ -399,7 +482,14 @@ class CommandTests(unittest.TestCase):
         }
         (self.root / "objdiff.json").write_text(json.dumps({"units": [unit]}))
 
-        result = scratch_unit(self.root, unit, source_override=worker_source)
+        private_parent = self.root / "private dir;$(bad)'s"
+        private_parent.mkdir()
+        previous_tempdir = tempfile.tempdir
+        tempfile.tempdir = str(private_parent)
+        try:
+            result = scratch_unit(self.root, unit, source_override=worker_source)
+        finally:
+            tempfile.tempdir = previous_tempdir
 
         self.assertEqual(result.verification.allocated_bytes, 4)
         self.assertEqual(result.section_matches, ((".text", 100),))

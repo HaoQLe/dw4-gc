@@ -22,7 +22,7 @@ Normal configuration, all configured source compilation, report generation and t
 
 Strict objdiff uses `functionRelocDiffs=data_value` and reports 100% for the 2,572-byte text section and all 20 functions. The independent ELF comparison confirms exact raw text, allocated section type/flags/alignment, complete function symbol metadata and all 40 relocations with their target metadata. The relocations are the expected `_savegpr`/`_restgpr` calls. The source object has no additional allocated section, emitted function, data, BSS or `UNUSED` artifact.
 
-Ninja and the link map attribute the complete range to the configured source object. Original and rebuilt DOLs both have the repository-pinned SHA-1 `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. An independent reviewer forced a fresh compile of all 204 configured source objects and repeated strict objdiff, separate ELF parsing, map/provenance, artifact, checksum and progress checks with no findings.
+Ninja and the link map attribute the complete range to the configured source object. Original and rebuilt DOLs both have the repository-pinned SHA-1 `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. An independent reviewer forced a fresh compile of all 204 configured source objects and repeated strict objdiff, separate ELF parsing, map/provenance, artifact, checksum and progress checks with no findings. The publication checks passed again after integration into `work`.
 
 Ignored evidence is under `build/GDJEB2/analysis/allocator-dispatch-recovery/`, including the pre-edit report, strict reports and independent verifier. Original inputs and generated artifacts remain ignored.
 

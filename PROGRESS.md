@@ -1,17 +1,18 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-09-30. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-01. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
+- The aggregate dispatch continuation batch is **complete: 3 exact functions / 344 original bytes / 9 full relocations, source-linked**. Functional commit `130de4b`. The recovered range `0x80040C84..0x80040DDC` adds the global accessor, slot-`0xD4` fan-out and bounded slot-`0xE0` parser/dispatcher while preserving unknown meanings. Strict and independent ELF checks, source provenance, the pinned DOL checksum and an independent fresh-compile review pass. See [aggregate continuation evidence](docs/research/2026-10-01-aggregate-dispatch-continuation.md).
 - The offset-adjusted aggregate dispatch batch is **complete: 3 exact functions / 516 original bytes / 6 full relocations, source-linked**. Functional commit `784bf49`. The recovered range `0x80040A80..0x80040C84` reuses the aggregate layout, adjusts two coordinates by owner/element offsets and preserves the nested halfword-stride loop without assigning semantic names. Strict and independent ELF checks, source provenance, the pinned DOL checksum and an independent fresh-build review pass; publication checks pass again after integration into `work`. See [offset-dispatch evidence](docs/research/2026-09-30-offset-dispatch-recovery.md).
 - The aggregate dispatch batch is **complete: 20 exact functions / 2,572 original bytes / 40 full relocations, source-linked**. Functional commit `357bfba`. The recovered range `0x80040074..0x80040A80` preserves the observed container layout, adjacent virtual calls and signed/unsigned loop distinctions without assigning semantic names. All publication gates and independent review pass. See [aggregate dispatch evidence](docs/research/2026-09-30-aggregate-dispatch-recovery.md).
 - The user-targeted retained batch is **complete: ten exact functions / 3,316 original bytes, source-linked**, with 69 full relocations. Functional commits: seven-function checkpoint `9849800`, hash `5a2992f`, probe `bee25a8`, lookup `45a1e2d`. The remaining three added 804 verified bytes; no target remains unrecovered or hard blocked. See [continuation evidence](docs/research/2026-09-30-retained-register-recovery.md) and [earlier seven-function checkpoint](docs/research/2026-09-30-retained-recovery.md).
 - All configured source builds, strict objdiff, independent ELF bytes/section/symbol/full-relocation comparisons, map/Ninja source provenance, the pinned DOL checksum and independent reviews pass. Publication gates passed again after integration into personal-fork `work`.
-- Lookup/hash use unchanged default `-O4,p`. Probe, aggregate dispatch and offset-dispatch units use the existing verified per-unit `-O4,s` profile alongside the earlier seven units; compiler/tool pins and other objects retain their settings. No new owned data/BSS or compiler artifacts are counted.
+- Lookup/hash use unchanged default `-O4,p`. Probe, aggregate dispatch, offset-dispatch and aggregate-continuation units use the existing verified per-unit `-O4,s` profile alongside the earlier seven units; compiler/tool pins and other objects retain their settings. No new owned data/BSS or compiler artifacts are counted.
 - Standing workflow preference: automatically continue an authorized batch until every target is verified or each remainder has an evidenced hard blocker. Exact-subset publication is a checkpoint; investigation stalls and execution interruptions retain active scope. See [AGENTS.md](AGENTS.md#recovery-throughput).
 - Preserved local experiment tips: lifecycle `45030f5`, post-lifecycle `67cb882`, storage `ad82114`, continuation `fe8ce09`, parser `c14e101`, retained candidates `ec1093d`. Their old mismatches are historical evidence. `task/retained-register-recovery` holds the completed continuation; no experiment branch was rewritten, deleted or published.
-- Future candidates: compare the unresolved storage/format group at `0x8003FD40..0x8003FF44` (516 bytes) with the adjacent accessor/dispatch functions beginning at `0x80040C84`; the former offers more bytes but spans parsing, pooled-string allocation and global ownership, while the latter continues the now-verified aggregate layout. Refresh the normal baseline before selecting. This proposal does not start another batch.
+- Future candidates: compare `fn_80040DDC` (580 bytes), which reuses the nested aggregate layout but adds allocation and pooled-string ownership, with the unresolved storage/format group at `0x8003FD40..0x8003FF44` (516 bytes). Refresh the normal baseline before selecting. This proposal does not start another batch.
 - Before new recovery: inspect Git status/recent commits and the handoff; preserve user edits and prior tips. The current ignored analysis has a working compiler AST/PCode/register-graph debugger and verified continuation checker.
 
 ## Completed work
@@ -37,26 +38,35 @@ Rows record each session's result at the time; the retained-recovery row and res
 | Retained-mismatch recovery | **Complete and verified:** ten functions / 3,316 code bytes and 69 full relocations match and source-link. Existing profiles, all-source build, exact ELF checks, pinned checksum, independent reviews and post-integration checks pass. No remainder. | Functional commits `9849800`, `5a2992f`, `bee25a8`, `45a1e2d`; [final handoff](docs/research/2026-09-30-retained-register-recovery.md) |
 | Aggregate virtual-dispatch family | **Complete and verified:** 20 functions / 2,572 code bytes and 40 full relocations match and source-link. Exact section/symbol/relocation checks, all-source build, map provenance, pinned checksum and independent fresh-build review pass. No remainder or emitted data/BSS/artifacts. | Functional commit `357bfba`; [handoff](docs/research/2026-09-30-aggregate-dispatch-recovery.md) |
 | Offset-adjusted aggregate dispatchers | **Complete and verified:** three functions / 516 code bytes and six full relocations match and source-link. Exact section/symbol/relocation checks, all-source build, map provenance, pinned checksum and independent fresh-build review pass. No remainder or emitted data/BSS/artifacts. | Functional commit `784bf49`; [handoff](docs/research/2026-09-30-offset-dispatch-recovery.md) |
+| Aggregate dispatch continuation | **Complete and verified:** three functions / 344 code bytes and nine full relocations match and source-link. Exact section/symbol/relocation checks, all-source build, map provenance, pinned checksum and independent fresh-compile review pass. No owned data/BSS or emitted artifacts. | Functional commit `130de4b`; [handoff](docs/research/2026-10-01-aggregate-dispatch-continuation.md) |
 
 The UART work also has historical [upstream PR #3](https://github.com/ivanno4317/dw4-gc/pull/3), created before the fork-first policy. Its review/merge status is independent of the verified fork result. This policy change does not modify that PR.
 
-Throughput preference remains evidence-backed aggregate recovery, dependency reuse and strict publication gates. This session selected and recovered all three offset-adjusted dispatch functions / 516 bytes. Historical fuzzy matches are not counted separately.
+Throughput preference remains evidence-backed aggregate recovery, dependency reuse and strict publication gates. This session selected and recovered all three aggregate continuation functions / 344 bytes. Historical fuzzy matches are not counted separately.
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-09-30 for functional revision `784bf49`, compared with the pre-batch `work` baseline `e13a94b`. Percentages use exact byte totals. Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-01 for functional revision `130de4b`, compared with the pre-batch `work` baseline `69cbb65`. Percentages use exact byte totals. Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 373,492 / 4,141,552 bytes (9.018165%) |
-| Fully linked source code | 359,404 / 4,141,552 bytes (8.678003%) |
-| Matched functions | 1,269 / 23,334 |
-| Completed units | 195 / 5,157 |
+| Matched executable code | 373,836 / 4,141,552 bytes (9.026471%) |
+| Fully linked source code | 359,748 / 4,141,552 bytes (8.686309%) |
+| Matched functions | 1,272 / 23,334 |
+| Completed units | 196 / 5,158 |
 | Matched data | 165,586 / 1,503,795 bytes (11.011208%) |
 
-Verification: normal configure, all-source build/report, strict objdiff and independent ELF comparisons pass for the offset-dispatch unit. All 516 original bytes, three function symbols, six full relocations and their target metadata agree; map/Ninja source provenance is verified. Both DOL SHA-1s equal `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-build review found no issues. Publication checks pass again after integration into `work`.
+Verification: normal configure, all-source build/report, strict objdiff and independent ELF comparisons pass for the aggregate continuation unit. All 344 original bytes, three function symbols, auxiliary symbol metadata, nine full relocations and their target metadata agree; map/Ninja source provenance is verified. Both DOL SHA-1s equal `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-compile review found no issues. Post-integration publication checks remain to be recorded on `work`.
 
-**Compiler artifacts remain excluded:** earlier 116-byte string and 116-byte reference-view destructors remain UNUSED, with four discarded relocations; their 232 bytes are not recovered progress. The offset-dispatch unit emits no additional functions, data, BSS or UNUSED artifacts.
+**Compiler artifacts remain excluded:** earlier 116-byte string and 116-byte reference-view destructors remain UNUSED, with four discarded relocations; their 232 bytes are not recovered progress. The aggregate continuation unit emits no additional functions, data, BSS or UNUSED artifacts.
+
+| Aggregate-continuation session metric | Before → after | Delta | Exact gain |
+| --- | --- | --- | --- |
+| Matched code | 9.018165171% → 9.026471236% | +0.008306065 percentage points | +344 bytes |
+| Fully linked code | 8.678002836% → 8.686308901% | +0.008306065 percentage points | +344 bytes |
+| Matched data | 11.011208310% → 11.011208310% | 0 percentage points | 0 bytes |
+
+Three newly matched functions; completed units increase 195 → 196. **Unit denominator: 5,157 → 5,158** because isolating the source prefix partitions the trailing original remainder. Code/data/function denominators remain unchanged. Configured engine totals are 14,868 code bytes, 354 data bytes, 88 functions and 24 complete units.
 
 | Offset-dispatch session metric | Before → after | Delta | Exact gain |
 | --- | --- | --- | --- |
@@ -99,6 +109,7 @@ For documentation-only tasks, show the current verified totals and label progres
 - Existing wrappers retain verified seven-argument receiver/eight-argument provider views and four-byte hidden-result ABI without claiming semantic class names. See [wrapper evidence](docs/research/2026-09-30-storage-context-and-wrappers.md).
 - The aggregate dispatch source records only the observed owner pointer at `0x34`, element count/array offsets and virtual slots `0x6C..0xC4`. Maximum, fan-out, sum and short-circuit behavior is exact; class, field and slot meanings remain unknown. See [aggregate dispatch evidence](docs/research/2026-09-30-aggregate-dispatch-recovery.md).
 - The offset-dispatch source extends only the observed layout through virtual slots `0xC8..0xD0`, owner/element offset `0x08`, owner halfword `0x14` and nested aggregate slot `0x5C`. Coordinate adjustment, accumulation and nested fan-out behavior are exact; class, field and slot meanings remain unknown. See [offset-dispatch evidence](docs/research/2026-09-30-offset-dispatch-recovery.md).
+- The aggregate continuation source adds only the observed global accessor, virtual slots `0xD4` and `0xE0`, and the two original parsing formats. Its fan-out, element-offset adjustment and parsed return sum are exact; class, field, slot and format meanings remain unknown. See [aggregate continuation evidence](docs/research/2026-10-01-aggregate-dispatch-continuation.md).
 - The current Mac needs `/opt/homebrew/bin/python3` because the login shell selects Python 3.7. Homebrew Python and pinned wibo/compiler execution were verified during the baseline build.
 - The existing `FILE_POS.C` case warning is unchanged. Configuration also warns about the two explicit original remainder splits having no source configuration; they intentionally link generated original objects. The supplied image's header says GDJEB2 revision 0 despite the README's revision label; its DOL matches the project's pinned checksum.
 - The inherited CI uses a private upstream container. Local checks establish completion; upstream CI availability is not required for work in our fork.

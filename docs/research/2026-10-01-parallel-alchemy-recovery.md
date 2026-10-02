@@ -100,8 +100,8 @@ source object. Original and rebuilt DOL SHA-1 both equal the repository-pinned
 Independent fresh-compile reviews of each worker's source found no blocking
 issues, covering behavior, ABI, exact bytes/metadata/full relocation targets and
 artifacts. The coordinator then checked integrated provenance, UNUSED exclusion,
-checksums and aggregate deltas. Final integration review and checks on `work`
-are recorded in the ledger at publication.
+checksums and aggregate deltas. Independent final integration review passes,
+and all publication checks pass again after integration into `work`.
 
 Ignored evidence lives under `build/GDJEB2/analysis/parallel-alchemy-recovery/`,
 including baseline/final reports, prepared totals, immutable target manifest, strict

@@ -95,6 +95,8 @@ repository-pinned `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`.
 All configured source compilation and the normal checksum target pass.
 Independent reviews repeat fresh private pinned compilation and exact ELF checks,
 review behavior and verify provenance, artifacts, checksums and report deltas.
+After integration into `work` at `e6507f1`, normal configure, all-source build,
+progress reporting and both allocator/full-batch verification scripts pass again.
 
 | Metric | Baseline → final | Gain |
 | --- | --- | --- |

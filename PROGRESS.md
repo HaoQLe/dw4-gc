@@ -1,8 +1,10 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-01. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-02. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
+
+- **Active storage-allocation batch:** three functions / 380 original bytes at `0x8004155C..0x800416D8`, baseline `5cf7f79`. The global accessor and growth helper are **verified and source-linked: 2 functions / 128 bytes / 2 full relocations** at `0x80041658..0x800416D8`; functional checkpoint `8df3ca9`, task branch `task/storage-allocation-recovery`. Strict and independent ELF checks, all-source compilation, source provenance, no-artifact checks, pinned checksum, exact progress deltas and independent fresh-compile review pass. The allocator remains active and original in published builds. Local NonMatching experiment tip `031a02b` on `task/storage-allocation-experiments` is preserved: 252/252 bytes, 96.82539% strict similarity, identical registers and relocations, one vtable-load ordering residual at `+0x70..+0x78`. Compiler dump isolates late peephole register forwarding and final scheduling. Next: compare recovered move/move/load virtual-call patterns and test a sizing receiver pointer-value temporary. Selection, rejected variants and evidence: [storage-allocation handoff](docs/research/2026-10-02-storage-allocation-recovery.md). This checkpoint does not close the batch.
 
 - Creation/lookup hooks are **complete and source-linked: five functions / 408 original bytes / 12 full relocations**, range `0x800413C4..0x8004155C`. Functional commit `0b2bddb`, baseline `73f7969`; task branch `task/creation-lookup-recovery` is integrated into `work`. Strict objdiff, independent exact ELF checks, all-source build, map/Ninja source provenance, no-artifact checks, pinned DOL checksum and independent fresh-compile review pass. All publication checks pass again on integrated `work`. No remainder or owned data/BSS. See [creation/lookup handoff](docs/research/2026-10-01-creation-lookup-recovery.md). Next proposed investigation: storage helpers beginning at `0x8004155C`; inspect metadata sizing, four-byte hidden-result allocation ABI and data boundaries, and compare other engine candidates and SDK reverb before selecting a batch. This proposal does not start another batch.
 
@@ -56,27 +58,27 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-01 for functional revision `0b2bddb`, compared with pre-batch `work` baseline `73f7969`. Percentages use exact byte totals. Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-02 for functional checkpoint `8df3ca9`, compared with pre-batch `work` baseline `5cf7f79`. Percentages use exact byte totals. Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 376,576 / 4,141,552 bytes (9.092630%) |
-| Fully linked source code | 362,488 / 4,141,552 bytes (8.752468%) |
-| Matched functions | 1,298 / 23,334 |
-| Completed units | 201 / 5,162 |
+| Matched executable code | 376,704 / 4,141,552 bytes (9.095721%) |
+| Fully linked source code | 362,616 / 4,141,552 bytes (8.755558%) |
+| Matched functions | 1,300 / 23,334 |
+| Completed units | 202 / 5,164 |
 | Matched data | 165,586 / 1,503,795 bytes (11.011208%) |
 
-Verification: normal configure, all configured source compilation, strict objdiff and independent exact ELF checks pass for the five-hook creation/lookup unit. All 408 original bytes, five function symbols, section/symbol metadata and 12 full relocations with target metadata agree. Map/Ninja source provenance and original-object immutability pass. Both DOL SHA-1s equal `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-compile review found no blocking issues. The new partition emits no additional code/data/BSS or discarded relocations. Normal configure, all-source/report build, independent exact ELF checks, strict objdiff, source provenance, artifact checks, pinned checksums and report deltas pass again on integrated `work`.
+Verification: normal configure, all configured source compilation, strict objdiff and independent exact ELF comparisons pass for both checkpoint functions: 128 original bytes, complete section/function metadata and two full relocations with target metadata. Source map/Ninja provenance, original-object immutability and artifact exclusion pass. Both DOL SHA-1s equal pinned `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-compile review found no blocking issues. No owned data/BSS or emitted artifacts. The 252-byte allocator remains NonMatching and local; it contributes no linked recovery.
 
 **Compiler artifacts remain excluded:** earlier string and reference-view destructors (232 bytes / four relocations), plus the parallel string builder's weak destructor (116 bytes / two relocations), remain UNUSED in the map. Their 348 bytes / six relocations are not recovered progress.
 
-| Creation/lookup session metric | Before → after | Delta | Exact gain |
+| Active storage-allocation checkpoint metric | Before → checkpoint | Delta | Exact gain |
 | --- | --- | --- | --- |
-| Matched code | 9.082778630% → 9.092630009% | +0.009851379 percentage points | +408 bytes |
-| Fully linked code | 8.742616295% → 8.752467674% | +0.009851379 percentage points | +408 bytes |
+| Matched code | 9.092630009% → 9.095720638% | +0.003090629 percentage points | +128 bytes |
+| Fully linked code | 8.752467674% → 8.755558303% | +0.003090629 percentage points | +128 bytes |
 | Matched data | 11.011208310% → 11.011208310% | 0 percentage points | 0 bytes |
 
-Five newly matched functions; completed units increase 200 → 201. **Unit denominator: 5,161 → 5,162** because isolating the creation/lookup source prefix partitions the original remainder. Code/data/function denominators remain unchanged. Configured engine totals are 17,608 code bytes, 354 data bytes, 114 functions and 29 complete units. All prior experiment/worker branch tips remain preserved locally.
+Two newly matched functions; completed units increase 201 → 202. **Unit denominator: 5,162 → 5,164** because the interior source partition leaves original reallocation and trailing remainder units. Code/data/function denominators remain unchanged. Configured engine totals are 17,736 code bytes, 354 data bytes, 116 functions and 30 complete units. The batch remains active with one 252-byte function to recover.
 
 | Metadata session metric | Before → after | Delta | Exact gain |
 | --- | --- | --- | --- |

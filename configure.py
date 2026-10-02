@@ -778,6 +778,7 @@ config.libs = [
             Object(Matching, "Alchemy/src/igCore/unknown800413C4.cpp", cflags=cflags_engine_size),
             Object(Matching, "Alchemy/src/igCore/unknown8004155C.cpp", cflags=cflags_engine_size),
             Object(Matching, "Alchemy/src/igCore/unknown80041658.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igCore/unknown800416D8.cpp", cflags=cflags_engine_size),
         ],        
     },
 ]

@@ -2,10 +2,13 @@
 
 Date: 2026-10-01. Baseline `work`: `73f7969`. Selected scope: five functions /
 408 original code bytes at `0x800413C4..0x8004155C`. All five are exact and
-source-linked on `task/creation-lookup-recovery`; no remainder or owned data/BSS.
+source-linked; `task/creation-lookup-recovery` is integrated into `work`. No
+remainder or owned data/BSS.
 Functional commit: `0b2bddb`. Independent fresh-compile review passes with no
 blocking issues; its exact, strict, provenance, checksum and report-delta checks
-pass. Integration publication checks are recorded in PROGRESS.md.
+pass. Normal configure, all-source/report build, strict and exact ELF checks,
+provenance, artifact exclusion, pinned checksums and report deltas pass again
+on integrated `work`.
 
 ## Selection and behavior
 

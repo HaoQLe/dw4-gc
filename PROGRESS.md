@@ -4,7 +4,10 @@ Updated: 2026-10-01. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- Metadata construction/access batch is **complete and source-linked: six functions / 932 original bytes / 31 full relocations**, range `0x80041020..0x800413C4`. Functional commit `bca74d7`, baseline `ce41066`; task branch `task/metadata-recovery` is integrated into `work`. Strict objdiff, independent exact ELF checks, all-source build, source provenance, no-artifact checks, pinned DOL checksum and independent fresh-compile review pass; all publication checks pass again on integrated `work`. No remainder or new owned data/BSS. Selection and compiler evidence: [metadata handoff](docs/research/2026-10-01-metadata-recovery.md). Next proposed candidate: five creation/lookup hooks at `0x800413C4..0x8004155C` / 408 bytes; inspect slots `0x70/0x74` and metadata-driven creation ABI and compare the SDK reverb remainder before selecting. This proposal does not start another batch.
+- Creation/lookup hooks are **complete and source-linked: five functions / 408 original bytes / 12 full relocations**, range `0x800413C4..0x8004155C`. Functional commit `0b2bddb`, baseline `73f7969`; branch `task/creation-lookup-recovery`. Strict objdiff, independent exact ELF checks, all-source build, map/Ninja source provenance, no-artifact checks, pinned DOL checksum and independent fresh-compile review pass. No remainder or owned data/BSS. See [creation/lookup handoff](docs/research/2026-10-01-creation-lookup-recovery.md). Next proposed investigation: storage helpers beginning at `0x8004155C`; inspect metadata sizing, four-byte hidden-result allocation ABI and data boundaries, and compare other engine candidates and SDK reverb before selecting a batch. This proposal does not start another batch.
+
+
+- Metadata construction/access batch is **complete and source-linked: six functions / 932 original bytes / 31 full relocations**, range `0x80041020..0x800413C4`. Functional commit `bca74d7`, baseline `ce41066`; task branch `task/metadata-recovery` is integrated into `work`. Strict objdiff, independent exact ELF checks, all-source build, source provenance, no-artifact checks, pinned DOL checksum and independent fresh-compile review pass; all publication checks pass again on integrated `work`. No remainder or new owned data/BSS. Selection and compiler evidence: [metadata handoff](docs/research/2026-10-01-metadata-recovery.md). The proposed five creation/lookup hooks are now recovered in the batch above.
 - Workflow acceleration is **adopted and verified**: `tools/decomp.py` provides private per-unit scratch compilation, independent exact ELF verification and deterministic report ranking; the matching playbook and coordinator/worker worktree contract are now repository policy. Twenty-one tests, exact and partial real-project scratch runs, configured-object immutability checks, all 204 built source-object parser checks and independent review pass. Use [the matching playbook](docs/decomp/matching-playbook.md) for normal recovery and [the parallel workflow](docs/decomp/parallel-workflow.md) only for an explicitly authorized multi-worker batch. Tooling commits `5cd5381`, `9096580`; research/design checkpoint `071d07b`.
 - The aggregate dispatch continuation batch is **complete: 3 exact functions / 344 original bytes / 9 full relocations, source-linked**. Functional commit `130de4b`. The recovered range `0x80040C84..0x80040DDC` adds the global accessor, slot-`0xD4` fan-out and bounded slot-`0xE0` parser/dispatcher while preserving unknown meanings. Strict and independent ELF checks, source provenance, the pinned DOL checksum and an independent fresh-compile review pass; publication checks pass again after integration into `work`. See [aggregate continuation evidence](docs/research/2026-10-01-aggregate-dispatch-continuation.md).
 - The offset-adjusted aggregate dispatch batch is **complete: 3 exact functions / 516 original bytes / 6 full relocations, source-linked**. Functional commit `784bf49`. The recovered range `0x80040A80..0x80040C84` reuses the aggregate layout, adjusts two coordinates by owner/element offsets and preserves the nested halfword-stride loop without assigning semantic names. Strict and independent ELF checks, source provenance, the pinned DOL checksum and an independent fresh-build review pass; publication checks pass again after integration into `work`. See [offset-dispatch evidence](docs/research/2026-09-30-offset-dispatch-recovery.md).
@@ -45,25 +48,35 @@ Rows record each session's result at the time; the retained-recovery row and res
 | Parallel Alchemy storage/conversion, constructor/wrapper/accessor and string builder | **Complete and source-linked:** 15 functions / 1,400 original bytes / 47 full relocations. Strict/contextual ELF checks, all-source build, provenance, UNUSED exclusion, pinned checksum and independent source reviews pass; final integration review and repeated `work` publication checks pass. No remainder or owned data/BSS. | Source commits `e7a16cb`, `191406f`, `d6b2236`; link commit `1f046ae`; [handoff](docs/research/2026-10-01-parallel-alchemy-recovery.md) |
 | Metadata construction/access | **Complete and source-linked:** six functions / 932 original bytes / 31 full relocations. Strict objdiff, exact independent ELF checks, all-source build, source provenance, pinned checksum and independent fresh-compile review pass. No remainder, owned data/BSS or emitted artifacts. | Functional commit `bca74d7`; [handoff](docs/research/2026-10-01-metadata-recovery.md) |
 
+| Creation and lookup hooks | **Complete and source-linked:** five functions / 408 original bytes / 12 full relocations. Strict objdiff, independent exact ELF checks, all-source build, source provenance, pinned checksum and independent fresh-compile review pass. No remainder, owned data/BSS or emitted artifacts. | Functional commit `0b2bddb`; [handoff](docs/research/2026-10-01-creation-lookup-recovery.md) |
+
 The UART work also has historical [upstream PR #3](https://github.com/ivanno4317/dw4-gc/pull/3), created before the fork-first policy. Its review/merge status is independent of the verified fork result. This policy change does not modify that PR.
 
-Throughput preference remains evidence-backed aggregate recovery, dependency reuse and strict publication gates. This session recovered all six selected metadata functions / 932 bytes. The earlier parallel batch recovered 15 functions / 1,400 bytes with three concurrent workers. Historical fuzzy matches are not counted separately.
+Throughput preference remains evidence-backed aggregate recovery, dependency reuse and strict publication gates. This session recovered all five selected creation/lookup hooks / 408 bytes. The metadata batch recovered six functions / 932 bytes. The earlier parallel batch recovered 15 functions / 1,400 bytes with three concurrent workers. Historical fuzzy matches are not counted separately.
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-01 for functional revision `bca74d7`, compared with pre-batch `work` baseline `ce41066`. Percentages use exact byte totals. Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-01 for functional revision `0b2bddb`, compared with pre-batch `work` baseline `73f7969`. Percentages use exact byte totals. Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 376,168 / 4,141,552 bytes (9.082779%) |
-| Fully linked source code | 362,080 / 4,141,552 bytes (8.742616%) |
-| Matched functions | 1,293 / 23,334 |
-| Completed units | 200 / 5,161 |
+| Matched executable code | 376,576 / 4,141,552 bytes (9.092630%) |
+| Fully linked source code | 362,488 / 4,141,552 bytes (8.752468%) |
+| Matched functions | 1,298 / 23,334 |
+| Completed units | 201 / 5,162 |
 | Matched data | 165,586 / 1,503,795 bytes (11.011208%) |
 
-Verification: normal configure, all configured source compilation, strict objdiff and independent exact ELF checks pass for the six-function metadata unit. All 932 original bytes, six function symbols, section/symbol metadata and 31 full relocations with target metadata agree. Map/Ninja source provenance and original-object immutability are verified. Both DOL SHA-1s equal `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-compile review found no blocking issues. The new partition emits no additional code/data/BSS or discarded relocations. Normal configure, all-source/report build, exact ELF checks, source provenance, checksums and deltas pass again after integration into `work`.
+Verification: normal configure, all configured source compilation, strict objdiff and independent exact ELF checks pass for the five-hook creation/lookup unit. All 408 original bytes, five function symbols, section/symbol metadata and 12 full relocations with target metadata agree. Map/Ninja source provenance and original-object immutability pass. Both DOL SHA-1s equal `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-compile review found no blocking issues. The new partition emits no additional code/data/BSS or discarded relocations. Integration publication checks are pending below.
 
 **Compiler artifacts remain excluded:** earlier string and reference-view destructors (232 bytes / four relocations), plus the parallel string builder's weak destructor (116 bytes / two relocations), remain UNUSED in the map. Their 348 bytes / six relocations are not recovered progress.
+
+| Creation/lookup session metric | Before → after | Delta | Exact gain |
+| --- | --- | --- | --- |
+| Matched code | 9.082778630% → 9.092630009% | +0.009851379 percentage points | +408 bytes |
+| Fully linked code | 8.742616295% → 8.752467674% | +0.009851379 percentage points | +408 bytes |
+| Matched data | 11.011208310% → 11.011208310% | 0 percentage points | 0 bytes |
+
+Five newly matched functions; completed units increase 200 → 201. **Unit denominator: 5,161 → 5,162** because isolating the creation/lookup source prefix partitions the original remainder. Code/data/function denominators remain unchanged. Configured engine totals are 17,608 code bytes, 354 data bytes, 114 functions and 29 complete units. All prior experiment/worker branch tips remain preserved locally.
 
 | Metadata session metric | Before → after | Delta | Exact gain |
 | --- | --- | --- | --- |
@@ -71,7 +84,7 @@ Verification: normal configure, all configured source compilation, strict objdif
 | Fully linked code | 8.720112653% → 8.742616295% | +0.022503641 percentage points | +932 bytes |
 | Matched data | 11.011208310% → 11.011208310% | 0 percentage points | 0 bytes |
 
-Six newly matched functions; completed units increase 199 → 200. **Unit denominator: 5,160 → 5,161** because isolating the metadata source prefix partitions the original remainder. Code/data/function denominators remain unchanged. Configured engine totals are 17,200 code bytes, 354 data bytes, 109 functions and 28 complete units. Prior experiment/worker branches and their exact tips remain preserved locally.
+Six newly matched functions; completed units increase 199 → 200. **Unit denominator: 5,160 → 5,161** from the metadata partition. Other denominators remain unchanged; see its handoff for full evidence.
 
 | Parallel-Alchemy session metric | Before → after | Delta | Exact gain |
 | --- | --- | --- | --- |
@@ -133,6 +146,7 @@ For documentation-only tasks, show the current verified totals and label progres
 - The aggregate continuation source adds only the observed global accessor, virtual slots `0xD4` and `0xE0`, and the two original parsing formats. Its fan-out, element-offset adjustment and parsed return sum are exact; class, field, slot and format meanings remain unknown. See [aggregate continuation evidence](docs/research/2026-10-01-aggregate-dispatch-continuation.md).
 - Parallel storage/conversion, constructor/wrapper/accessor and string-builder recovery is exact and source-linked. Local views retain observed byte storage, unsigned halfword access, hidden-result slot `0xE4` and pooled-string lifetimes; meanings remain unnamed. A and C use the established size profile, B the default profile. Original globals/formats/vtables remain external; array cleanup remains absent as observed. See [parallel recovery evidence](docs/research/2026-10-01-parallel-alchemy-recovery.md).
 - Metadata construction/access preserves receiver storage/count offsets `+0x08/+0x0C`, entry metadata/name/word offsets `+0x08/+0x0C/+0x10`, metadata name offset `+0x1C`, slot `0x58`, signed count/index guards and byte search flag. Reference release tests the original low 23 bits; pooled-string and factory helpers remain original. Full semantic types remain unrecovered. See [metadata evidence](docs/research/2026-10-01-metadata-recovery.md).
+- Creation/lookup hooks retain observed storage/count/array offsets `+0x10/+0x08/+0x10`, virtual slots `0x70/0x74`, byte test returns and original release-before-call ordering. Metadata-driven creation and ancestry-test/append helpers remain external and original; semantic types and names remain unknown. See [creation/lookup evidence](docs/research/2026-10-01-creation-lookup-recovery.md).
 - The current Mac needs `/opt/homebrew/bin/python3` because the login shell selects Python 3.7. Homebrew Python and pinned wibo/compiler execution were verified during the baseline build.
 - The existing `FILE_POS.C` case warning is unchanged. Configuration also warns about the two explicit original remainder splits having no source configuration; they intentionally link generated original objects. The supplied image's header says GDJEB2 revision 0 despite the README's revision label; its DOL matches the project's pinned checksum.
 - The inherited CI uses a private upstream container. Local checks establish completion; upstream CI availability is not required for work in our fork.

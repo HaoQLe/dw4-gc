@@ -59,7 +59,8 @@ SHA-1s equal repository-pinned `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`.
 All configured source compilation and the normal checksum target pass.
 Independent review repeats fresh private pinned compilation and exact ELF checks,
 checks architecture/type/flags and verifies provenance, artifacts, checksums and
-report deltas; no blocking findings.
+report deltas; no blocking findings. All publication checks pass again after
+integration into `work`.
 
 | Metric | Baseline → checkpoint | Gain |
 | --- | --- | --- |

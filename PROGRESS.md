@@ -4,6 +4,8 @@ Updated: 2026-10-02. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Active larger batch:** 50 functions / 5,908 original code bytes, `0x800416D8..0x80042DEC`, on `task/storage-metadata-large-recovery`, baseline `85c1520`. User explicitly requested a 5,000–10,000-byte batch. Scope includes storage insertion/search, reference-list ordering, empty hooks and metadata access/replacement. Original assembly establishes shared storage `+0x08/+0x0C/+0x10`, allocator/growth dependencies, low-23-bit release checks and virtual/hidden-result conventions. This is a synthetic recovery range, not an original translation-unit claim. Compared with SDK reverb (1,148 remaining bytes, independent floating-point mismatch) and standalone `fn_80369284` (7,704 bytes, extensive exception/destructor ownership), this group offers stronger dependency reuse. Main unknowns: callback/live-range register allocation, ordering routine `fn_80042134`, metadata replacement temporary lifetimes. Plan: recover storage helpers, then ordering/reference consumers, then hooks/metadata; strict objdiff and independent ELF checks per partition, all-source/map/artifact/checksum checks plus independent review at publication. Continue every remainder until exact or evidenced hard blocked. Baseline refresh passes: matched code 376,956, linked code 362,868 / 4,141,552; matched data 165,586 / 1,503,795; functions 1,301 / 23,334; units 203 / 5,164. Exact report and target inventory saved under ignored `build/GDJEB2/analysis/storage-metadata-large-recovery/`. Checkpoint `fe3044d` recovers the first 12 functions / 1,896 bytes / 34 relocations through `0x80041E40`. Strict objdiff, independent ELF comparisons, all-source/map/no-artifact/pinned DOL checks and independent fresh-compile review pass. Remaining 38 functions / 4,012 bytes stay active; next investigation is reference-list ordering and temporary lifetime recovery.
+
 - Storage-allocation batch is **complete and source-linked: three functions / 380 original bytes / 11 full relocations**, range `0x8004155C..0x800416D8`, in two source units. Functional commits: accessor/growth checkpoint `8df3ca9`, allocator `f1e1f29`; baseline `5cf7f79`. Task branch `task/storage-allocation-recovery` is integrated into `work`; all publication checks pass again on integrated revision `e6507f1`. Strict objdiff, independent exact ELF checks, all-source build, map/Ninja provenance, no-artifact checks, pinned checksum, exact progress deltas and independent fresh-compile reviews pass. No remainder or owned data/BSS. Nested allocation arguments resolved the allocator's final scheduling difference without compiler-option changes. Local experiment tip `031a02b` is preserved and its old mismatch is historical. See [storage-allocation handoff](docs/research/2026-10-02-storage-allocation-recovery.md). Next proposed investigation: insertion/append/removal helpers at `0x800416D8..0x80041894` (444 bytes); inspect signed guards and overlapping-copy arithmetic and compare alternatives before selecting another batch. This proposal starts no new batch.
 
 - Creation/lookup hooks are **complete and source-linked: five functions / 408 original bytes / 12 full relocations**, range `0x800413C4..0x8004155C`. Functional commit `0b2bddb`, baseline `73f7969`; task branch `task/creation-lookup-recovery` is integrated into `work`. Strict objdiff, independent exact ELF checks, all-source build, map/Ninja source provenance, no-artifact checks, pinned DOL checksum and independent fresh-compile review pass. All publication checks pass again on integrated `work`. No remainder or owned data/BSS. See [creation/lookup handoff](docs/research/2026-10-01-creation-lookup-recovery.md). The proposed storage-allocation group is now recovered in the batch above.
@@ -60,17 +62,19 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-02 for functional allocator revision `f1e1f29`, compared with pre-batch `work` baseline `5cf7f79`. Percentages use exact byte totals. Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-02 for large-batch checkpoint `fe3044d`, compared with pre-batch `work` baseline `85c1520`. Percentages use exact byte totals. Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 376,956 / 4,141,552 bytes (9.101805%) |
-| Fully linked source code | 362,868 / 4,141,552 bytes (8.761643%) |
-| Matched functions | 1,301 / 23,334 |
-| Completed units | 203 / 5,164 |
+| Matched executable code | 378,852 / 4,141,552 bytes (9.147585%) |
+| Fully linked source code | 364,764 / 4,141,552 bytes (8.807423%) |
+| Matched functions | 1,313 / 23,334 |
+| Completed units | 204 / 5,165 |
 | Matched data | 165,586 / 1,503,795 bytes (11.011208%) |
 
-Verification: normal configure, all configured source compilation, strict objdiff and independent exact ELF comparisons pass for all three functions: 380 original bytes, complete section/function metadata and 11 full relocations with target metadata. Source map/Ninja provenance, original-object immutability and artifact exclusion pass for both source units. Both DOL SHA-1s equal pinned `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-compile reviews found no blocking issues. No new owned data/BSS or emitted artifacts. No target remains unrecovered.
+Current checkpoint: +1,896 matched and linked bytes, +12 functions, +1 completed unit; unit denominator +1 from the synthetic split. Matched data and code/data/function denominators unchanged. Independent review passes. The larger batch remains active.
+
+Prior storage-allocation verification: normal configure, all configured source compilation, strict objdiff and independent exact ELF comparisons pass for all three functions: 380 original bytes, complete section/function metadata and 11 full relocations with target metadata. Source map/Ninja provenance, original-object immutability and artifact exclusion pass for both source units. Both DOL SHA-1s equal pinned `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-compile reviews found no blocking issues. No new owned data/BSS or emitted artifacts. No target remains unrecovered.
 
 **Compiler artifacts remain excluded:** earlier string and reference-view destructors (232 bytes / four relocations), plus the parallel string builder's weak destructor (116 bytes / two relocations), remain UNUSED in the map. Their 348 bytes / six relocations are not recovered progress.
 

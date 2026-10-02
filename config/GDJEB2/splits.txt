@@ -103,6 +103,9 @@ Alchemy/src/igCore/unknown80040C84.cpp:
 Alchemy/src/igCore/unknown80040DDC.cpp:
 	.text       start:0x80040DDC end:0x80041020
 
+Alchemy/src/igCore/unknown80041020.cpp:
+	.text       start:0x80041020 end:0x800413C4
+
 Runtime/MSL/Common/abort_exit.c:
 	.text       start:0x80094948 end:0x80094AD4
 	.bss        start:0x804F2728 end:0x804F2828

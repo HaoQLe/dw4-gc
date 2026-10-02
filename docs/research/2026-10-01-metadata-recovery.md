@@ -4,6 +4,9 @@ Date: 2026-10-01. Baseline `work`: `ce41066`. Selected scope is six functions /
 932 original code bytes at `0x80041020..0x800413C4`. All six match and source-link;
 no remainder, owned data/BSS or compiler artifacts. Functional commit: `bca74d7`. Independent fresh-compile review found no blocking
 issues; its strict and exact ELF checks, provenance, checksum and delta checks pass.
+The batch is integrated into `work`; normal configure, all-source/report build,
+strict and independent exact checks, provenance, checksums and deltas pass again
+after integration.
 
 ## Selection and recovered behavior
 

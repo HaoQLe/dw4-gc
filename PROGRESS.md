@@ -1,10 +1,10 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-02. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-03. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
-- **Active larger batch:** 50 functions / 5,908 original code bytes, `0x800416D8..0x80042DEC`, on `task/storage-metadata-large-recovery`, baseline `85c1520`. User explicitly requested a 5,000–10,000-byte batch. Scope includes storage insertion/search, reference-list ordering, empty hooks and metadata access/replacement. Original assembly establishes shared storage `+0x08/+0x0C/+0x10`, allocator/growth dependencies, low-23-bit release checks and virtual/hidden-result conventions. This is a synthetic recovery range, not an original translation-unit claim. Compared with SDK reverb (1,148 remaining bytes, independent floating-point mismatch) and standalone `fn_80369284` (7,704 bytes, extensive exception/destructor ownership), this group offers stronger dependency reuse. Main unknowns: callback/live-range register allocation, ordering routine `fn_80042134`, metadata replacement temporary lifetimes. Plan: recover storage helpers, then ordering/reference consumers, then hooks/metadata; strict objdiff and independent ELF checks per partition, all-source/map/artifact/checksum checks plus independent review at publication. Continue every remainder until exact or evidenced hard blocked. Baseline refresh passes: matched code 376,956, linked code 362,868 / 4,141,552; matched data 165,586 / 1,503,795; functions 1,301 / 23,334; units 203 / 5,164. Exact report and target inventory saved under ignored `build/GDJEB2/analysis/storage-metadata-large-recovery/`. Checkpoint `fe3044d` recovers the first 12 functions / 1,896 bytes / 34 relocations through `0x80041E40`. Strict objdiff, independent ELF comparisons, all-source/map/no-artifact/pinned DOL checks and independent fresh-compile review pass. Remaining 38 functions / 4,012 bytes stay active; next investigation is reference-list ordering and temporary lifetime recovery.
+- **Active larger batch:** 50 functions / 5,908 original code bytes at `0x800416D8..0x80042DEC`, baseline `85c1520`, on `task/storage-metadata-large-recovery`. User requested 5,000–10,000 bytes. **48 functions / 4,796 bytes / 106 original relocations are exact and source-linked** in five synthetic partitions: storage checkpoint `fe3044d` (12 functions / 1,896 bytes), additional checkpoint `54b37bf` (36 functions / 2,900 bytes). Normal configure/all-source/report, strict objdiff, independent full ELF comparisons, source/original map/Ninja provenance, original immutability, artifact exclusion, pinned original/rebuilt DOL SHA-1 and independent fresh-compile review pass. New weak destructor 116 bytes / two relocations is UNUSED and excluded. The two remaining targets stay active and original-linked: `fn_80042134` (896 bytes; same size, best strict similarity 99.75446%, first-phase storage/pair register swap) and `fn_8004291C` (216 bytes; same size, 93.888885%, incoming-pointer/index copy propagation). Local candidates are retained separately from published recovery source. Next: trace first-alias/pair coalescing against later pending/ready live ranges, and find the lookup frontend binding that preserves the input separately from its index. An extra-call-argument probe was rejected by independent ABI review; the two-argument ABI remains. Neither remainder is hard blocked; continue automatically after publication. Selection, exact partitions, verification and rejected variants: [larger-batch evidence](docs/research/2026-10-03-storage-metadata-large-recovery.md).
 
 - Storage-allocation batch is **complete and source-linked: three functions / 380 original bytes / 11 full relocations**, range `0x8004155C..0x800416D8`, in two source units. Functional commits: accessor/growth checkpoint `8df3ca9`, allocator `f1e1f29`; baseline `5cf7f79`. Task branch `task/storage-allocation-recovery` is integrated into `work`; all publication checks pass again on integrated revision `e6507f1`. Strict objdiff, independent exact ELF checks, all-source build, map/Ninja provenance, no-artifact checks, pinned checksum, exact progress deltas and independent fresh-compile reviews pass. No remainder or owned data/BSS. Nested allocation arguments resolved the allocator's final scheduling difference without compiler-option changes. Local experiment tip `031a02b` is preserved and its old mismatch is historical. See [storage-allocation handoff](docs/research/2026-10-02-storage-allocation-recovery.md). Next proposed investigation: insertion/append/removal helpers at `0x800416D8..0x80041894` (444 bytes); inspect signed guards and overlapping-copy arithmetic and compare alternatives before selecting another batch. This proposal starts no new batch.
 
@@ -56,23 +56,31 @@ Rows record each session's result at the time; the retained-recovery row and res
 
 | Storage allocation/accessor/growth | **Complete and source-linked:** three functions / 380 original bytes / 11 full relocations in two source units. Exact ELF/strict objdiff, all-source build, provenance, artifact exclusion, pinned checksum and independent fresh-compile reviews pass. No remainder or owned data/BSS. | Functional commits `8df3ca9`, `f1e1f29`; [handoff](docs/research/2026-10-02-storage-allocation-recovery.md) |
 
+| Larger storage/order/wrapper/metadata batch | **Active checkpoint: 48 of 50 functions / 4,796 of 5,908 bytes / 106 original relocations, source-linked.** All publication gates and independent fresh-compile review pass. Two register/copy-propagation mismatches remain active and original-linked; new 116-byte destructor is UNUSED and excluded. | Functional checkpoints `fe3044d`, `54b37bf`; [evidence](docs/research/2026-10-03-storage-metadata-large-recovery.md) |
+
 The UART work also has historical [upstream PR #3](https://github.com/ivanno4317/dw4-gc/pull/3), created before the fork-first policy. Its review/merge status is independent of the verified fork result. This policy change does not modify that PR.
 
-Throughput preference remains evidence-backed aggregate recovery, dependency reuse and strict publication gates. This batch recovered all three selected storage-allocation helpers / 380 bytes. The preceding creation/lookup batch recovered five hooks / 408 bytes. The metadata batch recovered six functions / 932 bytes. The earlier parallel batch recovered 15 functions / 1,400 bytes with three concurrent workers. Historical fuzzy matches are not counted separately.
+Throughput preference remains evidence-backed aggregate recovery, dependency reuse and strict publication gates. The active larger batch has recovered 48 functions / 4,796 original bytes, with two functions / 1,112 bytes still active. Checkpoint publication does not close the batch. Historical fuzzy matches and discarded compiler artifacts are not recovered progress.
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-02 for large-batch checkpoint `fe3044d`, compared with pre-batch `work` baseline `85c1520`. Percentages use exact byte totals. Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-03 for large-batch checkpoint `54b37bf`, compared with pre-batch `work` baseline `85c1520`. Percentages use exact byte totals. Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 378,852 / 4,141,552 bytes (9.147585%) |
-| Fully linked source code | 364,764 / 4,141,552 bytes (8.807423%) |
-| Matched functions | 1,313 / 23,334 |
-| Completed units | 204 / 5,165 |
-| Matched data | 165,586 / 1,503,795 bytes (11.011208%) |
+| Matched executable code | 381,752 / 4,141,552 bytes (9.217607312%) |
+| Fully linked source code | 367,664 / 4,141,552 bytes (8.877444977%) |
+| Matched functions | 1,349 / 23,334 |
+| Completed units | 208 / 5,171 |
+| Matched data | 165,586 / 1,503,795 bytes (11.011208310%) |
 
-Current checkpoint: +1,896 matched and linked bytes, +12 functions, +1 completed unit; unit denominator +1 from the synthetic split. Matched data and code/data/function denominators unchanged. Independent review passes. The larger batch remains active.
+| Active larger-batch metric | Before → checkpoint | Delta | Exact gain |
+| --- | --- | --- | --- |
+| Matched code | 9.101805314% → 9.217607312% | +0.115801999 percentage points | +4,796 bytes |
+| Fully linked code | 8.761642978% → 8.877444977% | +0.115801999 percentage points | +4,796 bytes |
+| Matched data | 11.011208310% → 11.011208310% | 0 percentage points | 0 bytes |
+
+Current checkpoint: +48 functions and +5 completed units. **Unit denominator: 5,164 → 5,171** from synthetic recovery/original partitions. Code/data/function denominators remain unchanged. New 116-byte destructor / two relocations and earlier 348 bytes / six relocations are UNUSED and excluded. Independent review passes. The larger batch remains active.
 
 Prior storage-allocation verification: normal configure, all configured source compilation, strict objdiff and independent exact ELF comparisons pass for all three functions: 380 original bytes, complete section/function metadata and 11 full relocations with target metadata. Source map/Ninja provenance, original-object immutability and artifact exclusion pass for both source units. Both DOL SHA-1s equal pinned `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Independent fresh-compile reviews found no blocking issues. No new owned data/BSS or emitted artifacts. No target remains unrecovered.
 

@@ -52,16 +52,28 @@ Data ownership: every compiled `.data` (all 86 source objects; also a minimal te
 
 fn_8004A41C's tables follow 0x50 bytes of unreferenced `igObject::internalRelease`/`release`/`~igSmartPointer<`/`(Unknown)` strings. Its data cannot start at an 8-aligned address outside this unit. Promoting it requires merging it into this unit and reproducing those orphan literals in order.
 
+## Verified parser and storage checkpoint (`bcf2e75`)
+
+Five exact units (26 functions, 6,884 bytes) source-link. The trace mechanism, from `debug-c5-fn_800442F8` and others: GPR coloring walks vregs in descending number, and each value gets the lowest callee-saved register already in use that is still available. Locals are numbered in reverse declaration order, and frontend/inline temps after locals. Nodes at the high-degree threshold are simplified last and so colored first.
+
+- **fn_80044A9C:** `!value ? "" : value` adds temporaries. They raise owner/storage interference, so those two get colored first.
+- **fn_80044C10:** the original loads the receiver before the nullable text conditional. An inline `unknown80044C10Load(receiver,const String&)` reproduces this; multi-return text helpers matched the order but added a branch.
+- **fn_800447F4:** `unknown800442F8At` makes the element a late temp. `return fn_800218F4(...).value;` keeps the returned value and the hidden-result release in one register.
+- **Parser partitions:** the parser unit is split at fn_80045BA8 and fn_80045FA4 into a shared header and per-run files, with definitions in address order.
+
+Retained mismatches, all local NonMatching:
+
+- **fn_800442F8 (99.92%):** uses reference-argument store, plain store, create and string-store helpers. Only `value` takes r25 where the original has r26; the original needs an interfering r25 neighbor.
+- **fn_80045BA8 (95.45%):** first argument fixed with `textElse`. The original places the `r3`/`r6` moves before the second conditional; wrapper permutations didn't move them.
+- **fn_80045FA4:** `object` and `value` are simplified in ascending order. Member, identity-inline and parameter variants were rejected.
+
 ## Active Alchemy recovery
 
-Local experiment `003767e` preserves all 83 implementations, with72 private strict-exact functions /16,160 bytes. After `340bb0b`, eight functions /11,220 original bytes remain partial (table below); the remaining exact candidates stay in incomplete original-linked units. All targets stay active. None meets the hard-blocker criterion. The paused lookup remains excluded.
+Local experiment `003767e` preserves all 83 implementations, with72 private strict-exact functions /16,160 bytes. After `bcf2e75`, five functions /8,940 original bytes remain partial (table below); the remaining exact candidates stay in incomplete original-linked units. All targets stay active. None meets the hard-blocker criterion. The paused lookup remains excluded.
 
 | Active function | Original / emitted bytes | Strict similarity | Concrete next investigation |
 | --- | --- | --- | --- |
 | fn_800442F8 | 1,276 /1,276 | 98.80564% | Reference temporaries at stack10/14 and storage/value/offset register lifetimes. |
-| fn_800447F4 | 680 /684 | 97.87647% | Index/value register29/30, cached string cleanup and the extra return-value move. |
-| fn_80044A9C | 368 /368 | 99.021736% | Receiver/storage/index/induction register28..31 coloring; inspect compiler IR before more type variants. |
-| fn_80044C10 | 1,232 /1,232 | 98.487015% | Receiver load before nullable text selection and hidden-result full-expression scheduling. |
 | fn_80045BA8 | 352 /348 | 91.98864% | Original first nullable-string branch/dead branch and receiver/index/ref argument scheduling. |
 | fn_80045FA4 | 688 /688 | 99.53488% | Only16 owner/node register30/31 substitutions; test late-temp vreg ordering (inline result) for the owner. |
 | fn_800489E4 | 2,664 /2,664 | 96.854355% | First two signed decoder pointer/shift/value lifetimes, later zero initialization and store-before-advance shape. |

@@ -47,7 +47,7 @@ static DVDBuffer Curr;
 static void Read(void* address, u32 length, u32 offset, DVDLowCallback callback);
 static void SetBreakAlarm(OSTime timeout);
 
-void __DVDInitWA(void) {
+__declspec(weak) void __DVDInitWA(void) {
 	NextCommandNumber = 0;
 	CommandList[0].command = -1;
 	__DVDLowSetWAType(0, 0);
@@ -72,7 +72,7 @@ static BOOL ProcessNextCommand(void) {
 	return FALSE;
 }
 
-void __DVDInterruptHandler(__OSInterrupt interrupt, OSContext* context) {
+__declspec(weak) void __DVDInterruptHandler(__OSInterrupt interrupt, OSContext* context) {
 	DVDLowCallback cb;
 	OSContext exceptionContext;
 	u32 cause = 0;
@@ -340,7 +340,7 @@ BOOL DVDLowSeek(u32 offset, DVDLowCallback callback) {
 	return TRUE;
 }
 
-BOOL DVDLowWaitCoverClose(DVDLowCallback callback) {
+__declspec(weak) BOOL DVDLowWaitCoverClose(DVDLowCallback callback) {
 	Callback = callback;
 	WaitingCoverClose = TRUE;
 	StopAtNextInt = FALSE;
@@ -363,7 +363,7 @@ BOOL DVDLowReadDiskID(DVDDiskID* diskID, DVDLowCallback callback) {
 	return TRUE;
 }
 
-BOOL DVDLowStopMotor(DVDLowCallback callback) {
+__declspec(weak) BOOL DVDLowStopMotor(DVDLowCallback callback) {
 	Callback = callback;
 	StopAtNextInt = FALSE;
 	__DIRegs[2] = 0xe3000000;

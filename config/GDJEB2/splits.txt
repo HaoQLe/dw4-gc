@@ -176,11 +176,11 @@ Alchemy/src/igCore/unknown8004944C.cpp:
 	.text       start:0x8004944C end:0x800496E8
 
 Alchemy/src/igCore/unknown800496E8.cpp:
-	.text       start:0x800496E8 end:0x8004A41C
-	.data       start:0x80469070 end:0x80469334
+	.text       start:0x800496E8 end:0x8004B394
+	.data       start:0x80469070 end:0x80469528
 
-auto_07_80469334_data:
-	.data       start:0x80469334 end:0x80477158 align:4
+auto_07_80469528_data:
+	.data       start:0x80469528 end:0x80477158 align:4
 
 Runtime/MSL/Common/abort_exit.c:
 	.text       start:0x80094948 end:0x80094AD4

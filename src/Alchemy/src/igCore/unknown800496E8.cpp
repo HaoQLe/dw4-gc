@@ -1,4 +1,5 @@
 #include "unknown800496E8.h"
+#include "unknown8004A41C.h"
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -193,5 +194,164 @@ void fn_8004A2F0(Unknown800496E8Owner *object,int size){
   p+=length;
  }
 }
+}
+#pragma force_active on
+extern "C" char lbl_80469334[0x50]="igObject::internalRelease\0\0\0igObject::release\0\0\0::~igSmartPointer<\0\0(Unknown)\0\0";
+#pragma force_active reset
+inline int unknown8004A41CNext(const char *&p){return *p++;}
+inline void unknown8004A41CDecimal(char *buffer,const char *custom,int value){sprintf(buffer,*custom ? custom : lbl_8055D7C0,value);}
+template <class T> inline void unknown8004A41CFormatted(char *buffer,const char *custom,T value,const char *fallback){sprintf(buffer,*custom ? custom : fallback,value);}
+template <class T> inline void unknown8004A41CAppend(char *buffer,const char *format,T value){sprintf(buffer+strlen(buffer),format,value);}
+extern "C" char *fn_8004A41C(Unknown800496E8Owner *object,const Unknown800496E8Record *source,char *output,int capacity){
+ const char *data=lbl_80463100;
+ char name[0x100],piece[0x100],description[0x100];
+ Unknown800496E8Record record(*source);
+ char format[0x80],extra[0x80];
+ int code,length;
+ void **entry;
+ if(capacity && output) *output=0;
+ if(!source) return output;
+ const char *p=fn_8004B394(object,source->unknown00);
+ if(!p || !*p){
+  switch(source->unknown00){
+   case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:{const char *fallback=*reinterpret_cast<const char **>(reinterpret_cast<char *>(object)+0xE0);if(fallback && *fallback) p=fallback;else p=lbl_8055D824;break;}
+   case 13:p=lbl_8055D828;break;
+   case 14:p=lbl_8055D82C;break;
+   case 15:default:p=lbl_8055D830;break;
+  }
+ }
+ switch(record.unknown00){
+  case 8:
+   if((!record.unknown44 || !*record.unknown44) && record.unknown4C){
+    entry=record.unknown4C;
+    for(;*entry;++entry){
+     object->slotA0(*entry,name,0xFF,&code,description,0xFF,&length);
+     if(!strstr(name,data+0x6234) && !strstr(name,data+0x6250) && !strstr(name,data+0x6264)){record.unknown44=description;record.unknown48=length;record.unknown4C=entry;break;}
+    }
+   }
+   break;
+ }
+ int limit=capacity;
+ while(*p){
+  char letter=*p++;
+  format[0]=0;extra[0]=0;
+  int index=-1;
+  if(*p>='0' && *p<='9'){index=0;while(*p>='0' && *p<='9'){index=*p+10*index;index-='0';++p;}}
+  if(letter!='"'){
+   while(*p=='\'' || *p=='^'){
+    if(*p=='\'') {int count=0;++p;
+ while(*p && *p!='\'' && count<0x7F){
+  if(*p=='\\'){
+   switch(*++p){case 'n':format[count++]=10;break;case 'r':format[count++]=13;break;case 't':format[count++]=9;break;}
+  }else format[count++]=*p;
+  ++p;
+ }
+ format[count]=0;if(*p=='\'') ++p;}
+    if(*p=='^') {int count=0;++p;
+ while(*p && *p!='^' && count<0x7F){
+  if(*p=='\\'){
+   switch(*++p){case 'n':extra[count++]=10;break;case 'r':extra[count++]=13;break;case 't':extra[count++]=9;break;}
+  }else extra[count++]=*p;
+  ++p;
+ }
+ extra[count]=0;if(*p=='^') ++p;}
+   }
+  }
+  piece[0]=0;
+  switch(letter){
+   case 'a':unknown8004A41CFormatted(piece,format,record.unknown08,lbl_8055D7B8);break;
+   case 'c':{
+    entry=record.unknown4C;
+    if(entry){for(;*entry;++entry){
+     object->slot9C(*entry,extra,name,0xFF);
+     unknown8004A41CFormatted(piece,format,name,lbl_8055D854);
+     strncat(output,piece,limit);if(capacity) output[capacity-1]=0;piece[0]=0;
+     if(!strncmp(name,lbl_8055D848,4) || strstr(name,lbl_8055D858)) break;
+    }}break;
+   }
+   case 'd':{
+    int end;
+    if(index!=-1) end=index+1;else{index=0;end=fn_8004C0E4(&record);}
+    piece[0]=0;
+    for(;index<end;++index){
+     switch(fn_8004C11C(&record,index)){
+      case 1:{const char *f=(*format ? format : lbl_8055D7C0);sprintf(piece+strlen(piece),f,fn_8004C140(&record,index));break;}
+      case 2:{const char *f=(*format ? format : lbl_8055D860);sprintf(piece+strlen(piece),f,fn_8004C19C(&record,index));break;}
+      case 3:{const char *text=fn_8004C1F8(&record,index) ? fn_8004C1F8(&record,index) : lbl_8055D4C4;const char *f=(*format ? format : lbl_8055D7AC);unknown8004A41CAppend(piece,f,text);break;}
+      case 0:default:continue;
+     }
+     if(index<end-1) strcat(piece,lbl_8055D864);
+    }
+    break;
+   }
+   case 'e':unknown8004A41CDecimal(piece,format,record.unknown10);break;
+   case 'f':{
+    if(record.unknown44 && *record.unknown44){
+     const char *backslash=strrchr(record.unknown44,'\\');const char *slash=strrchr(record.unknown44,'/');const char *text;
+     if(backslash && slash) text=backslash>slash ? backslash : slash;else if(backslash) text=backslash;else text=slash;
+     if(text) ++text;else text=record.unknown44;
+     if(text && *text) unknown8004A41CFormatted(piece,format,text,lbl_8055D7AC);
+    }break;
+   }
+   case 'g':if(record.unknown2C && *record.unknown2C) unknown8004A41CFormatted(piece,format,record.unknown2C,lbl_8055D7AC);break;
+   case 'i':unknown8004A41CDecimal(piece,format,record.unknown04);break;
+   case 'j':{
+    if(record.unknown3C && *record.unknown3C) unknown8004A41CFormatted(piece,format,record.unknown3C,lbl_8055D7AC);
+    else if(fn_8004C0E4(&record)==3){Unknown8004A41CValue value;fn_8004C24C(&record,0,&value);if(value.unknown08) unknown8004A41CFormatted(piece,format,value.unknown08,lbl_8055D7C0);}
+    break;
+   }
+   case 'k':{
+    char kind;
+    switch(record.unknown00){
+     case 1:kind='+';break;case 2:kind='*';break;case 3:kind='-';break;case 4:kind='<';break;case 5:kind='>';break;case 6:kind='o';break;case 7:kind='t';break;case 8:kind='d';break;case 9:kind='r';break;case 10:kind='w';break;case 11:kind='r';break;case 12:kind='w';break;case 13:kind='m';break;case 14:kind='n';break;case 0:case 15:default:kind='c';break;
+    }
+    unknown8004A41CFormatted(piece,format,kind,lbl_8055D7D0);break;
+   }
+   case 'l':unknown8004A41CDecimal(piece,format,record.unknown48);break;
+   case 'm':if(record.unknown34 && *record.unknown34) unknown8004A41CFormatted(piece,format,record.unknown34,lbl_8055D7AC);break;
+   case 'n':if(record.unknown38 && *record.unknown38) unknown8004A41CFormatted(piece,format,record.unknown38,lbl_8055D7AC);break;
+   case 'o':if(record.unknown30 && *record.unknown30) unknown8004A41CFormatted(piece,format,record.unknown30,lbl_8055D7AC);break;
+   case 'p':if(record.unknown44 && *record.unknown44) unknown8004A41CFormatted(piece,format,record.unknown44,lbl_8055D7AC);break;
+   case 'q':if(record.unknown40 && *record.unknown40) unknown8004A41CFormatted(piece,format,record.unknown40,lbl_8055D7AC);break;
+   case 'r':{
+    entry=record.unknown4C;
+    if(entry){while(*entry){
+     object->slot9C(*entry,extra,name,0xFF);
+     unknown8004A41CFormatted(piece,format,name,lbl_8055D7AC);
+     ++entry;if(*entry && !*format) strcat(piece,lbl_8055D864);
+     strncat(output,piece,limit);if(capacity) output[capacity-1]=0;piece[0]=0;
+     if(!strncmp(name,lbl_8055D848,4) || strstr(name,lbl_8055D858)) break;
+    }}break;
+   }
+   case 's':unknown8004A41CFormatted(piece,format,record.unknown0C,lbl_8055D868);break;
+   case 't':{const char *text=fn_8004B3E4(object,record.unknown00);if(!text) text=data+0x6278;unknown8004A41CFormatted(piece,format,text,lbl_8055D7AC);break;}
+   case 'u':if(record.unknown14){const char *text=fn_8004B434(object,record.unknown14);if(!text) text=data+0x6278;unknown8004A41CFormatted(piece,format,text,lbl_8055D7AC);}break;
+   case 'v':
+    if(record.unknown18) unknown8004A41CDecimal(piece,format,record.unknown18);
+    else if(fn_8004C0E4(&record)==3){Unknown8004A41CValue value;fn_8004C24C(&record,0,&value);sprintf(piece,*format ? format : lbl_8055D7C0,value.unknown04);}break;
+   case 'w':
+    if(reinterpret_cast<const char *>(record.unknown1C)) unknown8004A41CFormatted(piece,format,record.unknown1C,lbl_8055D7AC);
+    else if(fn_8004C0E4(&record)==3){Unknown8004A41CValue value;fn_8004C24C(&record,0,&value);sprintf(piece,*format ? format : lbl_8055D860,value.unknown00);}break;
+   case 'x':if(record.unknown20){const char *text=fn_8004B484(object,record.unknown20);if(!text) text=data+0x6278;unknown8004A41CFormatted(piece,format,text,lbl_8055D7AC);}break;
+   case 'y':if(record.unknown24){const char *text=fn_8004B4D4(object,record.unknown24);if(text) unknown8004A41CFormatted(piece,format,text,lbl_8055D7AC);else unknown8004A41CDecimal(piece,format,record.unknown24);}break;
+   case 'z':if(reinterpret_cast<const char *>(record.unknown28)) unknown8004A41CFormatted(piece,format,record.unknown28,lbl_8055D7AC);break;
+   case '\\':switch(*p++){case 'n':strcpy(piece,lbl_8055D7C4);break;case 'r':strcpy(piece,lbl_8055D7C8);break;case 't':strcpy(piece,lbl_8055D7CC);break;}break;
+   case '"':{
+    while(*p && *p!='"'){
+     if(*p=='\\'){switch(*++p){case 'n':strcat(piece,lbl_8055D7C4);break;case 'r':strcat(piece,lbl_8055D7C8);break;case 't':strcat(piece,lbl_8055D7CC);break;}}
+     else sprintf(piece+strlen(piece),lbl_8055D7D0,*p);
+     ++p;
+    }
+    if(*p=='"') ++p;
+    break;
+   }
+   default:sprintf(piece,lbl_8055D7D0,letter);break;
+  }
+  strncat(output,piece,limit);
+ }
+ strncat(output,lbl_8055D7C4,capacity);
+ if(capacity>1) output[capacity-2]=10;
+ if(capacity) output[capacity-1]=0;
+ return output;
 }
 #pragma pop

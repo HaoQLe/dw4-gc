@@ -107,16 +107,35 @@ helpers and search-local ordering have been compared. Next: inspect the
 coalescing order of the first alias and pair against the later pending/ready
 live ranges, then test a source expression that preserves the desired captures.
 
-`fn_8004291C` emits its original 216-byte size at 93.888885% strict similarity.
-Control flow and relocations match. The original moves incoming `r4` to `r5`
-and retains the search result in `r4`; the current compiler propagates the
-incoming pointer into physical `r4`, uses another register for the result and
-moves that result into `r4` just before the call. Compiler PCode confirms the
-input copy is removed before allocation. Declaration orders, search state,
-result references, parameter types, member/continuation helpers and pointer
-capture variants have not yet resolved it. Next: investigate the frontend
-binding and copy-propagation constraint that keeps the input separate from the
-index across the final comparison.
+On 2026-10-04, `fn_8004291C` improved from 93.888885% to **99.25926%**
+strict similarity, retaining its original 216-byte size and all three full
+relocations. Local-only commit `bae7d2f` on
+`task/storage-metadata-large-recovery` preserves the improved NonMatching
+candidate; earlier candidate commit `51aff11` remains in its history. Published
+`work` still links the original function. The candidate captures the pointer
+argument before using its word as the search-index workspace. Every search
+exit assigns that workspace; integer-valued pointer temporaries are converted
+back to indices without dereferencing them. The external pointer parameter and
+two-argument getter declaration remain intact. Independent fresh compilation
+and review confirm complete symbol metadata and relocations agree, with just
+eight instruction differences: the target pointer and array pointer use swapped
+`r5/r6` registers. All other registers now agree with the original.
+
+Declaration permutations, promoted search fields, pointer/reference bindings,
+capture helpers, array views and comparison helpers did not remove that last
+swap. The earlier compiler evidence identified copy propagation as the cause
+of the input/index collision; the workspace approach resolves it. Next:
+investigate allocation priority of the preserved target versus generated array
+temporaries. For `fn_80042134`, plain-pair/late-pending-reference source matches
+the first phase but swaps pending/ready registers in the second; the retained
+aggregate candidate matches the second phase but swaps first-phase storage/pair.
+Use those complementary results to investigate their live-range coalescing.
+
+The 2026-10-04 all-source compilation and report refresh pass. Verified totals
+remain 48 functions / 4,796 original bytes; neither candidate is promoted.
+Recent investigation time has concentrated on these two register mismatches,
+with no additional exact recovery. The improved lookup candidate is evidence,
+not recovered progress or a hard-blocker claim.
 
 A three-argument function-pointer probe improved the latter's registers by
 making the input live through the call. Independent ABI review rejected it:

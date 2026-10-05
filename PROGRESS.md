@@ -6,6 +6,26 @@ Updated: 2026-10-04. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 - **Active 10% milestone batch (expanded at user request):** baseline `0e0ce32`, branch `task/string-stream-large-recovery`. Target **both matched and fully linked code ≥10%**. Plan: recover 83 Alchemy functions / 28,828 original bytes at `0x800442F8..0x8004B394`, plus source-link six existing exact-code units (12,196 bytes): `__init_cpp_exceptions`, `odenotstub`, `axartlfo`, `dvdlow`, `OSAlloc`, `reverb_hi`. If all verify, matched code reaches 10.065405433% and fully linked code 10.019722075%. The six units are linkage investigations, not newly recovered code; reverb-hi currently has 64 unmatched data bytes. Compared with extending new recovery through `0x8004E2AC` (40,884 bytes), this scope reuses existing exact SDK/runtime source and coherent Alchemy string/stream, parser and property serialization dependencies. Principal unknowns: reference assignment and hidden-result cleanup; parser node vptr at +4; binary variable-length decoding and serialization control flow; SDK/runtime symbol, data and link layout. Inspect each dependency/layout before implementing its subset. All targets stay active until exact or evidenced hard blocked; publish verified checkpoints and continue. Compiler/tool pins and exact publication gates remain fixed. The paused `fn_8004291C` remains excluded.
 
+- **10% batch checkpoint `572409c` (on `work`): matched code reaches 10%.** fn_800489E4 (2,664 bytes, 22 relocations) is exact and source-linked in its own unit, `0x800489E4..0x8004944C`.
+
+  Compiler findings:
+  - CSE merges zero initializations of inline temporaries but not of caller locals.
+  - Inline locals are numbered in forward declaration order.
+  - Each decoder site therefore uses the original's mix: helper call, caller-local accumulation (`SignedInto`/`UnsignedInto`), or a helper with a specific local order (`SignedNext`/`SignedValue`).
+  - `SignedInto(p+4,value)` reproduces the first decoder's separate cursor.
+
+  Checks: the 17-unit verifier (133 functions, 38,708 bytes, 1,273 relocations), map provenance, all-source build, byte-identical DOL with the pinned SHA-1 and an independent review all pass.
+
+  Totals: matched 414,548 (**10.009484%**), linked 412,656 (9.963800%), data 166,842 (11.094730%), 1,470 functions, 230/5,191 units. Fully linked still needs about 1,500 bytes.
+
+  Active mismatches:
+
+  | Function | Size | Match |
+  | --- | --- | --- |
+  | fn_800442F8 | 1,276 | 99.92% |
+  | fn_80045FA4 | 688 | 99.53% |
+  | fn_80045BA8 | 352 | 95.45% |
+
 - **10% batch checkpoint `5b75c45` (on `work`):** fn_8004A41C is exact (3,960 bytes) and joins the `0x800496E8` unit. That unit now owns `.text` through `0x8004B394` and `.data` through `0x80469528`. MWCC 8-byte `.data` alignment requires fn_8004A41C's two jump tables to share the object that begins at `lbl_80469070`. An unreferenced 0x50-byte string block lies between the tables. It is defined as opaque force-active `lbl_80469334` and changes only the `.comment` force-active flag.
 
   Source forms:

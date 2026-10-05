@@ -1,0 +1,28 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+void fn_8006665C(void *);
+extern char lbl_80472FA0[];
+extern char lbl_80476C7C[];
+extern char lbl_80476E0C[];
+extern char lbl_804D6540[];
+extern char lbl_804D65A4[];
+}
+struct UnknownGenObject802D82CC {
+ void *unknown00;
+ char unknown04[20];
+};
+extern "C" {
+void *fn_802D82CC(){
+ UnknownGenObject802D82CC object;
+ fn_8006665C(&object);
+ object.unknown00=lbl_80472FA0;
+ object.unknown00=lbl_80476E0C;
+ object.unknown00=lbl_80476C7C;
+ object.unknown00=lbl_804D65A4;
+ object.unknown00=lbl_804D6540;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+}
+#pragma pop

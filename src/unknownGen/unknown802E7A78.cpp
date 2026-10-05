@@ -8,7 +8,7 @@ void fn_800D108C();
 void fn_802B1AC8();
 void *fn_802E7838();
 void fn_802E7884();
-void fn_802E7B3C();
+void *fn_802E7B3C();
 void fn_802E7B4C();
 extern char lbl_80421134[];
 extern char lbl_804D3208[];

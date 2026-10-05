@@ -5,7 +5,7 @@ extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void fn_802B2E3C();
+void *fn_802B2E3C();
 void *fn_802BACB4();
 void fn_802BAD00();
 void fn_802E3D20();

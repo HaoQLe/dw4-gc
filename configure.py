@@ -337,11 +337,15 @@ generated_units = (
     else []
 )
 
-# Generated units whose original functions own exception-table entries need exceptions enabled.
+# Generated units: 'eh' functions own exception-table entries; 'nosdata' code avoids small-data addressing.
 def GeneratedObject(unit: List[str]) -> Object:
-    cflags = cflags_engine_size
-    if len(unit) > 3 and unit[3] == "eh":
+    flags = unit[3].split(",") if len(unit) > 3 else []
+    cflags = list(cflags_engine_size)
+    if "eh" in flags:
+        assert "-Cpp_exceptions off" in cflags
         cflags = [("-Cpp_exceptions on" if flag == "-Cpp_exceptions off" else flag) for flag in cflags]
+    if "nosdata" in flags:
+        cflags += ["-sdata 0", "-sdata2 0"]
     return Object(Matching, unit[0], cflags=cflags)
 
 # Helper function for Dolphin libraries

@@ -90,6 +90,8 @@ def expr(e):
     if info and info[2]=='function':
       if sym not in protos: fn(sym,'void %s();')
       return '(int)%s'%sym
+    if sym in protos and protos[sym].startswith('extern void *'):
+      return '(int)&%s'%sym if not e[2] else '(int)((char *)&%s+%d)'%(sym,e[2])
     if sym not in protos: fn(sym,'extern char %s[];')
     return '(int)%s'%sym if not e[2] else '(int)(%s+%d)'%(sym,e[2])
   raise ValueError('expr %r'%(e,))
@@ -253,6 +255,37 @@ def generate(names,seed,calls=True,header=False):
   inc=('#include <%s>\n'%HEADER_NAME) if header else HEADER
   src=inc+'#pragma push\n#pragma auto_inline off\nextern "C" {\n'+'\n'.join(decls)+'\n}\n'+('\n'.join(PRE)+'\n' if PRE else '')+'extern "C" {\n'+'\n'.join(bodies)+'\n}\n#pragma pop\n'
   return src,done,cov,skipped
+def _profile_keys():
+  """Register each template representative's masked shape as compiled without small data."""
+  import subprocess,tempfile,compiler,elf
+  from paths import ANALYSIS
+  cache=ANALYSIS/'profilekeys.json'
+  reps=[(r,'F',f) for f,r in FAMREP.items()]+[(r,'T',r) for r in texttempl.T]
+  if cache.exists():
+    data=json.load(open(cache))
+  else:
+    data=[]
+    for rep,kind_,val in reps:
+      src,done,cov,sk=generate([rep],prepass([rep]))
+      tmp=Path(tempfile.mkdtemp(prefix='dw4-unknowngen-'));c=tmp/'r.cpp';o=tmp/'r.o';c.write_text(src)
+      subprocess.run(compiler.command(False,True)+['-c',str(c),'-o',str(o)],check=True,capture_output=True)
+      secs,rels,syms=elf.parse(o)
+      f=next(x for x in syms if x['name']==rep and x['type']==2)
+      rl=sorted((x['offset']-f['value'],x['type']) for x in rels if x['section']=='.text' and f['value']<=x['offset']<f['value']+f['size'])
+      b=bytearray(secs['.text']['data'][f['value']:f['value']+f['size']])
+      for off,t in rl:
+        w=off&~3
+        if t in (4,5,6): b[off:off+2]=b'\0\0'
+        elif t==109: b[w:w+4]=_st.pack('>I',_st.unpack('>I',bytes(b[w:w+4]))[0]&0xFFE00000)
+        elif t==10: b[w:w+4]=_st.pack('>I',_st.unpack('>I',bytes(b[w:w+4]))[0]&0xFC000003)
+      data.append([kind_,val,bytes(b).hex(),[t for off,t in rl]])
+    cache.parent.mkdir(parents=True,exist_ok=True);json.dump(data,open(cache,'w'))
+  for kind_,val,hx,types in data:
+    key=(bytes.fromhex(hx),tuple(types))
+    if kind_=='F': FM.setdefault(key,val)
+    else: TT.setdefault(key,val)
+  _famcache.clear()
+_profile_keys()
 if __name__=='__main__' and len(sys.argv)>3 and sys.argv[1]!='--runs':
   lo,hi,out=int(sys.argv[1],16),int(sys.argv[2],16),sys.argv[3]
   names=select(lo,hi)

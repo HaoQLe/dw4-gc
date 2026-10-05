@@ -7,7 +7,7 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_80284294();
 void *fn_80285384();
 void fn_802853D0();
-void fn_8028556C();
+void *fn_8028556C();
 void fn_8028557C();
 void fn_8028570C();
 extern char lbl_80416A54[];

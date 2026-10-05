@@ -6,7 +6,7 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802C6C7C();
 void fn_803250AC();
-void fn_80338A20();
+void *fn_80338A20();
 void *fn_8033A8E8();
 void fn_8033A934();
 void fn_8033AC44();

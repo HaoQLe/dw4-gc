@@ -1,7 +1,10 @@
 """Pinned compiler command for generated units (mirrors configure.py's cflags_engine_size)."""
 from paths import BUILD, VERSION
 
-def command(exceptions=False):
+# Units whose original code addresses every global without small-data relocations.
+NO_SDATA = ["-sdata", "0", "-sdata2", "0"]
+
+def command(exceptions=False, no_sdata=False):
     return [
         "build/tools/wibo", "build/tools/sjiswrap.exe", "build/compilers/GC/2.6/mwcceppc.exe",
         "-nodefaults", "-proc", "gekko", "-align", "powerpc", "-enum", "int", "-fp", "hardware",
@@ -11,4 +14,4 @@ def command(exceptions=False):
         "-i", "include", "-i", str(BUILD / "include"), "-DBUILD_VERSION=0", "-DVERSION_" + VERSION,
         "-cwd", "source", "-DNDEBUG=1", "-inline", "auto", "-lang=c++",
         "-i", "src/Alchemy/include", "-i", "src/Alchemy/include/igCore",
-    ]
+    ] + (NO_SDATA if no_sdata else [])

@@ -67,9 +67,20 @@ Retained mismatches, all local NonMatching:
 - **fn_80045BA8 (95.45%):** first argument fixed with `textElse`. The original places the `r3`/`r6` moves before the second conditional; wrapper permutations didn't move them.
 - **fn_80045FA4:** `object` and `value` are simplified in ascending order. Member, identity-inline and parameter variants were rejected.
 
+## Verified formatter checkpoint (`5b75c45`)
+
+fn_8004A41C reached 100% through four changes:
+
+- **`char letter=*p++`:** fixes the token/digit loop registers and the earlier 4-byte size difference.
+- **Direct `sprintf` in the `d` case-1/2 appends:** fixes the r21/r22 permutations, including the case-8 entry loop.
+- **One function-scope `entry` variable:** the original gives case `r`'s entry a higher vreg than case `d`'s `end`.
+- **Direct `sprintf` with `value.x` as the last argument:** the original loads the field after the format conditional, which an inline helper parameter prevents.
+
+The 0x50-byte unreferenced `igObject::...` string block occurs once in the DOL. Pinned MWCC does not emit orphan literals for dead `if(0)`, unused inline or constant-false code, so the block is reproduced as opaque force-active `lbl_80469334`. Data placement shows MWCC emits `.data` in definition order interleaved with per-function jump tables; the table created second is placed first. The `0x800496E8` unit now owns `.data 0x80469070..0x80469528`. The independent review found only cosmetic unused inline helpers.
+
 ## Active Alchemy recovery
 
-Local experiment `003767e` preserves all 83 implementations, with72 private strict-exact functions /16,160 bytes. After `bcf2e75`, five functions /8,940 original bytes remain partial (table below); the remaining exact candidates stay in incomplete original-linked units. All targets stay active. None meets the hard-blocker criterion. The paused lookup remains excluded.
+Local experiment `003767e` preserves all 83 implementations, with72 private strict-exact functions /16,160 bytes. After `5b75c45`, four functions /4,980 original bytes remain partial (table below); the remaining exact candidates stay in incomplete original-linked units. All targets stay active. None meets the hard-blocker criterion. The paused lookup remains excluded.
 
 | Active function | Original / emitted bytes | Strict similarity | Concrete next investigation |
 | --- | --- | --- | --- |
@@ -77,7 +88,6 @@ Local experiment `003767e` preserves all 83 implementations, with72 private stri
 | fn_80045BA8 | 352 /348 | 91.98864% | Original first nullable-string branch/dead branch and receiver/index/ref argument scheduling. |
 | fn_80045FA4 | 688 /688 | 99.53488% | Only16 owner/node register30/31 substitutions; test late-temp vreg ordering (inline result) for the owner. |
 | fn_800489E4 | 2,664 /2,664 | 96.854355% | First two signed decoder pointer/shift/value lifetimes, later zero initialization and store-before-advance shape. |
-| fn_8004A41C | 3,960 /3,956 | 99.166664% | Token/digit/quoted-buffer register3..6, entry/length pointer21/22, unsigned append value21/22, child cursor23/24 and two owned jump tables. |
 
 The parser's unsigned-byte loader assigned to signed int restores the original volatile cursor and signed tests; native member functions do not change the underlying ABI. Derived receiver alias changes arise from frontend lifetime shape. Fresh independent reasoning review covers22 retained ABI/type/inline forms and canonically verifies all25 parser relocations; the remaining16 changes are exclusively a register permutation.
 

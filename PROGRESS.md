@@ -6,6 +6,28 @@ Updated: 2026-10-04. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 - **Active 10% milestone batch (expanded at user request):** baseline `0e0ce32`, branch `task/string-stream-large-recovery`. Target **both matched and fully linked code ≥10%**. Plan: recover 83 Alchemy functions / 28,828 original bytes at `0x800442F8..0x8004B394`, plus source-link six existing exact-code units (12,196 bytes): `__init_cpp_exceptions`, `odenotstub`, `axartlfo`, `dvdlow`, `OSAlloc`, `reverb_hi`. If all verify, matched code reaches 10.065405433% and fully linked code 10.019722075%. The six units are linkage investigations, not newly recovered code; reverb-hi currently has 64 unmatched data bytes. Compared with extending new recovery through `0x8004E2AC` (40,884 bytes), this scope reuses existing exact SDK/runtime source and coherent Alchemy string/stream, parser and property serialization dependencies. Principal unknowns: reference assignment and hidden-result cleanup; parser node vptr at +4; binary variable-length decoding and serialization control flow; SDK/runtime symbol, data and link layout. Inspect each dependency/layout before implementing its subset. All targets stay active until exact or evidenced hard blocked; publish verified checkpoints and continue. Compiler/tool pins and exact publication gates remain fixed. The paused `fn_8004291C` remains excluded.
 
+- **10% batch checkpoint `5b75c45` (on `work`):** fn_8004A41C is exact (3,960 bytes) and joins the `0x800496E8` unit. That unit now owns `.text` through `0x8004B394` and `.data` through `0x80469528`. MWCC 8-byte `.data` alignment requires fn_8004A41C's two jump tables to share the object that begins at `lbl_80469070`. An unreferenced 0x50-byte string block lies between the tables. It is defined as opaque force-active `lbl_80469334` and changes only the `.comment` force-active flag.
+
+  Source forms:
+  - `char letter`;
+  - direct `sprintf` for the integer appends and for struct-field arguments evaluated after the format conditional;
+  - one function-scope `entry` variable.
+
+  Checks: the persistent-fresh-object verifier passes all 16 units (132 functions, 36,044 bytes, 1,251 relocations). Strict objdiff passes with explicit jump-table alias normalization. The map, all-source build, byte-identical DOL with the pinned SHA-1 and an independent review all pass.
+
+  Totals: matched 411,884 (9.945161%), linked 409,992 (9.899478%), data 166,842 (11.094730%), 1,469 functions, 229/5,191 units. Changes: +3,960 code, +500 data, +1 function.
+
+  Remaining for the 10% linked goal: about 4,163 bytes. Active mismatches:
+
+  | Function | Size | Match |
+  | --- | --- | --- |
+  | fn_800489E4 | 2,664 | 96.85% |
+  | fn_800442F8 | 1,276 | 99.92% |
+  | fn_80045FA4 | 688 | 99.53% |
+  | fn_80045BA8 | 352 | 95.45% |
+
+  The compiler-trace tools now live in ignored `build/GDJEB2/analysis/tools/`, after `/tmp` cleanup removed the old copies.
+
 - **10% batch checkpoint `bcf2e75` (on `work`):** five more exact units source-link: 26 functions, 6,884 bytes and 276 relocations. They are `0x800447F4..0x80044A9C`, `0x80044A9C..0x800450E0`, and three exact parser runs `0x8004577C..0x80045BA8`, `0x80045D08..0x80045FA4` and `0x80046254..0x80046D84`. Parser functions are partitioned along function boundaries, with definitions in address order (MWCC emits in definition order). fn_800442F8, fn_80045BA8 and fn_80045FA4 stay original-linked. Compiler findings:
   - The allocator gives each value the lowest callee-saved register already in use, and colors in descending vreg order.
   - Inline results and inline parameters are numbered after locals.

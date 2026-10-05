@@ -2,8 +2,8 @@
 
 The authorized batch remains **active**: 50 functions / 5,908 original code
 bytes at `0x800416D8..0x80042DEC`, baseline `85c1520`. The user requested a
-5,000–10,000-byte batch. Its current checkpoints recover **48 functions /
-4,796 bytes / 106 original relocations** in five source partitions.
+5,000–10,000-byte batch. Its current checkpoints recover **49 functions /
+5,692 bytes / 123 original relocations** in six source partitions.
 
 ## Selection and source boundaries
 
@@ -19,14 +19,17 @@ they do not assert original translation units or semantic class names.
 | --- | ---: | ---: | ---: |
 | `unknown800416D8.cpp`, `0x800416D8..0x80041E40` | 12 | 1,896 | 34 |
 | `unknown80041E40.cpp`, `0x80041E40..0x80042134` | 3 | 756 | 17 |
+| `unknown80042134.cpp`, `0x80042134..0x800424B4` | 1 | 896 | 17 |
 | `unknown800424B4.cpp`, `0x800424B4..0x80042824` | 27 | 880 | 31 |
 | `unknown80042824.cpp`, `0x80042824..0x8004291C` | 1 | 248 | 6 |
 | `unknown800429F4.cpp`, `0x800429F4..0x80042DEC` | 5 | 1,016 | 18 |
 
 Functional commits: first storage checkpoint `fe3044d`; additional 36 functions
-/ 2,900 bytes in `54b37bf`. Both are independently verified checkpoints within
-the same selected batch. Remaining targets are 896-byte `fn_80042134` and
-216-byte `fn_8004291C`; their published partitions use original objects.
+/ 2,900 bytes in `54b37bf`; ordering adds 896 bytes in `a308886`. These are
+independently verified checkpoints within the same selected batch. Only the
+216-byte `fn_8004291C` remains active; its published partition uses the original
+object. Local exact ordering development commit `9ac1f74` stays on the task
+branch; the clean landing copies the full source without its experiment ancestors.
 
 ## Recovered source and compiler evidence
 
@@ -60,10 +63,10 @@ Normal configure, all configured source compilation, progress/report generation
 and the normal DOL checksum check pass. Strict objdiff uses
 `functionRelocDiffs=data_value`. An independently parsed ELF comparison checks
 allocated-section attributes and bytes, every original function's binding,
-type, visibility, offset and size, and all 106 full relocations including target
+type, visibility, offset and size, and all 123 full relocations including target
 metadata. Original split-object hashes remain unchanged. Map and Ninja checks
 establish source linking for recovered functions and original linking for the
-two remaining targets.
+remaining lookup target.
 
 The original and rebuilt DOL SHA-1s both equal pinned
 `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. An independent reviewer performed
@@ -71,6 +74,9 @@ fresh pinned compilations and compared complete fresh/configured ELF contents;
 all publication gates pass. The generic whole-section comparison for the tail
 reports its known extra destructor; the contextual comparison verifies every
 original byte and relocation independently.
+
+The ordering unit emits weak `__dt__24Unknown80041E40ReferenceFv`, **116 bytes /
+two relocations**, after its 896 original bytes. It is UNUSED and excluded.
 
 The metadata tail emits weak `__dt__24Unknown80042824ReferenceFv`, **116 bytes /
 two relocations**, following its 1,016 original bytes. The map marks it UNUSED.
@@ -81,31 +87,48 @@ or BSS is added.
 
 | Metric | Baseline → checkpoint | Exact gain |
 | --- | --- | ---: |
-| Matched code | 376,956 → 381,752 / 4,141,552 | 4,796 bytes |
-| Fully linked code | 362,868 → 367,664 / 4,141,552 | 4,796 bytes |
+| Matched code | 376,956 → 382,648 / 4,141,552 | 5,692 bytes |
+| Fully linked code | 362,868 → 368,560 / 4,141,552 | 5,692 bytes |
 | Matched data | 165,586 → 165,586 / 1,503,795 | 0 bytes |
-| Matched functions | 1,301 → 1,349 / 23,334 | 48 |
-| Completed units | 203 → 208 | 5 |
+| Matched functions | 1,301 → 1,350 / 23,334 | 49 |
+| Completed units | 203 → 209 | 6 |
 | Total units | 5,164 → 5,171 | 7 synthetic partitions |
 
-Matched and linked code each increase **0.115801999 percentage points**. Code,
+Matched and linked code each increase **0.137436401 percentage points**. Code,
 data and function denominators are unchanged. Generated reports, assembly,
 private variants, compiler traces and verifiers remain ignored under
 `build/GDJEB2/analysis/storage-metadata-large-recovery/`.
 
-## Active remainders
+## Ordering completion on 2026-10-04
 
-`fn_80042134` emits its original 896-byte size. The best retained source reaches
-99.75446% strict similarity: all later instructions and relocations match, but
-the initial insertion step swaps the first storage alias and current pair
-registers (`r29/r26`). A different declaration shape matches the first phase
-and shifts the pending/ready/index registers in the second phase. The compiler
-trace shows loop-hoisted storage aliases and promoted local fields being
-coalesced into different registers. Declaration placement, aggregate fields,
-reference binding, pointer capture, constructor spelling, inline insertion
-helpers and search-local ordering have been compared. Next: inspect the
-coalescing order of the first alias and pair against the later pending/ready
-live ranges, then test a source expression that preserves the desired captures.
+The complementary plain-pair/pending-reference candidate already matched the
+first loop. Bounded local decomp-permuter runs on several initial candidates
+made no improvement; a run on this complementary candidate found a useful
+pointer capture used by the tail removal loop and final append. Targeted
+compilation reached 99.95536% / 896 bytes: every register agreed, with only two
+copy instructions exchanged around the pending-pointer reload.
+
+A fresh compiler AST/PCode trace identified the copy order in loop code motion.
+The tail pointer capture after the initial copy was hoisted after the clear/copy
+alias. Moving its assignment into the tail loop condition makes that capture
+hoist first, reproducing the original `mr r25; lwz r26; mr r29; mr r30` sequence.
+The cleaned source reaches **100% for all 896 original bytes and 17 full
+relocations** under the pinned compiler. No compiler options or ABI changed.
+
+The assignment runs on the condition check even if the tail loop body executes
+zero times, so its final append always uses an initialized pointer. It captures
+the storage object; operations may change the count/backing array and later
+reads observe those changes. The owning reference remains alive through every
+use. The pending pointer reference binds to a lifetime-extended pointer
+prvalue; the earlier volatile pointer reload is unnecessary for this shape.
+Independent review confirmed the source, fresh exact compilation, complete ELF
+metadata/relocations, UNUSED artifact, map/Ninja provenance, DOL checksum and
+report deltas. Integrated `work` repeats those publication checks.
+
+Tool setup, random candidates and compiler traces remain ignored under build
+analysis storage; the tool ran locally and changed no project dependency or pin.
+
+## Active remainder
 
 On 2026-10-04, `fn_8004291C` improved from 93.888885% to **99.25926%**
 strict similarity, retaining its original 216-byte size and all three full
@@ -126,16 +149,16 @@ capture helpers, array views and comparison helpers did not remove that last
 swap. The earlier compiler evidence identified copy propagation as the cause
 of the input/index collision; the workspace approach resolves it. Next:
 investigate allocation priority of the preserved target versus generated array
-temporaries. For `fn_80042134`, plain-pair/late-pending-reference source matches
-the first phase but swaps pending/ready registers in the second; the retained
-aggregate candidate matches the second phase but swaps first-phase storage/pair.
-Use those complementary results to investigate their live-range coalescing.
+temporaries. The next experiment applies the ordering trace lesson to a named
+array capture in the search condition, then checks whether loop code motion
+changes array/target priority without changing the instruction sequence.
 
-The 2026-10-04 all-source compilation and report refresh pass. Verified totals
-remain 48 functions / 4,796 original bytes; neither candidate is promoted.
-Recent investigation time has concentrated on these two register mismatches,
-with no additional exact recovery. The improved lookup candidate is evidence,
-not recovered progress or a hard-blocker claim.
+The 2026-10-04 all-source build, report and integrated verification pass with
+49 functions / 5,692 original bytes recovered. The lookup is still NonMatching
+and local-only. Register declarations, wide pointer captures, pointer-view
+copy/comparison helpers, identity conversions and the bounded initial permuter
+runs did not improve its 99.25926% match. This is investigation evidence, not a
+hard-blocker claim.
 
 A three-argument function-pointer probe improved the latter's registers by
 making the input live through the call. Independent ABI review rejected it:
@@ -144,6 +167,6 @@ making the input live through the call. Independent ABI review rejected it:
 definition through an incompatible pointer is not sound C++. The recovered ABI
 remains two arguments; the probe is investigation evidence only.
 
-Neither remainder has an evidenced hard blocker. The task continues
-automatically after checkpoint publication until both are exact or a genuine
+The remaining lookup has no evidenced hard blocker. The task continues
+automatically after checkpoint publication until it is exact or a genuine
 external/tool limitation is established.

@@ -6,6 +6,16 @@ Updated: 2026-10-04. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 - **Active 10% milestone batch (expanded at user request):** baseline `0e0ce32`, branch `task/string-stream-large-recovery`. Target **both matched and fully linked code ≥10%**. Plan: recover 83 Alchemy functions / 28,828 original bytes at `0x800442F8..0x8004B394`, plus source-link six existing exact-code units (12,196 bytes): `__init_cpp_exceptions`, `odenotstub`, `axartlfo`, `dvdlow`, `OSAlloc`, `reverb_hi`. If all verify, matched code reaches 10.065405433% and fully linked code 10.019722075%. The six units are linkage investigations, not newly recovered code; reverb-hi currently has 64 unmatched data bytes. Compared with extending new recovery through `0x8004E2AC` (40,884 bytes), this scope reuses existing exact SDK/runtime source and coherent Alchemy string/stream, parser and property serialization dependencies. Principal unknowns: reference assignment and hidden-result cleanup; parser node vptr at +4; binary variable-length decoding and serialization control flow; SDK/runtime symbol, data and link layout. Inspect each dependency/layout before implementing its subset. All targets stay active until exact or evidenced hard blocked; publish verified checkpoints and continue. Compiler/tool pins and exact publication gates remain fixed. The paused `fn_8004291C` remains excluded.
 
+- **10% batch checkpoint `2ce2f5a` (on `work`):** fn_80045FA4 is exact and source-linked in its own unit, `0x80045FA4..0x80046254` (688 bytes, 25 relocations). A decomp-permuter run found the fix: an inline wrapper around the entry constructor call adds the temporaries that let the owner outrank the node for r31. The 18-unit verifier (134 functions, 39,396 bytes, 1,298 relocations), byte-identical DOL with the pinned SHA-1 and an independent review pass.
+
+  Totals: matched 415,236 (**10.026096%**), linked 413,344 (9.980413%), data 166,842, 1,471 functions, 231/5,191 units. Fully linked code is about 812 bytes short of 10%.
+
+  Active remainders:
+  - **fn_800442F8 (99.92%):** only `value` differs (r25 vs r26). The original colors `value` before the store helpers' temps. Ruled out: whole-body or branch inline helpers (not inlined, or numbered late), reference-assign spellings and condition inversion. A 50-minute permuter run (workspace `permuter-442F8`) found nothing.
+  - **fn_80045BA8 (95.45%):** the original places the `r3`/`r6` argument moves before the second text conditional. A 50-minute permuter run (`permuter-45BA8`) found nothing.
+
+  Next investigation: try to make `value` an early-created frontend temp in fn_800442F8, and run longer or reseeded permuter searches.
+
 - **10% batch checkpoint `572409c` (on `work`): matched code reaches 10%.** fn_800489E4 (2,664 bytes, 22 relocations) is exact and source-linked in its own unit, `0x800489E4..0x8004944C`.
 
   Compiler findings:

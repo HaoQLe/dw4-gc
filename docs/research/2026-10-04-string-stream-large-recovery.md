@@ -30,8 +30,34 @@ Fresh review also identified four DVD functions explicitly scoped weak in origin
 
 After integration on `work`, all nine units pass again: 81 functions /20,128 original bytes /480 relocations; every owned function/data byte and map VMA, fresh-versus-configured metadata, source-link provenance and full original-versus-linked DOL equality. All configured source compiles. The DOL SHA-1 remains `e409a88a7379ed1a536f93b0a303a0ce7cd5d877`. Published totals: matched 395,968, linked 394,076, matched data165,634, functions1,418, complete units222/5,181. Original-only remainders remain generated and link original objects.
 
+## Verified lexer checkpoint (`15285cf`)
+
+The entire `0x800450E0..0x8004577C` lexer unit is now exact: 14 functions /1,692 bytes /48 relocations. Indexed destination writes `buffer[count]` allow the pinned compiler to generate the original advancing-pointer induction, resolving the final line-reader register rotation. No compiler flags change. Source linking and independent fresh comparison pass for this fourth Alchemy unit, including all prior SDK/Alchemy checkpoint units.
+
+The added unit emits an absent-original 116-byte weak reference destructor /two relocations. The linker selects its definition as UNUSED and omits the identical superseded destructor from the 46D84 map. Both copies have identical bytes, full relocations, weak binding, size/type/visibility, and the symbol is absent from the final ELF. The canonical verifier explicitly checks this coalescing case. No discarded artifact contributes recovered bytes.
+
+Checks repeated on integrated `work`: all-source compilation; strict fresh comparisons; independent function bytes/section attributes/full relocation target metadata/function bindings; original map VMAs and source provenance; full linked DOL equality and pinned SHA-1. All ten checkpoint units /95 functions /21,820 original bytes /528 relocations pass. Published totals: matched397,660 (9.601714526%), linked395,768 (9.556031169%), matched data165,634 (11.014400234%), functions1,432, complete units223/5,183. Milestone gains are9,624 matched bytes,21,820 linked bytes,48 data bytes,42 functions and10 complete units; denominator+8. Unfinished source stays local.
+
 ## Active Alchemy recovery
 
-Local experiment `b04a1f1` preserves all 83 selected implementations, including 71 private strict-exact functions /15,992 bytes. Twelve functions remain partial. The exact 8,060 bytes outside the three approved units remain original-linked on published `work`. All remaining scope stays active; high similarity or exhausted variants are not hard blockers.
+Local experiment `003767e` preserves all 83 implementations, with72 private strict-exact functions /16,160 bytes. Eleven functions /12,668 original bytes remain partial;6,536 already-exact bytes are still inside incomplete original-linked units. All targets stay active. None meets the hard-blocker criterion. The paused lookup remains excluded.
 
-Best formatter currently emits3,968/original3,960 bytes, strict98.05556%. Direct format-selection ternaries preserve buffer argument scheduling. Case15 reproduces the original fallback dispatch. Unknown value kinds must continue the loop before comma insertion; this corrects behavior and avoids hoisting an extra live register. Lexical quoted parsing improves register lifetimes. Next: distinguish current letter/digit/quoted-buffer allocation, original entry/length pointer registers, and typed hidden-result temporaries; assign original jump-table ownership only after exact code and data checks. Other active differences are receiver/argument scheduling in two strings and two parser functions, inline cursor register assignment, reader signed/unsigned decoding and three aggregate register patterns. No selected remainder meets the hard-blocker criterion. The user-paused lookup remains excluded.
+| Active function | Original / emitted bytes | Strict similarity | Concrete next investigation |
+| --- | --- | --- | --- |
+| fn_800442F8 | 1,276 /1,276 | 98.80564% | Reference temporaries at stack10/14 and storage/value/offset register lifetimes. |
+| fn_800447F4 | 680 /684 | 97.87647% | Index/value register29/30, cached string cleanup and the extra return-value move. |
+| fn_80044A9C | 368 /368 | 99.021736% | Receiver/storage/index/induction register28..31 coloring; inspect compiler IR before more type variants. |
+| fn_80044C10 | 1,232 /1,232 | 98.487015% | Receiver load before nullable text selection and hidden-result full-expression scheduling. |
+| fn_80045BA8 | 352 /348 | 91.98864% | Original first nullable-string branch/dead branch and receiver/index/ref argument scheduling. |
+| fn_80045FA4 | 688 /688 | 99.53488% | Only16 owner/node register30/31 substitutions; compiler alias/lifetime graph. |
+| fn_800489E4 | 2,664 /2,664 | 96.854355% | First two signed decoder pointer/shift/value lifetimes, later zero initialization and store-before-advance shape. |
+| fn_800496E8 | 836 /836 | 99.64115% | Generated induction zero-copy vs explicit zero, then original16-entry jump-table ownership and full data relocations. |
+| fn_8004A1B8 | 312 /312 | 99.42308% | Cached size vs scaled-index register30/31. |
+| fn_8004A2F0 | 300 /300 | 99.86667% | Sole remaining byte load destination27 vs original0; extension27 and all other registers now exact. |
+| fn_8004A41C | 3,960 /3,956 | 99.166664% | Token/digit/quoted-buffer register3..6, entry/length pointer21/22, unsigned append value21/22, child cursor23/24 and two owned jump tables. |
+
+The parser's unsigned-byte loader assigned to signed int restores the original volatile cursor and signed tests; native member functions do not change the underlying ABI. Derived receiver alias changes arise from frontend lifetime shape. Fresh independent reasoning review covers22 retained ABI/type/inline forms and canonically verifies all25 parser relocations; the remaining16 changes are exclusively a register permutation.
+
+Reader prefix and flags decoded lexically now reproduce independent zero initialization; the high-byte-first OR expression exactly reproduces original word loads. Expanding all signed loops lexically or adding default-initializer formals worsens coalescing; the best mixed candidate is retained. Formatter direct ternaries, explicit case15, unknown-kind continue-before-comma behavior and small typed formatting/append adapters improve its match from89.05% to99.166664%. Original unchecked behavior remains as observed. Its .data tables and the aggregate16-entry table remain original-owned; promotion requires correct ownership plus complete byte/relocation checks, not relaxed objdiff.
+
+Ignored experiment runs now retain the exact candidate source and sibling header snapshots, alongside private object and strict report. Recorded failed probes include member ABI, loop offsets, byte-local conversion, pointer-return/out-value decoding, default argument initialization and quoted loop forms. Review notes and artifacts remain below `build/GDJEB2/analysis/string-stream-large-recovery/`. The batch remains active through execution/context boundaries; no new batch is proposed.

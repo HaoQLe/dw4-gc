@@ -38,9 +38,23 @@ The added unit emits an absent-original 116-byte weak reference destructor /two 
 
 Checks repeated on integrated `work`: all-source compilation; strict fresh comparisons; independent function bytes/section attributes/full relocation target metadata/function bindings; original map VMAs and source provenance; full linked DOL equality and pinned SHA-1. All ten checkpoint units /95 functions /21,820 original bytes /528 relocations pass. Published totals: matched397,660 (9.601714526%), linked395,768 (9.556031169%), matched data165,634 (11.014400234%), functions1,432, complete units223/5,183. Milestone gains are9,624 matched bytes,21,820 linked bytes,48 data bytes,42 functions and10 complete units; denominator+8. Unfinished source stays local.
 
+## Verified aggregate unit checkpoint (`340bb0b`)
+
+All ten functions at `0x800496E8..0x8004A41C` are exact: 3,380 bytes, with 47 `.text` and 160 `.data` relocations. Fixes:
+
+- fn_800496E8 moved its trailing walk loop into an inline helper.
+- fn_8004A1B8 gets its cached size from inline `unknown800496E8Size`.
+- fn_8004A2F0 declares `char length=p[1]`.
+
+The compiler register-graph trace (`debug-base-fn_8004A1B8`) shows coloring in descending vreg order. Locals are numbered before frontend CSE temps, so the `index<<2` temp outranked local `size` for r31. Making size an inline-result temp reverses that. In fn_8004A2F0, an `int` local let the load and the sign extension share one vreg. A separate char temp moved `length` above `p`/`begin`. A `char` local reproduces the original separate load temp with `length` in place.
+
+Data ownership: every compiled `.data` (all 86 source objects; also a minimal test) has alignment ≥8. When provisionally linked alone, the table moved to `0x804692F8` and the checksum failed. The nearest preceding 8-aligned genuine object start is `lbl_80469070`, after zero padding `0x8046906D..0x80469070`. The unit owns `0x80469070..0x80469334` as opaque `{char[N]; const char *[M]}` objects matching analyzer boundaries, plus `lbl_804692E4` and the table. The linker stripped the two self-referenced tables as UNUSED until `#pragma force_active` was added; this changes only `.comment` flags. dtk's `force_active` symbol attribute did not add them to FORCEACTIVE. Verifier `reviewer-eleven-verify.py` adds explicit jump-table alias normalization and sorted full `.data` relocation comparison. Independent review confirmed every item. `tools/decomp.py verify` reports `.text` metadata differences only for the two UNUSED weak destructors (0xC0 bytes), as for the serializer.
+
+fn_8004A41C's tables follow 0x50 bytes of unreferenced `igObject::internalRelease`/`release`/`~igSmartPointer<`/`(Unknown)` strings. Its data cannot start at an 8-aligned address outside this unit. Promoting it requires merging it into this unit and reproducing those orphan literals in order.
+
 ## Active Alchemy recovery
 
-Local experiment `003767e` preserves all 83 implementations, with72 private strict-exact functions /16,160 bytes. Eleven functions /12,668 original bytes remain partial;6,536 already-exact bytes are still inside incomplete original-linked units. All targets stay active. None meets the hard-blocker criterion. The paused lookup remains excluded.
+Local experiment `003767e` preserves all 83 implementations, with72 private strict-exact functions /16,160 bytes. After `340bb0b`, eight functions /11,220 original bytes remain partial (table below); the remaining exact candidates stay in incomplete original-linked units. All targets stay active. None meets the hard-blocker criterion. The paused lookup remains excluded.
 
 | Active function | Original / emitted bytes | Strict similarity | Concrete next investigation |
 | --- | --- | --- | --- |
@@ -49,11 +63,8 @@ Local experiment `003767e` preserves all 83 implementations, with72 private stri
 | fn_80044A9C | 368 /368 | 99.021736% | Receiver/storage/index/induction register28..31 coloring; inspect compiler IR before more type variants. |
 | fn_80044C10 | 1,232 /1,232 | 98.487015% | Receiver load before nullable text selection and hidden-result full-expression scheduling. |
 | fn_80045BA8 | 352 /348 | 91.98864% | Original first nullable-string branch/dead branch and receiver/index/ref argument scheduling. |
-| fn_80045FA4 | 688 /688 | 99.53488% | Only16 owner/node register30/31 substitutions; compiler alias/lifetime graph. |
+| fn_80045FA4 | 688 /688 | 99.53488% | Only16 owner/node register30/31 substitutions; test late-temp vreg ordering (inline result) for the owner. |
 | fn_800489E4 | 2,664 /2,664 | 96.854355% | First two signed decoder pointer/shift/value lifetimes, later zero initialization and store-before-advance shape. |
-| fn_800496E8 | 836 /836 | 99.64115% | Generated induction zero-copy vs explicit zero, then original16-entry jump-table ownership and full data relocations. |
-| fn_8004A1B8 | 312 /312 | 99.42308% | Cached size vs scaled-index register30/31. |
-| fn_8004A2F0 | 300 /300 | 99.86667% | Sole remaining byte load destination27 vs original0; extension27 and all other registers now exact. |
 | fn_8004A41C | 3,960 /3,956 | 99.166664% | Token/digit/quoted-buffer register3..6, entry/length pointer21/22, unsigned append value21/22, child cursor23/24 and two owned jump tables. |
 
 The parser's unsigned-byte loader assigned to signed int restores the original volatile cursor and signed tests; native member functions do not change the underlying ABI. Derived receiver alias changes arise from frontend lifetime shape. Fresh independent reasoning review covers22 retained ABI/type/inline forms and canonically verifies all25 parser relocations; the remaining16 changes are exclusively a register permutation.

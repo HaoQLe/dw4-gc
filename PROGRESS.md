@@ -4,6 +4,27 @@ Updated: 2026-10-04. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Active 20% milestone batch (user request 2026-10-05):** baseline `9bccdac`: matched 416,864 / linked 414,972 of 4,141,552 code bytes. Target: matched and fully linked code both ≥20% (828,311 bytes), i.e. about +411,450 matched and +413,340 linked. Branch `task/alchemy-core-20pct`.
+
+  Scope:
+  - **Loose ends:**
+    - paused `fn_8004291C` (216 bytes, 99.26%), resumed by this request;
+    - SDK partial `reverb_std` (`ReverbSTDCreate`, 1,148 unmatched bytes);
+    - `ansi_files`: code matched, but 320 data bytes unmatched, so it is unlinked.
+  - **Main scope:** unmatched Alchemy-core functions in `0x80020400..0x800A0000`, about 418,000 bytes in about 3,180 functions averaging ~140 bytes. Work outward from the recovered `0x8003D1C8..0x8004B394` region, starting with `0x8004B394..0x80060000` (85,216 bytes / 386 functions).
+
+  Rationale: SDK code is already about 99% done, so nearly all remaining code is unnamed engine/game code. The Alchemy core shares one compiler profile (`GC/2.6 -O4,s`), recovered layouts (reference, pooled string, storage, records) and recurring registration/constructor/accessor/virtual-dispatch patterns, and lies next to verified work. Alternatives were game-code clusters (larger functions, unknown types) and 181 scattered 116-byte static-object destructors (~21 KB).
+
+  Unknowns: Alchemy class layouts, data and vtable ownership, compiler-generated jump tables and string literals (8-byte `.data` alignment), and per-TU weak-function emission.
+
+  Method:
+  - Partition exact runs into synthetic units.
+  - Keep mismatches NonMatching locally.
+  - Publish verified checkpoints with the canonical verifier and independent review.
+  - Use the recorded allocator findings and decomp-permuter for register stalls.
+
+  This spans multiple sessions. The batch stays active until both targets are reached or the remainders are evidenced hard blocks.
+
 - **10% milestone batch is complete and source-linked (closed `89ae0fd`, baseline `0e0ce32`).**
 
   Scope:

@@ -6,6 +6,20 @@ Updated: 2026-10-04. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 - **Active 20% milestone batch (user request 2026-10-05):** baseline `9bccdac`: matched 416,864 / linked 414,972 of 4,141,552 code bytes. Target: matched and fully linked code both ≥20% (828,311 bytes), i.e. about +411,450 matched and +413,340 linked. Branch `task/alchemy-core-20pct`.
 
+  **Checkpoint `69fd3b4` (published):**
+  - Six exact Alchemy units in `0x8004B394..0x8004DE4C`: 64 functions, 8,408 bytes, 241 relocations. They cover owner name tables, the 0x94-byte record members, metadata-field registration, the path holder and archive helpers.
+  - `ansi_files` now links (420 bytes): its console buffers are named from their reverse-declaration BSS order, and `__read_console` from the `__files` read slot.
+  - The shared result type gains an explicit int constructor; two owner virtual signatures follow observed calls.
+  - Independent review passed, including byte-identical rebuilt objects for every header user.
+  - Totals: matched 425,272 (10.268421%), linked 423,800 (10.232880%), data 167,162 (11.116010%), 1,537 functions, 240/5,202 units.
+  - Remaining in this chunk, kept local and NonMatching:
+    - `fn_8004BD50` (97.75%), `fn_8004B9FC` (97.19%), `fn_8004BBE0` (97.72%), `fn_8004DB40` (99.76%), `fn_8004DCC0` (98.85%);
+    - `fn_8004CCE0`, which differs only in local-static naming and needs `.sbss` ownership;
+    - `fn_8004CAAC` and `fn_8004DE4C`, not yet written.
+  - Loose ends still active: `fn_8004291C` (permuter best 185/330) and `ReverbSTDCreate` (register allocation).
+
+  **Next:** a family-template generator under `build/GDJEB2/analysis/batch-20pct/gen/` for the per-class metaobject boilerplate in `0x80020400..0x8003CFC0`. One prototype run produced 22 exact functions; region-wide output is in progress.
+
   Scope:
   - **Loose ends:**
     - paused `fn_8004291C` (216 bytes, 99.26%), resumed by this request;

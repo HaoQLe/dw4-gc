@@ -6,7 +6,7 @@ Updated: 2026-10-04. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 - **Active 10% milestone batch (expanded at user request):** baseline `0e0ce32`, branch `task/string-stream-large-recovery`. Target **both matched and fully linked code ≥10%**. Plan: recover 83 Alchemy functions / 28,828 original bytes at `0x800442F8..0x8004B394`, plus source-link six existing exact-code units (12,196 bytes): `__init_cpp_exceptions`, `odenotstub`, `axartlfo`, `dvdlow`, `OSAlloc`, `reverb_hi`. If all verify, matched code reaches 10.065405433% and fully linked code 10.019722075%. The six units are linkage investigations, not newly recovered code; reverb-hi currently has 64 unmatched data bytes. Compared with extending new recovery through `0x8004E2AC` (40,884 bytes), this scope reuses existing exact SDK/runtime source and coherent Alchemy string/stream, parser and property serialization dependencies. Principal unknowns: reference assignment and hidden-result cleanup; parser node vptr at +4; binary variable-length decoding and serialization control flow; SDK/runtime symbol, data and link layout. Inspect each dependency/layout before implementing its subset. All targets stay active until exact or evidenced hard blocked; publish verified checkpoints and continue. Compiler/tool pins and exact publication gates remain fixed. The paused `fn_8004291C` remains excluded.
 
-- **10% batch SDK linkage checkpoint:** six SDK/runtime units /53 existing matched functions /12,196 code bytes now pass source-link verification. Strict objdiff, independent full ELF comparisons with documented analyzer/compiler representation differences, source map/Ninja provenance, all-source build and pinned DOL checksum pass. Independent SDK review identified the corrected constant, false audio relocation and link layout blockers; final remedies pass the coordinator's exact checks. No newly recovered code is counted in this checkpoint. Verified linked code becomes 386,144 /4,141,552 bytes (9.323654514%); matched code remains 388,036 (9.369337871%). Matched data becomes 165,634 (11.014400234%); +6 completed units, denominator +1 for original-only DVD BSS padding. New Alchemy candidates remain local NonMatching and the selected 83-function range stays active. See [milestone evidence](docs/research/2026-10-04-string-stream-large-recovery.md).
+- **10% batch SDK linkage checkpoint (`5122f44`, integrated into `work`):** six SDK/runtime units /53 existing matched functions /12,196 code bytes now pass source-link verification. Strict objdiff, independent full ELF comparisons with documented analyzer/compiler representation differences, source map/Ninja provenance, all-source build and pinned DOL checksum pass. Independent SDK review identified the corrected constant, false audio relocation and link layout blockers; final remedies pass the coordinator's exact checks. No newly recovered code is counted in this checkpoint. Verified linked code becomes 386,144 /4,141,552 bytes (9.323654514%); matched code remains 388,036 (9.369337871%). Matched data becomes 165,634 (11.014400234%); +6 completed units, denominator +1 for original-only DVD BSS padding. New Alchemy candidates remain local NonMatching at `ae11770` on `task/string-stream-large-recovery`: 56 functions /7,100 bytes are exact in private strict objdiff, including all 24 functions at `0x80046D84..0x80047878`; source-link, independent ELF and Alchemy review gates remain. The selected 83-function range stays active. Next: finish the parser dispatch bodies and compare hidden-result argument scheduling, then recover the three large binary/initialization functions. The review service reached its usage limit after SDK diagnostics; additional Alchemy review is pending service availability. See [milestone evidence](docs/research/2026-10-04-string-stream-large-recovery.md).
 
 - **Metadata/storage follow-up batch is complete and source-linked: 40 functions / 5,388 original code bytes / 150 full relocations**, range `0x80042DEC..0x800442F8`, baseline `fcae0b0`. Functional commit `baf4780`; `task/metadata-followup-recovery` is integrated into `work`. Strict objdiff, independent ELF code/section/function/full-relocation checks, all-source compilation, source-map/Ninja provenance, original-object immutability, pinned DOL checksum and independent final fresh-compile review pass. Publication gates pass again on integrated `work`. Four synthetic units own no data/BSS; three identical weak destructors emit 348 bytes / six relocations, coalesce to one UNUSED map entry and are excluded. No remainder or blocker in this batch. The previously paused `fn_8004291C` remains out of scope and original-linked; prior experiment tips are preserved. See [follow-up evidence](docs/research/2026-10-04-metadata-followup-recovery.md). Next proposed investigation: inspect the original region beginning at `0x800442F8` and compare dependency/ABI confidence with alternatives before selecting scope. This proposal starts no new batch.
 
@@ -72,15 +72,23 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-04 after integrated follow-up functional commit `baf4780`, compared with pre-batch `work` baseline `fcae0b0`. Percentages use exact byte totals. Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-04 after integrated SDK linkage checkpoint `5122f44`, compared with milestone baseline `0e0ce32`. Post-integration all-source build, exact SDK comparisons, source provenance and pinned DOL checksum pass. Percentages use exact byte totals. Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
 | Matched executable code | 388,036 / 4,141,552 bytes (9.369337871%) |
-| Fully linked source code | 373,948 / 4,141,552 bytes (9.029175536%) |
+| Fully linked source code | 386,144 / 4,141,552 bytes (9.323654514%) |
 | Matched functions | 1,390 / 23,334 |
-| Completed units | 213 / 5,175 |
-| Matched data | 165,586 / 1,503,795 bytes (11.011208310%) |
+| Completed units | 219 / 5,176 |
+| Matched data | 165,634 / 1,503,795 bytes (11.014400234%) |
+
+| Active milestone SDK checkpoint | Before → after | Exact gain |
+| --- | --- | --- |
+| Matched code | 9.369337871% → 9.369337871% | 0 bytes |
+| Fully linked code | 9.029175536% → 9.323654514% | +12,196 bytes /+0.294478978 percentage points |
+| Matched data | 11.011208310% → 11.014400234% | +48 bytes /+0.003191924 percentage points |
+
+Checkpoint gains: +0 matched functions, +6 completed units; denominator 5,175 → 5,176. Experimental Alchemy matches are excluded from this published snapshot. The milestone remains active.
 
 | Follow-up batch metric | Before → after | Delta | Exact gain |
 | --- | --- | --- | --- |

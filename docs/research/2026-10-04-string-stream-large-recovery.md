@@ -2,7 +2,7 @@
 
 The user requested one large recovery batch reaching at least 10% for both matched executable code and fully source-linked code. Baseline is `0e0ce32`: 388,036 /4,141,552 matched code bytes, 373,948 linked bytes, 165,586 /1,503,795 matched data bytes, 1,390 /23,334 functions and 213 /5,175 complete units. The selected new Alchemy range is `0x800442F8..0x8004B394`, 83 functions /28,828 bytes. Six already-matched SDK/runtime units add 12,196 possible linked bytes. The earlier paused `fn_8004291C` remains excluded. The full selected batch remains active.
 
-## Verified SDK/runtime linkage checkpoint
+## Verified SDK/runtime linkage checkpoint (`5122f44`)
 
 Source linking now uses `__init_cpp_exceptions` (124 bytes /3 functions), `odenotstub` (2,688 /14), `axartlfo` (180 /1), `dvdlow` (3,708 /21), `OSAlloc` (1,648 /7), and `reverb_hi` (3,848 /7). This adds **12,196 fully linked bytes**, with no new matched code or functions. Reverb's 64 small-data bytes now match. A separate original-only DVD BSS padding partition removes 16 padding bytes from the source-owned matched-data tally; the net matched-data gain is 48 bytes. Completed units increase by six, and the denominator increases by one for the padding partition.
 
@@ -23,3 +23,5 @@ Detailed generated comparisons, baseline report, pre-regeneration original hashe
 ## Active Alchemy recovery
 
 Unfinished Alchemy source remains NonMatching on `task/string-stream-large-recovery`. Private pinned compilation established the reference-count and hidden-result conventions, node virtual destructor at offset4, scalar comparison wrappers, lexer helpers, parser constructors/destructors and lock-result temporaries. The exact stream/parser subset is still awaiting its own source-link checks and independent review. Register allocation, argument scheduling and cursor-inline allocation remain active investigations; none is a hard blocker. The property serializer and three large binary/initialization functions remain within the selected scope.
+
+Local experiment checkpoint `ae11770` preserves 56 strict-exact Alchemy functions /7,100 original bytes, including the complete 24-function `0x80046D84..0x80047878` partition. This is object-comparison evidence, not published recovery. The review service reached its usage limit when asked for additional final review after the SDK diagnostics. New Alchemy review remains pending; source recovery continues independently.

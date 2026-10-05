@@ -13,6 +13,7 @@ struct Unknown800442F8String {
     inline ~Unknown800442F8String(){ release(); }
     inline void adopt(const char *text){ const char *p=unknown80042DECAcquire(text); release(); value=p; }
     inline const char *textBranch() const { return value ? value : lbl_8055DC4C; }
+    inline const char *textElse() const { return !value ? lbl_8055DC4C : value; }
     inline const char *text() const { const char *p=value; if(!p) p=lbl_8055DC4C; return p; }
 };
 struct Unknown800442F8Reference {
@@ -118,6 +119,7 @@ extern "C" {
     extern char lbl_80468F58[], lbl_80468F64[], lbl_80472C3C[];
     extern char lbl_8055D7FC[2], lbl_8055D800[4];
 }
+inline Unknown80042DECValue *unknown800442F8At(Unknown80042DECStorage *storage,int index){return storage->unknown10[index];}
 inline void unknown800442F8Store(Unknown80042DECStorage *storage,int index,Unknown80042DECValue *p){
     unknown80042DECRetain(p);
     unknown80042DECRelease(storage->unknown10[index]);

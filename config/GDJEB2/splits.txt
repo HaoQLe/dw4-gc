@@ -148,8 +148,23 @@ Alchemy/src/igCore/unknown800439B4.cpp:
 Alchemy/src/igCore/unknown8004401C.cpp:
 	.text       start:0x8004401C end:0x800442F8
 
+Alchemy/src/igCore/unknown800447F4.cpp:
+	.text       start:0x800447F4 end:0x80044A9C
+
+Alchemy/src/igCore/unknown80044A9C.cpp:
+	.text       start:0x80044A9C end:0x800450E0
+
 Alchemy/src/igCore/unknown800450E0.cpp:
 	.text       start:0x800450E0 end:0x8004577C
+
+Alchemy/src/igCore/unknown8004577C.cpp:
+	.text       start:0x8004577C end:0x80045BA8
+
+Alchemy/src/igCore/unknown80045D08.cpp:
+	.text       start:0x80045D08 end:0x80045FA4
+
+Alchemy/src/igCore/unknown80046254.cpp:
+	.text       start:0x80046254 end:0x80046D84
 
 Alchemy/src/igCore/unknown80046D84.cpp:
 	.text       start:0x80046D84 end:0x80047878

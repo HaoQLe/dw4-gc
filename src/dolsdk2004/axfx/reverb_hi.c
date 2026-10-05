@@ -160,9 +160,10 @@ static int ReverbHIModify(struct AXFX_REVHI_WORK* rv, f32 coloration,
                           crosstalk);
 }
 
-const static f32 value0_3 = 0.3f;
-const static f32 value0_6 = 0.6f;
-const static double i2fMagic = 4503601774854144.0;
+const double lbl_80566F90 = 4503601774854144.0;
+const f32 lbl_80566F98 = 1.0f;
+const f32 lbl_80566F9C = 0.3f;
+const f32 lbl_80566FA0 = 0.6f;
 
 asm static void DoCrossTalk(register s32* l, register s32* r,
                             register f32 cross, register f32 invcross)
@@ -171,8 +172,8 @@ asm static void DoCrossTalk(register s32* l, register s32* r,
     nofralloc
 	stwu r1, -48(r1)
 	stfd f14, 40(r1)
-	lis r5, i2fMagic@ha
-	lfd f0, i2fMagic@l(r5)
+	lis r5, lbl_80566F90@ha
+	lfd f0, lbl_80566F90@l(r5)
 	lis r5, 0x4330 // 176.0f (0x43300000)
 	stw r5, 8(r1)
 	stw r5, 16(r1)
@@ -180,8 +181,8 @@ asm static void DoCrossTalk(register s32* l, register s32* r,
 	stw r5, 32(r1)
 	ps_merge00 f3, invcross, cross
 	ps_merge00 f4, cross, invcross
-	lis r5, value0_6@ha
-	lfs f5, value0_6@l(r5)
+	lis r5, lbl_80566F98@ha
+	lfs f5, lbl_80566F98@l(r5)
 	li r5, 79
 	mtctr r5
 	li r10, -8
@@ -296,12 +297,12 @@ asm static void HandleReverb(register s32* sptr,
 	stfd f25, 0xb8(r1)
 	stw k, 0x50(r1)
 	stw rv, 0x54(r1)
-	lis r31, value0_3@ha
-	lfs f6, value0_3@l(r31)
-	lis r31, value0_6@ha
-	lfs f9, value0_6@l(r31)
-	lis r31, i2fMagic@ha
-	lfd f5, i2fMagic@l(r31)
+	lis r31, lbl_80566F9C@ha
+	lfs f6, lbl_80566F9C@l(r31)
+	lis r31, lbl_80566FA0@ha
+	lfs f9, lbl_80566FA0@l(r31)
+	lis r31, lbl_80566F90@ha
+	lfd f5, lbl_80566F90@l(r31)
 	lfs f2, AXFX_REVHI_WORK.allPassCoeff(rv)
 	lfs f15, AXFX_REVHI_WORK.damping(rv)
 	lfs f8, AXFX_REVHI_WORK.level(rv)

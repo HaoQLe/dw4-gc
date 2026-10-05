@@ -695,7 +695,7 @@ dolsdk2004/dsp/dsp_task.c:
 
 dolsdk2004/dvd/dvdlow.c:
 	.text       start:0x8024D138 end:0x8024DFB4
-	.bss        start:0x80512680 end:0x80512760
+	.bss        start:0x80512680 end:0x80512750
 	.sdata      start:0x80560D98 end:0x80560DA0
 	.sbss       start:0x80565D20 end:0x80565D68
 
@@ -943,3 +943,7 @@ dolsdk2004/exi/EXIBios.c:
 dolsdk2004/exi/EXIUart.c:
 	.text       start:0x80268DAC end:0x80269380
 	.sbss       start:0x80565FD8 end:0x80565FE8
+
+# Original padding between dvdlow and dvd BSS; retain its linked extent.
+auto_80512750_bss:
+	.bss        start:0x80512750 end:0x80512760 align:4

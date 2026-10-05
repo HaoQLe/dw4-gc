@@ -385,7 +385,7 @@ config.libs = [
         "progress_category": "sdk",  # str | List[str]
         "objects": [
             Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
-            Object(NonMatching, "Runtime/Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
+            Object(Matching, "Runtime/Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
         ],        
     },
     DolphinLib(
@@ -460,7 +460,7 @@ config.libs = [
         [
             Object(Matching,"dolsdk2004/os/OS.c",),
             Object(Matching,"dolsdk2004/os/OSAlarm.c",),
-            Object(NonMatching,"dolsdk2004/os/OSAlloc.c",),
+            Object(Matching,"dolsdk2004/os/OSAlloc.c",),
             Object(Matching,"dolsdk2004/os/OSArena.c",),
             Object(Matching,"dolsdk2004/os/OSAudioSystem.c",),
             Object(Matching,"dolsdk2004/os/OSCache.c",),
@@ -514,7 +514,7 @@ config.libs = [
         cflags_dolsdk,
         [
             Object(Matching, "dolsdk2004/axart/axart.c"),
-            Object(NonMatching, "dolsdk2004/axart/axartlfo.c",cflags=[x for x in cflags_dolsdk if x != "-fp_contract on"] + ["-fp_contract off"],),
+            Object(Matching, "dolsdk2004/axart/axartlfo.c",cflags=[x for x in cflags_dolsdk if x != "-fp_contract on"] + ["-fp_contract off"],),
             Object(Matching, "dolsdk2004/axart/axartlpf.c"),
             Object(Matching, "dolsdk2004/axart/axart3d.c",cflags=[x for x in cflags_dolsdk if x != "-fp_contract on"] + ["-fp_contract off"],),
             Object(Matching, "dolsdk2004/axart/axartenv.c"),
@@ -557,7 +557,7 @@ config.libs = [
             Object(Matching, "dolsdk2004/dvd/dvdqueue.c"),
             Object(Matching, "dolsdk2004/dvd/dvd.c"),
             Object(Matching, "dolsdk2004/dvd/dvdfs.c"),
-            Object(NonMatching, "dolsdk2004/dvd/dvdlow.c"),
+            Object(Matching, "dolsdk2004/dvd/dvdlow.c"),
         ],
     ),
     DolphinLib(
@@ -591,7 +591,7 @@ config.libs = [
             Object(Matching, "dolsdk2004/axfx/delay.c"),
             Object(Matching, "dolsdk2004/axfx/axfx.c"),
             Object(NonMatching, "dolsdk2004/axfx/reverb_std.c",cflags=[x for x in cflags_dolsdk if x != "-fp_contract on"] + ["-fp_contract off"],),
-            Object(NonMatching, "dolsdk2004/axfx/reverb_hi.c",cflags=[x for x in cflags_dolsdk if x != "-fp_contract on"] + ["-fp_contract off"],),
+            Object(Matching, "dolsdk2004/axfx/reverb_hi.c",cflags=[x for x in cflags_dolsdk if x != "-fp_contract on"] + ["-fp_contract off"],),
         ],
     ),
     DolphinLib(
@@ -634,7 +634,7 @@ config.libs = [
         "cflags_dolsdk",
         cflags_dolsdk,
         [
-            Object(NonMatching, "dolsdk2004/odenotstub/odenotstub.c"),
+            Object(Matching, "dolsdk2004/odenotstub/odenotstub.c"),
         ],
     ),
     Library(

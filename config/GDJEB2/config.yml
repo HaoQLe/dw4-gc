@@ -5,3 +5,6 @@ splits: config/GDJEB2/splits.txt
 # Change this to match the linker version.
 # See config.example.yml for a list.
 mw_comment_version: 11
+# Audio sample word mistaken for an OSAlloc string address by pointer analysis.
+block_relocations:
+- source: .rodata:0x8045D418

@@ -4,7 +4,27 @@ Updated: 2026-10-04. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- **Active 10% milestone batch (expanded at user request):** baseline `0e0ce32`, branch `task/string-stream-large-recovery`. Target **both matched and fully linked code ≥10%**. Plan: recover 83 Alchemy functions / 28,828 original bytes at `0x800442F8..0x8004B394`, plus source-link six existing exact-code units (12,196 bytes): `__init_cpp_exceptions`, `odenotstub`, `axartlfo`, `dvdlow`, `OSAlloc`, `reverb_hi`. If all verify, matched code reaches 10.065405433% and fully linked code 10.019722075%. The six units are linkage investigations, not newly recovered code; reverb-hi currently has 64 unmatched data bytes. Compared with extending new recovery through `0x8004E2AC` (40,884 bytes), this scope reuses existing exact SDK/runtime source and coherent Alchemy string/stream, parser and property serialization dependencies. Principal unknowns: reference assignment and hidden-result cleanup; parser node vptr at +4; binary variable-length decoding and serialization control flow; SDK/runtime symbol, data and link layout. Inspect each dependency/layout before implementing its subset. All targets stay active until exact or evidenced hard blocked; publish verified checkpoints and continue. Compiler/tool pins and exact publication gates remain fixed. The paused `fn_8004291C` remains excluded.
+- **10% milestone batch is complete and source-linked (closed `89ae0fd`, baseline `0e0ce32`).**
+
+  Scope:
+  - All 83 Alchemy functions at `0x800442F8..0x8004B394` (28,828 bytes) in 14 synthetic units, with owned `.data 0x80469070..0x80469528`.
+  - Six SDK/runtime units: `__init_cpp_exceptions`, `odenotstub`, `axartlfo`, `dvdlow`, `OSAlloc`, `reverb_hi`.
+
+  Verification: every checkpoint passed strict objdiff, the persistent-fresh-object canonical verifier (final run: 20 units, 136 functions, 41,024 bytes, 1,357 relocations), map/Ninja provenance, all-source build, byte-identical DOL with the pinned SHA-1 and an independent review.
+
+  Totals compared with the baseline:
+
+  | Measure | Baseline | Now | Change |
+  | --- | --- | --- | --- |
+  | Matched code | 388,036 (9.369312%) | 416,864 (**10.065405%**) | +28,828 bytes |
+  | Fully linked code | 373,948 (9.029157%) | 414,972 (**10.019722%**) | +41,024 bytes |
+  | Matched data | 165,586 (11.011%) | 166,842 (11.094730%) | +1,256 bytes |
+  | Functions | 1,390 | 1,473 | +83 |
+  | Complete units | 213 | 233 | +20 |
+
+  The unit denominator grew by 16 (5,175 → 5,191), from synthetic gap and padding partitions.
+
+  No remainder or blocker. The paused `fn_8004291C` stays excluded and original-linked. Reusable compiler findings are in [milestone evidence](docs/research/2026-10-04-string-stream-large-recovery.md). No new batch is started.
 
 - **10% batch checkpoint `cb1ef60` (on `work`): both matched and fully linked code exceed 10%.** fn_800442F8 (1,276 bytes, 46 relocations) is exact and source-linked in its own unit, `0x800442F8..0x800447F4`.
 

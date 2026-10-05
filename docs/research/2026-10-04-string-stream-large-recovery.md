@@ -84,7 +84,15 @@ fn_800489E4 is exact. Traces (`debug-g1/h3-fn_800489E4`) show the second CSE pas
 
 Per-site search combined pointer-out, reference-return and caller-reference helpers. Inline locals are numbered in forward declaration order, so `SignedNext` (value, byte, p, shift) gives the second decoder byte r6 and value r8. `SignedInto(p+4,value)` makes the first cursor an inline parameter numbered above the second decoder's temporaries. All 17 sign-extension loops and 24 decode sites keep the original semantics; the independent review confirmed them.
 
-## Active Alchemy recovery
+## Batch closure (`89ae0fd`)
+
+- **fn_800442F8:** function-local storage and element pointers number below inline temporaries, so they are colored after the initial lookup, which then takes r26. A reused variable splits into separate webs, which explains the earlier trade-off between the start web and the first store.
+- **fn_80045BA8:** arguments are computed into function locals in statement order. The table handle goes through an integer round-trip cast, which keeps copy propagation from moving its argument copy past the second nullable-text conditional.
+- **fn_80045FA4:** found by decomp-permuter. The workspaces under `permuter-*` use a C-parseable base and a C++ compile wrapper.
+
+All 83 selected functions and six SDK units are source-linked, and matched and linked code both exceed 10%. The table below is historical.
+
+## Historical active-recovery notes
 
 Local experiment `003767e` preserves all 83 implementations, with72 private strict-exact functions /16,160 bytes. After `572409c`, three functions /2,316 original bytes remain partial (table below); the remaining exact candidates stay in incomplete original-linked units. All targets stay active. None meets the hard-blocker criterion. The paused lookup remains excluded.
 

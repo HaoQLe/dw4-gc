@@ -63,6 +63,15 @@ def ctors():
     a,n=_section_of(_symaddr('.ctors','_ctors'))
     _cache['ctors']={x for x in struct.unpack('>%dI'%(n//4),rd(a,n)) if x}
   return _cache['ctors']
+def extab_owners():
+  """Map each extab entry address to the function address owning it."""
+  if 'own' not in _cache:
+    a,n=_section_of(_symaddr('extabindex'))
+    _cache['own']={}
+    for k in range(0,n,12):
+      f,sz,e=struct.unpack_from('>3I',rd(a,n),k)
+      _cache['own'][e]=f
+  return _cache['own']
 def extab_functions():
   """Function addresses that own an original extabindex entry."""
   if 'eti' not in _cache:

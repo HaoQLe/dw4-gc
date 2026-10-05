@@ -7,6 +7,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from paths import CONFIG,RELINDEX,REPORT,EXCLUDE
 idx=json.load(open(RELINDEX))
+_etb_refs=idx.pop('@etb_refs',[])
 syminfo={}
 for l in open(CONFIG/'symbols.txt'):
   m=re.match(r'(\S+) = (\.\w+):0x([0-9A-F]+); // type:(\w+)(?: size:0x([0-9A-F]+))?',l)
@@ -25,21 +26,21 @@ def U(rel): # unique symbols in order
   return out
 T={}
 def F1(name,rel):
-  g=rel[0][2];ptrvar(g)
+  g=U(rel)[0];ptrvar(g)
   return 'void *%s(){return %s;}'%(name,g)
 ARGFAM={'F6'}
 def F2(name,rel):
-  c=rel[0][2]
+  c=U(rel)[0]
   if famof(c) in ARGFAM:
     fn(c,'void *%s(void *);')
     return 'void *%s(void *object){return %s(object);}'%(name,c)
   fn(c,'void *%s();')
   return 'void *%s(){return %s();}'%(name,c)
 def F3(name,rel):
-  meta,reg=rel[0][2],rel[1][2];ptrvar(meta);fn(reg,'void %s();')
+  meta,reg=U(rel)[:2];ptrvar(meta);fn(reg,'void %s();')
   return 'void *%s(){\n if(!%s || !(reinterpret_cast<unsigned int *>(%s)[0x24/4]&4)) %s();\n return %s;\n}'%(name,meta,meta,reg,meta)
 def F6(name,rel):
-  a,g,c=rel[0][2],rel[1][2],rel[2][2];fn(a,'void %s();');ptrvar(g);fn(c,'void *%s(void *,void *);');fn(name,'void *%s(void *);')
+  a,g,c=U(rel)[:3];fn(a,'void %s();');ptrvar(g);fn(c,'void *%s(void *,void *);');fn(name,'void *%s(void *);')
   return 'void *%s(void *object){\n %s();\n return %s(%s,object);\n}'%(name,a,c,g)
 def F7(name,rel):
   u=U(rel);g,h,f1,f2=u[0],u[1],u[2],u[3];ptrvar(g);ptrvar(h);fn(f1,'void *%s(void *);');fn(f2,'void *%s(void *);')
@@ -220,6 +221,9 @@ for _u in _rep['units']:
 _bad=set(json.load(open(EXCLUDE)))
 # Functions referenced from .ctors must stay static initializers, not plain functions.
 _bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and a in callshape.ctors()}
+# Functions whose exception-table entry is referenced from other data keep their original object.
+_etb_funcs={callshape.extab_owners().get(int(x[5:],16)) for x in _etb_refs}
+_bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and a in _etb_funcs}
 SIG={'F1':'void *%s();','F2':'void *%s();','F3':'void *%s();','F7':'void *%s();','F6':'void *%s(void *);','F8':'void %s();'}
 def select(lo,hi):
   ns=sorted([n for n in idx if n.startswith('fn_') and lo<=int(n[3:],16)<hi],key=lambda n:int(n[3:],16))
@@ -228,7 +232,7 @@ def prepass(names):
   g={}
   for n in names:
     f=famof(n)
-    if f=='F2' and famof(idx[n]['rel'][0][2]) in ARGFAM: g[n]='void *%s(void *);'%n
+    if f=='F2' and famof(U(idx[n]['rel'])[0]) in ARGFAM: g[n]='void *%s(void *);'%n
     elif f in SIG: g[n]=SIG[f]%n
   return g
 def kind(n,calls):

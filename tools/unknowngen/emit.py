@@ -50,4 +50,9 @@ old=[l.split('\t') for l in UNITS.read_text().splitlines() if l.strip()] if UNIT
 newpaths={u[0] for u in units}
 keep=[(p,int(a,16),int(e,16),f) for p,a,e,f in old if p not in newpaths and not (p.startswith(srcdir+'/') and lo<=int(a,16)<hi)]
 UNITS.write_text(''.join('%s\t%08X\t%08X\t%s\n'%u for u in sorted(keep+units,key=lambda u:u[1])))
+# Remove unit files in this range that are no longer listed.
+listed={l.split('\t')[0] for l in UNITS.read_text().splitlines()}
+for f in sorted((Path('src')/srcdir).glob('unknown*.cpp')):
+  rel=f.relative_to('src').as_posix()
+  if rel not in listed and lo<=int(f.stem[7:],16)<hi: f.unlink();print('removed stale',rel)
 print('units',len(units),'bytes',total,'new',len(newpaths-existing))

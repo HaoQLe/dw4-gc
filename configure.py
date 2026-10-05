@@ -330,6 +330,20 @@ cflags_rel = [
 ]
 config.linker_version = "GC/1.3.2"
 
+generated_units_path = Path("config") / config.version / "generated_units.txt"
+generated_units = (
+    [line.split("\t") for line in generated_units_path.read_text().splitlines() if line.strip()]
+    if generated_units_path.exists()
+    else []
+)
+
+# Generated units whose original functions own exception-table entries need exceptions enabled.
+def GeneratedObject(unit: List[str]) -> Object:
+    cflags = cflags_engine_size
+    if len(unit) > 3 and unit[3] == "eh":
+        cflags = [("-Cpp_exceptions on" if flag == "-Cpp_exceptions off" else flag) for flag in cflags]
+    return Object(Matching, unit[0], cflags=cflags)
+
 # Helper function for Dolphin libraries
 def DolphinLib(lib_name: str, cflags: Any, objects: List[Object]) -> Dict[str, Any]:
     return {
@@ -810,6 +824,22 @@ config.libs = [
             Object(Matching, "Alchemy/src/igCore/unknown8004DDC4.cpp", cflags=cflags_engine_size),
         ],        
     },
+    {
+        # Exact boilerplate units listed in config/<version>/generated_units.txt.
+        "lib": "Alchemy engine generated",
+        "mw_version": "GC/2.6",
+        "cflags": cflags_engine_size,
+        "progress_category": "engine",
+        "objects": [GeneratedObject(unit) for unit in generated_units if unit[0].startswith("Alchemy/")],
+    },
+    {
+        # Generated units outside the identified Alchemy core range; ownership is unknown.
+        "lib": "Unclassified generated",
+        "mw_version": "GC/2.6",
+        "cflags": cflags_engine_size,
+        "progress_category": "unclassified",
+        "objects": [GeneratedObject(unit) for unit in generated_units if not unit[0].startswith("Alchemy/")],
+    },
 ]
 
     
@@ -836,6 +866,7 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
 config.progress_categories = [
     ProgressCategory("game", "Game Code"),
     ProgressCategory("engine", "Game Engine"),
+    ProgressCategory("unclassified", "Unclassified Code"),
     ProgressCategory("sdk", "SDK Code"),
     ProgressCategory("MSL", "MSL"),
     ProgressCategory("zlib", "zlib"),

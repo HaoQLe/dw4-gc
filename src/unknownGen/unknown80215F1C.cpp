@@ -1,0 +1,62 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+extern void *lbl_80564660;
+extern void *lbl_80564744;
+extern void *lbl_80564754;
+extern void *lbl_805647B8;
+extern void *lbl_8056485C;
+extern void *lbl_80564860;
+extern void *lbl_80564864;
+extern void *lbl_80564880;
+extern void *lbl_80564884;
+extern void *lbl_80564890;
+extern void *lbl_805648A4;
+extern void *lbl_805648A8;
+extern void *lbl_805648E0;
+extern void *lbl_8056493C;
+extern void *lbl_80564940;
+extern void *lbl_80564944;
+extern void *lbl_80564948;
+extern void *lbl_8056494C;
+extern void *lbl_80564950;
+extern void *lbl_80564954;
+extern void *lbl_80564958;
+extern void *lbl_8056495C;
+extern void *lbl_80564960;
+extern void *lbl_80564964;
+extern void *lbl_80564A34;
+extern void *lbl_80564A38;
+extern void *lbl_80565444;
+}
+extern "C" {
+void *fn_80215F1C(){return lbl_80564964;}
+void *fn_80215F24(){return lbl_80564960;}
+void *fn_80215F2C(){return lbl_8056495C;}
+void *fn_80215F34(){return lbl_80564958;}
+void *fn_80215F3C(){return lbl_80564954;}
+void *fn_80215F44(){return lbl_80564950;}
+void *fn_80215F4C(){return lbl_8056494C;}
+void *fn_80215F54(){return lbl_80564948;}
+void *fn_80215F5C(){return lbl_80564944;}
+void *fn_80215F64(){return lbl_80564940;}
+void *fn_80215F6C(){return lbl_8056493C;}
+void *fn_80215F74(){return lbl_805648E0;}
+void *fn_80215F7C(){return lbl_80564660;}
+void *fn_80215F84(){return lbl_805648A8;}
+void *fn_80215F8C(){return lbl_805648A4;}
+void *fn_80215F94(){return lbl_80565444;}
+void *fn_80215F9C(){return lbl_80564890;}
+void *fn_80215FA4(){return lbl_80564884;}
+void *fn_80215FAC(){return lbl_80564880;}
+void *fn_80215FB4(){return lbl_80564864;}
+void *fn_80215FBC(){return lbl_80564860;}
+void *fn_80215FC4(){return lbl_8056485C;}
+void *fn_80215FCC(){return lbl_80564A38;}
+void *fn_80215FD4(){return lbl_805647B8;}
+void *fn_80215FDC(){return lbl_80564A34;}
+void *fn_80215FE4(){return lbl_80564754;}
+void *fn_80215FEC(){return lbl_80564744;}
+}
+#pragma pop

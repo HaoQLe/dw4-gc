@@ -1,0 +1,78 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+void *fn_80024180();
+void fn_8002907C();
+void *fn_80029E64(void *);
+void *fn_800607F4(void *);
+void *fn_8006546C(void *,void *);
+void fn_80065DBC(int);
+void fn_80066188(int);
+void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void fn_8006665C(void *);
+void fn_801AA6DC();
+void fn_801C869C();
+void *fn_801D3BDC();
+void fn_801D3C28();
+extern char lbl_80472FA0[];
+extern char lbl_80476C7C[];
+extern char lbl_80476E0C[];
+extern char lbl_804B1820[];
+extern char lbl_804B6AD0[];
+extern char lbl_804B6B34[];
+extern char lbl_80560860[8];
+extern void *lbl_805621F4;
+extern void *lbl_8056534C;
+extern void *lbl_80565350;
+void *fn_801C8410();
+void *fn_801C844C();
+void fn_801C84BC();
+void fn_801C84E4();
+void *fn_801C8550();
+}
+struct UnknownGenObject801C844C {
+ void *unknown00;
+ char unknown04[20];
+};
+extern "C" {
+void fn_801C838C(){
+ fn_80065DBC((int)fn_801D3C28);
+}
+void *fn_801C83B4(){return fn_801D3BDC();}
+void *fn_801C83D4(){
+ if(!lbl_8056534C) lbl_8056534C=fn_80029E64(fn_800607F4(lbl_805621F4));
+ return lbl_8056534C;
+}
+void *fn_801C8410(){
+ if(!lbl_8056534C || !(reinterpret_cast<unsigned int *>(lbl_8056534C)[0x24/4]&4)) fn_801C84BC();
+ return lbl_8056534C;
+}
+void *fn_801C844C(){
+ UnknownGenObject801C844C object;
+ fn_8006665C(&object);
+ object.unknown00=lbl_80472FA0;
+ object.unknown00=lbl_80476E0C;
+ object.unknown00=lbl_80476C7C;
+ object.unknown00=lbl_804B6B34;
+ object.unknown00=lbl_804B6AD0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_801C84BC(){
+ fn_80066188((int)fn_801C84E4);
+}
+void fn_801C84E4(){
+ fn_801AA6DC();
+ fn_80066204(0,(int)&lbl_8056534C,(int)fn_8002907C,(int)fn_80024180,(int)fn_801C8550,(int)lbl_804B1820,20,(int)fn_801C844C,0,0,(int)lbl_80560860);
+}
+void *fn_801C8550(){return fn_801C8410();}
+void *fn_801C8570(void *object){
+ fn_801C869C();
+ return fn_8006546C(lbl_80565350,object);
+}
+void *fn_801C85A8(){
+ if(!lbl_80565350 || !(reinterpret_cast<unsigned int *>(lbl_80565350)[0x24/4]&4)) fn_801C869C();
+ return lbl_80565350;
+}
+}
+#pragma pop

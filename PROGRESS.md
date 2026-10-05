@@ -6,6 +6,16 @@ Updated: 2026-10-04. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 - **Active 10% milestone batch (expanded at user request):** baseline `0e0ce32`, branch `task/string-stream-large-recovery`. Target **both matched and fully linked code ≥10%**. Plan: recover 83 Alchemy functions / 28,828 original bytes at `0x800442F8..0x8004B394`, plus source-link six existing exact-code units (12,196 bytes): `__init_cpp_exceptions`, `odenotstub`, `axartlfo`, `dvdlow`, `OSAlloc`, `reverb_hi`. If all verify, matched code reaches 10.065405433% and fully linked code 10.019722075%. The six units are linkage investigations, not newly recovered code; reverb-hi currently has 64 unmatched data bytes. Compared with extending new recovery through `0x8004E2AC` (40,884 bytes), this scope reuses existing exact SDK/runtime source and coherent Alchemy string/stream, parser and property serialization dependencies. Principal unknowns: reference assignment and hidden-result cleanup; parser node vptr at +4; binary variable-length decoding and serialization control flow; SDK/runtime symbol, data and link layout. Inspect each dependency/layout before implementing its subset. All targets stay active until exact or evidenced hard blocked; publish verified checkpoints and continue. Compiler/tool pins and exact publication gates remain fixed. The paused `fn_8004291C` remains excluded.
 
+- **10% batch checkpoint `cb1ef60` (on `work`): both matched and fully linked code exceed 10%.** fn_800442F8 (1,276 bytes, 46 relocations) is exact and source-linked in its own unit, `0x800442F8..0x800447F4`.
+
+  Compiler finding: function locals are numbered below inline temporaries. Holding the two storage pointers and the else-branch element in locals colors them after the initial lookup, so the lookup takes r26 as in the original. A reused `value` variable creates a separate web, which explained the earlier trade-off.
+
+  Checks: the 19-unit verifier (135 functions, 40,672 bytes, 1,344 relocations), byte-identical DOL with the pinned SHA-1 and an independent review pass.
+
+  Totals: matched 416,512 (**10.056906%**), linked 414,620 (**10.011223%**), data 166,842 (11.094730%), 1,472 functions, 232/5,191 units.
+
+  Only remaining active target: fn_80045BA8 (352 bytes, 95.45%). Its argument moves happen before the second text conditional. Next try: compute the arguments as function locals in statement order.
+
 - **10% batch checkpoint `2ce2f5a` (on `work`):** fn_80045FA4 is exact and source-linked in its own unit, `0x80045FA4..0x80046254` (688 bytes, 25 relocations). A decomp-permuter run found the fix: an inline wrapper around the entry constructor call adds the temporaries that let the owner outrank the node for r31. The 18-unit verifier (134 functions, 39,396 bytes, 1,298 relocations), byte-identical DOL with the pinned SHA-1 and an independent review pass.
 
   Totals: matched 415,236 (**10.026096%**), linked 413,344 (9.980413%), data 166,842, 1,471 functions, 231/5,191 units. Fully linked code is about 812 bytes short of 10%.

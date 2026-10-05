@@ -172,6 +172,9 @@ Alchemy/src/igCore/unknown80046D84.cpp:
 Alchemy/src/igCore/unknown80047878.cpp:
 	.text       start:0x80047878 end:0x800489E4
 
+Alchemy/src/igCore/unknown800489E4.cpp:
+	.text       start:0x800489E4 end:0x8004944C
+
 Alchemy/src/igCore/unknown8004944C.cpp:
 	.text       start:0x8004944C end:0x800496E8
 

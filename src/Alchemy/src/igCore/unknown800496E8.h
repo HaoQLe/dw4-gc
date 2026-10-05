@@ -134,5 +134,6 @@ struct Unknown800496E8Lock {
 inline void unknown800496E8Store(Unknown80042DECStorage *storage,int index,int value){
  if(storage->unknown08 && index>=0 && index<storage->unknown08) reinterpret_cast<int *>(storage->unknown10)[index]=value;
 }
+inline int unknown800496E8Size(Unknown80042DECStorage *storage){return storage->unknown08;}
 inline char unknown800496E8Count(const char *p){return p[1];}
 #endif

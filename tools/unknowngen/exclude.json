@@ -1,0 +1,17 @@
+{
+ "fn_80021E10": "factory template: vtable load scheduling differs",
+ "fn_80022450": "factory template: vtable load scheduling differs",
+ "fn_80022A90": "factory template: vtable load scheduling differs",
+ "fn_800259A8": "factory template: vtable load scheduling differs",
+ "fn_80028934": "generated candidate not exact",
+ "fn_80029FFC": "generated candidate not exact",
+ "fn_8002E1AC": "factory template: vtable load scheduling differs",
+ "fn_80037B1C": "factory template: vtable load scheduling differs",
+ "fn_800385E0": "factory template: vtable load scheduling differs",
+ "fn_80076080": "generated candidate not exact",
+ "fn_800760CC": "generated candidate not exact",
+ "fn_8007740C": "generated candidate not exact",
+ "fn_802EB7CC": "static initializer referenced from .ctors",
+ "fn_8031C974": "static initializer referenced from .ctors",
+ "fn_8040A208": "static initializer referenced from .ctors"
+}

@@ -97,10 +97,10 @@ public:
  virtual void slot8C();
  virtual void slot90();
  virtual void slot94();
- virtual void slot98();
+ virtual void slot98(Unknown800496E8Record *,char *,int);
  virtual Unknown80042DECResult slot9C(void *,char *,char *,int);
  virtual Unknown80042DECResult slotA0(void *,char *,int,int *,char *,int,int *);
- virtual void slotA4();
+ virtual void slotA4(int);
  virtual void slotA8();
  virtual void slotAC();
  virtual void slotB0();

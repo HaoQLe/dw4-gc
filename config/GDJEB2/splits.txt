@@ -194,6 +194,24 @@ Alchemy/src/igCore/unknown800496E8.cpp:
 auto_07_80469528_data:
 	.data       start:0x80469528 end:0x80477158 align:4
 
+Alchemy/src/igCore/unknown8004B394.cpp:
+	.text       start:0x8004B394 end:0x8004B9FC
+
+Alchemy/src/igCore/unknown8004BCF0.cpp:
+	.text       start:0x8004BCF0 end:0x8004BD50
+
+Alchemy/src/igCore/unknown8004BF04.cpp:
+	.text       start:0x8004BF04 end:0x8004CAAC
+
+Alchemy/src/igCore/unknown8004CDE4.cpp:
+	.text       start:0x8004CDE4 end:0x8004DB40
+
+Alchemy/src/igCore/unknown8004DC3C.cpp:
+	.text       start:0x8004DC3C end:0x8004DCC0
+
+Alchemy/src/igCore/unknown8004DDC4.cpp:
+	.text       start:0x8004DDC4 end:0x8004DE4C
+
 Runtime/MSL/Common/abort_exit.c:
 	.text       start:0x80094948 end:0x80094AD4
 	.bss        start:0x804F2728 end:0x804F2828

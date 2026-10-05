@@ -6,6 +6,7 @@
 // Synthetic views for this recovery range; meanings and unused slots are unknown.
 struct Unknown80042DECResult {
     int unknown00;
+    explicit inline Unknown80042DECResult(int value):unknown00(value){}
     Unknown80042DECResult(const Unknown80042DECResult&);
 };
 struct Unknown80042DECMetadata;

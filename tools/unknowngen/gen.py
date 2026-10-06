@@ -99,7 +99,7 @@ def expr(e):
   if k=='addr':
     sym=e[1];info=syminfo.get(sym)
     if info and info[2]=='function':
-      if sym not in protos: fn(sym,'void %%s(%s);'%','.join(['int']*explicit_params(sym)))
+      if sym not in protos: fn(sym,'void %%s(%s);'%','.join(['int']*arity(sym)))
       return '(int)%s'%sym
     if sym in protos and protos[sym].startswith('extern void *'):
       return '(int)&%s'%sym if not e[2] else '(int)((char *)&%s+%d)'%(sym,e[2])
@@ -131,6 +131,41 @@ def explicit_params(n):
   _explicit[n]=k
   return k
 
+def _reads_writes(w):
+  """(sources, destination) of an instruction, for the straight-line scans below."""
+  op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;rb=(w>>11)&31;xo=(w>>1)&0x3FF
+  if op==31 and xo==444: return [rt,rb],ra
+  if op in (14,15,12,13): return ([ra] if ra else []),rt
+  if op in (32,34,40,42): return [ra],rt
+  if op in (36,38,44): return [rt,ra],None
+  if op in (10,11): return [ra],None
+  if op==21: return [rt],ra
+  if op==31: return [ra,rb],rt
+  return [],None
+_dedicated={}
+def dedicated_arity(n):
+  """Largest number of leading argument registers some caller writes specifically for a call to n
+  (written after the previous call and read by nothing else)."""
+  if not _dedicated:
+    for c in idx:
+      if c not in syminfo or not c.startswith(GENERATED_PREFIXES): continue
+      b=callshape.rd(syminfo[c][1],idx[c]['size']);relat={o&~3:x for o,*x in idx[c]['rel']}
+      fresh={}
+      for i in range(0,len(b),4):
+        w=_st.unpack('>I',b[i:i+4])[0]
+        if (w>>26)==18 and w&1 and i in relat:
+          t=relat[i][1];k=0
+          while fresh.get(3+k): k+=1
+          _dedicated[t]=max(_dedicated.get(t,0),k);fresh={};continue
+        if (w>>26) in (16,18,19): fresh={};continue
+        srcs,dst=_reads_writes(w)
+        for r_ in srcs:
+          if r_ in fresh: fresh[r_]=False
+        if dst is not None and 3<=dst<=10: fresh[dst]=True
+    _dedicated.setdefault('',0)
+  return _dedicated.get(n,0)
+def arity(n): return max(explicit_params(n),dedicated_arity(n))
+
 _arity={}
 def caller_arity(n):
   """Largest argument count any analyzable caller passes to n (0 if none seen)."""
@@ -150,7 +185,7 @@ def CALLS(name,rel):
   addr=syminfo[name][1];size=idx[name]['size']
   if not _simple(addr,size): raise ValueError('not simple')
   # Callers' argument counts give the parameters; forwarded parameters appear in the calls.
-  nparam=explicit_params(name)
+  nparam=arity(name)
   calls=callshape.analyze(addr,size,[tuple(x) for x in rel],{3+i:('param',i) for i in range(nparam)})
   if not calls: raise ValueError('no calls')
   params=','.join('int p%d'%i for i in range(nparam));ptypes=','.join(['int']*nparam)
@@ -398,7 +433,7 @@ def FLOW(name,rel):
   regs={};vals=[];stmts=[];frame=None;ret=None
   def val(kind,*a):
     vals.append((kind,)+a);return len(vals)-1
-  nparam=explicit_params(name)
+  nparam=arity(name)
   for i_ in range(nparam): regs[3+i_]=val('param',i_)
   for i,w in enumerate(ws):
     op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF;r=relat.get(4*i)
@@ -457,7 +492,7 @@ def FLOW(name,rel):
     if k[0] in ('sda','addr'):
       sym=k[1];info=syminfo.get(sym)
       if info and info[2]=='function':
-        if sym not in protos: fn(sym,'void %%s(%s);'%','.join(['int']*explicit_params(sym)))
+        if sym not in protos: fn(sym,'void %%s(%s);'%','.join(['int']*arity(sym)))
         return '(void *)%s'%sym
       if sym in protos and protos[sym].startswith('extern void *'): return '&%s'%sym if not k[2] else '(char *)&%s+%d'%(sym,k[2])
       if k[0]=='sda':

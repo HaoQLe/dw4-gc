@@ -18,7 +18,7 @@ void *fn_802A76D4();
 }
 extern "C" {
 void *fn_8029D838(){return fn_802A6AA8();}
-void *fn_8029D858(){
+void *fn_8029D858(int p0,int p1){
  fn_802A6AC0();
  return (void *)0;
 }

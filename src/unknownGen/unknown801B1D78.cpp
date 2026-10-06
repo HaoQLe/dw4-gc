@@ -129,47 +129,47 @@ void fn_801B2EAC();
 void fn_801B2ED4();
 void *fn_801B2F3C();
 }
-struct UnknownGenObject801B1DF0 {
+struct UnknownGenObject801B1DF0_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B1F98 {
+struct UnknownGenObject801B1F98_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B2140 {
+struct UnknownGenObject801B2140_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B22E8 {
+struct UnknownGenObject801B22E8_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B2490 {
+struct UnknownGenObject801B2490_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B2638 {
+struct UnknownGenObject801B2638_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B27E0 {
+struct UnknownGenObject801B27E0_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B2988 {
+struct UnknownGenObject801B2988_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B2B30 {
+struct UnknownGenObject801B2B30_0 {
  void *unknown00;
  char unknown04[36];
 };
-struct UnknownGenObject801B2C9C {
+struct UnknownGenObject801B2C9C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject801B2E54 {
+struct UnknownGenObject801B2E54_0 {
  void *unknown00;
  char unknown04[20];
 };
@@ -183,7 +183,7 @@ void *fn_801B1DB4(){
  return lbl_8056493C;
 }
 void *fn_801B1DF0(){
- UnknownGenObject801B1DF0 object;
+ UnknownGenObject801B1DF0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -210,7 +210,7 @@ void *fn_801B1F5C(){
  return lbl_80564940;
 }
 void *fn_801B1F98(){
- UnknownGenObject801B1F98 object;
+ UnknownGenObject801B1F98_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -237,7 +237,7 @@ void *fn_801B2104(){
  return lbl_80564944;
 }
 void *fn_801B2140(){
- UnknownGenObject801B2140 object;
+ UnknownGenObject801B2140_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -264,7 +264,7 @@ void *fn_801B22AC(){
  return lbl_80564948;
 }
 void *fn_801B22E8(){
- UnknownGenObject801B22E8 object;
+ UnknownGenObject801B22E8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -291,7 +291,7 @@ void *fn_801B2454(){
  return lbl_8056494C;
 }
 void *fn_801B2490(){
- UnknownGenObject801B2490 object;
+ UnknownGenObject801B2490_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -318,7 +318,7 @@ void *fn_801B25FC(){
  return lbl_80564950;
 }
 void *fn_801B2638(){
- UnknownGenObject801B2638 object;
+ UnknownGenObject801B2638_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -345,7 +345,7 @@ void *fn_801B27A4(){
  return lbl_80564954;
 }
 void *fn_801B27E0(){
- UnknownGenObject801B27E0 object;
+ UnknownGenObject801B27E0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -372,7 +372,7 @@ void *fn_801B294C(){
  return lbl_80564958;
 }
 void *fn_801B2988(){
- UnknownGenObject801B2988 object;
+ UnknownGenObject801B2988_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -399,7 +399,7 @@ void *fn_801B2AF4(){
  return lbl_8056495C;
 }
 void *fn_801B2B30(){
- UnknownGenObject801B2B30 object;
+ UnknownGenObject801B2B30_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -422,7 +422,7 @@ void *fn_801B2C60(){
  return lbl_80564960;
 }
 void *fn_801B2C9C(){
- UnknownGenObject801B2C9C object;
+ UnknownGenObject801B2C9C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_804B8930;
@@ -450,7 +450,7 @@ void *fn_801B2E18(){
  return lbl_80564964;
 }
 void *fn_801B2E54(){
- UnknownGenObject801B2E54 object;
+ UnknownGenObject801B2E54_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_804B8870;

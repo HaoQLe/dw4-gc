@@ -79,24 +79,31 @@ void fn_8011E000();
 void fn_8011E028();
 void *fn_8011E094();
 }
-struct UnknownGenObject8011DB6C {
+struct UnknownGenObject8011DB6C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8011DCCC {
+struct UnknownGenObject8011DCCC_0 {
  void *unknown00;
  char unknown04[4];
 };
-struct UnknownGenObject8011DE20 {
+struct UnknownGenObject8011DE20_0 {
  void *unknown00;
  char unknown04[4];
 };
-struct UnknownGenObject8011DF74 {
+struct UnknownGenRoot8011DF74 {
  void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot8011DF74(){fn_800638E0(this);}
+};
+struct UnknownGenObject8011DF74_0 : UnknownGenRoot8011DF74 {
  char unknown04[8];
  UnknownGenString unknown0C;
+ inline ~UnknownGenObject8011DF74_0(){unknown00=lbl_80471914;}
+};
+struct UnknownGenObject8011DF74 : UnknownGenObject8011DF74_0 {
  char unknown10[48];
- inline ~UnknownGenObject8011DF74(){unknown00=lbl_8049901C;unknown00=lbl_80471914;}
+ inline ~UnknownGenObject8011DF74(){unknown00=lbl_8049901C;}
 };
 extern "C" {
 void *fn_8011D914(){
@@ -136,7 +143,7 @@ void *fn_8011DB30(){
  return lbl_805638CC;
 }
 void *fn_8011DB6C(){
- UnknownGenObject8011DB6C object;
+ UnknownGenObject8011DB6C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -158,7 +165,7 @@ void *fn_8011DC90(){
  return lbl_805638D0;
 }
 void *fn_8011DCCC(){
- UnknownGenObject8011DCCC object;
+ UnknownGenObject8011DCCC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8049BA94;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -177,7 +184,7 @@ void *fn_8011DDE4(){
  return lbl_805638D4;
 }
 void *fn_8011DE20(){
- UnknownGenObject8011DE20 object;
+ UnknownGenObject8011DE20_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8049BA38;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -197,7 +204,6 @@ void *fn_8011DF38(){
 }
 void *fn_8011DF74(){
  UnknownGenObject8011DF74 object;
- fn_800638E0(&object);
  object.unknown00=lbl_8049901C;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

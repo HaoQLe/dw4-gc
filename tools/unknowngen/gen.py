@@ -137,51 +137,121 @@ def CALLS(name,rel):
 
 
 def VT(name,rel):
+  """Temporary instance: base constructor, inline vtable stores, a read at _arkCore+0x394, then inline
+  destructors. Each class level restored after the read owns the members released right after its
+  vtable store; members are pooled strings or reference pointers, zero-initialized right after their
+  owner's constructor vtable store. Levels are emitted as a nested hierarchy so destruction interleaves."""
   addr=syminfo[name][1];size=idx[name]['size']
   b=callshape.rd(addr,size);relat={o&~3:(t,sy,a) for o,t,sy,a in rel}
-  regs={};events=[];frame=None;saves31=False;strofs=None;ctor=None
+  regs={};events=[];frame=None;saveoff=None;zeros=[];checks=[];ctor=None;read=False;post=[];outdtor=None
   for i in range(0,size,4):
     w=_st.unpack('>I',b[i:i+4])[0];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF;r=relat.get(i)
     if op==37 and rt==1 and ra==1: frame=0x10000-imm;continue
+    if op==47 and ra==1: saveoff=callshape.s16(imm);continue      # stmw
     if op==15: regs[rt]=('ha',r[1]) if r else None;continue
     if op==14:
-      if ra==1: regs[rt]=('stack',callshape.s16(imm))
+      if ra==1:
+        regs[rt]=('stack',callshape.s16(imm))
+        if rt not in (1,11) and callshape.s16(imm)>8: checks.append(callshape.s16(imm)-8)   # member address
+      elif ra==0 and not r: regs[rt]=('const',callshape.s16(imm))
       elif r and r[0]!=109 and regs.get(ra) and regs[ra][0]=='ha': regs[rt]=('addr',r[1])
       else: regs[rt]=None
       continue
-    if op==13 and ra==1: strofs=callshape.s16(imm)-8;continue  # addic. rX,r1,imm
+    if op==13 and ra==1: checks.append(callshape.s16(imm)-8);continue   # addic. member null check
     if op==36 and ra==1:
       o=callshape.s16(imm)
-      if rt==31 and o==frame-4: saves31=True;continue
+      if rt>=14 and o>=frame-4*(32-rt): saveoff=o if saveoff is None else min(saveoff,o);continue
       if o==frame+4: continue
-      if o!=8: raise ValueError('store off %x'%o)
       v=regs.get(rt)
+      if o!=8:
+        if v==('const',0) and not read: zeros.append(o-8);continue
+        raise ValueError('store off %x'%o)
       if not v or v[0]!='addr': raise ValueError('store val')
-      events.append(('st',v[1]));continue
-    if op==31 and ((w>>1)&0x3FF)==23: events.append(('rd',));continue
+      (post if read else events).append(('st',v[1]));continue
+    if op==31 and ((w>>1)&0x3FF)==23:
+      if read: raise ValueError('second read')
+      read=True;continue
     if op==18 and w&1:
-      if r[1].startswith('internalRelease'): continue
-      if r[1]=='_savegpr_29' or r[1].startswith('_'): raise ValueError('savegpr')
+      t=r[1]
+      if t.startswith('internalRelease'): post.append(('rel','UnknownGenString'));continue
+      if t=='fn_80066E1C': post.append(('rel','UnknownGenRefMember'));continue
+      if t.startswith('_savegpr_'):
+        x=regs.get(11);n=int(t.split('_')[-1])
+        if not x or x[0]!='stack': raise ValueError('savegpr base')
+        saveoff=x[1]-4*(32-n);continue
+      if t.startswith('_restgpr_'): continue
+      if read and not outdtor and regs.get(3)==('stack',8) and regs.get(4)==('const',-1):
+        outdtor=t;continue   # out-of-line destructor (this, -1)
       if ctor or events: raise ValueError('second call')
       if regs.get(3)!=('stack',8): raise ValueError('ctor arg')
-      ctor=r[1];continue
-  if frame is None or ('rd',) not in events: raise ValueError('no read')
-  k=events.index(('rd',));pre=[e[1] for e in events[:k]];post=[e[1] for e in events[k+1:]]
-  if post and strofs is None: pass
-  osize=frame-8-(8 if saves31 else 0)
-  cls='UnknownGenObject%s'%name[3:]
-  for x in pre+post: fn(x,'extern char %s[];')
-  lines=['struct %s {'%cls,' void *unknown00;']
-  used=4
-  if strofs is not None:
-    if strofs>4: lines.append(' char unknown04[%d];'%(strofs-4))
-    lines.append(' UnknownGenString unknown%02X;'%strofs);used=strofs+4
-  if osize>used: lines.append(' char unknown%02X[%d];'%(used,osize-used))
-  if post: lines.append(' inline ~%s(){%s}'%(cls,''.join('unknown00=%s;'%x for x in post)))
-  lines.append('};')
-  body=['void *%s(){'%name,' %s object;'%cls]
-  if ctor: fn(ctor,'void %s(void *);');body.append(' %s(&object);'%ctor)
-  body+=[' object.unknown00=%s;'%x for x in pre]
+      ctor=t;continue
+  if frame is None or not read: raise ValueError('no read')
+  pre=[e[1] for e in events]
+  if outdtor:
+    if post: raise ValueError('outdtor with inline stores')
+    if saveoff is None: saveoff=frame
+    osize=(saveoff-8)&~7
+    for x in pre: fn(x,'extern char %s[];')
+    fn(outdtor,'void %s(void *,short);')
+    cls='UnknownGenObject%s'%name[3:]
+    lines=['struct %s {'%cls,' void *unknown00;'];used=4
+    for o in sorted(set(zeros)):
+      if o>used: lines.append(' char unknown%02X[%d];'%(used,o-used))
+      lines.append(' int unknown%02X;'%o);used=o+4
+    if osize>used: lines.append(' char unknown%02X[%d];'%(used,osize-used))
+    lines.append('};')
+    body=['void *%s(){'%name,' %s object;'%cls]
+    if ctor: fn(ctor,'void %s(void *);');body.append(' %s(&object);'%ctor)
+    for x in pre: body.append(' object.unknown00=%s;'%x)
+    body+=[' object.unknown%02X=0;'%o for o in sorted(set(zeros))]
+    body.append(' void *result=*reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);')
+    body.append(' %s(&object,-1);\n return result;\n}'%outdtor)
+    fn(name,'void *%s();')
+    PRE.append('\n'.join(lines))
+    return '\n'.join(body)
+  rels=[x for x in post if x[0]=='rel']
+  zs=sorted(set(zeros)|set(checks),reverse=True)
+  if len(rels)!=len(zs): raise ValueError('member count')
+  # Owner of each member: the last vtable restored before its release.
+  levels=[];owner={};cur=None;k=0
+  for x in post:
+    if x[0]=='st': cur=x[1];levels.append(cur)
+    else:
+      if cur is None: raise ValueError('unowned member')
+      owner[zs[k]]=(cur,x[1]);k+=1
+  if saveoff is None: saveoff=frame
+  osize=(saveoff-8)&~7
+  for x in pre+levels: fn(x,'extern char %s[];')
+  # Base-most level first; members must ascend through the hierarchy.
+  order=list(reversed(levels))
+  cls=lambda i:'UnknownGenObject%s%s'%(name[3:],'' if i==len(order)-1 else '_%d'%i)
+  lines=[];used=4;prev=None
+  if ctor and order:
+    # A root with a trivial destructor runs the base constructor, so members exist only after the call
+    # and no exception cleanup is registered (the original's extab has no actions).
+    fn(ctor,'void %s(void *);')
+    root='UnknownGenRoot%s'%name[3:]
+    lines+=['struct %s {'%root,' void *unknown00;',' inline void operator delete(void *){}',' inline %s(){%s(this);}'%(root,ctor),'};'];prev=root
+  for li,lv in enumerate(order):
+    mem=sorted(o for o,(ow,t) in owner.items() if ow==lv)
+    head='struct %s%s {'%(cls(li),'' if prev is None else ' : %s'%prev)
+    # An inline class delete keeps the compiler's unused deleting destructors from referencing a global delete.
+    body=[] if prev else [' void *unknown00;',' inline void operator delete(void *){}']
+    for o in mem:
+      if o<used: raise ValueError('member order')
+      if o>used: body.append(' char unknown%02X[%d];'%(used,o-used))
+      body.append(' %s unknown%02X;'%(owner[o][1],o));used=o+4
+    if li==len(order)-1 and osize>used: body.append(' char unknown%02X[%d];'%(used,osize-used));used=osize
+    body.append(' inline ~%s(){unknown00=%s;}'%(cls(li),lv))
+    lines+= [head]+body+['};'];prev=cls(li)
+  if not order:
+    lines=['struct %s {'%cls(0),' void *unknown00;']+([' char unknown04[%d];'%(osize-4)] if osize>4 else [])+['};']
+  top=cls(len(order)-1) if order else cls(0)
+  body=['void *%s(){'%name,' %s object;'%top]
+  if ctor and not order: fn(ctor,'void %s(void *);');body.append(' %s(&object);'%ctor)
+  for x in pre:
+    body.append(' object.unknown00=%s;'%x)
+    body+=[' object.unknown%02X.value=0;'%o for o in sorted(o for o,(ow,t) in owner.items() if ow==x)]
   body.append(' return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);\n}')
   fn(name,'void *%s();')
   PRE.append('\n'.join(lines))
@@ -189,7 +259,7 @@ def VT(name,rel):
 PRE=[]
 def _isvt(name):
   addr=syminfo[name][1];size=idx[name]['size']
-  if size>=200: return False
+  if size>=1024: return False
   b=callshape.rd(addr,size);ws=[_st.unpack('>I',b[i:i+4])[0] for i in range(0,size,4)]
   return any((w>>26)==32 and (w&0xFFFF)==0x394 for w in ws) and any((w>>26)==31 and ((w>>1)&0x3FF)==23 for w in ws)
 
@@ -277,7 +347,7 @@ def ITEXT(name,rel):
 
 TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT,'LEAF':LEAF,'ITEXT':ITEXT}
 HEADER_NAME='unknownGen.h'
-HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nstruct UnknownGenHolder { UnknownGenValue *unknown00; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\n#endif\n'
+HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nstruct UnknownGenHolder { UnknownGenValue *unknown00; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\nstruct UnknownGenRefMember {\n UnknownGenValue *value;\n inline ~UnknownGenRefMember(){if(value) unknownGenDrop(value);}\n};\n#endif\n'
 _rep=json.load(open(REPORT));_done=set()
 for _u in _rep['units']:
   if 'unknownGen' in _u['name']: continue
@@ -353,7 +423,7 @@ def generate(names,seed,calls=True,header=False):
   src=inc+'#pragma push\n#pragma auto_inline off\nextern "C" {\n'+'\n'.join(decls)+'\n}\n'+('\n'.join(PRE)+'\n' if PRE else '')+'extern "C" {\n'+'\n'.join(bodies)+'\n}\n#pragma pop\n'
   return src,done,cov,skipped
 def _profile_keys():
-  """Register each template representative's masked shape as compiled without small data."""
+  """Register each template representative's masked shape under the other compiler profiles."""
   import subprocess,tempfile,compiler,elf
   from paths import ANALYSIS
   import hashlib
@@ -365,10 +435,10 @@ def _profile_keys():
     data=json.load(open(cache))
   else:
     data=[]
-    for rep,kind_,val in reps:
+    for (rep,kind_,val),(ns,sp) in [(x,y) for x in reps for y in ((True,False),(False,True),(True,True))]:
       src,done,cov,sk=generate([rep],prepass([rep]))
       tmp=Path(tempfile.mkdtemp(prefix='dw4-unknowngen-'));c=tmp/'r.cpp';o=tmp/'r.o';c.write_text(src)
-      subprocess.run(compiler.command(False,True)+['-c',str(c),'-o',str(o)],check=True,capture_output=True)
+      subprocess.run(compiler.command(False,ns,sp)+['-c',str(c),'-o',str(o)],check=True,capture_output=True)
       secs,rels,syms=elf.parse(o)
       f=next(x for x in syms if x['name']==rep and x['type']==2)
       rl=sorted((x['offset']-f['value'],x['type']) for x in rels if x['section']=='.text' and f['value']<=x['offset']<f['value']+f['size'])

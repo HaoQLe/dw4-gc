@@ -1,5 +1,7 @@
 """Write one source unit per contiguous run of verified functions and record it in generated_units.txt.
-usage: emit.py res.json res-nosdata.json lo hi srcdir   (srcdir relative to src/)
+usage: emit.py PROFILE=res.json [PROFILE=res.json ...] lo hi srcdir   (srcdir relative to src/)
+PROFILE is a comma list of flags (sdata, nosdata, speed), e.g. sdata=res.json nosdata,speed=res-ns.json;
+earlier profiles are preferred when several fit a run.
 Runs never cross an existing split boundary. Units whose functions own original extabindex
 entries are flagged 'eh' so configure.py builds them with C++ exceptions."""
 import json,re,sys
@@ -10,11 +12,14 @@ import gen,callshape
 sys.argv=_argv
 from paths import CONFIG,UNITS
 # Each function is accepted under the default profile, the no-small-data profile, or both.
+pairs=[x for x in sys.argv[1:] if '=' in x];rest=[x for x in sys.argv[1:] if '=' not in x]
+order=[x.split('=',1)[0] for x in pairs]
 prof={}
-for path,p in ((sys.argv[1],'sdata'),(sys.argv[2],'nosdata')):
+for x in pairs:
+  name,path=x.split('=',1)
   for k,v in json.load(open(path)).items():
-    if v==100.0: prof.setdefault(k,set()).add(p)
-lo,hi=int(sys.argv[3],16),int(sys.argv[4],16);srcdir=sys.argv[5]
+    if v==100.0: prof.setdefault(k,set()).add(name)
+lo,hi=int(rest[0],16),int(rest[1],16);srcdir=rest[2]
 ok=set(prof)
 allf=sorted((a,sz,n) for n,(sec,a,t,sz) in gen.syminfo.items() if sec=='.text' and t=='function' and lo<=a<hi)
 bounds=set()
@@ -40,7 +45,8 @@ eti=callshape.extab_functions()
 units=[];total=0
 for r,common in runs:
   names=[n for a,s,n in r]
-  flags=[f for f in ('eh',) if any(a in eti for a,s,n in r)]+([] if 'sdata' in common else ['nosdata'])
+  chosen=next(p for p in order if p in common)
+  flags=[f for f in ('eh',) if any(a in eti for a,s,n in r)]+[f for f in chosen.split(',') if f!='sdata']
   src,done,cov,skipped=gen.generate(names,seed,True,header=True)
   if done!=names: print('skip run',names[0],skipped[:2]);continue
   path='%s/unknown%08X.cpp'%(srcdir,r[0][0])

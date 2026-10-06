@@ -1,0 +1,45 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+void fn_8006665C(void *);
+extern char lbl_80472FA0[];
+extern char lbl_804748A0[];
+extern char lbl_80474900[];
+extern char lbl_804A3F0C[];
+extern char lbl_804A404C[];
+}
+struct UnknownGenRoot8013774C {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot8013774C(){fn_8006665C(this);}
+};
+struct UnknownGenObject8013774C_0 : UnknownGenRoot8013774C {
+ char unknown04[56];
+ UnknownGenRefMember unknown3C;
+ UnknownGenRefMember unknown40;
+ UnknownGenRefMember unknown44;
+ UnknownGenRefMember unknown48;
+ UnknownGenRefMember unknown4C;
+ inline ~UnknownGenObject8013774C_0(){unknown00=lbl_804A404C;}
+};
+struct UnknownGenObject8013774C : UnknownGenObject8013774C_0 {
+ inline ~UnknownGenObject8013774C(){unknown00=lbl_804A3F0C;}
+};
+extern "C" {
+void *fn_8013774C(){
+ UnknownGenObject8013774C object;
+ object.unknown00=lbl_80472FA0;
+ object.unknown00=lbl_80474900;
+ object.unknown00=lbl_804748A0;
+ object.unknown00=lbl_804A404C;
+ object.unknown3C.value=0;
+ object.unknown40.value=0;
+ object.unknown44.value=0;
+ object.unknown48.value=0;
+ object.unknown4C.value=0;
+ object.unknown00=lbl_804A3F0C;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+}
+#pragma pop

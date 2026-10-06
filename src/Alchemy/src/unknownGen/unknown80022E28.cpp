@@ -51,19 +51,36 @@ void fn_8002320C();
 void fn_80023234();
 void *fn_800232A0();
 }
-struct UnknownGenObject80022E9C {
+struct UnknownGenRoot80022E9C {
  void *unknown00;
- char unknown04[8];
- UnknownGenString unknown0C;
- char unknown10[48];
- inline ~UnknownGenObject80022E9C(){unknown00=lbl_80470950;unknown00=lbl_80476E6C;unknown00=lbl_80471914;}
+ inline void operator delete(void *){}
+ inline UnknownGenRoot80022E9C(){fn_80075A2C(this);}
 };
-struct UnknownGenObject80023180 {
- void *unknown00;
+struct UnknownGenObject80022E9C_0 : UnknownGenRoot80022E9C {
  char unknown04[8];
  UnknownGenString unknown0C;
+ inline ~UnknownGenObject80022E9C_0(){unknown00=lbl_80471914;}
+};
+struct UnknownGenObject80022E9C_1 : UnknownGenObject80022E9C_0 {
+ inline ~UnknownGenObject80022E9C_1(){unknown00=lbl_80476E6C;}
+};
+struct UnknownGenObject80022E9C : UnknownGenObject80022E9C_1 {
  char unknown10[48];
- inline ~UnknownGenObject80023180(){unknown00=lbl_80470A44;unknown00=lbl_80471914;}
+ inline ~UnknownGenObject80022E9C(){unknown00=lbl_80470950;}
+};
+struct UnknownGenRoot80023180 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot80023180(){fn_800638E0(this);}
+};
+struct UnknownGenObject80023180_0 : UnknownGenRoot80023180 {
+ char unknown04[8];
+ UnknownGenString unknown0C;
+ inline ~UnknownGenObject80023180_0(){unknown00=lbl_80471914;}
+};
+struct UnknownGenObject80023180 : UnknownGenObject80023180_0 {
+ char unknown10[48];
+ inline ~UnknownGenObject80023180(){unknown00=lbl_80470A44;}
 };
 extern "C" {
 void *fn_80022E28(void *object){
@@ -76,7 +93,6 @@ void *fn_80022E60(){
 }
 void *fn_80022E9C(){
  UnknownGenObject80022E9C object;
- fn_80075A2C(&object);
  object.unknown00=lbl_80470950;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -117,7 +133,6 @@ void *fn_80023144(){
 }
 void *fn_80023180(){
  UnknownGenObject80023180 object;
- fn_800638E0(&object);
  object.unknown00=lbl_80470A44;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

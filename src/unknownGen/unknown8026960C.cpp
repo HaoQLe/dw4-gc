@@ -22,7 +22,7 @@ void fn_802696C4();
 void fn_802696EC();
 void *fn_80269754();
 }
-struct UnknownGenObject80269684 {
+struct UnknownGenObject80269684_0 {
  void *unknown00;
  char unknown04[4];
 };
@@ -36,7 +36,7 @@ void *fn_80269648(){
  return lbl_80565FF8;
 }
 void *fn_80269684(){
- UnknownGenObject80269684 object;
+ UnknownGenObject80269684_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804C92E0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

@@ -6,13 +6,13 @@ void fn_8006665C(void *);
 extern char lbl_804E4A68[];
 extern char lbl_804EE1D8[];
 }
-struct UnknownGenObject803426D8 {
+struct UnknownGenObject803426D8_0 {
  void *unknown00;
  char unknown04[20];
 };
 extern "C" {
 void *fn_803426D8(){
- UnknownGenObject803426D8 object;
+ UnknownGenObject803426D8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804E4A68;
  object.unknown00=lbl_804EE1D8;

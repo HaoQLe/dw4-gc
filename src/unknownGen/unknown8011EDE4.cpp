@@ -26,12 +26,19 @@ void fn_8011EEAC();
 void fn_8011EED4();
 void *fn_8011EF40();
 }
-struct UnknownGenObject8011EE20 {
+struct UnknownGenRoot8011EE20 {
  void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot8011EE20(){fn_800638E0(this);}
+};
+struct UnknownGenObject8011EE20_0 : UnknownGenRoot8011EE20 {
  char unknown04[8];
  UnknownGenString unknown0C;
+ inline ~UnknownGenObject8011EE20_0(){unknown00=lbl_80471914;}
+};
+struct UnknownGenObject8011EE20 : UnknownGenObject8011EE20_0 {
  char unknown10[48];
- inline ~UnknownGenObject8011EE20(){unknown00=lbl_804999A4;unknown00=lbl_80471914;}
+ inline ~UnknownGenObject8011EE20(){unknown00=lbl_804999A4;}
 };
 extern "C" {
 void *fn_8011EDE4(){
@@ -40,7 +47,6 @@ void *fn_8011EDE4(){
 }
 void *fn_8011EE20(){
  UnknownGenObject8011EE20 object;
- fn_800638E0(&object);
  object.unknown00=lbl_804999A4;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

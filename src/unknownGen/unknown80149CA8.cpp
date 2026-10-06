@@ -77,31 +77,31 @@ void fn_8014A738();
 void *fn_8014A7A4();
 void *fn_8014A7C4();
 }
-struct UnknownGenObject80149D1C {
+struct UnknownGenObject80149D1C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80149E98 {
+struct UnknownGenObject80149E98_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8014A014 {
+struct UnknownGenObject8014A014_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8014A190 {
+struct UnknownGenObject8014A190_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8014A30C {
+struct UnknownGenObject8014A30C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8014A488 {
+struct UnknownGenObject8014A488_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8014A5CC {
+struct UnknownGenObject8014A5CC_0 {
  void *unknown00;
  char unknown04[20];
 };
@@ -115,7 +115,7 @@ void *fn_80149CE0(){
  return lbl_805642B8;
 }
 void *fn_80149D1C(){
- UnknownGenObject80149D1C object;
+ UnknownGenObject80149D1C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
@@ -139,7 +139,7 @@ void *fn_80149E5C(){
  return lbl_805642BC;
 }
 void *fn_80149E98(){
- UnknownGenObject80149E98 object;
+ UnknownGenObject80149E98_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
@@ -163,7 +163,7 @@ void *fn_80149FD8(){
  return lbl_805642C0;
 }
 void *fn_8014A014(){
- UnknownGenObject8014A014 object;
+ UnknownGenObject8014A014_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
@@ -187,7 +187,7 @@ void *fn_8014A154(){
  return lbl_805642C4;
 }
 void *fn_8014A190(){
- UnknownGenObject8014A190 object;
+ UnknownGenObject8014A190_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
@@ -211,7 +211,7 @@ void *fn_8014A2D0(){
  return lbl_805642C8;
 }
 void *fn_8014A30C(){
- UnknownGenObject8014A30C object;
+ UnknownGenObject8014A30C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
@@ -235,7 +235,7 @@ void *fn_8014A44C(){
  return lbl_805642CC;
 }
 void *fn_8014A488(){
- UnknownGenObject8014A488 object;
+ UnknownGenObject8014A488_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
@@ -255,7 +255,7 @@ void *fn_8014A590(){
  return lbl_805642D0;
 }
 void *fn_8014A5CC(){
- UnknownGenObject8014A5CC object;
+ UnknownGenObject8014A5CC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;

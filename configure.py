@@ -337,7 +337,8 @@ generated_units = (
     else []
 )
 
-# Generated units: 'eh' functions own exception-table entries; 'nosdata' code avoids small-data addressing.
+# Generated units: 'eh' functions own exception-table entries; 'nosdata' code avoids small-data addressing;
+# 'speed' code was optimized for speed (-O4,p) rather than size.
 def GeneratedObject(unit: List[str]) -> Object:
     flags = unit[3].split(",") if len(unit) > 3 else []
     cflags = list(cflags_engine_size)
@@ -346,6 +347,8 @@ def GeneratedObject(unit: List[str]) -> Object:
         cflags = [("-Cpp_exceptions on" if flag == "-Cpp_exceptions off" else flag) for flag in cflags]
     if "nosdata" in flags:
         cflags += ["-sdata 0", "-sdata2 0"]
+    if "speed" in flags:
+        cflags = [("-O4,p" if flag == "-O4,s" else flag) for flag in cflags]
     return Object(Matching, unit[0], cflags=cflags)
 
 # Helper function for Dolphin libraries

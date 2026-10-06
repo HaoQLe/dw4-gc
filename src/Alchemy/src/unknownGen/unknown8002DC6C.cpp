@@ -11,7 +11,7 @@ extern void *lbl_805619CC;
 extern void *lbl_805621F4;
 void fn_8002DD18();
 }
-struct UnknownGenObject8002DCE4 {
+struct UnknownGenObject8002DCE4_0 {
  void *unknown00;
  char unknown04[20];
 };
@@ -25,7 +25,7 @@ void *fn_8002DCA8(){
  return lbl_805619CC;
 }
 void *fn_8002DCE4(){
- UnknownGenObject8002DCE4 object;
+ UnknownGenObject8002DCE4_0 object;
  fn_80053CF4(&object);
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

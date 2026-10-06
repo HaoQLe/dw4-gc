@@ -5,13 +5,13 @@ extern "C" {
 void fn_8006665C(void *);
 extern char lbl_804D5DB4[];
 }
-struct UnknownGenObject802DACF8 {
+struct UnknownGenObject802DACF8_0 {
  void *unknown00;
  char unknown04[4];
 };
 extern "C" {
 void *fn_802DACF8(){
- UnknownGenObject802DACF8 object;
+ UnknownGenObject802DACF8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804D5DB4;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

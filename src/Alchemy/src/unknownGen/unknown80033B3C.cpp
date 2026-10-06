@@ -315,111 +315,111 @@ void fn_80037140();
 void fn_80037168();
 void *fn_800371D4();
 }
-struct UnknownGenObject80033BB4 {
+struct UnknownGenObject80033BB4_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80033D50 {
+struct UnknownGenObject80033D50_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80033EEC {
+struct UnknownGenObject80033EEC_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800340C0 {
+struct UnknownGenObject800340C0_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8003425C {
+struct UnknownGenObject8003425C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80034430 {
+struct UnknownGenObject80034430_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800345CC {
+struct UnknownGenObject800345CC_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800347A0 {
+struct UnknownGenObject800347A0_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800349E4 {
+struct UnknownGenObject800349E4_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80034C28 {
+struct UnknownGenObject80034C28_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80034DFC {
+struct UnknownGenObject80034DFC_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80035078 {
+struct UnknownGenObject80035078_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800352F4 {
+struct UnknownGenObject800352F4_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800354C8 {
+struct UnknownGenObject800354C8_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8003570C {
+struct UnknownGenObject8003570C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800358E0 {
+struct UnknownGenObject800358E0_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80035B5C {
+struct UnknownGenObject80035B5C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80035D28 {
+struct UnknownGenObject80035D28_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80035FA4 {
+struct UnknownGenObject80035FA4_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800361E4 {
+struct UnknownGenObject800361E4_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80036460 {
+struct UnknownGenObject80036460_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject8003662C {
+struct UnknownGenObject8003662C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80036870 {
+struct UnknownGenObject80036870_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80036A3C {
+struct UnknownGenObject80036A3C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80036CB8 {
+struct UnknownGenObject80036CB8_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject80036EFC {
+struct UnknownGenObject80036EFC_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800370D0 {
+struct UnknownGenObject800370D0_0 {
  void *unknown00;
  char unknown04[20];
 };
@@ -433,7 +433,7 @@ void *fn_80033B78(){
  return lbl_80561D4C;
 }
 void *fn_80033BB4(){
- UnknownGenObject80033BB4 object;
+ UnknownGenObject80033BB4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -459,7 +459,7 @@ void *fn_80033D14(){
  return lbl_80561D50;
 }
 void *fn_80033D50(){
- UnknownGenObject80033D50 object;
+ UnknownGenObject80033D50_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -485,7 +485,7 @@ void *fn_80033EB0(){
  return lbl_80561D54;
 }
 void *fn_80033EEC(){
- UnknownGenObject80033EEC object;
+ UnknownGenObject80033EEC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -515,7 +515,7 @@ void *fn_80034084(){
  return lbl_80561D58;
 }
 void *fn_800340C0(){
- UnknownGenObject800340C0 object;
+ UnknownGenObject800340C0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -541,7 +541,7 @@ void *fn_80034220(){
  return lbl_80561D5C;
 }
 void *fn_8003425C(){
- UnknownGenObject8003425C object;
+ UnknownGenObject8003425C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -571,7 +571,7 @@ void *fn_800343F4(){
  return lbl_80561D60;
 }
 void *fn_80034430(){
- UnknownGenObject80034430 object;
+ UnknownGenObject80034430_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -597,7 +597,7 @@ void *fn_80034590(){
  return lbl_80561D64;
 }
 void *fn_800345CC(){
- UnknownGenObject800345CC object;
+ UnknownGenObject800345CC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -627,7 +627,7 @@ void *fn_80034764(){
  return lbl_80561D68;
 }
 void *fn_800347A0(){
- UnknownGenObject800347A0 object;
+ UnknownGenObject800347A0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474FD8;
@@ -662,7 +662,7 @@ void *fn_800349A8(){
  return lbl_80561D70;
 }
 void *fn_800349E4(){
- UnknownGenObject800349E4 object;
+ UnknownGenObject800349E4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474F18;
@@ -697,7 +697,7 @@ void *fn_80034BEC(){
  return lbl_80561D78;
 }
 void *fn_80034C28(){
- UnknownGenObject80034C28 object;
+ UnknownGenObject80034C28_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -727,7 +727,7 @@ void *fn_80034DC0(){
  return lbl_80561D7C;
 }
 void *fn_80034DFC(){
- UnknownGenObject80034DFC object;
+ UnknownGenObject80034DFC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474D90;
@@ -766,7 +766,7 @@ void *fn_8003503C(){
  return lbl_80561D84;
 }
 void *fn_80035078(){
- UnknownGenObject80035078 object;
+ UnknownGenObject80035078_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474CD0;
@@ -805,7 +805,7 @@ void *fn_800352B8(){
  return lbl_80561D8C;
 }
 void *fn_800352F4(){
- UnknownGenObject800352F4 object;
+ UnknownGenObject800352F4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -835,7 +835,7 @@ void *fn_8003548C(){
  return lbl_80561D90;
 }
 void *fn_800354C8(){
- UnknownGenObject800354C8 object;
+ UnknownGenObject800354C8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474B48;
@@ -870,7 +870,7 @@ void *fn_800356D0(){
  return lbl_80561D98;
 }
 void *fn_8003570C(){
- UnknownGenObject8003570C object;
+ UnknownGenObject8003570C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -900,7 +900,7 @@ void *fn_800358A4(){
  return lbl_80561D9C;
 }
 void *fn_800358E0(){
- UnknownGenObject800358E0 object;
+ UnknownGenObject800358E0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_804749C0;
@@ -939,7 +939,7 @@ void *fn_80035B20(){
  return lbl_80561DA4;
 }
 void *fn_80035B5C(){
- UnknownGenObject80035B5C object;
+ UnknownGenObject80035B5C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474900;
@@ -969,7 +969,7 @@ void *fn_80035CEC(){
  return lbl_80561DA8;
 }
 void *fn_80035D28(){
- UnknownGenObject80035D28 object;
+ UnknownGenObject80035D28_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474900;
@@ -1008,7 +1008,7 @@ void *fn_80035F68(){
  return lbl_80561DB0;
 }
 void *fn_80035FA4(){
- UnknownGenObject80035FA4 object;
+ UnknownGenObject80035FA4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_804747E0;
@@ -1043,7 +1043,7 @@ void *fn_800361A8(){
  return lbl_80561DB8;
 }
 void *fn_800361E4(){
- UnknownGenObject800361E4 object;
+ UnknownGenObject800361E4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474720;
@@ -1082,7 +1082,7 @@ void *fn_80036424(){
  return lbl_80561DC0;
 }
 void *fn_80036460(){
- UnknownGenObject80036460 object;
+ UnknownGenObject80036460_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474660;
@@ -1112,7 +1112,7 @@ void *fn_800365F0(){
  return lbl_80561DC4;
 }
 void *fn_8003662C(){
- UnknownGenObject8003662C object;
+ UnknownGenObject8003662C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474660;
@@ -1147,7 +1147,7 @@ void *fn_80036834(){
  return lbl_80561DCC;
 }
 void *fn_80036870(){
- UnknownGenObject80036870 object;
+ UnknownGenObject80036870_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474540;
@@ -1177,7 +1177,7 @@ void *fn_80036A00(){
  return lbl_80561DD0;
 }
 void *fn_80036A3C(){
- UnknownGenObject80036A3C object;
+ UnknownGenObject80036A3C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474540;
@@ -1216,7 +1216,7 @@ void *fn_80036C7C(){
  return lbl_80561DD8;
 }
 void *fn_80036CB8(){
- UnknownGenObject80036CB8 object;
+ UnknownGenObject80036CB8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80474420;
@@ -1251,7 +1251,7 @@ void *fn_80036EC0(){
  return lbl_80561DE0;
 }
 void *fn_80036EFC(){
- UnknownGenObject80036EFC object;
+ UnknownGenObject80036EFC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -1281,7 +1281,7 @@ void *fn_80037094(){
  return lbl_80561DE4;
 }
 void *fn_800370D0(){
- UnknownGenObject800370D0 object;
+ UnknownGenObject800370D0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;

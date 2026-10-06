@@ -65,19 +65,19 @@ void fn_801AC558();
 void fn_801AC580();
 void *fn_801AC5EC();
 }
-struct UnknownGenObject801AC050 {
+struct UnknownGenObject801AC050_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject801AC1B0 {
+struct UnknownGenObject801AC1B0_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject801AC34C {
+struct UnknownGenObject801AC34C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject801AC4E8 {
+struct UnknownGenObject801AC4E8_0 {
  void *unknown00;
  char unknown04[20];
 };
@@ -91,7 +91,7 @@ void *fn_801AC014(){
  return lbl_80564704;
 }
 void *fn_801AC050(){
- UnknownGenObject801AC050 object;
+ UnknownGenObject801AC050_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -113,7 +113,7 @@ void *fn_801AC174(){
  return lbl_80564708;
 }
 void *fn_801AC1B0(){
- UnknownGenObject801AC1B0 object;
+ UnknownGenObject801AC1B0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -139,7 +139,7 @@ void *fn_801AC310(){
  return lbl_8056470C;
 }
 void *fn_801AC34C(){
- UnknownGenObject801AC34C object;
+ UnknownGenObject801AC34C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -165,7 +165,7 @@ void *fn_801AC4AC(){
  return lbl_80564710;
 }
 void *fn_801AC4E8(){
- UnknownGenObject801AC4E8 object;
+ UnknownGenObject801AC4E8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80480B58;

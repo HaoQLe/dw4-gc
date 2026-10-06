@@ -22,7 +22,7 @@ void fn_800D141C();
 void fn_800D1444();
 void *fn_800D14B4();
 }
-struct UnknownGenObject800D13DC {
+struct UnknownGenObject800D13DC_0 {
  void *unknown00;
  char unknown04[52];
 };
@@ -40,7 +40,7 @@ void *fn_800D13A0(){
  return lbl_80562EFC;
 }
 void *fn_800D13DC(){
- UnknownGenObject800D13DC object;
+ UnknownGenObject800D13DC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80493E34;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

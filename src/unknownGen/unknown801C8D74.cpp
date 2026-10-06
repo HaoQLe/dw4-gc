@@ -27,7 +27,7 @@ void fn_801C8E5C();
 void fn_801C8E84();
 void *fn_801C8EF0();
 }
-struct UnknownGenObject801C8DEC {
+struct UnknownGenObject801C8DEC_0 {
  void *unknown00;
  char unknown04[20];
 };
@@ -41,7 +41,7 @@ void *fn_801C8DB0(){
  return lbl_80565384;
 }
 void *fn_801C8DEC(){
- UnknownGenObject801C8DEC object;
+ UnknownGenObject801C8DEC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;

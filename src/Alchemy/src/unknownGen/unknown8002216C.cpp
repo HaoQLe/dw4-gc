@@ -38,12 +38,22 @@ void *fn_80022314();
 void *fn_80022334();
 void fn_8002233C();
 }
-struct UnknownGenObject800221E0 {
+struct UnknownGenRoot800221E0 {
  void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot800221E0(){fn_80075F0C(this);}
+};
+struct UnknownGenObject800221E0_0 : UnknownGenRoot800221E0 {
  char unknown04[8];
  UnknownGenString unknown0C;
+ inline ~UnknownGenObject800221E0_0(){unknown00=lbl_80471914;}
+};
+struct UnknownGenObject800221E0_1 : UnknownGenObject800221E0_0 {
+ inline ~UnknownGenObject800221E0_1(){unknown00=lbl_80477054;}
+};
+struct UnknownGenObject800221E0 : UnknownGenObject800221E0_1 {
  char unknown10[48];
- inline ~UnknownGenObject800221E0(){unknown00=lbl_80470768;unknown00=lbl_80477054;unknown00=lbl_80471914;}
+ inline ~UnknownGenObject800221E0(){unknown00=lbl_80470768;}
 };
 extern "C" {
 void *fn_8002216C(void *object){
@@ -56,7 +66,6 @@ void *fn_800221A4(){
 }
 void *fn_800221E0(){
  UnknownGenObject800221E0 object;
- fn_80075F0C(&object);
  object.unknown00=lbl_80470768;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

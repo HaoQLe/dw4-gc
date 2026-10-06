@@ -9,13 +9,13 @@ extern char lbl_80476E0C[];
 extern char lbl_804D6878[];
 extern char lbl_804D68DC[];
 }
-struct UnknownGenObject802D79E8 {
+struct UnknownGenObject802D79E8_0 {
  void *unknown00;
  char unknown04[20];
 };
 extern "C" {
 void *fn_802D79E8(){
- UnknownGenObject802D79E8 object;
+ UnknownGenObject802D79E8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;

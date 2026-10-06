@@ -57,14 +57,24 @@ void fn_8002E90C();
 void fn_8002E934();
 void *fn_8002E9A0();
 }
-struct UnknownGenObject8002E57C {
+struct UnknownGenRoot8002E57C {
  void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot8002E57C(){fn_800535B8(this);}
+};
+struct UnknownGenObject8002E57C_0 : UnknownGenRoot8002E57C {
  char unknown04[8];
  UnknownGenString unknown0C;
- char unknown10[48];
- inline ~UnknownGenObject8002E57C(){unknown00=lbl_8047236C;unknown00=lbl_80475B60;unknown00=lbl_80471914;}
+ inline ~UnknownGenObject8002E57C_0(){unknown00=lbl_80471914;}
 };
-struct UnknownGenObject8002E89C {
+struct UnknownGenObject8002E57C_1 : UnknownGenObject8002E57C_0 {
+ inline ~UnknownGenObject8002E57C_1(){unknown00=lbl_80475B60;}
+};
+struct UnknownGenObject8002E57C : UnknownGenObject8002E57C_1 {
+ char unknown10[48];
+ inline ~UnknownGenObject8002E57C(){unknown00=lbl_8047236C;}
+};
+struct UnknownGenObject8002E89C_0 {
  void *unknown00;
  char unknown04[20];
 };
@@ -79,7 +89,6 @@ void *fn_8002E540(){
 }
 void *fn_8002E57C(){
  UnknownGenObject8002E57C object;
- fn_800535B8(&object);
  object.unknown00=lbl_8047236C;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -123,7 +132,7 @@ void *fn_8002E860(){
  return lbl_805619F4;
 }
 void *fn_8002E89C(){
- UnknownGenObject8002E89C object;
+ UnknownGenObject8002E89C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;

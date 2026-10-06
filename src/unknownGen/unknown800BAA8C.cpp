@@ -38,11 +38,11 @@ void fn_800BAD80();
 void fn_800BADA8();
 void *fn_800BAE14();
 }
-struct UnknownGenObject800BAB3C {
+struct UnknownGenObject800BAB3C_0 {
  void *unknown00;
  char unknown04[20];
 };
-struct UnknownGenObject800BAD10 {
+struct UnknownGenObject800BAD10_0 {
  void *unknown00;
  char unknown04[20];
 };
@@ -60,7 +60,7 @@ void *fn_800BAB00(){
  return lbl_80562A40;
 }
 void *fn_800BAB3C(){
- UnknownGenObject800BAB3C object;
+ UnknownGenObject800BAB3C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;
@@ -90,7 +90,7 @@ void *fn_800BACD4(){
  return lbl_80562A44;
 }
 void *fn_800BAD10(){
- UnknownGenObject800BAD10 object;
+ UnknownGenObject800BAD10_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
  object.unknown00=lbl_80476E0C;

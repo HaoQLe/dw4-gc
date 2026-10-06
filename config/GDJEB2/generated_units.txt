@@ -2273,6 +2273,7 @@ unknownGen/unknown8028E204.cpp	8028E204	8028E2C0	-
 unknownGen/unknown8028F3B8.cpp	8028F3B8	8028F3C0	-
 unknownGen/unknown8028F8F8.cpp	8028F8F8	8028F900	-
 unknownGen/unknown8028FA0C.cpp	8028FA0C	8028FA64	-
+unknownGen/unknown8028FC40.cpp	8028FC40	8028FCD8	-
 unknownGen/unknown8028FD68.cpp	8028FD68	8028FD70	-
 unknownGen/unknown8028FFDC.cpp	8028FFDC	8028FFF4	-
 unknownGen/unknown80290000.cpp	80290000	80290018	-
@@ -2286,6 +2287,7 @@ unknownGen/unknown802957B4.cpp	802957B4	802957BC	-
 unknownGen/unknown802959C4.cpp	802959C4	80295A04	-
 unknownGen/unknown80298F94.cpp	80298F94	80298FAC	-
 unknownGen/unknown8029A004.cpp	8029A004	8029A008	-
+unknownGen/unknown8029A008.cpp	8029A008	8029A03C	-
 unknownGen/unknown8029A2B0.cpp	8029A2B0	8029A2B8	-
 unknownGen/unknown8029A438.cpp	8029A438	8029A440	-
 unknownGen/unknown8029A6BC.cpp	8029A6BC	8029A6C4	-
@@ -4422,6 +4424,7 @@ unknownGen/unknown803D5A6C.cpp	803D5A6C	803D5A70	-
 unknownGen/unknown803D6CE4.cpp	803D6CE4	803D6D0C	-
 unknownGen/unknown803E3924.cpp	803E3924	803E392C	-
 unknownGen/unknown803E4930.cpp	803E4930	803E4950	-
+unknownGen/unknown803E4950.cpp	803E4950	803E49B4	-
 unknownGen/unknown803E4BDC.cpp	803E4BDC	803E4BE4	-
 unknownGen/unknown803E4E40.cpp	803E4E40	803E4E48	-
 unknownGen/unknown803E4F48.cpp	803E4F48	803E4F58	-
@@ -4434,9 +4437,11 @@ unknownGen/unknown803E8838.cpp	803E8838	803E8858	-
 unknownGen/unknown803E88AC.cpp	803E88AC	803E88CC	-
 unknownGen/unknown803E8F98.cpp	803E8F98	803E8FA0	-
 unknownGen/unknown803EA1E4.cpp	803EA1E4	803EA204	-
+unknownGen/unknown803EA204.cpp	803EA204	803EA228	-
 unknownGen/unknown803EA8C0.cpp	803EA8C0	803EA8C8	-
 unknownGen/unknown803EA8D8.cpp	803EA8D8	803EA8E8	-
 unknownGen/unknown803EEF70.cpp	803EEF70	803EEF90	-
+unknownGen/unknown803EEF90.cpp	803EEF90	803EEFB4	-
 unknownGen/unknown803F1F9C.cpp	803F1F9C	803F1FBC	-
 unknownGen/unknown803F2FDC.cpp	803F2FDC	803F2FEC	-
 unknownGen/unknown803F3BC8.cpp	803F3BC8	803F3BE8	-

@@ -125,6 +125,13 @@ def CALLS(name,rel):
     ex=[expr(a) for a in args]
     fn(target,'void %%s(%s);'%','.join(['int']*len(args)))
     lines.append(' %s(%s);'%(target,','.join(ex)))
+  # A constant loaded into r3 after the last call is the return value.
+  b=callshape.rd(addr,size);ws=[_st.unpack('>I',b[i:i+4])[0] for i in range(0,size,4)]
+  last=max(i for i,w in enumerate(ws) if (w>>26)==18 and w&1)
+  ret=[callshape.s16(w&0xFFFF) for w in ws[last+1:] if (w>>26)==14 and ((w>>16)&31)==0 and ((w>>21)&31)==3]
+  if ret:
+    fn(name,'int %s();')
+    return 'int %s(){\n%s\n return %d;\n}'%(name,'\n'.join(lines),ret[-1])
   fn(name,'void %s();')
   return 'void %s(){\n%s\n}'%(name,'\n'.join(lines))
 

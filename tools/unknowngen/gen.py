@@ -5,7 +5,9 @@ Candidates are unverified until fastcmp.py confirms them."""
 import json,re,sys,collections
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
-from paths import CONFIG,RELINDEX,REPORT,EXCLUDE
+from paths import CONFIG,RELINDEX,REPORT,EXCLUDE,HERE
+FLOW_REGS=set(json.load(open(HERE/'flow_regs.json'))) if (HERE/'flow_regs.json').exists() else set()
+FLOW_REGS_ALL='--flow-regs-all' in sys.argv
 idx=json.load(open(RELINDEX))
 _etb_refs=idx.pop('@etb_refs',[])
 syminfo={}
@@ -531,8 +533,9 @@ def FLOW(name,rel):
         ptypes=[x.strip() for x in m[2].split(',')] if m[2].strip() not in ('','void') else []
         if len(ptypes)>len(args): raise ValueError('arity')
         args=args[:len(ptypes)]
-      else:
+      elif not (FLOW_REGS_ALL or name in FLOW_REGS):
         # Without a prototype, leftover registers are not arguments: use the inferred arity.
+        # (Functions listed in flow_regs.json match only when the set registers are passed.)
         k_=arity(t)
         if k_>len(args): raise ValueError('arity')
         args=args[:k_]

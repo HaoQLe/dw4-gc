@@ -3,6 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *OSDisableInterrupts(void *);
+void OSRestoreInterrupts(void *);
 void fn_800ABE3C();
 void fn_800AC00C();
 void fn_800AC1D8();
@@ -122,6 +123,9 @@ void fn_800BC6F8();
 void fn_800BC8C4();
 }
 extern "C" {
+void fn_800ABA44(int p0){
+ OSRestoreInterrupts(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+0));
+}
 void fn_800ABA68(int p0){
  void *value0=OSDisableInterrupts((void *)p0);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value0;

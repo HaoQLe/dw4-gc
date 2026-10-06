@@ -442,6 +442,7 @@ def FLOW(name,rel):
     if op==36 and ra==1: continue                                   # saves
     if op==32 and ra==1: continue                                   # restores
     if op==14 and rt==1 and ra==1: continue                         # epilogue
+    if op==14 and rt==11 and ra==1: continue                        # _savegpr/_restgpr frame pointer
     if op==15 and ra==0:
       regs[rt]=('ha',r[1],r[2]) if r else ('k',imm<<16);continue
     if op==14:
@@ -460,11 +461,12 @@ def FLOW(name,rel):
       raise ValueError('load shape')
     if op==31 and ((w>>1)&0x3FF)==444 and rt==((w>>11)&31):        # mr
       regs[ra]=regs.get(rt);continue
-    if op==36:
+    if op in (36,38,44):
       x=regs.get(ra);v=regs.get(rt)
       if isinstance(x,int) and isinstance(v,int) and vals[x][0] in ('ret','load','param','field'):
-        stmts.append(('store',x,callshape.s16(imm),v));continue
+        stmts.append(('store',x,callshape.s16(imm),v,{36:'void *',38:'unsigned char',44:'short'}[op]));continue
       raise ValueError('store shape')
+    if op==18 and w&1 and r and r[1].startswith(('_savegpr_','_restgpr_')): continue
     if op==18 and w&1 and r:
       args=[]
       for k in range(3,11):
@@ -529,13 +531,19 @@ def FLOW(name,rel):
         ptypes=[x.strip() for x in m[2].split(',')] if m[2].strip() not in ('','void') else []
         if len(ptypes)>len(args): raise ValueError('arity')
         args=args[:len(ptypes)]
+      else:
+        # Without a prototype, leftover registers are not arguments: use the inferred arity.
+        k_=arity(t)
+        if k_>len(args): raise ValueError('arity')
+        args=args[:k_]
       for a in args: ensure(a)
       if ptypes is None: ptypes=['int' if vals[a][0]=='const' else 'void *' for a in args]
       def cast(pt,a):
         e=ex(a)
-        if pt=='int' and vals[a][0]!='const': return '(int)(%s)'%e
-        if pt!='int' and vals[a][0]=='const': return '(%s)%s'%(pt,e)
-        return e
+        if pt=='void *': return '(void *)%s'%e if vals[a][0]=='const' else e
+        if pt.endswith('*'): return '(%s)(%s)'%(pt,e)
+        if vals[a][0]=='const': return e if pt=='int' else '(%s)%s'%(pt,e)
+        return '(%s)(int)(%s)'%(pt,e)
       call='%s(%s)'%(t,','.join(cast(pt,a) for pt,a in zip(ptypes,args)))
       rtype=m[1].strip() if m else None
       rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1]==si]
@@ -548,9 +556,12 @@ def FLOW(name,rel):
         if rtype is None: fn(t,'void %%s(%s);'%','.join(ptypes))
         lines.append(' %s;'%call)
     else:
-      x,off,v=st[1],st[2],st[3]
+      x,off,v,ty=st[1],st[2],st[3],st[4]
       ensure(x);ensure(v)
-      lines.append(' *reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ex(x),off,('(void *)%s'%ex(v)) if vals[v][0]=='const' else ex(v)))
+      e=ex(v)
+      if ty=='void *' and vals[v][0]=='const': e='(void *)%s'%e
+      elif ty!='void *' and vals[v][0]!='const': e='(%s)(int)%s'%(ty,e)
+      lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ty,ex(x),off,e))
   if retv is not None:
     ensure(retv)
     fn(name,'void *%%s(%s);'%','.join(['int']*nparam))

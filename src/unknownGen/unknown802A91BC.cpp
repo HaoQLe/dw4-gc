@@ -4,13 +4,13 @@
 extern "C" {
 void *fn_8029D6F0();
 void *fn_8029D710();
-void fn_803C385C(void *);
+void fn_803C385C();
 }
 extern "C" {
 void *fn_802A91BC(){return fn_8029D710();}
 void fn_802A91DC(int p0){
  void *value0=fn_8029D6F0();
- fn_803C385C(value0);
+ fn_803C385C();
 }
 }
 #pragma pop

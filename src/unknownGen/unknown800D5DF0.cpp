@@ -2,18 +2,26 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_80030000();
 void *fn_8006546C(void *,void *);
+void *fn_800658E4(void *,void *);
+void fn_80065924(void *,void *,int);
+void fn_800659C0(void *,void *,void *,void *,void *);
+void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
 void fn_800D2358();
-void fn_800D6058();
 extern char lbl_8048A6BC[];
 extern char lbl_80491194[];
 extern char lbl_804927D4[];
 extern char lbl_80492F94[];
 extern char lbl_8055ED64[8];
+extern char lbl_8055ED6C[4];
+extern char lbl_8055ED70[4];
+extern char lbl_8055ED74[4];
+extern char lbl_8055ED78[4];
 extern void *lbl_80562F74;
 extern void *lbl_805630F0;
 void *fn_800D5E28();
@@ -22,6 +30,7 @@ void fn_800D5F94();
 void fn_800D5FBC();
 void *fn_800D6030();
 void *fn_800D6050();
+void fn_800D6058();
 }
 struct UnknownGenRoot800D5E64 {
  void *unknown00;
@@ -71,5 +80,14 @@ void fn_800D5FBC(){
 }
 void *fn_800D6030(){return fn_800D5E28();}
 void *fn_800D6050(){return lbl_80562F74;}
+void fn_800D6058(){
+ void *value0=lbl_805630F0;
+ void *value1=fn_80065D88(value0);
+ fn_80065924(value0,lbl_8055ED6C,1);
+ void *value2=fn_800658E4(value0,value1);
+ void *value3=fn_80030000();
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
+ fn_800659C0(value0,lbl_8055ED70,lbl_8055ED74,lbl_8055ED78,value1);
+}
 }
 #pragma pop

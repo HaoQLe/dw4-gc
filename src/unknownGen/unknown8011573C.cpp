@@ -2,25 +2,45 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_800237D0();
+void *fn_80029E64(void *);
+void *fn_800607F4(void *);
+void *fn_800658E4(void *,void *);
+void fn_80065924(void *,void *,int);
+void fn_800659C0(void *,void *,void *,void *,void *);
+void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void fn_80066B08();
 void fn_8010CBD4();
 void fn_8010D60C();
 void *fn_8010DD30();
-void fn_8011597C();
+void *fn_80111CD4();
 extern char lbl_804959F8[];
+extern char lbl_80495AA4[];
 extern char lbl_80496040[];
 extern char lbl_80496D18[];
 extern char lbl_80497E1C[];
 extern char lbl_80497E78[];
 extern char lbl_8055F2BC[8];
+extern char lbl_8055F2C4[8];
+extern char lbl_8055F2CC[8];
+extern char lbl_8055F2D4[8];
+extern char lbl_8055F2DC[8];
+extern void *lbl_805621F4;
 extern void *lbl_80563888;
+extern void *lbl_805638AC;
 void *fn_8011573C();
 void *fn_80115778();
 void fn_801158C0();
 void fn_801158E8();
 void *fn_8011595C();
+void fn_8011597C();
+void *fn_80115A40();
+void fn_80115A7C();
+void fn_80115AA4();
+void *fn_80115B08();
 }
 struct UnknownGenRoot80115778 {
  void *unknown00;
@@ -70,5 +90,31 @@ void fn_801158E8(){
  fn_80066204(0,(int)&lbl_80563888,(int)fn_8010D60C,(int)fn_8010DD30,(int)fn_8011595C,(int)lbl_804959F8,60,(int)fn_80115778,(int)fn_8011597C,0,(int)lbl_8055F2BC);
 }
 void *fn_8011595C(){return fn_8011573C();}
+void fn_8011597C(){
+ void *value0=lbl_80563888;
+ void *value1=fn_80065D88(value0);
+ fn_80065924(value0,lbl_8055F2C4,2);
+ void *value2=fn_800658E4(value0,value1);
+ void *value3=fn_80111CD4();
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
+ fn_800659C0(value0,lbl_8055F2CC,lbl_8055F2D4,lbl_8055F2DC,value1);
+}
+void *fn_801159FC(){return lbl_805638AC;}
+void *fn_80115A04(){
+ if(!lbl_805638AC) lbl_805638AC=fn_80029E64(fn_800607F4(lbl_805621F4));
+ return lbl_805638AC;
+}
+void *fn_80115A40(){
+ if(!lbl_805638AC || !(reinterpret_cast<unsigned int *>(lbl_805638AC)[0x24/4]&4)) fn_80115A7C();
+ return lbl_805638AC;
+}
+void fn_80115A7C(){
+ fn_80066188((int)fn_80115AA4);
+}
+void fn_80115AA4(){
+ fn_8010CBD4();
+ fn_80066204(1,(int)&lbl_805638AC,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80115B08,(int)lbl_80495AA4,8,0,0,0,0);
+}
+void *fn_80115B08(){return fn_80115A40();}
 }
 #pragma pop

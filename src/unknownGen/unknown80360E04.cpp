@@ -10,7 +10,7 @@ int fn_80360E0C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<c
 int fn_80360E14(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+0);}
 void *fn_80360E1C(int p0,int p1){
  void *value0=fn_802D91E4(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+0));
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+0)=value0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value0;
  return (void *)p0;
 }
 void fn_80360E54(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+0)=value;}

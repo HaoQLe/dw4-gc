@@ -39,9 +39,9 @@ int fn_802ADA30(){return 1;}
 int fn_802ADA38(){return 1;}
 void fn_802ADA40(int p0){
  fn_800667CC();
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)=(void *)0;
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16)=(void *)0;
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)0;
 }
 void fn_802ADA7C(int p0){
  fn_800667A4();

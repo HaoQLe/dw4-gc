@@ -104,7 +104,7 @@ void fn_80140974(){
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F900,1);
  void *value2=fn_800658E4(value0,value1);
- *reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+56)=lbl_805622A4;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=lbl_805622A4;
  fn_800659C0(value0,lbl_8055F904,lbl_8055F908,lbl_8055F90C,value1);
 }
 void *fn_801409F0(){
@@ -147,7 +147,7 @@ void fn_80140C44(){
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F918,1);
  void *value2=fn_800658E4(value0,value1);
- *reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+56)=lbl_805622A4;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=lbl_805622A4;
  fn_800659C0(value0,lbl_8055F91C,lbl_8055F920,lbl_8055F924,value1);
 }
 void *fn_80140CC0(){

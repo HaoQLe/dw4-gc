@@ -43,14 +43,14 @@ void *fn_8021ECEC(){return lbl_805659E4;}
 void *fn_8021ECF4(){return lbl_80565A24;}
 void fn_8021ECFC(int p0){
  fn_800667D8();
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
 }
 void fn_8021ED40(int p0){
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
- *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
  fn_800667E4();
 }
 void *fn_8021ED78(){return lbl_80565A78;}

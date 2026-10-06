@@ -356,8 +356,11 @@ def _profile_keys():
   """Register each template representative's masked shape as compiled without small data."""
   import subprocess,tempfile,compiler,elf
   from paths import ANALYSIS
-  cache=ANALYSIS/'profilekeys.json'
+  import hashlib
   reps=[(r,'F',f) for f,r in FAMREP.items()]+[(r,'T',r) for r in texttempl.T]+[(r,'I',r) for r in texttempl.IT]
+  # The cache is keyed on the templates and representatives, so editing either rebuilds it.
+  tag=hashlib.sha1((Path(texttempl.__file__).read_text()+repr(reps)+Path(__file__).read_text()).encode()).hexdigest()[:16]
+  cache=ANALYSIS/('profilekeys-%s.json'%tag)
   if cache.exists():
     data=json.load(open(cache))
   else:

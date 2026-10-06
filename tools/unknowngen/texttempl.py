@@ -1,19 +1,6 @@
 """Text templates keyed by representative function. {N} = Nth unique relocated symbol, {name} = function.
 DECL[i] = declaration format for symbol i (None = already declared/arkCore)."""
 T={}
-T['fn_80021E10']=dict(decl=[None,'void %s();','extern void *%s;','void *%s(void *,void *);','void *%s(int,int,void *);','UnknownGenVirtual *%s(void *,int);'],sig='void *%s(void *);',src='''void *{name}(void *arg){
- UnknownGenVirtual *object;
- if(*reinterpret_cast<unsigned char *>(Gap::Core::_arkCore)){
-  {1}();
-  object=reinterpret_cast<UnknownGenVirtual *>({3}({2},arg));
- }else{
-  object=reinterpret_cast<UnknownGenVirtual *>({4}(0x34,0,arg));
-  if(object) object={5}(object,1);
-  object->slot2C();
-  object->slot24(0);
- }
- return object;
-}''')
 T['fn_80021EB4']=dict(decl=[None,'void %s();','void *%s(void *,void *);','void *%s(int,int);','void *%s(void *,void *);'],sig='void *%s(void *,void *);',src='''void *{name}(void *a,void *b){
  if(*reinterpret_cast<unsigned char *>(Gap::Core::_arkCore)){
   {1}();

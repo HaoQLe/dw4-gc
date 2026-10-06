@@ -36,4 +36,4 @@ Functions that `gen.py` never generates:
 - functions that start at, end at or contain a `.text` label; such a label at a unit boundary hangs the linker;
 - functions listed in `exclude.json`, with reasons.
 
-Generated candidates are hypotheses until `fastcmp.py` accepts them. Publication still requires the normal build checksum, report and review gates.
+Generated candidates are hypotheses until `fastcmp.py` accepts them. `fastcmp.py` compiles without exceptions; for `eh` units the normal build verifies the exception tables. Publication still requires the normal build checksum, report and review gates.

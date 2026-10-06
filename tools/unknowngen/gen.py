@@ -420,12 +420,14 @@ def FLOW(name,rel):
       x=regs.get(ra)
       if isinstance(x,int) and vals[x][0]=='addr' and imm==0: regs[rt]=val('load',vals[x][1],vals[x][2]);continue
       if isinstance(x,tuple) and x[0]=='ha' and r: regs[rt]=val('load',r[1],r[2]);continue
+      if isinstance(x,int) and vals[x][0] in ('param','load','ret','field') and not r:
+        regs[rt]=val('field',x,callshape.s16(imm));continue          # word field of a known value
       raise ValueError('load shape')
     if op==31 and ((w>>1)&0x3FF)==444 and rt==((w>>11)&31):        # mr
       regs[ra]=regs.get(rt);continue
     if op==36:
       x=regs.get(ra);v=regs.get(rt)
-      if isinstance(x,int) and isinstance(v,int) and vals[x][0] in ('ret','load'):
+      if isinstance(x,int) and isinstance(v,int) and vals[x][0] in ('ret','load','param','field'):
         stmts.append(('store',x,callshape.s16(imm),v));continue
       raise ValueError('store shape')
     if op==18 and w&1 and r:
@@ -443,6 +445,11 @@ def FLOW(name,rel):
   for st in stmts:
     if st[0]=='call': used.update(st[2])
     else: used.update([st[1],st[3]])
+  # A value left in r3 by a non-call instruction after the last call is the return value.
+  retv=regs.get(3) if isinstance(regs.get(3),int) and vals[regs[3]][0] in ('field','load','param','const') else None
+  if retv is not None: used[retv]+=1
+  for v,k in enumerate(vals):
+    if k[0]=='field' and used[v]: used[k[1]]+=1
   def ex(v):
     """Pointer-typed expression for a value (constants stay int)."""
     k=vals[v]
@@ -464,11 +471,20 @@ def FLOW(name,rel):
       fn(k[1],'extern void *%s;');return k[1]
     if k[0]=='ret': return names_[v]
     if k[0]=='param': return '(void *)p%d'%k[1]
+    if k[0]=='field':
+      if v in names_: return names_[v]
+      return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
     raise ValueError(k)
   names_={};lines=[]
   for v,k in enumerate(vals):
     if k[0]=='load' and used[v]>1: names_[v]='value%d'%len(names_)
   emitted=set()
+  def ensure(v):
+    """Declare a named global load at its first use."""
+    k=vals[v]
+    if k[0]=='field': ensure(k[1]);return
+    if v in names_ and k[0]=='load' and v not in emitted:
+      fn(k[1],'extern void *%s;');lines.append(' void *%s=%s;'%(names_[v],k[1]));emitted.add(v)
   for si,st in enumerate(stmts):
     if st[0]=='call':
       t,args=st[1],st[2]
@@ -478,9 +494,7 @@ def FLOW(name,rel):
         ptypes=[x.strip() for x in m[2].split(',')] if m[2].strip() not in ('','void') else []
         if len(ptypes)>len(args): raise ValueError('arity')
         args=args[:len(ptypes)]
-      for a in args:
-        if a in names_ and vals[a][0]=='load' and a not in emitted:
-          fn(vals[a][1],'extern void *%s;');lines.append(' void *%s=%s;'%(names_[a],vals[a][1]));emitted.add(a)
+      for a in args: ensure(a)
       if ptypes is None: ptypes=['int' if vals[a][0]=='const' else 'void *' for a in args]
       def cast(pt,a):
         e=ex(a)
@@ -500,7 +514,14 @@ def FLOW(name,rel):
         lines.append(' %s;'%call)
     else:
       x,off,v=st[1],st[2],st[3]
+      ensure(x);ensure(v)
       lines.append(' *reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ex(x),off,('(void *)%s'%ex(v)) if vals[v][0]=='const' else ex(v)))
+  if retv is not None:
+    ensure(retv)
+    fn(name,'void *%%s(%s);'%','.join(['int']*nparam))
+    rexp=ex(retv)
+    if vals[retv][0]=='const': rexp='(void *)%s'%rexp
+    return 'void *%s(%s){\n%s\n return %s;\n}'%(name,','.join('int p%d'%i for i in range(nparam)),'\n'.join(lines),rexp)
   fn(name,'void %%s(%s);'%','.join(['int']*nparam))
   return 'void %s(%s){\n%s\n}'%(name,','.join('int p%d'%i for i in range(nparam)),'\n'.join(lines))
 

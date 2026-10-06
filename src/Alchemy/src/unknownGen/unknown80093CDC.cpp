@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800667D4();
+void fn_800667D4();
 extern void *lbl_805614E4;
 extern void *lbl_805615D4;
 extern void *lbl_805615EC;
@@ -63,7 +63,7 @@ void *fn_80093D8C(){return lbl_80561E54;}
 void *fn_80093D94(){return lbl_80561978;}
 void *fn_80093D9C(){return lbl_805614E4;}
 void *fn_80093DA4(){return lbl_805615EC;}
-void *fn_80093DAC(){return fn_800667D4();}
+void fn_80093DAC(){return fn_800667D4();}
 void *fn_80093DCC(){return lbl_805615D4;}
 void *fn_80093DD4(){return lbl_80561E98;}
 void *fn_80093DDC(){return lbl_8056200C;}

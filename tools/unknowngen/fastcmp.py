@@ -1,4 +1,4 @@
-"""Compile a candidate file and verify each fn_ function exactly against the original:
+"""Compile a candidate file and verify each fn_/dtor_ function exactly against the original:
 bytes with relocation fields masked must equal the DOL, and relocations (offset, type, target, addend)
 must equal the original split object.
 usage: fastcmp.py file.cpp [--res out.json] [--eh] [--no-sdata]"""
@@ -24,13 +24,13 @@ def check(src,eh=False,no_sdata=False):
   secs,rels,syms=elf.parse(obj)
   text=secs['.text']['data'];trel=[x for x in rels if x['section']=='.text'];res={}
   for f in syms:
-    if f['type']!=2 or f['section']!='.text' or not f['name'].startswith('fn_'): continue
+    if f['type']!=2 or f['section']!='.text' or not f['name'].startswith(('fn_','dtor_')): continue
     n=f['name']
     if n not in idx: res[n]=None;continue
     mine=[(x['offset']-f['value'],x['type'],x['symbol']['name'],x['addend']) for x in trel if f['value']<=x['offset']<f['value']+f['size']]
     orig=[tuple(x) for x in idx[n]['rel']]
     ok=f['size']==idx[n]['size'] and sorted(mine)==sorted(orig)
-    if ok: ok=mask(text[f['value']:f['value']+f['size']],[(o,t) for o,t,s,a in mine])==mask(callshape.rd(int(n[3:],16),f['size']),[(o,t) for o,t,s,a in orig])
+    if ok: ok=mask(text[f['value']:f['value']+f['size']],[(o,t) for o,t,s,a in mine])==mask(callshape.rd(int(n.rsplit('_',1)[1],16),f['size']),[(o,t) for o,t,s,a in orig])
     res[n]=100.0 if ok else 0.0
   return res
 if __name__=='__main__':

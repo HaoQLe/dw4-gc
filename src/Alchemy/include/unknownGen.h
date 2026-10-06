@@ -24,6 +24,7 @@ public:
  virtual void slot2C();
 };
 struct UnknownGenValue { void *unknown00; unsigned int unknown04; };
+struct UnknownGenHolder { UnknownGenValue *unknown00; };
 extern "C" void fn_80066E1C(void *);
 inline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}
 #endif

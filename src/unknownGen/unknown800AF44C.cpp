@@ -6,12 +6,12 @@ void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
 void fn_800AF66C();
-void *fn_800C3A9C();
+void fn_800C3A9C();
 extern void *lbl_805621F4;
 extern void *lbl_80562554;
 }
 extern "C" {
-void *fn_800AF44C(){return fn_800C3A9C();}
+void fn_800AF44C(){return fn_800C3A9C();}
 void *fn_800AF46C(void *object){
  fn_800AF66C();
  return fn_8006546C(lbl_80562554,object);

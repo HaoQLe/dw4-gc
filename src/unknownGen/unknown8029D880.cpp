@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_802A6AB8();
+int fn_802A6AB8();
 void *fn_802A6AC8();
 void *fn_802A6AD8();
 void *fn_802A6B8C();
@@ -15,7 +15,7 @@ void *fn_802A7534();
 void *fn_802A76D4();
 }
 extern "C" {
-void *fn_8029D880(){return fn_802A6AB8();}
+int fn_8029D880(){return fn_802A6AB8();}
 void *fn_8029D8A0(){return fn_802A6AC8();}
 void *fn_8029D8C0(){return fn_802A6AD8();}
 void *fn_8029D8E0(){return fn_802A6B8C();}

@@ -10,7 +10,7 @@ void fn_8006665C(void *);
 void fn_8012FC48();
 void fn_801305C4();
 void fn_801452B0();
-void *fn_80177F30();
+void fn_80177F30();
 extern char lbl_8049E6FC[];
 extern char lbl_804A9954[];
 extern char lbl_804A99B0[];
@@ -30,7 +30,7 @@ struct UnknownGenObject80145198 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_80145100(){return fn_80177F30();}
+void fn_80145100(){return fn_80177F30();}
 void *fn_80145120(){
  if(!lbl_8056414C) lbl_8056414C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8056414C;

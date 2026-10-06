@@ -12,6 +12,8 @@ syminfo={}
 for l in open(CONFIG/'symbols.txt'):
   m=re.match(r'(\S+) = (\.\w+):0x([0-9A-F]+); // type:(\w+)(?: size:0x([0-9A-F]+))?',l)
   if m: syminfo[m[1]]=(m[2],int(m[3],16),m[4],int(m[5] or '0',16))
+# Address-named symbols that generated units may define.
+GENERATED_PREFIXES=('fn_','dtor_')
 protos={}   # symbol -> declaration line
 def fn(sym,decl):
   d=decl%sym
@@ -31,6 +33,13 @@ def F1(name,rel):
 ARGFAM={'F6'}
 def F2(name,rel):
   c=U(rel)[0]
+  m=re.match(r'(.*?)%s\((.*)\);$'%re.escape(c),protos.get(c,''))
+  if m and famof(c) not in ARGFAM and m[2] in ('','void *'):
+    # Wrap the target with its own recovered signature.
+    ret,args=m[1],m[2]
+    fn(name,'%s%%s(%s);'%(ret,args))
+    call='%s(%s)'%(c,'object' if args else '')
+    return '%s%s(%s){return %s;}'%(ret,name,'void *object' if args else '',call)
   if famof(c) in ARGFAM:
     fn(c,'void *%s(void *);')
     return 'void *%s(void *object){return %s(object);}'%(name,c)
@@ -97,7 +106,7 @@ def expr(e):
     return '(int)%s'%sym if not e[2] else '(int)(%s+%d)'%(sym,e[2])
   raise ValueError('expr %r'%(e,))
 def CALLS(name,rel):
-  addr=int(name[3:],16);size=idx[name]['size']
+  addr=syminfo[name][1];size=idx[name]['size']
   if not _simple(addr,size): raise ValueError('not simple')
   calls=callshape.analyze(addr,size,[tuple(x) for x in rel])
   if not calls: raise ValueError('no calls')
@@ -121,7 +130,7 @@ def CALLS(name,rel):
 
 
 def VT(name,rel):
-  addr=int(name[3:],16);size=idx[name]['size']
+  addr=syminfo[name][1];size=idx[name]['size']
   b=callshape.rd(addr,size);relat={o&~3:(t,sy,a) for o,t,sy,a in rel}
   regs={};events=[];frame=None;saves31=False;strofs=None;ctor=None
   for i in range(0,size,4):
@@ -172,7 +181,7 @@ def VT(name,rel):
   return '\n'.join(body)
 PRE=[]
 def _isvt(name):
-  addr=int(name[3:],16);size=idx[name]['size']
+  addr=syminfo[name][1];size=idx[name]['size']
   if size>=200: return False
   b=callshape.rd(addr,size);ws=[_st.unpack('>I',b[i:i+4])[0] for i in range(0,size,4)]
   return any((w>>26)==32 and (w&0xFFFF)==0x394 for w in ws) and any((w>>26)==31 and ((w>>1)&0x3FF)==23 for w in ws)
@@ -210,9 +219,34 @@ def _fmt(src,name,u):
   for i in range(len(u)-1,-1,-1): src=src.replace('{%d}'%i,u[i])
   return src
 
-TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT}
+def LEAF(name,rel):
+  """Two-instruction leaf functions: constant, field load/store/address, or an empty body."""
+  if rel: raise ValueError('leaf with relocations')
+  addr=syminfo[name][1];size=idx[name]['size'];b=callshape.rd(addr,size)
+  ws=[_st.unpack('>I',b[i:i+4])[0] for i in range(0,size,4)]
+  if ws==[0x4E800020]:
+    fn(name,'void %s();');return 'void %s(){}'%name
+  if size!=8 or ws[1]!=0x4E800020: raise ValueError('not leaf')
+  w=ws[0];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;d=callshape.s16(w&0xFFFF)
+  if op==14 and ra==0 and rt==3:
+    fn(name,'int %s();');return 'int %s(){return %d;}'%(name,d)
+  if op==14 and ra==3 and rt==3:
+    fn(name,'void *%s(void *);');return 'void *%s(void *object){return reinterpret_cast<char *>(object)+%d;}'%(name,d)
+  loads={32:'int',34:'unsigned char',40:'unsigned short',42:'short'}
+  if op in loads and ra==3 and rt==3:
+    t=loads[op];fn(name,'%s %%s(void *);'%t)
+    return '%s %s(void *object){return *reinterpret_cast<%s *>(reinterpret_cast<char *>(object)+%d);}'%(t,name,t,d)
+  stores={36:'int',38:'unsigned char',44:'unsigned short'}
+  if op in stores and ra==3 and rt==4:
+    t=stores[op];fn(name,'void %%s(void *,%s);'%t)
+    return 'void %s(void *object,%s value){*reinterpret_cast<%s *>(reinterpret_cast<char *>(object)+%d)=value;}'%(name,t,t,d)
+  raise ValueError('leaf shape')
+def _isleaf(n):
+  return not idx[n]['rel'] and idx[n]['size'] in (4,8)
+
+TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT,'LEAF':LEAF}
 HEADER_NAME='unknownGen.h'
-HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\n#endif\n'
+HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nstruct UnknownGenHolder { UnknownGenValue *unknown00; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\n#endif\n'
 _rep=json.load(open(REPORT));_done=set()
 for _u in _rep['units']:
   if 'unknownGen' in _u['name']: continue
@@ -221,29 +255,56 @@ for _u in _rep['units']:
 _bad=set(json.load(open(EXCLUDE)))
 # Functions referenced from .ctors must stay static initializers, not plain functions.
 _bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and a in callshape.ctors()}
+# A .text label at or inside a function boundary (e.g. __OSSystemCallVectorStart) hangs the linker
+# once the function moves into a recompiled unit, so such functions keep their original object.
+_labels={a for n,(sec,a,t,sz) in syminfo.items() if sec=='.text' and t=='label'}
+_bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and any(a<=x<=a+sz for x in _labels)}
 # Functions whose exception-table entry is referenced from other data keep their original object.
 _etb_funcs={callshape.extab_owners().get(int(x[5:],16)) for x in _etb_refs}
 _bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and a in _etb_funcs}
 SIG={'F1':'void *%s();','F2':'void *%s();','F3':'void *%s();','F7':'void *%s();','F6':'void *%s(void *);','F8':'void %s();'}
 def select(lo,hi):
-  ns=sorted([n for n in idx if n.startswith('fn_') and lo<=int(n[3:],16)<hi],key=lambda n:int(n[3:],16))
+  ns=sorted([n for n in idx if n.startswith(GENERATED_PREFIXES) and n in syminfo and lo<=syminfo[n][1]<hi],key=lambda n:syminfo[n][1])
   return [n for n in ns if n not in _done and n not in _bad]
 def prepass(names):
   g={}
   for n in names:
+    if _isleaf(n):
+      saved=dict(protos);protos.clear()
+      try:
+        LEAF(n,idx[n]['rel']);g[n]=protos[n]
+      except ValueError: pass
+      protos.clear();protos.update(saved)
+  for n in names:
     f=famof(n)
-    if f=='F2' and famof(U(idx[n]['rel'])[0]) in ARGFAM: g[n]='void *%s(void *);'%n
+    t=U(idx[n]['rel'])[0] if idx[n]['rel'] else None
+    m=re.match(r'(.*?)%s\((.*)\);$'%re.escape(t),g.get(t,'')) if f=='F2' else None
+    if f=='F2' and m and m[2] in ('','void *') and famof(t) not in ARGFAM: g[n]='%s%s(%s);'%(m[1],n,m[2])
+    elif f=='F2' and famof(t) in ARGFAM: g[n]='void *%s(void *);'%n
     elif f in SIG: g[n]=SIG[f]%n
   return g
 def kind(n,calls):
   f=famof(n)
   if f in TEMPL: return f
   if _masked(n) in TT: return 'TEXT'
+  if _isleaf(n): return 'LEAF'
   if _isvt(n): return 'VT'
   if calls: return 'CALLS'
   return None
+def _pointer_globals(names,seed,calls):
+  out={}
+  for n in names:
+    f=kind(n,calls)
+    if f in (None,'CALLS'): continue
+    protos.clear();protos.update(seed);del PRE[:]
+    try: TEMPL[f](n,idx[n]['rel'])
+    except Exception: continue
+    out.update({k:v for k,v in protos.items() if v.startswith('extern void *')})
+  return out
 def generate(names,seed,calls=True,header=False):
-  protos.clear();protos.update(seed);del PRE[:]
+  # First pass finds globals some template needs as pointers, so address-only uses agree.
+  pointers=_pointer_globals(names,seed,calls)
+  protos.clear();protos.update(seed);protos.update(pointers);del PRE[:]
   bodies=[];cov=0;skipped=[];done=[]
   for n in names:
     f=kind(n,calls)

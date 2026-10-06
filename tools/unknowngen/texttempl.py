@@ -41,6 +41,17 @@ T['fn_80024D24']=dict(decl=[None,'extern void *%s;','SDA','UnknownGenFactory *%s
  {7}(meta,type,field);
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }''')
+T['dtor_80020BB8']=dict(decl=[None,'void %s(void *);'],sig='UnknownGenHolder *%s(UnknownGenHolder *,short);',src='''UnknownGenHolder *{name}(UnknownGenHolder *object,short flags){
+ if(object){
+  UnknownGenValue *value=object->unknown00;
+  if(value){
+   --value->unknown04;
+   if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
+  }
+  if(flags>0) {1}(object);
+ }
+ return object;
+}''')
 PRELUDE='''struct UnknownGenField { void *unknown00; unsigned int unknown04; int unknown08[5]; void *unknown1C; int unknown20[6]; int unknown38; void *unknown3C; };
 class UnknownGenFactory { public:
  virtual void slot08(); virtual void slot0C(); virtual void slot10(); virtual void slot14(); virtual void slot18(); virtual void slot1C(); virtual void slot20(); virtual void slot24(); virtual void slot28(); virtual void slot2C(); virtual void slot30(); virtual void slot34(); virtual void slot38(); virtual void slot3C(); virtual void slot40(); virtual void slot44(); virtual void slot48(); virtual void slot4C(); virtual void slot50(); virtual UnknownGenField *slot54(int); };

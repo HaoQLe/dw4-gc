@@ -10,7 +10,7 @@ void *fn_800AC294();
 void *fn_800B419C();
 void fn_800B41D8();
 void fn_800B42F8();
-void *fn_800B43D8();
+void fn_800B43D8();
 extern char lbl_804790E8[];
 extern void *lbl_8056276C;
 void fn_800B4260();

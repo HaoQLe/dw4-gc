@@ -13,6 +13,21 @@ Sections:
 	.sdata2     type:rodata align:16
 	.sbss2      type:bss align:32
 
+unknownGen/unknown80020160.cpp:
+	extab       start:0x80005600 end:0x80005608
+	extabindex  start:0x80012BA0 end:0x80012BAC
+	.text       start:0x80020160 end:0x80020400
+
+Alchemy/src/unknownGen/unknown80020BB8.cpp:
+	extab       start:0x80005710 end:0x80005740
+	extabindex  start:0x80012C00 end:0x80012C48
+	.text       start:0x80020BB8 end:0x80020E70
+
+Alchemy/src/unknownGen/unknown80021678.cpp:
+	extab       start:0x80005768 end:0x80005770
+	extabindex  start:0x80012C6C end:0x80012C78
+	.text       start:0x80021678 end:0x800216EC
+
 Alchemy/src/unknownGen/unknown80021BF4.cpp:
 	.text       start:0x80021BF4 end:0x80021E10
 
@@ -103,6 +118,9 @@ Alchemy/src/unknownGen/unknown80025D04.cpp:
 Alchemy/src/unknownGen/unknown80026160.cpp:
 	.text       start:0x80026160 end:0x80026180
 
+Alchemy/src/unknownGen/unknown80026180.cpp:
+	.text       start:0x80026180 end:0x800261F4
+
 Alchemy/src/unknownGen/unknown8002648C.cpp:
 	.text       start:0x8002648C end:0x8002653C
 
@@ -111,6 +129,9 @@ Alchemy/src/unknownGen/unknown80026850.cpp:
 
 Alchemy/src/unknownGen/unknown80026ADC.cpp:
 	.text       start:0x80026ADC end:0x80026B8C
+
+Alchemy/src/unknownGen/unknown80026C8C.cpp:
+	.text       start:0x80026C8C end:0x80026D00
 
 Alchemy/src/unknownGen/unknown80026D28.cpp:
 	.text       start:0x80026D28 end:0x80026DC0
@@ -418,6 +439,9 @@ Alchemy/src/unknownGen/unknown80033230.cpp:
 Alchemy/src/unknownGen/unknown80033584.cpp:
 	.text       start:0x80033584 end:0x800336D8
 
+Alchemy/src/unknownGen/unknown80033708.cpp:
+	.text       start:0x80033708 end:0x80033710
+
 Alchemy/src/unknownGen/unknown800338FC.cpp:
 	.text       start:0x800338FC end:0x80033AA4
 
@@ -435,6 +459,12 @@ Alchemy/src/unknownGen/unknown800378D4.cpp:
 
 Alchemy/src/unknownGen/unknown80037A54.cpp:
 	.text       start:0x80037A54 end:0x80037AEC
+
+Alchemy/src/unknownGen/unknown80037AEC.cpp:
+	.text       start:0x80037AEC end:0x80037AF4
+
+Alchemy/src/unknownGen/unknown80037B18.cpp:
+	.text       start:0x80037B18 end:0x80037B1C
 
 Alchemy/src/unknownGen/unknown80037BC0.cpp:
 	.text       start:0x80037BC0 end:0x80037D28
@@ -505,6 +535,9 @@ Alchemy/src/unknownGen/unknown80039F58.cpp:
 Alchemy/src/unknownGen/unknown8003A270.cpp:
 	.text       start:0x8003A270 end:0x8003A3BC
 
+Alchemy/src/unknownGen/unknown8003A3EC.cpp:
+	.text       start:0x8003A3EC end:0x8003A3F4
+
 Alchemy/src/unknownGen/unknown8003A518.cpp:
 	.text       start:0x8003A518 end:0x8003A554
 
@@ -555,6 +588,27 @@ Alchemy/src/unknownGen/unknown8003BBA8.cpp:
 
 Alchemy/src/unknownGen/unknown8003BD20.cpp:
 	.text       start:0x8003BD20 end:0x8003BE78
+
+Alchemy/src/unknownGen/unknown8003BE8C.cpp:
+	.text       start:0x8003BE8C end:0x8003BE94
+
+Alchemy/src/unknownGen/unknown8003BFC4.cpp:
+	.text       start:0x8003BFC4 end:0x8003BFD4
+
+Alchemy/src/unknownGen/unknown8003BFE0.cpp:
+	.text       start:0x8003BFE0 end:0x8003BFF0
+
+Alchemy/src/unknownGen/unknown8003C228.cpp:
+	.text       start:0x8003C228 end:0x8003C230
+
+Alchemy/src/unknownGen/unknown8003C240.cpp:
+	.text       start:0x8003C240 end:0x8003C248
+
+Alchemy/src/unknownGen/unknown8003C998.cpp:
+	.text       start:0x8003C998 end:0x8003C9A0
+
+Alchemy/src/unknownGen/unknown8003CB2C.cpp:
+	.text       start:0x8003CB2C end:0x8003CB3C
 
 Alchemy/src/igGap.cpp:
 	.text       start:0x8003CFC0 end:0x8003D160
@@ -761,8 +815,23 @@ Alchemy/src/unknownGen/unknown800505D8.cpp:
 Alchemy/src/unknownGen/unknown80053354.cpp:
 	.text       start:0x80053354 end:0x8005335C
 
+Alchemy/src/unknownGen/unknown80053564.cpp:
+	.text       start:0x80053564 end:0x8005356C
+
 Alchemy/src/unknownGen/unknown80053630.cpp:
 	.text       start:0x80053630 end:0x80053650
+
+Alchemy/src/unknownGen/unknown80053684.cpp:
+	.text       start:0x80053684 end:0x8005368C
+
+Alchemy/src/unknownGen/unknown800541C8.cpp:
+	.text       start:0x800541C8 end:0x800541D8
+
+Alchemy/src/unknownGen/unknown80054BC0.cpp:
+	.text       start:0x80054BC0 end:0x80054BC8
+
+Alchemy/src/unknownGen/unknown80054C00.cpp:
+	.text       start:0x80054C00 end:0x80054C08
 
 Alchemy/src/unknownGen/unknown80056338.cpp:
 	.text       start:0x80056338 end:0x80056378
@@ -776,8 +845,32 @@ Alchemy/src/unknownGen/unknown8005645C.cpp:
 Alchemy/src/unknownGen/unknown800564E8.cpp:
 	.text       start:0x800564E8 end:0x80056508
 
+Alchemy/src/unknownGen/unknown80057368.cpp:
+	.text       start:0x80057368 end:0x80057378
+
+Alchemy/src/unknownGen/unknown800574E8.cpp:
+	.text       start:0x800574E8 end:0x800574F0
+
 Alchemy/src/unknownGen/unknown80058228.cpp:
 	.text       start:0x80058228 end:0x80058230
+
+Alchemy/src/unknownGen/unknown80058358.cpp:
+	.text       start:0x80058358 end:0x8005835C
+
+Alchemy/src/unknownGen/unknown800584AC.cpp:
+	.text       start:0x800584AC end:0x800584BC
+
+Alchemy/src/unknownGen/unknown80058920.cpp:
+	.text       start:0x80058920 end:0x80058928
+
+Alchemy/src/unknownGen/unknown800589D0.cpp:
+	.text       start:0x800589D0 end:0x800589D8
+
+Alchemy/src/unknownGen/unknown80058A20.cpp:
+	.text       start:0x80058A20 end:0x80058A38
+
+Alchemy/src/unknownGen/unknown80058AAC.cpp:
+	.text       start:0x80058AAC end:0x80058ABC
 
 Alchemy/src/unknownGen/unknown80058B70.cpp:
 	.text       start:0x80058B70 end:0x80058B90
@@ -788,8 +881,35 @@ Alchemy/src/unknownGen/unknown80058BB4.cpp:
 Alchemy/src/unknownGen/unknown80058C3C.cpp:
 	.text       start:0x80058C3C end:0x80058C5C
 
+Alchemy/src/unknownGen/unknown800591D8.cpp:
+	.text       start:0x800591D8 end:0x800591E8
+
 Alchemy/src/unknownGen/unknown800591E8.cpp:
 	.text       start:0x800591E8 end:0x80059208
+
+Alchemy/src/unknownGen/unknown80059208.cpp:
+	.text       start:0x80059208 end:0x8005920C
+
+Alchemy/src/unknownGen/unknown800592D4.cpp:
+	.text       start:0x800592D4 end:0x800592D8
+
+Alchemy/src/unknownGen/unknown800593EC.cpp:
+	.text       start:0x800593EC end:0x800593F4
+
+Alchemy/src/unknownGen/unknown800595E0.cpp:
+	.text       start:0x800595E0 end:0x800595EC
+
+Alchemy/src/unknownGen/unknown80059818.cpp:
+	.text       start:0x80059818 end:0x80059820
+
+Alchemy/src/unknownGen/unknown8005AA08.cpp:
+	.text       start:0x8005AA08 end:0x8005AA0C
+
+Alchemy/src/unknownGen/unknown8005C76C.cpp:
+	.text       start:0x8005C76C end:0x8005C774
+
+Alchemy/src/unknownGen/unknown8005CF4C.cpp:
+	.text       start:0x8005CF4C end:0x8005CF50
 
 Alchemy/src/unknownGen/unknown8005D7A0.cpp:
 	.text       start:0x8005D7A0 end:0x8005D7A8
@@ -797,17 +917,50 @@ Alchemy/src/unknownGen/unknown8005D7A0.cpp:
 Alchemy/src/unknownGen/unknown800607D4.cpp:
 	.text       start:0x800607D4 end:0x800607F4
 
+Alchemy/src/unknownGen/unknown800624E8.cpp:
+	.text       start:0x800624E8 end:0x800624F0
+
+Alchemy/src/unknownGen/unknown80063244.cpp:
+	.text       start:0x80063244 end:0x8006324C
+
 Alchemy/src/unknownGen/unknown800633A8.cpp:
 	.text       start:0x800633A8 end:0x800633C8
 
 Alchemy/src/unknownGen/unknown80063B5C.cpp:
 	.text       start:0x80063B5C end:0x80063B98
 
+Alchemy/src/unknownGen/unknown80063B98.cpp:
+	.text       start:0x80063B98 end:0x80063BA8
+
+Alchemy/src/unknownGen/unknown80063EB8.cpp:
+	.text       start:0x80063EB8 end:0x80063EBC
+
 Alchemy/src/unknownGen/unknown80063F0C.cpp:
 	.text       start:0x80063F0C end:0x80063F14
 
 Alchemy/src/unknownGen/unknown80064380.cpp:
 	.text       start:0x80064380 end:0x800643A0
+
+Alchemy/src/unknownGen/unknown800643A0.cpp:
+	.text       start:0x800643A0 end:0x800643A4
+
+Alchemy/src/unknownGen/unknown800649CC.cpp:
+	.text       start:0x800649CC end:0x800649D4
+
+Alchemy/src/unknownGen/unknown80064A00.cpp:
+	.text       start:0x80064A00 end:0x80064A14
+
+Alchemy/src/unknownGen/unknown80064C48.cpp:
+	.text       start:0x80064C48 end:0x80064C50
+
+Alchemy/src/unknownGen/unknown80066180.cpp:
+	.text       start:0x80066180 end:0x80066188
+
+Alchemy/src/unknownGen/unknown800667A0.cpp:
+	.text       start:0x800667A0 end:0x800667F4
+
+Alchemy/src/unknownGen/unknown80066AA4.cpp:
+	.text       start:0x80066AA4 end:0x80066AAC
 
 Alchemy/src/unknownGen/unknown80066AAC.cpp:
 	.text       start:0x80066AAC end:0x80066B08
@@ -821,14 +974,29 @@ Alchemy/src/unknownGen/unknown80066DFC.cpp:
 Alchemy/src/unknownGen/unknown8006889C.cpp:
 	.text       start:0x8006889C end:0x800688A4
 
+Alchemy/src/unknownGen/unknown80068FBC.cpp:
+	.text       start:0x80068FBC end:0x80068FCC
+
+Alchemy/src/unknownGen/unknown8006A538.cpp:
+	.text       start:0x8006A538 end:0x8006A540
+
 Alchemy/src/unknownGen/unknown8006AD54.cpp:
 	.text       start:0x8006AD54 end:0x8006AD74
 
 Alchemy/src/unknownGen/unknown8006C248.cpp:
 	.text       start:0x8006C248 end:0x8006C268
 
+Alchemy/src/unknownGen/unknown8006C3D4.cpp:
+	.text       start:0x8006C3D4 end:0x8006C3DC
+
 Alchemy/src/unknownGen/unknown8006C530.cpp:
 	.text       start:0x8006C530 end:0x8006C550
+
+Alchemy/src/unknownGen/unknown8006C550.cpp:
+	.text       start:0x8006C550 end:0x8006C558
+
+Alchemy/src/unknownGen/unknown8006C564.cpp:
+	.text       start:0x8006C564 end:0x8006C56C
 
 Alchemy/src/unknownGen/unknown8006C834.cpp:
 	.text       start:0x8006C834 end:0x8006C83C
@@ -836,11 +1004,29 @@ Alchemy/src/unknownGen/unknown8006C834.cpp:
 Alchemy/src/unknownGen/unknown8006CCE0.cpp:
 	.text       start:0x8006CCE0 end:0x8006CD00
 
+Alchemy/src/unknownGen/unknown8006CD00.cpp:
+	.text       start:0x8006CD00 end:0x8006CD18
+
 Alchemy/src/unknownGen/unknown80070F74.cpp:
 	.text       start:0x80070F74 end:0x80070F94
 
 Alchemy/src/unknownGen/unknown80071180.cpp:
 	.text       start:0x80071180 end:0x800711A0
+
+Alchemy/src/unknownGen/unknown800711A0.cpp:
+	.text       start:0x800711A0 end:0x800711A8
+
+Alchemy/src/unknownGen/unknown800711DC.cpp:
+	.text       start:0x800711DC end:0x800711E4
+
+Alchemy/src/unknownGen/unknown8007168C.cpp:
+	.text       start:0x8007168C end:0x80071694
+
+Alchemy/src/unknownGen/unknown80071A94.cpp:
+	.text       start:0x80071A94 end:0x80071A9C
+
+Alchemy/src/unknownGen/unknown80071C80.cpp:
+	.text       start:0x80071C80 end:0x80071C84
 
 Alchemy/src/unknownGen/unknown80071EE4.cpp:
 	.text       start:0x80071EE4 end:0x80071F04
@@ -860,32 +1046,284 @@ Alchemy/src/unknownGen/unknown80073DDC.cpp:
 Alchemy/src/unknownGen/unknown80073EE8.cpp:
 	.text       start:0x80073EE8 end:0x80073F08
 
+Alchemy/src/unknownGen/unknown800740F4.cpp:
+	.text       start:0x800740F4 end:0x80074104
+
+Alchemy/src/unknownGen/unknown8007496C.cpp:
+	.text       start:0x8007496C end:0x80074974
+
+Alchemy/src/unknownGen/unknown80074A14.cpp:
+	.text       start:0x80074A14 end:0x80074A1C
+
+Alchemy/src/unknownGen/unknown80074B48.cpp:
+	.text       start:0x80074B48 end:0x80074B58
+
+Alchemy/src/unknownGen/unknown8007586C.cpp:
+	.text       start:0x8007586C end:0x80075874
+
+Alchemy/src/unknownGen/unknown800758A8.cpp:
+	.text       start:0x800758A8 end:0x800758B0
+
+Alchemy/src/unknownGen/unknown800759D8.cpp:
+	.text       start:0x800759D8 end:0x800759E0
+
 Alchemy/src/unknownGen/unknown80075AA4.cpp:
 	.text       start:0x80075AA4 end:0x80075AC4
+
+Alchemy/src/unknownGen/unknown80075AF8.cpp:
+	.text       start:0x80075AF8 end:0x80075B00
+
+Alchemy/src/unknownGen/unknown80075C30.cpp:
+	.text       start:0x80075C30 end:0x80075C38
 
 Alchemy/src/unknownGen/unknown80075CFC.cpp:
 	.text       start:0x80075CFC end:0x80075D1C
 
+Alchemy/src/unknownGen/unknown80075D54.cpp:
+	.text       start:0x80075D54 end:0x80075D5C
+
+Alchemy/src/unknownGen/unknown80075E84.cpp:
+	.text       start:0x80075E84 end:0x80075E8C
+
 Alchemy/src/unknownGen/unknown80075F84.cpp:
 	.text       start:0x80075F84 end:0x80075FA4
+
+Alchemy/src/unknownGen/unknown80075FA4.cpp:
+	.text       start:0x80075FA4 end:0x80075FAC
+
+Alchemy/src/unknownGen/unknown80076078.cpp:
+	.text       start:0x80076078 end:0x80076080
+
+Alchemy/src/unknownGen/unknown80076118.cpp:
+	.text       start:0x80076118 end:0x80076120
 
 Alchemy/src/unknownGen/unknown8007618C.cpp:
 	.text       start:0x8007618C end:0x800761AC
 
+Alchemy/src/unknownGen/unknown80076854.cpp:
+	.text       start:0x80076854 end:0x80076864
+
+Alchemy/src/unknownGen/unknown80076C6C.cpp:
+	.text       start:0x80076C6C end:0x80076C74
+
+Alchemy/src/unknownGen/unknown80076D4C.cpp:
+	.text       start:0x80076D4C end:0x80076D54
+
+Alchemy/src/unknownGen/unknown80076DEC.cpp:
+	.text       start:0x80076DEC end:0x80076DF4
+
+Alchemy/src/unknownGen/unknown80077244.cpp:
+	.text       start:0x80077244 end:0x80077264
+
+Alchemy/src/unknownGen/unknown8007730C.cpp:
+	.text       start:0x8007730C end:0x80077324
+
+Alchemy/src/unknownGen/unknown8007732C.cpp:
+	.text       start:0x8007732C end:0x8007734C
+
+Alchemy/src/unknownGen/unknown800773D4.cpp:
+	.text       start:0x800773D4 end:0x800773DC
+
+Alchemy/src/unknownGen/unknown80077404.cpp:
+	.text       start:0x80077404 end:0x8007740C
+
+Alchemy/src/unknownGen/unknown80077430.cpp:
+	.text       start:0x80077430 end:0x80077434
+
+Alchemy/src/unknownGen/unknown80077A0C.cpp:
+	.text       start:0x80077A0C end:0x80077A14
+
 Alchemy/src/unknownGen/unknown80077B04.cpp:
 	.text       start:0x80077B04 end:0x80077B24
+
+Alchemy/src/unknownGen/unknown80077D88.cpp:
+	.text       start:0x80077D88 end:0x80077D8C
+
+Alchemy/src/unknownGen/unknown80078700.cpp:
+	.text       start:0x80078700 end:0x80078708
+
+Alchemy/src/unknownGen/unknown80082D48.cpp:
+	.text       start:0x80082D48 end:0x80082D58
+
+Alchemy/src/unknownGen/unknown80082E14.cpp:
+	.text       start:0x80082E14 end:0x80082E24
+
+Alchemy/src/unknownGen/unknown80083164.cpp:
+	.text       start:0x80083164 end:0x8008316C
+
+Alchemy/src/unknownGen/unknown8008317C.cpp:
+	.text       start:0x8008317C end:0x80083184
+
+Alchemy/src/unknownGen/unknown80083194.cpp:
+	.text       start:0x80083194 end:0x8008319C
+
+Alchemy/src/unknownGen/unknown800849F4.cpp:
+	.text       start:0x800849F4 end:0x800849FC
+
+Alchemy/src/unknownGen/unknown80084B80.cpp:
+	.text       start:0x80084B80 end:0x80084B88
+
+Alchemy/src/unknownGen/unknown80084C10.cpp:
+	.text       start:0x80084C10 end:0x80084C1C
+
+Alchemy/src/unknownGen/unknown8008626C.cpp:
+	.text       start:0x8008626C end:0x80086270
+
+Alchemy/src/unknownGen/unknown80086BD8.cpp:
+	.text       start:0x80086BD8 end:0x80086BDC
+
+Alchemy/src/unknownGen/unknown80086C3C.cpp:
+	.text       start:0x80086C3C end:0x80086C4C
+
+Alchemy/src/unknownGen/unknown80086E8C.cpp:
+	.text       start:0x80086E8C end:0x80086E94
+
+Alchemy/src/unknownGen/unknown80086FE4.cpp:
+	.text       start:0x80086FE4 end:0x80086FEC
+
+Alchemy/src/unknownGen/unknown800888BC.cpp:
+	.text       start:0x800888BC end:0x800888C4
+
+Alchemy/src/unknownGen/unknown80088910.cpp:
+	.text       start:0x80088910 end:0x80088918
+
+Alchemy/src/unknownGen/unknown80088928.cpp:
+	.text       start:0x80088928 end:0x80088930
+
+Alchemy/src/unknownGen/unknown80088964.cpp:
+	.text       start:0x80088964 end:0x8008896C
+
+Alchemy/src/unknownGen/unknown80088F50.cpp:
+	.text       start:0x80088F50 end:0x80088F58
+
+Alchemy/src/unknownGen/unknown80089024.cpp:
+	.text       start:0x80089024 end:0x80089034
+
+Alchemy/src/unknownGen/unknown800892E8.cpp:
+	.text       start:0x800892E8 end:0x800892F0
+
+Alchemy/src/unknownGen/unknown80089354.cpp:
+	.text       start:0x80089354 end:0x8008935C
+
+Alchemy/src/unknownGen/unknown80089384.cpp:
+	.text       start:0x80089384 end:0x8008938C
+
+Alchemy/src/unknownGen/unknown800893C0.cpp:
+	.text       start:0x800893C0 end:0x800893C8
+
+Alchemy/src/unknownGen/unknown8008A090.cpp:
+	.text       start:0x8008A090 end:0x8008A098
+
+Alchemy/src/unknownGen/unknown8008A164.cpp:
+	.text       start:0x8008A164 end:0x8008A174
+
+Alchemy/src/unknownGen/unknown8008A59C.cpp:
+	.text       start:0x8008A59C end:0x8008A5A4
+
+Alchemy/src/unknownGen/unknown8008A5B4.cpp:
+	.text       start:0x8008A5B4 end:0x8008A5BC
+
+Alchemy/src/unknownGen/unknown8008C04C.cpp:
+	.text       start:0x8008C04C end:0x8008C054
+
+Alchemy/src/unknownGen/unknown8008C1C4.cpp:
+	.text       start:0x8008C1C4 end:0x8008C1CC
+
+Alchemy/src/unknownGen/unknown8008C390.cpp:
+	.text       start:0x8008C390 end:0x8008C3A0
+
+Alchemy/src/unknownGen/unknown8008C55C.cpp:
+	.text       start:0x8008C55C end:0x8008C564
 
 Alchemy/src/unknownGen/unknown8008CE94.cpp:
 	.text       start:0x8008CE94 end:0x8008CED4
 
+Alchemy/src/unknownGen/unknown8008D37C.cpp:
+	.text       start:0x8008D37C end:0x8008D38C
+
+Alchemy/src/unknownGen/unknown8008D398.cpp:
+	.text       start:0x8008D398 end:0x8008D3A8
+
+Alchemy/src/unknownGen/unknown8008D608.cpp:
+	.text       start:0x8008D608 end:0x8008D610
+
+Alchemy/src/unknownGen/unknown8008D61C.cpp:
+	.text       start:0x8008D61C end:0x8008D624
+
+Alchemy/src/unknownGen/unknown8008D6AC.cpp:
+	.text       start:0x8008D6AC end:0x8008D6B4
+
+Alchemy/src/unknownGen/unknown8008D938.cpp:
+	.text       start:0x8008D938 end:0x8008D93C
+
+Alchemy/src/unknownGen/unknown8008D9AC.cpp:
+	.text       start:0x8008D9AC end:0x8008D9B4
+
+Alchemy/src/unknownGen/unknown8008D9E0.cpp:
+	.text       start:0x8008D9E0 end:0x8008D9F0
+
+Alchemy/src/unknownGen/unknown8008DA78.cpp:
+	.text       start:0x8008DA78 end:0x8008DA8C
+
 Alchemy/src/unknownGen/unknown8008E648.cpp:
 	.text       start:0x8008E648 end:0x8008E688
+
+Alchemy/src/unknownGen/unknown8008EAB4.cpp:
+	.text       start:0x8008EAB4 end:0x8008EAC0
+
+Alchemy/src/unknownGen/unknown8008EBBC.cpp:
+	.text       start:0x8008EBBC end:0x8008EBC0
+
+Alchemy/src/unknownGen/unknown8008EE2C.cpp:
+	.text       start:0x8008EE2C end:0x8008EE34
+
+Alchemy/src/unknownGen/unknown8008EE60.cpp:
+	.text       start:0x8008EE60 end:0x8008EE68
+
+Alchemy/src/unknownGen/unknown8008EE78.cpp:
+	.text       start:0x8008EE78 end:0x8008EE80
+
+Alchemy/src/unknownGen/unknown8008EEB4.cpp:
+	.text       start:0x8008EEB4 end:0x8008EEBC
+
+Alchemy/src/unknownGen/unknown8008FA8C.cpp:
+	.text       start:0x8008FA8C end:0x8008FA94
+
+Alchemy/src/unknownGen/unknown8008FB60.cpp:
+	.text       start:0x8008FB60 end:0x8008FB70
+
+Alchemy/src/unknownGen/unknown8009035C.cpp:
+	.text       start:0x8009035C end:0x80090364
+
+Alchemy/src/unknownGen/unknown80090488.cpp:
+	.text       start:0x80090488 end:0x80090490
+
+Alchemy/src/unknownGen/unknown80090CFC.cpp:
+	.text       start:0x80090CFC end:0x80090D04
 
 Alchemy/src/unknownGen/unknown80090D0C.cpp:
 	.text       start:0x80090D0C end:0x80090D1C
 
+Alchemy/src/unknownGen/unknown80090E04.cpp:
+	.text       start:0x80090E04 end:0x80090E0C
+
+Alchemy/src/unknownGen/unknown80091118.cpp:
+	.text       start:0x80091118 end:0x80091128
+
+Alchemy/src/unknownGen/unknown80091ABC.cpp:
+	.text       start:0x80091ABC end:0x80091AC0
+
+Alchemy/src/unknownGen/unknown80091FFC.cpp:
+	.text       start:0x80091FFC end:0x80092004
+
 Alchemy/src/unknownGen/unknown80093288.cpp:
 	.text       start:0x80093288 end:0x80093298
+
+Alchemy/src/unknownGen/unknown80093298.cpp:
+	.text       start:0x80093298 end:0x800932A8
+
+Alchemy/src/unknownGen/unknown800932B4.cpp:
+	.text       start:0x800932B4 end:0x800932BC
 
 Alchemy/src/unknownGen/unknown800932BC.cpp:
 	.text       start:0x800932BC end:0x800932C4
@@ -893,23 +1331,65 @@ Alchemy/src/unknownGen/unknown800932BC.cpp:
 Alchemy/src/unknownGen/unknown800932F4.cpp:
 	.text       start:0x800932F4 end:0x80093304
 
+Alchemy/src/unknownGen/unknown80093304.cpp:
+	.text       start:0x80093304 end:0x80093314
+
+Alchemy/src/unknownGen/unknown80093320.cpp:
+	.text       start:0x80093320 end:0x80093328
+
 Alchemy/src/unknownGen/unknown80093328.cpp:
 	.text       start:0x80093328 end:0x80093330
+
+Alchemy/src/unknownGen/unknown80093330.cpp:
+	.text       start:0x80093330 end:0x80093340
+
+Alchemy/src/unknownGen/unknown8009334C.cpp:
+	.text       start:0x8009334C end:0x80093364
 
 Alchemy/src/unknownGen/unknown80093364.cpp:
 	.text       start:0x80093364 end:0x80093374
 
+Alchemy/src/unknownGen/unknown80093374.cpp:
+	.text       start:0x80093374 end:0x8009338C
+
+Alchemy/src/unknownGen/unknown800933B0.cpp:
+	.text       start:0x800933B0 end:0x800933B8
+
+Alchemy/src/unknownGen/unknown800933C8.cpp:
+	.text       start:0x800933C8 end:0x800933D0
+
+Alchemy/src/unknownGen/unknown800933E8.cpp:
+	.text       start:0x800933E8 end:0x800933F0
+
 Alchemy/src/unknownGen/unknown800933F0.cpp:
 	.text       start:0x800933F0 end:0x80093400
+
+Alchemy/src/unknownGen/unknown80093400.cpp:
+	.text       start:0x80093400 end:0x80093410
+
+Alchemy/src/unknownGen/unknown80093448.cpp:
+	.text       start:0x80093448 end:0x80093458
+
+Alchemy/src/unknownGen/unknown800934F4.cpp:
+	.text       start:0x800934F4 end:0x80093504
 
 Alchemy/src/unknownGen/unknown80093528.cpp:
 	.text       start:0x80093528 end:0x80093538
 
+Alchemy/src/unknownGen/unknown80093538.cpp:
+	.text       start:0x80093538 end:0x80093540
+
 Alchemy/src/unknownGen/unknown800935A0.cpp:
 	.text       start:0x800935A0 end:0x800935A8
 
+Alchemy/src/unknownGen/unknown800939B4.cpp:
+	.text       start:0x800939B4 end:0x800939BC
+
 Alchemy/src/unknownGen/unknown800939BC.cpp:
 	.text       start:0x800939BC end:0x800939DC
+
+Alchemy/src/unknownGen/unknown800939DC.cpp:
+	.text       start:0x800939DC end:0x800939E0
 
 Alchemy/src/unknownGen/unknown800939E0.cpp:
 	.text       start:0x800939E0 end:0x80093A50
@@ -926,8 +1406,17 @@ Alchemy/src/unknownGen/unknown80093C8C.cpp:
 Alchemy/src/unknownGen/unknown80093CDC.cpp:
 	.text       start:0x80093CDC end:0x80093DFC
 
+Alchemy/src/unknownGen/unknown80093E28.cpp:
+	.text       start:0x80093E28 end:0x80093E2C
+
+Alchemy/src/unknownGen/unknown80093E44.cpp:
+	.text       start:0x80093E44 end:0x80093E5C
+
 Alchemy/src/unknownGen/unknown80093E5C.cpp:
 	.text       start:0x80093E5C end:0x80093E74
+
+Alchemy/src/unknownGen/unknown80093E74.cpp:
+	.text       start:0x80093E74 end:0x80093E7C
 
 Alchemy/src/unknownGen/unknown80093E7C.cpp:
 	.text       start:0x80093E7C end:0x80093EAC
@@ -935,14 +1424,29 @@ Alchemy/src/unknownGen/unknown80093E7C.cpp:
 Alchemy/src/unknownGen/unknown80093ED8.cpp:
 	.text       start:0x80093ED8 end:0x80093F10
 
+Alchemy/src/unknownGen/unknown80093F10.cpp:
+	.text       start:0x80093F10 end:0x80093F14
+
 Alchemy/src/unknownGen/unknown80093F14.cpp:
 	.text       start:0x80093F14 end:0x80093F24
+
+Alchemy/src/unknownGen/unknown80093F24.cpp:
+	.text       start:0x80093F24 end:0x80093F28
 
 Alchemy/src/unknownGen/unknown80093F28.cpp:
 	.text       start:0x80093F28 end:0x80094178
 
+Alchemy/src/unknownGen/unknown80094178.cpp:
+	.text       start:0x80094178 end:0x80094190
+
+Alchemy/src/unknownGen/unknown80094218.cpp:
+	.text       start:0x80094218 end:0x80094280
+
 Alchemy/src/unknownGen/unknown80094308.cpp:
 	.text       start:0x80094308 end:0x800943C8
+
+Alchemy/src/unknownGen/unknown80094880.cpp:
+	.text       start:0x80094880 end:0x800948F4
 
 Runtime/MSL/Common/abort_exit.c:
 	.text       start:0x80094948 end:0x80094AD4
@@ -1181,14 +1685,32 @@ Runtime/Runtime.PPCEABI.H/__init_cpp_exceptions.cpp:
 	.dtors      start:0x80412EA0 end:0x80412EA8
 	.sdata      start:0x8055DE48 end:0x8055DE50
 
+unknownGen/unknown800A65FC.cpp:
+	.text       start:0x800A65FC end:0x800A6604
+
+unknownGen/unknown800A78C8.cpp:
+	.text       start:0x800A78C8 end:0x800A78D8
+
 unknownGen/unknown800A7A70.cpp:
 	.text       start:0x800A7A70 end:0x800A7A80
+
+unknownGen/unknown800A823C.cpp:
+	.text       start:0x800A823C end:0x800A8254
+
+unknownGen/unknown800AB6A0.cpp:
+	.text       start:0x800AB6A0 end:0x800AB6A8
+
+unknownGen/unknown800ABA98.cpp:
+	.text       start:0x800ABA98 end:0x800ABA9C
 
 unknownGen/unknown800ABA9C.cpp:
 	.text       start:0x800ABA9C end:0x800ABC8C
 
 unknownGen/unknown800ABCC0.cpp:
 	.text       start:0x800ABCC0 end:0x800ABD34
+
+unknownGen/unknown800ABDC8.cpp:
+	.text       start:0x800ABDC8 end:0x800ABE3C
 
 unknownGen/unknown800ABE3C.cpp:
 	.text       start:0x800ABE3C end:0x800ABF00
@@ -1253,6 +1775,9 @@ unknownGen/unknown800AE2B0.cpp:
 unknownGen/unknown800AE470.cpp:
 	.text       start:0x800AE470 end:0x800AE4AC
 
+unknownGen/unknown800AE5A4.cpp:
+	.text       start:0x800AE5A4 end:0x800AE618
+
 unknownGen/unknown800AE618.cpp:
 	.text       start:0x800AE618 end:0x800AE6D4
 
@@ -1265,6 +1790,9 @@ unknownGen/unknown800AEA50.cpp:
 unknownGen/unknown800AEABC.cpp:
 	.text       start:0x800AEABC end:0x800AEB34
 
+unknownGen/unknown800AECD8.cpp:
+	.text       start:0x800AECD8 end:0x800AED4C
+
 unknownGen/unknown800AED4C.cpp:
 	.text       start:0x800AED4C end:0x800AEE10
 
@@ -1273,6 +1801,9 @@ unknownGen/unknown800AEEC4.cpp:
 
 unknownGen/unknown800AF130.cpp:
 	.text       start:0x800AF130 end:0x800AF1E0
+
+unknownGen/unknown800AF280.cpp:
+	.text       start:0x800AF280 end:0x800AF2F4
 
 unknownGen/unknown800AF2F4.cpp:
 	.text       start:0x800AF2F4 end:0x800AF3B4
@@ -1306,6 +1837,9 @@ unknownGen/unknown800B041C.cpp:
 
 unknownGen/unknown800B06C8.cpp:
 	.text       start:0x800B06C8 end:0x800B0704
+
+unknownGen/unknown800B07A4.cpp:
+	.text       start:0x800B07A4 end:0x800B0818
 
 unknownGen/unknown800B0818.cpp:
 	.text       start:0x800B0818 end:0x800B08D4
@@ -1388,11 +1922,17 @@ unknownGen/unknown800B327C.cpp:
 unknownGen/unknown800B3430.cpp:
 	.text       start:0x800B3430 end:0x800B34A8
 
+unknownGen/unknown800B3588.cpp:
+	.text       start:0x800B3588 end:0x800B35FC
+
 unknownGen/unknown800B35FC.cpp:
 	.text       start:0x800B35FC end:0x800B36BC
 
 unknownGen/unknown800B375C.cpp:
 	.text       start:0x800B375C end:0x800B3798
+
+unknownGen/unknown800B38DC.cpp:
+	.text       start:0x800B38DC end:0x800B3950
 
 unknownGen/unknown800B3950.cpp:
 	.text       start:0x800B3950 end:0x800B3A18
@@ -1442,6 +1982,9 @@ unknownGen/unknown800B5B7C.cpp:
 unknownGen/unknown800B5FC0.cpp:
 	.text       start:0x800B5FC0 end:0x800B5FFC
 
+unknownGen/unknown800B60DC.cpp:
+	.text       start:0x800B60DC end:0x800B6150
+
 unknownGen/unknown800B6150.cpp:
 	.text       start:0x800B6150 end:0x800B6210
 
@@ -1450,6 +1993,9 @@ unknownGen/unknown800B6340.cpp:
 
 unknownGen/unknown800B6540.cpp:
 	.text       start:0x800B6540 end:0x800B657C
+
+unknownGen/unknown800B6694.cpp:
+	.text       start:0x800B6694 end:0x800B6708
 
 unknownGen/unknown800B6708.cpp:
 	.text       start:0x800B6708 end:0x800B67C8
@@ -1568,11 +2114,47 @@ unknownGen/unknown800BC62C.cpp:
 unknownGen/unknown800BC830.cpp:
 	.text       start:0x800BC830 end:0x800BC97C
 
+unknownGen/unknown800BCAD8.cpp:
+	.text       start:0x800BCAD8 end:0x800BCAE0
+
+unknownGen/unknown800BCB60.cpp:
+	.text       start:0x800BCB60 end:0x800BCB74
+
 unknownGen/unknown800BCBC4.cpp:
 	.text       start:0x800BCBC4 end:0x800BCBCC
 
+unknownGen/unknown800BD3E4.cpp:
+	.text       start:0x800BD3E4 end:0x800BD3E8
+
 unknownGen/unknown800BD508.cpp:
 	.text       start:0x800BD508 end:0x800BD510
+
+unknownGen/unknown800BD628.cpp:
+	.text       start:0x800BD628 end:0x800BD638
+
+unknownGen/unknown800BD6C8.cpp:
+	.text       start:0x800BD6C8 end:0x800BD6D0
+
+unknownGen/unknown800BD700.cpp:
+	.text       start:0x800BD700 end:0x800BD704
+
+unknownGen/unknown800BD734.cpp:
+	.text       start:0x800BD734 end:0x800BD738
+
+unknownGen/unknown800BD7B8.cpp:
+	.text       start:0x800BD7B8 end:0x800BD7D0
+
+unknownGen/unknown800BD9CC.cpp:
+	.text       start:0x800BD9CC end:0x800BD9D4
+
+unknownGen/unknown800BDBA8.cpp:
+	.text       start:0x800BDBA8 end:0x800BDBB0
+
+unknownGen/unknown800BDD3C.cpp:
+	.text       start:0x800BDD3C end:0x800BDD40
+
+unknownGen/unknown800BDDCC.cpp:
+	.text       start:0x800BDDCC end:0x800BDDDC
 
 unknownGen/unknown800BDE8C.cpp:
 	.text       start:0x800BDE8C end:0x800BDE94
@@ -1580,17 +2162,125 @@ unknownGen/unknown800BDE8C.cpp:
 unknownGen/unknown800BE0DC.cpp:
 	.text       start:0x800BE0DC end:0x800BE0E4
 
+unknownGen/unknown800BE1E4.cpp:
+	.text       start:0x800BE1E4 end:0x800BE1EC
+
+unknownGen/unknown800BE26C.cpp:
+	.text       start:0x800BE26C end:0x800BE274
+
+unknownGen/unknown800BE320.cpp:
+	.text       start:0x800BE320 end:0x800BE328
+
+unknownGen/unknown800BE388.cpp:
+	.text       start:0x800BE388 end:0x800BE398
+
+unknownGen/unknown800BE404.cpp:
+	.text       start:0x800BE404 end:0x800BE408
+
+unknownGen/unknown800BE4FC.cpp:
+	.text       start:0x800BE4FC end:0x800BE504
+
+unknownGen/unknown800BE854.cpp:
+	.text       start:0x800BE854 end:0x800BE85C
+
+unknownGen/unknown800BEA2C.cpp:
+	.text       start:0x800BEA2C end:0x800BEA34
+
+unknownGen/unknown800BEB3C.cpp:
+	.text       start:0x800BEB3C end:0x800BEB40
+
+unknownGen/unknown800BEBE8.cpp:
+	.text       start:0x800BEBE8 end:0x800BEBEC
+
 unknownGen/unknown800BEC10.cpp:
 	.text       start:0x800BEC10 end:0x800BEC30
+
+unknownGen/unknown800C04B8.cpp:
+	.text       start:0x800C04B8 end:0x800C04BC
+
+unknownGen/unknown800C0910.cpp:
+	.text       start:0x800C0910 end:0x800C0914
+
+unknownGen/unknown800C0DA8.cpp:
+	.text       start:0x800C0DA8 end:0x800C0DB0
+
+unknownGen/unknown800C0E68.cpp:
+	.text       start:0x800C0E68 end:0x800C0E74
+
+unknownGen/unknown800C0E80.cpp:
+	.text       start:0x800C0E80 end:0x800C0E88
+
+unknownGen/unknown800C176C.cpp:
+	.text       start:0x800C176C end:0x800C1784
+
+unknownGen/unknown800C17B4.cpp:
+	.text       start:0x800C17B4 end:0x800C17B8
+
+unknownGen/unknown800C1928.cpp:
+	.text       start:0x800C1928 end:0x800C192C
 
 unknownGen/unknown800C19A0.cpp:
 	.text       start:0x800C19A0 end:0x800C19E0
 
+unknownGen/unknown800C1D0C.cpp:
+	.text       start:0x800C1D0C end:0x800C1D20
+
+unknownGen/unknown800C1F88.cpp:
+	.text       start:0x800C1F88 end:0x800C1F8C
+
+unknownGen/unknown800C2140.cpp:
+	.text       start:0x800C2140 end:0x800C2144
+
+unknownGen/unknown800C21A0.cpp:
+	.text       start:0x800C21A0 end:0x800C21A4
+
 unknownGen/unknown800C21FC.cpp:
 	.text       start:0x800C21FC end:0x800C2204
 
+unknownGen/unknown800C2318.cpp:
+	.text       start:0x800C2318 end:0x800C2320
+
+unknownGen/unknown800C248C.cpp:
+	.text       start:0x800C248C end:0x800C2490
+
+unknownGen/unknown800C27D4.cpp:
+	.text       start:0x800C27D4 end:0x800C27D8
+
+unknownGen/unknown800C280C.cpp:
+	.text       start:0x800C280C end:0x800C2810
+
+unknownGen/unknown800C2A34.cpp:
+	.text       start:0x800C2A34 end:0x800C2A3C
+
+unknownGen/unknown800C2CEC.cpp:
+	.text       start:0x800C2CEC end:0x800C2CF4
+
 unknownGen/unknown800C2D4C.cpp:
 	.text       start:0x800C2D4C end:0x800C2D54
+
+unknownGen/unknown800C2E2C.cpp:
+	.text       start:0x800C2E2C end:0x800C2E34
+
+unknownGen/unknown800C2F48.cpp:
+	.text       start:0x800C2F48 end:0x800C2F58
+
+unknownGen/unknown800C2FD8.cpp:
+	.text       start:0x800C2FD8 end:0x800C2FE0
+
+unknownGen/unknown800C3058.cpp:
+	.text       start:0x800C3058 end:0x800C305C
+
+unknownGen/unknown800C30CC.cpp:
+	.text       start:0x800C30CC end:0x800C30DC
+
+unknownGen/unknown800C33F0.cpp:
+	.text       start:0x800C33F0 end:0x800C33F4
+
+unknownGen/unknown800C3908.cpp:
+	.text       start:0x800C3908 end:0x800C390C
+
+unknownGen/unknown800C3A9C.cpp:
+	.text       start:0x800C3A9C end:0x800C3AA0
 
 unknownGen/unknown800C3CDC.cpp:
 	.text       start:0x800C3CDC end:0x800C3CFC
@@ -1598,17 +2288,56 @@ unknownGen/unknown800C3CDC.cpp:
 unknownGen/unknown800C3EC0.cpp:
 	.text       start:0x800C3EC0 end:0x800C3EC8
 
+unknownGen/unknown800C4978.cpp:
+	.text       start:0x800C4978 end:0x800C4980
+
+unknownGen/unknown800C4AAC.cpp:
+	.text       start:0x800C4AAC end:0x800C4AB4
+
+unknownGen/unknown800C4B98.cpp:
+	.text       start:0x800C4B98 end:0x800C4B9C
+
+unknownGen/unknown800C4F48.cpp:
+	.text       start:0x800C4F48 end:0x800C4F50
+
+unknownGen/unknown800C5594.cpp:
+	.text       start:0x800C5594 end:0x800C5598
+
+unknownGen/unknown800C5650.cpp:
+	.text       start:0x800C5650 end:0x800C5658
+
+unknownGen/unknown800C56D0.cpp:
+	.text       start:0x800C56D0 end:0x800C56D4
+
+unknownGen/unknown800C5778.cpp:
+	.text       start:0x800C5778 end:0x800C5784
+
+unknownGen/unknown800C5A00.cpp:
+	.text       start:0x800C5A00 end:0x800C5A04
+
 unknownGen/unknown800C60E0.cpp:
 	.text       start:0x800C60E0 end:0x800C60E8
+
+unknownGen/unknown800C60E8.cpp:
+	.text       start:0x800C60E8 end:0x800C6100
 
 unknownGen/unknown800C6100.cpp:
 	.text       start:0x800C6100 end:0x800C6108
 
+unknownGen/unknown800C6108.cpp:
+	.text       start:0x800C6108 end:0x800C6118
+
 unknownGen/unknown800C6118.cpp:
 	.text       start:0x800C6118 end:0x800C6130
 
+unknownGen/unknown800C6130.cpp:
+	.text       start:0x800C6130 end:0x800C6138
+
 unknownGen/unknown800C6138.cpp:
 	.text       start:0x800C6138 end:0x800C6140
+
+unknownGen/unknown800C6140.cpp:
+	.text       start:0x800C6140 end:0x800C6148
 
 unknownGen/unknown800C6148.cpp:
 	.text       start:0x800C6148 end:0x800C6158
@@ -1625,14 +2354,26 @@ unknownGen/unknown800C61C8.cpp:
 unknownGen/unknown800C61D8.cpp:
 	.text       start:0x800C61D8 end:0x800C61E8
 
+unknownGen/unknown800C61E8.cpp:
+	.text       start:0x800C61E8 end:0x800C61F0
+
 unknownGen/unknown800C61F0.cpp:
 	.text       start:0x800C61F0 end:0x800C6210
+
+unknownGen/unknown800C6210.cpp:
+	.text       start:0x800C6210 end:0x800C6228
 
 unknownGen/unknown800C6228.cpp:
 	.text       start:0x800C6228 end:0x800C6230
 
+unknownGen/unknown800C6230.cpp:
+	.text       start:0x800C6230 end:0x800C6250
+
 unknownGen/unknown800C62C0.cpp:
 	.text       start:0x800C62C0 end:0x800C62C8
+
+unknownGen/unknown800C62C8.cpp:
+	.text       start:0x800C62C8 end:0x800C62D8
 
 unknownGen/unknown800C62D8.cpp:
 	.text       start:0x800C62D8 end:0x800C62E0
@@ -1640,11 +2381,20 @@ unknownGen/unknown800C62D8.cpp:
 unknownGen/unknown800C6350.cpp:
 	.text       start:0x800C6350 end:0x800C6360
 
+unknownGen/unknown800C6360.cpp:
+	.text       start:0x800C6360 end:0x800C6368
+
 unknownGen/unknown800C6368.cpp:
 	.text       start:0x800C6368 end:0x800C6370
 
 unknownGen/unknown800C6394.cpp:
 	.text       start:0x800C6394 end:0x800C63AC
+
+unknownGen/unknown800C63AC.cpp:
+	.text       start:0x800C63AC end:0x800C63B4
+
+unknownGen/unknown800C63E0.cpp:
+	.text       start:0x800C63E0 end:0x800C63F0
 
 unknownGen/unknown800C643C.cpp:
 	.text       start:0x800C643C end:0x800C645C
@@ -1667,11 +2417,20 @@ unknownGen/unknown800C65AC.cpp:
 unknownGen/unknown800C6604.cpp:
 	.text       start:0x800C6604 end:0x800C6614
 
+unknownGen/unknown800C6614.cpp:
+	.text       start:0x800C6614 end:0x800C661C
+
 unknownGen/unknown800C661C.cpp:
 	.text       start:0x800C661C end:0x800C6624
 
+unknownGen/unknown800C6624.cpp:
+	.text       start:0x800C6624 end:0x800C662C
+
 unknownGen/unknown800C66F8.cpp:
 	.text       start:0x800C66F8 end:0x800C6718
+
+unknownGen/unknown800C6718.cpp:
+	.text       start:0x800C6718 end:0x800C6720
 
 unknownGen/unknown800C6720.cpp:
 	.text       start:0x800C6720 end:0x800C6728
@@ -1687,6 +2446,9 @@ unknownGen/unknown800C6754.cpp:
 
 unknownGen/unknown800C67FC.cpp:
 	.text       start:0x800C67FC end:0x800C6814
+
+unknownGen/unknown800C6920.cpp:
+	.text       start:0x800C6920 end:0x800C6924
 
 unknownGen/unknown800C6924.cpp:
 	.text       start:0x800C6924 end:0x800C692C
@@ -1709,6 +2471,9 @@ unknownGen/unknown800C69F0.cpp:
 unknownGen/unknown800C6A08.cpp:
 	.text       start:0x800C6A08 end:0x800C6A10
 
+unknownGen/unknown800C6A10.cpp:
+	.text       start:0x800C6A10 end:0x800C6A18
+
 unknownGen/unknown800C6A18.cpp:
 	.text       start:0x800C6A18 end:0x800C6A20
 
@@ -1724,8 +2489,14 @@ unknownGen/unknown800C6AF8.cpp:
 unknownGen/unknown800C6B18.cpp:
 	.text       start:0x800C6B18 end:0x800C6BD0
 
+unknownGen/unknown800C6BD0.cpp:
+	.text       start:0x800C6BD0 end:0x800C6BD8
+
 unknownGen/unknown800C6BD8.cpp:
 	.text       start:0x800C6BD8 end:0x800C6C40
+
+unknownGen/unknown800C6D58.cpp:
+	.text       start:0x800C6D58 end:0x800C6F28
 
 unknownGen/unknown800C6F5C.cpp:
 	.text       start:0x800C6F5C end:0x800C70C0
@@ -1739,11 +2510,20 @@ unknownGen/unknown800C72B4.cpp:
 unknownGen/unknown800C7424.cpp:
 	.text       start:0x800C7424 end:0x800C75A4
 
+unknownGen/unknown800C95D0.cpp:
+	.text       start:0x800C95D0 end:0x800C95D4
+
 unknownGen/unknown800CAE04.cpp:
 	.text       start:0x800CAE04 end:0x800CAE0C
 
+unknownGen/unknown800CAE7C.cpp:
+	.text       start:0x800CAE7C end:0x800CAE8C
+
 unknownGen/unknown800CAE8C.cpp:
 	.text       start:0x800CAE8C end:0x800CAEA4
+
+unknownGen/unknown800CAEA4.cpp:
+	.text       start:0x800CAEA4 end:0x800CAEAC
 
 unknownGen/unknown800CAF14.cpp:
 	.text       start:0x800CAF14 end:0x800CB080
@@ -1787,14 +2567,35 @@ unknownGen/unknown800CC1E4.cpp:
 unknownGen/unknown800CD178.cpp:
 	.text       start:0x800CD178 end:0x800CD19C
 
+unknownGen/unknown800CD3E0.cpp:
+	.text       start:0x800CD3E0 end:0x800CD3E8
+
 unknownGen/unknown800CD8D8.cpp:
 	.text       start:0x800CD8D8 end:0x800CD8E0
+
+unknownGen/unknown800CD8E0.cpp:
+	.text       start:0x800CD8E0 end:0x800CD8EC
+
+unknownGen/unknown800CD8FC.cpp:
+	.text       start:0x800CD8FC end:0x800CD900
+
+unknownGen/unknown800CD914.cpp:
+	.text       start:0x800CD914 end:0x800CD93C
+
+unknownGen/unknown800CD95C.cpp:
+	.text       start:0x800CD95C end:0x800CD970
 
 unknownGen/unknown800CD970.cpp:
 	.text       start:0x800CD970 end:0x800CD978
 
+unknownGen/unknown800CD978.cpp:
+	.text       start:0x800CD978 end:0x800CD980
+
 unknownGen/unknown800CD980.cpp:
 	.text       start:0x800CD980 end:0x800CD988
+
+unknownGen/unknown800CD988.cpp:
+	.text       start:0x800CD988 end:0x800CD9B8
 
 unknownGen/unknown800CD9B8.cpp:
 	.text       start:0x800CD9B8 end:0x800CD9C0
@@ -1802,11 +2603,20 @@ unknownGen/unknown800CD9B8.cpp:
 unknownGen/unknown800CD9E4.cpp:
 	.text       start:0x800CD9E4 end:0x800CDA0C
 
+unknownGen/unknown800CDA0C.cpp:
+	.text       start:0x800CDA0C end:0x800CDA4C
+
 unknownGen/unknown800CDA4C.cpp:
 	.text       start:0x800CDA4C end:0x800CDA8C
 
+unknownGen/unknown800CDA8C.cpp:
+	.text       start:0x800CDA8C end:0x800CDA94
+
 unknownGen/unknown800CDA94.cpp:
 	.text       start:0x800CDA94 end:0x800CDA9C
+
+unknownGen/unknown800CDAB0.cpp:
+	.text       start:0x800CDAB0 end:0x800CDAB4
 
 unknownGen/unknown800CDAB4.cpp:
 	.text       start:0x800CDAB4 end:0x800CDAD4
@@ -1898,6 +2708,9 @@ unknownGen/unknown800D1C9C.cpp:
 unknownGen/unknown800D1EE8.cpp:
 	.text       start:0x800D1EE8 end:0x800D1FF8
 
+unknownGen/unknown800D1FF8.cpp:
+	.text       start:0x800D1FF8 end:0x800D206C
+
 unknownGen/unknown800D206C.cpp:
 	.text       start:0x800D206C end:0x800D2544
 
@@ -1912,6 +2725,9 @@ unknownGen/unknown800D2978.cpp:
 
 unknownGen/unknown800D2A88.cpp:
 	.text       start:0x800D2A88 end:0x800D2BD4
+
+unknownGen/unknown800D2C04.cpp:
+	.text       start:0x800D2C04 end:0x800D2C0C
 
 unknownGen/unknown800D2ED0.cpp:
 	.text       start:0x800D2ED0 end:0x800D3118
@@ -2039,17 +2855,116 @@ unknownGen/unknown800D8838.cpp:
 unknownGen/unknown800D895C.cpp:
 	.text       start:0x800D895C end:0x800D89FC
 
+unknownGen/unknown800D94F4.cpp:
+	.text       start:0x800D94F4 end:0x800D94FC
+
+unknownGen/unknown800D9530.cpp:
+	.text       start:0x800D9530 end:0x800D9538
+
 unknownGen/unknown800D9CA4.cpp:
 	.text       start:0x800D9CA4 end:0x800D9CAC
+
+unknownGen/unknown800DA348.cpp:
+	.text       start:0x800DA348 end:0x800DA358
+
+unknownGen/unknown800DC0C4.cpp:
+	.text       start:0x800DC0C4 end:0x800DC0CC
+
+unknownGen/unknown800DDA70.cpp:
+	.text       start:0x800DDA70 end:0x800DDA78
+
+unknownGen/unknown800DDDAC.cpp:
+	.text       start:0x800DDDAC end:0x800DDDB4
+
+unknownGen/unknown800DDE4C.cpp:
+	.text       start:0x800DDE4C end:0x800DDE54
+
+unknownGen/unknown800DE508.cpp:
+	.text       start:0x800DE508 end:0x800DE50C
 
 unknownGen/unknown800DEB20.cpp:
 	.text       start:0x800DEB20 end:0x800DEB40
 
+unknownGen/unknown800DF114.cpp:
+	.text       start:0x800DF114 end:0x800DF11C
+
+unknownGen/unknown800DFED4.cpp:
+	.text       start:0x800DFED4 end:0x800DFED8
+
+unknownGen/unknown800E0008.cpp:
+	.text       start:0x800E0008 end:0x800E0010
+
+unknownGen/unknown800E14B4.cpp:
+	.text       start:0x800E14B4 end:0x800E14C4
+
+unknownGen/unknown800E1788.cpp:
+	.text       start:0x800E1788 end:0x800E1790
+
+unknownGen/unknown800E3004.cpp:
+	.text       start:0x800E3004 end:0x800E3008
+
+unknownGen/unknown800E326C.cpp:
+	.text       start:0x800E326C end:0x800E3274
+
+unknownGen/unknown800E6B4C.cpp:
+	.text       start:0x800E6B4C end:0x800E6B54
+
+unknownGen/unknown800E97B4.cpp:
+	.text       start:0x800E97B4 end:0x800E97E8
+
+unknownGen/unknown800E9904.cpp:
+	.text       start:0x800E9904 end:0x800E990C
+
+unknownGen/unknown800EA588.cpp:
+	.text       start:0x800EA588 end:0x800EA590
+
+unknownGen/unknown800EA7C8.cpp:
+	.text       start:0x800EA7C8 end:0x800EA7D0
+
+unknownGen/unknown800EAA6C.cpp:
+	.text       start:0x800EAA6C end:0x800EAA8C
+
+unknownGen/unknown800EADD4.cpp:
+	.text       start:0x800EADD4 end:0x800EADD8
+
+unknownGen/unknown800EBDA8.cpp:
+	.text       start:0x800EBDA8 end:0x800EBDB0
+
+unknownGen/unknown800EC160.cpp:
+	.text       start:0x800EC160 end:0x800EC170
+
 unknownGen/unknown800EC1E8.cpp:
 	.text       start:0x800EC1E8 end:0x800EC208
 
+unknownGen/unknown800ECE74.cpp:
+	.text       start:0x800ECE74 end:0x800ECE7C
+
+unknownGen/unknown800ED530.cpp:
+	.text       start:0x800ED530 end:0x800ED538
+
+unknownGen/unknown800ED5D0.cpp:
+	.text       start:0x800ED5D0 end:0x800ED5D8
+
+unknownGen/unknown800ED68C.cpp:
+	.text       start:0x800ED68C end:0x800ED694
+
+unknownGen/unknown800ED704.cpp:
+	.text       start:0x800ED704 end:0x800ED70C
+
+unknownGen/unknown800ED77C.cpp:
+	.text       start:0x800ED77C end:0x800ED784
+
+unknownGen/unknown800F1A88.cpp:
+	.text       start:0x800F1A88 end:0x800F1A8C
+
 unknownGen/unknown800F1C40.cpp:
 	.text       start:0x800F1C40 end:0x800F1C60
+
+unknownGen/unknown800F1F5C.cpp:
+	.text       start:0x800F1F5C end:0x800F1F64
+
+unknownGen/unknown800F23D8.cpp:
+	.text       start:0x800F23D8 end:0x800F23F8
 
 unknownGen/unknown800F23F8.cpp:
 	.text       start:0x800F23F8 end:0x800F2418
@@ -2057,23 +2972,131 @@ unknownGen/unknown800F23F8.cpp:
 unknownGen/unknown800F2458.cpp:
 	.text       start:0x800F2458 end:0x800F2460
 
+unknownGen/unknown800F3CC0.cpp:
+	.text       start:0x800F3CC0 end:0x800F3CC4
+
+unknownGen/unknown800F3E18.cpp:
+	.text       start:0x800F3E18 end:0x800F3E1C
+
+unknownGen/unknown800F3E44.cpp:
+	.text       start:0x800F3E44 end:0x800F3E48
+
+unknownGen/unknown800F3E70.cpp:
+	.text       start:0x800F3E70 end:0x800F3E74
+
 unknownGen/unknown800F48D8.cpp:
 	.text       start:0x800F48D8 end:0x800F48F8
+
+unknownGen/unknown800F49C0.cpp:
+	.text       start:0x800F49C0 end:0x800F49C8
+
+unknownGen/unknown800F5F4C.cpp:
+	.text       start:0x800F5F4C end:0x800F5F54
+
+unknownGen/unknown800F6028.cpp:
+	.text       start:0x800F6028 end:0x800F6030
+
+unknownGen/unknown800F61F8.cpp:
+	.text       start:0x800F61F8 end:0x800F6200
+
+unknownGen/unknown800F6580.cpp:
+	.text       start:0x800F6580 end:0x800F6588
+
+unknownGen/unknown800F7DCC.cpp:
+	.text       start:0x800F7DCC end:0x800F7DDC
+
+unknownGen/unknown800F8E24.cpp:
+	.text       start:0x800F8E24 end:0x800F8E2C
+
+unknownGen/unknown800F8E50.cpp:
+	.text       start:0x800F8E50 end:0x800F8E58
+
+unknownGen/unknown800F8E80.cpp:
+	.text       start:0x800F8E80 end:0x800F8E90
+
+unknownGen/unknown800F8F70.cpp:
+	.text       start:0x800F8F70 end:0x800F8F78
+
+unknownGen/unknown800F8F8C.cpp:
+	.text       start:0x800F8F8C end:0x800F8F94
+
+unknownGen/unknown800F9084.cpp:
+	.text       start:0x800F9084 end:0x800F908C
+
+unknownGen/unknown800F93A0.cpp:
+	.text       start:0x800F93A0 end:0x800F93B0
+
+unknownGen/unknown800F93D4.cpp:
+	.text       start:0x800F93D4 end:0x800F93DC
+
+unknownGen/unknown800F9440.cpp:
+	.text       start:0x800F9440 end:0x800F9448
+
+unknownGen/unknown800F946C.cpp:
+	.text       start:0x800F946C end:0x800F9474
+
+unknownGen/unknown800F9488.cpp:
+	.text       start:0x800F9488 end:0x800F9490
+
+unknownGen/unknown800F94A4.cpp:
+	.text       start:0x800F94A4 end:0x800F94AC
+
+unknownGen/unknown800F9504.cpp:
+	.text       start:0x800F9504 end:0x800F9514
+
+unknownGen/unknown800F9538.cpp:
+	.text       start:0x800F9538 end:0x800F9540
+
+unknownGen/unknown800F9570.cpp:
+	.text       start:0x800F9570 end:0x800F9578
+
+unknownGen/unknown800F980C.cpp:
+	.text       start:0x800F980C end:0x800F9860
 
 unknownGen/unknown800F9A30.cpp:
 	.text       start:0x800F9A30 end:0x800F9A38
 
+unknownGen/unknown800FBB34.cpp:
+	.text       start:0x800FBB34 end:0x800FBB3C
+
+unknownGen/unknown800FBC18.cpp:
+	.text       start:0x800FBC18 end:0x800FBC20
+
 unknownGen/unknown800FC170.cpp:
 	.text       start:0x800FC170 end:0x800FC1A8
+
+unknownGen/unknown800FC8D8.cpp:
+	.text       start:0x800FC8D8 end:0x800FC8E0
 
 unknownGen/unknown800FE028.cpp:
 	.text       start:0x800FE028 end:0x800FE048
 
+unknownGen/unknown800FEFF4.cpp:
+	.text       start:0x800FEFF4 end:0x800FEFF8
+
 unknownGen/unknown800FF8F8.cpp:
 	.text       start:0x800FF8F8 end:0x800FF918
 
+unknownGen/unknown80100304.cpp:
+	.text       start:0x80100304 end:0x80100308
+
+unknownGen/unknown801024E4.cpp:
+	.text       start:0x801024E4 end:0x801024E8
+
+unknownGen/unknown801030F4.cpp:
+	.text       start:0x801030F4 end:0x801030F8
+
+unknownGen/unknown80104410.cpp:
+	.text       start:0x80104410 end:0x80104418
+
+unknownGen/unknown8010446C.cpp:
+	.text       start:0x8010446C end:0x80104470
+
 unknownGen/unknown80104480.cpp:
 	.text       start:0x80104480 end:0x801044C0
+
+unknownGen/unknown80105970.cpp:
+	.text       start:0x80105970 end:0x80105978
 
 unknownGen/unknown80105978.cpp:
 	.text       start:0x80105978 end:0x80105998
@@ -2084,11 +3107,20 @@ unknownGen/unknown80106578.cpp:
 unknownGen/unknown80106594.cpp:
 	.text       start:0x80106594 end:0x801065DC
 
+unknownGen/unknown801065DC.cpp:
+	.text       start:0x801065DC end:0x8010662C
+
 unknownGen/unknown8010662C.cpp:
 	.text       start:0x8010662C end:0x8010666C
 
+unknownGen/unknown8010666C.cpp:
+	.text       start:0x8010666C end:0x80106674
+
 unknownGen/unknown801066A0.cpp:
 	.text       start:0x801066A0 end:0x801066C0
+
+unknownGen/unknown801066C0.cpp:
+	.text       start:0x801066C0 end:0x801066C8
 
 unknownGen/unknown801066C8.cpp:
 	.text       start:0x801066C8 end:0x801066D0
@@ -2096,23 +3128,44 @@ unknownGen/unknown801066C8.cpp:
 unknownGen/unknown80106728.cpp:
 	.text       start:0x80106728 end:0x80106730
 
+unknownGen/unknown80106730.cpp:
+	.text       start:0x80106730 end:0x80106740
+
 unknownGen/unknown80106740.cpp:
 	.text       start:0x80106740 end:0x80106768
+
+unknownGen/unknown80106768.cpp:
+	.text       start:0x80106768 end:0x80106770
 
 unknownGen/unknown80106770.cpp:
 	.text       start:0x80106770 end:0x80106778
 
+unknownGen/unknown80106798.cpp:
+	.text       start:0x80106798 end:0x801067A0
+
 unknownGen/unknown801067A0.cpp:
 	.text       start:0x801067A0 end:0x80106838
+
+unknownGen/unknown80106838.cpp:
+	.text       start:0x80106838 end:0x80106840
 
 unknownGen/unknown80106840.cpp:
 	.text       start:0x80106840 end:0x80106850
 
+unknownGen/unknown80106850.cpp:
+	.text       start:0x80106850 end:0x80106860
+
 unknownGen/unknown80106860.cpp:
 	.text       start:0x80106860 end:0x801068F8
 
+unknownGen/unknown801068F8.cpp:
+	.text       start:0x801068F8 end:0x80106900
+
 unknownGen/unknown80106900.cpp:
 	.text       start:0x80106900 end:0x80106950
+
+unknownGen/unknown80106950.cpp:
+	.text       start:0x80106950 end:0x80106968
 
 unknownGen/unknown80106968.cpp:
 	.text       start:0x80106968 end:0x801069C0
@@ -2122,6 +3175,9 @@ unknownGen/unknown8010CC08.cpp:
 
 unknownGen/unknown8010D0B8.cpp:
 	.text       start:0x8010D0B8 end:0x8010D130
+
+unknownGen/unknown8010D2B8.cpp:
+	.text       start:0x8010D2B8 end:0x8010D32C
 
 unknownGen/unknown8010D32C.cpp:
 	.text       start:0x8010D32C end:0x8010D3F4
@@ -2137,6 +3193,9 @@ unknownGen/unknown8010D728.cpp:
 
 unknownGen/unknown8010D91C.cpp:
 	.text       start:0x8010D91C end:0x8010D9E4
+
+unknownGen/unknown8010DAB8.cpp:
+	.text       start:0x8010DAB8 end:0x8010DB2C
 
 unknownGen/unknown8010DB2C.cpp:
 	.text       start:0x8010DB2C end:0x8010DB70
@@ -2201,6 +3260,9 @@ unknownGen/unknown8010F824.cpp:
 unknownGen/unknown8010F9B0.cpp:
 	.text       start:0x8010F9B0 end:0x8010FA28
 
+unknownGen/unknown8010FBDC.cpp:
+	.text       start:0x8010FBDC end:0x8010FC50
+
 unknownGen/unknown8010FC50.cpp:
 	.text       start:0x8010FC50 end:0x8010FD10
 
@@ -2224,6 +3286,9 @@ unknownGen/unknown801105AC.cpp:
 
 unknownGen/unknown80110720.cpp:
 	.text       start:0x80110720 end:0x80110794
+
+unknownGen/unknown801108A4.cpp:
+	.text       start:0x801108A4 end:0x8011098C
 
 unknownGen/unknown8011098C.cpp:
 	.text       start:0x8011098C end:0x80110A4C
@@ -2300,6 +3365,9 @@ unknownGen/unknown801136F0.cpp:
 unknownGen/unknown80113894.cpp:
 	.text       start:0x80113894 end:0x8011390C
 
+unknownGen/unknown80113980.cpp:
+	.text       start:0x80113980 end:0x80113984
+
 unknownGen/unknown80113984.cpp:
 	.text       start:0x80113984 end:0x80113AB4
 
@@ -2327,6 +3395,9 @@ unknownGen/unknown80114844.cpp:
 unknownGen/unknown80114988.cpp:
 	.text       start:0x80114988 end:0x80114A00
 
+unknownGen/unknown80114B68.cpp:
+	.text       start:0x80114B68 end:0x80114BDC
+
 unknownGen/unknown80114BDC.cpp:
 	.text       start:0x80114BDC end:0x80114CA4
 
@@ -2342,6 +3413,9 @@ unknownGen/unknown80114F90.cpp:
 unknownGen/unknown801150A0.cpp:
 	.text       start:0x801150A0 end:0x801151EC
 
+unknownGen/unknown8011521C.cpp:
+	.text       start:0x8011521C end:0x80115224
+
 unknownGen/unknown8011573C.cpp:
 	.text       start:0x8011573C end:0x80115778
 
@@ -2351,8 +3425,68 @@ unknownGen/unknown801158C0.cpp:
 unknownGen/unknown801159FC.cpp:
 	.text       start:0x801159FC end:0x80115B28
 
+unknownGen/unknown80116DFC.cpp:
+	.text       start:0x80116DFC end:0x80116EE4
+
 unknownGen/unknown80117DD0.cpp:
 	.text       start:0x80117DD0 end:0x80117DF0
+
+unknownGen/unknown80118794.cpp:
+	.text       start:0x80118794 end:0x8011879C
+
+unknownGen/unknown80118828.cpp:
+	.text       start:0x80118828 end:0x80118830
+
+unknownGen/unknown8011894C.cpp:
+	.text       start:0x8011894C end:0x80118954
+
+unknownGen/unknown801189E4.cpp:
+	.text       start:0x801189E4 end:0x801189EC
+
+unknownGen/unknown80118A90.cpp:
+	.text       start:0x80118A90 end:0x80118A98
+
+unknownGen/unknown80118B8C.cpp:
+	.text       start:0x80118B8C end:0x80118B94
+
+unknownGen/unknown80118C6C.cpp:
+	.text       start:0x80118C6C end:0x80118C74
+
+unknownGen/unknown80118E30.cpp:
+	.text       start:0x80118E30 end:0x80118E38
+
+unknownGen/unknown80118F1C.cpp:
+	.text       start:0x80118F1C end:0x80118F24
+
+unknownGen/unknown80119008.cpp:
+	.text       start:0x80119008 end:0x80119010
+
+unknownGen/unknown801190E0.cpp:
+	.text       start:0x801190E0 end:0x801190E8
+
+unknownGen/unknown80119244.cpp:
+	.text       start:0x80119244 end:0x8011924C
+
+unknownGen/unknown80119AE8.cpp:
+	.text       start:0x80119AE8 end:0x80119B10
+
+unknownGen/unknown80119DF8.cpp:
+	.text       start:0x80119DF8 end:0x80119E74
+
+unknownGen/unknown8011A0F4.cpp:
+	.text       start:0x8011A0F4 end:0x8011A168
+
+unknownGen/unknown8011A9A8.cpp:
+	.text       start:0x8011A9A8 end:0x8011A9AC
+
+unknownGen/unknown8011B238.cpp:
+	.text       start:0x8011B238 end:0x8011B240
+
+unknownGen/unknown8011B698.cpp:
+	.text       start:0x8011B698 end:0x8011B6A0
+
+unknownGen/unknown8011D058.cpp:
+	.text       start:0x8011D058 end:0x8011D05C
 
 unknownGen/unknown8011D178.cpp:
 	.text       start:0x8011D178 end:0x8011D190
@@ -2365,6 +3499,9 @@ unknownGen/unknown8011D210.cpp:
 
 unknownGen/unknown8011D250.cpp:
 	.text       start:0x8011D250 end:0x8011D258
+
+unknownGen/unknown8011D258.cpp:
+	.text       start:0x8011D258 end:0x8011D260
 
 unknownGen/unknown8011D260.cpp:
 	.text       start:0x8011D260 end:0x8011D268
@@ -2387,8 +3524,17 @@ unknownGen/unknown8011D3D8.cpp:
 unknownGen/unknown8011D418.cpp:
 	.text       start:0x8011D418 end:0x8011D428
 
+unknownGen/unknown8011D450.cpp:
+	.text       start:0x8011D450 end:0x8011D460
+
+unknownGen/unknown8011D488.cpp:
+	.text       start:0x8011D488 end:0x8011D48C
+
 unknownGen/unknown8011D48C.cpp:
 	.text       start:0x8011D48C end:0x8011D4AC
+
+unknownGen/unknown8011D4AC.cpp:
+	.text       start:0x8011D4AC end:0x8011D4B4
 
 unknownGen/unknown8011D4B4.cpp:
 	.text       start:0x8011D4B4 end:0x8011D4C4
@@ -2410,6 +3556,9 @@ unknownGen/unknown8011D61C.cpp:
 
 unknownGen/unknown8011D65C.cpp:
 	.text       start:0x8011D65C end:0x8011D79C
+
+unknownGen/unknown8011D79C.cpp:
+	.text       start:0x8011D79C end:0x8011D7A4
 
 unknownGen/unknown8011D7A4.cpp:
 	.text       start:0x8011D7A4 end:0x8011D7F4
@@ -2504,17 +3653,74 @@ unknownGen/unknown801229CC.cpp:
 unknownGen/unknown80123840.cpp:
 	.text       start:0x80123840 end:0x80123860
 
+unknownGen/unknown80124318.cpp:
+	.text       start:0x80124318 end:0x80124328
+
+unknownGen/unknown801244FC.cpp:
+	.text       start:0x801244FC end:0x80124504
+
+unknownGen/unknown80124530.cpp:
+	.text       start:0x80124530 end:0x80124538
+
+unknownGen/unknown80125048.cpp:
+	.text       start:0x80125048 end:0x8012504C
+
 unknownGen/unknown80125178.cpp:
 	.text       start:0x80125178 end:0x80125198
+
+unknownGen/unknown80125198.cpp:
+	.text       start:0x80125198 end:0x801251A4
 
 unknownGen/unknown8012614C.cpp:
 	.text       start:0x8012614C end:0x8012616C
 
+unknownGen/unknown80126324.cpp:
+	.text       start:0x80126324 end:0x80126334
+
+unknownGen/unknown801264AC.cpp:
+	.text       start:0x801264AC end:0x801264B4
+
+unknownGen/unknown801264E0.cpp:
+	.text       start:0x801264E0 end:0x801264E8
+
+unknownGen/unknown8012666C.cpp:
+	.text       start:0x8012666C end:0x8012667C
+
+unknownGen/unknown80126800.cpp:
+	.text       start:0x80126800 end:0x80126808
+
+unknownGen/unknown80126834.cpp:
+	.text       start:0x80126834 end:0x8012683C
+
+unknownGen/unknown801269C0.cpp:
+	.text       start:0x801269C0 end:0x801269D0
+
+unknownGen/unknown80126B54.cpp:
+	.text       start:0x80126B54 end:0x80126B64
+
+unknownGen/unknown80126CE8.cpp:
+	.text       start:0x80126CE8 end:0x80126CF0
+
+unknownGen/unknown80126D1C.cpp:
+	.text       start:0x80126D1C end:0x80126D24
+
+unknownGen/unknown80126EA8.cpp:
+	.text       start:0x80126EA8 end:0x80126EB8
+
+unknownGen/unknown801278C8.cpp:
+	.text       start:0x801278C8 end:0x80127910
+
 unknownGen/unknown80128148.cpp:
 	.text       start:0x80128148 end:0x80128150
 
+unknownGen/unknown8012859C.cpp:
+	.text       start:0x8012859C end:0x801285A0
+
 unknownGen/unknown8012EEAC.cpp:
 	.text       start:0x8012EEAC end:0x8012F104
+
+unknownGen/unknown8012F104.cpp:
+	.text       start:0x8012F104 end:0x8012F194
 
 unknownGen/unknown8012F194.cpp:
 	.text       start:0x8012F194 end:0x8012F1D4
@@ -2597,11 +3803,17 @@ unknownGen/unknown80132324.cpp:
 unknownGen/unknown80132490.cpp:
 	.text       start:0x80132490 end:0x8013257C
 
+unknownGen/unknown801326AC.cpp:
+	.text       start:0x801326AC end:0x80132720
+
 unknownGen/unknown80132720.cpp:
 	.text       start:0x80132720 end:0x801327DC
 
 unknownGen/unknown8013291C.cpp:
 	.text       start:0x8013291C end:0x80132958
+
+unknownGen/unknown80132B48.cpp:
+	.text       start:0x80132B48 end:0x80132BBC
 
 unknownGen/unknown80132BBC.cpp:
 	.text       start:0x80132BBC end:0x80132C7C
@@ -3077,6 +4289,9 @@ unknownGen/unknown80142760.cpp:
 unknownGen/unknown80142950.cpp:
 	.text       start:0x80142950 end:0x801429C8
 
+unknownGen/unknown80142AE0.cpp:
+	.text       start:0x80142AE0 end:0x80142B54
+
 unknownGen/unknown80142B54.cpp:
 	.text       start:0x80142B54 end:0x80142C14
 
@@ -3140,6 +4355,9 @@ unknownGen/unknown8014536C.cpp:
 unknownGen/unknown8014547C.cpp:
 	.text       start:0x8014547C end:0x801455C8
 
+unknownGen/unknown801455F8.cpp:
+	.text       start:0x801455F8 end:0x80145600
+
 unknownGen/unknown801458E8.cpp:
 	.text       start:0x801458E8 end:0x80145E14
 
@@ -3151,6 +4369,9 @@ unknownGen/unknown80145ED0.cpp:
 
 unknownGen/unknown80145FE0.cpp:
 	.text       start:0x80145FE0 end:0x8014612C
+
+unknownGen/unknown8014615C.cpp:
+	.text       start:0x8014615C end:0x80146164
 
 unknownGen/unknown8014636C.cpp:
 	.text       start:0x8014636C end:0x801463A8
@@ -3172,6 +4393,9 @@ unknownGen/unknown80146E7C.cpp:
 
 unknownGen/unknown8014733C.cpp:
 	.text       start:0x8014733C end:0x80147428
+
+unknownGen/unknown801477D4.cpp:
+	.text       start:0x801477D4 end:0x80147848
 
 unknownGen/unknown80147848.cpp:
 	.text       start:0x80147848 end:0x80147908
@@ -3455,6 +4679,12 @@ unknownGen/unknown801535EC.cpp:
 unknownGen/unknown8015377C.cpp:
 	.text       start:0x8015377C end:0x80153864
 
+unknownGen/unknown80153864.cpp:
+	.text       start:0x80153864 end:0x80153868
+
+unknownGen/unknown801538E0.cpp:
+	.text       start:0x801538E0 end:0x801538E4
+
 unknownGen/unknown801538E4.cpp:
 	.text       start:0x801538E4 end:0x801538EC
 
@@ -3467,8 +4697,14 @@ unknownGen/unknown80153F98.cpp:
 unknownGen/unknown80154140.cpp:
 	.text       start:0x80154140 end:0x80154148
 
+unknownGen/unknown8015427C.cpp:
+	.text       start:0x8015427C end:0x80154280
+
 unknownGen/unknown801542B0.cpp:
 	.text       start:0x801542B0 end:0x801542B8
+
+unknownGen/unknown801546AC.cpp:
+	.text       start:0x801546AC end:0x801546B4
 
 unknownGen/unknown801546B4.cpp:
 	.text       start:0x801546B4 end:0x801546BC
@@ -3476,20 +4712,50 @@ unknownGen/unknown801546B4.cpp:
 unknownGen/unknown8015472C.cpp:
 	.text       start:0x8015472C end:0x80154734
 
+unknownGen/unknown80154734.cpp:
+	.text       start:0x80154734 end:0x80154738
+
+unknownGen/unknown801547B0.cpp:
+	.text       start:0x801547B0 end:0x801547B4
+
 unknownGen/unknown801547B4.cpp:
 	.text       start:0x801547B4 end:0x801547BC
 
 unknownGen/unknown80154F64.cpp:
 	.text       start:0x80154F64 end:0x80154F6C
 
+unknownGen/unknown80154F6C.cpp:
+	.text       start:0x80154F6C end:0x80154F74
+
 unknownGen/unknown80154F74.cpp:
 	.text       start:0x80154F74 end:0x80154F7C
+
+unknownGen/unknown80155C98.cpp:
+	.text       start:0x80155C98 end:0x80155D0C
+
+unknownGen/unknown80156108.cpp:
+	.text       start:0x80156108 end:0x80156138
 
 unknownGen/unknown80156138.cpp:
 	.text       start:0x80156138 end:0x80156158
 
+unknownGen/unknown80156414.cpp:
+	.text       start:0x80156414 end:0x8015641C
+
+unknownGen/unknown8015984C.cpp:
+	.text       start:0x8015984C end:0x80159854
+
 unknownGen/unknown80159854.cpp:
 	.text       start:0x80159854 end:0x80159874
+
+unknownGen/unknown801598E0.cpp:
+	.text       start:0x801598E0 end:0x801598E4
+
+unknownGen/unknown8015B6F8.cpp:
+	.text       start:0x8015B6F8 end:0x8015B6FC
+
+unknownGen/unknown8015B7D4.cpp:
+	.text       start:0x8015B7D4 end:0x8015B7D8
 
 unknownGen/unknown8015B7D8.cpp:
 	.text       start:0x8015B7D8 end:0x8015B7E0
@@ -3533,8 +4799,17 @@ unknownGen/unknown8015C364.cpp:
 unknownGen/unknown8015C450.cpp:
 	.text       start:0x8015C450 end:0x8015C458
 
+unknownGen/unknown8015C930.cpp:
+	.text       start:0x8015C930 end:0x8015C948
+
+unknownGen/unknown8015C9C0.cpp:
+	.text       start:0x8015C9C0 end:0x8015C9C8
+
 unknownGen/unknown8015C9C8.cpp:
 	.text       start:0x8015C9C8 end:0x8015C9D0
+
+unknownGen/unknown8015DC9C.cpp:
+	.text       start:0x8015DC9C end:0x8015DD10
 
 unknownGen/unknown8015DDD0.cpp:
 	.text       start:0x8015DDD0 end:0x8015DDD8
@@ -3545,8 +4820,17 @@ unknownGen/unknown8015DF6C.cpp:
 unknownGen/unknown8015E06C.cpp:
 	.text       start:0x8015E06C end:0x8015E074
 
+unknownGen/unknown8015E1FC.cpp:
+	.text       start:0x8015E1FC end:0x8015E20C
+
+unknownGen/unknown8015E344.cpp:
+	.text       start:0x8015E344 end:0x8015E364
+
 unknownGen/unknown8015E364.cpp:
 	.text       start:0x8015E364 end:0x8015E384
+
+unknownGen/unknown8015E384.cpp:
+	.text       start:0x8015E384 end:0x8015E38C
 
 unknownGen/unknown8015EDF8.cpp:
 	.text       start:0x8015EDF8 end:0x8015EE18
@@ -3557,11 +4841,32 @@ unknownGen/unknown8015EEE8.cpp:
 unknownGen/unknown8015F434.cpp:
 	.text       start:0x8015F434 end:0x8015F454
 
+unknownGen/unknown8016020C.cpp:
+	.text       start:0x8016020C end:0x80160214
+
+unknownGen/unknown80160D84.cpp:
+	.text       start:0x80160D84 end:0x80160D8C
+
 unknownGen/unknown80161314.cpp:
 	.text       start:0x80161314 end:0x80161334
 
+unknownGen/unknown80161394.cpp:
+	.text       start:0x80161394 end:0x8016139C
+
+unknownGen/unknown80161D9C.cpp:
+	.text       start:0x80161D9C end:0x80161DA4
+
 unknownGen/unknown80161DA4.cpp:
 	.text       start:0x80161DA4 end:0x80161DAC
+
+unknownGen/unknown80162630.cpp:
+	.text       start:0x80162630 end:0x801626A4
+
+unknownGen/unknown80162924.cpp:
+	.text       start:0x80162924 end:0x8016292C
+
+unknownGen/unknown80163FEC.cpp:
+	.text       start:0x80163FEC end:0x80163FF4
 
 unknownGen/unknown80168050.cpp:
 	.text       start:0x80168050 end:0x80168058
@@ -3575,11 +4880,20 @@ unknownGen/unknown80168480.cpp:
 unknownGen/unknown80169F94.cpp:
 	.text       start:0x80169F94 end:0x80169FB4
 
+unknownGen/unknown80169FB4.cpp:
+	.text       start:0x80169FB4 end:0x80169FBC
+
+unknownGen/unknown8016BCAC.cpp:
+	.text       start:0x8016BCAC end:0x8016BCB4
+
 unknownGen/unknown8016C2A8.cpp:
 	.text       start:0x8016C2A8 end:0x8016C2B0
 
 unknownGen/unknown8016C7CC.cpp:
 	.text       start:0x8016C7CC end:0x8016C7D4
+
+unknownGen/unknown8016C9C8.cpp:
+	.text       start:0x8016C9C8 end:0x8016C9CC
 
 unknownGen/unknown8016E6E0.cpp:
 	.text       start:0x8016E6E0 end:0x8016E6E8
@@ -3590,17 +4904,35 @@ unknownGen/unknown8016E7CC.cpp:
 unknownGen/unknown8016E8C4.cpp:
 	.text       start:0x8016E8C4 end:0x8016E8CC
 
+unknownGen/unknown8016F0D8.cpp:
+	.text       start:0x8016F0D8 end:0x8016F0E8
+
 unknownGen/unknown8016F0E8.cpp:
 	.text       start:0x8016F0E8 end:0x8016F0F0
+
+unknownGen/unknown8016F790.cpp:
+	.text       start:0x8016F790 end:0x8016F798
 
 unknownGen/unknown8016F798.cpp:
 	.text       start:0x8016F798 end:0x8016F7A0
 
+unknownGen/unknown8016FD7C.cpp:
+	.text       start:0x8016FD7C end:0x8016FD84
+
 unknownGen/unknown8016FD84.cpp:
 	.text       start:0x8016FD84 end:0x8016FD8C
 
+unknownGen/unknown8017204C.cpp:
+	.text       start:0x8017204C end:0x80172054
+
+unknownGen/unknown801750A4.cpp:
+	.text       start:0x801750A4 end:0x801750AC
+
 unknownGen/unknown801750AC.cpp:
 	.text       start:0x801750AC end:0x801750CC
+
+unknownGen/unknown801750CC.cpp:
+	.text       start:0x801750CC end:0x801750D4
 
 unknownGen/unknown80175B00.cpp:
 	.text       start:0x80175B00 end:0x80175B10
@@ -3608,14 +4940,50 @@ unknownGen/unknown80175B00.cpp:
 unknownGen/unknown8017680C.cpp:
 	.text       start:0x8017680C end:0x80176814
 
+unknownGen/unknown80176814.cpp:
+	.text       start:0x80176814 end:0x8017681C
+
 unknownGen/unknown80176AF0.cpp:
 	.text       start:0x80176AF0 end:0x80176AF8
+
+unknownGen/unknown80177124.cpp:
+	.text       start:0x80177124 end:0x80177128
+
+unknownGen/unknown80177154.cpp:
+	.text       start:0x80177154 end:0x80177158
+
+unknownGen/unknown80177F30.cpp:
+	.text       start:0x80177F30 end:0x80177F34
+
+unknownGen/unknown801782AC.cpp:
+	.text       start:0x801782AC end:0x801782BC
+
+unknownGen/unknown8017A8FC.cpp:
+	.text       start:0x8017A8FC end:0x8017A904
+
+unknownGen/unknown8017B848.cpp:
+	.text       start:0x8017B848 end:0x8017B858
+
+unknownGen/unknown8017CBFC.cpp:
+	.text       start:0x8017CBFC end:0x8017CC04
 
 unknownGen/unknown8017E694.cpp:
 	.text       start:0x8017E694 end:0x8017E69C
 
+unknownGen/unknown8017E69C.cpp:
+	.text       start:0x8017E69C end:0x8017E6A4
+
+unknownGen/unknown8017EC2C.cpp:
+	.text       start:0x8017EC2C end:0x8017EC30
+
 unknownGen/unknown8017EC90.cpp:
 	.text       start:0x8017EC90 end:0x8017EC98
+
+unknownGen/unknown8017EFBC.cpp:
+	.text       start:0x8017EFBC end:0x8017EFC4
+
+unknownGen/unknown8017F0A8.cpp:
+	.text       start:0x8017F0A8 end:0x8017F0B0
 
 unknownGen/unknown8017F7C8.cpp:
 	.text       start:0x8017F7C8 end:0x8017F7D8
@@ -3713,26 +5081,74 @@ unknownGen/unknown80181E8C.cpp:
 unknownGen/unknown80181F5C.cpp:
 	.text       start:0x80181F5C end:0x80181F64
 
+unknownGen/unknown801820F8.cpp:
+	.text       start:0x801820F8 end:0x801820FC
+
 unknownGen/unknown801820FC.cpp:
 	.text       start:0x801820FC end:0x80182104
 
 unknownGen/unknown80182484.cpp:
 	.text       start:0x80182484 end:0x801824A4
 
+unknownGen/unknown80182AB8.cpp:
+	.text       start:0x80182AB8 end:0x80182AD8
+
+unknownGen/unknown80182E68.cpp:
+	.text       start:0x80182E68 end:0x80182E70
+
+unknownGen/unknown801845B4.cpp:
+	.text       start:0x801845B4 end:0x801845B8
+
+unknownGen/unknown80184A9C.cpp:
+	.text       start:0x80184A9C end:0x80184AAC
+
 unknownGen/unknown80184BAC.cpp:
 	.text       start:0x80184BAC end:0x80184BCC
+
+unknownGen/unknown80184FC4.cpp:
+	.text       start:0x80184FC4 end:0x80184FDC
+
+unknownGen/unknown80185490.cpp:
+	.text       start:0x80185490 end:0x801854A0
+
+unknownGen/unknown80185B1C.cpp:
+	.text       start:0x80185B1C end:0x80185B2C
+
+unknownGen/unknown801864F4.cpp:
+	.text       start:0x801864F4 end:0x801864FC
+
+unknownGen/unknown80188264.cpp:
+	.text       start:0x80188264 end:0x8018826C
 
 unknownGen/unknown80188960.cpp:
 	.text       start:0x80188960 end:0x80188980
 
+unknownGen/unknown80188CA4.cpp:
+	.text       start:0x80188CA4 end:0x80188CAC
+
 unknownGen/unknown80188F08.cpp:
 	.text       start:0x80188F08 end:0x80188F10
+
+unknownGen/unknown80188F1C.cpp:
+	.text       start:0x80188F1C end:0x80188F28
 
 unknownGen/unknown80188F28.cpp:
 	.text       start:0x80188F28 end:0x80188F30
 
+unknownGen/unknown80189BF0.cpp:
+	.text       start:0x80189BF0 end:0x80189C10
+
 unknownGen/unknown80189C10.cpp:
 	.text       start:0x80189C10 end:0x80189C30
+
+unknownGen/unknown8018E370.cpp:
+	.text       start:0x8018E370 end:0x8018E374
+
+unknownGen/unknown8018E8E4.cpp:
+	.text       start:0x8018E8E4 end:0x8018E8E8
+
+unknownGen/unknown8018EEEC.cpp:
+	.text       start:0x8018EEEC end:0x8018EEF0
 
 unknownGen/unknown8018EEF0.cpp:
 	.text       start:0x8018EEF0 end:0x8018EF10
@@ -3740,8 +5156,14 @@ unknownGen/unknown8018EEF0.cpp:
 unknownGen/unknown8018EF74.cpp:
 	.text       start:0x8018EF74 end:0x8018EF94
 
+unknownGen/unknown8018EF94.cpp:
+	.text       start:0x8018EF94 end:0x8018EF98
+
 unknownGen/unknown8018F060.cpp:
 	.text       start:0x8018F060 end:0x8018F080
+
+unknownGen/unknown8018F080.cpp:
+	.text       start:0x8018F080 end:0x8018F084
 
 unknownGen/unknown8018F084.cpp:
 	.text       start:0x8018F084 end:0x8018F0A4
@@ -3752,17 +5174,41 @@ unknownGen/unknown8018F108.cpp:
 unknownGen/unknown80190824.cpp:
 	.text       start:0x80190824 end:0x8019082C
 
+unknownGen/unknown8019082C.cpp:
+	.text       start:0x8019082C end:0x8019083C
+
 unknownGen/unknown8019132C.cpp:
 	.text       start:0x8019132C end:0x80191334
 
 unknownGen/unknown801929BC.cpp:
 	.text       start:0x801929BC end:0x801929DC
 
+unknownGen/unknown801929DC.cpp:
+	.text       start:0x801929DC end:0x801929EC
+
 unknownGen/unknown80192E18.cpp:
 	.text       start:0x80192E18 end:0x80192E20
 
+unknownGen/unknown80194284.cpp:
+	.text       start:0x80194284 end:0x80194294
+
+unknownGen/unknown80194918.cpp:
+	.text       start:0x80194918 end:0x80194920
+
 unknownGen/unknown80194920.cpp:
 	.text       start:0x80194920 end:0x80194928
+
+unknownGen/unknown8019505C.cpp:
+	.text       start:0x8019505C end:0x8019506C
+
+unknownGen/unknown80195154.cpp:
+	.text       start:0x80195154 end:0x8019515C
+
+unknownGen/unknown80195A68.cpp:
+	.text       start:0x80195A68 end:0x80195A6C
+
+unknownGen/unknown80195AE4.cpp:
+	.text       start:0x80195AE4 end:0x80195AE8
 
 unknownGen/unknown80195AE8.cpp:
 	.text       start:0x80195AE8 end:0x80195AF0
@@ -3770,11 +5216,20 @@ unknownGen/unknown80195AE8.cpp:
 unknownGen/unknown80196048.cpp:
 	.text       start:0x80196048 end:0x80196050
 
+unknownGen/unknown80196050.cpp:
+	.text       start:0x80196050 end:0x80196058
+
+unknownGen/unknown801963B0.cpp:
+	.text       start:0x801963B0 end:0x801963B4
+
 unknownGen/unknown801963B4.cpp:
 	.text       start:0x801963B4 end:0x801963BC
 
 unknownGen/unknown801968F0.cpp:
 	.text       start:0x801968F0 end:0x801968F8
+
+unknownGen/unknown80198A28.cpp:
+	.text       start:0x80198A28 end:0x80198A2C
 
 unknownGen/unknown80198A2C.cpp:
 	.text       start:0x80198A2C end:0x80198A34
@@ -3782,11 +5237,23 @@ unknownGen/unknown80198A2C.cpp:
 unknownGen/unknown801992C4.cpp:
 	.text       start:0x801992C4 end:0x801992CC
 
+unknownGen/unknown801992CC.cpp:
+	.text       start:0x801992CC end:0x801992D4
+
 unknownGen/unknown801992D4.cpp:
 	.text       start:0x801992D4 end:0x801992DC
 
+unknownGen/unknown801993C8.cpp:
+	.text       start:0x801993C8 end:0x801993D8
+
+unknownGen/unknown80199CF8.cpp:
+	.text       start:0x80199CF8 end:0x80199D00
+
 unknownGen/unknown80199D00.cpp:
 	.text       start:0x80199D00 end:0x80199D08
+
+unknownGen/unknown8019A260.cpp:
+	.text       start:0x8019A260 end:0x8019A268
 
 unknownGen/unknown8019A268.cpp:
 	.text       start:0x8019A268 end:0x8019A270
@@ -3800,140 +5267,290 @@ unknownGen/unknown8019CA60.cpp:
 unknownGen/unknown8019D2C4.cpp:
 	.text       start:0x8019D2C4 end:0x8019D2CC
 
+unknownGen/unknown801A1160.cpp:
+	.text       start:0x801A1160 end:0x801A1168
+
+unknownGen/unknown801A189C.cpp:
+	.text       start:0x801A189C end:0x801A18A4
+
+unknownGen/unknown801A2070.cpp:
+	.text       start:0x801A2070 end:0x801A2094
+
 unknownGen/unknown801A2094.cpp:
 	.text       start:0x801A2094 end:0x801A20B4
+
+unknownGen/unknown801A2CBC.cpp:
+	.text       start:0x801A2CBC end:0x801A2CFC
 
 unknownGen/unknown801A3458.cpp:
 	.text       start:0x801A3458 end:0x801A3460
 
+unknownGen/unknown801A43C0.cpp:
+	.text       start:0x801A43C0 end:0x801A43C8
+
+unknownGen/unknown801A4BDC.cpp:
+	.text       start:0x801A4BDC end:0x801A4BE4
+
 unknownGen/unknown801A6980.cpp:
 	.text       start:0x801A6980 end:0x801A6990
+
+unknownGen/unknown801A6990.cpp:
+	.text       start:0x801A6990 end:0x801A6998
 
 unknownGen/unknown801A6998.cpp:
 	.text       start:0x801A6998 end:0x801A69B0
 
+unknownGen/unknown801A69B0.cpp:
+	.text       start:0x801A69B0 end:0x801A69B8
+
 unknownGen/unknown801A69B8.cpp:
 	.text       start:0x801A69B8 end:0x801A69C0
+
+unknownGen/unknown801A69C0.cpp:
+	.text       start:0x801A69C0 end:0x801A69C8
 
 unknownGen/unknown801A69C8.cpp:
 	.text       start:0x801A69C8 end:0x801A69E8
 
+unknownGen/unknown801A69E8.cpp:
+	.text       start:0x801A69E8 end:0x801A69F0
+
 unknownGen/unknown801A69F0.cpp:
 	.text       start:0x801A69F0 end:0x801A69F8
+
+unknownGen/unknown801A69F8.cpp:
+	.text       start:0x801A69F8 end:0x801A6A00
 
 unknownGen/unknown801A6A00.cpp:
 	.text       start:0x801A6A00 end:0x801A6A08
 
+unknownGen/unknown801A6A08.cpp:
+	.text       start:0x801A6A08 end:0x801A6A10
+
 unknownGen/unknown801A6A10.cpp:
 	.text       start:0x801A6A10 end:0x801A6A20
+
+unknownGen/unknown801A6A20.cpp:
+	.text       start:0x801A6A20 end:0x801A6A28
 
 unknownGen/unknown801A6A28.cpp:
 	.text       start:0x801A6A28 end:0x801A6A48
 
+unknownGen/unknown801A6A48.cpp:
+	.text       start:0x801A6A48 end:0x801A6A50
+
 unknownGen/unknown801A6A50.cpp:
 	.text       start:0x801A6A50 end:0x801A6A60
+
+unknownGen/unknown801A6A60.cpp:
+	.text       start:0x801A6A60 end:0x801A6A68
 
 unknownGen/unknown801A6A68.cpp:
 	.text       start:0x801A6A68 end:0x801A6A88
 
+unknownGen/unknown801A6A88.cpp:
+	.text       start:0x801A6A88 end:0x801A6A98
+
 unknownGen/unknown801A6B28.cpp:
 	.text       start:0x801A6B28 end:0x801A6B40
+
+unknownGen/unknown801A6B40.cpp:
+	.text       start:0x801A6B40 end:0x801A6B48
 
 unknownGen/unknown801A6B48.cpp:
 	.text       start:0x801A6B48 end:0x801A6B60
 
+unknownGen/unknown801A6B60.cpp:
+	.text       start:0x801A6B60 end:0x801A6B68
+
 unknownGen/unknown801A6B68.cpp:
 	.text       start:0x801A6B68 end:0x801A6B70
+
+unknownGen/unknown801A6B70.cpp:
+	.text       start:0x801A6B70 end:0x801A6B78
 
 unknownGen/unknown801A6B78.cpp:
 	.text       start:0x801A6B78 end:0x801A6B90
 
+unknownGen/unknown801A6B90.cpp:
+	.text       start:0x801A6B90 end:0x801A6B98
+
 unknownGen/unknown801A6B98.cpp:
 	.text       start:0x801A6B98 end:0x801A6BC8
+
+unknownGen/unknown801A6BC8.cpp:
+	.text       start:0x801A6BC8 end:0x801A6BD0
 
 unknownGen/unknown801A6BD0.cpp:
 	.text       start:0x801A6BD0 end:0x801A6BE0
 
+unknownGen/unknown801A6BE0.cpp:
+	.text       start:0x801A6BE0 end:0x801A6BE8
+
 unknownGen/unknown801A6BE8.cpp:
 	.text       start:0x801A6BE8 end:0x801A6C10
+
+unknownGen/unknown801A6C10.cpp:
+	.text       start:0x801A6C10 end:0x801A6C28
 
 unknownGen/unknown801A6C28.cpp:
 	.text       start:0x801A6C28 end:0x801A6C30
 
+unknownGen/unknown801A6C30.cpp:
+	.text       start:0x801A6C30 end:0x801A6C38
+
 unknownGen/unknown801A6C38.cpp:
 	.text       start:0x801A6C38 end:0x801A6C40
+
+unknownGen/unknown801A6C40.cpp:
+	.text       start:0x801A6C40 end:0x801A6C48
 
 unknownGen/unknown801A6C48.cpp:
 	.text       start:0x801A6C48 end:0x801A6C50
 
+unknownGen/unknown801A6C50.cpp:
+	.text       start:0x801A6C50 end:0x801A6C58
+
 unknownGen/unknown801A6C58.cpp:
 	.text       start:0x801A6C58 end:0x801A6C78
+
+unknownGen/unknown801A6C78.cpp:
+	.text       start:0x801A6C78 end:0x801A6C7C
 
 unknownGen/unknown801A6C7C.cpp:
 	.text       start:0x801A6C7C end:0x801A6CB4
 
+unknownGen/unknown801A6CB4.cpp:
+	.text       start:0x801A6CB4 end:0x801A6CC4
+
 unknownGen/unknown801A6CD0.cpp:
 	.text       start:0x801A6CD0 end:0x801A6D08
+
+unknownGen/unknown801A6D08.cpp:
+	.text       start:0x801A6D08 end:0x801A6D10
 
 unknownGen/unknown801A6D10.cpp:
 	.text       start:0x801A6D10 end:0x801A6D60
 
+unknownGen/unknown801A6D60.cpp:
+	.text       start:0x801A6D60 end:0x801A6D68
+
 unknownGen/unknown801A6D68.cpp:
 	.text       start:0x801A6D68 end:0x801A6DA0
+
+unknownGen/unknown801A6DA0.cpp:
+	.text       start:0x801A6DA0 end:0x801A6DA8
 
 unknownGen/unknown801A6DA8.cpp:
 	.text       start:0x801A6DA8 end:0x801A6DB0
 
+unknownGen/unknown801A6DB0.cpp:
+	.text       start:0x801A6DB0 end:0x801A6DB8
+
 unknownGen/unknown801A6DB8.cpp:
 	.text       start:0x801A6DB8 end:0x801A6E18
+
+unknownGen/unknown801A6E18.cpp:
+	.text       start:0x801A6E18 end:0x801A6E20
 
 unknownGen/unknown801A6E20.cpp:
 	.text       start:0x801A6E20 end:0x801A6E40
 
+unknownGen/unknown801A6E40.cpp:
+	.text       start:0x801A6E40 end:0x801A6E48
+
 unknownGen/unknown801A6E48.cpp:
 	.text       start:0x801A6E48 end:0x801A6EA8
+
+unknownGen/unknown801A6EA8.cpp:
+	.text       start:0x801A6EA8 end:0x801A6EB0
 
 unknownGen/unknown801A6EB0.cpp:
 	.text       start:0x801A6EB0 end:0x801A6ED0
 
+unknownGen/unknown801A6ED0.cpp:
+	.text       start:0x801A6ED0 end:0x801A6ED8
+
 unknownGen/unknown801A6ED8.cpp:
 	.text       start:0x801A6ED8 end:0x801A6EE0
+
+unknownGen/unknown801A6EE0.cpp:
+	.text       start:0x801A6EE0 end:0x801A6EF0
 
 unknownGen/unknown801A6EF0.cpp:
 	.text       start:0x801A6EF0 end:0x801A6F58
 
+unknownGen/unknown801A6F58.cpp:
+	.text       start:0x801A6F58 end:0x801A6F60
+
 unknownGen/unknown801A6F60.cpp:
 	.text       start:0x801A6F60 end:0x801A6F68
+
+unknownGen/unknown801A6F68.cpp:
+	.text       start:0x801A6F68 end:0x801A6F70
+
+unknownGen/unknown801A6FD8.cpp:
+	.text       start:0x801A6FD8 end:0x801A6FE0
 
 unknownGen/unknown801A703C.cpp:
 	.text       start:0x801A703C end:0x801A704C
 
+unknownGen/unknown801A704C.cpp:
+	.text       start:0x801A704C end:0x801A7054
+
 unknownGen/unknown801A7054.cpp:
 	.text       start:0x801A7054 end:0x801A705C
+
+unknownGen/unknown801A710C.cpp:
+	.text       start:0x801A710C end:0x801A7114
 
 unknownGen/unknown801A7114.cpp:
 	.text       start:0x801A7114 end:0x801A7124
 
+unknownGen/unknown801A7124.cpp:
+	.text       start:0x801A7124 end:0x801A712C
+
 unknownGen/unknown801A712C.cpp:
 	.text       start:0x801A712C end:0x801A7134
+
+unknownGen/unknown801A71E4.cpp:
+	.text       start:0x801A71E4 end:0x801A71EC
 
 unknownGen/unknown801A71EC.cpp:
 	.text       start:0x801A71EC end:0x801A71F4
 
+unknownGen/unknown801A71F4.cpp:
+	.text       start:0x801A71F4 end:0x801A71FC
+
 unknownGen/unknown801A71FC.cpp:
 	.text       start:0x801A71FC end:0x801A7204
+
+unknownGen/unknown801A7204.cpp:
+	.text       start:0x801A7204 end:0x801A720C
 
 unknownGen/unknown801A720C.cpp:
 	.text       start:0x801A720C end:0x801A726C
 
+unknownGen/unknown801A726C.cpp:
+	.text       start:0x801A726C end:0x801A7274
+
 unknownGen/unknown801A7274.cpp:
 	.text       start:0x801A7274 end:0x801A72C4
+
+unknownGen/unknown801A72C4.cpp:
+	.text       start:0x801A72C4 end:0x801A72D4
 
 unknownGen/unknown801A72D4.cpp:
 	.text       start:0x801A72D4 end:0x801A72DC
 
+unknownGen/unknown801A72DC.cpp:
+	.text       start:0x801A72DC end:0x801A72EC
+
 unknownGen/unknown801A72EC.cpp:
 	.text       start:0x801A72EC end:0x801A7304
+
+unknownGen/unknown801A7304.cpp:
+	.text       start:0x801A7304 end:0x801A730C
 
 unknownGen/unknown801A730C.cpp:
 	.text       start:0x801A730C end:0x801A735C
@@ -3968,14 +5585,23 @@ unknownGen/unknown801A7B38.cpp:
 unknownGen/unknown801A7B54.cpp:
 	.text       start:0x801A7B54 end:0x801A7B7C
 
+unknownGen/unknown801A7B7C.cpp:
+	.text       start:0x801A7B7C end:0x801A7B80
+
 unknownGen/unknown801A7B80.cpp:
 	.text       start:0x801A7B80 end:0x801A7CE0
+
+unknownGen/unknown801A7CE0.cpp:
+	.text       start:0x801A7CE0 end:0x801A7CE8
 
 unknownGen/unknown801A7CE8.cpp:
 	.text       start:0x801A7CE8 end:0x801A7D00
 
 unknownGen/unknown801A8190.cpp:
 	.text       start:0x801A8190 end:0x801A8228
+
+unknownGen/unknown801AA35C.cpp:
+	.text       start:0x801AA35C end:0x801AA3D0
 
 unknownGen/unknown801AA3D0.cpp:
 	.text       start:0x801AA3D0 end:0x801AA6DC
@@ -4138,6 +5764,9 @@ unknownGen/unknown801B1B64.cpp:
 
 unknownGen/unknown801B1D78.cpp:
 	.text       start:0x801B1D78 end:0x801B2F98
+
+unknownGen/unknown801B3624.cpp:
+	.text       start:0x801B3624 end:0x801B3698
 
 unknownGen/unknown801B3698.cpp:
 	.text       start:0x801B3698 end:0x801B3758
@@ -4655,11 +6284,23 @@ unknownGen/unknown801CEBB4.cpp:
 unknownGen/unknown801CED90.cpp:
 	.text       start:0x801CED90 end:0x801CEEB8
 
+unknownGen/unknown801D11C0.cpp:
+	.text       start:0x801D11C0 end:0x801D11C8
+
 unknownGen/unknown801D3608.cpp:
 	.text       start:0x801D3608 end:0x801D3628
 
+unknownGen/unknown801D3754.cpp:
+	.text       start:0x801D3754 end:0x801D3764
+
+unknownGen/unknown801D682C.cpp:
+	.text       start:0x801D682C end:0x801D6834
+
 unknownGen/unknown801D86C4.cpp:
 	.text       start:0x801D86C4 end:0x801D86CC
+
+unknownGen/unknown801D93A0.cpp:
+	.text       start:0x801D93A0 end:0x801D93A8
 
 unknownGen/unknown801D9CA0.cpp:
 	.text       start:0x801D9CA0 end:0x801D9CA8
@@ -4670,8 +6311,26 @@ unknownGen/unknown801DB668.cpp:
 unknownGen/unknown801DD4FC.cpp:
 	.text       start:0x801DD4FC end:0x801DD51C
 
+unknownGen/unknown801DEDA4.cpp:
+	.text       start:0x801DEDA4 end:0x801DEDA8
+
+unknownGen/unknown801E0B34.cpp:
+	.text       start:0x801E0B34 end:0x801E0B44
+
+unknownGen/unknown801E29D4.cpp:
+	.text       start:0x801E29D4 end:0x801E29D8
+
 unknownGen/unknown801E40AC.cpp:
 	.text       start:0x801E40AC end:0x801E40B4
+
+unknownGen/unknown801E41BC.cpp:
+	.text       start:0x801E41BC end:0x801E41C4
+
+unknownGen/unknown801E4DA0.cpp:
+	.text       start:0x801E4DA0 end:0x801E4DA4
+
+unknownGen/unknown801E5564.cpp:
+	.text       start:0x801E5564 end:0x801E556C
 
 unknownGen/unknown801E57B0.cpp:
 	.text       start:0x801E57B0 end:0x801E57B8
@@ -4682,8 +6341,14 @@ unknownGen/unknown801E626C.cpp:
 unknownGen/unknown801E63F8.cpp:
 	.text       start:0x801E63F8 end:0x801E6400
 
+unknownGen/unknown801E7548.cpp:
+	.text       start:0x801E7548 end:0x801E754C
+
 unknownGen/unknown801E8924.cpp:
 	.text       start:0x801E8924 end:0x801E8944
+
+unknownGen/unknown801EF548.cpp:
+	.text       start:0x801EF548 end:0x801EF550
 
 unknownGen/unknown801EFDCC.cpp:
 	.text       start:0x801EFDCC end:0x801EFDD4
@@ -4691,11 +6356,20 @@ unknownGen/unknown801EFDCC.cpp:
 unknownGen/unknown801F2B38.cpp:
 	.text       start:0x801F2B38 end:0x801F2B58
 
+unknownGen/unknown801F3CF0.cpp:
+	.text       start:0x801F3CF0 end:0x801F3CF8
+
+unknownGen/unknown801F5BC8.cpp:
+	.text       start:0x801F5BC8 end:0x801F5BF8
+
 unknownGen/unknown801F5CC8.cpp:
 	.text       start:0x801F5CC8 end:0x801F5CE8
 
 unknownGen/unknown801F6010.cpp:
 	.text       start:0x801F6010 end:0x801F6050
+
+unknownGen/unknown801F6DD8.cpp:
+	.text       start:0x801F6DD8 end:0x801F6DE0
 
 unknownGen/unknown801F7074.cpp:
 	.text       start:0x801F7074 end:0x801F707C
@@ -4703,11 +6377,23 @@ unknownGen/unknown801F7074.cpp:
 unknownGen/unknown801F74A4.cpp:
 	.text       start:0x801F74A4 end:0x801F74AC
 
+unknownGen/unknown801F7630.cpp:
+	.text       start:0x801F7630 end:0x801F7638
+
 unknownGen/unknown801F77C8.cpp:
 	.text       start:0x801F77C8 end:0x801F77E8
 
+unknownGen/unknown801F9070.cpp:
+	.text       start:0x801F9070 end:0x801F9078
+
+unknownGen/unknown801FABA8.cpp:
+	.text       start:0x801FABA8 end:0x801FAC1C
+
 unknownGen/unknown801FADF8.cpp:
 	.text       start:0x801FADF8 end:0x801FAE18
+
+unknownGen/unknown801FAE88.cpp:
+	.text       start:0x801FAE88 end:0x801FAE90
 
 unknownGen/unknown801FBBF8.cpp:
 	.text       start:0x801FBBF8 end:0x801FBC00
@@ -4718,8 +6404,35 @@ unknownGen/unknown801FC6D0.cpp:
 unknownGen/unknown801FF6D0.cpp:
 	.text       start:0x801FF6D0 end:0x801FF6D8
 
+unknownGen/unknown80201D74.cpp:
+	.text       start:0x80201D74 end:0x80201D8C
+
+unknownGen/unknown8020254C.cpp:
+	.text       start:0x8020254C end:0x80202550
+
+unknownGen/unknown80202BE4.cpp:
+	.text       start:0x80202BE4 end:0x80202BE8
+
+unknownGen/unknown802037E8.cpp:
+	.text       start:0x802037E8 end:0x8020385C
+
 unknownGen/unknown8020663C.cpp:
 	.text       start:0x8020663C end:0x80206644
+
+unknownGen/unknown80207350.cpp:
+	.text       start:0x80207350 end:0x80207358
+
+unknownGen/unknown802073A8.cpp:
+	.text       start:0x802073A8 end:0x802073B4
+
+unknownGen/unknown80207400.cpp:
+	.text       start:0x80207400 end:0x80207404
+
+unknownGen/unknown8020B134.cpp:
+	.text       start:0x8020B134 end:0x8020B13C
+
+unknownGen/unknown8020B26C.cpp:
+	.text       start:0x8020B26C end:0x8020B274
 
 unknownGen/unknown8021329C.cpp:
 	.text       start:0x8021329C end:0x802132BC
@@ -4727,14 +6440,26 @@ unknownGen/unknown8021329C.cpp:
 unknownGen/unknown80213320.cpp:
 	.text       start:0x80213320 end:0x80213328
 
+unknownGen/unknown80215130.cpp:
+	.text       start:0x80215130 end:0x80215138
+
+unknownGen/unknown80215144.cpp:
+	.text       start:0x80215144 end:0x8021514C
+
 unknownGen/unknown8021514C.cpp:
 	.text       start:0x8021514C end:0x80215164
 
 unknownGen/unknown80215170.cpp:
 	.text       start:0x80215170 end:0x80215178
 
+unknownGen/unknown8021536C.cpp:
+	.text       start:0x8021536C end:0x80215374
+
 unknownGen/unknown80215380.cpp:
 	.text       start:0x80215380 end:0x80215388
+
+unknownGen/unknown80215438.cpp:
+	.text       start:0x80215438 end:0x80215440
 
 unknownGen/unknown80215440.cpp:
 	.text       start:0x80215440 end:0x80215448
@@ -4742,8 +6467,14 @@ unknownGen/unknown80215440.cpp:
 unknownGen/unknown80215474.cpp:
 	.text       start:0x80215474 end:0x8021547C
 
+unknownGen/unknown8021547C.cpp:
+	.text       start:0x8021547C end:0x80215484
+
 unknownGen/unknown80215484.cpp:
 	.text       start:0x80215484 end:0x8021548C
+
+unknownGen/unknown8021548C.cpp:
+	.text       start:0x8021548C end:0x80215494
 
 unknownGen/unknown80215494.cpp:
 	.text       start:0x80215494 end:0x802154A4
@@ -4754,41 +6485,86 @@ unknownGen/unknown802154BC.cpp:
 unknownGen/unknown80215534.cpp:
 	.text       start:0x80215534 end:0x80215544
 
+unknownGen/unknown80215544.cpp:
+	.text       start:0x80215544 end:0x80215548
+
 unknownGen/unknown80215548.cpp:
 	.text       start:0x80215548 end:0x80215560
+
+unknownGen/unknown80215560.cpp:
+	.text       start:0x80215560 end:0x80215568
 
 unknownGen/unknown80215568.cpp:
 	.text       start:0x80215568 end:0x80215578
 
+unknownGen/unknown80215780.cpp:
+	.text       start:0x80215780 end:0x80215788
+
 unknownGen/unknown80215788.cpp:
 	.text       start:0x80215788 end:0x80215798
+
+unknownGen/unknown80215798.cpp:
+	.text       start:0x80215798 end:0x802157A0
 
 unknownGen/unknown802157A0.cpp:
 	.text       start:0x802157A0 end:0x802157B8
 
+unknownGen/unknown802157B8.cpp:
+	.text       start:0x802157B8 end:0x802157C0
+
 unknownGen/unknown802157F0.cpp:
 	.text       start:0x802157F0 end:0x802157F8
+
+unknownGen/unknown802157F8.cpp:
+	.text       start:0x802157F8 end:0x80215800
 
 unknownGen/unknown8021581C.cpp:
 	.text       start:0x8021581C end:0x802158AC
 
+unknownGen/unknown8021591C.cpp:
+	.text       start:0x8021591C end:0x80215924
+
 unknownGen/unknown80215924.cpp:
 	.text       start:0x80215924 end:0x80215944
+
+unknownGen/unknown80215944.cpp:
+	.text       start:0x80215944 end:0x80215948
 
 unknownGen/unknown80215948.cpp:
 	.text       start:0x80215948 end:0x80215950
 
+unknownGen/unknown80215950.cpp:
+	.text       start:0x80215950 end:0x80215958
+
+unknownGen/unknown802159BC.cpp:
+	.text       start:0x802159BC end:0x802159D0
+
 unknownGen/unknown80215A50.cpp:
 	.text       start:0x80215A50 end:0x80215A78
+
+unknownGen/unknown80215B58.cpp:
+	.text       start:0x80215B58 end:0x80215B68
 
 unknownGen/unknown80215B68.cpp:
 	.text       start:0x80215B68 end:0x80215B70
 
+unknownGen/unknown80215B70.cpp:
+	.text       start:0x80215B70 end:0x80215B88
+
 unknownGen/unknown80215BF8.cpp:
 	.text       start:0x80215BF8 end:0x80215C28
 
+unknownGen/unknown80215C28.cpp:
+	.text       start:0x80215C28 end:0x80215C38
+
+unknownGen/unknown80215C48.cpp:
+	.text       start:0x80215C48 end:0x80215C50
+
 unknownGen/unknown80215C60.cpp:
 	.text       start:0x80215C60 end:0x80215C68
+
+unknownGen/unknown80215C68.cpp:
+	.text       start:0x80215C68 end:0x80215C70
 
 unknownGen/unknown80215C70.cpp:
 	.text       start:0x80215C70 end:0x80215CE0
@@ -4796,23 +6572,44 @@ unknownGen/unknown80215C70.cpp:
 unknownGen/unknown80215CF4.cpp:
 	.text       start:0x80215CF4 end:0x80215D94
 
+unknownGen/unknown80215D94.cpp:
+	.text       start:0x80215D94 end:0x80215D9C
+
 unknownGen/unknown80215D9C.cpp:
 	.text       start:0x80215D9C end:0x80215DBC
+
+unknownGen/unknown80215DBC.cpp:
+	.text       start:0x80215DBC end:0x80215DC4
 
 unknownGen/unknown80215DC4.cpp:
 	.text       start:0x80215DC4 end:0x80215E74
 
+unknownGen/unknown80215E74.cpp:
+	.text       start:0x80215E74 end:0x80215E7C
+
 unknownGen/unknown80215E7C.cpp:
 	.text       start:0x80215E7C end:0x80215F14
+
+unknownGen/unknown80215F14.cpp:
+	.text       start:0x80215F14 end:0x80215F1C
 
 unknownGen/unknown80215F1C.cpp:
 	.text       start:0x80215F1C end:0x80215FF4
 
+unknownGen/unknown80215FF4.cpp:
+	.text       start:0x80215FF4 end:0x80215FFC
+
 unknownGen/unknown80215FFC.cpp:
 	.text       start:0x80215FFC end:0x8021605C
 
+unknownGen/unknown8021605C.cpp:
+	.text       start:0x8021605C end:0x8021606C
+
 unknownGen/unknown8021606C.cpp:
 	.text       start:0x8021606C end:0x8021619C
+
+unknownGen/unknown802163DC.cpp:
+	.text       start:0x802163DC end:0x80216620
 
 unknownGen/unknown80216654.cpp:
 	.text       start:0x80216654 end:0x802167DC
@@ -4907,8 +6704,14 @@ unknownGen/unknown802194A4.cpp:
 unknownGen/unknown80219650.cpp:
 	.text       start:0x80219650 end:0x80219784
 
+unknownGen/unknown80219FB8.cpp:
+	.text       start:0x80219FB8 end:0x80219FBC
+
 unknownGen/unknown80219FBC.cpp:
 	.text       start:0x80219FBC end:0x80219FC4
+
+unknownGen/unknown8021A0D0.cpp:
+	.text       start:0x8021A0D0 end:0x8021A0D8
 
 unknownGen/unknown8021A8BC.cpp:
 	.text       start:0x8021A8BC end:0x8021A8C4
@@ -5513,11 +7316,17 @@ unknownGen/unknown802694D0.cpp:
 unknownGen/unknown8026960C.cpp:
 	.text       start:0x8026960C end:0x802697BC
 
+unknownGen/unknown80270948.cpp:
+	.text       start:0x80270948 end:0x80270950
+
 unknownGen/unknown802728B0.cpp:
 	.text       start:0x802728B0 end:0x802728B8
 
 unknownGen/unknown802734A8.cpp:
 	.text       start:0x802734A8 end:0x802734C8
+
+unknownGen/unknown8028418C.cpp:
+	.text       start:0x8028418C end:0x80284194
 
 unknownGen/unknown802842C8.cpp:
 	.text       start:0x802842C8 end:0x80284314
@@ -5735,6 +7544,9 @@ unknownGen/unknown8028725C.cpp:
 unknownGen/unknown8028726C.cpp:
 	.text       start:0x8028726C end:0x8028728C
 
+unknownGen/unknown8028728C.cpp:
+	.text       start:0x8028728C end:0x80287290
+
 unknownGen/unknown80287290.cpp:
 	.text       start:0x80287290 end:0x802872A0
 
@@ -5762,6 +7574,9 @@ unknownGen/unknown80287F8C.cpp:
 unknownGen/unknown80289914.cpp:
 	.text       start:0x80289914 end:0x80289924
 
+unknownGen/unknown80289924.cpp:
+	.text       start:0x80289924 end:0x80289930
+
 unknownGen/unknown8028B1F4.cpp:
 	.text       start:0x8028B1F4 end:0x8028B214
 
@@ -5779,6 +7594,9 @@ unknownGen/unknown8028C330.cpp:
 
 unknownGen/unknown8028C584.cpp:
 	.text       start:0x8028C584 end:0x8028C61C
+
+unknownGen/unknown8028C6FC.cpp:
+	.text       start:0x8028C6FC end:0x8028C770
 
 unknownGen/unknown8028C770.cpp:
 	.text       start:0x8028C770 end:0x8028C778
@@ -5828,14 +7646,68 @@ unknownGen/unknown8028E108.cpp:
 unknownGen/unknown8028E204.cpp:
 	.text       start:0x8028E204 end:0x8028E2C0
 
+unknownGen/unknown8028F3B8.cpp:
+	.text       start:0x8028F3B8 end:0x8028F3C0
+
+unknownGen/unknown8028F8F8.cpp:
+	.text       start:0x8028F8F8 end:0x8028F900
+
 unknownGen/unknown8028FA0C.cpp:
 	.text       start:0x8028FA0C end:0x8028FA64
+
+unknownGen/unknown8028FD68.cpp:
+	.text       start:0x8028FD68 end:0x8028FD70
+
+unknownGen/unknown8028FFDC.cpp:
+	.text       start:0x8028FFDC end:0x8028FFF4
+
+unknownGen/unknown80290000.cpp:
+	.text       start:0x80290000 end:0x80290018
 
 unknownGen/unknown80290FC8.cpp:
 	.text       start:0x80290FC8 end:0x8029102C
 
+unknownGen/unknown80293FE8.cpp:
+	.text       start:0x80293FE8 end:0x80293FF8
+
+unknownGen/unknown80294120.cpp:
+	.text       start:0x80294120 end:0x80294128
+
+unknownGen/unknown802941D0.cpp:
+	.text       start:0x802941D0 end:0x802941F0
+
+unknownGen/unknown80294208.cpp:
+	.text       start:0x80294208 end:0x80294228
+
+unknownGen/unknown802942BC.cpp:
+	.text       start:0x802942BC end:0x802942D4
+
+unknownGen/unknown802957B4.cpp:
+	.text       start:0x802957B4 end:0x802957BC
+
 unknownGen/unknown802959C4.cpp:
 	.text       start:0x802959C4 end:0x80295A04
+
+unknownGen/unknown80298F94.cpp:
+	.text       start:0x80298F94 end:0x80298FAC
+
+unknownGen/unknown8029A004.cpp:
+	.text       start:0x8029A004 end:0x8029A008
+
+unknownGen/unknown8029A2B0.cpp:
+	.text       start:0x8029A2B0 end:0x8029A2B8
+
+unknownGen/unknown8029A438.cpp:
+	.text       start:0x8029A438 end:0x8029A440
+
+unknownGen/unknown8029A6BC.cpp:
+	.text       start:0x8029A6BC end:0x8029A6C4
+
+unknownGen/unknown8029CC9C.cpp:
+	.text       start:0x8029CC9C end:0x8029CCA4
+
+unknownGen/unknown8029CDAC.cpp:
+	.text       start:0x8029CDAC end:0x8029CDB4
 
 unknownGen/unknown8029CFE8.cpp:
 	.text       start:0x8029CFE8 end:0x8029D018
@@ -5848,6 +7720,9 @@ unknownGen/unknown8029D6F0.cpp:
 
 unknownGen/unknown8029D838.cpp:
 	.text       start:0x8029D838 end:0x8029D858
+
+unknownGen/unknown8029D87C.cpp:
+	.text       start:0x8029D87C end:0x8029D880
 
 unknownGen/unknown8029D880.cpp:
 	.text       start:0x8029D880 end:0x8029D9E0
@@ -5864,11 +7739,20 @@ unknownGen/unknown8029FB60.cpp:
 unknownGen/unknown802A18B8.cpp:
 	.text       start:0x802A18B8 end:0x802A18F8
 
+unknownGen/unknown802A1EF8.cpp:
+	.text       start:0x802A1EF8 end:0x802A1F00
+
 unknownGen/unknown802A41A4.cpp:
 	.text       start:0x802A41A4 end:0x802A41C4
 
+unknownGen/unknown802A59C0.cpp:
+	.text       start:0x802A59C0 end:0x802A59C4
+
 unknownGen/unknown802A6A68.cpp:
 	.text       start:0x802A6A68 end:0x802A6AA8
+
+unknownGen/unknown802A6AB8.cpp:
+	.text       start:0x802A6AB8 end:0x802A6AC8
 
 unknownGen/unknown802A82B8.cpp:
 	.text       start:0x802A82B8 end:0x802A82D8
@@ -5889,6 +7773,12 @@ unknownGen/unknown802A8DA0.cpp:
 unknownGen/unknown802A8E78.cpp:
 	.text       start:0x802A8E78 end:0x802A8E88
 
+unknownGen/unknown802A8E88.cpp:
+	.text       start:0x802A8E88 end:0x802A8E8C
+
+unknownGen/unknown802A8ED4.cpp:
+	.text       start:0x802A8ED4 end:0x802A8ED8
+
 unknownGen/unknown802A8F7C.cpp:
 	extab       start:0x800059E0 end:0x800059E8
 	extabindex  start:0x80012E94 end:0x80012EA0
@@ -5899,6 +7789,11 @@ unknownGen/unknown802A91BC.cpp:
 	extabindex  start:0x80012EC4 end:0x80012ED0
 	.text       start:0x802A91BC end:0x802A91DC
 
+unknownGen/unknown802A9B90.cpp:
+	extab       start:0x80005A60 end:0x80005A68
+	extabindex  start:0x80012F3C end:0x80012F48
+	.text       start:0x802A9B90 end:0x802A9C0C
+
 unknownGen/unknown802A9C0C.cpp:
 	extab       start:0x80005A68 end:0x80005A70
 	extabindex  start:0x80012F48 end:0x80012F54
@@ -5906,6 +7801,18 @@ unknownGen/unknown802A9C0C.cpp:
 
 unknownGen/unknown802A9CDC.cpp:
 	.text       start:0x802A9CDC end:0x802A9CEC
+
+unknownGen/unknown802A9E68.cpp:
+	.text       start:0x802A9E68 end:0x802A9E78
+
+unknownGen/unknown802AA520.cpp:
+	.text       start:0x802AA520 end:0x802AA528
+
+unknownGen/unknown802AA5D0.cpp:
+	.text       start:0x802AA5D0 end:0x802AA5F8
+
+unknownGen/unknown802AA6E0.cpp:
+	.text       start:0x802AA6E0 end:0x802AA6E8
 
 unknownGen/unknown802AA728.cpp:
 	extab       start:0x80005AF0 end:0x80005AF8
@@ -6143,6 +8050,11 @@ unknownGen/unknown802AC790.cpp:
 	extabindex  start:0x80013458 end:0x80013470
 	.text       start:0x802AC790 end:0x802AC81C
 
+unknownGen/unknown802ACAE4.cpp:
+	extab       start:0x80005DE8 end:0x80005DF8
+	extabindex  start:0x80013488 end:0x800134A0
+	.text       start:0x802ACAE4 end:0x802ACBCC
+
 unknownGen/unknown802ACBCC.cpp:
 	extab       start:0x80005DF8 end:0x80005E10
 	extabindex  start:0x800134A0 end:0x800134C4
@@ -6220,21 +8132,44 @@ unknownGen/unknown802ADA10.cpp:
 unknownGen/unknown802ADA20.cpp:
 	.text       start:0x802ADA20 end:0x802ADA30
 
+unknownGen/unknown802ADA30.cpp:
+	.text       start:0x802ADA30 end:0x802ADA40
+
 unknownGen/unknown802ADAC0.cpp:
 	extab       start:0x80005ED0 end:0x80005ED8
 	extabindex  start:0x800135E4 end:0x800135F0
 	.text       start:0x802ADAC0 end:0x802ADAE0
 
+unknownGen/unknown802ADAE0.cpp:
+	.text       start:0x802ADAE0 end:0x802ADAE8
+
+unknownGen/unknown802AE4BC.cpp:
+	extab       start:0x80005F38 end:0x80005F40
+	extabindex  start:0x80013608 end:0x80013614
+	.text       start:0x802AE4BC end:0x802AE530
+
 unknownGen/unknown802AEAC0.cpp:
 	.text       start:0x802AEAC0 end:0x802AEAE0
 
+unknownGen/unknown802AEAE0.cpp:
+	.text       start:0x802AEAE0 end:0x802AEB24
+
 unknownGen/unknown802AEB24.cpp:
 	.text       start:0x802AEB24 end:0x802AEB34
+
+unknownGen/unknown802AEC3C.cpp:
+	.text       start:0x802AEC3C end:0x802AEC40
+
+unknownGen/unknown802AEC6C.cpp:
+	.text       start:0x802AEC6C end:0x802AEC7C
 
 unknownGen/unknown802B1118.cpp:
 	extab       start:0x800061FC end:0x80006204
 	extabindex  start:0x80013728 end:0x80013734
 	.text       start:0x802B1118 end:0x802B1138
+
+unknownGen/unknown802B1494.cpp:
+	.text       start:0x802B1494 end:0x802B1498
 
 unknownGen/unknown802B14E0.cpp:
 	.text       start:0x802B14E0 end:0x802B1500
@@ -6261,6 +8196,11 @@ unknownGen/unknown802B291C.cpp:
 	extab       start:0x8000629C end:0x800062A4
 	extabindex  start:0x80013800 end:0x8001380C
 	.text       start:0x802B291C end:0x802B2968
+
+unknownGen/unknown802B2A04.cpp:
+	extab       start:0x800062AC end:0x800062B4
+	extabindex  start:0x80013818 end:0x80013824
+	.text       start:0x802B2A04 end:0x802B2A78
 
 unknownGen/unknown802B2A78.cpp:
 	extab       start:0x800062B4 end:0x800062CC
@@ -6327,6 +8267,11 @@ unknownGen/unknown802B3464.cpp:
 	extab       start:0x80006374 end:0x8000637C
 	extabindex  start:0x80013944 end:0x80013950
 	.text       start:0x802B3464 end:0x802B34B0
+
+unknownGen/unknown802B3608.cpp:
+	extab       start:0x80006384 end:0x8000638C
+	extabindex  start:0x8001395C end:0x80013968
+	.text       start:0x802B3608 end:0x802B367C
 
 unknownGen/unknown802B3758.cpp:
 	extab       start:0x80006394 end:0x800063AC
@@ -6909,6 +8854,11 @@ unknownGen/unknown802BA200.cpp:
 	extabindex  start:0x80014514 end:0x80014520
 	.text       start:0x802BA200 end:0x802BA24C
 
+unknownGen/unknown802BA34C.cpp:
+	extab       start:0x80006B78 end:0x80006B80
+	extabindex  start:0x8001452C end:0x80014538
+	.text       start:0x802BA34C end:0x802BA3C0
+
 unknownGen/unknown802BA3C0.cpp:
 	extab       start:0x80006B80 end:0x80006B98
 	extabindex  start:0x80014538 end:0x8001455C
@@ -7156,6 +9106,11 @@ unknownGen/unknown802BD4D4.cpp:
 	extab       start:0x80006EF0 end:0x80006EF8
 	extabindex  start:0x80014A60 end:0x80014A6C
 	.text       start:0x802BD4D4 end:0x802BD520
+
+unknownGen/unknown802BD63C.cpp:
+	extab       start:0x80006F00 end:0x80006F08
+	extabindex  start:0x80014A78 end:0x80014A84
+	.text       start:0x802BD63C end:0x802BD6B0
 
 unknownGen/unknown802BD6B0.cpp:
 	extab       start:0x80006F08 end:0x80006F20
@@ -7468,6 +9423,11 @@ unknownGen/unknown802C13B4.cpp:
 	extabindex  start:0x80015168 end:0x80015174
 	.text       start:0x802C13B4 end:0x802C1400
 
+unknownGen/unknown802C1564.cpp:
+	extab       start:0x800073B0 end:0x800073B8
+	extabindex  start:0x80015180 end:0x8001518C
+	.text       start:0x802C1564 end:0x802C15D8
+
 unknownGen/unknown802C15D8.cpp:
 	extab       start:0x800073B8 end:0x800073D0
 	extabindex  start:0x8001518C end:0x800151B0
@@ -7487,6 +9447,11 @@ unknownGen/unknown802C1800.cpp:
 	extab       start:0x800073E8 end:0x800073F0
 	extabindex  start:0x800151D4 end:0x800151E0
 	.text       start:0x802C1800 end:0x802C184C
+
+unknownGen/unknown802C18D8.cpp:
+	extab       start:0x800073F8 end:0x80007400
+	extabindex  start:0x800151EC end:0x800151F8
+	.text       start:0x802C18D8 end:0x802C194C
 
 unknownGen/unknown802C194C.cpp:
 	extab       start:0x80007400 end:0x80007418
@@ -7617,6 +9582,11 @@ unknownGen/unknown802C2EF0.cpp:
 	extab       start:0x800075A8 end:0x800075B0
 	extabindex  start:0x80015474 end:0x80015480
 	.text       start:0x802C2EF0 end:0x802C2F3C
+
+unknownGen/unknown802C30A0.cpp:
+	extab       start:0x800075B8 end:0x800075C0
+	extabindex  start:0x8001548C end:0x80015498
+	.text       start:0x802C30A0 end:0x802C3114
 
 unknownGen/unknown802C3114.cpp:
 	extab       start:0x800075C0 end:0x800075D8
@@ -7909,6 +9879,11 @@ unknownGen/unknown802C63D4.cpp:
 	extabindex  start:0x80015A80 end:0x80015A8C
 	.text       start:0x802C63D4 end:0x802C6420
 
+unknownGen/unknown802C6A84.cpp:
+	extab       start:0x800079DC end:0x800079FC
+	extabindex  start:0x80015AA4 end:0x80015AD4
+	.text       start:0x802C6A84 end:0x802C6C54
+
 unknownGen/unknown802C6C54.cpp:
 	extab       start:0x800079FC end:0x80007A14
 	extabindex  start:0x80015AD4 end:0x80015AF8
@@ -8071,6 +10046,11 @@ unknownGen/unknown802C8CFC.cpp:
 	extab       start:0x80007CC4 end:0x80007CCC
 	extabindex  start:0x80015E40 end:0x80015E4C
 	.text       start:0x802C8CFC end:0x802C8D48
+
+unknownGen/unknown802C8E88.cpp:
+	extab       start:0x80007CD4 end:0x80007CDC
+	extabindex  start:0x80015E58 end:0x80015E64
+	.text       start:0x802C8E88 end:0x802C8EFC
 
 unknownGen/unknown802C8EFC.cpp:
 	extab       start:0x80007CDC end:0x80007CF4
@@ -8467,6 +10447,11 @@ unknownGen/unknown802CDF58.cpp:
 	extabindex  start:0x80016794 end:0x800167A0
 	.text       start:0x802CDF58 end:0x802CDFA4
 
+unknownGen/unknown802CE17C.cpp:
+	extab       start:0x8000830C end:0x80008314
+	extabindex  start:0x800167AC end:0x800167B8
+	.text       start:0x802CE17C end:0x802CE1F0
+
 unknownGen/unknown802CE1F0.cpp:
 	extab       start:0x80008314 end:0x8000832C
 	extabindex  start:0x800167B8 end:0x800167DC
@@ -8641,6 +10626,11 @@ unknownGen/unknown802D014C.cpp:
 	extab       start:0x8000855C end:0x80008564
 	extabindex  start:0x80016B24 end:0x80016B30
 	.text       start:0x802D014C end:0x802D0198
+
+unknownGen/unknown802D027C.cpp:
+	extab       start:0x8000856C end:0x80008574
+	extabindex  start:0x80016B3C end:0x80016B48
+	.text       start:0x802D027C end:0x802D02F0
 
 unknownGen/unknown802D02F0.cpp:
 	extab       start:0x80008574 end:0x8000858C
@@ -9045,6 +11035,11 @@ unknownGen/unknown802D4B5C.cpp:
 	extabindex  start:0x8001734C end:0x80017358
 	.text       start:0x802D4B5C end:0x802D4BA8
 
+unknownGen/unknown802D4D64.cpp:
+	extab       start:0x80008B14 end:0x80008B24
+	extabindex  start:0x80017364 end:0x8001737C
+	.text       start:0x802D4D64 end:0x802D4E4C
+
 unknownGen/unknown802D4E4C.cpp:
 	extab       start:0x80008B24 end:0x80008B3C
 	extabindex  start:0x8001737C end:0x800173A0
@@ -9217,6 +11212,11 @@ unknownGen/unknown802D6C8C.cpp:
 	extab       start:0x80008D5C end:0x80008D64
 	extabindex  start:0x800176D0 end:0x800176DC
 	.text       start:0x802D6C8C end:0x802D6CD8
+
+unknownGen/unknown802D6DBC.cpp:
+	extab       start:0x80008D6C end:0x80008D74
+	extabindex  start:0x800176E8 end:0x800176F4
+	.text       start:0x802D6DBC end:0x802D6E30
 
 unknownGen/unknown802D6E30.cpp:
 	extab       start:0x80008D74 end:0x80008D8C
@@ -10024,6 +12024,11 @@ unknownGen/unknown802DFD84.cpp:
 	extabindex  start:0x8001875C end:0x80018768
 	.text       start:0x802DFD84 end:0x802DFDD0
 
+unknownGen/unknown802DFFA8.cpp:
+	extab       start:0x80009874 end:0x8000987C
+	extabindex  start:0x80018774 end:0x80018780
+	.text       start:0x802DFFA8 end:0x802E001C
+
 unknownGen/unknown802E001C.cpp:
 	extab       start:0x8000987C end:0x80009894
 	extabindex  start:0x80018780 end:0x800187A4
@@ -10191,6 +12196,11 @@ unknownGen/unknown802E2570.cpp:
 	extab       start:0x80009B24 end:0x80009B2C
 	extabindex  start:0x80018B40 end:0x80018B4C
 	.text       start:0x802E2570 end:0x802E25BC
+
+unknownGen/unknown802E2718.cpp:
+	extab       start:0x80009B54 end:0x80009B5C
+	extabindex  start:0x80018B58 end:0x80018B64
+	.text       start:0x802E2718 end:0x802E278C
 
 unknownGen/unknown802E278C.cpp:
 	extab       start:0x80009B5C end:0x80009B74
@@ -10509,6 +12519,11 @@ unknownGen/unknown802E58D8.cpp:
 	extab       start:0x80009F64 end:0x80009F6C
 	extabindex  start:0x80019170 end:0x8001917C
 	.text       start:0x802E58D8 end:0x802E5924
+
+unknownGen/unknown802E5AA8.cpp:
+	extab       start:0x80009F74 end:0x80009F7C
+	extabindex  start:0x80019188 end:0x80019194
+	.text       start:0x802E5AA8 end:0x802E5B1C
 
 unknownGen/unknown802E5B1C.cpp:
 	extab       start:0x80009F7C end:0x80009F94
@@ -10921,8 +12936,14 @@ unknownGen/unknown802E92F0.cpp:
 unknownGen/unknown802E9330.cpp:
 	.text       start:0x802E9330 end:0x802E9370
 
+unknownGen/unknown802E9370.cpp:
+	.text       start:0x802E9370 end:0x802E9374
+
 unknownGen/unknown802E9374.cpp:
 	.text       start:0x802E9374 end:0x802E93A4
+
+unknownGen/unknown802E93A4.cpp:
+	.text       start:0x802E93A4 end:0x802E93B8
 
 unknownGen/unknown802E93B8.cpp:
 	.text       start:0x802E93B8 end:0x802E93C8
@@ -10941,6 +12962,11 @@ unknownGen/unknown802E9438.cpp:
 
 unknownGen/unknown802E9448.cpp:
 	.text       start:0x802E9448 end:0x802E9458
+
+unknownGen/unknown802E9528.cpp:
+	extab       start:0x8000A2C4 end:0x8000A2CC
+	extabindex  start:0x80019668 end:0x80019674
+	.text       start:0x802E9528 end:0x802E959C
 
 unknownGen/unknown802E9714.cpp:
 	.text       start:0x802E9714 end:0x802E9724
@@ -11128,11 +13154,32 @@ unknownGen/unknown802EA1BC.cpp:
 unknownGen/unknown802EA1CC.cpp:
 	.text       start:0x802EA1CC end:0x802EA1FC
 
+unknownGen/unknown802EB784.cpp:
+	.text       start:0x802EB784 end:0x802EB788
+
+unknownGen/unknown802EB818.cpp:
+	.text       start:0x802EB818 end:0x802EB820
+
+unknownGen/unknown802EB8BC.cpp:
+	.text       start:0x802EB8BC end:0x802EB8C8
+
+unknownGen/unknown802EB9C0.cpp:
+	.text       start:0x802EB9C0 end:0x802EB9C4
+
+unknownGen/unknown802EBC88.cpp:
+	.text       start:0x802EBC88 end:0x802EBCA8
+
+unknownGen/unknown802EE480.cpp:
+	.text       start:0x802EE480 end:0x802EE484
+
 unknownGen/unknown802EE540.cpp:
 	.text       start:0x802EE540 end:0x802EE550
 
 unknownGen/unknown802EFDA4.cpp:
 	.text       start:0x802EFDA4 end:0x802EFDB4
+
+unknownGen/unknown802EFDB4.cpp:
+	.text       start:0x802EFDB4 end:0x802EFDB8
 
 unknownGen/unknown802EFDB8.cpp:
 	.text       start:0x802EFDB8 end:0x802EFDC8
@@ -11140,11 +13187,26 @@ unknownGen/unknown802EFDB8.cpp:
 unknownGen/unknown802F2224.cpp:
 	.text       start:0x802F2224 end:0x802F2234
 
+unknownGen/unknown802F2234.cpp:
+	.text       start:0x802F2234 end:0x802F2244
+
 unknownGen/unknown802F2278.cpp:
 	.text       start:0x802F2278 end:0x802F2288
 
+unknownGen/unknown802F2288.cpp:
+	.text       start:0x802F2288 end:0x802F228C
+
 unknownGen/unknown802F2490.cpp:
 	.text       start:0x802F2490 end:0x802F24A0
+
+unknownGen/unknown802F24A0.cpp:
+	.text       start:0x802F24A0 end:0x802F24B0
+
+unknownGen/unknown802F2518.cpp:
+	.text       start:0x802F2518 end:0x802F251C
+
+unknownGen/unknown802F2624.cpp:
+	.text       start:0x802F2624 end:0x802F2628
 
 unknownGen/unknown802F29BC.cpp:
 	.text       start:0x802F29BC end:0x802F29CC
@@ -11158,11 +13220,22 @@ unknownGen/unknown802F2A64.cpp:
 unknownGen/unknown802F2A74.cpp:
 	.text       start:0x802F2A74 end:0x802F2A84
 
+unknownGen/unknown802F2BBC.cpp:
+	.text       start:0x802F2BBC end:0x802F2BC0
+
+unknownGen/unknown802F3FAC.cpp:
+	extab       start:0x8000A8BC end:0x8000A8C4
+	extabindex  start:0x80019D4C end:0x80019D58
+	.text       start:0x802F3FAC end:0x802F4020
+
 unknownGen/unknown802F4020.cpp:
 	.text       start:0x802F4020 end:0x802F4030
 
 unknownGen/unknown802F445C.cpp:
 	.text       start:0x802F445C end:0x802F446C
+
+unknownGen/unknown802F446C.cpp:
+	.text       start:0x802F446C end:0x802F4484
 
 unknownGen/unknown802F4484.cpp:
 	.text       start:0x802F4484 end:0x802F4494
@@ -11181,8 +13254,19 @@ unknownGen/unknown802F667C.cpp:
 unknownGen/unknown802F7324.cpp:
 	.text       start:0x802F7324 end:0x802F7334
 
+unknownGen/unknown802F7458.cpp:
+	extab       start:0x8000AA84 end:0x8000AA8C
+	extabindex  start:0x80019F68 end:0x80019F74
+	.text       start:0x802F7458 end:0x802F74CC
+
+unknownGen/unknown802F7D00.cpp:
+	.text       start:0x802F7D00 end:0x802F7D0C
+
 unknownGen/unknown802F825C.cpp:
 	.text       start:0x802F825C end:0x802F826C
+
+unknownGen/unknown802F8398.cpp:
+	.text       start:0x802F8398 end:0x802F839C
 
 unknownGen/unknown802FA6D8.cpp:
 	.text       start:0x802FA6D8 end:0x802FA6E8
@@ -11194,6 +13278,14 @@ unknownGen/unknown802FA6E8.cpp:
 
 unknownGen/unknown802FA8EC.cpp:
 	.text       start:0x802FA8EC end:0x802FA8FC
+
+unknownGen/unknown802FA8FC.cpp:
+	.text       start:0x802FA8FC end:0x802FA900
+
+unknownGen/unknown802FB8D0.cpp:
+	extab       start:0x8000AD04 end:0x8000AD0C
+	extabindex  start:0x8001A0AC end:0x8001A0B8
+	.text       start:0x802FB8D0 end:0x802FB944
 
 unknownGen/unknown802FC938.cpp:
 	.text       start:0x802FC938 end:0x802FC948
@@ -11207,14 +13299,28 @@ unknownGen/unknown802FC9A4.cpp:
 unknownGen/unknown802FD9B8.cpp:
 	.text       start:0x802FD9B8 end:0x802FD9C8
 
+unknownGen/unknown802FD9C8.cpp:
+	.text       start:0x802FD9C8 end:0x802FD9CC
+
 unknownGen/unknown802FD9CC.cpp:
 	.text       start:0x802FD9CC end:0x802FD9DC
+
+unknownGen/unknown802FDA08.cpp:
+	.text       start:0x802FDA08 end:0x802FDA0C
 
 unknownGen/unknown802FE194.cpp:
 	.text       start:0x802FE194 end:0x802FE1A4
 
 unknownGen/unknown802FE2C8.cpp:
 	.text       start:0x802FE2C8 end:0x802FE2D8
+
+unknownGen/unknown802FE30C.cpp:
+	.text       start:0x802FE30C end:0x802FE310
+
+unknownGen/unknown803010A8.cpp:
+	extab       start:0x8000AE5C end:0x8000AE64
+	extabindex  start:0x8001A208 end:0x8001A214
+	.text       start:0x803010A8 end:0x8030111C
 
 unknownGen/unknown80301210.cpp:
 	.text       start:0x80301210 end:0x80301230
@@ -11224,14 +13330,26 @@ unknownGen/unknown80301230.cpp:
 	extabindex  start:0x8001A220 end:0x8001A238
 	.text       start:0x80301230 end:0x80301270
 
+unknownGen/unknown80301270.cpp:
+	.text       start:0x80301270 end:0x80301278
+
 unknownGen/unknown80301278.cpp:
 	.text       start:0x80301278 end:0x80301288
 
 unknownGen/unknown80301354.cpp:
 	.text       start:0x80301354 end:0x80301364
 
+unknownGen/unknown80301364.cpp:
+	.text       start:0x80301364 end:0x80301368
+
 unknownGen/unknown80301BD0.cpp:
 	.text       start:0x80301BD0 end:0x80301BE0
+
+unknownGen/unknown80302374.cpp:
+	.text       start:0x80302374 end:0x80302378
+
+unknownGen/unknown80302558.cpp:
+	.text       start:0x80302558 end:0x8030255C
 
 unknownGen/unknown8030255C.cpp:
 	.text       start:0x8030255C end:0x8030256C
@@ -11240,6 +13358,11 @@ unknownGen/unknown803025DC.cpp:
 	extab       start:0x8000AF2C end:0x8000AF34
 	extabindex  start:0x8001A2E0 end:0x8001A2EC
 	.text       start:0x803025DC end:0x803025FC
+
+unknownGen/unknown803029FC.cpp:
+	extab       start:0x8000AF9C end:0x8000AFAC
+	extabindex  start:0x8001A2F8 end:0x8001A310
+	.text       start:0x803029FC end:0x80302AE4
 
 unknownGen/unknown80302AE4.cpp:
 	extab       start:0x8000AFAC end:0x8000AFB4
@@ -11255,13 +13378,34 @@ unknownGen/unknown80302F50.cpp:
 unknownGen/unknown80303BFC.cpp:
 	.text       start:0x80303BFC end:0x80303C0C
 
+unknownGen/unknown80303FD8.cpp:
+	extab       start:0x8000B074 end:0x8000B084
+	extabindex  start:0x8001A364 end:0x8001A37C
+	.text       start:0x80303FD8 end:0x803040C0
+
+unknownGen/unknown80304C00.cpp:
+	.text       start:0x80304C00 end:0x80304C08
+
 unknownGen/unknown80304C38.cpp:
 	extab       start:0x8000B0B4 end:0x8000B0BC
 	extabindex  start:0x8001A3C4 end:0x8001A3D0
 	.text       start:0x80304C38 end:0x80304C58
 
+unknownGen/unknown80305294.cpp:
+	extab       start:0x8000B124 end:0x8000B12C
+	extabindex  start:0x8001A3F4 end:0x8001A400
+	.text       start:0x80305294 end:0x80305308
+
+unknownGen/unknown80305E0C.cpp:
+	extab       start:0x8000B184 end:0x8000B18C
+	extabindex  start:0x8001A424 end:0x8001A430
+	.text       start:0x80305E0C end:0x80305E80
+
 unknownGen/unknown80307100.cpp:
 	.text       start:0x80307100 end:0x80307110
+
+unknownGen/unknown80307110.cpp:
+	.text       start:0x80307110 end:0x80307114
 
 unknownGen/unknown80307114.cpp:
 	.text       start:0x80307114 end:0x80307124
@@ -11269,11 +13413,68 @@ unknownGen/unknown80307114.cpp:
 unknownGen/unknown80307998.cpp:
 	.text       start:0x80307998 end:0x803079A8
 
+unknownGen/unknown80307EA8.cpp:
+	.text       start:0x80307EA8 end:0x80307EAC
+
 unknownGen/unknown80308314.cpp:
 	.text       start:0x80308314 end:0x80308324
 
+unknownGen/unknown803084B4.cpp:
+	.text       start:0x803084B4 end:0x803084B8
+
+unknownGen/unknown8030AE6C.cpp:
+	extab       start:0x8000B424 end:0x8000B42C
+	extabindex  start:0x8001A694 end:0x8001A6A0
+	.text       start:0x8030AE6C end:0x8030AEE0
+
+unknownGen/unknown8030BCB0.cpp:
+	.text       start:0x8030BCB0 end:0x8030BCB8
+
+unknownGen/unknown8030C130.cpp:
+	.text       start:0x8030C130 end:0x8030C134
+
+unknownGen/unknown8030D080.cpp:
+	.text       start:0x8030D080 end:0x8030D084
+
+unknownGen/unknown8030EFDC.cpp:
+	extab       start:0x8000B65C end:0x8000B66C
+	extabindex  start:0x8001A790 end:0x8001A7A8
+	.text       start:0x8030EFDC end:0x8030F0C4
+
+unknownGen/unknown8030F1A4.cpp:
+	extab       start:0x8000B67C end:0x8000B684
+	extabindex  start:0x8001A7C0 end:0x8001A7CC
+	.text       start:0x8030F1A4 end:0x8030F220
+
+unknownGen/unknown8030F5D8.cpp:
+	.text       start:0x8030F5D8 end:0x8030F5DC
+
+unknownGen/unknown8030F64C.cpp:
+	.text       start:0x8030F64C end:0x8030F654
+
+unknownGen/unknown8030F6C4.cpp:
+	.text       start:0x8030F6C4 end:0x8030F6C8
+
+unknownGen/unknown8030F8C4.cpp:
+	.text       start:0x8030F8C4 end:0x8030F8CC
+
 unknownGen/unknown8030F9C0.cpp:
 	.text       start:0x8030F9C0 end:0x8030FA00
+
+unknownGen/unknown80310D38.cpp:
+	extab       start:0x8000B7B4 end:0x8000B7BC
+	extabindex  start:0x8001A91C end:0x8001A928
+	.text       start:0x80310D38 end:0x80310DAC
+
+unknownGen/unknown80310F38.cpp:
+	extab       start:0x8000B7D4 end:0x8000B7DC
+	extabindex  start:0x8001A934 end:0x8001A940
+	.text       start:0x80310F38 end:0x80310FAC
+
+unknownGen/unknown803110D0.cpp:
+	extab       start:0x8000B7F4 end:0x8000B7FC
+	extabindex  start:0x8001A94C end:0x8001A958
+	.text       start:0x803110D0 end:0x80311144
 
 unknownGen/unknown80311144.cpp:
 	.text       start:0x80311144 end:0x80311174
@@ -11286,6 +13487,14 @@ unknownGen/unknown80311860.cpp:
 unknownGen/unknown80311CB0.cpp:
 	.text       start:0x80311CB0 end:0x80311CC0
 
+unknownGen/unknown80311EB0.cpp:
+	extab       start:0x8000B884 end:0x8000B88C
+	extabindex  start:0x8001AA0C end:0x8001AA18
+	.text       start:0x80311EB0 end:0x80311F24
+
+unknownGen/unknown80311F78.cpp:
+	.text       start:0x80311F78 end:0x80311F84
+
 unknownGen/unknown80312180.cpp:
 	.text       start:0x80312180 end:0x80312190
 
@@ -11295,14 +13504,23 @@ unknownGen/unknown803124B4.cpp:
 unknownGen/unknown8031298C.cpp:
 	.text       start:0x8031298C end:0x8031299C
 
+unknownGen/unknown8031299C.cpp:
+	.text       start:0x8031299C end:0x803129A0
+
 unknownGen/unknown803129A0.cpp:
 	.text       start:0x803129A0 end:0x803129B0
+
+unknownGen/unknown803129DC.cpp:
+	.text       start:0x803129DC end:0x803129E0
 
 unknownGen/unknown80312BEC.cpp:
 	.text       start:0x80312BEC end:0x80312BFC
 
 unknownGen/unknown803130C0.cpp:
 	.text       start:0x803130C0 end:0x803130D0
+
+unknownGen/unknown803130D0.cpp:
+	.text       start:0x803130D0 end:0x803130D4
 
 unknownGen/unknown80313228.cpp:
 	.text       start:0x80313228 end:0x80313238
@@ -11322,20 +13540,37 @@ unknownGen/unknown803148F4.cpp:
 unknownGen/unknown80314BF0.cpp:
 	.text       start:0x80314BF0 end:0x80314C00
 
+unknownGen/unknown80315C20.cpp:
+	extab       start:0x8000BA40 end:0x8000BA48
+	extabindex  start:0x8001AB5C end:0x8001AB68
+	.text       start:0x80315C20 end:0x80315C94
+
 unknownGen/unknown80315D1C.cpp:
 	.text       start:0x80315D1C end:0x80315D2C
+
+unknownGen/unknown80315D2C.cpp:
+	.text       start:0x80315D2C end:0x80315D30
 
 unknownGen/unknown80315D30.cpp:
 	.text       start:0x80315D30 end:0x80315D40
 
+unknownGen/unknown80315D6C.cpp:
+	.text       start:0x80315D6C end:0x80315D70
+
 unknownGen/unknown80315E00.cpp:
 	.text       start:0x80315E00 end:0x80315E10
+
+unknownGen/unknown80316244.cpp:
+	.text       start:0x80316244 end:0x8031624C
 
 unknownGen/unknown80316964.cpp:
 	.text       start:0x80316964 end:0x80316974
 
 unknownGen/unknown80317034.cpp:
 	.text       start:0x80317034 end:0x80317044
+
+unknownGen/unknown80317EA4.cpp:
+	.text       start:0x80317EA4 end:0x80317EA8
 
 unknownGen/unknown803180E8.cpp:
 	.text       start:0x803180E8 end:0x803180F8
@@ -11345,6 +13580,11 @@ unknownGen/unknown80318220.cpp:
 
 unknownGen/unknown80318288.cpp:
 	.text       start:0x80318288 end:0x80318298
+
+unknownGen/unknown803183FC.cpp:
+	extab       start:0x8000BB40 end:0x8000BB48
+	extabindex  start:0x8001AC58 end:0x8001AC64
+	.text       start:0x803183FC end:0x80318474
 
 unknownGen/unknown80318A14.cpp:
 	.text       start:0x80318A14 end:0x80318A24
@@ -11363,11 +13603,20 @@ unknownGen/unknown8031AD48.cpp:
 unknownGen/unknown8031AD58.cpp:
 	.text       start:0x8031AD58 end:0x8031AD68
 
+unknownGen/unknown8031AD68.cpp:
+	.text       start:0x8031AD68 end:0x8031AD6C
+
 unknownGen/unknown8031AD6C.cpp:
 	.text       start:0x8031AD6C end:0x8031AD7C
 
 unknownGen/unknown8031B5FC.cpp:
 	.text       start:0x8031B5FC end:0x8031B60C
+
+unknownGen/unknown8031B60C.cpp:
+	.text       start:0x8031B60C end:0x8031B614
+
+unknownGen/unknown8031B684.cpp:
+	.text       start:0x8031B684 end:0x8031B690
 
 unknownGen/unknown8031B9EC.cpp:
 	.text       start:0x8031B9EC end:0x8031B9FC
@@ -11375,17 +13624,39 @@ unknownGen/unknown8031B9EC.cpp:
 unknownGen/unknown8031BB98.cpp:
 	.text       start:0x8031BB98 end:0x8031BBA8
 
+unknownGen/unknown8031BBA8.cpp:
+	.text       start:0x8031BBA8 end:0x8031BBAC
+
 unknownGen/unknown8031BCB4.cpp:
 	.text       start:0x8031BCB4 end:0x8031BCC4
+
+unknownGen/unknown8031BD70.cpp:
+	.text       start:0x8031BD70 end:0x8031BD7C
 
 unknownGen/unknown8031C954.cpp:
 	.text       start:0x8031C954 end:0x8031C974
 
+unknownGen/unknown8031D5CC.cpp:
+	.text       start:0x8031D5CC end:0x8031D5D0
+
+unknownGen/unknown8031E0C4.cpp:
+	extab       start:0x8000BD60 end:0x8000BD68
+	extabindex  start:0x8001AED4 end:0x8001AEE0
+	.text       start:0x8031E0C4 end:0x8031E138
+
 unknownGen/unknown8031EC00.cpp:
 	.text       start:0x8031EC00 end:0x8031EC10
 
+unknownGen/unknown8031F348.cpp:
+	extab       start:0x8000BE58 end:0x8000BE60
+	extabindex  start:0x8001AF70 end:0x8001AF7C
+	.text       start:0x8031F348 end:0x8031F3BC
+
 unknownGen/unknown8031F3BC.cpp:
 	.text       start:0x8031F3BC end:0x8031F3CC
+
+unknownGen/unknown8031F828.cpp:
+	.text       start:0x8031F828 end:0x8031F82C
 
 unknownGen/unknown8031F82C.cpp:
 	.text       start:0x8031F82C end:0x8031F83C
@@ -11395,6 +13666,9 @@ unknownGen/unknown8031F908.cpp:
 
 unknownGen/unknown8031FB88.cpp:
 	.text       start:0x8031FB88 end:0x8031FB98
+
+unknownGen/unknown80322848.cpp:
+	.text       start:0x80322848 end:0x80322858
 
 unknownGen/unknown80322858.cpp:
 	.text       start:0x80322858 end:0x80322868
@@ -11429,17 +13703,36 @@ unknownGen/unknown80323150.cpp:
 unknownGen/unknown80323274.cpp:
 	.text       start:0x80323274 end:0x80323284
 
+unknownGen/unknown80323BFC.cpp:
+	extab       start:0x8000C090 end:0x8000C0A0
+	extabindex  start:0x8001B27C end:0x8001B294
+	.text       start:0x80323BFC end:0x80323CE4
+
 unknownGen/unknown80323CE4.cpp:
 	.text       start:0x80323CE4 end:0x80323CF4
+
+unknownGen/unknown803244FC.cpp:
+	extab       start:0x8000C120 end:0x8000C158
+	extabindex  start:0x8001B2AC end:0x8001B300
+	.text       start:0x803244FC end:0x80324828
 
 unknownGen/unknown80324828.cpp:
 	.text       start:0x80324828 end:0x80324838
 
+unknownGen/unknown80324838.cpp:
+	.text       start:0x80324838 end:0x80324858
+
 unknownGen/unknown80324858.cpp:
 	.text       start:0x80324858 end:0x80324868
 
+unknownGen/unknown80324868.cpp:
+	.text       start:0x80324868 end:0x8032486C
+
 unknownGen/unknown8032486C.cpp:
 	.text       start:0x8032486C end:0x8032487C
+
+unknownGen/unknown803248A8.cpp:
+	.text       start:0x803248A8 end:0x803248AC
 
 unknownGen/unknown80324AB0.cpp:
 	.text       start:0x80324AB0 end:0x80324AC0
@@ -11554,6 +13847,11 @@ unknownGen/unknown80326BD4.cpp:
 	extab       start:0x8000C318 end:0x8000C328
 	extabindex  start:0x8001B588 end:0x8001B5A0
 	.text       start:0x80326BD4 end:0x80326C60
+
+unknownGen/unknown80326E60.cpp:
+	extab       start:0x8000C330 end:0x8000C338
+	extabindex  start:0x8001B5AC end:0x8001B5B8
+	.text       start:0x80326E60 end:0x80326ED4
 
 unknownGen/unknown80326ED4.cpp:
 	extab       start:0x8000C338 end:0x8000C350
@@ -11814,6 +14112,11 @@ unknownGen/unknown8032ACB0.cpp:
 	extabindex  start:0x8001BCF0 end:0x8001BCFC
 	.text       start:0x8032ACB0 end:0x8032ACFC
 
+unknownGen/unknown8032ADE0.cpp:
+	extab       start:0x8000C818 end:0x8000C820
+	extabindex  start:0x8001BD08 end:0x8001BD14
+	.text       start:0x8032ADE0 end:0x8032AE54
+
 unknownGen/unknown8032AE54.cpp:
 	extab       start:0x8000C820 end:0x8000C838
 	extabindex  start:0x8001BD14 end:0x8001BD38
@@ -11833,6 +14136,11 @@ unknownGen/unknown8032B04C.cpp:
 	extab       start:0x8000C850 end:0x8000C858
 	extabindex  start:0x8001BD5C end:0x8001BD68
 	.text       start:0x8032B04C end:0x8032B098
+
+unknownGen/unknown8032B240.cpp:
+	extab       start:0x8000C860 end:0x8000C868
+	extabindex  start:0x8001BD74 end:0x8001BD80
+	.text       start:0x8032B240 end:0x8032B2B4
 
 unknownGen/unknown8032B2B4.cpp:
 	extab       start:0x8000C868 end:0x8000C880
@@ -11960,6 +14268,11 @@ unknownGen/unknown8032E530.cpp:
 	extabindex  start:0x8001C194 end:0x8001C1AC
 	.text       start:0x8032E530 end:0x8032E5BC
 
+unknownGen/unknown8032E884.cpp:
+	extab       start:0x8000CB40 end:0x8000CB48
+	extabindex  start:0x8001C1C4 end:0x8001C1D0
+	.text       start:0x8032E884 end:0x8032E8F8
+
 unknownGen/unknown8032E8F8.cpp:
 	extab       start:0x8000CB48 end:0x8000CB60
 	extabindex  start:0x8001C1D0 end:0x8001C1F4
@@ -12030,6 +14343,11 @@ unknownGen/unknown80330184.cpp:
 	extabindex  start:0x8001C3F8 end:0x8001C410
 	.text       start:0x80330184 end:0x80330210
 
+unknownGen/unknown8033050C.cpp:
+	extab       start:0x8000CCD8 end:0x8000CCE0
+	extabindex  start:0x8001C428 end:0x8001C434
+	.text       start:0x8033050C end:0x80330580
+
 unknownGen/unknown80330580.cpp:
 	extab       start:0x8000CCE0 end:0x8000CCF8
 	extabindex  start:0x8001C434 end:0x8001C458
@@ -12070,6 +14388,11 @@ unknownGen/unknown80331530.cpp:
 	extabindex  start:0x8001C584 end:0x8001C59C
 	.text       start:0x80331530 end:0x803315BC
 
+unknownGen/unknown803318B8.cpp:
+	extab       start:0x8000CDE0 end:0x8000CDE8
+	extabindex  start:0x8001C5B4 end:0x8001C5C0
+	.text       start:0x803318B8 end:0x8033192C
+
 unknownGen/unknown8033192C.cpp:
 	extab       start:0x8000CDE8 end:0x8000CE00
 	extabindex  start:0x8001C5C0 end:0x8001C5E4
@@ -12099,6 +14422,11 @@ unknownGen/unknown80332324.cpp:
 	extab       start:0x8000CE80 end:0x8000CE90
 	extabindex  start:0x8001C6A4 end:0x8001C6BC
 	.text       start:0x80332324 end:0x803323B0
+
+unknownGen/unknown803327E8.cpp:
+	extab       start:0x8000CEA8 end:0x8000CEB0
+	extabindex  start:0x8001C6E0 end:0x8001C6EC
+	.text       start:0x803327E8 end:0x8033285C
 
 unknownGen/unknown8033285C.cpp:
 	extab       start:0x8000CEB0 end:0x8000CEC8
@@ -12388,6 +14716,11 @@ unknownGen/unknown803368C8.cpp:
 	extabindex  start:0x8001CDDC end:0x8001CDE8
 	.text       start:0x803368C8 end:0x80336914
 
+unknownGen/unknown803369F8.cpp:
+	extab       start:0x8000D360 end:0x8000D368
+	extabindex  start:0x8001CDF4 end:0x8001CE00
+	.text       start:0x803369F8 end:0x80336A6C
+
 unknownGen/unknown80336A6C.cpp:
 	extab       start:0x8000D368 end:0x8000D380
 	extabindex  start:0x8001CE00 end:0x8001CE24
@@ -12407,6 +14740,11 @@ unknownGen/unknown80336C64.cpp:
 	extab       start:0x8000D398 end:0x8000D3A0
 	extabindex  start:0x8001CE48 end:0x8001CE54
 	.text       start:0x80336C64 end:0x80336CB0
+
+unknownGen/unknown80336E90.cpp:
+	extab       start:0x8000D3A8 end:0x8000D3B0
+	extabindex  start:0x8001CE60 end:0x8001CE6C
+	.text       start:0x80336E90 end:0x80336F04
 
 unknownGen/unknown80336F04.cpp:
 	extab       start:0x8000D3B0 end:0x8000D3C8
@@ -12697,6 +15035,11 @@ unknownGen/unknown8033A8A8.cpp:
 	extab       start:0x8000D7A0 end:0x8000D7B0
 	extabindex  start:0x8001D454 end:0x8001D46C
 	.text       start:0x8033A8A8 end:0x8033A934
+
+unknownGen/unknown8033AB0C.cpp:
+	extab       start:0x8000D7C8 end:0x8000D7D0
+	extabindex  start:0x8001D490 end:0x8001D49C
+	.text       start:0x8033AB0C end:0x8033AB80
 
 unknownGen/unknown8033AB80.cpp:
 	extab       start:0x8000D7D0 end:0x8000D7E8
@@ -13575,6 +15918,11 @@ unknownGen/unknown80344308.cpp:
 	extabindex  start:0x8001E690 end:0x8001E69C
 	.text       start:0x80344308 end:0x80344354
 
+unknownGen/unknown803446D8.cpp:
+	extab       start:0x8000E3E0 end:0x8000E3E8
+	extabindex  start:0x8001E6B4 end:0x8001E6C0
+	.text       start:0x803446D8 end:0x8034474C
+
 unknownGen/unknown8034474C.cpp:
 	extab       start:0x8000E3E8 end:0x8000E400
 	extabindex  start:0x8001E6C0 end:0x8001E6E4
@@ -13682,6 +16030,9 @@ unknownGen/unknown80345BB4.cpp:
 unknownGen/unknown80345BF4.cpp:
 	.text       start:0x80345BF4 end:0x80345C34
 
+unknownGen/unknown80345C34.cpp:
+	.text       start:0x80345C34 end:0x80345C48
+
 unknownGen/unknown80345C48.cpp:
 	.text       start:0x80345C48 end:0x80345C68
 
@@ -13784,11 +16135,20 @@ unknownGen/unknown80346F64.cpp:
 unknownGen/unknown80347B5C.cpp:
 	.text       start:0x80347B5C end:0x80347B6C
 
+unknownGen/unknown80347B6C.cpp:
+	.text       start:0x80347B6C end:0x80347B70
+
 unknownGen/unknown80347BA4.cpp:
 	.text       start:0x80347BA4 end:0x80347BB4
 
 unknownGen/unknown803481F8.cpp:
 	.text       start:0x803481F8 end:0x80348208
+
+unknownGen/unknown80348208.cpp:
+	.text       start:0x80348208 end:0x80348214
+
+unknownGen/unknown80348634.cpp:
+	.text       start:0x80348634 end:0x80348638
 
 unknownGen/unknown80348638.cpp:
 	.text       start:0x80348638 end:0x80348648
@@ -13802,14 +16162,28 @@ unknownGen/unknown8034A1B8.cpp:
 unknownGen/unknown8034B6B0.cpp:
 	.text       start:0x8034B6B0 end:0x8034B6D0
 
+unknownGen/unknown8034B6D0.cpp:
+	.text       start:0x8034B6D0 end:0x8034B6D4
+
 unknownGen/unknown8034B6D4.cpp:
 	.text       start:0x8034B6D4 end:0x8034B6F4
+
+unknownGen/unknown8034B72C.cpp:
+	.text       start:0x8034B72C end:0x8034B730
 
 unknownGen/unknown8034B8DC.cpp:
 	.text       start:0x8034B8DC end:0x8034B8EC
 
+unknownGen/unknown8034B924.cpp:
+	.text       start:0x8034B924 end:0x8034B928
+
 unknownGen/unknown8034BAD4.cpp:
 	.text       start:0x8034BAD4 end:0x8034BAE4
+
+unknownGen/unknown8034BDC8.cpp:
+	extab       start:0x8000E7E4 end:0x8000E7EC
+	extabindex  start:0x8001EB34 end:0x8001EB40
+	.text       start:0x8034BDC8 end:0x8034BE3C
 
 unknownGen/unknown8034BE3C.cpp:
 	extab       start:0x8000E7EC end:0x8000E7F4
@@ -13819,14 +16193,30 @@ unknownGen/unknown8034BE3C.cpp:
 unknownGen/unknown8034BE5C.cpp:
 	.text       start:0x8034BE5C end:0x8034BE6C
 
+unknownGen/unknown8034BEA4.cpp:
+	.text       start:0x8034BEA4 end:0x8034BEA8
+
 unknownGen/unknown8034C0E8.cpp:
 	.text       start:0x8034C0E8 end:0x8034C0F8
+
+unknownGen/unknown8034C130.cpp:
+	.text       start:0x8034C130 end:0x8034C134
 
 unknownGen/unknown8034C2E0.cpp:
 	.text       start:0x8034C2E0 end:0x8034C2F0
 
+unknownGen/unknown8034D1A0.cpp:
+	extab       start:0x8000E894 end:0x8000E89C
+	extabindex  start:0x8001EBAC end:0x8001EBB8
+	.text       start:0x8034D1A0 end:0x8034D214
+
 unknownGen/unknown8034E6CC.cpp:
 	.text       start:0x8034E6CC end:0x8034E6DC
+
+unknownGen/unknown8034EB04.cpp:
+	extab       start:0x8000E9CC end:0x8000E9D4
+	extabindex  start:0x8001EC3C end:0x8001EC48
+	.text       start:0x8034EB04 end:0x8034EB78
 
 unknownGen/unknown8034F43C.cpp:
 	.text       start:0x8034F43C end:0x8034F44C
@@ -13834,29 +16224,138 @@ unknownGen/unknown8034F43C.cpp:
 unknownGen/unknown8034F4A4.cpp:
 	.text       start:0x8034F4A4 end:0x8034F4B4
 
+unknownGen/unknown80352788.cpp:
+	extab       start:0x8000EB00 end:0x8000EB20
+	extabindex  start:0x8001EC9C end:0x8001ECCC
+	.text       start:0x80352788 end:0x80352958
+
 unknownGen/unknown80352958.cpp:
 	.text       start:0x80352958 end:0x80352968
+
+unknownGen/unknown8035C064.cpp:
+	extab       start:0x8000ECE8 end:0x8000ECF0
+	extabindex  start:0x8001EE10 end:0x8001EE1C
+	.text       start:0x8035C064 end:0x8035C0D8
+
+unknownGen/unknown80360BC0.cpp:
+	.text       start:0x80360BC0 end:0x80360BE0
+
+unknownGen/unknown80360BFC.cpp:
+	.text       start:0x80360BFC end:0x80360C0C
+
+unknownGen/unknown80360C1C.cpp:
+	.text       start:0x80360C1C end:0x80360C24
+
+unknownGen/unknown80360C3C.cpp:
+	.text       start:0x80360C3C end:0x80360C6C
+
+unknownGen/unknown80360C7C.cpp:
+	.text       start:0x80360C7C end:0x80360CBC
+
+unknownGen/unknown80360CF0.cpp:
+	.text       start:0x80360CF0 end:0x80360CF8
+
+unknownGen/unknown80360D54.cpp:
+	.text       start:0x80360D54 end:0x80360D6C
+
+unknownGen/unknown80360D7C.cpp:
+	.text       start:0x80360D7C end:0x80360D84
 
 unknownGen/unknown80360D84.cpp:
 	.text       start:0x80360D84 end:0x80360D94
 
+unknownGen/unknown80360D94.cpp:
+	.text       start:0x80360D94 end:0x80360DA4
+
 unknownGen/unknown80360DA4.cpp:
 	.text       start:0x80360DA4 end:0x80360DB4
+
+unknownGen/unknown80360DD4.cpp:
+	.text       start:0x80360DD4 end:0x80360DF4
+
+unknownGen/unknown80360E04.cpp:
+	.text       start:0x80360E04 end:0x80360E1C
+
+unknownGen/unknown80360E54.cpp:
+	.text       start:0x80360E54 end:0x80360E6C
+
+unknownGen/unknown80360F18.cpp:
+	extab       start:0x8000EDC0 end:0x8000EDC8
+	extabindex  start:0x8001EE94 end:0x8001EEA0
+	.text       start:0x80360F18 end:0x80360F94
+
+unknownGen/unknown80360FCC.cpp:
+	.text       start:0x80360FCC end:0x80360FD4
+
+unknownGen/unknown80361010.cpp:
+	.text       start:0x80361010 end:0x80361030
+
+unknownGen/unknown80361040.cpp:
+	.text       start:0x80361040 end:0x80361060
+
+unknownGen/unknown80361078.cpp:
+	.text       start:0x80361078 end:0x803610C8
+
+unknownGen/unknown803610EC.cpp:
+	.text       start:0x803610EC end:0x803610F4
+
+unknownGen/unknown8036110C.cpp:
+	.text       start:0x8036110C end:0x80361154
 
 unknownGen/unknown80361154.cpp:
 	.text       start:0x80361154 end:0x80361164
 
+unknownGen/unknown8036118C.cpp:
+	.text       start:0x8036118C end:0x8036119C
+
+unknownGen/unknown803611B8.cpp:
+	.text       start:0x803611B8 end:0x803611C8
+
+unknownGen/unknown803611F4.cpp:
+	.text       start:0x803611F4 end:0x80361244
+
+unknownGen/unknown80361254.cpp:
+	.text       start:0x80361254 end:0x8036126C
+
 unknownGen/unknown8036126C.cpp:
 	.text       start:0x8036126C end:0x8036127C
+
+unknownGen/unknown80361DA8.cpp:
+	extab       start:0x8000EF64 end:0x8000EFBC
+	extabindex  start:0x8001EED0 end:0x8001EF54
+	.text       start:0x80361DA8 end:0x803622A4
 
 unknownGen/unknown803622A4.cpp:
 	.text       start:0x803622A4 end:0x803622B4
 
+unknownGen/unknown8036316C.cpp:
+	.text       start:0x8036316C end:0x8036317C
+
+unknownGen/unknown80363FC4.cpp:
+	extab       start:0x8000F0A4 end:0x8000F0AC
+	extabindex  start:0x8001F020 end:0x8001F02C
+	.text       start:0x80363FC4 end:0x80364038
+
+unknownGen/unknown803677A4.cpp:
+	extab       start:0x8000F234 end:0x8000F24C
+	extabindex  start:0x8001F0BC end:0x8001F0E0
+	.text       start:0x803677A4 end:0x80367900
+
 unknownGen/unknown8036896C.cpp:
 	.text       start:0x8036896C end:0x8036897C
 
+unknownGen/unknown80368FA0.cpp:
+	extab       start:0x8000F350 end:0x8000F368
+	extabindex  start:0x8001F14C end:0x8001F170
+	.text       start:0x80368FA0 end:0x803690FC
+
 unknownGen/unknown803690FC.cpp:
 	.text       start:0x803690FC end:0x8036910C
+
+unknownGen/unknown8036B09C.cpp:
+	extab       start:0x8000F448 end:0x8000F458
+	extabindex  start:0x8001F194 end:0x8001F1AC
+	.text       start:0x8036B09C end:0x8036B184
 
 unknownGen/unknown8036B184.cpp:
 	.text       start:0x8036B184 end:0x8036B194
@@ -13864,11 +16363,82 @@ unknownGen/unknown8036B184.cpp:
 unknownGen/unknown8036B268.cpp:
 	.text       start:0x8036B268 end:0x8036B278
 
+unknownGen/unknown8036CAF0.cpp:
+	extab       start:0x8000F5D0 end:0x8000F608
+	extabindex  start:0x8001F26C end:0x8001F2C0
+	.text       start:0x8036CAF0 end:0x8036CE1C
+
+unknownGen/unknown8036D93C.cpp:
+	extab       start:0x8000F6A0 end:0x8000F6B0
+	extabindex  start:0x8001F2FC end:0x8001F314
+	.text       start:0x8036D93C end:0x8036DA28
+
+unknownGen/unknown803714B0.cpp:
+	extab       start:0x8000F7D8 end:0x8000F7E0
+	extabindex  start:0x8001F404 end:0x8001F410
+	.text       start:0x803714B0 end:0x80371524
+
+unknownGen/unknown803781CC.cpp:
+	.text       start:0x803781CC end:0x803781D4
+
+unknownGen/unknown80378234.cpp:
+	.text       start:0x80378234 end:0x80378244
+
+unknownGen/unknown80378268.cpp:
+	.text       start:0x80378268 end:0x80378270
+
+unknownGen/unknown80378280.cpp:
+	.text       start:0x80378280 end:0x80378290
+
+unknownGen/unknown8037841C.cpp:
+	.text       start:0x8037841C end:0x80378424
+
+unknownGen/unknown803784D0.cpp:
+	.text       start:0x803784D0 end:0x803784E0
+
+unknownGen/unknown8037859C.cpp:
+	.text       start:0x8037859C end:0x803785A4
+
+unknownGen/unknown803785C0.cpp:
+	.text       start:0x803785C0 end:0x803785D0
+
+unknownGen/unknown8037860C.cpp:
+	.text       start:0x8037860C end:0x80378624
+
+unknownGen/unknown80378634.cpp:
+	.text       start:0x80378634 end:0x8037864C
+
+unknownGen/unknown8037865C.cpp:
+	.text       start:0x8037865C end:0x8037866C
+
+unknownGen/unknown803786A4.cpp:
+	.text       start:0x803786A4 end:0x803786BC
+
+unknownGen/unknown803786F4.cpp:
+	.text       start:0x803786F4 end:0x8037870C
+
+unknownGen/unknown80378744.cpp:
+	.text       start:0x80378744 end:0x8037875C
+
+unknownGen/unknown80378794.cpp:
+	.text       start:0x80378794 end:0x803787B4
+
+unknownGen/unknown803787E8.cpp:
+	.text       start:0x803787E8 end:0x80378800
+
 unknownGen/unknown80378800.cpp:
 	.text       start:0x80378800 end:0x80378810
 
+unknownGen/unknown80378810.cpp:
+	.text       start:0x80378810 end:0x80378818
+
 unknownGen/unknown80379148.cpp:
 	.text       start:0x80379148 end:0x80379158
+
+unknownGen/unknown8037967C.cpp:
+	extab       start:0x8000FBEC end:0x8000FBF4
+	extabindex  start:0x8001F4E8 end:0x8001F4F4
+	.text       start:0x8037967C end:0x803796F0
 
 unknownGen/unknown803796F0.cpp:
 	.text       start:0x803796F0 end:0x80379700
@@ -13878,16 +16448,96 @@ unknownGen/unknown8037CF8C.cpp:
 	extabindex  start:0x8001F50C end:0x8001F518
 	.text       start:0x8037CF8C end:0x8037CFAC
 
+unknownGen/unknown8037CFAC.cpp:
+	.text       start:0x8037CFAC end:0x8037CFC4
+
 unknownGen/unknown8037CFC4.cpp:
 	extab       start:0x8000FC34 end:0x8000FC3C
 	extabindex  start:0x8001F518 end:0x8001F524
 	.text       start:0x8037CFC4 end:0x8037CFE4
 
+unknownGen/unknown8037CFE4.cpp:
+	.text       start:0x8037CFE4 end:0x8037CFEC
+
+unknownGen/unknown8037D05C.cpp:
+	.text       start:0x8037D05C end:0x8037D07C
+
+unknownGen/unknown8037D08C.cpp:
+	.text       start:0x8037D08C end:0x8037D0B4
+
+unknownGen/unknown8037D0C4.cpp:
+	.text       start:0x8037D0C4 end:0x8037D0CC
+
+unknownGen/unknown8037D0F0.cpp:
+	.text       start:0x8037D0F0 end:0x8037D100
+
+unknownGen/unknown8037D118.cpp:
+	.text       start:0x8037D118 end:0x8037D120
+
+unknownGen/unknown8037D154.cpp:
+	.text       start:0x8037D154 end:0x8037D16C
+
 unknownGen/unknown8037D16C.cpp:
 	.text       start:0x8037D16C end:0x8037D17C
 
+unknownGen/unknown8037E638.cpp:
+	extab       start:0x8000FF28 end:0x8000FF30
+	extabindex  start:0x8001F554 end:0x8001F560
+	.text       start:0x8037E638 end:0x8037E6AC
+
 unknownGen/unknown8037E6AC.cpp:
 	.text       start:0x8037E6AC end:0x8037E6BC
+
+unknownGen/unknown8037F4A0.cpp:
+	extab       start:0x8000FFD0 end:0x80010008
+	extabindex  start:0x8001F590 end:0x8001F5E4
+	.text       start:0x8037F4A0 end:0x8037F7CC
+
+unknownGen/unknown8037FE30.cpp:
+	extab       start:0x80010050 end:0x80010068
+	extabindex  start:0x8001F5F0 end:0x8001F614
+	.text       start:0x8037FE30 end:0x8037FF8C
+
+unknownGen/unknown803815C8.cpp:
+	extab       start:0x800100C8 end:0x800100D8
+	extabindex  start:0x8001F620 end:0x8001F638
+	.text       start:0x803815C8 end:0x803816B0
+
+unknownGen/unknown80383EFC.cpp:
+	extab       start:0x8001039C end:0x800103A4
+	extabindex  start:0x8001F6B0 end:0x8001F6BC
+	.text       start:0x80383EFC end:0x80383F70
+
+unknownGen/unknown80384310.cpp:
+	extab       start:0x800103FC end:0x80010404
+	extabindex  start:0x8001F6D4 end:0x8001F6E0
+	.text       start:0x80384310 end:0x80384384
+
+unknownGen/unknown80387888.cpp:
+	.text       start:0x80387888 end:0x8038788C
+
+unknownGen/unknown803878B8.cpp:
+	.text       start:0x803878B8 end:0x803878D0
+
+unknownGen/unknown803896EC.cpp:
+	extab       start:0x8001080C end:0x80010814
+	extabindex  start:0x8001F8CC end:0x8001F8D8
+	.text       start:0x803896EC end:0x80389760
+
+unknownGen/unknown8038B7A0.cpp:
+	extab       start:0x80010ACC end:0x80010AD4
+	extabindex  start:0x8001F8FC end:0x8001F908
+	.text       start:0x8038B7A0 end:0x8038B814
+
+unknownGen/unknown8038C2A8.cpp:
+	extab       start:0x80010B64 end:0x80010B6C
+	extabindex  start:0x8001F95C end:0x8001F968
+	.text       start:0x8038C2A8 end:0x8038C31C
+
+unknownGen/unknown8038D2F4.cpp:
+	extab       start:0x80010BF4 end:0x80010BFC
+	extabindex  start:0x8001F974 end:0x8001F980
+	.text       start:0x8038D2F4 end:0x8038D368
 
 unknownGen/unknown80390328.cpp:
 	.text       start:0x80390328 end:0x803903D8
@@ -13919,6 +16569,51 @@ unknownGen/unknown8039330C.cpp:
 unknownGen/unknown8039333C.cpp:
 	.text       start:0x8039333C end:0x8039334C
 
+unknownGen/unknown80393A8C.cpp:
+	extab       start:0x800112E0 end:0x800112F0
+	extabindex  start:0x8001FA94 end:0x8001FAAC
+	.text       start:0x80393A8C end:0x80393B74
+
+unknownGen/unknown80394E68.cpp:
+	extab       start:0x80011460 end:0x80011478
+	extabindex  start:0x8001FAB8 end:0x8001FADC
+	.text       start:0x80394E68 end:0x80394FC4
+
+unknownGen/unknown80395C3C.cpp:
+	extab       start:0x800114E0 end:0x800114E8
+	extabindex  start:0x8001FAE8 end:0x8001FAF4
+	.text       start:0x80395C3C end:0x80395CB0
+
+unknownGen/unknown80397A48.cpp:
+	extab       start:0x80011648 end:0x80011650
+	extabindex  start:0x8001FB0C end:0x8001FB18
+	.text       start:0x80397A48 end:0x80397ABC
+
+unknownGen/unknown8039882C.cpp:
+	extab       start:0x800116C8 end:0x800116D0
+	extabindex  start:0x8001FB48 end:0x8001FB54
+	.text       start:0x8039882C end:0x803988A0
+
+unknownGen/unknown803991B8.cpp:
+	extab       start:0x80011748 end:0x80011760
+	extabindex  start:0x8001FB60 end:0x8001FB84
+	.text       start:0x803991B8 end:0x80399314
+
+unknownGen/unknown80399B68.cpp:
+	extab       start:0x800117A8 end:0x800117C0
+	extabindex  start:0x8001FB90 end:0x8001FBB4
+	.text       start:0x80399B68 end:0x80399CC4
+
+unknownGen/unknown8039DD14.cpp:
+	extab       start:0x80011B00 end:0x80011B08
+	extabindex  start:0x8001FC20 end:0x8001FC2C
+	.text       start:0x8039DD14 end:0x8039DD88
+
+unknownGen/unknown8039FF08.cpp:
+	extab       start:0x80011D18 end:0x80011D30
+	extabindex  start:0x8001FC80 end:0x8001FCA4
+	.text       start:0x8039FF08 end:0x803A0064
+
 unknownGen/unknown803A6D44.cpp:
 	.text       start:0x803A6D44 end:0x803A6E64
 
@@ -13928,8 +16623,18 @@ unknownGen/unknown803AA658.cpp:
 unknownGen/unknown803AA970.cpp:
 	.text       start:0x803AA970 end:0x803AA9A0
 
+unknownGen/unknown803AB450.cpp:
+	extab       start:0x80012878 end:0x80012890
+	extabindex  start:0x8001FE9C end:0x8001FEC0
+	.text       start:0x803AB450 end:0x803AB5AC
+
 unknownGen/unknown803AC43C.cpp:
 	.text       start:0x803AC43C end:0x803AC44C
+
+unknownGen/unknown803AC7E4.cpp:
+	extab       start:0x80012910 end:0x80012918
+	extabindex  start:0x8001FF08 end:0x8001FF14
+	.text       start:0x803AC7E4 end:0x803AC858
 
 unknownGen/unknown803B0680.cpp:
 	.text       start:0x803B0680 end:0x803B06A0
@@ -13943,6 +16648,11 @@ unknownGen/unknown803B17FC.cpp:
 unknownGen/unknown803B180C.cpp:
 	.text       start:0x803B180C end:0x803B184C
 
+unknownGen/unknown803B34EC.cpp:
+	extab       start:0x80012AD0 end:0x80012AD8
+	extabindex  start:0x80020094 end:0x800200A0
+	.text       start:0x803B34EC end:0x803B3560
+
 unknownGen/unknown803B36C8.cpp:
 	.text       start:0x803B36C8 end:0x803B36D8
 
@@ -13955,8 +16665,41 @@ unknownGen/unknown803B3C60.cpp:
 unknownGen/unknown803B4194.cpp:
 	.text       start:0x803B4194 end:0x803B41A4
 
+unknownGen/unknown803B4294.cpp:
+	.text       start:0x803B4294 end:0x803B4298
+
 unknownGen/unknown803B554C.cpp:
 	.text       start:0x803B554C end:0x803B556C
+
+unknownGen/unknown803B5CFC.cpp:
+	.text       start:0x803B5CFC end:0x803B5D0C
+
+unknownGen/unknown803B5D14.cpp:
+	.text       start:0x803B5D14 end:0x803B5D18
+
+unknownGen/unknown803C4950.cpp:
+	.text       start:0x803C4950 end:0x803C4958
+
+unknownGen/unknown803C5F60.cpp:
+	.text       start:0x803C5F60 end:0x803C5F70
+
+unknownGen/unknown803C603C.cpp:
+	.text       start:0x803C603C end:0x803C6044
+
+unknownGen/unknown803C6050.cpp:
+	.text       start:0x803C6050 end:0x803C6068
+
+unknownGen/unknown803C663C.cpp:
+	.text       start:0x803C663C end:0x803C6644
+
+unknownGen/unknown803C6A6C.cpp:
+	.text       start:0x803C6A6C end:0x803C6A74
+
+unknownGen/unknown803C6BD4.cpp:
+	.text       start:0x803C6BD4 end:0x803C6BD8
+
+unknownGen/unknown803C7D6C.cpp:
+	.text       start:0x803C7D6C end:0x803C7D70
 
 unknownGen/unknown803C7E1C.cpp:
 	.text       start:0x803C7E1C end:0x803C7E5C
@@ -13964,17 +16707,77 @@ unknownGen/unknown803C7E1C.cpp:
 unknownGen/unknown803C9678.cpp:
 	.text       start:0x803C9678 end:0x803C9698
 
+unknownGen/unknown803CA910.cpp:
+	.text       start:0x803CA910 end:0x803CA918
+
+unknownGen/unknown803CABC0.cpp:
+	.text       start:0x803CABC0 end:0x803CABC8
+
+unknownGen/unknown803CB97C.cpp:
+	.text       start:0x803CB97C end:0x803CB980
+
+unknownGen/unknown803CDD3C.cpp:
+	.text       start:0x803CDD3C end:0x803CDD40
+
+unknownGen/unknown803CFF90.cpp:
+	.text       start:0x803CFF90 end:0x803CFF94
+
+unknownGen/unknown803D59D4.cpp:
+	.text       start:0x803D59D4 end:0x803D59D8
+
+unknownGen/unknown803D5A6C.cpp:
+	.text       start:0x803D5A6C end:0x803D5A70
+
+unknownGen/unknown803D6CE4.cpp:
+	.text       start:0x803D6CE4 end:0x803D6D0C
+
+unknownGen/unknown803E3924.cpp:
+	.text       start:0x803E3924 end:0x803E392C
+
 unknownGen/unknown803E4930.cpp:
 	.text       start:0x803E4930 end:0x803E4950
+
+unknownGen/unknown803E4BDC.cpp:
+	.text       start:0x803E4BDC end:0x803E4BE4
+
+unknownGen/unknown803E4E40.cpp:
+	.text       start:0x803E4E40 end:0x803E4E48
+
+unknownGen/unknown803E4F48.cpp:
+	.text       start:0x803E4F48 end:0x803E4F58
+
+unknownGen/unknown803E66C4.cpp:
+	.text       start:0x803E66C4 end:0x803E66C8
 
 unknownGen/unknown803E80D0.cpp:
 	.text       start:0x803E80D0 end:0x803E815C
 
+unknownGen/unknown803E8544.cpp:
+	.text       start:0x803E8544 end:0x803E854C
+
+unknownGen/unknown803E85F4.cpp:
+	.text       start:0x803E85F4 end:0x803E8624
+
+unknownGen/unknown803E8650.cpp:
+	.text       start:0x803E8650 end:0x803E8660
+
+unknownGen/unknown803E8838.cpp:
+	.text       start:0x803E8838 end:0x803E8858
+
 unknownGen/unknown803E88AC.cpp:
 	.text       start:0x803E88AC end:0x803E88CC
 
+unknownGen/unknown803E8F98.cpp:
+	.text       start:0x803E8F98 end:0x803E8FA0
+
 unknownGen/unknown803EA1E4.cpp:
 	.text       start:0x803EA1E4 end:0x803EA204
+
+unknownGen/unknown803EA8C0.cpp:
+	.text       start:0x803EA8C0 end:0x803EA8C8
+
+unknownGen/unknown803EA8D8.cpp:
+	.text       start:0x803EA8D8 end:0x803EA8E8
 
 unknownGen/unknown803EEF70.cpp:
 	.text       start:0x803EEF70 end:0x803EEF90
@@ -13982,8 +16785,41 @@ unknownGen/unknown803EEF70.cpp:
 unknownGen/unknown803F1F9C.cpp:
 	.text       start:0x803F1F9C end:0x803F1FBC
 
+unknownGen/unknown803F2FDC.cpp:
+	.text       start:0x803F2FDC end:0x803F2FEC
+
 unknownGen/unknown803F3BC8.cpp:
 	.text       start:0x803F3BC8 end:0x803F3BE8
+
+unknownGen/unknown803F4924.cpp:
+	.text       start:0x803F4924 end:0x803F4928
+
+unknownGen/unknown803F5028.cpp:
+	.text       start:0x803F5028 end:0x803F5030
+
+unknownGen/unknown803F50D0.cpp:
+	.text       start:0x803F50D0 end:0x803F50F8
+
+unknownGen/unknown803F5208.cpp:
+	.text       start:0x803F5208 end:0x803F5218
+
+unknownGen/unknown803F52DC.cpp:
+	.text       start:0x803F52DC end:0x803F52E4
+
+unknownGen/unknown803F53F0.cpp:
+	.text       start:0x803F53F0 end:0x803F5420
+
+unknownGen/unknown803F5514.cpp:
+	.text       start:0x803F5514 end:0x803F5524
+
+unknownGen/unknown803F60B8.cpp:
+	.text       start:0x803F60B8 end:0x803F60C8
+
+unknownGen/unknown803F6128.cpp:
+	.text       start:0x803F6128 end:0x803F6130
+
+unknownGen/unknown803F9D90.cpp:
+	.text       start:0x803F9D90 end:0x803F9D98
 
 unknownGen/unknown803F9D98.cpp:
 	.text       start:0x803F9D98 end:0x803F9DB8
@@ -14006,14 +16842,26 @@ unknownGen/unknown803FA550.cpp:
 unknownGen/unknown803FA5D0.cpp:
 	.text       start:0x803FA5D0 end:0x803FA5F0
 
+unknownGen/unknown803FA668.cpp:
+	.text       start:0x803FA668 end:0x803FA684
+
+unknownGen/unknown803FAEB4.cpp:
+	.text       start:0x803FAEB4 end:0x803FAEBC
+
 unknownGen/unknown803FAEBC.cpp:
 	.text       start:0x803FAEBC end:0x803FAEFC
+
+unknownGen/unknown803FAEFC.cpp:
+	.text       start:0x803FAEFC end:0x803FAF04
 
 unknownGen/unknown803FAF04.cpp:
 	.text       start:0x803FAF04 end:0x803FAF24
 
 unknownGen/unknown803FAF4C.cpp:
 	.text       start:0x803FAF4C end:0x803FAF7C
+
+unknownGen/unknown803FF4BC.cpp:
+	.text       start:0x803FF4BC end:0x803FF4CC
 
 unknownGen/unknown80402E5C.cpp:
 	.text       start:0x80402E5C end:0x80402EB0
@@ -14225,20 +17073,53 @@ unknownGen/unknown80409AA8.cpp:
 unknownGen/unknown80409AB8.cpp:
 	.text       start:0x80409AB8 end:0x80409AE8
 
+unknownGen/unknown80409AE8.cpp:
+	.text       start:0x80409AE8 end:0x80409AF4
+
 unknownGen/unknown80409AF4.cpp:
 	.text       start:0x80409AF4 end:0x80409B04
+
+unknownGen/unknown80409B04.cpp:
+	.text       start:0x80409B04 end:0x80409B14
 
 unknownGen/unknown80409B14.cpp:
 	.text       start:0x80409B14 end:0x80409B24
 
+unknownGen/unknown80409B24.cpp:
+	.text       start:0x80409B24 end:0x80409B28
+
 unknownGen/unknown80409D24.cpp:
 	.text       start:0x80409D24 end:0x80409D34
+
+unknownGen/unknown80409D34.cpp:
+	.text       start:0x80409D34 end:0x80409D44
 
 unknownGen/unknown8040A1F8.cpp:
 	.text       start:0x8040A1F8 end:0x8040A208
 
 unknownGen/unknown8040C598.cpp:
 	.text       start:0x8040C598 end:0x8040C5A8
+
+unknownGen/unknown8040C5A8.cpp:
+	.text       start:0x8040C5A8 end:0x8040C5AC
+
+unknownGen/unknown8040CA04.cpp:
+	.text       start:0x8040CA04 end:0x8040CA08
+
+unknownGen/unknown8040E288.cpp:
+	.text       start:0x8040E288 end:0x8040E28C
+
+unknownGen/unknown8040E534.cpp:
+	.text       start:0x8040E534 end:0x8040E544
+
+unknownGen/unknown8040E63C.cpp:
+	.text       start:0x8040E63C end:0x8040E650
+
+unknownGen/unknown8040E7D8.cpp:
+	.text       start:0x8040E7D8 end:0x8040E7DC
+
+unknownGen/unknown8040EB38.cpp:
+	.text       start:0x8040EB38 end:0x8040EB48
 
 unknownGen/unknown8040EB8C.cpp:
 	.text       start:0x8040EB8C end:0x8040EB9C
@@ -14249,11 +17130,26 @@ unknownGen/unknown8040EB9C.cpp:
 unknownGen/unknown8040EBEC.cpp:
 	.text       start:0x8040EBEC end:0x8040EBFC
 
+unknownGen/unknown8040EDC4.cpp:
+	.text       start:0x8040EDC4 end:0x8040EDD0
+
+unknownGen/unknown8040EDE8.cpp:
+	.text       start:0x8040EDE8 end:0x8040EDEC
+
 unknownGen/unknown8040EE04.cpp:
 	.text       start:0x8040EE04 end:0x8040EE24
 
+unknownGen/unknown8040F990.cpp:
+	.text       start:0x8040F990 end:0x8040F994
+
 unknownGen/unknown80410760.cpp:
 	.text       start:0x80410760 end:0x80410770
+
+unknownGen/unknown80410870.cpp:
+	.text       start:0x80410870 end:0x80410878
+
+unknownGen/unknown80411040.cpp:
+	.text       start:0x80411040 end:0x80411044
 
 unknownGen/unknown80412A10.cpp:
 	.text       start:0x80412A10 end:0x80412A50
@@ -14261,8 +17157,17 @@ unknownGen/unknown80412A10.cpp:
 unknownGen/unknown80412A50.cpp:
 	.text       start:0x80412A50 end:0x80412A60
 
+unknownGen/unknown80412B5C.cpp:
+	.text       start:0x80412B5C end:0x80412B60
+
+unknownGen/unknown80412E18.cpp:
+	.text       start:0x80412E18 end:0x80412E1C
+
 unknownGen/unknown80412E1C.cpp:
 	.text       start:0x80412E1C end:0x80412E2C
+
+unknownGen/unknown80412E2C.cpp:
+	.text       start:0x80412E2C end:0x80412E3C
 
 unknownGen/unknown80412E3C.cpp:
 	.text       start:0x80412E3C end:0x80412E4C

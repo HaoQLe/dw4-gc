@@ -3,7 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
-void fn_80024334();
+void *fn_800237D0();
+void fn_800243F4();
 void fn_8002907C();
 void fn_80029694();
 void *fn_80029E64(void *);
@@ -13,8 +14,12 @@ void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void fn_80066B08();
 extern char lbl_804633A8[];
 extern char lbl_804633C4[];
+extern char lbl_804633D4[];
+extern char lbl_804633E4[];
+extern char lbl_80470D7C[];
 extern char lbl_80472FA0[];
 extern char lbl_80476BB4[];
 extern char lbl_80476C18[];
@@ -43,6 +48,11 @@ void fn_800240CC();
 void fn_800240F4();
 void *fn_80024160();
 void *fn_80024180();
+void *fn_800241C0();
+void *fn_800241FC();
+void fn_80024334();
+void fn_8002435C();
+void *fn_800243D4();
 }
 struct UnknownGenObject80023EB8_0 {
  void *unknown00;
@@ -51,6 +61,20 @@ struct UnknownGenObject80023EB8_0 {
 struct UnknownGenObject8002405C_0 {
  void *unknown00;
  char unknown04[20];
+};
+struct UnknownGenRoot800241FC {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot800241FC(){fn_8006665C(this);}
+};
+struct UnknownGenObject800241FC : UnknownGenRoot800241FC {
+ char unknown04[24];
+ UnknownGenRefMember unknown1C;
+ UnknownGenRefMember unknown20;
+ UnknownGenRefMember unknown24;
+ UnknownGenRefMember unknown28;
+ char unknown2C[12];
+ inline ~UnknownGenObject800241FC(){unknown00=lbl_80470D7C;}
 };
 extern "C" {
 void *fn_80023E20(){return fn_8003AF84();}
@@ -116,5 +140,22 @@ void *fn_800241C0(){
  if(!lbl_80561538 || !(reinterpret_cast<unsigned int *>(lbl_80561538)[0x24/4]&4)) fn_80024334();
  return lbl_80561538;
 }
+void *fn_800241FC(){
+ UnknownGenObject800241FC object;
+ object.unknown00=lbl_80470D7C;
+ object.unknown1C.value=0;
+ object.unknown20.value=0;
+ object.unknown24.value=0;
+ object.unknown28.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_80024334(){
+ fn_80066188((int)fn_8002435C);
+}
+void fn_8002435C(){
+ fn_80021B94();
+ fn_80066204(0,(int)&lbl_80561538,(int)fn_80066B08,(int)fn_800237D0,(int)fn_800243D4,(int)lbl_804633E4,44,(int)fn_800241FC,(int)fn_800243F4,0,(int)lbl_804633D4);
+}
+void *fn_800243D4(){return fn_800241C0();}
 }
 #pragma pop

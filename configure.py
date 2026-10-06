@@ -338,7 +338,7 @@ generated_units = (
 )
 
 # Generated units: 'eh' functions own exception-table entries; 'nosdata' code avoids small-data addressing;
-# 'speed' code was optimized for speed (-O4,p) rather than size.
+# 'speed' code was optimized for speed (-O4,p) rather than size; 'lmw' code saves registers with stmw/lmw.
 def GeneratedObject(unit: List[str]) -> Object:
     flags = unit[3].split(",") if len(unit) > 3 else []
     cflags = list(cflags_engine_size)
@@ -349,6 +349,8 @@ def GeneratedObject(unit: List[str]) -> Object:
         cflags += ["-sdata 0", "-sdata2 0"]
     if "speed" in flags:
         cflags = [("-O4,p" if flag == "-O4,s" else flag) for flag in cflags]
+    if "lmw" in flags:
+        cflags += ["-use_lmw_stmw on"]
     return Object(Matching, unit[0], cflags=cflags)
 
 # Helper function for Dolphin libraries

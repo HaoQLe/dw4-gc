@@ -8,9 +8,11 @@ void fn_802B1AC8();
 void *fn_802B2E3C();
 void *fn_802BACB4();
 void fn_802BAD00();
+void fn_802BB050();
 void fn_802E3D20();
 extern char lbl_8041D9F0[];
 extern char lbl_805347F8[];
+extern void *lbl_805347FC;
 void fn_802BAE78();
 void *fn_802BAEE4();
 }
@@ -23,5 +25,9 @@ void fn_802BAE78(){
  fn_80066204(0,(int)lbl_805347F8,(int)fn_802E3D20,(int)fn_802B2E3C,(int)fn_802BAEE4,(int)lbl_8041D9F0,28,(int)fn_802BAD00,0,0,0);
 }
 void *fn_802BAEE4(){return fn_802BACB4();}
+void *fn_802BAF04(){
+ if(!lbl_805347FC || !(reinterpret_cast<unsigned int *>(lbl_805347FC)[0x24/4]&4)) fn_802BB050();
+ return lbl_805347FC;
+}
 }
 #pragma pop

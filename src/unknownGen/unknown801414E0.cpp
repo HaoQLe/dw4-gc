@@ -9,12 +9,18 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013B2B0();
-void fn_80141778();
+void *fn_8013B680();
+void fn_80141834();
 void fn_80142038();
+void fn_80146870();
 extern char lbl_8049E0FC[];
+extern char lbl_8049E110[];
+extern char lbl_804A5EC4[];
 extern char lbl_804A6460[];
 extern char lbl_804AA0F4[];
+extern char lbl_804AA1C0[];
 extern char lbl_804AA22C[];
+extern char lbl_8055F928[8];
 extern void *lbl_805621F4;
 extern void *lbl_8056403C;
 extern void *lbl_80564040;
@@ -23,10 +29,26 @@ void *fn_80141558();
 void fn_801415B0();
 void fn_801415D8();
 void *fn_80141640();
+void *fn_8014169C();
+void *fn_801416D8();
+void fn_80141778();
+void fn_801417A0();
+void *fn_80141814();
 }
 struct UnknownGenObject80141558_0 {
  void *unknown00;
  char unknown04[36];
+};
+struct UnknownGenRoot801416D8 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot801416D8(){fn_8006665C(this);}
+};
+struct UnknownGenObject801416D8 : UnknownGenRoot801416D8 {
+ char unknown04[28];
+ UnknownGenRefMember unknown20;
+ char unknown24[12];
+ inline ~UnknownGenObject801416D8(){unknown00=lbl_804A5EC4;}
 };
 extern "C" {
 void *fn_801414E0(){
@@ -61,5 +83,21 @@ void *fn_8014169C(){
  if(!lbl_80564040 || !(reinterpret_cast<unsigned int *>(lbl_80564040)[0x24/4]&4)) fn_80141778();
  return lbl_80564040;
 }
+void *fn_801416D8(){
+ UnknownGenObject801416D8 object;
+ object.unknown00=lbl_804A6460;
+ object.unknown00=lbl_804AA1C0;
+ object.unknown00=lbl_804A5EC4;
+ object.unknown20.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_80141778(){
+ fn_80066188((int)fn_801417A0);
+}
+void fn_801417A0(){
+ fn_8012FC48();
+ fn_80066204(0,(int)&lbl_80564040,(int)fn_80146870,(int)fn_8013B680,(int)fn_80141814,(int)lbl_8049E110,36,(int)fn_801416D8,(int)fn_80141834,0,(int)lbl_8055F928);
+}
+void *fn_80141814(){return fn_8014169C();}
 }
 #pragma pop

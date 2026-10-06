@@ -27,5 +27,6 @@ void fn_801537E0(){
  fn_80066204(1,(int)&lbl_805645A0,(int)fn_80145C0C,(int)fn_8013496C,(int)fn_80153844,(int)lbl_804A02B0,32,0,0,0,0);
 }
 void *fn_80153844(){return fn_8015377C();}
+void fn_80153864(){}
 }
 #pragma pop

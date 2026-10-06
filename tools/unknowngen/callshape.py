@@ -7,10 +7,10 @@ def rd(a,n):
   for i in range(18):
     if _h[18+i]<=a and a+n<=_h[18+i]+_h[36+i]: o=_h[i]+a-_h[18+i];return _d[o:o+n]
 def s16(x): return x-0x10000 if x&0x8000 else x
-def analyze(addr,size,rel):
+def analyze(addr,size,rel,seed=None):
   relat={}
   for o,t,s,a in rel: relat[o&~3]=(t,s,a)
-  b=rd(addr,size);regs={};stack={};calls=[]
+  b=rd(addr,size);regs=dict(seed or {});stack={};calls=[]
   for i in range(0,size,4):
     w=struct.unpack('>I',b[i:i+4])[0];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF
     r=relat.get(i)

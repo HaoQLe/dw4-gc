@@ -2,8 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_80023CF4();
 void *fn_80024180();
 void fn_8002907C();
+void fn_80029D58();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
@@ -11,14 +13,18 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801CD5D4();
+void fn_801CD690();
 extern char lbl_80472FA0[];
+extern char lbl_8047650C[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
 extern char lbl_804B2924[];
+extern char lbl_804B293C[];
+extern char lbl_804B59D8[];
 extern char lbl_804B5A34[];
 extern char lbl_804B5A98[];
 extern char lbl_80560A38[8];
+extern char lbl_80560A40[8];
 extern void *lbl_805621F4;
 extern void *lbl_8056556C;
 extern void *lbl_80565570;
@@ -27,10 +33,30 @@ void *fn_801CD35C();
 void fn_801CD3CC();
 void fn_801CD3F4();
 void *fn_801CD460();
+void *fn_801CD4B8();
+void *fn_801CD4F4();
+void fn_801CD5D4();
+void fn_801CD5FC();
+void *fn_801CD670();
 }
 struct UnknownGenObject801CD35C_0 {
  void *unknown00;
  char unknown04[20];
+};
+struct UnknownGenRoot801CD4F4 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot801CD4F4(){fn_8006665C(this);}
+};
+struct UnknownGenObject801CD4F4_0 : UnknownGenRoot801CD4F4 {
+ char unknown04[4];
+ UnknownGenString unknown08;
+ inline ~UnknownGenObject801CD4F4_0(){unknown00=lbl_8047650C;}
+};
+struct UnknownGenObject801CD4F4 : UnknownGenObject801CD4F4_0 {
+ UnknownGenRefMember unknown0C;
+ char unknown10[32];
+ inline ~UnknownGenObject801CD4F4(){unknown00=lbl_804B59D8;}
 };
 extern "C" {
 void *fn_801CD2E4(){
@@ -67,5 +93,21 @@ void *fn_801CD4B8(){
  if(!lbl_80565570 || !(reinterpret_cast<unsigned int *>(lbl_80565570)[0x24/4]&4)) fn_801CD5D4();
  return lbl_80565570;
 }
+void *fn_801CD4F4(){
+ UnknownGenObject801CD4F4 object;
+ object.unknown00=lbl_8047650C;
+ object.unknown08.value=0;
+ object.unknown00=lbl_804B59D8;
+ object.unknown0C.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_801CD5D4(){
+ fn_80066188((int)fn_801CD5FC);
+}
+void fn_801CD5FC(){
+ fn_801AA6DC();
+ fn_80066204(0,(int)&lbl_80565570,(int)fn_80029D58,(int)fn_80023CF4,(int)fn_801CD670,(int)lbl_804B293C,44,(int)fn_801CD4F4,(int)fn_801CD690,0,(int)lbl_80560A40);
+}
+void *fn_801CD670(){return fn_801CD4B8();}
 }
 #pragma pop

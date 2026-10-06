@@ -7,6 +7,7 @@ void *fn_8002213C();
 void *fn_8002277C();
 void *fn_80022DF8();
 void *fn_80023358();
+void *fn_800237D0();
 void *fn_80024180();
 void *fn_80024D1C();
 void *fn_80025CD4();
@@ -18,7 +19,7 @@ void *fn_8002E4D8();
 void *fn_8002FC18();
 void *fn_800321EC();
 void fn_80033A14();
-void fn_80037330();
+void fn_800373EC();
 void *fn_80037E48();
 void *fn_80038948();
 void *fn_80053998(void *,void *);
@@ -29,6 +30,7 @@ UnknownGenFactory *fn_800658F8(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void fn_80066B08();
 extern char lbl_804674A8[];
 extern char lbl_804674BC[];
 extern char lbl_804674D0[];
@@ -56,7 +58,9 @@ extern char lbl_8046764C[];
 extern char lbl_80467658[];
 extern char lbl_80467664[];
 extern char lbl_80467678[];
+extern char lbl_80467690[];
 extern char lbl_80472FA0[];
+extern char lbl_804741D4[];
 extern char lbl_80474230[];
 extern char lbl_80474294[];
 extern char lbl_804742F8[];
@@ -123,6 +127,7 @@ extern char lbl_8055D620[8];
 extern char lbl_8055D628[8];
 extern char lbl_8055D630[8];
 extern char lbl_8055D638[8];
+extern char lbl_8055D640[8];
 extern void *lbl_80561D4C;
 extern void *lbl_80561D50;
 extern void *lbl_80561D54;
@@ -314,6 +319,11 @@ void *fn_800370D0();
 void fn_80037140();
 void fn_80037168();
 void *fn_800371D4();
+void *fn_8003722C();
+void *fn_80037268();
+void fn_80037330();
+void fn_80037358();
+void *fn_800373CC();
 }
 struct UnknownGenObject80033BB4_0 {
  void *unknown00;
@@ -422,6 +432,18 @@ struct UnknownGenObject80036EFC_0 {
 struct UnknownGenObject800370D0_0 {
  void *unknown00;
  char unknown04[20];
+};
+struct UnknownGenRoot80037268 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot80037268(){fn_8006665C(this);}
+};
+struct UnknownGenObject80037268 : UnknownGenRoot80037268 {
+ char unknown04[4];
+ UnknownGenRefMember unknown08;
+ UnknownGenString unknown0C;
+ char unknown10[16];
+ inline ~UnknownGenObject80037268(){unknown00=lbl_804741D4;}
 };
 extern "C" {
 void *fn_80033B3C(){
@@ -1306,5 +1328,20 @@ void *fn_8003722C(){
  if(!lbl_80561DE8 || !(reinterpret_cast<unsigned int *>(lbl_80561DE8)[0x24/4]&4)) fn_80037330();
  return lbl_80561DE8;
 }
+void *fn_80037268(){
+ UnknownGenObject80037268 object;
+ object.unknown00=lbl_804741D4;
+ object.unknown08.value=0;
+ object.unknown0C.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_80037330(){
+ fn_80066188((int)fn_80037358);
+}
+void fn_80037358(){
+ fn_80021B94();
+ fn_80066204(0,(int)&lbl_80561DE8,(int)fn_80066B08,(int)fn_800237D0,(int)fn_800373CC,(int)lbl_80467690,20,(int)fn_80037268,(int)fn_800373EC,0,(int)lbl_8055D640);
+}
+void *fn_800373CC(){return fn_8003722C();}
 }
 #pragma pop

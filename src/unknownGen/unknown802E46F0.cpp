@@ -4,12 +4,17 @@
 extern "C" {
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
+void fn_802E4804();
 extern void *lbl_80535730;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *fn_802E46F0(){
  if(!lbl_80535730) lbl_80535730=fn_80029E64(fn_800607F4(lbl_805621F4));
+ return lbl_80535730;
+}
+void *fn_802E4744(){
+ if(!lbl_80535730 || !(reinterpret_cast<unsigned int *>(lbl_80535730)[0x24/4]&4)) fn_802E4804();
  return lbl_80535730;
 }
 }

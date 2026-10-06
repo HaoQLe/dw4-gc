@@ -11,11 +11,13 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
+void fn_801C7E6C(void *,short);
 void fn_801C80D4();
 extern char lbl_80472FA0[];
 extern char lbl_80476DA8[];
 extern char lbl_80476E0C[];
 extern char lbl_804B158C[];
+extern char lbl_804B54A0[];
 extern char lbl_804B6B98[];
 extern char lbl_804B6BFC[];
 extern char lbl_80560858[8];
@@ -31,6 +33,24 @@ void *fn_801C7D50();
 struct UnknownGenObject801C7C4C_0 {
  void *unknown00;
  char unknown04[20];
+};
+struct UnknownGenObject801C7DE8 {
+ void *unknown00;
+ char unknown04[12];
+ int unknown10;
+ int unknown14;
+ int unknown18;
+ int unknown1C;
+ int unknown20;
+ int unknown24;
+ int unknown28;
+ int unknown2C;
+ char unknown30[4];
+ int unknown34;
+ int unknown38;
+ char unknown3C[4];
+ int unknown40;
+ char unknown44[12];
 };
 extern "C" {
 void *fn_801C7BD8(void *object){
@@ -66,6 +86,25 @@ void *fn_801C7D70(){
 void *fn_801C7DAC(){
  if(!lbl_80565304 || !(reinterpret_cast<unsigned int *>(lbl_80565304)[0x24/4]&4)) fn_801C80D4();
  return lbl_80565304;
+}
+void *fn_801C7DE8(){
+ UnknownGenObject801C7DE8 object;
+ fn_8006665C(&object);
+ object.unknown00=lbl_804B54A0;
+ object.unknown10=0;
+ object.unknown14=0;
+ object.unknown18=0;
+ object.unknown1C=0;
+ object.unknown20=0;
+ object.unknown24=0;
+ object.unknown28=0;
+ object.unknown2C=0;
+ object.unknown34=0;
+ object.unknown38=0;
+ object.unknown40=0;
+ void *result=*reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+ fn_801C7E6C(&object,-1);
+ return result;
 }
 }
 #pragma pop

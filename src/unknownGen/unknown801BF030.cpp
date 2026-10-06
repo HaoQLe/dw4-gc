@@ -7,12 +7,15 @@ void *fn_80024180();
 void fn_8002907C();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
+void fn_80065924(void *,void *,int);
+void fn_800659C0(void *,void *,void *,void *,void *);
+void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_80066B08();
 void fn_801AA6DC();
-void fn_801BF300();
+void fn_801BF5B4();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
@@ -22,9 +25,14 @@ extern char lbl_804B74F8[];
 extern char lbl_804B755C[];
 extern char lbl_804B817C[];
 extern char lbl_805605C8[8];
+extern char lbl_805605D0[8];
+extern char lbl_805605D8[8];
+extern char lbl_805605E0[8];
+extern char lbl_805605E8[8];
 extern void *lbl_805621F4;
 extern void *lbl_80564EB8;
 extern void *lbl_80564EBC;
+extern void *lbl_80564EC8;
 void *fn_801BF06C();
 void *fn_801BF0A8();
 void fn_801BF118();
@@ -35,6 +43,7 @@ void *fn_801BF208();
 void fn_801BF248();
 void fn_801BF270();
 void *fn_801BF2E0();
+void fn_801BF300();
 }
 struct UnknownGenObject801BF0A8_0 {
  void *unknown00;
@@ -89,5 +98,15 @@ void fn_801BF270(){
  fn_80066204(0,(int)&lbl_80564EBC,(int)fn_80066B08,(int)fn_800237D0,(int)fn_801BF2E0,(int)lbl_804AF4B8,16,(int)fn_801BF208,(int)fn_801BF300,0,0);
 }
 void *fn_801BF2E0(){return fn_801BF1CC();}
+void fn_801BF300(){
+ void *value0=lbl_80564EBC;
+ void *value1=fn_80065D88(value0);
+ fn_80065924(value0,lbl_805605D0,2);
+ fn_800659C0(value0,lbl_805605D8,lbl_805605E0,lbl_805605E8,value1);
+}
+void *fn_801BF368(){
+ if(!lbl_80564EC8 || !(reinterpret_cast<unsigned int *>(lbl_80564EC8)[0x24/4]&4)) fn_801BF5B4();
+ return lbl_80564EC8;
+}
 }
 #pragma pop

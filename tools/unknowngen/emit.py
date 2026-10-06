@@ -1,6 +1,6 @@
 """Write one source unit per contiguous run of verified functions and record it in generated_units.txt.
 usage: emit.py PROFILE=res.json [PROFILE=res.json ...] lo hi srcdir   (srcdir relative to src/)
-PROFILE is a comma list of flags (sdata, nosdata, speed), e.g. sdata=res.json nosdata,speed=res-ns.json;
+PROFILE is a comma list of flags (sdata, nosdata, speed, lmw), e.g. sdata=res.json nosdata,speed=res-ns.json;
 earlier profiles are preferred when several fit a run.
 Runs never cross an existing split boundary. Units whose functions own original extabindex
 entries are flagged 'eh' so configure.py builds them with C++ exceptions."""
@@ -22,33 +22,60 @@ for x in pairs:
 lo,hi=int(rest[0],16),int(rest[1],16);srcdir=rest[2]
 ok=set(prof)
 allf=sorted((a,sz,n) for n,(sec,a,t,sz) in gen.syminfo.items() if sec=='.text' and t=='function' and lo<=a<hi)
+# Boundaries of other (non-generated) split units; generated units are re-derived each run.
 bounds=set()
-for l in open(CONFIG/'splits.txt'):
-  m=re.search(r'\.text\s+start:0x([0-9A-F]+) end:0x([0-9A-F]+)',l)
-  if m and 'unknownGen' not in l: bounds.update((int(m[1],16),int(m[2],16)))
+for block in (CONFIG/'splits.txt').read_text().split('\n\n'):
+  if 'unknownGen/' in block.split('\n')[0]: continue
+  for m in re.finditer(r'\.text\s+start:0x([0-9A-F]+) end:0x([0-9A-F]+)',block):
+    bounds.update((int(m[1],16),int(m[2],16)))
 existing={l.split('\t')[0] for l in UNITS.read_text().splitlines()} if UNITS.exists() else set()
+eti=callshape.extab_functions()
+def dtor_eh(n,a):
+  """Exception-enabled temporaries with destructors: the compiler adds exception entries for unused
+  out-of-line destructor copies, so these functions get units of their own and the extra object-level
+  entries do not hide other functions' exception tables from comparison."""
+  if a not in eti or gen.kind(n,True)!='VT': return False
+  src,done,cov,sk=gen.generate([n],seed,True)
+  return 'inline ~' in src
 # A unit uses one profile, so a run also ends where no common profile remains (default preferred).
-runs=[];cur=[];common=set()
+seed=gen.prepass(gen.select(0,0xFFFFFFFF))
+runs=[];cur=[];common=set();prevd=None
 for a,s,n in allf:
   if n in ok and n not in gen._done and n not in gen._bad:
-    if cur and (a in bounds or cur[-1][0]+cur[-1][1]!=a or not (common&prof[n])):
+    d=dtor_eh(n,a)
+    if cur and (a in bounds or cur[-1][0]+cur[-1][1]!=a or not (common&prof[n]) or d or prevd):
       runs.append((cur,common));cur=[]
     common=(common&prof[n]) if cur else set(prof[n])
-    cur.append((a,s,n))
+    cur.append((a,s,n));prevd=d
   else:
     if cur: runs.append((cur,common));cur=[]
 if cur: runs.append((cur,common))
-seed=gen.prepass(gen.select(0,0xFFFFFFFF))
 Path('src/Alchemy/include',gen.HEADER_NAME).write_text(gen.HEADER)
 (Path('src')/srcdir).mkdir(parents=True,exist_ok=True)
-eti=callshape.extab_functions()
 units=[];total=0
+def pieces(r):
+  """Generate a run; when some members fail as one file, retry their contiguous successful pieces."""
+  names=[n for a,s,n in r]
+  src,done,cov,skipped=gen.generate(names,seed,True,header=True)
+  if done==names: return [(r,src,cov)]
+  ok=set(done);out=[];cur=[]
+  for x in r:
+    if x[2] in ok and (not cur or cur[-1][0]+cur[-1][1]==x[0]): cur.append(x)
+    else:
+      if cur: out.append(cur)
+      cur=[x] if x[2] in ok else []
+  if cur: out.append(cur)
+  if len(out)==1 and len(out[0])==len(r): return []
+  res=[]
+  for q in out: res+=pieces(q)
+  return res
+expanded=[]
 for r,common in runs:
+  for q,src,cov in pieces(r): expanded.append((q,common,src,cov))
+for r,common,src,cov in expanded:
   names=[n for a,s,n in r]
   chosen=next(p for p in order if p in common)
   flags=[f for f in ('eh',) if any(a in eti for a,s,n in r)]+[f for f in chosen.split(',') if f!='sdata']
-  src,done,cov,skipped=gen.generate(names,seed,True,header=True)
-  if done!=names: print('skip run',names[0],skipped[:2]);continue
   path='%s/unknown%08X.cpp'%(srcdir,r[0][0])
   (Path('src')/path).write_text(src)
   units.append((path,r[0][0],r[-1][0]+r[-1][1],','.join(flags) or '-'));total+=cov

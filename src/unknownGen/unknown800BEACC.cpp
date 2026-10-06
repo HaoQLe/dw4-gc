@@ -11,5 +11,6 @@ void fn_800BEACC(void *object,UnknownGenValue *value){
  if(old) unknownGenDrop(old);
  *reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x10)=value;
 }
+void fn_800BEB3C(){}
 }
 #pragma pop

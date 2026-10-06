@@ -2,18 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_8006546C(void *,void *);
+void fn_80065924(void *,void *,int);
+void fn_800659C0(void *,void *,void *,void *,void *);
+void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_8032B8A4();
 void *fn_8032D454();
 void fn_8032D4A0();
-void fn_8032D75C();
+void fn_8032DB64();
 void fn_80333F14();
 extern char lbl_80453880[];
-extern char lbl_80535E38[];
+extern char lbl_804E1BF0[];
+extern char lbl_804E1BF8[];
+extern char lbl_804E1C00[];
+extern char lbl_804E1C08[];
+extern void *lbl_80535E38;
+extern void *lbl_80535E44;
 void fn_8032D6C8();
 void *fn_8032D73C();
+void fn_8032D75C();
 }
 extern "C" {
 void fn_8032D6A0(){
@@ -21,8 +31,22 @@ void fn_8032D6A0(){
 }
 void fn_8032D6C8(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535E38,(int)fn_80333F14,(int)fn_8032B8A4,(int)fn_8032D73C,(int)lbl_80453880,92,(int)fn_8032D4A0,(int)fn_8032D75C,0,0);
+ fn_80066204(0,(int)&lbl_80535E38,(int)fn_80333F14,(int)fn_8032B8A4,(int)fn_8032D73C,(int)lbl_80453880,92,(int)fn_8032D4A0,(int)fn_8032D75C,0,0);
 }
 void *fn_8032D73C(){return fn_8032D454();}
+void fn_8032D75C(){
+ void *meta=lbl_80535E38;
+ void *field=fn_80065D88(meta);
+ fn_80065924(meta,lbl_804E1BF0,0x2);
+ fn_800659C0(meta,lbl_804E1BF8,lbl_804E1C00,lbl_804E1C08,field);
+}
+void *fn_8032D7DC(void *object){
+ fn_8032DB64();
+ return fn_8006546C(lbl_80535E44,object);
+}
+void *fn_8032D81C(){
+ if(!lbl_80535E44 || !(reinterpret_cast<unsigned int *>(lbl_80535E44)[0x24/4]&4)) fn_8032DB64();
+ return lbl_80535E44;
+}
 }
 #pragma pop

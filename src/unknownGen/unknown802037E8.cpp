@@ -16,5 +16,11 @@ UnknownGenHolder *dtor_802037E8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
+void fn_8020385C(void *object,UnknownGenValue *value){
+ if(value) ++value->unknown04;
+ UnknownGenValue *old=*reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x20);
+ if(old) unknownGenDrop(old);
+ *reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x20)=value;
+}
 }
 #pragma pop

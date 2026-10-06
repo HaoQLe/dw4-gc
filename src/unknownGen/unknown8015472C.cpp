@@ -6,5 +6,6 @@ extern void *lbl_805622A4;
 }
 extern "C" {
 void *fn_8015472C(){return lbl_805622A4;}
+void fn_80154734(){}
 }
 #pragma pop

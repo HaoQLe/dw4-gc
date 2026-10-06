@@ -2,16 +2,19 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_800635C8(void *,void *,void *,int);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_801420C0();
 void fn_801465FC();
+extern char lbl_8049BC80[];
 extern char lbl_8049E8B0[];
 extern char lbl_804A6460[];
 extern char lbl_804AA1C0[];
 extern void *lbl_80564198;
+extern void *lbl_8056419C;
 void *fn_801467C0();
 void *fn_801467FC();
 void fn_80146848();
@@ -42,5 +45,10 @@ void fn_80146870(){
  fn_80066204(0,(int)&lbl_80564198,(int)fn_801465FC,(int)fn_801420C0,(int)fn_801468D8,(int)lbl_8049E8B0,32,(int)fn_801467FC,0,0,0);
 }
 void *fn_801468D8(){return fn_801467C0();}
+void *fn_801468F8(){
+ char *data=lbl_8049BC80;
+ if(!lbl_8056419C) lbl_8056419C=fn_800635C8(data+0x2C8C,data+0x2C6C,data+0x2C7C,0x4);
+ return lbl_8056419C;
+}
 }
 #pragma pop

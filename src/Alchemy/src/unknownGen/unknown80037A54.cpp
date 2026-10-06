@@ -23,5 +23,6 @@ void fn_80037A54(){
   }
  }
 }
+int fn_80037AEC(){return 1;}
 }
 #pragma pop

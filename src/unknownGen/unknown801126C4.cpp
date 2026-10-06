@@ -11,11 +11,17 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8010CBD4();
-void fn_80112968();
+void fn_8010CFA4();
+void *fn_8010E6DC();
+void fn_80112A28();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
 extern char lbl_80495308[];
+extern char lbl_80495320[];
+extern char lbl_8049532C[];
+extern char lbl_80495AD8[];
+extern char lbl_804965F8[];
 extern char lbl_8049735C[];
 extern char lbl_804973C0[];
 extern char lbl_8055F14C[8];
@@ -27,10 +33,26 @@ void *fn_8011273C();
 void fn_801127AC();
 void fn_801127D4();
 void *fn_80112840();
+void *fn_80112898();
+void *fn_801128D4();
+void fn_80112968();
+void fn_80112990();
+void *fn_80112A08();
 }
 struct UnknownGenObject8011273C_0 {
  void *unknown00;
  char unknown04[20];
+};
+struct UnknownGenRoot801128D4 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot801128D4(){fn_8006665C(this);}
+};
+struct UnknownGenObject801128D4 : UnknownGenRoot801128D4 {
+ char unknown04[12];
+ UnknownGenRefMember unknown10;
+ char unknown14[12];
+ inline ~UnknownGenObject801128D4(){unknown00=lbl_804965F8;}
 };
 extern "C" {
 void *fn_801126C4(){
@@ -67,5 +89,20 @@ void *fn_80112898(){
  if(!lbl_805637A4 || !(reinterpret_cast<unsigned int *>(lbl_805637A4)[0x24/4]&4)) fn_80112968();
  return lbl_805637A4;
 }
+void *fn_801128D4(){
+ UnknownGenObject801128D4 object;
+ object.unknown00=lbl_80495AD8;
+ object.unknown00=lbl_804965F8;
+ object.unknown10.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_80112968(){
+ fn_80066188((int)fn_80112990);
+}
+void fn_80112990(){
+ fn_8010CBD4();
+ fn_80066204(0,(int)&lbl_805637A4,(int)fn_8010CFA4,(int)fn_8010E6DC,(int)fn_80112A08,(int)lbl_8049532C,20,(int)fn_801128D4,(int)fn_80112A28,0,(int)lbl_80495320);
+}
+void *fn_80112A08(){return fn_80112898();}
 }
 #pragma pop

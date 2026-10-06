@@ -12,6 +12,7 @@ extern void *lbl_805635D8;
 extern void *lbl_805635DC;
 extern void *lbl_805635E0;
 extern void *lbl_805635E8;
+extern void *lbl_805635EC;
 extern void *lbl_80563618;
 extern void *lbl_80563628;
 extern void *lbl_80563630;
@@ -22,10 +23,12 @@ extern void *lbl_8056365C;
 extern void *lbl_8056368C;
 extern void *lbl_80563718;
 extern void *lbl_8056374C;
+extern void *lbl_80563750;
 extern void *lbl_80563770;
 extern void *lbl_80563784;
 extern void *lbl_80563798;
 extern void *lbl_805637A0;
+extern void *lbl_805637A4;
 extern void *lbl_805637B0;
 extern void *lbl_805637B4;
 extern void *lbl_805637B8;
@@ -33,6 +36,7 @@ extern void *lbl_805637D0;
 extern void *lbl_805637D8;
 extern void *lbl_80563808;
 extern void *lbl_8056380C;
+extern void *lbl_80563810;
 extern void *lbl_80563830;
 extern void *lbl_80563844;
 extern void *lbl_8056384C;
@@ -84,5 +88,16 @@ void *fn_8011D77C(){return lbl_80563578;}
 void *fn_8011D784(){return lbl_80563574;}
 void *fn_8011D78C(){return lbl_80563638;}
 void *fn_8011D794(){return lbl_8056357C;}
+int fn_8011D79C(){return 40;}
+void *fn_8011D7A4(){return lbl_805637D8;}
+void *fn_8011D7AC(){return lbl_805637A4;}
+void *fn_8011D7B4(){return lbl_8056365C;}
+void *fn_8011D7BC(){return lbl_805637B8;}
+void *fn_8011D7C4(){return lbl_805635EC;}
+void *fn_8011D7CC(){return lbl_805635E0;}
+void *fn_8011D7D4(){return lbl_80563810;}
+void *fn_8011D7DC(){return lbl_80563750;}
+void *fn_8011D7E4(){return lbl_80563638;}
+void *fn_8011D7EC(){return lbl_8056357C;}
 }
 #pragma pop

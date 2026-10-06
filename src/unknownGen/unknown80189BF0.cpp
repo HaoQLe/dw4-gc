@@ -3,8 +3,10 @@
 #pragma auto_inline off
 extern "C" {
 void fn_800667D0();
+void fn_800667D4();
 }
 extern "C" {
 void fn_80189BF0(){return fn_800667D0();}
+void fn_80189C10(){return fn_800667D4();}
 }
 #pragma pop

@@ -4,7 +4,7 @@ from paths import BUILD, VERSION
 # Units whose original code addresses every global without small-data relocations.
 NO_SDATA = ["-sdata", "0", "-sdata2", "0"]
 
-def command(exceptions=False, no_sdata=False, speed=False):
+def command(exceptions=False, no_sdata=False, speed=False, lmw=False):
     return [
         "build/tools/wibo", "build/tools/sjiswrap.exe", "build/compilers/GC/2.6/mwcceppc.exe",
         "-nodefaults", "-proc", "gekko", "-align", "powerpc", "-enum", "int", "-fp", "hardware",
@@ -14,4 +14,4 @@ def command(exceptions=False, no_sdata=False, speed=False):
         "-i", "include", "-i", str(BUILD / "include"), "-DBUILD_VERSION=0", "-DVERSION_" + VERSION,
         "-cwd", "source", "-DNDEBUG=1", "-inline", "auto", "-lang=c++",
         "-i", "src/Alchemy/include", "-i", "src/Alchemy/include/igCore",
-    ] + (NO_SDATA if no_sdata else [])
+    ] + (NO_SDATA if no_sdata else []) + (["-use_lmw_stmw", "on"] if lmw else [])

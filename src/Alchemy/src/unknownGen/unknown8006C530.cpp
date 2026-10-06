@@ -6,5 +6,6 @@ void *fn_8006CCE0();
 }
 extern "C" {
 void *fn_8006C530(){return fn_8006CCE0();}
+int fn_8006C550(){return 0;}
 }
 #pragma pop

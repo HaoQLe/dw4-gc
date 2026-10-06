@@ -2,15 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80326F88();
 void *fn_80326FD8();
 void fn_80327024();
+void fn_80327564();
 void fn_80328720();
 extern char lbl_80453488[];
 extern char lbl_80535D44[];
+extern void *lbl_80535D48;
 void fn_8032724C();
 void *fn_803272B8();
 }
@@ -23,5 +26,13 @@ void fn_8032724C(){
  fn_80066204(0,(int)lbl_80535D44,(int)fn_80328720,(int)fn_80326F88,(int)fn_803272B8,(int)lbl_80453488,80,(int)fn_80327024,0,0,0);
 }
 void *fn_803272B8(){return fn_80326FD8();}
+void *fn_803272D8(void *object){
+ fn_80327564();
+ return fn_8006546C(lbl_80535D48,object);
+}
+void *fn_80327318(){
+ if(!lbl_80535D48 || !(reinterpret_cast<unsigned int *>(lbl_80535D48)[0x24/4]&4)) fn_80327564();
+ return lbl_80535D48;
+}
 }
 #pragma pop

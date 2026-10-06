@@ -3,8 +3,9 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
+void *fn_800237D0();
 void *fn_80024180();
-void fn_8002717C();
+void fn_80027238();
 void fn_8002907C();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
@@ -12,13 +13,17 @@ void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void fn_80066B08();
 extern char lbl_80463E6C[];
+extern char lbl_80463E80[];
 extern char lbl_80472FA0[];
+extern char lbl_80476724[];
 extern char lbl_80476780[];
 extern char lbl_804767E4[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
 extern char lbl_8055D140[8];
+extern char lbl_8055D148[8];
 extern void *lbl_80561670;
 extern void *lbl_80561674;
 extern void *lbl_805621F4;
@@ -27,10 +32,27 @@ void *fn_80026F1C();
 void fn_80026F8C();
 void fn_80026FB4();
 void *fn_80027020();
+void *fn_80027078();
+void *fn_800270B4();
+void fn_8002717C();
+void fn_800271A4();
+void *fn_80027218();
 }
 struct UnknownGenObject80026F1C_0 {
  void *unknown00;
  char unknown04[20];
+};
+struct UnknownGenRoot800270B4 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot800270B4(){fn_8006665C(this);}
+};
+struct UnknownGenObject800270B4 : UnknownGenRoot800270B4 {
+ char unknown04[8];
+ UnknownGenRefMember unknown0C;
+ UnknownGenRefMember unknown10;
+ char unknown14[12];
+ inline ~UnknownGenObject800270B4(){unknown00=lbl_80476724;}
 };
 extern "C" {
 void *fn_80026EA4(){
@@ -67,5 +89,20 @@ void *fn_80027078(){
  if(!lbl_80561674 || !(reinterpret_cast<unsigned int *>(lbl_80561674)[0x24/4]&4)) fn_8002717C();
  return lbl_80561674;
 }
+void *fn_800270B4(){
+ UnknownGenObject800270B4 object;
+ object.unknown00=lbl_80476724;
+ object.unknown0C.value=0;
+ object.unknown10.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_8002717C(){
+ fn_80066188((int)fn_800271A4);
+}
+void fn_800271A4(){
+ fn_80021B94();
+ fn_80066204(0,(int)&lbl_80561674,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80027218,(int)lbl_80463E80,20,(int)fn_800270B4,(int)fn_80027238,0,(int)lbl_8055D148);
+}
+void *fn_80027218(){return fn_80027078();}
 }
 #pragma pop

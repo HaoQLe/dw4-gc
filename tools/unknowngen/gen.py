@@ -2,7 +2,7 @@
 usage: gen.py lo hi out.cpp [--calls]
 Writes one candidate file for every unrecovered function in [lo,hi) that a template recognizes.
 Candidates are unverified until fastcmp.py confirms them."""
-import json,re,sys
+import json,re,sys,collections
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from paths import CONFIG,RELINDEX,REPORT,EXCLUDE
@@ -86,6 +86,7 @@ def _simple(addr,size):
 def expr(e):
   k=e[0]
   if k=='const': return str(e[1])
+  if k=='param': return 'p%d'%e[1]
   if k=='sda':
     sym=e[1]
     if sym in protos and protos[sym].startswith('extern void *'): return '(int)&%s'%sym
@@ -98,18 +99,61 @@ def expr(e):
   if k=='addr':
     sym=e[1];info=syminfo.get(sym)
     if info and info[2]=='function':
-      if sym not in protos: fn(sym,'void %s();')
+      if sym not in protos: fn(sym,'void %%s(%s);'%','.join(['int']*explicit_params(sym)))
       return '(int)%s'%sym
     if sym in protos and protos[sym].startswith('extern void *'):
       return '(int)&%s'%sym if not e[2] else '(int)((char *)&%s+%d)'%(sym,e[2])
     if sym not in protos: fn(sym,'extern char %s[];')
     return '(int)%s'%sym if not e[2] else '(int)(%s+%d)'%(sym,e[2])
   raise ValueError('expr %r'%(e,))
+_explicit={}
+def explicit_params(n):
+  """Number of argument registers (r3..) the function itself reads before writing, scanning straight-line
+  code; implicit forwarding through a call cannot be told apart from no parameter and counts as none."""
+  if n in _explicit: return _explicit[n]
+  if n not in syminfo or n not in idx: return 0
+  b=callshape.rd(syminfo[n][1],idx[n]['size']);written=set();read=set()
+  for i in range(0,len(b),4):
+    w=_st.unpack('>I',b[i:i+4])[0];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;rb=(w>>11)&31;xo=(w>>1)&0x3FF
+    srcs=[];dst=None
+    if op==31 and xo==444: srcs=[rt,rb];dst=ra                  # or / mr
+    elif op in (14,15,12,13): srcs=[ra] if ra else [];dst=rt      # addi/addis/addic
+    elif op in (32,34,40,42): srcs=[ra];dst=rt                    # loads
+    elif op in (36,38,44): srcs=[rt,ra]                           # stores
+    elif op in (10,11): srcs=[ra]                                 # cmpli/cmpi
+    elif op==18 and w&1: written|=set(range(3,13));continue       # call clobbers
+    elif op==21: srcs=[rt];dst=ra                                 # rlwinm
+    for r_ in srcs:
+      if 3<=r_<=10 and r_ not in written: read.add(r_)
+    if dst is not None: written.add(dst)
+  k=0
+  while 3+k in read: k+=1
+  _explicit[n]=k
+  return k
+
+_arity={}
+def caller_arity(n):
+  """Largest argument count any analyzable caller passes to n (0 if none seen)."""
+  if not _arity:
+    for c in idx:
+      if not c.startswith(GENERATED_PREFIXES) or c not in syminfo: continue
+      try: calls=callshape.analyze(syminfo[c][1],idx[c]['size'],[tuple(x) for x in idx[c]['rel']])
+      except Exception: continue
+      for target,regs,stack in calls or []:
+        k=0
+        while 3+k<=10 and regs.get(3+k) is not None: k+=1
+        _arity[target]=max(_arity.get(target,0),k)
+    _arity.setdefault('',0)
+  return _arity.get(n,0)
+
 def CALLS(name,rel):
   addr=syminfo[name][1];size=idx[name]['size']
   if not _simple(addr,size): raise ValueError('not simple')
-  calls=callshape.analyze(addr,size,[tuple(x) for x in rel])
+  # Callers' argument counts give the parameters; forwarded parameters appear in the calls.
+  nparam=explicit_params(name)
+  calls=callshape.analyze(addr,size,[tuple(x) for x in rel],{3+i:('param',i) for i in range(nparam)})
   if not calls: raise ValueError('no calls')
+  params=','.join('int p%d'%i for i in range(nparam));ptypes=','.join(['int']*nparam)
   lines=[]
   for target,regs,stack in calls:
     args=[]
@@ -130,10 +174,10 @@ def CALLS(name,rel):
   last=max(i for i,w in enumerate(ws) if (w>>26)==18 and w&1)
   ret=[callshape.s16(w&0xFFFF) for w in ws[last+1:] if (w>>26)==14 and ((w>>16)&31)==0 and ((w>>21)&31)==3]
   if ret:
-    fn(name,'int %s();')
-    return 'int %s(){\n%s\n return %d;\n}'%(name,'\n'.join(lines),ret[-1])
-  fn(name,'void %s();')
-  return 'void %s(){\n%s\n}'%(name,'\n'.join(lines))
+    fn(name,'int %%s(%s);'%ptypes)
+    return 'int %s(%s){\n%s\n return %d;\n}'%(name,params,'\n'.join(lines),ret[-1])
+  fn(name,'void %%s(%s);'%ptypes)
+  return 'void %s(%s){\n%s\n}'%(name,params,'\n'.join(lines))
 
 
 def VT(name,rel):
@@ -345,7 +389,122 @@ def ITEXT(name,rel):
     return ('0x%X'%v) if v>=0 else '-0x%X'%-v
   return re.sub(r'\{@(\d+)\}',imm,src)
 
-TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT,'LEAF':LEAF,'ITEXT':ITEXT}
+def FLOW(name,rel):
+  """Straight-line code: calls whose arguments are constants, addresses, loaded globals or earlier call
+  results, plus word stores into call results. Values used more than once become locals in first-use order."""
+  addr=syminfo[name][1];size=idx[name]['size']
+  b=callshape.rd(addr,size);relat={o&~3:(t,sy,a) for o,t,sy,a in rel}
+  ws=[_st.unpack('>I',b[i:i+4])[0] for i in range(0,size,4)]
+  regs={};vals=[];stmts=[];frame=None;ret=None
+  def val(kind,*a):
+    vals.append((kind,)+a);return len(vals)-1
+  nparam=explicit_params(name)
+  for i_ in range(nparam): regs[3+i_]=val('param',i_)
+  for i,w in enumerate(ws):
+    op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF;r=relat.get(4*i)
+    if op==37 and rt==1 and ra==1: frame=0x10000-imm;continue
+    if w in (0x7C0802A6,0x7C0803A6,0x4E800020): continue
+    if op==36 and ra==1: continue                                   # saves
+    if op==32 and ra==1: continue                                   # restores
+    if op==14 and rt==1 and ra==1: continue                         # epilogue
+    if op==15 and ra==0:
+      regs[rt]=('ha',r[1],r[2]) if r else ('k',imm<<16);continue
+    if op==14:
+      if r and r[0]==109: regs[rt]=val('sda',r[1],r[2]);continue
+      if ra==0 and not r: regs[rt]=val('const',callshape.s16(imm));continue
+      x=regs.get(ra)
+      if isinstance(x,tuple) and x[0]=='ha' and r: regs[rt]=val('addr',r[1],r[2]);continue
+      raise ValueError('addi shape')
+    if op==32:
+      if r and r[0]==109: regs[rt]=val('load',r[1],r[2]);continue
+      x=regs.get(ra)
+      if isinstance(x,int) and vals[x][0]=='addr' and imm==0: regs[rt]=val('load',vals[x][1],vals[x][2]);continue
+      if isinstance(x,tuple) and x[0]=='ha' and r: regs[rt]=val('load',r[1],r[2]);continue
+      raise ValueError('load shape')
+    if op==31 and ((w>>1)&0x3FF)==444 and rt==((w>>11)&31):        # mr
+      regs[ra]=regs.get(rt);continue
+    if op==36:
+      x=regs.get(ra);v=regs.get(rt)
+      if isinstance(x,int) and isinstance(v,int) and vals[x][0] in ('ret','load'):
+        stmts.append(('store',x,callshape.s16(imm),v));continue
+      raise ValueError('store shape')
+    if op==18 and w&1 and r:
+      args=[]
+      for k in range(3,11):
+        v=regs.get(k)
+        if isinstance(v,int): args.append(v)
+        else: break
+      stmts.append(('call',r[1],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
+      regs[3]=val('ret',len(stmts)-1);continue
+    raise ValueError('flow op %08x'%w)
+  if not any(s_[0]=='call' for s_ in stmts): raise ValueError('no calls')
+  # Which call results are used later decides their declared return types.
+  used=collections.Counter()
+  for st in stmts:
+    if st[0]=='call': used.update(st[2])
+    else: used.update([st[1],st[3]])
+  def ex(v):
+    """Pointer-typed expression for a value (constants stay int)."""
+    k=vals[v]
+    if k[0]=='const': return str(k[1])
+    if k[0] in ('sda','addr'):
+      sym=k[1];info=syminfo.get(sym)
+      if info and info[2]=='function':
+        if sym not in protos: fn(sym,'void %%s(%s);'%','.join(['int']*explicit_params(sym)))
+        return '(void *)%s'%sym
+      if sym in protos and protos[sym].startswith('extern void *'): return '&%s'%sym if not k[2] else '(char *)&%s+%d'%(sym,k[2])
+      if k[0]=='sda':
+        n_=max(info[3],1) if info else 4
+        fn(sym,'extern char %%s[%d];'%n_)
+      elif sym not in protos: fn(sym,'extern char %s[];')
+      return sym if not k[2] else '%s+%d'%(sym,k[2])
+    if k[0]=='load':
+      if v in names_: return names_[v]
+      if k[2]: raise ValueError('load addend')
+      fn(k[1],'extern void *%s;');return k[1]
+    if k[0]=='ret': return names_[v]
+    if k[0]=='param': return '(void *)p%d'%k[1]
+    raise ValueError(k)
+  names_={};lines=[]
+  for v,k in enumerate(vals):
+    if k[0]=='load' and used[v]>1: names_[v]='value%d'%len(names_)
+  emitted=set()
+  for si,st in enumerate(stmts):
+    if st[0]=='call':
+      t,args=st[1],st[2]
+      m=re.match(r'(.*?)%s\((.*)\);$'%re.escape(t),protos.get(t,''))
+      ptypes=None
+      if m:
+        ptypes=[x.strip() for x in m[2].split(',')] if m[2].strip() not in ('','void') else []
+        if len(ptypes)>len(args): raise ValueError('arity')
+        args=args[:len(ptypes)]
+      for a in args:
+        if a in names_ and vals[a][0]=='load' and a not in emitted:
+          fn(vals[a][1],'extern void *%s;');lines.append(' void *%s=%s;'%(names_[a],vals[a][1]));emitted.add(a)
+      if ptypes is None: ptypes=['int' if vals[a][0]=='const' else 'void *' for a in args]
+      def cast(pt,a):
+        e=ex(a)
+        if pt=='int' and vals[a][0]!='const': return '(int)(%s)'%e
+        if pt!='int' and vals[a][0]=='const': return '(%s)%s'%(pt,e)
+        return e
+      call='%s(%s)'%(t,','.join(cast(pt,a) for pt,a in zip(ptypes,args)))
+      rtype=m[1].strip() if m else None
+      rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1]==si]
+      if rv and used[rv[0]]:
+        if rtype is None: fn(t,'void *%%s(%s);'%','.join(ptypes));rtype='void *'
+        if rtype=='void': raise ValueError('void result used')
+        names_[rv[0]]='value%d'%len(names_)
+        lines.append(' void *%s=%s;'%(names_[rv[0]],call if rtype.endswith('*') else '(void *)'+call))
+      else:
+        if rtype is None: fn(t,'void %%s(%s);'%','.join(ptypes))
+        lines.append(' %s;'%call)
+    else:
+      x,off,v=st[1],st[2],st[3]
+      lines.append(' *reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ex(x),off,('(void *)%s'%ex(v)) if vals[v][0]=='const' else ex(v)))
+  fn(name,'void %%s(%s);'%','.join(['int']*nparam))
+  return 'void %s(%s){\n%s\n}'%(name,','.join('int p%d'%i for i in range(nparam)),'\n'.join(lines))
+
+TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT,'LEAF':LEAF,'ITEXT':ITEXT,'FLOW':FLOW}
 HEADER_NAME='unknownGen.h'
 HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nstruct UnknownGenHolder { UnknownGenValue *unknown00; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\nstruct UnknownGenRefMember {\n UnknownGenValue *value;\n inline ~UnknownGenRefMember(){if(value) unknownGenDrop(value);}\n};\n#endif\n'
 _rep=json.load(open(REPORT));_done=set()
@@ -412,8 +571,12 @@ def generate(names,seed,calls=True,header=False):
     f=kind(n,calls)
     if not f: continue
     saved=dict(protos);pl=len(PRE)
-    try: bodies.append(TEMPL[f](n,idx[n]['rel']));cov+=idx[n]['size'];done.append(n)
-    except Exception as ex: skipped.append((n,str(ex)));protos.clear();protos.update(saved);del PRE[pl:]
+    for f2 in ([f,'FLOW'] if f=='CALLS' else [f]):
+      try:
+        bodies.append(TEMPL[f2](n,idx[n]['rel']));cov+=idx[n]['size'];done.append(n);break
+      except Exception as ex:
+        protos.clear();protos.update(saved);del PRE[pl:]
+        if f2==([f,'FLOW'] if f=='CALLS' else [f])[-1]: skipped.append((n,str(ex)))
   text='\n'.join(PRE)+'\n'+'\n'.join(bodies)
   used=set(re.findall(r'[A-Za-z_][A-Za-z0-9_]*',text))
   own=set(done)
@@ -435,7 +598,7 @@ def _profile_keys():
     data=json.load(open(cache))
   else:
     data=[]
-    for (rep,kind_,val),(ns,sp) in [(x,y) for x in reps for y in ((True,False),(False,True),(True,True))]:
+    for (rep,kind_,val),(ns,sp) in [(x,y) for x in reps for y in ((False,False),(True,False),(False,True),(True,True))]:
       src,done,cov,sk=generate([rep],prepass([rep]))
       tmp=Path(tempfile.mkdtemp(prefix='dw4-unknowngen-'));c=tmp/'r.cpp';o=tmp/'r.o';c.write_text(src)
       subprocess.run(compiler.command(False,ns,sp)+['-c',str(c),'-o',str(o)],check=True,capture_output=True)

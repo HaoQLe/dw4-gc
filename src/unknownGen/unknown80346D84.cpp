@@ -2,12 +2,35 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+extern void *lbl_80535C78;
+extern void *lbl_80535C80;
+extern void *lbl_80535CCC;
+extern void *lbl_80535CD0;
+extern void *lbl_80535D00;
+extern void *lbl_80535DBC;
+extern void *lbl_80535DC0;
+extern void *lbl_80535DC8;
+extern void *lbl_80535FAC;
+extern void *lbl_80535FC8;
+extern void *lbl_80535FCC;
+extern void *lbl_80535FDC;
+extern void *lbl_80535FE0;
+extern void *lbl_80535FF8;
 extern void *lbl_80535FFC;
 extern void *lbl_8053600C;
 extern void *lbl_80536064;
 extern void *lbl_80536068;
 extern void *lbl_80536098;
 extern void *lbl_8053609C;
+extern void *lbl_8053645C;
+extern void *lbl_805365AC;
+extern void *lbl_80536604;
+extern void *lbl_80536620;
+extern void *lbl_80536634;
+extern void *lbl_805366D8;
+extern void *lbl_80536768;
+extern void *lbl_80536798;
+extern void *lbl_80536838;
 }
 extern "C" {
 void *fn_80346D84(){return lbl_8053609C;}
@@ -16,5 +39,30 @@ void *fn_80346DA4(){return lbl_80536068;}
 void *fn_80346DB4(){return lbl_80536064;}
 void *fn_80346DC4(){return lbl_8053600C;}
 void *fn_80346DD4(){return lbl_80535FFC;}
+void *fn_80346DE4(){return lbl_80535FF8;}
+void *fn_80346DF4(){return lbl_80535FE0;}
+void *fn_80346E04(){return lbl_80535FDC;}
+void *fn_80346E14(){return lbl_80535FCC;}
+void *fn_80346E24(){return lbl_80535FC8;}
+void *fn_80346E34(){return lbl_80535FAC;}
+void *fn_80346E44(){return lbl_80535DC8;}
+void *fn_80346E54(){return lbl_80535DC0;}
+void *fn_80346E64(){return lbl_80535DBC;}
+void *fn_80346E74(){return lbl_80535C80;}
+void *fn_80346E84(){return lbl_80535D00;}
+void *fn_80346E94(){return lbl_80535CD0;}
+void *fn_80346EA4(){return lbl_80535CCC;}
+void *fn_80346EB4(){return lbl_80535C78;}
+void *fn_80346EC4(){return lbl_80536838;}
+void *fn_80346ED4(){return lbl_80536798;}
+void *fn_80346EE4(){return lbl_8053645C;}
+void *fn_80346EF4(){return lbl_80535FFC;}
+void *fn_80346F04(){return lbl_80536768;}
+void *fn_80346F14(){return lbl_805365AC;}
+void *fn_80346F24(){return lbl_80536604;}
+void *fn_80346F34(){return lbl_80536620;}
+void *fn_80346F44(){return lbl_80536634;}
+void *fn_80346F54(){return lbl_805366D8;}
+void *fn_80346F64(){return lbl_80535C80;}
 }
 #pragma pop

@@ -13,13 +13,16 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_80066B08();
 void fn_801AA6DC();
-void fn_801B490C();
+void fn_801B49CC();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
 extern char lbl_804AD430[];
 extern char lbl_804AD440[];
 extern char lbl_804AD450[];
+extern char lbl_804AD460[];
+extern char lbl_804AD46C[];
+extern char lbl_804B8658[];
 extern char lbl_804B86B4[];
 extern char lbl_804B8718[];
 extern char lbl_80560334[8];
@@ -41,10 +44,26 @@ void *fn_801B4670();
 void fn_801B46E0();
 void fn_801B4708();
 void *fn_801B4774();
+void *fn_801B4808();
+void *fn_801B4844();
+void fn_801B490C();
+void fn_801B4934();
+void *fn_801B49AC();
 }
 struct UnknownGenObject801B4670_0 {
  void *unknown00;
  char unknown04[20];
+};
+struct UnknownGenRoot801B4844 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot801B4844(){fn_8006665C(this);}
+};
+struct UnknownGenObject801B4844 : UnknownGenRoot801B4844 {
+ char unknown04[4];
+ UnknownGenRefMember unknown08;
+ UnknownGenRefMember unknown0C;
+ inline ~UnknownGenObject801B4844(){unknown00=lbl_804B8658;}
 };
 extern "C" {
 void *fn_801B43B0(){
@@ -117,5 +136,20 @@ void *fn_801B4808(){
  if(!lbl_80564A40 || !(reinterpret_cast<unsigned int *>(lbl_80564A40)[0x24/4]&4)) fn_801B490C();
  return lbl_80564A40;
 }
+void *fn_801B4844(){
+ UnknownGenObject801B4844 object;
+ object.unknown00=lbl_804B8658;
+ object.unknown08.value=0;
+ object.unknown0C.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_801B490C(){
+ fn_80066188((int)fn_801B4934);
+}
+void fn_801B4934(){
+ fn_801AA6DC();
+ fn_80066204(0,(int)&lbl_80564A40,(int)fn_80066B08,(int)fn_800237D0,(int)fn_801B49AC,(int)lbl_804AD46C,16,(int)fn_801B4844,(int)fn_801B49CC,0,(int)lbl_804AD460);
+}
+void *fn_801B49AC(){return fn_801B4808();}
 }
 #pragma pop

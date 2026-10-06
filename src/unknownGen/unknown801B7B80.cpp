@@ -10,26 +10,49 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801B7DEC();
+void fn_801B7EB0();
+void fn_801BF270();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
 extern char lbl_804ADF48[];
+extern char lbl_804ADF54[];
+extern char lbl_804B8120[];
+extern char lbl_804B817C[];
 extern char lbl_804B81D8[];
 extern char lbl_804B823C[];
 extern char lbl_805603D4[8];
+extern char lbl_805603DC[6];
 extern void *lbl_805621F4;
 extern void *lbl_80564BE8;
 extern void *lbl_80564BEC;
+extern void *lbl_80564EBC;
 void *fn_801B7BBC();
 void *fn_801B7BF8();
 void fn_801B7C68();
 void fn_801B7C90();
 void *fn_801B7CFC();
+void *fn_801B7D1C();
+void *fn_801B7D58();
+void fn_801B7DEC();
+void fn_801B7E14();
+void *fn_801B7E88();
+void *fn_801B7EA8();
 }
 struct UnknownGenObject801B7BF8_0 {
  void *unknown00;
  char unknown04[20];
+};
+struct UnknownGenRoot801B7D58 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot801B7D58(){fn_8006665C(this);}
+};
+struct UnknownGenObject801B7D58 : UnknownGenRoot801B7D58 {
+ char unknown04[32];
+ UnknownGenRefMember unknown24;
+ char unknown28[8];
+ inline ~UnknownGenObject801B7D58(){unknown00=lbl_804B8120;}
 };
 extern "C" {
 void *fn_801B7B80(){
@@ -62,5 +85,21 @@ void *fn_801B7D1C(){
  if(!lbl_80564BEC || !(reinterpret_cast<unsigned int *>(lbl_80564BEC)[0x24/4]&4)) fn_801B7DEC();
  return lbl_80564BEC;
 }
+void *fn_801B7D58(){
+ UnknownGenObject801B7D58 object;
+ object.unknown00=lbl_804B817C;
+ object.unknown00=lbl_804B8120;
+ object.unknown24.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_801B7DEC(){
+ fn_80066188((int)fn_801B7E14);
+}
+void fn_801B7E14(){
+ fn_801AA6DC();
+ fn_80066204(0,(int)&lbl_80564BEC,(int)fn_801BF270,(int)fn_801B7EA8,(int)fn_801B7E88,(int)lbl_805603DC,44,(int)fn_801B7D58,(int)fn_801B7EB0,0,(int)lbl_804ADF54);
+}
+void *fn_801B7E88(){return fn_801B7D1C();}
+void *fn_801B7EA8(){return lbl_80564EBC;}
 }
 #pragma pop

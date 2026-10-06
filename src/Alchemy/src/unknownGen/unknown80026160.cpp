@@ -3,8 +3,20 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_8003B238();
+void fn_800A325C(void *);
 }
 extern "C" {
 void *fn_80026160(){return fn_8003B238();}
+UnknownGenHolder *dtor_80026180(UnknownGenHolder *object,short flags){
+ if(object){
+  UnknownGenValue *value=object->unknown00;
+  if(value){
+   --value->unknown04;
+   if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
+  }
+  if(flags>0) fn_800A325C(object);
+ }
+ return object;
+}
 }
 #pragma pop

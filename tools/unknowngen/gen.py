@@ -244,7 +244,31 @@ def LEAF(name,rel):
 def _isleaf(n):
   return not idx[n]['rel'] and idx[n]['size'] in (4,8)
 
-TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT,'LEAF':LEAF}
+_IMMOPS=(7,8,10,11,12,13,14,15,24,25,26,27,28,29)+tuple(range(32,56))
+def _imasked(n):
+  b,types=_masked(n);out=bytearray(b)
+  for i in range(0,len(b),4):
+    w=_st.unpack('>I',b[i:i+4])[0]
+    if (w>>26) in _IMMOPS: out[i+2:i+4]=b'\0\0'
+  return bytes(out),types
+IK={}
+for rep in texttempl.IT: IK[_imasked(rep)]=rep
+def ITEXT(name,rel):
+  rep=IK[_imasked(name)];t=texttempl.IT[rep];u=U(rel)
+  if len(u)!=len(t['decl']): raise ValueError('symcount')
+  for sym,dc in zip(u,t['decl']):
+    if dc=='SDA':
+      info=syminfo.get(sym);fn(sym,'extern char %%s[%d];'%max(info[3] if info else 4,1))
+    elif dc: fn(sym,dc)
+  fn(name,t['sig'])
+  b=callshape.rd(syminfo[name][1],idx[name]['size'])
+  src=_fmt(t['src'],name,u)
+  def imm(m):
+    k=int(m[1]);v=callshape.s16(_st.unpack('>I',b[4*k:4*k+4])[0]&0xFFFF)
+    return ('0x%X'%v) if v>=0 else '-0x%X'%-v
+  return re.sub(r'\{@(\d+)\}',imm,src)
+
+TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT,'LEAF':LEAF,'ITEXT':ITEXT}
 HEADER_NAME='unknownGen.h'
 HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nstruct UnknownGenHolder { UnknownGenValue *unknown00; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\n#endif\n'
 _rep=json.load(open(REPORT));_done=set()
@@ -287,6 +311,7 @@ def kind(n,calls):
   f=famof(n)
   if f in TEMPL: return f
   if _masked(n) in TT: return 'TEXT'
+  if _imasked(n) in IK: return 'ITEXT'
   if _isleaf(n): return 'LEAF'
   if _isvt(n): return 'VT'
   if calls: return 'CALLS'
@@ -325,7 +350,7 @@ def _profile_keys():
   import subprocess,tempfile,compiler,elf
   from paths import ANALYSIS
   cache=ANALYSIS/'profilekeys.json'
-  reps=[(r,'F',f) for f,r in FAMREP.items()]+[(r,'T',r) for r in texttempl.T]
+  reps=[(r,'F',f) for f,r in FAMREP.items()]+[(r,'T',r) for r in texttempl.T]+[(r,'I',r) for r in texttempl.IT]
   if cache.exists():
     data=json.load(open(cache))
   else:
@@ -348,7 +373,12 @@ def _profile_keys():
   for kind_,val,hx,types in data:
     key=(bytes.fromhex(hx),tuple(types))
     if kind_=='F': FM.setdefault(key,val)
-    else: TT.setdefault(key,val)
+    elif kind_=='T': TT.setdefault(key,val)
+    else:
+      b=bytearray(key[0])
+      for i in range(0,len(b),4):
+        if (_st.unpack('>I',bytes(b[i:i+4]))[0]>>26) in _IMMOPS: b[i+2:i+4]=b'\0\0'
+      IK.setdefault((bytes(b),key[1]),val)
   _famcache.clear()
 _profile_keys()
 if __name__=='__main__' and len(sys.argv)>3 and sys.argv[1]!='--runs':

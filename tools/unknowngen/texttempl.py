@@ -52,6 +52,29 @@ T['dtor_80020BB8']=dict(decl=[None,'void %s(void *);'],sig='UnknownGenHolder *%s
  }
  return object;
 }''')
+# Immediate-parameterized templates: {@K} is the signed 16-bit immediate of member instruction K.
+IT={}
+IT['fn_80023A70']=dict(decl=['extern char %s[];','extern void *%s;','void *%s(void *,void *,void *,int);'],sig='void *%s();',src='''void *{name}(){
+ char *data={0};
+ if(!{1}) {1}={2}(data+{@8},data+{@9},data+{@10},{@11});
+ return {1};
+}''')
+IT['fn_8003C9A0']=dict(decl=[None],sig='void %s(void *,UnknownGenValue *);',src='''void {name}(void *object,UnknownGenValue *value){
+ if(value) ++value->unknown04;
+ UnknownGenValue *old=*reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+{@11});
+ if(old) unknownGenDrop(old);
+ *reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+{@11})=value;
+}''')
+IT['fn_802AAD5C']=dict(decl=['extern void *%s;','void *%s(void *);','extern char %s[];','void %s(void *,void *,int);','extern char %s[];','extern char %s[];','extern char %s[];','void %s(void *,void *,void *,void *,void *);'],sig='void %s();',src='''void {name}(){
+ void *meta={0};
+ void *field={1}(meta);
+ {3}(meta,{2},{@15});
+ {7}(meta,{4},{5},{6},field);
+}''')
+IT['fn_802AC6D0']=dict(decl=['extern void *%s;','extern char %s[];','extern char %s[];','extern char %s[];','void *%s(void *,void *,void *,int);'],sig='void *%s();',src='''void *{name}(){
+ if(!{0}) {0}={4}({1},{2},{3},{@10});
+ return {0};
+}''')
 PRELUDE='''struct UnknownGenField { void *unknown00; unsigned int unknown04; int unknown08[5]; void *unknown1C; int unknown20[6]; int unknown38; void *unknown3C; };
 class UnknownGenFactory { public:
  virtual void slot08(); virtual void slot0C(); virtual void slot10(); virtual void slot14(); virtual void slot18(); virtual void slot1C(); virtual void slot20(); virtual void slot24(); virtual void slot28(); virtual void slot2C(); virtual void slot30(); virtual void slot34(); virtual void slot38(); virtual void slot3C(); virtual void slot40(); virtual void slot44(); virtual void slot48(); virtual void slot4C(); virtual void slot50(); virtual UnknownGenField *slot54(int); };

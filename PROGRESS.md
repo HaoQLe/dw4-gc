@@ -1,9 +1,19 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-05. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-06. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
+- **Generator round 2 closed (user request 2026-10-05):** `work` at `f63c8ec`.
+  - **Tool:** `tools/unknowngen/` reproduces every generated unit; see its README.
+  - **Yield:** +155,008 bytes (3,580 functions), from the no-small-data profile, position-independent symbols, the destructor and leaf templates, immediate-parameterized templates and constant-return calls.
+  - **Totals:** matched code 24.501154%, linked 24.465612%.
+  - **Link hang:** a unit ending at the hand-placed label `__OSSystemCallVectorStart` hung `mwldeppc`. Functions touching `.text` labels now keep their original objects.
+  - **Retained:**
+    - the `fn_80021E10` factory family (99.76%; the vtable lands in `r4` where the original uses `r12`);
+    - 9 call-only candidates.
+  - **30% assessment:** needs +227,738 bytes. The remaining repeated families (about 358 KB over about 415 families) have a long tail; the top 50 hold about 160 KB. A third generator round may reach about 27–28%; 30% also needs manual decompilation of unique functions.
+  - Details: [generator round 2](docs/research/2026-10-05-generator-round2.md).
 - **20% milestone batch closed (user request 2026-10-05):** both targets reached on `work` at `f814ea4`. Matched code is 20.758402% and fully linked code is 20.722860%.
   - **Checkpoint `69fd3b4`:** six exact Alchemy units in `0x8004B394..0x8004DE4C` (64 functions, 8,408 bytes); `ansi_files` linked.
   - **Checkpoint `f814ea4`:** 2,102 generated exact units with 8,060 functions and 434,448 bytes, emitted from relocation-verified boilerplate templates.
@@ -159,6 +169,7 @@ Rows record each session's result at the time; the retained-recovery row and res
 | Accelerated matching workflow | Private per-unit compile/diff, strict reusable ELF verification, explainable target ranking, matching tactics and isolated coordinator/worker ownership are adopted. Twenty-one unit/integration tests, exact and partial real-object smoke checks, configured-output immutability, all built-source parser checks and independent review pass. Recovery totals are unchanged. | `071d07b`, `5cd5381`, `9096580`; [research](docs/research/2026-10-01-peer-decomp-acceleration.md), [matching playbook](docs/decomp/matching-playbook.md), [parallel workflow](docs/decomp/parallel-workflow.md) |
 | Local matching-build baseline | Supplied GDJEB2 CISO successfully extracted; pinned compilers run on this Mac; all configured source builds; original and rebuilt DOL share the expected checksum. | Recorded in `c974833`; [host/build notes](docs/research/2026-09-29-uart-console.md) |
 | 20% milestone batch | Six exact Alchemy units, `ansi_files` linked and 2,102 generated exact boilerplate units (8,060 functions, 434,448 bytes). Two independent reviews and pinned DOL equality pass. Matched code 20.758402%, linked 20.722860%. | `69fd3b4`, `f814ea4`; [generated boilerplate note](docs/research/2026-10-05-generated-boilerplate-recovery.md) |
+| Generator round 2 | `unknowngen` committed as a reproducible repository tool; +155,008 bytes (3,580 functions) in exact generated units. Independent review and pinned DOL equality pass. Matched code 24.501154%, linked 24.465612%. | `78d0f4b`..`f63c8ec`; [round-2 note](docs/research/2026-10-05-generator-round2.md) |
 | UART console runtime unit | **Complete and linked from source.** Recovered `fn_8009F35C`; made initializer static inline. All three functions, 224 code bytes and 8 data bytes match. Strict objdiff and whole-DOL verification passed; independent review found no issues. | Functional commit `bd5b375`; [UART handoff](docs/research/2026-09-29-uart-console.md) |
 | Alchemy lifecycle unit (`igGap.cpp`) | **Complete and linked from source.** `igRefAlchemy(int)` and `igReleaseAlchemy()` match: 416 code bytes, 8 owned BSS bytes, all 34 relocation records. Corrected class layout, five registrar targets and shared-global references; corrected the synthetic BSS split. All configured source compiles and whole-DOL checksum passes; independent review found no blocking issues. | Functional commit `6ac6304`; [Alchemy handoff](docs/research/2026-09-29-alchemy-lifecycle.md) |
 | Alchemy version-check split (`igArkCore.cpp`) | **Complete and linked from source.** `checkAlchemyVersion(int)` matches: 108 code bytes, 345 diagnostic bytes, one suppression BSS byte and all five relocations. Corrected version, opaque-byte gate, diagnostic and report target; preserved unknown class fields. All configured source compiles and whole-DOL checksum passes; independent review found no blocking issues. Other class methods remain original. | Functional commit `c586318`; [version-check handoff](docs/research/2026-09-29-alchemy-version-check.md) |
@@ -191,23 +202,23 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-05 at integrated `f814ea4` and compared with the 20% batch baseline `9bccdac`. The checks passed: all-source build, independent full ELF comparison, map provenance, independent review and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-06 at integrated `f63c8ec` and compared with round-2 base `162166c`. The checks passed: all-source build, independent full ELF comparison, map provenance, independent review and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 859,720 / 4,141,552 bytes (20.758402%) |
-| Fully linked source code | 858,248 / 4,141,552 bytes (20.722860%) |
-| Matched functions | 9,597 / 23,334 |
-| Completed units | 2,342 / 7,401 |
-| Matched data | 196,902 / 1,503,795 bytes (13.093673%) |
+| Matched executable code | 1,014,728 / 4,141,552 bytes (24.501154%) |
+| Fully linked source code | 1,013,256 / 4,141,552 bytes (24.465612%) |
+| Matched functions | 13,177 / 23,334 |
+| Completed units | 4,816 / 8,777 |
+| Matched data | 222,582 / 1,503,795 bytes (14.801353%) |
 
-| 20% batch (`9bccdac` → `f814ea4`) | Before → after | Exact gain |
+| Generator round 2 (`162166c` → `f63c8ec`) | Before → after | Exact gain |
 | --- | --- | --- |
-| Matched code | 10.065405% → 20.758402% | +442,856 bytes (+10.692997 pp) |
-| Fully linked code | 10.019722% → 20.722860% | +443,276 bytes (+10.703138 pp) |
-| Matched data | 11.094730% → 13.093673% | +30,060 bytes (+1.998943 pp) |
+| Matched code | 20.758402% → 24.501154% | +155,008 bytes (+3.742752 pp) |
+| Fully linked code | 20.722860% → 24.465612% | +155,008 bytes (+3.742752 pp) |
+| Matched data | 13.093673% → 14.801353% | +25,680 bytes (+1.707680 pp) |
 
-The unit denominator changes from 5,191 to 7,401 because of synthetic partitions; the code, data and function denominators are unchanged. Function count goes from 1,473 to 9,597 and completed units from 233 to 2,342. Earlier snapshots remain in Git history.
+The unit denominator changes from 7,401 to 8,777 because of synthetic partitions; the code, data and function denominators are unchanged. Function count goes from 9,597 to 13,177 and completed units from 2,342 to 4,816. Earlier snapshots remain in Git history.
 
 | Active milestone published checkpoints | Before → after | Exact gain |
 | --- | --- | --- |

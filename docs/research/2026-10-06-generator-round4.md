@@ -80,6 +80,7 @@ Generator yields by round have been +155 KB, +233 KB and now +78 KB. In the pool
 ## Verification
 
 - The full `cycle.sh` run reproduces every unit.
+- An independent review clean-rebuilt `05f7803`, compared all 13,753 generated functions (900,364 bytes, 66,431 relocations) exactly, and confirmed map provenance, unchanged non-generated splits and symbols, and the gained/lost counts.
 - `verify_units.py` checked 673 changed units with their configured flags; none failed. Two functions failed in their emitted unit and were added to `exclude.json`.
 - The normal build matches `build.sha1` (`./build/GDJEB2/main.dol: OK`).
 - The report was regenerated with `ninja all_source progress build/GDJEB2/report.json`.

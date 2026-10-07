@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8007798C();
+void fn_8007798C(int,int,int,int,int,int);
 void fn_800779D4();
 extern void *lbl_80562394;
 }
@@ -48,9 +48,9 @@ public:
  virtual void * s40(void *);
 };
 extern "C" {
-void fn_80092280(){
+void fn_80092280(int p0,int p1,int p2,int p3,int p4,int p5){
  if(!lbl_80562394){
-  fn_8007798C();
+  fn_8007798C((int)(int)((void *)p0),(int)(int)((void *)p1),(int)(int)((void *)p2),(int)(int)((void *)p3),(int)(int)((void *)p4),(int)(int)((void *)p5));
   return;
  } else {
   return;
@@ -64,10 +64,10 @@ void fn_800922AC(){
   return;
  }
 }
-void *fn_800922D8(){
+void *fn_800922D8(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value1;
  if(!lbl_80562394){
-  fn_8007798C();
+  fn_8007798C((int)(int)((void *)p0),(int)(int)((void *)p1),(int)(int)((void *)p2),(int)(int)((void *)p3),(int)(int)((void *)p4),(int)(int)((void *)p5));
  }
  void *value0=lbl_80562394;
  if(value0){
@@ -77,10 +77,10 @@ void *fn_800922D8(){
   return (void *)4096;
  }
 }
-void *fn_80092328(int p0){
+void *fn_80092328(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value1;
  if(!lbl_80562394){
-  fn_8007798C();
+  fn_8007798C((int)(int)((void *)p0),(int)(int)((void *)p1),(int)(int)((void *)p2),(int)(int)((void *)p3),(int)(int)((void *)p4),(int)(int)((void *)p5));
  }
  void *value0=lbl_80562394;
  if(value0){

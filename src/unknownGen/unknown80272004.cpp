@@ -4,7 +4,7 @@
 extern "C" {
 void fn_800A325C(void *);
 void fn_80272110(void *,void *,void *);
-void fn_802728B8(void *);
+void *fn_802728B8(void *);
 void fn_80272A90(void *);
 extern void *lbl_805622F8;
 }

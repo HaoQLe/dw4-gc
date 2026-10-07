@@ -4,7 +4,6 @@
 extern "C" {
 void *fn_8028A730(void *,void *);
 extern char lbl_80534698[];
-extern void *lbl_80534DF0;
 extern char lbl_80535124[];
 }
 extern "C" {
@@ -23,6 +22,5 @@ void fn_803082A4(int p0){
   return;
  }
 }
-void *fn_80308314(){return lbl_80534DF0;}
 }
 #pragma pop

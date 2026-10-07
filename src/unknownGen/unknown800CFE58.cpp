@@ -13,7 +13,7 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_80066B08();
 void fn_800CE2F8();
-void fn_800D0194();
+void *fn_800D0194();
 void *fn_800D78B0();
 void *fn_800E2BEC();
 extern char lbl_80472FA0[];

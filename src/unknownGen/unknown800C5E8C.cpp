@@ -2,11 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800FC960(void *,int,void *,void *,void *,void *);
+void *fn_800FC960(void *,int,void *,void *,void *,void *);
 void fn_800FCA28(void *,int,void *,void *,void *,void *);
 void fn_800FCA7C(void *,void *,void *,void *);
 extern void *lbl_80562404;
 extern void *lbl_80562410;
+extern void *lbl_80562430;
+extern void *lbl_80562438;
+extern void *lbl_8056246C;
+extern void *lbl_80562474;
+extern void *lbl_8056247C;
+extern void *lbl_805624A0;
+extern void *lbl_805624AC;
 extern void *lbl_80562A88;
 extern void *lbl_80562A9C;
 extern void *lbl_80562AAC;
@@ -71,5 +78,21 @@ void *fn_800C6138(){return lbl_80562AD0;}
 int fn_800C6140(){return 4;}
 void *fn_800C6148(){return lbl_80562404;}
 void *fn_800C6150(){return lbl_80562410;}
+void *fn_800C6158(int p0,int p1,int p2,int p3,int p4,float f0,float f1){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)p1;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)p2;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p3;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)p4;
+ *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+32)=f0;
+ *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+36)=f1;
+ return (void *)p0;
+}
+void *fn_800C6174(){return lbl_80562430;}
+void *fn_800C617C(){return lbl_80562438;}
+void *fn_800C6184(){return lbl_8056246C;}
+void *fn_800C618C(){return lbl_80562474;}
+void *fn_800C6194(){return lbl_8056247C;}
+void *fn_800C619C(){return lbl_805624A0;}
+void *fn_800C61A4(){return lbl_805624AC;}
 }
 #pragma pop

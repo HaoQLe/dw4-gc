@@ -6,7 +6,7 @@ void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800CE2F8();
-void fn_800CFD04();
+void *fn_800CFD04();
 void *fn_800CFE78();
 void fn_800D0108();
 extern char lbl_804888F8[];

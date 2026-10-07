@@ -12,7 +12,7 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80071694(void *,int);
+void *fn_80071694(void *,void *);
 void fn_800A325C(void *);
 void fn_8012FC48();
 void *fn_801308D0();
@@ -126,7 +126,7 @@ void fn_801426C4(){
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F970,2);
  void *value2=fn_800658E4(value0,value1);
- fn_80071694(value2,0);
+ fn_80071694(value2,(void *)0);
  void *value3=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
  void *value4=fn_80026B14();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;

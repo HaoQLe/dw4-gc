@@ -3,7 +3,6 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_8028A730(void *,void *);
-extern void *lbl_80534730;
 extern char lbl_80534FBC[];
 }
 extern "C" {
@@ -17,7 +16,5 @@ void fn_8031BB4C(int p0){
   return;
  }
 }
-void *fn_8031BB98(){return lbl_80534730;}
-void fn_8031BBA8(){}
 }
 #pragma pop

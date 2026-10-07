@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80068430(void *,void *);
+void *fn_80068430(int,int);
 void fn_800BEB3C();
 void *fn_800D0030(void *);
 }
@@ -164,7 +164,7 @@ void fn_800BEC30(int p0,int p1,int p2,int p3,int p4){
  void *value3;
  void *value4;
  if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
-  value5=fn_80068430((void *)p0,(void *)p1);
+  value5=fn_80068430((int)(int)((void *)p0),(int)(int)((void *)p1));
   value6=fn_800D0030(value5);
   if((int)(int)value6!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4);

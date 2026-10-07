@@ -4,7 +4,7 @@
 extern "C" {
 void fn_8004155C(void *,void *,int);
 void fn_80041660(void *,void *,int);
-void fn_8007798C();
+void fn_8007798C(int,int,int,int,int,int);
 extern void *lbl_80562394;
 void malloc(void *);
 }
@@ -44,9 +44,9 @@ public:
  virtual void s6C();
 };
 extern "C" {
-void fn_80057304(int p0){
+void fn_80057304(int p0,int p1,int p2,int p3,int p4,int p5){
  if(!lbl_80562394){
-  fn_8007798C();
+  fn_8007798C((int)(int)((void *)p0),(int)(int)((void *)p1),(int)(int)((void *)p2),(int)(int)((void *)p3),(int)(int)((void *)p4),(int)(int)((void *)p5));
  }
  void *value0=lbl_80562394;
  if(value0){

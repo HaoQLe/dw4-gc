@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800F6D64(void *,void *);
+void *fn_800F6D64(void *,void *);
 }
 class UnknownGenV800C28FC_0 {
 public:

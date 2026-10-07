@@ -10,7 +10,7 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80071694(void *,void *);
+void *fn_80071694(void *,void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void *fn_801308D0();

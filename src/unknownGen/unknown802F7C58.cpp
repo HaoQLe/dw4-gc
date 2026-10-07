@@ -21,7 +21,5 @@ void fn_802F7CA8(int p0){
  void *value1=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_80535124);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=value1;
 }
-void fn_802F7D00(){}
-int fn_802F7D04(){return 0;}
 }
 #pragma pop

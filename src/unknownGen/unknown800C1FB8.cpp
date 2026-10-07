@@ -158,5 +158,18 @@ void fn_800C1FB8(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C1FB8_0 *>((void *)p1)->s24C((void *)p1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
 }
+void *fn_800C1FF8(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)-1;
+ return (void *)p0;
+}
+void fn_800C2004(int p0,int p1){
+ if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>=0){
+  return;
+ }
+ if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)<0){
+  return;
+ }
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)p1;
+}
 }
 #pragma pop

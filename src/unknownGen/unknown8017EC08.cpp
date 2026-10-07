@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_801887D4(void *,void *,void *,void *);
+void *fn_801887D4(void *,void *,void *,void *);
 extern void *lbl_80564034;
 extern void *lbl_80564038;
 extern void *lbl_80564BC0;

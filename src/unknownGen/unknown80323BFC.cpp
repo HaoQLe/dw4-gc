@@ -3,7 +3,6 @@
 #pragma auto_inline off
 extern "C" {
 void fn_800A325C(void *);
-extern void *lbl_80534828;
 }
 extern "C" {
 UnknownGenHolder *dtor_80323BFC(UnknownGenHolder *object,short flags){
@@ -28,6 +27,5 @@ UnknownGenHolder *dtor_80323C70(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void *fn_80323CE4(){return lbl_80534828;}
 }
 #pragma pop

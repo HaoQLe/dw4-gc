@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Full regeneration: generate candidates (both flow argument strategies), check them under every
+# Full regeneration: refresh definition signatures, generate candidates (both flow argument strategies), check them under every
 # compiler profile, emit units, verify each new or changed unit, sync splits, configure and build.
 # Run after a normal build and report; see README.md.
 set -e -o pipefail
@@ -8,6 +8,9 @@ R=build/GDJEB2/analysis/unknowngen
 PY=/opt/homebrew/bin/python3
 SPECS=("sdata:" "nosdata:--no-sdata" "speed:--speed" "nosdata,speed:--no-sdata --speed" "nosdata,lmw:--no-sdata --lmw" "lmw:--lmw")
 find $R -maxdepth 1 -name "res[BVT-]*-*.json" -delete
+# Signature pass: record each generated definition's signature (seeded by the previous record), so
+# callers earlier in address order declare it the way the definition does.
+$PY tools/unknowngen/gen.py 80000000 80420000 $R/cand.cpp --calls --sigs-out=tools/unknowngen/signatures.json | cut -c1-60
 # Candidates under each strategy: default, every set argument register passed (B), and branch joins
 # kept in variables (V) or returning an untouched first parameter (T).
 $PY tools/unknowngen/gen.py 80000000 80420000 $R/candB.cpp --calls --flow-regs-all | cut -c1-60 &

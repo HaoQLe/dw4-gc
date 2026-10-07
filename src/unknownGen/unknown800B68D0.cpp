@@ -15,7 +15,7 @@ void fn_8006665C(void *);
 void fn_800ABC8C();
 void fn_800AC034();
 void *fn_800AC294();
-void fn_800B6D94();
+void *fn_800B6D94();
 void *fn_800D06E0();
 extern char lbl_80479688[];
 extern char lbl_8047969C[];

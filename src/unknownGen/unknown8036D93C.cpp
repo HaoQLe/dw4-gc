@@ -27,6 +27,5 @@ UnknownGenHolder *dtor_8036D9B0(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_8036DA24(){}
 }
 #pragma pop

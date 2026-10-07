@@ -9,5 +9,9 @@ int fn_800C4F48(){return 128;}
 void fn_800C4F50(int p0,int p1){
  fn_800F8590((void *)p1,(reinterpret_cast<char *>((void *)(int)*reinterpret_cast<unsigned short *>(reinterpret_cast<char *>((void *)p0)+76))+10),(reinterpret_cast<char *>((void *)p0)+12));
 }
+void *fn_800C4F84(int p0){
+ *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+10)=(short)(int)(void *)(int)*reinterpret_cast<unsigned short *>(reinterpret_cast<char *>((void *)p0)+76);
+ return (void *)p0;
+}
 }
 #pragma pop

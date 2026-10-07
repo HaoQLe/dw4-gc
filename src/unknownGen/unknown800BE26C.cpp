@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_800F9448(void *,void *);
-void fn_800F9490(void *,void *);
+void *fn_800F9490(void *,void *);
 }
 extern "C" {
 void fn_800BE26C(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}

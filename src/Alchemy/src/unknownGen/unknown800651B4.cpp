@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_8002DB4C(int);
-void fn_80065218(void *);
-void fn_80066710(void *);
+void *fn_80065218(void *);
+void *fn_80066710(void *);
 extern char lbl_804761D8[];
 }
 extern "C" {

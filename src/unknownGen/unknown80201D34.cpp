@@ -45,5 +45,9 @@ void fn_80201D34(int p0){
 unsigned char fn_80201D74(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+32);}
 void fn_80201D7C(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+34)=value;}
 unsigned char fn_80201D84(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+34);}
+void *fn_80201D8C(void *p0){
+ *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(p0)+33)=0;
+ return p0;
+}
 }
 #pragma pop

@@ -2,7 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-
+void fn_800D8B90(void *,void *,int);
+extern char lbl_804F5B10[];
 }
 class UnknownGenV800EACBC_0 {
 public:
@@ -52,6 +53,9 @@ void *fn_800EACBC(int p0){
  } else {
   return (void *)0;
  }
+}
+void fn_800EACFC(int p0,int p1,int p2,int p3,int p4,int p5){
+ fn_800D8B90((void *)p1,lbl_804F5B10,28);
 }
 }
 #pragma pop

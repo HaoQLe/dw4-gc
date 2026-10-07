@@ -2,6 +2,8 @@
  "fn_8006F35C": "var",
  "fn_80090CA8": "var",
  "fn_800EABC0": "var",
+ "fn_80119894": "var",
+ "fn_80177C58": "var",
  "fn_8017BDE4": "var",
  "fn_8017E130": "this",
  "fn_8017E480": "this",
@@ -12,9 +14,11 @@
  "fn_8017E654": "this",
  "fn_8017E674": "this",
  "fn_80188B84": "this",
+ "fn_801EAC44": "var",
  "fn_80201B58": "var",
  "fn_802037B0": "var",
  "fn_802072E4": "var",
+ "fn_80274214": "var",
  "fn_802778DC": "var",
  "fn_802827B0": "var",
  "fn_802A514C": "var",
@@ -28,5 +32,7 @@
  "fn_8038FC84": "this",
  "fn_8038FD18": "this",
  "fn_8038FD3C": "this",
+ "fn_803B5B70": "var",
+ "fn_803F530C": "var",
  "fn_803FF5B4": "var"
 }

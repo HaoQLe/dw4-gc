@@ -3,10 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80065704(void *,int);
-void fn_800667A4();
 void fn_801FAE18(void *);
-void fn_801FF70C(void *);
-void fn_802004A4(void *);
+void fn_802004A4();
 extern void *lbl_80564968;
 }
 class UnknownGenV801FF67C_0 {
@@ -41,16 +39,12 @@ void fn_801FF67C(int p0){
  value0=reinterpret_cast<UnknownGenV801FF67C_0 *>((void *)p0)->s58();
  value1=fn_80065704(value0,1);
  if((int)(int)value1==0){
-  fn_802004A4(value1);
+  fn_802004A4();
   return;
  } else {
   return;
  }
 }
 void *fn_801FF6D0(){return lbl_80564968;}
-void fn_801FF6D8(int p0){
- fn_800667A4();
- fn_801FF70C((void *)p0);
-}
 }
 #pragma pop

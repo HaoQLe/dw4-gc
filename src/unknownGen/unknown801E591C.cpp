@@ -4,6 +4,7 @@
 extern "C" {
 void fn_801E5CBC(void *,void *,void *);
 extern void *lbl_805657AC;
+extern void *lbl_805657B0;
 }
 extern "C" {
 void fn_801E591C(int p0){
@@ -13,6 +14,13 @@ void fn_801E591C(int p0){
  } else {
   return;
  }
+}
+void *fn_801E5958(int p0){
+ lbl_805657B0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+160);
+ return (void *)p0;
+}
+void fn_801E5964(){
+ lbl_805657B0=(void *)0;
 }
 }
 #pragma pop

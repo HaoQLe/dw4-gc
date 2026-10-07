@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80068430(void *,void *);
+void *fn_80068430(int,int);
 }
 class UnknownGenV802AE9F0_0 {
 public:
@@ -62,7 +62,7 @@ public:
 };
 extern "C" {
 void fn_802AE9F0(int p0,int p1){
- void *value0=fn_80068430((void *)p0,(void *)p1);
+ void *value0=fn_80068430((int)(int)((void *)p0),(int)(int)((void *)p1));
  reinterpret_cast<UnknownGenV802AE9F0_0 *>(value0)->sD8((void *)p1);
 }
 }

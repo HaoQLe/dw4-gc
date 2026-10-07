@@ -69,5 +69,10 @@ void fn_8021540C(int p0){
 }
 void fn_80215438(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+96)=value;}
 void *fn_80215440(){return lbl_80564728;}
+void *fn_80215448(int p0,int p1,int p2,int p3){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+60)=(void *)p3;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+56)=(void *)p2;
+ return (void *)p0;
+}
 }
 #pragma pop

@@ -87,5 +87,9 @@ void *fn_800BE504(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+1);
  return value1;
 }
+void *fn_800BE528(int p0){
+ *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+10)=(short)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ return (void *)p0;
+}
 }
 #pragma pop

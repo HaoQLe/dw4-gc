@@ -3,9 +3,9 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_8015DF74(void *,void *,void *);
-void fn_80188BA4(void *);
-void fn_80188C0C(void *,int);
-void fn_80188CAC(void *,void *);
+void *fn_80188BA4(void *);
+void *fn_80188C0C(void *,int);
+void *fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
 extern void *lbl_80562548;
 }

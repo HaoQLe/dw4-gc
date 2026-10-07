@@ -3,8 +3,10 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80065704(void *,int);
+void *fn_800C37E4(void *,int,void *);
 void *fn_801E626C();
 void fn_801E628C(void *);
+void *fn_801E754C(void *);
 void *fn_803B5B70(void *);
 extern void *lbl_805655D8;
 }
@@ -110,5 +112,21 @@ void fn_802132BC(int p0){
  fn_801E628C((void *)p0);
 }
 void *fn_80213320(){return lbl_805655D8;}
+void *fn_80213328(int p0,int p1,int p2,int p3,int p4,int p5){
+ void *value0;
+ void *value1;
+ void *value2;
+ value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
+ if(value0){
+  value1=fn_800C37E4(value0,0,(void *)p2);
+  if(!value1){
+   value2=fn_801E754C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
+   return value2;
+  } else {
+   return value1;
+  }
+ }
+ return value0;
+}
 }
 #pragma pop

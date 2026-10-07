@@ -7,8 +7,8 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
 void fn_800CF0E4();
+void *fn_800CF15C();
 void *fn_800CF250();
-void fn_800D7810();
 void *fn_8010307C();
 extern char lbl_8047650C[];
 extern char lbl_8048E298[];
@@ -20,6 +20,7 @@ void *fn_800D7610();
 void fn_800D7770();
 void fn_800D7798();
 void *fn_800D7808();
+void *fn_800D7810();
 }
 struct UnknownGenRoot800D7610 {
  void *unknown00;
@@ -65,5 +66,10 @@ void fn_800D7798(){
  fn_80066204(0,(int)&lbl_805633B8,(int)fn_800CF0E4,(int)fn_800D7808,(int)fn_800CF250,(int)lbl_8048E298,24,(int)fn_800D7610,(int)fn_800D7810,0,0);
 }
 void *fn_800D7808(){return lbl_80562D84;}
+void *fn_800D7810(){
+ void *value0=lbl_805633B8;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)fn_800CF15C;
+ return value0;
+}
 }
 #pragma pop

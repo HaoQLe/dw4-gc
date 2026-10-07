@@ -2,7 +2,6 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800667A4();
 void fn_800A325C(void *);
 }
 extern "C" {
@@ -17,8 +16,5 @@ UnknownGenHolder *fn_802A9B90(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_802A9C04(){}
-void fn_802A9C08(){}
-void fn_802A9C0C(){return fn_800667A4();}
 }
 #pragma pop

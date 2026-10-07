@@ -4,7 +4,7 @@
 extern "C" {
 void fn_80162C28(void *,void *);
 void *fn_8017BA20(void *,void *);
-void fn_8017BAFC(void *,void *,int);
+void *fn_8017BAFC(void *,void *,int);
 void *fn_8017BBDC(void *,void *);
 extern char lbl_804A0B5C[];
 }
@@ -23,6 +23,12 @@ void fn_80162D28(int p0){
  } else {
   return;
  }
+}
+void *fn_80162DAC(int p0,int p1,int p2){
+ if((unsigned int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+p1)<(unsigned int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+p2)){
+  return (void *)-1;
+ }
+ return (void *)(int)((unsigned int)(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+p2)-*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+p1))>>31);
 }
 }
 #pragma pop

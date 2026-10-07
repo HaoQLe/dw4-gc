@@ -2,7 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_800237D0();
 void *fn_80029F84();
+void fn_8004D4BC(void *,float);
+void fn_80053650(void *,int);
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
@@ -10,9 +13,9 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void fn_80066B08();
 void fn_80075AC4(void *,int);
-void fn_80130490();
-void fn_8013059C();
+void fn_80130654();
 void fn_80130818();
 void fn_80130BA0();
 void fn_80130DC8();
@@ -251,11 +254,13 @@ extern char lbl_8049BC80[];
 extern char lbl_8049BCAC[];
 extern char lbl_8049BCB8[];
 extern char lbl_8049BCDC[];
+extern char lbl_8049BCF0[];
 extern char lbl_804A2BC0[];
 extern char lbl_804A2CCC[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
+extern char lbl_804AAD84[];
 extern char lbl_804AADE0[];
 extern char lbl_804AAE58[];
 extern char lbl_804AAED0[];
@@ -269,15 +274,21 @@ extern char lbl_8055F46C[4];
 extern char lbl_8055F470[4];
 extern char lbl_8055F474[4];
 extern char lbl_8055F478[4];
+extern char lbl_8055F47C[8];
+extern char lbl_8055F494[8];
+extern char lbl_8055F49C[8];
+extern char lbl_8055F4A4[8];
 extern char lbl_80563A98[1];
 extern char lbl_80563A99[1];
 extern void *lbl_80563A9C;
 extern void *lbl_80563AA4;
 extern void *lbl_80563AA8;
 extern void *lbl_80563AB0;
+extern void *lbl_80563ABC;
 extern void *lbl_80563E54;
 extern void *lbl_80564000;
 extern void *lbl_805640A4;
+extern char lbl_80566AD0[4];
 void fn_8012FC48();
 void *fn_8012FC7C();
 void *fn_8012FCB8();
@@ -303,6 +314,12 @@ void *fn_80130298();
 void fn_801303D8();
 void fn_80130400();
 void *fn_80130470();
+void fn_80130490();
+void *fn_80130520();
+void *fn_8013055C();
+void fn_8013059C();
+void fn_801305C4();
+void *fn_80130634();
 }
 struct UnknownGenRoot8012FCB8 {
  void *unknown00;
@@ -352,6 +369,10 @@ struct UnknownGenObject80130298_1 : UnknownGenObject80130298_0 {
 struct UnknownGenObject80130298 : UnknownGenObject80130298_1 {
  char unknown2C[12];
  inline ~UnknownGenObject80130298(){unknown00=lbl_804A2CCC;}
+};
+struct UnknownGenObject8013055C_0 {
+ void *unknown00;
+ char unknown04[20];
 };
 extern "C" {
 void fn_8012F87C(){
@@ -704,5 +725,33 @@ void fn_80130400(){
  fn_80066204(0,(int)&lbl_80563AB0,(int)fn_8013A878,(int)fn_8012FEB0,(int)fn_80130470,(int)lbl_8049BCDC,52,(int)fn_80130298,(int)fn_80130490,0,0);
 }
 void *fn_80130470(){return fn_8013025C();}
+void fn_80130490(){
+ void *value0=lbl_80563AB0;
+ void *value1=fn_80065D88(value0);
+ fn_80065924(value0,lbl_8055F47C,2);
+ void *value2=fn_800658E4(value0,value1);
+ fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566AD0+0)));
+ void *value3=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ fn_80053650(value3,128);
+ fn_800659C0(value0,lbl_8055F494,lbl_8055F49C,lbl_8055F4A4,value1);
+}
+void *fn_80130520(){
+ if(!lbl_80563ABC || !(reinterpret_cast<unsigned int *>(lbl_80563ABC)[0x24/4]&4)) fn_8013059C();
+ return lbl_80563ABC;
+}
+void *fn_8013055C(){
+ UnknownGenObject8013055C_0 object;
+ fn_8006665C(&object);
+ object.unknown00=lbl_804AAD84;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void fn_8013059C(){
+ fn_80066188((int)fn_801305C4);
+}
+void fn_801305C4(){
+ fn_8012FC48();
+ fn_80066204(0,(int)&lbl_80563ABC,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80130634,(int)lbl_8049BCF0,20,(int)fn_8013055C,(int)fn_80130654,0,0);
+}
+void *fn_80130634(){return fn_80130520();}
 }
 #pragma pop

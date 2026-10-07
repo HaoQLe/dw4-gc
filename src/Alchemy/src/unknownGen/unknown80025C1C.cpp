@@ -7,9 +7,9 @@ void *fn_80023CF4();
 void *fn_80025AC8();
 void fn_80025B8C();
 void fn_80025BB4();
-void fn_8002614C();
 void fn_80029D58();
 void *fn_80029E64(void *);
+void *fn_8003B238();
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
@@ -23,6 +23,7 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_80071108(void *);
+void fn_800A325C(void *);
 extern char lbl_804636EC[];
 extern char lbl_80463704[];
 extern char lbl_8047110C[];
@@ -50,6 +51,8 @@ void *fn_8002605C();
 void fn_80026098();
 void fn_800260C0();
 void *fn_8002612C();
+void *fn_8002614C();
+void *fn_80026160();
 }
 struct UnknownGenRoot80025D78 {
  void *unknown00;
@@ -147,5 +150,22 @@ void fn_800260C0(){
  fn_80066204(1,(int)&lbl_805615EC,(int)fn_80029D58,(int)fn_80023CF4,(int)fn_8002612C,(int)lbl_80463704,12,0,(int)fn_8002614C,0,0);
 }
 void *fn_8002612C(){return fn_8002605C();}
+void *fn_8002614C(){
+ void *value0=lbl_805615EC;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)fn_80026160;
+ return value0;
+}
+void *fn_80026160(){return fn_8003B238();}
+UnknownGenHolder *dtor_80026180(UnknownGenHolder *object,short flags){
+ if(object){
+  UnknownGenValue *value=object->unknown00;
+  if(value){
+   --value->unknown04;
+   if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
+  }
+  if(flags>0) fn_800A325C(object);
+ }
+ return object;
+}
 }
 #pragma pop

@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void dtor_8040F21C(void *,int);
+void *dtor_8040F21C(void *,int);
 void fn_800A325C(void *);
 }
 extern "C" {

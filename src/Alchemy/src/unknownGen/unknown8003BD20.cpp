@@ -4,8 +4,8 @@
 extern "C" {
 void fn_80021B94();
 void fn_8003826C();
+void *fn_800382DC();
 void *fn_80038318();
-void fn_8003BE78();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
@@ -22,6 +22,7 @@ void *fn_8003BD5C();
 void fn_8003BDD8();
 void fn_8003BE00();
 void *fn_8003BE70();
+void *fn_8003BE78();
 }
 struct UnknownGenObject8003BD5C_0 {
  void *unknown00;
@@ -51,5 +52,11 @@ void fn_8003BE00(){
  fn_80066204(0,(int)&lbl_805620F4,(int)fn_8003826C,(int)fn_8003BE70,(int)fn_80038318,(int)lbl_80468A00,20,(int)fn_8003BD5C,(int)fn_8003BE78,0,0);
 }
 void *fn_8003BE70(){return lbl_80561E30;}
+void *fn_8003BE78(){
+ void *value0=lbl_805620F4;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)fn_800382DC;
+ return value0;
+}
+int fn_8003BE8C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+180);}
 }
 #pragma pop

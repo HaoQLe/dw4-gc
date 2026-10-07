@@ -7,7 +7,7 @@ void *fn_800237D0();
 void *fn_8002760C();
 void fn_800276DC();
 void fn_80027704();
-void fn_80027C70();
+void *fn_80027C70();
 void *fn_80029E64(void *);
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);

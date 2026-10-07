@@ -9,8 +9,8 @@ int fn_80294208(void *);
 short fn_80294210(void *);
 int fn_80294218(void *);
 int fn_80294220(void *);
-void fn_80294228(void *);
-void fn_80294294(void *);
+void *fn_80294228(void *);
+void *fn_80294294(void *);
 int fn_802942BC(void *);
 short fn_802942C4(void *);
 }
@@ -57,5 +57,13 @@ void fn_8028FFB8(int p0){
 void fn_8028FFDC(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+68)=value;}
 void fn_8028FFE4(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+64)=value;}
 void fn_8028FFEC(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+60)=value;}
+void *fn_8028FFF4(int p0,int p1,int p2){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+72)=(void *)p1;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+76)=(void *)p2;
+ return (void *)p0;
+}
+void fn_80290000(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+156)=value;}
+void fn_80290008(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+52)=value;}
+int fn_80290010(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+44);}
 }
 #pragma pop

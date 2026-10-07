@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80119B10(void *);
+void fn_80119B10(int,int);
 }
 class UnknownGenV80119720_0 {
 public:
@@ -35,8 +35,8 @@ extern "C" {
 void fn_80119720(int p0,int p1,int p2){
  reinterpret_cast<UnknownGenV80119720_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))->s64((void *)p1,(void *)p2);
 }
-void fn_80119750(int p0){
- fn_80119B10(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+void fn_80119750(int p0,int p1,int p2,int p3,int p4,int p5){
+ fn_80119B10((int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16)),(int)(int)((void *)p1));
 }
 }
 #pragma pop

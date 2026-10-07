@@ -8,7 +8,7 @@ void fn_8002F868();
 void *fn_8002F970();
 void fn_800300A0();
 void *fn_80030248();
-void fn_8003BC44();
+void *fn_8003BC44();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);

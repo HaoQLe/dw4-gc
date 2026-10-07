@@ -19,7 +19,7 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_80066B08();
-void fn_80071694(void *,int);
+void *fn_80071694(void *,void *);
 extern char lbl_80464258[];
 extern char lbl_80464278[];
 extern char lbl_8046428C[];
@@ -187,7 +187,7 @@ void fn_80029DE8(){
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D25C,1);
  void *value2=fn_800658E4(value0,value1);
- fn_80071694(value2,0);
+ fn_80071694(value2,(void *)0);
  fn_800659C0(value0,lbl_8055D268,lbl_8055D26C,lbl_8055D270,value1);
 }
 }

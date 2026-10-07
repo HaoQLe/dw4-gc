@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8036317C(void *);
+void *fn_8036317C(void *);
 }
 extern "C" {
 void fn_8036308C(int p0){

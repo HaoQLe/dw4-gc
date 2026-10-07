@@ -2,10 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80068430(void *,void *);
-extern void *lbl_805343D8;
-extern void *lbl_805343DC;
-extern void *lbl_805343EC;
+void *fn_80068430(int,int);
 }
 class UnknownGenV802AEA80_0 {
 public:
@@ -77,20 +74,8 @@ public:
 };
 extern "C" {
 void fn_802AEA80(int p0,int p1){
- void *value0=fn_80068430((void *)p0,(void *)p1);
+ void *value0=fn_80068430((int)(int)((void *)p0),(int)(int)((void *)p1));
  reinterpret_cast<UnknownGenV802AEA80_0 *>(value0)->s108((void *)p1);
 }
-void *fn_802AEAC0(){return lbl_805343DC;}
-void *fn_802AEAD0(){return lbl_805343EC;}
-int fn_802AEAE0(){return 0;}
-void fn_802AEAE8(){}
-int fn_802AEAEC(){return 0;}
-int fn_802AEAF4(){return 0;}
-int fn_802AEAFC(){return 0;}
-int fn_802AEB04(){return 0;}
-int fn_802AEB0C(){return 0;}
-int fn_802AEB14(){return 0;}
-int fn_802AEB1C(){return 0;}
-void *fn_802AEB24(){return lbl_805343D8;}
 }
 #pragma pop

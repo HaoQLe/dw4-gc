@@ -2,9 +2,232 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-
+extern void *kFailure__3Gap;
+extern void *lbl_80561494;
+extern void *lbl_80561498;
+extern void *lbl_805614A8;
+extern void *lbl_805614AC;
+extern void *lbl_805614BC;
+extern void *lbl_805614C0;
+extern void *lbl_80561504;
+extern void *lbl_80561530;
+extern void *lbl_80561534;
+extern void *lbl_805615A4;
+extern void *lbl_805615A8;
+extern void *lbl_805615B4;
+extern void *lbl_805615B8;
+extern void *lbl_805615D8;
+extern void *lbl_805615DC;
+extern void *lbl_80561670;
+extern void *lbl_80561674;
+extern void *lbl_80561694;
+extern void *lbl_80561698;
+extern void *lbl_805616C4;
+extern void *lbl_805616CC;
+extern void *lbl_805616D8;
+extern void *lbl_805616DC;
+extern void *lbl_805616E8;
+extern void *lbl_805616EC;
+extern void *lbl_80561708;
+extern void *lbl_80561730;
+extern void *lbl_80561740;
+extern void *lbl_80561744;
+extern void *lbl_8056174C;
+extern void *lbl_80561808;
+extern void *lbl_80561818;
+extern void *lbl_8056181C;
+extern void *lbl_80561854;
+extern void *lbl_80561904;
+extern void *lbl_80561908;
+extern void *lbl_80561970;
+extern void *lbl_805619C0;
+extern void *lbl_805619CC;
+extern void *lbl_805619D4;
+extern void *lbl_805619E0;
+extern void *lbl_805619E4;
+extern void *lbl_805619F4;
+extern void *lbl_80561C2C;
+extern void *lbl_80561C30;
+extern void *lbl_80561C34;
+extern void *lbl_80561C80;
+extern void *lbl_80561CA8;
+extern void *lbl_80561D14;
+extern void *lbl_80561D2C;
+extern void *lbl_80561D34;
+extern void *lbl_80561D38;
+extern void *lbl_80561D4C;
+extern void *lbl_80561D50;
+extern void *lbl_80561D54;
+extern void *lbl_80561D58;
+extern void *lbl_80561D5C;
+extern void *lbl_80561D60;
+extern void *lbl_80561D64;
+extern void *lbl_80561D68;
+extern void *lbl_80561D70;
+extern void *lbl_80561D78;
+extern void *lbl_80561D7C;
+extern void *lbl_80561D84;
+extern void *lbl_80561D8C;
+extern void *lbl_80561D90;
+extern void *lbl_80561D98;
+extern void *lbl_80561D9C;
+extern void *lbl_80561DA4;
+extern void *lbl_80561DA8;
+extern void *lbl_80561DB0;
+extern void *lbl_80561DB8;
+extern void *lbl_80561DC0;
+extern void *lbl_80561DC4;
+extern void *lbl_80561DCC;
+extern void *lbl_80561DD0;
+extern void *lbl_80561DD8;
+extern void *lbl_80561DE0;
+extern void *lbl_80561DE4;
+extern void *lbl_80561DE8;
+extern void *lbl_80561DFC;
+extern void *lbl_80561E00;
+extern void *lbl_80561E10;
+extern void *lbl_80561E1C;
+extern void *lbl_80561E20;
+extern void *lbl_80561E48;
+extern void *lbl_80561E4C;
+extern void *lbl_80561E5C;
+extern void *lbl_80561EAC;
+extern void *lbl_80561ED8;
+extern void *lbl_805622A4;
 }
+class UnknownGenV80093EAC_0 {
+public:
+ virtual void s08();
+ virtual void s0C();
+ virtual void s10();
+ virtual void s14();
+ virtual void s18();
+ virtual void s1C();
+ virtual void s20();
+ virtual void s24();
+ virtual void s28();
+ virtual void s2C();
+ virtual void s30();
+ virtual void s34();
+ virtual void s38();
+ virtual void s3C();
+ virtual void s40();
+ virtual void s44();
+ virtual void s48();
+};
 extern "C" {
 void fn_80093E28(){}
+void *fn_80093E2C(int p0){
+ *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+112)=0;
+ return (void *)p0;
+}
+void *fn_80093E38(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
+ return (void *)p0;
+}
+int fn_80093E44(){return 0;}
+int fn_80093E4C(){return 0;}
+int fn_80093E54(){return 0;}
+void *fn_80093E5C(){return lbl_80561ED8;}
+void *fn_80093E64(){return lbl_80561EAC;}
+void *fn_80093E6C(){return lbl_80561E5C;}
+int fn_80093E74(){return 1;}
+void *fn_80093E7C(){return lbl_80561E48;}
+void *fn_80093E84(){return lbl_80561E4C;}
+void *fn_80093E8C(){return lbl_80561E1C;}
+void *fn_80093E94(){return lbl_80561E20;}
+void *fn_80093E9C(){return lbl_80561E10;}
+void *fn_80093EA4(){return lbl_80561DFC;}
+void fn_80093EAC(int p0){
+ reinterpret_cast<UnknownGenV80093EAC_0 *>((void *)p0)->s48();
+}
+void *fn_80093ED8(){return lbl_80561730;}
+void *fn_80093EE0(){return lbl_80561DE8;}
+void *fn_80093EE8(){return lbl_80561DE4;}
+void *fn_80093EF0(){return lbl_80561708;}
+void *fn_80093EF8(){return lbl_80561DE0;}
+void *fn_80093F00(){return lbl_80561DD8;}
+void *fn_80093F08(){return lbl_80561DCC;}
+void fn_80093F10(){}
+void *fn_80093F14(){return lbl_80561DD0;}
+void *fn_80093F1C(){return lbl_80561DC0;}
+void fn_80093F24(){}
+void *fn_80093F28(){return lbl_80561DC4;}
+void *fn_80093F30(){return lbl_80561DB8;}
+void *fn_80093F38(){return lbl_80561DB0;}
+void *fn_80093F40(){return lbl_80561DA4;}
+void *fn_80093F48(){return lbl_80561DA8;}
+void *fn_80093F50(){return lbl_80561D9C;}
+void *fn_80093F58(){return lbl_80561D98;}
+void *fn_80093F60(){return lbl_80561D90;}
+void *fn_80093F68(){return lbl_80561D8C;}
+void *fn_80093F70(){return lbl_80561D84;}
+void *fn_80093F78(){return lbl_80561D7C;}
+void *fn_80093F80(){return lbl_80561D78;}
+void *fn_80093F88(){return lbl_80561D70;}
+void *fn_80093F90(){return lbl_80561D68;}
+void *fn_80093F98(){return lbl_80561D64;}
+void *fn_80093FA0(){return lbl_80561D60;}
+void *fn_80093FA8(){return lbl_80561D5C;}
+void *fn_80093FB0(){return lbl_80561D58;}
+void *fn_80093FB8(){return lbl_80561D54;}
+void *fn_80093FC0(){return lbl_80561D50;}
+void *fn_80093FC8(){return lbl_80561D4C;}
+void *fn_80093FD0(){return lbl_80561D34;}
+void *fn_80093FD8(){return lbl_80561D38;}
+void *fn_80093FE0(){return lbl_80561D2C;}
+void *fn_80093FE8(){return lbl_80561D14;}
+void *fn_80093FF0(){return lbl_80561CA8;}
+void *fn_80093FF8(){return lbl_80561C80;}
+void *fn_80094000(){return lbl_80561C30;}
+void *fn_80094008(){return lbl_80561C34;}
+void *fn_80094010(){return lbl_80561C2C;}
+void *fn_80094018(){return lbl_805619F4;}
+void *fn_80094020(){return lbl_805619E0;}
+void *fn_80094028(){return lbl_805619E4;}
+void *fn_80094030(){return lbl_805619D4;}
+void *fn_80094038(){return lbl_805619CC;}
+void *fn_80094040(){return lbl_805619C0;}
+void *fn_80094048(){return lbl_80561970;}
+void *fn_80094050(){return lbl_80561908;}
+void *fn_80094058(){return lbl_80561904;}
+void *fn_80094060(){return lbl_80561854;}
+void *fn_80094068(){return lbl_80561818;}
+void *fn_80094070(){return lbl_8056181C;}
+void *fn_80094078(){return lbl_80561808;}
+void *fn_80094080(){return lbl_8056174C;}
+void *fn_80094088(){return lbl_80561740;}
+void *fn_80094090(){return lbl_805616E8;}
+void *fn_80094098(){return lbl_805616EC;}
+void *fn_800940A0(){return lbl_805616DC;}
+void *fn_800940A8(){return lbl_805616D8;}
+void *fn_800940B0(){return lbl_805616CC;}
+void *fn_800940B8(){return lbl_80561744;}
+void *fn_800940C0(){return lbl_805616C4;}
+void *fn_800940C8(){return lbl_80561694;}
+void *fn_800940D0(){return lbl_80561698;}
+void *fn_800940D8(){return lbl_80561674;}
+void *fn_800940E0(){return lbl_80561670;}
+void *fn_800940E8(){return lbl_805615D8;}
+void *fn_800940F0(){return lbl_805615DC;}
+void *fn_800940F8(){return lbl_805615B4;}
+void *fn_80094100(){return lbl_805615B8;}
+void *fn_80094108(){return lbl_805615A8;}
+void *fn_80094110(){return lbl_805615A4;}
+void *fn_80094118(){return lbl_80561534;}
+void *fn_80094120(){return lbl_805622A4;}
+void *fn_80094128(){return lbl_80561530;}
+void *fn_80094130(){return lbl_805622A4;}
+void *fn_80094138(){return lbl_805614BC;}
+void *fn_80094140(){return lbl_805614C0;}
+void *fn_80094148(){return lbl_805614A8;}
+void *fn_80094150(){return lbl_805614AC;}
+void *fn_80094158(){return lbl_80561494;}
+void *fn_80094160(){return lbl_80561498;}
+void *fn_80094168(){return lbl_80561E00;}
+void *fn_80094170(){return lbl_80561504;}
+int fn_80094178(){return 4;}
+int fn_80094180(){return 8;}
+int fn_80094188(){return 4;}
 }
 #pragma pop

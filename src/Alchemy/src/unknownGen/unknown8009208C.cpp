@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-
+extern void *kSuccess__3Gap;
 }
 class UnknownGenV8009208C_0 {
 public:
@@ -27,6 +27,10 @@ void fn_8009208C(int p0){
 }
 void fn_800920B8(int p0){
  reinterpret_cast<UnknownGenV800920B8_1 *>((void *)p0)->s24();
+}
+void *fn_800920E4(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kSuccess__3Gap;
+ return (void *)p0;
 }
 }
 #pragma pop

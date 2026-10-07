@@ -43,7 +43,9 @@ runs=[];cur=[];common=set();prevd=None
 for a,s,n in allf:
   if n in ok and n not in gen._done and n not in gen._bad:
     d=dtor_eh(n,a)
-    if cur and (a in bounds or cur[-1][0]+cur[-1][1]!=a or not (common&prof[n]) or d or prevd):
+    # Functions with and without original exception-table entries never share a unit: exceptions
+    # enabled for the unit would give the others entries the original lacks.
+    if cur and (a in bounds or cur[-1][0]+cur[-1][1]!=a or not (common&prof[n]) or d or prevd or (a in eti)!=(cur[-1][0] in eti)):
       runs.append((cur,common));cur=[]
     common=(common&prof[n]) if cur else set(prof[n])
     cur.append((a,s,n));prevd=d

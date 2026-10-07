@@ -3,11 +3,11 @@
 #pragma auto_inline off
 extern "C" {
 void fn_800A325C(void *);
-void fn_803B7F88(void *);
-void fn_803B7FD8(void *,int);
-void fn_803B8260(void *);
-void fn_803B82B8(void *,int);
-void fn_803B85CC(void *,int);
+void *fn_803B7F88(void *);
+void *fn_803B7FD8(void *,int);
+void *fn_803B8260(void *);
+void *fn_803B82B8(void *,int);
+void *fn_803B85CC(void *,int);
 extern char lbl_804EEB5C[];
 extern void *lbl_805661F0;
 }

@@ -13,7 +13,7 @@ void fn_8006665C(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
 void fn_801BF938();
-void fn_801C129C();
+void *fn_801C129C();
 void fn_801E871C(int);
 void fn_801E8744();
 void *fn_801E8770();

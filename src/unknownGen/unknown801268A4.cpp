@@ -3,6 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80023358();
+void fn_80123D28(void *,void *,int,int,int);
 }
 class UnknownGenV801268A4_0 {
 public:
@@ -62,6 +63,9 @@ extern "C" {
 void fn_801268A4(int p0,int p1,int p2){
  void *value0=fn_80023358();
  reinterpret_cast<UnknownGenV801268A4_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2**reinterpret_cast<unsigned short *>(reinterpret_cast<char *>((void *)p0)+20)));
+}
+void fn_801268FC(int p0,int p1,int p2,int p3,int p4,int p5){
+ fn_80123D28((void *)p2,(void *)p1,3,1,0);
 }
 }
 #pragma pop

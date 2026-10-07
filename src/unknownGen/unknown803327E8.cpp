@@ -2,22 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800A325C(void *);
 void fn_803250AC();
 void *fn_80332364();
 void fn_803323B0();
-void fn_80332AC8();
+void *fn_80332910();
 void fn_80332E4C();
 extern char lbl_80453B8C[];
 extern char lbl_80535F30[];
-extern void *lbl_80535F34;
-extern void *lbl_80535F3C;
 void fn_80332884();
 void *fn_803328F0();
-void *fn_80332910();
 }
 extern "C" {
 UnknownGenHolder *dtor_803327E8(UnknownGenHolder *object,short flags){
@@ -39,14 +35,5 @@ void fn_80332884(){
  fn_80066204(0,(int)lbl_80535F30,(int)fn_80332E4C,(int)fn_80332910,(int)fn_803328F0,(int)lbl_80453B8C,124,(int)fn_803323B0,0,0,0);
 }
 void *fn_803328F0(){return fn_80332364();}
-void *fn_80332910(){return lbl_80535F3C;}
-void *fn_80332920(void *object){
- fn_80332AC8();
- return fn_8006546C(lbl_80535F34,object);
-}
-void *fn_80332960(){
- if(!lbl_80535F34 || !(reinterpret_cast<unsigned int *>(lbl_80535F34)[0x24/4]&4)) fn_80332AC8();
- return lbl_80535F34;
-}
 }
 #pragma pop

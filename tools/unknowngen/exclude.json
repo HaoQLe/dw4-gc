@@ -13,7 +13,17 @@
  "fn_8007740C": "candidate was inexact in round 1; kept out until its template is revisited",
  "fn_800C8224": "inexact when compiled in its emitted unit",
  "fn_800DFC74": "inexact when compiled in its emitted unit",
+ "fn_80287FAC": "inexact when compiled in its emitted unit",
  "fn_802EB7CC": "static initializer referenced from .ctors",
  "fn_8031C974": "static initializer referenced from .ctors",
+ "fn_803B0C8C": "inexact when compiled in its emitted unit",
+ "fn_803B0DC0": "inexact when compiled in its emitted unit",
+ "fn_803B0EF8": "inexact when compiled in its emitted unit",
+ "fn_803B0FEC": "inexact when compiled in its emitted unit",
+ "fn_803B1078": "inexact when compiled in its emitted unit",
+ "fn_803B13D0": "inexact when compiled in its emitted unit",
+ "fn_803B1750": "inexact when compiled in its emitted unit",
+ "fn_803B1788": "inexact when compiled in its emitted unit",
+ "fn_803F530C": "inexact when compiled in its emitted unit",
  "fn_8040A208": "static initializer referenced from .ctors"
 }

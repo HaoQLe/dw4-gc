@@ -5,9 +5,9 @@ extern "C" {
 void *fn_80053F28(void *);
 void *fn_80054094(void *,void *);
 void *fn_80054140(int);
-void fn_80188BA4(void *);
-void fn_80188C0C(void *,int);
-void fn_80188CAC(void *,void *);
+void *fn_80188BA4(void *);
+void *fn_80188C0C(void *,int);
+void *fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
 extern void *lbl_80562140;
 extern void *lbl_805644E0;

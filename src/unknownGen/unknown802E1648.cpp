@@ -7,15 +7,14 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802E150C();
 void fn_802E1558();
+void *fn_802E170C();
 void fn_802E171C();
 void fn_80407B3C();
 extern char lbl_80420A8C[];
 extern char lbl_804D2980[];
 extern char lbl_805355E0[];
-extern void *lbl_8055CA5C;
 void fn_802E1670();
 void *fn_802E16EC();
-void *fn_802E170C();
 }
 extern "C" {
 void fn_802E1648(){
@@ -26,6 +25,5 @@ void fn_802E1670(){
  fn_80066204(0,(int)lbl_805355E0,(int)fn_80407B3C,(int)fn_802E170C,(int)fn_802E16EC,(int)lbl_80420A8C,120,(int)fn_802E1558,(int)fn_802E171C,0,(int)lbl_804D2980);
 }
 void *fn_802E16EC(){return fn_802E150C();}
-void *fn_802E170C(){return lbl_8055CA5C;}
 }
 #pragma pop

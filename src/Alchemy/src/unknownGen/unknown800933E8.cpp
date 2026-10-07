@@ -7,6 +7,8 @@ extern void *kFailure__3Gap;
 extern void *kSuccess__3Gap;
 extern void *lbl_80562070;
 extern void *lbl_80562074;
+extern void *lbl_8056209C;
+extern void *lbl_805620A0;
 }
 class UnknownGenV80093458_0 {
 public:
@@ -81,5 +83,20 @@ void fn_80093458(int p0,int p1,int p2,int p3){
 }
 int fn_800934F4(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+32);}
 int fn_800934FC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36);}
+void *fn_80093504(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
+ return (void *)p0;
+}
+void *fn_80093510(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
+ return (void *)p0;
+}
+void *fn_8009351C(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
+ return (void *)p0;
+}
+void *fn_80093528(){return lbl_8056209C;}
+void *fn_80093530(){return lbl_805620A0;}
+unsigned char fn_80093538(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+20);}
 }
 #pragma pop

@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80302B14(void *);
+void *fn_80302B14(void *);
 void fn_80302B40(void *);
 void fn_80302C3C(void *);
-void fn_80302D08(void *,void *);
-void fn_80302D58(void *,void *);
-void fn_80302DA8(void *,void *);
+void *fn_80302D08(void *,void *);
+void *fn_80302D58(void *,void *);
+void *fn_80302DA8(void *,void *);
 void fn_80302DB8(void *,void *);
 void fn_8030650C(void *,void *,void *,void *,void *,void *,void *,void *);
 extern void *lbl_80535904;

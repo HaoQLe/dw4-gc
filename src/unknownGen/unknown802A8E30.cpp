@@ -4,7 +4,6 @@
 extern "C" {
 void fn_80065704(void *,int);
 void fn_800667B0();
-extern void *lbl_80534350;
 }
 class UnknownGenV802A8E30_0 {
 public:
@@ -36,7 +35,5 @@ void fn_802A8E30(int p0){
  void *value0=reinterpret_cast<UnknownGenV802A8E30_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);
 }
-void *fn_802A8E78(){return lbl_80534350;}
-void fn_802A8E88(){}
 }
 #pragma pop

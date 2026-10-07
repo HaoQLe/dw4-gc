@@ -26,7 +26,7 @@ void fn_800AC034();
 void *fn_800AC294();
 void fn_800BBF58();
 void fn_800BCB68();
-void fn_800BCC14(int);
+void *fn_800BCC14(int);
 void *fn_800BD398();
 void fn_800BD3E4();
 void fn_800CDDF0();

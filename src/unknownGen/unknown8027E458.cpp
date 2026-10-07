@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80276F5C(void *,int,void *);
+void fn_80276F5C(int,int,int);
 void fn_8027C1E0(void *);
 void fn_8027CE80(void *);
 void *fn_8027DA18(void *);
@@ -19,7 +19,7 @@ void fn_8027E458(int p0){
    fn_8027CE80((void *)p0);
   }
  }
- fn_80276F5C(value0,1,(void *)(int)*reinterpret_cast<short *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40))+30));
+ fn_80276F5C((int)(int)(value0),1,(int)(int)((void *)(int)*reinterpret_cast<short *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40))+30)));
  *reinterpret_cast<short *>(reinterpret_cast<char *>(value0)+28)=(short)(int)(void *)(int)*reinterpret_cast<short *>(reinterpret_cast<char *>(value0)+30);
 }
 }

@@ -6,6 +6,7 @@ void *fn_800635C8(void *,int,int,int);
 extern char lbl_8055D4C4[1];
 extern void *lbl_805620F8;
 extern char lbl_805620FC[1];
+extern void *lbl_80562110;
 }
 extern "C" {
 void *fn_8003D160(){
@@ -19,6 +20,10 @@ void *fn_8003D160(){
   lbl_805620F8=value0;
  }
  return lbl_805620F8;
+}
+void *fn_8003D1C0(void *p0){
+ lbl_80562110=p0;
+ return p0;
 }
 }
 #pragma pop

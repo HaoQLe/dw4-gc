@@ -12,6 +12,15 @@ FLOW_REGS_ALL='--flow-regs-all' in sys.argv
 # differing registers in variables, 'this' also returns an untouched first parameter.
 FLOW_CF=json.load(open(HERE/'flow_cf.json')) if (HERE/'flow_cf.json').exists() else {}
 FLOW_CF_ALL=next((a.split('=')[1] for a in sys.argv if a.startswith('--cf=')),None)
+# Definition signatures from the previous generation pass, so callers earlier in address order declare
+# each generated function the way its definition does (written by gen.py --sigs-out).
+FP_NAME_ALL='--fp-name-stale' not in sys.argv
+SIGS=json.load(open(HERE/'signatures.json')) if (HERE/'signatures.json').exists() else {}
+# Functions some generated caller uses the result of.
+RESULT_USED=set()
+# Signatures that definitions wanted but could not declare (a caller declared them differently first).
+WANT={}
+DEFKIND={}  # template that generated each definition
 idx=json.load(open(RELINDEX))
 _etb_refs=idx.pop('@etb_refs',[])
 syminfo={}
@@ -128,6 +137,7 @@ def explicit_params(n):
     elif op in (14,15,12,13): srcs=[ra] if ra else [];dst=rt      # addi/addis/addic
     elif op in (32,34,40,42): srcs=[ra];dst=rt                    # loads
     elif op in (36,38,44): srcs=[rt,ra]                           # stores
+    elif op in (48,50,52,54): srcs=[ra]                           # FP loads/stores (base)
     elif op in (10,11): srcs=[ra]                                 # cmpli/cmpi
     elif op==18 and w&1: written|=set(range(3,13));continue       # call clobbers
     elif op==21: srcs=[rt];dst=ra                                 # rlwinm
@@ -146,10 +156,54 @@ def _reads_writes(w):
   if op in (14,15,12,13): return ([ra] if ra else []),rt
   if op in (32,34,40,42): return [ra],rt
   if op in (36,38,44): return [rt,ra],None
+  if op in (48,50,52,54): return [ra],None
   if op in (10,11): return [ra],None
   if op==21: return [rt],ra
   if op==31: return [ra,rb],rt
   return [],None
+def _fp_rw(w):
+  """(FPR sources, FPR destination) of a floating-point instruction; saves and restores through r1 of
+  f14..f31 are neither."""
+  op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;rb=(w>>11)&31;rc=(w>>6)&31
+  if op in (48,49,50,51): return [],(None if op==50 and ra==1 and rt>=14 else rt)
+  if op in (52,53,54,55): return ([] if op==54 and ra==1 and rt>=14 else [rt]),None
+  if op==59:
+    xo=(w>>1)&31
+    if xo in (18,20,21): return [ra,rb],rt
+    if xo==25: return [ra,rc],rt
+    if xo in (28,29,30,31): return [ra,rc,rb],rt
+    if xo in (24,22): return [rb],rt
+  if op==63:
+    xo=(w>>1)&0x3FF
+    if xo in (0,32): return [ra,rb],None
+    if xo in (40,72,136,264,12,14,15): return [rb],rt
+    x5=(w>>1)&31
+    if x5 in (18,20,21): return [ra,rb],rt
+    if x5==25: return [ra,rc],rt
+    if x5 in (28,29,30,31,23): return [ra,rc,rb],rt
+    if x5==26: return [rb],rt
+  return [],None
+_fexplicit={}
+def fp_explicit_params(n):
+  """Number of FP argument registers (f1..) the function reads before writing, in straight-line order."""
+  if n in _fexplicit: return _fexplicit[n]
+  if n not in syminfo or n not in idx: return 0
+  b=callshape.rd(syminfo[n][1],idx[n]['size']);written=set();read=set()
+  for i in range(0,len(b),4):
+    w=_st.unpack('>I',b[i:i+4])[0]
+    if (w>>26)==18 and w&1: written|=set(range(0,14));continue
+    srcs,dst=_fp_rw(w)
+    for r_ in srcs:
+      if 1<=r_<=8 and r_ not in written: read.add(r_)
+    if dst is not None: written.add(dst)
+  k=0
+  while 1+k in read: k+=1
+  _fexplicit[n]=k
+  return k
+_fdedicated={}
+def _survivors(regs):
+  """Registers preserved across a call: r14..r31 and f14..f31 (keys 46..63)."""
+  return {k:v for k,v in regs.items() if k>=14 and not 32<=k<46}
 _dedicated={}
 def dedicated_arity(n):
   """Largest number of leading argument registers some caller writes specifically for a call to n
@@ -158,15 +212,22 @@ def dedicated_arity(n):
     for c in idx:
       if c not in syminfo or not c.startswith(GENERATED_PREFIXES): continue
       b=callshape.rd(syminfo[c][1],idx[c]['size']);relat={o&~3:x for o,*x in idx[c]['rel']}
-      fresh={}
+      fresh={};ffresh={}
       for i in range(0,len(b),4):
         w=_st.unpack('>I',b[i:i+4])[0]
         if (w>>26)==18 and w&1 and i in relat and relat[i][1].startswith(('_savegpr_','_restgpr_')): continue
         if (w>>26)==18 and w&1 and i in relat:
           t=relat[i][1];k=0
           while fresh.get(3+k): k+=1
-          _dedicated[t]=max(_dedicated.get(t,0),k);fresh={};continue
-        if (w>>26) in (16,18,19): fresh={};continue
+          _dedicated[t]=max(_dedicated.get(t,0),k);fresh={}
+          k=0
+          while ffresh.get(1+k): k+=1
+          _fdedicated[t]=max(_fdedicated.get(t,0),k);ffresh={};continue
+        if (w>>26) in (16,18,19): fresh={};ffresh={};continue
+        fs,fd=_fp_rw(w)
+        for r_ in fs:
+          if r_ in ffresh: ffresh[r_]=False
+        if fd is not None and 1<=fd<=8: ffresh[fd]=True
         srcs,dst=_reads_writes(w)
         for r_ in srcs:
           if r_ in fresh: fresh[r_]=False
@@ -174,6 +235,9 @@ def dedicated_arity(n):
     _dedicated.setdefault('',0)
   return _dedicated.get(n,0)
 def arity(n): return max(explicit_params(n),dedicated_arity(n))
+def fp_arity(n):
+  dedicated_arity(n)
+  return max(fp_explicit_params(n),_fdedicated.get(n,0))
 
 _arity={}
 def caller_arity(n):
@@ -461,7 +525,28 @@ _BINI={7:lambda k:'({0}*%d)'%callshape.s16(k),8:lambda k:'(%d-{0})'%callshape.s1
 _BASES=('param','load','ret','field','var','add','local','xfield','bin','gfield')
 _XLOAD={23:'int',87:'unsigned char',279:'unsigned short',343:'short'}
 _XSTORE={151:'int',215:'unsigned char',407:'short'}
+def _gap_params(n):
+  """Highest argument register (r3..) read before written, counting skipped lower registers."""
+  if n not in syminfo or n not in idx: return 0
+  b=callshape.rd(syminfo[n][1],idx[n]['size']);written=set();hi=0
+  for i in range(0,len(b),4):
+    w=_st.unpack('>I',b[i:i+4])[0]
+    if (w>>26)==18 and w&1: break
+    if (w>>26) in (16,18,19): break
+    srcs,dst=_reads_writes(w)
+    for r_ in srcs:
+      if 3<=r_<=10 and r_ not in written: hi=max(hi,r_-2)
+    if dst is not None: written.add(dst)
+  return hi
 def FLOW(name,rel):
+  try: return _flow(name,rel,None)
+  except ValueError as ex:
+    if str(ex).startswith('proto conflict'): raise
+    # A function reading a higher argument register without the lower ones takes them all as parameters.
+    g=_gap_params(name)
+    if g>arity(name): return _flow(name,rel,g)
+    raise
+def _flow(name,rel,nparam_override):
   """Calls whose arguments are constants, addresses, loaded globals, fields or earlier call results, field
   stores and virtual calls, structured by forward conditional branches into if/else blocks and returns.
   Values used more than once become locals in first-use order; registers that differ where paths join
@@ -481,14 +566,50 @@ def FLOW(name,rel):
       v=todo.pop();k=vals[v]
       if k[0]=='field' and born[v]<seq[0]: stale.add(v)
       if k[0] in ('field','cast','add'): todo.append(k[1])
-      elif k[0]=='bin': todo+=list(k[2:])
+      elif k[0] in ('bin','fbin'): todo+=list(k[2:])
       elif k[0]=='xfield': todo+=[k[1],k[2]]
     if effect: seq[0]+=1
-  nparam=arity(name)
+  # Floating-point registers are modeled only in functions with FP instructions; elsewhere FP values
+  # pass through calls implicitly, as in the integer-only template.
+  usefp=any(_fp_rw(w)!=([],None) or (w>>26) in (56,60) for w in ws)
+  nparam=nparam_override or arity(name);nfparam=fp_arity(name) if usefp else 0
+  # A definition declared earlier (by a caller or a recorded signature) with the same parameter count keeps
+  # those parameter types (int or void *).
+  pty=['int']*nparam
+  m_=re.match(r'(.*?)%s\((.*)\);$'%re.escape(name),protos.get(name,''))
+  if m_:
+    ts_=[x.strip() for x in m_[2].split(',')] if m_[2].strip() not in ('','void') else []
+    its_=[x for x in ts_ if x not in ('float','double')]
+    if len(its_)==nparam and all(x in ('int','void *') for x in its_): pty=its_
   # Stack offsets whose address is taken are locals; other r1 loads/stores are register saves.
   locs=sorted({callshape.s16(w&0xFFFF) for w in ws if (w>>26)==14 and (w>>16)&31==1 and (w>>21)&31 not in (1,11)})
+  # Stores and reads through r1 at or above an address-taken local (below the frame end) that are not
+  # register saves are members of that local; such a local becomes a struct with typed members.
+  frame=next((0x10000-(w&0xFFFF) for w in ws if (w>>26)==37 and (w>>21)&31==1 and (w>>16)&31==1),None)
+  def lowner(o):
+    g_=[L_ for L_ in locs if L_<=o]
+    return g_[-1] if g_ else None
+  mem={}
+  for w in ws:
+    op=w>>26;rt=(w>>21)&31;o=callshape.s16(w&0xFFFF)
+    if (w>>16)&31!=1 or frame is None or o>=frame or lowner(o) is None: continue
+    ty={48:'float',52:'float'}.get(op);nosave=rt<14 or o in locs
+    if op in (50,54) and nosave: ty='double'
+    if op in (32,36) and nosave: ty='int'
+    if op in (34,38) and nosave: ty='unsigned char'
+    if op in (40,42,44) and nosave: ty='short'
+    if ty:
+      if mem.get(o,ty)!=ty: raise ValueError('local member type')
+      mem[o]=ty
+  lgroups={}
+  for o,ty in mem.items(): lgroups.setdefault(lowner(o),{})[o]=ty
+  lagg={L_ for L_,m_ in lgroups.items() if set(m_)!={L_} or m_[L_]!='int'}
+  lmem={o:ty for o,ty in mem.items() if lowner(o) in lagg}
   regs0={}
   for i_ in range(nparam): regs0[3+i_]=val('param',i_)
+  # Floating-point registers are keys 32+n; parameters arrive in f1...
+  for i_ in range(nfparam): regs0[33+i_]=val('fparam',i_)
+  fparamty={};fbinty={};fretty={}
   branchy=[False]
   cf=FLOW_CF_ALL or FLOW_CF.get(name,'tail')
   def passes(j,regs,cr):
@@ -507,7 +628,7 @@ def FLOW(name,rel):
     m={}
     for k in sorted(set(tr)&set(er)):
       if tr[k]==er[k]: m[k]=tr[k]
-      elif isinstance(tr[k],int) and isinstance(er[k],int) and k!=1:
+      elif isinstance(tr[k],int) and isinstance(er[k],int) and k!=1 and k<32:
         v=val('var');m[k]=v
         touch([tr[k],er[k]])
         ts.append(('assign',v,tr[k]));(out if noelse else es).append(('assign',v,er[k]));varsrc[v]+=[tr[k],er[k]]
@@ -526,11 +647,12 @@ def FLOW(name,rel):
     return st
   def block(s,e,join,regs,cr):
     """Interpret words [s,e); control continues at join after e. Returns (statements, registers or None)."""
-    out=[];i=s;ctr=None;varargs=False;prev3=regs.get(3);prevcall=False
+    out=[];i=s;ctr=None;varargs=False;prev3=regs.get(3);prevcall=False;prevf1=regs.get(33)
     while i<e:
-      # Key -1 records that a non-call instruction set r3 (a deliberate return value).
+      # Key -1 records that a non-call instruction set r3 (a deliberate return value); -2 the same for f1.
       if regs.get(3)!=prev3 and not prevcall: regs[-1]=('moved',)
-      prev3=regs.get(3);prevcall=False
+      if regs.get(33)!=prevf1 and not prevcall: regs[-2]=('moved',)
+      prev3=regs.get(3);prevf1=regs.get(33);prevcall=False
       w=ws[i];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF;r=relat.get(4*i)
       if op==16:
         if w&3: raise ValueError('bc form')
@@ -543,7 +665,7 @@ def FLOW(name,rel):
           tw=ws[t-1];E=t-1+_s26(tw)//4 if (tw>>26)==18 and not tw&3 and t-1>i else None
           if E is not None and t<E<=e:
             ts,tr=block(i+1,t-1,E,dict(regs),cr);es,er=block(t,E,E,dict(regs),cr)
-            regs=merge(out,_negate(c),ts,tr,es,er,pre,E,False,cr);i=E;prev3=regs and regs.get(3)
+            regs=merge(out,_negate(c),ts,tr,es,er,pre,E,False,cr);i=E;prev3=regs and regs.get(3);prevf1=regs and regs.get(33)
             if regs is None: return out,None
             continue
           if E is not None and E==join:
@@ -552,9 +674,9 @@ def FLOW(name,rel):
           if E is not None:
             ts,tr=block(i+1,t-1,E,dict(regs),cr)
             if tr is not None: ts+=exitpath(E,tr,cr)
-            regs=merge(out,_negate(c),ts,None,[],regs,pre);i=t;prev3=regs.get(3);continue
+            regs=merge(out,_negate(c),ts,None,[],regs,pre);i=t;prev3=regs.get(3);prevf1=regs.get(33);continue
           ts,tr=block(i+1,t,t,dict(regs),cr)
-          regs=merge(out,_negate(c),ts,tr,[],regs,pre,t,True,cr);i=t;prev3=regs and regs.get(3)
+          regs=merge(out,_negate(c),ts,tr,[],regs,pre,t,True,cr);i=t;prev3=regs and regs.get(3);prevf1=regs and regs.get(33)
           if regs is None: return out,None
           continue
         merge(out,c,exitpath(t,regs,cr),None,[],regs,pre);i+=1;continue
@@ -564,17 +686,72 @@ def FLOW(name,rel):
         if t>i: return out+exitpath(t,regs,cr),None
         raise ValueError('backward branch')
       if w==0x4E800020:
-        touch([regs.get(3)]);out.append(('return',regs.get(3),-1 in regs));return out,None
+        touch([regs.get(3),regs.get(33)]);out.append(('return',regs.get(3),-1 in regs,regs.get(33),-2 in regs));return out,None
       if op==19 and ((w>>1)&0x3FF)==16 and not w&1 and not (w>>11)&3:
-        c=_taken(w,cr);touch([c[0],c[2],regs.get(3)]);merge(out,c,[('return',regs.get(3),-1 in regs)],None,[],regs,len(vals));i+=1;continue
+        c=_taken(w,cr);touch([c[0],c[2],regs.get(3),regs.get(33)]);merge(out,c,[('return',regs.get(3),-1 in regs,regs.get(33),-2 in regs)],None,[],regs,len(vals));i+=1;continue
       i+=1
       if op==37 and rt==1 and ra==1: continue
       if w in (0x7C0802A6,0x7C0803A6): continue
       if w==0x4CC63182: varargs=True;continue                         # crclr 6: variadic call follows
+      if op in (56,60) and ra==1: continue                            # psq_l/psq_st saves
+      if op==50 and ra==1 and rt>=14: continue                        # FPR restore
+      if op==54 and ra==1 and rt>=14: continue                        # FPR save
+      if op in (48,50):                                               # lfs/lfd
+        ty='float' if op==48 else 'double';x=regs.get(ra)
+        if ra==1:
+          o_=callshape.s16(imm)
+          if o_ not in lmem: raise ValueError('local float read')
+          regs[32+rt]=val('lfield',o_,ty);continue
+        if r and (r[0]==109 or (isinstance(x,tuple) and x[0]=='ha')): regs[32+rt]=val('gfield',r[1],r[2],ty);continue
+        if isinstance(x,int) and vals[x][0]=='addr' and not r: regs[32+rt]=val('gfield',vals[x][1],vals[x][2]+callshape.s16(imm),ty);continue
+        if isinstance(x,int) and vals[x][0] in _BASES and not r:
+          regs[32+rt]=val('field',x,callshape.s16(imm),ty);out.append(('def',regs[32+rt]));continue
+        raise ValueError('float load shape')
+      if op in (52,54):                                               # stfs/stfd
+        ty='float' if op==52 else 'double';x=regs.get(ra);v=regs.get(32+rt)
+        if not isinstance(v,int): raise ValueError('float store value')
+        if vals[v][0]=='fparam' and ty=='double': fparamty[vals[v][1]]='double'
+        if isinstance(x,tuple) and x[0]=='k' and not r:
+          touch([v],True);out.append(('kstore',(x[1]+callshape.s16(imm))&0xFFFFFFFF,v,ty));continue
+        if ra==1:
+          if lmem.get(callshape.s16(imm))!=ty: raise ValueError('local float store')
+          touch([v],True);out.append(('lstore',callshape.s16(imm),v,ty));continue
+        if r and (r[0]==109 or isinstance(x,tuple)):
+          touch([v],True);out.append(('gstore',r[1],r[2],v,ty,r[0]!=109));continue
+        if isinstance(x,int) and vals[x][0]=='addr' and not r:
+          touch([v],True);out.append(('gstore',vals[x][1],vals[x][2]+callshape.s16(imm),v,ty,True));continue
+        if isinstance(x,int) and vals[x][0] in _BASES and not r:
+          touch([x,v],True);out.append(('store',x,callshape.s16(imm),v,ty));continue
+        raise ValueError('float store shape')
+      if op in (59,63):                                               # FP arithmetic, moves, compares
+        xo=(w>>1)&0x3FF;x5=(w>>1)&31;rb=(w>>11)&31;rc=(w>>6)&31;sp=op==59
+        if op==63 and xo in (0,32) and not rt>>2:
+          a_,b_=regs.get(32+ra),regs.get(32+rb)
+          if not (isinstance(a_,int) and isinstance(b_,int)): raise ValueError('fcmp operand')
+          cr=(a_,b_,'f');continue
+        if op==63 and xo==72:
+          regs[32+rt]=regs.get(32+rb);continue
+        if op==63 and xo in (40,264,136,12):
+          fmt_={40:'(-{0})',264:'__fabs({0})',136:'(-__fabs({0}))',12:'(float){0}'}[xo]
+          ops_=[regs.get(32+rb)];ty='float' if xo==12 else None
+        elif x5 in (18,20,21,25,28,29,30,31):
+          fmt_={18:'({0}/{1})',20:'({0}-{1})',21:'({0}+{1})',25:'({0}*{1})',28:'({0}*{1}-{2})',29:'({0}*{1}+{2})',30:'(-({0}*{1}-{2}))',31:'(-({0}*{1}+{2}))'}[x5]
+          ops_=[regs.get(32+q_) for q_ in ([ra,rb] if x5 in (18,20,21) else [ra,rc] if x5==25 else [ra,rc,rb])]
+          ty='float' if sp else 'double'
+        else: raise ValueError('flow op %08x'%w)
+        if not all(isinstance(q_,int) for q_ in ops_): raise ValueError('float operand')
+        if ty is None: ty=ftype(ops_[0])
+        regs[32+rt]=val('fbin',fmt_,*ops_);fbinty[regs[32+rt]]=ty;continue
+      if op in (36,38,44) and ra==1 and callshape.s16(imm) in lmem:   # local struct member store
+        v=regs.get(rt)
+        if not isinstance(v,int): raise ValueError('local store shape')
+        touch([v],True);out.append(('lstore',callshape.s16(imm),v,lmem[callshape.s16(imm)]));continue
+      if op in (32,34,40,42) and ra==1 and callshape.s16(imm) in lmem:
+        regs[rt]=val('lfield',callshape.s16(imm),lmem[callshape.s16(imm)]);continue
       if op in (36,38,44) and ra==1 and callshape.s16(imm) in locs:   # local store
         v=regs.get(rt)
         if not isinstance(v,int) or op!=36: raise ValueError('local store shape')
-        touch([v],True);out.append(('lstore',callshape.s16(imm),v));continue
+        touch([v],True);out.append(('lstore',callshape.s16(imm),v,None));continue
       if op==32 and ra==1 and callshape.s16(imm) in locs: regs[rt]=val('local',callshape.s16(imm));continue
       if op==14 and ra==1 and rt not in (1,11): regs[rt]=val('stack',callshape.s16(imm));continue
       if op==36 and ra==1: continue                                   # saves
@@ -656,7 +833,7 @@ def FLOW(name,rel):
           v=regs.get(k)
           if isinstance(v,int): args.append(v)
           else: break
-        touch([ctr[1]]+args,True);out.append(('icall',ctr[1],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
+        touch([ctr[1]]+args,True);out.append(('icall',ctr[1],args,len(vals)));regs=_survivors(regs)
         regs[3]=val('ret',out[-1]);prevcall=True;continue
       if w==0x4E800421:                                                # bctrl: virtual call
         if ctr is None or regs.get(3)!=ctr[1]: raise ValueError('virtual this')
@@ -665,12 +842,14 @@ def FLOW(name,rel):
           v=regs.get(k)
           if isinstance(v,int): args.append(v)
           else: break
-        touch([ctr[1]]+args,True);out.append(('vcall',ctr[1],ctr[2],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
+        touch([ctr[1]]+args,True);out.append(('vcall',ctr[1],ctr[2],args,len(vals)));regs=_survivors(regs)
         regs[3]=val('ret',out[-1]);prevcall=True;continue
       if op==31 and ((w>>1)&0x3FF)==444 and rt==((w>>11)&31):        # mr
         regs[ra]=regs.get(rt);continue
       if op in (36,38,44) and r and (r[0]==109 or isinstance(regs.get(ra),tuple)) and isinstance(regs.get(rt),int):
         touch([regs[rt]],True);out.append(('gstore',r[1],r[2],regs[rt],{36:'void *',38:'unsigned char',44:'short'}[op],r[0]!=109));continue
+      if op in (36,38,44) and isinstance(regs.get(ra),tuple) and regs[ra][0]=='k' and not r and isinstance(regs.get(rt),int):
+        touch([regs[rt]],True);out.append(('kstore',(regs[ra][1]+callshape.s16(imm))&0xFFFFFFFF,regs[rt],{36:'int',38:'unsigned char',44:'short'}[op]));continue
       if op in (36,38,44):
         x=regs.get(ra);v=regs.get(rt)
         if isinstance(x,int) and isinstance(v,int) and vals[x][0] in _BASES:
@@ -683,8 +862,18 @@ def FLOW(name,rel):
           v=regs.get(k)
           if isinstance(v,int): args.append(v)
           else: break
-        touch(args,True);out.append(('call',r[1],args,len(vals),varargs));regs={k:v for k,v in regs.items() if k>=14};varargs=False
-        regs[3]=val('ret',out[-1]);prevcall=True;continue
+        fargs=[]
+        for k in range(33,41):
+          v=regs.get(k)
+          if isinstance(v,int): fargs.append(v)
+          else: break
+        # Floating-point arguments: the prototype's float parameters, else the callee's inferred FP arity.
+        m_=re.match(r'(.*?)%s\((.*)\);$'%re.escape(r[1]),protos.get(r[1],''))
+        fargs=fargs[:len([x for x in m_[2].split(',') if x.strip() in ('float','double')]) if m_ else fp_arity(r[1])] if usefp else []
+        touch(args+fargs,True);out.append(('call',r[1],args,len(vals),varargs,fargs));regs=_survivors(regs);varargs=False
+        regs[3]=val('ret',out[-1])
+        if usefp: regs[33]=val('fret',out[-1])
+        prevcall=True;continue
       xo=(w>>1)&0x3FF
       if op==31 and xo in _XLOAD and isinstance(regs.get(ra),int) and isinstance(regs.get((w>>11)&31),int):
         regs[rt]=val('xfield',regs[ra],regs[(w>>11)&31],_XLOAD[xo]);continue
@@ -716,11 +905,23 @@ def FLOW(name,rel):
       if s_[0]=='if':
         yield from walk(s_[2]);yield from walk(s_[3])
   allst=list(walk(stmts))
-  if not branchy and not any(s_[0] in ('call','vcall') for s_ in allst): raise ValueError('no calls')
   rets=[s_ for s_ in allst if s_[0]=='return']
-  if not branchy:
+  # A value left in f1 by a non-call instruction is a floating-point return value.
+  # A value that some statement consumes (stored, passed) is left in f1 as scratch, not returned.
+  def consumed(v):
+    for s_ in allst:
+      if s_[0] in ('store','gstore','lstore','kstore') and v==(s_[3] if s_[0] in ('store','gstore') else s_[2]): return True
+      if s_[0]=='call' and v in s_[2]+s_[5]: return True
+    return False
+  retfloat=any(s_[4] for s_ in rets) and not any(s_[2] for s_ in rets) and not any(isinstance(s_[3],int) and consumed(s_[3]) for s_ in rets)
+  if retfloat and not all(isinstance(s_[3],int) for s_ in rets): raise ValueError('float return missing')
+  if not branchy and not retfloat and not any(s_[0] in ('call','vcall','icall','store','gstore','xstore','kstore') for s_ in allst): raise ValueError('no effect')
+  if retfloat: retval=False
+  elif not branchy:
     # A value left in r3 by a non-call instruction after the last call is the return value.
     v=rets[0][1];retval=isinstance(v,int) and vals[v][0] in FLOW_VALUE_KINDS
+    # Without calls, a word left in r3 that a statement consumes is scratch, not a return value.
+    if retval and not any(s_[0] in ('call','vcall','icall') for s_ in allst) and vals[v][0]!='param' and consumed(v): retval=False
   else:
     def computed(v,seen=()):
       if not isinstance(v,int) or v in seen: return False
@@ -733,18 +934,22 @@ def FLOW(name,rel):
       return pr.startswith('void ') and not pr.startswith('void *')
     retval=not any(voidret(s_[1]) for s_ in rets) and any(computed(s_[1]) or s_[2] for s_ in rets) or (cf=='this' and nparam and all(s_[1]==regs0[3] for s_ in rets))
     if retval and not all(isinstance(s_[1],int) for s_ in rets): raise ValueError('return value missing')
+  # A caller using the result declares the function returning a pointer; returning what is left in r3
+  # (typically a call result) compiles the same as discarding it.
+  if not retval and not retfloat and protos.get(name,'').startswith('void *') and all(isinstance(s_[1],int) for s_ in rets): retval=True
   # Which values are used decides call return types and locals.
   used=collections.Counter()
   def use_stmt(st):
-    if st[0]=='call': used.update(st[2])
+    if st[0]=='call': used.update(st[2]+st[5])
     elif st[0]=='icall': used.update([st[1]]+st[2])
     elif st[0]=='xstore': used.update(st[1:4])
-    elif st[0] in ('lstore','gstore'): used[st[3] if st[0]=='gstore' else st[2]]+=1
+    elif st[0] in ('lstore','gstore','kstore'): used[st[3] if st[0]=='gstore' else st[2]]+=1
     elif st[0]=='vcall': used.update([st[1]]+st[3])
     elif st[0]=='store': used.update([st[1],st[3]])
     elif st[0]=='if':
       used.update([st[1][0]]+([st[1][2]] if isinstance(st[1][2],int) else []))
     elif st[0]=='return' and retval: used[st[1]]+=1
+    elif st[0]=='return' and retfloat: used[st[3]]+=1
   for st in allst: use_stmt(st)
   done_vars=set()
   while True:
@@ -756,11 +961,75 @@ def FLOW(name,rel):
         if st[0]=='assign' and st[1]==v: used[st[2]]+=1
   for v,k in enumerate(vals):
     if k[0] in ('field','cast','add') and used[v]: used[k[1]]+=1
-    if k[0]=='bin' and used[v]: used.update(k[2:])
+    if k[0] in ('bin','fbin') and used[v]: used.update(k[2:])
     if k[0]=='xfield' and used[v]: used.update(k[1:3])
+  # In straight-line code a word left in r3 that a struct copy absorbs is not a return value.
+  rv0=rets[0][1] if not branchy and retval and len(rets)==1 else None
+  def copysrc(v):
+    """(source, offset) of a single-use word read that a struct copy can absorb."""
+    k=vals[v]
+    if used[v]-(v==rv0)!=1: return None
+    if k[0]=='field' and len(k)==3: return (('f',k[1]),k[2])
+    if k[0]=='load' and len(k)>3 and '__' not in k[1]: return (('g',k[1]),k[2])
+    return None
+  def copies(st):
+    """Runs of word stores of consecutive single-use reads to consecutive offsets of one base become
+    one aggregate assignment: long long for two words stored high word last, else a word block."""
+    out=[];i=0
+    while i<len(st):
+      run=[];j=i
+      while j<len(st) and (st[j][0]=='def' or (st[j][0]=='store' and st[j][4]=='void *' and copysrc(st[j][3]))):
+        if st[j][0]=='store': run.append(j)
+        j+=1
+      best=None
+      if len(run)>=2:
+        x=st[run[0]][1];src=copysrc(st[run[0]][3])[0]
+        ok=all(st[q][1]==x and copysrc(st[q][3])[0]==src for q in run)
+        d=[st[q][2] for q in run];so=[copysrc(st[q][3])[1] for q in run]
+        # The original must load ahead of storing (two reads pending at some store); alternating
+        # read/store pairs are member assignments.
+        pend=0;ahead=False
+        for q in range(i,j):
+          if st[q][0]=='def': pend+=1
+          else: ahead|=pend>=2;pend=max(pend-1,0)
+        if ok and ahead and len({a_-b_ for a_,b_ in zip(d,so)})==1 and sorted(d)==list(range(min(d),min(d)+4*len(d),4)):
+          best=('copy',x,min(d),src,min(so),len(d),'ll' if len(d)==2 and d[0]>d[1] else 'block')
+      if best:
+        for q in run: stale.discard(st[q][3])
+        out+=[s_ for s_ in st[i:j] if s_[0]=='def']+[best];i=j;continue
+      s_=st[i]
+      if s_[0]=='if': s_=('if',s_[1],copies(s_[2]),copies(s_[3]),s_[4])
+      out.append(s_);i+=1
+    return out
+  stmts=copies(stmts)
+  if rv0 is not None and any(s_[0]=='copy' for s_ in walk(stmts)) and not any(s_[0]=='store' and s_[3]==rv0 for s_ in walk(stmts)):
+    retval=False;used[rv0]-=1
+  def ftype(v):
+    """'float' or 'double' for a floating-point value, else None."""
+    k=vals[v]
+    if k[0]=='fparam': return fparamty.get(k[1],'float')
+    if k[0] in ('field','gfield','lfield') and k[-1] in ('float','double'): return k[-1]
+    if k[0]=='fbin': return fbinty.get(v,'float')
+    if k[0]=='fret': return fretty.get(v,'float')
+    return None
+  def lref(o):
+    L_=lowner(o)
+    return 'local%d.m%02X'%(locs.index(L_),o) if L_ in lagg else 'local%d'%locs.index(L_)
+  def fx(v):
+    """Floating-point expression for a value."""
+    k=vals[v]
+    if not ftype(v): raise ValueError('integer as float')
+    if k[0]=='fparam': return 'f%d'%k[1]
+    if v in names_: return names_[v]
+    if k[0]=='field': return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
+    if k[0]=='gfield': return '*reinterpret_cast<%s *>(%s)'%(k[3],gaddr(k[1],k[2]))
+    if k[0]=='lfield': return lref(k[1])
+    if k[0]=='fbin': return k[1].format(*[fx(o) for o in k[2:]])
+    raise ValueError('float value %r'%(k,))
   def ex(v):
     """Pointer-typed expression for a value (constants stay int)."""
     k=vals[v]
+    if ftype(v): raise ValueError('float as pointer')
     if k[0]=='const': return str(k[1])
     if k[0] in ('sda','addr'):
       sym=k[1];info=syminfo.get(sym)
@@ -782,8 +1051,8 @@ def FLOW(name,rel):
     if k[0]=='local': return 'local%d'%locs.index(k[1])
     if k[0]=='stack': return '&local%d'%locs.index(k[1])
     if k[0]=='add': return '(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
-    if k[0] in ('gfield','bin','xfield'): return '(void *)(int)%s'%ix(v)
-    if k[0]=='param': return '(void *)p%d'%k[1]
+    if k[0] in ('gfield','bin','xfield','lfield'): return '(void *)(int)%s'%ix(v)
+    if k[0]=='param': return 'p%d'%k[1] if pty[k[1]]=='void *' else '(void *)p%d'%k[1]
     if k[0]=='field':
       if v in names_: return names_[v]
       if len(k)>3: return '(void *)(int)*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
@@ -802,8 +1071,10 @@ def FLOW(name,rel):
   def ix(v):
     """Integer-typed expression for a value."""
     k=vals[v]
+    if ftype(v): raise ValueError('float as integer')
+    if k[0]=='lfield': return lref(k[1])
     if k[0]=='const': return str(k[1])
-    if k[0]=='param': return 'p%d'%k[1]
+    if k[0]=='param': return '(int)p%d'%k[1] if pty[k[1]]=='void *' else 'p%d'%k[1]
     if k[0]=='field' and len(k)>3 and v not in names_:
       return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
     if k[0]=='gfield': return '*reinterpret_cast<%s *>(%s)'%(k[3],gaddr(k[1],k[2]))
@@ -816,6 +1087,7 @@ def FLOW(name,rel):
     return '(int)%s'%ex(v)
   def cond(c):
     a,rel_,b_,signed=c
+    if signed=='f': return '(%s%s%s)'%(fx(a),rel_,fx(b_))
     k=vals[a][0]
     if isinstance(b_,tuple):
       n_=b_[1]
@@ -831,12 +1103,17 @@ def FLOW(name,rel):
     if k[0]=='load' and used[v]>1: names_[v]='value%d'%len(names_)
     # In branchy code a field read more than once is read once, where it is first needed.
     elif branchy and k[0]=='field' and used[v] and v in stale: names_[v]='value%d'%len(names_)
+    # Floating-point field reads are read into variables where the original loads them.
+    elif ftype(v) and k[0]=='field' and used[v] and (FP_NAME_ALL or v in stale): names_[v]='value%d'%len(names_)
   def ensure(v,lines):
     """Declare a named global load at its first use."""
     k=vals[v]
     if k[0]=='field' and v in names_ and v not in emitted:
-      ensure(k[1],lines);n_=names_.pop(v);e_=ex(v);names_[v]=n_;emitted.add(v)
-      lines.append(' %s%s=%s;'%(declare(n_),n_,e_));return
+      ensure(k[1],lines);n_=names_.pop(v);ty_=ftype(v);e_=fx(v) if ty_ else ex(v);names_[v]=n_;emitted.add(v)
+      lines.append(' %s%s=%s;'%(declare(n_,ty_ or 'void *'),n_,e_));return
+    if k[0]=='fbin':
+      for o in k[2:]: ensure(o,lines)
+      return
     if k[0] in ('field','cast','add'): ensure(k[1],lines);return
     if k[0]=='bin':
       for o in k[2:]: ensure(o,lines)
@@ -846,25 +1123,28 @@ def FLOW(name,rel):
       fn(k[1],'extern void *%s;'%'%s');lines.append(' void *%s=%s;'%(names_[v],k[1]));emitted.add(v)
   def refs(st):
     for s_ in walk([st]):
-      if s_[0]=='call': yield from s_[2]
+      if s_[0]=='call': yield from s_[2]+s_[5]
       elif s_[0]=='icall': yield from [s_[1]]+s_[2]
-      elif s_[0]=='lstore': yield s_[2]
+      elif s_[0] in ('lstore','kstore'): yield s_[2]
       elif s_[0]=='xstore': yield from s_[1:4]
       elif s_[0]=='gstore': yield s_[3]
       elif s_[0]=='vcall': yield from [s_[1]]+s_[3]
       elif s_[0]=='store': yield from [s_[1],s_[3]]
+      elif s_[0]=='copy': yield from [s_[1]]+([s_[3][1]] if s_[3][0]=='f' else [])
       elif s_[0]=='if':
         yield s_[1][0]
         if isinstance(s_[1][2],int): yield s_[1][2]
       elif s_[0]=='assign' and used[s_[1]]: yield s_[2]
       elif s_[0]=='return' and retval: yield s_[1]
+      elif s_[0]=='return' and retfloat: yield s_[3]
   varlines=[]
   for v,k in enumerate(vals):
     if k[0]=='var' and used[v]: names_[v]='value%d'%len(names_);varlines.append(' void *%s;'%names_[v])
   def emit(stmts,lines,top):
     for si,st in enumerate(stmts):
       if st[0]=='call':
-        t,args=st[1],st[2]
+        t,args,fargs=st[1],st[2],st[5]
+        isfp=lambda pt:pt in ('float','double')
         if st[4]:
           if t not in protos: fn(t,'void %s(void *,...);')
           if not protos[t].endswith('...);') or not args: raise ValueError('variadic prototype')
@@ -875,28 +1155,46 @@ def FLOW(name,rel):
           if used[[v for v,k in enumerate(vals) if k[0]=='ret' and k[1] is st][0]]: raise ValueError('variadic result')
         elif m:
           ptypes=[x.strip() for x in m[2].split(',')] if m[2].strip() not in ('','void') else []
-          if len(ptypes)>len(args): raise ValueError('arity')
-          args=args[:len(ptypes)]
+          ni=len([x for x in ptypes if not isfp(x)])
+          if ni>len(args) or len(ptypes)-ni>len(fargs): raise ValueError('arity')
+          args=args[:ni];fargs=fargs[:len(ptypes)-ni]
         elif not (FLOW_REGS_ALL or name in FLOW_REGS):
           # Without a prototype, leftover registers are not arguments: use the inferred arity.
           # (Functions listed in flow_regs.json match only when the set registers are passed.)
           k_=arity(t)
           if k_>len(args): raise ValueError('arity')
           args=args[:k_]
-        for a in args: ensure(a,lines)
-        if ptypes is None: ptypes=['int' if vals[a][0]=='const' else 'void *' for a in args]
+        if not m and not st[4] and usefp:
+          k_=fp_arity(t)
+          if k_>len(fargs): raise ValueError('float arity')
+          fargs=fargs[:k_]
+        if st[4]: fargs=[]
+        for a in args+fargs: ensure(a,lines)
+        if ptypes is None: ptypes=['int' if vals[a][0]=='const' else 'void *' for a in args]+[ftype(a) for a in fargs]
+        # Arguments in prototype order: integer and floating-point registers are assigned independently.
+        ai=iter(args);fi=iter(fargs);pargs=[next(fi) if isfp(pt) else next(ai) for pt in ptypes]
         def cast(pt,a):
+          if isfp(pt): return fx(a)
           e=ex(a)
           if pt=='void *': return '(void *)%s'%e if vals[a][0]=='const' else e
           if pt.endswith('*'): return '(%s)(%s)'%(pt,e)
           if vals[a][0]=='const': return e if pt=='int' else '(%s)%s'%(pt,e)
           return '(%s)(int)(%s)'%(pt,e)
-        call='%s(%s)'%(t,','.join(cast(pt,a) for pt,a in zip(ptypes,args)))
+        call='%s(%s)'%(t,','.join(cast(pt,a) for pt,a in zip(ptypes,pargs)))
         rtype=m[1].strip() if m else None
         rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1] is st]
-        if rv and used[rv[0]]:
+        fv=[v for v,k in enumerate(vals) if k[0]=='fret' and k[1] is st]
+        if fv and used[fv[0]]:
+          # Integer argument registers are counted before trimming, so r3 may look used too; a real
+          # integer use fails later because the r3 result has no name.
+          if rtype is None: rtype=fretty.get(fv[0],'float');fn(t,'%s %%s(%s);'%(rtype,','.join(ptypes)))
+          if not isfp(rtype): raise ValueError('float result of %s'%t)
+          fretty[fv[0]]=rtype;names_[fv[0]]='value%d'%len(names_)
+          lines.append(' %s%s=%s;'%(declare(names_[fv[0]],rtype),names_[fv[0]],call))
+        elif rv and used[rv[0]]:
+          RESULT_USED.add(t)
           if rtype is None: fn(t,'void *%%s(%s);'%','.join(ptypes));rtype='void *'
-          if rtype=='void': raise ValueError('void result used %s'%t)
+          if rtype=='void' or isfp(rtype): raise ValueError('void result used %s'%t)
           names_[rv[0]]='value%d'%len(names_)
           lines.append(' %s%s=%s;'%(declare(names_[rv[0]]),names_[rv[0]],call if rtype.endswith('*') else '(void *)'+call))
         else:
@@ -929,15 +1227,36 @@ def FLOW(name,rel):
         else: lines.append(' %s;'%call)
       elif st[0]=='def':
         if st[1] in names_: ensure(st[1],lines)
+      elif st[0]=='copy':
+        x,doff,src,soff,n_,kd=st[1:]
+        ty_='long long' if kd=='ll' else 'UnknownGenBlock<%d>'%n_
+        ensure(x,lines)
+        if src[0]=='f':
+          ensure(src[1],lines);se='reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(ty_,ex(src[1]),soff)
+        else: se='reinterpret_cast<%s *>(%s)'%(ty_,gaddr(src[1],soff))
+        lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)=*%s;'%(ty_,ex(x),doff,se))
       elif st[0]=='xstore':
         for v in st[1:4]: ensure(v,lines)
         lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%s)=(%s)%s;'%(st[4],ex(st[1]),ix(st[2]),st[4],ix(st[3])))
+      elif st[0]=='kstore':
+        ensure(st[2],lines);ty=st[3]
+        e=fx(st[2]) if ty in ('float','double') else str(vals[st[2]][1]) if vals[st[2]][0]=='const' else '(%s)%s'%(ty,ix(st[2]))
+        lines.append(' *reinterpret_cast<volatile %s *>(0x%X)=%s;'%(ty,st[1],e))
       elif st[0]=='lstore':
-        ensure(st[2],lines);e=ex(st[2])
-        lines.append(' local%d=%s;'%(locs.index(st[1]),'(void *)%s'%e if vals[st[2]][0]=='const' else e))
+        ensure(st[2],lines)
+        if st[3] in ('float','double'): lines.append(' %s=%s;'%(lref(st[1]),fx(st[2])))
+        elif st[3]:
+          e=ix(st[2]) if vals[st[2]][0]!='const' else str(vals[st[2]][1])
+          lines.append(' %s=(%s)%s;'%(lref(st[1]),st[3],e))
+        else:
+          e=ex(st[2])
+          lines.append(' local%d=%s;'%(locs.index(st[1]),'(void *)%s'%e if vals[st[2]][0]=='const' else e))
       elif st[0]=='gstore':
         sym,add,v,ty=st[1],st[2],st[3],st[4]
-        ensure(v,lines);e=ex(v)
+        ensure(v,lines)
+        if ty in ('float','double'):
+          lines.append(' *reinterpret_cast<%s *>(%s)=%s;'%(ty,gaddr(sym,add),fx(v)));continue
+        e=ex(v)
         if ty=='void *' and not add and (protos.get(sym,'').startswith('extern void *') or (sym not in protos and not st[5])):
           fn(sym,'extern void *%s;')
           lines.append(' %s=%s;'%(sym,'(void *)%s'%e if vals[v][0]=='const' else e))
@@ -948,6 +1267,8 @@ def FLOW(name,rel):
       elif st[0]=='store':
         x,off,v,ty=st[1],st[2],st[3],st[4]
         ensure(x,lines);ensure(v,lines)
+        if ty in ('float','double'):
+          lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ty,ex(x),off,fx(v)));continue
         e=ex(v)
         if ty=='void *' and vals[v][0]=='const': e='(void *)%s'%e
         elif ty!='void *' and vals[v][0]!='const': e='(%s)(int)%s'%(ty,e)
@@ -971,26 +1292,41 @@ def FLOW(name,rel):
         if retval:
           v=st[1];ensure(v,lines);e=ex(v)
           lines.append(' return %s;'%('(void *)%s'%e if vals[v][0] in ('const','cast') else e))
+        elif retfloat:
+          ensure(st[3],lines);lines.append(' return %s;'%fx(st[3]))
         elif not last: lines.append(' return;')
   # In branchy code, call results are declared at the top so they outlive their block.
   topdecl=[]
-  def declare(n_):
-    if not branchy: return 'void *'
-    topdecl.append(' void *%s;'%n_);return ''
+  def declare(n_,ty='void *'):
+    ty=ty if ty.endswith('*') else ty+' '
+    if not branchy: return ty
+    topdecl.append(' %s%s;'%(ty,n_));return ''
   body=[]
   emit(stmts,body,True)
-  lines=list(varlines)+topdecl+[' void *local%d;'%k for k in reversed(range(len(locs)))]+body
-  params=','.join('int p%d'%i for i in range(nparam))
-  if retval:
-    fn(name,'void *%%s(%s);'%','.join(['int']*nparam))
-    return 'void *%s(%s){\n%s\n}'%(name,params,'\n'.join(lines))
-  fn(name,'void %%s(%s);'%','.join(['int']*nparam))
-  return 'void %s(%s){\n%s\n}'%(name,params,'\n'.join(lines))
+  # Address-taken locals with members are structs of the member types, padded to the last member.
+  ldecl=[]
+  for k_ in reversed(range(len(locs))):
+    L_=locs[k_]
+    if L_ not in lagg: ldecl.append(' void *local%d;'%k_);continue
+    cls_='UnknownGenL%s_%X'%(name[3:],L_);fl=[];at=L_
+    for o in sorted(lgroups[L_]):
+      ty=lgroups[L_][o];sz={'int':4,'float':4,'double':8,'short':2,'unsigned char':1}[ty]
+      if o<at: raise ValueError('local member overlap')
+      if o>at: fl.append(' char pad%02X[%d];'%(at,o-at))
+      fl.append(' %s m%02X;'%(ty,o));at=o+sz
+    PRE.append('struct %s {\n%s\n};'%(cls_,'\n'.join(fl)))
+    ldecl.append(' %s local%d;'%(cls_,k_))
+  lines=list(varlines)+topdecl+ldecl+body
+  ptys=pty+[fparamty.get(i,'float') for i in range(nfparam)]
+  params=','.join(['%s%sp%d'%(pty[i],'' if pty[i].endswith('*') else ' ',i) for i in range(nparam)]+['%s f%d'%(fparamty.get(i,'float'),i) for i in range(nfparam)])
+  rty='void *' if retval else ftype(rets[0][3]) if retfloat else 'void'
+  fn(name,'%s%%s(%s);'%(rty if rty.endswith('*') else rty+' ',','.join(ptys)))
+  return '%s%s(%s){\n%s\n}'%(rty if rty.endswith('*') else rty+' ',name,params,'\n'.join(lines))
 
 TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT,'LEAF':LEAF,'ITEXT':ITEXT,'FLOW':FLOW}
 HEADER_NAME='unknownGen.h'
 HEADER_PROTOS={'fn_80066E1C':'void fn_80066E1C(void *);'}  # declared by the header
-HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nstruct UnknownGenHolder { UnknownGenValue *unknown00; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\nstruct UnknownGenRefMember {\n UnknownGenValue *value;\n inline ~UnknownGenRefMember(){if(value) unknownGenDrop(value);}\n};\n#endif\n'
+HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nstruct UnknownGenHolder { UnknownGenValue *unknown00; };\ntemplate<int N> struct UnknownGenBlock { int w[N]; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\nstruct UnknownGenRefMember {\n UnknownGenValue *value;\n inline ~UnknownGenRefMember(){if(value) unknownGenDrop(value);}\n};\n#endif\n'
 _rep=json.load(open(REPORT));_done=set()
 for _u in _rep['units']:
   if 'unknownGen' in _u['name']: continue
@@ -1019,6 +1355,8 @@ def prepass(names):
         LEAF(n,idx[n]['rel']);g[n]=protos[n]
       except ValueError: pass
       protos.clear();protos.update(saved)
+  for n in names:
+    if n in SIGS and n not in g and n not in HEADER_PROTOS: g[n]=SIGS[n]
   for n in names:
     f=famof(n)
     t=U(idx[n]['rel'])[0] if idx[n]['rel'] else None
@@ -1051,6 +1389,14 @@ def _pointer_globals(names,seed,calls):
       if k not in seed: decl.setdefault(k,v)
   decl.update(out)
   return decl
+def _drop_template_conflicts(sig,names):
+  """Drop recorded signatures that disagree with prototypes fixed templates require (their own
+  signatures, callees and globals), which take precedence."""
+  saved=dict(SIGS);SIGS.clear()
+  try:
+    base=prepass(names);tp=dict(base);tp.update(_pointer_globals(names,base,True))
+  finally: SIGS.update(saved)
+  return {n:d for n,d in sig.items() if tp.get(n,d)==d}
 def generate(names,seed,calls=True,header=False):
   # First pass finds globals some template needs as pointers, so address-only uses agree.
   pointers=_pointer_globals(names,seed,calls)
@@ -1059,12 +1405,15 @@ def generate(names,seed,calls=True,header=False):
   for n in names:
     f=kind(n,calls)
     if not f: continue
-    saved=dict(protos);pl=len(PRE)
+    saved=dict(protos);pl=len(PRE);ru=set(RESULT_USED)
     for f2 in ([f,'FLOW'] if f=='CALLS' else [f]):
       try:
-        bodies.append(TEMPL[f2](n,idx[n]['rel']));cov+=idx[n]['size'];done.append(n);break
+        bodies.append(TEMPL[f2](n,idx[n]['rel']));cov+=idx[n]['size'];done.append(n);DEFKIND[n]=f2;break
       except Exception as ex:
-        protos.clear();protos.update(saved);del PRE[pl:]
+        protos.clear();protos.update(saved);del PRE[pl:];RESULT_USED.clear();RESULT_USED.update(ru)
+        # A definition rejected because a caller declared it first records the signature it wanted.
+        m_=re.match(r'proto conflict %s: .* vs (.*)$'%re.escape(n),str(ex))
+        if m_: WANT[n]=m_[1]
         if f2==([f,'FLOW'] if f=='CALLS' else [f])[-1]: skipped.append((n,str(ex)))
   text='\n'.join(PRE)+'\n'+'\n'.join(bodies)
   used=set(re.findall(r'[A-Za-z_][A-Za-z0-9_]*',text))
@@ -1118,4 +1467,18 @@ if __name__=='__main__' and len(sys.argv)>3 and sys.argv[1]!='--runs':
   names=select(lo,hi)
   src,done,cov,skipped=generate(names,prepass(names),'--calls' in sys.argv)
   Path(out).write_text(src)
+  if any(a.startswith('--sigs-out=') for a in sys.argv):
+    # Each definition's signature; one whose result a caller uses returns a pointer.
+    # Recorded: signatures definitions wanted but could not declare, definitions already recorded (kept,
+    # so the record is stable), and FLOW/CALLS definitions whose result a caller uses (returning a pointer).
+    sig={n:d for n,d in WANT.items() if n not in done}
+    for n in done:
+      d=protos.get(n)
+      if not d: continue
+      up=n in RESULT_USED and DEFKIND.get(n) in ('CALLS','FLOW') and d.startswith('void ') and not d.startswith('void *')
+      if up: d='void *'+d[5:]
+      if up or n in SIGS: sig[n]=d
+    sig={n:d for n,d in sig.items() if n not in HEADER_PROTOS}
+    sig=_drop_template_conflicts(sig,names)
+    Path(next(a for a in sys.argv if a.startswith('--sigs-out='))[11:]).write_text(json.dumps(sig,indent=0,sort_keys=True)+'\n')
   print('functions',len(names),'generated',len(done),'bytes',cov,'skipped',skipped[:5])

@@ -3,6 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80022DF8();
+void fn_800D8B90(void *,void *,int);
+extern char lbl_804F59C0[];
 }
 class UnknownGenV800E26DC_0 {
 public:
@@ -187,6 +189,19 @@ void fn_800E270C(int p0){
 void fn_800E273C(int p0){
  void *value0=fn_80022DF8();
  reinterpret_cast<UnknownGenV800E273C_2 *>(value0)->sD0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+}
+void fn_800E2780(int p0,int p1,int p2,int p3,int p4,int p5){
+ fn_800D8B90((void *)p1,lbl_804F59C0,28);
+}
+void *fn_800E27B4(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+4)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)0;
+ return (void *)p0;
 }
 }
 #pragma pop

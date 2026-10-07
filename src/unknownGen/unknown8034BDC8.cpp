@@ -4,7 +4,6 @@
 extern "C" {
 void fn_800A325C(void *);
 void *fn_803AE1A4();
-extern void *lbl_80536228;
 }
 extern "C" {
 UnknownGenHolder *dtor_8034BDC8(UnknownGenHolder *object,short flags){
@@ -19,6 +18,5 @@ UnknownGenHolder *dtor_8034BDC8(UnknownGenHolder *object,short flags){
  return object;
 }
 void *fn_8034BE3C(){return fn_803AE1A4();}
-void *fn_8034BE5C(){return lbl_80536228;}
 }
 #pragma pop

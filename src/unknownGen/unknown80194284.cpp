@@ -2,10 +2,14 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-
+void fn_80068128(void *,void *);
+extern void *lbl_80565468;
 }
 extern "C" {
 int fn_80194284(){return 1;}
 int fn_8019428C(){return 0;}
+void fn_80194294(int p0,int p1,int p2,int p3,int p4,int p5){
+ fn_80068128((void *)p1,lbl_80565468);
+}
 }
 #pragma pop

@@ -50,7 +50,5 @@ UnknownGenHolder *dtor_8030F1A4(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_8030F218(){}
-void fn_8030F21C(){}
 }
 #pragma pop

@@ -13,5 +13,9 @@ void fn_800C5A9C(int p0,int p1){
  void *value0=fn_80100084((void *)p1,(void *)(int)*reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+16));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
 }
+void *fn_800C5AD4(int p0){
+ *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+10)=(short)(int)(void *)(int)*reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+16);
+ return (void *)p0;
+}
 }
 #pragma pop

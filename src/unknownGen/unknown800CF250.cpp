@@ -12,7 +12,7 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
-void fn_800CF554();
+void *fn_800CF554();
 void *fn_800D75D4();
 extern char lbl_8047650C[];
 extern char lbl_80480EC0[];

@@ -14,12 +14,14 @@ void fn_8006665C(void *);
 void fn_800ABC8C();
 void fn_800AC034();
 void *fn_800AC294();
-void fn_800C5A04(int);
-void fn_800C5AD4(int);
-void fn_800C5BA4(int);
-void fn_800C5CA8(int);
+void *fn_800C5A04(int);
+void *fn_800C5AD4(int);
+void *fn_800C5BA4(int);
+void *fn_800C5CA8(int);
 void fn_800D60D8();
 void fn_800D6128();
+void *fn_800F8F78(void *,void *);
+void *fn_800F8F94(void *,float);
 extern char lbl_8047A1CC[];
 extern char lbl_8047A204[];
 extern char lbl_8047A22C[];
@@ -215,6 +217,11 @@ void fn_800BC97C(){
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+48)=(void *)fn_800C5A04;
  fn_800659C0(value0,lbl_8055E7BC,lbl_8055E7C4,lbl_8055E7CC,value1);
+}
+void fn_800BC9FC(int p0,int p1){
+ fn_800F8F78((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+ float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+16);
+ fn_800F8F94((void *)p1,value0);
 }
 }
 #pragma pop

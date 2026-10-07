@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-
+extern void *kFailure__3Gap;
 }
 class UnknownGenV8008D8F4_0 {
 public:
@@ -112,5 +112,14 @@ extern "C" {
 void fn_8008D8F4(int p0){
  reinterpret_cast<UnknownGenV8008D8F4_0 *>((void *)p0)->s198();
 }
+void *fn_8008D920(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
+ return (void *)p0;
+}
+void *fn_8008D92C(int p0){
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
+ return (void *)p0;
+}
+void fn_8008D938(){}
 }
 #pragma pop

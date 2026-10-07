@@ -52,5 +52,9 @@ void *fn_800C2FE0(int p0,int p1){
  return value0;
 }
 void fn_800C3058(){}
+void *fn_800C305C(int p0){
+ *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+10)=(short)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76);
+ return (void *)p0;
+}
 }
 #pragma pop

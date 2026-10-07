@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80305ED0(void *,void *,void *,void *,void *);
-void fn_8036317C(void *);
+void *fn_8036317C(void *);
 extern char lbl_804580A0[];
 }
 extern "C" {
@@ -12,7 +12,5 @@ void fn_80363114(int p0){
  fn_80305ED0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),(reinterpret_cast<char *>(lbl_804580A0)+996),(reinterpret_cast<char *>(lbl_804580A0)+1008),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44),(reinterpret_cast<char *>(lbl_804580A0)+1120));
  fn_8036317C((void *)p0);
 }
-unsigned char fn_8036316C(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+34);}
-int fn_80363174(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+48);}
 }
 #pragma pop

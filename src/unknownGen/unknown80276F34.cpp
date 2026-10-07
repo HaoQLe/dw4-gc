@@ -8,5 +8,8 @@ extern "C" {
 void fn_80276F34(int p0,int p1){
  fn_80276F80(p0,p1,0,0);
 }
+void fn_80276F5C(int p0,int p1,int p2){
+ fn_80276F80(p0,p1,p2,0);
+}
 }
 #pragma pop

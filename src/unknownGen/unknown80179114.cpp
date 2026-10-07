@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80179098(void *);
-void fn_80179220(void *);
+void *fn_80179220(void *);
 }
 extern "C" {
 void fn_80179114(int p0){

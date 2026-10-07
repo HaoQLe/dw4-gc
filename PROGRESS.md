@@ -1,9 +1,26 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-06. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-07. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
+- **Generator round 5 (user request 2026-10-07):** signature pass, floating point and struct copies in FLOW; functional commit `33ecdd9` (task branch `task/generator-round5`).
+  - **Totals:** matched code 32.955182%, linked 32.919640%, matched data 15.137835% (+39,220 code bytes each, +1,220 data bytes); 16,000 functions (+710); 3,747/6,970 units.
+  - **Yield:** 730 functions gained (40,896 bytes), 20 lost (1,676 bytes). By cause:
+    - recovered round-4 losses: 25 of 47 (1,648 bytes);
+    - floating point: 74 functions (6,780 bytes);
+    - local structs: 26 (2,532 bytes);
+    - struct copies: 5 (136 bytes);
+    - consistency fixes (pointer returns, adopted parameter types, gap parameters, call-free functions): 590 (29,672 bytes).
+  - **Against the round-4 projection:** 100–150 KB was projected; this round gave 39 KB without loops. The expected generator plateau is lowered to about 34–35%; loops are the last template-scale pool.
+  - **Fix:** `emit.py` no longer mixes functions with and without original exception entries in one unit; an extra entry had shifted every later `extab` address.
+  - **Verification:** `verify_units.py` checked 914 changed units, none failing; 10 functions excluded. `build.sha1` OK. An independent review re-compared all 3,507 generated units (939,584 bytes) and confirmed map, splits and counts.
+  - **Retained (active):**
+    - 22 of the 47 round-4 losses (template-prototype, arity and void-result conflicts);
+    - 20 newly lost functions, each exact when generated alone; the conflict is with neighbouring prototypes, for example the `fn_8027B4C4` family (`ceil` on a `double` call result) and `fn_80281E80` (parameter casts);
+    - two unverified points: GX FIFO two-value load order (`fn_80102670`) and whether a signature-pass rerun reproduces `signatures.json`.
+  - **Next investigation:** choose per prototype conflict which side wins by bytes, rather than always letting templates win; then simple counted loops.
+  - Details: [generator round 5](docs/research/2026-10-07-generator-round5.md).
 - **Generator round 4 closed (user request 2026-10-06):** forward control flow in the FLOW template; functional commit `05f7803`.
   - **Totals:** matched code 32.008194%, linked 31.972652% (+77,524 bytes each).
   - **Template:** `if`/`else` blocks, early and conditional returns, three join strategies (`flow_cf.json`), integer arithmetic, indexed loads/stores, global stores, function-pointer, variadic and local-address calls.

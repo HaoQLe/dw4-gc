@@ -6,7 +6,7 @@ Matched and fully linked code each gained 39,220 bytes. All generated units are 
 
 | Metric | Before (`278f825`) | After | Gain |
 | --- | --- | --- | --- |
-| Matched code | 1,325,636 (32.008194%) | 1,364,856 (32.955180%) | +39,220 bytes (+0.946986 pp) |
+| Matched code | 1,325,636 (32.008194%) | 1,364,856 (32.955182%) | +39,220 bytes (+0.946988 pp) |
 | Fully linked code | 1,324,164 (31.972652%) | 1,363,384 (32.919640%) | +39,220 bytes (+0.946988 pp) |
 | Matched data | 226,422 (15.056707%) | 227,642 (15.137835%) | +1,220 bytes (+0.081128 pp) |
 
@@ -23,7 +23,7 @@ Matched and fully linked code each gained 39,220 bytes. All generated units are 
   | Fixed-address stores | 10 | 128 |
   | Other: forced pointer returns, adopted parameter types, gap parameters, call-free functions, scratch `r3` | 590 | 29,672 |
 
-**Against the round-4 projection.** Round 4 projected 100–150 KB (to about 34.5–35.5%) from float arguments, struct copies, a second signature pass and simple counted loops. This round, without loops, gained 39 KB (to 32.96%). Floating point, local structs and struct copies together gave 9.4 KB. Most FP code that the template can reach still differs in load scheduling and register choice. The prototype-consistency fixes gave the largest share. The generator plateau now looks closer to 34–35% than 35–37%: loops are the remaining template-scale pool.
+**Against the round-4 projection.** Round 4 projected 100–150 KB (to about 34.5–35.5%) from float arguments, struct copies, a second signature pass and simple counted loops. This round, without loops, gained 39 KB (to 32.955%). Floating point, local structs and struct copies together gave 9.4 KB. Most FP code that the template can reach still differs in load scheduling and register choice. The prototype-consistency fixes gave the largest share. The generator plateau now looks closer to 34–35% than 35–37%: loops are the remaining template-scale pool.
 
 ## Definition-signature pre-pass
 
@@ -53,7 +53,7 @@ Changes:
 - arity conflicts;
 - results of `void` definitions used by callers generated in other strategies.
 
-20 previously generated functions (1,676 bytes) are lost, mostly to changed neighbouring prototypes. 17 of them are exact when generated on their own. They include:
+20 previously generated functions (1,676 bytes) are lost, mostly to changed neighbouring prototypes. Each of the 20 is exact when generated alone (default profile), so all remain recoverable. They include:
 - the `fn_8027B4C4` family, which passes a `double` result through `ceil`;
 - `fn_80281E80` (parameter casts);
 - `fn_801264B4` and `fn_80126CF0`.
@@ -104,6 +104,7 @@ A copy is formed only when the original loads ahead of storing (two reads pendin
 ## Verification
 
 - The full `cycle.sh` run reproduces every unit. Its first build failed the checksum: emit merged `fn_80094880` (no original exception entry) into an exception-enabled unit with `fn_800948F4`. The compiler gave `fn_80094880` an extra entry, which shifted every later `extab` address, including `.rodata` references to exception tables. `emit.py` now never mixes functions with and without original exception entries in one unit. Emission, verification and the build were then rerun.
-- `verify_units.py` checked 914 changed units with their configured flags; none failed. In the first emission, 9 functions failed in their emitted unit; they were added to `exclude.json`.
+- `verify_units.py` checked 914 changed units with their configured flags; none failed. In the first emission, 10 functions in 9 units failed in their emitted unit; they were added to `exclude.json`.
+- An independent review clean-rebuilt the commit and compared all 3,507 generated units (14,463 functions, 939,584 bytes) against the original objects and DOL with its own comparator. It also confirmed map provenance, unchanged non-generated splits, the gained/lost counts, byte-identical regeneration of every unit from the committed `signatures.json`, and that no unit mixes functions with and without exception entries. A rerun of the signature pass to confirm that the record is stable did not finish and is unverified.
 - The normal build matches `build.sha1` (`./build/GDJEB2/main.dol: OK`).
 - The report was regenerated with `ninja all_source progress build/GDJEB2/report.json`.

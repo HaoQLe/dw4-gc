@@ -51,7 +51,7 @@ public:
  virtual void sB0();
  virtual void sB4();
 };
-class UnknownGenV800649A0_0 {
+class UnknownGenV800649A0_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -103,7 +103,7 @@ void fn_80064974(int p0){
  reinterpret_cast<UnknownGenV80064974_0 *>((void *)p0)->sB4();
 }
 void fn_800649A0(int p0){
- reinterpret_cast<UnknownGenV800649A0_0 *>((void *)p0)->sB4();
+ reinterpret_cast<UnknownGenV800649A0_1 *>((void *)p0)->sB4();
 }
 int fn_800649CC(){return 1;}
 }

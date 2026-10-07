@@ -107,7 +107,7 @@ public:
  virtual void s190();
  virtual void s194(void *,void *,void *);
 };
-class UnknownGenV8008A768_0 {
+class UnknownGenV8008A768_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -215,7 +215,7 @@ void fn_8008A730(int p0,int p1){
  reinterpret_cast<UnknownGenV8008A730_0 *>((void *)p0)->s194((void *)0,(void *)p1,(void *)(int)*reinterpret_cast<unsigned short *>(reinterpret_cast<char *>((void *)p0)+144));
 }
 void fn_8008A768(int p0,int p1,int p2){
- reinterpret_cast<UnknownGenV8008A768_0 *>((void *)p0)->s194((void *)0,(void *)p1,(void *)p2);
+ reinterpret_cast<UnknownGenV8008A768_1 *>((void *)p0)->s194((void *)0,(void *)p1,(void *)p2);
 }
 }
 #pragma pop

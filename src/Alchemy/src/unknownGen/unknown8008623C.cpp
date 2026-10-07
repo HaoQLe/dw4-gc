@@ -30,5 +30,17 @@ void fn_8008623C(){
  reinterpret_cast<UnknownGenV8008623C_0 *>(lbl_80562394)->s4C();
 }
 void fn_8008626C(){}
+void *fn_80086270(int p0){
+ if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+124)){
+  return *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+124);
+ }
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+112))+2060);
+}
+void *fn_80086290(int p0){
+ if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+124)){
+  return (void *)(int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+124)+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+164));
+ }
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+112))+2064);
+}
 }
 #pragma pop

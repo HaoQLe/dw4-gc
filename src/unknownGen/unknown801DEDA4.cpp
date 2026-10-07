@@ -98,7 +98,7 @@ public:
  virtual void sAC();
  virtual void sB0(void *);
 };
-class UnknownGenV801DEE10_0 {
+class UnknownGenV801DEE10_2 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -146,7 +146,7 @@ public:
  virtual void sB4();
  virtual void sB8(void *);
 };
-class UnknownGenV801DEE10_1 {
+class UnknownGenV801DEE10_3 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -200,8 +200,8 @@ void *fn_801DEDA8(int p0,int p1){
  return (void *)0;
 }
 void *fn_801DEE10(int p0,int p1){
- reinterpret_cast<UnknownGenV801DEE10_0 *>((void *)p1)->sB8((void *)1);
- reinterpret_cast<UnknownGenV801DEE10_1 *>((void *)p1)->sB0((void *)p0);
+ reinterpret_cast<UnknownGenV801DEE10_2 *>((void *)p1)->sB8((void *)1);
+ reinterpret_cast<UnknownGenV801DEE10_3 *>((void *)p1)->sB0((void *)p0);
  return (void *)0;
 }
 }

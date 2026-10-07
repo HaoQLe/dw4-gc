@@ -4,7 +4,7 @@
 extern "C" {
 void fn_800667CC();
 }
-class UnknownGenV801683DC_1 {
+class UnknownGenV801683DC_0 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -33,7 +33,7 @@ public:
 extern "C" {
 void fn_801683DC(int p0){
  fn_800667CC();
- reinterpret_cast<UnknownGenV801683DC_1 *>((void *)p0)->s60();
+ reinterpret_cast<UnknownGenV801683DC_0 *>((void *)p0)->s60();
 }
 }
 #pragma pop

@@ -2,12 +2,92 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_800607F4(void *);
+void fn_8009173C(void *);
+extern void *lbl_805621EC;
 void memset(void *,int,int);
+void strncpy(void *,void *,int);
 }
+class UnknownGenV800916F8_0 {
+public:
+ virtual void s08();
+ virtual void s0C();
+ virtual void s10();
+ virtual void s14();
+ virtual void s18();
+ virtual void s1C();
+ virtual void s20();
+ virtual void s24();
+ virtual void s28();
+ virtual void s2C();
+ virtual void s30();
+ virtual void s34();
+ virtual void s38();
+ virtual void s3C();
+ virtual void s40();
+ virtual void s44();
+ virtual void s48();
+ virtual void s4C();
+ virtual void s50();
+ virtual void s54();
+ virtual void s58();
+ virtual void s5C();
+ virtual void s60();
+ virtual void s64();
+ virtual void s68();
+ virtual void s6C();
+ virtual void s70();
+ virtual void s74();
+ virtual void s78();
+ virtual void s7C();
+ virtual void s80();
+ virtual void s84();
+ virtual void s88();
+ virtual void s8C();
+ virtual void s90();
+ virtual void s94();
+ virtual void s98();
+ virtual void s9C();
+ virtual void sA0();
+ virtual void sA4();
+ virtual void sA8();
+ virtual void sAC();
+ virtual void sB0();
+ virtual void sB4();
+ virtual void sB8();
+ virtual void sBC();
+ virtual void sC0();
+ virtual void sC4();
+ virtual void sC8();
+ virtual void sCC();
+ virtual void sD0();
+ virtual void sD4();
+ virtual void sD8(void *);
+};
 extern "C" {
 void *fn_8009160C(int p0){
  memset((void *)p0,0,168);
  return (void *)p0;
+}
+void *fn_80091644(int p0,int p1){
+ if((int)p0!=0){
+  if((int)(short)p1>0){
+   fn_8009173C((void *)p0);
+  }
+ }
+ return (void *)p0;
+}
+void fn_80091680(int p0,int p1){
+ strncpy((reinterpret_cast<char *>((void *)p0)+8),(void *)p1,79);
+ *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+87)=0;
+}
+void fn_800916BC(int p0,int p1){
+ strncpy((reinterpret_cast<char *>((void *)p0)+88),(void *)p1,79);
+ *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+167)=0;
+}
+void fn_800916F8(int p0){
+ void *value0=fn_800607F4(lbl_805621EC);
+ reinterpret_cast<UnknownGenV800916F8_0 *>(value0)->sD8((void *)p0);
 }
 }
 #pragma pop

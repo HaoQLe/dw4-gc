@@ -2,9 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void fn_8012D498(void *,void *,void *);
 void fn_801EAB04(void *);
+void fn_801EB1CC(void *,void *);
 }
-class UnknownGenV801F7D24_1 {
+class UnknownGenV801F7D24_0 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -40,7 +42,11 @@ public:
 extern "C" {
 void fn_801F7D24(int p0){
  fn_801EAB04((void *)p0);
- reinterpret_cast<UnknownGenV801F7D24_1 *>((void *)p0)->s7C();
+ reinterpret_cast<UnknownGenV801F7D24_0 *>((void *)p0)->s7C();
+}
+void fn_801F7D64(int p0,int p1){
+ fn_801EB1CC((void *)p0,(void *)p1);
+ fn_8012D498((reinterpret_cast<char *>((void *)p0)+52),(reinterpret_cast<char *>((void *)p0)+52),(void *)p1);
 }
 }
 #pragma pop

@@ -2,9 +2,14 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *fn_800284F4();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
+void *fn_800658E4(void *,void *);
+void fn_80065924(void *,void *,int);
+void fn_800659C0(void *,void *,void *,void *,void *);
+void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
@@ -12,7 +17,8 @@ void fn_801AA6DC();
 void fn_801AAEA0();
 void *fn_801AD7BC();
 void fn_801B09E4();
-void fn_801BE324();
+void *fn_801B103C();
+void fn_801BE514();
 extern char lbl_804AF2F4[];
 extern char lbl_804AF314[];
 extern char lbl_804AF320[];
@@ -21,10 +27,15 @@ extern char lbl_804B3B28[];
 extern char lbl_804B473C[];
 extern char lbl_804B761C[];
 extern char lbl_804BA1D8[];
+extern char lbl_80560574[8];
+extern char lbl_8056057C[8];
+extern char lbl_80560584[8];
+extern char lbl_8056058C[8];
 extern void *lbl_805621F4;
 extern void *lbl_80564680;
 extern void *lbl_80564E6C;
 extern void *lbl_80564E70;
+extern void *lbl_80564E7C;
 void *fn_801BDED4();
 void *fn_801BDF10();
 void fn_801BDF5C();
@@ -36,6 +47,7 @@ void fn_801BE25C();
 void fn_801BE284();
 void *fn_801BE2FC();
 void *fn_801BE31C();
+void fn_801BE324();
 }
 struct UnknownGenObject801BDF10_0 {
  void *unknown00;
@@ -116,5 +128,22 @@ void fn_801BE284(){
 }
 void *fn_801BE2FC(){return fn_801BE048();}
 void *fn_801BE31C(){return lbl_80564680;}
+void fn_801BE324(){
+ void *value0=lbl_80564E70;
+ void *value1=fn_80065D88(value0);
+ fn_80065924(value0,lbl_80560574,2);
+ void *value2=fn_800658E4(value0,value1);
+ void *value3=fn_801B103C();
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
+ void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value5=fn_800284F4();
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
+ *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
+ fn_800659C0(value0,lbl_8056057C,lbl_80560584,lbl_8056058C,value1);
+}
+void *fn_801BE3C4(){
+ if(!lbl_80564E7C || !(reinterpret_cast<unsigned int *>(lbl_80564E7C)[0x24/4]&4)) fn_801BE514();
+ return lbl_80564E7C;
+}
 }
 #pragma pop

@@ -31,7 +31,7 @@ public:
  virtual void s60();
  virtual void s64();
 };
-class UnknownGenV802151A4_0 {
+class UnknownGenV802151A4_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -66,7 +66,7 @@ void fn_80215178(int p0){
  reinterpret_cast<UnknownGenV80215178_0 *>((void *)p0)->s64();
 }
 void fn_802151A4(int p0){
- reinterpret_cast<UnknownGenV802151A4_0 *>((void *)p0)->s6C();
+ reinterpret_cast<UnknownGenV802151A4_1 *>((void *)p0)->s6C();
 }
 }
 #pragma pop

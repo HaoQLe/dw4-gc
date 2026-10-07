@@ -7,7 +7,7 @@ void fn_800667B0();
 extern void *lbl_80536620;
 extern void *lbl_80536630;
 }
-class UnknownGenV80345E28_1 {
+class UnknownGenV80345E28_0 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -36,7 +36,7 @@ void *fn_80345E08(){return lbl_80536630;}
 void *fn_80345E18(){return lbl_80536620;}
 void fn_80345E28(int p0){
  fn_800667B0();
- void *value0=reinterpret_cast<UnknownGenV80345E28_1 *>((void *)p0)->s58();
+ void *value0=reinterpret_cast<UnknownGenV80345E28_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);
 }
 }

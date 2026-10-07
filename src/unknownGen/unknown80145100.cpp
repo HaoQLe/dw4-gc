@@ -19,7 +19,7 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void fn_801305C4();
-void *fn_801455C8();
+void fn_80145624(void *);
 void fn_80177F30();
 extern char lbl_80471914[];
 extern char lbl_80474018[];
@@ -49,6 +49,7 @@ void *fn_801453A8();
 void fn_8014547C();
 void fn_801454A4();
 void *fn_80145510();
+void *fn_801455C8();
 }
 struct UnknownGenObject80145198_0 {
  void *unknown00;
@@ -140,6 +141,16 @@ void fn_80145530(){
    fn_80063F14(lbl_80564158);
   }
  }
+}
+void *fn_801455C8(){
+ if(!lbl_80564158){
+  fn_8014547C();
+ }
+ return lbl_80564158;
+}
+int fn_801455F8(){return 12;}
+void fn_80145600(int p0){
+ fn_80145624(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
 }
 }
 #pragma pop

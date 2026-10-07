@@ -5,7 +5,7 @@ extern "C" {
 void fn_800ED5F8(void *,void *);
 extern void *lbl_80562B08;
 }
-class UnknownGenV800C2D9C_1 {
+class UnknownGenV800C2D9C_0 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -41,7 +41,7 @@ public:
  virtual void s84();
  virtual void s88(void *);
 };
-class UnknownGenV800C2D9C_2 {
+class UnknownGenV800C2D9C_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -73,7 +73,7 @@ public:
  virtual void s74();
  virtual void s78();
 };
-class UnknownGenV800C2D9C_3 {
+class UnknownGenV800C2D9C_2 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -107,7 +107,7 @@ public:
  virtual void s7C();
  virtual void s80(void *,void *);
 };
-class UnknownGenV800C2D9C_4 {
+class UnknownGenV800C2D9C_3 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -143,10 +143,10 @@ public:
 extern "C" {
 void fn_800C2D9C(int p0,int p1){
  fn_800ED5F8((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24));
- reinterpret_cast<UnknownGenV800C2D9C_1 *>(lbl_80562B08)->s88(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28));
- reinterpret_cast<UnknownGenV800C2D9C_2 *>(lbl_80562B08)->s78();
- reinterpret_cast<UnknownGenV800C2D9C_3 *>(lbl_80562B08)->s80(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20));
- reinterpret_cast<UnknownGenV800C2D9C_4 *>(lbl_80562B08)->s7C();
+ reinterpret_cast<UnknownGenV800C2D9C_0 *>(lbl_80562B08)->s88(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28));
+ reinterpret_cast<UnknownGenV800C2D9C_1 *>(lbl_80562B08)->s78();
+ reinterpret_cast<UnknownGenV800C2D9C_2 *>(lbl_80562B08)->s80(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20));
+ reinterpret_cast<UnknownGenV800C2D9C_3 *>(lbl_80562B08)->s7C();
 }
 void fn_800C2E2C(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36)=value;}
 }

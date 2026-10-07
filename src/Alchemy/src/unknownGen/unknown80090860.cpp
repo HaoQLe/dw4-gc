@@ -16,7 +16,7 @@ public:
  virtual void s24();
  virtual void s28();
 };
-class UnknownGenV8009088C_0 {
+class UnknownGenV8009088C_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -29,7 +29,7 @@ public:
  virtual void s28();
  virtual void s2C();
 };
-class UnknownGenV800908B8_0 {
+class UnknownGenV800908B8_2 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -48,10 +48,10 @@ void fn_80090860(int p0){
  reinterpret_cast<UnknownGenV80090860_0 *>((void *)p0)->s28();
 }
 void fn_8009088C(int p0){
- reinterpret_cast<UnknownGenV8009088C_0 *>((void *)p0)->s2C();
+ reinterpret_cast<UnknownGenV8009088C_1 *>((void *)p0)->s2C();
 }
 void fn_800908B8(int p0){
- reinterpret_cast<UnknownGenV800908B8_0 *>((void *)p0)->s30();
+ reinterpret_cast<UnknownGenV800908B8_2 *>((void *)p0)->s30();
 }
 }
 #pragma pop

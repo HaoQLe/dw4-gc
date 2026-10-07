@@ -11,5 +11,68 @@ void fn_802B0E24(void *object,UnknownGenValue *value){
  if(old) unknownGenDrop(old);
  *reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0xC)=value;
 }
+void *fn_802B0E94(int p0,int p1){
+ void *value0;
+ void *value1;
+ void *value2;
+ if((int)p1!=0){
+  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+4);
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+4)=(reinterpret_cast<char *>(value0)+1);
+ }
+ value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+0);
+ if(value1){
+  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+   fn_80066E1C(value1);
+  }
+ }
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)p1;
+ return (void *)p0;
+}
+void *fn_802B0F08(int p0,int p1){
+ void *value0;
+ void *value1;
+ void *value2;
+ if((int)p1!=0){
+  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+4);
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+4)=(reinterpret_cast<char *>(value0)+1);
+ }
+ value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+0);
+ if(value1){
+  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+   fn_80066E1C(value1);
+  }
+ }
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)p1;
+ return (void *)p0;
+}
+void *fn_802B0F7C(int p0,int p1){
+ void *value0;
+ void *value1;
+ void *value2;
+ if((int)p1!=0){
+  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+4);
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+4)=(reinterpret_cast<char *>(value0)+1);
+ }
+ value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+0);
+ if(value1){
+  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+   fn_80066E1C(value1);
+  }
+ }
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)p1;
+ return (void *)p0;
+}
+void fn_802B0FF0(void *object,UnknownGenValue *value){
+ if(value) ++value->unknown04;
+ UnknownGenValue *old=*reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x50);
+ if(old) unknownGenDrop(old);
+ *reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x50)=value;
+}
 }
 #pragma pop

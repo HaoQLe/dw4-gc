@@ -29,7 +29,7 @@ public:
  virtual void s58();
  virtual void s5C(void *,void *);
 };
-class UnknownGenV8028B780_0 {
+class UnknownGenV8028B780_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -65,7 +65,7 @@ void fn_8028B750(int p0,int p1,int p2){
  reinterpret_cast<UnknownGenV8028B750_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s5C((void *)p1,(void *)p2);
 }
 void fn_8028B780(int p0,int p1){
- reinterpret_cast<UnknownGenV8028B780_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s70((void *)p1);
+ reinterpret_cast<UnknownGenV8028B780_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s70((void *)p1);
 }
 }
 #pragma pop

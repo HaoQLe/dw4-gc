@@ -13,7 +13,7 @@ tools/unknowngen/cycle.sh
 | --- | --- |
 | `relindex.py` | Indexes each original function's size and relocations from the split target objects. |
 | `gen.py` | Writes one candidate source file for every unrecovered function that a template recognizes. The templates are described below. |
-| `cycle.sh` | Runs everything below in order, using both flow argument strategies and every compiler profile. |
+| `cycle.sh` | Runs everything below in order, using both flow argument strategies, all three join strategies and every compiler profile. |
 | `fastcmp.py` | Compiles the candidates with the pinned compiler. A function is accepted only if both checks pass:<br>• its bytes, with relocation fields masked, equal the original DOL;<br>• its relocations (offset, type, target, addend) equal the original object. |
 | `emit.py` | Writes one unit per contiguous run of accepted functions, never crossing an existing split. Each unit uses one compiler profile; a run ends where no common profile remains. It records units in `config/GDJEB2/generated_units.txt` with comma-separated flags, which `configure.py` applies:<br>• `eh`: the functions own original `extabindex` entries, so the unit builds with C++ exceptions;<br>• `nosdata`: the code addresses all globals without small-data relocations, so the unit builds with `-sdata 0 -sdata2 0`;<br>• `speed`: the code was optimized for speed, so the unit builds with `-O4,p`;<br>• `lmw`: the code saves registers with `stmw`/`lmw`, so the unit builds with `-use_lmw_stmw on`.<br>Runs never cross an existing non-generated split. Exception-enabled temporaries with destructors get units of their own.<br>It deletes unit files that are no longer listed. |
 | `verify_units.py` | Compiles every new or changed unit with its configured flags and checks every function. `cycle.sh` excludes failures (recorded in `exclude.json`) and emits again. |
@@ -26,10 +26,19 @@ The templates in `gen.py`:
   - members are pooled strings or reference pointers, nested per destructor level;
   - a root class runs the base constructor;
   - an out-of-line destructor variant is supported.
-- **`FLOW`** handles straight-line code passing:
-  - constants, addresses and loaded globals;
-  - call results and field loads/stores;
-  - virtual calls.
+- **`FLOW`** handles code passing:
+  - constants, addresses and loaded globals, including stores to globals;
+  - call results, field loads/stores and indexed loads/stores;
+  - integer arithmetic, shifts and masks;
+  - virtual calls, function-pointer calls and variadic calls;
+  - stack locals whose address is passed to a call.
+
+  Forward conditional branches become `if`/`else` blocks and early returns (null checks, comparisons, record-form tests). Loops and backward branches are not handled. Where paths join, one of three strategies applies:
+  - `tail` (default): a join that only returns `r3` is duplicated into each path as a `return`;
+  - `var`: registers that differ become variables assigned on each path;
+  - `this`: like `tail`, but an untouched first parameter is returned.
+
+  `flow_cf.json` records functions that match only with `var` or `this`. A field read before an intervening store or call is read into a variable at its original position.
 
   Parameters come from registers the function reads and from argument registers callers write specifically for the call. `flow_regs.json` lists functions that match only when every set argument register is passed.
 - **`LEAF`** handles two-instruction leaf functions.

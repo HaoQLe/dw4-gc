@@ -16,5 +16,17 @@ UnknownGenHolder *dtor_80155C98(UnknownGenHolder *object,short flags){
  }
  return object;
 }
+void *fn_80155D0C(int p0,int p1){
+ if((unsigned int)p1==0){
+  return (void *)0;
+ }
+ if((unsigned int)p1==(unsigned int)p0){
+  return (void *)0;
+ }
+ if(((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+20)&0x40)){
+  return (void *)0;
+ }
+ return (void *)(int)((unsigned int)__cntlzw(((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+20)-(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)))>>5);
+}
 }
 #pragma pop

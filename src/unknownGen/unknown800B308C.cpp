@@ -4,6 +4,7 @@
 extern "C" {
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
+void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
@@ -14,15 +15,22 @@ void fn_800A325C(void *);
 void fn_800ABC8C();
 void fn_800AC034();
 void *fn_800AC294();
-void fn_800B36BC();
+void fn_800B3A18();
+void *fn_800B3D08();
+void fn_800B3F08();
+void *fn_800B6C60();
 extern char lbl_80478F00[];
 extern char lbl_80478F1C[];
 extern char lbl_80478F40[];
 extern char lbl_80478F4C[];
+extern char lbl_80478F7C[];
+extern char lbl_80478F90[];
 extern char lbl_8047BB6C[];
 extern char lbl_8047BBEC[];
+extern char lbl_8047BC70[];
 extern char lbl_8047BCE4[];
 extern char lbl_8047D578[];
+extern char lbl_8047E058[];
 extern char lbl_8047E50C[];
 extern char lbl_8055E2EC[4];
 extern char lbl_8055E2F0[4];
@@ -32,10 +40,16 @@ extern char lbl_8055E2FC[4];
 extern char lbl_8055E300[4];
 extern char lbl_8055E304[4];
 extern char lbl_8055E308[4];
+extern char lbl_8055E30C[8];
+extern char lbl_8055E314[8];
+extern char lbl_8055E31C[8];
+extern char lbl_8055E324[8];
 extern void *lbl_805621F4;
 extern void *lbl_80562718;
 extern void *lbl_80562720;
 extern void *lbl_80562728;
+extern void *lbl_80562734;
+extern void *lbl_80562764;
 void *fn_800B30C8();
 void *fn_800B3104();
 void fn_800B315C();
@@ -53,6 +67,13 @@ void *fn_800B34A8();
 void fn_800B35FC();
 void fn_800B3624();
 void *fn_800B369C();
+void fn_800B36BC();
+void *fn_800B375C();
+void *fn_800B3798();
+void fn_800B3950();
+void fn_800B3978();
+void *fn_800B39F0();
+void *fn_800B3A10();
 }
 struct UnknownGenObject800B3104_0 {
  void *unknown00;
@@ -73,6 +94,21 @@ struct UnknownGenObject800B34A8 : UnknownGenRoot800B34A8 {
  UnknownGenRefMember unknown10;
  char unknown14[12];
  inline ~UnknownGenObject800B34A8(){unknown00=lbl_8047BCE4;}
+};
+struct UnknownGenRoot800B3798 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot800B3798(){fn_8006665C(this);}
+};
+struct UnknownGenObject800B3798 : UnknownGenRoot800B3798 {
+ char unknown04[4];
+ UnknownGenRefMember unknown08;
+ UnknownGenRefMember unknown0C;
+ char unknown10[8];
+ UnknownGenRefMember unknown18;
+ UnknownGenRefMember unknown1C;
+ char unknown20[24];
+ inline ~UnknownGenObject800B3798(){unknown00=lbl_8047BC70;}
 };
 extern "C" {
 void *fn_800B308C(){
@@ -167,5 +203,52 @@ void fn_800B3624(){
  fn_80066204(0,(int)&lbl_80562728,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B369C,(int)lbl_80478F4C,20,(int)fn_800B34A8,(int)fn_800B36BC,0,(int)lbl_80478F40);
 }
 void *fn_800B369C(){return fn_800B346C();}
+void fn_800B36BC(){
+ void *value0=lbl_80562728;
+ void *value1=fn_80065D88(value0);
+ fn_80065924(value0,lbl_8055E30C,2);
+ void *value2=fn_800658E4(value0,value1);
+ void *value3=fn_800B6C60();
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
+ void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value5=fn_800B3D08();
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
+ *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
+ fn_800659C0(value0,lbl_8055E314,lbl_8055E31C,lbl_8055E324,value1);
+}
+void *fn_800B375C(){
+ if(!lbl_80562734 || !(reinterpret_cast<unsigned int *>(lbl_80562734)[0x24/4]&4)) fn_800B3950();
+ return lbl_80562734;
+}
+void *fn_800B3798(){
+ UnknownGenObject800B3798 object;
+ object.unknown00=lbl_8047E058;
+ object.unknown00=lbl_8047BC70;
+ object.unknown08.value=0;
+ object.unknown0C.value=0;
+ object.unknown18.value=0;
+ object.unknown1C.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+UnknownGenHolder *dtor_800B38DC(UnknownGenHolder *object,short flags){
+ if(object){
+  UnknownGenValue *value=object->unknown00;
+  if(value){
+   --value->unknown04;
+   if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
+  }
+  if(flags>0) fn_800A325C(object);
+ }
+ return object;
+}
+void fn_800B3950(){
+ fn_80066188((int)fn_800B3978);
+}
+void fn_800B3978(){
+ fn_800ABC8C();
+ fn_80066204(0,(int)&lbl_80562734,(int)fn_800B3F08,(int)fn_800B3A10,(int)fn_800B39F0,(int)lbl_80478F90,44,(int)fn_800B3798,(int)fn_800B3A18,0,(int)lbl_80478F7C);
+}
+void *fn_800B39F0(){return fn_800B375C();}
+void *fn_800B3A10(){return lbl_80562764;}
 }
 #pragma pop

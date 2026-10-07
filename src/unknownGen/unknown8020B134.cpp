@@ -29,7 +29,7 @@ public:
  virtual void s58();
  virtual void s5C(void *);
 };
-class UnknownGenV8020B13C_2 {
+class UnknownGenV8020B13C_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -61,7 +61,7 @@ void fn_8020B138(){}
 void fn_8020B13C(int p0,int p1){
  reinterpret_cast<UnknownGenV8020B13C_0 *>((void *)p0)->s5C((void *)p1);
  fn_8020B06C((void *)p0,(void *)p1);
- reinterpret_cast<UnknownGenV8020B13C_2 *>((void *)p0)->s60((void *)p1);
+ reinterpret_cast<UnknownGenV8020B13C_1 *>((void *)p0)->s60((void *)p1);
 }
 }
 #pragma pop

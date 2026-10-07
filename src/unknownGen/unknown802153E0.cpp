@@ -31,7 +31,7 @@ public:
  virtual void s60();
  virtual void s64();
 };
-class UnknownGenV8021540C_0 {
+class UnknownGenV8021540C_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -65,7 +65,7 @@ void fn_802153E0(int p0){
  reinterpret_cast<UnknownGenV802153E0_0 *>((void *)p0)->s64();
 }
 void fn_8021540C(int p0){
- reinterpret_cast<UnknownGenV8021540C_0 *>((void *)p0)->s6C();
+ reinterpret_cast<UnknownGenV8021540C_1 *>((void *)p0)->s6C();
 }
 void fn_80215438(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+96)=value;}
 void *fn_80215440(){return lbl_80564728;}

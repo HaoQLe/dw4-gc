@@ -2,6 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void fn_80298FB8(void *);
 void fn_8029963C(void *,void *);
 void fn_80299728(void *);
 void *fn_80299820();
@@ -26,6 +27,14 @@ void fn_803FA570(int p0,int p1,int p2,int p3,int p4){
 void *fn_803FA5D0(){return fn_80299B94();}
 void fn_803FA5F0(int p0){
  fn_80299D90(p0,0);
+}
+void fn_803FA614(int p0){
+ if((unsigned int)p0!=0){
+  fn_80298FB8((void *)p0);
+  return;
+ } else {
+  return;
+ }
 }
 }
 #pragma pop

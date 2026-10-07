@@ -2,6 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void fn_8004155C(void *,void *,int);
 extern void *lbl_80563574;
 extern void *lbl_80563578;
 extern void *lbl_8056357C;
@@ -99,5 +100,13 @@ void *fn_8011D7D4(){return lbl_80563810;}
 void *fn_8011D7DC(){return lbl_80563750;}
 void *fn_8011D7E4(){return lbl_80563638;}
 void *fn_8011D7EC(){return lbl_8056357C;}
+void fn_8011D7F4(int p0){
+ if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
+  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),40);
+  return;
+ } else {
+  return;
+ }
+}
 }
 #pragma pop

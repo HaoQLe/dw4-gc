@@ -8,6 +8,10 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from paths import CONFIG,RELINDEX,REPORT,EXCLUDE,HERE
 FLOW_REGS=set(json.load(open(HERE/'flow_regs.json'))) if (HERE/'flow_regs.json').exists() else set()
 FLOW_REGS_ALL='--flow-regs-all' in sys.argv
+# Join strategy for branchy FLOW functions: 'tail' duplicates a return into each path, 'var' joins
+# differing registers in variables, 'this' also returns an untouched first parameter.
+FLOW_CF=json.load(open(HERE/'flow_cf.json')) if (HERE/'flow_cf.json').exists() else {}
+FLOW_CF_ALL=next((a.split('=')[1] for a in sys.argv if a.startswith('--cf=')),None)
 idx=json.load(open(RELINDEX))
 _etb_refs=idx.pop('@etb_refs',[])
 syminfo={}
@@ -429,91 +433,331 @@ def ITEXT(name,rel):
     return ('0x%X'%v) if v>=0 else '-0x%X'%-v
   return re.sub(r'\{@(\d+)\}',imm,src)
 
+_CRREL={0:'<',1:'>',2:'=='}
+_NEG={'<':'>=','>=':'<','>':'<=','<=':'>','==':'!=','!=':'=='}
+def _taken(w,cr):
+  """(a, relation, b, signed) under which a conditional branch on cr0 is taken."""
+  bo=(w>>21)&31;bi=(w>>16)&31
+  if cr is None or bi not in _CRREL: raise ValueError('cr shape')
+  rel=_CRREL[bi]
+  if bo&~1==12: pass
+  elif bo&~1==4: rel=_NEG[rel]
+  else: raise ValueError('bo shape')
+  return (cr[0],rel,cr[1],cr[2])
+def _negate(c): return (c[0],_NEG[c[1]],c[2],c[3])
+def _s26(w):
+  d=w&0x3FFFFFC
+  return d-0x4000000 if d&0x2000000 else d
+FLOW_VALUE_KINDS=('field','load','param','const')
+# Integer operations: format over operand int expressions, operand fields (s/a/b), destination field.
+_BIN31={266:('({0}+{1})','ab','d'),40:('({1}-{0})','ab','d'),235:('({0}*{1})','ab','d'),491:('({0}/{1})','ab','d'),
+  459:('((unsigned int){0}/(unsigned int){1})','ab','d'),104:('(-{0})','a','d'),28:('({0}&{1})','sb','a'),
+  444:('({0}|{1})','sb','a'),316:('({0}^{1})','sb','a'),60:('({0}&~{1})','sb','a'),124:('~({0}|{1})','sb','a'),
+  24:('({0}<<{1})','sb','a'),536:('((unsigned int){0}>>{1})','sb','a'),792:('({0}>>{1})','sb','a'),
+  824:('({0}>>%d)','s','a'),26:('__cntlzw({0})','s','a')}
+_BINI={7:lambda k:'({0}*%d)'%callshape.s16(k),8:lambda k:'(%d-{0})'%callshape.s16(k),12:lambda k:'({0}+%d)'%callshape.s16(k),
+  15:lambda k:'({0}+%d)'%(callshape.s16(k)<<16),24:lambda k:'({0}|0x%X)'%k,25:lambda k:'({0}|0x%X)'%(k<<16),
+  26:lambda k:'({0}^0x%X)'%k,28:lambda k:'({0}&0x%X)'%k,29:lambda k:'({0}&0x%X)'%(k<<16)}
+_BASES=('param','load','ret','field','var','add','local','xfield','bin','gfield')
+_XLOAD={23:'int',87:'unsigned char',279:'unsigned short',343:'short'}
+_XSTORE={151:'int',215:'unsigned char',407:'short'}
 def FLOW(name,rel):
-  """Straight-line code: calls whose arguments are constants, addresses, loaded globals or earlier call
-  results, plus word stores into call results. Values used more than once become locals in first-use order."""
+  """Calls whose arguments are constants, addresses, loaded globals, fields or earlier call results, field
+  stores and virtual calls, structured by forward conditional branches into if/else blocks and returns.
+  Values used more than once become locals in first-use order; registers that differ where paths join
+  become variables."""
   addr=syminfo[name][1];size=idx[name]['size']
   b=callshape.rd(addr,size);relat={o&~3:(t,sy,a) for o,t,sy,a in rel}
-  ws=[_st.unpack('>I',b[i:i+4])[0] for i in range(0,size,4)]
-  regs={};vals=[];stmts=[];frame=None;ret=None;ctr=None
+  ws=[_st.unpack('>I',b[i:i+4])[0] for i in range(0,size,4)];nw=len(ws)
+  vals=[];varsrc=collections.defaultdict(list)
+  # A field read before a store or call that precedes one of its uses is stale: it is read into a
+  # variable where the original loads it.
+  seq=[0];born={};stale=set()
   def val(kind,*a):
-    vals.append((kind,)+a);return len(vals)-1
+    vals.append((kind,)+a);born[len(vals)-1]=seq[0];return len(vals)-1
+  def touch(vs,effect=False):
+    todo=[v for v in vs if isinstance(v,int)]
+    while todo:
+      v=todo.pop();k=vals[v]
+      if k[0]=='field' and born[v]<seq[0]: stale.add(v)
+      if k[0] in ('field','cast','add'): todo.append(k[1])
+      elif k[0]=='bin': todo+=list(k[2:])
+      elif k[0]=='xfield': todo+=[k[1],k[2]]
+    if effect: seq[0]+=1
   nparam=arity(name)
-  for i_ in range(nparam): regs[3+i_]=val('param',i_)
-  for i,w in enumerate(ws):
-    op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF;r=relat.get(4*i)
-    if op==37 and rt==1 and ra==1: frame=0x10000-imm;continue
-    if w in (0x7C0802A6,0x7C0803A6,0x4E800020): continue
-    if op==36 and ra==1: continue                                   # saves
-    if op in (46,47) and ra==1: continue                            # lmw/stmw saves
-    if op==32 and ra==1: continue                                   # restores
-    if op==14 and rt==1 and ra==1: continue                         # epilogue
-    if op==14 and rt==11 and ra==1: continue                        # _savegpr/_restgpr frame pointer
-    if op==15 and ra==0:
-      regs[rt]=('ha',r[1],r[2]) if r else ('k',imm<<16);continue
-    if op==14:
-      if r and r[0]==109: regs[rt]=val('sda',r[1],r[2]);continue
-      if ra==0 and not r: regs[rt]=val('const',callshape.s16(imm));continue
-      x=regs.get(ra)
-      if isinstance(x,tuple) and x[0]=='ha' and r: regs[rt]=val('addr',r[1],r[2]);continue
-      raise ValueError('addi shape')
-    if op==32:
-      if r and r[0]==109: regs[rt]=val('load',r[1],r[2]);continue
-      x=regs.get(ra)
-      if isinstance(x,int) and vals[x][0]=='addr' and imm==0: regs[rt]=val('load',vals[x][1],vals[x][2]);continue
-      if isinstance(x,tuple) and x[0]=='ha' and r: regs[rt]=val('load',r[1],r[2]);continue
-      if isinstance(x,int) and vals[x][0] in ('param','load','ret','field') and not r:
-        if rt==12 and imm==0: regs[12]=('vt',x);continue             # vtable of a known object
-        regs[rt]=val('field',x,callshape.s16(imm));continue          # word field of a known value
-      if isinstance(x,tuple) and x[0]=='vt' and rt==12 and not r:
-        regs[12]=('vslot',x[1],callshape.s16(imm));continue          # virtual slot
-      raise ValueError('load shape')
-    if op in (34,40,42):
-      x=regs.get(ra)
-      if isinstance(x,int) and vals[x][0] in ('param','load','ret','field') and not r:
-        regs[rt]=val('field',x,callshape.s16(imm),{34:'unsigned char',40:'unsigned short',42:'short'}[op]);continue
-      raise ValueError('narrow load shape')
-    if w==0x7D8903A6:                                                # mtctr r12
-      if not (isinstance(regs.get(12),tuple) and regs[12][0]=='vslot'): raise ValueError('mtctr shape')
-      ctr=regs[12];continue
-    if w==0x4E800421:                                                # bctrl: virtual call
-      if regs.get(3)!=ctr[1]: raise ValueError('virtual this')
-      args=[]
-      for k in range(4,11):
-        v=regs.get(k)
-        if isinstance(v,int): args.append(v)
-        else: break
-      stmts.append(('vcall',ctr[1],ctr[2],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
-      regs[3]=val('ret',len(stmts)-1);continue
-    if op==31 and ((w>>1)&0x3FF)==444 and rt==((w>>11)&31):        # mr
-      regs[ra]=regs.get(rt);continue
-    if op in (36,38,44):
-      x=regs.get(ra);v=regs.get(rt)
-      if isinstance(x,int) and isinstance(v,int) and vals[x][0] in ('ret','load','param','field'):
-        stmts.append(('store',x,callshape.s16(imm),v,{36:'void *',38:'unsigned char',44:'short'}[op]));continue
-      raise ValueError('store shape')
-    if op==18 and w&1 and r and r[1].startswith(('_savegpr_','_restgpr_')): continue
-    if op==18 and w&1 and r:
-      args=[]
-      for k in range(3,11):
-        v=regs.get(k)
-        if isinstance(v,int): args.append(v)
-        else: break
-      stmts.append(('call',r[1],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
-      regs[3]=val('ret',len(stmts)-1);continue
-    raise ValueError('flow op %08x'%w)
-  if not any(s_[0] in ('call','vcall') for s_ in stmts): raise ValueError('no calls')
-  # Which call results are used later decides their declared return types.
+  # Stack offsets whose address is taken are locals; other r1 loads/stores are register saves.
+  locs=sorted({callshape.s16(w&0xFFFF) for w in ws if (w>>26)==14 and (w>>16)&31==1 and (w>>21)&31 not in (1,11)})
+  regs0={}
+  for i_ in range(nparam): regs0[3+i_]=val('param',i_)
+  branchy=[False]
+  cf=FLOW_CF_ALL or FLOW_CF.get(name,'tail')
+  def passes(j,regs,cr):
+    """Whether the code at j only returns the incoming r3."""
+    try: return exitpath(j,regs,cr)[-1][1]==regs.get(3)
+    except ValueError: return False
+  def merge(out,c,ts,tr,es,er,pre,j=None,noelse=False,cr=None):
+    """Append if(c){ts}else{es}; join the register states (None: that path returned) at word j. Without
+    an else part, a variable takes the branch-point value before the if. With the tail strategy, a join
+    that only returns is duplicated into both paths."""
+    branchy[0]=True
+    if cf!='var' and j is not None and tr is not None and er is not None and tr.get(3)!=er.get(3) and passes(j,tr,cr) and passes(j,er,cr):
+      ts=ts+exitpath(j,tr,cr);es=es+exitpath(j,er,cr);tr=er=None
+    if tr is None or er is None:
+      out.append(('if',c,ts,es,pre));return er if tr is None else tr
+    m={}
+    for k in sorted(set(tr)&set(er)):
+      if tr[k]==er[k]: m[k]=tr[k]
+      elif isinstance(tr[k],int) and isinstance(er[k],int) and k!=1:
+        v=val('var');m[k]=v
+        touch([tr[k],er[k]])
+        ts.append(('assign',v,tr[k]));(out if noelse else es).append(('assign',v,er[k]));varsrc[v]+=[tr[k],er[k]]
+    out.append(('if',c,ts,es,pre))
+    return m
+  def chase(t):
+    """Final target of a branch to unconditional forward branches."""
+    while 0<=t<nw and (ws[t]>>26)==18 and not ws[t]&3 and _s26(ws[t])>0: t+=_s26(ws[t])//4
+    return t
+  def exitpath(t,regs,cr):
+    # An exit is straight-line code ending in the function's final blr.
+    if any((w_>>26) in (16,18) or ((w_>>26)==19 and w_!=0x4E800020) for w_ in ws[t:nw-1] if w_!=0x4E800421 and not ((w_>>26)==18 and w_&1)) or ws[nw-1]!=0x4E800020:
+      raise ValueError('exit shape')
+    st,r_=block(t,nw,None,dict(regs),cr)
+    if r_ is not None or [x[0] for x in st if x[0]!='def']!=['return']: raise ValueError('exit shape')
+    return st
+  def block(s,e,join,regs,cr):
+    """Interpret words [s,e); control continues at join after e. Returns (statements, registers or None)."""
+    out=[];i=s;ctr=None;varargs=False;prev3=regs.get(3);prevcall=False
+    while i<e:
+      # Key -1 records that a non-call instruction set r3 (a deliberate return value).
+      if regs.get(3)!=prev3 and not prevcall: regs[-1]=('moved',)
+      prev3=regs.get(3);prevcall=False
+      w=ws[i];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF;r=relat.get(4*i)
+      if op==16:
+        if w&3: raise ValueError('bc form')
+        t=chase(i+callshape.s16(w&0xFFFC)//4);c=_taken(w,cr);pre=len(vals);touch([c[0],c[2]])
+        if t<=i: raise ValueError('backward branch')
+        if t==join:
+          ts,tr=block(i+1,e,join,dict(regs),cr)
+          return out,merge(out,_negate(c),ts,tr,[],regs,pre,join,True,cr)
+        if t<e:
+          tw=ws[t-1];E=t-1+_s26(tw)//4 if (tw>>26)==18 and not tw&3 and t-1>i else None
+          if E is not None and t<E<=e:
+            ts,tr=block(i+1,t-1,E,dict(regs),cr);es,er=block(t,E,E,dict(regs),cr)
+            regs=merge(out,_negate(c),ts,tr,es,er,pre,E,False,cr);i=E;prev3=regs and regs.get(3)
+            if regs is None: return out,None
+            continue
+          if E is not None and E==join:
+            ts,tr=block(i+1,t-1,join,dict(regs),cr);es,er=block(t,e,join,dict(regs),cr)
+            return out,merge(out,_negate(c),ts,tr,es,er,pre,join,False,cr)
+          if E is not None:
+            ts,tr=block(i+1,t-1,E,dict(regs),cr)
+            if tr is not None: ts+=exitpath(E,tr,cr)
+            regs=merge(out,_negate(c),ts,None,[],regs,pre);i=t;prev3=regs.get(3);continue
+          ts,tr=block(i+1,t,t,dict(regs),cr)
+          regs=merge(out,_negate(c),ts,tr,[],regs,pre,t,True,cr);i=t;prev3=regs and regs.get(3)
+          if regs is None: return out,None
+          continue
+        merge(out,c,exitpath(t,regs,cr),None,[],regs,pre);i+=1;continue
+      if op==18 and not w&3:
+        t=chase(i+_s26(w)//4)
+        if t==join: return out,regs
+        if t>i: return out+exitpath(t,regs,cr),None
+        raise ValueError('backward branch')
+      if w==0x4E800020:
+        touch([regs.get(3)]);out.append(('return',regs.get(3),-1 in regs));return out,None
+      if op==19 and ((w>>1)&0x3FF)==16 and not w&1 and not (w>>11)&3:
+        c=_taken(w,cr);touch([c[0],c[2],regs.get(3)]);merge(out,c,[('return',regs.get(3),-1 in regs)],None,[],regs,len(vals));i+=1;continue
+      i+=1
+      if op==37 and rt==1 and ra==1: continue
+      if w in (0x7C0802A6,0x7C0803A6): continue
+      if w==0x4CC63182: varargs=True;continue                         # crclr 6: variadic call follows
+      if op in (36,38,44) and ra==1 and callshape.s16(imm) in locs:   # local store
+        v=regs.get(rt)
+        if not isinstance(v,int) or op!=36: raise ValueError('local store shape')
+        touch([v],True);out.append(('lstore',callshape.s16(imm),v));continue
+      if op==32 and ra==1 and callshape.s16(imm) in locs: regs[rt]=val('local',callshape.s16(imm));continue
+      if op==14 and ra==1 and rt not in (1,11): regs[rt]=val('stack',callshape.s16(imm));continue
+      if op==36 and ra==1: continue                                   # saves
+      if op in (46,47) and ra==1: continue                            # lmw/stmw saves
+      if op==32 and ra==1: continue                                   # restores
+      if op==14 and rt==1 and ra==1: continue                         # epilogue
+      if op==14 and rt==11 and ra==1: continue                        # _savegpr/_restgpr frame pointer
+      if op in (10,11) and not rt>>2:                                 # cmplwi/cmpwi
+        x=regs.get(ra)
+        if not isinstance(x,int): raise ValueError('cmp operand')
+        cr=(x,('imm',callshape.s16(imm) if op==11 else imm),op==11);continue
+      if op==31 and ((w>>1)&0x3FF) in (0,32) and not rt>>2:           # cmpw/cmplw
+        x=regs.get(ra);y=regs.get((w>>11)&31)
+        if not (isinstance(x,int) and isinstance(y,int)): raise ValueError('cmp operand')
+        cr=(x,y,((w>>1)&0x3FF)==0);continue
+      if op==21:                                                      # rlwinm: mask or shift
+        x=regs.get(rt);sh=(w>>11)&31;mb=(w>>6)&31;me=(w>>1)&31
+        if not isinstance(x,int): raise ValueError('mask operand')
+        if not sh and mb<=me:
+          mask=((1<<(32-mb))-1)&~((1<<(31-me))-1)
+          v=val('cast',x,{0xFF:'unsigned char',0xFFFF:'unsigned short'}.get(mask,mask))
+        elif not mb and me==31-sh: v=val('bin','({0}<<%d)'%sh,x)
+        elif me==31 and sh==32-mb: v=val('bin','((unsigned int){0}>>%d)'%mb,x)
+        else: raise ValueError('mask shape')
+        regs[ra]=v
+        if w&1: cr=(v,('imm',0),True)
+        continue
+      if op==31 and ((w>>1)&0x3FF)==444 and rt==((w>>11)&31) and w&1:  # mr.
+        x=regs.get(rt)
+        if not isinstance(x,int): raise ValueError('mr. operand')
+        regs[ra]=x;cr=(x,('imm',0),True);continue
+      if op==15 and ra==0:
+        regs[rt]=('ha',r[1],r[2]) if r else ('k',imm<<16);continue
+      if op==14:
+        if r and r[0]==109: regs[rt]=val('sda',r[1],r[2]);continue
+        if ra==0 and not r: regs[rt]=val('const',callshape.s16(imm));continue
+        x=regs.get(ra)
+        if isinstance(x,tuple) and x[0]=='ha' and r: regs[rt]=val('addr',r[1],r[2]);continue
+        if isinstance(x,int) and not r: regs[rt]=val('add',x,callshape.s16(imm));continue
+        raise ValueError('addi shape %08x'%w)
+      if op==13 and not r and isinstance(regs.get(ra),int):           # addic.
+        regs[rt]=val('add',regs[ra],callshape.s16(imm));cr=(regs[rt],('imm',0),True);continue
+      if op==31 and ((w>>1)&0x3FF) in (922,954) and not (w>>11)&31:    # extsh/extsb
+        x=regs.get(rt)
+        if not isinstance(x,int): raise ValueError('ext operand')
+        k_=vals[x];sx='short' if ((w>>1)&0x3FF)==922 else 'signed char'
+        if k_[0] in ('field','gfield','xfield') and len(k_)>3 and k_[-1]=={'short':'unsigned short','signed char':'unsigned char'}[sx]:
+          regs[ra]=val(*(k_[:-1]+(sx,)))                              # signed narrow load
+        else: regs[ra]=val('cast',x,sx)
+        if w&1: cr=(regs[ra],('imm',0),True)
+        continue
+      if op==32:
+        if r and r[0]==109: regs[rt]=val('load',r[1],r[2]);continue
+        x=regs.get(ra)
+        if isinstance(x,int) and vals[x][0]=='addr' and not r: regs[rt]=val('load',vals[x][1],vals[x][2]+callshape.s16(imm),'ha');continue
+        if isinstance(x,tuple) and x[0]=='ha' and r: regs[rt]=val('load',r[1],r[2],'ha');continue
+        if isinstance(x,int) and vals[x][0] in _BASES and not r:
+          if rt==12 and imm==0: regs[12]=('vt',x);continue             # vtable of a known object
+          regs[rt]=val('field',x,callshape.s16(imm));out.append(('def',regs[rt]));continue  # word field
+        if isinstance(x,tuple) and x[0]=='vt' and rt==12 and not r:
+          regs[12]=('vslot',x[1],callshape.s16(imm));continue          # virtual slot
+        raise ValueError('load shape %08x %s'%(w,vals[x][0] if isinstance(x,int) else x))
+      if op in (34,40,42) and r and (r[0]==109 or isinstance(regs.get(ra),tuple)):
+        regs[rt]=val('gfield',r[1],r[2],{34:'unsigned char',40:'unsigned short',42:'short'}[op]);continue
+      if op in (34,40,42):
+        x=regs.get(ra)
+        if isinstance(x,int) and vals[x][0] in _BASES and not r:
+          regs[rt]=val('field',x,callshape.s16(imm),{34:'unsigned char',40:'unsigned short',42:'short'}[op]);out.append(('def',regs[rt]));continue
+        raise ValueError('narrow load shape')
+      if (w&0xFC1FFFFF)==0x7C0903A6:                                   # mtctr
+        x=regs.get(rt)
+        if isinstance(x,tuple) and x[0]=='vslot' and rt==12: ctr=x;continue
+        if isinstance(x,tuple) and x[0]=='vt': x=val('field',x[1],0)
+        if not isinstance(x,int): raise ValueError('mtctr shape')
+        ctr=('ptr',x);continue
+      if w==0x4E800421 and ctr and ctr[0]=='ptr':                      # bctrl: function pointer
+        args=[]
+        for k in range(3,11):
+          v=regs.get(k)
+          if isinstance(v,int): args.append(v)
+          else: break
+        touch([ctr[1]]+args,True);out.append(('icall',ctr[1],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
+        regs[3]=val('ret',out[-1]);prevcall=True;continue
+      if w==0x4E800421:                                                # bctrl: virtual call
+        if ctr is None or regs.get(3)!=ctr[1]: raise ValueError('virtual this')
+        args=[]
+        for k in range(4,11):
+          v=regs.get(k)
+          if isinstance(v,int): args.append(v)
+          else: break
+        touch([ctr[1]]+args,True);out.append(('vcall',ctr[1],ctr[2],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
+        regs[3]=val('ret',out[-1]);prevcall=True;continue
+      if op==31 and ((w>>1)&0x3FF)==444 and rt==((w>>11)&31):        # mr
+        regs[ra]=regs.get(rt);continue
+      if op in (36,38,44) and r and (r[0]==109 or isinstance(regs.get(ra),tuple)) and isinstance(regs.get(rt),int):
+        touch([regs[rt]],True);out.append(('gstore',r[1],r[2],regs[rt],{36:'void *',38:'unsigned char',44:'short'}[op],r[0]!=109));continue
+      if op in (36,38,44):
+        x=regs.get(ra);v=regs.get(rt)
+        if isinstance(x,int) and isinstance(v,int) and vals[x][0] in _BASES:
+          touch([x,v],True);out.append(('store',x,callshape.s16(imm),v,{36:'void *',38:'unsigned char',44:'short'}[op]));continue
+        raise ValueError('store shape %08x'%w)
+      if op==18 and w&1 and r and r[1].startswith(('_savegpr_','_restgpr_')): continue
+      if op==18 and w&1 and r:
+        args=[]
+        for k in range(3,11):
+          v=regs.get(k)
+          if isinstance(v,int): args.append(v)
+          else: break
+        touch(args,True);out.append(('call',r[1],args,len(vals),varargs));regs={k:v for k,v in regs.items() if k>=14};varargs=False
+        regs[3]=val('ret',out[-1]);prevcall=True;continue
+      xo=(w>>1)&0x3FF
+      if op==31 and xo in _XLOAD and isinstance(regs.get(ra),int) and isinstance(regs.get((w>>11)&31),int):
+        regs[rt]=val('xfield',regs[ra],regs[(w>>11)&31],_XLOAD[xo]);continue
+      if op==31 and xo in _XSTORE and all(isinstance(regs.get(k),int) for k in (ra,(w>>11)&31,rt)):
+        touch([regs[ra],regs[(w>>11)&31],regs[rt]],True);out.append(('xstore',regs[ra],regs[(w>>11)&31],regs[rt],_XSTORE[xo]));continue
+      if op==31 and xo&0x1FF in (266,40,235,491,459,104): xo&=0x1FF   # ignore OE
+      if op==31 and xo in _BIN31:                                      # integer arithmetic
+        fmt_,srcs,dst=_BIN31[xo]
+        if '%d' in fmt_: fmt_=fmt_%((w>>11)&31)
+        ops_=[regs.get({'s':rt,'a':ra,'b':(w>>11)&31}[c_]) for c_ in srcs]
+        if not all(isinstance(x,int) for x in ops_): raise ValueError('arith operand')
+        v=val('bin',fmt_,*ops_);regs[{'d':rt,'a':ra}[dst]]=v
+        if w&1: cr=(v,('imm',0),True)
+        continue
+      if op in _BINI:                                                 # immediate arithmetic
+        x=regs.get(ra if op in (7,8,12,15) else rt)
+        if not isinstance(x,int) or r: raise ValueError('arith operand')
+        v=val('bin',_BINI[op](imm),x);regs[rt if op in (7,8,12,15) else ra]=v
+        if op in (28,29): cr=(v,('imm',0),True)
+        continue
+      raise ValueError('flow op %08x'%w)
+    return out,regs
+  stmts,fin=block(0,nw,None,dict(regs0),None)
+  if fin is not None: raise ValueError('falls off end')
+  branchy=branchy[0]
+  def walk(st):
+    for s_ in st:
+      yield s_
+      if s_[0]=='if':
+        yield from walk(s_[2]);yield from walk(s_[3])
+  allst=list(walk(stmts))
+  if not branchy and not any(s_[0] in ('call','vcall') for s_ in allst): raise ValueError('no calls')
+  rets=[s_ for s_ in allst if s_[0]=='return']
+  if not branchy:
+    # A value left in r3 by a non-call instruction after the last call is the return value.
+    v=rets[0][1];retval=isinstance(v,int) and vals[v][0] in FLOW_VALUE_KINDS
+  else:
+    def computed(v,seen=()):
+      if not isinstance(v,int) or v in seen: return False
+      k=vals[v][0]
+      if k=='var': return any(computed(x,seen+(v,)) for x in varsrc[v])
+      return k in ('field','load','const','cast','sda','addr')
+    def voidret(v):
+      if not isinstance(v,int) or vals[v][0]!='ret' or vals[v][1][0]!='call': return False
+      pr=protos.get(vals[v][1][1],'')
+      return pr.startswith('void ') and not pr.startswith('void *')
+    retval=not any(voidret(s_[1]) for s_ in rets) and any(computed(s_[1]) or s_[2] for s_ in rets) or (cf=='this' and nparam and all(s_[1]==regs0[3] for s_ in rets))
+    if retval and not all(isinstance(s_[1],int) for s_ in rets): raise ValueError('return value missing')
+  # Which values are used decides call return types and locals.
   used=collections.Counter()
-  for st in stmts:
+  def use_stmt(st):
     if st[0]=='call': used.update(st[2])
+    elif st[0]=='icall': used.update([st[1]]+st[2])
+    elif st[0]=='xstore': used.update(st[1:4])
+    elif st[0] in ('lstore','gstore'): used[st[3] if st[0]=='gstore' else st[2]]+=1
     elif st[0]=='vcall': used.update([st[1]]+st[3])
-    else: used.update([st[1],st[3]])
-  # A value left in r3 by a non-call instruction after the last call is the return value.
-  retv=regs.get(3) if isinstance(regs.get(3),int) and vals[regs[3]][0] in ('field','load','param','const') else None
-  if retv is not None: used[retv]+=1
+    elif st[0]=='store': used.update([st[1],st[3]])
+    elif st[0]=='if':
+      used.update([st[1][0]]+([st[1][2]] if isinstance(st[1][2],int) else []))
+    elif st[0]=='return' and retval: used[st[1]]+=1
+  for st in allst: use_stmt(st)
+  done_vars=set()
+  while True:
+    new=[v for v in used if vals[v][0]=='var' and used[v] and v not in done_vars]
+    if not new: break
+    for v in new:
+      done_vars.add(v)
+      for st in allst:
+        if st[0]=='assign' and st[1]==v: used[st[2]]+=1
   for v,k in enumerate(vals):
-    if k[0]=='field' and used[v]: used[k[1]]+=1
+    if k[0] in ('field','cast','add') and used[v]: used[k[1]]+=1
+    if k[0]=='bin' and used[v]: used.update(k[2:])
+    if k[0]=='xfield' and used[v]: used.update(k[1:3])
   def ex(v):
     """Pointer-typed expression for a value (constants stay int)."""
     k=vals[v]
@@ -531,92 +775,221 @@ def FLOW(name,rel):
       return sym if not k[2] else '%s+%d'%(sym,k[2])
     if k[0]=='load':
       if v in names_: return names_[v]
-      if k[2]: raise ValueError('load addend')
+      # In branchy code a global addressed with @ha/@l is declared without a size, as the original.
+      if k[2] or (branchy and len(k)>3 and not (k[1] in protos and protos[k[1]].startswith('extern void *'))): return '*reinterpret_cast<void **>(%s)'%gaddr(k[1],k[2])
       fn(k[1],'extern void *%s;');return k[1]
-    if k[0]=='ret': return names_[v]
+    if k[0] in ('ret','var'): return names_[v]
+    if k[0]=='local': return 'local%d'%locs.index(k[1])
+    if k[0]=='stack': return '&local%d'%locs.index(k[1])
+    if k[0]=='add': return '(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
+    if k[0] in ('gfield','bin','xfield'): return '(void *)(int)%s'%ix(v)
     if k[0]=='param': return '(void *)p%d'%k[1]
     if k[0]=='field':
       if v in names_: return names_[v]
       if len(k)>3: return '(void *)(int)*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
       return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
+    if k[0]=='cast': return '(void *)(int)%s'%ix(v)
     raise ValueError(k)
-  names_={};lines=[]
+  def gaddr(sym,add):
+    """char * address of a global plus an addend."""
+    if sym in protos and protos[sym].startswith('extern void *'): return '((char *)&%s+%d)'%(sym,add)
+    if '__' in sym: raise ValueError('C++ global')                # declared with its type elsewhere
+    info=syminfo.get(sym)
+    if info and info[0] in ('.sdata','.sbss','.sdata2','.sbss2'): fn(sym,'extern char %%s[%d];'%max(info[3],1))
+    elif sym not in protos: fn(sym,'extern char %s[];')
+    if not re.match(r'extern char %s\['%re.escape(sym),protos.get(sym,'')): raise ValueError('global type')
+    return '(%s+%d)'%(sym,add)
+  def ix(v):
+    """Integer-typed expression for a value."""
+    k=vals[v]
+    if k[0]=='const': return str(k[1])
+    if k[0]=='param': return 'p%d'%k[1]
+    if k[0]=='field' and len(k)>3 and v not in names_:
+      return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
+    if k[0]=='gfield': return '*reinterpret_cast<%s *>(%s)'%(k[3],gaddr(k[1],k[2]))
+    if k[0]=='bin': return k[1].format(*[ix(o) for o in k[2:]])
+    if k[0]=='xfield': return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%s)'%(k[3],ex(k[1]),ix(k[2]))
+    if k[0]=='add': return '(%s+%d)'%(ix(k[1]),k[2])
+    if k[0]=='cast':
+      if isinstance(k[2],int): return '((unsigned int)%s&0x%X)'%(ix(k[1]),k[2])
+      return '(%s)%s'%(k[2],ix(k[1]))
+    return '(int)%s'%ex(v)
+  def cond(c):
+    a,rel_,b_,signed=c
+    k=vals[a][0]
+    if isinstance(b_,tuple):
+      n_=b_[1]
+      if n_==0 and rel_ in ('==','!='):
+        if k=='cast' or (not signed and k not in ('param','const')):
+          e_=ex(a) if k not in ('cast','field') or (k=='field' and len(vals[a])==3) else ix(a)
+          return e_ if rel_=='!=' else '!%s'%e_
+      return '(%s)%s%s%d'%('int' if signed else 'unsigned int',ix(a),rel_,n_)
+    t_='int' if signed else 'unsigned int'
+    return '(%s)%s%s(%s)%s'%(t_,ix(a),rel_,t_,ix(b_))
+  names_={};emitted=set()
   for v,k in enumerate(vals):
     if k[0]=='load' and used[v]>1: names_[v]='value%d'%len(names_)
-  emitted=set()
-  def ensure(v):
+    # In branchy code a field read more than once is read once, where it is first needed.
+    elif branchy and k[0]=='field' and used[v] and v in stale: names_[v]='value%d'%len(names_)
+  def ensure(v,lines):
     """Declare a named global load at its first use."""
     k=vals[v]
-    if k[0]=='field': ensure(k[1]);return
+    if k[0]=='field' and v in names_ and v not in emitted:
+      ensure(k[1],lines);n_=names_.pop(v);e_=ex(v);names_[v]=n_;emitted.add(v)
+      lines.append(' %s%s=%s;'%(declare(n_),n_,e_));return
+    if k[0] in ('field','cast','add'): ensure(k[1],lines);return
+    if k[0]=='bin':
+      for o in k[2:]: ensure(o,lines)
+      return
+    if k[0]=='xfield': ensure(k[1],lines);ensure(k[2],lines);return
     if v in names_ and k[0]=='load' and v not in emitted:
-      fn(k[1],'extern void *%s;');lines.append(' void *%s=%s;'%(names_[v],k[1]));emitted.add(v)
-  for si,st in enumerate(stmts):
-    if st[0]=='call':
-      t,args=st[1],st[2]
-      m=re.match(r'(.*?)%s\((.*)\);$'%re.escape(t),protos.get(t,''))
-      ptypes=None
-      if m:
-        ptypes=[x.strip() for x in m[2].split(',')] if m[2].strip() not in ('','void') else []
-        if len(ptypes)>len(args): raise ValueError('arity')
-        args=args[:len(ptypes)]
-      elif not (FLOW_REGS_ALL or name in FLOW_REGS):
-        # Without a prototype, leftover registers are not arguments: use the inferred arity.
-        # (Functions listed in flow_regs.json match only when the set registers are passed.)
-        k_=arity(t)
-        if k_>len(args): raise ValueError('arity')
-        args=args[:k_]
-      for a in args: ensure(a)
-      if ptypes is None: ptypes=['int' if vals[a][0]=='const' else 'void *' for a in args]
-      def cast(pt,a):
-        e=ex(a)
-        if pt=='void *': return '(void *)%s'%e if vals[a][0]=='const' else e
-        if pt.endswith('*'): return '(%s)(%s)'%(pt,e)
-        if vals[a][0]=='const': return e if pt=='int' else '(%s)%s'%(pt,e)
-        return '(%s)(int)(%s)'%(pt,e)
-      call='%s(%s)'%(t,','.join(cast(pt,a) for pt,a in zip(ptypes,args)))
-      rtype=m[1].strip() if m else None
-      rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1]==si]
-      if rv and used[rv[0]]:
-        if rtype is None: fn(t,'void *%%s(%s);'%','.join(ptypes));rtype='void *'
-        if rtype=='void': raise ValueError('void result used')
-        names_[rv[0]]='value%d'%len(names_)
-        lines.append(' void *%s=%s;'%(names_[rv[0]],call if rtype.endswith('*') else '(void *)'+call))
-      else:
-        if rtype is None: fn(t,'void %%s(%s);'%','.join(ptypes))
-        lines.append(' %s;'%call)
-    elif st[0]=='vcall':
-      obj,off,args=st[1],st[2],st[3]
-      ensure(obj)
-      for a in args: ensure(a)
-      rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1]==si]
-      want=bool(rv and used[rv[0]])
-      cls='UnknownGenV%s_%d'%(name[3:],si)
-      slots=[' virtual void s%02X();'%o for o in range(8,off,4)]
-      params=','.join('void *' for a in args)
-      slots.append(' virtual %s s%02X(%s);'%('void *' if want else 'void',off,params))
-      PRE.append('class %s {\npublic:\n%s\n};'%(cls,'\n'.join(slots)))
-      call='reinterpret_cast<%s *>(%s)->s%02X(%s)'%(cls,ex(obj),off,','.join(('(void *)%s'%ex(a)) if vals[a][0]=='const' else ex(a) for a in args))
-      if want:
-        names_[rv[0]]='value%d'%len(names_);lines.append(' void *%s=%s;'%(names_[rv[0]],call))
-      else: lines.append(' %s;'%call)
-    else:
-      x,off,v,ty=st[1],st[2],st[3],st[4]
-      ensure(x);ensure(v)
-      e=ex(v)
-      if ty=='void *' and vals[v][0]=='const': e='(void *)%s'%e
-      elif ty!='void *' and vals[v][0]!='const': e='(%s)(int)%s'%(ty,e)
-      lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ty,ex(x),off,e))
-  if retv is not None:
-    ensure(retv)
+      fn(k[1],'extern void *%s;'%'%s');lines.append(' void *%s=%s;'%(names_[v],k[1]));emitted.add(v)
+  def refs(st):
+    for s_ in walk([st]):
+      if s_[0]=='call': yield from s_[2]
+      elif s_[0]=='icall': yield from [s_[1]]+s_[2]
+      elif s_[0]=='lstore': yield s_[2]
+      elif s_[0]=='xstore': yield from s_[1:4]
+      elif s_[0]=='gstore': yield s_[3]
+      elif s_[0]=='vcall': yield from [s_[1]]+s_[3]
+      elif s_[0]=='store': yield from [s_[1],s_[3]]
+      elif s_[0]=='if':
+        yield s_[1][0]
+        if isinstance(s_[1][2],int): yield s_[1][2]
+      elif s_[0]=='assign' and used[s_[1]]: yield s_[2]
+      elif s_[0]=='return' and retval: yield s_[1]
+  varlines=[]
+  for v,k in enumerate(vals):
+    if k[0]=='var' and used[v]: names_[v]='value%d'%len(names_);varlines.append(' void *%s;'%names_[v])
+  def emit(stmts,lines,top):
+    for si,st in enumerate(stmts):
+      if st[0]=='call':
+        t,args=st[1],st[2]
+        if st[4]:
+          if t not in protos: fn(t,'void %s(void *,...);')
+          if not protos[t].endswith('...);') or not args: raise ValueError('variadic prototype')
+        m=re.match(r'(.*?)%s\((.*)\);$'%re.escape(t),protos.get(t,HEADER_PROTOS.get(t,'')))
+        ptypes=None
+        if st[4]:
+          ptypes=['void *']*len(args)
+          if used[[v for v,k in enumerate(vals) if k[0]=='ret' and k[1] is st][0]]: raise ValueError('variadic result')
+        elif m:
+          ptypes=[x.strip() for x in m[2].split(',')] if m[2].strip() not in ('','void') else []
+          if len(ptypes)>len(args): raise ValueError('arity')
+          args=args[:len(ptypes)]
+        elif not (FLOW_REGS_ALL or name in FLOW_REGS):
+          # Without a prototype, leftover registers are not arguments: use the inferred arity.
+          # (Functions listed in flow_regs.json match only when the set registers are passed.)
+          k_=arity(t)
+          if k_>len(args): raise ValueError('arity')
+          args=args[:k_]
+        for a in args: ensure(a,lines)
+        if ptypes is None: ptypes=['int' if vals[a][0]=='const' else 'void *' for a in args]
+        def cast(pt,a):
+          e=ex(a)
+          if pt=='void *': return '(void *)%s'%e if vals[a][0]=='const' else e
+          if pt.endswith('*'): return '(%s)(%s)'%(pt,e)
+          if vals[a][0]=='const': return e if pt=='int' else '(%s)%s'%(pt,e)
+          return '(%s)(int)(%s)'%(pt,e)
+        call='%s(%s)'%(t,','.join(cast(pt,a) for pt,a in zip(ptypes,args)))
+        rtype=m[1].strip() if m else None
+        rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1] is st]
+        if rv and used[rv[0]]:
+          if rtype is None: fn(t,'void *%%s(%s);'%','.join(ptypes));rtype='void *'
+          if rtype=='void': raise ValueError('void result used %s'%t)
+          names_[rv[0]]='value%d'%len(names_)
+          lines.append(' %s%s=%s;'%(declare(names_[rv[0]]),names_[rv[0]],call if rtype.endswith('*') else '(void *)'+call))
+        else:
+          if rtype is None: fn(t,'void %%s(%s);'%','.join(ptypes))
+          lines.append(' %s;'%call)
+      elif st[0]=='vcall':
+        obj,off,args=st[1],st[2],st[3]
+        ensure(obj,lines)
+        for a in args: ensure(a,lines)
+        rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1] is st]
+        want=bool(rv and used[rv[0]])
+        cls='UnknownGenV%s_%d'%(name[3:],len(PRE))
+        slots=[' virtual void s%02X();'%o for o in range(8,off,4)]
+        params=','.join('void *' for a in args)
+        slots.append(' virtual %s s%02X(%s);'%('void *' if want else 'void',off,params))
+        PRE.append('class %s {\npublic:\n%s\n};'%(cls,'\n'.join(slots)))
+        call='reinterpret_cast<%s *>(%s)->s%02X(%s)'%(cls,ex(obj),off,','.join(('(void *)%s'%ex(a)) if vals[a][0]=='const' else ex(a) for a in args))
+        if want:
+          names_[rv[0]]='value%d'%len(names_);lines.append(' %s%s=%s;'%(declare(names_[rv[0]]),names_[rv[0]],call))
+        else: lines.append(' %s;'%call)
+      elif st[0]=='icall':
+        f_,args=st[1],st[2]
+        ensure(f_,lines)
+        for a in args: ensure(a,lines)
+        rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1] is st]
+        want=bool(rv and used[rv[0]])
+        call='reinterpret_cast<%s (*)(%s)>(%s)(%s)'%('void *' if want else 'void',','.join('void *' for a in args),ex(f_),','.join(('(void *)%s'%ex(a)) if vals[a][0]=='const' else ex(a) for a in args))
+        if want:
+          names_[rv[0]]='value%d'%len(names_);lines.append(' %s%s=%s;'%(declare(names_[rv[0]]),names_[rv[0]],call))
+        else: lines.append(' %s;'%call)
+      elif st[0]=='def':
+        if st[1] in names_: ensure(st[1],lines)
+      elif st[0]=='xstore':
+        for v in st[1:4]: ensure(v,lines)
+        lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%s)=(%s)%s;'%(st[4],ex(st[1]),ix(st[2]),st[4],ix(st[3])))
+      elif st[0]=='lstore':
+        ensure(st[2],lines);e=ex(st[2])
+        lines.append(' local%d=%s;'%(locs.index(st[1]),'(void *)%s'%e if vals[st[2]][0]=='const' else e))
+      elif st[0]=='gstore':
+        sym,add,v,ty=st[1],st[2],st[3],st[4]
+        ensure(v,lines);e=ex(v)
+        if ty=='void *' and not add and (protos.get(sym,'').startswith('extern void *') or (sym not in protos and not st[5])):
+          fn(sym,'extern void *%s;')
+          lines.append(' %s=%s;'%(sym,'(void *)%s'%e if vals[v][0]=='const' else e))
+        else:
+          if vals[v][0]!='const': e='(%s)(int)%s'%(ty,e) if ty!='void *' else e
+          elif ty=='void *': e='(void *)%s'%e
+          lines.append(' *reinterpret_cast<%s *>(%s)=%s;'%(ty,gaddr(sym,add),e))
+      elif st[0]=='store':
+        x,off,v,ty=st[1],st[2],st[3],st[4]
+        ensure(x,lines);ensure(v,lines)
+        e=ex(v)
+        if ty=='void *' and vals[v][0]=='const': e='(void *)%s'%e
+        elif ty!='void *' and vals[v][0]!='const': e='(%s)(int)%s'%(ty,e)
+        lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ty,ex(x),off,e))
+      elif st[0]=='assign':
+        if not used[st[1]]: continue
+        ensure(st[2],lines);e=ex(st[2])
+        lines.append(' %s=%s;'%(names_[st[1]],'(void *)%s'%e if vals[st[2]][0]=='const' else e))
+      elif st[0]=='if':
+        for v in sorted(set(refs(st))):
+          if v<st[4]: ensure(v,lines)
+        tl=[];el=[]
+        emit(st[2],tl,False);emit(st[3],el,False)
+        if not tl and el: c_=cond(_negate(st[1]));tl,el=el,[]
+        else: c_=cond(st[1])
+        lines.append(' if(%s){'%c_);lines.extend(' '+x for x in tl)
+        if el: lines.append(' } else {');lines.extend(' '+x for x in el)
+        lines.append(' }')
+      elif st[0]=='return':
+        last=top and si==len(stmts)-1
+        if retval:
+          v=st[1];ensure(v,lines);e=ex(v)
+          lines.append(' return %s;'%('(void *)%s'%e if vals[v][0] in ('const','cast') else e))
+        elif not last: lines.append(' return;')
+  # In branchy code, call results are declared at the top so they outlive their block.
+  topdecl=[]
+  def declare(n_):
+    if not branchy: return 'void *'
+    topdecl.append(' void *%s;'%n_);return ''
+  body=[]
+  emit(stmts,body,True)
+  lines=list(varlines)+topdecl+[' void *local%d;'%k for k in reversed(range(len(locs)))]+body
+  params=','.join('int p%d'%i for i in range(nparam))
+  if retval:
     fn(name,'void *%%s(%s);'%','.join(['int']*nparam))
-    rexp=ex(retv)
-    if vals[retv][0]=='const': rexp='(void *)%s'%rexp
-    return 'void *%s(%s){\n%s\n return %s;\n}'%(name,','.join('int p%d'%i for i in range(nparam)),'\n'.join(lines),rexp)
+    return 'void *%s(%s){\n%s\n}'%(name,params,'\n'.join(lines))
   fn(name,'void %%s(%s);'%','.join(['int']*nparam))
-  return 'void %s(%s){\n%s\n}'%(name,','.join('int p%d'%i for i in range(nparam)),'\n'.join(lines))
+  return 'void %s(%s){\n%s\n}'%(name,params,'\n'.join(lines))
 
 TEMPL={'F1':F1,'F2':F2,'F3':F3,'F6':F6,'F7':F7,'F8':F8,'CALLS':CALLS,'VT':VT,'TEXT':TEXT,'LEAF':LEAF,'ITEXT':ITEXT,'FLOW':FLOW}
 HEADER_NAME='unknownGen.h'
+HEADER_PROTOS={'fn_80066E1C':'void fn_80066E1C(void *);'}  # declared by the header
 HEADER='#ifndef UNKNOWNGEN_H\n#define UNKNOWNGEN_H\n#include <igCore/igStringPoolItem.h>\n// Synthetic views shared by recovered metaobject boilerplate; meanings are unknown.\nnamespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }\nstruct UnknownGenString {\n const char *value;\n inline ~UnknownGenString(){if(value) reinterpret_cast<const Gap::Core::igStringPoolItem *>(value-8)->release();}\n};\n'+texttempl.PRELUDE+'\nstruct UnknownGenValue { void *unknown00; unsigned int unknown04; };\nstruct UnknownGenHolder { UnknownGenValue *unknown00; };\nextern "C" void fn_80066E1C(void *);\ninline void unknownGenDrop(UnknownGenValue *value){--value->unknown04;if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);}\nstruct UnknownGenRefMember {\n UnknownGenValue *value;\n inline ~UnknownGenRefMember(){if(value) unknownGenDrop(value);}\n};\n#endif\n'
 _rep=json.load(open(REPORT));_done=set()
 for _u in _rep['units']:
@@ -664,7 +1037,9 @@ def kind(n,calls):
   if calls: return 'CALLS'
   return None
 def _pointer_globals(names,seed,calls):
-  out={}
+  """Prototypes the template functions need (their own signatures, their callees and globals they use
+  as pointers), so that earlier straight-line or branchy callers declare those symbols the same way."""
+  out={};decl={}
   for n in names:
     f=kind(n,calls)
     if f in (None,'CALLS'): continue
@@ -672,7 +1047,10 @@ def _pointer_globals(names,seed,calls):
     try: TEMPL[f](n,idx[n]['rel'])
     except Exception: continue
     out.update({k:v for k,v in protos.items() if v.startswith('extern void *')})
-  return out
+    for k,v in protos.items():
+      if k not in seed: decl.setdefault(k,v)
+  decl.update(out)
+  return decl
 def generate(names,seed,calls=True,header=False):
   # First pass finds globals some template needs as pointers, so address-only uses agree.
   pointers=_pointer_globals(names,seed,calls)

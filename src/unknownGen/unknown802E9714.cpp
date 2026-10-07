@@ -17,7 +17,7 @@ extern void *lbl_80534B38;
 extern void *lbl_80534B48;
 extern void *lbl_80534B64;
 }
-class UnknownGenV802E97D4_1 {
+class UnknownGenV802E97D4_0 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -56,7 +56,7 @@ void *fn_802E97B4(){return lbl_80534A04;}
 void *fn_802E97C4(){return lbl_805349F8;}
 void fn_802E97D4(int p0){
  fn_800667B0();
- void *value0=reinterpret_cast<UnknownGenV802E97D4_1 *>((void *)p0)->s58();
+ void *value0=reinterpret_cast<UnknownGenV802E97D4_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);
 }
 }

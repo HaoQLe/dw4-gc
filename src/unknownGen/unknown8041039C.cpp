@@ -32,7 +32,7 @@ public:
  virtual void s64();
  virtual void s68();
 };
-class UnknownGenV804103D0_0 {
+class UnknownGenV804103D0_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -67,7 +67,7 @@ void *fn_8041039C(int p0){
  return (void *)1;
 }
 void *fn_804103D0(int p0){
- reinterpret_cast<UnknownGenV804103D0_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s6C();
+ reinterpret_cast<UnknownGenV804103D0_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s6C();
  return (void *)1;
 }
 }

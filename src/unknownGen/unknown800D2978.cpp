@@ -13,6 +13,7 @@ void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800CE2F8();
+void fn_800D2C30(void *);
 extern char lbl_80471914[];
 extern char lbl_80474018[];
 extern char lbl_80489E70[];
@@ -76,6 +77,16 @@ void fn_800D2B3C(){
    fn_80063F14(lbl_80562FE0);
   }
  }
+}
+void *fn_800D2BD4(){
+ if(!lbl_80562FE0){
+  fn_800D2A88();
+ }
+ return lbl_80562FE0;
+}
+int fn_800D2C04(){return 12;}
+void fn_800D2C0C(int p0){
+ fn_800D2C30(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
 }
 }
 #pragma pop

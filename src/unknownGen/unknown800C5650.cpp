@@ -149,7 +149,7 @@ public:
  virtual void s238();
  virtual void s23C(void *,void *);
 };
-class UnknownGenV800C5690_0 {
+class UnknownGenV800C5690_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -301,9 +301,20 @@ void fn_800C5658(int p0,int p1){
  reinterpret_cast<UnknownGenV800C5658_0 *>((void *)p1)->s23C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
 }
 void fn_800C5690(int p0,int p1){
- void *value0=reinterpret_cast<UnknownGenV800C5690_0 *>((void *)p1)->s240((void *)p1);
+ void *value0=reinterpret_cast<UnknownGenV800C5690_1 *>((void *)p1)->s240((void *)p1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
 }
 void fn_800C56D0(){}
+void fn_800C56D4(int p0){
+ void *value0;
+ if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)==-1){
+  return;
+ }
+ value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56);
+ if(value0){
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+56)=(void *)0;
+ }
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=(void *)-1;
+}
 }
 #pragma pop

@@ -30,7 +30,7 @@ public:
  virtual void s5C();
  virtual void s60();
 };
-class UnknownGenV800BE4CC_0 {
+class UnknownGenV800BE4CC_1 {
 public:
  virtual void s08();
  virtual void s0C();
@@ -72,8 +72,20 @@ void fn_800BE4A0(int p0,int p1){
  fn_800F98A4((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
 }
 void fn_800BE4CC(int p0,int p1){
- reinterpret_cast<UnknownGenV800BE4CC_0 *>((void *)p0)->s80((void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+312));
+ reinterpret_cast<UnknownGenV800BE4CC_1 *>((void *)p0)->s80((void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+312));
 }
 void fn_800BE4FC(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
+void *fn_800BE504(int p0){
+ void *value0;
+ void *value1;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)0;
+ value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+0);
+ if(!value0){
+  return (void *)p0;
+ }
+ value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+1);
+ return value1;
+}
 }
 #pragma pop

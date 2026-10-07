@@ -16,5 +16,11 @@ UnknownGenHolder *fn_801FABA8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
+void *fn_801FAC1C(int p0){
+ if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16)){
+  return *reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+8);
+ }
+ return (void *)0;
+}
 }
 #pragma pop

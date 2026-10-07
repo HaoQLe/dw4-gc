@@ -4,6 +4,22 @@ Updated: 2026-10-06. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Generator round 3 closed (user request 2026-10-06):** `work` at `b03f148`; both metrics exceed 30%.
+  - **Totals:** matched code 30.136335%, linked 30.100792%.
+  - **Yield:** +233,384 bytes over round 2, from:
+    - hierarchical vtable-read temporaries (members per destructor level, a root class running the base constructor);
+    - speed and lmw compiler profiles;
+    - the FLOW template (field access, virtual calls, inferred parameters).
+  - **Consolidation:** emission merges generated runs, giving 6,564 units in total, of which 3,099 are generated.
+  - **Verification:** every changed unit is compiled with its own flags before linking.
+  - **Known artifact:** 287 isolated exception-enabled units carry 5,740 bytes of unmatched object-level extab data. These come from unused destructor copies stripped at link; the executable is exact.
+  - **Retained:**
+    - 15 functions (744 bytes) left generated units;
+    - 68 vtable-read temporaries (about 11 KB, register allocation);
+    - about 130 flow candidates;
+    - the `fn_80021E10` family.
+  - **Remaining code:** mostly branchy. The next gains need control-flow support or manual decompilation.
+  - Details: [generator round 3](docs/research/2026-10-06-generator-round3.md).
 - **Generator round 2 closed (user request 2026-10-05):** `work` at `f63c8ec`.
   - **Tool:** `tools/unknowngen/` reproduces every generated unit; see its README.
   - **Yield:** +155,008 bytes (3,580 functions), from the no-small-data profile, position-independent symbols, the destructor and leaf templates, immediate-parameterized templates and constant-return calls.
@@ -170,6 +186,7 @@ Rows record each session's result at the time; the retained-recovery row and res
 | Local matching-build baseline | Supplied GDJEB2 CISO successfully extracted; pinned compilers run on this Mac; all configured source builds; original and rebuilt DOL share the expected checksum. | Recorded in `c974833`; [host/build notes](docs/research/2026-09-29-uart-console.md) |
 | 20% milestone batch | Six exact Alchemy units, `ansi_files` linked and 2,102 generated exact boilerplate units (8,060 functions, 434,448 bytes). Two independent reviews and pinned DOL equality pass. Matched code 20.758402%, linked 20.722860%. | `69fd3b4`, `f814ea4`; [generated boilerplate note](docs/research/2026-10-05-generated-boilerplate-recovery.md) |
 | Generator round 2 | `unknowngen` committed as a reproducible repository tool; +155,008 bytes (3,580 functions) in exact generated units. Independent review and pinned DOL equality pass. Matched code 24.501154%, linked 24.465612%. | `78d0f4b`..`f63c8ec`; [round-2 note](docs/research/2026-10-05-generator-round2.md) |
+| Generator round 3 | Matched and linked code both exceed 30%. +233,384 bytes: hierarchical temporaries, speed/lmw profiles, FLOW template, consolidated and verified units. Independent review, reproducibility and pinned DOL equality pass. | `92ac6cd`..`b03f148`; [round-3 note](docs/research/2026-10-06-generator-round3.md) |
 | UART console runtime unit | **Complete and linked from source.** Recovered `fn_8009F35C`; made initializer static inline. All three functions, 224 code bytes and 8 data bytes match. Strict objdiff and whole-DOL verification passed; independent review found no issues. | Functional commit `bd5b375`; [UART handoff](docs/research/2026-09-29-uart-console.md) |
 | Alchemy lifecycle unit (`igGap.cpp`) | **Complete and linked from source.** `igRefAlchemy(int)` and `igReleaseAlchemy()` match: 416 code bytes, 8 owned BSS bytes, all 34 relocation records. Corrected class layout, five registrar targets and shared-global references; corrected the synthetic BSS split. All configured source compiles and whole-DOL checksum passes; independent review found no blocking issues. | Functional commit `6ac6304`; [Alchemy handoff](docs/research/2026-09-29-alchemy-lifecycle.md) |
 | Alchemy version-check split (`igArkCore.cpp`) | **Complete and linked from source.** `checkAlchemyVersion(int)` matches: 108 code bytes, 345 diagnostic bytes, one suppression BSS byte and all five relocations. Corrected version, opaque-byte gate, diagnostic and report target; preserved unknown class fields. All configured source compiles and whole-DOL checksum passes; independent review found no blocking issues. Other class methods remain original. | Functional commit `c586318`; [version-check handoff](docs/research/2026-09-29-alchemy-version-check.md) |
@@ -202,15 +219,25 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-06 at integrated `f63c8ec` and compared with round-2 base `162166c`. The checks passed: all-source build, independent full ELF comparison, map provenance, independent review and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-06 at integrated `b03f148` and compared with round-3 base `c5cdee8`. The checks passed: all-source build, independent full ELF comparison, map provenance, independent review, pinned DOL equality (`e409a88a…`) and pipeline reproducibility. Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 1,014,728 / 4,141,552 bytes (24.501154%) |
-| Fully linked source code | 1,013,256 / 4,141,552 bytes (24.465612%) |
-| Matched functions | 13,177 / 23,334 |
-| Completed units | 4,816 / 8,777 |
-| Matched data | 222,582 / 1,503,795 bytes (14.801353%) |
+| Matched executable code | 1,248,112 / 4,141,552 bytes (30.136335%) |
+| Fully linked source code | 1,246,640 / 4,141,552 bytes (30.100792%) |
+| Matched functions | 14,499 / 23,334 |
+| Completed units | 3,339 / 6,564 |
+| Matched data | 225,222 / 1,503,795 bytes (14.976909%) |
+
+| Generator round 3 (`c5cdee8` → `b03f148`) | Before → after | Exact gain |
+| --- | --- | --- |
+| Matched code | 24.501154% → 30.136335% | +233,384 bytes (+5.635181 pp) |
+| Fully linked code | 24.465612% → 30.100792% | +233,384 bytes (+5.635180 pp) |
+| Matched data | 14.801353% → 14.976909% | +2,640 bytes (+0.175556 pp) |
+
+- **Units:** 8,777 → 6,564, and completed units 4,816 → 3,339, because generated runs were consolidated. Code, data and function denominators are unchanged.
+- **Functions:** 13,177 → 14,499.
+- **Complete data (231,130):** includes the 5,740 artifact bytes above.
 
 | Generator round 2 (`162166c` → `f63c8ec`) | Before → after | Exact gain |
 | --- | --- | --- |

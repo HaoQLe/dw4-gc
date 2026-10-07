@@ -115,7 +115,9 @@ def explicit_params(n):
   if n in _explicit: return _explicit[n]
   if n not in syminfo or n not in idx: return 0
   b=callshape.rd(syminfo[n][1],idx[n]['size']);written=set();read=set()
+  relat={o&~3:x for o,*x in idx[n]['rel']}
   for i in range(0,len(b),4):
+    if i in relat and relat[i][1].startswith(('_savegpr_','_restgpr_')): continue
     w=_st.unpack('>I',b[i:i+4])[0];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;rb=(w>>11)&31;xo=(w>>1)&0x3FF
     srcs=[];dst=None
     if op==31 and xo==444: srcs=[rt,rb];dst=ra                  # or / mr
@@ -155,6 +157,7 @@ def dedicated_arity(n):
       fresh={}
       for i in range(0,len(b),4):
         w=_st.unpack('>I',b[i:i+4])[0]
+        if (w>>26)==18 and w&1 and i in relat and relat[i][1].startswith(('_savegpr_','_restgpr_')): continue
         if (w>>26)==18 and w&1 and i in relat:
           t=relat[i][1];k=0
           while fresh.get(3+k): k+=1
@@ -432,7 +435,7 @@ def FLOW(name,rel):
   addr=syminfo[name][1];size=idx[name]['size']
   b=callshape.rd(addr,size);relat={o&~3:(t,sy,a) for o,t,sy,a in rel}
   ws=[_st.unpack('>I',b[i:i+4])[0] for i in range(0,size,4)]
-  regs={};vals=[];stmts=[];frame=None;ret=None
+  regs={};vals=[];stmts=[];frame=None;ret=None;ctr=None
   def val(kind,*a):
     vals.append((kind,)+a);return len(vals)-1
   nparam=arity(name)
@@ -442,6 +445,7 @@ def FLOW(name,rel):
     if op==37 and rt==1 and ra==1: frame=0x10000-imm;continue
     if w in (0x7C0802A6,0x7C0803A6,0x4E800020): continue
     if op==36 and ra==1: continue                                   # saves
+    if op in (46,47) and ra==1: continue                            # lmw/stmw saves
     if op==32 and ra==1: continue                                   # restores
     if op==14 and rt==1 and ra==1: continue                         # epilogue
     if op==14 and rt==11 and ra==1: continue                        # _savegpr/_restgpr frame pointer
@@ -459,8 +463,28 @@ def FLOW(name,rel):
       if isinstance(x,int) and vals[x][0]=='addr' and imm==0: regs[rt]=val('load',vals[x][1],vals[x][2]);continue
       if isinstance(x,tuple) and x[0]=='ha' and r: regs[rt]=val('load',r[1],r[2]);continue
       if isinstance(x,int) and vals[x][0] in ('param','load','ret','field') and not r:
+        if rt==12 and imm==0: regs[12]=('vt',x);continue             # vtable of a known object
         regs[rt]=val('field',x,callshape.s16(imm));continue          # word field of a known value
+      if isinstance(x,tuple) and x[0]=='vt' and rt==12 and not r:
+        regs[12]=('vslot',x[1],callshape.s16(imm));continue          # virtual slot
       raise ValueError('load shape')
+    if op in (34,40,42):
+      x=regs.get(ra)
+      if isinstance(x,int) and vals[x][0] in ('param','load','ret','field') and not r:
+        regs[rt]=val('field',x,callshape.s16(imm),{34:'unsigned char',40:'unsigned short',42:'short'}[op]);continue
+      raise ValueError('narrow load shape')
+    if w==0x7D8903A6:                                                # mtctr r12
+      if not (isinstance(regs.get(12),tuple) and regs[12][0]=='vslot'): raise ValueError('mtctr shape')
+      ctr=regs[12];continue
+    if w==0x4E800421:                                                # bctrl: virtual call
+      if regs.get(3)!=ctr[1]: raise ValueError('virtual this')
+      args=[]
+      for k in range(4,11):
+        v=regs.get(k)
+        if isinstance(v,int): args.append(v)
+        else: break
+      stmts.append(('vcall',ctr[1],ctr[2],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
+      regs[3]=val('ret',len(stmts)-1);continue
     if op==31 and ((w>>1)&0x3FF)==444 and rt==((w>>11)&31):        # mr
       regs[ra]=regs.get(rt);continue
     if op in (36,38,44):
@@ -478,11 +502,12 @@ def FLOW(name,rel):
       stmts.append(('call',r[1],args,len(vals)));regs={k:v for k,v in regs.items() if k>=14}
       regs[3]=val('ret',len(stmts)-1);continue
     raise ValueError('flow op %08x'%w)
-  if not any(s_[0]=='call' for s_ in stmts): raise ValueError('no calls')
+  if not any(s_[0] in ('call','vcall') for s_ in stmts): raise ValueError('no calls')
   # Which call results are used later decides their declared return types.
   used=collections.Counter()
   for st in stmts:
     if st[0]=='call': used.update(st[2])
+    elif st[0]=='vcall': used.update([st[1]]+st[3])
     else: used.update([st[1],st[3]])
   # A value left in r3 by a non-call instruction after the last call is the return value.
   retv=regs.get(3) if isinstance(regs.get(3),int) and vals[regs[3]][0] in ('field','load','param','const') else None
@@ -512,6 +537,7 @@ def FLOW(name,rel):
     if k[0]=='param': return '(void *)p%d'%k[1]
     if k[0]=='field':
       if v in names_: return names_[v]
+      if len(k)>3: return '(void *)(int)*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
       return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
     raise ValueError(k)
   names_={};lines=[]
@@ -558,6 +584,21 @@ def FLOW(name,rel):
       else:
         if rtype is None: fn(t,'void %%s(%s);'%','.join(ptypes))
         lines.append(' %s;'%call)
+    elif st[0]=='vcall':
+      obj,off,args=st[1],st[2],st[3]
+      ensure(obj)
+      for a in args: ensure(a)
+      rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1]==si]
+      want=bool(rv and used[rv[0]])
+      cls='UnknownGenV%s_%d'%(name[3:],si)
+      slots=[' virtual void s%02X();'%o for o in range(8,off,4)]
+      params=','.join('void *' for a in args)
+      slots.append(' virtual %s s%02X(%s);'%('void *' if want else 'void',off,params))
+      PRE.append('class %s {\npublic:\n%s\n};'%(cls,'\n'.join(slots)))
+      call='reinterpret_cast<%s *>(%s)->s%02X(%s)'%(cls,ex(obj),off,','.join(('(void *)%s'%ex(a)) if vals[a][0]=='const' else ex(a) for a in args))
+      if want:
+        names_[rv[0]]='value%d'%len(names_);lines.append(' void *%s=%s;'%(names_[rv[0]],call))
+      else: lines.append(' %s;'%call)
     else:
       x,off,v,ty=st[1],st[2],st[3],st[4]
       ensure(x);ensure(v)

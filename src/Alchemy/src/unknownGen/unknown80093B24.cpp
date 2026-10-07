@@ -36,6 +36,26 @@ extern void *lbl_805619E8;
 extern void *lbl_805619EC;
 extern void *lbl_80561A04;
 }
+class UnknownGenV80093C2C_0 {
+public:
+ virtual void s08();
+ virtual void s0C();
+ virtual void s10();
+ virtual void s14();
+ virtual void s18();
+ virtual void s1C();
+ virtual void s20();
+ virtual void s24();
+ virtual void s28();
+ virtual void s2C();
+ virtual void s30();
+ virtual void s34();
+ virtual void s38();
+ virtual void s3C();
+ virtual void s40();
+ virtual void s44();
+ virtual void s48();
+};
 extern "C" {
 void *fn_80093B24(){return lbl_80561594;}
 void *fn_80093B2C(){return lbl_805615C8;}
@@ -70,5 +90,8 @@ void *fn_80093C0C(){return lbl_805619A0;}
 void *fn_80093C14(){return lbl_805619E8;}
 void *fn_80093C1C(){return lbl_805619EC;}
 void *fn_80093C24(){return lbl_80561A04;}
+void fn_80093C2C(int p0){
+ reinterpret_cast<UnknownGenV80093C2C_0 *>((void *)p0)->s48();
+}
 }
 #pragma pop

@@ -4,6 +4,16 @@ Updated: 2026-10-07. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Generator round 6 closed (user request 2026-10-07):** prototype conflicts resolved by bytes (isolation), signature pass confirmed stable, loops in FLOW; functional commits `ebcb89b` (isolation) and `275fe25` (loops and instruction forms), task branch `task/generator-round6`.
+  - **Totals:** matched code 32.955182% → 36.177937% (+3.222755 pp), linked 32.919640% → 36.142395% (+3.222755 pp), +133,472 bytes each; matched data 15.137835% → 15.532835% (+5,940 bytes); 16,793 functions (+793, none lost); 4,544/7,465 units.
+  - **Retained losses:** all 42 recovered (22 round-4, 20 round-5).
+  - **Stages:** isolation +99,812 bytes (579 functions); loops and instruction forms +33,660 bytes (214 functions, 87 with loops = 11,972 bytes).
+  - **Against the round-5 plateau estimate (34–35%):** exceeded at 36.18%. Isolation, not loops, gave most of the gain: prototype conflicts blocked far more than the tracked losses.
+  - **Signature pass:** a rerun reproduces `signatures.json` byte for byte.
+  - **Verification:** every changed unit verified in both cycles (591 and 215 units, none failing, no new exclusions); `build.sha1` OK; an independent review clean-rebuilt `275fe25` and compared all 4,304 generated units (15,256 functions, 1,073,056 bytes, 81,298 relocations) with its own comparator; it also confirmed map provenance for all 793 gained functions, unchanged non-generated splits, no mixed exception units, and byte-identical regeneration of all 608 isolated units.
+  - **Review notes (non-blocking):** isolated definitions may be declared differently by callers in other units (1,007 such symbols, valid for `extern "C"` matching but an ODR cleanup item for a PC port); `emit.py` `pieces()` terminates because failed members go to `gen.isolated` and successful pieces are strict subsets.
+  - **Next candidate (not started):** short-circuit `&&` with an else part, often with calls in the condition (827 functions, 568 KB failing generation); then `bcctr` switches (90 KB).
+  - Details: [generator round 6](docs/research/2026-10-07-generator-round6.md).
 - **Generator round 5 (user request 2026-10-07):** signature pass, floating point and struct copies in FLOW; functional commit `33ecdd9` (task branch `task/generator-round5`).
   - **Totals:** matched code 32.955182%, linked 32.919640%, matched data 15.137835% (+39,220 code bytes each, +1,220 data bytes); 16,000 functions (+710); 3,747/6,970 units.
   - **Yield:** 730 functions gained (40,896 bytes), 20 lost (1,676 bytes). By cause:
@@ -15,10 +25,10 @@ Updated: 2026-10-07. Development repository: [HaoQLe/dw4-gc](https://github.com/
   - **Against the round-4 projection:** 100–150 KB was projected; this round gave 39 KB without loops. The expected generator plateau is lowered to about 34–35%; loops are the last template-scale pool.
   - **Fix:** `emit.py` no longer mixes functions with and without original exception entries in one unit; an extra entry had shifted every later `extab` address.
   - **Verification:** `verify_units.py` checked 914 changed units, none failing; 10 functions excluded. `build.sha1` OK. An independent review re-compared all 3,507 generated units (939,584 bytes) and confirmed map, splits and counts.
-  - **Retained (active):**
+  - **Retained (resolved in round 6):**
     - 22 of the 47 round-4 losses (template-prototype, arity and void-result conflicts);
     - 20 newly lost functions, each exact when generated alone; the conflict is with neighbouring prototypes, for example the `fn_8027B4C4` family (`ceil` on a `double` call result) and `fn_80281E80` (parameter casts);
-    - two unverified points: GX FIFO two-value load order (`fn_80102670`) and whether a signature-pass rerun reproduces `signatures.json`.
+    - two unverified points: GX FIFO two-value load order (`fn_80102670`, still unmatched) and whether a signature-pass rerun reproduces `signatures.json` (confirmed in round 6).
   - **Next investigation:** choose per prototype conflict which side wins by bytes, rather than always letting templates win; then simple counted loops.
   - Details: [generator round 5](docs/research/2026-10-07-generator-round5.md).
 - **Generator round 4 closed (user request 2026-10-06):** forward control flow in the FLOW template; functional commit `05f7803`.
@@ -246,15 +256,24 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-06 at `05f7803` and compared with round-4 base `41344b0`. The checks passed: all-source build, per-unit verification of every changed unit, an independent clean rebuild and comparison of all 13,753 generated functions (bytes and relocations), map provenance, pinned DOL equality (`e409a88a…`) and pipeline reproducibility. Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-07 at `275fe25` and compared with round-6 base `94ff74d`. The checks passed: all-source build, per-unit verification of every changed unit, pinned DOL equality (`e409a88a…`) and the independent review recorded under generator round 6. Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 1,325,636 / 4,141,552 bytes (32.008194%) |
-| Fully linked source code | 1,324,164 / 4,141,552 bytes (31.972652%) |
-| Matched functions | 15,290 / 23,334 |
-| Completed units | 3,474 / 6,744 |
-| Matched data | 226,422 / 1,503,795 bytes (15.056707%) |
+| Matched executable code | 1,498,328 / 4,141,552 bytes (36.177937%) |
+| Fully linked source code | 1,496,856 / 4,141,552 bytes (36.142395%) |
+| Matched functions | 16,793 / 23,334 |
+| Completed units | 4,544 / 7,465 |
+| Matched data | 233,582 / 1,503,795 bytes (15.532835%) |
+
+| Generator round 6 (`94ff74d` → `275fe25`) | Before → after | Exact gain |
+| --- | --- | --- |
+| Matched code | 32.955182% → 36.177937% | +133,472 bytes (+3.222755 pp) |
+| Fully linked code | 32.919640% → 36.142395% | +133,472 bytes (+3.222755 pp) |
+| Matched data | 15.137835% → 15.532835% | +5,940 bytes (+0.395000 pp) |
+
+- **Units:** 6,970 → 7,465 (isolated functions are units of their own); completed units 3,747 → 4,544. Code, data and function denominators are unchanged.
+- **Functions:** 16,000 → 16,793.
 
 | Generator round 4 (`41344b0` → `05f7803`) | Before → after | Exact gain |
 | --- | --- | --- |

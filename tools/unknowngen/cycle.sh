@@ -50,8 +50,20 @@ for spec in $SPECS; do
   $PY tools/unknowngen/fastcmp.py $R/cand.cpp ${=flags} --res $f | cut -c1-50
   P="$P $name=$f"
 done
+# Candidates not exact in the final pass are retried generated alone, under each strategy; those exact
+# alone are recorded in isolated.json, generated without other functions' prototype needs and emitted
+# as units of their own.
+$PY tools/unknowngen/isolate.py names
+for st in "I:" "IB:--flow-regs-all" "IV:--cf=var" "IT:--cf=this"; do
+  $PY tools/unknowngen/gen.py --isolate $R/iso/try.json $R/iso/cand${st%%:*} --calls ${=st#*:} | cut -c1-60
+  $PY tools/unknowngen/isolate.py check $R/iso/cand${st%%:*} ${st%%:*}
+done
+$PY tools/unknowngen/isolate.py merge
+$PY tools/unknowngen/gen.py --isolate tools/unknowngen/isolated.json $R/iso/candF --calls | cut -c1-60
+$PY tools/unknowngen/isolate.py check $R/iso/candF F
+$PY tools/unknowngen/isolate.py res
 cp $R/res-sdata.json $R/res.json; cp $R/res-nosdata.json $R/resnosdata.json; cp $R/res-speed.json $R/resspeed.json; cp $R/res-nosdata-speed.json $R/resnosdataspeed.json; cp $R/res-nosdata-lmw.json $R/resnosdatalmw.json; cp $R/res-lmw.json $R/reslmw.json
-for attempt in 1 2 3; do
+for attempt in 1 2 3 4; do
   $PY tools/unknowngen/emit.py ${=P} 80020400 800A0000 Alchemy/src/unknownGen | tail -1
   $PY tools/unknowngen/emit.py ${=P} 80000000 80020400 unknownGen | tail -1
   $PY tools/unknowngen/emit.py ${=P} 800A0000 80420000 unknownGen | tail -1
@@ -60,11 +72,15 @@ for attempt in 1 2 3; do
 import json
 from pathlib import Path
 ex=json.load(open('tools/unknowngen/exclude.json'))
+iso=set(json.load(open('tools/unknowngen/isolated.json')))
 for l in open('build/GDJEB2/analysis/unknowngen/verify-fail.txt'):
   p,fs=l.rstrip('\n').split('\t')
   for f in fs.split(','):
-    if f and not f.startswith('compile'): ex.setdefault(f,'inexact when compiled in its emitted unit')
+    if f and not f.startswith('compile') and f in iso: ex.setdefault(f,'inexact when compiled in its emitted unit')
+    elif f and not f.startswith('compile'): iso.add(f)
 Path('tools/unknowngen/exclude.json').write_text(json.dumps(ex,indent=1,sort_keys=True)+'\n')
+# A function inexact in its emitted unit is first retried alone; inexact alone, it is excluded.
+Path('tools/unknowngen/isolated.json').write_text(json.dumps(sorted(iso),indent=1)+'\n')
 PYEOF
 done
 $PY tools/unknowngen/apply.py

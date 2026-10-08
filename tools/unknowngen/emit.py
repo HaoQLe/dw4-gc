@@ -39,25 +39,33 @@ def dtor_eh(n,a):
   return 'inline ~' in src
 # A unit uses one profile, so a run also ends where no common profile remains (default preferred).
 seed=gen.prepass(gen.select(0,0xFFFFFFFF))
-runs=[];cur=[];common=set();prevd=None
+runs=[];cur=[];common=set();prevd=None;previso=False
 for a,s,n in allf:
   if n in ok and n not in gen._done and n not in gen._bad:
     d=dtor_eh(n,a)
     # Functions with and without original exception-table entries never share a unit: exceptions
     # enabled for the unit would give the others entries the original lacks.
-    if cur and (a in bounds or cur[-1][0]+cur[-1][1]!=a or not (common&prof[n]) or d or prevd or (a in eti)!=(cur[-1][0] in eti)):
+    # Functions generated alone (gen.ISOLATED) get units of their own.
+    iso=n in gen.ISOLATED
+    if cur and (a in bounds or cur[-1][0]+cur[-1][1]!=a or not (common&prof[n]) or d or prevd or iso or previso or (a in eti)!=(cur[-1][0] in eti)):
       runs.append((cur,common));cur=[]
     common=(common&prof[n]) if cur else set(prof[n])
-    cur.append((a,s,n));prevd=d
+    cur.append((a,s,n));prevd=d;previso=iso
   else:
     if cur: runs.append((cur,common));cur=[]
 if cur: runs.append((cur,common))
 Path('src/Alchemy/include',gen.HEADER_NAME).write_text(gen.HEADER)
 (Path('src')/srcdir).mkdir(parents=True,exist_ok=True)
 units=[];total=0
+def alone(x):
+  """A function generated alone: a unit of its own, or nothing if it cannot be generated."""
+  r_=gen.isolated(x[2],True)
+  return [([x],gen.assemble_packed([r_],header=True),r_[4])] if r_ else []
 def pieces(r):
-  """Generate a run; when some members fail as one file, retry their contiguous successful pieces."""
+  """Generate a run; when some members fail as one file, retry their contiguous successful pieces
+  and generate the failed members alone."""
   names=[n for a,s,n in r]
+  if len(r)==1 and names[0] in gen.ISOLATED: return alone(r[0])
   src,done,cov,skipped=gen.generate(names,seed,True,header=True)
   if done==names: return [(r,src,cov)]
   ok=set(done);out=[];cur=[]
@@ -66,10 +74,11 @@ def pieces(r):
     else:
       if cur: out.append(cur)
       cur=[x] if x[2] in ok else []
+      if x[2] not in ok: out.append([x])
   if cur: out.append(cur)
-  if len(out)==1 and len(out[0])==len(r): return []
   res=[]
-  for q in out: res+=pieces(q)
+  for q in out:
+    res+=alone(q[0]) if q[0][2] not in ok else pieces(q)
   return res
 expanded=[]
 for r,common in runs:

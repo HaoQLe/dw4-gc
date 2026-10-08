@@ -16,6 +16,8 @@ FLOW_CF_ALL=next((a.split('=')[1] for a in sys.argv if a.startswith('--cf=')),No
 # each generated function the way its definition does (written by gen.py --sigs-out).
 FP_NAME_ALL='--fp-name-stale' not in sys.argv
 SIGS=json.load(open(HERE/'signatures.json')) if (HERE/'signatures.json').exists() else {}
+# Functions generated alone (gen.isolated): exact only without other functions' prototype needs.
+ISOLATED=set(json.load(open(HERE/'isolated.json'))) if (HERE/'isolated.json').exists() else set()
 # Functions some generated caller uses the result of.
 RESULT_USED=set()
 # Signatures that definitions wanted but could not declare (a caller declared them differently first).
@@ -1343,11 +1345,14 @@ _bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and any(a<=x<=a+
 _etb_funcs={callshape.extab_owners().get(int(x[5:],16)) for x in _etb_refs}
 _bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and a in _etb_funcs}
 SIG={'F1':'void *%s();','F2':'void *%s();','F3':'void *%s();','F7':'void *%s();','F6':'void *%s(void *);','F8':'void %s();'}
-def select(lo,hi):
+def select(lo,hi,iso=False):
+  """Unrecovered generator candidates in [lo,hi): those generated together, or (iso) those generated alone."""
   ns=sorted([n for n in idx if n.startswith(GENERATED_PREFIXES) and n in syminfo and lo<=syminfo[n][1]<hi],key=lambda n:syminfo[n][1])
-  return [n for n in ns if n not in _done and n not in _bad]
-def prepass(names):
+  return [n for n in ns if n not in _done and n not in _bad and (n in ISOLATED)==iso]
+def prepass(names,iso_sigs=True):
   g={}
+  # Callers declare functions generated alone as recorded (not when generating alone).
+  if iso_sigs: g.update({n:SIGS[n] for n in ISOLATED if n in SIGS and n not in HEADER_PROTOS})
   for n in names:
     if _isleaf(n):
       saved=dict(protos);protos.clear()
@@ -1397,7 +1402,8 @@ def _drop_template_conflicts(sig,names):
     base=prepass(names);tp=dict(base);tp.update(_pointer_globals(names,base,True))
   finally: SIGS.update(saved)
   return {n:d for n,d in sig.items() if tp.get(n,d)==d}
-def generate(names,seed,calls=True,header=False):
+def _parts(names,seed,calls=True):
+  """Generate names in one namespace: returns (PRE entries, bodies, prototypes, done, covered bytes, skipped)."""
   # First pass finds globals some template needs as pointers, so address-only uses agree.
   pointers=_pointer_globals(names,seed,calls)
   protos.clear();protos.update(seed);protos.update(pointers);del PRE[:]
@@ -1415,14 +1421,47 @@ def generate(names,seed,calls=True,header=False):
         m_=re.match(r'proto conflict %s: .* vs (.*)$'%re.escape(n),str(ex))
         if m_: WANT[n]=m_[1]
         if f2==([f,'FLOW'] if f=='CALLS' else [f])[-1]: skipped.append((n,str(ex)))
-  text='\n'.join(PRE)+'\n'+'\n'.join(bodies)
+  return list(PRE),bodies,dict(protos),done,cov,skipped
+def _assemble(pre,bodies,protos_,done,header=False):
+  text='\n'.join(pre)+'\n'+'\n'.join(bodies)
   used=set(re.findall(r'[A-Za-z_][A-Za-z0-9_]*',text))
   own=set(done)
-  decls=[d for s_,d in sorted(protos.items()) if s_ in used and s_ not in own and s_!='fn_80066E1C']
-  decls+=[protos[n] for n in done if n in protos and n in used and re.search(r'\b%s\b'%n,text.replace(n+'(','',1)) ]
+  decls=[d for s_,d in sorted(protos_.items()) if s_ in used and s_ not in own and s_!='fn_80066E1C']
+  decls+=[protos_[n] for n in done if n in protos_ and n in used and re.search(r'\b%s\b'%n,text.replace(n+'(','',1)) ]
   inc=('#include <%s>\n'%HEADER_NAME) if header else HEADER
-  src=inc+'#pragma push\n#pragma auto_inline off\nextern "C" {\n'+'\n'.join(decls)+'\n}\n'+('\n'.join(PRE)+'\n' if PRE else '')+'extern "C" {\n'+'\n'.join(bodies)+'\n}\n#pragma pop\n'
-  return src,done,cov,skipped
+  return inc+'#pragma push\n#pragma auto_inline off\nextern "C" {\n'+'\n'.join(decls)+'\n}\n'+('\n'.join(pre)+'\n' if pre else '')+'extern "C" {\n'+'\n'.join(bodies)+'\n}\n#pragma pop\n'
+def generate(names,seed,calls=True,header=False):
+  pre,bodies,protos_,done,cov,skipped=_parts(names,seed,calls)
+  return _assemble(pre,bodies,protos_,done,header),done,cov,skipped
+def isolated(n,calls=True):
+  """Generate one function alone, seeded only by its own prepass, so no other function's prototype
+  needs constrain it (callers in other units may declare it differently; extern "C" links by name).
+  A recorded signature its definition cannot declare (for example a caller's arity) is dropped."""
+  for drop in (False,True):
+    if drop and n not in SIGS: break
+    saved=SIGS.pop(n) if drop else None
+    try: r=_parts([n],prepass([n],False),calls)
+    finally:
+      if saved is not None: SIGS[n]=saved
+    if r[3]: return r
+  return None
+def pack(items):
+  """Pack isolated functions into files whose prototypes agree: items are _parts results of one
+  function each; returns lists of items per file."""
+  files=[]
+  for it in items:
+    pre,bodies,pr,done,cov,sk=it
+    text='\n'.join(pre)+'\n'+'\n'.join(bodies)
+    need={k:v for k,v in pr.items() if k in set(re.findall(r'[A-Za-z_][A-Za-z0-9_]*',text))}
+    for f in files:
+      if all(f[0].get(k,v)==v for k,v in need.items()) and not (set(done)&set(f[0])) and not any(d in f[2] for d in need):
+        f[0].update(need);f[1].append(it);f[2].update(done);break
+    else: files.append([dict(need),[it],set(done)])
+  return [f[1] for f in files]
+def assemble_packed(group,header=False):
+  pre=[];bodies=[];pr={};done=[]
+  for p_,b,q,d,c,s in group: pre+=p_;bodies+=b;pr.update(q);done+=d
+  return _assemble(pre,bodies,pr,done,header)
 def _profile_keys():
   """Register each template representative's masked shape under the other compiler profiles."""
   import subprocess,tempfile,compiler,elf
@@ -1437,7 +1476,7 @@ def _profile_keys():
   else:
     data=[]
     for (rep,kind_,val),(ns,sp) in [(x,y) for x in reps for y in ((False,False),(True,False),(False,True),(True,True))]:
-      src,done,cov,sk=generate([rep],prepass([rep]))
+      src,done,cov,sk=generate([rep],prepass([rep],False))
       tmp=Path(tempfile.mkdtemp(prefix='dw4-unknowngen-'));c=tmp/'r.cpp';o=tmp/'r.o';c.write_text(src)
       subprocess.run(compiler.command(False,ns,sp)+['-c',str(c),'-o',str(o)],check=True,capture_output=True)
       secs,rels,syms=elf.parse(o)
@@ -1462,7 +1501,15 @@ def _profile_keys():
       IK.setdefault((bytes(b),key[1]),val)
   _famcache.clear()
 _profile_keys()
-if __name__=='__main__' and len(sys.argv)>3 and sys.argv[1]!='--runs':
+if __name__=='__main__' and '--isolate' in sys.argv:
+  # gen.py --isolate names.json outprefix: generate each named function alone and pack them into
+  # groups whose prototypes agree (outprefix.json; isolate.py check writes and compiles the files).
+  i=sys.argv.index('--isolate');names=json.load(open(sys.argv[i+1]));outp=sys.argv[i+2]
+  items=[r for r in (isolated(n,True) for n in names if n not in HEADER_PROTOS) if r]
+  groups=pack(items)
+  json.dump(groups,open(outp+'.json','w'))
+  print('isolated',len(names),'generated',len(items),'groups',len(groups))
+elif __name__=='__main__' and len(sys.argv)>3 and sys.argv[1]!='--runs':
   lo,hi,out=int(sys.argv[1],16),int(sys.argv[2],16),sys.argv[3]
   names=select(lo,hi)
   src,done,cov,skipped=generate(names,prepass(names),'--calls' in sys.argv)
@@ -1479,6 +1526,8 @@ if __name__=='__main__' and len(sys.argv)>3 and sys.argv[1]!='--runs':
       if up: d='void *'+d[5:]
       if up or n in SIGS: sig[n]=d
     sig={n:d for n,d in sig.items() if n not in HEADER_PROTOS}
+    # Functions generated alone keep their recorded signatures; this pass does not generate them.
+    sig.update({n:d for n,d in SIGS.items() if n in ISOLATED})
     sig=_drop_template_conflicts(sig,names)
     Path(next(a for a in sys.argv if a.startswith('--sigs-out='))[11:]).write_text(json.dumps(sig,indent=0,sort_keys=True)+'\n')
   print('functions',len(names),'generated',len(done),'bytes',cov,'skipped',skipped[:5])

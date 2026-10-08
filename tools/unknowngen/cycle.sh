@@ -54,7 +54,7 @@ done
 # alone are recorded in isolated.json, generated without other functions' prototype needs and emitted
 # as units of their own.
 $PY tools/unknowngen/isolate.py names
-for st in "I:" "IB:--flow-regs-all" "IV:--cf=var" "IT:--cf=this"; do
+for st in "I:" "IB:--flow-regs-all" "IV:--cf=var" "IT:--cf=this" "IP:--loop-param" "IL:--loop-vars-last" "IPL:--loop-param --loop-vars-last"; do
   $PY tools/unknowngen/gen.py --isolate $R/iso/try.json $R/iso/cand${st%%:*} --calls ${=st#*:} | cut -c1-60
   $PY tools/unknowngen/isolate.py check $R/iso/cand${st%%:*} ${st%%:*}
 done

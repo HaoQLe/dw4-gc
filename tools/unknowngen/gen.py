@@ -11,6 +11,14 @@ FLOW_REGS_ALL='--flow-regs-all' in sys.argv
 # Join strategy for branchy FLOW functions: 'tail' duplicates a return into each path, 'var' joins
 # differing registers in variables, 'this' also returns an untouched first parameter.
 FLOW_CF=json.load(open(HERE/'flow_cf.json')) if (HERE/'flow_cf.json').exists() else {}
+# Loops are generated only for functions generated alone (gen.isolated), so they never change the prototypes
+# of functions generated together. Source variants per function are in flow_loop.json ('param': a variable
+# starting from a parameter used nowhere else is that parameter; 'last': loop variables are declared after
+# other locals); --loop-param and --loop-vars-last apply them to every function.
+LOOPS=[False]
+FLOW_LOOP=json.load(open(HERE/'flow_loop.json')) if (HERE/'flow_loop.json').exists() else {}
+LOOP_PARAM_ALL='--loop-param' in sys.argv
+LOOP_VLAST_ALL='--loop-vars-last' in sys.argv
 FLOW_CF_ALL=next((a.split('=')[1] for a in sys.argv if a.startswith('--cf=')),None)
 # Definition signatures from the previous generation pass, so callers earlier in address order declare
 # each generated function the way its definition does (written by gen.py --sigs-out).
@@ -185,6 +193,46 @@ def _fp_rw(w):
     if x5 in (28,29,30,31,23): return [ra,rc,rb],rt
     if x5==26: return [rb],rt
   return [],None
+_LOGIC31=(28,60,124,284,316,412,444,476,24,536,792,824,26,922,954)
+def _loop_rw(w):
+  """(sources, destinations) of an instruction for loop-carried register analysis; FPRs are keys 32+n.
+  A call writes every volatile register."""
+  op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;rb=(w>>11)&31;xo=(w>>1)&0x3FF
+  if op==18 and w&1: return [],[0]+list(range(3,13))+list(range(32,46))
+  fs,fd=_fp_rw(w)
+  fs=[32+x for x in fs];fd=[] if fd is None else [32+fd]
+  if op in (48,50): return [ra],fd
+  if op in (52,54): return [ra]+fs,[]
+  if op in (59,63): return fs,fd
+  if op==31:
+    if xo in _LOGIC31: return ([rt] if xo in (824,26,922,954) else [rt,rb]),[ra]
+    if xo in (151,215,407,183,247,439): return [rt,ra,rb],[]
+    if xo in (0,32): return [ra,rb],[]
+    if xo==467: return [rt],[]                                         # mtspr
+    if xo==339: return [],[rt]                                         # mfspr
+    return [ra,rb],[rt]
+  if op in (20,21,23): return [rt]+([ra] if op==20 else [])+([rb] if op==23 else []),[ra]
+  if op in (24,25,26,27,28,29): return [rt],[ra]
+  if op in (7,8,12,13,14,15): return ([ra] if ra or op not in (14,15) else []),[rt]
+  if op in (32,34,40,42): return [ra],[rt]
+  if op in (36,38,44): return [rt,ra],[]
+  if op in (10,11): return [ra],[]
+  return [],[]
+def _loop_params(n):
+  """Argument registers (r3..) a function with loops reads before writing, with exact register effects; used
+  only for that function's own definition (callers keep arity())."""
+  b=callshape.rd(syminfo[n][1],idx[n]['size']);written=set();read=set()
+  relat={o&~3:x for o,*x in idx[n]['rel']}
+  for i in range(0,len(b),4):
+    if i in relat and relat[i][1].startswith(('_savegpr_','_restgpr_')): continue
+    w=_st.unpack('>I',b[i:i+4])[0]
+    if (w>>26) in (16,18,19) and not ((w>>26)==18 and w&1): continue
+    srcs,dsts=_loop_rw(w)
+    for r_ in srcs:
+      if 3<=r_<=10 and r_ not in written: read.add(r_)
+    written.update(dsts)
+  # Like _gap_params, a higher register read without the lower ones counts them all.
+  return max([r_-2 for r_ in read]+[0])
 _fexplicit={}
 def fp_explicit_params(n):
   """Number of FP argument registers (f1..) the function reads before writing, in straight-line order."""
@@ -540,15 +588,25 @@ def _gap_params(n):
       if 3<=r_<=10 and r_ not in written: hi=max(hi,r_-2)
     if dst is not None: written.add(dst)
   return hi
+class _LoopHint(Exception):
+  """Raised by a first interpretation of a loop whose variables include a strength-reduced index; the
+  function is interpreted again with that variable derived from its counter."""
+  def __init__(self,h): self.h=h
 def FLOW(name,rel):
-  try: return _flow(name,rel,None)
+  try: return _flowh(name,rel,None)
   except ValueError as ex:
     if str(ex).startswith('proto conflict'): raise
     # A function reading a higher argument register without the lower ones takes them all as parameters.
     g=_gap_params(name)
-    if g>arity(name): return _flow(name,rel,g)
+    if g>arity(name): return _flowh(name,rel,g)
     raise
-def _flow(name,rel,nparam_override):
+def _flowh(name,rel,nparam_override):
+  hints={}
+  for _ in range(4):
+    try: return _flow(name,rel,nparam_override,hints)
+    except _LoopHint as h: hints.update(h.h)
+  raise ValueError('loop hints')
+def _flow(name,rel,nparam_override,hints={}):
   """Calls whose arguments are constants, addresses, loaded globals, fields or earlier call results, field
   stores and virtual calls, structured by forward conditional branches into if/else blocks and returns.
   Values used more than once become locals in first-use order; registers that differ where paths join
@@ -567,7 +625,7 @@ def _flow(name,rel,nparam_override):
     while todo:
       v=todo.pop();k=vals[v]
       if k[0]=='field' and born[v]<seq[0]: stale.add(v)
-      if k[0] in ('field','cast','add'): todo.append(k[1])
+      if k[0] in ('field','cast','add','ftoi'): todo.append(k[1])
       elif k[0] in ('bin','fbin'): todo+=list(k[2:])
       elif k[0]=='xfield': todo+=[k[1],k[2]]
     if effect: seq[0]+=1
@@ -575,6 +633,11 @@ def _flow(name,rel,nparam_override):
   # pass through calls implicitly, as in the integer-only template.
   usefp=any(_fp_rw(w)!=([],None) or (w>>26) in (56,60) for w in ws)
   nparam=nparam_override or arity(name);nfparam=fp_arity(name) if usefp else 0
+  if any(((w>>26)==16 and callshape.s16(w&0xFFFC)<0) or ((w>>26)==18 and not w&3 and _s26(w)<0) for w in ws):
+    if not LOOPS[0]: raise ValueError('backward branch')
+    if not nparam_override: nparam=max(nparam,_loop_params(name))
+  LOOP_PARAM=LOOP_PARAM_ALL or 'param' in FLOW_LOOP.get(name,'')
+  LOOP_VLAST=LOOP_VLAST_ALL or 'last' in FLOW_LOOP.get(name,'')
   # A definition declared earlier (by a caller or a recorded signature) with the same parameter count keeps
   # those parameter types (int or void *).
   pty=['int']*nparam
@@ -647,6 +710,137 @@ def _flow(name,rel,nparam_override):
     st,r_=block(t,nw,None,dict(regs),cr)
     if r_ is not None or [x[0] for x in st if x[0]!='def']!=['return']: raise ValueError('exit shape')
     return st
+  heads=set();lastcr=[None];hasloop=[False];pvar={};loopexit=[];ftoi={}
+  def deps(v,seen=None):
+    """Loop variables a value's expression reads."""
+    out=set();todo=[v]
+    while todo:
+      x=todo.pop()
+      if not isinstance(x,int): continue
+      k=vals[x]
+      if k[0]=='var': out.add(x)
+      elif k[0] in ('field','cast','add'): todo.append(k[1])
+      elif k[0] in ('bin','fbin'): todo+=list(k[2:])
+      elif k[0]=='xfield': todo+=[k[1],k[2]]
+    return out
+  def backto(i,e):
+    """Word of a backward conditional branch in [i,e) to word i."""
+    for j in range(i,e):
+      if (ws[j]>>26)==16 and not ws[j]&3 and j+callshape.s16(ws[j]&0xFFFC)//4==i: return j
+    return None
+  def loop(bs,be,cs,ce,regs,cr,out,ctr=None):
+    """A while loop (body [bs,be), condition [cs,ce)) or, without cs, a do-while loop (body [bs,ce)), closed
+    by the backward conditional branch at ce. Registers an iteration reads before writing (in execution
+    order from the loop head) and writes become variables. Returns the registers after the loop."""
+    branchy[0]=True;hasloop[0]=True;pre=len(vals);hint=hints.get(bs,{})
+    order=list(range(bs,ce)) if cs is None else list(range(cs,ce))+list(range(bs,be))
+    cnd=set()
+    for q in range(bs,ce):
+      w=ws[q];t=None
+      if (w>>26)==16 and not w&3: t=q+callshape.s16(w&0xFFFC)//4
+      elif (w>>26)==18 and not w&3: t=q+_s26(w)//4
+      if t is not None and t>q: cnd.update(range(q+1,t))
+    first={};written=set();bodyw=set()
+    for q in order:
+      rs_,wd_=_loop_rw(ws[q])
+      for r_ in rs_: first.setdefault(r_,'r')
+      for r_ in wd_: first.setdefault(r_,'cw' if q in cnd else 'w')
+      written.update(wd_)
+      if cs is None or q<be: bodyw.update(wd_)
+    carried=[]
+    for r_ in sorted(written):
+      if r_==1 or first.get(r_)=='w': continue
+      x=regs.get(r_)
+      if not isinstance(x,int):
+        if first[r_]=='r': raise ValueError('loop entry value')
+        continue
+      if r_>=32: raise ValueError('float loop variable')
+      carried.append(r_)
+    lregs=dict(regs);lv={}
+    for r_ in carried:
+      if r_ in hint: continue
+      v=val('var');lv[r_]=v;touch([regs[r_]]);out.append(('assign',v,regs[r_]));varsrc[v].append(regs[r_]);lregs[r_]=v
+      if vals[regs[r_]][0]=='param': pvar[v]=(vals[regs[r_]][1],regs[r_])
+    # A strength-reduced index is derived from its counter: (counter<<s), plus a base when the counter starts at 0.
+    for rA,(rB,s_,base) in hint.items():
+      e_=val('bin','({0}<<%d)'%s_,lv[rB]) if s_ else lv[rB]
+      lregs[rA]=val('bin','({0}+{1})',base,e_) if base is not None else e_
+    inits={r_:regs[r_] for r_ in carried}
+    # With a call in the loop, volatile registers that are not loop variables hold nothing at the loop head.
+    if any(((ws[q]>>26)==18 and ws[q]&1 and not (relat.get(4*q) and relat[4*q][1].startswith(('_savegpr_','_restgpr_')))) or ws[q]==0x4E800421 for q in range(bs,ce)):
+      for k in [0]+list(range(3,13))+list(range(32,46)):
+        if k not in carried and k not in hint: lregs.pop(k,None)
+    carried=[r_ for r_ in carried if r_ not in hint]
+    heads.add(bs);loopexit.append((chase(ce+1),[]))
+    try: body,rb=block(bs,be if cs is not None else ce,cs if cs is not None else ce,dict(lregs),cr)
+    finally: heads.discard(bs);brk=loopexit.pop()[1]
+    if rb is None: raise ValueError('loop body returns')
+    bcr=lastcr[0];upd={}
+    for r_ in list(carried):
+      y=rb.get(r_)
+      if not isinstance(y,int):
+        # A register first written on some path and lost at the end of the body is not read across iterations.
+        if first[r_]=='cw': carried.remove(r_);continue
+        raise ValueError('loop variable lost')
+      if y!=lv[r_]: upd[r_]=y
+    for rA in hint:
+      if rA in rb: rb.pop(rA)
+    # Updates in the order of their last write, except that a variable is assigned only after every update
+    # reading its old value.
+    last={r_:max(q for q in range(bs,be if cs is not None else ce) if r_ in _loop_rw(ws[q])[1]) for r_ in upd}
+    pend=sorted(upd,key=lambda r_:last[r_]);asg=[];done_=set()
+    while pend:
+      r_=next((x for x in pend if not any(lv[x] in deps(upd[o]) for o in pend if o!=x)),None)
+      if r_ is None: raise ValueError('loop assignment order')
+      pend.remove(r_);y=upd[r_]
+      touch([y]);asg.append(('assign',lv[r_],y));varsrc[lv[r_]].append(y);done_.add(lv[r_])
+    cupd={}
+    if cs is not None:
+      cst,rc=block(cs,ce,None,dict(lregs),cr)
+      if rc is None or any(x[0]!='def' for x in cst): raise ValueError('loop condition shape')
+      cupd={r_:rc[r_] for r_ in carried if rc.get(r_)!=lv[r_]}
+      if any(not isinstance(y,int) for y in cupd.values()) or (set(cupd)&set(upd)): raise ValueError('loop condition writes')
+      c=_taken(ws[ce],lastcr[0]);after=dict(rc)
+      for r_ in bodyw-set(carried):
+        if not any(r_ in _loop_rw(ws[q])[1] for q in range(cs,ce)): after.pop(r_,None)
+      for r_ in cupd: after[r_]=lv[r_]
+      for rA in hint: after.pop(rA,None)
+    elif ctr:
+      # A count-register loop counts a synthetic variable up to the count: while(i<n){...; i=i+1;}.
+      cst=[];after={k:(lv.get(k,x)) for k,x in rb.items()}
+      n_,sg_=ctr
+      if vals[n_][0] not in ('param','const','var'):
+        vn=val('var');out.insert(len(out)-len(carried),('assign',vn,n_));varsrc[vn].append(n_);n_=vn
+      vi=val('var');k0=val('const',0);out.append(('assign',vi,k0));varsrc[vi].append(k0)
+      inc=val('add',vi,1);asg.append(('assign',vi,inc));varsrc[vi].append(inc)
+      c=(vi,'<',n_,sg_)
+    else:
+      cst=[];after={k:(lv.get(k,x)) for k,x in rb.items()}
+      sub={rb[r_]:lv[r_] for r_ in carried}
+      c=_taken(ws[ce],bcr);c=(sub.get(c[0],c[0]),c[1],sub.get(c[2],c[2]) if isinstance(c[2],int) else c[2],c[3])
+      for o_ in (c[0],c[2]):
+        if isinstance(o_,int) and o_ not in lv.values() and deps(o_)&done_: raise ValueError('loop condition order')
+    # First interpretation: a variable stepping by k<<s alongside a counter stepping by k is the counter's
+    # strength-reduced index (scaled initial value, or any base when the counter starts at 0).
+    if not hint:
+      allupd=dict(upd);allupd.update(cupd);found={}
+      steps={r_:vals[y][2] for r_,y in allupd.items() if vals[y][0]=='add' and vals[y][1]==lv[r_]}
+      for rB,d in steps.items():
+        if d not in (1,-1): continue
+        for rA,k in steps.items():
+          if rA==rB or rA in found or rB in found: continue
+          s_=next((x for x in range(1,5) if k==d<<x),None)
+          if s_ is None: continue
+          iA,iB=vals[inits[rA]],vals[inits[rB]]
+          if iA[0]=='bin' and iA[1]=='({0}<<%d)'%s_ and iA[2]==inits[rB]: found[rA]=(rB,s_,None)
+          elif iA==('const',0) and iB==('const',0): found[rA]=(rB,s_,None)
+      if found: raise _LoopHint({bs:found})
+    # Registers after a loop left by break statements are those every exit agrees on.
+    for k in list(after):
+      if any(b_.get(k)!=after[k] for b_ in brk): after.pop(k)
+    touch([c[0],c[2]])
+    out.append(('loop','while' if cs is not None or ctr else 'do',c,body+asg,cst,pre,{lv[r_]:y for r_,y in cupd.items()}))
+    return after
   def block(s,e,join,regs,cr):
     """Interpret words [s,e); control continues at join after e. Returns (statements, registers or None)."""
     out=[];i=s;ctr=None;varargs=False;prev3=regs.get(3);prevcall=False;prevf1=regs.get(33)
@@ -655,11 +849,17 @@ def _flow(name,rel,nparam_override):
       if regs.get(3)!=prev3 and not prevcall: regs[-1]=('moved',)
       if regs.get(33)!=prevf1 and not prevcall: regs[-2]=('moved',)
       prev3=regs.get(3);prevf1=regs.get(33);prevcall=False
+      if i not in heads:
+        j_=backto(i,e)
+        if j_ is not None:
+          regs=loop(i,None,None,j_,regs,cr,out);i=j_+1;cr=None;prev3=regs.get(3);prevf1=regs.get(33);continue
       w=ws[i];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF;r=relat.get(4*i)
       if op==16:
         if w&3: raise ValueError('bc form')
         t=chase(i+callshape.s16(w&0xFFFC)//4);c=_taken(w,cr);pre=len(vals);touch([c[0],c[2]])
         if t<=i: raise ValueError('backward branch')
+        if loopexit and t==loopexit[-1][0]:
+          loopexit[-1][1].append(dict(regs));merge(out,c,[('break',)],None,[],regs,pre);i+=1;continue
         if t==join:
           ts,tr=block(i+1,e,join,dict(regs),cr)
           return out,merge(out,_negate(c),ts,tr,[],regs,pre,join,True,cr)
@@ -682,8 +882,14 @@ def _flow(name,rel,nparam_override):
           if regs is None: return out,None
           continue
         merge(out,c,exitpath(t,regs,cr),None,[],regs,pre);i+=1;continue
+      if op==18 and not w&3 and _s26(w)>0:
+        t0=i+_s26(w)//4;j_=next((q for q in range(t0,e) if (ws[q]>>26) in (16,18,19)),None)
+        if j_ is not None and (ws[j_]>>26)==16 and not ws[j_]&3 and j_+callshape.s16(ws[j_]&0xFFFC)//4==i+1:
+          regs=loop(i+1,t0,t0,j_,regs,cr,out);i=j_+1;cr=None;prev3=regs.get(3);prevf1=regs.get(33);continue
       if op==18 and not w&3:
         t=chase(i+_s26(w)//4)
+        if loopexit and t==loopexit[-1][0] and t!=join:
+          loopexit[-1][1].append(dict(regs));return out+[('break',)],None
         if t==join: return out,regs
         if t>i: return out+exitpath(t,regs,cr),None
         raise ValueError('backward branch')
@@ -709,6 +915,8 @@ def _flow(name,rel,nparam_override):
         if isinstance(x,int) and vals[x][0] in _BASES and not r:
           regs[32+rt]=val('field',x,callshape.s16(imm),ty);out.append(('def',regs[32+rt]));continue
         raise ValueError('float load shape')
+      if LOOPS[0] and op==54 and ra==1 and isinstance(regs.get(32+rt),int) and vals[regs[32+rt]][0]=='ftoi':
+        ftoi[callshape.s16(imm)+4]=regs[32+rt];continue              # float to int through a stack slot
       if op in (52,54):                                               # stfs/stfd
         ty='float' if op==52 else 'double';x=regs.get(ra);v=regs.get(32+rt)
         if not isinstance(v,int): raise ValueError('float store value')
@@ -731,6 +939,10 @@ def _flow(name,rel,nparam_override):
           a_,b_=regs.get(32+ra),regs.get(32+rb)
           if not (isinstance(a_,int) and isinstance(b_,int)): raise ValueError('fcmp operand')
           cr=(a_,b_,'f');continue
+        if LOOPS[0] and op==63 and xo==15:                            # fctiwz
+          x=regs.get(32+rb)
+          if not isinstance(x,int): raise ValueError('float operand')
+          regs[32+rt]=val('ftoi',x);continue
         if op==63 and xo==72:
           regs[32+rt]=regs.get(32+rb);continue
         if op==63 and xo in (40,264,136,12):
@@ -742,7 +954,14 @@ def _flow(name,rel,nparam_override):
           ty='float' if sp else 'double'
         else: raise ValueError('flow op %08x'%w)
         if not all(isinstance(q_,int) for q_ in ops_): raise ValueError('float operand')
-        if ty is None: ty=ftype(ops_[0])
+        if ty is None:
+          # (ftype is defined after interpretation; isolated generation infers the operand type here.)
+          if not LOOPS[0]: ty=ftype(ops_[0])
+          else:
+            k_=vals[ops_[0]]
+            ty=(fparamty.get(k_[1],'float') if k_[0]=='fparam' else k_[-1] if k_[0] in ('field','gfield','lfield') and k_[-1] in ('float','double')
+                else fbinty.get(ops_[0],'float') if k_[0]=='fbin' else fretty.get(ops_[0],'float') if k_[0]=='fret' else None)
+            if ty is None: raise ValueError('float operand type')
         regs[32+rt]=val('fbin',fmt_,*ops_);fbinty[regs[32+rt]]=ty;continue
       if op in (36,38,44) and ra==1 and callshape.s16(imm) in lmem:   # local struct member store
         v=regs.get(rt)
@@ -758,6 +977,7 @@ def _flow(name,rel,nparam_override):
       if op==14 and ra==1 and rt not in (1,11): regs[rt]=val('stack',callshape.s16(imm));continue
       if op==36 and ra==1: continue                                   # saves
       if op in (46,47) and ra==1: continue                            # lmw/stmw saves
+      if op==32 and ra==1 and callshape.s16(imm) in ftoi: regs[rt]=ftoi[callshape.s16(imm)];continue
       if op==32 and ra==1: continue                                   # restores
       if op==14 and rt==1 and ra==1: continue                         # epilogue
       if op==14 and rt==11 and ra==1: continue                        # _savegpr/_restgpr frame pointer
@@ -777,6 +997,12 @@ def _flow(name,rel,nparam_override):
           v=val('cast',x,{0xFF:'unsigned char',0xFFFF:'unsigned short'}.get(mask,mask))
         elif not mb and me==31-sh: v=val('bin','({0}<<%d)'%sh,x)
         elif me==31 and sh==32-mb: v=val('bin','((unsigned int){0}>>%d)'%mb,x)
+        # Isolated generation also models masks wrapping around (sh 0), bit-field extracts and masked shifts.
+        elif LOOPS[0] and not sh and mb>me:
+          v=val('bin','({0}&0x%X)'%((((1<<(32-mb))-1)|(0xFFFFFFFF&~((1<<(31-me))-1)))&0xFFFFFFFF),x)
+        elif LOOPS[0] and me==31 and sh and 32-mb<=sh: v=val('bin','(((unsigned int){0}>>%d)&0x%X)'%(32-sh,(1<<(32-mb))-1),x)
+        elif LOOPS[0] and mb<=me and me<=31-sh and sh:
+          v=val('bin','(({0}<<%d)&0x%X)'%(sh,((1<<(32-mb))-1)&~((1<<(31-me))-1)),x)
         else: raise ValueError('mask shape')
         regs[ra]=v
         if w&1: cr=(v,('imm',0),True)
@@ -823,6 +1049,17 @@ def _flow(name,rel,nparam_override):
         if isinstance(x,int) and vals[x][0] in _BASES and not r:
           regs[rt]=val('field',x,callshape.s16(imm),{34:'unsigned char',40:'unsigned short',42:'short'}[op]);out.append(('def',regs[rt]));continue
         raise ValueError('narrow load shape')
+      if (w&0xFC1FFFFF)==0x7C0903A6 and i+1<e and isinstance(regs.get(rt),int):
+        # Count-register loop: mtctr n; cmpwi n,0; ble/beq past the loop (or blelr); body; bdnz body.
+        # (i is already past the mtctr.)
+        c1,b1=ws[i],ws[i+1];L_=i+2
+        j_=next((q for q in range(L_,e) if (ws[q]>>26)==16 and ((ws[q]>>21)&31)&~1==16 and not ws[q]&3 and q+callshape.s16(ws[q]&0xFFFC)//4==L_),None)
+        if j_ is not None and (c1>>26) in (10,11) and (c1>>16)&31==rt and not c1&0xFFFF and not (c1>>21)&31:
+          ok_=False
+          if (b1>>26)==16 and not b1&3: ok_=chase(i+1+callshape.s16(b1&0xFFFC)//4)==chase(j_+1)
+          elif b1&0xFFFFFFFE==0x4C810020 or b1&0xFFFFFFFE==0x4D820020: ok_=ws[j_+1]==0x4E800020
+          if ok_:
+            regs=loop(L_,None,None,j_,regs,cr,out,(regs[rt],(c1>>26)==11));i=j_+1;cr=None;prev3=regs.get(3);prevf1=regs.get(33);continue
       if (w&0xFC1FFFFF)==0x7C0903A6:                                   # mtctr
         x=regs.get(rt)
         if isinstance(x,tuple) and x[0]=='vslot' and rt==12: ctr=x;continue
@@ -881,6 +1118,20 @@ def _flow(name,rel,nparam_override):
         regs[rt]=val('xfield',regs[ra],regs[(w>>11)&31],_XLOAD[xo]);continue
       if op==31 and xo in _XSTORE and all(isinstance(regs.get(k),int) for k in (ra,(w>>11)&31,rt)):
         touch([regs[ra],regs[(w>>11)&31],regs[rt]],True);out.append(('xstore',regs[ra],regs[(w>>11)&31],regs[rt],_XSTORE[xo]));continue
+      if LOOPS[0] and op==20:                                          # rlwimi: bit-field insert
+        x=regs.get(ra);y=regs.get(rt);sh=(w>>11)&31;mb=(w>>6)&31;me=(w>>1)&31
+        if not (isinstance(x,int) and isinstance(y,int)) or mb>me or w&1: raise ValueError('insert shape')
+        M_=((1<<(32-mb))-1)&~((1<<(31-me))-1)
+        if me<=31-sh: ins='(({1}<<%d)&0x%X)'%(sh,M_) if sh else '({1}&0x%X)'%M_
+        elif 32-mb<=sh: ins='(((unsigned int){1}>>%d)&0x%X)'%(32-sh,M_)
+        else: raise ValueError('insert shape')
+        regs[ra]=val('bin','(({0}&0x%X)|%s)'%(~M_&0xFFFFFFFF,ins),x,y);continue
+      if LOOPS[0] and op==31 and xo==202 and not (w>>11)&31:          # addze after srawi: signed division
+        x=regs.get(ra)
+        if not isinstance(x,int) or vals[x][0]!='bin' or not re.match(r'^\(\{0\}>>\d+\)$',vals[x][1]): raise ValueError('addze shape')
+        n_=int(vals[x][1][5:-1]);regs[rt]=val('bin','({0}/%d)'%(1<<n_),vals[x][2])
+        if w&1: cr=(regs[rt],('imm',0),True)
+        continue
       if op==31 and xo&0x1FF in (266,40,235,491,459,104): xo&=0x1FF   # ignore OE
       if op==31 and xo in _BIN31:                                      # integer arithmetic
         fmt_,srcs,dst=_BIN31[xo]
@@ -897,6 +1148,7 @@ def _flow(name,rel,nparam_override):
         if op in (28,29): cr=(v,('imm',0),True)
         continue
       raise ValueError('flow op %08x'%w)
+    lastcr[0]=cr
     return out,regs
   stmts,fin=block(0,nw,None,dict(regs0),None)
   if fin is not None: raise ValueError('falls off end')
@@ -906,6 +1158,8 @@ def _flow(name,rel,nparam_override):
       yield s_
       if s_[0]=='if':
         yield from walk(s_[2]);yield from walk(s_[3])
+      if s_[0]=='loop':
+        yield from walk(s_[3]);yield from walk(s_[4])
   allst=list(walk(stmts))
   rets=[s_ for s_ in allst if s_[0]=='return']
   # A value left in f1 by a non-call instruction is a floating-point return value.
@@ -930,9 +1184,11 @@ def _flow(name,rel,nparam_override):
       k=vals[v][0]
       if k=='var': return any(computed(x,seen+(v,)) for x in varsrc[v])
       return k in ('field','load','const','cast','sda','addr')
-    def voidret(v):
+    def voidret(v,seen=()):
+      # Isolated generation also follows join variables: one merging a void call's result is no return value.
+      if LOOPS[0] and isinstance(v,int) and vals[v][0]=='var' and v not in seen: return any(voidret(x,seen+(v,)) for x in varsrc[v])
       if not isinstance(v,int) or vals[v][0]!='ret' or vals[v][1][0]!='call': return False
-      pr=protos.get(vals[v][1][1],'')
+      pr=protos.get(vals[v][1][1],HEADER_PROTOS.get(vals[v][1][1],'') if LOOPS[0] else '')
       return pr.startswith('void ') and not pr.startswith('void *')
     retval=not any(voidret(s_[1]) for s_ in rets) and any(computed(s_[1]) or s_[2] for s_ in rets) or (cf=='this' and nparam and all(s_[1]==regs0[3] for s_ in rets))
     if retval and not all(isinstance(s_[1],int) for s_ in rets): raise ValueError('return value missing')
@@ -950,6 +1206,8 @@ def _flow(name,rel,nparam_override):
     elif st[0]=='store': used.update([st[1],st[3]])
     elif st[0]=='if':
       used.update([st[1][0]]+([st[1][2]] if isinstance(st[1][2],int) else []))
+    elif st[0]=='loop':
+      used.update([st[2][0]]+([st[2][2]] if isinstance(st[2][2],int) else []))
     elif st[0]=='return' and retval: used[st[1]]+=1
     elif st[0]=='return' and retfloat: used[st[3]]+=1
   for st in allst: use_stmt(st)
@@ -962,9 +1220,22 @@ def _flow(name,rel,nparam_override):
       for st in allst:
         if st[0]=='assign' and st[1]==v: used[st[2]]+=1
   for v,k in enumerate(vals):
-    if k[0] in ('field','cast','add') and used[v]: used[k[1]]+=1
+    if k[0] in ('field','cast','add','ftoi') and used[v]: used[k[1]]+=1
     if k[0] in ('bin','fbin') and used[v]: used.update(k[2:])
     if k[0]=='xfield' and used[v]: used.update(k[1:3])
+  # Loop variables can be read only through other loop variables' updates: mark the whole closure.
+  while hasloop[0]:
+    ch=False
+    for v,k in enumerate(vals):
+      if not used[v]: continue
+      ops=[k[1]] if k[0] in ('field','cast','add') else list(k[2:]) if k[0] in ('bin','fbin') else list(k[1:3]) if k[0]=='xfield' else []
+      for o in ops:
+        if isinstance(o,int) and not used[o]: used[o]+=1;ch=True
+      if k[0]=='var' and v not in done_vars:
+        done_vars.add(v);ch=True
+        for st in allst:
+          if st[0]=='assign' and st[1]==v: used[st[2]]+=1
+    if not ch: break
   # In straight-line code a word left in r3 that a struct copy absorbs is not a return value.
   rv0=rets[0][1] if not branchy and retval and len(rets)==1 else None
   def copysrc(v):
@@ -1060,6 +1331,7 @@ def _flow(name,rel,nparam_override):
       if len(k)>3: return '(void *)(int)*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
       return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
     if k[0]=='cast': return '(void *)(int)%s'%ix(v)
+    if k[0]=='ftoi': return '(void *)%s'%ix(v)
     raise ValueError(k)
   def gaddr(sym,add):
     """char * address of a global plus an addend."""
@@ -1081,6 +1353,7 @@ def _flow(name,rel,nparam_override):
       return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
     if k[0]=='gfield': return '*reinterpret_cast<%s *>(%s)'%(k[3],gaddr(k[1],k[2]))
     if k[0]=='bin': return k[1].format(*[ix(o) for o in k[2:]])
+    if k[0]=='ftoi': return '(int)%s'%fx(k[1])
     if k[0]=='xfield': return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%s)'%(k[3],ex(k[1]),ix(k[2]))
     if k[0]=='add': return '(%s+%d)'%(ix(k[1]),k[2])
     if k[0]=='cast':
@@ -1116,7 +1389,7 @@ def _flow(name,rel,nparam_override):
     if k[0]=='fbin':
       for o in k[2:]: ensure(o,lines)
       return
-    if k[0] in ('field','cast','add'): ensure(k[1],lines);return
+    if k[0] in ('field','cast','add','ftoi'): ensure(k[1],lines);return
     if k[0]=='bin':
       for o in k[2:]: ensure(o,lines)
       return
@@ -1136,12 +1409,18 @@ def _flow(name,rel,nparam_override):
       elif s_[0]=='if':
         yield s_[1][0]
         if isinstance(s_[1][2],int): yield s_[1][2]
+      elif s_[0]=='loop':
+        yield s_[2][0]
+        if isinstance(s_[2][2],int): yield s_[2][2]
       elif s_[0]=='assign' and used[s_[1]]: yield s_[2]
       elif s_[0]=='return' and retval: yield s_[1]
       elif s_[0]=='return' and retfloat: yield s_[3]
-  varlines=[]
+  varlines=[];ptarget={}
   for v,k in enumerate(vals):
-    if k[0]=='var' and used[v]: names_[v]='value%d'%len(names_);varlines.append(' void *%s;'%names_[v])
+    if k[0]=='var' and used[v]:
+      if LOOP_PARAM and v in pvar and used[pvar[v][1]]==1:
+        pi_=pvar[v][0];ptarget[v]='p%d'%pi_;names_[v]='p%d'%pi_ if pty[pi_]=='void *' else '((void *)p%d)'%pi_;continue
+      names_[v]='value%d'%len(names_);varlines.append(' void *%s;'%names_[v])
   def emit(stmts,lines,top):
     for si,st in enumerate(stmts):
       if st[0]=='call':
@@ -1277,6 +1556,10 @@ def _flow(name,rel,nparam_override):
         lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ty,ex(x),off,e))
       elif st[0]=='assign':
         if not used[st[1]]: continue
+        if st[1] in ptarget:
+          if st[2]==pvar[st[1]][1]: continue
+          ensure(st[2],lines);e=ex(st[2])
+          lines.append(' %s=%s;'%(ptarget[st[1]],e if names_[st[1]]==ptarget[st[1]] else '(int)%s'%e));continue
         ensure(st[2],lines);e=ex(st[2])
         lines.append(' %s=%s;'%(names_[st[1]],'(void *)%s'%e if vals[st[2]][0]=='const' else e))
       elif st[0]=='if':
@@ -1289,6 +1572,31 @@ def _flow(name,rel,nparam_override):
         lines.append(' if(%s){'%c_);lines.extend(' '+x for x in tl)
         if el: lines.append(' } else {');lines.extend(' '+x for x in el)
         lines.append(' }')
+      elif st[0]=='loop':
+        for v in sorted(set(refs(st))):
+          if v<st[5]: ensure(v,lines)
+        bl=[];emit(st[3],bl,False)
+        if st[1]=='while':
+          cl=[]
+          for v in (st[2][0],st[2][2]):
+            if isinstance(v,int): ensure(v,cl)
+          if cl: raise ValueError('loop condition statements')
+          c_=st[2];cu=st[6]
+          if cu:
+            # A condition updating a variable compares the assignment: while((v=v-1)>=n).
+            if len(cu)!=1: raise ValueError('loop condition updates')
+            (v_,y_),=cu.items()
+            if c_[0]!=y_ or (isinstance(c_[2],int) and v_ in deps(c_[2])): raise ValueError('loop condition update shape')
+            t_='int' if c_[3] else 'unsigned int'
+            rhs='%d'%c_[2][1] if isinstance(c_[2],tuple) else '(%s)%s'%(t_,ix(c_[2]))
+            cs_='(%s)(%s=%s)%s%s'%(t_,names_[v_],ex(y_),c_[1],rhs)
+          else: cs_=cond(c_)
+          lines.append(' while(%s){'%cs_);lines.extend(' '+x for x in bl);lines.append(' }')
+        else:
+          for v in (st[2][0],st[2][2]):
+            if isinstance(v,int): ensure(v,bl)
+          lines.append(' do {');lines.extend(' '+x for x in bl);lines.append(' } while(%s);'%cond(st[2]))
+      elif st[0]=='break': lines.append(' break;')
       elif st[0]=='return':
         last=top and si==len(stmts)-1
         if retval:
@@ -1318,7 +1626,7 @@ def _flow(name,rel,nparam_override):
       fl.append(' %s m%02X;'%(ty,o));at=o+sz
     PRE.append('struct %s {\n%s\n};'%(cls_,'\n'.join(fl)))
     ldecl.append(' %s local%d;'%(cls_,k_))
-  lines=list(varlines)+topdecl+ldecl+body
+  lines=(topdecl+list(varlines) if LOOP_VLAST and hasloop[0] else list(varlines)+topdecl)+ldecl+body
   ptys=pty+[fparamty.get(i,'float') for i in range(nfparam)]
   params=','.join(['%s%sp%d'%(pty[i],'' if pty[i].endswith('*') else ' ',i) for i in range(nparam)]+['%s f%d'%(fparamty.get(i,'float'),i) for i in range(nfparam)])
   rty='void *' if retval else ftype(rets[0][3]) if retfloat else 'void'
@@ -1440,8 +1748,10 @@ def isolated(n,calls=True):
   for drop in (False,True):
     if drop and n not in SIGS: break
     saved=SIGS.pop(n) if drop else None
+    LOOPS[0]=True
     try: r=_parts([n],prepass([n],False),calls)
     finally:
+      LOOPS[0]=False
       if saved is not None: SIGS[n]=saved
     if r[3]: return r
   return None

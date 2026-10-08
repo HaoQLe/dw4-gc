@@ -16,7 +16,7 @@ tools/unknowngen/cycle.sh
 | `cycle.sh` | Runs everything below in order: a signature pass, then both flow argument strategies, all three join strategies and every compiler profile. |
 | `gen.py --sigs-out` | The signature pass. It records prototypes in `signatures.json`, which later passes (and `emit.py`) seed before generating, so callers earlier in address order declare those functions the way the definitions need:<br>• a definition rejected because a caller declared it differently first records the signature it wanted;<br>• a FLOW or CALLS definition whose result some caller uses is recorded returning a pointer;<br>• recorded definitions are kept, so the record is stable across cycles;<br>• isolated functions keep their recorded signatures. |
 | `fastcmp.py` | Compiles the candidates with the pinned compiler. A function is accepted only if both checks pass:<br>• its bytes, with relocation fields masked, equal the original DOL;<br>• its relocations (offset, type, target, addend) equal the original object. |
-| `isolate.py` | Retries candidates the final pass left inexact, each generated alone (`gen.py --isolate`), under every strategy:<br>• a function generated alone is seeded only with its own prepass, so no other function's prototype needs constrain it; a recorded signature it cannot declare is dropped;<br>• alone-generated functions are packed into files whose prototypes agree; a file that does not compile is halved until each part compiles;<br>• functions exact alone are recorded in `isolated.json` (with their strategy in `flow_regs.json` or `flow_cf.json`), left out of the combined passes and emitted as units of their own. Callers still declare them with their recorded signatures. |
+| `isolate.py` | Retries candidates the final pass left inexact, each generated alone (`gen.py --isolate`), under every strategy:<br>• a function generated alone is seeded only with its own prepass, so no other function's prototype needs constrain it; a recorded signature it cannot declare is dropped;<br>• alone-generated functions are packed into files whose prototypes agree; a file that does not compile is halved until each part compiles;<br>• functions exact alone are recorded in `isolated.json` (with their strategy in `flow_regs.json`, `flow_cf.json` or `flow_loop.json`), left out of the combined passes and emitted as units of their own. Callers still declare them with their recorded signatures. |
 | `emit.py` | Writes one unit per contiguous run of accepted functions, never crossing an existing split. Each unit uses one compiler profile; a run ends where no common profile remains. It records units in `config/GDJEB2/generated_units.txt` with comma-separated flags, which `configure.py` applies:<br>• `eh`: the functions own original `extabindex` entries, so the unit builds with C++ exceptions;<br>• `nosdata`: the code addresses all globals without small-data relocations, so the unit builds with `-sdata 0 -sdata2 0`;<br>• `speed`: the code was optimized for speed, so the unit builds with `-O4,p`;<br>• `lmw`: the code saves registers with `stmw`/`lmw`, so the unit builds with `-use_lmw_stmw on`.<br>Runs never cross an existing non-generated split. Exception-enabled temporaries with destructors and isolated functions get units of their own; a run member that fails when its run is generated together is generated alone.<br>It deletes unit files that are no longer listed. |
 | `verify_units.py` | Compiles every new or changed unit with its configured flags and checks every function. `cycle.sh` first moves a failing function to `isolated.json`; an isolated function that still fails is excluded (recorded in `exclude.json`). It then emits again. |
 | `apply.py` | Synchronizes `splits.txt` with that list. |
@@ -45,10 +45,24 @@ The templates in `gen.py`:
   - struct copies: consecutive single-use word reads stored to consecutive offsets of one base, where the original loads ahead of storing, become one assignment (`long long` when the high word is stored last, otherwise a word block);
   - stores to fixed hardware addresses (`lis` bases).
 
-  Forward conditional branches become `if`/`else` blocks and early returns (null checks, comparisons, record-form tests). Loops and backward branches are not handled. Where paths join, one of three strategies applies:
+  Forward conditional branches become `if`/`else` blocks and early returns (null checks, comparisons, record-form tests). Loops are handled only for functions generated alone (see `isolate.py`). Where paths join, one of three strategies applies:
   - `tail` (default): a join that only returns `r3` is duplicated into each path as a `return`;
   - `var`: registers that differ become variables assigned on each path;
   - `this`: like `tail`, but an untouched first parameter is returned.
+
+  Loops (functions generated alone only; combined passes still reject backward branches):
+  - `b` to a bottom test closing with a backward conditional branch becomes `while(c){...}`; a bottom test without the entry branch becomes `do {...} while(c);`;
+  - `mtctr n; cmpwi n,0; ble/beq past the loop; ...; bdnz` becomes `while(i<n){...; i=i+1;}` on a synthetic counter;
+  - registers an iteration reads before writing (in execution order from the loop head) and writes become variables, assigned before the loop and updated at the end of the body in dependency order;
+  - a variable stepping by `k<<s` alongside a counter stepping by `k` is the counter's strength-reduced index, written `(i<<s)`;
+  - a condition updating a variable compares the assignment (`while((v=v-1)>=n)`);
+  - branches out of the body to the loop exit become `break`;
+  - with a call in the loop, volatile registers that are not loop variables hold nothing at the loop head;
+  - a loop function's own definition counts every argument register it reads (including through `mtctr`).
+
+  `flow_loop.json` records per-function variants: `param` (a variable starting from a parameter used nowhere else is that parameter) and `last` (loop variables are declared after other locals).
+
+  Functions generated alone also model `rlwinm` masks wrapping around, bit-field extracts and masked shifts; `rlwimi` bit-field inserts; `srawi`+`addze` signed division by a power of two; `fctiwz` float-to-integer conversion through a stack slot; and a join variable merging a `void` call's result is no return value.
 
   `flow_cf.json` records functions that match only with `var` or `this`. A field read before an intervening store or call is read into a variable at its original position.
 

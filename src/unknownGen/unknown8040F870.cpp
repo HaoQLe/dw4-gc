@@ -5,7 +5,7 @@ extern "C" {
 void fn_8011D0D4(void *,int);
 }
 extern "C" {
-void fn_8040F870(int p0,int p1,int p2,int p3,int p4,int p5){
+void fn_8040F870(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

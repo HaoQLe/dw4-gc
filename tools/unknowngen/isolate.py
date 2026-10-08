@@ -58,19 +58,23 @@ elif step=='check':
   for p,r in res.items(): json.dump(r,open(ISO/('res%s-%s.json'%(tag,p)),'w'))
   print(tag,'files',len(files),'exact',len({n for r in res.values() for n,v in r.items() if v==100}))
 elif step=='merge':
-  A,B,V,T=(exact(ISO/('res%s-*.json'%t)) for t in ('I','IB','IV','IT'))
+  A,B,V,T,LP,LL,LPL=(exact(ISO/('res%s-*.json'%t)) for t in ('I','IB','IV','IT','IP','IL','IPL'))
   iso=set(json.load(open(HERE/'isolated.json'))) if (HERE/'isolated.json').exists() else set()
   regs=set(json.load(open(HERE/'flow_regs.json')))
   cf=json.load(open(HERE/'flow_cf.json'))
-  new=(A|B|V|T)-iso
-  # Strategy as in cycle.sh: register arguments if only that works, else a join strategy.
+  lp=json.load(open(HERE/'flow_loop.json')) if (HERE/'flow_loop.json').exists() else {}
+  new=(A|B|V|T|LP|LL|LPL)-iso
+  # Strategy as in cycle.sh: register arguments if only that works, else a join strategy, else a loop variant.
   for n in sorted(new):
     if n in A: continue
     if n in B: regs.add(n)
-    elif n not in cf: cf[n]='var' if n in V else 'this'
+    elif n in V|T:
+      if n not in cf: cf[n]='var' if n in V else 'this'
+    else: lp[n]='param' if n in LP else 'last' if n in LL else 'param,last'
   (HERE/'isolated.json').write_text(json.dumps(sorted(iso|new),indent=1)+'\n')
   (HERE/'flow_regs.json').write_text(json.dumps(sorted(regs),indent=1)+'\n')
   (HERE/'flow_cf.json').write_text(json.dumps(cf,indent=1,sort_keys=True)+'\n')
+  (HERE/'flow_loop.json').write_text(json.dumps(lp,indent=1,sort_keys=True)+'\n')
   print('isolated',len(iso|new),'added',len(new))
 elif step=='res':
   for p in PROFILES:

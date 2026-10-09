@@ -19,6 +19,10 @@ LOOPS=[False]
 FLOW_LOOP=json.load(open(HERE/'flow_loop.json')) if (HERE/'flow_loop.json').exists() else {}
 LOOP_PARAM_ALL='--loop-param' in sys.argv
 LOOP_VLAST_ALL='--loop-vars-last' in sys.argv
+# Short-circuit conditions (&&, ||, calls inside the condition as comma expressions) for functions generated
+# alone: per function in flow_cc.json, or every function with --compound.
+FLOW_CC=set(json.load(open(HERE/'flow_cc.json'))) if (HERE/'flow_cc.json').exists() else set()
+CC_ALL='--compound' in sys.argv
 FLOW_CF_ALL=next((a.split('=')[1] for a in sys.argv if a.startswith('--cf=')),None)
 # Definition signatures from the previous generation pass, so callers earlier in address order declare
 # each generated function the way its definition does (written by gen.py --sigs-out).
@@ -558,7 +562,45 @@ def _taken(w,cr):
   elif bo&~1==4: rel=_NEG[rel]
   else: raise ValueError('bo shape')
   return (cr[0],rel,cr[1],cr[2])
-def _negate(c): return (c[0],_NEG[c[1]],c[2],c[3])
+def _negate(c):
+  # Compound conditions: ('&&'|'||', a, b) and ('SEQ', statements, leaf) evaluating statements first.
+  if c[0]=='&&': return ('||',_negate(c[1]),_negate(c[2]))
+  if c[0]=='||': return ('&&',_negate(c[1]),_negate(c[2]))
+  if c[0]=='SEQ': return ('SEQ',c[1],_negate(c[2]))
+  return (c[0],_NEG[c[1]],c[2],c[3])
+def _leaves(c):
+  if c[0] in ('&&','||'): yield from _leaves(c[1]);yield from _leaves(c[2])
+  elif c[0]=='SEQ': yield from _leaves(c[2])
+  else: yield c
+def _condvals(c):
+  for l in _leaves(c):
+    yield l[0]
+    if isinstance(l[2],int): yield l[2]
+def _seqs(c):
+  if c[0] in ('&&','||'): yield from _seqs(c[1]);yield from _seqs(c[2])
+  elif c[0]=='SEQ': yield c[1]
+def _reduce_chain(succ):
+  """Short-circuit structure of a chain of conditional branches: succ[j] is where node j goes when its
+  branch is taken ('S' the fall-through after the chain, 'O' the other exit, or a later node), falling
+  through to node j+1 (or 'S'). Returns (expression tree over ('L',j) leaves, target when true, target
+  when false) or None if the chain does not reduce to a single condition."""
+  k=len(succ);N={j:[('L',j),succ[j],j+1 if j<k-1 else 'S'] for j in range(k)}
+  def preds(m): return [n for n in N if m in N[n][1:]]
+  ch=True
+  while len(N)>1 and ch:
+    ch=False
+    for n in sorted(N):
+      e_,T,F=N[n]
+      for m,other,isT in ((T,F,True),(F,T,False)):
+        if not isinstance(m,int) or m not in N or preds(m)!=[n]: continue
+        mE,mT,mF=N[m]
+        if other==(mF if isT else mT): N[n]=[('&&' if isT else '||',e_,mE),mT,mF]
+        elif other==(mT if isT else mF): N[n]=[('&&' if isT else '||',e_,('NOT',mE)),mF,mT]
+        else: continue
+        del N[m];ch=True;break
+      if ch: break
+  if len(N)!=1 or set(N[0][1:])!={'S','O'}: return None
+  return tuple(N[0])
 def _s26(w):
   d=w&0x3FFFFFC
   return d-0x4000000 if d&0x2000000 else d
@@ -572,7 +614,7 @@ _BIN31={266:('({0}+{1})','ab','d'),40:('({1}-{0})','ab','d'),235:('({0}*{1})','a
 _BINI={7:lambda k:'({0}*%d)'%callshape.s16(k),8:lambda k:'(%d-{0})'%callshape.s16(k),12:lambda k:'({0}+%d)'%callshape.s16(k),
   15:lambda k:'({0}+%d)'%(callshape.s16(k)<<16),24:lambda k:'({0}|0x%X)'%k,25:lambda k:'({0}|0x%X)'%(k<<16),
   26:lambda k:'({0}^0x%X)'%k,28:lambda k:'({0}&0x%X)'%k,29:lambda k:'({0}&0x%X)'%(k<<16)}
-_BASES=('param','load','ret','field','var','add','local','xfield','bin','gfield')
+_BASES=('param','load','ret','field','var','add','local','xfield','bin','gfield','icast')
 _XLOAD={23:'int',87:'unsigned char',279:'unsigned short',343:'short'}
 _XSTORE={151:'int',215:'unsigned char',407:'short'}
 def _gap_params(n):
@@ -677,6 +719,7 @@ def _flow(name,rel,nparam_override,hints={}):
   fparamty={};fbinty={};fretty={}
   branchy=[False]
   cf=FLOW_CF_ALL or FLOW_CF.get(name,'tail')
+  CC_ON=LOOPS[0] and (CC_ALL or name in FLOW_CC)
   def passes(j,regs,cr):
     """Whether the code at j only returns the incoming r3."""
     try: return exitpath(j,regs,cr)[-1][1]==regs.get(3)
@@ -688,8 +731,22 @@ def _flow(name,rel,nparam_override,hints={}):
     branchy[0]=True
     if cf!='var' and j is not None and tr is not None and er is not None and tr.get(3)!=er.get(3) and passes(j,tr,cr) and passes(j,er,cr):
       ts=ts+exitpath(j,tr,cr);es=es+exitpath(j,er,cr);tr=er=None
+    # (Compound strategy) a then-path falling through to a return-only join while the else path returns
+    # returns there too: if(c){...; return x;} keeps the then-block first.
+    elif CC_ON and cf!='var' and j is not None and tr is not None and er is None and passes(j,tr,cr):
+      ts=ts+exitpath(j,tr,cr);tr=None
     if tr is None or er is None:
       out.append(('if',c,ts,es,pre));return er if tr is None else tr
+    # (Compound strategy) a join where one path keeps a value X that its condition tests and the other
+    # sets 0, with no statements on either path, is an inline cast: if(cond(X)) return X; return 0;.
+    if CC_ON and tr is not None and er is not None and not ts and not es:
+      for k in sorted(set(tr)&set(er)):
+        if k<3 or k>=32 or not (isinstance(tr[k],int) and isinstance(er[k],int)) or tr[k]==er[k]: continue
+        hit=next(((X,cc) for X,Z,cc in ((tr[k],er[k],c),(er[k],tr[k],_negate(c))) if vals[Z]==('const',0) and X in set(_condvals(cc)) and all(inner(y,X) for y in _condvals(cc) if isinstance(y,int))),None)
+        if not hit: continue
+        v=val('icast',hit[0],hit[1]);out.append(('icastdef',v))
+        m={kk:tr[kk] for kk in set(tr)&set(er) if tr[kk]==er[kk]};m[k]=v
+        return m
     m={}
     for k in sorted(set(tr)&set(er)):
       if tr[k]==er[k]: m[k]=tr[k]
@@ -699,6 +756,16 @@ def _flow(name,rel,nparam_override,hints={}):
         ts.append(('assign',v,tr[k]));(out if noelse else es).append(('assign',v,er[k]));varsrc[v]+=[tr[k],er[k]]
     out.append(('if',c,ts,es,pre))
     return m
+  def inner(v,X,seen=()):
+    """Whether a value depends only on X, constants, globals and calls on those (an inline helper's scope)."""
+    if v==X or v in seen: return True
+    k=vals[v];seen=seen+(v,)
+    if k[0] in ('const','sda','addr','load','gfield'): return True
+    if k[0]=='ret': return all(inner(y,X,seen) for y in k[1][2]) if k[1][0]=='call' else False
+    if k[0] in ('field','cast','add'): return inner(k[1],X,seen)
+    if k[0]=='bin': return all(inner(y,X,seen) for y in k[2:])
+    if k[0]=='xfield': return inner(k[1],X,seen) and inner(k[2],X,seen)
+    return False
   def chase(t):
     """Final target of a branch to unconditional forward branches."""
     while 0<=t<nw and (ws[t]>>26)==18 and not ws[t]&3 and _s26(ws[t])>0: t+=_s26(ws[t])//4
@@ -841,6 +908,154 @@ def _flow(name,rel,nparam_override,hints={}):
     touch([c[0],c[2]])
     out.append(('loop','while' if cs is not None or ctr else 'do',c,body+asg,cst,pre,{lv[r_]:y for r_,y in cupd.items()}))
     return after
+  def chain(i,e,regs,cr):
+    """A short-circuit condition starting with the conditional branch at i: later conditional branches
+    separated by straight-line code (which may call) whose targets are later chain members, the code after
+    the chain (S) or one other target (O). Returns (last branch, condition under which O is reached,
+    O, registers, cr) or None."""
+    P=[i];q=i+1
+    while q<e and len(P)<10:
+      w_=ws[q];o_=w_>>26
+      if o_==16:
+        if w_&3 or callshape.s16(w_&0xFFFC)<0: break
+        P.append(q)
+      elif (o_==18 and not w_&1) or (o_==19 and w_!=0x4E800421): break
+      q+=1
+    for k in range(len(P),1,-1):
+      Pk=P[:k];S=Pk[-1]+1;lab={Pk[m-1]+1:m for m in range(1,k)}
+      tg=[p_+callshape.s16(ws[p_]&0xFFFC)//4 for p_ in Pk]
+      ext={t_ for t_ in tg if t_>Pk[-1] and t_!=S}
+      if len(ext)!=1: continue
+      O=next(iter(ext));succ=[]
+      for j,t_ in enumerate(tg):
+        if t_==S: succ.append('S')
+        elif t_==O: succ.append('O')
+        elif lab.get(t_,-1)>j+1: succ.append(lab[t_])
+        else: break
+      if len(succ)!=k: continue
+      red=_reduce_chain(succ)
+      if not red: continue
+      # Interpret each node's condition code in order; its statements are evaluated inside the condition.
+      leaf=[];r_=dict(regs);c_=cr
+      for j in range(k):
+        st_=[]
+        if j:
+          st_,r_=block(Pk[j-1]+1,Pk[j],None,dict(r_),c_)
+          c_=lastcr[0]
+        cj=_taken(ws[Pk[j]],c_);touch([cj[0],cj[2]])
+        leaf.append(('SEQ',st_,cj) if j else cj)
+      def build(x):
+        if x[0]=='L': return leaf[x[1]]
+        if x[0]=='NOT': return _negate(build(x[1]))
+        return (x[0],build(x[1]),build(x[2]))
+      E_=build(red[0])
+      return Pk[-1],(E_ if red[1]=='O' else _negate(E_)),O,r_,c_
+    return None
+  def swtree(i,e,join):
+    """A switch compiled as a compare tree starting with the compare at word i: compares of one register
+    with immediates and forward branches on them. Returns (register, signed, bodies [(labels, start)] in
+    address order, end) or None."""
+    w=ws[i];rx=(w>>16)&31;sg=(w>>26)==11;q=i;imms=set();nbc=0;beq=False
+    while q<e:
+      w_=ws[q];o_=w_>>26
+      if o_ in (10,11) and not (w_>>23)&7 and (w_>>16)&31==rx and (o_==11)==sg:
+        imms.add(callshape.s16(w_&0xFFFF) if sg else w_&0xFFFF)
+      elif o_==16 and not w_&3 and callshape.s16(w_&0xFFFC)>0 and (w_>>16)&31<3 and ((w_>>21)&31)&~1 in (4,12):
+        nbc+=1;beq|=(w_>>16)&31==2 and ((w_>>21)&31)&~1==12
+      elif o_==18 and not w_&3 and _s26(w_)>0: pass
+      else: break
+      q+=1
+    end=q
+    if nbc<2 or not beq or len(imms)<2: return None
+    def run(v):
+      pc=i;crv=None
+      while i<=pc<end:
+        w_=ws[pc];o_=w_>>26
+        if o_ in (10,11):
+          k_=callshape.s16(w_&0xFFFF) if sg else w_&0xFFFF;x_=v if sg else v&0xFFFFFFFF
+          crv=(x_<k_,x_>k_,x_==k_);pc+=1
+        elif o_==16:
+          bit=crv[(w_>>16)&31];tk=bit if ((w_>>21)&31)&~1==12 else not bit
+          pc=pc+callshape.s16(w_&0xFFFC)//4 if tk else pc+1
+        else: pc+=_s26(w_)//4
+      return pc
+    lo,hi=(-0x80000000,0x7FFFFFFF) if sg else (0,0xFFFFFFFF)
+    dflt=run(lo)
+    if run(hi)!=dflt: return None
+    bnd=sorted({x for k_ in imms for x in (k_,k_+1) if lo<=x<=hi})
+    labs=collections.defaultdict(list);n_=0
+    for a_,b_ in zip(bnd,bnd[1:]):
+      t_=run(a_)
+      if t_==dflt: continue
+      n_+=b_-a_
+      if n_>256: return None
+      labs[t_]+=list(range(a_,b_))
+    return swfinish(labs,dflt,end,e,join,sg,rx)
+  def swfinish(labs,dflt,end,e,join,sg,rx):
+    """Case bodies of a switch from its targets: (labels, start) in address order, its end (where
+    breaks go) and whether the default is the end."""
+    if len(labs)<2 or min(labs)<end: return None
+    B=sorted(labs);top=max(B)
+    brk=collections.Counter(k_-1+_s26(ws[k_-1])//4 for k_ in B[1:]+([dflt] if dflt>top else []) if (ws[k_-1]>>26)==18 and not ws[k_-1]&3 and k_-1+_s26(ws[k_-1])//4>top)
+    if brk: E=sorted(brk,key=lambda x:(-brk[x],x))[0]
+    elif dflt>top: E=dflt
+    else: return None
+    if dflt!=E:
+      if dflt<end or dflt>E: return None
+      labs[dflt].append('default');B=sorted(labs)
+    if E>e and E!=join: return None
+    return rx,sg,[(labs[b_],b_) for b_ in B],E,dflt==E
+  def jtab(i,e,join,regs):
+    """A switch compiled as a jump table: cmplwi n,K; bgt default; the table address, n<<2, lwzx,
+    mtctr and bctr. The targets are read from the original table. Returns as swtree."""
+    w=ws[i]
+    if (w>>26)!=10 or (w>>23)&7 or i+2>=e: return None
+    rn=(w>>16)&31;K=w&0xFFFF;b_=ws[i+1]
+    if (b_>>26)!=16 or b_&3 or (b_>>16)&31!=1 or ((b_>>21)&31)&~1!=12 or callshape.s16(b_&0xFFFC)<=0: return None
+    D=i+1+callshape.s16(b_&0xFFFC)//4;sym=None
+    for q in range(i+2,min(i+10,e)):
+      w_=ws[q];o_=w_>>26;r_=relat.get(4*q)
+      if w_==0x4E800420: break
+      if o_==15 and r_ and r_[1].startswith('jumptable_'): sym=r_[1]
+      elif o_==14 and r_ and r_[1]==sym: pass
+      elif o_==21 and (w_>>21)&31==rn and (w_>>11)&31==2 and (w_>>6)&31==0 and (w_>>1)&31==29: pass
+      elif o_==31 and (w_>>1)&0x3FF in (23,467): pass
+      else: return None
+    else: return None
+    if not sym or sym not in syminfo or syminfo[sym][3]!=4*(K+1) or any(a_<=syminfo[sym][1]<b_ for a_,b_ in _DATA_SPLITS): return None
+    tb=callshape.rd(syminfo[sym][1],4*(K+1))
+    tg=[(_st.unpack('>I',tb[4*k_:4*k_+4])[0]-addr)//4 for k_ in range(K+1)]
+    if any(not q<t_<nw for t_ in tg): return None
+    X=regs.get(rn);base=0
+    if not isinstance(X,int): return None
+    if vals[X][0]=='add': base=-vals[X][2];X=vals[X][1]
+    labs=collections.defaultdict(list)
+    for v_,t_ in enumerate(tg):
+      if t_!=D: labs[t_].append(v_+base)
+    return swfinish(labs,D,q+1,e,join,True,('val',X))
+  def switch(sw,regs,out,rets=False):
+    """Interpret a compare-tree switch; returns the registers after it (None if every case returns). With
+    rets, cases leaving to a return-only end return there instead of breaking."""
+    rx,sg,bodies,E,nodef=sw
+    X=regs.get(rx) if isinstance(rx,int) else rx[1]
+    if not isinstance(X,int): raise ValueError('switch operand')
+    branchy[0]=True;touch([X]);pre=len(vals);entry=dict(regs);prevr=None;cases=[]
+    if not rets: loopexit.append((chase(E),[]))
+    try:
+      for k_,(labs,b0) in enumerate(bodies):
+        b1=bodies[k_+1][1] if k_+1<len(bodies) else E
+        rin=dict(entry) if prevr is None else {kk:vv for kk,vv in entry.items() if prevr.get(kk)==vv}
+        st_,prevr=block(b0,b1,None,rin,None)
+        if rets and k_+1==len(bodies) and prevr is not None: st_=st_+exitpath(E,prevr,None);prevr=None
+        cases.append((labs,st_))
+    finally: brk=[] if rets else loopexit.pop()[1]
+    ex_=brk+([prevr] if prevr is not None else [])+([entry] if nodef else [])
+    # A switch whose cases leave different return values to a return-only end returns in each case.
+    if not rets and cf!='var' and len({r_.get(3) for r_ in ex_})>1 and all(passes(E,r_,None) for r_ in ex_):
+      return switch(sw,regs,out,True)
+    out.append(('switch',X,sg,cases,pre))
+    if not ex_: return None
+    return {kk:vv for kk,vv in ex_[0].items() if all(r_.get(kk)==vv for r_ in ex_[1:])}
   def block(s,e,join,regs,cr):
     """Interpret words [s,e); control continues at join after e. Returns (statements, registers or None)."""
     out=[];i=s;ctr=None;varargs=False;prev3=regs.get(3);prevcall=False;prevf1=regs.get(33)
@@ -856,7 +1071,9 @@ def _flow(name,rel,nparam_override,hints={}):
       w=ws[i];op=w>>26;rt=(w>>21)&31;ra=(w>>16)&31;imm=w&0xFFFF;r=relat.get(4*i)
       if op==16:
         if w&3: raise ValueError('bc form')
-        t=chase(i+callshape.s16(w&0xFFFC)//4);c=_taken(w,cr);pre=len(vals);touch([c[0],c[2]])
+        pre=len(vals);cc_=chain(i,e,regs,cr) if CC_ON else None
+        if cc_: i,c,t,regs,cr=cc_;t=chase(t)
+        else: t=chase(i+callshape.s16(w&0xFFFC)//4);c=_taken(w,cr);touch([c[0],c[2]])
         if t<=i: raise ValueError('backward branch')
         if loopexit and t==loopexit[-1][0]:
           loopexit[-1][1].append(dict(regs));merge(out,c,[('break',)],None,[],regs,pre);i+=1;continue
@@ -873,7 +1090,9 @@ def _flow(name,rel,nparam_override,hints={}):
           if E is not None and E==join:
             ts,tr=block(i+1,t-1,join,dict(regs),cr);es,er=block(t,e,join,dict(regs),cr)
             return out,merge(out,_negate(c),ts,tr,es,er,pre,join,False,cr)
-          if E is not None:
+          # (Compound strategy) a then-block ending by leaving to an exit is interpreted up to the else start,
+          # so its inner branches there leave the if.
+          if E is not None and not CC_ON:
             ts,tr=block(i+1,t-1,E,dict(regs),cr)
             if tr is not None: ts+=exitpath(E,tr,cr)
             regs=merge(out,_negate(c),ts,None,[],regs,pre);i=t;prev3=regs.get(3);prevf1=regs.get(33);continue
@@ -981,6 +1200,14 @@ def _flow(name,rel,nparam_override,hints={}):
       if op==32 and ra==1: continue                                   # restores
       if op==14 and rt==1 and ra==1: continue                         # epilogue
       if op==14 and rt==11 and ra==1: continue                        # _savegpr/_restgpr frame pointer
+      if op in (10,11) and not rt>>2 and CC_ON:
+        sw=jtab(i-1,e,join,regs) or swtree(i-1,e,join)
+        if sw:
+          regs=switch(sw,regs,out);i=sw[3];cr=None
+          if regs is None: return out,None
+          prev3=regs.get(3);prevf1=regs.get(33)
+          if i==join or i>=e: return out,regs
+          continue
       if op in (10,11) and not rt>>2:                                 # cmplwi/cmpwi
         x=regs.get(ra)
         if not isinstance(x,int): raise ValueError('cmp operand')
@@ -1157,9 +1384,14 @@ def _flow(name,rel,nparam_override,hints={}):
     for s_ in st:
       yield s_
       if s_[0]=='if':
+        for q_ in _seqs(s_[1]): yield from walk(q_)
         yield from walk(s_[2]);yield from walk(s_[3])
       if s_[0]=='loop':
         yield from walk(s_[3]);yield from walk(s_[4])
+      if s_[0]=='icastdef':
+        for q_ in _seqs(vals[s_[1]][2]): yield from walk(q_)
+      if s_[0]=='switch':
+        for labs_,b_ in s_[3]: yield from walk(b_)
   allst=list(walk(stmts))
   rets=[s_ for s_ in allst if s_[0]=='return']
   # A value left in f1 by a non-call instruction is a floating-point return value.
@@ -1183,7 +1415,7 @@ def _flow(name,rel,nparam_override,hints={}):
       if not isinstance(v,int) or v in seen: return False
       k=vals[v][0]
       if k=='var': return any(computed(x,seen+(v,)) for x in varsrc[v])
-      return k in ('field','load','const','cast','sda','addr')
+      return k in ('field','load','const','cast','sda','addr','icast')
     def voidret(v,seen=()):
       # Isolated generation also follows join variables: one merging a void call's result is no return value.
       if LOOPS[0] and isinstance(v,int) and vals[v][0]=='var' and v not in seen: return any(voidret(x,seen+(v,)) for x in varsrc[v])
@@ -1205,7 +1437,10 @@ def _flow(name,rel,nparam_override,hints={}):
     elif st[0]=='vcall': used.update([st[1]]+st[3])
     elif st[0]=='store': used.update([st[1],st[3]])
     elif st[0]=='if':
-      used.update([st[1][0]]+([st[1][2]] if isinstance(st[1][2],int) else []))
+      used.update(_condvals(st[1]))
+    elif st[0]=='icastdef':
+      used.update(_condvals(vals[st[1]][2]));used.update([vals[st[1]][1],st[1]])
+    elif st[0]=='switch': used[st[1]]+=1
     elif st[0]=='loop':
       used.update([st[2][0]]+([st[2][2]] if isinstance(st[2][2],int) else []))
     elif st[0]=='return' and retval: used[st[1]]+=1
@@ -1299,9 +1534,11 @@ def _flow(name,rel,nparam_override,hints={}):
     if k[0]=='lfield': return lref(k[1])
     if k[0]=='fbin': return k[1].format(*[fx(o) for o in k[2:]])
     raise ValueError('float value %r'%(k,))
+  subst={}   # values renamed inside an inline helper
   def ex(v):
     """Pointer-typed expression for a value (constants stay int)."""
     k=vals[v]
+    if v in subst: return subst[v]
     if ftype(v): raise ValueError('float as pointer')
     if k[0]=='const': return str(k[1])
     if k[0] in ('sda','addr'):
@@ -1320,7 +1557,7 @@ def _flow(name,rel,nparam_override,hints={}):
       # In branchy code a global addressed with @ha/@l is declared without a size, as the original.
       if k[2] or (branchy and len(k)>3 and not (k[1] in protos and protos[k[1]].startswith('extern void *'))): return '*reinterpret_cast<void **>(%s)'%gaddr(k[1],k[2])
       fn(k[1],'extern void *%s;');return k[1]
-    if k[0] in ('ret','var'): return names_[v]
+    if k[0] in ('ret','var','icast'): return names_[v]
     if k[0]=='local': return 'local%d'%locs.index(k[1])
     if k[0]=='stack': return '&local%d'%locs.index(k[1])
     if k[0]=='add': return '(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
@@ -1345,6 +1582,7 @@ def _flow(name,rel,nparam_override,hints={}):
   def ix(v):
     """Integer-typed expression for a value."""
     k=vals[v]
+    if v in subst: return '(int)%s'%subst[v]
     if ftype(v): raise ValueError('float as integer')
     if k[0]=='lfield': return lref(k[1])
     if k[0]=='const': return str(k[1])
@@ -1360,7 +1598,24 @@ def _flow(name,rel,nparam_override,hints={}):
       if isinstance(k[2],int): return '((unsigned int)%s&0x%X)'%(ix(k[1]),k[2])
       return '(%s)%s'%(k[2],ix(k[1]))
     return '(int)%s'%ex(v)
+  seqx={}
   def cond(c):
+    if c[0] in ('&&','||'): return '(%s%s%s)'%(cond(c[1]),c[0],cond(c[2]))
+    if c[0]=='SEQ':
+      # Statements inside a condition become a comma expression, emitted once where first needed.
+      if id(c[1]) not in seqx:
+        ls=[];emit(c[1],ls,False)
+        for v in _condvals(c[2]):
+          if isinstance(v,int): ensure(v,ls)
+        xs=[]
+        for l in ls:
+          l=l.strip();m=re.match(r'^void \*(value\d+)=(.*);$',l)
+          if m: topdecl.append(' void *%s;'%m[1]);xs.append('%s=%s'%(m[1],m[2]));continue
+          if not l.endswith(';') or '{' in l or l.startswith(('if(','return','while(','do ','break')): raise ValueError('condition statement')
+          xs.append(l[:-1])
+        seqx[id(c[1])]=','.join(xs)
+      p_=seqx[id(c[1])]
+      return '(%s,%s)'%(p_,cond(c[2])) if p_ else cond(c[2])
     a,rel_,b_,signed=c
     if signed=='f': return '(%s%s%s)'%(fx(a),rel_,fx(b_))
     k=vals[a][0]
@@ -1369,6 +1624,8 @@ def _flow(name,rel,nparam_override,hints={}):
       if n_==0 and rel_ in ('==','!='):
         if k=='cast' or (not signed and k not in ('param','const')):
           e_=ex(a) if k not in ('cast','field') or (k=='field' and len(vals[a])==3) else ix(a)
+          # (Compound strategy) a named unsigned narrow field compares unsigned, as a pointer.
+          if CC_ON and k=='field' and a in names_ and len(vals[a])>3 and vals[a][3].startswith('unsigned'): e_=ex(a)
           return e_ if rel_=='!=' else '!%s'%e_
       return '(%s)%s%s%d'%('int' if signed else 'unsigned int',ix(a),rel_,n_)
     t_='int' if signed else 'unsigned int'
@@ -1376,6 +1633,7 @@ def _flow(name,rel,nparam_override,hints={}):
   names_={};emitted=set()
   for v,k in enumerate(vals):
     if k[0]=='load' and used[v]>1: names_[v]='value%d'%len(names_)
+    elif k[0]=='icast': names_[v]='value%d'%len(names_)
     # In branchy code a field read more than once is read once, where it is first needed.
     elif branchy and k[0]=='field' and used[v] and v in stale: names_[v]='value%d'%len(names_)
     # Floating-point field reads are read into variables where the original loads them.
@@ -1406,9 +1664,9 @@ def _flow(name,rel,nparam_override,hints={}):
       elif s_[0]=='vcall': yield from [s_[1]]+s_[3]
       elif s_[0]=='store': yield from [s_[1],s_[3]]
       elif s_[0]=='copy': yield from [s_[1]]+([s_[3][1]] if s_[3][0]=='f' else [])
-      elif s_[0]=='if':
-        yield s_[1][0]
-        if isinstance(s_[1][2],int): yield s_[1][2]
+      elif s_[0]=='if': yield from _condvals(s_[1])
+      elif s_[0]=='icastdef': yield vals[s_[1]][1]
+      elif s_[0]=='switch': yield s_[1]
       elif s_[0]=='loop':
         yield s_[2][0]
         if isinstance(s_[2][2],int): yield s_[2][2]
@@ -1565,7 +1823,7 @@ def _flow(name,rel,nparam_override,hints={}):
       elif st[0]=='if':
         for v in sorted(set(refs(st))):
           if v<st[4]: ensure(v,lines)
-        tl=[];el=[]
+        tl=[];el=[];cond(st[1])
         emit(st[2],tl,False);emit(st[3],el,False)
         if not tl and el: c_=cond(_negate(st[1]));tl,el=el,[]
         else: c_=cond(st[1])
@@ -1597,6 +1855,26 @@ def _flow(name,rel,nparam_override,hints={}):
             if isinstance(v,int): ensure(v,bl)
           lines.append(' do {');lines.extend(' '+x for x in bl);lines.append(' } while(%s);'%cond(st[2]))
       elif st[0]=='break': lines.append(' break;')
+      elif st[0]=='switch':
+        for v in sorted(set(refs(st))):
+          if v<st[4]: ensure(v,lines)
+        lines.append(' switch((%s)%s){'%('int' if st[2] else 'unsigned int',ix(st[1])))
+        for labs_,b_ in st[3]:
+          lines.extend(' default:' if l_=='default' else ' case %d:'%l_ for l_ in labs_)
+          bl=[];emit(b_,bl,False);lines.extend(' '+x for x in bl or [' break;'])
+        lines.append(' }')
+      elif st[0]=='icastdef':
+        v=st[1];X,cc=vals[v][1],vals[v][2];ensure(X,lines)
+        # The helper's condition is emitted with X as its parameter and its own locals.
+        hn='UnknownGenCast%s_%d'%(name[3:],v);outer=topdecl[:];del topdecl[:];subst[X]='q'
+        try: c_=cond(cc)
+        finally: del subst[X]
+        hdecl=topdecl[:];topdecl[:]=outer
+        text='static inline void *%s(void *q){\n%s\n if(%s) return q;\n return 0;\n}'%(hn,'\n'.join(hdecl),c_)
+        own=set(re.findall(r'\b(value\d+);',''.join(hdecl)))
+        if any(x not in own for x in re.findall(r'\b((?:p|value|local)\d+)\b',text)): raise ValueError('cast scope')
+        PRE.append(text)
+        lines.append(' %s%s=%s(%s);'%(declare(names_[v]),names_[v],hn,ex(X)))
       elif st[0]=='return':
         last=top and si==len(stmts)-1
         if retval:
@@ -1652,6 +1930,9 @@ _bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and any(a<=x<=a+
 # Functions whose exception-table entry is referenced from other data keep their original object.
 _etb_funcs={callshape.extab_owners().get(int(x[5:],16)) for x in _etb_refs}
 _bad|={n for n,(sec,a,t,sz) in syminfo.items() if t=='function' and a in _etb_funcs}
+# .data ranges of other split units: a jump table there cannot move into a generated unit.
+_DATA_SPLITS=[(int(m[1],16),int(m[2],16)) for b_ in (CONFIG/'splits.txt').read_text().split('\n\n') if 'unknownGen/' not in b_.split('\n')[0]
+  for m in re.finditer(r'\.data\s+start:0x([0-9A-F]+) end:0x([0-9A-F]+)',b_)]
 SIG={'F1':'void *%s();','F2':'void *%s();','F3':'void *%s();','F7':'void *%s();','F6':'void *%s(void *);','F8':'void %s();'}
 def select(lo,hi,iso=False):
   """Unrecovered generator candidates in [lo,hi): those generated together, or (iso) those generated alone."""

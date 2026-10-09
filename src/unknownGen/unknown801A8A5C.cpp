@@ -1,0 +1,34 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+void *fn_80068128(void *,void *);
+extern void *lbl_805614A8;
+}
+static inline void *UnknownGenCast801A8A5C_14(void *q){
+ void *value4;
+ if(((unsigned int)(int)q!=0&&(value4=fn_80068128(q,lbl_805614A8),(unsigned char)(int)value4))) return q;
+ return 0;
+}
+extern "C" {
+void *fn_801A8A5C(int p0,int p1,int p2,int p3,int p4){
+ void *value2;
+ void *value3;
+ void *value0;
+ void *value1;
+ if(((int)p0!=0&&(value3=fn_80068128((void *)p0,lbl_805614A8),(unsigned char)(int)value3))){
+  value2=(void *)p0;
+ } else {
+  value2=(void *)0;
+ }
+ value0=UnknownGenCast801A8A5C_14((void *)p2);
+ if((value2&&value0)){
+  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8);
+  *reinterpret_cast<long long *>(reinterpret_cast<char *>((void *)(int)(p3+(int)value1))+0)=*reinterpret_cast<long long *>(reinterpret_cast<char *>((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+8)))+0);
+  return (void *)1;
+ } else {
+  return (void *)0;
+ }
+}
+}
+#pragma pop

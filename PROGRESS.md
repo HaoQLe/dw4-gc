@@ -4,6 +4,22 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Port inventory and Alchemy metadata (investigation, user request 2026-10-08):** the project goal is a PC port, so readable source now takes priority over matched-percentage throughput. No game source changed.
+  - **Inventory:**
+    - Alchemy engine: 2.02 MB (49%);
+    - game (`be…` classes): 1.13 MB (27%), none of it readable yet (matched game code is all generated);
+    - CRI ADX/Sofdec: 360 KB, replaced on PC;
+    - named libraries: 356 KB, 99.7% matched;
+    - Lua 4.0.1 (public source) with some Alchemy code: 159 KB.
+  - **Alchemy metadata:** `tools/alchemymeta/extract.py` reads class registrations (`fn_80066204`) and field tables (`fn_80065924`, `fn_800659C0`) statically. Result: 1,434 classes with size and parent (963 `ig…`, 458 `be…`) and 4,202 named, typed fields on 834 classes.
+  - **Naming reach (estimate):** about 12,400 functions (1.85 MB, 45% of code) through registration callbacks and vtable-like tables.
+  - **`fn_80068128`:** a type test against a class metaobject, used at about 300 sites (for example against `igNode`'s `lbl_80564BC0`).
+  - **Next candidates (not started):**
+    - generate class headers from the metadata and attribute registration functions and vtables to classes;
+    - extract object-reference targets and enums;
+    - re-express generated code against the headers;
+    - recover one game subsystem (for example `beWeapon`) readably.
+  - Details: [port inventory and Alchemy metadata](docs/research/2026-10-08-port-inventory-and-alchemy-metadata.md).
 - **Generator round 7 closed (user request 2026-10-08):** compound strategy for functions generated alone (`flow_cc.json`, isolation tags `IC`/`ICV`), covering short-circuit `&&`/`||` with calls in the condition, inline cast helpers, compare-tree switches and jump-table switches; task branch `task/generator-round7`, functional commit `1d8d741` on `work`.
   - **Totals:** matched code 36.177937% → 36.905680% (+0.727743 pp), linked 36.142395% → 36.870140% (+0.727745 pp), +30,140 bytes each; matched data 15.532835% → 15.554115% (+320 bytes); 16,986 functions (+193, none lost); 4,737/7,643 units.
   - **Yield by feature:**

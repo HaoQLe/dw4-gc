@@ -4,6 +4,18 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **beWeapon readable-source batch (user request 2026-10-09):** the first game subsystem as hand-written, typed C++.
+  - **Units:** `src/Game/Bec/beWeapon.cpp` (`0x80318230..0x80318474`: `virtual88`, `virtual80`, `virtual7C`, the `AdoptedRef` destructor, `virtual84`) and `src/Game/Bec/ObjectRef.cpp` (the `ObjectRef` destructor at `0x802B3608`), against `include/meta` and the new `include/game/ObjectRef.h`.
+  - **Totals:** matched code 36.905680% → 36.914276% (+356 bytes, `virtual7C` newly matched), linked code 36.870140% → 36.878735%, matched data −40 bytes (an objdiff artifact of the discarded weak destructor copy; the executable is exact). `build.sha1` OK; all 4,492 generated units verify.
+  - **Established:**
+    - game flags (`cflags_game`): `-O4,p`, `stmw`/`lmw`, exceptions, read-only strings, `-sdata2 4`;
+    - game namespace `Gap::Bec`;
+    - the messenger command protocol;
+    - the `MsgAction` enum;
+    - three distinct reference-holder destructor types;
+    - `fn_800A325C` is `operator delete` (`__dl__FPv`).
+  - **Active remainder:** `beWeapon_virtual8C`, the 1,440-byte message handler. The readable draft has identical instructions but differs in register numbering (about 280 lines). It is kept on the local branch `task/beweapon-8c-wip`; the next investigation is the remove case's variable structure, or a template smart-pointer model.
+  - Details: [beWeapon as readable C++](docs/research/2026-10-09-beweapon-readable.md).
 - **Class names and typed generated code batch (user request 2026-10-09):** code is unchanged (`build.sha1` OK; report identical: matched code 1,528,468, linked 1,526,996, 16,986 functions).
   - **Names:** 11,857 functions renamed to `<class>_<role>` (for example `igSphere_getMeta`, `beWeapon_virtual88`) by `tools/alchemymeta/rename.py`. The generator and fastcmp no longer depend on address names.
   - **Typed accesses:** the generator writes accesses at reflected members as `Meta::` members when a value's class is known; 499 units now carry 2,026 typed accesses (about 12% of field accesses in generated code). `igObject::_refCount` (`+4`) is added from code evidence.

@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void beBaseInfoRam_register();
 void *beWeaponInfoRam_getMeta();
 void beWeaponInfoRam_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void __dl__FPv(void *);
 void fn_802B1AC8();
 void *fn_802B2B2C();
 extern char lbl_8041C9D0[];

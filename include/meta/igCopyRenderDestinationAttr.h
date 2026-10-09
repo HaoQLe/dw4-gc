@@ -3,12 +3,13 @@
 #ifndef META_IGCOPYRENDERDESTINATIONATTR_H
 #define META_IGCOPYRENDERDESTINATIONATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igImage;
 struct igRenderDestinationAttr;
 struct igTextureAttr;
 struct igCopyRenderDestinationAttr : igVisualAttribute {
- int _copyType;  // 0x0C igEnumMetaField
+ CopyType::Value _copyType;  // 0x0C igEnumMetaField
  igRenderDestinationAttr *_pRDAttr;  // 0x10 igObjectRefMetaField
  igImage *_pImage;  // 0x14 igObjectRefMetaField
  igTextureAttr *_pTextureAttr;  // 0x18 igObjectRefMetaField

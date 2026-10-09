@@ -422,7 +422,7 @@ void igPointSpriteExt_virtual7C(int p0){
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
  reinterpret_cast<UnknownGenV800E1B64_0 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_context)->s32C((void *)1,(reinterpret_cast<char *>((void *)p0)+40));
- if((int)(int)(void *)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
+ if((int)(int)(void *)(int)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
   reinterpret_cast<UnknownGenV800E1B64_1 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_context)->s32C((void *)0,(reinterpret_cast<char *>((void *)p0)+104));
  }
  value0=reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray;

@@ -3,14 +3,15 @@
 #ifndef META_IGSPRITEATTR_H
 #define META_IGSPRITEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igVertexArray;
 struct igSpriteAttr : igVisualAttribute {
- int _spriteType;  // 0x0C igEnumMetaField
+ IG_GFX_SPRITE_TYPE::Value _spriteType;  // 0x0C igEnumMetaField
  unsigned int _numPrims;  // 0x10 igUnsignedIntMetaField
  unsigned int _offset;  // 0x14 igUnsignedIntMetaField
  igVertexArray *_vertexArray;  // 0x18 igObjectRefMetaField
- int _spriteSpace;  // 0x1C igEnumMetaField
+ IG_GFX_SPRITE_SIZE_SPACE::Value _spriteSpace;  // 0x1C igEnumMetaField
 };
 }
 #endif

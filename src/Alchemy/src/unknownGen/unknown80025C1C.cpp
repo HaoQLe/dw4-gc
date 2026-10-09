@@ -3,6 +3,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void fn_80021B94();
 void *fn_80023CF4();
 void fn_80025B8C();
@@ -20,7 +21,6 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_80071108(void *);
-void __dl__FPv(void *);
 void *igGamecubeSemaphore_getMeta();
 void igNamedObject_register();
 void *igShortMetaField_getMeta();

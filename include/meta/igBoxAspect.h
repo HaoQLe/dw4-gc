@@ -3,11 +3,12 @@
 #ifndef META_IGBOXASPECT_H
 #define META_IGBOXASPECT_H
 #include <meta/igGuiComponentAspect.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igChildSizeObserverList;
 struct igNonRefCountedTransformList;
 struct igBoxAspect : igGuiComponentAspect {
- int _orientation;  // 0x28 igEnumMetaField
+ ORIENTATION::Value _orientation;  // 0x28 igEnumMetaField
  igChildSizeObserverList *_childSizeObserverList;  // 0x2C igObjectRefMetaField
  igNonRefCountedTransformList *_transformList;  // 0x30 igObjectRefMetaField
 };

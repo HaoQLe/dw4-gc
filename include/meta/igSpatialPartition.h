@@ -3,6 +3,7 @@
 #ifndef META_IGSPATIALPARTITION_H
 #define META_IGSPATIALPARTITION_H
 #include <meta/igOptVisitObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igBoundingBoxesMaker;
 struct igNodeList;
@@ -14,7 +15,7 @@ struct igSpatialPartition : igOptVisitObject {
  bool _splitGeometry;  // 0x38 igBoolMetaField
  unsigned char unknown39[3];
  unsigned int _minVertices;  // 0x3C igUnsignedIntMetaField
- int _maxTreeType;  // 0x40 igEnumMetaField
+ igPartitionType::Value _maxTreeType;  // 0x40 igEnumMetaField
  float _minBoxX;  // 0x44 igFloatMetaField
  float _minBoxY;  // 0x48 igFloatMetaField
  float _minBoxZ;  // 0x4C igFloatMetaField

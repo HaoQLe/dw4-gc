@@ -3,9 +3,10 @@
 #ifndef META_IGSCISSORTYPEATTR_H
 #define META_IGSCISSORTYPEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igScissorTypeAttr : igVisualAttribute {
- int _type;  // 0x0C igEnumMetaField
+ IG_GFX_SCISSOR_TYPE::Value _type;  // 0x0C igEnumMetaField
 };
 }
 #endif

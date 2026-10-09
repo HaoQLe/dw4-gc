@@ -3,11 +3,12 @@
 #ifndef META_IGCULLFACEATTR_H
 #define META_IGCULLFACEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igCullFaceAttr : igVisualAttribute {
  bool _enabled;  // 0x0C igBoolMetaField
  unsigned char unknown0D[3];
- int _mode;  // 0x10 igEnumMetaField
+ IG_GFX_CULL_FACE_MODE::Value _mode;  // 0x10 igEnumMetaField
 };
 }
 #endif

@@ -3,9 +3,10 @@
 #ifndef META_IGMATERIALMODEATTR_H
 #define META_IGMATERIALMODEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igMaterialModeAttr : igVisualAttribute {
- int _mode;  // 0x0C igEnumMetaField
+ IG_GFX_MATERIAL_COMPONENT::Value _mode;  // 0x0C igEnumMetaField
 };
 }
 #endif

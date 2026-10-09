@@ -3,6 +3,7 @@
 #ifndef META_IGPAGEMEMORYPOOL_H
 #define META_IGPAGEMEMORYPOOL_H
 #include <meta/igMemoryPool.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igEventTracker;
 struct igSemaphore;
@@ -13,7 +14,7 @@ struct igPageMemoryPool : igMemoryPool {
  unsigned long long _maxSize;  // 0x78 igUnsignedLongMetaField
  igEventTracker *_eventTracker;  // 0x80 igObjectRefMetaField
  int _poolIndex;  // 0x84 igIntMetaField
- int _messageLevel;  // 0x88 igEnumMetaField
+ igPageMemoryPool_MessageLevel::Value _messageLevel;  // 0x88 igEnumMetaField
  int _poolOptionFlags;  // 0x8C igIntMetaField
  unsigned char unknown90[128];
 };

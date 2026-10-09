@@ -3,10 +3,11 @@
 #ifndef META_IGPLUGINREPOSITORY_H
 #define META_IGPLUGINREPOSITORY_H
 #include <meta/igNamedObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igPluginRepository : igNamedObject {
  const char *_location;  // 0x0C igStringMetaField
- int _locationType;  // 0x10 igEnumMetaField
+ LOCATION_TYPE::Value _locationType;  // 0x10 igEnumMetaField
 };
 }
 #endif

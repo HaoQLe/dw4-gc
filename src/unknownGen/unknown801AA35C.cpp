@@ -2,6 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void *fn_800237D0();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
@@ -13,7 +14,6 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void __dl__FPv(void *);
 void *fn_8011148C();
 void fn_801AACA8();
 void fn_801AAE78();

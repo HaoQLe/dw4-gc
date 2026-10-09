@@ -3,10 +3,11 @@
 #ifndef META_IGBILLBOARDPROCESSOR_H
 #define META_IGBILLBOARDPROCESSOR_H
 #include <meta/igShaderProcessor.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igModelViewMatrixAttr;
 struct igBillboardProcessor : igShaderProcessor {
- int _mode;  // 0x08 igEnumMetaField
+ BillboardMode::Value _mode;  // 0x08 igEnumMetaField
  float _axis[3];  // 0x0C igVec3fMetaField
  float _origin[3];  // 0x18 igVec3fMetaField
  igModelViewMatrixAttr *_modelViewMatrix;  // 0x24 igObjectRefMetaField

@@ -620,7 +620,7 @@ void *igGamecubePointSpriteExt_virtual7C(int p0){
   value5=value6;
  } else {
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
-  if((int)(int)(void *)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
+  if((int)(int)(void *)(int)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
    GXSetPointSize((void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+424),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+428));
    value7=reinterpret_cast<UnknownGenV800F9C38_0 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->s64();
    value2=value7;

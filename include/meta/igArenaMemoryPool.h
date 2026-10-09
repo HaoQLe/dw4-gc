@@ -3,6 +3,7 @@
 #ifndef META_IGARENAMEMORYPOOL_H
 #define META_IGARENAMEMORYPOOL_H
 #include <meta/igMemoryPool.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igEventTracker;
 struct igSemaphore;
@@ -24,8 +25,8 @@ struct igArenaMemoryPool : igMemoryPool {
  unsigned char unknownAE[2];
  igEventTracker *_eventTracker;  // 0xB0 igObjectRefMetaField
  int _poolIndex;  // 0xB4 igIntMetaField
- int _heapIntegrityCheckLevel;  // 0xB8 igEnumMetaField
- int _messageLevel;  // 0xBC igEnumMetaField
+ HeapIntegrityCheckLevel::Value _heapIntegrityCheckLevel;  // 0xB8 igEnumMetaField
+ igArenaMemoryPool_MessageLevel::Value _messageLevel;  // 0xBC igEnumMetaField
  int _poolOptionFlags;  // 0xC0 igIntMetaField
  int _poolPreSized;  // 0xC4 igIntMetaField
  unsigned int _smallestChunkSize;  // 0xC8 igUnsignedIntMetaField

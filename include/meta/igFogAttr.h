@@ -3,9 +3,10 @@
 #ifndef META_IGFOGATTR_H
 #define META_IGFOGATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igFogAttr : igVisualAttribute {
- int _mode;  // 0x0C igEnumMetaField
+ IG_GFX_FOG_MODE::Value _mode;  // 0x0C igEnumMetaField
  float _nearVal;  // 0x10 igFloatMetaField
  float _farVal;  // 0x14 igFloatMetaField
  float _density;  // 0x18 igFloatMetaField

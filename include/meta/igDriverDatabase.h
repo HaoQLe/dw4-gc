@@ -3,6 +3,7 @@
 #ifndef META_IGDRIVERDATABASE_H
 #define META_IGDRIVERDATABASE_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igFile;
 struct igRegistry;
@@ -15,7 +16,7 @@ struct igDriverDatabase : igObject {
  igStringRefListList *_subPropertyValues;  // 0x10 igObjectRefMetaField
  igRegistry *_overrideSource;  // 0x14 igObjectRefMetaField
  int _overrideSourceSection;  // 0x18 igIntMetaField
- int _overrideMode;  // 0x1C igEnumMetaField
+ SECTION_OVERRIDE_MODE::Value _overrideMode;  // 0x1C igEnumMetaField
  igFile *_databaseFile;  // 0x20 igObjectRefMetaField
  igStringObj *_databaseFileName;  // 0x24 igObjectRefMetaField
  igStringObj *_rawDatabase;  // 0x28 igObjectRefMetaField

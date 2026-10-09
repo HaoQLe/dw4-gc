@@ -3,16 +3,17 @@
 #ifndef META_IGTEXTUREFUNCTIONATTR_H
 #define META_IGTEXTUREFUNCTIONATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igTextureFunctionAttr : igVisualAttribute {
  int _mode;  // 0x0C igEnumMetaField
  int _unitID;  // 0x10 igIntMetaField
- int _arg0;  // 0x14 igEnumMetaField
- int _arg1;  // 0x18 igEnumMetaField
- int _type;  // 0x1C igEnumMetaField
+ TEXTURE_ARGUMENT::Value _arg0;  // 0x14 igEnumMetaField
+ TEXTURE_ARGUMENT::Value _arg1;  // 0x18 igEnumMetaField
+ TEXTURE_STAGE_TYPE::Value _type;  // 0x1C igEnumMetaField
  unsigned char _call_state;  // 0x20 igUnsignedCharMetaField
  unsigned char unknown21[3];
- int _functionType;  // 0x24 igEnumMetaField
+ TEXTURE_FUNCTION_TYPE::Value _functionType;  // 0x24 igEnumMetaField
 };
 }
 #endif

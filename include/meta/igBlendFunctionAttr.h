@@ -3,21 +3,22 @@
 #ifndef META_IGBLENDFUNCTIONATTR_H
 #define META_IGBLENDFUNCTIONATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igBlendEquationExt;
 struct igBlendFunctionAttr : igVisualAttribute {
- int _src;  // 0x0C igEnumMetaField
- int _dst;  // 0x10 igEnumMetaField
+ IG_GFX_BLENDING_FUNCTION::Value _src;  // 0x0C igEnumMetaField
+ IG_GFX_BLENDING_FUNCTION::Value _dst;  // 0x10 igEnumMetaField
  int _eq;  // 0x14 igEnumMetaField
  igBlendEquationExt *_blendEquationExt;  // 0x18 igObjectRefMetaField
  unsigned char _blendConstant;  // 0x1C igUnsignedCharMetaField
  unsigned char unknown1D[1];
  short _blendStage;  // 0x1E igShortMetaField
  float _blendConstantFloat;  // 0x20 igFloatMetaField
- int _blendA;  // 0x24 igEnumMetaField
- int _blendB;  // 0x28 igEnumMetaField
- int _blendC;  // 0x2C igEnumMetaField
- int _blendD;  // 0x30 igEnumMetaField
+ BLENDING_FUNCTION_COLOR_PSX2::Value _blendA;  // 0x24 igEnumMetaField
+ BLENDING_FUNCTION_COLOR_PSX2::Value _blendB;  // 0x28 igEnumMetaField
+ BLENDING_FUNCTION_ALPHA_PSX2::Value _blendC;  // 0x2C igEnumMetaField
+ BLENDING_FUNCTION_COLOR_PSX2::Value _blendD;  // 0x30 igEnumMetaField
 };
 }
 #endif

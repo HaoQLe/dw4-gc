@@ -3,11 +3,12 @@
 #ifndef META_IGFILE_H
 #define META_IGFILE_H
 #include <meta/igNamedObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igFile : igNamedObject {
  const char *_fileName;  // 0x0C igStringMetaField
- int _readMode;  // 0x10 igEnumMetaField
- int _openMode;  // 0x14 igEnumMetaField
+ ReadMode::Value _readMode;  // 0x10 igEnumMetaField
+ OpenMode::Value _openMode;  // 0x14 igEnumMetaField
  void *_fileHandle;  // 0x18 igRawRefMetaField
  int _optimalReadChunkSize;  // 0x1C igIntMetaField
  int _optimalWriteChunkSize;  // 0x20 igIntMetaField

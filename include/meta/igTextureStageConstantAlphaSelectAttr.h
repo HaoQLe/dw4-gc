@@ -3,9 +3,10 @@
 #ifndef META_IGTEXTURESTAGECONSTANTALPHASELECTATTR_H
 #define META_IGTEXTURESTAGECONSTANTALPHASELECTATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igTextureStageConstantAlphaSelectAttr : igVisualAttribute {
- int _constantSelect;  // 0x0C igEnumMetaField
+ IG_GFX_TEXTURE_CONSTANT_ALPHA_SELECTION::Value _constantSelect;  // 0x0C igEnumMetaField
  short _unitID;  // 0x10 igShortMetaField
  unsigned char unknown12[2];
 };

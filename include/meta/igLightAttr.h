@@ -3,10 +3,11 @@
 #ifndef META_IGLIGHTATTR_H
 #define META_IGLIGHTATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igVisualContext;
 struct igLightAttr : igVisualAttribute {
- int _lightType;  // 0x0C igEnumMetaField
+ IG_GFX_LIGHT_TYPE::Value _lightType;  // 0x0C igEnumMetaField
  int _lightId;  // 0x10 igIntMetaField
  float _position[3];  // 0x14 igVec3fMetaField
  float _ambient[4];  // 0x20 igVec4fMetaField

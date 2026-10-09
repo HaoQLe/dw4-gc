@@ -3,9 +3,10 @@
 #ifndef META_IGSHADEMODELATTR_H
 #define META_IGSHADEMODELATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igShadeModelAttr : igVisualAttribute {
- int _mode;  // 0x0C igEnumMetaField
+ IG_GFX_SHADING_MODE::Value _mode;  // 0x0C igEnumMetaField
 };
 }
 #endif

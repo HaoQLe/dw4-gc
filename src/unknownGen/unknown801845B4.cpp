@@ -133,7 +133,7 @@ public:
 extern "C" {
 void igOptStatistics_virtual94(){}
 void igOptStatistics_virtual90(int p0){
- reinterpret_cast<UnknownGenV801845B8_0 *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table)->s6C((void *)reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_sortColumnLeftToRight);
+ reinterpret_cast<UnknownGenV801845B8_0 *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table)->s6C((void *)(int)reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_sortColumnLeftToRight);
  reinterpret_cast<UnknownGenV801845B8_1 *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table)->s70((void *)reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_sortColumn);
  reinterpret_cast<UnknownGenV801845B8_2 *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table)->s74(reinterpret_cast<Meta::igOptInterface *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_optInterface)->_logInterface);
 }

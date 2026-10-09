@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void beModelCtrlInfoWork_register();
 void beNDMWMdlItemInfoWork_fieldInit();
 void *beNDMWMdlItemInfoWork_getMeta();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void __dl__FPv(void *);
 void fn_803250AC();
 void *fn_80338A20();
 void fn_8033A934();

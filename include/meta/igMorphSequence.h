@@ -3,6 +3,7 @@
 #ifndef META_IGMORPHSEQUENCE_H
 #define META_IGMORPHSEQUENCE_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igMorphSequenceDataList;
 struct igUnsignedIntList;
@@ -12,8 +13,8 @@ struct igMorphSequence : igObject {
  int _lastKey;  // 0x10 igIntMetaField
  bool _unifTime;  // 0x14 igBoolMetaField
  unsigned char unknown15[3];
- int _playMode;  // 0x18 igEnumMetaField
- int _interpolationMethod;  // 0x1C igEnumMetaField
+ igMorphSequence_PLAY_MODE::Value _playMode;  // 0x18 igEnumMetaField
+ INTERPOLATION_METHOD::Value _interpolationMethod;  // 0x1C igEnumMetaField
  int _coefCount;  // 0x20 igIntMetaField
  igMorphSequenceDataList *_coefList;  // 0x24 igObjectRefMetaField
  float _startTime;  // 0x28 igFloatMetaField

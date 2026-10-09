@@ -2,8 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800904A0(void *,int);
 void __dl__FPv(void *);
+void fn_800904A0(void *,int);
 extern char lbl_804701F8[];
 }
 extern "C" {

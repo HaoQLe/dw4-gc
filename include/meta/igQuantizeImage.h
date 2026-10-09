@@ -3,13 +3,14 @@
 #ifndef META_IGQUANTIZEIMAGE_H
 #define META_IGQUANTIZEIMAGE_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igCBBoxList;
 struct igImageHistogramBase;
 struct igQuantizeImage : igObject {
  igCBBoxList *_bboxList;  // 0x08 igObjectRefMetaField
  igImageHistogramBase *_histogram;  // 0x0C igObjectRefMetaField
- int _phase;  // 0x10 igEnumMetaField
+ igQuantizeImagePhaseEnum::Value _phase;  // 0x10 igEnumMetaField
  void *_errorLimit;  // 0x14 igMemoryRefMetaField
 };
 }

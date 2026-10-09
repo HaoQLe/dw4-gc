@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void beBaseInfoRam_register();
 void beNDMWStatusInfoRam_fieldInit();
 void *beNDMWStatusInfoRam_getMeta();
 void beNDMWStatusInfoRam_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void __dl__FPv(void *);
 void *fn_802B2B2C();
 void fn_803250AC();
 extern char lbl_804536C8[];

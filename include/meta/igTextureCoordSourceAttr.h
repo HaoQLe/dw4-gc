@@ -3,9 +3,10 @@
 #ifndef META_IGTEXTURECOORDSOURCEATTR_H
 #define META_IGTEXTURECOORDSOURCEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igTextureCoordSourceAttr : igVisualAttribute {
- int _mode;  // 0x0C igEnumMetaField
+ IG_GFX_TEXTURE_COORD_SOURCE::Value _mode;  // 0x0C igEnumMetaField
  int _texCoordIndex;  // 0x10 igIntMetaField
  int _unitID;  // 0x14 igIntMetaField
 };

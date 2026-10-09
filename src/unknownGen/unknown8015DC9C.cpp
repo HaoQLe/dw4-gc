@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void *fn_80053F28(void *);
 void *fn_80054094(void *,void *);
 void *fn_80054140(int);
-void __dl__FPv(void *);
 void *fn_80188328(void *,void *,void *,void *);
 extern void *lbl_80562140;
 extern void *lbl_80564490;

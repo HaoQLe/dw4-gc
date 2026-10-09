@@ -3,15 +3,16 @@
 #ifndef META_IGSTENCILFUNCTIONATTR_H
 #define META_IGSTENCILFUNCTIONATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igStencilFunctionAttr : igVisualAttribute {
  unsigned int _refVal;  // 0x0C igUnsignedIntMetaField
- int _func;  // 0x10 igEnumMetaField
+ IG_GFX_STENCIL_FUNCTION::Value _func;  // 0x10 igEnumMetaField
  unsigned int _writeMask;  // 0x14 igUnsignedIntMetaField
  unsigned int _readMask;  // 0x18 igUnsignedIntMetaField
- int _stenFailOp;  // 0x1C igEnumMetaField
- int _stenPassZPassOp;  // 0x20 igEnumMetaField
- int _stenPassZFailOp;  // 0x24 igEnumMetaField
+ IG_GFX_STENCIL_OPERATION::Value _stenFailOp;  // 0x1C igEnumMetaField
+ IG_GFX_STENCIL_OPERATION::Value _stenPassZPassOp;  // 0x20 igEnumMetaField
+ IG_GFX_STENCIL_OPERATION::Value _stenPassZFailOp;  // 0x24 igEnumMetaField
 };
 }
 #endif

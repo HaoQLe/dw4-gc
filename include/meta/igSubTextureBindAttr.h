@@ -3,10 +3,11 @@
 #ifndef META_IGSUBTEXTUREBINDATTR_H
 #define META_IGSUBTEXTUREBINDATTR_H
 #include <meta/igTextureBindAttr.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igSubTextureBindAttr : igTextureBindAttr {
- int _wrapS;  // 0x14 igEnumMetaField
- int _wrapT;  // 0x18 igEnumMetaField
+ IG_GFX_TEXTURE_WRAP::Value _wrapS;  // 0x14 igEnumMetaField
+ IG_GFX_TEXTURE_WRAP::Value _wrapT;  // 0x18 igEnumMetaField
  unsigned int _minU;  // 0x1C igUnsignedIntMetaField
  unsigned int _minV;  // 0x20 igUnsignedIntMetaField
  unsigned int _maxU;  // 0x24 igUnsignedIntMetaField

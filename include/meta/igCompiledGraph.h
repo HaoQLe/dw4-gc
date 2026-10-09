@@ -3,6 +3,7 @@
 #ifndef META_IGCOMPILEDGRAPH_H
 #define META_IGCOMPILEDGRAPH_H
 #include <meta/igGroup.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igAttrList;
 struct igBlendListRecordList;
@@ -18,14 +19,14 @@ struct igCompiledGraph : igGroup {
  igNonRefCountedAttrList *_destMvmAttrPtr;  // 0x28 igObjectRefMetaField
  igNonRefCountedAttrList *_instMvmAttrPtr;  // 0x2C igObjectRefMetaField
  igBlendListRecordList *_bRecList;  // 0x30 igObjectRefMetaField
- int _priorStateUsage;  // 0x34 igEnumMetaField
+ igCompiledGraph_PriorStateUsage::Value _priorStateUsage;  // 0x34 igEnumMetaField
  igNonRefCountedAttrList *_destRestoreAttrPtr;  // 0x38 igObjectRefMetaField
  igNonRefCountedAttrList *_restoreAttrs;  // 0x3C igObjectRefMetaField
  igAttrList *_dupDefaultAttrs;  // 0x40 igObjectRefMetaField
  igModelViewMatrixAttrList *_mvmList;  // 0x44 igObjectRefMetaField
  igCompiledTransformList *_xformInfoList;  // 0x48 igObjectRefMetaField
  int _moCount;  // 0x4C igIntMetaField
- int _lastCompileResult;  // 0x50 igEnumMetaField
+ igCompileError::Value _lastCompileResult;  // 0x50 igEnumMetaField
  igMatrixOptStateAttr *_matOptStateAttr;  // 0x54 igObjectRefMetaField
  igEnvironmentMapShader2List *_environmentShader2List;  // 0x58 igObjectRefMetaField
 };

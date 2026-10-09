@@ -3,12 +3,13 @@
 #ifndef META_IGCOLLAPSENODE_H
 #define META_IGCOLLAPSENODE_H
 #include <meta/igItemBase.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igNode;
 struct igCollapseNode : igItemBase {
  igNode *_node;  // 0x20 igObjectRefMetaField
  igNode *_replaceNode;  // 0x24 igObjectRefMetaField
- int _collapse;  // 0x28 igEnumMetaField
+ HIERARCHY_COLLAPSE::Value _collapse;  // 0x28 igEnumMetaField
 };
 }
 #endif

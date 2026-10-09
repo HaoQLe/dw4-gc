@@ -4,11 +4,12 @@
 #ifndef META_IGENBAYAANIMATIONSOURCE_H
 #define META_IGENBAYAANIMATIONSOURCE_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igEnbayaAnimationSource : igObject {
  unsigned char _interpolationMethod[3];  // 0x08 igUnsignedCharArrayMetaField
  unsigned char _drivenChannels;  // 0x0B igUnsignedCharMetaField
- int _playMode;  // 0x0C igEnumMetaField
+ igEnbayaAnimationSource_PLAY_MODE::Value _playMode;  // 0x0C igEnumMetaField
  float _lastUpdateTimef;  // 0x10 igFloatMetaField
  unsigned char unknown14[4];
  long long _lastUpdateTime;  // 0x18 igLongMetaField

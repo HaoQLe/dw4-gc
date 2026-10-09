@@ -3,9 +3,10 @@
 #ifndef META_IGCAMERA_H
 #define META_IGCAMERA_H
 #include <meta/igNode.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igCamera : igNode {
- int _cameraType;  // 0x1C igEnumMetaField
+ CameraType::Value _cameraType;  // 0x1C igEnumMetaField
  bool _deadfield1;  // 0x20 igBoolMetaField
  unsigned char unknown21[3];
  float _deadfield2;  // 0x24 igFloatMetaField

@@ -3,6 +3,7 @@
 #ifndef META_IGSTATISTICSITEM_H
 #define META_IGSTATISTICSITEM_H
 #include <meta/igView.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igDefaultAspect;
 struct igGuiComponent;
@@ -21,7 +22,7 @@ struct igStatisticsItem : igView {
  igDefaultAspect *_aspect;  // 0x28 igObjectRefMetaField
  igTextElement *_textElement;  // 0x2C igObjectRefMetaField
  igViewerStatisticsManager *_manager;  // 0x30 igObjectRefMetaField
- int _statId;  // 0x34 igEnumMetaField
+ IG_GFX_STATISTIC::Value _statId;  // 0x34 igEnumMetaField
  int _otherId;  // 0x38 igIntMetaField
 };
 }

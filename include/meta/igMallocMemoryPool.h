@@ -3,6 +3,7 @@
 #ifndef META_IGMALLOCMEMORYPOOL_H
 #define META_IGMALLOCMEMORYPOOL_H
 #include <meta/igMemoryPool.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igEventTracker;
 struct igSemaphore;
@@ -17,7 +18,7 @@ struct igMallocMemoryPool : igMemoryPool {
  unsigned short _alignment;  // 0x90 igUnsignedShortMetaField
  unsigned char unknown92[2];
  igEventTracker *_eventTracker;  // 0x94 igObjectRefMetaField
- int _messageLevel;  // 0x98 igEnumMetaField
+ igMallocMemoryPool_MessageLevel::Value _messageLevel;  // 0x98 igEnumMetaField
  int _poolOptionFlags;  // 0x9C igIntMetaField
 };
 }

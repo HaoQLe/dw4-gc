@@ -40,7 +40,7 @@ void igRenderDestinationAttr_virtual60(int p0,int p1){
   value3=igGamecubeVisualContext_virtualC8((void *)p1);
   reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iPrevRDHandle=(int)value3;
   if((int)(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iRDHandle<0){
-   if((int)(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iCreateMode!=1){
+   if((int)(int)(void *)(int)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iCreateMode!=1){
     igGamecubeVisualContext_virtualD4((void *)p1,(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iPrevRDHandle,&local1,&local0);
     reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iSizeX=(int)local1;
     reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iSizeY=(int)local0;
@@ -53,7 +53,7 @@ void igRenderDestinationAttr_virtual60(int p0,int p1){
     value7=igGamecubeVisualContext_virtualE4((void *)p1,(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iPrevRDHandle);
     reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iStencilBitCount=(int)value7;
    }
-   if((int)(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iCreateMode==2){
+   if((int)(int)(void *)(int)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iCreateMode==2){
     reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iRDHandle=(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iPrevRDHandle;
    } else {
     local2.m14=(int)(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iSizeX;
@@ -62,7 +62,7 @@ void igRenderDestinationAttr_virtual60(int p0,int p1){
     local2.m20=(int)(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iAlphaBitCount;
     local2.m24=(int)(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iDepthBitCount;
     local2.m28=(int)(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iStencilBitCount;
-    local2.m10=(int)(int)(void *)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iType;
+    local2.m10=(int)(int)(void *)(int)reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iType;
     value8=igGamecubeVisualContext_virtualB8((void *)p1,&local2);
     reinterpret_cast<Meta::igRenderDestinationAttr *>((void *)p0)->_iRDHandle=(int)value8;
    }

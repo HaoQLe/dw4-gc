@@ -3,6 +3,7 @@
 #ifndef META_IGPOINTSPRITEEXT_H
 #define META_IGPOINTSPRITEEXT_H
 #include <meta/igContextExt.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igVertexArray;
 struct igVisualContext;
@@ -12,7 +13,7 @@ struct igPointSpriteExt : igContextExt {
  float _spriteSize;  // 0x1C igFloatMetaField
  bool _inSpriteMode;  // 0x20 igBoolMetaField
  unsigned char unknown21[3];
- int _spriteSizeSpace;  // 0x24 igEnumMetaField
+ IG_GFX_SPRITE_SIZE_SPACE::Value _spriteSizeSpace;  // 0x24 igEnumMetaField
  float _previousModelview[16];  // 0x28 igMatrix44fMetaField
  float _previousProjection[16];  // 0x68 igMatrix44fMetaField
  float _orthoMatrix[16];  // 0xA8 igMatrix44fMetaField

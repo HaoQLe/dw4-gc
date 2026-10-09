@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void beMessenger_fieldInit();
 void *beMessenger_getMeta();
 void beMessenger_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void __dl__FPv(void *);
 void *fn_80284550();
 void fn_802B1AC8();
 void igInfoManager_register();

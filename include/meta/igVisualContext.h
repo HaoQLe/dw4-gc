@@ -4,6 +4,7 @@
 #ifndef META_IGVISUALCONTEXT_H
 #define META_IGVISUALCONTEXT_H
 #include <meta/igContext.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igCustomStateCollectionList;
 struct igCustomStateFieldList;
@@ -32,7 +33,7 @@ struct igVisualContext : igContext {
  unsigned int _inverseTransposeCount;  // 0x58 igUnsignedIntMetaField
  unsigned char unknown5C[4];
  long long _renderingTime;  // 0x60 igLongMetaField
- int _scissorType;  // 0x68 igEnumMetaField
+ IG_GFX_SCISSOR_TYPE::Value _scissorType;  // 0x68 igEnumMetaField
  float _viewMatrixHint[16];  // 0x6C igMatrix44fMetaField
  float _viewMatrixInverse[16];  // 0xAC igMatrix44fMetaField
  bool _viewMatrixDirty;  // 0xEC igBoolMetaField

@@ -3,18 +3,19 @@
 #ifndef META_IGRENDERDESTINATIONATTR_H
 #define META_IGRENDERDESTINATIONATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igTextureAttr;
 struct igVisualContext;
 struct igRenderDestinationAttr : igVisualAttribute {
- int _iCreateMode;  // 0x0C igEnumMetaField
- int _iTexCreateMode;  // 0x10 igEnumMetaField
+ RENDERDESTINATION_CREATE_MODE::Value _iCreateMode;  // 0x0C igEnumMetaField
+ RENDERDESTINATION_TEXTURE_CREATE_MODE::Value _iTexCreateMode;  // 0x10 igEnumMetaField
  int _iRDHandle;  // 0x14 igIntMetaField
  bool _bEnabled;  // 0x18 igBoolMetaField
  unsigned char unknown19[3];
  int _iPrevRDHandle;  // 0x1C igIntMetaField
  igTextureAttr *_pTex;  // 0x20 igObjectRefMetaField
- int _iType;  // 0x24 igEnumMetaField
+ IG_GFX_RENDERDESTINATION_TYPE::Value _iType;  // 0x24 igEnumMetaField
  int _iSizeX;  // 0x28 igIntMetaField
  int _iSizeY;  // 0x2C igIntMetaField
  int _iColorBitCount;  // 0x30 igIntMetaField

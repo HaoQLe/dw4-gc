@@ -3,11 +3,12 @@
 #ifndef META_IGHOTKEYBINDING_H
 #define META_IGHOTKEYBINDING_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igAction;
 struct igHotKeyBinding : igObject {
- int _key;  // 0x08 igEnumMetaField
- int _button;  // 0x0C igEnumMetaField
+ KEY_VALUES::Value _key;  // 0x08 igEnumMetaField
+ BUTTONS::Value _button;  // 0x0C igEnumMetaField
  igAction *_action;  // 0x10 igObjectRefMetaField
 };
 }

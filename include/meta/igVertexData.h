@@ -3,11 +3,12 @@
 #ifndef META_IGVERTEXDATA_H
 #define META_IGVERTEXDATA_H
 #include <meta/igNamedObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igDataList;
 struct igVertexData : igNamedObject {
  igDataList *_data;  // 0x0C igObjectRefMetaField
- int _componentType;  // 0x10 igEnumMetaField
+ IG_VERTEX_COMPONENT_TYPE::Value _componentType;  // 0x10 igEnumMetaField
  unsigned int _componentIndex;  // 0x14 igUnsignedIntMetaField
  unsigned int _componentSize;  // 0x18 igUnsignedIntMetaField
  int _userID;  // 0x1C igIntMetaField

@@ -904,11 +904,11 @@ void igScissorAttr_virtual68(int p0,int p1){
  reinterpret_cast<UnknownGenV800C2978_2 *>((void *)p1)->s2F4((reinterpret_cast<char *>((void *)p0)+16),(reinterpret_cast<char *>((void *)p0)+20),(reinterpret_cast<char *>((void *)p0)+24),(reinterpret_cast<char *>((void *)p0)+28));
 }
 void igScissorTypeAttr_virtual60(int p0,int p1){
- reinterpret_cast<UnknownGenV800C29BC_3 *>((void *)p1)->s2F8((void *)reinterpret_cast<Meta::igScissorTypeAttr *>((void *)p0)->_type,(void *)p0);
+ reinterpret_cast<UnknownGenV800C29BC_3 *>((void *)p1)->s2F8((void *)(int)reinterpret_cast<Meta::igScissorTypeAttr *>((void *)p0)->_type,(void *)p0);
 }
 void igScissorTypeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C29F4_4 *>((void *)p1)->s2FC((void *)p1);
- reinterpret_cast<Meta::igScissorTypeAttr *>((void *)p0)->_type=(int)value0;
+ reinterpret_cast<Meta::igScissorTypeAttr *>((void *)p0)->_type=(Meta::IG_GFX_SCISSOR_TYPE::Value)(int)value0;
 }
 int igGamecubeVisualContext_virtual2FC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+104);}
 }

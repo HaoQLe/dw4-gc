@@ -3,13 +3,14 @@
 #ifndef META_IGOPTSTATISTICS_H
 #define META_IGOPTSTATISTICS_H
 #include <meta/igOptVisitObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igDataTable;
 struct igOptStatistics : igOptVisitObject {
  const char *_separatorString;  // 0x2C igStringMetaField
  int _columnMaxWidth;  // 0x30 igIntMetaField
  int _showColumnsMask;  // 0x34 igIntMetaField
- int _sortColumnLeftToRight;  // 0x38 igEnumMetaField
+ COLUMNSORT_CRITERIA::Value _sortColumnLeftToRight;  // 0x38 igEnumMetaField
  int _sortColumn;  // 0x3C igIntMetaField
  igDataTable *_table;  // 0x40 igObjectRefMetaField
 };

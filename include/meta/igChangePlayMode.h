@@ -3,9 +3,10 @@
 #ifndef META_IGCHANGEPLAYMODE_H
 #define META_IGCHANGEPLAYMODE_H
 #include <meta/igOptVisitObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igChangePlayMode : igOptVisitObject {
- int _playMode;  // 0x2C igEnumMetaField
+ igChangePlayMode_PLAY_MODE::Value _playMode;  // 0x2C igEnumMetaField
 };
 }
 #endif

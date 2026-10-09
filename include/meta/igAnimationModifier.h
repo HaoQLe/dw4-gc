@@ -3,12 +3,13 @@
 #ifndef META_IGANIMATIONMODIFIER_H
 #define META_IGANIMATIONMODIFIER_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igTransform;
 struct igAnimationModifier : igObject {
  int _boneIndex;  // 0x08 igIntMetaField
  igTransform *_transform;  // 0x0C igObjectRefMetaField
- int _type;  // 0x10 igEnumMetaField
+ ModifierType::Value _type;  // 0x10 igEnumMetaField
 };
 }
 #endif

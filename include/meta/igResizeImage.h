@@ -3,6 +3,7 @@
 #ifndef META_IGRESIZEIMAGE_H
 #define META_IGRESIZEIMAGE_H
 #include <meta/igOptVisitObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igResizeImage : igOptVisitObject {
  float _widthFactor;  // 0x2C igFloatMetaField
@@ -14,7 +15,7 @@ struct igResizeImage : igOptVisitObject {
  bool _resizeMipmap;  // 0x44 igBoolMetaField
  bool _useNextPowerOfTwo;  // 0x45 igBoolMetaField
  unsigned char unknown46[2];
- int _filterType;  // 0x48 igEnumMetaField
+ FilterType::Value _filterType;  // 0x48 igEnumMetaField
 };
 }
 #endif

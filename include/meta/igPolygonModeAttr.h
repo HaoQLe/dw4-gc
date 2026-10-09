@@ -3,9 +3,10 @@
 #ifndef META_IGPOLYGONMODEATTR_H
 #define META_IGPOLYGONMODEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igPolygonModeAttr : igVisualAttribute {
- int _mode;  // 0x0C igEnumMetaField
+ IG_GFX_RENDER_MODE::Value _mode;  // 0x0C igEnumMetaField
 };
 }
 #endif

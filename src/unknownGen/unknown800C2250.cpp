@@ -47,7 +47,7 @@ void igPointSpriteSizeAttr_virtual68(int p0,int p1,int p2,int p3,int p4,int p5){
  }
 }
 void igPolygonModeAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual3BC((void *)p1,(int)(int)((void *)reinterpret_cast<Meta::igPolygonModeAttr *>((void *)p0)->_mode));
+ igGamecubeVisualContext_virtual3BC((void *)p1,(int)(int)((void *)(int)reinterpret_cast<Meta::igPolygonModeAttr *>((void *)p0)->_mode));
 }
 }
 #pragma pop

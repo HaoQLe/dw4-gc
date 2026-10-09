@@ -3,9 +3,10 @@
 #ifndef META_IGALPHAFUNCTIONATTR_H
 #define META_IGALPHAFUNCTIONATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igAlphaFunctionAttr : igVisualAttribute {
- int _func;  // 0x0C igEnumMetaField
+ IG_GFX_ALPHA_FUNCTION::Value _func;  // 0x0C igEnumMetaField
  float _refValue;  // 0x10 igFloatMetaField
 };
 }

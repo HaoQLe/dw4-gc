@@ -3,6 +3,7 @@
 #ifndef META_IGGEOMETRYATTR_H
 #define META_IGGEOMETRYATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igIndexArray;
 struct igUnsignedIntList;
@@ -11,7 +12,7 @@ struct igVertexArray;
 struct igGeometryAttr : igVisualAttribute {
  igVertexArray *_vertexArray;  // 0x0C igObjectRefMetaField
  igIndexArray *_indexArray;  // 0x10 igObjectRefMetaField
- int _primType;  // 0x14 igEnumMetaField
+ IG_GFX_DRAW::Value _primType;  // 0x14 igEnumMetaField
  unsigned int _numPrims;  // 0x18 igUnsignedIntMetaField
  unsigned int _offset;  // 0x1C igUnsignedIntMetaField
  igUnsignedIntList *_primLengths;  // 0x20 igObjectRefMetaField

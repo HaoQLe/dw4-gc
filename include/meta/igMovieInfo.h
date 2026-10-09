@@ -3,6 +3,7 @@
 #ifndef META_IGMOVIEINFO_H
 #define META_IGMOVIEINFO_H
 #include <meta/igInfo.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igImage;
 struct igMovieCodec;
@@ -11,7 +12,7 @@ struct igTextureBindAttrList;
 struct igTextureList;
 struct igMovieInfo : igInfo {
  const char *_path;  // 0x14 igStringMetaField
- int _type;  // 0x18 igEnumMetaField
+ IG_MOVIE_TYPE::Value _type;  // 0x18 igEnumMetaField
  bool _loop;  // 0x1C igBoolMetaField
  unsigned char unknown1D[3];
  int _width;  // 0x20 igIntMetaField
@@ -19,17 +20,17 @@ struct igMovieInfo : igInfo {
  int _audioChannel;  // 0x28 igIntMetaField
  int _audioVolume;  // 0x2C igIntMetaField
  igTextureBindAttrList *_videoTextures;  // 0x30 igObjectRefMetaField
- int _minificationFilter;  // 0x34 igEnumMetaField
- int _magnificationFilter;  // 0x38 igEnumMetaField
+ IG_GFX_TEXTURE_FILTER::Value _minificationFilter;  // 0x34 igEnumMetaField
+ IG_GFX_TEXTURE_FILTER::Value _magnificationFilter;  // 0x38 igEnumMetaField
  int _tileWidth;  // 0x3C igIntMetaField
  int _tileHeight;  // 0x40 igIntMetaField
  const char *_codecType;  // 0x44 igStringMetaField
  igMovieCodec *_codec;  // 0x48 igObjectRefMetaField
- int _state;  // 0x4C igEnumMetaField
+ IG_MOVIE_STATE::Value _state;  // 0x4C igEnumMetaField
  igSceneInfo *_sceneInfo;  // 0x50 igObjectRefMetaField
  igImage *_runtimeImage;  // 0x54 igObjectRefMetaField
  igTextureList *_runtimeTextures;  // 0x58 igObjectRefMetaField
- int _imageFormat;  // 0x5C igEnumMetaField
+ IG_GFX_TEXTURE_FORMAT::Value _imageFormat;  // 0x5C igEnumMetaField
  void *_userdata;  // 0x60 igObjectRefMetaField
  int _bitrate;  // 0x64 igIntMetaField
 };

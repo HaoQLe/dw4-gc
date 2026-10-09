@@ -3,9 +3,10 @@
 #ifndef META_IGDEPTHFUNCTIONATTR_H
 #define META_IGDEPTHFUNCTIONATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igDepthFunctionAttr : igVisualAttribute {
- int _func;  // 0x0C igEnumMetaField
+ IG_GFX_DEPTH_TEST_FUNCTION::Value _func;  // 0x0C igEnumMetaField
 };
 }
 #endif

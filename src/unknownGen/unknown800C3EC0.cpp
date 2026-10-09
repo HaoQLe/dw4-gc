@@ -241,7 +241,7 @@ void fn_800C3F78(int p0,int p1,int p2){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=1;
 }
 void *igTextureFunctionAttr_virtual80(int p0,int p1){
- reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_type=(int)(void *)p1;
+ reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_type=(Meta::TEXTURE_STAGE_TYPE::Value)(int)(void *)p1;
  reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_call_state=0;
  return (void *)p0;
 }

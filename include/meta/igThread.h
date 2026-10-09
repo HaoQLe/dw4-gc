@@ -3,12 +3,13 @@
 #ifndef META_IGTHREAD_H
 #define META_IGTHREAD_H
 #include <meta/igNamedObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igThread : igNamedObject {
- int _type;  // 0x0C igEnumMetaField
- int _scope;  // 0x10 igEnumMetaField
- int _state;  // 0x14 igEnumMetaField
- int _priority;  // 0x18 igEnumMetaField
+ Type::Value _type;  // 0x0C igEnumMetaField
+ Scope::Value _scope;  // 0x10 igEnumMetaField
+ State::Value _state;  // 0x14 igEnumMetaField
+ Priority::Value _priority;  // 0x18 igEnumMetaField
  void *_arg;  // 0x1C igRawRefMetaField
  void *_stack;  // 0x20 igRawRefMetaField
  unsigned int _stackSize;  // 0x24 igUnsignedIntMetaField

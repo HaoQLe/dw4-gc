@@ -3,6 +3,7 @@
 #ifndef META_IGDEFAULTASPECTELEMENT_H
 #define META_IGDEFAULTASPECTELEMENT_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igColorChanger;
 struct igGeometryElement;
@@ -11,7 +12,7 @@ struct igDefaultAspectElement : igObject {
  igGeometryElement *_geometryElement;  // 0x08 igObjectRefMetaField
  igColorChanger *_colorChanger;  // 0x0C igObjectRefMetaField
  igTransform *_transform;  // 0x10 igObjectRefMetaField
- int _fitMode;  // 0x14 igEnumMetaField
+ FIT_MODE::Value _fitMode;  // 0x14 igEnumMetaField
  float _hMargin;  // 0x18 igFloatMetaField
  float _vMargin;  // 0x1C igFloatMetaField
 };

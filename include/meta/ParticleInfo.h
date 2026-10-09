@@ -5,6 +5,7 @@
 #ifndef META_PARTICLEINFO_H
 #define META_PARTICLEINFO_H
 #include <meta/igSceneInfo.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igGeometry;
 struct igImage;
@@ -14,15 +15,15 @@ struct ParticleInfo : igSceneInfo {
  float _lifetime;  // 0x3C0 igFloatMetaField
  int _count;  // 0x3C4 igIntMetaField
  igImage *_texture;  // 0x3C8 igObjectRefMetaField
- int _alphaType;  // 0x3CC igEnumMetaField
- int _alphaFunction;  // 0x3D0 igEnumMetaField
+ IG_PARTICLE_ALPHA_TYPE::Value _alphaType;  // 0x3CC igEnumMetaField
+ IG_PARTICLE_ALPHA_FUNCTION::Value _alphaFunction;  // 0x3D0 igEnumMetaField
  bool _sizeLock;  // 0x3D4 igBoolMetaField
  bool _sizeWorld;  // 0x3D5 igBoolMetaField
  unsigned char unknown3D6[2];
- int _timeType;  // 0x3D8 igEnumMetaField
+ IG_PARTICLE_TIME_TYPE::Value _timeType;  // 0x3D8 igEnumMetaField
  bool _particleScene;  // 0x3DC igBoolMetaField
  unsigned char unknown3DD[3];
- int _shape;  // 0x3E0 igEnumMetaField
+ IG_PARTICLE_EMITTER_TYPE::Value _shape;  // 0x3E0 igEnumMetaField
  bool _maximize;  // 0x3E4 igBoolMetaField
  unsigned char unknown3E5[3];
  int _xImageCount;  // 0x3E8 igIntMetaField

@@ -3,6 +3,7 @@
 #ifndef META_IGMACROTEXTURESTRIP_H
 #define META_IGMACROTEXTURESTRIP_H
 #include <meta/igOptVisitObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igMacrotextureStrip : igOptVisitObject {
  const char *_hashString;  // 0x2C igStringMetaField
@@ -10,8 +11,8 @@ struct igMacrotextureStrip : igOptVisitObject {
  bool _ignoreUVRepeat;  // 0x34 igBoolMetaField
  unsigned char unknown35[3];
  const char *_macroTextureName;  // 0x38 igStringMetaField
- int _magnificationFilter;  // 0x3C igEnumMetaField
- int _minificationFilter;  // 0x40 igEnumMetaField
+ IG_GFX_TEXTURE_FILTER::Value _magnificationFilter;  // 0x3C igEnumMetaField
+ IG_GFX_TEXTURE_FILTER::Value _minificationFilter;  // 0x40 igEnumMetaField
 };
 }
 #endif

@@ -278,13 +278,13 @@ void igTextureFunctionAttr_virtual60(int p0,int p1,int p2,int p3,int p4,int p5){
  reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_call_state=0;
  void *value0=lbl_80562B0C;
  if(value0){
-  value1=(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_functionType;
+  value1=(void *)(int)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_functionType;
   switch((int)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_call_state){
   case 0:
-   reinterpret_cast<UnknownGenV800C3FB4_4 *>(value0)->s78((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_type,(void *)p4,(void *)p5);
+   reinterpret_cast<UnknownGenV800C3FB4_4 *>(value0)->s78((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)(int)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_type,(void *)p4,(void *)p5);
   case 1:
-   reinterpret_cast<UnknownGenV800C3FB4_5 *>(lbl_80562B0C)->s80((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)0,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_arg0,(void *)0);
-   reinterpret_cast<UnknownGenV800C3FB4_6 *>(lbl_80562B0C)->s80((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)1,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_arg1,(void *)0);
+   reinterpret_cast<UnknownGenV800C3FB4_5 *>(lbl_80562B0C)->s80((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)0,(void *)(int)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_arg0,(void *)0);
+   reinterpret_cast<UnknownGenV800C3FB4_6 *>(lbl_80562B0C)->s80((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)1,(void *)(int)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_arg1,(void *)0);
   }
   reinterpret_cast<UnknownGenV800C3FB4_7 *>(lbl_80562B0C)->s7C((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_mode);
   return;

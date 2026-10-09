@@ -49,7 +49,7 @@ void *igSetRenderDestinationAttr_virtual70(int p0){
  }
 }
 void igShadeModelAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual38C((void *)p1,(int)(int)((void *)reinterpret_cast<Meta::igShadeModelAttr *>((void *)p0)->_mode));
+ igGamecubeVisualContext_virtual38C((void *)p1,(int)(int)((void *)(int)reinterpret_cast<Meta::igShadeModelAttr *>((void *)p0)->_mode));
 }
 }
 #pragma pop

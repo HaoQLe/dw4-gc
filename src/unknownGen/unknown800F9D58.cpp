@@ -159,7 +159,7 @@ void igGamecubePointSpriteExt_virtual80(int p0,int p1,int p2,int p3,int p4,int p
  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexArray *>(value0)->_usageFlags&0x10)){
   igPointSpriteExt_virtual80((void *)p0,(void *)p1,(void *)p2);
  } else {
-  if((int)(int)(void *)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
+  if((int)(int)(void *)(int)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
    reinterpret_cast<UnknownGenV800F9D58_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+392))->s11C((void *)0,(void *)p1,(void *)p2,value0,(void *)p5);
    return;
   } else {

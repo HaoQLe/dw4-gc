@@ -2,8 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *dtor_8040F21C(void *,int);
 void __dl__FPv(void *);
+void *dtor_8040F21C(void *,int);
 }
 extern "C" {
 UnknownGenHolder *dtor_80020BB8(UnknownGenHolder *object,short flags){

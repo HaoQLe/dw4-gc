@@ -3,13 +3,14 @@
 #ifndef META_IGANIMATIONSTATE_H
 #define META_IGANIMATIONSTATE_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igAnimation;
 struct igAnimationState : igObject {
  igAnimation *_animation;  // 0x08 igObjectRefMetaField
- int _combineMode;  // 0x0C igEnumMetaField
- int _transitionMode;  // 0x10 igEnumMetaField
- int _status;  // 0x14 igEnumMetaField
+ CombineMode::Value _combineMode;  // 0x0C igEnumMetaField
+ TransitionMode::Value _transitionMode;  // 0x10 igEnumMetaField
+ Status::Value _status;  // 0x14 igEnumMetaField
  igAnimationState *_baseState;  // 0x18 igObjectRefMetaField
  bool _new;  // 0x1C igBoolMetaField
  unsigned char unknown1D[3];

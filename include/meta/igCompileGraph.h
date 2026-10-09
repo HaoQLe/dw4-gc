@@ -3,9 +3,10 @@
 #ifndef META_IGCOMPILEGRAPH_H
 #define META_IGCOMPILEGRAPH_H
 #include <meta/igOptBase.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igCompileGraph : igOptBase {
- int _priorStateUsage;  // 0x28 igEnumMetaField
+ igCompileGraph_PriorStateUsage::Value _priorStateUsage;  // 0x28 igEnumMetaField
  const char *_nodeName;  // 0x2C igStringMetaField
 };
 }

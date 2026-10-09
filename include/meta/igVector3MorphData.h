@@ -3,6 +3,7 @@
 #ifndef META_IGVECTOR3MORPHDATA_H
 #define META_IGVECTOR3MORPHDATA_H
 #include <meta/igMorphData.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igFloatList;
 struct igPointerList;
@@ -16,7 +17,7 @@ struct igVector3MorphData : igMorphData {
  igPointerList *_activeTargets;  // 0x18 igObjectRefMetaField
  igFloatList *_activeCoeff;  // 0x1C igObjectRefMetaField
  int _activeCount;  // 0x20 igIntMetaField
- int _component;  // 0x24 igEnumMetaField
+ IG_GFX_VERTEX_COMPONENT::Value _component;  // 0x24 igEnumMetaField
  bool _dirty;  // 0x28 igBoolMetaField
  unsigned char unknown29[3];
 };

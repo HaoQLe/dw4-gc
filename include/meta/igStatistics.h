@@ -3,13 +3,14 @@
 #ifndef META_IGSTATISTICS_H
 #define META_IGSTATISTICS_H
 #include <meta/igOptBase.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igAllAttrStatistics;
 struct igAllNodeStatistics;
 struct igStatistics : igOptBase {
  igAllNodeStatistics *_nodeStatistics;  // 0x28 igObjectRefMetaField
  igAllAttrStatistics *_attrStatistics;  // 0x2C igObjectRefMetaField
- int _level;  // 0x30 igEnumMetaField
+ STATISTICS_VERBOSE::Value _level;  // 0x30 igEnumMetaField
 };
 }
 #endif

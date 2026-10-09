@@ -1615,7 +1615,7 @@ def _flow(name,rel,nparam_override,hints={}):
     if not mo: return None
     (nm,ct,tg),own,shadowed=mo
     if acc=='word':
-      if ct not in ('int','unsigned int','void *','const char *') and not (ct.startswith('Meta::') and ct.endswith(' *')): return None
+      if ct not in ('int','unsigned int','void *','const char *') and not (ct.startswith('Meta::') and ct.endswith((' *','::Value'))): return None
     elif ct!=acc: return None
     # A member a more derived class hides behind the same name is qualified with its own class.
     return 'reinterpret_cast<Meta::%s *>(%s)->%s%s'%(LAYOUTS[c]['ident'],ex(base),LAYOUTS[own]['ident']+'::' if shadowed else '',nm),ct
@@ -1651,6 +1651,7 @@ def _flow(name,rel,nparam_override,hints={}):
       if v in names_: return names_[v]
       m_=member(k[1],k[2],k[3] if len(k)>3 else 'word')
       if m_ and len(k)>3: return '(void *)(int)%s'%m_[0]
+      if m_ and m_[1].endswith('::Value'): return '(void *)(int)%s'%m_[0]      # an enum member
       if m_: return m_[0] if m_[1]=='void *' or m_[1].startswith('Meta::') else '(void *)%s'%m_[0]
       if len(k)>3: return '(void *)(int)*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
       return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
@@ -1900,7 +1901,7 @@ def _flow(name,rel,nparam_override,hints={}):
           lines.append(' %s=%s;'%(m_[0] if m_ else '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(ty,ex(x),off),fx(v)));continue
         e=ex(v)
         if m_ and ty=='void *':
-          lines.append(' %s=(%s)%s;'%(m_[0],m_[1],e));continue
+          lines.append(' %s=(%s)%s%s;'%(m_[0],m_[1],'(int)' if m_[1].endswith('::Value') else '',e));continue
         if ty=='void *' and vals[v][0]=='const': e='(void *)%s'%e
         elif ty!='void *' and vals[v][0]!='const': e='(%s)(int)%s'%(ty,e)
         lines.append(' %s=%s;'%(m_[0] if m_ else '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(ty,ex(x),off),e))

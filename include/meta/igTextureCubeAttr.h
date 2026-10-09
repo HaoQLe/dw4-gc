@@ -4,10 +4,11 @@
 #ifndef META_IGTEXTURECUBEATTR_H
 #define META_IGTEXTURECUBEATTR_H
 #include <meta/igTextureAttr.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igTextureCubeAttr : igTextureAttr {
  void * _cubeImage[6];  // 0x48 igObjectRefArrayMetaField
- int _applyType;  // 0x60 igEnumMetaField
+ ApplyType::Value _applyType;  // 0x60 igEnumMetaField
  int _unused;  // 0x64 igIntMetaField
 };
 }

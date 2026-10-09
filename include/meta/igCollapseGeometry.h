@@ -3,11 +3,12 @@
 #ifndef META_IGCOLLAPSEGEOMETRY_H
 #define META_IGCOLLAPSEGEOMETRY_H
 #include <meta/igOptBase.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igCollapseGeometry : igOptBase {
  bool _useNewMethod;  // 0x28 igBoolMetaField
  unsigned char unknown29[3];
- int _compactGeometry;  // 0x2C igEnumMetaField
+ COMPOUND_GEOMETRY::Value _compactGeometry;  // 0x2C igEnumMetaField
  unsigned int _fieldMaskMax;  // 0x30 igUnsignedIntMetaField
  unsigned int _fieldMaskMin;  // 0x34 igUnsignedIntMetaField
  const char *_traversalName;  // 0x38 igStringMetaField

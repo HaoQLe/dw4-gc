@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void __dl__FPv(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igGeometrySetAttr_fieldInit();

@@ -3,6 +3,7 @@
 #ifndef META_IGMORPHBASE_H
 #define META_IGMORPHBASE_H
 #include <meta/igObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igIndexArray;
 struct igIntListList;
@@ -19,7 +20,7 @@ struct igMorphBase : igObject {
  igIntListList *_posIndexList;  // 0x1C igObjectRefMetaField
  igVec3fListList *_normDispList;  // 0x20 igObjectRefMetaField
  igIntListList *_normIndexList;  // 0x24 igObjectRefMetaField
- int _primType;  // 0x28 igEnumMetaField
+ IG_GFX_DRAW::Value _primType;  // 0x28 igEnumMetaField
  unsigned int _numPrims;  // 0x2C igUnsignedIntMetaField
  unsigned int _offset;  // 0x30 igUnsignedIntMetaField
  igUnsignedIntList *_primLengths;  // 0x34 igObjectRefMetaField

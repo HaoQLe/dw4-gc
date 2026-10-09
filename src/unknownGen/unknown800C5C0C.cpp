@@ -33,11 +33,11 @@ public:
 };
 extern "C" {
 void igTextureStageConstantAlphaSelectAttr_virtual60(int p0,int p1){
- fn_80100094((void *)p1,(void *)(int)reinterpret_cast<Meta::igTextureStageConstantAlphaSelectAttr *>((void *)p0)->_unitID,(void *)reinterpret_cast<Meta::igTextureStageConstantAlphaSelectAttr *>((void *)p0)->_constantSelect);
+ fn_80100094((void *)p1,(void *)(int)reinterpret_cast<Meta::igTextureStageConstantAlphaSelectAttr *>((void *)p0)->_unitID,(void *)(int)reinterpret_cast<Meta::igTextureStageConstantAlphaSelectAttr *>((void *)p0)->_constantSelect);
 }
 void igTextureStageConstantAlphaSelectAttr_virtual68(int p0,int p1){
  void *value0=fn_801000D0((void *)p1,(void *)(int)reinterpret_cast<Meta::igTextureStageConstantAlphaSelectAttr *>((void *)p0)->_unitID);
- reinterpret_cast<Meta::igTextureStageConstantAlphaSelectAttr *>((void *)p0)->_constantSelect=(int)value0;
+ reinterpret_cast<Meta::igTextureStageConstantAlphaSelectAttr *>((void *)p0)->_constantSelect=(Meta::IG_GFX_TEXTURE_CONSTANT_ALPHA_SELECTION::Value)(int)value0;
 }
 void igTextureStageConstantAlphaSelectAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C5C74_0 *>((void *)p1)->s5C((void *)8,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);

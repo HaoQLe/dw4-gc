@@ -3,6 +3,7 @@
 #ifndef META_IGGEOMETRYSETATTR_H
 #define META_IGGEOMETRYSETATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igGeometryAttrList;
 struct igVisualContext;
@@ -10,7 +11,7 @@ struct igGeometrySetAttr : igVisualAttribute {
  igVisualContext *_vc;  // 0x0C igObjectRefMetaField
  int _renderListHandle;  // 0x10 igIntMetaField
  igGeometryAttrList *_geometryAttrList;  // 0x14 igObjectRefMetaField
- int _renderListState;  // 0x18 igEnumMetaField
+ ATTR_FLAGS::Value _renderListState;  // 0x18 igEnumMetaField
  bool _drawState;  // 0x1C igBoolMetaField
  unsigned char unknown1D[3];
 };

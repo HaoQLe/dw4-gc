@@ -159,7 +159,7 @@ public:
 extern "C" {
 void igPixelPipelineModeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C1FB8_0 *>((void *)p1)->s24C((void *)p1);
- reinterpret_cast<Meta::igPixelPipelineModeAttr *>((void *)p0)->_pipelineMode=(int)value0;
+ reinterpret_cast<Meta::igPixelPipelineModeAttr *>((void *)p0)->_pipelineMode=(Meta::IG_GFX_PIXEL_PIPELINE_MODE::Value)(int)value0;
 }
 void *igPixelShaderAttr_virtual70(int p0){
  reinterpret_cast<Meta::igPixelShaderAttr *>((void *)p0)->_iHandle=(int)-1;

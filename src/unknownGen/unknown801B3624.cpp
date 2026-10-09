@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void __dl__FPv(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
 void igGroup_register();

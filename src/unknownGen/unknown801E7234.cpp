@@ -26,7 +26,7 @@ void igGamecubeEnvironmentMapShader_virtual94(int p0,int p1){
   }
  }
  reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapTexture=(Meta::igTextureCubeAttr *)(void *)p1;
- reinterpret_cast<Meta::igTextureCubeAttr *>(reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapTexture)->_applyType=(int)0;
+ reinterpret_cast<Meta::igTextureCubeAttr *>(reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapTexture)->_applyType=(Meta::ApplyType::Value)(int)0;
  value3=fn_800C37E4(reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapTexture,0);
  if(!value3){
   fn_801E754C(reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapTexture);

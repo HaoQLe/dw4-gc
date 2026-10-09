@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void arkRegister__Q33Gap4Core10igRegistryFv();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
 void fn_8006665C(void *);
-void __dl__FPv(void *);
 extern char lbl_80471328[];
 extern void *lbl_80561658;
 extern void *lbl_805621F4;

@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void beBaseInfoManager_register();
 void beCameraCtrl_fieldInit();
 void *beCameraCtrl_getMeta();
 void beCameraCtrl_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void __dl__FPv(void *);
 void fn_802B1AC8();
 void *fn_802B381C();
 extern char lbl_80420C34[];

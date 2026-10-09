@@ -3,11 +3,12 @@
 #ifndef META_IGPLANE_H
 #define META_IGPLANE_H
 #include <meta/igVolume.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igPlane : igVolume {
  float _norm[3];  // 0x08 igVec3fMetaField
  float _offset;  // 0x14 igFloatMetaField
- int _octant;  // 0x18 igEnumMetaField
+ IG_MATH_SPATIAL_REGION::Value _octant;  // 0x18 igEnumMetaField
 };
 }
 #endif

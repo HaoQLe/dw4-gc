@@ -842,11 +842,11 @@ void igMaterialAttr_virtual68(int p0,int p1){
  reinterpret_cast<UnknownGenV800C12BC_9 *>((void *)p0)->s80();
 }
 void igMaterialModeAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual190((void *)p1,(int)(int)((void *)reinterpret_cast<Meta::igMaterialModeAttr *>((void *)p0)->_mode));
+ igGamecubeVisualContext_virtual190((void *)p1,(int)(int)((void *)(int)reinterpret_cast<Meta::igMaterialModeAttr *>((void *)p0)->_mode));
 }
 void igMaterialModeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C1404_10 *>((void *)p1)->s194((void *)p1);
- reinterpret_cast<Meta::igMaterialModeAttr *>((void *)p0)->_mode=(int)value0;
+ reinterpret_cast<Meta::igMaterialModeAttr *>((void *)p0)->_mode=(Meta::IG_GFX_MATERIAL_COMPONENT::Value)(int)value0;
 }
 void *fn_800C1444(int p0){
  *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+10)=(short)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76);

@@ -3,13 +3,14 @@
 #ifndef META_IGTIMESWITCH_H
 #define META_IGTIMESWITCH_H
 #include <meta/igGroup.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igSpecialDoubleList;
 struct igTimeSwitch : igGroup {
  igSpecialDoubleList *_timeList;  // 0x20 igObjectRefMetaField
  unsigned char unknown24[4];
  double _startTime;  // 0x28 igDoubleMetaField
- int _playMode;  // 0x30 igEnumMetaField
+ igTimeSwitch_PLAY_MODE::Value _playMode;  // 0x30 igEnumMetaField
  unsigned char unknown34[4];
 };
 }

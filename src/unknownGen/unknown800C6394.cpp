@@ -82,15 +82,15 @@ void *igStencilStateAttr_virtual58(){return lbl_805625CC;}
 void *igStencilFunctionAttr_virtual58(){return lbl_805625D4;}
 int igStencilFunctionAttr_virtual84(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
 void *igStencilFunctionAttr_virtual8C(int p0,int p1,int p2,int p3){
- reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenFailOp=(int)(void *)p1;
- reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZPassOp=(int)(void *)p2;
- reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZFailOp=(int)(void *)p3;
+ reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenFailOp=(Meta::IG_GFX_STENCIL_OPERATION::Value)(int)(void *)p1;
+ reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZPassOp=(Meta::IG_GFX_STENCIL_OPERATION::Value)(int)(void *)p2;
+ reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZFailOp=(Meta::IG_GFX_STENCIL_OPERATION::Value)(int)(void *)p3;
  return (void *)p0;
 }
 void *igStencilFunctionAttr_virtual90(int p0,int p1,int p2,int p3){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+0)=(void *)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenFailOp;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p2)+0)=(void *)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZPassOp;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p3)+0)=(void *)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZFailOp;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+0)=(void *)(int)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenFailOp;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p2)+0)=(void *)(int)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZPassOp;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p3)+0)=(void *)(int)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZFailOp;
  return (void *)p0;
 }
 void igStencilFunctionAttr_virtual94(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+24)=value;}

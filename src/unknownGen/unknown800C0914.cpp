@@ -28,7 +28,7 @@ void igLightAttr_virtual60(int p0,int p1){
  void *value7;
  value0=(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightId;
  if((int)(int)value0==-1){
-  value8=igGamecubeVisualContext_virtual134((void *)p1,(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightType);
+  value8=igGamecubeVisualContext_virtual134((void *)p1,(void *)(int)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightType);
   reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightId=(int)value8;
   if((unsigned int)p1!=0){
    value1=(void *)reinterpret_cast<Meta::igGamecubeVisualContext *>((void *)p1)->_refCount;
@@ -45,7 +45,7 @@ void igLightAttr_virtual60(int p0,int p1){
   igGamecubeVisualContext_virtual150((void *)p1,(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightId,(reinterpret_cast<char *>((void *)p0)+32));
   igGamecubeVisualContext_virtual148((void *)p1,(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightId,(reinterpret_cast<char *>((void *)p0)+48));
   igGamecubeVisualContext_virtual158((void *)p1,(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightId,(reinterpret_cast<char *>((void *)p0)+64));
-  switch((int)(int)(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightType){
+  switch((int)(int)(void *)(int)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightType){
   case 1:
    igGamecubeVisualContext_virtual180((void *)p1,(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightId,(reinterpret_cast<char *>((void *)p0)+100));
    break;
@@ -58,7 +58,7 @@ void igLightAttr_virtual60(int p0,int p1){
   }
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+144)=0;
  }
- value7=(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightType;
+ value7=(void *)(int)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightType;
  switch((int)(int)value7){
  case 0:
   igGamecubeVisualContext_virtual168((void *)p1,(void *)reinterpret_cast<Meta::igLightAttr *>((void *)p0)->_lightId,(reinterpret_cast<char *>((void *)p0)+80));

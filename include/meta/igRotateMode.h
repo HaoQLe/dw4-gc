@@ -3,6 +3,7 @@
 #ifndef META_IGROTATEMODE_H
 #define META_IGROTATEMODE_H
 #include <meta/igViewMode.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igRotateMode : igViewMode {
  float _distance;  // 0x4C igFloatMetaField
@@ -15,7 +16,7 @@ struct igRotateMode : igViewMode {
  float _joystickR[2];  // 0x64 igVec2fMetaField
  bool _constraint;  // 0x6C igBoolMetaField
  unsigned char unknown6D[3];
- int _constraintAxis;  // 0x70 igEnumMetaField
+ CONSTRAINT_AXIS::Value _constraintAxis;  // 0x70 igEnumMetaField
  bool _active;  // 0x74 igBoolMetaField
  bool _maya;  // 0x75 igBoolMetaField
  unsigned char unknown76[2];

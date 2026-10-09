@@ -3,6 +3,7 @@
 #ifndef META_IGVERTEXSTREAM_H
 #define META_IGVERTEXSTREAM_H
 #include <meta/igNamedObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igVertexDataList;
 struct igVertexStream : igNamedObject {
@@ -10,9 +11,9 @@ struct igVertexStream : igNamedObject {
  bool _isConfigured;  // 0x10 igBoolMetaField
  unsigned char unknown11[3];
  igVertexDataList *_vertexDataList;  // 0x14 igObjectRefMetaField
- int _accessMode;  // 0x18 igEnumMetaField
- int _primitive;  // 0x1C igEnumMetaField
- int _streamMode;  // 0x20 igEnumMetaField
+ IG_VERTEX_ACCESS_MODE::Value _accessMode;  // 0x18 igEnumMetaField
+ IG_GFX_DRAW::Value _primitive;  // 0x1C igEnumMetaField
+ IG_VERTEX_STREAM_COMPILE_MODE::Value _streamMode;  // 0x20 igEnumMetaField
 };
 }
 #endif

@@ -3,6 +3,7 @@
 #ifndef META_IGGENERATEMACROTEXTURE_H
 #define META_IGGENERATEMACROTEXTURE_H
 #include <meta/igOptTraverseGraph.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igGeometryListList;
 struct igRegistry;
@@ -10,7 +11,7 @@ struct igTextureList;
 struct igGenerateMacroTexture : igOptTraverseGraph {
  unsigned int _maxHeight;  // 0x34 igUnsignedIntMetaField
  unsigned int _maxWidth;  // 0x38 igUnsignedIntMetaField
- int _generatedTextureFormat;  // 0x3C igEnumMetaField
+ IG_GFX_TEXTURE_FORMAT::Value _generatedTextureFormat;  // 0x3C igEnumMetaField
  const char *_outputTextureName;  // 0x40 igStringMetaField
  bool _ignoreInstantiation;  // 0x44 igBoolMetaField
  bool _useRepeatMode;  // 0x45 igBoolMetaField

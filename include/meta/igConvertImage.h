@@ -3,12 +3,13 @@
 #ifndef META_IGCONVERTIMAGE_H
 #define META_IGCONVERTIMAGE_H
 #include <meta/igOptVisitObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igStringObj;
 struct igStringObjList;
 struct igConvertImage : igOptVisitObject {
- int _format;  // 0x2C igEnumMetaField
- int _order;  // 0x30 igEnumMetaField
+ IG_GFX_TEXTURE_FORMAT::Value _format;  // 0x2C igEnumMetaField
+ IG_GFX_IMAGE_ORDER::Value _order;  // 0x30 igEnumMetaField
  bool _preserveAlpha;  // 0x34 igBoolMetaField
  unsigned char unknown35[3];
  unsigned int _targetAlphaBits;  // 0x38 igUnsignedIntMetaField

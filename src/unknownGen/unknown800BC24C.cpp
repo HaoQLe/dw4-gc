@@ -220,7 +220,7 @@ void igTextureConstantAttr_fieldInit(){
  fn_800659C0(value0,lbl_8055E7BC,lbl_8055E7C4,lbl_8055E7CC,value1);
 }
 void igAlphaFunctionAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual36C((void *)p1,(void *)reinterpret_cast<Meta::igAlphaFunctionAttr *>((void *)p0)->_func);
+ igGamecubeVisualContext_virtual36C((void *)p1,(void *)(int)reinterpret_cast<Meta::igAlphaFunctionAttr *>((void *)p0)->_func);
  float value0=reinterpret_cast<Meta::igAlphaFunctionAttr *>((void *)p0)->_refValue;
  igGamecubeVisualContext_virtual374((void *)p1,value0);
 }

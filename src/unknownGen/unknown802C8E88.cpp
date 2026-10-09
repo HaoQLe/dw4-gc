@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void beBaseInfoData_register();
 void beModelCtrlInfoRamData_fieldInit();
 void *beModelCtrlInfoRamData_getMeta();
 void beModelCtrlInfoRamData_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void __dl__FPv(void *);
 void fn_802B1AC8();
 void *fn_802B8770();
 extern char lbl_8041EFBC[];

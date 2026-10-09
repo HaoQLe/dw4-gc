@@ -3,6 +3,7 @@
 #ifndef META_IGTEXTUREATTR_H
 #define META_IGTEXTUREATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igImage;
 struct igImageMipMapList;
@@ -11,13 +12,13 @@ struct igVisualContext;
 struct igTextureAttr : igVisualAttribute {
  igVisualContext *_vc;  // 0x0C igObjectRefMetaField
  unsigned int _bColor;  // 0x10 igUnsignedIntMetaField
- int _magFilter;  // 0x14 igEnumMetaField
- int _minFilter;  // 0x18 igEnumMetaField
- int _wrapS;  // 0x1C igEnumMetaField
- int _wrapT;  // 0x20 igEnumMetaField
+ IG_GFX_TEXTURE_FILTER::Value _magFilter;  // 0x14 igEnumMetaField
+ IG_GFX_TEXTURE_FILTER::Value _minFilter;  // 0x18 igEnumMetaField
+ IG_GFX_TEXTURE_WRAP::Value _wrapS;  // 0x1C igEnumMetaField
+ IG_GFX_TEXTURE_WRAP::Value _wrapT;  // 0x20 igEnumMetaField
  int _texId;  // 0x24 igIntMetaField
- int _mipmapMode;  // 0x28 igEnumMetaField
- int _source;  // 0x2C igEnumMetaField
+ IG_GFX_TEXTURE_MODE::Value _mipmapMode;  // 0x28 igEnumMetaField
+ IG_GFX_TEXTURE_SOURCE::Value _source;  // 0x2C igEnumMetaField
  igImage *_image;  // 0x30 igObjectRefMetaField
  bool _paging;  // 0x34 igBoolMetaField
  unsigned char unknown35[3];

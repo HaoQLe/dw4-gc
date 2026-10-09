@@ -3,11 +3,12 @@
 #ifndef META_IGTEXTUREADDRESSMODEATTR_H
 #define META_IGTEXTUREADDRESSMODEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igTextureAddressModeAttr : igVisualAttribute {
  bool _enabled;  // 0x0C igBoolMetaField
  unsigned char unknown0D[3];
- int _wrapS;  // 0x10 igEnumMetaField
+ IG_GFX_TEXTURE_WRAP::Value _wrapS;  // 0x10 igEnumMetaField
 };
 }
 #endif

@@ -301,11 +301,11 @@ public:
 extern "C" {
 void igVertexBlendStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
 void igVertexPipelineModeAttr_virtual60(int p0,int p1){
- reinterpret_cast<UnknownGenV800C5658_0 *>((void *)p1)->s23C((void *)reinterpret_cast<Meta::igVertexPipelineModeAttr *>((void *)p0)->_mode,(void *)p0);
+ reinterpret_cast<UnknownGenV800C5658_0 *>((void *)p1)->s23C((void *)(int)reinterpret_cast<Meta::igVertexPipelineModeAttr *>((void *)p0)->_mode,(void *)p0);
 }
 void igVertexPipelineModeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C5690_1 *>((void *)p1)->s240((void *)p1);
- reinterpret_cast<Meta::igVertexPipelineModeAttr *>((void *)p0)->_mode=(int)value0;
+ reinterpret_cast<Meta::igVertexPipelineModeAttr *>((void *)p0)->_mode=(Meta::IG_GFX_VERTEX_PIPELINE_MODE::Value)(int)value0;
 }
 void igVertexShaderAttr_virtual60(){}
 void igVertexShaderAttr_virtual70(int p0){

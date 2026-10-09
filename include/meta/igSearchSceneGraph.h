@@ -3,6 +3,7 @@
 #ifndef META_IGSEARCHSCENEGRAPH_H
 #define META_IGSEARCHSCENEGRAPH_H
 #include <meta/igNamedObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igIterateGraph;
 struct igMetaObject;
@@ -10,7 +11,7 @@ struct igSearchSceneGraph : igNamedObject {
  igIterateGraph *_iterateGraph;  // 0x0C igObjectRefMetaField
  const char *_searchString;  // 0x10 igStringMetaField
  igMetaObject *_searchMeta;  // 0x14 igObjectRefMetaField
- int _nextOfTypeCode;  // 0x18 igEnumMetaField
+ IG_APPLICATION_FIND_TYPE::Value _nextOfTypeCode;  // 0x18 igEnumMetaField
 };
 }
 #endif

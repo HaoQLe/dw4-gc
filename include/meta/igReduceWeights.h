@@ -3,6 +3,7 @@
 #ifndef META_IGREDUCEWEIGHTS_H
 #define META_IGREDUCEWEIGHTS_H
 #include <meta/igOptBase.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igFloatList;
 struct igReduceWeights : igOptBase {
@@ -11,8 +12,8 @@ struct igReduceWeights : igOptBase {
  unsigned char unknown2D[3];
  unsigned int _maxWeightCount;  // 0x30 igUnsignedIntMetaField
  float _threshold;  // 0x34 igFloatMetaField
- int _weightOptType;  // 0x38 igEnumMetaField
- int _createLod;  // 0x3C igEnumMetaField
+ REDUCE_WEIGHT_OPT_TYPE::Value _weightOptType;  // 0x38 igEnumMetaField
+ REDUCE_WEIGHT_CREATE_LOD::Value _createLod;  // 0x3C igEnumMetaField
  const char *_lodRangeListString;  // 0x40 igStringMetaField
 };
 }

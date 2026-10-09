@@ -3,6 +3,7 @@
 #ifndef META_IGVIEWERSCENEINFOMANAGER_H
 #define META_IGVIEWERSCENEINFOMANAGER_H
 #include <meta/igInfoManager.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igBoundingBoxRenderer;
 struct igBoxComponent;
@@ -63,7 +64,7 @@ struct igViewerSceneInfoManager : igInfoManager {
  int _frames;  // 0xA0 igIntMetaField
  unsigned char unknownA4[4];
  long long _lastStatTime;  // 0xA8 igLongMetaField
- int _guiVisibility;  // 0xB0 igEnumMetaField
+ GUI_VISIBILITY::Value _guiVisibility;  // 0xB0 igEnumMetaField
  igTextureList *_textureList;  // 0xB4 igObjectRefMetaField
  igViewerModeChangeMessage *_modeChange;  // 0xB8 igObjectRefMetaField
  bool _isCapturingBudget;  // 0xBC igBoolMetaField

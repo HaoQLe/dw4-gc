@@ -3,11 +3,12 @@
 #ifndef META_IGDIRENTRY_H
 #define META_IGDIRENTRY_H
 #include <meta/igNamedObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igDirEntry : igNamedObject {
  int _index;  // 0x0C igIntMetaField
- int _resolveMethod;  // 0x10 igEnumMetaField
- int _refType;  // 0x14 igEnumMetaField
+ ResolveMethod::Value _resolveMethod;  // 0x10 igEnumMetaField
+ RefType::Value _refType;  // 0x14 igEnumMetaField
  void *_ref;  // 0x18 igRawRefMetaField
 };
 }

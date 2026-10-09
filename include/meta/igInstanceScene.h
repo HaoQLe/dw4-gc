@@ -3,6 +3,7 @@
 #ifndef META_IGINSTANCESCENE_H
 #define META_IGINSTANCESCENE_H
 #include <meta/igOptVisitObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igInstanceScene : igOptVisitObject {
  bool _byCopy;  // 0x2C igBoolMetaField
@@ -13,9 +14,9 @@ struct igInstanceScene : igOptVisitObject {
  float _spacingScalarX;  // 0x3C igFloatMetaField
  float _spacingScalarY;  // 0x40 igFloatMetaField
  float _spacingScalarZ;  // 0x44 igFloatMetaField
- int _plane;  // 0x48 igEnumMetaField
- int _shape;  // 0x4C igEnumMetaField
- int _shapeRotation;  // 0x50 igEnumMetaField
+ PLANE::Value _plane;  // 0x48 igEnumMetaField
+ SHAPE::Value _shape;  // 0x4C igEnumMetaField
+ SHAPE_ROTATION::Value _shapeRotation;  // 0x50 igEnumMetaField
  bool _shadeTextures;  // 0x54 igBoolMetaField
  unsigned char unknown55[3];
  float _color1Scalar;  // 0x58 igFloatMetaField

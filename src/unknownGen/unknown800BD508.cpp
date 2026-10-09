@@ -43,7 +43,7 @@ extern "C" {
 void *igBlendFunctionAttr_virtual58(){return lbl_80562A10;}
 void *igBlendFunctionAttr_virtual60(int p0,int p1){
  void *value1;
- igGamecubeVisualContext_virtual278((void *)p1,(void *)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_src,(void *)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_dst);
+ igGamecubeVisualContext_virtual278((void *)p1,(void *)(int)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_src,(void *)(int)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_dst);
  void *value0=lbl_80562AE4;
  if(value0){
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+20)=(void *)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_eq;

@@ -12,7 +12,7 @@ void *igGamecubeVisualContext_virtual3EC(void *,float);
 extern "C" {
 int igFloatConstantAttr_virtual7C(){return 128;}
 void igFogAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual3D4((void *)p1,(void *)reinterpret_cast<Meta::igFogAttr *>((void *)p0)->_mode);
+ igGamecubeVisualContext_virtual3D4((void *)p1,(void *)(int)reinterpret_cast<Meta::igFogAttr *>((void *)p0)->_mode);
  float value0=reinterpret_cast<Meta::igFogAttr *>((void *)p0)->_density;
  igGamecubeVisualContext_virtual3CC((void *)p1,value0);
  igGamecubeVisualContext_virtual3DC((void *)p1,(reinterpret_cast<char *>((void *)p0)+28));

@@ -3,10 +3,11 @@
 #ifndef META_IGREMOVEANIMATIONTRACKCHANNEL_H
 #define META_IGREMOVEANIMATIONTRACKCHANNEL_H
 #include <meta/igOptVisitObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igStringRefList;
 struct igRemoveAnimationTrackChannel : igOptVisitObject {
- int _channelForRemoval;  // 0x2C igEnumMetaField
+ DRIVEN_CHANNEL::Value _channelForRemoval;  // 0x2C igEnumMetaField
  const char *_animationNameList;  // 0x30 igStringMetaField
  const char *_animationTrackNameList;  // 0x34 igStringMetaField
  igStringRefList *_animationNames;  // 0x38 igObjectRefMetaField

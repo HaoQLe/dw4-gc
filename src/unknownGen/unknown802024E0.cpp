@@ -47,9 +47,9 @@ void *igShaderFactory_virtual60(int p0){
  return value1;
 }
 void igShaderFactory_virtual64(int p0,int p1){
- if((int)p1!=(int)(int)(void *)reinterpret_cast<Meta::igShaderFactory *>((void *)p0)->_fileCachingMode){
-  reinterpret_cast<Meta::igShaderFactory *>((void *)p0)->_fileCachingMode=(int)(void *)p1;
-  if((int)(int)(void *)reinterpret_cast<Meta::igShaderFactory *>((void *)p0)->_fileCachingMode==0){
+ if((int)p1!=(int)(int)(void *)(int)reinterpret_cast<Meta::igShaderFactory *>((void *)p0)->_fileCachingMode){
+  reinterpret_cast<Meta::igShaderFactory *>((void *)p0)->_fileCachingMode=(Meta::FILE_CACHING_MODE::Value)(int)(void *)p1;
+  if((int)(int)(void *)(int)reinterpret_cast<Meta::igShaderFactory *>((void *)p0)->_fileCachingMode==0){
    reinterpret_cast<UnknownGenV80202504_0 *>((void *)p0)->s68((void *)p1);
    return;
   } else {

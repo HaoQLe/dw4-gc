@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __dl__FPv(void *);
 void *beNDMWShopTitle03_getMeta();
 void beNDMWShopTitle03_vtableRead();
 void beNDMWWindowTitle_register();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void __dl__FPv(void *);
 void fn_803250AC();
 void *fn_80326F88();
 extern char lbl_80453474[];

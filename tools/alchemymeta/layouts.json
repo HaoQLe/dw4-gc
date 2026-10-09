@@ -108,12 +108,12 @@ null
 ],
 "972": [
 "_alphaType",
-"int",
+"Meta::IG_PARTICLE_ALPHA_TYPE::Value",
 null
 ],
 "976": [
 "_alphaFunction",
-"int",
+"Meta::IG_PARTICLE_ALPHA_FUNCTION::Value",
 null
 ],
 "980": [
@@ -128,7 +128,7 @@ null
 ],
 "984": [
 "_timeType",
-"int",
+"Meta::IG_PARTICLE_TIME_TYPE::Value",
 null
 ],
 "988": [
@@ -138,7 +138,7 @@ null
 ],
 "992": [
 "_shape",
-"int",
+"Meta::IG_PARTICLE_EMITTER_TYPE::Value",
 null
 ],
 "996": [
@@ -11188,7 +11188,7 @@ null
 "members": {
 "12": [
 "_func",
-"int",
+"Meta::IG_GFX_ALPHA_FUNCTION::Value",
 null
 ],
 "16": [
@@ -11529,7 +11529,7 @@ null
 ],
 "16": [
 "_type",
-"int",
+"Meta::ModifierType::Value",
 null
 ],
 "8": [
@@ -11571,7 +11571,7 @@ null
 ],
 "12": [
 "_combineMode",
-"int",
+"Meta::CombineMode::Value",
 null
 ],
 "120": [
@@ -11616,12 +11616,12 @@ null
 ],
 "16": [
 "_transitionMode",
-"int",
+"Meta::TransitionMode::Value",
 null
 ],
 "20": [
 "_status",
-"int",
+"Meta::Status::Value",
 null
 ],
 "24": [
@@ -11966,12 +11966,12 @@ null
 ],
 "184": [
 "_heapIntegrityCheckLevel",
-"int",
+"Meta::HeapIntegrityCheckLevel::Value",
 null
 ],
 "188": [
 "_messageLevel",
-"int",
+"Meta::igArenaMemoryPool_MessageLevel::Value",
 null
 ],
 "192": [
@@ -12369,7 +12369,7 @@ null
 ],
 "8": [
 "_mode",
-"int",
+"Meta::BillboardMode::Value",
 null
 ]
 },
@@ -12426,12 +12426,12 @@ null
 "members": {
 "12": [
 "_src",
-"int",
+"Meta::IG_GFX_BLENDING_FUNCTION::Value",
 null
 ],
 "16": [
 "_dst",
-"int",
+"Meta::IG_GFX_BLENDING_FUNCTION::Value",
 null
 ],
 "20": [
@@ -12461,22 +12461,22 @@ null
 ],
 "36": [
 "_blendA",
-"int",
+"Meta::BLENDING_FUNCTION_COLOR_PSX2::Value",
 null
 ],
 "40": [
 "_blendB",
-"int",
+"Meta::BLENDING_FUNCTION_COLOR_PSX2::Value",
 null
 ],
 "44": [
 "_blendC",
-"int",
+"Meta::BLENDING_FUNCTION_ALPHA_PSX2::Value",
 null
 ],
 "48": [
 "_blendD",
-"int",
+"Meta::BLENDING_FUNCTION_COLOR_PSX2::Value",
 null
 ]
 },
@@ -12780,7 +12780,7 @@ null
 "members": {
 "40": [
 "_orientation",
-"int",
+"Meta::ORIENTATION::Value",
 null
 ],
 "44": [
@@ -13030,7 +13030,7 @@ null
 "members": {
 "28": [
 "_cameraType",
-"int",
+"Meta::CameraType::Value",
 null
 ],
 "32": [
@@ -13212,7 +13212,7 @@ null
 "members": {
 "44": [
 "_playMode",
-"int",
+"Meta::igChangePlayMode_PLAY_MODE::Value",
 null
 ]
 },
@@ -13409,7 +13409,7 @@ null
 ],
 "44": [
 "_compactGeometry",
-"int",
+"Meta::COMPOUND_GEOMETRY::Value",
 null
 ],
 "48": [
@@ -13465,7 +13465,7 @@ null
 ],
 "40": [
 "_collapse",
-"int",
+"Meta::HIERARCHY_COLLAPSE::Value",
 null
 ]
 },
@@ -14037,7 +14037,7 @@ null
 "members": {
 "40": [
 "_priorStateUsage",
-"int",
+"Meta::igCompileGraph_PriorStateUsage::Value",
 null
 ],
 "44": [
@@ -14148,7 +14148,7 @@ null
 ],
 "52": [
 "_priorStateUsage",
-"int",
+"Meta::igCompiledGraph_PriorStateUsage::Value",
 null
 ],
 "56": [
@@ -14183,7 +14183,7 @@ null
 ],
 "80": [
 "_lastCompileResult",
-"int",
+"Meta::igCompileError::Value",
 null
 ],
 "84": [
@@ -14592,12 +14592,12 @@ null
 "members": {
 "44": [
 "_format",
-"int",
+"Meta::IG_GFX_TEXTURE_FORMAT::Value",
 null
 ],
 "48": [
 "_order",
-"int",
+"Meta::IG_GFX_IMAGE_ORDER::Value",
 null
 ],
 "52": [
@@ -14701,7 +14701,7 @@ null
 "members": {
 "12": [
 "_copyType",
-"int",
+"Meta::CopyType::Value",
 null
 ],
 "16": [
@@ -14944,7 +14944,7 @@ null
 ],
 "16": [
 "_mode",
-"int",
+"Meta::IG_GFX_CULL_FACE_MODE::Value",
 null
 ]
 },
@@ -15352,7 +15352,7 @@ null
 ],
 "20": [
 "_fitMode",
-"int",
+"Meta::FIT_MODE::Value",
 null
 ],
 "24": [
@@ -15580,7 +15580,7 @@ null
 "members": {
 "12": [
 "_func",
-"int",
+"Meta::IG_GFX_DEPTH_TEST_FUNCTION::Value",
 null
 ]
 },
@@ -15668,12 +15668,12 @@ null
 ],
 "16": [
 "_resolveMethod",
-"int",
+"Meta::ResolveMethod::Value",
 null
 ],
 "20": [
 "_refType",
-"int",
+"Meta::RefType::Value",
 null
 ],
 "24": [
@@ -15881,7 +15881,7 @@ null
 ],
 "28": [
 "_overrideMode",
-"int",
+"Meta::SECTION_OVERRIDE_MODE::Value",
 null
 ],
 "32": [
@@ -15976,7 +15976,7 @@ null
 ],
 "12": [
 "_playMode",
-"int",
+"Meta::igEnbayaAnimationSource_PLAY_MODE::Value",
 null
 ],
 "16": [
@@ -16713,12 +16713,12 @@ null
 ],
 "16": [
 "_readMode",
-"int",
+"Meta::ReadMode::Value",
 null
 ],
 "20": [
 "_openMode",
-"int",
+"Meta::OpenMode::Value",
 null
 ],
 "24": [
@@ -17065,7 +17065,7 @@ null
 "members": {
 "12": [
 "_mode",
-"int",
+"Meta::IG_GFX_FOG_MODE::Value",
 null
 ],
 "16": [
@@ -17699,7 +17699,7 @@ null
 ],
 "60": [
 "_generatedTextureFormat",
-"int",
+"Meta::IG_GFX_TEXTURE_FORMAT::Value",
 null
 ],
 "64": [
@@ -17869,7 +17869,7 @@ null
 ],
 "20": [
 "_primType",
-"int",
+"Meta::IG_GFX_DRAW::Value",
 null
 ],
 "24": [
@@ -17940,7 +17940,7 @@ null
 ],
 "24": [
 "_primType",
-"int",
+"Meta::IG_GFX_DRAW::Value",
 null
 ],
 "28": [
@@ -18040,7 +18040,7 @@ null
 ],
 "24": [
 "_renderListState",
-"int",
+"Meta::ATTR_FLAGS::Value",
 null
 ],
 "28": [
@@ -18462,7 +18462,7 @@ null
 "members": {
 "12": [
 "_button",
-"int",
+"Meta::BUTTONS::Value",
 null
 ],
 "16": [
@@ -18472,7 +18472,7 @@ null
 ],
 "8": [
 "_key",
-"int",
+"Meta::KEY_VALUES::Value",
 null
 ]
 },
@@ -19281,17 +19281,17 @@ null
 ],
 "72": [
 "_plane",
-"int",
+"Meta::PLANE::Value",
 null
 ],
 "76": [
 "_shape",
-"int",
+"Meta::SHAPE::Value",
 null
 ],
 "80": [
 "_shapeRotation",
-"int",
+"Meta::SHAPE_ROTATION::Value",
 null
 ],
 "84": [
@@ -19963,7 +19963,7 @@ null
 ],
 "12": [
 "_lightType",
-"int",
+"Meta::IG_GFX_LIGHT_TYPE::Value",
 null
 ],
 "140": [
@@ -20505,12 +20505,12 @@ null
 ],
 "60": [
 "_magnificationFilter",
-"int",
+"Meta::IG_GFX_TEXTURE_FILTER::Value",
 null
 ],
 "64": [
 "_minificationFilter",
-"int",
+"Meta::IG_GFX_TEXTURE_FILTER::Value",
 null
 ]
 },
@@ -20563,7 +20563,7 @@ null
 ],
 "152": [
 "_messageLevel",
-"int",
+"Meta::igMallocMemoryPool_MessageLevel::Value",
 null
 ],
 "156": [
@@ -20606,7 +20606,7 @@ null
 "members": {
 "12": [
 "_mode",
-"int",
+"Meta::IG_GFX_MATERIAL_COMPONENT::Value",
 null
 ]
 },
@@ -21658,7 +21658,7 @@ null
 ],
 "40": [
 "_primType",
-"int",
+"Meta::IG_GFX_DRAW::Value",
 null
 ],
 "44": [
@@ -21806,12 +21806,12 @@ null
 ],
 "24": [
 "_playMode",
-"int",
+"Meta::igMorphSequence_PLAY_MODE::Value",
 null
 ],
 "28": [
 "_interpolationMethod",
-"int",
+"Meta::INTERPOLATION_METHOD::Value",
 null
 ],
 "32": [
@@ -21992,7 +21992,7 @@ null
 ],
 "24": [
 "_type",
-"int",
+"Meta::IG_MOVIE_TYPE::Value",
 null
 ],
 "28": [
@@ -22027,12 +22027,12 @@ null
 ],
 "52": [
 "_minificationFilter",
-"int",
+"Meta::IG_GFX_TEXTURE_FILTER::Value",
 null
 ],
 "56": [
 "_magnificationFilter",
-"int",
+"Meta::IG_GFX_TEXTURE_FILTER::Value",
 null
 ],
 "60": [
@@ -22057,7 +22057,7 @@ null
 ],
 "76": [
 "_state",
-"int",
+"Meta::IG_MOVIE_STATE::Value",
 null
 ],
 "80": [
@@ -22077,7 +22077,7 @@ null
 ],
 "92": [
 "_imageFormat",
-"int",
+"Meta::IG_GFX_TEXTURE_FORMAT::Value",
 null
 ],
 "96": [
@@ -23350,7 +23350,7 @@ null
 ],
 "56": [
 "_sortColumnLeftToRight",
-"int",
+"Meta::COLUMNSORT_CRITERIA::Value",
 null
 ],
 "60": [
@@ -23527,7 +23527,7 @@ null
 ],
 "136": [
 "_messageLevel",
-"int",
+"Meta::igPageMemoryPool_MessageLevel::Value",
 null
 ],
 "140": [
@@ -23809,7 +23809,7 @@ null
 "members": {
 "12": [
 "_pipelineMode",
-"int",
+"Meta::IG_GFX_PIXEL_PIPELINE_MODE::Value",
 null
 ]
 },
@@ -23989,7 +23989,7 @@ null
 ],
 "24": [
 "_octant",
-"int",
+"Meta::IG_MATH_SPATIAL_REGION::Value",
 null
 ]
 },
@@ -24035,7 +24035,7 @@ null
 ],
 "16": [
 "_locationType",
-"int",
+"Meta::LOCATION_TYPE::Value",
 null
 ]
 },
@@ -24075,7 +24075,7 @@ null
 ],
 "36": [
 "_spriteSizeSpace",
-"int",
+"Meta::IG_GFX_SPRITE_SIZE_SPACE::Value",
 null
 ],
 "360": [
@@ -24155,7 +24155,7 @@ null
 "members": {
 "12": [
 "_mode",
-"int",
+"Meta::IG_GFX_RENDER_MODE::Value",
 null
 ]
 },
@@ -24624,7 +24624,7 @@ null
 ],
 "16": [
 "_phase",
-"int",
+"Meta::igQuantizeImagePhaseEnum::Value",
 null
 ],
 "20": [
@@ -24818,12 +24818,12 @@ null
 ],
 "56": [
 "_weightOptType",
-"int",
+"Meta::REDUCE_WEIGHT_OPT_TYPE::Value",
 null
 ],
 "60": [
 "_createLod",
-"int",
+"Meta::REDUCE_WEIGHT_CREATE_LOD::Value",
 null
 ],
 "64": [
@@ -24940,7 +24940,7 @@ null
 "members": {
 "44": [
 "_channelForRemoval",
-"int",
+"Meta::DRIVEN_CHANNEL::Value",
 null
 ],
 "48": [
@@ -25023,12 +25023,12 @@ null
 "members": {
 "12": [
 "_iCreateMode",
-"int",
+"Meta::RENDERDESTINATION_CREATE_MODE::Value",
 null
 ],
 "16": [
 "_iTexCreateMode",
-"int",
+"Meta::RENDERDESTINATION_TEXTURE_CREATE_MODE::Value",
 null
 ],
 "20": [
@@ -25053,7 +25053,7 @@ null
 ],
 "36": [
 "_iType",
-"int",
+"Meta::IG_GFX_RENDERDESTINATION_TYPE::Value",
 null
 ],
 "40": [
@@ -25390,7 +25390,7 @@ null
 ],
 "72": [
 "_filterType",
-"int",
+"Meta::FilterType::Value",
 null
 ]
 },
@@ -25508,7 +25508,7 @@ null
 ],
 "112": [
 "_constraintAxis",
-"int",
+"Meta::CONSTRAINT_AXIS::Value",
 null
 ],
 "116": [
@@ -25688,7 +25688,7 @@ null
 "members": {
 "12": [
 "_type",
-"int",
+"Meta::IG_GFX_SCISSOR_TYPE::Value",
 null
 ]
 },
@@ -25749,7 +25749,7 @@ null
 ],
 "24": [
 "_nextOfTypeCode",
-"int",
+"Meta::IG_APPLICATION_FIND_TYPE::Value",
 null
 ]
 },
@@ -26053,7 +26053,7 @@ null
 "members": {
 "12": [
 "_mode",
-"int",
+"Meta::IG_GFX_SHADING_MODE::Value",
 null
 ]
 },
@@ -26170,7 +26170,7 @@ null
 ],
 "20": [
 "_fileCachingMode",
-"int",
+"Meta::FILE_CACHING_MODE::Value",
 null
 ]
 },
@@ -26655,7 +26655,7 @@ null
 ],
 "64": [
 "_maxTreeType",
-"int",
+"Meta::igPartitionType::Value",
 null
 ],
 "68": [
@@ -26773,7 +26773,7 @@ null
 "members": {
 "12": [
 "_spriteType",
-"int",
+"Meta::IG_GFX_SPRITE_TYPE::Value",
 null
 ],
 "16": [
@@ -26793,7 +26793,7 @@ null
 ],
 "28": [
 "_spriteSpace",
-"int",
+"Meta::IG_GFX_SPRITE_SIZE_SPACE::Value",
 null
 ]
 },
@@ -26922,7 +26922,7 @@ null
 ],
 "48": [
 "_level",
-"int",
+"Meta::STATISTICS_VERBOSE::Value",
 null
 ]
 },
@@ -26985,7 +26985,7 @@ null
 ],
 "52": [
 "_statId",
-"int",
+"Meta::IG_GFX_STATISTIC::Value",
 null
 ],
 "56": [
@@ -27035,7 +27035,7 @@ null
 ],
 "16": [
 "_func",
-"int",
+"Meta::IG_GFX_STENCIL_FUNCTION::Value",
 null
 ],
 "20": [
@@ -27050,17 +27050,17 @@ null
 ],
 "28": [
 "_stenFailOp",
-"int",
+"Meta::IG_GFX_STENCIL_OPERATION::Value",
 null
 ],
 "32": [
 "_stenPassZPassOp",
-"int",
+"Meta::IG_GFX_STENCIL_OPERATION::Value",
 null
 ],
 "36": [
 "_stenPassZFailOp",
-"int",
+"Meta::IG_GFX_STENCIL_OPERATION::Value",
 null
 ]
 },
@@ -27251,12 +27251,12 @@ null
 "members": {
 "20": [
 "_wrapS",
-"int",
+"Meta::IG_GFX_TEXTURE_WRAP::Value",
 null
 ],
 "24": [
 "_wrapT",
-"int",
+"Meta::IG_GFX_TEXTURE_WRAP::Value",
 null
 ],
 "28": [
@@ -27396,7 +27396,7 @@ null
 ],
 "16": [
 "_wrapS",
-"int",
+"Meta::IG_GFX_TEXTURE_WRAP::Value",
 null
 ]
 },
@@ -27419,22 +27419,22 @@ null
 ],
 "20": [
 "_magFilter",
-"int",
+"Meta::IG_GFX_TEXTURE_FILTER::Value",
 null
 ],
 "24": [
 "_minFilter",
-"int",
+"Meta::IG_GFX_TEXTURE_FILTER::Value",
 null
 ],
 "28": [
 "_wrapS",
-"int",
+"Meta::IG_GFX_TEXTURE_WRAP::Value",
 null
 ],
 "32": [
 "_wrapT",
-"int",
+"Meta::IG_GFX_TEXTURE_WRAP::Value",
 null
 ],
 "36": [
@@ -27444,12 +27444,12 @@ null
 ],
 "40": [
 "_mipmapMode",
-"int",
+"Meta::IG_GFX_TEXTURE_MODE::Value",
 null
 ],
 "44": [
 "_source",
-"int",
+"Meta::IG_GFX_TEXTURE_SOURCE::Value",
 null
 ],
 "48": [
@@ -27535,7 +27535,7 @@ null
 "members": {
 "12": [
 "_mode",
-"int",
+"Meta::IG_GFX_TEXTURE_COORD_SOURCE::Value",
 null
 ],
 "16": [
@@ -27563,7 +27563,7 @@ null
 ],
 "96": [
 "_applyType",
-"int",
+"Meta::ApplyType::Value",
 null
 ]
 },
@@ -27604,17 +27604,17 @@ null
 ],
 "20": [
 "_arg0",
-"int",
+"Meta::TEXTURE_ARGUMENT::Value",
 null
 ],
 "24": [
 "_arg1",
-"int",
+"Meta::TEXTURE_ARGUMENT::Value",
 null
 ],
 "28": [
 "_type",
-"int",
+"Meta::TEXTURE_STAGE_TYPE::Value",
 null
 ],
 "32": [
@@ -27624,7 +27624,7 @@ null
 ],
 "36": [
 "_functionType",
-"int",
+"Meta::TEXTURE_FUNCTION_TYPE::Value",
 null
 ]
 },
@@ -27726,7 +27726,7 @@ null
 "members": {
 "12": [
 "_constantSelect",
-"int",
+"Meta::IG_GFX_TEXTURE_CONSTANT_ALPHA_SELECTION::Value",
 null
 ],
 "16": [
@@ -27744,7 +27744,7 @@ null
 "members": {
 "12": [
 "_constantSelect",
-"int",
+"Meta::IG_GFX_TEXTURE_CONSTANT_COLOR_SELECTION::Value",
 null
 ],
 "16": [
@@ -27923,22 +27923,22 @@ null
 "members": {
 "12": [
 "_type",
-"int",
+"Meta::Type::Value",
 null
 ],
 "16": [
 "_scope",
-"int",
+"Meta::Scope::Value",
 null
 ],
 "20": [
 "_state",
-"int",
+"Meta::State::Value",
 null
 ],
 "24": [
 "_priority",
-"int",
+"Meta::Priority::Value",
 null
 ],
 "28": [
@@ -28036,7 +28036,7 @@ null
 ],
 "48": [
 "_playMode",
-"int",
+"Meta::igTimeSwitch_PLAY_MODE::Value",
 null
 ]
 },
@@ -28713,7 +28713,7 @@ null
 ],
 "36": [
 "_component",
-"int",
+"Meta::IG_GFX_VERTEX_COMPONENT::Value",
 null
 ],
 "40": [
@@ -28972,7 +28972,7 @@ null
 ],
 "16": [
 "_componentType",
-"int",
+"Meta::IG_VERTEX_COMPONENT_TYPE::Value",
 null
 ],
 "20": [
@@ -29012,7 +29012,7 @@ null
 "members": {
 "12": [
 "_mode",
-"int",
+"Meta::IG_GFX_VERTEX_PIPELINE_MODE::Value",
 null
 ]
 },
@@ -29121,17 +29121,17 @@ null
 ],
 "24": [
 "_accessMode",
-"int",
+"Meta::IG_VERTEX_ACCESS_MODE::Value",
 null
 ],
 "28": [
 "_primitive",
-"int",
+"Meta::IG_GFX_DRAW::Value",
 null
 ],
 "32": [
 "_streamMode",
-"int",
+"Meta::IG_VERTEX_STREAM_COMPILE_MODE::Value",
 null
 ]
 },
@@ -29723,7 +29723,7 @@ null
 ],
 "176": [
 "_guiVisibility",
-"int",
+"Meta::GUI_VISIBILITY::Value",
 null
 ],
 "180": [
@@ -30021,7 +30021,7 @@ null
 "members": {
 "104": [
 "_scissorType",
-"int",
+"Meta::IG_GFX_SCISSOR_TYPE::Value",
 null
 ],
 "20": [

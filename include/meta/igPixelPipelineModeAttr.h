@@ -3,9 +3,10 @@
 #ifndef META_IGPIXELPIPELINEMODEATTR_H
 #define META_IGPIXELPIPELINEMODEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igPixelPipelineModeAttr : igVisualAttribute {
- int _pipelineMode;  // 0x0C igEnumMetaField
+ IG_GFX_PIXEL_PIPELINE_MODE::Value _pipelineMode;  // 0x0C igEnumMetaField
 };
 }
 #endif

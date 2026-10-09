@@ -3,12 +3,13 @@
 #ifndef META_IGSHADERFACTORY_H
 #define META_IGSHADERFACTORY_H
 #include <meta/igNamedObject.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igNamedObjectList;
 struct igShaderFactory : igNamedObject {
  igNamedObjectList *_attrNames;  // 0x0C igObjectRefMetaField
  igNamedObjectList *_attrTypes;  // 0x10 igObjectRefMetaField
- int _fileCachingMode;  // 0x14 igEnumMetaField
+ FILE_CACHING_MODE::Value _fileCachingMode;  // 0x14 igEnumMetaField
 };
 }
 #endif

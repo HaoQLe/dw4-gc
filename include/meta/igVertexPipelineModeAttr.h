@@ -3,9 +3,10 @@
 #ifndef META_IGVERTEXPIPELINEMODEATTR_H
 #define META_IGVERTEXPIPELINEMODEATTR_H
 #include <meta/igVisualAttribute.h>
+#include <meta/enums.h>
 namespace Meta {
 struct igVertexPipelineModeAttr : igVisualAttribute {
- int _mode;  // 0x0C igEnumMetaField
+ IG_GFX_VERTEX_PIPELINE_MODE::Value _mode;  // 0x0C igEnumMetaField
 };
 }
 #endif

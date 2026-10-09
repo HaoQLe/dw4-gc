@@ -4,6 +4,11 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Small game classes batch (user request 2026-10-09):** `src/Game/Bec/beTimer.cpp` (`0x8031B60C..0x8031B864`) is readable and exact: idle and count-down timers that run Lua files; `virtual70` is newly matched. `include/game/List.h` holds the shared list helpers.
+  - **Totals:** matched code 36.972034% → 36.980434% (+348 bytes), linked 36.936493% → 36.944893%, matched data +20 bytes, 16,996 functions. `build.sha1` OK; all 4,483 generated units verify.
+  - **Stalled on register allocation only:** `beTimer_virtual74` (10 lines) and `beSeCtl_virtual90` (63 lines), drafts on the local branch `task/small-classes-wip`, plus the `beWeapon` handler.
+  - **Next investigation:** a focused study of MWCC 2.6's register priority order using reduced test cases, then retry all three; `beCameraMode` (needs the model and matrix classes) is described.
+  - Details: [small game classes](docs/research/2026-10-09-small-game-classes.md).
 - **Enums and controller-input batch (user request 2026-10-09):** both parts verified.
   - **Enums:** 149 enums (1,284 values) extracted (`tools/alchemymeta/enums.py`) into `include/meta/enums.h`; 120 enum fields typed.
   - **Input:** `src/Game/Bec/bePadData.cpp` and `bePadManager.cpp` are readable and exact (17 functions, `0x803116E0..0x80312190`, with their `.rodata`): sticks, dead zone, direction sectors, button trigger and auto-repeat, and per-frame controller polling.

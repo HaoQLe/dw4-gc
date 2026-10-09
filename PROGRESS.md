@@ -4,6 +4,15 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Alchemy class headers and attribution batch (user request 2026-10-08):** the first step toward readable source; no game source or build input changed; `build.sha1` OK.
+  - **Headers:** `include/meta/` holds 1,434 class layouts (namespace `Meta`, typed reflected fields, reference fields typed by target class, parents as bases). A compile-time check of all 1,434 sizes and 4,202 field offsets passes with the pinned compiler.
+  - **Attribution:** `config/GDJEB2/alchemy_class_functions.txt` attributes 11,858 functions (1.67 MB; 3,157 game functions, 639 KB) to one class each, through code-checked registration roles and own-vtable slots.
+  - **Extraction:** 1,536 of 1,565 reference targets resolved; 1,280 own vtables, with the parent's vtable in the chain for 558 of 568.
+  - **Next:**
+    - names for attributed `fn_` symbols that the generator and existing units accept;
+    - generated units re-expressed against `Meta::` types;
+    - one game subsystem recovered readably (for example `beWeapon`).
+  - Details: [port inventory and Alchemy metadata](docs/research/2026-10-08-port-inventory-and-alchemy-metadata.md#batch-class-headers-and-function-attribution-2026-10-08); tools: [alchemymeta](tools/alchemymeta/README.md).
 - **Port inventory and Alchemy metadata (investigation, user request 2026-10-08):** the project goal is a PC port, so readable source now takes priority over matched-percentage throughput. No game source changed.
   - **Inventory:**
     - Alchemy engine: 2.02 MB (49%);

@@ -71,3 +71,32 @@ Output: `build/GDJEB2/analysis/meta/classes.json` (ignored). Run after a normal 
 2. **Extract object-reference targets and enums:** these give the types of the 868 reference fields.
 3. **Re-express generated code against those headers:** for example, `fn_80068128` is used at about 300 sites as a type test against a class metaobject, so naming it and the metaobjects makes those sites readable. Keep matching and checksum gates.
 4. **Recover one game subsystem readably as the template:** for instance the `beWeapon`/`beBaseInfoManager` family, whose layouts are now known.
+
+## Batch: class headers and function attribution (2026-10-08)
+
+The first proposed step, done on `task/alchemy-class-headers`. No game source or build input changed. The DOL SHA-1 is unchanged (`e409a88a…`).
+
+- **Extraction additions** (`tools/alchemymeta/extract.py`):
+  - **Object-reference targets:** after fetching field *k* (`fn_800658E4` with the field-count base plus *k*), the code calls the target class's `getMeta` and stores the result in the field. This resolves targets for 1,536 of 1,565 reference fields (for example `igNode._bound` → `igVolume`, `beWeapon._attachDataList` → `beWeaponAttachDataList`).
+  - **Vtable chains:** the `r10` callback constructs a temporary instance on the stack, storing each constructor level's vtable at `0x8(r1)`, and reads it back with `lwzx` before any branch. The last vtable stored is the class's own: 1,280 classes, all distinct. In 558 of 568 classes whose parent has a vtable, the parent's own vtable appears earlier in the chain. Typed lists have an unregistered template level in between, and the 10 exceptions skip inlined levels.
+  - **Callback roles, checked against the code:**
+    - `r6` reads exactly the parent's metaobject (1,434 of 1,434 classes with a registered parent);
+    - `r7` only calls the class's `getMeta`, which loads its own metaobject (1,434 of 1,435, all but the root);
+    - the stack argument at `+8` is the field initializer.
+  - **Duplicates:** `igModelViewMatrixBoneSelectList` is registered twice (engine and game range, same size).
+- **Headers** (`tools/alchemymeta/headers.py`, `include/meta/`): 1,434 class layouts as structs in namespace `Meta`, each deriving from its registered parent.
+  - Reflected fields are typed; reference fields are pointers to their target class.
+  - Bytes no field covers are `unknownXX`, and the root's vtable pointer is an explicit member.
+  - **Check:** a generated check file asserts all 1,434 sizes and 4,202 field offsets at compile time, and compiles with the pinned compiler. A deliberately wrong size is rejected.
+  - Nothing includes the headers yet.
+- **Attribution** (`tools/alchemymeta/attribute.py`, `config/GDJEB2/alchemy_class_functions.txt`): 11,858 functions (1,667,376 bytes) attributed to exactly one class:
+  - by role: 5,367 virtual-method slots, 1,435 `register`, 1,434 `getMeta`, 1,434 `getMetaCall`, 1,281 `vtableRead`, 834 `fieldInit` and 112 `parentMeta`;
+  - by group: 8,619 engine functions (1,013,716 bytes), 3,157 game functions (639,092 bytes) and 82 others;
+  - 445 functions claimed by several classes are left out.
+
+  Virtual slots are recorded by byte offset; their meanings are unknown.
+
+**Next:**
+- use the attribution and headers in source: names for `fn_` symbols that the generator and existing units accept, and generated units re-expressed against `Meta::` types;
+- recover one game subsystem readably as the template (for example `beWeapon`);
+- extract enum names and the remaining callback roles (`spC`, `sp10`).

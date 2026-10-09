@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beNDMWStatusMainSlot.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -49,8 +50,8 @@ public:
 };
 extern "C" {
 void beNDMWStatusMainSlot_virtual84(int p0){
- fn_80381D20((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+84),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48));
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+84)==0){
+ fn_80381D20((void *)p0,reinterpret_cast<Meta::beNDMWStatusMainSlot *>((void *)p0)->_mainSlot,(void *)reinterpret_cast<Meta::beNDMWStatusMainSlot *>((void *)p0)->_kindListPos,(void *)reinterpret_cast<Meta::beNDMWStatusMainSlot *>((void *)p0)->_retCode);
+ if((int)(int)(void *)reinterpret_cast<Meta::beNDMWStatusMainSlot *>((void *)p0)->_kindListPos==0){
   reinterpret_cast<UnknownGenV80386148_0 *>((void *)p0)->sA0();
   return;
  } else {
@@ -58,7 +59,7 @@ void beNDMWStatusMainSlot_virtual84(int p0){
  }
 }
 void beNDMWStatusMainSlot_virtualA4(int p0,int p1){
- fn_80382858((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+116),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+92),(void *)p1);
+ fn_80382858((void *)p0,reinterpret_cast<Meta::beNDMWStatusMainSlot *>((void *)p0)->_apuPocket,(void *)reinterpret_cast<Meta::beNDMWStatusMainSlot *>((void *)p0)->_pocketPos,(void *)p1);
 }
 }
 #pragma pop

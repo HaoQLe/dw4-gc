@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTextureFunctionAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -215,8 +216,8 @@ void *igTextureFunctionAttr_virtual58(){return lbl_80562504;}
 void igTextureFunctionAttr_virtual68(int p0,int p1){
  void *value0;
  void *value1;
- value0=reinterpret_cast<UnknownGenV800C3EC8_0 *>((void *)p1)->s254(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
+ value0=reinterpret_cast<UnknownGenV800C3EC8_0 *>((void *)p1)->s254((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID);
+ reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_mode=(int)value0;
  if(!lbl_80562B0C){
   value1=reinterpret_cast<UnknownGenV800C3EC8_1 *>((void *)p1)->s68(lbl_8047A2F4);
   lbl_80562B0C=value1;
@@ -240,8 +241,8 @@ void fn_800C3F78(int p0,int p1,int p2){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=1;
 }
 void *igTextureFunctionAttr_virtual80(int p0,int p1){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=(void *)p1;
- *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
+ reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_type=(int)(void *)p1;
+ reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_call_state=0;
  return (void *)p0;
 }
 }

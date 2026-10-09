@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMorphBase.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -35,7 +36,7 @@ public:
 };
 extern "C" {
 void igMorphBase_virtual64(int p0){
- reinterpret_cast<UnknownGenV801F9040_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))->s6C();
+ reinterpret_cast<UnknownGenV801F9040_0 *>(reinterpret_cast<Meta::igMorphBase *>((void *)p0)->_stripLengths)->s6C();
 }
 int fn_801F9070(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+68);}
 }

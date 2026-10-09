@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -65,7 +66,7 @@ void igMessageDispatcher_register(){
 void *igMessageDispatcher_getMetaCall(){return igMessageDispatcher_getMeta();}
 void *fn_8028579C(){
  void *value0=lbl_80515CAC;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igFilterMessageDispatcher_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igFilterMessageDispatcher_getMetaCall;
  return value0;
 }
 void *fn_802857B8(void *object){

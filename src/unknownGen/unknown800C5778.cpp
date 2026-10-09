@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igViewportAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -204,9 +205,9 @@ void igVertexShaderAttr_virtual68(){}
 void igVertexShaderBindAttr_virtual60(){}
 void igVertexShaderBindAttr_virtual68(){}
 void igViewportAttr_virtual60(int p0,int p1){
- float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+32);
- float value1=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+36);
- igGamecubeVisualContext_virtual2E4((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24),value0,value1);
+ float value0=reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_nearZ;
+ float value1=reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_farZ;
+ igGamecubeVisualContext_virtual2E4((void *)p1,(void *)reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_x,(void *)reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_y,(void *)reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_w,(void *)reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_h,value0,value1);
 }
 void igViewportAttr_virtual68(int p0,int p1){
  void *local5;
@@ -216,12 +217,12 @@ void igViewportAttr_virtual68(int p0,int p1){
  UnknownGenL800C57C4_C local1;
  UnknownGenL800C57C4_8 local0;
  reinterpret_cast<UnknownGenV800C57C4_0 *>((void *)p1)->s2EC(&local5,&local4,&local3,&local2,&local1,&local0);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=local5;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=local4;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=local3;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=local2;
- *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+32)=local1.m0C;
- *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+36)=local0.m08;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_x=(int)local5;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_y=(int)local4;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_w=(int)local3;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_h=(int)local2;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_nearZ=local1.m0C;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_farZ=local0.m08;
 }
 }
 #pragma pop

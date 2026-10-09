@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igLightStateAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -40,7 +41,7 @@ void igLightStateAttr_virtual80(void *object,unsigned char value){*reinterpret_c
 void *igLightStateAttr_virtual74(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ value0=reinterpret_cast<Meta::igLightStateAttr *>((void *)p0)->_light;
  if(value0){
   value1=reinterpret_cast<UnknownGenV800C0DB0_0 *>(value0)->s74();
   return value1;

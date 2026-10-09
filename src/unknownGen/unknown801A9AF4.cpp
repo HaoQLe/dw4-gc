@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igBoolMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -30,7 +31,7 @@ void fn_801A9AF4(int p0,int p1,int p2,int p3){
    return;
   } else {
    value3=fn_80188264((void *)p3);
-   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p2)+0)=(unsigned char)(int)(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8));
+   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p2)+0)=(unsigned char)(int)(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+(int)(void *)reinterpret_cast<Meta::igBoolMetaField *>(value0)->_offset);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kSuccess__3Gap;
    return;
   }

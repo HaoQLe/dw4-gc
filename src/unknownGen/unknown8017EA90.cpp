@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGroup.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -22,7 +23,7 @@ void igNodeTraversal_virtual90(int p0,int p1){
  fn_80188BA4(&local0);
  value0=UnknownGenCast8017EA90_9(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+32));
  if(value0){
-  fn_80069184(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+28));
+  fn_80069184(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36),reinterpret_cast<Meta::igGroup *>(value0)->_childList);
  }
  fn_80188CD0(&local0);
  fn_80188CAC((void *)p0,&local0);

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igSelfShadowShader.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -36,7 +37,7 @@ public:
 };
 extern "C" {
 void igSelfShadowShader_virtual7C(int p0){
- reinterpret_cast<UnknownGenV80201AAC_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+144))->s70();
+ reinterpret_cast<UnknownGenV80201AAC_0 *>(reinterpret_cast<Meta::igSelfShadowShader *>((void *)p0)->_pShadowTexRD)->s70();
 }
 }
 #pragma pop

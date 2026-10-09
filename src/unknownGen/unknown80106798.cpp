@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igGfxStateModifierList.h>
+#include <meta/igTrackedElementList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -127,8 +129,8 @@ void *fn_801069A8(){return lbl_80562D84;}
 void *igVertexDataList_virtual60(){return lbl_80562DC0;}
 void *igVertexArrayList_virtual60(){return lbl_80562DFC;}
 void igGfxStateModifierList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igGfxStateModifierList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igGfxStateModifierList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igGfxStateModifierList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
@@ -143,8 +145,8 @@ void fn_801069F4(int p0){
  }
 }
 void igTrackedElementList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),12);
+ if((int)(int)(void *)reinterpret_cast<Meta::igTrackedElementList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igTrackedElementList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igTrackedElementList *>((void *)p0)->_count,12);
   return;
  } else {
   return;

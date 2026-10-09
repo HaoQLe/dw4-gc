@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/igEventDispatcher.h>
+#include <meta/igEventReceiverOrderedList.h>
+#include <meta/igObjectList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -38,12 +41,12 @@ void igEventDispatcher_virtual6C(int p0,int p1,int p2,int p3){
  void *value2;
  void *value4;
  void *value3;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8);
- value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+8);
+ value0=reinterpret_cast<Meta::igEventDispatcher *>((void *)p0)->_receivers;
+ value1=reinterpret_cast<Meta::igEventReceiverOrderedList *>(value0)->_objectList;
+ value2=(void *)reinterpret_cast<Meta::igObjectList *>(value1)->_count;
  value3=(void *)0;
  while((int)(int)value3<(int)(int)value2){
-  value4=reinterpret_cast<UnknownGenV8011879C_0 *>((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+8))+16))+((int)value3<<2)))->s64((void *)p3,(void *)1);
+  value4=reinterpret_cast<UnknownGenV8011879C_0 *>((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igObjectList *>(reinterpret_cast<Meta::igEventReceiverOrderedList *>(reinterpret_cast<Meta::igEventDispatcher *>((void *)p0)->_receivers)->_objectList)->_data)+((int)value3<<2)))->s64((void *)p3,(void *)1);
   if((unsigned char)(int)value4){
    break;
   }

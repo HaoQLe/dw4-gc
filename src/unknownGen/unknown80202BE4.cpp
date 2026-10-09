@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igSimpleShader.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -35,7 +36,7 @@ public:
 extern "C" {
 void igShaderProcessor_virtual64(){}
 void igSimpleShader_virtualA0(int p0,int p1){
- reinterpret_cast<UnknownGenV80202BE8_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40))->s68((void *)p0,(void *)p1,(void *)p0);
+ reinterpret_cast<UnknownGenV80202BE8_0 *>(reinterpret_cast<Meta::igSimpleShader *>((void *)p0)->_processor)->s68((void *)p0,(void *)p1,(void *)p0);
 }
 void igSimpleShader_virtualB0(void *object,UnknownGenValue *value){
  if(value) ++value->unknown04;

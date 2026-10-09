@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igGeometry.h>
+#include <meta/igTextElement.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -22,7 +24,7 @@ void igTextElement_virtual174(int p0){
 void *igTextElement_virtualC4(int p0,int p1){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
+ value0=reinterpret_cast<Meta::igTextElement *>((void *)p0)->_geometry;
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+0)!=0){
   return (void *)p0;
  }
@@ -30,7 +32,7 @@ void *igTextElement_virtualC4(int p0,int p1){
  if(!value1){
   return value1;
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+32);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+24)=reinterpret_cast<Meta::igGeometry *>(value0)->_attributes;
  return value1;
 }
 }

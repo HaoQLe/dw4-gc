@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igDisableExt.h>
+#include <meta/igViewerRenderer.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -104,22 +106,22 @@ void igViewerRenderer_virtual5C(int p0){
  void *value0;
  void *value1;
  void *value2;
- value3=reinterpret_cast<UnknownGenV8040ACE4_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s68(lbl_80462E10);
+ value3=reinterpret_cast<UnknownGenV8040ACE4_0 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_visualContext)->s68(lbl_80462E10);
  if((int)(int)value3!=0){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+88);
+ value1=reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_disableExtension;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igDisableExt *>(value1)->_refCount;
+  reinterpret_cast<Meta::igDisableExt *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igDisableExt *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+88)=value3;
- reinterpret_cast<UnknownGenV8040ACE4_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72))->s70(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8));
- reinterpret_cast<UnknownGenV8040ACE4_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80))->s70(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8));
+ reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_disableExtension=(Meta::igDisableExt *)value3;
+ reinterpret_cast<UnknownGenV8040ACE4_1 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightTraversal)->s70(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_visualContext);
+ reinterpret_cast<UnknownGenV8040ACE4_2 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneTraversal)->s70(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_visualContext);
  fn_8040B834((void *)p0);
  fn_8040B8C0((void *)p0);
  fn_8040B92C((void *)p0);

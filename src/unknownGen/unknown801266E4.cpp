@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igVec3fMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -61,7 +62,7 @@ public:
 extern "C" {
 void igVec3fMetaField_virtualD0(int p0,int p1,int p2){
  void *value0=fn_8002FC18();
- reinterpret_cast<UnknownGenV801266E4_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(((unsigned int)*reinterpret_cast<unsigned short *>(reinterpret_cast<char *>((void *)p0)+20)>>2)&0x3FFF)));
+ reinterpret_cast<UnknownGenV801266E4_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(((unsigned int)reinterpret_cast<Meta::igVec3fMetaField *>((void *)p0)->_size>>2)&0x3FFF)));
 }
 }
 #pragma pop

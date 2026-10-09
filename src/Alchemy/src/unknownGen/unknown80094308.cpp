@@ -1,4 +1,17 @@
 #include <unknownGen.h>
+#include <meta/igBoolList.h>
+#include <meta/igCharList.h>
+#include <meta/igDependencyList.h>
+#include <meta/igDoubleList.h>
+#include <meta/igFloatList.h>
+#include <meta/igIntList.h>
+#include <meta/igLongList.h>
+#include <meta/igMemoryDescriptorList.h>
+#include <meta/igPointerList.h>
+#include <meta/igShortList.h>
+#include <meta/igUnsignedCharList.h>
+#include <meta/igUnsignedLongList.h>
+#include <meta/igUnsignedShortList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -54,40 +67,40 @@ void *igFloatListList_virtual60(){return lbl_80561D7C;}
 void *igShortListList_virtual60(){return lbl_80561D90;}
 void *igUnsignedShortListList_virtual60(){return lbl_80561D9C;}
 void igBoolList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),1);
+ if((int)(int)(void *)reinterpret_cast<Meta::igBoolList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igBoolList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igBoolList *>((void *)p0)->_count,1);
   return;
  } else {
   return;
  }
 }
 void igCharList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),1);
+ if((int)(int)(void *)reinterpret_cast<Meta::igCharList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igCharList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igCharList *>((void *)p0)->_count,1);
   return;
  } else {
   return;
  }
 }
 void igIntList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igIntList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igIntList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igIntList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igUnsignedLongList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
+ if((int)(int)(void *)reinterpret_cast<Meta::igUnsignedLongList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igUnsignedLongList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igUnsignedLongList *>((void *)p0)->_count,8);
   return;
  } else {
   return;
  }
 }
 void igLongList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
+ if((int)(int)(void *)reinterpret_cast<Meta::igLongList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igLongList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igLongList *>((void *)p0)->_count,8);
   return;
  } else {
   return;
@@ -102,64 +115,64 @@ void fn_800944CC(int p0){
  }
 }
 void igUnsignedShortList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),2);
+ if((int)(int)(void *)reinterpret_cast<Meta::igUnsignedShortList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igUnsignedShortList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igUnsignedShortList *>((void *)p0)->_count,2);
   return;
  } else {
   return;
  }
 }
 void igShortList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),2);
+ if((int)(int)(void *)reinterpret_cast<Meta::igShortList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igShortList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igShortList *>((void *)p0)->_count,2);
   return;
  } else {
   return;
  }
 }
 void igUnsignedCharList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),1);
+ if((int)(int)(void *)reinterpret_cast<Meta::igUnsignedCharList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igUnsignedCharList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igUnsignedCharList *>((void *)p0)->_count,1);
   return;
  } else {
   return;
  }
 }
 void igFloatList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igFloatList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igFloatList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igFloatList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igDoubleList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
+ if((int)(int)(void *)reinterpret_cast<Meta::igDoubleList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igDoubleList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igDoubleList *>((void *)p0)->_count,8);
   return;
  } else {
   return;
  }
 }
 void igPointerList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igPointerList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igPointerList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igPointerList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igDependencyList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
+ if((int)(int)(void *)reinterpret_cast<Meta::igDependencyList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igDependencyList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igDependencyList *>((void *)p0)->_count,8);
   return;
  } else {
   return;
  }
 }
 void igMemoryDescriptorList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igMemoryDescriptorList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igMemoryDescriptorList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igMemoryDescriptorList *>((void *)p0)->_count,4);
   return;
  } else {
   return;

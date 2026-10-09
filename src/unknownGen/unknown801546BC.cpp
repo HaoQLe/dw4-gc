@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igChangePlayMode.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -13,12 +14,12 @@ void igChangePlayMode_virtual88(int p0,int p1){
  void *value0;
  value1=fn_80068128((void *)p1,lbl_8056469C);
  if((unsigned char)(int)value1){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+36)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+36)=(void *)reinterpret_cast<Meta::igChangePlayMode *>((void *)p0)->_playMode;
   return;
  } else {
   value2=fn_80068128((void *)p1,lbl_80564FA4);
   if((unsigned char)(int)value2){
-   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+   value0=(void *)reinterpret_cast<Meta::igChangePlayMode *>((void *)p0)->_playMode;
    *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+12)=value0;
   }
   return;

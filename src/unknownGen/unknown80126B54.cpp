@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igVec4fArrayMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -63,7 +64,7 @@ int igVec4dMetaField_virtual64(){return 32;}
 int igVec4dMetaField_virtual160(){return 8;}
 void igVec4fArrayMetaField_virtualD0(int p0,int p1,int p2){
  void *value0=fn_8011E3C8();
- reinterpret_cast<UnknownGenV80126B64_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)));
+ reinterpret_cast<UnknownGenV80126B64_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)(void *)reinterpret_cast<Meta::igVec4fArrayMetaField *>((void *)p0)->_num));
 }
 }
 #pragma pop

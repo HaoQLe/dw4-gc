@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igRenderListAttr.h>
+#include <meta/igVisualContext.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -203,19 +205,19 @@ extern "C" {
 void igRenderListAttr_virtual70(int p0){
  void *value0;
  void *value1;
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)!=-1){
-  reinterpret_cast<UnknownGenV800C2850_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))->s304(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+ if((int)(int)(void *)reinterpret_cast<Meta::igRenderListAttr *>((void *)p0)->_handle!=-1){
+  reinterpret_cast<UnknownGenV800C2850_0 *>(reinterpret_cast<Meta::igRenderListAttr *>((void *)p0)->_vc)->s304((void *)reinterpret_cast<Meta::igRenderListAttr *>((void *)p0)->_handle);
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)-1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ reinterpret_cast<Meta::igRenderListAttr *>((void *)p0)->_handle=(int)-1;
+ value0=reinterpret_cast<Meta::igRenderListAttr *>((void *)p0)->_vc;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4)&0x7FFFFF)){
+  value1=(void *)reinterpret_cast<Meta::igVisualContext *>(value0)->_refCount;
+  reinterpret_cast<Meta::igVisualContext *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVisualContext *>(value0)->_refCount&0x7FFFFF)){
    fn_80066E1C(value0);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)0;
+ reinterpret_cast<Meta::igRenderListAttr *>((void *)p0)->_vc=(Meta::igVisualContext *)0;
 }
 }
 #pragma pop

@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igGeometryAttr1_5.h>
+#include <meta/igVertexArray.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -135,11 +137,11 @@ void *igGeometryAttr1_5_virtual70(int p0){
  void *value0;
  void *value1;
  void *value2;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ value0=reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_vertexArray;
  if(value0){
   reinterpret_cast<UnknownGenV800BEB88_0 *>(value0)->sEC();
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ value1=reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_indexArray;
  if(value1){
   value2=reinterpret_cast<UnknownGenV800BEB88_1 *>(value1)->s8C();
   return value2;
@@ -163,30 +165,30 @@ void igGeometryAttr1_5_virtual80(int p0,int p1,int p2,int p3,int p4){
  void *value2;
  void *value3;
  void *value4;
- if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
+ if(!reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_vertexArray){
   value5=fn_80068430((int)(int)((void *)p0),(int)(int)((void *)p1));
   value6=fn_800D0030(value5);
   if((int)(int)value6!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+4)=(reinterpret_cast<char *>(value0)+1);
   }
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+  value1=reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_vertexArray;
   if(value1){
-   value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+   value2=(void *)reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount;
+   reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount&0x7FFFFF)){
     fn_80066E1C(value1);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value6;
-  value3=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
-  value4=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+4)=(reinterpret_cast<char *>(value4)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4)&0x7FFFFF)){
+  reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_vertexArray=(Meta::igVertexArray *)value6;
+  value3=reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_vertexArray;
+  value4=(void *)reinterpret_cast<Meta::igVertexArray *>(value3)->_refCount;
+  reinterpret_cast<Meta::igVertexArray *>(value3)->_refCount=(unsigned int)(reinterpret_cast<char *>(value4)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexArray *>(value3)->_refCount&0x7FFFFF)){
    fn_80066E1C(value3);
   }
  }
- reinterpret_cast<UnknownGenV800BEC30_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))->s60((void *)p1,(void *)p2,(void *)p3,(void *)p4);
+ reinterpret_cast<UnknownGenV800BEC30_2 *>(reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_vertexArray)->s60((void *)p1,(void *)p2,(void *)p3,(void *)p4);
 }
 }
 #pragma pop

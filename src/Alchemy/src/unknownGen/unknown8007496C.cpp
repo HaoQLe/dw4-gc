@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igStructMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -74,8 +75,8 @@ void *igStructMetaField_virtualE4(int p0,int p1){
 }
 int igStructMetaField_virtual6C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+52);}
 void igStructMetaField_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)),(void *)p1,(void *)p2,(void *)p3,(void *)p4,(void *)p5);
+ if(reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_cppConstructor){
+  reinterpret_cast<void (*)(void *,void *,void *,void *,void *,void *)>(reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_cppConstructor)((void *)(int)(p1+(int)(void *)reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_offset),(void *)p1,(void *)p2,(void *)p3,(void *)p4,(void *)p5);
   return;
  } else {
   fn_80064A04();
@@ -83,8 +84,8 @@ void igStructMetaField_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5){
  }
 }
 void igStructMetaField_virtual80(int p0,int p1,int p2,int p3,int p4,int p5){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60))((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)),(void *)p1,(void *)p2,(void *)p3,(void *)p4,(void *)p5);
+ if(reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_cppDestructor){
+  reinterpret_cast<void (*)(void *,void *,void *,void *,void *,void *)>(reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_cppDestructor)((void *)(int)(p1+(int)(void *)reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_offset),(void *)p1,(void *)p2,(void *)p3,(void *)p4,(void *)p5);
   return;
  } else {
   fn_80064A08();
@@ -92,9 +93,9 @@ void igStructMetaField_virtual80(int p0,int p1,int p2,int p3,int p4,int p5){
  }
 }
 void igStructMetaField_virtual70(int p0,int p1){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56)){
-  reinterpret_cast<void (*)(void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60))((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)),(void *)p1);
-  reinterpret_cast<void (*)(void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)));
+ if(reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_cppConstructor){
+  reinterpret_cast<void (*)(void *,void *)>(reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_cppDestructor)((void *)(int)(p1+(int)(void *)reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_offset),(void *)p1);
+  reinterpret_cast<void (*)(void *)>(reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_cppConstructor)((void *)(int)(p1+(int)(void *)reinterpret_cast<Meta::igStructMetaField *>((void *)p0)->_offset));
   return;
  } else {
   fn_80063E50((void *)p0);

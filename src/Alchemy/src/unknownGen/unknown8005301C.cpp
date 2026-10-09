@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igFile.h>
+#include <meta/igIGBFile.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -180,29 +182,29 @@ void *igIGBFile_virtual88(int p0){
  void *value2;
  void *value4;
  void *value5;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+260)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+164);
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+260);
+ reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunkSize=(int)(void *)reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_forceChunkSize;
+ value0=(void *)reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunkSize;
  if((int)(int)value0<0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104);
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+32);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+260)=value2;
+  value1=reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_file;
+  value2=(void *)reinterpret_cast<Meta::igFile *>(value1)->_optimalWriteChunkSize;
+  reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunkSize=(int)value2;
  }
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+260)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+156)){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+260)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+156);
+ if((int)(int)(void *)reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunkSize>(int)(int)(void *)reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_memoryRefBufferSize){
+  reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunkSize=(int)(void *)reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_memoryRefBufferSize;
  }
- value4=reinterpret_cast<UnknownGenV8005301C_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+280))->sDC(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+260),(void *)(int)(unsigned short)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104))+36));
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+264)=value4;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+256)=(void *)0;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+268)=(void *)0;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+272)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+260);
+ value4=reinterpret_cast<UnknownGenV8005301C_0 *>(reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_temporaryMemoryPool)->sDC((void *)reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunkSize,(void *)(int)(unsigned short)(int)(void *)reinterpret_cast<Meta::igFile *>(reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_file)->_pageSize);
+ reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunk=(void *)value4;
+ reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_memoryBufferPlace=(int)0;
+ reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_memoryBytesCopied=(int)0;
+ reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_bytesRemainingInChunk=(int)(void *)reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunkSize;
  value3=(void *)0;
- while((int)(int)value3<(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
+ while((int)(int)value3<(int)(int)(void *)reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_count){
   value5=fn_80042B1C((void *)p0,value3);
   reinterpret_cast<UnknownGenV8005301C_1 *>(value5)->sA4((void *)p0);
   value3=(reinterpret_cast<char *>(value3)+1);
  }
- reinterpret_cast<UnknownGenV8005301C_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+280))->s108(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+264));
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+264)=(void *)0;
+ reinterpret_cast<UnknownGenV8005301C_2 *>(reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_temporaryMemoryPool)->s108(reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunk);
+ reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_chunk=(void *)0;
  return (void *)1;
 }
 }

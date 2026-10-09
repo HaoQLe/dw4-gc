@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igVisualContextCapabilityManager.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -47,8 +48,8 @@ public:
 extern "C" {
 void *igVisualContextCapabilityManager_virtual5C(int p0){
  void *value0;
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  value0=reinterpret_cast<UnknownGenV800EACBC_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s94();
+ if(reinterpret_cast<Meta::igVisualContextCapabilityManager *>((void *)p0)->_visualContext){
+  value0=reinterpret_cast<UnknownGenV800EACBC_0 *>(reinterpret_cast<Meta::igVisualContextCapabilityManager *>((void *)p0)->_visualContext)->s94();
   return value0;
  } else {
   return (void *)0;

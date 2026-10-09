@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igTextureSwapAttr.h>
+#include <meta/igViewportAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -25,7 +27,7 @@ extern "C" {
 void igTextureSwapAttr_virtual68(int p0,int p1){
  void *local1;
  void *local0;
- fn_800FCA7C((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),&local1,&local0);
+ fn_800FCA7C((void *)p1,(void *)reinterpret_cast<Meta::igTextureSwapAttr *>((void *)p0)->_unitID,&local1,&local0);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12)=(unsigned char)(int)local1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+13)=(unsigned char)(int)local0;
 }
@@ -79,12 +81,12 @@ int igTextureConstantAttr_virtual7C(){return 4;}
 void *igVisualContextAttrDefaultManager_virtual58(){return lbl_80562404;}
 void *igViewportAttr_virtual58(){return lbl_80562410;}
 void *igViewportAttr_virtual80(int p0,int p1,int p2,int p3,int p4,float f0,float f1){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)p1;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)p2;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p3;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)p4;
- *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+32)=f0;
- *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+36)=f1;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_x=(int)(void *)p1;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_y=(int)(void *)p2;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_w=(int)(void *)p3;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_h=(int)(void *)p4;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_nearZ=f0;
+ reinterpret_cast<Meta::igViewportAttr *>((void *)p0)->_farZ=f1;
  return (void *)p0;
 }
 void *igVertexShaderBindAttr_virtual58(){return lbl_80562430;}

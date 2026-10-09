@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTextureStateAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -39,7 +40,7 @@ void *fn_800C49B4(int p0){
  return (void *)p0;
 }
 void igTextureStateAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual1D4((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
+ igGamecubeVisualContext_virtual1D4((void *)p1,(void *)reinterpret_cast<Meta::igTextureStateAttr *>((void *)p0)->_unitID,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
 }
 }
 #pragma pop

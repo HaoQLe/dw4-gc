@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -17,7 +18,7 @@ void *igNodeTraversal_virtual88(int p0){
  void *value5;
  void *value6;
  void *value0=lbl_8056402C;
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+28);
+ value1=(void *)reinterpret_cast<Meta::igMetaObject *>(value0)->_name;
  if(!value1){
   value3=(void *)0;
  } else {

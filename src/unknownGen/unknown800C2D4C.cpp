@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igSpriteAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -183,17 +184,17 @@ void igSpriteAttr_virtual68(int p0,int p1,int p2,int p3,int p4,int p5){
  }
 }
 void igSpriteAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtualEC((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24));
- reinterpret_cast<UnknownGenV800C2D9C_1 *>(lbl_80562B08)->s88(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28));
+ igGamecubeVisualContext_virtualEC((void *)p1,reinterpret_cast<Meta::igSpriteAttr *>((void *)p0)->_vertexArray);
+ reinterpret_cast<UnknownGenV800C2D9C_1 *>(lbl_80562B08)->s88((void *)reinterpret_cast<Meta::igSpriteAttr *>((void *)p0)->_spriteSpace);
  reinterpret_cast<UnknownGenV800C2D9C_2 *>(lbl_80562B08)->s78();
- reinterpret_cast<UnknownGenV800C2D9C_3 *>(lbl_80562B08)->s80(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20));
+ reinterpret_cast<UnknownGenV800C2D9C_3 *>(lbl_80562B08)->s80((void *)reinterpret_cast<Meta::igSpriteAttr *>((void *)p0)->_numPrims,(void *)reinterpret_cast<Meta::igSpriteAttr *>((void *)p0)->_offset);
  reinterpret_cast<UnknownGenV800C2D9C_4 *>(lbl_80562B08)->s7C();
 }
 void igPointSpriteExt_virtual88(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36)=value;}
 void *igSpriteAttr_virtual80(int p0,int p1,int p2,int p3){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)p1;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)p2;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p3;
+ reinterpret_cast<Meta::igSpriteAttr *>((void *)p0)->_spriteType=(int)(void *)p1;
+ reinterpret_cast<Meta::igSpriteAttr *>((void *)p0)->_numPrims=(unsigned int)(void *)p2;
+ reinterpret_cast<Meta::igSpriteAttr *>((void *)p0)->_offset=(unsigned int)(void *)p3;
  return (void *)p0;
 }
 }

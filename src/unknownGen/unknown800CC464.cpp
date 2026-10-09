@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igDefaultInterfaceManager.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -34,40 +35,40 @@ public:
 };
 extern "C" {
 void igDefaultInterfaceManager_virtual68(int p0,int p1,int p2){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
-  reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))((void *)p1,(void *)p2,(void *)p2);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_mouseMotionFunction){
+  reinterpret_cast<void (*)(void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_mouseMotionFunction)((void *)p1,(void *)p2,(void *)p2);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual6C(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_mouseButtonDownFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_mouseButtonDownFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual70(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_mouseButtonUpFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_mouseButtonUpFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual74(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_windowMoveFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_windowMoveFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual78(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_windowResizeFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_windowResizeFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
@@ -78,8 +79,8 @@ void *igDefaultInterfaceManager_virtual7C(int p0,int p1){
  void *value1;
  void *value2;
  value0=(void *)1;
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
-  value1=reinterpret_cast<void * (*)(void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32))((void *)p1,(void *)p1);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_windowCloseFunction){
+  value1=reinterpret_cast<void * (*)(void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_windowCloseFunction)((void *)p1,(void *)p1);
   value0=value1;
  }
  if((unsigned char)(int)value0){
@@ -90,80 +91,80 @@ void *igDefaultInterfaceManager_virtual7C(int p0,int p1){
  }
 }
 void igDefaultInterfaceManager_virtualA0(int p0,int p1,int p2){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68)){
-  reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68))((void *)p1,(void *)p2,(void *)p2);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_keyDownFunction){
+  reinterpret_cast<void (*)(void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_keyDownFunction)((void *)p1,(void *)p2,(void *)p2);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtualA4(int p0,int p1,int p2){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72)){
-  reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72))((void *)p1,(void *)p2,(void *)p2);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_keyUpFunction){
+  reinterpret_cast<void (*)(void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_keyUpFunction)((void *)p1,(void *)p2,(void *)p2);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual80(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerJoystickMotionFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerJoystickMotionFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual84(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerButtonDownFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerButtonDownFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual88(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerButtonUpFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerButtonUpFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual8C(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerButtonPressureFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerButtonPressureFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual90(int p0,int p1,int p2){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)){
-  reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))((void *)p1,(void *)p2,(void *)p2);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerConnectionFunction){
+  reinterpret_cast<void (*)(void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerConnectionFunction)((void *)p1,(void *)p2,(void *)p2);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual94(int p0,int p1,int p2){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56)){
-  reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))((void *)p1,(void *)p2,(void *)p2);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerDisconnectionFunction){
+  reinterpret_cast<void (*)(void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerDisconnectionFunction)((void *)p1,(void *)p2,(void *)p2);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual98(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerSliderFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerSliderFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;
  }
 }
 void igDefaultInterfaceManager_virtual9C(int p0,int p1,int p2,int p3){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64)){
-  reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
+ if(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerPointOfViewFunction){
+  reinterpret_cast<void (*)(void *,void *,void *,void *)>(reinterpret_cast<Meta::igDefaultInterfaceManager *>((void *)p0)->_controllerPointOfViewFunction)((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
  } else {
   return;

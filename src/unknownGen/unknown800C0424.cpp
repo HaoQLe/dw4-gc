@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGeometryAttr2.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -100,11 +101,11 @@ void *igGeometryAttr2_virtual70(int p0){
  void *value0;
  void *value1;
  void *value2;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ value0=reinterpret_cast<Meta::igGeometryAttr2 *>((void *)p0)->_vertexArray;
  if(value0){
   reinterpret_cast<UnknownGenV800C0458_1 *>(value0)->s60();
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ value1=reinterpret_cast<Meta::igGeometryAttr2 *>((void *)p0)->_indexArray;
  if(value1){
   value2=reinterpret_cast<UnknownGenV800C0458_2 *>(value1)->s8C();
   return value2;

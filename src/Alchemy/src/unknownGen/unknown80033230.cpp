@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igDependencyMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -148,7 +149,7 @@ void *fn_800336D8(){
 }
 int igDependencyMetaField_virtual64(){return 8;}
 void igDependencyMetaField_virtual2C(int p0){
- fn_80033734(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+ fn_80033734(reinterpret_cast<Meta::igDependencyMetaField *>((void *)p0)->_fieldList);
 }
 }
 #pragma pop

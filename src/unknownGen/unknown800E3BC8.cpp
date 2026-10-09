@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeVertexArray1_1.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -12,18 +13,18 @@ void *igGamecubeVertexArray1_1_virtualFC(int p0){
  void *value3;
  void *value4;
  void *value5;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
+ value0=reinterpret_cast<Meta::igGamecubeVertexArray1_1 *>((void *)p0)->_vdata;
  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+68);
  if(value1){
   fn_80056378(value1);
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
+  value2=reinterpret_cast<Meta::igGamecubeVertexArray1_1 *>((void *)p0)->_vdata;
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+68)=(void *)0;
  }
- value3=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
+ value3=reinterpret_cast<Meta::igGamecubeVertexArray1_1 *>((void *)p0)->_vdata;
  value4=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+72);
  if(value4){
   fn_80056378(value4);
-  value5=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
+  value5=reinterpret_cast<Meta::igGamecubeVertexArray1_1 *>((void *)p0)->_vdata;
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+72)=(void *)0;
   return value5;
  } else {

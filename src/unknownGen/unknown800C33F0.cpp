@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTextureAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -8,9 +9,9 @@ extern "C" {
 void igTextureAttr_virtual68(){}
 void igTextureAttr_virtual44(int p0){
  void *value0;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60);
+ value0=(void *)reinterpret_cast<Meta::igTextureAttr *>((void *)p0)->_imageCount;
  if((int)(int)value0==0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+60)=(void *)1;
+  reinterpret_cast<Meta::igTextureAttr *>((void *)p0)->_imageCount=(int)1;
  }
  fn_800BCB74((void *)p0);
 }

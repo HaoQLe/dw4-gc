@@ -1,4 +1,9 @@
 #include <unknownGen.h>
+#include <meta/igBlendFunctionAttr.h>
+#include <meta/igGamecubeEnvironmentMapShader.h>
+#include <meta/igTextureAttr.h>
+#include <meta/igTextureBindAttr.h>
+#include <meta/igTextureFunctionAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -15,43 +20,43 @@ void igGamecubeEnvironmentMapShader_virtualD0(int p0){
  void *value6;
  void *value7;
  fn_801E6CE8((void *)p0);
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+112);
+ value0=reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapBlendFunc;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4)&0x7FFFFF)){
+  value1=(void *)reinterpret_cast<Meta::igBlendFunctionAttr *>(value0)->_refCount;
+  reinterpret_cast<Meta::igBlendFunctionAttr *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igBlendFunctionAttr *>(value0)->_refCount&0x7FFFFF)){
    fn_80066E1C(value0);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+112)=(void *)0;
- *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+116)=255;
- value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+120);
+ reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapBlendFunc=(Meta::igBlendFunctionAttr *)0;
+ reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_reflectionScale=255;
+ value2=reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_scaleTexture;
  if(value2){
-  value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+4)=(reinterpret_cast<char *>(value3)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4)&0x7FFFFF)){
+  value3=(void *)reinterpret_cast<Meta::igTextureAttr *>(value2)->_refCount;
+  reinterpret_cast<Meta::igTextureAttr *>(value2)->_refCount=(unsigned int)(reinterpret_cast<char *>(value3)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igTextureAttr *>(value2)->_refCount&0x7FFFFF)){
    fn_80066E1C(value2);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+120)=(void *)0;
- value4=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+124);
+ reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_scaleTexture=(Meta::igTextureAttr *)0;
+ value4=reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_scaleTextureBind;
  if(value4){
-  value5=*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+4)=(reinterpret_cast<char *>(value5)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4)&0x7FFFFF)){
+  value5=(void *)reinterpret_cast<Meta::igTextureBindAttr *>(value4)->_refCount;
+  reinterpret_cast<Meta::igTextureBindAttr *>(value4)->_refCount=(unsigned int)(reinterpret_cast<char *>(value5)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igTextureBindAttr *>(value4)->_refCount&0x7FFFFF)){
    fn_80066E1C(value4);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+124)=(void *)0;
- value6=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+128);
+ reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_scaleTextureBind=(Meta::igTextureBindAttr *)0;
+ value6=reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_scaleTextureFunc;
  if(value6){
-  value7=*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+4)=(reinterpret_cast<char *>(value7)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4)&0x7FFFFF)){
+  value7=(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>(value6)->_refCount;
+  reinterpret_cast<Meta::igTextureFunctionAttr *>(value6)->_refCount=(unsigned int)(reinterpret_cast<char *>(value7)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>(value6)->_refCount&0x7FFFFF)){
    fn_80066E1C(value6);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+128)=(void *)0;
+ reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_scaleTextureFunc=(Meta::igTextureFunctionAttr *)0;
 }
 }
 #pragma pop

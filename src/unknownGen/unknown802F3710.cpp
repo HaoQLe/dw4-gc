@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beCameraCtrl.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -14,8 +15,8 @@ void beCameraCtrl_virtual84(int p0,int p1){
  void *value1;
  value0=(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+216);
  if(value0){
-  fn_8028A400(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
-  fn_8028A398(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
+  fn_8028A400(reinterpret_cast<Meta::beCameraCtrl *>((void *)p0)->_insight,(void *)p0);
+  fn_8028A398(reinterpret_cast<Meta::beCameraCtrl *>((void *)p0)->_insight,(void *)p0);
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+216)=0;
  }
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+20)){

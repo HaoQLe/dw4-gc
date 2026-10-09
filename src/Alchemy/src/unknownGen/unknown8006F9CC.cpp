@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/igIntList.h>
+#include <meta/igResource.h>
+#include <meta/igStringObjList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -14,24 +17,24 @@ void igResource_virtual30(int p0){
  if((unsigned int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)==1){
   fn_8006F8CC((void *)p0);
  }
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+ value0=reinterpret_cast<Meta::igResource *>((void *)p0)->_alignmentStrings;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4)&0x7FFFFF)){
+  value1=(void *)reinterpret_cast<Meta::igStringObjList *>(value0)->_refCount;
+  reinterpret_cast<Meta::igStringObjList *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igStringObjList *>(value0)->_refCount&0x7FFFFF)){
    fn_80066E1C(value0);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+44)=(void *)0;
- value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48);
+ reinterpret_cast<Meta::igResource *>((void *)p0)->_alignmentStrings=(Meta::igStringObjList *)0;
+ value2=reinterpret_cast<Meta::igResource *>((void *)p0)->_alignmentValues;
  if(value2){
-  value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+4)=(reinterpret_cast<char *>(value3)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4)&0x7FFFFF)){
+  value3=(void *)reinterpret_cast<Meta::igIntList *>(value2)->_refCount;
+  reinterpret_cast<Meta::igIntList *>(value2)->_refCount=(unsigned int)(reinterpret_cast<char *>(value3)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igIntList *>(value2)->_refCount&0x7FFFFF)){
    fn_80066E1C(value2);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+48)=(void *)0;
+ reinterpret_cast<Meta::igResource *>((void *)p0)->_alignmentValues=(Meta::igIntList *)0;
  fn_800667D4((void *)p0);
 }
 }

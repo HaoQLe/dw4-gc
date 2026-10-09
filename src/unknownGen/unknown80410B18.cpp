@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igCameraMode.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -46,7 +47,7 @@ extern "C" {
 void *igCameraMode_virtual80(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80);
+ value0=reinterpret_cast<Meta::igCameraMode *>((void *)p0)->_camera;
  if(value0){
   value1=reinterpret_cast<UnknownGenV80410B18_0 *>(value0)->s90();
   return value1;

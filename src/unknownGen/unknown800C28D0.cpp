@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igScissorAttr.h>
+#include <meta/igScissorTypeAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -896,17 +898,17 @@ void igSceneAmbientColorAttr_virtual68(int p0,int p1){
  reinterpret_cast<UnknownGenV800C28FC_0 *>((void *)p1)->s1D0((reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
 }
 void igScissorAttr_virtual60(int p0,int p1){
- reinterpret_cast<UnknownGenV800C2934_1 *>((void *)p1)->s2F0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28));
+ reinterpret_cast<UnknownGenV800C2934_1 *>((void *)p1)->s2F0((void *)reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_x,(void *)reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_y,(void *)reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_w,(void *)reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_h);
 }
 void igScissorAttr_virtual68(int p0,int p1){
  reinterpret_cast<UnknownGenV800C2978_2 *>((void *)p1)->s2F4((reinterpret_cast<char *>((void *)p0)+16),(reinterpret_cast<char *>((void *)p0)+20),(reinterpret_cast<char *>((void *)p0)+24),(reinterpret_cast<char *>((void *)p0)+28));
 }
 void igScissorTypeAttr_virtual60(int p0,int p1){
- reinterpret_cast<UnknownGenV800C29BC_3 *>((void *)p1)->s2F8(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
+ reinterpret_cast<UnknownGenV800C29BC_3 *>((void *)p1)->s2F8((void *)reinterpret_cast<Meta::igScissorTypeAttr *>((void *)p0)->_type,(void *)p0);
 }
 void igScissorTypeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C29F4_4 *>((void *)p1)->s2FC((void *)p1);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
+ reinterpret_cast<Meta::igScissorTypeAttr *>((void *)p0)->_type=(int)value0;
 }
 int igGamecubeVisualContext_virtual2FC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+104);}
 }

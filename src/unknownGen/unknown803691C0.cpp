@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/beNDMWMcUtilCtrl.h>
+#include <meta/beNDMWTitle2.h>
+#include <meta/bePadManager.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -13,32 +16,32 @@ void beNDMWTitle2_virtual88(int p0){
  void *value2;
  void *value3;
  void *value4;
- if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
-  value5=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>((lbl_80534AAC+0)));
+ if(!reinterpret_cast<Meta::beNDMWTitle2 *>((void *)p0)->_padManager){
+  value5=fn_8028A730(reinterpret_cast<Meta::beNDMWTitle2 *>((void *)p0)->_insight,*reinterpret_cast<void **>((lbl_80534AAC+0)));
   if((int)(int)value5!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value5)+4);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+4)=(reinterpret_cast<char *>(value0)+1);
   }
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
+  value1=reinterpret_cast<Meta::beNDMWTitle2 *>((void *)p0)->_padManager;
   if(value1){
-   value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+   value2=(void *)reinterpret_cast<Meta::bePadManager *>(value1)->_refCount;
+   reinterpret_cast<Meta::bePadManager *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::bePadManager *>(value1)->_refCount&0x7FFFFF)){
     fn_80066E1C(value1);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=value5;
+  reinterpret_cast<Meta::beNDMWTitle2 *>((void *)p0)->_padManager=(Meta::bePadManager *)value5;
  }
- value3=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);
+ value3=reinterpret_cast<Meta::beNDMWTitle2 *>((void *)p0)->_mcUtilCtrl;
  if(value3){
   if(value3){
-   value4=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+4)=(reinterpret_cast<char *>(value4)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4)&0x7FFFFF)){
+   value4=(void *)reinterpret_cast<Meta::beNDMWMcUtilCtrl *>(value3)->_refCount;
+   reinterpret_cast<Meta::beNDMWMcUtilCtrl *>(value3)->_refCount=(unsigned int)(reinterpret_cast<char *>(value4)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beNDMWMcUtilCtrl *>(value3)->_refCount&0x7FFFFF)){
     fn_80066E1C(value3);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)0;
+  reinterpret_cast<Meta::beNDMWTitle2 *>((void *)p0)->_mcUtilCtrl=(Meta::beNDMWMcUtilCtrl *)0;
   return;
  } else {
   return;

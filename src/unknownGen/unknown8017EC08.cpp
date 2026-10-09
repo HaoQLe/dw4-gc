@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igNodeTraversal.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -24,8 +25,8 @@ void igNodeTraversal_virtual6C(){}
 void igNodeTraversal_virtual70(int p0,int p1){
  void *local1;
  void *local0;
- fn_801887D4(&local1,(void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(lbl_80564034)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36));
- fn_801887D4(&local0,(void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(lbl_80564038)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40));
+ fn_801887D4(&local1,(void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(lbl_80564034)+12),reinterpret_cast<Meta::igNodeTraversal *>((void *)p0)->_childList);
+ fn_801887D4(&local0,(void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(lbl_80564038)+12),reinterpret_cast<Meta::igNodeTraversal *>((void *)p0)->_parentList);
 }
 void *igNodeTraversal_virtual7C(){return lbl_80564BC0;}
 }

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igDataTable.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -53,7 +54,7 @@ public:
 extern "C" {
 void igDataTable_virtual70(int p0,int p1){
  if((int)p1>=0){
-  reinterpret_cast<UnknownGenV80167DD4_0 *>((void *)p0)->sB0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24),(void *)p1);
+  reinterpret_cast<UnknownGenV80167DD4_0 *>((void *)p0)->sB0(reinterpret_cast<Meta::igDataTable *>((void *)p0)->_columnList,(void *)p1);
   return;
  } else {
   return;

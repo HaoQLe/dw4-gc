@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/beDataBase.h>
+#include <meta/beNDMWGameRam.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -22,78 +24,78 @@ void beNDMWGameRam_virtual88(int p0){
  void *value13;
  void *value14;
  void *value15;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
+ value0=reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBShinka;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4)&0x7FFFFF)){
+  value1=(void *)reinterpret_cast<Meta::beDataBase *>(value0)->_refCount;
+  reinterpret_cast<Meta::beDataBase *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beDataBase *>(value0)->_refCount&0x7FFFFF)){
    fn_80066E1C(value0);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=(void *)0;
- value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);
+ reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBShinka=(Meta::beDataBase *)0;
+ value2=reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBPcTech;
  if(value2){
-  value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+4)=(reinterpret_cast<char *>(value3)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4)&0x7FFFFF)){
+  value3=(void *)reinterpret_cast<Meta::beDataBase *>(value2)->_refCount;
+  reinterpret_cast<Meta::beDataBase *>(value2)->_refCount=(unsigned int)(reinterpret_cast<char *>(value3)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beDataBase *>(value2)->_refCount&0x7FFFFF)){
    fn_80066E1C(value2);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)0;
- value4=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40);
+ reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBPcTech=(Meta::beDataBase *)0;
+ value4=reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBWeapon;
  if(value4){
-  value5=*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+4)=(reinterpret_cast<char *>(value5)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4)&0x7FFFFF)){
+  value5=(void *)reinterpret_cast<Meta::beDataBase *>(value4)->_refCount;
+  reinterpret_cast<Meta::beDataBase *>(value4)->_refCount=(unsigned int)(reinterpret_cast<char *>(value5)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beDataBase *>(value4)->_refCount&0x7FFFFF)){
    fn_80066E1C(value4);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+40)=(void *)0;
- value6=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+ reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBWeapon=(Meta::beDataBase *)0;
+ value6=reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBArmor1;
  if(value6){
-  value7=*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+4)=(reinterpret_cast<char *>(value7)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4)&0x7FFFFF)){
+  value7=(void *)reinterpret_cast<Meta::beDataBase *>(value6)->_refCount;
+  reinterpret_cast<Meta::beDataBase *>(value6)->_refCount=(unsigned int)(reinterpret_cast<char *>(value7)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beDataBase *>(value6)->_refCount&0x7FFFFF)){
    fn_80066E1C(value6);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+44)=(void *)0;
- value8=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48);
+ reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBArmor1=(Meta::beDataBase *)0;
+ value8=reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBArmor2;
  if(value8){
-  value9=*reinterpret_cast<void **>(reinterpret_cast<char *>(value8)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+4)=(reinterpret_cast<char *>(value9)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value8)+4)&0x7FFFFF)){
+  value9=(void *)reinterpret_cast<Meta::beDataBase *>(value8)->_refCount;
+  reinterpret_cast<Meta::beDataBase *>(value8)->_refCount=(unsigned int)(reinterpret_cast<char *>(value9)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beDataBase *>(value8)->_refCount&0x7FFFFF)){
    fn_80066E1C(value8);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+48)=(void *)0;
- value10=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52);
+ reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBArmor2=(Meta::beDataBase *)0;
+ value10=reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBAbChip;
  if(value10){
-  value11=*reinterpret_cast<void **>(reinterpret_cast<char *>(value10)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value10)+4)=(reinterpret_cast<char *>(value11)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value10)+4)&0x7FFFFF)){
+  value11=(void *)reinterpret_cast<Meta::beDataBase *>(value10)->_refCount;
+  reinterpret_cast<Meta::beDataBase *>(value10)->_refCount=(unsigned int)(reinterpret_cast<char *>(value11)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beDataBase *>(value10)->_refCount&0x7FFFFF)){
    fn_80066E1C(value10);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+52)=(void *)0;
- value12=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56);
+ reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBAbChip=(Meta::beDataBase *)0;
+ value12=reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBEnemy;
  if(value12){
-  value13=*reinterpret_cast<void **>(reinterpret_cast<char *>(value12)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value12)+4)=(reinterpret_cast<char *>(value13)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value12)+4)&0x7FFFFF)){
+  value13=(void *)reinterpret_cast<Meta::beDataBase *>(value12)->_refCount;
+  reinterpret_cast<Meta::beDataBase *>(value12)->_refCount=(unsigned int)(reinterpret_cast<char *>(value13)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beDataBase *>(value12)->_refCount&0x7FFFFF)){
    fn_80066E1C(value12);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+56)=(void *)0;
- value14=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60);
+ reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBEnemy=(Meta::beDataBase *)0;
+ value14=reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBEneatk;
  if(value14){
-  value15=*reinterpret_cast<void **>(reinterpret_cast<char *>(value14)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value14)+4)=(reinterpret_cast<char *>(value15)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value14)+4)&0x7FFFFF)){
+  value15=(void *)reinterpret_cast<Meta::beDataBase *>(value14)->_refCount;
+  reinterpret_cast<Meta::beDataBase *>(value14)->_refCount=(unsigned int)(reinterpret_cast<char *>(value15)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beDataBase *>(value14)->_refCount&0x7FFFFF)){
    fn_80066E1C(value14);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+60)=(void *)0;
+ reinterpret_cast<Meta::beNDMWGameRam *>((void *)p0)->_dBEneatk=(Meta::beDataBase *)0;
 }
 }
 #pragma pop

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -338,7 +339,7 @@ void *igTimer_getMetaCall(){return igTimer_getMeta();}
 void *fn_800237D0(){return lbl_805622A4;}
 void *fn_800237D8(){
  void *value0=lbl_805614E4;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igLongTimer_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igLongTimer_getMetaCall;
  return value0;
 }
 void *igLongTimer_getMetaCall(){return igLongTimer_getMeta();}
@@ -373,7 +374,7 @@ void igThreadManager_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value5)+52)=1;
  fn_800659C0(value0,lbl_8055CFA8,lbl_8055CFB0,lbl_8055CFB8,value2);
  void *value1=lbl_805614E8;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+60)=(void *)igGamecubeThreadManager_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value1)->_abstractProxy=(void *)(void *)igGamecubeThreadManager_getMetaCall;
  fn_80065D94((void *)fn_80023A50);
 }
 void *igGamecubeThreadManager_getMetaCall(){return igGamecubeThreadManager_getMeta();}

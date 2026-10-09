@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTransform.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -178,10 +179,10 @@ void *igTransform_virtual68(int p0){
  if((int)(int)value2>1){
   value1=(void *)0;
  } else {
-  if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104)){
+  if(!reinterpret_cast<Meta::igTransform *>((void *)p0)->_transformInput){
    value0=(void *)1;
   } else {
-   value3=reinterpret_cast<UnknownGenV802072E4_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104))->s74();
+   value3=reinterpret_cast<UnknownGenV802072E4_2 *>(reinterpret_cast<Meta::igTransform *>((void *)p0)->_transformInput)->s74();
    value0=value3;
   }
   value1=value0;
@@ -191,7 +192,7 @@ void *igTransform_virtual68(int p0){
 int fn_80207350(){return 0;}
 void igTransform_virtual6C(int p0,int p1){
  void *value0;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104);
+ value0=reinterpret_cast<Meta::igTransform *>((void *)p0)->_transformInput;
  if(!value0){
   fn_80128690((reinterpret_cast<char *>((void *)p0)+32),(reinterpret_cast<char *>((void *)p0)+32),(void *)p1);
   return;
@@ -205,7 +206,7 @@ int igTransform_virtual78(){return 2;}
 void *igTransform_virtual7C(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104);
+ value0=reinterpret_cast<Meta::igTransform *>((void *)p0)->_transformInput;
  if(value0){
   reinterpret_cast<UnknownGenV802073B4_4 *>(value0)->s84();
   value1=fn_801285A0((reinterpret_cast<char *>((void *)p0)+32));

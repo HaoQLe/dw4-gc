@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igFilterMessageDispatcher.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -69,8 +70,8 @@ void igFilterMessageDispatcher_virtual6C(int p0,int p1,int p2,int p3,int p4,int 
  fn_800692E0(&local2,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p2)+12),(void *)p1,0);
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p2)+12);
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8)==0){
-  fn_800692E0(&local1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p2,0);
-  fn_800692E0(&local0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),(void *)p2,0);
+  fn_800692E0(&local1,reinterpret_cast<Meta::igFilterMessageDispatcher *>((void *)p0)->_filters,(void *)p2,0);
+  fn_800692E0(&local0,reinterpret_cast<Meta::igFilterMessageDispatcher *>((void *)p0)->_defaultFilters,(void *)p2,0);
   return;
  } else {
   return;

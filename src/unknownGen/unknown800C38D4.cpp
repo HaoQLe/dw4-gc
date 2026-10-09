@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igTextureAttr.h>
+#include <meta/igTextureBindAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -124,7 +126,7 @@ void igTextureBindAttr_virtual68(){}
 void *igTextureBindAttr_virtual70(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ value0=reinterpret_cast<Meta::igTextureBindAttr *>((void *)p0)->_texture;
  if(value0){
   value1=reinterpret_cast<UnknownGenV800C390C_1 *>(value0)->s70();
   return value1;
@@ -135,7 +137,7 @@ void *igTextureBindAttr_virtual70(int p0){
 void *igTextureBindAttr_virtual74(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ value0=reinterpret_cast<Meta::igTextureBindAttr *>((void *)p0)->_texture;
  if(value0){
   value1=reinterpret_cast<UnknownGenV800C3944_2 *>(value0)->s74();
   return value1;
@@ -145,22 +147,22 @@ void *igTextureBindAttr_virtual74(int p0){
 }
 void igTextureBindAttr_virtual80(int p0,int p1){
  void *value0;
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
-  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+36);
+ if(reinterpret_cast<Meta::igTextureBindAttr *>((void *)p0)->_texture){
+  value0=(void *)reinterpret_cast<Meta::igTextureAttr *>(reinterpret_cast<Meta::igTextureBindAttr *>((void *)p0)->_texture)->_texId;
  } else {
   value0=(void *)-1;
  }
- igGamecubeVisualContext_virtual1FC((void *)p1,value0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+ igGamecubeVisualContext_virtual1FC((void *)p1,value0,(void *)reinterpret_cast<Meta::igTextureBindAttr *>((void *)p0)->_unitID);
 }
 void igTextureBindAttr_virtual60(int p0,int p1){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ value0=reinterpret_cast<Meta::igTextureBindAttr *>((void *)p0)->_texture;
  if(value0){
   reinterpret_cast<UnknownGenV800C39C0_3 *>(value0)->s60((void *)p1);
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
-  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36)>=0){
-   igGamecubeVisualContext_virtual1FC((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+  value1=reinterpret_cast<Meta::igTextureBindAttr *>((void *)p0)->_texture;
+  if((int)(int)(void *)reinterpret_cast<Meta::igTextureAttr *>(value1)->_texId>=0){
+   igGamecubeVisualContext_virtual1FC((void *)p1,(void *)reinterpret_cast<Meta::igTextureAttr *>(value1)->_texId,(void *)reinterpret_cast<Meta::igTextureBindAttr *>((void *)p0)->_unitID);
    return;
   } else {
    return;

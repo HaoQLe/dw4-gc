@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/igBlendMatricesAttr.h>
+#include <meta/igBlendMatrixPaletteAttr.h>
+#include <meta/igVec3fList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -51,17 +54,17 @@ void *igBlendingControlStateAttr_virtual58(){return lbl_805629D0;}
 void *igBlendStateAttr_virtual58(){return lbl_805629D8;}
 void *igBlendMatrixPaletteAttr_virtual58(){return lbl_805629E4;}
 void igBlendMatrixPaletteAttr_virtual44(int p0){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24)){
+ if((void *)reinterpret_cast<Meta::igBlendMatrixPaletteAttr *>((void *)p0)->_capacity){
   return;
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
+ reinterpret_cast<Meta::igBlendMatrixPaletteAttr *>((void *)p0)->_capacity=(unsigned int)(void *)reinterpret_cast<Meta::igBlendMatrixPaletteAttr *>((void *)p0)->_currentMatrixCount;
 }
 void *igBlendMatricesAttr_virtual58(){return lbl_805629F8;}
 void igBlendMatricesAttr_virtual44(int p0){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)){
+ if((void *)reinterpret_cast<Meta::igBlendMatricesAttr *>((void *)p0)->_matrixCacheCapacity){
   return;
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ reinterpret_cast<Meta::igBlendMatricesAttr *>((void *)p0)->_matrixCacheCapacity=(unsigned int)(void *)reinterpret_cast<Meta::igBlendMatricesAttr *>((void *)p0)->_currentMatrixCount;
 }
 void *igAttrPool_virtual58(){return lbl_80562A48;}
 void *fn_800C6B20(){return lbl_80562A58;}
@@ -101,8 +104,8 @@ void *igVertexBlendMatrixAttrList_virtual60(){return lbl_805624A0;}
 void *igAttrListList_virtual60(){return lbl_80562A64;}
 void *igAttrList_virtual60(){return lbl_80562A68;}
 void igVec3fList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),12);
+ if((int)(int)(void *)reinterpret_cast<Meta::igVec3fList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igVec3fList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igVec3fList *>((void *)p0)->_count,12);
   return;
  } else {
   return;

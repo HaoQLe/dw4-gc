@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMessageFilter.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -88,7 +89,7 @@ void *fn_80287290(){return lbl_80515C8C;}
 void *fn_802872A0(){return lbl_80515CAC;}
 void *igMessageFilter_virtual58(){return lbl_80515C94;}
 void igMessageFilter_virtual5C(int p0,int p1){
- fn_80068128((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8));
+ fn_80068128((void *)p1,reinterpret_cast<Meta::igMessageFilter *>((void *)p0)->_msgType);
 }
 void *igMessageFilterList_virtual58(){return lbl_80515C90;}
 void *igMessageReceiverList_virtual58(){return lbl_80515C88;}

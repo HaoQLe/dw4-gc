@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/igGraphPath.h>
+#include <meta/igPickMode.h>
+#include <meta/igViewerParameters.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -29,20 +32,20 @@ void igPickMode_virtual6C(int p0,int p1,int p2){
    fn_80412874((void *)p0);
   } else {
    if((int)p1==1){
-    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76);
-    value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+240);
+    value0=reinterpret_cast<Meta::igPickMode *>((void *)p0)->_parameters;
+    value1=reinterpret_cast<Meta::igViewerParameters *>(value0)->_selectedObject;
     if(value1){
-     value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-     *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-     if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+     value2=(void *)reinterpret_cast<Meta::igGraphPath *>(value1)->_refCount;
+     reinterpret_cast<Meta::igGraphPath *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+     if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igGraphPath *>(value1)->_refCount&0x7FFFFF)){
       fn_80066E1C(value1);
      }
     }
-    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+240)=(void *)0;
+    reinterpret_cast<Meta::igViewerParameters *>(value0)->_selectedObject=(Meta::igGraphPath *)0;
     local0.m08=(int)2;
     local0.m0C=(int)0;
     local0.m10=(int)(int)*reinterpret_cast<void **>((lbl_8055C960+0));
-    fn_8011BFA4(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76),&local0);
+    fn_8011BFA4(reinterpret_cast<Meta::igPickMode *>((void *)p0)->_parameters,&local0);
     return;
    } else {
     return;

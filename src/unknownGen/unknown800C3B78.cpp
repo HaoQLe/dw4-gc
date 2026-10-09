@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTextureCoordSourceAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -161,10 +162,10 @@ extern "C" {
 void igTextureCoordSourceAttr_virtual68(int p0,int p1){
  void *local1;
  void *local0;
- local1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
- reinterpret_cast<UnknownGenV800C3B78_0 *>((void *)p1)->s25C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),&local1,&local0);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=local1;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=local0;
+ local1=(void *)reinterpret_cast<Meta::igTextureCoordSourceAttr *>((void *)p0)->_mode;
+ reinterpret_cast<UnknownGenV800C3B78_0 *>((void *)p1)->s25C((void *)reinterpret_cast<Meta::igTextureCoordSourceAttr *>((void *)p0)->_unitID,&local1,&local0);
+ reinterpret_cast<Meta::igTextureCoordSourceAttr *>((void *)p0)->_mode=(int)local1;
+ reinterpret_cast<Meta::igTextureCoordSourceAttr *>((void *)p0)->_texCoordIndex=(int)local0;
 }
 }
 #pragma pop

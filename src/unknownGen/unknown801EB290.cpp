@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igHashedUserInfo.h>
+#include <meta/igPropertyList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -51,13 +53,13 @@ void *igHashedUserInfo_virtual94(int p0,int p1,int p2,int p3,int p4,int p5){
   }
  }
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+8)=(void *)p1;
- value3=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
+ value3=reinterpret_cast<Meta::igHashedUserInfo *>((void *)p0)->_propertyList;
  local0=value4;
  value5=fn_80041C90(value3,&local0,(void *)fn_801EB254);
  if((int)(int)value5==-1){
   return (void *)0;
  } else {
-  return (void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32))+16))+((int)value5<<2));
+  return (void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igPropertyList *>(reinterpret_cast<Meta::igHashedUserInfo *>((void *)p0)->_propertyList)->_data)+((int)value5<<2));
  }
 }
 }

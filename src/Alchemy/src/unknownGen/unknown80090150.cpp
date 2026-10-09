@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igStandardQueue.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -38,7 +39,7 @@ public:
 };
 extern "C" {
 void igStandardQueue_virtual70(int p0){
- reinterpret_cast<UnknownGenV80090150_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))->s78();
+ reinterpret_cast<UnknownGenV80090150_0 *>(reinterpret_cast<Meta::igStandardQueue *>((void *)p0)->_queueSema)->s78();
 }
 }
 #pragma pop

@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igEndianSwappedEnbayaAnimationSource.h>
+#include <meta/igGamecubeEnvironmentMapShader.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -97,7 +99,7 @@ public:
 };
 extern "C" {
 void igEndianSwappedEnbayaAnimationSource_virtual50(int p0){
- void *value0=fn_803B5B70(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
+ void *value0=fn_803B5B70(reinterpret_cast<Meta::igEndianSwappedEnbayaAnimationSource *>((void *)p0)->_enbayaAnimationStream);
  reinterpret_cast<UnknownGenV80213268_0 *>(value0)->s1C();
 }
 void *igGamecubeEnvironmentMapShader_virtual24(){return fn_801E626C();}
@@ -116,11 +118,11 @@ void *igGamecubeEnvironmentMapShader_virtual44(int p0,int p1,int p2,int p3,int p
  void *value0;
  void *value1;
  void *value2;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
+ value0=reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapTexture;
  if(value0){
   value1=fn_800C37E4(value0,0,(void *)p2);
   if(!value1){
-   value2=fn_801E754C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
+   value2=fn_801E754C(reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapTexture);
    return value2;
   } else {
    return value1;

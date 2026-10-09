@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igVertexDataList.h>
+#include <meta/igVertexStream.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -9,15 +11,15 @@ void igVertexStream_virtual6C(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+16)=0;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
+ value0=reinterpret_cast<Meta::igVertexStream *>((void *)p0)->_vertexDataList;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4)&0x7FFFFF)){
+  value1=(void *)reinterpret_cast<Meta::igVertexDataList *>(value0)->_refCount;
+  reinterpret_cast<Meta::igVertexDataList *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexDataList *>(value0)->_refCount&0x7FFFFF)){
    fn_80066E1C(value0);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)0;
+ reinterpret_cast<Meta::igVertexStream *>((void *)p0)->_vertexDataList=(Meta::igVertexDataList *)0;
 }
 }
 #pragma pop

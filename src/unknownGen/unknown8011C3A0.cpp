@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igRadioGroup.h>
+#include <meta/igRadioGroupSelectedObserver.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -9,8 +11,8 @@ void *fn_8011D0D4(void *,int);
 extern "C" {
 void igRadioGroup_virtual34(int p0){
  fn_800667CC();
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+12)=(void *)p0;
- fn_8011D0D4(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)));
+ reinterpret_cast<Meta::igRadioGroupSelectedObserver *>(reinterpret_cast<Meta::igRadioGroup *>((void *)p0)->_selectedObserver)->_group=(Meta::igRadioGroup *)(void *)p0;
+ fn_8011D0D4(reinterpret_cast<Meta::igRadioGroup *>((void *)p0)->_selectedObserver,(int)(int)(reinterpret_cast<Meta::igRadioGroup *>((void *)p0)->_model));
 }
 void *fn_8011C3E0(int p0){
  void *value0;

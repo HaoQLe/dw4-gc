@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beSvUseCheckApi.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -14,23 +15,23 @@ void *beSvUseCheckApi_virtual60(int p0){
   value0=fn_8031FCF0((void *)p0);
   switch((int)(int)value0){
   case 1:
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)2;
+   reinterpret_cast<Meta::beSvUseCheckApi *>((void *)p0)->_result=(int)2;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)=1;
    break;
   case -1:
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)5;
+   reinterpret_cast<Meta::beSvUseCheckApi *>((void *)p0)->_result=(int)5;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)=1;
    break;
   case -2:
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)7;
+   reinterpret_cast<Meta::beSvUseCheckApi *>((void *)p0)->_result=(int)7;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)=1;
    break;
   case -3:
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)12;
+   reinterpret_cast<Meta::beSvUseCheckApi *>((void *)p0)->_result=(int)12;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)=1;
    break;
   case -4:
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)11;
+   reinterpret_cast<Meta::beSvUseCheckApi *>((void *)p0)->_result=(int)11;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)=1;
   }
   if((unsigned int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)==1){

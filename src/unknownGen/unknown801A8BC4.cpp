@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igUnsignedCharMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -22,7 +23,7 @@ void *fn_801A8BC4(int p0,int p1,int p2,int p3,int p4){
  }
  value0=UnknownGenCast801A8BC4_14((void *)p2);
  if((value1&&value0)){
-  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p3)+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8))=(unsigned char)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+8));
+  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p3)+(int)(void *)reinterpret_cast<Meta::igUnsignedCharMetaField *>(value0)->_offset)=(unsigned char)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+8));
   return (void *)1;
  } else {
   return (void *)0;

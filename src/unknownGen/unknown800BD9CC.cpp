@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igColorAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -83,19 +84,19 @@ void igClippingStateAttr_virtual80(void *object,unsigned char value){*reinterpre
 void igColorAttr_virtual2C(int p0){
  fn_800667D0();
  void *value0=fn_8012E1D8((reinterpret_cast<char *>((void *)p0)+12),1);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=value0;
+ reinterpret_cast<Meta::igColorAttr *>((void *)p0)->_colorPacked=(unsigned int)value0;
 }
 void igColorAttr_virtual44(int p0){
  fn_800BCB74((void *)p0);
  void *value0=fn_8012E1D8((reinterpret_cast<char *>((void *)p0)+12),1);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=value0;
+ reinterpret_cast<Meta::igColorAttr *>((void *)p0)->_colorPacked=(unsigned int)value0;
 }
 void igColorAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual108((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28)));
+ igGamecubeVisualContext_virtual108((void *)p1,(int)(int)((void *)reinterpret_cast<Meta::igColorAttr *>((void *)p0)->_colorPacked));
 }
 void igColorAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800BDA78_0 *>((void *)p1)->s110((void *)p1);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=value0;
+ reinterpret_cast<Meta::igColorAttr *>((void *)p0)->_colorPacked=(unsigned int)value0;
 }
 void fn_800BDAB8(int p0){
  void *value0=fn_8012E1D8((reinterpret_cast<char *>((void *)p0)+12),1);

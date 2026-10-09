@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGuiComponentNode.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -24,7 +25,7 @@ void *fn_8011967C(int p0){
   while((int)(int)value1>=0){
    value0=UnknownGenCast8011967C_14((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))+16))+((int)value1<<2)));
    if(value0){
-    return *reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+32);
+    return reinterpret_cast<Meta::igGuiComponentNode *>(value0)->_component;
    }
    value1=(reinterpret_cast<char *>(value1)+-1);
   }

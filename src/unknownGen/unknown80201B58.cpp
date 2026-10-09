@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igShader.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -29,7 +30,7 @@ void *fn_80201B58(int p0){
 void igShader_virtual24(int p0,int p1){
  fn_801FAE18((void *)p0,(void *)p1);
  if(!(unsigned char)p1){
-  fn_801D6834(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+  fn_801D6834(reinterpret_cast<Meta::igShader *>((void *)p0)->_passMask);
   return;
  } else {
   return;

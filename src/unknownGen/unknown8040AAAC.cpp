@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/igDisplayListAttr.h>
+#include <meta/igViewerParameters.h>
+#include <meta/igViewerRenderer.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -682,66 +685,66 @@ void igViewerRenderer_virtual64(int p0){
  void *value8;
  void *value9;
  void *value10;
- reinterpret_cast<UnknownGenV8040AAAC_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s32C((void *)0,(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+44));
- reinterpret_cast<UnknownGenV8040AAAC_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s354((reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+108));
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76);
+ reinterpret_cast<UnknownGenV8040AAAC_0 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_visualContext)->s32C((void *)0,(reinterpret_cast<char *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters)+44));
+ reinterpret_cast<UnknownGenV8040AAAC_1 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_visualContext)->s354((reinterpret_cast<char *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters)+108));
+ value0=reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightOutput;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4)&0x7FFFFF)){
+  value1=(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value0)->_refCount;
+  reinterpret_cast<Meta::igDisplayListAttr *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value0)->_refCount&0x7FFFFF)){
    fn_80066E1C(value0);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+76)=(void *)0;
- value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+84);
+ reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightOutput=(Meta::igDisplayListAttr *)0;
+ value2=reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneOutput;
  if(value2){
-  value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+4)=(reinterpret_cast<char *>(value3)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4)&0x7FFFFF)){
+  value3=(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value2)->_refCount;
+  reinterpret_cast<Meta::igDisplayListAttr *>(value2)->_refCount=(unsigned int)(reinterpret_cast<char *>(value3)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value2)->_refCount&0x7FFFFF)){
    fn_80066E1C(value2);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+84)=(void *)0;
- value4=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+12)){
+ reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneOutput=(Meta::igDisplayListAttr *)0;
+ value4=reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters;
+ if(reinterpret_cast<Meta::igViewerParameters *>(value4)->_scene){
   if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+68)){
-   reinterpret_cast<UnknownGenV8040AAAC_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72))->s7C();
-   reinterpret_cast<UnknownGenV8040AAAC_3 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72))->s6C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+176),*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+180));
-   reinterpret_cast<UnknownGenV8040AAAC_4 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72))->s64(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44));
-   value11=reinterpret_cast<UnknownGenV8040AAAC_5 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72))->s78();
+   reinterpret_cast<UnknownGenV8040AAAC_2 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightTraversal)->s7C();
+   reinterpret_cast<UnknownGenV8040AAAC_3 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightTraversal)->s6C(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters,*reinterpret_cast<void **>(reinterpret_cast<char *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters)+176),*reinterpret_cast<void **>(reinterpret_cast<char *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters)+180));
+   reinterpret_cast<UnknownGenV8040AAAC_4 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightTraversal)->s64(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_attrSet);
+   value11=reinterpret_cast<UnknownGenV8040AAAC_5 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightTraversal)->s78();
    if((int)(int)value11!=0){
     value5=*reinterpret_cast<void **>(reinterpret_cast<char *>(value11)+4);
     *reinterpret_cast<void * *>(reinterpret_cast<char *>(value11)+4)=(reinterpret_cast<char *>(value5)+1);
    }
-   value6=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76);
+   value6=reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightOutput;
    if(value6){
-    value7=*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4);
-    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+4)=(reinterpret_cast<char *>(value7)+-1);
-    if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4)&0x7FFFFF)){
+    value7=(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value6)->_refCount;
+    reinterpret_cast<Meta::igDisplayListAttr *>(value6)->_refCount=(unsigned int)(reinterpret_cast<char *>(value7)+-1);
+    if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value6)->_refCount&0x7FFFFF)){
      fn_80066E1C(value6);
     }
    }
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+76)=value11;
+   reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_lightOutput=(Meta::igDisplayListAttr *)value11;
   }
-  reinterpret_cast<UnknownGenV8040AAAC_6 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80))->s7C();
-  reinterpret_cast<UnknownGenV8040AAAC_7 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80))->s6C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+176),*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+180));
+  reinterpret_cast<UnknownGenV8040AAAC_6 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneTraversal)->s7C();
+  reinterpret_cast<UnknownGenV8040AAAC_7 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneTraversal)->s6C(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters,*reinterpret_cast<void **>(reinterpret_cast<char *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters)+176),*reinterpret_cast<void **>(reinterpret_cast<char *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_parameters)+180));
   fn_8040A97C((void *)p0);
-  reinterpret_cast<UnknownGenV8040AAAC_8 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80))->s64(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44));
+  reinterpret_cast<UnknownGenV8040AAAC_8 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneTraversal)->s64(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_attrSet);
   fn_8040AA14((void *)p0);
-  value12=reinterpret_cast<UnknownGenV8040AAAC_9 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80))->s78();
+  value12=reinterpret_cast<UnknownGenV8040AAAC_9 *>(reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneTraversal)->s78();
   if((int)(int)value12!=0){
    value8=*reinterpret_cast<void **>(reinterpret_cast<char *>(value12)+4);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value12)+4)=(reinterpret_cast<char *>(value8)+1);
   }
-  value9=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+84);
+  value9=reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneOutput;
   if(value9){
-   value10=*reinterpret_cast<void **>(reinterpret_cast<char *>(value9)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value9)+4)=(reinterpret_cast<char *>(value10)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value9)+4)&0x7FFFFF)){
+   value10=(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value9)->_refCount;
+   reinterpret_cast<Meta::igDisplayListAttr *>(value9)->_refCount=(unsigned int)(reinterpret_cast<char *>(value10)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value9)->_refCount&0x7FFFFF)){
     fn_80066E1C(value9);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+84)=value12;
+  reinterpret_cast<Meta::igViewerRenderer *>((void *)p0)->_sceneOutput=(Meta::igDisplayListAttr *)value12;
   return;
  } else {
   return;

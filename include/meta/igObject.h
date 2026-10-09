@@ -5,7 +5,7 @@
 namespace Meta {
 struct igObject {
  void *__vtable;  // 0x00
- unsigned char unknown04[4];
+ unsigned int _refCount;  // 0x04 not reflected: decremented on release; the object is released when its low 23 bits reach 0
 };
 }
 #endif

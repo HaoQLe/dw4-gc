@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -77,7 +78,7 @@ void igScissorExt_register(){
 void *igScissorExt_getMetaCall(){return igScissorExt_getMeta();}
 void *fn_800D0450(){
  void *value0=lbl_80562E14;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igGamecubeScissorExt_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igGamecubeScissorExt_getMetaCall;
  return value0;
 }
 void *igGamecubeScissorExt_getMetaCall(){return igGamecubeScissorExt_getMeta();}

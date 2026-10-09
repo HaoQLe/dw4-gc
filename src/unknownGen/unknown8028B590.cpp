@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igFilterMessageDispatcher.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -37,7 +38,7 @@ public:
 extern "C" {
 void igFilterMessageDispatcher_virtual60(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_800694EC(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p2)+12),(void *)p1);
- fn_800694EC(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p2);
+ fn_800694EC(reinterpret_cast<Meta::igFilterMessageDispatcher *>((void *)p0)->_filters,(void *)p2);
 }
 void igFilterMessageDispatcher_virtual68(int p0,int p1,int p2){
  void *value0;

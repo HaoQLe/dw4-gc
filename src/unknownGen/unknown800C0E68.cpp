@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igLineWidthAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -8,7 +9,7 @@ extern "C" {
 void igLightingStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
 void igLineWidthAttr_virtual60(){}
 void *igLineWidthAttr_virtual68(int p0){
- *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+12)=*reinterpret_cast<float *>((lbl_80566810+0));
+ reinterpret_cast<Meta::igLineWidthAttr *>((void *)p0)->_width=*reinterpret_cast<float *>((lbl_80566810+0));
  return (void *)p0;
 }
 void igMacroTextureRegionAttr_virtual60(){}

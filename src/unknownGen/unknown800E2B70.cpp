@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeVertexArray1_1.h>
+#include <meta/igMemoryPool.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -17,15 +19,15 @@ void igGamecubeVertexArray1_1_virtual34(int p0){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ value1=reinterpret_cast<Meta::igGamecubeVertexArray1_1 *>((void *)p0)->_memPool;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igMemoryPool *>(value1)->_refCount;
+  reinterpret_cast<Meta::igMemoryPool *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igMemoryPool *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=value3;
+ reinterpret_cast<Meta::igGamecubeVertexArray1_1 *>((void *)p0)->_memPool=(Meta::igMemoryPool *)value3;
 }
 }
 #pragma pop

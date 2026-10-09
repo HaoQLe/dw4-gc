@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igFlushRenderer.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -183,7 +184,7 @@ public:
 };
 extern "C" {
 void igFlushRenderer_virtual68(int p0){
- reinterpret_cast<UnknownGenV802898E4_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s2BC();
+ reinterpret_cast<UnknownGenV802898E4_0 *>(reinterpret_cast<Meta::igFlushRenderer *>((void *)p0)->_visualContext)->s2BC();
 }
 void *igFlushRenderer_virtual58(){return lbl_80515D40;}
 void igFlushRenderer_virtual64(){}

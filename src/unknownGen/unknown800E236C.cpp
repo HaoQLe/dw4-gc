@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igPointSpriteExt.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -53,7 +54,7 @@ void igPointSpriteExt_virtual9C(int p0,int p1,int p2){
  void *value0;
  value0=(void *)0;
  do {
-  reinterpret_cast<UnknownGenV800E236C_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sA8((void *)(int)((int)value0+(p1*6)),(void *)p2);
+  reinterpret_cast<UnknownGenV800E236C_0 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->sA8((void *)(int)((int)value0+(p1*6)),(void *)p2);
   value0=(reinterpret_cast<char *>(value0)+1);
  } while((int)(int)value0<6);
 }

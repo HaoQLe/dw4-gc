@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
+#include <meta/igReplaceByGroup.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -55,15 +57,15 @@ void igReplaceByGroup_virtual2C(int p0){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40);
+ value1=reinterpret_cast<Meta::igReplaceByGroup *>((void *)p0)->_nodeType;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igMetaObject *>(value1)->_refCount;
+  reinterpret_cast<Meta::igMetaObject *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igMetaObject *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+40)=value3;
+ reinterpret_cast<Meta::igReplaceByGroup *>((void *)p0)->_nodeType=(Meta::igMetaObject *)value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+48)=1;
 }
 }

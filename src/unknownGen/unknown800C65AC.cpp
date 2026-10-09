@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igParticleAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -58,7 +59,7 @@ void *igParticleAttr_virtual58(){return lbl_805626F8;}
 void *igParticleAttr_virtual70(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ value0=reinterpret_cast<Meta::igParticleAttr *>((void *)p0)->_particleArray;
  if(value0){
   value1=reinterpret_cast<UnknownGenV800C65CC_0 *>(value0)->s98();
   return value1;

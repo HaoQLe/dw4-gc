@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeAudioSourceList.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -57,8 +59,8 @@ void *igGamecubeAudioSourceList_virtual58(){return lbl_80562B60;}
 void *fn_800CAE9C(){return lbl_80562B2C;}
 int igGamecubeAudioSourceList_virtual5C(){return 60;}
 void igGamecubeAudioSourceList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),60);
+ if((int)(int)(void *)reinterpret_cast<Meta::igGamecubeAudioSourceList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igGamecubeAudioSourceList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igGamecubeAudioSourceList *>((void *)p0)->_count,60);
   return;
  } else {
   return;
@@ -97,7 +99,7 @@ void *igWindow_getMetaCall(){return igWindow_getMeta();}
 void *fn_800CB078(){return lbl_80562BB0;}
 void *fn_800CB080(){
  void *value0=lbl_80562B74;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igGamecubeWindow_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igGamecubeWindow_getMetaCall;
  return value0;
 }
 void *igGamecubeWindow_getMetaCall(){return igGamecubeWindow_getMeta();}

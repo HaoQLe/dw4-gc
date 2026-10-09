@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igImageHistogram_LA.h>
+#include <meta/igImageHistogram_RGBA.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -10,21 +12,21 @@ void igImageHistogram_LA_virtual9C(int p0,int p1){
  void *value1;
  if((int)p1>0){
   if((int)p1>2){
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+0)=(void *)1;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+4)=(void *)4;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+0)=(void *)8;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+4)=(void *)8;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))+0)=(void *)5;
-   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52);
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_scale)+0)=(void *)1;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_scale)+4)=(void *)4;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_sigBits)+0)=(void *)8;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_sigBits)+4)=(void *)8;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_logNum2)+0)=(void *)5;
+   value0=reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_logNum2;
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(void *)5;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+20)=0;
   } else {
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+0)=(void *)2;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+4)=(void *)1;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+0)=(void *)8;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+4)=(void *)1;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))+0)=(void *)5;
-   value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52);
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_scale)+0)=(void *)2;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_scale)+4)=(void *)1;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_sigBits)+0)=(void *)8;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_sigBits)+4)=(void *)1;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_logNum2)+0)=(void *)5;
+   value1=reinterpret_cast<Meta::igImageHistogram_LA *>((void *)p0)->_logNum2;
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(void *)0;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+20)=1;
   }
@@ -39,33 +41,33 @@ void igImageHistogram_RGBA_virtual9C(int p0,int p1){
  void *value1;
  if((int)p1>0){
   if((int)p1>2){
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+0)=(void *)2;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+4)=(void *)3;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+8)=(void *)1;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+12)=(void *)7;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+0)=(void *)5;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+4)=(void *)6;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+8)=(void *)5;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+12)=(void *)6;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))+0)=(void *)2;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))+4)=(void *)3;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))+8)=(void *)2;
-   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52);
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_scale)+0)=(void *)2;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_scale)+4)=(void *)3;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_scale)+8)=(void *)1;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_scale)+12)=(void *)7;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_sigBits)+0)=(void *)5;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_sigBits)+4)=(void *)6;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_sigBits)+8)=(void *)5;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_sigBits)+12)=(void *)6;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_logNum2)+0)=(void *)2;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_logNum2)+4)=(void *)3;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_logNum2)+8)=(void *)2;
+   value0=reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_logNum2;
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+12)=(void *)3;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+20)=0;
   } else {
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+0)=(void *)2;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+4)=(void *)3;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+8)=(void *)1;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+12)=(void *)1;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+0)=(void *)5;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+4)=(void *)6;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+8)=(void *)5;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+12)=(void *)1;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))+0)=(void *)2;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))+4)=(void *)3;
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))+8)=(void *)2;
-   value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52);
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_scale)+0)=(void *)2;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_scale)+4)=(void *)3;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_scale)+8)=(void *)1;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_scale)+12)=(void *)1;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_sigBits)+0)=(void *)5;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_sigBits)+4)=(void *)6;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_sigBits)+8)=(void *)5;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_sigBits)+12)=(void *)1;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_logNum2)+0)=(void *)2;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_logNum2)+4)=(void *)3;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_logNum2)+8)=(void *)2;
+   value1=reinterpret_cast<Meta::igImageHistogram_RGBA *>((void *)p0)->_logNum2;
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+12)=(void *)0;
    *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+20)=1;
   }

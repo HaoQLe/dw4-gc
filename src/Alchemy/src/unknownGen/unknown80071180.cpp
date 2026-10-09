@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igStringArrayMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -110,7 +111,7 @@ void fn_800711A8(int p0,int p1){
 int igShortArrayMetaField_virtual6C(){return 2;}
 void igStringArrayMetaField_virtualD0(int p0,int p1,int p2){
  void *value0=fn_800256C0();
- reinterpret_cast<UnknownGenV800711E4_2 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60)));
+ reinterpret_cast<UnknownGenV800711E4_2 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)(void *)reinterpret_cast<Meta::igStringArrayMetaField *>((void *)p0)->_num));
 }
 }
 #pragma pop

@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igPointSpriteExt.h>
+#include <meta/igVertexArray.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -419,19 +421,19 @@ void igPointSpriteExt_virtual7C(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
- reinterpret_cast<UnknownGenV800E1B64_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))->s32C((void *)1,(reinterpret_cast<char *>((void *)p0)+40));
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)==1){
-  reinterpret_cast<UnknownGenV800E1B64_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))->s32C((void *)0,(reinterpret_cast<char *>((void *)p0)+104));
+ reinterpret_cast<UnknownGenV800E1B64_0 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_context)->s32C((void *)1,(reinterpret_cast<char *>((void *)p0)+40));
+ if((int)(int)(void *)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
+  reinterpret_cast<UnknownGenV800E1B64_1 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_context)->s32C((void *)0,(reinterpret_cast<char *>((void *)p0)+104));
  }
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ value0=reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4)&0x7FFFFF)){
+  value1=(void *)reinterpret_cast<Meta::igVertexArray *>(value0)->_refCount;
+  reinterpret_cast<Meta::igVertexArray *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexArray *>(value0)->_refCount&0x7FFFFF)){
    fn_80066E1C(value0);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)0;
+ reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray=(Meta::igVertexArray *)0;
 }
 }
 #pragma pop

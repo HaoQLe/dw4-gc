@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeVertexArray2.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -66,7 +67,7 @@ void igGamecubeVertexArray2_virtual30(int p0){
 void *igGamecubeVertexArray2_virtual60(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
+ value0=reinterpret_cast<Meta::igGamecubeVertexArray2 *>((void *)p0)->_vertexStream;
  if(value0){
   value1=reinterpret_cast<UnknownGenV80103044_1 *>(value0)->s6C();
   return value1;

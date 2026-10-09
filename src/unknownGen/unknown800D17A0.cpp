@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -63,7 +64,7 @@ void igMultiTextureExt_register(){
 void *igMultiTextureExt_getMetaCall(){return igMultiTextureExt_getMeta();}
 void *fn_800D1890(){
  void *value0=lbl_80562F34;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igGamecubeMultiTextureExt_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igGamecubeMultiTextureExt_getMetaCall;
  return value0;
 }
 void *igGamecubeMultiTextureExt_getMetaCall(){return igGamecubeMultiTextureExt_getMeta();}

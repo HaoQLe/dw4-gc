@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beNDMWMcUtilCtrl.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -32,7 +33,7 @@ public:
 };
 extern "C" {
 void beNDMWMcUtilCtrl_virtual28(int p0){
- fn_8031F988(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40));
+ fn_8031F988(reinterpret_cast<Meta::beNDMWMcUtilCtrl *>((void *)p0)->_svData);
  void *value0=reinterpret_cast<UnknownGenV803460E8_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);
  fn_800667B4((void *)p0);

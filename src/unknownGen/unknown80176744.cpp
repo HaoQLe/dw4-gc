@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igInterpretedShaderData.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -85,7 +86,7 @@ void igInternalizeShader_virtual88(int p0,int p1,int p2,int p3,int p4,int p5){
   value2=(void *)0;
  }
  value0=UnknownGenCast80176744_16(*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+36));
- value1=UnknownGenCast80176744_22(*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+24));
+ value1=UnknownGenCast80176744_22(reinterpret_cast<Meta::igInterpretedShaderData *>(value0)->_factory);
  reinterpret_cast<UnknownGenV80176744_2 *>(value1)->s64((void *)2);
  reinterpret_cast<UnknownGenV80176744_3 *>(value1)->s6C();
 }

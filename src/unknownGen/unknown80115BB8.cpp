@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igBitmapFont.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -33,10 +34,10 @@ extern "C" {
 void *igBitmapFont_virtual1F4(int p0){
  void *value0;
  void *value1;
- if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))+13)){
+ if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)reinterpret_cast<Meta::igBitmapFont *>((void *)p0)->_name)+13)){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
   if(value0){
-   value1=reinterpret_cast<UnknownGenV80115BB8_0 *>(value0)->s5C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8));
+   value1=reinterpret_cast<UnknownGenV80115BB8_0 *>(value0)->s5C((void *)reinterpret_cast<Meta::igBitmapFont *>((void *)p0)->_name);
    return value1;
   } else {
    return value0;

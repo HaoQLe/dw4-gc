@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igPointSpriteExt.h>
+#include <meta/igVertexArray.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -89,15 +91,15 @@ void igGamecubePointSpriteExt_virtual8C(int p0,int p1,int p2,int p3,int p4){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ value1=reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount;
+  reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)p1;
+ reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray=(Meta::igVertexArray *)(void *)p1;
  value3=reinterpret_cast<UnknownGenV800F9DF8_0 *>((void *)p0)->sBC((void *)p2);
  if((unsigned char)(int)value3){
   reinterpret_cast<UnknownGenV800F9DF8_1 *>((void *)p1)->s60((void *)p2,(void *)p3,(void *)(int)(p4|0x10),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+392));

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -152,7 +153,7 @@ void igSemaphore_register(){
 void *igSemaphore_getMetaCall(){return igSemaphore_getMeta();}
 void *fn_8002614C(){
  void *value0=lbl_805615EC;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igGamecubeSemaphore_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igGamecubeSemaphore_getMetaCall;
  return value0;
 }
 void *igGamecubeSemaphore_getMetaCall(){return igGamecubeSemaphore_getMeta();}

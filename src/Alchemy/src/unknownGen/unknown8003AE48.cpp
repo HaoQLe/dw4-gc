@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -79,7 +80,7 @@ void igGamecubeThreadManager_register(){
 void *igGamecubeThreadManager_parentMeta(){return lbl_805614E8;}
 void *fn_8003AF70(){
  void *value0=lbl_80562070;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)igThreadManager_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igThreadManager_getMetaCall;
  return value0;
 }
 void *igGamecubeThread_getMeta(){

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMorphBase.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -47,7 +48,7 @@ void *igMultiResolutionMeshCore_virtual58(){return lbl_80564C88;}
 void *igMorphInstance_virtual58(){return lbl_80564D20;}
 int igGeometry_virtual90(){return 1;}
 void igMorphBase_virtual60(int p0){
- reinterpret_cast<UnknownGenV802157C0_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))->s68();
+ reinterpret_cast<UnknownGenV802157C0_0 *>(reinterpret_cast<Meta::igMorphBase *>((void *)p0)->_stripLengths)->s68();
 }
 void *igLod_virtual58(){return lbl_80564D8C;}
 int igLod_virtual90(){return 1;}

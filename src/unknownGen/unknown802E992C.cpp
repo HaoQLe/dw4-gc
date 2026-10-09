@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beSvPlatDataGC.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -35,16 +36,16 @@ void beSvPlatDataGC_virtual28(int p0){
  void *value0;
  void *value1;
  void *value2;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
+ value0=reinterpret_cast<Meta::beSvPlatDataGC *>((void *)p0)->_banTplData;
  if(value0){
   fn_80056378(value0);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);
+ value1=reinterpret_cast<Meta::beSvPlatDataGC *>((void *)p0)->_iconTplData;
  if(value1){
   fn_80056378(value1);
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=(void *)0;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)0;
+ reinterpret_cast<Meta::beSvPlatDataGC *>((void *)p0)->_banTplData=(void *)0;
+ reinterpret_cast<Meta::beSvPlatDataGC *>((void *)p0)->_iconTplData=(void *)0;
  value2=reinterpret_cast<UnknownGenV802E992C_0 *>((void *)p0)->s58();
  fn_80065704(value2,1);
  fn_800667B4((void *)p0);

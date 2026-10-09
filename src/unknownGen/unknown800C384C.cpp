@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igTextureAttr.h>
+#include <meta/igVisualContext.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -142,22 +144,22 @@ void igTextureAttr_virtual70(int p0){
  void *value0;
  void *value1;
  void *value2;
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)!=-1){
-  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ if((int)(int)(void *)reinterpret_cast<Meta::igTextureAttr *>((void *)p0)->_texId!=-1){
+  value0=reinterpret_cast<Meta::igTextureAttr *>((void *)p0)->_vc;
   if(value0){
-   reinterpret_cast<UnknownGenV800C384C_0 *>(value0)->s20C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36));
+   reinterpret_cast<UnknownGenV800C384C_0 *>(value0)->s20C((void *)reinterpret_cast<Meta::igTextureAttr *>((void *)p0)->_texId);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)-1;
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ reinterpret_cast<Meta::igTextureAttr *>((void *)p0)->_texId=(int)-1;
+ value1=reinterpret_cast<Meta::igTextureAttr *>((void *)p0)->_vc;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igVisualContext *>(value1)->_refCount;
+  reinterpret_cast<Meta::igVisualContext *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVisualContext *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)0;
+ reinterpret_cast<Meta::igTextureAttr *>((void *)p0)->_vc=(Meta::igVisualContext *)0;
 }
 }
 #pragma pop

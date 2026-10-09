@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igNode.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -32,7 +33,7 @@ extern "C" {
 void igNode_virtual44(int p0){
  fn_800667E0();
  void *value0=reinterpret_cast<UnknownGenV801FB000_0 *>((void *)p0)->s58();
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8);
+ reinterpret_cast<Meta::igNode *>((void *)p0)->_handle=(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8);
 }
 }
 #pragma pop

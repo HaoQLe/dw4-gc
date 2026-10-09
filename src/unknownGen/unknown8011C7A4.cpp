@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igClearRenderer.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -184,7 +185,7 @@ public:
 };
 extern "C" {
 void igClearRenderer_virtual68(int p0){
- reinterpret_cast<UnknownGenV8011C7A4_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s2C0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+ reinterpret_cast<UnknownGenV8011C7A4_0 *>(reinterpret_cast<Meta::igClearRenderer *>((void *)p0)->_visualContext)->s2C0((void *)reinterpret_cast<Meta::igClearRenderer *>((void *)p0)->_buffersToClear);
 }
 }
 #pragma pop

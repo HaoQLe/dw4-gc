@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMemoryDescriptorMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -141,7 +142,7 @@ void *fn_8003A3BC(){
 }
 int igMemoryDescriptorMetaField_virtual64(){return 4;}
 void igMemoryDescriptorMetaField_virtual2C(int p0){
- fn_8003A418(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+ fn_8003A418(reinterpret_cast<Meta::igMemoryDescriptorMetaField *>((void *)p0)->_fieldList);
 }
 }
 #pragma pop

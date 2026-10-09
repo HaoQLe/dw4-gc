@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igFloatHistogram.h>
+#include <meta/igIntHistogram.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -75,18 +77,18 @@ void *igFloatHistogram_virtual58(){return lbl_80565A98;}
 void igFloatHistogram_virtual38(int p0){
  fn_800667D8();
  float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+12);
- *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+24)=value0;
+ reinterpret_cast<Meta::igFloatHistogram *>((void *)p0)->_minValueIgb=value0;
  float value1=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+16);
- *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+28)=value1;
+ reinterpret_cast<Meta::igFloatHistogram *>((void *)p0)->_maxValueIgb=value1;
  float value2=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+20);
- *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+32)=value2;
+ reinterpret_cast<Meta::igFloatHistogram *>((void *)p0)->_binWidthIgb=value2;
 }
 void igFloatHistogram_virtual40(int p0){
- float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+24);
+ float value0=reinterpret_cast<Meta::igFloatHistogram *>((void *)p0)->_minValueIgb;
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
- float value1=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+28);
+ float value1=reinterpret_cast<Meta::igFloatHistogram *>((void *)p0)->_maxValueIgb;
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+16)=value1;
- float value2=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+32);
+ float value2=reinterpret_cast<Meta::igFloatHistogram *>((void *)p0)->_binWidthIgb;
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+20)=value2;
  fn_800667E4();
 }
@@ -107,14 +109,14 @@ void *fn_8021ECEC(){return lbl_805659E4;}
 void *fn_8021ECF4(){return lbl_80565A24;}
 void igIntHistogram_virtual38(int p0){
  fn_800667D8();
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
+ reinterpret_cast<Meta::igIntHistogram *>((void *)p0)->_minValueIgb=(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ reinterpret_cast<Meta::igIntHistogram *>((void *)p0)->_maxValueIgb=(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ reinterpret_cast<Meta::igIntHistogram *>((void *)p0)->_binWidthIgb=(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
 }
 void igIntHistogram_virtual40(int p0){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)reinterpret_cast<Meta::igIntHistogram *>((void *)p0)->_minValueIgb;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)reinterpret_cast<Meta::igIntHistogram *>((void *)p0)->_maxValueIgb;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)reinterpret_cast<Meta::igIntHistogram *>((void *)p0)->_binWidthIgb;
  fn_800667E4();
 }
 void *igIntHistogram_virtual58(){return lbl_80565A78;}

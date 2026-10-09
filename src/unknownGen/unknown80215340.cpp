@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTransformSequence1_5.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -35,7 +36,7 @@ void igTransformSequence1_5_virtual60(int p0){
 }
 void igTransformSequence1_5_virtualD0(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+32)=value;}
 void *igTransformSequence1_5_virtual84(int p0){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+40)=(void *)1;
+ reinterpret_cast<Meta::igTransformSequence1_5 *>((void *)p0)->_lastTime=(int)1;
  return (void *)p0;
 }
 void *fn_80215380(){return lbl_805646D0;}

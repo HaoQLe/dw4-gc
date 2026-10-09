@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igDataPumpLock.h>
+#include <meta/igOptInterface.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -13,11 +15,11 @@ void igDataPumpLock_virtual74(int p0){
  void *value0;
  void *value1;
  void *value2;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ value0=reinterpret_cast<Meta::igDataPumpLock *>((void *)p0)->_lockInterface;
  value1=fn_8017BA20(value0,lbl_804A0B5C);
  value2=fn_8017BBDC(value0,lbl_804A0B5C);
  if(!(unsigned char)(int)value1){
-  fn_80162C28(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))+40),value2);
+  fn_80162C28(reinterpret_cast<Meta::igOptInterface *>(reinterpret_cast<Meta::igDataPumpLock *>((void *)p0)->_optInterface)->_file,value2);
   fn_8017BAFC(value0,lbl_804A0B5C,1);
   return;
  } else {

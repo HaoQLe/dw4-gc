@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igVec3fList.h>
+#include <meta/igVertexArray2Helper.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -15,9 +17,9 @@ extern "C" {
 void *igVertexArray2Helper_virtual90(int p0,int p1){
  void *value1;
  void *value0;
- value1=fn_800E3D94(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),7,0);
+ value1=fn_800E3D94(reinterpret_cast<Meta::igVertexArray2Helper *>((void *)p0)->_vertexArray,7,0);
  value0=UnknownGenCast800E5738_11(*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+12));
- return (void *)(int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+16)+(p1*12));
+ return (void *)(int)((int)reinterpret_cast<Meta::igVec3fList *>(value0)->_data+(p1*12));
 }
 }
 #pragma pop

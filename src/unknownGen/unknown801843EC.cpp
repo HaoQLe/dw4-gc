@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igOptStatistics.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -46,7 +47,7 @@ public:
 };
 extern "C" {
 void *igOptStatistics_virtual7C(int p0){
- reinterpret_cast<UnknownGenV801843EC_0 *>((void *)p0)->s98(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64));
+ reinterpret_cast<UnknownGenV801843EC_0 *>((void *)p0)->s98(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table);
  return (void *)1;
 }
 }

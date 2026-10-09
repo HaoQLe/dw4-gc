@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igStringRefList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -126,8 +127,8 @@ void igStringRefList_virtual38(int p0){
  reinterpret_cast<UnknownGenV80093AC4_0 *>((void *)p0)->s48();
 }
 void igStringRefList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igStringRefList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igStringRefList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igStringRefList *>((void *)p0)->_count,4);
   return;
  } else {
   return;

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igStringKey.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -15,7 +16,7 @@ extern "C" {
 void igStringKey_virtual60(int p0,int p1){
  void *value0;
  value0=UnknownGenCast80206644_6((void *)p1);
- strcmp(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8));
+ strcmp((void *)reinterpret_cast<Meta::igStringKey *>((void *)p0)->_value,(void *)reinterpret_cast<Meta::igStringKey *>(value0)->_value);
 }
 }
 #pragma pop

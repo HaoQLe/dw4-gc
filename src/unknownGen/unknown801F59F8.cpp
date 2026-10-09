@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igInverseKinematicsAnimation.h>
+#include <meta/igInverseKinematicsSource.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -38,15 +40,15 @@ void *igInverseKinematicsSource_virtual5C(int p0,int p1){
  void *value0;
  void *value1;
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+16)){
-  if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
-   reinterpret_cast<UnknownGenV801F59F8_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s68((void *)p1);
+  if(!(void *)reinterpret_cast<Meta::igInverseKinematicsSource *>((void *)p0)->_boneIndex){
+   reinterpret_cast<UnknownGenV801F59F8_0 *>(reinterpret_cast<Meta::igInverseKinematicsSource *>((void *)p0)->_inverseKinematicsAnimation)->s68((void *)p1);
   }
-  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))+140);
-  value2=(void *)(int)((int)value0+((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)<<6));
+  value0=reinterpret_cast<Meta::igInverseKinematicsAnimation *>(reinterpret_cast<Meta::igInverseKinematicsSource *>((void *)p0)->_inverseKinematicsAnimation)->_resultMatrixArray;
+  value2=(void *)(int)((int)value0+((int)(void *)reinterpret_cast<Meta::igInverseKinematicsSource *>((void *)p0)->_boneIndex<<6));
  } else {
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+16)=1;
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))+132);
-  value2=(void *)(int)((int)value1+((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)<<6));
+  value1=reinterpret_cast<Meta::igInverseKinematicsAnimation *>(reinterpret_cast<Meta::igInverseKinematicsSource *>((void *)p0)->_inverseKinematicsAnimation)->_initialMatrixArray;
+  value2=(void *)(int)((int)value1+((int)(void *)reinterpret_cast<Meta::igInverseKinematicsSource *>((void *)p0)->_boneIndex<<6));
  }
  fn_80128CF4((void *)p1,value2);
  return (void *)1;

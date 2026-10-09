@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/libNdmwRuntimePlugin.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -6,68 +7,68 @@ void fn_8028A2D0(void *,void *);
 }
 extern "C" {
 void libNdmwRuntimePlugin_virtual60(int p0,int p1){
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+88)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+88));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlMapCursor){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlMapCursor);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+84)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+84));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlMapBase){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlMapBase);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlEffect){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlEffect);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlItem){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlItem);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlObject){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlObject);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlEBullet){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlEBullet);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlEnemy){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlEnemy);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlPBullet){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlPBullet);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlPlayer2){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlPlayer2);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlPlayer){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_mdlPlayer);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_status){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_status);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_gameRam){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_gameRam);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_saveCtrl){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_saveCtrl);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_saveIntf){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_saveIntf);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_loadIntf2){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_loadIntf2);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_loadCtrl2){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_loadCtrl2);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_title2){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_title2);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_logo){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_logo);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_panelWaza){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_panelWaza);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_afsSetup){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_afsSetup);
  }
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
-  fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+ if(reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_stageCtl){
+  fn_8028A2D0((void *)p1,reinterpret_cast<Meta::libNdmwRuntimePlugin *>((void *)p0)->_stageCtl);
   return;
  } else {
   return;

@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/beSaveMemoryObj.h>
+#include <meta/beSvFileMakeApi.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -12,38 +14,38 @@ void beSvFileMakeApi_virtual28(int p0){
  void *value3;
  void *value4;
  void *value5;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+216);
+ value0=reinterpret_cast<Meta::beSvFileMakeApi *>((void *)p0)->_saveWork;
  if(value0){
   if(value0){
-   value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4)&0x7FFFFF)){
+   value1=(void *)reinterpret_cast<Meta::beSaveMemoryObj *>(value0)->_refCount;
+   reinterpret_cast<Meta::beSaveMemoryObj *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beSaveMemoryObj *>(value0)->_refCount&0x7FFFFF)){
     fn_80066E1C(value0);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+216)=(void *)0;
+  reinterpret_cast<Meta::beSvFileMakeApi *>((void *)p0)->_saveWork=(Meta::beSaveMemoryObj *)0;
  }
- value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48);
+ value2=reinterpret_cast<Meta::beSvFileMakeApi *>((void *)p0)->_imageWork;
  if(value2){
   if(value2){
-   value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+4)=(reinterpret_cast<char *>(value3)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4)&0x7FFFFF)){
+   value3=(void *)reinterpret_cast<Meta::beSaveMemoryObj *>(value2)->_refCount;
+   reinterpret_cast<Meta::beSaveMemoryObj *>(value2)->_refCount=(unsigned int)(reinterpret_cast<char *>(value3)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beSaveMemoryObj *>(value2)->_refCount&0x7FFFFF)){
     fn_80066E1C(value2);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+48)=(void *)0;
+  reinterpret_cast<Meta::beSvFileMakeApi *>((void *)p0)->_imageWork=(Meta::beSaveMemoryObj *)0;
  }
- value4=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52);
+ value4=reinterpret_cast<Meta::beSvFileMakeApi *>((void *)p0)->_mountWork;
  if(value4){
   if(value4){
-   value5=*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+4)=(reinterpret_cast<char *>(value5)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4)&0x7FFFFF)){
+   value5=(void *)reinterpret_cast<Meta::beSaveMemoryObj *>(value4)->_refCount;
+   reinterpret_cast<Meta::beSaveMemoryObj *>(value4)->_refCount=(unsigned int)(reinterpret_cast<char *>(value5)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::beSaveMemoryObj *>(value4)->_refCount&0x7FFFFF)){
     fn_80066E1C(value4);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+52)=(void *)0;
+  reinterpret_cast<Meta::beSvFileMakeApi *>((void *)p0)->_mountWork=(Meta::beSaveMemoryObj *)0;
  }
  fn_800667B4((void *)p0);
 }

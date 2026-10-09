@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igObjectDirEntry.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -26,10 +27,10 @@ public:
 extern "C" {
 void igObjectDirEntry_virtual90(int p0,int p1){
  void *value0;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ value0=reinterpret_cast<Meta::igObjectDirEntry *>((void *)p0)->_ref;
  if(value0){
   if((unsigned char)p1){
-   fn_80066990(value0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28));
+   fn_80066990(value0,reinterpret_cast<Meta::igObjectDirEntry *>((void *)p0)->_typeMeta);
    return;
   } else {
    fn_80066990(value0,(void *)0);
@@ -38,7 +39,7 @@ void igObjectDirEntry_virtual90(int p0,int p1){
  }
 }
 void igObjectDirEntry_virtual94(int p0){
- reinterpret_cast<UnknownGenV80068C7C_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->s44();
+ reinterpret_cast<UnknownGenV80068C7C_0 *>(reinterpret_cast<Meta::igObjectDirEntry *>((void *)p0)->_ref)->s44();
 }
 }
 #pragma pop

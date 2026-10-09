@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igCommonTraversal.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -32,7 +33,7 @@ public:
 extern "C" {
 void igCommonTraversal_virtual28(){return fn_800667B4();}
 void igCommonTraversal_virtual78(int p0){
- reinterpret_cast<UnknownGenV801DB688_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68))->s5C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+ reinterpret_cast<UnknownGenV801DB688_0 *>(reinterpret_cast<Meta::igCommonTraversal *>((void *)p0)->_sorter)->s5C(reinterpret_cast<Meta::igCommonTraversal *>((void *)p0)->_attrStack);
 }
 }
 #pragma pop

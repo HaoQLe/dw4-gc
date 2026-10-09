@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igFieldUpdate.h>
+#include <meta/igMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -41,37 +43,37 @@ void igFieldUpdate_virtual6C(int p0,int p1){
  void *value4;
  void *value5;
  void *value6;
- value7=fn_8018810C((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36));
+ value7=fn_8018810C((void *)p1,(void *)reinterpret_cast<Meta::igFieldUpdate *>((void *)p0)->_sourceFieldName);
  if((int)(int)value7!=0){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value7)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value7)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+ value1=reinterpret_cast<Meta::igFieldUpdate *>((void *)p0)->_sourceField;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igMetaField *>(value1)->_refCount;
+  reinterpret_cast<Meta::igMetaField *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igMetaField *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+44)=value7;
- value3=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40);
+ reinterpret_cast<Meta::igFieldUpdate *>((void *)p0)->_sourceField=(Meta::igMetaField *)value7;
+ value3=reinterpret_cast<Meta::igFieldUpdate *>((void *)p0)->_destinationObject;
  if(value3){
   value8=reinterpret_cast<UnknownGenV8016C6EC_0 *>(value3)->s58();
-  value9=fn_800658F8(value8,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
+  value9=fn_800658F8(value8,(void *)reinterpret_cast<Meta::igFieldUpdate *>((void *)p0)->_destinationFieldName);
   if((int)(int)value9!=0){
    value4=*reinterpret_cast<void **>(reinterpret_cast<char *>(value9)+4);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value9)+4)=(reinterpret_cast<char *>(value4)+1);
   }
-  value5=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48);
+  value5=reinterpret_cast<Meta::igFieldUpdate *>((void *)p0)->_destinationField;
   if(value5){
-   value6=*reinterpret_cast<void **>(reinterpret_cast<char *>(value5)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+4)=(reinterpret_cast<char *>(value6)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value5)+4)&0x7FFFFF)){
+   value6=(void *)reinterpret_cast<Meta::igMetaField *>(value5)->_refCount;
+   reinterpret_cast<Meta::igMetaField *>(value5)->_refCount=(unsigned int)(reinterpret_cast<char *>(value6)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igMetaField *>(value5)->_refCount&0x7FFFFF)){
     fn_80066E1C(value5);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+48)=value9;
+  reinterpret_cast<Meta::igFieldUpdate *>((void *)p0)->_destinationField=(Meta::igMetaField *)value9;
   return;
  } else {
   return;

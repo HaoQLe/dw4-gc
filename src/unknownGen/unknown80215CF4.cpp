@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igAttrStackManagerPopFunctionList.h>
+#include <meta/igTraversalFunctionList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -273,16 +275,16 @@ void *igTransformList_virtual60(){return lbl_80564714;}
 void *fn_8021618C(){return lbl_80564BBC;}
 void *igNodeList_virtual60(){return lbl_80564BC0;}
 void igTraversalFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igTraversalFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igTraversalFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igTraversalFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igAttrStackManagerPopFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igAttrStackManagerPopFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igAttrStackManagerPopFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igAttrStackManagerPopFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;

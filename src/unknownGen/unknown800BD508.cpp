@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igBlendFunctionAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -42,10 +43,10 @@ extern "C" {
 void *igBlendFunctionAttr_virtual58(){return lbl_80562A10;}
 void *igBlendFunctionAttr_virtual60(int p0,int p1){
  void *value1;
- igGamecubeVisualContext_virtual278((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+ igGamecubeVisualContext_virtual278((void *)p1,(void *)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_src,(void *)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_dst);
  void *value0=lbl_80562AE4;
  if(value0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+20)=(void *)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_eq;
   value1=reinterpret_cast<UnknownGenV800BD510_0 *>(lbl_80562AE4)->s78();
   return value1;
  } else {

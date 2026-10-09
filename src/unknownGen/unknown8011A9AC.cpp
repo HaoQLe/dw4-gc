@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igDisplayListAttr.h>
+#include <meta/igGuiSystemRenderer.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -102,22 +104,22 @@ void igGuiSystemRenderer_virtual64(int p0){
  void *value0;
  void *value1;
  void *value2;
- reinterpret_cast<UnknownGenV8011A9AC_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))->s7C();
- reinterpret_cast<UnknownGenV8011A9AC_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))->s64(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
- value3=reinterpret_cast<UnknownGenV8011A9AC_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))->s78();
+ reinterpret_cast<UnknownGenV8011A9AC_0 *>(reinterpret_cast<Meta::igGuiSystemRenderer *>((void *)p0)->_commonTraversal)->s7C();
+ reinterpret_cast<UnknownGenV8011A9AC_1 *>(reinterpret_cast<Meta::igGuiSystemRenderer *>((void *)p0)->_commonTraversal)->s64(reinterpret_cast<Meta::igGuiSystemRenderer *>((void *)p0)->_root);
+ value3=reinterpret_cast<UnknownGenV8011A9AC_2 *>(reinterpret_cast<Meta::igGuiSystemRenderer *>((void *)p0)->_commonTraversal)->s78();
  if((int)(int)value3!=0){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ value1=reinterpret_cast<Meta::igGuiSystemRenderer *>((void *)p0)->_displayListAttr;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value1)->_refCount;
+  reinterpret_cast<Meta::igDisplayListAttr *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igDisplayListAttr *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=value3;
+ reinterpret_cast<Meta::igGuiSystemRenderer *>((void *)p0)->_displayListAttr=(Meta::igDisplayListAttr *)value3;
 }
 }
 #pragma pop

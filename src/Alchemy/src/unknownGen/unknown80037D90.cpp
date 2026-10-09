@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -194,7 +195,7 @@ void *igCallStackTracer_getMetaCall(){return igCallStackTracer_getMeta();}
 void *igCallStackTracer_parentMeta(){return lbl_80561DA4;}
 void *fn_80038304(){
  void *value0=lbl_80561E30;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igGamecubeCallStackTracer_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igGamecubeCallStackTracer_getMetaCall;
  return value0;
 }
 void *igGamecubeCallStackTracer_getMetaCall(){return igGamecubeCallStackTracer_getMeta();}

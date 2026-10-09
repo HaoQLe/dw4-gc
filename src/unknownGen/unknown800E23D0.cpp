@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igPointSpriteExt.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -97,10 +98,10 @@ public:
 };
 extern "C" {
 void igPointSpriteExt_virtualA0(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
- reinterpret_cast<UnknownGenV800E23D0_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sAC((void *)(int)(p1*6),(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
+ reinterpret_cast<UnknownGenV800E23D0_0 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->sAC((void *)(int)(p1*6),(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
 void igPointSpriteExt_virtualA4(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
- reinterpret_cast<UnknownGenV800E2404_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sB0((void *)(int)(p1*6),(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
+ reinterpret_cast<UnknownGenV800E2404_1 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->sB0((void *)(int)(p1*6),(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
 }
 #pragma pop

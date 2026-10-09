@@ -45,6 +45,24 @@ for l in open(CONFIG/'symbols.txt'):
 # (config/<version>/alchemy_class_functions.txt, see tools/alchemymeta).
 _ATTR=CONFIG/'alchemy_class_functions.txt'
 CLASS_NAMED={l.rstrip('\n').split('\t')[3] for l in open(_ATTR) if not l.startswith('#')} if _ATTR.exists() else set()
+# Class layouts (tools/alchemymeta/layouts.json) and the class of each virtual method (its first
+# parameter is that class's this): field accesses at a reflected member of matching type are written as
+# members of the Meta:: class (include/meta/).
+_LAY=Path(__file__).resolve().parents[1]/'alchemymeta'/'layouts.json'
+LAYOUTS=json.load(open(_LAY)) if _LAY.exists() and '--untyped' not in sys.argv else {}
+VIRTUAL_OF={l.split('\t')[3].rstrip('\n'):l.split('\t')[1] for l in open(_ATTR) if not l.startswith('#') and 'virtual' in l.split('\t')[2]} if _ATTR.exists() else {}
+META_IDENT={v['ident']:v['header'] for v in LAYOUTS.values()}
+META_OF={v['meta']:k for k,v in LAYOUTS.items() if v.get('meta')}   # metaobject global -> class
+TYPE_TEST='fn_80068128'   # (object, metaobject): whether the object is of that class
+# Functions returning a class's metaobject (an igMetaObject).
+GET_META={l.split('\t')[3].rstrip('\n') for l in open(_ATTR) if not l.startswith('#') and l.split('\t')[2].split(',')[0] in ('getMeta','getMetaCall')} if _ATTR.exists() else set()
+def meta_member(c,off):
+  """(name, C type, target class) of the reflected member at off in class c or its parents."""
+  while c in LAYOUTS:
+    m=LAYOUTS[c]['members'].get('%d'%off)
+    if m: return m
+    c=LAYOUTS[c]['parent']
+  return None
 def generatable(n): return bool(re.fullmatch(r'(fn|dtor)_[0-9A-F]{8}',n)) or n in CLASS_NAMED
 def tag(n):
   """Address tag for helper type names: the address-name suffix, or the function's address."""
@@ -1399,6 +1417,14 @@ def _flow(name,rel,nparam_override,hints={}):
       if s_[0]=='switch':
         for labs_,b_ in s_[3]: yield from walk(b_)
   allst=list(walk(stmts))
+  # A value passed as the first argument of a class's virtual function is an instance of that class (or
+  # of a class derived from it); values passed to functions of different classes stay untyped.
+  ARGCLS={}
+  if LAYOUTS:
+    seen_={}
+    for st_ in allst:
+      if st_[0]=='call' and st_[1] in VIRTUAL_OF and st_[2] and isinstance(st_[2][0],int): seen_.setdefault(st_[2][0],set()).add(VIRTUAL_OF[st_[1]])
+    ARGCLS={v_:next(iter(c_)) for v_,c_ in seen_.items() if len(c_)==1 and next(iter(c_)) in LAYOUTS}
   rets=[s_ for s_ in allst if s_[0]=='return']
   # A value left in f1 by a non-call instruction is a floating-point return value.
   # A value that some statement consumes (stored, passed) is left in f1 as scratch, not returned.
@@ -1535,12 +1561,45 @@ def _flow(name,rel,nparam_override,hints={}):
     if not ftype(v): raise ValueError('integer as float')
     if k[0]=='fparam': return 'f%d'%k[1]
     if v in names_: return names_[v]
-    if k[0]=='field': return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
+    if k[0]=='field':
+      m_=member(k[1],k[2],k[3])
+      if m_: return m_[0]
+      return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
     if k[0]=='gfield': return '*reinterpret_cast<%s *>(%s)'%(k[3],gaddr(k[1],k[2]))
     if k[0]=='lfield': return lref(k[1])
     if k[0]=='fbin': return k[1].format(*[fx(o) for o in k[2:]])
     raise ValueError('float value %r'%(k,))
   subst={}   # values renamed inside an inline helper
+  THIS=VIRTUAL_OF.get(name) if LAYOUTS else None
+  def class_of(v):
+    """Meta class a value points to: this for a virtual method's first parameter, or the target class
+    of a reference member read from a value of known class."""
+    k=vals[v]
+    if v in ARGCLS: return ARGCLS[v]
+    if k==('param',0) and THIS: return THIS
+    # Metaobject globals and getMeta results are igMetaObject instances.
+    if k[0]=='load' and k[1] in META_OF and not k[2] and 'igMetaObject' in LAYOUTS: return 'igMetaObject'
+    if k[0]=='ret' and k[1][0]=='call' and k[1][1] in GET_META and 'igMetaObject' in LAYOUTS: return 'igMetaObject'
+    if k[0]=='icast':
+      # An inline cast tested against a class metaobject yields that class.
+      for q_ in _seqs(k[2]):
+        for st_ in q_:
+          if st_[0]=='call' and st_[1]==TYPE_TEST and len(st_[2])>1 and st_[2][0]==k[1] and vals[st_[2][1]][0] in ('load','sda'):
+            return META_OF.get(vals[st_[2][1]][1])
+    if k[0]=='field' and len(k)==3:
+      m=meta_member(class_of(k[1]),k[2])
+      return m[2] if m else None
+    return None
+  def member(base,off,acc):
+    """Typed lvalue for the access of type acc ('word' for a pointer-sized word) at base+off, or None."""
+    c=class_of(base)
+    m=meta_member(c,off)
+    if not m: return None
+    nm,ct,tg=m
+    if acc=='word':
+      if ct not in ('int','unsigned int','void *','const char *') and not (ct.startswith('Meta::') and ct.endswith(' *')): return None
+    elif ct!=acc: return None
+    return 'reinterpret_cast<Meta::%s *>(%s)->%s'%(LAYOUTS[c]['ident'],ex(base),nm),ct
   def ex(v):
     """Pointer-typed expression for a value (constants stay int)."""
     k=vals[v]
@@ -1571,6 +1630,9 @@ def _flow(name,rel,nparam_override,hints={}):
     if k[0]=='param': return 'p%d'%k[1] if pty[k[1]]=='void *' else '(void *)p%d'%k[1]
     if k[0]=='field':
       if v in names_: return names_[v]
+      m_=member(k[1],k[2],k[3] if len(k)>3 else 'word')
+      if m_ and len(k)>3: return '(void *)(int)%s'%m_[0]
+      if m_: return m_[0] if m_[1]=='void *' or m_[1].startswith('Meta::') else '(void *)%s'%m_[0]
       if len(k)>3: return '(void *)(int)*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
       return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(ex(k[1]),k[2])
     if k[0]=='cast': return '(void *)(int)%s'%ix(v)
@@ -1594,6 +1656,8 @@ def _flow(name,rel,nparam_override,hints={}):
     if k[0]=='const': return str(k[1])
     if k[0]=='param': return '(int)p%d'%k[1] if pty[k[1]]=='void *' else 'p%d'%k[1]
     if k[0]=='field' and len(k)>3 and v not in names_:
+      m_=member(k[1],k[2],k[3])
+      if m_: return m_[0]
       return '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(k[3],ex(k[1]),k[2])
     if k[0]=='gfield': return '*reinterpret_cast<%s *>(%s)'%(k[3],gaddr(k[1],k[2]))
     if k[0]=='bin': return k[1].format(*[ix(o) for o in k[2:]])
@@ -1812,12 +1876,15 @@ def _flow(name,rel,nparam_override,hints={}):
       elif st[0]=='store':
         x,off,v,ty=st[1],st[2],st[3],st[4]
         ensure(x,lines);ensure(v,lines)
+        m_=member(x,off,'word' if ty=='void *' else ty)
         if ty in ('float','double'):
-          lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ty,ex(x),off,fx(v)));continue
+          lines.append(' %s=%s;'%(m_[0] if m_ else '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(ty,ex(x),off),fx(v)));continue
         e=ex(v)
+        if m_ and ty=='void *':
+          lines.append(' %s=(%s)%s;'%(m_[0],m_[1],e));continue
         if ty=='void *' and vals[v][0]=='const': e='(void *)%s'%e
         elif ty!='void *' and vals[v][0]!='const': e='(%s)(int)%s'%(ty,e)
-        lines.append(' *reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)=%s;'%(ty,ex(x),off,e))
+        lines.append(' %s=%s;'%(m_[0] if m_ else '*reinterpret_cast<%s *>(reinterpret_cast<char *>(%s)+%d)'%(ty,ex(x),off),e))
       elif st[0]=='assign':
         if not used[st[1]]: continue
         if st[1] in ptarget:
@@ -2024,6 +2091,7 @@ def _assemble(pre,bodies,protos_,done,header=False):
   decls=[d for s_,d in sorted(protos_.items()) if s_ in used and s_ not in own and s_!='fn_80066E1C']
   decls+=[protos_[n] for n in done if n in protos_ and n in used and re.search(r'\b%s\b'%n,text.replace(n+'(','',1)) ]
   inc=('#include <%s>\n'%HEADER_NAME) if header else HEADER
+  inc+=''.join('#include <meta/%s.h>\n'%META_IDENT[c] for c in sorted(set(re.findall(r'\bMeta::(\w+)',text))) if c in META_IDENT)
   return inc+'#pragma push\n#pragma auto_inline off\nextern "C" {\n'+'\n'.join(decls)+'\n}\n'+('\n'.join(pre)+'\n' if pre else '')+'extern "C" {\n'+'\n'.join(bodies)+'\n}\n#pragma pop\n'
 def generate(names,seed,calls=True,header=False):
   pre,bodies,protos_,done,cov,skipped=_parts(names,seed,calls)

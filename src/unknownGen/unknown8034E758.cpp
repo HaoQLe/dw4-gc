@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beNDMWMdlPlayer2.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -7,7 +8,7 @@ extern char lbl_804573B8[];
 }
 extern "C" {
 void beNDMWMdlPlayer2_virtual9C(int p0,int p1,int p2,int p3,int p4,int p5){
- fn_80305308(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),(void *)p1,lbl_804573B8);
+ fn_80305308(reinterpret_cast<Meta::beNDMWMdlPlayer2 *>((void *)p0)->_messenger,(void *)p1,lbl_804573B8);
 }
 }
 #pragma pop

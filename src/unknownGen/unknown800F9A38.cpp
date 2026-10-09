@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igPointSpriteExt.h>
+#include <meta/igVertexArray.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -1263,23 +1265,23 @@ void *igGamecubePointSpriteExt_virtual78(int p0){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value8)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ value1=reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount;
+  reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexArray *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=value8;
- if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+20)&0x10)){
+ reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray=(Meta::igVertexArray *)value8;
+ if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexArray *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->_usageFlags&0x10)){
   value9=igPointSpriteExt_virtual78((void *)p0);
   return value9;
  } else {
-  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)==1){
+  if((int)(int)(void *)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
    GXGetPointSize((reinterpret_cast<char *>((void *)p0)+424),(reinterpret_cast<char *>((void *)p0)+428));
-   GXSetPointSize((void *)(int)(*reinterpret_cast<float *>((lbl_80566970+0))**reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+28)),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+412));
-   value10=reinterpret_cast<UnknownGenV800F9A38_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->s64();
+   GXSetPointSize((void *)(int)(*reinterpret_cast<float *>((lbl_80566970+0))*reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSize),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+412));
+   value10=reinterpret_cast<UnknownGenV800F9A38_1 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->s64();
    value5=value10;
    if((int)(((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value10)+0)>>16)&0xF)==0){
     reinterpret_cast<UnknownGenV800F9A38_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+392))->s340((void *)2,(reinterpret_cast<char *>((void *)p0)+432));

@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igLightAttr.h>
+#include <meta/igLightStateAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -38,12 +40,12 @@ void *fn_800C0CC8(int p0){
 void *igLightStateAttr_virtual60(int p0,int p1){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ value0=reinterpret_cast<Meta::igLightStateAttr *>((void *)p0)->_light;
  if(value0){
-  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+16)==-1){
+  if((int)(int)(void *)reinterpret_cast<Meta::igLightAttr *>(value0)->_lightId==-1){
    reinterpret_cast<UnknownGenV800C0CD4_0 *>(value0)->s60((void *)p1);
   }
-  value1=igGamecubeVisualContext_virtual13C((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+16),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+20));
+  value1=igGamecubeVisualContext_virtual13C((void *)p1,(void *)reinterpret_cast<Meta::igLightAttr *>(reinterpret_cast<Meta::igLightStateAttr *>((void *)p0)->_light)->_lightId,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+20));
   return value1;
  } else {
   return value0;

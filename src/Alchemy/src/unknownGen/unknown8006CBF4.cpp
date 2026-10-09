@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igRegistry.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -40,7 +41,7 @@ int fn_8006CD08(){return 4;}
 int fn_8006CD10(){return 1;}
 void igRegistry_virtual2C(int p0){
  fn_800667D0();
- fn_800691E8(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),256);
+ fn_800691E8(reinterpret_cast<Meta::igRegistry *>((void *)p0)->_valueTable,256);
 }
 }
 #pragma pop

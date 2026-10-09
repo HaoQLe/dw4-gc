@@ -6,13 +6,15 @@ Recovers Alchemy class metadata statically from the original DOL and turns it in
 /opt/homebrew/bin/python3 tools/alchemymeta/extract.py
 /opt/homebrew/bin/python3 tools/alchemymeta/headers.py
 /opt/homebrew/bin/python3 tools/alchemymeta/attribute.py
+/opt/homebrew/bin/python3 tools/alchemymeta/rename.py
 ```
 
 | Step | What it does |
 | --- | --- |
 | `extract.py` | Reads every class registration (`fn_80066204`: metaobject global, parent's register function, name, instance size, callbacks) and field registration (`fn_80065924` field-type getters, `fn_800659C0` name and offset tables). It also records each object-reference field's target class (the `getMeta` result stored into the field) and the class's vtable chain (from the `r10` callback, which constructs a temporary instance). Writes `build/GDJEB2/analysis/meta/classes.json`. |
-| `headers.py` | Writes `include/meta/<class>.h` for every class and `include/meta/meta.h` including them all, plus `build/GDJEB2/analysis/meta/check.cpp`, which asserts every class size and field offset. |
-| `attribute.py` | Writes `config/GDJEB2/alchemy_class_functions.txt`, recording each function's class and role. A role is recorded only where the code confirms it (see the tool's docstring); functions claimed by several classes are left out. |
+| `headers.py` | Writes:<br>• `include/meta/<class>.h` for every class and `include/meta/meta.h` including them all;<br>• `tools/alchemymeta/layouts.json`, each class's header, metaobject, parent and accessible members by offset, which the source generator reads;<br>• `build/GDJEB2/analysis/meta/check.cpp`, which asserts every class size and field offset. |
+| `attribute.py` | Writes `config/GDJEB2/alchemy_class_functions.txt`: address, class, roles and name, one function per line.<br>• A role is recorded only where the code confirms it (see the tool's docstring).<br>• Functions claimed by several classes are left out.<br>• The name is `<class>_<role>`, for example `igSphere_getMeta` or `beWeapon_virtual88` (vtable byte offset 0x88). |
+| `rename.py` | Renames every attributed function still named by its address, wherever the name appears as a whole token: `symbols.txt`, sources, headers, the generator's state files and templates. Names do not change code; the build checksum must not change. Run the generator's `emit.py` afterwards to put declarations back in its sorted order. |
 
 Check the headers with the pinned compiler:
 
@@ -32,6 +34,7 @@ Check the headers with the pinned compiler:
   - vectors and matrices are `float` arrays;
   - arrays and struct fields take their size from the space up to the next member, and say so in the header.
 - **Name collisions:** names differing only in case get a numeric suffix on the file name, not the class (`beModelCtrlAIMap_2.h`).
+- **Non-reflected members:** members established from the code alone are listed in `headers.py`'s `EXTRA`, with their evidence in the header comment. So far there is one: `igObject::_refCount` at `+4`, decremented on release, with the object released when its low 23 bits reach 0.
 - **Duplicate registrations:** `igModelViewMatrixBoneSelectList` is registered twice with the same size; one header is written.
 
-Nothing includes these headers yet. They are evidence for replacing generated code with typed source.
+The source generator (`tools/unknowngen`) uses `layouts.json` to write field accesses as `Meta::` members and includes the headers each unit needs.

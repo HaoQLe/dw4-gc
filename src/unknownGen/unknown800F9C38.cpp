@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igPointSpriteExt.h>
+#include <meta/igVertexArray.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -613,14 +615,14 @@ void *igGamecubePointSpriteExt_virtual7C(int p0){
  void *value9;
  void *value0;
  void *value1;
- if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+20)&0x10)){
+ if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVertexArray *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->_usageFlags&0x10)){
   value6=igPointSpriteExt_virtual7C((void *)p0);
   value5=value6;
  } else {
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
-  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)==1){
+  if((int)(int)(void *)reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_spriteSizeSpace==1){
    GXSetPointSize((void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+424),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+428));
-   value7=reinterpret_cast<UnknownGenV800F9C38_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->s64();
+   value7=reinterpret_cast<UnknownGenV800F9C38_0 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->s64();
    value2=value7;
    if((int)(((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value7)+0)>>16)&0xF)==0){
     reinterpret_cast<UnknownGenV800F9C38_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+392))->s32C((void *)2,(reinterpret_cast<char *>((void *)p0)+432));

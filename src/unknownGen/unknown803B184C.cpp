@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/beNDMWLogo.h>
+#include <meta/bePadManager.h>
+#include <meta/beSystem.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -10,13 +13,13 @@ extern "C" {
 void beNDMWLogo_virtual88(int p0){
  void *value0;
  void *value1;
- if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)){
-  value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>((lbl_80534AAC+0)));
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=value0;
+ if(!reinterpret_cast<Meta::beNDMWLogo *>((void *)p0)->_padManager){
+  value0=fn_8028A730(reinterpret_cast<Meta::beNDMWLogo *>((void *)p0)->_insight,*reinterpret_cast<void **>((lbl_80534AAC+0)));
+  reinterpret_cast<Meta::beNDMWLogo *>((void *)p0)->_padManager=(Meta::bePadManager *)value0;
  }
- if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
-  value1=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>((lbl_805346A8+0)));
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=value1;
+ if(!reinterpret_cast<Meta::beNDMWLogo *>((void *)p0)->_system){
+  value1=fn_8028A730(reinterpret_cast<Meta::beNDMWLogo *>((void *)p0)->_insight,*reinterpret_cast<void **>((lbl_805346A8+0)));
+  reinterpret_cast<Meta::beNDMWLogo *>((void *)p0)->_system=(Meta::beSystem *)value1;
   return;
  } else {
   return;

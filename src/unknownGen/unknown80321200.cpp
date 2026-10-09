@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/beSvFileFindApi.h>
+#include <meta/beSvFormatApi.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -6,13 +8,13 @@ extern "C" {
 }
 extern "C" {
 void beSvFileFindApi_virtual64(int p0,int p1){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+24)=(void *)reinterpret_cast<Meta::beSvFileFindApi *>((void *)p0)->_result;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+44)=1;
 }
 void *beSvFormatApi_virtual5C(int p0,int p1){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)=0;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+16);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)1;
+ reinterpret_cast<Meta::beSvFormatApi *>((void *)p0)->_connect=(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+16);
+ reinterpret_cast<Meta::beSvFormatApi *>((void *)p0)->_result=(int)1;
  return (void *)p0;
 }
 }

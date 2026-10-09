@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igCamera.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -34,8 +35,8 @@ void fn_80410A34(int p0,int p1){
   value7=fn_801EA93C((void *)p1);
   value3=UnknownGenCast80410A34_18(value7);
   if(value3){
-   value4=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+4)=(reinterpret_cast<char *>(value4)+1);
+   value4=(void *)reinterpret_cast<Meta::igCamera *>(value3)->_refCount;
+   reinterpret_cast<Meta::igCamera *>(value3)->_refCount=(unsigned int)(reinterpret_cast<char *>(value4)+1);
   }
   value5=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80);
   if((value5&&(value6=*reinterpret_cast<void **>(reinterpret_cast<char *>(value5)+4),*reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+4)=(reinterpret_cast<char *>(value6)+-1),!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value5)+4)&0x7FFFFF)))){

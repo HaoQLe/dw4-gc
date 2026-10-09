@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igSetRenderDestinationAttr.h>
+#include <meta/igShadeModelAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -38,7 +40,7 @@ extern "C" {
 void *igSetRenderDestinationAttr_virtual70(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ value0=reinterpret_cast<Meta::igSetRenderDestinationAttr *>((void *)p0)->_pRDAttr;
  if(value0){
   value1=reinterpret_cast<UnknownGenV800C2C34_0 *>(value0)->s70();
   return value1;
@@ -47,7 +49,7 @@ void *igSetRenderDestinationAttr_virtual70(int p0){
  }
 }
 void igShadeModelAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual38C((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)));
+ igGamecubeVisualContext_virtual38C((void *)p1,(int)(int)((void *)reinterpret_cast<Meta::igShadeModelAttr *>((void *)p0)->_mode));
 }
 }
 #pragma pop

@@ -1,4 +1,22 @@
 #include <unknownGen.h>
+#include <meta/igContainsFunctionList.h>
+#include <meta/igContainsRayFunctionList.h>
+#include <meta/igContainsVecFunctionList.h>
+#include <meta/igEmptyFunctionList.h>
+#include <meta/igExtendByFunctionList.h>
+#include <meta/igExtendByRayFunctionList.h>
+#include <meta/igExtendByVecFunctionList.h>
+#include <meta/igGetCenterFunctionList.h>
+#include <meta/igIntersectionFunctionList.h>
+#include <meta/igIsEmptyFunctionList.h>
+#include <meta/igMatrix44fList.h>
+#include <meta/igQuaternionfList.h>
+#include <meta/igRayIntersectionFunctionList.h>
+#include <meta/igTransformFunctionList.h>
+#include <meta/igVec2fList.h>
+#include <meta/igVec3ucList.h>
+#include <meta/igVec4fList.h>
+#include <meta/igVec4ucList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -183,144 +201,144 @@ void *fn_8012F1BC(){return lbl_80563A20;}
 void *igRayList_virtual60(){return lbl_8056396C;}
 void *igVolumeList_virtual60(){return lbl_805638C8;}
 void igIntersectionFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igIntersectionFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igIntersectionFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igIntersectionFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igExtendByFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igExtendByFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igExtendByFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igExtendByFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igContainsFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igContainsFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igContainsFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igContainsFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igRayIntersectionFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igRayIntersectionFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igRayIntersectionFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igRayIntersectionFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igExtendByRayFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igExtendByRayFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igExtendByRayFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igExtendByRayFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igContainsRayFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igContainsRayFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igContainsRayFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igContainsRayFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igExtendByVecFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igExtendByVecFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igExtendByVecFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igExtendByVecFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igContainsVecFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igContainsVecFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igContainsVecFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igContainsVecFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igTransformFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igTransformFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igTransformFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igTransformFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igEmptyFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igEmptyFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igEmptyFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igEmptyFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igIsEmptyFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igIsEmptyFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igIsEmptyFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igIsEmptyFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igGetCenterFunctionList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igGetCenterFunctionList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igGetCenterFunctionList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igGetCenterFunctionList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igVec2fList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
+ if((int)(int)(void *)reinterpret_cast<Meta::igVec2fList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igVec2fList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igVec2fList *>((void *)p0)->_count,8);
   return;
  } else {
   return;
  }
 }
 void igVec3ucList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),3);
+ if((int)(int)(void *)reinterpret_cast<Meta::igVec3ucList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igVec3ucList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igVec3ucList *>((void *)p0)->_count,3);
   return;
  } else {
   return;
  }
 }
 void igVec4fList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),16);
+ if((int)(int)(void *)reinterpret_cast<Meta::igVec4fList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igVec4fList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igVec4fList *>((void *)p0)->_count,16);
   return;
  } else {
   return;
  }
 }
 void igVec4ucList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)(void *)reinterpret_cast<Meta::igVec4ucList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igVec4ucList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igVec4ucList *>((void *)p0)->_count,4);
   return;
  } else {
   return;
  }
 }
 void igQuaternionfList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),16);
+ if((int)(int)(void *)reinterpret_cast<Meta::igQuaternionfList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igQuaternionfList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igQuaternionfList *>((void *)p0)->_count,16);
   return;
  } else {
   return;
  }
 }
 void igMatrix44fList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),64);
+ if((int)(int)(void *)reinterpret_cast<Meta::igMatrix44fList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igMatrix44fList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igMatrix44fList *>((void *)p0)->_count,64);
   return;
  } else {
   return;

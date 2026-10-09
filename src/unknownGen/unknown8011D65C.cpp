@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igCharMetricsList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -101,8 +102,8 @@ void *igGuiComponentList_virtual60(){return lbl_80563750;}
 void *igEventReceiver_virtual1B4(){return lbl_80563638;}
 void *igViewList_virtual60(){return lbl_8056357C;}
 void igCharMetricsList_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),40);
+ if((int)(int)(void *)reinterpret_cast<Meta::igCharMetricsList *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igCharMetricsList *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igCharMetricsList *>((void *)p0)->_count,40);
   return;
  } else {
   return;

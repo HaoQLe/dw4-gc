@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igDecalAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -71,7 +72,7 @@ void *igDecalAttr_virtual58(){return lbl_8056292C;}
 void igDecalAttr_virtual60(int p0){
  void *value0=lbl_80562AE8;
  if(value0){
-  reinterpret_cast<UnknownGenV800BE0E4_0 *>(value0)->s78(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+  reinterpret_cast<UnknownGenV800BE0E4_0 *>(value0)->s78((void *)reinterpret_cast<Meta::igDecalAttr *>((void *)p0)->_decalOffset);
   return;
  } else {
   return;
@@ -85,7 +86,7 @@ void *igDecalAttr_virtual68(int p0,int p1){
  }
  void *value0=lbl_80562AE8;
  if(value0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+20);
+  reinterpret_cast<Meta::igDecalAttr *>((void *)p0)->_decalOffset=(unsigned int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+20);
  }
  return value0;
 }

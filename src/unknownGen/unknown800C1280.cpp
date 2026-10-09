@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igMaterialAttr.h>
+#include <meta/igMaterialModeAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -823,7 +825,7 @@ public:
 };
 extern "C" {
 void igMaterialAttr_virtual60(int p0,int p1){
- float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+12);
+ float value0=reinterpret_cast<Meta::igMaterialAttr *>((void *)p0)->_shininess;
  igGamecubeVisualContext_virtual1C0((void *)p1,(reinterpret_cast<char *>((void *)p0)+32),(reinterpret_cast<char *>((void *)p0)+16),(reinterpret_cast<char *>((void *)p0)+64),(reinterpret_cast<char *>((void *)p0)+48),value0);
 }
 void igMaterialAttr_virtual68(int p0,int p1){
@@ -840,11 +842,11 @@ void igMaterialAttr_virtual68(int p0,int p1){
  reinterpret_cast<UnknownGenV800C12BC_9 *>((void *)p0)->s80();
 }
 void igMaterialModeAttr_virtual60(int p0,int p1){
- igGamecubeVisualContext_virtual190((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)));
+ igGamecubeVisualContext_virtual190((void *)p1,(int)(int)((void *)reinterpret_cast<Meta::igMaterialModeAttr *>((void *)p0)->_mode));
 }
 void igMaterialModeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C1404_10 *>((void *)p1)->s194((void *)p1);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
+ reinterpret_cast<Meta::igMaterialModeAttr *>((void *)p0)->_mode=(int)value0;
 }
 void *fn_800C1444(int p0){
  *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+10)=(short)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76);

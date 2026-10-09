@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beSvPs2McImage128k.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -34,11 +35,11 @@ extern "C" {
 void beSvPs2McImage128k_virtual28(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
+ value0=reinterpret_cast<Meta::beSvPs2McImage128k *>((void *)p0)->_data;
  if(value0){
   fn_80056378(value0);
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=(void *)0;
+ reinterpret_cast<Meta::beSvPs2McImage128k *>((void *)p0)->_data=(void *)0;
  value1=reinterpret_cast<UnknownGenV802E9A1C_0 *>((void *)p0)->s58();
  fn_80065704(value1,1);
  fn_800667B4((void *)p0);

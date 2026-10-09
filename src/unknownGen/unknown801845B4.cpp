@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igOptInterface.h>
+#include <meta/igOptStatistics.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -131,13 +133,13 @@ public:
 extern "C" {
 void igOptStatistics_virtual94(){}
 void igOptStatistics_virtual90(int p0){
- reinterpret_cast<UnknownGenV801845B8_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64))->s6C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56));
- reinterpret_cast<UnknownGenV801845B8_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64))->s70(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60));
- reinterpret_cast<UnknownGenV801845B8_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64))->s74(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))+28));
+ reinterpret_cast<UnknownGenV801845B8_0 *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table)->s6C((void *)reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_sortColumnLeftToRight);
+ reinterpret_cast<UnknownGenV801845B8_1 *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table)->s70((void *)reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_sortColumn);
+ reinterpret_cast<UnknownGenV801845B8_2 *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table)->s74(reinterpret_cast<Meta::igOptInterface *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_optInterface)->_logInterface);
 }
 void *igOptStatistics_virtual9C(int p0,int p1){
  void *value0;
- value0=reinterpret_cast<UnknownGenV8018462C_3 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64))->s80((void *)p1);
+ value0=reinterpret_cast<UnknownGenV8018462C_3 *>(reinterpret_cast<Meta::igOptStatistics *>((void *)p0)->_table)->s80((void *)p1);
  if((int)(int)value0>=0){
   memset((void *)p1,45,value0);
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+(int)value0)=(unsigned char)10;

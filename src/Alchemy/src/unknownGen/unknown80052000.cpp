@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igIGBFile.h>
+#include <meta/igPointerList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -43,33 +45,33 @@ void igIGBFile_virtual10(int p0){
  void *value3;
  void *value4;
  void *value5;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+ value0=reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_refList;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8);
+  value1=(void *)reinterpret_cast<Meta::igPointerList *>(value0)->_count;
   value6=(void *)0;
   while((int)(int)value6<(int)(int)value1){
-   reinterpret_cast<UnknownGenV80052000_0 *>((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+((int)value6<<2)))->s70((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44))+16))+((int)value6<<2)));
+   reinterpret_cast<UnknownGenV80052000_0 *>((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_data)+((int)value6<<2)))->s70((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igPointerList *>(reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_refList)->_data)+((int)value6<<2)));
    value6=(reinterpret_cast<char *>(value6)+1);
   }
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+  value2=reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_refList;
   if(value2){
-   value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+4)=(reinterpret_cast<char *>(value3)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4)&0x7FFFFF)){
+   value3=(void *)reinterpret_cast<Meta::igPointerList *>(value2)->_refCount;
+   reinterpret_cast<Meta::igPointerList *>(value2)->_refCount=(unsigned int)(reinterpret_cast<char *>(value3)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igPointerList *>(value2)->_refCount&0x7FFFFF)){
     fn_80066E1C(value2);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+44)=(void *)0;
+  reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_refList=(Meta::igPointerList *)0;
  }
- value4=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+ value4=reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_refList;
  if(value4){
-  value5=*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+4)=(reinterpret_cast<char *>(value5)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4)&0x7FFFFF)){
+  value5=(void *)reinterpret_cast<Meta::igPointerList *>(value4)->_refCount;
+  reinterpret_cast<Meta::igPointerList *>(value4)->_refCount=(unsigned int)(reinterpret_cast<char *>(value5)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igPointerList *>(value4)->_refCount&0x7FFFFF)){
    fn_80066E1C(value4);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+44)=(void *)0;
+ reinterpret_cast<Meta::igIGBFile *>((void *)p0)->_refList=(Meta::igPointerList *)0;
  fn_800667A8((void *)p0);
 }
 }

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igBoxFilterFun.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -10,7 +11,7 @@ extern "C" {
 void *igBoxFilterFun_virtual58(){return lbl_805642CC;}
 void igBoxFilterFun_virtual2C(int p0){
  fn_800667D0();
- *reinterpret_cast<double *>(reinterpret_cast<char *>((void *)p0)+8)=*reinterpret_cast<double *>((lbl_80566B48+0));
+ reinterpret_cast<Meta::igBoxFilterFun *>((void *)p0)->_hWidth=*reinterpret_cast<double *>((lbl_80566B48+0));
 }
 }
 #pragma pop

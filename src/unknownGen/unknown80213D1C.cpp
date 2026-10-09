@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeEnvironmentMapShader.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -169,18 +170,18 @@ extern "C" {
 void igGamecubeEnvironmentMapShader_virtualC0(int p0,int p1){
  reinterpret_cast<UnknownGenV80213D1C_0 *>((void *)p0)->sD0((void *)p1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+60)=1;
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
+ if(reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_envMapTexture){
   reinterpret_cast<UnknownGenV80213D1C_1 *>((void *)p0)->sC4((void *)p1);
   reinterpret_cast<UnknownGenV80213D1C_2 *>((void *)p0)->sCC((void *)p1);
-  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)){
+  if(reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_glossMapTexture){
    fn_80214590((void *)p0,(void *)p1);
    return;
   } else {
-   if((unsigned int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+116)!=255){
+   if((unsigned int)reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_reflectionScale!=255){
     fn_8021425C((void *)p0,(void *)p1);
     return;
    } else {
-    if((*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+48)||!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36))){
+    if((*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+48)||!reinterpret_cast<Meta::igGamecubeEnvironmentMapShader *>((void *)p0)->_diffuseTextureBind)){
      fn_80213FE4((void *)p0,(void *)p1);
      return;
     } else {

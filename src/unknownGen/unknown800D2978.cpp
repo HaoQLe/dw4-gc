@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTrackedElementMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -86,7 +87,7 @@ void *fn_800D2BD4(){
 }
 int igTrackedElementMetaField_virtual64(){return 12;}
 void igTrackedElementMetaField_virtual2C(int p0){
- fn_800D2C30(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+ fn_800D2C30(reinterpret_cast<Meta::igTrackedElementMetaField *>((void *)p0)->_fieldList);
 }
 }
 #pragma pop

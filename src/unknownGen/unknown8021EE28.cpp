@@ -1,4 +1,10 @@
 #include <unknownGen.h>
+#include <meta/igFloatHistogram.h>
+#include <meta/igHistogramBase.h>
+#include <meta/igIntHistogram.h>
+#include <meta/igIntList.h>
+#include <meta/igLongStack.h>
+#include <meta/igMatrixStack.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -37,9 +43,9 @@ void *fn_8021EE78(){return lbl_805659AC;}
 void *igFloatHistogram_virtual2C(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+12)>=2){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+8)=(void *)2;
+ value0=reinterpret_cast<Meta::igFloatHistogram *>((void *)p0)->_bins;
+ if((int)(int)(void *)reinterpret_cast<Meta::igIntList *>(value0)->_capacity>=2){
+  reinterpret_cast<Meta::igIntList *>(value0)->_count=(int)2;
   return value0;
  } else {
   value1=fn_80041660(value0,2,4);
@@ -49,9 +55,9 @@ void *igFloatHistogram_virtual2C(int p0){
 void *igIntHistogram_virtual2C(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+12)>=2){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+8)=(void *)2;
+ value0=reinterpret_cast<Meta::igIntHistogram *>((void *)p0)->_bins;
+ if((int)(int)(void *)reinterpret_cast<Meta::igIntList *>(value0)->_capacity>=2){
+  reinterpret_cast<Meta::igIntList *>(value0)->_count=(int)2;
   return value0;
  } else {
   value1=fn_80041660(value0,2,4);
@@ -73,48 +79,48 @@ void *igUnresolvedSymbolList_virtual60(){return lbl_80565A08;}
 void *fn_8021EF68(){return lbl_805659C0;}
 void *fn_8021EF70(){return lbl_805659B4;}
 void igHistogramBase_virtual104(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
+ if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)reinterpret_cast<Meta::igHistogramBase *>((void *)p0)->_bins){
+  fn_8004155C((void *)p0,reinterpret_cast<Meta::igHistogramBase *>((void *)p0)->_bins,4);
   return;
  } else {
   return;
  }
 }
 void igHistogramBase_virtual164(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),1);
+ if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)reinterpret_cast<Meta::igHistogramBase *>((void *)p0)->_bins){
+  fn_8004155C((void *)p0,reinterpret_cast<Meta::igHistogramBase *>((void *)p0)->_bins,1);
   return;
  } else {
   return;
  }
 }
 void igHistogramBase_virtual224(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
+ if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)reinterpret_cast<Meta::igHistogramBase *>((void *)p0)->_bins){
+  fn_8004155C((void *)p0,reinterpret_cast<Meta::igHistogramBase *>((void *)p0)->_bins,8);
   return;
  } else {
   return;
  }
 }
 void igHistogramBase_virtual2E4(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
+ if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)reinterpret_cast<Meta::igHistogramBase *>((void *)p0)->_bins){
+  fn_8004155C((void *)p0,reinterpret_cast<Meta::igHistogramBase *>((void *)p0)->_bins,8);
   return;
  } else {
   return;
  }
 }
 void igLongStack_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
+ if((int)(int)(void *)reinterpret_cast<Meta::igLongStack *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igLongStack *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igLongStack *>((void *)p0)->_count,8);
   return;
  } else {
   return;
  }
 }
 void igMatrixStack_virtual48(int p0){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
-  fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),64);
+ if((int)(int)(void *)reinterpret_cast<Meta::igMatrixStack *>((void *)p0)->_capacity>(int)(int)(void *)reinterpret_cast<Meta::igMatrixStack *>((void *)p0)->_count){
+  fn_8004155C((void *)p0,(void *)reinterpret_cast<Meta::igMatrixStack *>((void *)p0)->_count,64);
   return;
  } else {
   return;

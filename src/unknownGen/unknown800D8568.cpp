@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -106,7 +107,7 @@ void igGamecubeIndexArray_register(){
 void *igGamecubeIndexArray_parentMeta(){return lbl_80562F40;}
 void *fn_800D86DC(){
  void *value0=lbl_80563460;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)igIndexArray_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igIndexArray_getMetaCall;
  return value0;
 }
 void *igGamecubeImageConvert_getMeta(){
@@ -131,7 +132,7 @@ void igGamecubeImageConvert_register(){
 void *igGamecubeImageConvert_parentMeta(){return lbl_80562F5C;}
 void *fn_800D8824(){
  void *value0=lbl_80563464;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)igImageConvert_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igImageConvert_getMetaCall;
  return value0;
 }
 void *igGamecubeImage_getMeta(){

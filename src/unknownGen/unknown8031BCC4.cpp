@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beTargetObj.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -12,15 +13,15 @@ extern char lbl_80535BAC[];
 }
 extern "C" {
 void beTargetObj_virtual5C(int p0){
- fn_8028A398(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
+ fn_8028A398(reinterpret_cast<Meta::beTargetObj *>((void *)p0)->_insight,(void *)p0);
 }
 void beTargetObj_virtual60(int p0){
- fn_8028A400(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
+ fn_8028A400(reinterpret_cast<Meta::beTargetObj *>((void *)p0)->_insight,(void *)p0);
 }
 void beTargetObj_virtual64(int p0){
- void *value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_80534698);
+ void *value0=fn_8028A730(reinterpret_cast<Meta::beTargetObj *>((void *)p0)->_insight,lbl_80534698);
  *reinterpret_cast<void * *>((lbl_80535BA8+0))=value0;
- void *value1=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_80534FBC);
+ void *value1=fn_8028A730(reinterpret_cast<Meta::beTargetObj *>((void *)p0)->_insight,lbl_80534FBC);
  *reinterpret_cast<void * *>((lbl_80535BAC+0))=value1;
 }
 }

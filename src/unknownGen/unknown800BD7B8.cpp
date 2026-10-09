@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igClearAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -15,12 +16,12 @@ void igBlendingCorrectionStateAttr_virtual60(){}
 void igBlendingCorrectionStateAttr_virtual68(){}
 void igClearAttr_virtual60(int p0,int p1){
  float value0;
- value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+64);
+ value0=reinterpret_cast<Meta::igClearAttr *>((void *)p0)->_depthF;
  igGamecubeVisualContext_virtual2D4((void *)p1,value0);
- igGamecubeVisualContext_virtual2C8((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60));
- igGamecubeVisualContext_virtual2DC((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56)));
- if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
-  igGamecubeVisualContext_virtual2C0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+ igGamecubeVisualContext_virtual2C8((void *)p1,(void *)reinterpret_cast<Meta::igClearAttr *>((void *)p0)->_colorPacked);
+ igGamecubeVisualContext_virtual2DC((void *)p1,(int)(int)((void *)reinterpret_cast<Meta::igClearAttr *>((void *)p0)->_stencil));
+ if((void *)reinterpret_cast<Meta::igClearAttr *>((void *)p0)->_clearMode){
+  igGamecubeVisualContext_virtual2C0((void *)p1,(void *)reinterpret_cast<Meta::igClearAttr *>((void *)p0)->_clearMode);
   return;
  } else {
   return;

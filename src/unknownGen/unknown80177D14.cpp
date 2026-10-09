@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igItemInterface.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -121,7 +122,7 @@ void *fn_80177DE0(int p0,int p1){
 void fn_80177F30(){}
 void igItemInterface_virtual34(int p0){
  fn_800667CC();
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)p0;
+ reinterpret_cast<Meta::igItemInterface *>((void *)p0)->_itemInterface=(Meta::igItemInterface *)(void *)p0;
 }
 }
 #pragma pop

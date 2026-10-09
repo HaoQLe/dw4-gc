@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/igScissorAttr.h>
+#include <meta/igSpriteAttr.h>
+#include <meta/igStencilFunctionAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -79,15 +82,15 @@ void *igStencilStateAttr_virtual58(){return lbl_805625CC;}
 void *igStencilFunctionAttr_virtual58(){return lbl_805625D4;}
 int igStencilFunctionAttr_virtual84(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
 void *igStencilFunctionAttr_virtual8C(int p0,int p1,int p2,int p3){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=(void *)p1;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=(void *)p2;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)p3;
+ reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenFailOp=(int)(void *)p1;
+ reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZPassOp=(int)(void *)p2;
+ reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZFailOp=(int)(void *)p3;
  return (void *)p0;
 }
 void *igStencilFunctionAttr_virtual90(int p0,int p1,int p2,int p3){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p2)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p3)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+0)=(void *)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenFailOp;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p2)+0)=(void *)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZPassOp;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p3)+0)=(void *)reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenPassZFailOp;
  return (void *)p0;
 }
 void igStencilFunctionAttr_virtual94(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+24)=value;}
@@ -98,7 +101,7 @@ void *igSpriteAttr_virtual70(int p0){
  if(lbl_80562B08){
   lbl_80562B08=(void *)0;
  }
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+ value0=reinterpret_cast<Meta::igSpriteAttr *>((void *)p0)->_vertexArray;
  if(value0){
   value1=reinterpret_cast<UnknownGenV800C63F0_0 *>(value0)->sEC();
   return value1;
@@ -111,10 +114,10 @@ void *igSetRenderDestinationAttr_virtual58(){return lbl_80562614;}
 void *igScissorTypeAttr_virtual58(){return lbl_8056261C;}
 void *igScissorAttr_virtual58(){return lbl_80562624;}
 void *igScissorAttr_virtual80(int p0,int p1,int p2,int p3,int p4){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)p1;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p2;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)p3;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=(void *)p4;
+ reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_x=(int)(void *)p1;
+ reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_y=(int)(void *)p2;
+ reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_w=(int)(void *)p3;
+ reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_h=(int)(void *)p4;
  return (void *)p0;
 }
 void *igSceneAmbientColorAttr_virtual58(){return lbl_8056263C;}

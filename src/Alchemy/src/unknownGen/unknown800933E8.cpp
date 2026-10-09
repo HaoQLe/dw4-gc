@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeThread.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -52,8 +53,8 @@ int igGamecubeThread_virtualA8(){return 32;}
 int igGamecubeThread_virtualAC(){return 32;}
 void igGamecubeThread_virtual30(int p0){
  if(!*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+45)){
-  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
-   fn_80068390((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
+  if(reinterpret_cast<Meta::igGamecubeThread *>((void *)p0)->_stack){
+   fn_80068390((void *)p0,reinterpret_cast<Meta::igGamecubeThread *>((void *)p0)->_stack);
    return;
   } else {
    return;

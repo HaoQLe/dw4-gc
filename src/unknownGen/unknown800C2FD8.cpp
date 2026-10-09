@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igSubTextureBindAttr.h>
+#include <meta/igTextureAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -36,14 +38,14 @@ void *igSubTextureBindAttr_virtual60(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ value0=reinterpret_cast<Meta::igSubTextureBindAttr *>((void *)p0)->_texture;
  if(value0){
-  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+36)==-1){
+  if((int)(int)(void *)reinterpret_cast<Meta::igTextureAttr *>(value0)->_texId==-1){
    reinterpret_cast<UnknownGenV800C2FE0_0 *>(value0)->s60((void *)p1);
   }
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
-  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36)>=0){
-   value2=igGamecubeVisualContext_virtual1FC((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+  value1=reinterpret_cast<Meta::igSubTextureBindAttr *>((void *)p0)->_texture;
+  if((int)(int)(void *)reinterpret_cast<Meta::igTextureAttr *>(value1)->_texId>=0){
+   value2=igGamecubeVisualContext_virtual1FC((void *)p1,(void *)reinterpret_cast<Meta::igTextureAttr *>(value1)->_texId,(void *)reinterpret_cast<Meta::igSubTextureBindAttr *>((void *)p0)->_unitID);
    return value2;
   } else {
    return value1;

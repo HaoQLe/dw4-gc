@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -87,7 +88,7 @@ void igInsightScheduler_register(){
 void *igInsightScheduler_getMetaCall(){return igInsightScheduler_getMeta();}
 void *fn_80285BB4(){
  void *value0=lbl_80515CC0;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igSerialScheduler_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igSerialScheduler_getMetaCall;
  return value0;
 }
 void *fn_80285BD0(){

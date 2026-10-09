@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -46,7 +47,7 @@ void igEndianSwappedEnbayaAnimationSource_register(){
 void *igEndianSwappedEnbayaAnimationSource_parentMeta(){return lbl_80564FA4;}
 void *fn_801CEEB8(){
  void *value0=lbl_805655F4;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)igEnbayaAnimationSource_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igEnbayaAnimationSource_getMetaCall;
  return value0;
 }
 }

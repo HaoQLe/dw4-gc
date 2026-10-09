@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igEventTracker.h>
+#include <meta/igStackMemoryPool.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -20,15 +22,15 @@ void igStackMemoryPool_virtual168(int p0,int p1){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+148);
+ value1=reinterpret_cast<Meta::igStackMemoryPool *>((void *)p0)->_eventTracker;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igEventTracker *>(value1)->_refCount;
+  reinterpret_cast<Meta::igEventTracker *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igEventTracker *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+148)=(void *)p1;
+ reinterpret_cast<Meta::igStackMemoryPool *>((void *)p0)->_eventTracker=(Meta::igEventTracker *)(void *)p1;
 }
 }
 #pragma pop

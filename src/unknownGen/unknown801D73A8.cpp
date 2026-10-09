@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTransform.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -33,7 +34,7 @@ extern "C" {
 void *igTransform_virtual9C(int p0){
  void *value0;
  void *value1;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104);
+ value0=reinterpret_cast<Meta::igTransform *>((void *)p0)->_transformInput;
  if(value0){
   value1=reinterpret_cast<UnknownGenV801D73A8_0 *>(value0)->s5C((reinterpret_cast<char *>((void *)p0)+32));
   return value1;

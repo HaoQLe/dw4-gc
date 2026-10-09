@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igCharMetricsMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -316,7 +317,7 @@ void *fn_801151EC(){
 }
 int igCharMetricsMetaField_virtual64(){return 40;}
 void igCharMetricsMetaField_virtual2C(int p0){
- fn_80115248(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+ fn_80115248(reinterpret_cast<Meta::igCharMetricsMetaField *>((void *)p0)->_fieldList);
 }
 }
 #pragma pop

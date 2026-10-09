@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igDOFCamera.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -7,7 +8,7 @@ extern "C" {
 extern "C" {
 void *igDOFCamera_virtual90(int p0){
  void *value0;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64);
+ value0=reinterpret_cast<Meta::igDOFCamera *>((void *)p0)->_shader;
  if(!value0){
   return value0;
  }

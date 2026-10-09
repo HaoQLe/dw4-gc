@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igAttrList.h>
+#include <meta/igGeometry.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -71,11 +73,11 @@ void *igGeometry_virtual7C(int p0){
  void *value2;
  void *value4;
  void *value3;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8);
+ value0=reinterpret_cast<Meta::igGeometry *>((void *)p0)->_attributes;
+ value1=(void *)reinterpret_cast<Meta::igAttrList *>(value0)->_count;
  value3=(void *)0;
  while((unsigned int)(int)value3<(unsigned int)(int)value1){
-  reinterpret_cast<UnknownGenV801EA384_0 *>((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32))+16))+((int)value3<<2)))->s70();
+  reinterpret_cast<UnknownGenV801EA384_0 *>((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(reinterpret_cast<Meta::igAttrList *>(reinterpret_cast<Meta::igGeometry *>((void *)p0)->_attributes)->_data)+((int)value3<<2)))->s70();
   value3=(reinterpret_cast<char *>(value3)+1);
  }
  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(lbl_805657D4)+8);

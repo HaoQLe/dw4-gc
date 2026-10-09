@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/igVertexPipelineModeAttr.h>
+#include <meta/igVertexShaderAttr.h>
+#include <meta/igVisualContext.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -298,23 +301,23 @@ public:
 extern "C" {
 void igVertexBlendStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
 void igVertexPipelineModeAttr_virtual60(int p0,int p1){
- reinterpret_cast<UnknownGenV800C5658_0 *>((void *)p1)->s23C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
+ reinterpret_cast<UnknownGenV800C5658_0 *>((void *)p1)->s23C((void *)reinterpret_cast<Meta::igVertexPipelineModeAttr *>((void *)p0)->_mode,(void *)p0);
 }
 void igVertexPipelineModeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C5690_1 *>((void *)p1)->s240((void *)p1);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
+ reinterpret_cast<Meta::igVertexPipelineModeAttr *>((void *)p0)->_mode=(int)value0;
 }
 void igVertexShaderAttr_virtual60(){}
 void igVertexShaderAttr_virtual70(int p0){
  void *value0;
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)==-1){
+ if((int)(int)(void *)reinterpret_cast<Meta::igVertexShaderAttr *>((void *)p0)->_vertexShaderHandle==-1){
   return;
  }
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56);
+ value0=reinterpret_cast<Meta::igVertexShaderAttr *>((void *)p0)->_visualContext;
  if(value0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+56)=(void *)0;
+  reinterpret_cast<Meta::igVertexShaderAttr *>((void *)p0)->_visualContext=(Meta::igVisualContext *)0;
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=(void *)-1;
+ reinterpret_cast<Meta::igVertexShaderAttr *>((void *)p0)->_vertexShaderHandle=(int)-1;
 }
 }
 #pragma pop

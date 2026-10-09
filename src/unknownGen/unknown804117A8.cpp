@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igFlyMode.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -17,7 +18,7 @@ extern "C" {
 void igFlyMode_virtual78(int p0,float f0){
  void *value0;
  UnknownGenL804117A8_8 local0;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
+ value0=reinterpret_cast<Meta::igFlyMode *>((void *)p0)->_model;
  fn_80411044((void *)p0,f0);
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+132)){
   fn_80411580((void *)p0);

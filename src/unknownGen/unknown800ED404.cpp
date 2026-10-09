@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeVisualContext.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -9,9 +10,9 @@ extern char lbl_8055EE5C[4];
 }
 extern "C" {
 void *igGamecubeVisualContext_virtual314(void *p0,void *p1,void *p2){
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(p0)+72)=p1;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(p0)+84)=p2;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(p0)+76)=(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(p0)+76))+1);
+ reinterpret_cast<Meta::igGamecubeVisualContext *>(p0)->_blendMatricesCount=(int)p1;
+ reinterpret_cast<Meta::igGamecubeVisualContext *>(p0)->_blendMatrices=(void *)p2;
+ reinterpret_cast<Meta::igGamecubeVisualContext *>(p0)->_blendIndex=(unsigned int)(reinterpret_cast<char *>((void *)reinterpret_cast<Meta::igGamecubeVisualContext *>(p0)->_blendIndex)+1);
  return p0;
 }
 void igGamecubeVisualContext_virtual6C(int p0,int p1,int p2,int p3,int p4,int p5){

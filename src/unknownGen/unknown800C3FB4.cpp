@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igTextureFunctionAttr.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -274,21 +275,21 @@ public:
 extern "C" {
 void igTextureFunctionAttr_virtual60(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value1;
- *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
+ reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_call_state=0;
  void *value0=lbl_80562B0C;
  if(value0){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);
-  switch((int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)){
+  value1=(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_functionType;
+  switch((int)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_call_state){
   case 0:
-   reinterpret_cast<UnknownGenV800C3FB4_4 *>(value0)->s78(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),value1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28),(void *)p4,(void *)p5);
+   reinterpret_cast<UnknownGenV800C3FB4_4 *>(value0)->s78((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_type,(void *)p4,(void *)p5);
   case 1:
-   reinterpret_cast<UnknownGenV800C3FB4_5 *>(lbl_80562B0C)->s80(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),value1,(void *)0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),(void *)0);
-   reinterpret_cast<UnknownGenV800C3FB4_6 *>(lbl_80562B0C)->s80(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),value1,(void *)1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24),(void *)0);
+   reinterpret_cast<UnknownGenV800C3FB4_5 *>(lbl_80562B0C)->s80((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)0,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_arg0,(void *)0);
+   reinterpret_cast<UnknownGenV800C3FB4_6 *>(lbl_80562B0C)->s80((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)1,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_arg1,(void *)0);
   }
-  reinterpret_cast<UnknownGenV800C3FB4_7 *>(lbl_80562B0C)->s7C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),value1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+  reinterpret_cast<UnknownGenV800C3FB4_7 *>(lbl_80562B0C)->s7C((void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,value1,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_mode);
   return;
  } else {
-  igGamecubeVisualContext_virtual250((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p3);
+  igGamecubeVisualContext_virtual250((void *)p1,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_unitID,(void *)reinterpret_cast<Meta::igTextureFunctionAttr *>((void *)p0)->_mode,(void *)p3);
   return;
  }
 }

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/beXboxImage24k.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -39,8 +40,8 @@ void beXboxImage24k_virtual24(int p0,int p1){
  fn_80065704(value0,1);
  if(!(unsigned char)p1){
   value1=fn_800560F8(24576);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=value1;
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)24576;
+  reinterpret_cast<Meta::beXboxImage24k *>((void *)p0)->_data=(void *)value1;
+  reinterpret_cast<Meta::beXboxImage24k *>((void *)p0)->_dataSize=(int)24576;
   return;
  } else {
   return;

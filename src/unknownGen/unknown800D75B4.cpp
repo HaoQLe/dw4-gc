@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -68,7 +69,7 @@ void igGamecubeVertexArray2_register(){
 void *igGamecubeVertexArray2_parentMeta(){return lbl_80562D84;}
 void *fn_800D7810(){
  void *value0=lbl_805633B8;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)igVertexArray2_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igVertexArray2_getMetaCall;
  return value0;
 }
 }

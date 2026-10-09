@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igHeap.h>
+#include <meta/igHeapableList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -19,9 +21,9 @@ void igHeap_virtual24(int p0,int p1){
  void *value4;
  fn_800667B0();
  if(!(unsigned char)p1){
-  fn_800691E8(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),1);
-  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+16);
+  fn_800691E8(reinterpret_cast<Meta::igHeap *>((void *)p0)->_heap,1);
+  value0=reinterpret_cast<Meta::igHeap *>((void *)p0)->_heap;
+  value1=reinterpret_cast<Meta::igHeapableList *>(value0)->_data;
   value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+0);
   if(value2){
    value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
@@ -30,9 +32,9 @@ void igHeap_virtual24(int p0,int p1){
     fn_80066E1C(value2);
    }
   }
-  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8)!=0){
-   if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8)>0){
-    value4=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+16);
+  if((int)(int)(void *)reinterpret_cast<Meta::igHeapableList *>(value0)->_count!=0){
+   if((int)(int)(void *)reinterpret_cast<Meta::igHeapableList *>(value0)->_count>0){
+    value4=reinterpret_cast<Meta::igHeapableList *>(value0)->_data;
     *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+0)=(void *)0;
     return;
    } else {

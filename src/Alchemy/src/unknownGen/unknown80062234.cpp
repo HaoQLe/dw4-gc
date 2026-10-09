@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMemoryRefArrayMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -194,7 +195,7 @@ void fn_8006226C(int p0){
 }
 void igMemoryRefArrayMetaField_virtualD0(int p0,int p1,int p2){
  void *value0=fn_8002B210();
- reinterpret_cast<UnknownGenV800622A4_2 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80)));
+ reinterpret_cast<UnknownGenV800622A4_2 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)(void *)reinterpret_cast<Meta::igMemoryRefArrayMetaField *>((void *)p0)->_num));
 }
 }
 #pragma pop

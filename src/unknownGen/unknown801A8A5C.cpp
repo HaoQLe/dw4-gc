@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igUnsignedLongMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -23,7 +24,7 @@ void *fn_801A8A5C(int p0,int p1,int p2,int p3,int p4){
  }
  value0=UnknownGenCast801A8A5C_14((void *)p2);
  if((value2&&value0)){
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8);
+  value1=(void *)reinterpret_cast<Meta::igUnsignedLongMetaField *>(value0)->_offset;
   *reinterpret_cast<long long *>(reinterpret_cast<char *>((void *)(int)(p3+(int)value1))+0)=*reinterpret_cast<long long *>(reinterpret_cast<char *>((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+8)))+0);
   return (void *)1;
  } else {

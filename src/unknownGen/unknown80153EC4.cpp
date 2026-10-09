@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igLightStateSet.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -68,7 +69,7 @@ void igAttrEditForLightStateSet_virtual94(int p0,int p1){
  fn_80188BA4(&local1);
  value0=UnknownGenCast80153EC4_9(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+32));
  value1=UnknownGenCast80153EC4_15(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36));
- fn_800692E0(&local0,*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+32),value1,0);
+ fn_800692E0(&local0,reinterpret_cast<Meta::igLightStateSet *>(value0)->_lightEnables,value1,0);
  reinterpret_cast<UnknownGenV80153EC4_2 *>((void *)p1)->s90();
  fn_80188CD0(&local1);
  fn_80188CAC((void *)p0,&local1);

@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igLuaState.h>
+#include <meta/igMemoryPool.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -38,23 +40,23 @@ void igLuaState_virtual24(int p0){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+4)=(reinterpret_cast<char *>(value0)+1);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ value1=reinterpret_cast<Meta::igLuaState *>((void *)p0)->_memPool;
  if(value1){
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+  value2=(void *)reinterpret_cast<Meta::igMemoryPool *>(value1)->_refCount;
+  reinterpret_cast<Meta::igMemoryPool *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+  if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igMemoryPool *>(value1)->_refCount&0x7FFFFF)){
    fn_80066E1C(value1);
   }
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=value4;
- value7=fn_8027E9D4(0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value7;
+ reinterpret_cast<Meta::igLuaState *>((void *)p0)->_memPool=(Meta::igMemoryPool *)value4;
+ value7=fn_8027E9D4(0,reinterpret_cast<Meta::igLuaState *>((void *)p0)->_memPool);
+ reinterpret_cast<Meta::igLuaState *>((void *)p0)->_luaState=(void *)value7;
  if(!(void *)(int)*reinterpret_cast<unsigned char *>((lbl_80566068+0))){
   fn_80272558((void *)p0);
  }
- value8=fn_80272264(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+ value8=fn_80272264(reinterpret_cast<Meta::igLuaState *>((void *)p0)->_luaState);
  lbl_80566070=value8;
- value3=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
+ value3=reinterpret_cast<Meta::igLuaState *>((void *)p0)->_luaState;
  fn_80275FF8(value3);
  fn_80280C08(value3);
  fn_8027BC14(value3);

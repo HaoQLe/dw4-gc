@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igViewManager.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -37,7 +38,7 @@ public:
 };
 extern "C" {
 void *igViewManager_virtual6C(int p0){
- reinterpret_cast<UnknownGenV80410504_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s74();
+ reinterpret_cast<UnknownGenV80410504_0 *>(reinterpret_cast<Meta::igViewManager *>((void *)p0)->_viewMode)->s74();
  return (void *)1;
 }
 }

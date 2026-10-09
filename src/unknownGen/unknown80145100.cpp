@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igItemDataBaseField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -150,7 +151,7 @@ void *fn_801455C8(){
 }
 int igItemDataBaseField_virtual64(){return 12;}
 void igItemDataBaseField_virtual2C(int p0){
- fn_80145624(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+ fn_80145624(reinterpret_cast<Meta::igItemDataBaseField *>((void *)p0)->_fieldList);
 }
 }
 #pragma pop

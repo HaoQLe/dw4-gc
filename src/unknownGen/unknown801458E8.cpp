@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igInterfaceDeclarationField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -242,7 +243,7 @@ void *fn_8014612C(){
 }
 int igInterfaceDeclarationField_virtual64(){return 16;}
 void igInterfaceDeclarationField_virtual2C(int p0){
- fn_80146188(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
+ fn_80146188(reinterpret_cast<Meta::igInterfaceDeclarationField *>((void *)p0)->_fieldList);
 }
 }
 #pragma pop

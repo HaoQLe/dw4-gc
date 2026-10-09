@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igTraversal.h>
+#include <meta/igTraversalFunctionList.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -53,15 +55,15 @@ void *igCommonTraversal_virtual24(int p0,int p1){
    value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+1);
   }
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
+  value2=reinterpret_cast<Meta::igTraversal *>((void *)p0)->_travProcs;
   if(value2){
-   value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+4)=(reinterpret_cast<char *>(value3)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4)&0x7FFFFF)){
+   value3=(void *)reinterpret_cast<Meta::igTraversalFunctionList *>(value2)->_refCount;
+   reinterpret_cast<Meta::igTraversalFunctionList *>(value2)->_refCount=(unsigned int)(reinterpret_cast<char *>(value3)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igTraversalFunctionList *>(value2)->_refCount&0x7FFFFF)){
     fn_80066E1C(value2);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=value0;
+  reinterpret_cast<Meta::igTraversal *>((void *)p0)->_travProcs=(Meta::igTraversalFunctionList *)value0;
   reinterpret_cast<UnknownGenV801DB534_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+232))->s80((void *)0);
   value4=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+236);
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+12)=1;

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igShader.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -28,9 +29,9 @@ void igObjectPropertyForShader_virtual90(int p0,int p1){
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+36)=1;
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+37)=1;
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+38)=1;
-  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+39)=(unsigned char)(int)(void *)(int)((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+56)&0x1);
+  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+39)=(unsigned char)(int)(void *)(int)((unsigned int)(int)(void *)reinterpret_cast<Meta::igShader *>(value0)->_childMode&0x1);
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+42)=1;
-  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+40)=(unsigned char)(int)(void *)(int)((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+56)&0x1);
+  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+40)=(unsigned char)(int)(void *)(int)((unsigned int)(int)(void *)reinterpret_cast<Meta::igShader *>(value0)->_childMode&0x1);
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+41)=1;
   fn_80188CD0(&local0);
   fn_80188CAC((void *)p0,&local0);

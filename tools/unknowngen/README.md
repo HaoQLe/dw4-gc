@@ -75,9 +75,19 @@ The templates in `gen.py`:
   `flow_cf.json` records functions that match only with `var` or `this`. A field read before an intervening store or call is read into a variable at its original position.
 
   Parameters come from registers the function reads and from argument registers callers write specifically for the call. A function that reads a higher argument register without the lower ones is retried with all of them as parameters. A definition already declared with the same parameter count keeps those parameter types (`int` or `void *`), and one declared returning a pointer returns what is left in `r3`. `flow_regs.json` lists functions that match only when every set argument register is passed.
+- **Typed members:** in every template using FLOW field access, an access at a reflected member is written as that member, for example `reinterpret_cast<Meta::beWeapon *>(p0)->_attachDataList` (`tools/alchemymeta/layouts.json`, headers in `include/meta/`). This applies only when the member's C type matches the access exactly, or for word accesses, is a pointer or an `int`. A value's class is known when it is:
+  - the first parameter of a class's virtual function (`config/GDJEB2/alchemy_class_functions.txt`);
+  - a reference member read from a value of known class (its target class);
+  - an inline cast tested against a class metaobject;
+  - a value passed as the first argument of one class's virtual functions;
+  - a metaobject global, or a `getMeta` result (both `igMetaObject`).
+
+  Units include the headers of the classes they use. `--untyped` turns typing off.
 - **`LEAF`** handles two-instruction leaf functions.
 - **Hand-written forms** are in `texttempl.py`. `T` entries must match a representative exactly. `IT` entries also mask immediates and substitute each member's own value for `{@K}` (instruction K).
 - **Both compiler profiles:** each representative is also compiled without small data, so units built that way classify too.
+
+Generated functions are those named by address (`fn_`, `dtor_`) and those named from their Alchemy class (`tools/alchemymeta`). Helper type names keep the address as their tag.
 
 Functions that `gen.py` never generates:
 - functions referenced from `.ctors`;

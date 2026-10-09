@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/beBaseInfoList.h>
+#include <meta/beBkColor.h>
+#include <meta/igInsightCore.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -230,10 +233,10 @@ void beBkColor_virtual84(int p0){
  void *value2;
  void *value3;
  if(!*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)){
-  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+16);
+  value0=reinterpret_cast<Meta::beBkColor *>((void *)p0)->_infoList;
+  value1=reinterpret_cast<Meta::beBaseInfoList *>(value0)->_data;
   value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+0);
-  value3=reinterpret_cast<UnknownGenV802F29E8_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+20))->s98(value1);
+  value3=reinterpret_cast<UnknownGenV802F29E8_0 *>(reinterpret_cast<Meta::igInsightCore *>(reinterpret_cast<Meta::beBkColor *>((void *)p0)->_insight)->_window)->s98(value1);
   reinterpret_cast<UnknownGenV802F29E8_1 *>(value3)->s2C4((reinterpret_cast<char *>(value2)+28));
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=1;
   return;

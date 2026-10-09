@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeWindow.h>
+#include <meta/igVisualContext.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -40,22 +42,22 @@ void *igGamecubeWindow_virtual9C(int p0,int p1){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+4);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+4)=(reinterpret_cast<char *>(value0)+1);
   }
-  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
+  value1=reinterpret_cast<Meta::igGamecubeWindow *>((void *)p0)->_vc;
   if(value1){
-   value2=*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value1)+4)=(reinterpret_cast<char *>(value2)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+4)&0x7FFFFF)){
+   value2=(void *)reinterpret_cast<Meta::igVisualContext *>(value1)->_refCount;
+   reinterpret_cast<Meta::igVisualContext *>(value1)->_refCount=(unsigned int)(reinterpret_cast<char *>(value2)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igVisualContext *>(value1)->_refCount&0x7FFFFF)){
     fn_80066E1C(value1);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)p1;
+  reinterpret_cast<Meta::igGamecubeWindow *>((void *)p0)->_vc=(Meta::igVisualContext *)(void *)p1;
   return (void *)1;
  } else {
   return (void *)0;
  }
 }
 void igGamecubeWindow_virtual64(int p0){
- reinterpret_cast<UnknownGenV800CD53C_0 *>((void *)p0)->s60(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+ reinterpret_cast<UnknownGenV800CD53C_0 *>((void *)p0)->s60((void *)reinterpret_cast<Meta::igGamecubeWindow *>((void *)p0)->_winName,(void *)reinterpret_cast<Meta::igGamecubeWindow *>((void *)p0)->_width,(void *)reinterpret_cast<Meta::igGamecubeWindow *>((void *)p0)->_height);
 }
 }
 #pragma pop

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igAdxFile.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -7,7 +8,7 @@ void fn_8029E6A4(void *);
 extern "C" {
 void *igAdxFile_virtual9C(int p0){
  fn_8029E6A4(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+96));
- return *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72);
+ return (void *)reinterpret_cast<Meta::igAdxFile *>((void *)p0)->_iSeekPosition;
 }
 }
 #pragma pop

@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGeometryAttr1_5.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -66,7 +67,7 @@ void *igGeometryAttr1_5_virtualAC(int p0,int p1){
  return value1;
 }
 void igGeometryAttr1_5_virtualA4(int p0){
- reinterpret_cast<UnknownGenV800C6950_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48))->s6C();
+ reinterpret_cast<UnknownGenV800C6950_0 *>(reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_stripLengths)->s6C();
 }
 void *fn_800C6980(){return lbl_80562888;}
 void *igGenericAttrDefaultManager_virtual58(){return lbl_805628B0;}

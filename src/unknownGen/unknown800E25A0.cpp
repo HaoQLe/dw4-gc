@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igPointSpriteExt.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -276,19 +277,19 @@ public:
 extern "C" {
 void igPointSpriteExt_virtualAC(int p0,int p1,int p2){
  if((unsigned int)p1==0){
-  reinterpret_cast<UnknownGenV800E25A0_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sCC((void *)0,(void *)(int)(p2*6));
+  reinterpret_cast<UnknownGenV800E25A0_0 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->sCC((void *)0,(void *)(int)(p2*6));
   return;
  } else {
-  reinterpret_cast<UnknownGenV800E25A0_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sCC((void *)0,(reinterpret_cast<char *>((void *)(int)(p2*6))+3));
+  reinterpret_cast<UnknownGenV800E25A0_1 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->sCC((void *)0,(reinterpret_cast<char *>((void *)(int)(p2*6))+3));
   return;
  }
 }
 void igPointSpriteExt_virtualB0(int p0,int p1,int p2){
  if((unsigned int)p1==0){
-  reinterpret_cast<UnknownGenV800E2604_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sD0((void *)0,(void *)(int)(p2*6));
+  reinterpret_cast<UnknownGenV800E2604_2 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->sD0((void *)0,(void *)(int)(p2*6));
   return;
  } else {
-  reinterpret_cast<UnknownGenV800E2604_3 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sD0((void *)0,(reinterpret_cast<char *>((void *)(int)(p2*6))+3));
+  reinterpret_cast<UnknownGenV800E2604_3 *>(reinterpret_cast<Meta::igPointSpriteExt *>((void *)p0)->_vertexArray)->sD0((void *)0,(reinterpret_cast<char *>((void *)(int)(p2*6))+3));
   return;
  }
 }

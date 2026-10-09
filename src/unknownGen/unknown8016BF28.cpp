@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igFieldSource.h>
+#include <meta/igMetaField.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -36,23 +38,23 @@ void igFieldSource_virtual6C(int p0){
  void *value1;
  void *value2;
  void *value3;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40);
+ value0=reinterpret_cast<Meta::igFieldSource *>((void *)p0)->_container;
  if(value0){
   value4=reinterpret_cast<UnknownGenV8016BF28_0 *>(value0)->s58();
-  value5=fn_800658F8(value4,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
+  value5=fn_800658F8(value4,(void *)reinterpret_cast<Meta::igFieldSource *>((void *)p0)->_sourceFieldName);
   if((int)(int)value5!=0){
    value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value5)+4);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+4)=(reinterpret_cast<char *>(value1)+1);
   }
-  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
+  value2=reinterpret_cast<Meta::igFieldSource *>((void *)p0)->_sourceField;
   if(value2){
-   value3=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+4)=(reinterpret_cast<char *>(value3)+-1);
-   if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4)&0x7FFFFF)){
+   value3=(void *)reinterpret_cast<Meta::igMetaField *>(value2)->_refCount;
+   reinterpret_cast<Meta::igMetaField *>(value2)->_refCount=(unsigned int)(reinterpret_cast<char *>(value3)+-1);
+   if(!((unsigned int)(int)(void *)reinterpret_cast<Meta::igMetaField *>(value2)->_refCount&0x7FFFFF)){
     fn_80066E1C(value2);
    }
   }
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+44)=value5;
+  reinterpret_cast<Meta::igFieldSource *>((void *)p0)->_sourceField=(Meta::igMetaField *)value5;
   return;
  } else {
   return;

@@ -1,4 +1,7 @@
 #include <unknownGen.h>
+#include <meta/igAttrSet.h>
+#include <meta/igLightSet.h>
+#include <meta/igLightStateSet.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -36,15 +39,15 @@ void igAttrTraversal_virtual90(int p0,int p1){
  fn_80188BA4(&local0);
  value0=UnknownGenCast80154148_9(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+32));
  if(value0){
-  fn_80069184(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+32));
+  fn_80069184(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36),reinterpret_cast<Meta::igAttrSet *>(value0)->_attributes);
  }
  value1=UnknownGenCast80154148_19(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+32));
  if(value1){
-  fn_80069184(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+28));
+  fn_80069184(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36),reinterpret_cast<Meta::igLightSet *>(value1)->_lights);
  }
  value2=UnknownGenCast80154148_29(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+32));
  if(value2){
-  fn_80069184(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+32));
+  fn_80069184(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36),reinterpret_cast<Meta::igLightStateSet *>(value2)->_lightEnables);
  }
  fn_80188CD0(&local0);
  fn_80188CAC((void *)p0,&local0);

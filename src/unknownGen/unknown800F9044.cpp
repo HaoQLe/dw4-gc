@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igGamecubeVisualContext.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -21,7 +22,7 @@ void igGamecubeVisualContext_virtual2F0(int p0,int p1,int p2,int p3,int p4){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1180)=(void *)p2;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1184)=(void *)p3;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1188)=(void *)p4;
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104)!=1){
+ if((int)(int)(void *)reinterpret_cast<Meta::igGamecubeVisualContext *>((void *)p0)->_scissorType!=1){
   return;
  }
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1312)=(void *)(int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+1312)|0x10);
@@ -34,10 +35,10 @@ void *igGamecubeVisualContext_virtual2F4(int p0,int p1,int p2,int p3,int p4){
  return (void *)p0;
 }
 void igGamecubeVisualContext_virtual2F8(int p0,int p1){
- if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104)==(int)p1){
+ if((int)(int)(void *)reinterpret_cast<Meta::igGamecubeVisualContext *>((void *)p0)->_scissorType==(int)p1){
   return;
  }
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+104)=(void *)p1;
+ reinterpret_cast<Meta::igGamecubeVisualContext *>((void *)p0)->_scissorType=(int)(void *)p1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1312)=(void *)(int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+1312)|0x10);
 }
 }

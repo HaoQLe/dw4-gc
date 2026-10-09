@@ -1,4 +1,5 @@
 #include <unknownGen.h>
+#include <meta/igMetaObject.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -246,7 +247,7 @@ void igRandomNumber_register(){
 void *igRandomNumber_getMetaCall(){return igRandomNumber_getMeta();}
 void *fn_80216BCC(){
  void *value0=lbl_805659E4;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igMersenneTwisterRandomNumber_getMetaCall;
+ reinterpret_cast<Meta::igMetaObject *>(value0)->_abstractProxy=(void *)(void *)igMersenneTwisterRandomNumber_getMetaCall;
  return value0;
 }
 void *igMersenneTwisterRandomNumber_getMetaCall(){return igMersenneTwisterRandomNumber_getMeta();}

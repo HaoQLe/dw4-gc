@@ -1,4 +1,6 @@
 #include <unknownGen.h>
+#include <meta/igMemoryDictionary.h>
+#include <meta/igUnsignedIntListNoClean.h>
 #pragma push
 #pragma auto_inline off
 extern "C" {
@@ -63,15 +65,15 @@ void igMemoryDictionary_virtual64(int p0){
  void *value0;
  void *value1;
  void *value2;
- value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
- if((int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)<<1)>=(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8)){
-  fn_8004155C(value0,(void *)(int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)<<1),4);
+ value0=reinterpret_cast<Meta::igMemoryDictionary *>((void *)p0)->_memoryEntries;
+ if((int)((int)(void *)reinterpret_cast<Meta::igMemoryDictionary *>((void *)p0)->_capacity<<1)>=(int)(int)(void *)reinterpret_cast<Meta::igUnsignedIntListNoClean *>(value0)->_count){
+  fn_8004155C(value0,(void *)(int)((int)(void *)reinterpret_cast<Meta::igMemoryDictionary *>((void *)p0)->_capacity<<1),4);
  }
- value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);
- value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
+ value1=(void *)reinterpret_cast<Meta::igMemoryDictionary *>((void *)p0)->_capacity;
+ value2=reinterpret_cast<Meta::igMemoryDictionary *>((void *)p0)->_memoryEntries;
  if((int)((int)value1<<1)>=0){
-  if((int)((int)value1<<1)<=(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+12)){
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+8)=(void *)(int)((int)value1<<1);
+  if((int)((int)value1<<1)<=(int)(int)(void *)reinterpret_cast<Meta::igUnsignedIntListNoClean *>(value2)->_capacity){
+   reinterpret_cast<Meta::igUnsignedIntListNoClean *>(value2)->_count=(int)(void *)(int)((int)value1<<1);
   } else {
    fn_80041660(value2,(void *)(int)((int)value1<<1),4);
   }

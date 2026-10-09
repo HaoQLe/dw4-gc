@@ -6,6 +6,7 @@
 #include <meta/beWeaponAttachData.h>
 #include <meta/beWeaponAttachDataList.h>
 #include <meta/beMessenger.h>
+#include <meta/beBaseInfoRam.h>
 #include <game/ObjectRef.h>
 
 using namespace Meta;
@@ -18,7 +19,7 @@ extern char lbl_8056225C[];                   // default pool source (type unkno
 beWeaponAttachDataList *fn_802B38CC(void *pool);  // creates a beWeaponAttachDataList in pool
 beWeaponAttachData *fn_802B3ADC(void *pool);      // creates a beWeaponAttachData in pool
 void fn_80069128(void *list, void *object);   // appends to an object list
-void fn_80305308(beMessenger *messenger, int, const char *command);  // sends command through the messenger
+void fn_80305308(beMessenger *messenger, beBaseInfoRam *ram, const char *command);  // sends command through the messenger
 extern const char lbl_80452628[];             // "PLAYERARMS", first of the strings shared with the message handler
 extern char lbl_8053453C[];                   // a metaobject pointer (class unknown)
 }
@@ -47,7 +48,7 @@ void *beWeapon_virtual80(beWeapon *)
 }
 
 // Creates the attachment list, with four empty attachments, on first use; then sends PLAYERARMS.
-void beWeapon_virtual7C(beWeapon *self, int arg)
+void beWeapon_virtual7C(beWeapon *self, beBaseInfoRam *ram)
 {
     if (!self->_attachDataList) {
         beWeaponAttachDataList *list = fn_802B38CC(poolFor(self));
@@ -59,7 +60,7 @@ void beWeapon_virtual7C(beWeapon *self, int arg)
             fn_80069128(self->_attachDataList, attachment._object);
         }
     }
-    fn_80305308(self->_messenger, arg, lbl_80452628);
+    fn_80305308(self->_messenger, ram, lbl_80452628);
 }
 
 void beWeapon_virtual84(beWeapon *) {}

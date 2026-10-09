@@ -1,4 +1,6 @@
-// Reference counting for Alchemy objects, as the game code uses it.
+// Reference counting for Alchemy objects, as the game code uses it. ObjectRef and AdoptedRef are our names
+// (their destructors are __dt__9ObjectRefFv and __dt__10AdoptedRefFv in symbols.txt); the original types
+// are unknown, probably one smart-pointer template per held type.
 #ifndef GAME_OBJECTREF_H
 #define GAME_OBJECTREF_H
 #include <meta/igObject.h>

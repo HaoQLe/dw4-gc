@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80315D6C(){}
+void beSwitchCtrl_virtual84(){}
 }
 #pragma pop

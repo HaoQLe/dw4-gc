@@ -2,27 +2,27 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beSvSlotData_register();
+void beSvSlotXbox_fieldInit();
+void *beSvSlotXbox_getMeta();
+void beSvSlotXbox_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802BFAE8();
-void *fn_802BFC4C();
-void fn_802BFC98();
-void fn_802BFDEC();
-void fn_802BFEF4();
 extern char lbl_8041E244[];
 extern char lbl_805349C4[];
-void fn_802BFD58();
-void *fn_802BFDCC();
+void beSvSlotXbox_register();
+void *beSvSlotXbox_getMetaCall();
 }
 extern "C" {
 void fn_802BFD30(){
- fn_80066188((int)fn_802BFD58);
+ fn_80066188((int)beSvSlotXbox_register);
 }
-void fn_802BFD58(){
+void beSvSlotXbox_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805349C4,(int)fn_802BFEF4,(int)fn_802BFAE8,(int)fn_802BFDCC,(int)lbl_8041E244,56,(int)fn_802BFC98,(int)fn_802BFDEC,0,0);
+ fn_80066204(0,(int)lbl_805349C4,(int)beSvSlotData_register,(int)fn_802BFAE8,(int)beSvSlotXbox_getMetaCall,(int)lbl_8041E244,56,(int)beSvSlotXbox_vtableRead,(int)beSvSlotXbox_fieldInit,0,0);
 }
-void *fn_802BFDCC(){return fn_802BFC4C();}
+void *beSvSlotXbox_getMetaCall(){return beSvSlotXbox_getMeta();}
 }
 #pragma pop

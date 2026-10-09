@@ -21,7 +21,7 @@ struct UnknownGenObject802E1DC0 : UnknownGenRoot802E1DC0 {
  inline ~UnknownGenObject802E1DC0(){unknown00=lbl_804D47CC;}
 };
 extern "C" {
-void *fn_802E1DC0(){
+void *beCameraBoxData_vtableRead(){
  UnknownGenObject802E1DC0 object;
  object.unknown00=lbl_804D47CC;
  object.unknown08.value=0;

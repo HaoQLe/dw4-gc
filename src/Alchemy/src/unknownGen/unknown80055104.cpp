@@ -93,7 +93,7 @@ public:
  virtual void s60(void *);
 };
 extern "C" {
-void fn_80055104(int p0){
+void igMemoryDictionary_virtualEC(int p0){
  void *value0;
  void *value1;
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+45)){

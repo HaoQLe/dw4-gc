@@ -5,7 +5,7 @@ extern "C" {
 void fn_8028A2D0(void *,void *);
 }
 extern "C" {
-void fn_80347984(int p0,int p1){
+void libNdmwRuntimePlugin_virtual60(int p0,int p1){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+88)){
   fn_8028A2D0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+88));
  }

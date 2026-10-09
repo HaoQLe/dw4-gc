@@ -62,11 +62,11 @@ public:
  virtual void s6C();
 };
 extern "C" {
-void *fn_8041039C(int p0){
+void *igViewManager_virtual60(int p0){
  reinterpret_cast<UnknownGenV8041039C_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s68();
  return (void *)1;
 }
-void *fn_804103D0(int p0){
+void *igViewManager_virtual64(int p0){
  reinterpret_cast<UnknownGenV804103D0_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s6C();
  return (void *)1;
 }

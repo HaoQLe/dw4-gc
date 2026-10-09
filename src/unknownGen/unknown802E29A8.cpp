@@ -32,7 +32,7 @@ struct UnknownGenObject802E29A8 : UnknownGenObject802E29A8_2 {
  inline ~UnknownGenObject802E29A8(){unknown00=lbl_804D46D4;}
 };
 extern "C" {
-void *fn_802E29A8(){
+void *beBkColorInfo_vtableRead(){
  UnknownGenObject802E29A8 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

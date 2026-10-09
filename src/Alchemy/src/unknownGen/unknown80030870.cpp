@@ -4,22 +4,22 @@
 extern "C" {
 void fn_80021B94();
 void *fn_8002942C();
-void fn_80030AD0();
-void fn_80032D80();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void igDirEntry_register();
+void igExternalDirEntry_fieldInit();
 extern char lbl_8046604C[];
 extern char lbl_804729A4[];
 extern char lbl_80472EF4[];
 extern char lbl_8047650C[];
 extern char lbl_8055D4B4[8];
 extern void *lbl_80561B8C;
-void *fn_80030870();
-void *fn_800308AC();
+void *igExternalDirEntry_getMeta();
+void *igExternalDirEntry_vtableRead();
 void fn_80030A14();
-void fn_80030A3C();
-void *fn_80030AB0();
+void igExternalDirEntry_register();
+void *igExternalDirEntry_getMetaCall();
 }
 struct UnknownGenRoot800308AC {
  void *unknown00;
@@ -44,11 +44,11 @@ struct UnknownGenObject800308AC : UnknownGenObject800308AC_1 {
  inline ~UnknownGenObject800308AC(){unknown00=lbl_804729A4;}
 };
 extern "C" {
-void *fn_80030870(){
+void *igExternalDirEntry_getMeta(){
  if(!lbl_80561B8C || !(reinterpret_cast<unsigned int *>(lbl_80561B8C)[0x24/4]&4)) fn_80030A14();
  return lbl_80561B8C;
 }
-void *fn_800308AC(){
+void *igExternalDirEntry_vtableRead(){
  UnknownGenObject800308AC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -60,12 +60,12 @@ void *fn_800308AC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80030A14(){
- fn_80066188((int)fn_80030A3C);
+ fn_80066188((int)igExternalDirEntry_register);
 }
-void fn_80030A3C(){
+void igExternalDirEntry_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561B8C,(int)fn_80032D80,(int)fn_8002942C,(int)fn_80030AB0,(int)lbl_8046604C,44,(int)fn_800308AC,(int)fn_80030AD0,0,(int)lbl_8055D4B4);
+ fn_80066204(0,(int)&lbl_80561B8C,(int)igDirEntry_register,(int)fn_8002942C,(int)igExternalDirEntry_getMetaCall,(int)lbl_8046604C,44,(int)igExternalDirEntry_vtableRead,(int)igExternalDirEntry_fieldInit,0,(int)lbl_8055D4B4);
 }
-void *fn_80030AB0(){return fn_80030870();}
+void *igExternalDirEntry_getMetaCall(){return igExternalDirEntry_getMeta();}
 }
 #pragma pop

@@ -8,7 +8,7 @@ void fn_80062638(void *,void *,void *);
 void fn_800626DC(void *,void *);
 }
 extern "C" {
-void fn_80062998(int p0,int p1,int p2){
+void igMemoryRefArrayMetaField_virtual98(int p0,int p1,int p2){
  void *value2;
  void *value0;
  void *value1;

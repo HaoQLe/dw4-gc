@@ -23,7 +23,7 @@ struct UnknownGenObject802C056C : UnknownGenRoot802C056C {
  inline ~UnknownGenObject802C056C(){unknown00=lbl_804DAC4C;}
 };
 extern "C" {
-void *fn_802C056C(){
+void *beSvDeliver_vtableRead(){
  UnknownGenObject802C056C object;
  object.unknown00=lbl_804DAC4C;
  object.unknown0C.value=0;

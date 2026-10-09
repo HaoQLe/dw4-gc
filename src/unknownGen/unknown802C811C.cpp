@@ -19,7 +19,7 @@ struct UnknownGenObject802C811C : UnknownGenRoot802C811C {
  inline ~UnknownGenObject802C811C(){unknown00=lbl_804D9BE8;}
 };
 extern "C" {
-void *fn_802C811C(){
+void *beModelCtrlInfoHitBody_vtableRead(){
  UnknownGenObject802C811C object;
  object.unknown00=lbl_804D9BE8;
  object.unknown20.value=0;

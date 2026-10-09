@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800F654C(void *,void *);
+void igGamecubeVisualContext_virtual12C(void *,void *);
 }
 class UnknownGenV800C0DB0_0 {
 public:
@@ -36,8 +36,8 @@ public:
  virtual void * s74();
 };
 extern "C" {
-void fn_800C0DA8(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+20)=value;}
-void *fn_800C0DB0(int p0){
+void igLightStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+20)=value;}
+void *igLightStateAttr_virtual74(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
@@ -48,8 +48,8 @@ void *fn_800C0DB0(int p0){
   return value0;
  }
 }
-void fn_800C0DE8(int p0,int p1){
- fn_800F654C((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
+void igLightingStateAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual12C((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
 }
 }
 #pragma pop

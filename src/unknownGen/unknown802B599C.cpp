@@ -17,7 +17,7 @@ extern char lbl_804CF12C[];
 extern void *lbl_80534630;
 }
 extern "C" {
-void fn_802B599C(){
+void beTimer_fieldInit(){
  void *value0=lbl_80534630;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF0F0,5);

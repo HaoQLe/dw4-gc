@@ -64,25 +64,25 @@ public:
  virtual void s6C();
 };
 extern "C" {
-unsigned char fn_80215130(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+132);}
-void *fn_80215138(int p0){
+unsigned char igGamecubeEnvironmentMapShader_virtualBC(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+132);}
+void *igGamecubeEnvironmentMapShader_virtual7C(int p0){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+60)=0;
  return (void *)p0;
 }
-int fn_80215144(){return 0;}
-void *fn_8021514C(){return lbl_805655F4;}
-void *fn_80215154(){return lbl_8056465C;}
-void *fn_8021515C(){return lbl_80564668;}
-void *fn_80215164(int p0,int p1,int p2,int p3){
+int igGamecubeEnvironmentMapShader_virtual68(){return 0;}
+void *igEndianSwappedEnbayaAnimationSource_virtual58(){return lbl_805655F4;}
+void *igVertexArrayHelper_virtual58(){return lbl_8056465C;}
+void *igTraversal_virtual58(){return lbl_80564668;}
+void *igTraversal_virtual6C(int p0,int p1,int p2,int p3){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p3;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)p2;
  return (void *)p0;
 }
-void *fn_80215170(){return lbl_8056469C;}
-void fn_80215178(int p0){
+void *igTransformSequence1_5_virtual58(){return lbl_8056469C;}
+void igTransformSequence1_5_virtualD4(int p0){
  reinterpret_cast<UnknownGenV80215178_0 *>((void *)p0)->s64();
 }
-void fn_802151A4(int p0){
+void igTransformSequence1_5_virtualD8(int p0){
  reinterpret_cast<UnknownGenV802151A4_1 *>((void *)p0)->s6C();
 }
 }

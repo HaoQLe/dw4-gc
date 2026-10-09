@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80086C3C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+132);}
-void fn_80086C44(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+132)=value;}
+int igElfFile_virtual1F0(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+132);}
+void igElfFile_virtual1F4(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+132)=value;}
 }
 #pragma pop

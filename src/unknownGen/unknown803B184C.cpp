@@ -7,7 +7,7 @@ extern char lbl_805346A8[];
 extern char lbl_80534AAC[];
 }
 extern "C" {
-void fn_803B184C(int p0){
+void beNDMWLogo_virtual88(int p0){
  void *value0;
  void *value1;
  if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)){

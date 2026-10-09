@@ -8,7 +8,7 @@ void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013EBE0();
-void fn_80140664();
+void igObjectPropertyForNode_register();
 extern char lbl_8049DD78[];
 extern char lbl_804A558C[];
 extern char lbl_804A5BE8[];
@@ -18,11 +18,11 @@ extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F898[8];
 extern void *lbl_80563F7C;
-void *fn_8013EA1C();
-void *fn_8013EA58();
+void *igObjectPropertyForUserInfo_getMeta();
+void *igObjectPropertyForUserInfo_vtableRead();
 void fn_8013EB24();
-void fn_8013EB4C();
-void *fn_8013EBC0();
+void igObjectPropertyForUserInfo_register();
+void *igObjectPropertyForUserInfo_getMetaCall();
 }
 struct UnknownGenRoot8013EA58 {
  void *unknown00;
@@ -42,11 +42,11 @@ struct UnknownGenObject8013EA58 : UnknownGenObject8013EA58_1 {
  inline ~UnknownGenObject8013EA58(){unknown00=lbl_804A558C;}
 };
 extern "C" {
-void *fn_8013EA1C(){
+void *igObjectPropertyForUserInfo_getMeta(){
  if(!lbl_80563F7C || !(reinterpret_cast<unsigned int *>(lbl_80563F7C)[0x24/4]&4)) fn_8013EB24();
  return lbl_80563F7C;
 }
-void *fn_8013EA58(){
+void *igObjectPropertyForUserInfo_vtableRead(){
  UnknownGenObject8013EA58 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -58,12 +58,12 @@ void *fn_8013EA58(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013EB24(){
- fn_80066188((int)fn_8013EB4C);
+ fn_80066188((int)igObjectPropertyForUserInfo_register);
 }
-void fn_8013EB4C(){
+void igObjectPropertyForUserInfo_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563F7C,(int)fn_80140664,(int)fn_8013BF68,(int)fn_8013EBC0,(int)lbl_8049DD78,44,(int)fn_8013EA58,(int)fn_8013EBE0,0,(int)lbl_8055F898);
+ fn_80066204(0,(int)&lbl_80563F7C,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForUserInfo_getMetaCall,(int)lbl_8049DD78,44,(int)igObjectPropertyForUserInfo_vtableRead,(int)fn_8013EBE0,0,(int)lbl_8055F898);
 }
-void *fn_8013EBC0(){return fn_8013EA1C();}
+void *igObjectPropertyForUserInfo_getMetaCall(){return igObjectPropertyForUserInfo_getMeta();}
 }
 #pragma pop

@@ -14,7 +14,7 @@ extern char lbl_804D21B8[];
 extern void *lbl_80535388;
 }
 extern "C" {
-void fn_802DA3E8(){
+void beFontGeomAttrPair_fieldInit(){
  void *value0=lbl_80535388;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2194,3);

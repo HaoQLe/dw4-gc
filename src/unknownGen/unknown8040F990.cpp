@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8040F990(){}
+void igViewMode_virtual78(){}
 }
 #pragma pop

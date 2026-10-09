@@ -3,27 +3,27 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_8002C31C();
-void fn_800300A0();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802AA788();
-void *fn_802AB22C();
-void fn_802AB278();
-void fn_802AB474();
 void fn_802AB598();
+void igAdxFile_fieldInit();
+void *igAdxFile_getMeta();
+void igAdxFile_vtableRead();
+void igFile_register();
 extern char lbl_8041BB9C[];
 extern char lbl_80534370[];
-void fn_802AB3D8();
-void *fn_802AB454();
+void igAdxFile_register();
+void *igAdxFile_getMetaCall();
 }
 extern "C" {
 void fn_802AB3B0(){
- fn_80066188((int)fn_802AB3D8);
+ fn_80066188((int)igAdxFile_register);
 }
-void fn_802AB3D8(){
+void igAdxFile_register(){
  fn_802AA788();
- fn_80066204(0,(int)lbl_80534370,(int)fn_800300A0,(int)fn_8002C31C,(int)fn_802AB454,(int)lbl_8041BB9C,104,(int)fn_802AB278,(int)fn_802AB474,(int)fn_802AB598,0);
+ fn_80066204(0,(int)lbl_80534370,(int)igFile_register,(int)fn_8002C31C,(int)igAdxFile_getMetaCall,(int)lbl_8041BB9C,104,(int)igAdxFile_vtableRead,(int)igAdxFile_fieldInit,(int)fn_802AB598,0);
 }
-void *fn_802AB454(){return fn_802AB22C();}
+void *igAdxFile_getMetaCall(){return igAdxFile_getMeta();}
 }
 #pragma pop

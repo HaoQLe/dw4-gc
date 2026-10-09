@@ -54,7 +54,7 @@ public:
  virtual void sBC();
 };
 extern "C" {
-void fn_80089544(int p0){
+void igProgramFile_virtual144(int p0){
  reinterpret_cast<UnknownGenV80089544_0 *>((void *)p0)->sBC();
 }
 }

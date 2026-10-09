@@ -4,16 +4,16 @@
 extern "C" {
 void *fn_80024D1C();
 void *fn_80029E64(void *);
-void fn_80033A14();
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801ADA38();
 void *fn_801AF130();
 void fn_801B3698();
+void igDataList_register();
+void igObjectPool_register();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
@@ -73,61 +73,61 @@ extern void *lbl_8056495C;
 extern void *lbl_80564960;
 extern void *lbl_80564964;
 extern void *lbl_80564968;
-void *fn_801B1DB4();
-void *fn_801B1DF0();
+void *igBlendMatricesAttrPool_getMeta();
+void *igBlendMatricesAttrPool_vtableRead();
 void fn_801B1E6C();
-void fn_801B1E94();
-void *fn_801B1F00();
-void *fn_801B1F5C();
-void *fn_801B1F98();
+void igBlendMatricesAttrPool_register();
+void *igBlendMatricesAttrPool_getMetaCall();
+void *igTextureMatrixAttrPool_getMeta();
+void *igTextureMatrixAttrPool_vtableRead();
 void fn_801B2014();
-void fn_801B203C();
-void *fn_801B20A8();
-void *fn_801B2104();
-void *fn_801B2140();
+void igTextureMatrixAttrPool_register();
+void *igTextureMatrixAttrPool_getMetaCall();
+void *igMatrixObjectPool_getMeta();
+void *igMatrixObjectPool_vtableRead();
 void fn_801B21BC();
-void fn_801B21E4();
-void *fn_801B2250();
-void *fn_801B22AC();
-void *fn_801B22E8();
+void igMatrixObjectPool_register();
+void *igMatrixObjectPool_getMetaCall();
+void *igVertexBlendMatrixListAttrPool_getMeta();
+void *igVertexBlendMatrixListAttrPool_vtableRead();
 void fn_801B2364();
-void fn_801B238C();
-void *fn_801B23F8();
-void *fn_801B2454();
-void *fn_801B2490();
+void igVertexBlendMatrixListAttrPool_register();
+void *igVertexBlendMatrixListAttrPool_getMetaCall();
+void *igVertexBlendMatrixAttrPool_getMeta();
+void *igVertexBlendMatrixAttrPool_vtableRead();
 void fn_801B250C();
-void fn_801B2534();
-void *fn_801B25A0();
-void *fn_801B25FC();
-void *fn_801B2638();
+void igVertexBlendMatrixAttrPool_register();
+void *igVertexBlendMatrixAttrPool_getMetaCall();
+void *igProjectionMatrixAttrPool_getMeta();
+void *igProjectionMatrixAttrPool_vtableRead();
 void fn_801B26B4();
-void fn_801B26DC();
-void *fn_801B2748();
-void *fn_801B27A4();
-void *fn_801B27E0();
+void igProjectionMatrixAttrPool_register();
+void *igProjectionMatrixAttrPool_getMetaCall();
+void *igTimeAttrPool_getMeta();
+void *igTimeAttrPool_vtableRead();
 void fn_801B285C();
-void fn_801B2884();
-void *fn_801B28F0();
-void *fn_801B294C();
-void *fn_801B2988();
+void igTimeAttrPool_register();
+void *igTimeAttrPool_getMetaCall();
+void *igModelViewMatrixAttrPool_getMeta();
+void *igModelViewMatrixAttrPool_vtableRead();
 void fn_801B2A04();
-void fn_801B2A2C();
-void *fn_801B2A98();
-void *fn_801B2AF4();
-void *fn_801B2B30();
+void igModelViewMatrixAttrPool_register();
+void *igModelViewMatrixAttrPool_getMetaCall();
+void *igLightStateAttrPool_getMeta();
+void *igLightStateAttrPool_vtableRead();
 void fn_801B2BAC();
-void fn_801B2BD4();
-void *fn_801B2C40();
-void *fn_801B2C60();
-void *fn_801B2C9C();
+void igLightStateAttrPool_register();
+void *igLightStateAttrPool_getMetaCall();
+void *igAttrStackManagerPopFunctionList_getMeta();
+void *igAttrStackManagerPopFunctionList_vtableRead();
 void fn_801B2CF4();
-void fn_801B2D1C();
-void *fn_801B2D84();
-void *fn_801B2E18();
-void *fn_801B2E54();
+void igAttrStackManagerPopFunctionList_register();
+void *igAttrStackManagerPopFunctionList_getMetaCall();
+void *igTraversalFunctionList_getMeta();
+void *igTraversalFunctionList_vtableRead();
 void fn_801B2EAC();
-void fn_801B2ED4();
-void *fn_801B2F3C();
+void igTraversalFunctionList_register();
+void *igTraversalFunctionList_getMetaCall();
 }
 struct UnknownGenObject801B1DF0_0 {
  void *unknown00;
@@ -178,11 +178,11 @@ void *fn_801B1D78(){
  if(!lbl_8056493C) lbl_8056493C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8056493C;
 }
-void *fn_801B1DB4(){
+void *igBlendMatricesAttrPool_getMeta(){
  if(!lbl_8056493C || !(reinterpret_cast<unsigned int *>(lbl_8056493C)[0x24/4]&4)) fn_801B1E6C();
  return lbl_8056493C;
 }
-void *fn_801B1DF0(){
+void *igBlendMatricesAttrPool_vtableRead(){
  UnknownGenObject801B1DF0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -194,22 +194,22 @@ void *fn_801B1DF0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B1E6C(){
- fn_80066188((int)fn_801B1E94);
+ fn_80066188((int)igBlendMatricesAttrPool_register);
 }
-void fn_801B1E94(){
+void igBlendMatricesAttrPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_8056493C,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B1F00,(int)lbl_804ACCE8,32,(int)fn_801B1DF0,0,0,(int)lbl_805602A4);
+ fn_80066204(0,(int)&lbl_8056493C,(int)igObjectPool_register,(int)fn_801AF130,(int)igBlendMatricesAttrPool_getMetaCall,(int)lbl_804ACCE8,32,(int)igBlendMatricesAttrPool_vtableRead,0,0,(int)lbl_805602A4);
 }
-void *fn_801B1F00(){return fn_801B1DB4();}
+void *igBlendMatricesAttrPool_getMetaCall(){return igBlendMatricesAttrPool_getMeta();}
 void *fn_801B1F20(){
  if(!lbl_80564940) lbl_80564940=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564940;
 }
-void *fn_801B1F5C(){
+void *igTextureMatrixAttrPool_getMeta(){
  if(!lbl_80564940 || !(reinterpret_cast<unsigned int *>(lbl_80564940)[0x24/4]&4)) fn_801B2014();
  return lbl_80564940;
 }
-void *fn_801B1F98(){
+void *igTextureMatrixAttrPool_vtableRead(){
  UnknownGenObject801B1F98_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -221,22 +221,22 @@ void *fn_801B1F98(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B2014(){
- fn_80066188((int)fn_801B203C);
+ fn_80066188((int)igTextureMatrixAttrPool_register);
 }
-void fn_801B203C(){
+void igTextureMatrixAttrPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564940,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B20A8,(int)lbl_804ACD00,32,(int)fn_801B1F98,0,0,(int)lbl_805602AC);
+ fn_80066204(0,(int)&lbl_80564940,(int)igObjectPool_register,(int)fn_801AF130,(int)igTextureMatrixAttrPool_getMetaCall,(int)lbl_804ACD00,32,(int)igTextureMatrixAttrPool_vtableRead,0,0,(int)lbl_805602AC);
 }
-void *fn_801B20A8(){return fn_801B1F5C();}
+void *igTextureMatrixAttrPool_getMetaCall(){return igTextureMatrixAttrPool_getMeta();}
 void *fn_801B20C8(){
  if(!lbl_80564944) lbl_80564944=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564944;
 }
-void *fn_801B2104(){
+void *igMatrixObjectPool_getMeta(){
  if(!lbl_80564944 || !(reinterpret_cast<unsigned int *>(lbl_80564944)[0x24/4]&4)) fn_801B21BC();
  return lbl_80564944;
 }
-void *fn_801B2140(){
+void *igMatrixObjectPool_vtableRead(){
  UnknownGenObject801B2140_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -248,22 +248,22 @@ void *fn_801B2140(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B21BC(){
- fn_80066188((int)fn_801B21E4);
+ fn_80066188((int)igMatrixObjectPool_register);
 }
-void fn_801B21E4(){
+void igMatrixObjectPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564944,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B2250,(int)lbl_804ACD18,32,(int)fn_801B2140,0,0,(int)lbl_805602B4);
+ fn_80066204(0,(int)&lbl_80564944,(int)igObjectPool_register,(int)fn_801AF130,(int)igMatrixObjectPool_getMetaCall,(int)lbl_804ACD18,32,(int)igMatrixObjectPool_vtableRead,0,0,(int)lbl_805602B4);
 }
-void *fn_801B2250(){return fn_801B2104();}
+void *igMatrixObjectPool_getMetaCall(){return igMatrixObjectPool_getMeta();}
 void *fn_801B2270(){
  if(!lbl_80564948) lbl_80564948=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564948;
 }
-void *fn_801B22AC(){
+void *igVertexBlendMatrixListAttrPool_getMeta(){
  if(!lbl_80564948 || !(reinterpret_cast<unsigned int *>(lbl_80564948)[0x24/4]&4)) fn_801B2364();
  return lbl_80564948;
 }
-void *fn_801B22E8(){
+void *igVertexBlendMatrixListAttrPool_vtableRead(){
  UnknownGenObject801B22E8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -275,22 +275,22 @@ void *fn_801B22E8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B2364(){
- fn_80066188((int)fn_801B238C);
+ fn_80066188((int)igVertexBlendMatrixListAttrPool_register);
 }
-void fn_801B238C(){
+void igVertexBlendMatrixListAttrPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564948,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B23F8,(int)lbl_804ACD2C,32,(int)fn_801B22E8,0,0,(int)lbl_805602BC);
+ fn_80066204(0,(int)&lbl_80564948,(int)igObjectPool_register,(int)fn_801AF130,(int)igVertexBlendMatrixListAttrPool_getMetaCall,(int)lbl_804ACD2C,32,(int)igVertexBlendMatrixListAttrPool_vtableRead,0,0,(int)lbl_805602BC);
 }
-void *fn_801B23F8(){return fn_801B22AC();}
+void *igVertexBlendMatrixListAttrPool_getMetaCall(){return igVertexBlendMatrixListAttrPool_getMeta();}
 void *fn_801B2418(){
  if(!lbl_8056494C) lbl_8056494C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8056494C;
 }
-void *fn_801B2454(){
+void *igVertexBlendMatrixAttrPool_getMeta(){
  if(!lbl_8056494C || !(reinterpret_cast<unsigned int *>(lbl_8056494C)[0x24/4]&4)) fn_801B250C();
  return lbl_8056494C;
 }
-void *fn_801B2490(){
+void *igVertexBlendMatrixAttrPool_vtableRead(){
  UnknownGenObject801B2490_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -302,22 +302,22 @@ void *fn_801B2490(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B250C(){
- fn_80066188((int)fn_801B2534);
+ fn_80066188((int)igVertexBlendMatrixAttrPool_register);
 }
-void fn_801B2534(){
+void igVertexBlendMatrixAttrPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_8056494C,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B25A0,(int)lbl_804ACD4C,32,(int)fn_801B2490,0,0,(int)lbl_805602C4);
+ fn_80066204(0,(int)&lbl_8056494C,(int)igObjectPool_register,(int)fn_801AF130,(int)igVertexBlendMatrixAttrPool_getMetaCall,(int)lbl_804ACD4C,32,(int)igVertexBlendMatrixAttrPool_vtableRead,0,0,(int)lbl_805602C4);
 }
-void *fn_801B25A0(){return fn_801B2454();}
+void *igVertexBlendMatrixAttrPool_getMetaCall(){return igVertexBlendMatrixAttrPool_getMeta();}
 void *fn_801B25C0(){
  if(!lbl_80564950) lbl_80564950=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564950;
 }
-void *fn_801B25FC(){
+void *igProjectionMatrixAttrPool_getMeta(){
  if(!lbl_80564950 || !(reinterpret_cast<unsigned int *>(lbl_80564950)[0x24/4]&4)) fn_801B26B4();
  return lbl_80564950;
 }
-void *fn_801B2638(){
+void *igProjectionMatrixAttrPool_vtableRead(){
  UnknownGenObject801B2638_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -329,22 +329,22 @@ void *fn_801B2638(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B26B4(){
- fn_80066188((int)fn_801B26DC);
+ fn_80066188((int)igProjectionMatrixAttrPool_register);
 }
-void fn_801B26DC(){
+void igProjectionMatrixAttrPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564950,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B2748,(int)lbl_804ACD68,32,(int)fn_801B2638,0,0,(int)lbl_805602CC);
+ fn_80066204(0,(int)&lbl_80564950,(int)igObjectPool_register,(int)fn_801AF130,(int)igProjectionMatrixAttrPool_getMetaCall,(int)lbl_804ACD68,32,(int)igProjectionMatrixAttrPool_vtableRead,0,0,(int)lbl_805602CC);
 }
-void *fn_801B2748(){return fn_801B25FC();}
+void *igProjectionMatrixAttrPool_getMetaCall(){return igProjectionMatrixAttrPool_getMeta();}
 void *fn_801B2768(){
  if(!lbl_80564954) lbl_80564954=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564954;
 }
-void *fn_801B27A4(){
+void *igTimeAttrPool_getMeta(){
  if(!lbl_80564954 || !(reinterpret_cast<unsigned int *>(lbl_80564954)[0x24/4]&4)) fn_801B285C();
  return lbl_80564954;
 }
-void *fn_801B27E0(){
+void *igTimeAttrPool_vtableRead(){
  UnknownGenObject801B27E0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -356,22 +356,22 @@ void *fn_801B27E0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B285C(){
- fn_80066188((int)fn_801B2884);
+ fn_80066188((int)igTimeAttrPool_register);
 }
-void fn_801B2884(){
+void igTimeAttrPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564954,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B28F0,(int)lbl_804ACD84,32,(int)fn_801B27E0,0,0,(int)lbl_805602D4);
+ fn_80066204(0,(int)&lbl_80564954,(int)igObjectPool_register,(int)fn_801AF130,(int)igTimeAttrPool_getMetaCall,(int)lbl_804ACD84,32,(int)igTimeAttrPool_vtableRead,0,0,(int)lbl_805602D4);
 }
-void *fn_801B28F0(){return fn_801B27A4();}
+void *igTimeAttrPool_getMetaCall(){return igTimeAttrPool_getMeta();}
 void *fn_801B2910(){
  if(!lbl_80564958) lbl_80564958=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564958;
 }
-void *fn_801B294C(){
+void *igModelViewMatrixAttrPool_getMeta(){
  if(!lbl_80564958 || !(reinterpret_cast<unsigned int *>(lbl_80564958)[0x24/4]&4)) fn_801B2A04();
  return lbl_80564958;
 }
-void *fn_801B2988(){
+void *igModelViewMatrixAttrPool_vtableRead(){
  UnknownGenObject801B2988_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -383,22 +383,22 @@ void *fn_801B2988(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B2A04(){
- fn_80066188((int)fn_801B2A2C);
+ fn_80066188((int)igModelViewMatrixAttrPool_register);
 }
-void fn_801B2A2C(){
+void igModelViewMatrixAttrPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564958,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B2A98,(int)lbl_804ACD94,32,(int)fn_801B2988,0,0,(int)lbl_805602DC);
+ fn_80066204(0,(int)&lbl_80564958,(int)igObjectPool_register,(int)fn_801AF130,(int)igModelViewMatrixAttrPool_getMetaCall,(int)lbl_804ACD94,32,(int)igModelViewMatrixAttrPool_vtableRead,0,0,(int)lbl_805602DC);
 }
-void *fn_801B2A98(){return fn_801B294C();}
+void *igModelViewMatrixAttrPool_getMetaCall(){return igModelViewMatrixAttrPool_getMeta();}
 void *fn_801B2AB8(){
  if(!lbl_8056495C) lbl_8056495C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8056495C;
 }
-void *fn_801B2AF4(){
+void *igLightStateAttrPool_getMeta(){
  if(!lbl_8056495C || !(reinterpret_cast<unsigned int *>(lbl_8056495C)[0x24/4]&4)) fn_801B2BAC();
  return lbl_8056495C;
 }
-void *fn_801B2B30(){
+void *igLightStateAttrPool_vtableRead(){
  UnknownGenObject801B2B30_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -410,18 +410,18 @@ void *fn_801B2B30(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B2BAC(){
- fn_80066188((int)fn_801B2BD4);
+ fn_80066188((int)igLightStateAttrPool_register);
 }
-void fn_801B2BD4(){
+void igLightStateAttrPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_8056495C,(int)fn_801ADA38,(int)fn_801AF130,(int)fn_801B2C40,(int)lbl_804ACDB0,32,(int)fn_801B2B30,0,0,(int)lbl_805602E4);
+ fn_80066204(0,(int)&lbl_8056495C,(int)igObjectPool_register,(int)fn_801AF130,(int)igLightStateAttrPool_getMetaCall,(int)lbl_804ACDB0,32,(int)igLightStateAttrPool_vtableRead,0,0,(int)lbl_805602E4);
 }
-void *fn_801B2C40(){return fn_801B2AF4();}
-void *fn_801B2C60(){
+void *igLightStateAttrPool_getMetaCall(){return igLightStateAttrPool_getMeta();}
+void *igAttrStackManagerPopFunctionList_getMeta(){
  if(!lbl_80564960 || !(reinterpret_cast<unsigned int *>(lbl_80564960)[0x24/4]&4)) fn_801B2CF4();
  return lbl_80564960;
 }
-void *fn_801B2C9C(){
+void *igAttrStackManagerPopFunctionList_vtableRead(){
  UnknownGenObject801B2C9C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -430,13 +430,13 @@ void *fn_801B2C9C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B2CF4(){
- fn_80066188((int)fn_801B2D1C);
+ fn_80066188((int)igAttrStackManagerPopFunctionList_register);
 }
-void fn_801B2D1C(){
+void igAttrStackManagerPopFunctionList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564960,(int)fn_80033A14,(int)fn_80024D1C,(int)fn_801B2D84,(int)lbl_804ACDC8,20,(int)fn_801B2C9C,0,0,0);
+ fn_80066204(0,(int)&lbl_80564960,(int)igDataList_register,(int)fn_80024D1C,(int)igAttrStackManagerPopFunctionList_getMetaCall,(int)lbl_804ACDC8,20,(int)igAttrStackManagerPopFunctionList_vtableRead,0,0,0);
 }
-void *fn_801B2D84(){return fn_801B2C60();}
+void *igAttrStackManagerPopFunctionList_getMetaCall(){return igAttrStackManagerPopFunctionList_getMeta();}
 void *fn_801B2DA4(void *object){
  fn_801B2EAC();
  return fn_8006546C(lbl_80564964,object);
@@ -445,11 +445,11 @@ void *fn_801B2DDC(){
  if(!lbl_80564964) lbl_80564964=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564964;
 }
-void *fn_801B2E18(){
+void *igTraversalFunctionList_getMeta(){
  if(!lbl_80564964 || !(reinterpret_cast<unsigned int *>(lbl_80564964)[0x24/4]&4)) fn_801B2EAC();
  return lbl_80564964;
 }
-void *fn_801B2E54(){
+void *igTraversalFunctionList_vtableRead(){
  UnknownGenObject801B2E54_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -458,14 +458,14 @@ void *fn_801B2E54(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B2EAC(){
- fn_80066188((int)fn_801B2ED4);
+ fn_80066188((int)igTraversalFunctionList_register);
 }
-void fn_801B2ED4(){
+void igTraversalFunctionList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564964,(int)fn_80033A14,(int)fn_80024D1C,(int)fn_801B2F3C,(int)lbl_804ACDEC,20,(int)fn_801B2E54,0,0,0);
+ fn_80066204(0,(int)&lbl_80564964,(int)igDataList_register,(int)fn_80024D1C,(int)igTraversalFunctionList_getMetaCall,(int)lbl_804ACDEC,20,(int)igTraversalFunctionList_vtableRead,0,0,0);
 }
-void *fn_801B2F3C(){return fn_801B2E18();}
-void *fn_801B2F5C(){
+void *igTraversalFunctionList_getMetaCall(){return igTraversalFunctionList_getMeta();}
+void *igSelfShadowShader_getMeta(){
  if(!lbl_80564968 || !(reinterpret_cast<unsigned int *>(lbl_80564968)[0x24/4]&4)) fn_801B3698();
  return lbl_80564968;
 }

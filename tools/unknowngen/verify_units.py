@@ -1,4 +1,4 @@
-"""Compile generated units with their configured flags and check every fn_/dtor_ function exactly.
+"""Compile generated units with their configured flags and check every defined function exactly.
 usage: verify_units.py [--all]   (default: units whose source differs from HEAD or is new)
 Prints failing units; exits 1 if any fail."""
 import subprocess,sys

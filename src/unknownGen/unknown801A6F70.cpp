@@ -41,7 +41,7 @@ public:
  virtual void * s84(void *);
 };
 extern "C" {
-void *fn_801A6F70(int p0,int p1){
+void *igCreateBoundingBoxes_virtual74(int p0,int p1){
  void *value0;
  void *value1;
  value0=fn_80068128((void *)p1,lbl_80564A14);

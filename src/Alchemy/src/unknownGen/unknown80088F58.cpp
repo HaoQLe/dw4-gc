@@ -5,7 +5,7 @@ extern "C" {
 void *fn_80068430(void *,void *);
 }
 extern "C" {
-void fn_80088F58(int p0,int p1){
+void igProgramFile_virtual378(int p0,int p1){
  void *value3;
  void *value0;
  void *value1;

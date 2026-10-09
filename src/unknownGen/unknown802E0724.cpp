@@ -14,7 +14,7 @@ extern char lbl_804D293C[];
 extern void *lbl_805355BC;
 }
 extern "C" {
-void fn_802E0724(){
+void beCopyTransform_fieldInit(){
  void *value0=lbl_805355BC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2930,1);

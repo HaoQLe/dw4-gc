@@ -21,7 +21,7 @@ struct UnknownGenObject802CE630 : UnknownGenRoot802CE630 {
  inline ~UnknownGenObject802CE630(){unknown00=lbl_804D8528;}
 };
 extern "C" {
-void *fn_802CE630(){
+void *beMessengerWork_vtableRead(){
  UnknownGenObject802CE630 object;
  object.unknown00=lbl_804D8528;
  object.unknown08.value=0;

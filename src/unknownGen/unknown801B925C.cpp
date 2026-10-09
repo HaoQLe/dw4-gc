@@ -9,9 +9,9 @@ void *fn_800635C8(void *,void *,void *,int);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_801AA6DC();
-void fn_801B94F4();
+void igMorphSequence_fieldInit();
+void igObject_register();
 extern char lbl_804AAFB8[];
 extern char lbl_804AE734[];
 extern char lbl_804AE740[];
@@ -20,11 +20,11 @@ extern void *lbl_805621F4;
 extern void *lbl_80564CB4;
 extern void *lbl_80564CB8;
 extern void *lbl_80564CBC;
-void *fn_801B9330();
-void *fn_801B936C();
+void *igMorphSequence_getMeta();
+void *igMorphSequence_vtableRead();
 void fn_801B9434();
-void fn_801B945C();
-void *fn_801B94D4();
+void igMorphSequence_register();
+void *igMorphSequence_getMetaCall();
 }
 struct UnknownGenRoot801B936C {
  void *unknown00;
@@ -54,11 +54,11 @@ void *fn_801B92F4(){
  if(!lbl_80564CBC) lbl_80564CBC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564CBC;
 }
-void *fn_801B9330(){
+void *igMorphSequence_getMeta(){
  if(!lbl_80564CBC || !(reinterpret_cast<unsigned int *>(lbl_80564CBC)[0x24/4]&4)) fn_801B9434();
  return lbl_80564CBC;
 }
-void *fn_801B936C(){
+void *igMorphSequence_vtableRead(){
  UnknownGenObject801B936C object;
  object.unknown00=lbl_804B7DDC;
  object.unknown0C.value=0;
@@ -66,12 +66,12 @@ void *fn_801B936C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B9434(){
- fn_80066188((int)fn_801B945C);
+ fn_80066188((int)igMorphSequence_register);
 }
-void fn_801B945C(){
+void igMorphSequence_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564CBC,(int)fn_80066B08,(int)fn_800237D0,(int)fn_801B94D4,(int)lbl_804AE740,64,(int)fn_801B936C,(int)fn_801B94F4,0,(int)lbl_804AE734);
+ fn_80066204(0,(int)&lbl_80564CBC,(int)igObject_register,(int)fn_800237D0,(int)igMorphSequence_getMetaCall,(int)lbl_804AE740,64,(int)igMorphSequence_vtableRead,(int)igMorphSequence_fieldInit,0,(int)lbl_804AE734);
 }
-void *fn_801B94D4(){return fn_801B9330();}
+void *igMorphSequence_getMetaCall(){return igMorphSequence_getMeta();}
 }
 #pragma pop

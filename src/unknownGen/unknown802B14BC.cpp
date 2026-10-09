@@ -5,7 +5,7 @@ extern "C" {
 void fn_802AEC70(void *);
 }
 extern "C" {
-void fn_802B14BC(int p0){
+void igMovieRenderer_virtual60(int p0){
  fn_802AEC70(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
 }
 }

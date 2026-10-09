@@ -14,7 +14,7 @@ extern char lbl_804D200C[];
 extern void *lbl_80535318;
 }
 extern "C" {
-void fn_802D8F74(){
+void beFontInfoData_fieldInit(){
  void *value0=lbl_80535318;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1FB8,7);

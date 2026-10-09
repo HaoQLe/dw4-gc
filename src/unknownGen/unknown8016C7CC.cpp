@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805622A4;
 }
 extern "C" {
-void *fn_8016C7CC(){return lbl_805622A4;}
+void *igFieldUpdate_virtual7C(){return lbl_805622A4;}
 }
 #pragma pop

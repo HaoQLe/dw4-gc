@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_803084B4(){}
+void beNDMWMdlMapCursor_virtual9C(){}
 }
 #pragma pop

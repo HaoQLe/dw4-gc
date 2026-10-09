@@ -12,13 +12,13 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_801AA6DC();
-void fn_801AB354();
 void *fn_801ABB34();
-void fn_801C19D0();
 void *fn_801C1E2C();
-void *fn_801CE580();
+void igEnbayaContextPool_fieldInit();
+void *igGamecubeEnvironmentMapShader_getMeta();
+void igObject_register();
+void igTransformSource_register();
 extern char lbl_804AFA10[];
 extern char lbl_804AFA4C[];
 extern char lbl_804AFA58[];
@@ -32,17 +32,17 @@ extern char lbl_8056068C[8];
 extern char lbl_80560694[8];
 extern void *lbl_80564F78;
 extern void *lbl_80564F84;
-void *fn_801C157C();
-void *fn_801C15B8();
+void *igEnbayaTransformSource_getMeta();
+void *igEnbayaTransformSource_vtableRead();
 void fn_801C164C();
-void fn_801C1674();
-void *fn_801C16E8();
-void fn_801C1708();
-void *fn_801C17D4();
-void *fn_801C1810();
+void igEnbayaTransformSource_register();
+void *igEnbayaTransformSource_getMetaCall();
+void igEnbayaTransformSource_fieldInit();
+void *igEnbayaContextPool_getMeta();
+void *igEnbayaContextPool_vtableRead();
 void fn_801C1910();
-void fn_801C1938();
-void *fn_801C19B0();
+void igEnbayaContextPool_register();
+void *igEnbayaContextPool_getMetaCall();
 }
 struct UnknownGenRoot801C15B8 {
  void *unknown00;
@@ -68,16 +68,16 @@ struct UnknownGenObject801C1810 : UnknownGenRoot801C1810 {
  inline ~UnknownGenObject801C1810(){unknown00=lbl_804B4CE4;}
 };
 extern "C" {
-void *fn_801C1524(){return fn_801CE580();}
+void *igGamecubeEnvironmentMapShader_getMetaCall(){return igGamecubeEnvironmentMapShader_getMeta();}
 void *fn_801C1544(void *object){
  fn_801C164C();
  return fn_8006546C(lbl_80564F78,object);
 }
-void *fn_801C157C(){
+void *igEnbayaTransformSource_getMeta(){
  if(!lbl_80564F78 || !(reinterpret_cast<unsigned int *>(lbl_80564F78)[0x24/4]&4)) fn_801C164C();
  return lbl_80564F78;
 }
-void *fn_801C15B8(){
+void *igEnbayaTransformSource_vtableRead(){
  UnknownGenObject801C15B8 object;
  object.unknown00=lbl_804BA150;
  object.unknown00=lbl_804B4C5C;
@@ -85,14 +85,14 @@ void *fn_801C15B8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801C164C(){
- fn_80066188((int)fn_801C1674);
+ fn_80066188((int)igEnbayaTransformSource_register);
 }
-void fn_801C1674(){
+void igEnbayaTransformSource_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564F78,(int)fn_801AB354,(int)fn_801ABB34,(int)fn_801C16E8,(int)lbl_804AFA10,16,(int)fn_801C15B8,(int)fn_801C1708,0,(int)lbl_80560674);
+ fn_80066204(0,(int)&lbl_80564F78,(int)igTransformSource_register,(int)fn_801ABB34,(int)igEnbayaTransformSource_getMetaCall,(int)lbl_804AFA10,16,(int)igEnbayaTransformSource_vtableRead,(int)igEnbayaTransformSource_fieldInit,0,(int)lbl_80560674);
 }
-void *fn_801C16E8(){return fn_801C157C();}
-void fn_801C1708(){
+void *igEnbayaTransformSource_getMetaCall(){return igEnbayaTransformSource_getMeta();}
+void igEnbayaTransformSource_fieldInit(){
  void *value0=lbl_80564F78;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8056067C,2);
@@ -107,11 +107,11 @@ void *fn_801C179C(void *object){
  fn_801C1910();
  return fn_8006546C(lbl_80564F84,object);
 }
-void *fn_801C17D4(){
+void *igEnbayaContextPool_getMeta(){
  if(!lbl_80564F84 || !(reinterpret_cast<unsigned int *>(lbl_80564F84)[0x24/4]&4)) fn_801C1910();
  return lbl_80564F84;
 }
-void *fn_801C1810(){
+void *igEnbayaContextPool_vtableRead(){
  UnknownGenObject801C1810 object;
  object.unknown00=lbl_804B4CE4;
  object.unknown08.value=0;
@@ -120,12 +120,12 @@ void *fn_801C1810(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801C1910(){
- fn_80066188((int)fn_801C1938);
+ fn_80066188((int)igEnbayaContextPool_register);
 }
-void fn_801C1938(){
+void igEnbayaContextPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564F84,(int)fn_80066B08,(int)fn_800237D0,(int)fn_801C19B0,(int)lbl_804AFA58,20,(int)fn_801C1810,(int)fn_801C19D0,0,(int)lbl_804AFA4C);
+ fn_80066204(0,(int)&lbl_80564F84,(int)igObject_register,(int)fn_800237D0,(int)igEnbayaContextPool_getMetaCall,(int)lbl_804AFA58,20,(int)igEnbayaContextPool_vtableRead,(int)igEnbayaContextPool_fieldInit,0,(int)lbl_804AFA4C);
 }
-void *fn_801C19B0(){return fn_801C17D4();}
+void *igEnbayaContextPool_getMetaCall(){return igEnbayaContextPool_getMeta();}
 }
 #pragma pop

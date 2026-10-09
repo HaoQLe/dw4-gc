@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800E45B0(int p0){
+void igVertexStream_virtual6C(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+16)=0;

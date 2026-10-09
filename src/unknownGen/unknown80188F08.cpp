@@ -6,13 +6,13 @@ extern void *lbl_80562F78;
 extern void *lbl_80564A14;
 }
 extern "C" {
-void *fn_80188F08(){return lbl_80562F78;}
-void *fn_80188F10(int p0,int p1){
+void *igPhotoshopScript_virtual8C(){return lbl_80562F78;}
+void *igPhotoshopScript_virtual7C(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+52)=(void *)p1;
  return (void *)0;
 }
-void fn_80188F1C(){}
-int fn_80188F20(){return 1;}
-void *fn_80188F28(){return lbl_80564A14;}
+void igPhotoshopScript_virtual88(){}
+int igPromoteAllAttrs_virtual7C(){return 1;}
+void *igPromoteAllAttrs_virtual8C(){return lbl_80564A14;}
 }
 #pragma pop

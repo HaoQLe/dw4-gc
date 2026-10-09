@@ -33,7 +33,7 @@ struct UnknownGenObject8033BE84 : UnknownGenObject8033BE84_2 {
  inline ~UnknownGenObject8033BE84(){unknown00=lbl_804EE6B0;}
 };
 extern "C" {
-void *fn_8033BE84(){
+void *beNDMWLogo_vtableRead(){
  UnknownGenObject8033BE84 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

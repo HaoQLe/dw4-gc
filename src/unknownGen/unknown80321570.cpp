@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80321570(int p0,int p1){
+void beSvUseCheckApi_virtual64(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+44)=1;
 }

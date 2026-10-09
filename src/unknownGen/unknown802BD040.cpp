@@ -14,7 +14,7 @@ extern char lbl_804CFAEC[];
 extern void *lbl_805348C4;
 }
 extern "C" {
-void fn_802BD040(){
+void beSvPs2McImage128k_fieldInit(){
  void *value0=lbl_805348C4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFAD4,2);

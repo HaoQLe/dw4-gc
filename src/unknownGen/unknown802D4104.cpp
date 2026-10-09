@@ -25,7 +25,7 @@ struct UnknownGenL802D4104_8 {
  float m14;
 };
 extern "C" {
-void fn_802D4104(){
+void beLOA_fieldInit(){
  UnknownGenL802D4104_8 local0;
  void *value0=lbl_80535174;
  void *value1=fn_80065D88(value0);

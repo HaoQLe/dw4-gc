@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8034C130(){}
+void beNDMWMdlPBullet_virtual9C(){}
 }
 #pragma pop

@@ -22,23 +22,23 @@ extern void *lbl_80535EB0;
 extern void *lbl_80535EBC;
 }
 extern "C" {
-void *fn_803A6D44(){return lbl_80535DF8;}
-void *fn_803A6D54(){return lbl_80535E00;}
-void *fn_803A6D64(){return lbl_80535E08;}
-void *fn_803A6D74(){return lbl_80535E14;}
-void *fn_803A6D84(){return lbl_80535E2C;}
-void *fn_803A6D94(){return lbl_80535E34;}
-void *fn_803A6DA4(){return lbl_80535E38;}
-void *fn_803A6DB4(){return lbl_80535E44;}
-void *fn_803A6DC4(){return lbl_80535EA8;}
-void *fn_803A6DD4(){return lbl_80535E64;}
-void *fn_803A6DE4(){return lbl_80535E68;}
-void *fn_803A6DF4(){return lbl_80535E74;}
-void *fn_803A6E04(){return lbl_80535DE8;}
-void *fn_803A6E14(){return lbl_80535E80;}
-void *fn_803A6E24(){return lbl_80535E98;}
-void *fn_803A6E34(){return lbl_80535EA0;}
-void *fn_803A6E44(){return lbl_80535EB0;}
-void *fn_803A6E54(){return lbl_80535EBC;}
+void *beNDMWShopDevice_virtual58(){return lbl_80535DF8;}
+void *beNDMWShopCtrlXdataChip_virtual58(){return lbl_80535E00;}
+void *beNDMWShopCtrlSales_virtual58(){return lbl_80535E08;}
+void *beNDMWShopCtrlDiskSell_virtual58(){return lbl_80535E14;}
+void *beNDMWShopCtrlDeviceSell_virtual58(){return lbl_80535E2C;}
+void *beNDMWShopCtrlSell_virtual58(){return lbl_80535E34;}
+void *beNDMWShopCtrlEditBit_virtual58(){return lbl_80535E38;}
+void *beNDMWShopCtrlDigilabo_virtual58(){return lbl_80535E44;}
+void *beNDMWShopCtrlEvolve_virtual58(){return lbl_80535EA8;}
+void *beNDMWShopCtrlA2_virtual58(){return lbl_80535E64;}
+void *beNDMWShopCtrlA1_virtual58(){return lbl_80535E68;}
+void *beNDMWShopCtrlA0_virtual58(){return lbl_80535E74;}
+void *beNDMWShopJunk_virtual58(){return lbl_80535DE8;}
+void *beNDMWShopCtrl50_virtual58(){return lbl_80535E80;}
+void *beNDMWShopCtrl40_virtual58(){return lbl_80535E98;}
+void *beNDMWShopCtrl30_virtual58(){return lbl_80535EA0;}
+void *beNDMWShopCtrl10_virtual58(){return lbl_80535EB0;}
+void *beNDMWShopCtrl00_virtual58(){return lbl_80535EBC;}
 }
 #pragma pop

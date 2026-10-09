@@ -2,16 +2,16 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800F9448(void *,void *);
-void *fn_800F9490(void *,void *);
+void igGamecubeVisualContext_virtual3A4(void *,void *);
+void *igGamecubeVisualContext_virtual3B4(void *,void *);
 }
 extern "C" {
-void fn_800BE26C(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
-void fn_800BE274(int p0,int p1){
- fn_800F9448((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
+void igDepthStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
+void igDepthStateAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual3A4((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
 }
-void fn_800BE2A0(int p0,int p1){
- fn_800F9490((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
+void igDepthWriteStateAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual3B4((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
 }
 }
 #pragma pop

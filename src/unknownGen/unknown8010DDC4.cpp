@@ -4,9 +4,7 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80024180();
-void fn_8002907C();
 void *fn_80029E64(void *);
-void fn_800330A8();
 void *fn_800607F4(void *);
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
@@ -15,11 +13,13 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void *fn_800CE788();
 void fn_8010CBD4();
-void fn_8010CFA4();
-void fn_8010EBAC();
+void igDependencyOrderedList_register();
+void igObjectList_register();
+void igObject_register();
+void igRadioGroup_fieldInit();
+void igView_register();
 extern char lbl_80472FA0[];
 extern char lbl_80475764[];
 extern char lbl_80476C7C[];
@@ -73,48 +73,48 @@ extern void *lbl_805635E8;
 extern void *lbl_805635EC;
 extern void *lbl_805635F4;
 extern void *lbl_805635FC;
-void *fn_8010DE00();
-void *fn_8010DE3C();
+void *igClearRenderer_getMeta();
+void *igClearRenderer_vtableRead();
 void fn_8010DED4();
-void fn_8010DEFC();
-void *fn_8010DF6C();
+void igClearRenderer_register();
+void *igClearRenderer_getMetaCall();
 void *fn_8010DF8C();
-void fn_8010DF94();
-void *fn_8010E038();
-void *fn_8010E074();
+void igClearRenderer_fieldInit();
+void *igRendererOrderedList_getMeta();
+void *igRendererOrderedList_vtableRead();
 void fn_8010E1CC();
-void fn_8010E1F4();
-void *fn_8010E260();
+void igRendererOrderedList_register();
+void *igRendererOrderedList_getMetaCall();
 void *fn_8010E280();
-void *fn_8010E288();
+void *igRenderer_getMeta();
 void fn_8010E2C4();
-void fn_8010E2EC();
-void *fn_8010E35C();
-void fn_8010E37C();
-void *fn_8010E438();
-void *fn_8010E474();
+void igRenderer_register();
+void *igRenderer_getMetaCall();
+void igRenderer_fieldInit();
+void *igOnOffValueObserverList_getMeta();
+void *igOnOffValueObserverList_vtableRead();
 void fn_8010E4E4();
-void fn_8010E50C();
-void *fn_8010E578();
-void *fn_8010E598();
-void *fn_8010E5D4();
+void igOnOffValueObserverList_register();
+void *igOnOffValueObserverList_getMetaCall();
+void *igOnOffValueObserver_getMeta();
+void *igOnOffValueObserver_vtableRead();
 void fn_8010E620();
-void fn_8010E648();
-void *fn_8010E6BC();
+void igOnOffValueObserver_register();
+void *igOnOffValueObserver_getMetaCall();
 void *fn_8010E6DC();
-void fn_8010E6E4();
-void *fn_8010E7A8();
-void *fn_8010E7E4();
+void igOnOffValueObserver_fieldInit();
+void *igRadioGroupSelectedObserver_getMeta();
+void *igRadioGroupSelectedObserver_vtableRead();
 void fn_8010E830();
-void fn_8010E858();
-void *fn_8010E8CC();
-void fn_8010E8EC();
+void igRadioGroupSelectedObserver_register();
+void *igRadioGroupSelectedObserver_getMetaCall();
+void igRadioGroupSelectedObserver_fieldInit();
 void *fn_8010E974();
-void *fn_8010E9B0();
-void *fn_8010E9EC();
+void *igRadioGroup_getMeta();
+void *igRadioGroup_vtableRead();
 void fn_8010EAEC();
-void fn_8010EB14();
-void *fn_8010EB8C();
+void igRadioGroup_register();
+void *igRadioGroup_getMetaCall();
 }
 struct UnknownGenRoot8010DE3C {
  void *unknown00;
@@ -180,11 +180,11 @@ void *fn_8010DDC4(){
  if(!lbl_805635D0) lbl_805635D0=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805635D0;
 }
-void *fn_8010DE00(){
+void *igClearRenderer_getMeta(){
  if(!lbl_805635D0 || !(reinterpret_cast<unsigned int *>(lbl_805635D0)[0x24/4]&4)) fn_8010DED4();
  return lbl_805635D0;
 }
-void *fn_8010DE3C(){
+void *igClearRenderer_vtableRead(){
  UnknownGenObject8010DE3C object;
  object.unknown00=lbl_80497C9C;
  object.unknown08.value=0;
@@ -192,15 +192,15 @@ void *fn_8010DE3C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010DED4(){
- fn_80066188((int)fn_8010DEFC);
+ fn_80066188((int)igClearRenderer_register);
 }
-void fn_8010DEFC(){
+void igClearRenderer_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805635D0,(int)fn_8010E2EC,(int)fn_8010DF8C,(int)fn_8010DF6C,(int)lbl_80494860,16,(int)fn_8010DE3C,(int)fn_8010DF94,0,0);
+ fn_80066204(0,(int)&lbl_805635D0,(int)igRenderer_register,(int)fn_8010DF8C,(int)igClearRenderer_getMetaCall,(int)lbl_80494860,16,(int)igClearRenderer_vtableRead,(int)igClearRenderer_fieldInit,0,0);
 }
-void *fn_8010DF6C(){return fn_8010DE00();}
+void *igClearRenderer_getMetaCall(){return igClearRenderer_getMeta();}
 void *fn_8010DF8C(){return lbl_805635E0;}
-void fn_8010DF94(){
+void igClearRenderer_fieldInit(){
  void *value0=lbl_805635D0;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EF4C,1);
@@ -210,11 +210,11 @@ void *fn_8010DFFC(){
  if(!lbl_805635D8) lbl_805635D8=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805635D8;
 }
-void *fn_8010E038(){
+void *igRendererOrderedList_getMeta(){
  if(!lbl_805635D8 || !(reinterpret_cast<unsigned int *>(lbl_805635D8)[0x24/4]&4)) fn_8010E1CC();
  return lbl_805635D8;
 }
-void *fn_8010E074(){
+void *igRendererOrderedList_vtableRead(){
  UnknownGenObject8010E074 object;
  object.unknown00=lbl_80475764;
  object.unknown08.value=0;
@@ -226,27 +226,27 @@ void *fn_8010E074(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010E1CC(){
- fn_80066188((int)fn_8010E1F4);
+ fn_80066188((int)igRendererOrderedList_register);
 }
-void fn_8010E1F4(){
+void igRendererOrderedList_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805635D8,(int)fn_800330A8,(int)fn_8010E280,(int)fn_8010E260,(int)lbl_80494880,28,(int)fn_8010E074,0,0,(int)lbl_8055EF5C);
+ fn_80066204(0,(int)&lbl_805635D8,(int)igDependencyOrderedList_register,(int)fn_8010E280,(int)igRendererOrderedList_getMetaCall,(int)lbl_80494880,28,(int)igRendererOrderedList_vtableRead,0,0,(int)lbl_8055EF5C);
 }
-void *fn_8010E260(){return fn_8010E038();}
+void *igRendererOrderedList_getMetaCall(){return igRendererOrderedList_getMeta();}
 void *fn_8010E280(){return lbl_80561D14;}
-void *fn_8010E288(){
+void *igRenderer_getMeta(){
  if(!lbl_805635E0 || !(reinterpret_cast<unsigned int *>(lbl_805635E0)[0x24/4]&4)) fn_8010E2C4();
  return lbl_805635E0;
 }
 void fn_8010E2C4(){
- fn_80066188((int)fn_8010E2EC);
+ fn_80066188((int)igRenderer_register);
 }
-void fn_8010E2EC(){
+void igRenderer_register(){
  fn_8010CBD4();
- fn_80066204(1,(int)&lbl_805635E0,(int)fn_80066B08,(int)fn_800237D0,(int)fn_8010E35C,(int)lbl_804948A8,12,0,(int)fn_8010E37C,0,(int)lbl_8055EF64);
+ fn_80066204(1,(int)&lbl_805635E0,(int)igObject_register,(int)fn_800237D0,(int)igRenderer_getMetaCall,(int)lbl_804948A8,12,0,(int)igRenderer_fieldInit,0,(int)lbl_8055EF64);
 }
-void *fn_8010E35C(){return fn_8010E288();}
-void fn_8010E37C(){
+void *igRenderer_getMetaCall(){return igRenderer_getMeta();}
+void igRenderer_fieldInit(){
  void *value0=lbl_805635E0;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EF6C,1);
@@ -259,11 +259,11 @@ void *fn_8010E3FC(){
  if(!lbl_805635E8) lbl_805635E8=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805635E8;
 }
-void *fn_8010E438(){
+void *igOnOffValueObserverList_getMeta(){
  if(!lbl_805635E8 || !(reinterpret_cast<unsigned int *>(lbl_805635E8)[0x24/4]&4)) fn_8010E4E4();
  return lbl_805635E8;
 }
-void *fn_8010E474(){
+void *igOnOffValueObserverList_vtableRead(){
  UnknownGenObject8010E474_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -274,18 +274,18 @@ void *fn_8010E474(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010E4E4(){
- fn_80066188((int)fn_8010E50C);
+ fn_80066188((int)igOnOffValueObserverList_register);
 }
-void fn_8010E50C(){
+void igOnOffValueObserverList_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805635E8,(int)fn_8002907C,(int)fn_80024180,(int)fn_8010E578,(int)lbl_804948C4,20,(int)fn_8010E474,0,0,(int)lbl_8055EF7C);
+ fn_80066204(0,(int)&lbl_805635E8,(int)igObjectList_register,(int)fn_80024180,(int)igOnOffValueObserverList_getMetaCall,(int)lbl_804948C4,20,(int)igOnOffValueObserverList_vtableRead,0,0,(int)lbl_8055EF7C);
 }
-void *fn_8010E578(){return fn_8010E438();}
-void *fn_8010E598(){
+void *igOnOffValueObserverList_getMetaCall(){return igOnOffValueObserverList_getMeta();}
+void *igOnOffValueObserver_getMeta(){
  if(!lbl_805635EC || !(reinterpret_cast<unsigned int *>(lbl_805635EC)[0x24/4]&4)) fn_8010E620();
  return lbl_805635EC;
 }
-void *fn_8010E5D4(){
+void *igOnOffValueObserver_vtableRead(){
  UnknownGenObject8010E5D4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80495AD8;
@@ -293,15 +293,15 @@ void *fn_8010E5D4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010E620(){
- fn_80066188((int)fn_8010E648);
+ fn_80066188((int)igOnOffValueObserver_register);
 }
-void fn_8010E648(){
+void igOnOffValueObserver_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805635EC,(int)fn_8010CFA4,(int)fn_8010E6DC,(int)fn_8010E6BC,(int)lbl_804948E0,16,(int)fn_8010E5D4,(int)fn_8010E6E4,0,(int)lbl_8055EF84);
+ fn_80066204(0,(int)&lbl_805635EC,(int)igView_register,(int)fn_8010E6DC,(int)igOnOffValueObserver_getMetaCall,(int)lbl_804948E0,16,(int)igOnOffValueObserver_vtableRead,(int)igOnOffValueObserver_fieldInit,0,(int)lbl_8055EF84);
 }
-void *fn_8010E6BC(){return fn_8010E598();}
+void *igOnOffValueObserver_getMetaCall(){return igOnOffValueObserver_getMeta();}
 void *fn_8010E6DC(){return lbl_8056357C;}
-void fn_8010E6E4(){
+void igOnOffValueObserver_fieldInit(){
  void *value0=lbl_805635EC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EF8C,1);
@@ -315,11 +315,11 @@ void *fn_8010E76C(){
  if(!lbl_805635F4) lbl_805635F4=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805635F4;
 }
-void *fn_8010E7A8(){
+void *igRadioGroupSelectedObserver_getMeta(){
  if(!lbl_805635F4 || !(reinterpret_cast<unsigned int *>(lbl_805635F4)[0x24/4]&4)) fn_8010E830();
  return lbl_805635F4;
 }
-void *fn_8010E7E4(){
+void *igRadioGroupSelectedObserver_vtableRead(){
  UnknownGenObject8010E7E4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80495AD8;
@@ -327,14 +327,14 @@ void *fn_8010E7E4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010E830(){
- fn_80066188((int)fn_8010E858);
+ fn_80066188((int)igRadioGroupSelectedObserver_register);
 }
-void fn_8010E858(){
+void igRadioGroupSelectedObserver_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805635F4,(int)fn_8010CFA4,(int)fn_8010E6DC,(int)fn_8010E8CC,(int)lbl_804948F8,16,(int)fn_8010E7E4,(int)fn_8010E8EC,0,(int)lbl_8055EFA4);
+ fn_80066204(0,(int)&lbl_805635F4,(int)igView_register,(int)fn_8010E6DC,(int)igRadioGroupSelectedObserver_getMetaCall,(int)lbl_804948F8,16,(int)igRadioGroupSelectedObserver_vtableRead,(int)igRadioGroupSelectedObserver_fieldInit,0,(int)lbl_8055EFA4);
 }
-void *fn_8010E8CC(){return fn_8010E7A8();}
-void fn_8010E8EC(){
+void *igRadioGroupSelectedObserver_getMetaCall(){return igRadioGroupSelectedObserver_getMeta();}
+void igRadioGroupSelectedObserver_fieldInit(){
  void *value0=lbl_805635F4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EFAC,1);
@@ -348,11 +348,11 @@ void *fn_8010E974(){
  if(!lbl_805635FC) lbl_805635FC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805635FC;
 }
-void *fn_8010E9B0(){
+void *igRadioGroup_getMeta(){
  if(!lbl_805635FC || !(reinterpret_cast<unsigned int *>(lbl_805635FC)[0x24/4]&4)) fn_8010EAEC();
  return lbl_805635FC;
 }
-void *fn_8010E9EC(){
+void *igRadioGroup_vtableRead(){
  UnknownGenObject8010E9EC object;
  object.unknown00=lbl_80495EF4;
  object.unknown08.value=0;
@@ -361,12 +361,12 @@ void *fn_8010E9EC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010EAEC(){
- fn_80066188((int)fn_8010EB14);
+ fn_80066188((int)igRadioGroup_register);
 }
-void fn_8010EB14(){
+void igRadioGroup_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805635FC,(int)fn_80066B08,(int)fn_800237D0,(int)fn_8010EB8C,(int)lbl_80494928,32,(int)fn_8010E9EC,(int)fn_8010EBAC,0,(int)lbl_80494918);
+ fn_80066204(0,(int)&lbl_805635FC,(int)igObject_register,(int)fn_800237D0,(int)igRadioGroup_getMetaCall,(int)lbl_80494928,32,(int)igRadioGroup_vtableRead,(int)igRadioGroup_fieldInit,0,(int)lbl_80494918);
 }
-void *fn_8010EB8C(){return fn_8010E9B0();}
+void *igRadioGroup_getMetaCall(){return igRadioGroup_getMeta();}
 }
 #pragma pop

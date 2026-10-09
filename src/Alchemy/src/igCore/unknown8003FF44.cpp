@@ -71,8 +71,8 @@ extern "C" Unknown8003FF44 *fn_8003FFCC(Unknown8003FF44 *object, const void *val
     return object;
 }
 
-extern "C" void fn_80040008(void *object){ fn_80063B1C(object); }
+extern "C" void igCharArrayMetaField_virtual08(void *object){ fn_80063B1C(object); }
 extern "C" int fn_80040028(){ return 1; }
 extern "C" void fn_80040030(Unknown8003FF44 *object, unsigned char value){ object->slot8C(&value); }
-extern "C" int fn_80040064(){ return 1; }
+extern "C" int igCharArrayMetaField_virtual6C(){ return 1; }
 extern "C" unsigned short fn_8004006C(Unknown8003FF44 *object){ return object->unknown14; }

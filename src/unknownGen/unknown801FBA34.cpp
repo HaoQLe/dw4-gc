@@ -422,7 +422,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_801FBA34(int p0){
+void igPlanarShadowShader_virtual24(int p0){
  void *value0;
  void *value1;
  void *value2;
@@ -490,8 +490,8 @@ void fn_801FBA34(int p0){
   return;
  }
 }
-void *fn_801FBBF8(){return lbl_80564B3C;}
-void fn_801FBC00(int p0){
+void *igPlanarShadowShader_virtual58(){return lbl_80564B3C;}
+void igPlanarShadowShader_virtual28(int p0){
  void *value18;
  void *value19;
  void *value1;

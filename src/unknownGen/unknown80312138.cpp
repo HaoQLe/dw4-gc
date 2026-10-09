@@ -14,6 +14,6 @@ void *fn_80312138(int p0,int p1){
  }
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))+16))+16);
 }
-void *fn_80312180(){return lbl_80534AAC;}
+void *bePadManager_virtual58(){return lbl_80534AAC;}
 }
 #pragma pop

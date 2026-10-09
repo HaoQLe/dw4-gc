@@ -7,7 +7,7 @@ void *fn_8020B300(void *);
 void *fn_8020B30C(void *,void *);
 }
 extern "C" {
-void *fn_80202EB4(int p0,int p1){
+void *igSimpleUserInfo_virtual94(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

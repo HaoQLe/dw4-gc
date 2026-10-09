@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80088964(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+116);}
+int igProgramFile_virtual278(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+116);}
 }
 #pragma pop

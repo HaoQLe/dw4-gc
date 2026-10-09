@@ -31,7 +31,7 @@ public:
  virtual void s60();
 };
 extern "C" {
-void fn_80076528(int p0){
+void igGamecubeFile_virtual68(int p0){
  reinterpret_cast<UnknownGenV80076528_0 *>((void *)p0)->s60();
 }
 }

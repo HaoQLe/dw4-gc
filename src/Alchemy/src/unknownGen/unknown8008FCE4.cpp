@@ -58,7 +58,7 @@ public:
  virtual void s60();
 };
 extern "C" {
-void fn_8008FCE4(int p0){
+void igStandardQueue_virtual30(int p0){
  void *value0;
  value0=reinterpret_cast<UnknownGenV8008FCE4_0 *>((void *)p0)->s64();
  if((unsigned char)(int)value0){

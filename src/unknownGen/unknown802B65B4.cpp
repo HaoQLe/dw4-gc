@@ -14,7 +14,7 @@ extern char lbl_804CF1CC[];
 extern void *lbl_80534670;
 }
 extern "C" {
-void fn_802B65B4(){
+void beTextureCtrlAttr_fieldInit(){
  void *value0=lbl_80534670;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF1C0,1);

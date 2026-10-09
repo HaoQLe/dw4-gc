@@ -356,7 +356,7 @@ public:
  virtual void s80(void *);
 };
 extern "C" {
-void fn_802133D4(){
+void igGamecubeEnvironmentMapShader_virtualC4(){
  void *value12;
  void *value1;
  void *value13;
@@ -469,7 +469,7 @@ void fn_802133D4(){
   return;
  }
 }
-void fn_802136CC(int p0){
+void igGamecubeEnvironmentMapShader_virtualC8(int p0){
  void *value1;
  void *value3;
  void *value5;

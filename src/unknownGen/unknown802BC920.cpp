@@ -14,7 +14,7 @@ extern char lbl_804CF964[];
 extern void *lbl_80534858;
 }
 extern "C" {
-void fn_802BC920(){
+void beXboxImage24k_fieldInit(){
  void *value0=lbl_80534858;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF94C,2);

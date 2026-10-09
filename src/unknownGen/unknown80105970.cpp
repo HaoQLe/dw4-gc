@@ -63,8 +63,8 @@ public:
  virtual void * s6C(void *,void *,void *);
 };
 extern "C" {
-int fn_80105970(){return 1;}
-void fn_80105978(){return fn_800667D4();}
+int igFileImagePng_virtualB4(){return 1;}
+void igTgaLoader_virtual30(){return fn_800667D4();}
 void *fn_80105998(int p0,int p1){
  void *value0;
  void *value1;

@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800F98A4(void *,void *);
+void igGamecubeVisualContext_virtual244(void *,void *);
 }
 class UnknownGenV800BE474_0 {
 public:
@@ -68,14 +68,14 @@ extern "C" {
 void fn_800BE474(int p0){
  reinterpret_cast<UnknownGenV800BE474_0 *>((void *)p0)->s60();
 }
-void fn_800BE4A0(int p0,int p1){
- fn_800F98A4((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
+void igDitherStateAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual244((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
 }
-void fn_800BE4CC(int p0,int p1){
+void igDitherStateAttr_virtual68(int p0,int p1){
  reinterpret_cast<UnknownGenV800BE4CC_1 *>((void *)p0)->s80((void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+312));
 }
-void fn_800BE4FC(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
-void *fn_800BE504(int p0){
+void igDitherStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
+void *igFileAttrDefaultManager_virtual60(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)0;

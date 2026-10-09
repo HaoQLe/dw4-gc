@@ -34,7 +34,7 @@ extern char lbl_804E1654[];
 extern void *lbl_80535C20;
 }
 extern "C" {
-void fn_803256F4(){
+void libNdmwRuntimePlugin_fieldInit(){
  void *value0=lbl_80535C20;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1558,21);

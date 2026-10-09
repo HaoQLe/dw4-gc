@@ -31,7 +31,7 @@ struct UnknownGenObject802CDFA4 : UnknownGenObject802CDFA4_1 {
  inline ~UnknownGenObject802CDFA4(){unknown00=lbl_804DE9D8;}
 };
 extern "C" {
-void *fn_802CDFA4(){
+void *beMessenger_vtableRead(){
  UnknownGenObject802CDFA4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

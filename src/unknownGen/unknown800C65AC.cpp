@@ -51,11 +51,11 @@ public:
  virtual void * s98();
 };
 extern "C" {
-void *fn_800C65AC(){return lbl_805626B8;}
-void *fn_800C65B4(){return lbl_805626C0;}
-void *fn_800C65BC(){return lbl_805626EC;}
-void *fn_800C65C4(){return lbl_805626F8;}
-void *fn_800C65CC(int p0){
+void *igPixelShaderBindAttr_virtual58(){return lbl_805626B8;}
+void *igPixelShaderAttr_virtual58(){return lbl_805626C0;}
+void *igPixelPipelineModeAttr_virtual58(){return lbl_805626EC;}
+void *igParticleAttr_virtual58(){return lbl_805626F8;}
+void *igParticleAttr_virtual70(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
@@ -66,10 +66,10 @@ void *fn_800C65CC(int p0){
   return value0;
  }
 }
-void *fn_800C6604(){return lbl_80562718;}
-void *fn_800C660C(){return lbl_80562720;}
-void fn_800C6614(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12)=value;}
-void *fn_800C661C(){return lbl_80562734;}
-int fn_800C6624(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+32);}
+void *igNormalizeNormalsStateAttr_virtual58(){return lbl_80562718;}
+void *igMultiPassStateAttr_virtual58(){return lbl_80562720;}
+void igMultiPassStateAttr_virtual80(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12)=value;}
+void *igVector3MorphData_virtual58(){return lbl_80562734;}
+int igVector3MorphData_virtual64(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+32);}
 }
 #pragma pop

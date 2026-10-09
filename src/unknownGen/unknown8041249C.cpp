@@ -12,14 +12,14 @@ struct UnknownGenL804124B0_8 {
  int m10;
 };
 extern "C" {
-void fn_8041249C(int p0,int p1,int p2,float f0,float f1){
+void igPickMode_virtual70(int p0,int p1,int p2,float f0,float f1){
  if((unsigned short)p2){
   return;
  }
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+180)=f0;
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+184)=f1;
 }
-void fn_804124B0(int p0,int p1,int p2){
+void igPickMode_virtual6C(int p0,int p1,int p2){
  void *value0;
  void *value1;
  void *value2;
@@ -53,7 +53,7 @@ void fn_804124B0(int p0,int p1,int p2){
   return;
  }
 }
-void fn_80412558(int p0,int p1,int p2,int p3,int p4,int p5){
+void igPickMode_virtual74(int p0,int p1,int p2,int p3,int p4,int p5){
  if((int)p2==14){
   if((unsigned char)p3){
    fn_80412874((void *)p0);

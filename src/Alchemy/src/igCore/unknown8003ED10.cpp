@@ -19,7 +19,7 @@ extern "C" void fn_8003ED10(Unknown8003ED10 *object){
 
 extern "C" void fn_8003EDF0(Unknown8003ED10 *object){ object->slot60(0); }
 
-extern "C" Gap::igInt fn_8003EE28(Unknown8003ED10 *object){
+extern "C" Gap::igInt igCallStackTable_virtual5C(Unknown8003ED10 *object){
     Gap::igInt result = 0;
     Gap::igInt count = object->unknown10->unknown08;
     Gap::igUnsignedInt *value = object->unknown10->unknown10;
@@ -29,7 +29,7 @@ extern "C" Gap::igInt fn_8003EE28(Unknown8003ED10 *object){
     return result;
 }
 
-extern "C" Unknown8003ED10Result fn_8003EE60(Unknown8003ED10 *object, Gap::igInt value){
+extern "C" Unknown8003ED10Result igCallStackTable_virtual60(Unknown8003ED10 *object, Gap::igInt value){
     Unknown8003ED10Storage *storage = object->unknown10;
     Gap::igUnsignedInt *element = storage->unknown10;
     Gap::igInt count = storage->unknown08;
@@ -50,7 +50,7 @@ extern "C" Unknown8003ED10Result fn_8003EE60(Unknown8003ED10 *object, Gap::igInt
     return kFailure__3Gap;
 }
 
-extern "C" Gap::igUnsignedInt *fn_8003EF44(Unknown8003ED10 *object, Gap::igInt index){
+extern "C" Gap::igUnsignedInt *igCallStackTable_virtual64(Unknown8003ED10 *object, Gap::igInt index){
     if(index < 0 || index >= object->unknown10->unknown08 || !object->unknown10->unknown10) return 0;
     Gap::igUnsignedInt *value = object->unknown10->unknown10 + index;
     if(index > 0 && value[-1]) return 0;

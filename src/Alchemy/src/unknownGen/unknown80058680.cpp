@@ -7,7 +7,7 @@ extern void *kFailure__3Gap;
 extern void *kSuccess__3Gap;
 }
 extern "C" {
-void fn_80058680(int p0,int p1,int p2){
+void igMemoryFile_virtual5C(int p0,int p1,int p2){
  void *value0;
  void *local1;
  void *local0;

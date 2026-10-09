@@ -20,7 +20,7 @@ struct UnknownGenL8010FFF4_8 {
  float m0C;
 };
 extern "C" {
-void fn_8010FFF4(){
+void igMouseCursor_fieldInit(){
  UnknownGenL8010FFF4_8 local0;
  void *value0=lbl_8056368C;
  void *value1=fn_80065D88(value0);

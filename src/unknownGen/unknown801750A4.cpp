@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_801B3FE4();
+void *igSceneInfo_getMeta();
 }
 extern "C" {
-int fn_801750A4(){return 1;}
-void *fn_801750AC(){return fn_801B3FE4();}
-void fn_801750CC(){}
-void fn_801750D0(){}
+int igInstanceScene_virtual7C(){return 1;}
+void *igInstanceScene_virtual8C(){return igSceneInfo_getMeta();}
+void igInstanceScene_virtual94(){}
+void igInstanceScene_virtual90(){}
 }
 #pragma pop

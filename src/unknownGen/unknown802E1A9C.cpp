@@ -14,7 +14,7 @@ extern void *lbl_80535604;
 extern void *lbl_805622A4;
 }
 extern "C" {
-void fn_802E1A9C(){
+void beCameraCtrlInfo_fieldInit(){
  void *value0=lbl_80535604;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2A18,1);

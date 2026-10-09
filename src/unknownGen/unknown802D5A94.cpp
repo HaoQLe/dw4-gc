@@ -17,7 +17,7 @@ struct UnknownGenObject802D5A94 : UnknownGenRoot802D5A94 {
  inline ~UnknownGenObject802D5A94(){unknown00=lbl_804D6F5C;}
 };
 extern "C" {
-void *fn_802D5A94(){
+void *beHitLandResultData_vtableRead(){
  UnknownGenObject802D5A94 object;
  object.unknown00=lbl_804D6F5C;
  object.unknown08.value=0;

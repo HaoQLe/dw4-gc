@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800F3E18(){}
+void igGamecubeImageConvert_virtual78(){}
 }
 #pragma pop

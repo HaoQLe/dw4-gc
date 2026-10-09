@@ -31,7 +31,7 @@ public:
  virtual void s60(void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800E2DC8(int p0,int p1,int p2,int p3,int p4,int p5){
+void igGamecubeVertexArray1_1_virtual5C(int p0,int p1,int p2,int p3,int p4,int p5){
  void *local1;
  void *local0;
  fn_800E2D20(&local0,(void *)p1);

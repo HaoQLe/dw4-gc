@@ -28,7 +28,7 @@ struct UnknownGenObject802DA9F4 : UnknownGenObject802DA9F4_1 {
  inline ~UnknownGenObject802DA9F4(){unknown00=lbl_804D5E34;}
 };
 extern "C" {
-void *fn_802DA9F4(){
+void *beFileListInfo_vtableRead(){
  UnknownGenObject802DA9F4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

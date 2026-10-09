@@ -21,7 +21,7 @@ struct UnknownGenObject802E6F98 : UnknownGenObject802E6F98_0 {
  inline ~UnknownGenObject802E6F98(){unknown00=lbl_804D359C;}
 };
 extern "C" {
-void *fn_802E6F98(){
+void *beAction2Data_vtableRead(){
  UnknownGenObject802E6F98 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

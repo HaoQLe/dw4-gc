@@ -14,7 +14,7 @@ struct UnknownGenObject8034157C_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_8034157C(){
+void *beLoadIntf2ComMdlDataList_vtableRead(){
  UnknownGenObject8034157C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;

@@ -14,7 +14,7 @@ struct UnknownGenObject802AAE28_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_802AAE28(){
+void *igFileNameList_vtableRead(){
  UnknownGenObject802AAE28_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;

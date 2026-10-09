@@ -26,7 +26,7 @@ struct UnknownGenObject802BA24C : UnknownGenObject802BA24C_1 {
  inline ~UnknownGenObject802BA24C(){unknown00=lbl_804DB794;}
 };
 extern "C" {
-void *fn_802BA24C(){
+void *beSelectCtrlInfoRamData_vtableRead(){
  UnknownGenObject802BA24C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

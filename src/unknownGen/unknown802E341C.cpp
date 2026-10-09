@@ -11,7 +11,7 @@ void *fn_802E341C(void *object){
  fn_802E3558();
  return fn_8006546C(lbl_805356D4,object);
 }
-void *fn_802E345C(){
+void *beBaseInfoRamTimer_getMeta(){
  if(!lbl_805356D4 || !(reinterpret_cast<unsigned int *>(lbl_805356D4)[0x24/4]&4)) fn_802E3558();
  return lbl_805356D4;
 }

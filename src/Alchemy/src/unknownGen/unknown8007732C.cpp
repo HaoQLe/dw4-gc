@@ -5,9 +5,9 @@ extern "C" {
 
 }
 extern "C" {
-int fn_8007732C(){return 0;}
-int fn_80077334(){return 0;}
-int fn_8007733C(){return -1;}
-int fn_80077344(){return -1;}
+int igGamecubeHostFile_virtual90(){return 0;}
+int igGamecubeHostFile_virtual94(){return 0;}
+int igGamecubeHostFile_virtual98(){return -1;}
+int igGamecubeHostFile_virtual9C(){return -1;}
 }
 #pragma pop

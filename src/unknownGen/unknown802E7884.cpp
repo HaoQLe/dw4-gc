@@ -30,7 +30,7 @@ struct UnknownGenObject802E7884 : UnknownGenObject802E7884_0 {
  inline ~UnknownGenObject802E7884(){unknown00=lbl_804DFEB0;}
 };
 extern "C" {
-void *fn_802E7884(){
+void *ParticleArray_vtableRead(){
  UnknownGenObject802E7884 object;
  object.unknown00=lbl_80492640;
  object.unknown08.value=0;

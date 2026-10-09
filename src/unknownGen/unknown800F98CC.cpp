@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800658F8(void *,void *);
-void fn_800E1788(void *,void *);
+void igPointSpriteExt_virtual74(void *,void *);
 extern char lbl_80488C14[];
 extern char lbl_80488C20[];
 extern char lbl_8048D338[];
@@ -81,7 +81,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_800F98CC(int p0,int p1){
+void igGamecubePointSpriteExt_virtual74(int p0,int p1){
  void *value9;
  void *value10;
  void *value0;
@@ -97,7 +97,7 @@ void fn_800F98CC(int p0,int p1){
  void *value6;
  void *value7;
  void *value8;
- fn_800E1788((void *)p0,(void *)p1);
+ igPointSpriteExt_virtual74((void *)p0,(void *)p1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+392)=(void *)p1;
  value9=reinterpret_cast<UnknownGenV800F98CC_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+392))->s58();
  value10=fn_800658F8(value9,lbl_80488C20);

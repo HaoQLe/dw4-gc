@@ -10,7 +10,7 @@ extern void *lbl_80562140;
 extern void *lbl_80563FF8;
 }
 extern "C" {
-void *fn_8018065C(int p0){
+void *igObjectPropertyForNode_virtual88(int p0){
  void *value2;
  void *value3;
  void *value1;
@@ -37,7 +37,7 @@ void *fn_8018065C(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value3;
  return value3;
 }
-void fn_801806DC(int p0){
+void igObjectPropertyForNode_virtual34(int p0){
  fn_800667CC();
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+36)=0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+37)=0;

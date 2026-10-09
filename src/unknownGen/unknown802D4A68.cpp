@@ -27,7 +27,7 @@ void *fn_802D4B08(){
  if(!lbl_805351C4) lbl_805351C4=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805351C4;
 }
-void *fn_802D4B5C(){
+void *beHitLandModel_getMeta(){
  if(!lbl_805351C4 || !(reinterpret_cast<unsigned int *>(lbl_805351C4)[0x24/4]&4)) fn_802D4E4C();
  return lbl_805351C4;
 }

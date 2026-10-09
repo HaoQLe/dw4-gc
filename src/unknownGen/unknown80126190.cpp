@@ -68,7 +68,7 @@ void *fn_80126190(int p0,int p1){
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p1)+8)=value2;
  return (void *)p0;
 }
-void fn_801261AC(int p0,int p1,int p2){
+void igVec2dMetaField_virtual1C4(int p0,int p1,int p2){
  void *value0=fn_8011F4B8();
  reinterpret_cast<UnknownGenV801261AC_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)));
 }

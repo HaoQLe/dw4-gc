@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800ED5F8(void *,void *);
+void igGamecubeVisualContext_virtualEC(void *,void *);
 extern char lbl_8047A2B8[];
 extern void *lbl_805625F4;
 extern void *lbl_80562B08;
@@ -171,8 +171,8 @@ public:
  virtual void s7C();
 };
 extern "C" {
-void *fn_800C2D4C(){return lbl_805625F4;}
-void fn_800C2D54(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igSpriteAttr_virtual58(){return lbl_805625F4;}
+void igSpriteAttr_virtual68(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  if(!lbl_80562B08){
   value0=reinterpret_cast<UnknownGenV800C2D54_0 *>((void *)p1)->s68(lbl_8047A2B8,(void *)p2,(void *)p3,(void *)p4,(void *)p5);
@@ -182,15 +182,15 @@ void fn_800C2D54(int p0,int p1,int p2,int p3,int p4,int p5){
   return;
  }
 }
-void fn_800C2D9C(int p0,int p1){
- fn_800ED5F8((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24));
+void igSpriteAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtualEC((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24));
  reinterpret_cast<UnknownGenV800C2D9C_1 *>(lbl_80562B08)->s88(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28));
  reinterpret_cast<UnknownGenV800C2D9C_2 *>(lbl_80562B08)->s78();
  reinterpret_cast<UnknownGenV800C2D9C_3 *>(lbl_80562B08)->s80(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20));
  reinterpret_cast<UnknownGenV800C2D9C_4 *>(lbl_80562B08)->s7C();
 }
-void fn_800C2E2C(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36)=value;}
-void *fn_800C2E34(int p0,int p1,int p2,int p3){
+void igPointSpriteExt_virtual88(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36)=value;}
+void *igSpriteAttr_virtual80(int p0,int p1,int p2,int p3){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)p1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)p2;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p3;

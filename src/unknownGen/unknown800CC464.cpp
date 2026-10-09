@@ -33,7 +33,7 @@ public:
  virtual void * s68();
 };
 extern "C" {
-void fn_800CC464(int p0,int p1,int p2){
+void igDefaultInterfaceManager_virtual68(int p0,int p1,int p2){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
   reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))((void *)p1,(void *)p2,(void *)p2);
   return;
@@ -41,7 +41,7 @@ void fn_800CC464(int p0,int p1,int p2){
   return;
  }
 }
-void fn_800CC49C(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual6C(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -49,7 +49,7 @@ void fn_800CC49C(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void fn_800CC4D8(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual70(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -57,7 +57,7 @@ void fn_800CC4D8(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void fn_800CC514(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual74(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -65,7 +65,7 @@ void fn_800CC514(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void fn_800CC550(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual78(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -73,7 +73,7 @@ void fn_800CC550(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void *fn_800CC58C(int p0,int p1){
+void *igDefaultInterfaceManager_virtual7C(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;
@@ -89,7 +89,7 @@ void *fn_800CC58C(int p0,int p1){
   return value0;
  }
 }
-void fn_800CC5EC(int p0,int p1,int p2){
+void igDefaultInterfaceManager_virtualA0(int p0,int p1,int p2){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68)){
   reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68))((void *)p1,(void *)p2,(void *)p2);
   return;
@@ -97,7 +97,7 @@ void fn_800CC5EC(int p0,int p1,int p2){
   return;
  }
 }
-void fn_800CC624(int p0,int p1,int p2){
+void igDefaultInterfaceManager_virtualA4(int p0,int p1,int p2){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72)){
   reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72))((void *)p1,(void *)p2,(void *)p2);
   return;
@@ -105,7 +105,7 @@ void fn_800CC624(int p0,int p1,int p2){
   return;
  }
 }
-void fn_800CC65C(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual80(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -113,7 +113,7 @@ void fn_800CC65C(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void fn_800CC698(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual84(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -121,7 +121,7 @@ void fn_800CC698(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void fn_800CC6D4(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual88(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -129,7 +129,7 @@ void fn_800CC6D4(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void fn_800CC710(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual8C(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -137,7 +137,7 @@ void fn_800CC710(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void fn_800CC74C(int p0,int p1,int p2){
+void igDefaultInterfaceManager_virtual90(int p0,int p1,int p2){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)){
   reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52))((void *)p1,(void *)p2,(void *)p2);
   return;
@@ -145,7 +145,7 @@ void fn_800CC74C(int p0,int p1,int p2){
   return;
  }
 }
-void fn_800CC784(int p0,int p1,int p2){
+void igDefaultInterfaceManager_virtual94(int p0,int p1,int p2){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56)){
   reinterpret_cast<void (*)(void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))((void *)p1,(void *)p2,(void *)p2);
   return;
@@ -153,7 +153,7 @@ void fn_800CC784(int p0,int p1,int p2){
   return;
  }
 }
-void fn_800CC7BC(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual98(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;
@@ -161,7 +161,7 @@ void fn_800CC7BC(int p0,int p1,int p2,int p3){
   return;
  }
 }
-void fn_800CC7F8(int p0,int p1,int p2,int p3){
+void igDefaultInterfaceManager_virtual9C(int p0,int p1,int p2,int p3){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64)){
   reinterpret_cast<void (*)(void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64))((void *)p1,(void *)p2,(void *)p3,(void *)p3);
   return;

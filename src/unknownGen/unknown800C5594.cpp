@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800C5594(){}
+void igVertexBlendMatrixListAttr_virtual68(){}
 }
 #pragma pop

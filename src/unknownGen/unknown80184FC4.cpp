@@ -8,9 +8,9 @@ extern void *lbl_80565468;
 extern "C" {
 void fn_80184FC4(){}
 void fn_80184FC8(){}
-int fn_80184FCC(){return 1;}
-int fn_80184FD4(){return 0;}
-void fn_80184FDC(int p0,int p1,int p2,int p3,int p4,int p5){
+int igOptimizeActorAnimations_virtual7C(){return 1;}
+int igOptimizeActorAnimations_virtual70(){return 0;}
+void igOptimizeActorAnimations_virtual74(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_80068128((void *)p1,lbl_80565468);
 }
 }

@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564E3C;
 }
 extern "C" {
-void *fn_802D53A8(){return lbl_80564E3C;}
+void *beHitLandModelTraversal_parentMeta(){return lbl_80564E3C;}
 }
 #pragma pop

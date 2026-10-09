@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80037D28();
 void fn_8003FF90(void *);
 void *fn_8003FFCC(void *,void *);
 void fn_80066188(int);
 void *fn_80066DD8(int,int);
 void *fn_800680B4(void *,void *);
+void igCharMetaField_register();
 extern char lbl_80471914[];
 extern char lbl_80473F24[];
 extern void *lbl_80561E1C;
@@ -28,7 +28,7 @@ struct UnknownGenObject80037C78 : UnknownGenObject80037C78_0 {
  inline ~UnknownGenObject80037C78(){unknown00=lbl_80473F24;}
 };
 extern "C" {
-void *fn_80037BC0(void *a,void *b){
+void *igCharArrayMetaField_virtual54(void *a,void *b){
  if(*reinterpret_cast<unsigned char *>(Gap::Core::_arkCore)){
   fn_80037D00();
   return fn_800680B4(a,b);
@@ -37,7 +37,7 @@ void *fn_80037BC0(void *a,void *b){
  if(object) object=fn_8003FFCC(object,a);
  return object;
 }
-void *fn_80037C3C(){
+void *igCharMetaField_getMeta(){
  if(!lbl_80561E1C || !(reinterpret_cast<unsigned int *>(lbl_80561E1C)[0x24/4]&4)) fn_80037D00();
  return lbl_80561E1C;
 }
@@ -46,7 +46,7 @@ void *fn_80037C78(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80037D00(){
- fn_80066188((int)fn_80037D28);
+ fn_80066188((int)igCharMetaField_register);
 }
 }
 #pragma pop

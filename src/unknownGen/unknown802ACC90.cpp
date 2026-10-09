@@ -31,7 +31,7 @@ extern void *lbl_80534414;
 extern void *lbl_805622A4;
 }
 extern "C" {
-void fn_802ACC90(){
+void igMovieInfo_fieldInit(){
  void *value0=lbl_80534414;
  void *value2=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CDBF8,21);

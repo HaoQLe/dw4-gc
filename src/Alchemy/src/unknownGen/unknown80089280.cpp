@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80089280(int p0){
+void igProgramFile_virtual100(int p0){
  void *value0;
  value0=(void *)0;
  while((unsigned int)(int)value0<(unsigned int)(((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+136)>>3)+1)){

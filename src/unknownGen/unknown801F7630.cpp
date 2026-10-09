@@ -35,8 +35,8 @@ public:
  virtual void s70(void *,void *);
 };
 extern "C" {
-int fn_801F7630(){return 1;}
-void fn_801F7638(int p0,int p1){
+int igLightSet_virtual78(){return 1;}
+void igLightSet_virtual24(int p0,int p1){
  fn_801FAE18((void *)p0,(void *)p1);
  if(!(unsigned char)p1){
   reinterpret_cast<UnknownGenV801F7638_0 *>((void *)p0)->s70((void *)1,(void *)1);

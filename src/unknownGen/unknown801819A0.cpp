@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805652EC;
 }
 extern "C" {
-void *fn_801819A0(){return lbl_805652EC;}
+void *igObjectPropertyForBillboard_virtual7C(){return lbl_805652EC;}
 }
 #pragma pop

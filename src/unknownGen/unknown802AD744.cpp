@@ -18,7 +18,7 @@ struct UnknownGenObject802AD744 : UnknownGenRoot802AD744 {
  inline ~UnknownGenObject802AD744(){unknown00=lbl_804CEA18;}
 };
 extern "C" {
-void *fn_802AD744(){
+void *igMoviePlugin_vtableRead(){
  UnknownGenObject802AD744 object;
  object.unknown00=lbl_804CDE20;
  object.unknown00=lbl_804CEA18;

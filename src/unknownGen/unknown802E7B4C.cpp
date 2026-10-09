@@ -23,7 +23,7 @@ extern void *lbl_80535868;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void fn_802E7B4C(){
+void ParticleArray_fieldInit(){
  void *value0=lbl_80535838;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D3210,11);
@@ -55,7 +55,7 @@ void *fn_802E7CAC(){
  if(!lbl_80535868) lbl_80535868=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80535868;
 }
-void *fn_802E7D00(){
+void *ParticleTimer_getMeta(){
  if(!lbl_80535868 || !(reinterpret_cast<unsigned int *>(lbl_80535868)[0x24/4]&4)) fn_802E7FDC();
  return lbl_80535868;
 }

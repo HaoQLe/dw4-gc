@@ -31,7 +31,7 @@ public:
  virtual void * s5C();
 };
 extern "C" {
-void fn_801D27AC(int p0){
+void igAnimationCombiner_virtual28(int p0){
  void *value0;
  value0=reinterpret_cast<UnknownGenV801D27AC_0 *>((void *)p0)->s5C();
  if((unsigned char)(int)value0){

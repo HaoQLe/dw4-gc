@@ -6,7 +6,7 @@ void fn_802D8EB0();
 extern void *lbl_80535318;
 }
 extern "C" {
-void *fn_802D8D24(){
+void *beFontInfoData_getMeta(){
  if(!lbl_80535318 || !(reinterpret_cast<unsigned int *>(lbl_80535318)[0x24/4]&4)) fn_802D8EB0();
  return lbl_80535318;
 }

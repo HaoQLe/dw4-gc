@@ -42,10 +42,10 @@ public:
  virtual void s8C();
 };
 extern "C" {
-int fn_801244FC(){return 64;}
+int igMatrix44fMetaField_virtual64(){return 64;}
 void fn_80124504(int p0){
  reinterpret_cast<UnknownGenV80124504_0 *>((void *)p0)->s8C();
 }
-int fn_80124530(){return 16;}
+int igMatrix44fMetaField_virtual160(){return 16;}
 }
 #pragma pop

@@ -6,7 +6,7 @@ void fn_80160128(void *);
 void fn_80184B24(void *);
 }
 extern "C" {
-void fn_801600F4(int p0){
+void igConvertImage_virtual2C(int p0){
  fn_80184B24((void *)p0);
  fn_80160128((void *)p0);
 }

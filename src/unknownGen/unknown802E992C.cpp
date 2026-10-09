@@ -31,7 +31,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_802E992C(int p0){
+void beSvPlatDataGC_virtual28(int p0){
  void *value0;
  void *value1;
  void *value2;

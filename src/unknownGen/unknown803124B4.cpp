@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80534A90;
 }
 extern "C" {
-void *fn_803124B4(){return lbl_80534A90;}
+void *beParticleCtrl2_virtual80(){return lbl_80534A90;}
 }
 #pragma pop

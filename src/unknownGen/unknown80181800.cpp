@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564FC0;
 }
 extern "C" {
-void *fn_80181800(){return lbl_80564FC0;}
+void *igObjectPropertyForDOFShader_virtual7C(){return lbl_80564FC0;}
 }
 #pragma pop

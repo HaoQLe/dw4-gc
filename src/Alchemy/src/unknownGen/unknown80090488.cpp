@@ -6,7 +6,7 @@ void fn_800A325C(void *);
 extern char lbl_8046F7C0[];
 }
 extern "C" {
-int fn_80090488(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+40);}
+int igStandardQueue_virtual84(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+40);}
 void *fn_80090490(void *p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(p0)+0)=lbl_8046F7C0;
  return p0;

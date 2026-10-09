@@ -12,7 +12,6 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
 void *fn_800C5A04(int);
 void *fn_800C5AD4(int);
@@ -20,8 +19,9 @@ void *fn_800C5BA4(int);
 void *fn_800C5CA8(int);
 void fn_800D60D8();
 void fn_800D6128();
-void *fn_800F8F78(void *,void *);
-void *fn_800F8F94(void *,float);
+void *igGamecubeVisualContext_virtual36C(void *,void *);
+void *igGamecubeVisualContext_virtual374(void *,float);
+void igVisualAttribute_register();
 extern char lbl_8047A1CC[];
 extern char lbl_8047A204[];
 extern char lbl_8047A22C[];
@@ -54,30 +54,30 @@ extern void *lbl_80562AAC;
 extern void *lbl_80562AB8;
 extern void *lbl_80562AC4;
 extern void *lbl_80562AD0;
-void *fn_800BC24C();
-void *fn_800BC288();
+void *igTextureStageConstantColorSelectAttr_getMeta();
+void *igTextureStageConstantColorSelectAttr_vtableRead();
 void fn_800BC2E0();
-void fn_800BC308();
-void *fn_800BC378();
-void fn_800BC398();
-void *fn_800BC43C();
-void *fn_800BC478();
+void igTextureStageConstantColorSelectAttr_register();
+void *igTextureStageConstantColorSelectAttr_getMetaCall();
+void igTextureStageConstantColorSelectAttr_fieldInit();
+void *igTextureStageConstantAlphaSelectAttr_getMeta();
+void *igTextureStageConstantAlphaSelectAttr_vtableRead();
 void fn_800BC4D0();
-void fn_800BC4F8();
-void *fn_800BC568();
-void fn_800BC588();
-void *fn_800BC664();
-void *fn_800BC6A0();
+void igTextureStageConstantAlphaSelectAttr_register();
+void *igTextureStageConstantAlphaSelectAttr_getMetaCall();
+void igTextureStageConstantAlphaSelectAttr_fieldInit();
+void *igTextureEnvironmentColorAttr_getMeta();
+void *igTextureEnvironmentColorAttr_vtableRead();
 void fn_800BC6F8();
-void fn_800BC720();
-void *fn_800BC790();
-void fn_800BC7B0();
-void *fn_800BC830();
-void *fn_800BC86C();
+void igTextureEnvironmentColorAttr_register();
+void *igTextureEnvironmentColorAttr_getMetaCall();
+void igTextureEnvironmentColorAttr_fieldInit();
+void *igTextureConstantAttr_getMeta();
+void *igTextureConstantAttr_vtableRead();
 void fn_800BC8C4();
-void fn_800BC8EC();
-void *fn_800BC95C();
-void fn_800BC97C();
+void igTextureConstantAttr_register();
+void *igTextureConstantAttr_getMetaCall();
+void igTextureConstantAttr_fieldInit();
 }
 struct UnknownGenObject800BC288_0 {
  void *unknown00;
@@ -96,11 +96,11 @@ struct UnknownGenObject800BC86C_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_800BC24C(){
+void *igTextureStageConstantColorSelectAttr_getMeta(){
  if(!lbl_80562AAC || !(reinterpret_cast<unsigned int *>(lbl_80562AAC)[0x24/4]&4)) fn_800BC2E0();
  return lbl_80562AAC;
 }
-void *fn_800BC288(){
+void *igTextureStageConstantColorSelectAttr_vtableRead(){
  UnknownGenObject800BC288_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -109,14 +109,14 @@ void *fn_800BC288(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800BC2E0(){
- fn_80066188((int)fn_800BC308);
+ fn_80066188((int)igTextureStageConstantColorSelectAttr_register);
 }
-void fn_800BC308(){
+void igTextureStageConstantColorSelectAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562AAC,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800BC378,(int)lbl_8047A1CC,20,(int)fn_800BC288,(int)fn_800BC398,0,0);
+ fn_80066204(0,(int)&lbl_80562AAC,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igTextureStageConstantColorSelectAttr_getMetaCall,(int)lbl_8047A1CC,20,(int)igTextureStageConstantColorSelectAttr_vtableRead,(int)igTextureStageConstantColorSelectAttr_fieldInit,0,0);
 }
-void *fn_800BC378(){return fn_800BC24C();}
-void fn_800BC398(){
+void *igTextureStageConstantColorSelectAttr_getMetaCall(){return igTextureStageConstantColorSelectAttr_getMeta();}
+void igTextureStageConstantColorSelectAttr_fieldInit(){
  void *value0=lbl_80562AAC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E74C,2);
@@ -127,11 +127,11 @@ void fn_800BC398(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+48)=(void *)fn_800C5CA8;
  fn_800659C0(value0,lbl_8055E754,lbl_8055E75C,lbl_8055E764,value1);
 }
-void *fn_800BC43C(){
+void *igTextureStageConstantAlphaSelectAttr_getMeta(){
  if(!lbl_80562AB8 || !(reinterpret_cast<unsigned int *>(lbl_80562AB8)[0x24/4]&4)) fn_800BC4D0();
  return lbl_80562AB8;
 }
-void *fn_800BC478(){
+void *igTextureStageConstantAlphaSelectAttr_vtableRead(){
  UnknownGenObject800BC478_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -140,14 +140,14 @@ void *fn_800BC478(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800BC4D0(){
- fn_80066188((int)fn_800BC4F8);
+ fn_80066188((int)igTextureStageConstantAlphaSelectAttr_register);
 }
-void fn_800BC4F8(){
+void igTextureStageConstantAlphaSelectAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562AB8,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800BC568,(int)lbl_8047A204,20,(int)fn_800BC478,(int)fn_800BC588,0,0);
+ fn_80066204(0,(int)&lbl_80562AB8,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igTextureStageConstantAlphaSelectAttr_getMetaCall,(int)lbl_8047A204,20,(int)igTextureStageConstantAlphaSelectAttr_vtableRead,(int)igTextureStageConstantAlphaSelectAttr_fieldInit,0,0);
 }
-void *fn_800BC568(){return fn_800BC43C();}
-void fn_800BC588(){
+void *igTextureStageConstantAlphaSelectAttr_getMetaCall(){return igTextureStageConstantAlphaSelectAttr_getMeta();}
+void igTextureStageConstantAlphaSelectAttr_fieldInit(){
  void *value0=lbl_80562AB8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E770,2);
@@ -162,11 +162,11 @@ void *fn_800BC62C(void *object){
  fn_800BC6F8();
  return fn_8006546C(lbl_80562AC4,object);
 }
-void *fn_800BC664(){
+void *igTextureEnvironmentColorAttr_getMeta(){
  if(!lbl_80562AC4 || !(reinterpret_cast<unsigned int *>(lbl_80562AC4)[0x24/4]&4)) fn_800BC6F8();
  return lbl_80562AC4;
 }
-void *fn_800BC6A0(){
+void *igTextureEnvironmentColorAttr_vtableRead(){
  UnknownGenObject800BC6A0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -175,14 +175,14 @@ void *fn_800BC6A0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800BC6F8(){
- fn_80066188((int)fn_800BC720);
+ fn_80066188((int)igTextureEnvironmentColorAttr_register);
 }
-void fn_800BC720(){
+void igTextureEnvironmentColorAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562AC4,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800BC790,(int)lbl_8047A22C,20,(int)fn_800BC6A0,(int)fn_800BC7B0,0,0);
+ fn_80066204(0,(int)&lbl_80562AC4,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igTextureEnvironmentColorAttr_getMetaCall,(int)lbl_8047A22C,20,(int)igTextureEnvironmentColorAttr_vtableRead,(int)igTextureEnvironmentColorAttr_fieldInit,0,0);
 }
-void *fn_800BC790(){return fn_800BC664();}
-void fn_800BC7B0(){
+void *igTextureEnvironmentColorAttr_getMetaCall(){return igTextureEnvironmentColorAttr_getMeta();}
+void igTextureEnvironmentColorAttr_fieldInit(){
  void *value0=lbl_80562AC4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E794,2);
@@ -190,11 +190,11 @@ void fn_800BC7B0(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+48)=(void *)fn_800C5AD4;
  fn_800659C0(value0,lbl_8055E79C,lbl_8055E7A4,lbl_8055E7AC,value1);
 }
-void *fn_800BC830(){
+void *igTextureConstantAttr_getMeta(){
  if(!lbl_80562AD0 || !(reinterpret_cast<unsigned int *>(lbl_80562AD0)[0x24/4]&4)) fn_800BC8C4();
  return lbl_80562AD0;
 }
-void *fn_800BC86C(){
+void *igTextureConstantAttr_vtableRead(){
  UnknownGenObject800BC86C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -203,14 +203,14 @@ void *fn_800BC86C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800BC8C4(){
- fn_80066188((int)fn_800BC8EC);
+ fn_80066188((int)igTextureConstantAttr_register);
 }
-void fn_800BC8EC(){
+void igTextureConstantAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562AD0,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800BC95C,(int)lbl_8047A260,20,(int)fn_800BC86C,(int)fn_800BC97C,0,0);
+ fn_80066204(0,(int)&lbl_80562AD0,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igTextureConstantAttr_getMetaCall,(int)lbl_8047A260,20,(int)igTextureConstantAttr_vtableRead,(int)igTextureConstantAttr_fieldInit,0,0);
 }
-void *fn_800BC95C(){return fn_800BC830();}
-void fn_800BC97C(){
+void *igTextureConstantAttr_getMetaCall(){return igTextureConstantAttr_getMeta();}
+void igTextureConstantAttr_fieldInit(){
  void *value0=lbl_80562AD0;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E7B4,2);
@@ -218,10 +218,10 @@ void fn_800BC97C(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+48)=(void *)fn_800C5A04;
  fn_800659C0(value0,lbl_8055E7BC,lbl_8055E7C4,lbl_8055E7CC,value1);
 }
-void fn_800BC9FC(int p0,int p1){
- fn_800F8F78((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
+void igAlphaFunctionAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual36C((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
  float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+16);
- fn_800F8F94((void *)p1,value0);
+ igGamecubeVisualContext_virtual374((void *)p1,value0);
 }
 }
 #pragma pop

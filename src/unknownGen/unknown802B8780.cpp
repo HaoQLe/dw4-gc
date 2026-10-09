@@ -16,7 +16,7 @@ extern void *lbl_80534734;
 extern void *lbl_80534740;
 }
 extern "C" {
-void fn_802B8780(){
+void beBinDataObject_fieldInit(){
  void *value0=lbl_80534734;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF478,2);
@@ -25,7 +25,7 @@ void fn_802B8780(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+60)=value3;
  fn_800659C0(value0,lbl_804CF480,lbl_804CF488,lbl_804CF490,value1);
 }
-void *fn_802B8820(){
+void *beSoundInfo_getMeta(){
  if(!lbl_80534740 || !(reinterpret_cast<unsigned int *>(lbl_80534740)[0x24/4]&4)) fn_802B8A24();
  return lbl_80534740;
 }

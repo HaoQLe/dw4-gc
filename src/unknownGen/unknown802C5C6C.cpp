@@ -13,9 +13,9 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void fn_802B1AC8();
 void fn_802C6198();
+void igObject_register();
 extern char lbl_8041E6AC[];
 extern char lbl_8041EA3C[];
 extern char lbl_804D06B8[];
@@ -25,26 +25,26 @@ extern char lbl_804D06DC[];
 extern void *lbl_80534C40;
 extern void *lbl_80534C50;
 extern void *lbl_805621F4;
-void *fn_802C5C6C();
+void *beModelCtrlSubComBase_getMeta();
 void fn_802C5CB8();
-void fn_802C5CE0();
-void *fn_802C5D50();
-void fn_802C5D70();
+void beModelCtrlSubComBase_register();
+void *beModelCtrlSubComBase_getMetaCall();
+void beModelCtrlSubComBase_fieldInit();
 }
 extern "C" {
-void *fn_802C5C6C(){
+void *beModelCtrlSubComBase_getMeta(){
  if(!lbl_80534C40 || !(reinterpret_cast<unsigned int *>(lbl_80534C40)[0x24/4]&4)) fn_802C5CB8();
  return lbl_80534C40;
 }
 void fn_802C5CB8(){
- fn_80066188((int)fn_802C5CE0);
+ fn_80066188((int)beModelCtrlSubComBase_register);
 }
-void fn_802C5CE0(){
+void beModelCtrlSubComBase_register(){
  fn_802B1AC8();
- fn_80066204(1,(int)&lbl_80534C40,(int)fn_80066B08,(int)fn_800237D0,(int)fn_802C5D50,(int)lbl_8041EA3C,20,0,(int)fn_802C5D70,0,0);
+ fn_80066204(1,(int)&lbl_80534C40,(int)igObject_register,(int)fn_800237D0,(int)beModelCtrlSubComBase_getMetaCall,(int)lbl_8041EA3C,20,0,(int)beModelCtrlSubComBase_fieldInit,0,0);
 }
-void *fn_802C5D50(){return fn_802C5C6C();}
-void fn_802C5D70(){
+void *beModelCtrlSubComBase_getMetaCall(){return beModelCtrlSubComBase_getMeta();}
+void beModelCtrlSubComBase_fieldInit(){
  void *value0=lbl_80534C40;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D06B8,3);
@@ -60,7 +60,7 @@ void *fn_802C5E48(){
  if(!lbl_80534C50) lbl_80534C50=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80534C50;
 }
-void *fn_802C5E9C(){
+void *beModelCtrlNode2_getMeta(){
  if(!lbl_80534C50 || !(reinterpret_cast<unsigned int *>(lbl_80534C50)[0x24/4]&4)) fn_802C6198();
  return lbl_80534C50;
 }

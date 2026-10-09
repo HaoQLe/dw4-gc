@@ -4,7 +4,6 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80024180();
-void fn_8002907C();
 void *fn_80029E64(void *);
 void fn_80053650(void *,int);
 void *fn_800607F4(void *);
@@ -16,13 +15,14 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_8010CBD4();
 void *fn_8010CC08();
 void *fn_8010D6A0();
-void fn_8010F8E0();
-void fn_80111654();
-void fn_80112DF0();
+void igEventReceiver_register();
+void igGuiComponentModel_register();
+void igHotKeyBinding_fieldInit();
+void igObjectList_register();
+void igObject_register();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
@@ -69,43 +69,43 @@ extern void *lbl_80563650;
 extern void *lbl_80563658;
 extern void *lbl_8056365C;
 extern void *lbl_805637B8;
-void *fn_8010ECE0();
-void *fn_8010ED1C();
+void *igRadioGroupModel_getMeta();
+void *igRadioGroupModel_vtableRead();
 void fn_8010EDB4();
-void fn_8010EDDC();
-void *fn_8010EE4C();
+void igRadioGroupModel_register();
+void *igRadioGroupModel_getMetaCall();
 void *fn_8010EE6C();
-void fn_8010EE74();
-void *fn_8010EEF0();
-void *fn_8010EF2C();
+void igRadioGroupModel_fieldInit();
+void *igOnOffModel_getMeta();
+void *igOnOffModel_vtableRead();
 void fn_8010EFD4();
-void fn_8010EFFC();
-void *fn_8010F06C();
-void fn_8010F08C();
-void *fn_8010F130();
-void *fn_8010F16C();
+void igOnOffModel_register();
+void *igOnOffModel_getMetaCall();
+void igOnOffModel_fieldInit();
+void *igModel_getMeta();
+void *igModel_vtableRead();
 void fn_8010F1F4();
-void fn_8010F21C();
-void *fn_8010F28C();
-void fn_8010F2AC();
-void *fn_8010F370();
-void *fn_8010F3AC();
+void igModel_register();
+void *igModel_getMetaCall();
+void igModel_fieldInit();
+void *igHotKeyEventReceiver_getMeta();
+void *igHotKeyEventReceiver_vtableRead();
 void fn_8010F440();
-void fn_8010F468();
-void *fn_8010F4DC();
+void igHotKeyEventReceiver_register();
+void *igHotKeyEventReceiver_getMetaCall();
 void *fn_8010F4FC();
-void fn_8010F504();
+void igHotKeyEventReceiver_fieldInit();
 void *fn_8010F58C();
-void *fn_8010F5C8();
-void *fn_8010F604();
+void *igHotKeyBindingList_getMeta();
+void *igHotKeyBindingList_vtableRead();
 void fn_8010F674();
-void fn_8010F69C();
-void *fn_8010F708();
-void *fn_8010F760();
-void *fn_8010F79C();
+void igHotKeyBindingList_register();
+void *igHotKeyBindingList_getMetaCall();
+void *igHotKeyBinding_getMeta();
+void *igHotKeyBinding_vtableRead();
 void fn_8010F824();
-void fn_8010F84C();
-void *fn_8010F8C0();
+void igHotKeyBinding_register();
+void *igHotKeyBinding_getMetaCall();
 }
 struct UnknownGenRoot8010ED1C {
  void *unknown00;
@@ -180,11 +180,11 @@ void *fn_8010ECA4(){
  if(!lbl_80563618) lbl_80563618=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80563618;
 }
-void *fn_8010ECE0(){
+void *igRadioGroupModel_getMeta(){
  if(!lbl_80563618 || !(reinterpret_cast<unsigned int *>(lbl_80563618)[0x24/4]&4)) fn_8010EDB4();
  return lbl_80563618;
 }
-void *fn_8010ED1C(){
+void *igRadioGroupModel_vtableRead(){
  UnknownGenObject8010ED1C object;
  object.unknown00=lbl_80496040;
  object.unknown08.value=0;
@@ -192,15 +192,15 @@ void *fn_8010ED1C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010EDB4(){
- fn_80066188((int)fn_8010EDDC);
+ fn_80066188((int)igRadioGroupModel_register);
 }
-void fn_8010EDDC(){
+void igRadioGroupModel_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563618,(int)fn_8010F21C,(int)fn_8010EE6C,(int)fn_8010EE4C,(int)lbl_804949F0,16,(int)fn_8010ED1C,(int)fn_8010EE74,0,0);
+ fn_80066204(0,(int)&lbl_80563618,(int)igModel_register,(int)fn_8010EE6C,(int)igRadioGroupModel_getMetaCall,(int)lbl_804949F0,16,(int)igRadioGroupModel_vtableRead,(int)igRadioGroupModel_fieldInit,0,0);
 }
-void *fn_8010EE4C(){return fn_8010ECE0();}
+void *igRadioGroupModel_getMetaCall(){return igRadioGroupModel_getMeta();}
 void *fn_8010EE6C(){return lbl_80563638;}
-void fn_8010EE74(){
+void igRadioGroupModel_fieldInit(){
  void *value0=lbl_80563618;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EFBC,1);
@@ -208,11 +208,11 @@ void fn_8010EE74(){
  fn_80053650(value2,-1);
  fn_800659C0(value0,lbl_8055EFC0,lbl_8055EFC4,lbl_8055EFC8,value1);
 }
-void *fn_8010EEF0(){
+void *igOnOffModel_getMeta(){
  if(!lbl_80563628 || !(reinterpret_cast<unsigned int *>(lbl_80563628)[0x24/4]&4)) fn_8010EFD4();
  return lbl_80563628;
 }
-void *fn_8010EF2C(){
+void *igOnOffModel_vtableRead(){
  UnknownGenObject8010EF2C object;
  object.unknown00=lbl_80496040;
  object.unknown08.value=0;
@@ -221,14 +221,14 @@ void *fn_8010EF2C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010EFD4(){
- fn_80066188((int)fn_8010EFFC);
+ fn_80066188((int)igOnOffModel_register);
 }
-void fn_8010EFFC(){
+void igOnOffModel_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563628,(int)fn_80111654,(int)fn_8010D6A0,(int)fn_8010F06C,(int)lbl_80494A34,40,(int)fn_8010EF2C,(int)fn_8010F08C,0,0);
+ fn_80066204(0,(int)&lbl_80563628,(int)igGuiComponentModel_register,(int)fn_8010D6A0,(int)igOnOffModel_getMetaCall,(int)lbl_80494A34,40,(int)igOnOffModel_vtableRead,(int)igOnOffModel_fieldInit,0,0);
 }
-void *fn_8010F06C(){return fn_8010EEF0();}
-void fn_8010F08C(){
+void *igOnOffModel_getMetaCall(){return igOnOffModel_getMeta();}
+void igOnOffModel_fieldInit(){
  void *value0=lbl_80563628;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EFCC,1);
@@ -238,25 +238,25 @@ void *fn_8010F0F4(){
  if(!lbl_80563638) lbl_80563638=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80563638;
 }
-void *fn_8010F130(){
+void *igModel_getMeta(){
  if(!lbl_80563638 || !(reinterpret_cast<unsigned int *>(lbl_80563638)[0x24/4]&4)) fn_8010F1F4();
  return lbl_80563638;
 }
-void *fn_8010F16C(){
+void *igModel_vtableRead(){
  UnknownGenObject8010F16C object;
  object.unknown00=lbl_80496040;
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010F1F4(){
- fn_80066188((int)fn_8010F21C);
+ fn_80066188((int)igModel_register);
 }
-void fn_8010F21C(){
+void igModel_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563638,(int)fn_80066B08,(int)fn_800237D0,(int)fn_8010F28C,(int)lbl_8055EFEC,12,(int)fn_8010F16C,(int)fn_8010F2AC,0,(int)lbl_8055EFE4);
+ fn_80066204(0,(int)&lbl_80563638,(int)igObject_register,(int)fn_800237D0,(int)igModel_getMetaCall,(int)lbl_8055EFEC,12,(int)igModel_vtableRead,(int)igModel_fieldInit,0,(int)lbl_8055EFE4);
 }
-void *fn_8010F28C(){return fn_8010F130();}
-void fn_8010F2AC(){
+void *igModel_getMetaCall(){return igModel_getMeta();}
+void igModel_fieldInit(){
  void *value0=lbl_80563638;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EFF4,1);
@@ -270,11 +270,11 @@ void *fn_8010F334(){
  if(!lbl_80563650) lbl_80563650=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80563650;
 }
-void *fn_8010F370(){
+void *igHotKeyEventReceiver_getMeta(){
  if(!lbl_80563650 || !(reinterpret_cast<unsigned int *>(lbl_80563650)[0x24/4]&4)) fn_8010F440();
  return lbl_80563650;
 }
-void *fn_8010F3AC(){
+void *igHotKeyEventReceiver_vtableRead(){
  UnknownGenObject8010F3AC object;
  object.unknown00=lbl_80497724;
  object.unknown00=lbl_80496100;
@@ -282,15 +282,15 @@ void *fn_8010F3AC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010F440(){
- fn_80066188((int)fn_8010F468);
+ fn_80066188((int)igHotKeyEventReceiver_register);
 }
-void fn_8010F468(){
+void igHotKeyEventReceiver_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563650,(int)fn_80112DF0,(int)fn_8010F4FC,(int)fn_8010F4DC,(int)lbl_80494ACC,12,(int)fn_8010F3AC,(int)fn_8010F504,0,(int)lbl_8055F00C);
+ fn_80066204(0,(int)&lbl_80563650,(int)igEventReceiver_register,(int)fn_8010F4FC,(int)igHotKeyEventReceiver_getMetaCall,(int)lbl_80494ACC,12,(int)igHotKeyEventReceiver_vtableRead,(int)igHotKeyEventReceiver_fieldInit,0,(int)lbl_8055F00C);
 }
-void *fn_8010F4DC(){return fn_8010F370();}
+void *igHotKeyEventReceiver_getMetaCall(){return igHotKeyEventReceiver_getMeta();}
 void *fn_8010F4FC(){return lbl_805637B8;}
-void fn_8010F504(){
+void igHotKeyEventReceiver_fieldInit(){
  void *value0=lbl_80563650;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F014,1);
@@ -304,11 +304,11 @@ void *fn_8010F58C(){
  if(!lbl_80563658) lbl_80563658=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80563658;
 }
-void *fn_8010F5C8(){
+void *igHotKeyBindingList_getMeta(){
  if(!lbl_80563658 || !(reinterpret_cast<unsigned int *>(lbl_80563658)[0x24/4]&4)) fn_8010F674();
  return lbl_80563658;
 }
-void *fn_8010F604(){
+void *igHotKeyBindingList_vtableRead(){
  UnknownGenObject8010F604_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -319,34 +319,34 @@ void *fn_8010F604(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010F674(){
- fn_80066188((int)fn_8010F69C);
+ fn_80066188((int)igHotKeyBindingList_register);
 }
-void fn_8010F69C(){
+void igHotKeyBindingList_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563658,(int)fn_8002907C,(int)fn_80024180,(int)fn_8010F708,(int)lbl_80494AF0,20,(int)fn_8010F604,0,0,(int)lbl_8055F024);
+ fn_80066204(0,(int)&lbl_80563658,(int)igObjectList_register,(int)fn_80024180,(int)igHotKeyBindingList_getMetaCall,(int)lbl_80494AF0,20,(int)igHotKeyBindingList_vtableRead,0,0,(int)lbl_8055F024);
 }
-void *fn_8010F708(){return fn_8010F5C8();}
+void *igHotKeyBindingList_getMetaCall(){return igHotKeyBindingList_getMeta();}
 void *fn_8010F728(void *object){
  fn_8010F824();
  return fn_8006546C(lbl_8056365C,object);
 }
-void *fn_8010F760(){
+void *igHotKeyBinding_getMeta(){
  if(!lbl_8056365C || !(reinterpret_cast<unsigned int *>(lbl_8056365C)[0x24/4]&4)) fn_8010F824();
  return lbl_8056365C;
 }
-void *fn_8010F79C(){
+void *igHotKeyBinding_vtableRead(){
  UnknownGenObject8010F79C object;
  object.unknown00=lbl_80497600;
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010F824(){
- fn_80066188((int)fn_8010F84C);
+ fn_80066188((int)igHotKeyBinding_register);
 }
-void fn_8010F84C(){
+void igHotKeyBinding_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_8056365C,(int)fn_80066B08,(int)fn_800237D0,(int)fn_8010F8C0,(int)lbl_80494B04,20,(int)fn_8010F79C,(int)fn_8010F8E0,0,(int)lbl_8055F02C);
+ fn_80066204(0,(int)&lbl_8056365C,(int)igObject_register,(int)fn_800237D0,(int)igHotKeyBinding_getMetaCall,(int)lbl_80494B04,20,(int)igHotKeyBinding_vtableRead,(int)igHotKeyBinding_fieldInit,0,(int)lbl_8055F02C);
 }
-void *fn_8010F8C0(){return fn_8010F760();}
+void *igHotKeyBinding_getMetaCall(){return igHotKeyBinding_getMeta();}
 }
 #pragma pop

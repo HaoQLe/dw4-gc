@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_803234A8(int p0){
+void beSaveUtil_virtual88(int p0){
  void *value0;
  void *value1;
  void *value2;

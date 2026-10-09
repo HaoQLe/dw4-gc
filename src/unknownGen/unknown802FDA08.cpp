@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_802FDA08(){}
+void beHitLandDeliv_virtual84(){}
 }
 #pragma pop

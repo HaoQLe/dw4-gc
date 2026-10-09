@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80534630;
 }
 extern "C" {
-void *fn_8031B9EC(){return lbl_80534630;}
+void *beTimer_virtual58(){return lbl_80534630;}
 }
 #pragma pop

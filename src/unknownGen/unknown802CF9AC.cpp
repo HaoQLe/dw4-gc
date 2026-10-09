@@ -21,7 +21,7 @@ extern char lbl_804D15C4[];
 extern void *lbl_8053503C;
 }
 extern "C" {
-void fn_802CF9AC(){
+void beMessengerArgData_fieldInit(){
  void *value0=lbl_8053503C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D154C,10);

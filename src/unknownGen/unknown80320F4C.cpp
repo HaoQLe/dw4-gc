@@ -5,11 +5,11 @@ extern "C" {
 extern char lbl_80535C18[];
 }
 extern "C" {
-void fn_80320F4C(int p0,int p1){
+void beSvFileMakeApi_virtual64(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+44)=1;
 }
-void fn_80320F60(int p0,int p1){
+void beSvFileFindApi_virtual5C(int p0,int p1){
  void *value0;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+16);
  if((int)(int)value0==-1){

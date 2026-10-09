@@ -13,7 +13,7 @@ void *fn_80029F84(){
  if(!lbl_8056174C) lbl_8056174C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8056174C;
 }
-void *fn_80029FC0(){
+void *igMetaObject_getMeta(){
  if(!lbl_8056174C || !(reinterpret_cast<unsigned int *>(lbl_8056174C)[0x24/4]&4)) fn_8002A0A8();
  return lbl_8056174C;
 }

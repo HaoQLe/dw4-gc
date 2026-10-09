@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80311F78(){return 0;}
-void fn_80311F80(){}
+int bePadManager_virtual6C(){return 0;}
+void bePadManager_virtual70(){}
 }
 #pragma pop

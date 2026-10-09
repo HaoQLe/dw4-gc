@@ -5,7 +5,7 @@ extern "C" {
 void fn_800BCB6C(void *,void *);
 }
 extern "C" {
-void fn_800C23F0(int p0,int p1){
+void igRefVertexBlendMatrixAttr_virtual64(int p0,int p1){
  *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+16)=(short)(int)(void *)p1;
  fn_800BCB6C((void *)p0,(void *)p1);
 }

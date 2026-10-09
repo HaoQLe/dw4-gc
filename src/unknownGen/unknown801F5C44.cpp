@@ -2,15 +2,15 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8020AF78(void *,void *);
+void igTraversal_virtual24(void *,void *);
 extern void *lbl_805657E4;
 }
 extern "C" {
-void fn_801F5C44(int p0,int p1){
+void igIntersectTraversal_virtual24(int p0,int p1){
  void *value1;
  void *value2;
  void *value3;
- fn_8020AF78((void *)p0,(void *)p1);
+ igTraversal_virtual24((void *)p0,(void *)p1);
  if(!(unsigned char)p1){
   void *value0=lbl_805657E4;
   if(value0){

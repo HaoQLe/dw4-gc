@@ -15,7 +15,7 @@ extern char lbl_804CEE44[];
 extern void *lbl_80534568;
 }
 extern "C" {
-void fn_802B3CFC(){
+void beWeaponAttachData_fieldInit(){
  void *value0=lbl_80534568;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CEE2C,2);

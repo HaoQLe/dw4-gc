@@ -2,6 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *beNDMWStatusPowerSocket_getMeta();
+void beNDMWStatusPowerSocket_vtableRead();
+void beNDMWWindowCtrl_register();
 void fn_80053650(void *,int);
 void *fn_8006546C(void *,void *);
 void *fn_800658E4(void *,void *);
@@ -14,10 +17,7 @@ void *fn_802DC03C();
 void fn_803250AC();
 void *fn_8032B8A4();
 void *fn_80332910();
-void *fn_80332BBC();
-void fn_80332C08();
 void fn_803332B4();
-void fn_80333F14();
 void *fn_8034365C();
 extern char lbl_80453BB8[];
 extern char lbl_80453BD0[];
@@ -29,36 +29,36 @@ extern char lbl_804E1FA0[];
 extern char lbl_80535F38[];
 extern void *lbl_80535F3C;
 extern void *lbl_80535F68;
-void fn_80332D4C();
-void *fn_80332DB8();
-void *fn_80332DD8();
+void beNDMWStatusPowerSocket_register();
+void *beNDMWStatusPowerSocket_getMetaCall();
+void *beNDMWStatusCtrlBaseEquip_getMeta();
 void fn_80332E24();
-void fn_80332E4C();
-void *fn_80332EC4();
-void fn_80332EE4();
+void beNDMWStatusCtrlBaseEquip_register();
+void *beNDMWStatusCtrlBaseEquip_getMetaCall();
+void beNDMWStatusCtrlBaseEquip_fieldInit();
 }
 extern "C" {
 void fn_80332D24(){
- fn_80066188((int)fn_80332D4C);
+ fn_80066188((int)beNDMWStatusPowerSocket_register);
 }
-void fn_80332D4C(){
+void beNDMWStatusPowerSocket_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535F38,(int)fn_80332E4C,(int)fn_80332910,(int)fn_80332DB8,(int)lbl_80453BB8,124,(int)fn_80332C08,0,0,0);
+ fn_80066204(0,(int)lbl_80535F38,(int)beNDMWStatusCtrlBaseEquip_register,(int)fn_80332910,(int)beNDMWStatusPowerSocket_getMetaCall,(int)lbl_80453BB8,124,(int)beNDMWStatusPowerSocket_vtableRead,0,0,0);
 }
-void *fn_80332DB8(){return fn_80332BBC();}
-void *fn_80332DD8(){
+void *beNDMWStatusPowerSocket_getMetaCall(){return beNDMWStatusPowerSocket_getMeta();}
+void *beNDMWStatusCtrlBaseEquip_getMeta(){
  if(!lbl_80535F3C || !(reinterpret_cast<unsigned int *>(lbl_80535F3C)[0x24/4]&4)) fn_80332E24();
  return lbl_80535F3C;
 }
 void fn_80332E24(){
- fn_80066188((int)fn_80332E4C);
+ fn_80066188((int)beNDMWStatusCtrlBaseEquip_register);
 }
-void fn_80332E4C(){
+void beNDMWStatusCtrlBaseEquip_register(){
  fn_803250AC();
- fn_80066204(1,(int)&lbl_80535F3C,(int)fn_80333F14,(int)fn_8032B8A4,(int)fn_80332EC4,(int)lbl_80453BD0,124,0,(int)fn_80332EE4,0,(int)lbl_804E1F1C);
+ fn_80066204(1,(int)&lbl_80535F3C,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWStatusCtrlBaseEquip_getMetaCall,(int)lbl_80453BD0,124,0,(int)beNDMWStatusCtrlBaseEquip_fieldInit,0,(int)lbl_804E1F1C);
 }
-void *fn_80332EC4(){return fn_80332DD8();}
-void fn_80332EE4(){
+void *beNDMWStatusCtrlBaseEquip_getMetaCall(){return beNDMWStatusCtrlBaseEquip_getMeta();}
+void beNDMWStatusCtrlBaseEquip_fieldInit(){
  void *value0=lbl_80535F3C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1F28,10);
@@ -91,7 +91,7 @@ void *fn_80333028(void *object){
  fn_803332B4();
  return fn_8006546C(lbl_80535F68,object);
 }
-void *fn_80333068(){
+void *beNDMWStatusCtrlEquip_getMeta(){
  if(!lbl_80535F68 || !(reinterpret_cast<unsigned int *>(lbl_80535F68)[0x24/4]&4)) fn_803332B4();
  return lbl_80535F68;
 }

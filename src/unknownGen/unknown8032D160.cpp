@@ -31,7 +31,7 @@ struct UnknownGenObject8032D160 : UnknownGenObject8032D160_1 {
  inline ~UnknownGenObject8032D160(){unknown00=lbl_804ECCD8;}
 };
 extern "C" {
-void *fn_8032D160(){
+void *beNDMWShopCtrlSell_vtableRead(){
  UnknownGenObject8032D160 object;
  object.unknown00=lbl_804E6A60;
  object.unknown34.value=0;

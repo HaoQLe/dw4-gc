@@ -93,10 +93,10 @@ public:
  virtual void * s8C();
 };
 extern "C" {
-void fn_800C0424(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igGeometryAttr2_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C0424_0 *>((void *)p1)->s5C((void *)23,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
-void *fn_800C0458(int p0){
+void *igGeometryAttr2_virtual70(int p0){
  void *value0;
  void *value1;
  void *value2;
@@ -112,6 +112,6 @@ void *fn_800C0458(int p0){
   return value1;
  }
 }
-void fn_800C04B8(){}
+void igVertexArray2_virtual60(){}
 }
 #pragma pop

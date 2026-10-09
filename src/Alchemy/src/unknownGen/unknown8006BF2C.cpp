@@ -86,7 +86,7 @@ public:
  virtual void * sA8();
 };
 extern "C" {
-void fn_8006BF2C(int p0,int p1,int p2){
+void igGamecubeThread_virtual9C(int p0,int p1,int p2){
  void *value0;
  void *value1;
  void *value2;

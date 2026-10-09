@@ -5,8 +5,8 @@ extern "C" {
 extern void *lbl_80561710;
 }
 extern "C" {
-void *fn_8006889C(){return lbl_80561710;}
-void *fn_800688A4(int p0,int p1){
+void *igObjectDirEntry_virtual58(){return lbl_80561710;}
+void *igObjectDirEntry_virtual6C(int p0,int p1){
  void *value0;
  if((unsigned int)p1==0){
   return (void *)p0;

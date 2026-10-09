@@ -30,7 +30,7 @@ public:
  virtual void s5C(void *);
 };
 extern "C" {
-void fn_8021B2F4(int p0){
+void igMersenneTwisterRandomNumber_virtual34(int p0){
  fn_800667CC();
  reinterpret_cast<UnknownGenV8021B2F4_0 *>((void *)p0)->s5C((void *)5150);
 }

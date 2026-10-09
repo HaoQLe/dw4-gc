@@ -11,7 +11,7 @@ void *fn_80342FAC(void *object){
  fn_803430A4();
  return fn_8006546C(lbl_8053674C,object);
 }
-void *fn_80342FEC(){
+void *beNDMWItemBlueArmor_getMeta(){
  if(!lbl_8053674C || !(reinterpret_cast<unsigned int *>(lbl_8053674C)[0x24/4]&4)) fn_803430A4();
  return lbl_8053674C;
 }

@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_80564A14;
 }
 extern "C" {
-int fn_8016F790(){return 1;}
-void *fn_8016F798(){return lbl_80564A14;}
+int igGatherSpatialPartitions_virtual7C(){return 1;}
+void *igGatherSpatialPartitions_virtual8C(){return lbl_80564A14;}
 }
 #pragma pop

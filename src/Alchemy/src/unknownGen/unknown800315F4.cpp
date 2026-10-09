@@ -4,10 +4,7 @@
 extern "C" {
 void fn_80021B94();
 void *fn_800237D0();
-void *fn_80031498();
 void fn_8003155C();
-void fn_80031584();
-void fn_80031D98();
 void fn_80046FD8(void *);
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
@@ -23,7 +20,10 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
+void igDriverDatabase_fieldInit();
+void *igEnumMetaField_getMeta();
+void igEnumMetaField_register();
+void igObject_register();
 extern char lbl_80466C6C[];
 extern char lbl_80466CA8[];
 extern char lbl_80466DD4[];
@@ -50,18 +50,18 @@ extern void *lbl_80561C40;
 extern void *lbl_80561C48;
 extern void *lbl_80561C4C;
 extern void *lbl_805621F4;
-void *fn_80031790();
-void *fn_800317CC();
+void *igEnumArrayMetaField_getMeta();
+void *igEnumArrayMetaField_vtableRead();
 void fn_80031864();
-void fn_8003188C();
-void *fn_80031900();
-void *fn_80031920();
-void fn_80031928();
-void *fn_80031ABC();
-void *fn_80031AF8();
+void igEnumArrayMetaField_register();
+void *igEnumArrayMetaField_getMetaCall();
+void *igEnumArrayMetaField_parentMeta();
+void igEnumArrayMetaField_fieldInit();
+void *igDriverDatabase_getMeta();
+void *igDriverDatabase_vtableRead();
 void fn_80031CD8();
-void fn_80031D00();
-void *fn_80031D78();
+void igDriverDatabase_register();
+void *igDriverDatabase_getMetaCall();
 }
 struct UnknownGenRoot800317CC {
  void *unknown00;
@@ -99,8 +99,8 @@ struct UnknownGenObject80031AF8 : UnknownGenRoot80031AF8 {
  inline ~UnknownGenObject80031AF8(){unknown00=lbl_80472C48;}
 };
 extern "C" {
-void *fn_800315F4(){return fn_80031498();}
-void fn_80031614(){
+void *igEnumMetaField_getMetaCall(){return igEnumMetaField_getMeta();}
+void igEnumMetaField_fieldInit(){
  void *value0=lbl_80561C30;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D518,1);
@@ -129,25 +129,25 @@ void *fn_80031758(void *object){
  fn_80031864();
  return fn_8006546C(lbl_80561C3C,object);
 }
-void *fn_80031790(){
+void *igEnumArrayMetaField_getMeta(){
  if(!lbl_80561C3C || !(reinterpret_cast<unsigned int *>(lbl_80561C3C)[0x24/4]&4)) fn_80031864();
  return lbl_80561C3C;
 }
-void *fn_800317CC(){
+void *igEnumArrayMetaField_vtableRead(){
  UnknownGenObject800317CC object;
  object.unknown00=lbl_80472B24;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80031864(){
- fn_80066188((int)fn_8003188C);
+ fn_80066188((int)igEnumArrayMetaField_register);
 }
-void fn_8003188C(){
+void igEnumArrayMetaField_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561C3C,(int)fn_80031584,(int)fn_80031920,(int)fn_80031900,(int)lbl_80466C6C,60,(int)fn_800317CC,(int)fn_80031928,0,(int)lbl_8055D528);
+ fn_80066204(0,(int)&lbl_80561C3C,(int)igEnumMetaField_register,(int)igEnumArrayMetaField_parentMeta,(int)igEnumArrayMetaField_getMetaCall,(int)lbl_80466C6C,60,(int)igEnumArrayMetaField_vtableRead,(int)igEnumArrayMetaField_fieldInit,0,(int)lbl_8055D528);
 }
-void *fn_80031900(){return fn_80031790();}
-void *fn_80031920(){return lbl_80561C30;}
-void fn_80031928(){
+void *igEnumArrayMetaField_getMetaCall(){return igEnumArrayMetaField_getMeta();}
+void *igEnumArrayMetaField_parentMeta(){return lbl_80561C30;}
+void igEnumArrayMetaField_fieldInit(){
  void *meta=lbl_80561C3C;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_8055D530,1);
@@ -177,11 +177,11 @@ void *fn_80031A84(void *object){
  fn_80031CD8();
  return fn_8006546C(lbl_80561C4C,object);
 }
-void *fn_80031ABC(){
+void *igDriverDatabase_getMeta(){
  if(!lbl_80561C4C || !(reinterpret_cast<unsigned int *>(lbl_80561C4C)[0x24/4]&4)) fn_80031CD8();
  return lbl_80561C4C;
 }
-void *fn_80031AF8(){
+void *igDriverDatabase_vtableRead(){
  UnknownGenObject80031AF8 object;
  object.unknown00=lbl_80472C48;
  object.unknown08.value=0;
@@ -194,12 +194,12 @@ void *fn_80031AF8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80031CD8(){
- fn_80066188((int)fn_80031D00);
+ fn_80066188((int)igDriverDatabase_register);
 }
-void fn_80031D00(){
+void igDriverDatabase_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561C4C,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80031D78,(int)lbl_80466DEC,56,(int)fn_80031AF8,(int)fn_80031D98,0,(int)lbl_80466DD4);
+ fn_80066204(0,(int)&lbl_80561C4C,(int)igObject_register,(int)fn_800237D0,(int)igDriverDatabase_getMetaCall,(int)lbl_80466DEC,56,(int)igDriverDatabase_vtableRead,(int)igDriverDatabase_fieldInit,0,(int)lbl_80466DD4);
 }
-void *fn_80031D78(){return fn_80031ABC();}
+void *igDriverDatabase_getMetaCall(){return igDriverDatabase_getMeta();}
 }
 #pragma pop

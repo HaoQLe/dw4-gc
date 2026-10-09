@@ -19,7 +19,7 @@ struct UnknownGenObject802DA214 : UnknownGenRoot802DA214 {
  inline ~UnknownGenObject802DA214(){unknown00=lbl_804D5EAC;}
 };
 extern "C" {
-void *fn_802DA214(){
+void *beFontGeomAttrPair_vtableRead(){
  UnknownGenObject802DA214 object;
  object.unknown00=lbl_804D5EAC;
  object.unknown08.value=0;

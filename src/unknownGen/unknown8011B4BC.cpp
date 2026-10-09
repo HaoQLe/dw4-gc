@@ -11,7 +11,7 @@ struct UnknownGenL8011B4BC_8 {
  int m10;
 };
 extern "C" {
-void *fn_8011B4BC(int p0){
+void *igGuiSystem_virtual88(int p0){
  UnknownGenL8011B4BC_8 local0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+180)=1;
  local0.m08=(int)2;

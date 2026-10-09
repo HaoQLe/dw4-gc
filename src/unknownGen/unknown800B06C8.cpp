@@ -7,20 +7,20 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800A325C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
-void fn_800B08D4();
+void igSpriteAttr_fieldInit();
+void igVisualAttribute_register();
 extern char lbl_8047883C[];
 extern char lbl_8047B340[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
 extern char lbl_8055E158[8];
 extern void *lbl_805625F4;
-void *fn_800B06C8();
-void *fn_800B0704();
+void *igSpriteAttr_getMeta();
+void *igSpriteAttr_vtableRead();
 void fn_800B0818();
-void fn_800B0840();
-void *fn_800B08B4();
+void igSpriteAttr_register();
+void *igSpriteAttr_getMetaCall();
 }
 struct UnknownGenRoot800B0704 {
  void *unknown00;
@@ -34,11 +34,11 @@ struct UnknownGenObject800B0704 : UnknownGenRoot800B0704 {
  inline ~UnknownGenObject800B0704(){unknown00=lbl_8047B340;}
 };
 extern "C" {
-void *fn_800B06C8(){
+void *igSpriteAttr_getMeta(){
  if(!lbl_805625F4 || !(reinterpret_cast<unsigned int *>(lbl_805625F4)[0x24/4]&4)) fn_800B0818();
  return lbl_805625F4;
 }
-void *fn_800B0704(){
+void *igSpriteAttr_vtableRead(){
  UnknownGenObject800B0704 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -58,12 +58,12 @@ UnknownGenHolder *dtor_800B07A4(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_800B0818(){
- fn_80066188((int)fn_800B0840);
+ fn_80066188((int)igSpriteAttr_register);
 }
-void fn_800B0840(){
+void igSpriteAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_805625F4,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B08B4,(int)lbl_8047883C,32,(int)fn_800B0704,(int)fn_800B08D4,0,(int)lbl_8055E158);
+ fn_80066204(0,(int)&lbl_805625F4,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igSpriteAttr_getMetaCall,(int)lbl_8047883C,32,(int)igSpriteAttr_vtableRead,(int)igSpriteAttr_fieldInit,0,(int)lbl_8055E158);
 }
-void *fn_800B08B4(){return fn_800B06C8();}
+void *igSpriteAttr_getMetaCall(){return igSpriteAttr_getMeta();}
 }
 #pragma pop

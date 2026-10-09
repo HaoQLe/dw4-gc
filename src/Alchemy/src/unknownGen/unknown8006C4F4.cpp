@@ -12,7 +12,7 @@ void *fn_8006C4F4(int p0,int p1,int p2,int p3,int p4,int p5){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_80476630;
  return (void *)p0;
 }
-void *fn_8006C530(){return fn_8006CCE0();}
+void *igRawRefArrayMetaField_virtual08(){return fn_8006CCE0();}
 int fn_8006C550(){return 0;}
 void *fn_8006C558(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)0;

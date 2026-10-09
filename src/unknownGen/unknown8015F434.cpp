@@ -5,6 +5,6 @@ extern "C" {
 void *fn_80058C5C();
 }
 extern "C" {
-void *fn_8015F434(){return fn_80058C5C();}
+void *igOptConfiguration_virtual5C(){return fn_80058C5C();}
 }
 #pragma pop

@@ -60,7 +60,7 @@ public:
  virtual void * sD4(void *,void *,void *,void *,void *);
 };
 extern "C" {
-void *fn_8008968C(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igProgramFile_virtual15C(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  if((unsigned int)p1<=(unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+128)){
   value0=reinterpret_cast<UnknownGenV8008968C_0 *>((void *)p0)->sD4((void *)p1,(void *)p2,(void *)p3,(void *)p4,(void *)p5);

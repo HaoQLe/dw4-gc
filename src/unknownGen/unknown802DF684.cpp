@@ -18,7 +18,7 @@ struct UnknownGenObject802DF684 : UnknownGenRoot802DF684 {
  inline ~UnknownGenObject802DF684(){unknown00=lbl_804D4DE4;}
 };
 extern "C" {
-void *fn_802DF684(){
+void *beCriAudio_vtableRead(){
  UnknownGenObject802DF684 object;
  object.unknown00=lbl_804D4DE4;
  object.unknown08.value=0;

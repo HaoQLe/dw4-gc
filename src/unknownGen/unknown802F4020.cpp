@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80535660;
 }
 extern "C" {
-void *fn_802F4020(){return lbl_80535660;}
+void *beCameraCtrl_virtual58(){return lbl_80535660;}
 }
 #pragma pop

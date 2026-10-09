@@ -2,8 +2,6 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8011F55C();
-void *fn_8011FBA0();
 void fn_80122FCC(int,int);
 void fn_8012305C(int,int);
 float fn_801230E4(int,int);
@@ -33,6 +31,8 @@ void *fn_80127FFC(void *,void *);
 void *fn_80128030(void *,void *);
 void *fn_80128064(void *,void *);
 void *fn_80128098(void *,void *);
+void *igPlane_getMeta();
+void *igSphere_getMeta();
 extern void *lbl_8056395C;
 extern void *lbl_8056397C;
 extern void *lbl_80563A34;
@@ -43,9 +43,9 @@ void *fn_801229CC(){return fn_801229EC();}
 void *fn_801229EC(){
  void *value0=lbl_80563A34;
  void *value3=fn_80127DF0(value0,value0,(void *)fn_8012305C);
- void *value4=fn_8011FBA0();
+ void *value4=igPlane_getMeta();
  void *value5=fn_80127DF0(lbl_80563A34,value4,(void *)fn_801230E4);
- void *value6=fn_8011F55C();
+ void *value6=igSphere_getMeta();
  fn_80127DF0(lbl_80563A34,value6,(void *)fn_80122FCC);
  void *value1=lbl_80563A34;
  fn_80127EA0(value1,value1,(void *)fn_801232F8);

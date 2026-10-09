@@ -33,7 +33,7 @@ public:
  virtual void s68(void *);
 };
 extern "C" {
-void *fn_802024E0(int p0){
+void *igShaderFactory_virtual60(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)0;
@@ -45,7 +45,7 @@ void *fn_802024E0(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+1);
  return value1;
 }
-void fn_80202504(int p0,int p1){
+void igShaderFactory_virtual64(int p0,int p1){
  if((int)p1!=(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)){
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p1;
   if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)==0){
@@ -56,6 +56,6 @@ void fn_80202504(int p0,int p1){
   }
  }
 }
-void fn_8020254C(){}
+void igShaderFactory_virtual68(){}
 }
 #pragma pop

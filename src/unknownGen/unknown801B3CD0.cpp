@@ -4,7 +4,6 @@
 extern "C" {
 void *fn_800284EC();
 void *fn_80029E64(void *);
-void fn_8002EABC();
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
 void fn_80066188(int);
@@ -12,8 +11,9 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
-void fn_801B4280();
-void fn_801BF938();
+void igGroup_register();
+void igInfo_register();
+void igSceneInfo_fieldInit();
 extern char lbl_80472460[];
 extern char lbl_8047650C[];
 extern char lbl_804AD340[];
@@ -26,16 +26,16 @@ extern char lbl_804B877C[];
 extern void *lbl_805621F4;
 extern void *lbl_80564A10;
 extern void *lbl_80564A14;
-void *fn_801B3D0C();
-void *fn_801B3D48();
+void *igSegment_getMeta();
+void *igSegment_vtableRead();
 void fn_801B3EC0();
-void fn_801B3EE8();
-void *fn_801B3F50();
-void *fn_801B3FE4();
-void *fn_801B4020();
+void igSegment_register();
+void *igSegment_getMetaCall();
+void *igSceneInfo_getMeta();
+void *igSceneInfo_vtableRead();
 void fn_801B41C0();
-void fn_801B41E8();
-void *fn_801B4260();
+void igSceneInfo_register();
+void *igSceneInfo_getMetaCall();
 }
 struct UnknownGenRoot801B3D48 {
  void *unknown00;
@@ -88,11 +88,11 @@ void *fn_801B3CD0(){
  if(!lbl_80564A10) lbl_80564A10=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564A10;
 }
-void *fn_801B3D0C(){
+void *igSegment_getMeta(){
  if(!lbl_80564A10 || !(reinterpret_cast<unsigned int *>(lbl_80564A10)[0x24/4]&4)) fn_801B3EC0();
  return lbl_80564A10;
 }
-void *fn_801B3D48(){
+void *igSegment_vtableRead(){
  UnknownGenObject801B3D48 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -105,13 +105,13 @@ void *fn_801B3D48(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B3EC0(){
- fn_80066188((int)fn_801B3EE8);
+ fn_80066188((int)igSegment_register);
 }
-void fn_801B3EE8(){
+void igSegment_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564A10,(int)fn_801BF938,(int)fn_8011148C,(int)fn_801B3F50,(int)lbl_804AD340,32,(int)fn_801B3D48,0,0,0);
+ fn_80066204(0,(int)&lbl_80564A10,(int)igGroup_register,(int)fn_8011148C,(int)igSegment_getMetaCall,(int)lbl_804AD340,32,(int)igSegment_vtableRead,0,0,0);
 }
-void *fn_801B3F50(){return fn_801B3D0C();}
+void *igSegment_getMetaCall(){return igSegment_getMeta();}
 void *fn_801B3F70(void *object){
  fn_801B41C0();
  return fn_8006546C(lbl_80564A14,object);
@@ -120,11 +120,11 @@ void *fn_801B3FA8(){
  if(!lbl_80564A14) lbl_80564A14=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564A14;
 }
-void *fn_801B3FE4(){
+void *igSceneInfo_getMeta(){
  if(!lbl_80564A14 || !(reinterpret_cast<unsigned int *>(lbl_80564A14)[0x24/4]&4)) fn_801B41C0();
  return lbl_80564A14;
 }
-void *fn_801B4020(){
+void *igSceneInfo_vtableRead(){
  UnknownGenObject801B4020 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -137,12 +137,12 @@ void *fn_801B4020(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B41C0(){
- fn_80066188((int)fn_801B41E8);
+ fn_80066188((int)igSceneInfo_register);
 }
-void fn_801B41E8(){
+void igSceneInfo_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564A14,(int)fn_8002EABC,(int)fn_800284EC,(int)fn_801B4260,(int)lbl_804AD360,64,(int)fn_801B4020,(int)fn_801B4280,0,(int)lbl_804AD34C);
+ fn_80066204(0,(int)&lbl_80564A14,(int)igInfo_register,(int)fn_800284EC,(int)igSceneInfo_getMetaCall,(int)lbl_804AD360,64,(int)igSceneInfo_vtableRead,(int)igSceneInfo_fieldInit,0,(int)lbl_804AD34C);
 }
-void *fn_801B4260(){return fn_801B3FE4();}
+void *igSceneInfo_getMetaCall(){return igSceneInfo_getMeta();}
 }
 #pragma pop

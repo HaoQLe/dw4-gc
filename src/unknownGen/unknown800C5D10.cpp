@@ -57,20 +57,20 @@ public:
  virtual void s5C(void *,void *,void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800C5D10(int p0,int p1){
+void igTextureStageConstantColorSelectAttr_virtual60(int p0,int p1){
  fn_801000E0((void *)p1,(void *)(int)*reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
 }
-void fn_800C5D40(int p0,int p1){
+void igTextureStageConstantColorSelectAttr_virtual68(int p0,int p1){
  void *value0=fn_8010011C((void *)p1,(void *)(int)*reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+16));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
 }
-void fn_800C5D78(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igTextureStageConstantColorSelectAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C5D78_0 *>((void *)p1)->s5C((void *)8,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
-void fn_800C5DAC(int p0,int p1){
+void igTextureSwapAttr_virtual60(int p0,int p1){
  fn_800FCA60((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),(void *)(int)*reinterpret_cast<signed char *>(reinterpret_cast<char *>((void *)p0)+12),(void *)(int)*reinterpret_cast<signed char *>(reinterpret_cast<char *>((void *)p0)+13));
 }
-void fn_800C5DE8(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igTextureSwapAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C5DE8_1 *>((void *)p1)->s5C((void *)8,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
 }

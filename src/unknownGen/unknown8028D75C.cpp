@@ -35,11 +35,11 @@ void *fn_8028D794(){
  if(!lbl_80566118) lbl_80566118=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80566118;
 }
-void *fn_8028D7D0(){
+void *igCollisionGrid_getMeta(){
  if(!lbl_80566118 || !(reinterpret_cast<unsigned int *>(lbl_80566118)[0x24/4]&4)) fn_8028DA5C();
  return lbl_80566118;
 }
-void *fn_8028D80C(){
+void *igCollisionGrid_vtableRead(){
  UnknownGenObject8028D80C object;
  fn_8006665C(&object);
  object.unknown00=lbl_804CCBF0;

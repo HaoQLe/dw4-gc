@@ -18,7 +18,7 @@ extern char lbl_804D3018[];
 extern void *lbl_80535764;
 }
 extern "C" {
-void fn_802E57D8(){
+void beAction2InfoWork_fieldInit(){
  void *value0=lbl_80535764;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2F1C,21);

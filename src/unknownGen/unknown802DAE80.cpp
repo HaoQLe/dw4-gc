@@ -17,7 +17,7 @@ struct UnknownGenObject802DAE80 : UnknownGenRoot802DAE80 {
  inline ~UnknownGenObject802DAE80(){unknown00=lbl_804D5D44;}
 };
 extern "C" {
-void *fn_802DAE80(){
+void *beFileChkObj_vtableRead(){
  UnknownGenObject802DAE80 object;
  object.unknown00=lbl_804D5D44;
  object.unknown08.value=0;

@@ -9,7 +9,7 @@ extern void *lbl_80562140;
 extern void *lbl_8056402C;
 }
 extern "C" {
-void *fn_8017EF3C(int p0){
+void *igNodeTraversal_virtual88(int p0){
  void *value2;
  void *value3;
  void *value1;
@@ -36,6 +36,6 @@ void *fn_8017EF3C(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value3;
  return value3;
 }
-int fn_8017EFBC(){return 1;}
+int igNormalizeNormals_virtual7C(){return 1;}
 }
 #pragma pop

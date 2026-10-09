@@ -4,9 +4,9 @@
 extern "C" {
 void fn_800667D0();
 void fn_800BCB74(void *);
-void fn_800ED530(void *,int);
-void *fn_800F935C(void *,void *,void *,void *,void *);
 void *fn_8012E1D8(void *,int);
+void igGamecubeVisualContext_virtual108(void *,int);
+void *igGamecubeVisualContext_virtual384(void *,void *,void *,void *,void *);
 }
 class UnknownGenV800BDA78_0 {
 public:
@@ -79,21 +79,21 @@ public:
  virtual void * s110(void *);
 };
 extern "C" {
-void fn_800BD9CC(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
-void fn_800BD9D4(int p0){
+void igClippingStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
+void igColorAttr_virtual2C(int p0){
  fn_800667D0();
  void *value0=fn_8012E1D8((reinterpret_cast<char *>((void *)p0)+12),1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=value0;
 }
-void fn_800BDA10(int p0){
+void igColorAttr_virtual44(int p0){
  fn_800BCB74((void *)p0);
  void *value0=fn_8012E1D8((reinterpret_cast<char *>((void *)p0)+12),1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=value0;
 }
-void fn_800BDA4C(int p0,int p1){
- fn_800ED530((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28)));
+void igColorAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual108((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28)));
 }
-void fn_800BDA78(int p0,int p1){
+void igColorAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800BDA78_0 *>((void *)p1)->s110((void *)p1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=value0;
 }
@@ -101,15 +101,15 @@ void fn_800BDAB8(int p0){
  void *value0=fn_8012E1D8((reinterpret_cast<char *>((void *)p0)+12),1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=value0;
 }
-void *fn_800BDAF0(int p0,int p1,int p2,int p3,int p4){
+void *igColorMaskAttr_virtual80(int p0,int p1,int p2,int p3,int p4){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12)=(unsigned char)(int)(void *)p1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+13)=(unsigned char)(int)(void *)p2;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+14)=(unsigned char)(int)(void *)p3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+15)=(unsigned char)(int)(void *)p4;
  return (void *)p0;
 }
-void fn_800BDB04(int p0,int p1){
- fn_800F935C((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+13),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+14),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+15));
+void igColorMaskAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual384((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+13),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+14),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+15));
 }
 }
 #pragma pop

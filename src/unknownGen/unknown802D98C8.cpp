@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80563838;
 }
 extern "C" {
-void *fn_802D98C8(){return lbl_80563838;}
+void *beFontImage_parentMeta(){return lbl_80563838;}
 }
 #pragma pop

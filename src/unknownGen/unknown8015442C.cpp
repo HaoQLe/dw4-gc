@@ -9,7 +9,7 @@ extern void *lbl_80562140;
 extern void *lbl_80564560;
 }
 extern "C" {
-void *fn_8015442C(int p0){
+void *igAttrTraversal_virtual88(int p0){
  void *value2;
  void *value3;
  void *value1;

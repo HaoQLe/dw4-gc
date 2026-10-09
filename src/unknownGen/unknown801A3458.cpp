@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805622A4;
 }
 extern "C" {
-void *fn_801A3458(){return lbl_805622A4;}
+void *igStatisticsNodeUsage_virtual8C(){return lbl_805622A4;}
 }
 #pragma pop

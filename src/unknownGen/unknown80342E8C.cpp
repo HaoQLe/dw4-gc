@@ -12,7 +12,7 @@ struct UnknownGenObject80342E8C_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_80342E8C(){
+void *beNDMWItemYellowArmor_vtableRead(){
  UnknownGenObject80342E8C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804E4A68;

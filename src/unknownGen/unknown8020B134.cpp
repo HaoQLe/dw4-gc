@@ -56,9 +56,9 @@ public:
  virtual void s60(void *);
 };
 extern "C" {
-void fn_8020B134(){}
-void fn_8020B138(){}
-void fn_8020B13C(int p0,int p1){
+void igTraversal_virtual5C(){}
+void igTraversal_virtual60(){}
+void igTraversal_virtual64(int p0,int p1){
  reinterpret_cast<UnknownGenV8020B13C_0 *>((void *)p0)->s5C((void *)p1);
  fn_8020B06C((void *)p0,(void *)p1);
  reinterpret_cast<UnknownGenV8020B13C_1 *>((void *)p0)->s60((void *)p1);

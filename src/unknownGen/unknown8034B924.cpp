@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8034B924(){}
+void beNDMWMdlEffect_virtual9C(){}
 }
 #pragma pop

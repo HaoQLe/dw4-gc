@@ -4,7 +4,7 @@
 extern "C" {
 void fn_801DBD60(void *);
 void fn_80203E48(void *,void *);
-void fn_8020B138(void *,void *);
+void igTraversal_virtual60(void *,void *);
 }
 class UnknownGenV801DFA98_0 {
 public:
@@ -48,7 +48,7 @@ void fn_801DFA98(int p0,int p1){
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+24)){
   reinterpret_cast<UnknownGenV801DFA98_0 *>((void *)p0)->s84();
  }
- fn_8020B138((void *)p0,(void *)p1);
+ igTraversal_virtual60((void *)p0,(void *)p1);
 }
 }
 #pragma pop

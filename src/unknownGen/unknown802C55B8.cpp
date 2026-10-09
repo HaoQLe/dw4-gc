@@ -18,7 +18,7 @@ struct UnknownGenObject802C55B8 : UnknownGenRoot802C55B8 {
  inline ~UnknownGenObject802C55B8(){unknown00=lbl_804DEF48;}
 };
 extern "C" {
-void *fn_802C55B8(){
+void *beModelCtrlSCSound_vtableRead(){
  UnknownGenObject802C55B8 object;
  object.unknown00=lbl_804D9E80;
  object.unknown00=lbl_804DEF48;

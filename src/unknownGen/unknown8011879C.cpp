@@ -32,7 +32,7 @@ public:
  virtual void * s64(void *,void *);
 };
 extern "C" {
-void fn_8011879C(int p0,int p1,int p2,int p3){
+void igEventDispatcher_virtual6C(int p0,int p1,int p2,int p3){
  void *value0;
  void *value1;
  void *value2;

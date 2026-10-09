@@ -30,14 +30,14 @@ public:
  virtual void s5C(void *,void *,void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800C4B98(){}
-void fn_800C4B9C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igTextureUnloadAttr_virtual68(){}
+void igTextureUnloadAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C4B9C_0 *>((void *)p1)->s5C((void *)8,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
-void fn_800C4BD0(int p0,int p1){
+void igTimeAttr_virtual60(int p0,int p1){
  *reinterpret_cast<long long *>(reinterpret_cast<char *>((void *)p1)+96)=*reinterpret_cast<long long *>(reinterpret_cast<char *>((void *)p0)+16);
 }
-void fn_800C4BE4(int p0,int p1){
+void igTimeAttr_virtual68(int p0,int p1){
  *reinterpret_cast<long long *>(reinterpret_cast<char *>((void *)p0)+16)=*reinterpret_cast<long long *>(reinterpret_cast<char *>((void *)p1)+96);
 }
 void *fn_800C4BF8(int p0){

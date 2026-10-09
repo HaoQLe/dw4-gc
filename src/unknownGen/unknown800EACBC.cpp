@@ -45,7 +45,7 @@ public:
  virtual void * s94();
 };
 extern "C" {
-void *fn_800EACBC(int p0){
+void *igVisualContextCapabilityManager_virtual5C(int p0){
  void *value0;
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   value0=reinterpret_cast<UnknownGenV800EACBC_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s94();

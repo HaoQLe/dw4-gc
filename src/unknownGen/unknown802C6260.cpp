@@ -16,7 +16,7 @@ extern char lbl_804D0720[];
 extern void *lbl_80534C50;
 }
 extern "C" {
-void fn_802C6260(){
+void beModelCtrlNode2_fieldInit(){
  void *value0=lbl_80534C50;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D06F0,4);

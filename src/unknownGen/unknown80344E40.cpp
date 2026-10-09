@@ -28,7 +28,7 @@ struct UnknownGenObject80344E40 : UnknownGenObject80344E40_1 {
  inline ~UnknownGenObject80344E40(){unknown00=lbl_804E4468;}
 };
 extern "C" {
-void *fn_80344E40(){
+void *beNDMWAfsSetupInfo_vtableRead(){
  UnknownGenObject80344E40 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

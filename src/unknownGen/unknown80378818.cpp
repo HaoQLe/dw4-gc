@@ -6,7 +6,7 @@ void *fn_8028A730(void *,void *);
 extern char lbl_80534AAC[];
 }
 extern "C" {
-void fn_80378818(int p0){
+void beNDMWSaveCtrl_virtual88(int p0){
  void *value3;
  void *value0;
  void *value1;

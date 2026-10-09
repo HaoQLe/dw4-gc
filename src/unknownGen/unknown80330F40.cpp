@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beNDMWStatusCtrlSendBit_fieldInit();
+void *beNDMWStatusCtrlSendBit_getMeta();
+void beNDMWStatusCtrlSendBit_vtableRead();
+void beNDMWWindowCtrl_register();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_8032B8A4();
-void *fn_80330C60();
-void fn_80330CAC();
-void fn_80331004();
-void fn_80333F14();
 extern char lbl_80453ADC[];
 extern char lbl_804E1E24[];
 extern char lbl_80535EE8[];
-void fn_80330F68();
-void *fn_80330FE4();
+void beNDMWStatusCtrlSendBit_register();
+void *beNDMWStatusCtrlSendBit_getMetaCall();
 }
 extern "C" {
 void fn_80330F40(){
- fn_80066188((int)fn_80330F68);
+ fn_80066188((int)beNDMWStatusCtrlSendBit_register);
 }
-void fn_80330F68(){
+void beNDMWStatusCtrlSendBit_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535EE8,(int)fn_80333F14,(int)fn_8032B8A4,(int)fn_80330FE4,(int)lbl_80453ADC,100,(int)fn_80330CAC,(int)fn_80331004,0,(int)lbl_804E1E24);
+ fn_80066204(0,(int)lbl_80535EE8,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWStatusCtrlSendBit_getMetaCall,(int)lbl_80453ADC,100,(int)beNDMWStatusCtrlSendBit_vtableRead,(int)beNDMWStatusCtrlSendBit_fieldInit,0,(int)lbl_804E1E24);
 }
-void *fn_80330FE4(){return fn_80330C60();}
+void *beNDMWStatusCtrlSendBit_getMetaCall(){return beNDMWStatusCtrlSendBit_getMeta();}
 }
 #pragma pop

@@ -5,7 +5,7 @@ extern "C" {
 void *fn_80068430(void *,void *);
 }
 extern "C" {
-void fn_8008FA94(int p0,int p1){
+void igStackMemoryPool_virtual168(int p0,int p1){
  void *value3;
  void *value0;
  void *value1;

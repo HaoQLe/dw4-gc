@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800F67A0(void *,void *,void *);
+void *igGamecubeVisualContext_virtual13C(void *,void *,void *);
 }
 class UnknownGenV800C0CD4_0 {
 public:
@@ -35,7 +35,7 @@ void *fn_800C0CC8(int p0){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+144)=1;
  return (void *)p0;
 }
-void *fn_800C0CD4(int p0,int p1){
+void *igLightStateAttr_virtual60(int p0,int p1){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
@@ -43,7 +43,7 @@ void *fn_800C0CD4(int p0,int p1){
   if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+16)==-1){
    reinterpret_cast<UnknownGenV800C0CD4_0 *>(value0)->s60((void *)p1);
   }
-  value1=fn_800F67A0((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+16),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+20));
+  value1=igGamecubeVisualContext_virtual13C((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+16),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+20));
   return value1;
  } else {
   return value0;

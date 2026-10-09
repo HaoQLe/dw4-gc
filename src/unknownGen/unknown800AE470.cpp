@@ -4,7 +4,6 @@
 extern "C" {
 void *fn_800284EC();
 void *fn_80029E64(void *);
-void fn_8002EABC();
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
 void *fn_800658E4(void *,void *);
@@ -16,11 +15,12 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800A325C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
-void fn_800AE924();
 void *fn_800AEA50();
 void *fn_800BAAC4();
+void igInfo_register();
+void igTextureFunctionAttr_fieldInit();
+void igVisualAttribute_register();
 extern char lbl_80472460[];
 extern char lbl_8047650C[];
 extern char lbl_80478240[];
@@ -37,17 +37,17 @@ extern char lbl_8055DFEC[4];
 extern void *lbl_805621F4;
 extern void *lbl_805624FC;
 extern void *lbl_80562504;
-void *fn_800AE470();
-void *fn_800AE4AC();
+void *igTextureInfo_getMeta();
+void *igTextureInfo_vtableRead();
 void fn_800AE618();
-void fn_800AE640();
-void *fn_800AE6B4();
-void fn_800AE6D4();
-void *fn_800AE7D0();
-void *fn_800AE80C();
+void igTextureInfo_register();
+void *igTextureInfo_getMetaCall();
+void igTextureInfo_fieldInit();
+void *igTextureFunctionAttr_getMeta();
+void *igTextureFunctionAttr_vtableRead();
 void fn_800AE864();
-void fn_800AE88C();
-void *fn_800AE904();
+void igTextureFunctionAttr_register();
+void *igTextureFunctionAttr_getMetaCall();
 }
 struct UnknownGenRoot800AE4AC {
  void *unknown00;
@@ -73,11 +73,11 @@ struct UnknownGenObject800AE80C_0 {
  char unknown04[36];
 };
 extern "C" {
-void *fn_800AE470(){
+void *igTextureInfo_getMeta(){
  if(!lbl_805624FC || !(reinterpret_cast<unsigned int *>(lbl_805624FC)[0x24/4]&4)) fn_800AE618();
  return lbl_805624FC;
 }
-void *fn_800AE4AC(){
+void *igTextureInfo_vtableRead(){
  UnknownGenObject800AE4AC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -98,14 +98,14 @@ UnknownGenHolder *dtor_800AE5A4(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_800AE618(){
- fn_80066188((int)fn_800AE640);
+ fn_80066188((int)igTextureInfo_register);
 }
-void fn_800AE640(){
+void igTextureInfo_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_805624FC,(int)fn_8002EABC,(int)fn_800284EC,(int)fn_800AE6B4,(int)lbl_80478240,24,(int)fn_800AE4AC,(int)fn_800AE6D4,0,(int)lbl_8055DFD8);
+ fn_80066204(0,(int)&lbl_805624FC,(int)igInfo_register,(int)fn_800284EC,(int)igTextureInfo_getMetaCall,(int)lbl_80478240,24,(int)igTextureInfo_vtableRead,(int)igTextureInfo_fieldInit,0,(int)lbl_8055DFD8);
 }
-void *fn_800AE6B4(){return fn_800AE470();}
-void fn_800AE6D4(){
+void *igTextureInfo_getMetaCall(){return igTextureInfo_getMeta();}
+void igTextureInfo_fieldInit(){
  void *value0=lbl_805624FC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055DFE0,1);
@@ -123,11 +123,11 @@ void *fn_800AE794(){
  if(!lbl_80562504) lbl_80562504=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562504;
 }
-void *fn_800AE7D0(){
+void *igTextureFunctionAttr_getMeta(){
  if(!lbl_80562504 || !(reinterpret_cast<unsigned int *>(lbl_80562504)[0x24/4]&4)) fn_800AE864();
  return lbl_80562504;
 }
-void *fn_800AE80C(){
+void *igTextureFunctionAttr_vtableRead(){
  UnknownGenObject800AE80C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -136,12 +136,12 @@ void *fn_800AE80C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800AE864(){
- fn_80066188((int)fn_800AE88C);
+ fn_80066188((int)igTextureFunctionAttr_register);
 }
-void fn_800AE88C(){
+void igTextureFunctionAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562504,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800AE904,(int)lbl_80478304,40,(int)fn_800AE80C,(int)fn_800AE924,(int)fn_800AEA50,0);
+ fn_80066204(0,(int)&lbl_80562504,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igTextureFunctionAttr_getMetaCall,(int)lbl_80478304,40,(int)igTextureFunctionAttr_vtableRead,(int)igTextureFunctionAttr_fieldInit,(int)fn_800AEA50,0);
 }
-void *fn_800AE904(){return fn_800AE7D0();}
+void *igTextureFunctionAttr_getMetaCall(){return igTextureFunctionAttr_getMeta();}
 }
 #pragma pop

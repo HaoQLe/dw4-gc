@@ -30,7 +30,7 @@ public:
  virtual void * s5C(void *);
 };
 extern "C" {
-void *fn_80115BB8(int p0){
+void *igBitmapFont_virtual1F4(int p0){
  void *value0;
  void *value1;
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))+13)){

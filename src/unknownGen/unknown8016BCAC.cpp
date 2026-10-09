@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_8016BCAC(){return 1;}
+int igExposeActorSkinGraphs_virtual7C(){return 1;}
 }
 #pragma pop

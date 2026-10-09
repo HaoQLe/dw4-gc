@@ -45,7 +45,7 @@ public:
  virtual void s98(void *);
 };
 extern "C" {
-void *fn_801843EC(int p0){
+void *igOptStatistics_virtual7C(int p0){
  reinterpret_cast<UnknownGenV801843EC_0 *>((void *)p0)->s98(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64));
  return (void *)1;
 }

@@ -31,7 +31,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_802E9B10(int p0){
+void beXboxImage24k_virtual28(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);

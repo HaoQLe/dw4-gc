@@ -7,7 +7,7 @@ extern void *kFailure__3Gap;
 extern void *kSuccess__3Gap;
 }
 extern "C" {
-void fn_8007761C(int p0,int p1){
+void igGamecubeSemaphore_virtual8C(int p0,int p1){
  if(!*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+20)){
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
   return;

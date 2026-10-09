@@ -6,8 +6,8 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
-void fn_801308D8();
-void fn_8013B97C();
+void igOptBase_register();
+void igStripTriangles_fieldInit();
 extern char lbl_8049BD3C[];
 extern char lbl_804A2D64[];
 extern char lbl_804A4A04[];
@@ -15,11 +15,11 @@ extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern void *lbl_80563ACC;
 extern void *lbl_80563ED0;
-void *fn_801306EC();
-void *fn_80130728();
+void *igStripTriangles_getMeta();
+void *igStripTriangles_vtableRead();
 void fn_80130818();
-void fn_80130840();
-void *fn_801308B0();
+void igStripTriangles_register();
+void *igStripTriangles_getMetaCall();
 void *fn_801308D0();
 }
 struct UnknownGenRoot80130728 {
@@ -38,11 +38,11 @@ struct UnknownGenObject80130728 : UnknownGenObject80130728_0 {
  inline ~UnknownGenObject80130728(){unknown00=lbl_804A2D64;}
 };
 extern "C" {
-void *fn_801306EC(){
+void *igStripTriangles_getMeta(){
  if(!lbl_80563ACC || !(reinterpret_cast<unsigned int *>(lbl_80563ACC)[0x24/4]&4)) fn_80130818();
  return lbl_80563ACC;
 }
-void *fn_80130728(){
+void *igStripTriangles_vtableRead(){
  UnknownGenObject80130728 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -53,13 +53,13 @@ void *fn_80130728(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80130818(){
- fn_80066188((int)fn_80130840);
+ fn_80066188((int)igStripTriangles_register);
 }
-void fn_80130840(){
+void igStripTriangles_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563ACC,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_801308B0,(int)lbl_8049BD3C,48,(int)fn_80130728,(int)fn_801308D8,0,0);
+ fn_80066204(0,(int)&lbl_80563ACC,(int)igOptBase_register,(int)fn_801308D0,(int)igStripTriangles_getMetaCall,(int)lbl_8049BD3C,48,(int)igStripTriangles_vtableRead,(int)igStripTriangles_fieldInit,0,0);
 }
-void *fn_801308B0(){return fn_801306EC();}
+void *igStripTriangles_getMetaCall(){return igStripTriangles_getMeta();}
 void *fn_801308D0(){return lbl_80563ED0;}
 }
 #pragma pop

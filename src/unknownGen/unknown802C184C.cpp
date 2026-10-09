@@ -17,7 +17,7 @@ struct UnknownGenObject802C184C : UnknownGenRoot802C184C {
  inline ~UnknownGenObject802C184C(){unknown00=lbl_804DAA14;}
 };
 extern "C" {
-void *fn_802C184C(){
+void *beParticleCtrl2InfoWork_vtableRead(){
  UnknownGenObject802C184C object;
  object.unknown00=lbl_804DAA14;
  object.unknown08.value=0;

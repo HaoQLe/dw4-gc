@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800E1C70(void *,void *,void *);
+void igPointSpriteExt_virtual80(void *,void *,void *);
 }
 class UnknownGenV800F9D58_0 {
 public:
@@ -151,11 +151,11 @@ public:
  virtual void s11C(void *,void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800F9D58(int p0,int p1,int p2,int p3,int p4,int p5){
+void igGamecubePointSpriteExt_virtual80(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+20)&0x10)){
-  fn_800E1C70((void *)p0,(void *)p1,(void *)p2);
+  igPointSpriteExt_virtual80((void *)p0,(void *)p1,(void *)p2);
  } else {
   if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36)==1){
    reinterpret_cast<UnknownGenV800F9D58_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+392))->s11C((void *)0,(void *)p1,(void *)p2,value0,(void *)p5);

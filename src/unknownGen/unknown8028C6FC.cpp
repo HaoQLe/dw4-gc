@@ -17,6 +17,6 @@ UnknownGenHolder *dtor_8028C6FC(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void *fn_8028C770(){return lbl_805660A0;}
+void *igSearchSceneGraph_virtual58(){return lbl_805660A0;}
 }
 #pragma pop

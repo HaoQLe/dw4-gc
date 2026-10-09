@@ -7,10 +7,10 @@ extern void *lbl_80564440;
 extern void *lbl_8056446C;
 }
 extern "C" {
-int fn_801A710C(){return 1;}
-void *fn_801A7114(){return lbl_80564428;}
-void *fn_801A711C(){return lbl_80564440;}
-int fn_801A7124(){return 1;}
-void *fn_801A712C(){return lbl_8056446C;}
+int igConvertTransformsToCompressedSequencesQS_virtual84(){return 1;}
+void *igConvertTransform_virtual58(){return lbl_80564428;}
+void *igConvertImage_virtual58(){return lbl_80564440;}
+int igConvertImage_virtual84(){return 1;}
+void *igConvertAnimationsToCompressedSequencesQS_virtual58(){return lbl_8056446C;}
 }
 #pragma pop

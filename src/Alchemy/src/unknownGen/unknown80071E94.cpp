@@ -13,6 +13,6 @@ void *fn_80071E94(void *p0,void *p1){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(p0)+56)=(unsigned char)(int)(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(p1)+56);
  return p0;
 }
-void *fn_80071EE4(){return fn_8006CCE0();}
+void *igStringArrayMetaField_virtual08(){return fn_8006CCE0();}
 }
 #pragma pop

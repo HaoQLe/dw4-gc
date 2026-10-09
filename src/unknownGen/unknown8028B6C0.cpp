@@ -61,7 +61,7 @@ public:
  virtual void s70(void *);
 };
 extern "C" {
-void fn_8028B6C0(int p0,int p1,int p2,int p3,int p4,int p5){
+void igFilterMessageDispatcher_virtual6C(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  void *local2;
  void *local1;
@@ -76,7 +76,7 @@ void fn_8028B6C0(int p0,int p1,int p2,int p3,int p4,int p5){
   return;
  }
 }
-void *fn_8028B740(){return lbl_80515CA0;}
+void *igFilterMessageDispatcher_virtual58(){return lbl_80515CA0;}
 void fn_8028B750(int p0,int p1,int p2){
  reinterpret_cast<UnknownGenV8028B750_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s5C((void *)p1,(void *)p2);
 }

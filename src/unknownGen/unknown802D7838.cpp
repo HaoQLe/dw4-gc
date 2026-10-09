@@ -17,7 +17,7 @@ extern char lbl_804D1E58[];
 extern void *lbl_80535294;
 }
 extern "C" {
-void fn_802D7838(){
+void beGeneraterData_fieldInit(){
  void *value0=lbl_80535294;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1DC8,12);

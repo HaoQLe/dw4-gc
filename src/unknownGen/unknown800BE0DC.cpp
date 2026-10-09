@@ -67,8 +67,8 @@ public:
  virtual void * s68(void *);
 };
 extern "C" {
-void *fn_800BE0DC(){return lbl_8056292C;}
-void fn_800BE0E4(int p0){
+void *igDecalAttr_virtual58(){return lbl_8056292C;}
+void igDecalAttr_virtual60(int p0){
  void *value0=lbl_80562AE8;
  if(value0){
   reinterpret_cast<UnknownGenV800BE0E4_0 *>(value0)->s78(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
@@ -77,7 +77,7 @@ void fn_800BE0E4(int p0){
   return;
  }
 }
-void *fn_800BE128(int p0,int p1){
+void *igDecalAttr_virtual68(int p0,int p1){
  void *value1;
  if(!lbl_80562AE8){
   value1=reinterpret_cast<UnknownGenV800BE128_1 *>((void *)p1)->s68(lbl_8047A2A0);

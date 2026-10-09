@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_8017CBFC(){return 1;}
+int igMacrotextureStrip_virtual7C(){return 1;}
 }
 #pragma pop

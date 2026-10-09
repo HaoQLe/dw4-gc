@@ -38,8 +38,8 @@ public:
  virtual void s68();
 };
 extern "C" {
-void *fn_80104480(){return fn_800DDE54();}
-void *fn_801044A0(){return fn_800DA440();}
+void *igFileImagePng_virtual30(){return fn_800DDE54();}
+void *igFileImagePng_virtual5C(){return fn_800DA440();}
 void *fn_801044C0(int p0,int p1,int p2,int p3,int p4,int p5,int p6,int p7){
  void *value0;
  void *value1;

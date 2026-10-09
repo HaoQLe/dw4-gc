@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800FEEB8(void *,void *,void *);
+void *igGamecubeVisualContext_virtual1FC(void *,void *,void *);
 }
 class UnknownGenV800C2FE0_0 {
 public:
@@ -31,8 +31,8 @@ public:
  virtual void s60(void *);
 };
 extern "C" {
-void fn_800C2FD8(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
-void *fn_800C2FE0(int p0,int p1){
+void igStencilStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
+void *igSubTextureBindAttr_virtual60(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;
@@ -43,7 +43,7 @@ void *fn_800C2FE0(int p0,int p1){
   }
   value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
   if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36)>=0){
-   value2=fn_800FEEB8((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+   value2=igGamecubeVisualContext_virtual1FC((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
    return value2;
   } else {
    return value1;
@@ -51,7 +51,7 @@ void *fn_800C2FE0(int p0,int p1){
  }
  return value0;
 }
-void fn_800C3058(){}
+void igSubTextureBindAttr_virtual68(){}
 void *fn_800C305C(int p0){
  *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+10)=(short)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76);
  return (void *)p0;

@@ -265,7 +265,7 @@ public:
  virtual void s404();
 };
 extern "C" {
-int fn_800FBB34(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
+int igVertexStream_virtual5C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
 void *fn_800FBB3C(int p0,int p1){
  void *value0;
  value0=(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12);
@@ -283,7 +283,7 @@ void *fn_800FBB3C(int p0,int p1){
  }
  return (void *)0;
 }
-void fn_800FBB9C(int p0){
+void igGamecubeVisualContext_virtual400(int p0){
  reinterpret_cast<UnknownGenV800FBB9C_0 *>((void *)p0)->s404();
 }
 }

@@ -5,6 +5,6 @@ extern "C" {
 void fn_800667B4();
 }
 extern "C" {
-void fn_802A876C(){return fn_800667B4();}
+void igAdxAudio_virtual28(){return fn_800667B4();}
 }
 #pragma pop

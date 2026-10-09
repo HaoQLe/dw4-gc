@@ -32,7 +32,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_801FF67C(int p0){
+void igSelfShadowShader_virtual24(int p0){
  void *value0;
  void *value1;
  fn_801FAE18((void *)p0);
@@ -45,6 +45,6 @@ void fn_801FF67C(int p0){
   return;
  }
 }
-void *fn_801FF6D0(){return lbl_80564968;}
+void *igSelfShadowShader_virtual58(){return lbl_80564968;}
 }
 #pragma pop

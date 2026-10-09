@@ -4,31 +4,31 @@
 extern "C" {
 void fn_80021B94();
 void *fn_800237D0();
-void *fn_80025028();
-void fn_80025064();
 void *fn_80037E48();
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
+void igObject_register();
+void *igStringObj_getMeta();
+void igStringObj_vtableRead();
 extern char lbl_80463664[];
 extern char lbl_8055D0B8[8];
 extern char lbl_8055D0D0[8];
 extern char lbl_8055D0D8[8];
 extern char lbl_8055D0E0[8];
 extern void *lbl_805615A8;
-void *fn_8002513C();
-void fn_8002515C();
+void *igStringObj_getMetaCall();
+void igStringObj_fieldInit();
 }
 extern "C" {
-void fn_800250CC(){
+void igStringObj_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_805615A8,(int)fn_80066B08,(int)fn_800237D0,(int)fn_8002513C,(int)lbl_80463664,16,(int)fn_80025064,(int)fn_8002515C,0,0);
+ fn_80066204(0,(int)&lbl_805615A8,(int)igObject_register,(int)fn_800237D0,(int)igStringObj_getMetaCall,(int)lbl_80463664,16,(int)igStringObj_vtableRead,(int)igStringObj_fieldInit,0,0);
 }
-void *fn_8002513C(){return fn_80025028();}
-void fn_8002515C(){
+void *igStringObj_getMetaCall(){return igStringObj_getMeta();}
+void igStringObj_fieldInit(){
  void *value0=lbl_805615A8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D0B8,2);

@@ -31,7 +31,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_800BE084(int p0){
+void igDecalAttr_virtual30(int p0){
  void *value0;
  void *value1;
  value0=reinterpret_cast<UnknownGenV800BE084_0 *>((void *)p0)->s58();

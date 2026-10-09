@@ -415,7 +415,7 @@ public:
  virtual void s32C(void *,void *);
 };
 extern "C" {
-void fn_800E1B64(int p0){
+void igPointSpriteExt_virtual7C(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;

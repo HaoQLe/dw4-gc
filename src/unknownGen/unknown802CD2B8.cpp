@@ -14,7 +14,7 @@ extern char lbl_804D11F4[];
 extern void *lbl_80534F5C;
 }
 extern "C" {
-void fn_802CD2B8(){
+void beMeterCtrlNode_fieldInit(){
  void *value0=lbl_80534F5C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D11D0,3);

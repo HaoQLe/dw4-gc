@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-unsigned char fn_80078700(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+55);}
+unsigned char igGamecubeThread_virtual80(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+55);}
 }
 #pragma pop

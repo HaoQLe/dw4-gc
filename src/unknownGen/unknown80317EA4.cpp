@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80317EA4(){}
+void beWaterPlain_virtual88(){}
 }
 #pragma pop

@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_804119C8(int p0,int p1,int p2){
+void igRotateMode_virtual64(int p0,int p1,int p2){
  if((*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+117)&&((int)p1==200||(int)p1==201))){
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+116)=(unsigned char)(int)(void *)p2;
  }

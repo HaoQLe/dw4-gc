@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beNDMWStatusCtrlBaseEquip_register();
+void *beNDMWStatusSubSlot_getMeta();
+void beNDMWStatusSubSlot_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800A325C(void *);
 void fn_803250AC();
-void *fn_80332364();
-void fn_803323B0();
 void *fn_80332910();
-void fn_80332E4C();
 extern char lbl_80453B8C[];
 extern char lbl_80535F30[];
-void fn_80332884();
-void *fn_803328F0();
+void beNDMWStatusSubSlot_register();
+void *beNDMWStatusSubSlot_getMetaCall();
 }
 extern "C" {
 UnknownGenHolder *dtor_803327E8(UnknownGenHolder *object,short flags){
@@ -28,12 +28,12 @@ UnknownGenHolder *dtor_803327E8(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_8033285C(){
- fn_80066188((int)fn_80332884);
+ fn_80066188((int)beNDMWStatusSubSlot_register);
 }
-void fn_80332884(){
+void beNDMWStatusSubSlot_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535F30,(int)fn_80332E4C,(int)fn_80332910,(int)fn_803328F0,(int)lbl_80453B8C,124,(int)fn_803323B0,0,0,0);
+ fn_80066204(0,(int)lbl_80535F30,(int)beNDMWStatusCtrlBaseEquip_register,(int)fn_80332910,(int)beNDMWStatusSubSlot_getMetaCall,(int)lbl_80453B8C,124,(int)beNDMWStatusSubSlot_vtableRead,0,0,0);
 }
-void *fn_803328F0(){return fn_80332364();}
+void *beNDMWStatusSubSlot_getMetaCall(){return beNDMWStatusSubSlot_getMeta();}
 }
 #pragma pop

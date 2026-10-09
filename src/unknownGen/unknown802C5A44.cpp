@@ -19,7 +19,7 @@ struct UnknownGenObject802C5A44 : UnknownGenRoot802C5A44 {
  inline ~UnknownGenObject802C5A44(){unknown00=lbl_804DEFCC;}
 };
 extern "C" {
-void *fn_802C5A44(){
+void *beModelCtrlSCEffect_vtableRead(){
  UnknownGenObject802C5A44 object;
  object.unknown00=lbl_804D9E80;
  object.unknown00=lbl_804DEFCC;

@@ -5,8 +5,6 @@ extern "C" {
 void *fn_800237D0();
 void *fn_80023FDC();
 void *fn_80024180();
-void fn_8002907C();
-void fn_80029694();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_800658E4(void *,void *);
@@ -16,11 +14,13 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_800A325C(void *);
-void fn_8010D3F4();
 void *fn_8010F0F4();
-void fn_801120FC();
+void igGeometryElement_register();
+void igNonRefCountedObjectList_register();
+void igObjectList_register();
+void igObject_register();
+void igTextElement_fieldInit();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476DA8[];
@@ -52,27 +52,27 @@ extern void *lbl_8056357C;
 extern void *lbl_80563584;
 extern void *lbl_80563770;
 void fn_8010CBD4();
-void *fn_8010CC44();
-void *fn_8010CC80();
+void *igNonRefCountedViewList_getMeta();
+void *igNonRefCountedViewList_vtableRead();
 void fn_8010CCF0();
-void fn_8010CD18();
-void *fn_8010CD84();
-void *fn_8010CDE0();
-void *fn_8010CE1C();
+void igNonRefCountedViewList_register();
+void *igNonRefCountedViewList_getMetaCall();
+void *igViewList_getMeta();
+void *igViewList_vtableRead();
 void fn_8010CE8C();
-void fn_8010CEB4();
-void *fn_8010CF20();
-void *fn_8010CF40();
+void igViewList_register();
+void *igViewList_getMetaCall();
+void *igView_getMeta();
 void fn_8010CF7C();
-void fn_8010CFA4();
-void *fn_8010D010();
-void fn_8010D030();
-void *fn_8010D0F4();
-void *fn_8010D130();
+void igView_register();
+void *igView_getMetaCall();
+void igView_fieldInit();
+void *igTextElement_getMeta();
+void *igTextElement_vtableRead();
 void fn_8010D32C();
-void fn_8010D354();
-void *fn_8010D3CC();
-void *fn_8010D3EC();
+void igTextElement_register();
+void *igTextElement_getMetaCall();
+void *igTextElement_parentMeta();
 }
 struct UnknownGenObject8010CC80_0 {
  void *unknown00;
@@ -124,11 +124,11 @@ void *fn_8010CC08(){
  if(!lbl_80563574) lbl_80563574=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80563574;
 }
-void *fn_8010CC44(){
+void *igNonRefCountedViewList_getMeta(){
  if(!lbl_80563574 || !(reinterpret_cast<unsigned int *>(lbl_80563574)[0x24/4]&4)) fn_8010CCF0();
  return lbl_80563574;
 }
-void *fn_8010CC80(){
+void *igNonRefCountedViewList_vtableRead(){
  UnknownGenObject8010CC80_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -139,22 +139,22 @@ void *fn_8010CC80(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010CCF0(){
- fn_80066188((int)fn_8010CD18);
+ fn_80066188((int)igNonRefCountedViewList_register);
 }
-void fn_8010CD18(){
+void igNonRefCountedViewList_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563574,(int)fn_80029694,(int)fn_80023FDC,(int)fn_8010CD84,(int)lbl_80494624,20,(int)fn_8010CC80,0,0,(int)lbl_8055EEB0);
+ fn_80066204(0,(int)&lbl_80563574,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igNonRefCountedViewList_getMetaCall,(int)lbl_80494624,20,(int)igNonRefCountedViewList_vtableRead,0,0,(int)lbl_8055EEB0);
 }
-void *fn_8010CD84(){return fn_8010CC44();}
+void *igNonRefCountedViewList_getMetaCall(){return igNonRefCountedViewList_getMeta();}
 void *fn_8010CDA4(){
  if(!lbl_80563578) lbl_80563578=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80563578;
 }
-void *fn_8010CDE0(){
+void *igViewList_getMeta(){
  if(!lbl_80563578 || !(reinterpret_cast<unsigned int *>(lbl_80563578)[0x24/4]&4)) fn_8010CE8C();
  return lbl_80563578;
 }
-void *fn_8010CE1C(){
+void *igViewList_vtableRead(){
  UnknownGenObject8010CE1C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -165,26 +165,26 @@ void *fn_8010CE1C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010CE8C(){
- fn_80066188((int)fn_8010CEB4);
+ fn_80066188((int)igViewList_register);
 }
-void fn_8010CEB4(){
+void igViewList_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563578,(int)fn_8002907C,(int)fn_80024180,(int)fn_8010CF20,(int)lbl_8049463C,20,(int)fn_8010CE1C,0,0,(int)lbl_8055EEB8);
+ fn_80066204(0,(int)&lbl_80563578,(int)igObjectList_register,(int)fn_80024180,(int)igViewList_getMetaCall,(int)lbl_8049463C,20,(int)igViewList_vtableRead,0,0,(int)lbl_8055EEB8);
 }
-void *fn_8010CF20(){return fn_8010CDE0();}
-void *fn_8010CF40(){
+void *igViewList_getMetaCall(){return igViewList_getMeta();}
+void *igView_getMeta(){
  if(!lbl_8056357C || !(reinterpret_cast<unsigned int *>(lbl_8056357C)[0x24/4]&4)) fn_8010CF7C();
  return lbl_8056357C;
 }
 void fn_8010CF7C(){
- fn_80066188((int)fn_8010CFA4);
+ fn_80066188((int)igView_register);
 }
-void fn_8010CFA4(){
+void igView_register(){
  fn_8010CBD4();
- fn_80066204(1,(int)&lbl_8056357C,(int)fn_80066B08,(int)fn_800237D0,(int)fn_8010D010,(int)lbl_8055EEC8,12,0,(int)fn_8010D030,0,(int)lbl_8055EEC0);
+ fn_80066204(1,(int)&lbl_8056357C,(int)igObject_register,(int)fn_800237D0,(int)igView_getMetaCall,(int)lbl_8055EEC8,12,0,(int)igView_fieldInit,0,(int)lbl_8055EEC0);
 }
-void *fn_8010D010(){return fn_8010CF40();}
-void fn_8010D030(){
+void *igView_getMetaCall(){return igView_getMeta();}
+void igView_fieldInit(){
  void *value0=lbl_8056357C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EED0,1);
@@ -198,11 +198,11 @@ void *fn_8010D0B8(){
  if(!lbl_80563584) lbl_80563584=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80563584;
 }
-void *fn_8010D0F4(){
+void *igTextElement_getMeta(){
  if(!lbl_80563584 || !(reinterpret_cast<unsigned int *>(lbl_80563584)[0x24/4]&4)) fn_8010D32C();
  return lbl_80563584;
 }
-void *fn_8010D130(){
+void *igTextElement_vtableRead(){
  UnknownGenObject8010D130 object;
  object.unknown00=lbl_80497ED4;
  object.unknown08.value=0;
@@ -225,13 +225,13 @@ UnknownGenHolder *dtor_8010D2B8(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_8010D32C(){
- fn_80066188((int)fn_8010D354);
+ fn_80066188((int)igTextElement_register);
 }
-void fn_8010D354(){
+void igTextElement_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563584,(int)fn_801120FC,(int)fn_8010D3EC,(int)fn_8010D3CC,(int)lbl_80494654,56,(int)fn_8010D130,(int)fn_8010D3F4,0,(int)lbl_80494648);
+ fn_80066204(0,(int)&lbl_80563584,(int)igGeometryElement_register,(int)igTextElement_parentMeta,(int)igTextElement_getMetaCall,(int)lbl_80494654,56,(int)igTextElement_vtableRead,(int)igTextElement_fieldInit,0,(int)lbl_80494648);
 }
-void *fn_8010D3CC(){return fn_8010D0F4();}
-void *fn_8010D3EC(){return lbl_80563770;}
+void *igTextElement_getMetaCall(){return igTextElement_getMeta();}
+void *igTextElement_parentMeta(){return lbl_80563770;}
 }
 #pragma pop

@@ -7,7 +7,7 @@ extern void *kFailure__3Gap;
 extern void *kSuccess__3Gap;
 }
 extern "C" {
-void fn_80078394(int p0,int p1){
+void igGamecubeThread_virtualB0(int p0,int p1){
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+44)){
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
   return;

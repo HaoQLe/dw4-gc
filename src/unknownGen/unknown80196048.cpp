@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_80564BC0;
 }
 extern "C" {
-void *fn_80196048(){return lbl_80564BC0;}
-int fn_80196050(){return 1;}
+void *igReplaceAttrForNode_virtual7C(){return lbl_80564BC0;}
+int igReplaceByGroup_virtual84(){return 1;}
 }
 #pragma pop

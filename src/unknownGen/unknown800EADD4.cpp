@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800EADD4(){}
+void igPrimLengthArray1_1_virtual64(){}
 }
 #pragma pop

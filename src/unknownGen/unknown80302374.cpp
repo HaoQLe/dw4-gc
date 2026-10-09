@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80302374(){}
+void beLua_virtual68(){}
 }
 #pragma pop

@@ -9,19 +9,19 @@ void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_801AA6DC();
-void fn_801C6DD8();
+void igBoundingBoxesMaker_fieldInit();
+void igObject_register();
 extern char lbl_804B1294[];
 extern char lbl_804B12A8[];
 extern char lbl_804B6EB0[];
 extern void *lbl_805621F4;
 extern void *lbl_80565298;
-void *fn_801C6BA4();
-void *fn_801C6BE0();
+void *igBoundingBoxesMaker_getMeta();
+void *igBoundingBoxesMaker_vtableRead();
 void fn_801C6D18();
-void fn_801C6D40();
-void *fn_801C6DB8();
+void igBoundingBoxesMaker_register();
+void *igBoundingBoxesMaker_getMetaCall();
 }
 struct UnknownGenRoot801C6BE0 {
  void *unknown00;
@@ -46,11 +46,11 @@ void *fn_801C6B68(){
  if(!lbl_80565298) lbl_80565298=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80565298;
 }
-void *fn_801C6BA4(){
+void *igBoundingBoxesMaker_getMeta(){
  if(!lbl_80565298 || !(reinterpret_cast<unsigned int *>(lbl_80565298)[0x24/4]&4)) fn_801C6D18();
  return lbl_80565298;
 }
-void *fn_801C6BE0(){
+void *igBoundingBoxesMaker_vtableRead(){
  UnknownGenObject801C6BE0 object;
  object.unknown00=lbl_804B6EB0;
  object.unknown14.value=0;
@@ -60,12 +60,12 @@ void *fn_801C6BE0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801C6D18(){
- fn_80066188((int)fn_801C6D40);
+ fn_80066188((int)igBoundingBoxesMaker_register);
 }
-void fn_801C6D40(){
+void igBoundingBoxesMaker_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80565298,(int)fn_80066B08,(int)fn_800237D0,(int)fn_801C6DB8,(int)lbl_804B12A8,40,(int)fn_801C6BE0,(int)fn_801C6DD8,0,(int)lbl_804B1294);
+ fn_80066204(0,(int)&lbl_80565298,(int)igObject_register,(int)fn_800237D0,(int)igBoundingBoxesMaker_getMetaCall,(int)lbl_804B12A8,40,(int)igBoundingBoxesMaker_vtableRead,(int)igBoundingBoxesMaker_fieldInit,0,(int)lbl_804B1294);
 }
-void *fn_801C6DB8(){return fn_801C6BA4();}
+void *igBoundingBoxesMaker_getMetaCall(){return igBoundingBoxesMaker_getMeta();}
 }
 #pragma pop

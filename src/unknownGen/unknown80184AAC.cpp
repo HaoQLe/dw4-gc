@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800667D0();
-void *fn_801B752C();
+void *igNode_getMeta();
 }
 extern "C" {
 void fn_80184AAC(int p0){
@@ -13,7 +13,7 @@ void fn_80184AAC(int p0){
  void *value1;
  void *value2;
  value3=fn_800667D0();
- value4=fn_801B752C();
+ value4=igNode_getMeta();
  if((int)(int)value4!=0){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+4)=(reinterpret_cast<char *>(value0)+1);

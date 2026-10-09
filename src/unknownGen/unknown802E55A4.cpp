@@ -21,7 +21,7 @@ struct UnknownGenObject802E55A4 : UnknownGenRoot802E55A4 {
  inline ~UnknownGenObject802E55A4(){unknown00=lbl_804D3C48;}
 };
 extern "C" {
-void *fn_802E55A4(){
+void *beAction2InfoWork_vtableRead(){
  UnknownGenObject802E55A4 object;
  object.unknown00=lbl_804D3C48;
  object.unknown08.value=0;

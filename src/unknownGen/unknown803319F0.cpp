@@ -16,7 +16,7 @@ extern char lbl_804E1EDC[];
 extern void *lbl_80535F04;
 }
 extern "C" {
-void fn_803319F0(){
+void beNDMWStatusCtrlDisk_fieldInit(){
  void *value0=lbl_80535F04;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1E94,6);

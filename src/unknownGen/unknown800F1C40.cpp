@@ -5,6 +5,6 @@ extern "C" {
 void *GXDrawDone();
 }
 extern "C" {
-void *fn_800F1C40(){return GXDrawDone();}
+void *igGamecubeVisualContext_virtual2BC(){return GXDrawDone();}
 }
 #pragma pop

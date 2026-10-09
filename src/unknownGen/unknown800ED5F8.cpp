@@ -268,7 +268,7 @@ public:
  virtual void s414(void *,void *);
 };
 extern "C" {
-void fn_800ED5F8(int p0,int p1){
+void igGamecubeVisualContext_virtualEC(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

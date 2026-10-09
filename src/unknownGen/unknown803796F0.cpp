@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80536090;
 }
 extern "C" {
-void *fn_803796F0(){return lbl_80536090;}
+void *beNDMWSaveCtrl_virtual58(){return lbl_80536090;}
 }
 #pragma pop

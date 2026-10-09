@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80563100;
 }
 extern "C" {
-void *fn_800F9A30(){return lbl_80563100;}
+void *igGamecubeVisualContext_virtual58(){return lbl_80563100;}
 }
 #pragma pop

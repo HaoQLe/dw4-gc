@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800F6D64(void *,void *);
+void *igGamecubeVisualContext_virtual1CC(void *,void *);
 }
 class UnknownGenV800C28FC_0 {
 public:
@@ -889,25 +889,25 @@ public:
  virtual void * s2FC(void *);
 };
 extern "C" {
-void fn_800C28D0(int p0,int p1){
- fn_800F6D64((void *)p1,(reinterpret_cast<char *>((void *)p0)+12));
+void igSceneAmbientColorAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual1CC((void *)p1,(reinterpret_cast<char *>((void *)p0)+12));
 }
-void fn_800C28FC(int p0,int p1){
+void igSceneAmbientColorAttr_virtual68(int p0,int p1){
  reinterpret_cast<UnknownGenV800C28FC_0 *>((void *)p1)->s1D0((reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
 }
-void fn_800C2934(int p0,int p1){
+void igScissorAttr_virtual60(int p0,int p1){
  reinterpret_cast<UnknownGenV800C2934_1 *>((void *)p1)->s2F0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28));
 }
-void fn_800C2978(int p0,int p1){
+void igScissorAttr_virtual68(int p0,int p1){
  reinterpret_cast<UnknownGenV800C2978_2 *>((void *)p1)->s2F4((reinterpret_cast<char *>((void *)p0)+16),(reinterpret_cast<char *>((void *)p0)+20),(reinterpret_cast<char *>((void *)p0)+24),(reinterpret_cast<char *>((void *)p0)+28));
 }
-void fn_800C29BC(int p0,int p1){
+void igScissorTypeAttr_virtual60(int p0,int p1){
  reinterpret_cast<UnknownGenV800C29BC_3 *>((void *)p1)->s2F8(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
 }
-void fn_800C29F4(int p0,int p1){
+void igScissorTypeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C29F4_4 *>((void *)p1)->s2FC((void *)p1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
 }
-int fn_800C2A34(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+104);}
+int igGamecubeVisualContext_virtual2FC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+104);}
 }
 #pragma pop

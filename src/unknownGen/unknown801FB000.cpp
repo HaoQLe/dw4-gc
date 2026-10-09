@@ -29,7 +29,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_801FB000(int p0){
+void igNode_virtual44(int p0){
  fn_800667E0();
  void *value0=reinterpret_cast<UnknownGenV801FB000_0 *>((void *)p0)->s58();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8);

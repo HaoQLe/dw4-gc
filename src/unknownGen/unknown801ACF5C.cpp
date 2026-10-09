@@ -10,8 +10,8 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
-void fn_801AD294();
-void fn_801BF938();
+void igGroup_register();
+void igTimeSwitch_fieldInit();
 extern char lbl_8047650C[];
 extern char lbl_804AAFB8[];
 extern char lbl_804ABBC4[];
@@ -22,11 +22,11 @@ extern char lbl_80560188[8];
 extern void *lbl_805621F4;
 extern void *lbl_80564740;
 extern void *lbl_80564744;
-void *fn_801ACFE4();
-void *fn_801AD020();
+void *igTimeSwitch_getMeta();
+void *igTimeSwitch_vtableRead();
 void fn_801AD1D8();
-void fn_801AD200();
-void *fn_801AD274();
+void igTimeSwitch_register();
+void *igTimeSwitch_getMetaCall();
 }
 struct UnknownGenRoot801AD020 {
  void *unknown00;
@@ -63,11 +63,11 @@ void *fn_801ACFA8(){
  if(!lbl_80564744) lbl_80564744=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564744;
 }
-void *fn_801ACFE4(){
+void *igTimeSwitch_getMeta(){
  if(!lbl_80564744 || !(reinterpret_cast<unsigned int *>(lbl_80564744)[0x24/4]&4)) fn_801AD1D8();
  return lbl_80564744;
 }
-void *fn_801AD020(){
+void *igTimeSwitch_vtableRead(){
  UnknownGenObject801AD020 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -81,12 +81,12 @@ void *fn_801AD020(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801AD1D8(){
- fn_80066188((int)fn_801AD200);
+ fn_80066188((int)igTimeSwitch_register);
 }
-void fn_801AD200(){
+void igTimeSwitch_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564744,(int)fn_801BF938,(int)fn_8011148C,(int)fn_801AD274,(int)lbl_804ABBC4,56,(int)fn_801AD020,(int)fn_801AD294,0,(int)lbl_80560188);
+ fn_80066204(0,(int)&lbl_80564744,(int)igGroup_register,(int)fn_8011148C,(int)igTimeSwitch_getMetaCall,(int)lbl_804ABBC4,56,(int)igTimeSwitch_vtableRead,(int)igTimeSwitch_fieldInit,0,(int)lbl_80560188);
 }
-void *fn_801AD274(){return fn_801ACFE4();}
+void *igTimeSwitch_getMetaCall(){return igTimeSwitch_getMeta();}
 }
 #pragma pop

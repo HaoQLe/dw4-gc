@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_801189E4(){return 0;}
+int igEventReceiver_virtual80(){return 0;}
 }
 #pragma pop

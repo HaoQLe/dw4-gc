@@ -15,7 +15,7 @@ static inline void *UnknownGenCast8018132C_9(void *q){
  return 0;
 }
 extern "C" {
-void fn_8018132C(int p0,int p1){
+void igObjectPropertyForGeometry_virtual90(int p0,int p1){
  void *value0;
  void *local0;
  fn_80188BA4(&local0);

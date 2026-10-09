@@ -282,7 +282,7 @@ public:
  virtual void * s44C(void *,void *,void *,void *,void *);
 };
 extern "C" {
-void *fn_800FF85C(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igGamecubeVisualContext_virtual254(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  if((int)p1>16){
   return (void *)1;

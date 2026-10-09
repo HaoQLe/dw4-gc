@@ -10,7 +10,7 @@ struct UnknownGenObject8033DCAC_0 {
  char unknown04[68];
 };
 extern "C" {
-void *fn_8033DCAC(){
+void *beNDMWLoadIntf2DegiState_vtableRead(){
  UnknownGenObject8033DCAC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804E58E4;

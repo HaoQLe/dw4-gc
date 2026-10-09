@@ -14,7 +14,7 @@ extern char lbl_804CF840[];
 extern void *lbl_8053481C;
 }
 extern "C" {
-void fn_802BBB40(){
+void beSaveUtilInfoRam_fieldInit(){
  void *value0=lbl_8053481C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF828,2);

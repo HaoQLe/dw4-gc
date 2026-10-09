@@ -96,12 +96,12 @@ public:
  virtual void sD0(void *,void *);
 };
 extern "C" {
-int fn_80126800(){return 12;}
+int igVec3fMetaField_virtual64(){return 12;}
 void fn_80126808(int p0){
  reinterpret_cast<UnknownGenV80126808_0 *>((void *)p0)->s8C();
 }
-int fn_80126834(){return 16;}
-void fn_8012683C(int p0,int p1,int p2){
+int igVec3fMetaField_virtual160(){return 16;}
+void igVec3ucMetaField_virtual1C4(int p0,int p1,int p2){
  void *value0=fn_8011EB38();
  reinterpret_cast<UnknownGenV8012683C_1 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)));
 }

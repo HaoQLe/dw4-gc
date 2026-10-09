@@ -40,8 +40,8 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void *fn_801D9CA0(){return lbl_805651C0;}
-void fn_801D9CA8(int p0){
+void *igCartoonShader_virtual58(){return lbl_805651C0;}
+void igCartoonShader_virtual28(int p0){
  void *value18;
  void *value19;
  void *value1;

@@ -180,13 +180,13 @@ public:
  virtual void sD0(void *,void *);
 };
 extern "C" {
-void fn_800E26DC(int p0){
+void igPointSpriteExt_virtualB4(int p0){
  reinterpret_cast<UnknownGenV800E26DC_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sE4();
 }
-void fn_800E270C(int p0){
+void igPointSpriteExt_virtualB8(int p0){
  reinterpret_cast<UnknownGenV800E270C_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sE8();
 }
-void fn_800E273C(int p0){
+void igPrimLengthArray1_1_virtual50(int p0){
  void *value0=fn_80022DF8();
  reinterpret_cast<UnknownGenV800E273C_2 *>(value0)->sD0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
 }

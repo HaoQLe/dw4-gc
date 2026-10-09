@@ -11,7 +11,7 @@ void *fn_8033D28C(void *object){
  fn_8033D3C8();
  return fn_8006546C(lbl_805363E8,object);
 }
-void *fn_8033D2CC(){
+void *beNDMWLoadIntf2DataSelIntf_getMeta(){
  if(!lbl_805363E8 || !(reinterpret_cast<unsigned int *>(lbl_805363E8)[0x24/4]&4)) fn_8033D3C8();
  return lbl_805363E8;
 }

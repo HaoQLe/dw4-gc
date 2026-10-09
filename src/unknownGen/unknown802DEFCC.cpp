@@ -15,7 +15,7 @@ extern char lbl_804D26B8[];
 extern void *lbl_805354FC;
 }
 extern "C" {
-void fn_802DEFCC(){
+void beCriHandle_fieldInit(){
  void *value0=lbl_805354FC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D267C,5);

@@ -16,7 +16,7 @@ extern char lbl_804D2704[];
 extern void *lbl_80535514;
 }
 extern "C" {
-void fn_802DF2E4(){
+void beCriFxInfo_fieldInit(){
  void *value0=lbl_80535514;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D26D4,4);

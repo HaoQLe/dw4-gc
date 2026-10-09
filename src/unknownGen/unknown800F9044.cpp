@@ -6,7 +6,7 @@ void GXSetClipMode(void *);
 extern char lbl_8056350E[1];
 }
 extern "C" {
-void fn_800F9044(int p0,int p1){
+void igGamecubeVisualContext_virtual37C(int p0,int p1){
  void *value0;
  value0=(void *)p1;
  if((void *)(int)*reinterpret_cast<unsigned char *>((lbl_8056350E+0))){
@@ -15,8 +15,8 @@ void fn_800F9044(int p0,int p1){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+1172)=(unsigned char)(int)value0;
  GXSetClipMode((void *)(int)((unsigned int)__cntlzw((unsigned char)(int)value0)>>5));
 }
-unsigned char fn_800F9084(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+1172);}
-void fn_800F908C(int p0,int p1,int p2,int p3,int p4){
+unsigned char igGamecubeVisualContext_virtual380(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+1172);}
+void igGamecubeVisualContext_virtual2F0(int p0,int p1,int p2,int p3,int p4){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1176)=(void *)p1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1180)=(void *)p2;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1184)=(void *)p3;
@@ -26,14 +26,14 @@ void fn_800F908C(int p0,int p1,int p2,int p3,int p4){
  }
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+1312)=(void *)(int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+1312)|0x10);
 }
-void *fn_800F90B8(int p0,int p1,int p2,int p3,int p4){
+void *igGamecubeVisualContext_virtual2F4(int p0,int p1,int p2,int p3,int p4){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+1176);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p2)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+1180);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p3)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+1184);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p4)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+1188);
  return (void *)p0;
 }
-void fn_800F90DC(int p0,int p1){
+void igGamecubeVisualContext_virtual2F8(int p0,int p1){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104)==(int)p1){
   return;
  }

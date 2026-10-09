@@ -16,7 +16,7 @@ struct UnknownGenObject802DB70C : UnknownGenRoot802DB70C {
  inline ~UnknownGenObject802DB70C(){unknown00=lbl_804D5BAC;}
 };
 extern "C" {
-void *fn_802DB70C(){
+void *beDemoManagerWork_vtableRead(){
  UnknownGenObject802DB70C object;
  object.unknown00=lbl_804D5BAC;
  object.unknown0C.value=0;

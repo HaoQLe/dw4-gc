@@ -21,7 +21,7 @@ struct UnknownGenObject802D5538 : UnknownGenRoot802D5538 {
  inline ~UnknownGenObject802D5538(){unknown00=lbl_804DE34C;}
 };
 extern "C" {
-void *fn_802D5538(){
+void *beHitLandModelOrder_vtableRead(){
  UnknownGenObject802D5538 object;
  object.unknown00=lbl_804DE34C;
  object.unknown20.value=0;

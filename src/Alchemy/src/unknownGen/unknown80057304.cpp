@@ -57,9 +57,9 @@ void fn_80057304(int p0,int p1,int p2,int p3,int p4,int p5){
   return;
  }
 }
-int fn_80057368(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+8);}
-void fn_80057370(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+8)=value;}
-void fn_80057378(int p0){
+int igMemoryDictionary_virtual5C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+8);}
+void igMemoryDictionary_virtual60(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+8)=value;}
+void igMemoryDictionary_virtual64(int p0){
  void *value0;
  void *value1;
  void *value2;

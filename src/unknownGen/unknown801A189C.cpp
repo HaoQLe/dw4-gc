@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_801A189C(){return 1;}
+int igSplitGeometries_virtual7C(){return 1;}
 }
 #pragma pop

@@ -7,10 +7,10 @@ void fn_803050A8(void *,void *,void *,int,int);
 extern char lbl_80425730[];
 }
 extern "C" {
-void fn_802FA858(int p0,int p1,int p2,int p3,int p4,int p5){
+void beFont_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_803050A8(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),(void *)p1,lbl_80425730,0,-1);
 }
-void fn_802FA88C(int p0){
+void beFont_virtual88(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);

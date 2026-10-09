@@ -6,8 +6,8 @@ extern void *lbl_80536840;
 extern void *lbl_8053684C;
 }
 extern "C" {
-void fn_80348634(){}
-void *fn_80348638(){return lbl_80536840;}
-void *fn_80348648(){return lbl_8053684C;}
+void beNDMWAfsStageLoad_virtual5C(){}
+void *beNDMWAfsStageLoad_virtual58(){return lbl_80536840;}
+void *beNDMWAfsSetup_virtual58(){return lbl_8053684C;}
 }
 #pragma pop

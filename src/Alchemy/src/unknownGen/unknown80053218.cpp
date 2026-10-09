@@ -43,7 +43,7 @@ public:
  virtual void s8C(void *);
 };
 extern "C" {
-void fn_80053218(int p0,int p1){
+void igIGBFile_virtual84(int p0,int p1){
  void *value1;
  void *value0;
  void *value2;

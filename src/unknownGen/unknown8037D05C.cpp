@@ -58,6 +58,6 @@ void *fn_8037D138(int p0){
 int fn_8037D154(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+40);}
 int fn_8037D15C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36);}
 int fn_8037D164(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36);}
-void *fn_8037D16C(){return lbl_80535FDC;}
+void *beNDMWSaveIntf_virtual80(){return lbl_80535FDC;}
 }
 #pragma pop

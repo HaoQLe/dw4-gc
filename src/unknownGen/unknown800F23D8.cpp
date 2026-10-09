@@ -32,9 +32,9 @@ public:
  virtual void s58();
 };
 extern "C" {
-void fn_800F23D8(){return fn_800667D0();}
-void *fn_800F23F8(){return fn_800DDE54();}
-void fn_800F2418(int p0,int p1,int p2,int p3,int p4,int p5){
+void igGamecubeImage_virtual2C(){return fn_800667D0();}
+void *igGamecubeImage_virtual30(){return fn_800DDE54();}
+void igGamecubeImage_virtual5C(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_800DA440((void *)p0,(void *)p1,(void *)p2);
  reinterpret_cast<UnknownGenV800F2418_0 *>((void *)p1)->s58();
 }

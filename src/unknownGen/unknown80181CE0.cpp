@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564BD4;
 }
 extern "C" {
-void *fn_80181CE0(){return lbl_80564BD4;}
+void *igObjectPropertyForMultiTextureShader_virtual7C(){return lbl_80564BD4;}
 }
 #pragma pop

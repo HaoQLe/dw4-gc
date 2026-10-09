@@ -35,7 +35,7 @@ public:
  virtual void s70();
 };
 extern "C" {
-void fn_802AEC40(int p0){
+void igMovieManager_virtual60(int p0){
  reinterpret_cast<UnknownGenV802AEC40_0 *>((void *)p0)->s70();
 }
 }

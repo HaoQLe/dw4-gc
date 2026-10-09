@@ -18,7 +18,7 @@ struct UnknownGenObject802BFC98 : UnknownGenRoot802BFC98 {
  inline ~UnknownGenObject802BFC98(){unknown00=lbl_804DAD48;}
 };
 extern "C" {
-void *fn_802BFC98(){
+void *beSvSlotXbox_vtableRead(){
  UnknownGenObject802BFC98 object;
  object.unknown00=lbl_804DAE94;
  object.unknown00=lbl_804DAD48;

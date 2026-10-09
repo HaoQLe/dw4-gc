@@ -14,7 +14,7 @@ struct UnknownGenL804117A8_8 {
  int m10;
 };
 extern "C" {
-void fn_804117A8(int p0,float f0){
+void igFlyMode_virtual78(int p0,float f0){
  void *value0;
  UnknownGenL804117A8_8 local0;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);

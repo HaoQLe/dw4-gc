@@ -8,7 +8,7 @@ void fn_8028A398(void *,void *);
 extern char lbl_80565AF4[4];
 }
 extern "C" {
-void *fn_80409B28(int p0,int p1){
+void *igViewerDataPumpManager_virtual6C(int p0,int p1){
  void *value0;
  value0=fn_80068128((void *)p1,*reinterpret_cast<void **>((lbl_80565AF4+0)));
  if((unsigned char)(int)value0){

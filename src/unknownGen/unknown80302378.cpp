@@ -7,7 +7,7 @@ void fn_80069128(void *,void *);
 extern char lbl_80535100[];
 }
 extern "C" {
-void *fn_80302378(int p0,int p1){
+void *beLua_virtual6C(int p0,int p1){
  void *value0;
  value0=fn_80068128((void *)p1,*reinterpret_cast<void **>((lbl_80535100+0)));
  if((unsigned char)(int)value0){

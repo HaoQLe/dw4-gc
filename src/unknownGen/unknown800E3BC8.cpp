@@ -5,7 +5,7 @@ extern "C" {
 void fn_80056378(void *);
 }
 extern "C" {
-void *fn_800E3BC8(int p0){
+void *igGamecubeVertexArray1_1_virtualFC(int p0){
  void *value0;
  void *value1;
  void *value2;

@@ -18,7 +18,7 @@ struct UnknownGenObject803353D4 : UnknownGenRoot803353D4 {
  inline ~UnknownGenObject803353D4(){unknown00=lbl_804E64BC;}
 };
 extern "C" {
-void *fn_803353D4(){
+void *beSaveIntfComMdlData_vtableRead(){
  UnknownGenObject803353D4 object;
  object.unknown00=lbl_804E64BC;
  object.unknown0C.value=0;

@@ -81,108 +81,108 @@ extern void *lbl_80563A30;
 extern void *lbl_80563A34;
 }
 extern "C" {
-void *fn_8012EEAC(){return lbl_805638D8;}
-void *fn_8012EEB4(){return lbl_805638DC;}
-void *fn_8012EEBC(){return lbl_805638E0;}
-void *fn_8012EEC4(){return lbl_805638E4;}
-void *fn_8012EECC(){return lbl_805638E8;}
-void *fn_8012EED4(){return lbl_805638EC;}
-void *fn_8012EEDC(){return lbl_805638F0;}
-void *fn_8012EEE4(){return lbl_805638F4;}
-void *fn_8012EEEC(){return lbl_805638FC;}
-void *fn_8012EEF4(){return lbl_80563900;}
-void *fn_8012EEFC(){return lbl_80563904;}
-void *fn_8012EF04(){return lbl_80563908;}
-void *fn_8012EF0C(){return lbl_8056390C;}
-void *fn_8012EF14(){return lbl_80563910;}
-void *fn_8012EF1C(){return lbl_80563914;}
-void *fn_8012EF24(){return lbl_80563918;}
-void *fn_8012EF2C(){return lbl_8056391C;}
-void *fn_8012EF34(){return lbl_80563920;}
-void *fn_8012EF3C(){return lbl_80563924;}
-void *fn_8012EF44(){return lbl_80563928;}
-void *fn_8012EF4C(){return lbl_8056392C;}
-void *fn_8012EF54(){return lbl_80563930;}
-void *fn_8012EF5C(){return lbl_80563934;}
-void *fn_8012EF64(){return lbl_80563938;}
-void *fn_8012EF6C(){return lbl_8056393C;}
-void *fn_8012EF74(){return lbl_80563940;}
-void *fn_8012EF7C(){return lbl_80563944;}
-void *fn_8012EF84(){return lbl_80563948;}
-void *fn_8012EF8C(){return lbl_8056394C;}
-void *fn_8012EF94(){return lbl_80563950;}
-void *fn_8012EF9C(){return lbl_80563954;}
-void *fn_8012EFA4(){return lbl_80563958;}
-void *fn_8012EFAC(){return lbl_8056398C;}
-void *fn_8012EFB4(){return lbl_80563990;}
-void *fn_8012EFBC(){return lbl_80563994;}
-void *fn_8012EFC4(){return lbl_80563998;}
-void *fn_8012EFCC(){return lbl_8056399C;}
-void *fn_8012EFD4(){return lbl_805639A0;}
-void *fn_8012EFDC(){return lbl_805639A4;}
-void *fn_8012EFE4(){return lbl_805639A8;}
-void *fn_8012EFEC(){return lbl_80563A34;}
-void *fn_8012EFF4(){return lbl_80563A30;}
+void *igVec4ucMetaField_virtual58(){return lbl_805638D8;}
+void *igVec4ucMetaField_virtual5C(){return lbl_805638DC;}
+void *igVec4ucMetaField_virtual14C(){return lbl_805638E0;}
+void *igVec4ucMetaField_virtual150(){return lbl_805638E4;}
+void *igVec4fMetaField_virtual58(){return lbl_805638E8;}
+void *igVec4fMetaField_virtual5C(){return lbl_805638EC;}
+void *igVec4fArrayMetaField_virtual58(){return lbl_805638F0;}
+void *igVec4fArrayMetaField_virtual5C(){return lbl_805638F4;}
+void *igVec4dMetaField_virtual58(){return lbl_805638FC;}
+void *igVec4dMetaField_virtual5C(){return lbl_80563900;}
+void *igVec4dMetaField_virtual14C(){return lbl_80563904;}
+void *igVec4dMetaField_virtual150(){return lbl_80563908;}
+void *igVec3ucMetaField_virtual58(){return lbl_8056390C;}
+void *igVec3ucMetaField_virtual5C(){return lbl_80563910;}
+void *igVec3ucMetaField_virtual14C(){return lbl_80563914;}
+void *igVec3ucMetaField_virtual150(){return lbl_80563918;}
+void *igVec3fMetaField_virtual58(){return lbl_8056391C;}
+void *igVec3fMetaField_virtual5C(){return lbl_80563920;}
+void *igVec3fMetaField_virtual14C(){return lbl_80563924;}
+void *igVec3fMetaField_virtual150(){return lbl_80563928;}
+void *igVec3dMetaField_virtual58(){return lbl_8056392C;}
+void *igVec3dMetaField_virtual5C(){return lbl_80563930;}
+void *igVec3dMetaField_virtual14C(){return lbl_80563934;}
+void *igVec3dMetaField_virtual150(){return lbl_80563938;}
+void *igVec2fMetaField_virtual58(){return lbl_8056393C;}
+void *igVec2fMetaField_virtual5C(){return lbl_80563940;}
+void *igVec2fMetaField_virtual14C(){return lbl_80563944;}
+void *igVec2fMetaField_virtual150(){return lbl_80563948;}
+void *igVec2dMetaField_virtual58(){return lbl_8056394C;}
+void *igVec2dMetaField_virtual5C(){return lbl_80563950;}
+void *igVec2dMetaField_virtual14C(){return lbl_80563954;}
+void *igVec2dMetaField_virtual150(){return lbl_80563958;}
+void *igMatrix44fMetaField_virtual58(){return lbl_8056398C;}
+void *igMatrix44fMetaField_virtual5C(){return lbl_80563990;}
+void *igMatrix44fMetaField_virtual14C(){return lbl_80563994;}
+void *igMatrix44fMetaField_virtual150(){return lbl_80563998;}
+void *igMatrix44dMetaField_virtual58(){return lbl_8056399C;}
+void *igMatrix44dMetaField_virtual5C(){return lbl_805639A0;}
+void *igMatrix44dMetaField_virtual14C(){return lbl_805639A4;}
+void *igMatrix44dMetaField_virtual150(){return lbl_805639A8;}
+void *igAABox_virtual58(){return lbl_80563A34;}
+void *igAABoxList_virtual58(){return lbl_80563A30;}
 void *fn_8012EFFC(){return lbl_80563A2C;}
 void *fn_8012F004(){return lbl_80563A28;}
-void *fn_8012F00C(){return lbl_80563A20;}
+void *igVec2fList_virtual58(){return lbl_80563A20;}
 void *fn_8012F014(){return lbl_80563A1C;}
-void *fn_8012F01C(){return lbl_80563A0C;}
-void *fn_8012F024(){return lbl_80563A08;}
-void *fn_8012F02C(){return lbl_80563A00;}
+void *igVec3ucList_virtual58(){return lbl_80563A0C;}
+void *igVec3fListList_virtual58(){return lbl_80563A08;}
+void *igVec4fList_virtual58(){return lbl_80563A00;}
 void *fn_8012F034(){return lbl_805639FC;}
-void *fn_8012F03C(){return lbl_805639F4;}
-void *fn_8012F044(){return lbl_805639EC;}
+void *igVec4ucList_virtual58(){return lbl_805639F4;}
+void *igQuaternionfList_virtual58(){return lbl_805639EC;}
 void *fn_8012F04C(){return lbl_805639E8;}
-void *fn_8012F054(){return lbl_805639E0;}
+void *igMatrix44fList_virtual58(){return lbl_805639E0;}
 void *fn_8012F05C(){return lbl_805639DC;}
-void *fn_8012F064(){return lbl_805639D8;}
-void *fn_8012F06C(){return lbl_805639D4;}
-void *fn_8012F074(){return lbl_805639D0;}
-void *fn_8012F07C(){return lbl_805639CC;}
-void *fn_8012F084(){return lbl_805639C8;}
-void *fn_8012F08C(){return lbl_805639C4;}
-void *fn_8012F094(){return lbl_805639C0;}
-void *fn_8012F09C(){return lbl_805639BC;}
-void *fn_8012F0A4(){return lbl_805639B8;}
-void *fn_8012F0AC(){return lbl_805639B4;}
-void *fn_8012F0B4(){return lbl_805639B0;}
-void *fn_8012F0BC(){return lbl_805639AC;}
-void *fn_8012F0C4(){return lbl_8056397C;}
-void *fn_8012F0CC(){return lbl_8056396C;}
-void *fn_8012F0D4(){return lbl_80563968;}
-void *fn_8012F0DC(){return lbl_8056395C;}
-void *fn_8012F0E4(){return lbl_805638D4;}
-void *fn_8012F0EC(){return lbl_805638D0;}
-void *fn_8012F0F4(){return lbl_805638CC;}
+void *igIntersectionFunctionList_virtual58(){return lbl_805639D8;}
+void *igExtendByFunctionList_virtual58(){return lbl_805639D4;}
+void *igContainsFunctionList_virtual58(){return lbl_805639D0;}
+void *igRayIntersectionFunctionList_virtual58(){return lbl_805639CC;}
+void *igExtendByRayFunctionList_virtual58(){return lbl_805639C8;}
+void *igContainsRayFunctionList_virtual58(){return lbl_805639C4;}
+void *igExtendByVecFunctionList_virtual58(){return lbl_805639C0;}
+void *igContainsVecFunctionList_virtual58(){return lbl_805639BC;}
+void *igTransformFunctionList_virtual58(){return lbl_805639B8;}
+void *igEmptyFunctionList_virtual58(){return lbl_805639B4;}
+void *igIsEmptyFunctionList_virtual58(){return lbl_805639B0;}
+void *igGetCenterFunctionList_virtual58(){return lbl_805639AC;}
+void *igPlane_virtual58(){return lbl_8056397C;}
+void *igRay_virtual58(){return lbl_8056396C;}
+void *igRayList_virtual58(){return lbl_80563968;}
+void *igSphere_virtual58(){return lbl_8056395C;}
+void *igVectorBlending_virtual58(){return lbl_805638D4;}
+void *igVectorMorphing_virtual58(){return lbl_805638D0;}
+void *igVolumeList_virtual58(){return lbl_805638CC;}
 void *fn_8012F0FC(){return lbl_80563A34;}
-int fn_8012F104(){return 64;}
-int fn_8012F10C(){return 16;}
-int fn_8012F114(){return 4;}
-int fn_8012F11C(){return 16;}
-int fn_8012F124(){return 3;}
-int fn_8012F12C(){return 8;}
-int fn_8012F134(){return 4;}
-int fn_8012F13C(){return 4;}
-int fn_8012F144(){return 4;}
-int fn_8012F14C(){return 4;}
-int fn_8012F154(){return 4;}
-int fn_8012F15C(){return 4;}
-int fn_8012F164(){return 4;}
-int fn_8012F16C(){return 4;}
-int fn_8012F174(){return 4;}
-int fn_8012F17C(){return 4;}
-int fn_8012F184(){return 4;}
-int fn_8012F18C(){return 4;}
-void *fn_8012F194(){return lbl_80563A34;}
+int igMatrix44fList_virtual5C(){return 64;}
+int igQuaternionfList_virtual5C(){return 16;}
+int igVec4ucList_virtual5C(){return 4;}
+int igVec4fList_virtual5C(){return 16;}
+int igVec3ucList_virtual5C(){return 3;}
+int igVec2fList_virtual5C(){return 8;}
+int igGetCenterFunctionList_virtual5C(){return 4;}
+int igIsEmptyFunctionList_virtual5C(){return 4;}
+int igEmptyFunctionList_virtual5C(){return 4;}
+int igTransformFunctionList_virtual5C(){return 4;}
+int igContainsVecFunctionList_virtual5C(){return 4;}
+int igExtendByVecFunctionList_virtual5C(){return 4;}
+int igContainsRayFunctionList_virtual5C(){return 4;}
+int igExtendByRayFunctionList_virtual5C(){return 4;}
+int igRayIntersectionFunctionList_virtual5C(){return 4;}
+int igContainsFunctionList_virtual5C(){return 4;}
+int igExtendByFunctionList_virtual5C(){return 4;}
+int igIntersectionFunctionList_virtual5C(){return 4;}
+void *igAABoxList_virtual60(){return lbl_80563A34;}
 void *fn_8012F19C(){return lbl_805639E0;}
 void *fn_8012F1A4(){return lbl_805639EC;}
 void *fn_8012F1AC(){return lbl_80563A00;}
-void *fn_8012F1B4(){return lbl_80563A14;}
+void *igVec3fListList_virtual60(){return lbl_80563A14;}
 void *fn_8012F1BC(){return lbl_80563A20;}
-void *fn_8012F1C4(){return lbl_8056396C;}
-void *fn_8012F1CC(){return lbl_805638C8;}
-void fn_8012F1D4(int p0){
+void *igRayList_virtual60(){return lbl_8056396C;}
+void *igVolumeList_virtual60(){return lbl_805638C8;}
+void igIntersectionFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -190,7 +190,7 @@ void fn_8012F1D4(int p0){
   return;
  }
 }
-void fn_8012F208(int p0){
+void igExtendByFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -198,7 +198,7 @@ void fn_8012F208(int p0){
   return;
  }
 }
-void fn_8012F23C(int p0){
+void igContainsFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -206,7 +206,7 @@ void fn_8012F23C(int p0){
   return;
  }
 }
-void fn_8012F270(int p0){
+void igRayIntersectionFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -214,7 +214,7 @@ void fn_8012F270(int p0){
   return;
  }
 }
-void fn_8012F2A4(int p0){
+void igExtendByRayFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -222,7 +222,7 @@ void fn_8012F2A4(int p0){
   return;
  }
 }
-void fn_8012F2D8(int p0){
+void igContainsRayFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -230,7 +230,7 @@ void fn_8012F2D8(int p0){
   return;
  }
 }
-void fn_8012F30C(int p0){
+void igExtendByVecFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -238,7 +238,7 @@ void fn_8012F30C(int p0){
   return;
  }
 }
-void fn_8012F340(int p0){
+void igContainsVecFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -246,7 +246,7 @@ void fn_8012F340(int p0){
   return;
  }
 }
-void fn_8012F374(int p0){
+void igTransformFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -254,7 +254,7 @@ void fn_8012F374(int p0){
   return;
  }
 }
-void fn_8012F3A8(int p0){
+void igEmptyFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -262,7 +262,7 @@ void fn_8012F3A8(int p0){
   return;
  }
 }
-void fn_8012F3DC(int p0){
+void igIsEmptyFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -270,7 +270,7 @@ void fn_8012F3DC(int p0){
   return;
  }
 }
-void fn_8012F410(int p0){
+void igGetCenterFunctionList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -278,7 +278,7 @@ void fn_8012F410(int p0){
   return;
  }
 }
-void fn_8012F444(int p0){
+void igVec2fList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),8);
   return;
@@ -286,7 +286,7 @@ void fn_8012F444(int p0){
   return;
  }
 }
-void fn_8012F478(int p0){
+void igVec3ucList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),3);
   return;
@@ -294,7 +294,7 @@ void fn_8012F478(int p0){
   return;
  }
 }
-void fn_8012F4AC(int p0){
+void igVec4fList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),16);
   return;
@@ -302,7 +302,7 @@ void fn_8012F4AC(int p0){
   return;
  }
 }
-void fn_8012F4E0(int p0){
+void igVec4ucList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);
   return;
@@ -310,7 +310,7 @@ void fn_8012F4E0(int p0){
   return;
  }
 }
-void fn_8012F514(int p0){
+void igQuaternionfList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),16);
   return;
@@ -318,7 +318,7 @@ void fn_8012F514(int p0){
   return;
  }
 }
-void fn_8012F548(int p0){
+void igMatrix44fList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),64);
   return;

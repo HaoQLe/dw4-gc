@@ -5,7 +5,7 @@ extern "C" {
 void fn_8031FC40(void *);
 }
 extern "C" {
-void fn_80321430(int p0,int p1){
+void beSvUseCheckApi_virtual5C(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+16);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)=0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)1;

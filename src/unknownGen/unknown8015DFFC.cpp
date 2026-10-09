@@ -10,7 +10,7 @@ void fn_80188CD0(void *);
 extern void *lbl_80562548;
 }
 extern "C" {
-void fn_8015DFFC(int p0,int p1){
+void igCompareAttr_virtual90(int p0,int p1){
  void *local0;
  fn_80188BA4(&local0);
  void *value0=fn_8015DF74((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+32),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+36));
@@ -19,6 +19,6 @@ void fn_8015DFFC(int p0,int p1){
  fn_80188CAC((void *)p0,&local0);
  fn_80188C0C(&local0,-1);
 }
-void *fn_8015E06C(){return lbl_80562548;}
+void *igCompareAttrForTexture_virtual7C(){return lbl_80562548;}
 }
 #pragma pop

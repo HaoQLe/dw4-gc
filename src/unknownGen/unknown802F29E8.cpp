@@ -224,7 +224,7 @@ public:
  virtual void s2C4(void *);
 };
 extern "C" {
-void fn_802F29E8(int p0){
+void beBkColor_virtual84(int p0){
  void *value0;
  void *value1;
  void *value2;

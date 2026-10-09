@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beBaseInfoRam_fieldInit();
+void *beBaseInfoRam_getMeta();
+void beBaseInfoRam_vtableRead();
 void *fn_800237D0();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void fn_802B1AC8();
-void *fn_802E3184();
-void fn_802E31D0();
-void fn_802E3320();
+void igObject_register();
 extern char lbl_80420D10[];
 extern char lbl_804D2CC0[];
 extern char lbl_805356AC[];
-void fn_802E3284();
-void *fn_802E3300();
+void beBaseInfoRam_register();
+void *beBaseInfoRam_getMetaCall();
 }
 extern "C" {
 void fn_802E325C(){
- fn_80066188((int)fn_802E3284);
+ fn_80066188((int)beBaseInfoRam_register);
 }
-void fn_802E3284(){
+void beBaseInfoRam_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805356AC,(int)fn_80066B08,(int)fn_800237D0,(int)fn_802E3300,(int)lbl_80420D10,44,(int)fn_802E31D0,(int)fn_802E3320,0,(int)lbl_804D2CC0);
+ fn_80066204(0,(int)lbl_805356AC,(int)igObject_register,(int)fn_800237D0,(int)beBaseInfoRam_getMetaCall,(int)lbl_80420D10,44,(int)beBaseInfoRam_vtableRead,(int)beBaseInfoRam_fieldInit,0,(int)lbl_804D2CC0);
 }
-void *fn_802E3300(){return fn_802E3184();}
+void *beBaseInfoRam_getMetaCall(){return beBaseInfoRam_getMeta();}
 }
 #pragma pop

@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80058AAC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+56);}
-int fn_80058AB4(){return -1;}
+int igMemoryFile_virtual9C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+56);}
+int igMemoryFile_virtual88(){return -1;}
 }
 #pragma pop

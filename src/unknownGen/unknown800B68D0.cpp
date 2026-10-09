@@ -13,10 +13,10 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
-void *fn_800B6D94();
 void *fn_800D06E0();
+void *igGeometryAttr_fieldInit();
+void igVisualAttribute_register();
 extern char lbl_80479688[];
 extern char lbl_8047969C[];
 extern char lbl_804796B0[];
@@ -32,17 +32,17 @@ extern char lbl_8055E45C[4];
 extern void *lbl_805621F4;
 extern void *lbl_80562880;
 extern void *lbl_80562888;
-void *fn_800B68D0();
-void *fn_800B690C();
+void *igGeometryAttr1_5_getMeta();
+void *igGeometryAttr1_5_vtableRead();
 void fn_800B6AE4();
-void fn_800B6B0C();
-void *fn_800B6B80();
-void *fn_800B6BA0();
-void fn_800B6BA8();
-void *fn_800B6C9C();
+void igGeometryAttr1_5_register();
+void *igGeometryAttr1_5_getMetaCall();
+void *igGeometryAttr1_5_parentMeta();
+void igGeometryAttr1_5_fieldInit();
+void *igGeometryAttr_getMeta();
 void fn_800B6CD8();
-void fn_800B6D00();
-void *fn_800B6D74();
+void igGeometryAttr_register();
+void *igGeometryAttr_getMetaCall();
 }
 struct UnknownGenRoot800B690C {
  void *unknown00;
@@ -66,11 +66,11 @@ struct UnknownGenObject800B690C : UnknownGenObject800B690C_0 {
  inline ~UnknownGenObject800B690C(){unknown00=lbl_8047C4FC;}
 };
 extern "C" {
-void *fn_800B68D0(){
+void *igGeometryAttr1_5_getMeta(){
  if(!lbl_80562880 || !(reinterpret_cast<unsigned int *>(lbl_80562880)[0x24/4]&4)) fn_800B6AE4();
  return lbl_80562880;
 }
-void *fn_800B690C(){
+void *igGeometryAttr1_5_vtableRead(){
  UnknownGenObject800B690C object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -85,15 +85,15 @@ void *fn_800B690C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B6AE4(){
- fn_80066188((int)fn_800B6B0C);
+ fn_80066188((int)igGeometryAttr1_5_register);
 }
-void fn_800B6B0C(){
+void igGeometryAttr1_5_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562880,(int)fn_800B6D00,(int)fn_800B6BA0,(int)fn_800B6B80,(int)lbl_80479688,52,(int)fn_800B690C,(int)fn_800B6BA8,0,(int)lbl_8055E448);
+ fn_80066204(0,(int)&lbl_80562880,(int)igGeometryAttr_register,(int)igGeometryAttr1_5_parentMeta,(int)igGeometryAttr1_5_getMetaCall,(int)lbl_80479688,52,(int)igGeometryAttr1_5_vtableRead,(int)igGeometryAttr1_5_fieldInit,0,(int)lbl_8055E448);
 }
-void *fn_800B6B80(){return fn_800B68D0();}
-void *fn_800B6BA0(){return lbl_80562888;}
-void fn_800B6BA8(){
+void *igGeometryAttr1_5_getMetaCall(){return igGeometryAttr1_5_getMeta();}
+void *igGeometryAttr1_5_parentMeta(){return lbl_80562888;}
+void igGeometryAttr1_5_fieldInit(){
  void *value0=lbl_80562880;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E450,1);
@@ -110,17 +110,17 @@ void *fn_800B6C60(){
  if(!lbl_80562888) lbl_80562888=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562888;
 }
-void *fn_800B6C9C(){
+void *igGeometryAttr_getMeta(){
  if(!lbl_80562888 || !(reinterpret_cast<unsigned int *>(lbl_80562888)[0x24/4]&4)) fn_800B6CD8();
  return lbl_80562888;
 }
 void fn_800B6CD8(){
- fn_80066188((int)fn_800B6D00);
+ fn_80066188((int)igGeometryAttr_register);
 }
-void fn_800B6D00(){
+void igGeometryAttr_register(){
  fn_800ABC8C();
- fn_80066204(1,(int)&lbl_80562888,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B6D74,(int)lbl_804796B0,48,0,(int)fn_800B6D94,0,(int)lbl_8047969C);
+ fn_80066204(1,(int)&lbl_80562888,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igGeometryAttr_getMetaCall,(int)lbl_804796B0,48,0,(int)igGeometryAttr_fieldInit,0,(int)lbl_8047969C);
 }
-void *fn_800B6D74(){return fn_800B6C9C();}
+void *igGeometryAttr_getMetaCall(){return igGeometryAttr_getMeta();}
 }
 #pragma pop

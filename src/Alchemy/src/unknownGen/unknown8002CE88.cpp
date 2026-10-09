@@ -6,9 +6,6 @@ void fn_80021B94();
 void *fn_80021D70();
 void *fn_800237D0();
 void *fn_80029E64(void *);
-void fn_8002A6D8();
-void fn_8002D644();
-void *fn_8003B478();
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
@@ -23,7 +20,10 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
+void *igGamecubeLongTimer_getMeta();
+void igLocationTable_fieldInit();
+void igMetaField_register();
+void igObject_register();
 extern char lbl_804652FC[];
 extern char lbl_8046530C[];
 extern char lbl_80465324[];
@@ -44,23 +44,23 @@ extern void *lbl_80561994;
 extern void *lbl_80561998;
 extern void *lbl_805619A0;
 extern void *lbl_805621F4;
-void *fn_8002CEE0();
-void *fn_8002CF1C();
+void *igLongMetaField_getMeta();
+void *igLongMetaField_vtableRead();
 void fn_8002CFA8();
-void fn_8002CFD0();
-void *fn_8002D03C();
-void *fn_8002D124();
-void *fn_8002D160();
+void igLongMetaField_register();
+void *igLongMetaField_getMetaCall();
+void *igLongArrayMetaField_getMeta();
+void *igLongArrayMetaField_vtableRead();
 void fn_8002D1FC();
-void fn_8002D224();
-void *fn_8002D298();
-void *fn_8002D2B8();
-void fn_8002D2C0();
-void *fn_8002D410();
-void *fn_8002D44C();
+void igLongArrayMetaField_register();
+void *igLongArrayMetaField_getMetaCall();
+void *igLongArrayMetaField_parentMeta();
+void igLongArrayMetaField_fieldInit();
+void *igLocationTable_getMeta();
+void *igLocationTable_vtableRead();
 void fn_8002D584();
-void fn_8002D5AC();
-void *fn_8002D624();
+void igLocationTable_register();
+void *igLocationTable_getMetaCall();
 }
 struct UnknownGenRoot8002CF1C {
  void *unknown00;
@@ -108,28 +108,28 @@ struct UnknownGenObject8002D44C : UnknownGenRoot8002D44C {
  inline ~UnknownGenObject8002D44C(){unknown00=lbl_804722E8;}
 };
 extern "C" {
-void *fn_8002CE88(){return fn_8003B478();}
+void *igGamecubeLongTimer_getMetaCall(){return igGamecubeLongTimer_getMeta();}
 void *fn_8002CEA8(void *object){
  fn_8002CFA8();
  return fn_8006546C(lbl_8056198C,object);
 }
-void *fn_8002CEE0(){
+void *igLongMetaField_getMeta(){
  if(!lbl_8056198C || !(reinterpret_cast<unsigned int *>(lbl_8056198C)[0x24/4]&4)) fn_8002CFA8();
  return lbl_8056198C;
 }
-void *fn_8002CF1C(){
+void *igLongMetaField_vtableRead(){
  UnknownGenObject8002CF1C object;
  object.unknown00=lbl_80472100;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8002CFA8(){
- fn_80066188((int)fn_8002CFD0);
+ fn_80066188((int)igLongMetaField_register);
 }
-void fn_8002CFD0(){
+void igLongMetaField_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_8056198C,(int)fn_8002A6D8,(int)fn_80021D70,(int)fn_8002D03C,(int)lbl_804652FC,52,(int)fn_8002CF1C,0,0,(int)lbl_8055D36C);
+ fn_80066204(0,(int)&lbl_8056198C,(int)igMetaField_register,(int)fn_80021D70,(int)igLongMetaField_getMetaCall,(int)lbl_804652FC,52,(int)igLongMetaField_vtableRead,0,0,(int)lbl_8055D36C);
 }
-void *fn_8002D03C(){return fn_8002CEE0();}
+void *igLongMetaField_getMetaCall(){return igLongMetaField_getMeta();}
 void fn_8002D05C(){
  if(!lbl_80561990){
   void *object=(lbl_80561990=fn_8006546C(lbl_8056198C,fn_800607F4(lbl_805621F4)));
@@ -147,26 +147,26 @@ void *fn_8002D0F4(){
  }
  return lbl_80561990;
 }
-void *fn_8002D124(){
+void *igLongArrayMetaField_getMeta(){
  if(!lbl_80561994 || !(reinterpret_cast<unsigned int *>(lbl_80561994)[0x24/4]&4)) fn_8002D1FC();
  return lbl_80561994;
 }
-void *fn_8002D160(){
+void *igLongArrayMetaField_vtableRead(){
  UnknownGenObject8002D160 object;
  object.unknown00=lbl_80472100;
  object.unknown00=lbl_804721F4;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8002D1FC(){
- fn_80066188((int)fn_8002D224);
+ fn_80066188((int)igLongArrayMetaField_register);
 }
-void fn_8002D224(){
+void igLongArrayMetaField_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561994,(int)fn_8002CFD0,(int)fn_8002D2B8,(int)fn_8002D298,(int)lbl_8046530C,56,(int)fn_8002D160,(int)fn_8002D2C0,0,(int)lbl_8055D374);
+ fn_80066204(0,(int)&lbl_80561994,(int)igLongMetaField_register,(int)igLongArrayMetaField_parentMeta,(int)igLongArrayMetaField_getMetaCall,(int)lbl_8046530C,56,(int)igLongArrayMetaField_vtableRead,(int)igLongArrayMetaField_fieldInit,0,(int)lbl_8055D374);
 }
-void *fn_8002D298(){return fn_8002D124();}
-void *fn_8002D2B8(){return lbl_8056198C;}
-void fn_8002D2C0(){
+void *igLongArrayMetaField_getMetaCall(){return igLongArrayMetaField_getMeta();}
+void *igLongArrayMetaField_parentMeta(){return lbl_8056198C;}
+void igLongArrayMetaField_fieldInit(){
  void *meta=lbl_80561994;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_8055D37C,1);
@@ -188,11 +188,11 @@ void *fn_8002D3D4(){
  if(!lbl_805619A0) lbl_805619A0=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805619A0;
 }
-void *fn_8002D410(){
+void *igLocationTable_getMeta(){
  if(!lbl_805619A0 || !(reinterpret_cast<unsigned int *>(lbl_805619A0)[0x24/4]&4)) fn_8002D584();
  return lbl_805619A0;
 }
-void *fn_8002D44C(){
+void *igLocationTable_vtableRead(){
  UnknownGenObject8002D44C object;
  object.unknown00=lbl_804722E8;
  object.unknown10.value=0;
@@ -202,12 +202,12 @@ void *fn_8002D44C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8002D584(){
- fn_80066188((int)fn_8002D5AC);
+ fn_80066188((int)igLocationTable_register);
 }
-void fn_8002D5AC(){
+void igLocationTable_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_805619A0,(int)fn_80066B08,(int)fn_800237D0,(int)fn_8002D624,(int)lbl_80465334,32,(int)fn_8002D44C,(int)fn_8002D644,0,(int)lbl_80465324);
+ fn_80066204(0,(int)&lbl_805619A0,(int)igObject_register,(int)fn_800237D0,(int)igLocationTable_getMetaCall,(int)lbl_80465334,32,(int)igLocationTable_vtableRead,(int)igLocationTable_fieldInit,0,(int)lbl_80465324);
 }
-void *fn_8002D624(){return fn_8002D410();}
+void *igLocationTable_getMetaCall(){return igLocationTable_getMeta();}
 }
 #pragma pop

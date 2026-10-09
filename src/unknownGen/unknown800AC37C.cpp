@@ -12,10 +12,10 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
 void fn_800AC6A0(void *,short);
 void fn_800AC8A8();
+void igVisualAttribute_register();
 extern char lbl_80477DDC[];
 extern char lbl_8047A704[];
 extern char lbl_8047A784[];
@@ -29,12 +29,12 @@ extern char lbl_8055DEB4[4];
 extern void *lbl_805621F4;
 extern void *lbl_80562430;
 extern void *lbl_80562438;
-void *fn_800AC37C();
-void *fn_800AC3B8();
+void *igVertexShaderBindAttr_getMeta();
+void *igVertexShaderBindAttr_vtableRead();
 void fn_800AC458();
-void fn_800AC480();
-void *fn_800AC4F4();
-void fn_800AC514();
+void igVertexShaderBindAttr_register();
+void *igVertexShaderBindAttr_getMetaCall();
+void igVertexShaderBindAttr_fieldInit();
 void *fn_800AC594();
 }
 struct UnknownGenRoot800AC3B8 {
@@ -63,11 +63,11 @@ struct UnknownGenObject800AC60C {
  char unknown38[8];
 };
 extern "C" {
-void *fn_800AC37C(){
+void *igVertexShaderBindAttr_getMeta(){
  if(!lbl_80562430 || !(reinterpret_cast<unsigned int *>(lbl_80562430)[0x24/4]&4)) fn_800AC458();
  return lbl_80562430;
 }
-void *fn_800AC3B8(){
+void *igVertexShaderBindAttr_vtableRead(){
  UnknownGenObject800AC3B8 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -76,14 +76,14 @@ void *fn_800AC3B8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800AC458(){
- fn_80066188((int)fn_800AC480);
+ fn_80066188((int)igVertexShaderBindAttr_register);
 }
-void fn_800AC480(){
+void igVertexShaderBindAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562430,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800AC4F4,(int)lbl_80477DDC,16,(int)fn_800AC3B8,(int)fn_800AC514,0,(int)lbl_8055DEA0);
+ fn_80066204(0,(int)&lbl_80562430,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igVertexShaderBindAttr_getMetaCall,(int)lbl_80477DDC,16,(int)igVertexShaderBindAttr_vtableRead,(int)igVertexShaderBindAttr_fieldInit,0,(int)lbl_8055DEA0);
 }
-void *fn_800AC4F4(){return fn_800AC37C();}
-void fn_800AC514(){
+void *igVertexShaderBindAttr_getMetaCall(){return igVertexShaderBindAttr_getMeta();}
+void igVertexShaderBindAttr_fieldInit(){
  void *value0=lbl_80562430;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055DEA8,1);
@@ -96,11 +96,11 @@ void *fn_800AC594(){
  if(!lbl_80562438) lbl_80562438=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562438;
 }
-void *fn_800AC5D0(){
+void *igVertexShaderAttr_getMeta(){
  if(!lbl_80562438 || !(reinterpret_cast<unsigned int *>(lbl_80562438)[0x24/4]&4)) fn_800AC8A8();
  return lbl_80562438;
 }
-void *fn_800AC60C(){
+void *igVertexShaderAttr_vtableRead(){
  UnknownGenObject800AC60C object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;

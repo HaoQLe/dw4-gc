@@ -68,7 +68,7 @@ public:
  virtual void s74(void *,void *);
 };
 extern "C" {
-void fn_800DFEF8(int p0,int p1,int p2){
+void igGamecubeIndexArray_virtual7C(int p0,int p1,int p2){
  void *value0;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
  switch((int)(int)value0){

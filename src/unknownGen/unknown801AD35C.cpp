@@ -4,7 +4,6 @@
 extern "C" {
 void *fn_80029E64(void *);
 void *fn_800321EC();
-void fn_80034A64();
 void *fn_80053998(void *,void *);
 void *fn_800607F4(void *);
 void fn_8006588C(void *,void *,void *);
@@ -13,8 +12,9 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801AD7C4();
-void fn_801B09E4();
+void igDoubleList_register();
+void igShaderProcessor_register();
+void igTextureTransformMovieProcessor_fieldInit();
 extern char lbl_80472FA0[];
 extern char lbl_80474EB8[];
 extern char lbl_80474F18[];
@@ -31,18 +31,18 @@ extern void *lbl_80564754;
 extern char lbl_80564758[4];
 extern void *lbl_8056475C;
 extern void *lbl_805648D0;
-void *fn_801AD398();
-void *fn_801AD3D4();
+void *igSpecialDoubleList_getMeta();
+void *igSpecialDoubleList_vtableRead();
 void fn_801AD438();
-void fn_801AD460();
-void *fn_801AD4D0();
-void *fn_801AD4F0();
+void igSpecialDoubleList_register();
+void *igSpecialDoubleList_getMetaCall();
+void *igSpecialDoubleList_parentMeta();
 void fn_801AD4F8();
-void *fn_801AD5B4();
-void *fn_801AD5F0();
+void *igTextureTransformMovieProcessor_getMeta();
+void *igTextureTransformMovieProcessor_vtableRead();
 void fn_801AD6FC();
-void fn_801AD724();
-void *fn_801AD79C();
+void igTextureTransformMovieProcessor_register();
+void *igTextureTransformMovieProcessor_getMetaCall();
 void *fn_801AD7BC();
 }
 struct UnknownGenObject801AD3D4_0 {
@@ -68,11 +68,11 @@ void *fn_801AD35C(){
  if(!lbl_80564754) lbl_80564754=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564754;
 }
-void *fn_801AD398(){
+void *igSpecialDoubleList_getMeta(){
  if(!lbl_80564754 || !(reinterpret_cast<unsigned int *>(lbl_80564754)[0x24/4]&4)) fn_801AD438();
  return lbl_80564754;
 }
-void *fn_801AD3D4(){
+void *igSpecialDoubleList_vtableRead(){
  UnknownGenObject801AD3D4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -82,14 +82,14 @@ void *fn_801AD3D4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801AD438(){
- fn_80066188((int)fn_801AD460);
+ fn_80066188((int)igSpecialDoubleList_register);
 }
-void fn_801AD460(){
+void igSpecialDoubleList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564754,(int)fn_80034A64,(int)fn_801AD4F0,(int)fn_801AD4D0,(int)lbl_804ABC04,20,(int)fn_801AD3D4,(int)fn_801AD4F8,0,0);
+ fn_80066204(0,(int)&lbl_80564754,(int)igDoubleList_register,(int)igSpecialDoubleList_parentMeta,(int)igSpecialDoubleList_getMetaCall,(int)lbl_804ABC04,20,(int)igSpecialDoubleList_vtableRead,(int)fn_801AD4F8,0,0);
 }
-void *fn_801AD4D0(){return fn_801AD398();}
-void *fn_801AD4F0(){return lbl_80561D70;}
+void *igSpecialDoubleList_getMetaCall(){return igSpecialDoubleList_getMeta();}
+void *igSpecialDoubleList_parentMeta(){return lbl_80561D70;}
 void fn_801AD4F8(){
  void *meta=lbl_80564754;
  UnknownGenField *field=reinterpret_cast<UnknownGenField *>(fn_800658F8(meta,lbl_80560194));
@@ -101,11 +101,11 @@ void fn_801AD4F8(){
  fn_8006588C(meta,type,field);
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
-void *fn_801AD5B4(){
+void *igTextureTransformMovieProcessor_getMeta(){
  if(!lbl_8056475C || !(reinterpret_cast<unsigned int *>(lbl_8056475C)[0x24/4]&4)) fn_801AD6FC();
  return lbl_8056475C;
 }
-void *fn_801AD5F0(){
+void *igTextureTransformMovieProcessor_vtableRead(){
  UnknownGenObject801AD5F0 object;
  object.unknown00=lbl_804B39E8;
  object.unknown00=lbl_804B3644;
@@ -115,13 +115,13 @@ void *fn_801AD5F0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801AD6FC(){
- fn_80066188((int)fn_801AD724);
+ fn_80066188((int)igTextureTransformMovieProcessor_register);
 }
-void fn_801AD724(){
+void igTextureTransformMovieProcessor_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_8056475C,(int)fn_801B09E4,(int)fn_801AD7BC,(int)fn_801AD79C,(int)lbl_804ABC24,80,(int)fn_801AD5F0,(int)fn_801AD7C4,0,(int)lbl_804ABC18);
+ fn_80066204(0,(int)&lbl_8056475C,(int)igShaderProcessor_register,(int)fn_801AD7BC,(int)igTextureTransformMovieProcessor_getMetaCall,(int)lbl_804ABC24,80,(int)igTextureTransformMovieProcessor_vtableRead,(int)igTextureTransformMovieProcessor_fieldInit,0,(int)lbl_804ABC18);
 }
-void *fn_801AD79C(){return fn_801AD5B4();}
+void *igTextureTransformMovieProcessor_getMetaCall(){return igTextureTransformMovieProcessor_getMeta();}
 void *fn_801AD7BC(){return lbl_805648D0;}
 }
 #pragma pop

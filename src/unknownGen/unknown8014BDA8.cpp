@@ -6,24 +6,24 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8012FC48();
 void *fn_8012FEB0();
-void fn_8013A878();
-void *fn_8014B98C();
-void fn_8014B9C8();
-void fn_8014BE68();
+void igEnbayaCompressAnimations_fieldInit();
+void *igEnbayaCompressAnimations_getMeta();
+void igEnbayaCompressAnimations_vtableRead();
+void igOptVisitObject_register();
 extern char lbl_8049F264[];
 extern char lbl_8049F278[];
 extern void *lbl_80564330;
-void fn_8014BDD0();
-void *fn_8014BE48();
+void igEnbayaCompressAnimations_register();
+void *igEnbayaCompressAnimations_getMetaCall();
 }
 extern "C" {
 void fn_8014BDA8(){
- fn_80066188((int)fn_8014BDD0);
+ fn_80066188((int)igEnbayaCompressAnimations_register);
 }
-void fn_8014BDD0(){
+void igEnbayaCompressAnimations_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564330,(int)fn_8013A878,(int)fn_8012FEB0,(int)fn_8014BE48,(int)lbl_8049F278,104,(int)fn_8014B9C8,(int)fn_8014BE68,0,(int)lbl_8049F264);
+ fn_80066204(0,(int)&lbl_80564330,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igEnbayaCompressAnimations_getMetaCall,(int)lbl_8049F278,104,(int)igEnbayaCompressAnimations_vtableRead,(int)igEnbayaCompressAnimations_fieldInit,0,(int)lbl_8049F264);
 }
-void *fn_8014BE48(){return fn_8014B98C();}
+void *igEnbayaCompressAnimations_getMetaCall(){return igEnbayaCompressAnimations_getMeta();}
 }
 #pragma pop

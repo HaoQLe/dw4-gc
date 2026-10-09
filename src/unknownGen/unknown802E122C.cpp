@@ -31,7 +31,7 @@ struct UnknownGenObject802E122C : UnknownGenObject802E122C_2 {
  inline ~UnknownGenObject802E122C(){unknown00=lbl_804DDBE0;}
 };
 extern "C" {
-void *fn_802E122C(){
+void *beChangePosTransform_vtableRead(){
  UnknownGenObject802E122C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

@@ -12,7 +12,7 @@ static inline void *UnknownGenCast800E53D8_11(void *q){
  return 0;
 }
 extern "C" {
-void *fn_800E53D8(int p0,int p1){
+void *igVertexArray2Helper_virtual78(int p0,int p1){
  void *value1;
  void *value0;
  value1=fn_800E3D94(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),1,0);

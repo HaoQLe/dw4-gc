@@ -36,7 +36,7 @@ public:
  virtual void * s74(void *,void *);
 };
 extern "C" {
-void *fn_80203360(int p0,int p1,int p2){
+void *igSkeleton_virtual7C(int p0,int p1,int p2){
  void *value0;
  void *value1;
  void *local0;

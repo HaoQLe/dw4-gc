@@ -10,22 +10,22 @@ void fn_80065DBC(int);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_801AA6DC();
-void fn_801BDDD4();
 void fn_801F5C1C(int);
 void fn_801F5CE8();
 void *fn_801F5D14();
+void igObject_register();
+void igProbe_fieldInit();
 extern char lbl_804AF2A0[];
 extern char lbl_804B7684[];
 extern char lbl_8056055C[8];
 extern void *lbl_805621F4;
 extern void *lbl_80564E5C;
-void *fn_801BDBDC();
-void *fn_801BDC18();
+void *igProbe_getMeta();
+void *igProbe_vtableRead();
 void fn_801BDD18();
-void fn_801BDD40();
-void *fn_801BDDB4();
+void igProbe_register();
+void *igProbe_getMetaCall();
 }
 struct UnknownGenRoot801BDC18 {
  void *unknown00;
@@ -54,11 +54,11 @@ void *fn_801BDBA0(){
  if(!lbl_80564E5C) lbl_80564E5C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564E5C;
 }
-void *fn_801BDBDC(){
+void *igProbe_getMeta(){
  if(!lbl_80564E5C || !(reinterpret_cast<unsigned int *>(lbl_80564E5C)[0x24/4]&4)) fn_801BDD18();
  return lbl_80564E5C;
 }
-void *fn_801BDC18(){
+void *igProbe_vtableRead(){
  UnknownGenObject801BDC18 object;
  object.unknown00=lbl_804B7684;
  object.unknown08.value=0;
@@ -67,12 +67,12 @@ void *fn_801BDC18(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801BDD18(){
- fn_80066188((int)fn_801BDD40);
+ fn_80066188((int)igProbe_register);
 }
-void fn_801BDD40(){
+void igProbe_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564E5C,(int)fn_80066B08,(int)fn_800237D0,(int)fn_801BDDB4,(int)lbl_8056055C,20,(int)fn_801BDC18,(int)fn_801BDDD4,0,(int)lbl_804AF2A0);
+ fn_80066204(0,(int)&lbl_80564E5C,(int)igObject_register,(int)fn_800237D0,(int)igProbe_getMetaCall,(int)lbl_8056055C,20,(int)igProbe_vtableRead,(int)igProbe_fieldInit,0,(int)lbl_804AF2A0);
 }
-void *fn_801BDDB4(){return fn_801BDBDC();}
+void *igProbe_getMetaCall(){return igProbe_getMeta();}
 }
 #pragma pop

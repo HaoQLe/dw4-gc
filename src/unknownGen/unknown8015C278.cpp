@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564D84;
 }
 extern "C" {
-void *fn_8015C278(){return lbl_80564D84;}
+void *igCollapseNodeForModelViewMatrixBoneSelect_virtual7C(){return lbl_80564D84;}
 }
 #pragma pop

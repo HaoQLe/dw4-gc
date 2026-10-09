@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beNDMWAfsSetup_fieldInit();
+void *beNDMWAfsSetup_getMeta();
+void beNDMWAfsSetup_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_80284550();
-void fn_80286F0C();
 void fn_803250AC();
-void *fn_803457F4();
-void fn_80345840();
-void fn_80345AA4();
+void igInfoManager_register();
 extern char lbl_804556EC[];
 extern char lbl_804E41C8[];
 extern char lbl_8053684C[];
-void fn_80345A08();
-void *fn_80345A84();
+void beNDMWAfsSetup_register();
+void *beNDMWAfsSetup_getMetaCall();
 }
 extern "C" {
 void fn_803459E0(){
- fn_80066188((int)fn_80345A08);
+ fn_80066188((int)beNDMWAfsSetup_register);
 }
-void fn_80345A08(){
+void beNDMWAfsSetup_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_8053684C,(int)fn_80286F0C,(int)fn_80284550,(int)fn_80345A84,(int)lbl_804556EC,40,(int)fn_80345840,(int)fn_80345AA4,0,(int)lbl_804E41C8);
+ fn_80066204(0,(int)lbl_8053684C,(int)igInfoManager_register,(int)fn_80284550,(int)beNDMWAfsSetup_getMetaCall,(int)lbl_804556EC,40,(int)beNDMWAfsSetup_vtableRead,(int)beNDMWAfsSetup_fieldInit,0,(int)lbl_804E41C8);
 }
-void *fn_80345A84(){return fn_803457F4();}
+void *beNDMWAfsSetup_getMetaCall(){return beNDMWAfsSetup_getMeta();}
 }
 #pragma pop

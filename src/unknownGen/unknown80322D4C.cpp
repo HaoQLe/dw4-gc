@@ -30,7 +30,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_80322D4C(int p0){
+void beSvReadMediaApi_virtual24(int p0){
  fn_800667B0();
  void *value0=reinterpret_cast<UnknownGenV80322D4C_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);

@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80565ABC;
 }
 extern "C" {
-void *fn_8021AA78(){return lbl_80565ABC;}
+void *igMersenneTwisterRandomNumber_virtual184(){return lbl_80565ABC;}
 }
 #pragma pop

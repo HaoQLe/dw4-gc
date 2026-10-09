@@ -29,7 +29,7 @@ struct UnknownGenObject802C4B60 : UnknownGenObject802C4B60_1 {
  inline ~UnknownGenObject802C4B60(){unknown00=lbl_804D9F7C;}
 };
 extern "C" {
-void *fn_802C4B60(){
+void *beMovieInfoData_vtableRead(){
  UnknownGenObject802C4B60 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

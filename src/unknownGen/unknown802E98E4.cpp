@@ -30,7 +30,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_802E98E4(int p0){
+void beSvPlatDataGC_virtual24(int p0){
  fn_800667B0();
  void *value0=reinterpret_cast<UnknownGenV802E98E4_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);

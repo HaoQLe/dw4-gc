@@ -211,8 +211,8 @@ public:
  virtual void s5C(void *,void *,void *,void *,void *,void *);
 };
 extern "C" {
-void *fn_800C3EC0(){return lbl_80562504;}
-void fn_800C3EC8(int p0,int p1){
+void *igTextureFunctionAttr_virtual58(){return lbl_80562504;}
+void igTextureFunctionAttr_virtual68(int p0,int p1){
  void *value0;
  void *value1;
  value0=reinterpret_cast<UnknownGenV800C3EC8_0 *>((void *)p1)->s254(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
@@ -225,7 +225,7 @@ void fn_800C3EC8(int p0,int p1){
   return;
  }
 }
-void fn_800C3F44(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igTextureFunctionAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C3F44_2 *>((void *)p1)->s5C((void *)8,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
 void fn_800C3F78(int p0,int p1,int p2){
@@ -239,7 +239,7 @@ void fn_800C3F78(int p0,int p1,int p2){
  }
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=1;
 }
-void *fn_800C3FA4(int p0,int p1){
+void *igTextureFunctionAttr_virtual80(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=(void *)p1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
  return (void *)p0;

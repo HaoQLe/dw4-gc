@@ -15,7 +15,7 @@ extern char lbl_804D1718[];
 extern void *lbl_805350A8;
 }
 extern "C" {
-void fn_802D0BF4(){
+void beMatCtrlSearch_fieldInit(){
  void *value0=lbl_805350A8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D16DC,5);

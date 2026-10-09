@@ -34,7 +34,7 @@ struct UnknownGenObject802B886C : UnknownGenObject802B886C_2 {
  inline ~UnknownGenObject802B886C(){unknown00=lbl_804DBCD8;}
 };
 extern "C" {
-void *fn_802B886C(){
+void *beSoundInfo_vtableRead(){
  UnknownGenObject802B886C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

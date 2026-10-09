@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_800A325C(void *);
-void *fn_80272768();
+void *igLuaState_virtual64();
 }
 extern "C" {
 UnknownGenHolder *dtor_803029FC(UnknownGenHolder *object,short flags){
@@ -28,6 +28,6 @@ UnknownGenHolder *dtor_80302A70(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void *fn_80302AE4(){return fn_80272768();}
+void *beLuaState_virtual64(){return igLuaState_virtual64();}
 }
 #pragma pop

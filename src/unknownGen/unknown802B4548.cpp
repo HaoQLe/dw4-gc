@@ -13,7 +13,7 @@ void *fn_802B4548(){
  if(!lbl_805345EC) lbl_805345EC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805345EC;
 }
-void *fn_802B459C(){
+void *beWaterMove_getMeta(){
  if(!lbl_805345EC || !(reinterpret_cast<unsigned int *>(lbl_805345EC)[0x24/4]&4)) fn_802B4674();
  return lbl_805345EC;
 }

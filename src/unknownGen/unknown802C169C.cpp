@@ -16,7 +16,7 @@ extern char lbl_804D008C[];
 extern void *lbl_80534A74;
 }
 extern "C" {
-void fn_802C169C(){
+void beParticleCtrl2InfoRam_fieldInit(){
  void *value0=lbl_80534A74;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D0068,3);

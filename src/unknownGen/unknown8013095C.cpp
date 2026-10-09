@@ -4,7 +4,6 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80024180();
-void fn_8002907C();
 void *fn_80029F84();
 void *fn_8006546C(void *,void *);
 void *fn_800658E4(void *,void *);
@@ -14,10 +13,11 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_8012FC48();
-void fn_80131120();
-void fn_8013AD64();
+void igNodeUsageObjectDefinition_fieldInit();
+void igObjectList_register();
+void igObject_register();
+void igOptStatistics_register();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
@@ -44,23 +44,23 @@ extern void *lbl_80563ADC;
 extern void *lbl_80563AE4;
 extern void *lbl_80563AE8;
 extern void *lbl_80563E6C;
-void *fn_8013095C();
-void *fn_80130998();
+void *igStatisticsNodeUsage_getMeta();
+void *igStatisticsNodeUsage_vtableRead();
 void fn_80130BA0();
-void fn_80130BC8();
-void *fn_80130C3C();
-void *fn_80130C5C();
-void fn_80130C64();
-void *fn_80130D1C();
-void *fn_80130D58();
+void igStatisticsNodeUsage_register();
+void *igStatisticsNodeUsage_getMetaCall();
+void *igStatisticsNodeUsage_parentMeta();
+void igStatisticsNodeUsage_fieldInit();
+void *igNodeUsageObjectDefinitionList_getMeta();
+void *igNodeUsageObjectDefinitionList_vtableRead();
 void fn_80130DC8();
-void fn_80130DF0();
-void *fn_80130E5C();
-void *fn_80130EB4();
-void *fn_80130EF0();
+void igNodeUsageObjectDefinitionList_register();
+void *igNodeUsageObjectDefinitionList_getMetaCall();
+void *igNodeUsageObjectDefinition_getMeta();
+void *igNodeUsageObjectDefinition_vtableRead();
 void fn_80131060();
-void fn_80131088();
-void *fn_80131100();
+void igNodeUsageObjectDefinition_register();
+void *igNodeUsageObjectDefinition_getMetaCall();
 }
 struct UnknownGenRoot80130998 {
  void *unknown00;
@@ -108,11 +108,11 @@ struct UnknownGenObject80130EF0 : UnknownGenRoot80130EF0 {
  inline ~UnknownGenObject80130EF0(){unknown00=lbl_804AAB9C;}
 };
 extern "C" {
-void *fn_8013095C(){
+void *igStatisticsNodeUsage_getMeta(){
  if(!lbl_80563ADC || !(reinterpret_cast<unsigned int *>(lbl_80563ADC)[0x24/4]&4)) fn_80130BA0();
  return lbl_80563ADC;
 }
-void *fn_80130998(){
+void *igStatisticsNodeUsage_vtableRead(){
  UnknownGenObject80130998 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -129,15 +129,15 @@ void *fn_80130998(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80130BA0(){
- fn_80066188((int)fn_80130BC8);
+ fn_80066188((int)igStatisticsNodeUsage_register);
 }
-void fn_80130BC8(){
+void igStatisticsNodeUsage_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563ADC,(int)fn_8013AD64,(int)fn_80130C5C,(int)fn_80130C3C,(int)lbl_8049BD98,72,(int)fn_80130998,(int)fn_80130C64,0,(int)lbl_8055F4CC);
+ fn_80066204(0,(int)&lbl_80563ADC,(int)igOptStatistics_register,(int)igStatisticsNodeUsage_parentMeta,(int)igStatisticsNodeUsage_getMetaCall,(int)lbl_8049BD98,72,(int)igStatisticsNodeUsage_vtableRead,(int)igStatisticsNodeUsage_fieldInit,0,(int)lbl_8055F4CC);
 }
-void *fn_80130C3C(){return fn_8013095C();}
-void *fn_80130C5C(){return lbl_80563E6C;}
-void fn_80130C64(){
+void *igStatisticsNodeUsage_getMetaCall(){return igStatisticsNodeUsage_getMeta();}
+void *igStatisticsNodeUsage_parentMeta(){return lbl_80563E6C;}
+void igStatisticsNodeUsage_fieldInit(){
  void *value0=lbl_80563ADC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F4D4,1);
@@ -150,11 +150,11 @@ void *fn_80130CE4(void *object){
  fn_80130DC8();
  return fn_8006546C(lbl_80563AE4,object);
 }
-void *fn_80130D1C(){
+void *igNodeUsageObjectDefinitionList_getMeta(){
  if(!lbl_80563AE4 || !(reinterpret_cast<unsigned int *>(lbl_80563AE4)[0x24/4]&4)) fn_80130DC8();
  return lbl_80563AE4;
 }
-void *fn_80130D58(){
+void *igNodeUsageObjectDefinitionList_vtableRead(){
  UnknownGenObject80130D58_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -165,22 +165,22 @@ void *fn_80130D58(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80130DC8(){
- fn_80066188((int)fn_80130DF0);
+ fn_80066188((int)igNodeUsageObjectDefinitionList_register);
 }
-void fn_80130DF0(){
+void igNodeUsageObjectDefinitionList_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563AE4,(int)fn_8002907C,(int)fn_80024180,(int)fn_80130E5C,(int)lbl_8049BDBC,20,(int)fn_80130D58,0,0,(int)lbl_8055F4E4);
+ fn_80066204(0,(int)&lbl_80563AE4,(int)igObjectList_register,(int)fn_80024180,(int)igNodeUsageObjectDefinitionList_getMetaCall,(int)lbl_8049BDBC,20,(int)igNodeUsageObjectDefinitionList_vtableRead,0,0,(int)lbl_8055F4E4);
 }
-void *fn_80130E5C(){return fn_80130D1C();}
+void *igNodeUsageObjectDefinitionList_getMetaCall(){return igNodeUsageObjectDefinitionList_getMeta();}
 void *fn_80130E7C(void *object){
  fn_80131060();
  return fn_8006546C(lbl_80563AE8,object);
 }
-void *fn_80130EB4(){
+void *igNodeUsageObjectDefinition_getMeta(){
  if(!lbl_80563AE8 || !(reinterpret_cast<unsigned int *>(lbl_80563AE8)[0x24/4]&4)) fn_80131060();
  return lbl_80563AE8;
 }
-void *fn_80130EF0(){
+void *igNodeUsageObjectDefinition_vtableRead(){
  UnknownGenObject80130EF0 object;
  object.unknown00=lbl_804AAB9C;
  object.unknown08.value=0;
@@ -191,12 +191,12 @@ void *fn_80130EF0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80131060(){
- fn_80066188((int)fn_80131088);
+ fn_80066188((int)igNodeUsageObjectDefinition_register);
 }
-void fn_80131088(){
+void igNodeUsageObjectDefinition_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563AE8,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80131100,(int)lbl_8049BDF4,28,(int)fn_80130EF0,(int)fn_80131120,0,(int)lbl_8049BDDC);
+ fn_80066204(0,(int)&lbl_80563AE8,(int)igObject_register,(int)fn_800237D0,(int)igNodeUsageObjectDefinition_getMetaCall,(int)lbl_8049BDF4,28,(int)igNodeUsageObjectDefinition_vtableRead,(int)igNodeUsageObjectDefinition_fieldInit,0,(int)lbl_8049BDDC);
 }
-void *fn_80131100(){return fn_80130EB4();}
+void *igNodeUsageObjectDefinition_getMetaCall(){return igNodeUsageObjectDefinition_getMeta();}
 }
 #pragma pop

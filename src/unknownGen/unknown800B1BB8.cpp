@@ -13,11 +13,11 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
 void fn_800B1EF8();
 void *fn_800C23E4(int);
 void *fn_80218120();
+void igVisualAttribute_register();
 extern char lbl_80478C88[];
 extern char lbl_8047B754[];
 extern char lbl_8047D578[];
@@ -30,12 +30,12 @@ extern char lbl_8055E25C[8];
 extern void *lbl_805621F4;
 extern void *lbl_80562694;
 extern void *lbl_805626A0;
-void *fn_800B1BB8();
-void *fn_800B1BF4();
+void *igRefVertexBlendMatrixAttr_getMeta();
+void *igRefVertexBlendMatrixAttr_vtableRead();
 void fn_800B1C94();
-void fn_800B1CBC();
-void *fn_800B1D30();
-void fn_800B1D50();
+void igRefVertexBlendMatrixAttr_register();
+void *igRefVertexBlendMatrixAttr_getMetaCall();
+void igRefVertexBlendMatrixAttr_fieldInit();
 }
 struct UnknownGenRoot800B1BF4 {
  void *unknown00;
@@ -49,11 +49,11 @@ struct UnknownGenObject800B1BF4 : UnknownGenRoot800B1BF4 {
  inline ~UnknownGenObject800B1BF4(){unknown00=lbl_8047B754;}
 };
 extern "C" {
-void *fn_800B1BB8(){
+void *igRefVertexBlendMatrixAttr_getMeta(){
  if(!lbl_80562694 || !(reinterpret_cast<unsigned int *>(lbl_80562694)[0x24/4]&4)) fn_800B1C94();
  return lbl_80562694;
 }
-void *fn_800B1BF4(){
+void *igRefVertexBlendMatrixAttr_vtableRead(){
  UnknownGenObject800B1BF4 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -62,14 +62,14 @@ void *fn_800B1BF4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B1C94(){
- fn_80066188((int)fn_800B1CBC);
+ fn_80066188((int)igRefVertexBlendMatrixAttr_register);
 }
-void fn_800B1CBC(){
+void igRefVertexBlendMatrixAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562694,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B1D30,(int)lbl_80478C88,20,(int)fn_800B1BF4,(int)fn_800B1D50,0,(int)lbl_8055E23C);
+ fn_80066204(0,(int)&lbl_80562694,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igRefVertexBlendMatrixAttr_getMetaCall,(int)lbl_80478C88,20,(int)igRefVertexBlendMatrixAttr_vtableRead,(int)igRefVertexBlendMatrixAttr_fieldInit,0,(int)lbl_8055E23C);
 }
-void *fn_800B1D30(){return fn_800B1BB8();}
-void fn_800B1D50(){
+void *igRefVertexBlendMatrixAttr_getMetaCall(){return igRefVertexBlendMatrixAttr_getMeta();}
+void igRefVertexBlendMatrixAttr_fieldInit(){
  void *value0=lbl_80562694;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E244,2);
@@ -88,7 +88,7 @@ void *fn_800B1E20(){
  if(!lbl_805626A0) lbl_805626A0=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805626A0;
 }
-void *fn_800B1E5C(){
+void *igProjectionMatrixAttr_getMeta(){
  if(!lbl_805626A0 || !(reinterpret_cast<unsigned int *>(lbl_805626A0)[0x24/4]&4)) fn_800B1EF8();
  return lbl_805626A0;
 }

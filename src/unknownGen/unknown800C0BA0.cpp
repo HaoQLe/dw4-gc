@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_800C0BA0(int p0){
+void *igLightAttr_virtual68(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)-1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+144)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+145)=1;

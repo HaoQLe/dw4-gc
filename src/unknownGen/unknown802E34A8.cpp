@@ -25,7 +25,7 @@ struct UnknownGenObject802E34A8 : UnknownGenObject802E34A8_1 {
  inline ~UnknownGenObject802E34A8(){unknown00=lbl_804D4524;}
 };
 extern "C" {
-void *fn_802E34A8(){
+void *beBaseInfoRamTimer_vtableRead(){
  UnknownGenObject802E34A8 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

@@ -5,6 +5,6 @@ extern "C" {
 void fn_800667A4();
 }
 extern "C" {
-void fn_802A8DA0(){return fn_800667A4();}
+void igAdx_virtual0C(){return fn_800667A4();}
 }
 #pragma pop

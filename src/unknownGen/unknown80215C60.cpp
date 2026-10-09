@@ -19,21 +19,21 @@ extern void *lbl_8056559C;
 extern void *lbl_805655A0;
 }
 extern "C" {
-void *fn_80215C60(){return lbl_805655A0;}
-int fn_80215C68(){return 0;}
-void *fn_80215C70(){return lbl_8056559C;}
-void *fn_80215C78(){return lbl_80565584;}
-void *fn_80215C80(){return lbl_80565580;}
-void *fn_80215C88(){return lbl_80565570;}
-void *fn_80215C90(){return lbl_8056556C;}
-void *fn_80215C98(){return lbl_80565558;}
-void *fn_80215CA0(){return lbl_8056554C;}
-void *fn_80215CA8(){return lbl_80565548;}
-void *fn_80215CB0(){return lbl_80565538;}
-void *fn_80215CB8(){return lbl_80565534;}
-void *fn_80215CC0(){return lbl_8056550C;}
-void *fn_80215CC8(){return lbl_805654F4;}
-void *fn_80215CD0(){return lbl_805654F0;}
+void *igActor_virtual58(){return lbl_805655A0;}
+int igActor_virtual68(){return 0;}
+void *igActorList_virtual58(){return lbl_8056559C;}
+void *igActorInfo_virtual58(){return lbl_80565584;}
+void *igActorInfoList_virtual58(){return lbl_80565580;}
+void *igAnimationTrack_virtual58(){return lbl_80565570;}
+void *igAnimationTrackList_virtual58(){return lbl_8056556C;}
+void *igAnimationTransitionParams_virtual58(){return lbl_80565558;}
+void *igAnimationTransitionPoint_virtual58(){return lbl_8056554C;}
+void *igAnimationTransitionPointList_virtual58(){return lbl_80565548;}
+void *igAnimationTransitionDefinition_virtual58(){return lbl_80565538;}
+void *igAnimationTransitionDefinitionList_virtual58(){return lbl_80565534;}
+void *igAnimationList_virtual58(){return lbl_8056550C;}
+void *igAnimationBinding_virtual58(){return lbl_805654F4;}
+void *igAnimationBindingList_virtual58(){return lbl_805654F0;}
 void *fn_80215CD8(){return lbl_805653A0;}
 }
 #pragma pop

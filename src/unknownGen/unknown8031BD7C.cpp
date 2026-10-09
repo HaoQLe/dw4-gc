@@ -5,7 +5,7 @@ extern "C" {
 void fn_8004155C(void *,int,int);
 }
 extern "C" {
-void fn_8031BD7C(int p0,int p1,int p2,int p3,int p4,int p5){
+void beTargetObj_virtual70(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  void *value1;
  void *value2;

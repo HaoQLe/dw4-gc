@@ -7,7 +7,7 @@ extern void *lbl_8056469C;
 extern void *lbl_80564FA4;
 }
 extern "C" {
-void fn_801546BC(int p0,int p1){
+void igChangePlayMode_virtual88(int p0,int p1){
  void *value1;
  void *value2;
  void *value0;

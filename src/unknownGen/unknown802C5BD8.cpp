@@ -14,7 +14,7 @@ extern char lbl_804D069C[];
 extern void *lbl_80534C20;
 }
 extern "C" {
-void fn_802C5BD8(){
+void beModelCtrlSCEffect_fieldInit(){
  void *value0=lbl_80534C20;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D0648,7);

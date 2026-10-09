@@ -45,12 +45,12 @@ public:
  virtual void * s80(void *,void *,void *);
 };
 extern "C" {
-int fn_800933E8(){return 1;}
-void *fn_800933F0(){return lbl_80562070;}
-void *fn_800933F8(){return lbl_80562074;}
-int fn_80093400(){return 32;}
-int fn_80093408(){return 32;}
-void fn_80093410(int p0){
+int igElfFile_virtual1D0(){return 1;}
+void *igGamecubeThreadManager_virtual58(){return lbl_80562070;}
+void *igGamecubeThread_virtual58(){return lbl_80562074;}
+int igGamecubeThread_virtualA8(){return 32;}
+int igGamecubeThread_virtualAC(){return 32;}
+void igGamecubeThread_virtual30(int p0){
  if(!*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+45)){
   if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
    fn_80068390((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
@@ -60,9 +60,9 @@ void fn_80093410(int p0){
   }
  }
 }
-int fn_80093448(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+40);}
-int fn_80093450(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+28);}
-void fn_80093458(int p0,int p1,int p2,int p3){
+int igGamecubeThread_virtual88(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+40);}
+int igGamecubeThread_virtual90(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+28);}
+void igGamecubeThread_virtual94(int p0,int p1,int p2,int p3){
  void *value0;
  value0=reinterpret_cast<UnknownGenV80093458_0 *>((void *)p1)->s80((void *)p1,(void *)p2,(void *)p3);
  if(!(unsigned char)(int)value0){
@@ -81,22 +81,22 @@ void fn_80093458(int p0,int p1,int p2,int p3){
   return;
  }
 }
-int fn_800934F4(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+32);}
-int fn_800934FC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36);}
-void *fn_80093504(int p0){
+int igGamecubeThread_virtual98(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+32);}
+int igGamecubeThread_virtualA0(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36);}
+void *igGamecubeThread_virtualD0(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }
-void *fn_80093510(int p0){
+void *igGamecubeThread_virtualD4(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }
-void *fn_8009351C(int p0){
+void *igGamecubeThread_virtualD8(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }
 void *fn_80093528(){return lbl_8056209C;}
-void *fn_80093530(){return lbl_805620A0;}
-unsigned char fn_80093538(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+20);}
+void *igGamecubeSemaphore_virtual58(){return lbl_805620A0;}
+unsigned char igGamecubeSemaphore_virtual64(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+20);}
 }
 #pragma pop

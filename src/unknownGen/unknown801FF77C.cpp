@@ -7,7 +7,7 @@ void fn_801EAC44(void *,void *);
 void fn_801FF70C(void *);
 }
 extern "C" {
-void fn_801FF77C(int p0){
+void igSelfShadowShader_virtual44(int p0){
  void *value4;
  void *value0;
  void *value1;

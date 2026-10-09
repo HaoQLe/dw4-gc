@@ -8,6 +8,8 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 import callshape,compiler,elf
 from paths import CONFIG,RELINDEX
 idx=json.load(open(RELINDEX))
+# Original function addresses by name: every function a generated unit may define.
+ADDR={m[1]:int(m[2],16) for m in re.finditer(r'(\S+) = \.text:0x([0-9A-F]+); // type:function',(CONFIG/'symbols.txt').read_text())}
 # Original jump tables: name -> (address, size).
 JT={m[1]:(int(m[2],16),int(m[3],16)) for m in re.finditer(r'(jumptable_\w+) = \.data:0x([0-9A-F]+); // type:object size:0x([0-9A-F]+)',(CONFIG/'symbols.txt').read_text())}
 def mask(b,rl):
@@ -26,7 +28,7 @@ def check(src,eh=False,no_sdata=False,speed=False,lmw=False):
   secs,rels,syms=elf.parse(obj)
   text=secs['.text']['data'];trel=[x for x in rels if x['section']=='.text'];res={}
   for f in syms:
-    if f['type']!=2 or f['section']!='.text' or not f['name'].startswith(('fn_','dtor_')): continue
+    if f['type']!=2 or f['section']!='.text' or f['name'] not in ADDR: continue
     n=f['name']
     if n not in idx: res[n]=None;continue
     mine=[(x['offset']-f['value'],x['type'],x['symbol']['name'],x['addend']) for x in trel if f['value']<=x['offset']<f['value']+f['size']]
@@ -43,7 +45,7 @@ def check(src,eh=False,no_sdata=False,speed=False,lmw=False):
       ok_=True
       for (mn,sy),o_ in zip(sorted(jt.items(),key=lambda kv:kv[1]['value']),on):
         oa=JT[o_]
-        ent=[struct.unpack('>I',callshape.rd(oa[0],oa[1])[k:k+4])[0]-int(n.rsplit('_',1)[1],16) for k in range(0,oa[1],4)]
+        ent=[struct.unpack('>I',callshape.rd(oa[0],oa[1])[k:k+4])[0]-ADDR[n] for k in range(0,oa[1],4)]
         dr={x['offset']:x for x in rels if x['section']=='.data' and sy['value']<=x['offset']<sy['value']+sy['size']}
         me=[]
         for k in range(0,sy['size'],4):
@@ -54,7 +56,7 @@ def check(src,eh=False,no_sdata=False,speed=False,lmw=False):
         mine=[(a,t,o_ if s_==mn else s_,ad) for a,t,s_,ad in mine]
       if not ok_: res[n]=0.0;continue
     ok=f['size']==idx[n]['size'] and sorted(mine)==sorted(orig)
-    if ok: ok=mask(text[f['value']:f['value']+f['size']],[(o,t) for o,t,s,a in mine])==mask(callshape.rd(int(n.rsplit('_',1)[1],16),f['size']),[(o,t) for o,t,s,a in orig])
+    if ok: ok=mask(text[f['value']:f['value']+f['size']],[(o,t) for o,t,s,a in mine])==mask(callshape.rd(ADDR[n],f['size']),[(o,t) for o,t,s,a in orig])
     res[n]=100.0 if ok else 0.0
   return res
 if __name__=='__main__':

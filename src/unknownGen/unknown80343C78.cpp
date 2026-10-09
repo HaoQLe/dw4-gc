@@ -18,7 +18,7 @@ extern char lbl_804E3DE8[];
 extern void *lbl_80536778;
 }
 extern "C" {
-void fn_80343C78(){
+void beNDMWShinkaCtrl_fieldInit(){
  void *value0=lbl_80536778;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E3DA0,6);

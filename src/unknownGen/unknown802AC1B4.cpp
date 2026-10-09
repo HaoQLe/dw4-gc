@@ -13,7 +13,7 @@ extern char lbl_804CDB80[];
 extern void *lbl_805343EC;
 }
 extern "C" {
-void fn_802AC1B4(){
+void igCriMovieData_fieldInit(){
  void *value0=lbl_805343EC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CDB44,5);

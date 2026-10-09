@@ -1,7 +1,7 @@
 #include "unknown80047878.h"
 #pragma push
 #pragma auto_inline off
-extern "C" int fn_80047878(Unknown800496E8Owner *object,Unknown800496E8Record *record,int previous){
+extern "C" int igEventTracker_virtual68(Unknown800496E8Owner *object,Unknown800496E8Record *record,int previous){
  if(!(object->unknown10&(1<<record->unknown00))) return -1;
  switch(record->unknown00){
   case 13:if(!(object->unknown18&(1<<record->unknown14))) return -1;break;

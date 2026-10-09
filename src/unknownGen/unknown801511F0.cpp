@@ -14,8 +14,8 @@ void fn_8006665C(void *);
 void *fn_80071694(void *,void *);
 void fn_8012FC48();
 void *fn_801308D0();
-void fn_8013B97C();
-void fn_801517A4();
+void igCollapseGeometry_fieldInit();
+void igOptBase_register();
 extern char lbl_8049BC80[];
 extern char lbl_8049C458[];
 extern char lbl_8049FFA0[];
@@ -34,17 +34,17 @@ extern void *lbl_805644F0;
 extern void *lbl_805644F4;
 extern void *lbl_80564500;
 extern void *lbl_80564504;
-void *fn_8015123C();
-void *fn_80151278();
+void *igCollapseHierarchy_getMeta();
+void *igCollapseHierarchy_vtableRead();
 void fn_801513E0();
-void fn_80151408();
-void *fn_8015147C();
-void fn_8015149C();
-void *fn_80151580();
-void *fn_801515BC();
+void igCollapseHierarchy_register();
+void *igCollapseHierarchy_getMetaCall();
+void igCollapseHierarchy_fieldInit();
+void *igCollapseGeometry_getMeta();
+void *igCollapseGeometry_vtableRead();
 void fn_801516EC();
-void fn_80151714();
-void *fn_80151784();
+void igCollapseGeometry_register();
+void *igCollapseGeometry_getMetaCall();
 }
 struct UnknownGenRoot80151278 {
  void *unknown00;
@@ -86,11 +86,11 @@ void *fn_801511F0(){
  if(!lbl_805644F0) lbl_805644F0=fn_800635C8(data+0x430C,data+0x42EC,data+0x42FC,0x4);
  return lbl_805644F0;
 }
-void *fn_8015123C(){
+void *igCollapseHierarchy_getMeta(){
  if(!lbl_805644F4 || !(reinterpret_cast<unsigned int *>(lbl_805644F4)[0x24/4]&4)) fn_801513E0();
  return lbl_805644F4;
 }
-void *fn_80151278(){
+void *igCollapseHierarchy_vtableRead(){
  UnknownGenObject80151278 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -103,14 +103,14 @@ void *fn_80151278(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801513E0(){
- fn_80066188((int)fn_80151408);
+ fn_80066188((int)igCollapseHierarchy_register);
 }
-void fn_80151408(){
+void igCollapseHierarchy_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644F4,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_8015147C,(int)lbl_8049FFA0,48,(int)fn_80151278,(int)fn_8015149C,0,(int)lbl_8055FCC0);
+ fn_80066204(0,(int)&lbl_805644F4,(int)igOptBase_register,(int)fn_801308D0,(int)igCollapseHierarchy_getMetaCall,(int)lbl_8049FFA0,48,(int)igCollapseHierarchy_vtableRead,(int)igCollapseHierarchy_fieldInit,0,(int)lbl_8055FCC0);
 }
-void *fn_8015147C(){return fn_8015123C();}
-void fn_8015149C(){
+void *igCollapseHierarchy_getMetaCall(){return igCollapseHierarchy_getMeta();}
+void igCollapseHierarchy_fieldInit(){
  void *value0=lbl_805644F4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055FCC8,2);
@@ -126,11 +126,11 @@ void *fn_80151534(){
  if(!lbl_80564500) lbl_80564500=fn_800635C8(data+0x4388,data+0x4370,data+0x437C,0x3);
  return lbl_80564500;
 }
-void *fn_80151580(){
+void *igCollapseGeometry_getMeta(){
  if(!lbl_80564504 || !(reinterpret_cast<unsigned int *>(lbl_80564504)[0x24/4]&4)) fn_801516EC();
  return lbl_80564504;
 }
-void *fn_801515BC(){
+void *igCollapseGeometry_vtableRead(){
  UnknownGenObject801515BC object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -142,12 +142,12 @@ void *fn_801515BC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801516EC(){
- fn_80066188((int)fn_80151714);
+ fn_80066188((int)igCollapseGeometry_register);
 }
-void fn_80151714(){
+void igCollapseGeometry_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564504,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_80151784,(int)lbl_804A001C,60,(int)fn_801515BC,(int)fn_801517A4,0,0);
+ fn_80066204(0,(int)&lbl_80564504,(int)igOptBase_register,(int)fn_801308D0,(int)igCollapseGeometry_getMetaCall,(int)lbl_804A001C,60,(int)igCollapseGeometry_vtableRead,(int)igCollapseGeometry_fieldInit,0,0);
 }
-void *fn_80151784(){return fn_80151580();}
+void *igCollapseGeometry_getMetaCall(){return igCollapseGeometry_getMeta();}
 }
 #pragma pop

@@ -5,25 +5,25 @@ extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_80284550();
-void fn_80286F0C();
 void fn_80402E28();
-void *fn_804091F0();
-void fn_8040923C();
-void fn_80409630();
+void igActorManager_fieldInit();
+void *igActorManager_getMeta();
+void igActorManager_vtableRead();
+void igInfoManager_register();
 extern char lbl_80462C44[];
 extern char lbl_804F1030[];
 extern char lbl_8055CB40[];
-void fn_80409594();
-void *fn_80409610();
+void igActorManager_register();
+void *igActorManager_getMetaCall();
 }
 extern "C" {
 void fn_8040956C(){
- fn_80066188((int)fn_80409594);
+ fn_80066188((int)igActorManager_register);
 }
-void fn_80409594(){
+void igActorManager_register(){
  fn_80402E28();
- fn_80066204(0,(int)lbl_8055CB40,(int)fn_80286F0C,(int)fn_80284550,(int)fn_80409610,(int)lbl_80462C44,56,(int)fn_8040923C,(int)fn_80409630,0,(int)lbl_804F1030);
+ fn_80066204(0,(int)lbl_8055CB40,(int)igInfoManager_register,(int)fn_80284550,(int)igActorManager_getMetaCall,(int)lbl_80462C44,56,(int)igActorManager_vtableRead,(int)igActorManager_fieldInit,0,(int)lbl_804F1030);
 }
-void *fn_80409610(){return fn_804091F0();}
+void *igActorManager_getMetaCall(){return igActorManager_getMeta();}
 }
 #pragma pop

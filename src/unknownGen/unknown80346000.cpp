@@ -13,14 +13,14 @@ extern void *lbl_80536604;
 extern void *lbl_8053661C;
 }
 extern "C" {
-void *fn_80346000(){return lbl_8053661C;}
-void *fn_80346010(){return lbl_80536600;}
-void *fn_80346020(){return lbl_805365F4;}
-void *fn_80346030(){return lbl_805365EC;}
+void *beNDMWLoadSlotPlayerList_virtual58(){return lbl_8053661C;}
+void *beNDMWMcSlotPS2_virtual58(){return lbl_80536600;}
+void *beNDMWMcSlotGC_virtual58(){return lbl_805365F4;}
+void *beNDMWMcSlotXbox_virtual58(){return lbl_805365EC;}
 void *fn_80346040(){return lbl_80536604;}
-void *fn_80346050(){return lbl_805365E8;}
-void *fn_80346060(){return lbl_805365AC;}
-void *fn_80346070(){return lbl_805365A8;}
-void *fn_80346080(){return lbl_80536560;}
+void *beNDMWMcSlotList_virtual58(){return lbl_805365E8;}
+void *beNDMWLoadSavePlWork_virtual58(){return lbl_805365AC;}
+void *beNDMWLoadSavePlWorkList_virtual58(){return lbl_805365A8;}
+void *beNDMWMcUtilCtrl_virtual58(){return lbl_80536560;}
 }
 #pragma pop

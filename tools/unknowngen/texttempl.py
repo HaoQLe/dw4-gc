@@ -1,7 +1,7 @@
 """Text templates keyed by representative function. {N} = Nth unique relocated symbol, {name} = function.
 DECL[i] = declaration format for symbol i (None = already declared/arkCore)."""
 T={}
-T['fn_80021EB4']=dict(decl=[None,'void %s();','void *%s(void *,void *);','void *%s(int,int);','void *%s(void *,void *);'],sig='void *%s(void *,void *);',src='''void *{name}(void *a,void *b){
+T['igUnsignedShortArrayMetaField_virtual54']=dict(decl=[None,'void %s();','void *%s(void *,void *);','void *%s(int,int);','void *%s(void *,void *);'],sig='void *%s(void *,void *);',src='''void *{name}(void *a,void *b){
  if(*reinterpret_cast<unsigned char *>(Gap::Core::_arkCore)){
   {1}();
   return {2}(a,b);
@@ -10,7 +10,7 @@ T['fn_80021EB4']=dict(decl=[None,'void %s();','void *%s(void *,void *);','void *
  if(object) object={4}(object,a);
  return object;
 }''')
-T['fn_8002233C']=dict(decl=['extern void *%s;','void *%s(void *);','SDA','void %s(void *,void *,int);','void *%s(void *,void *);','void %s(void *,int);','SDA','SDA','SDA','void %s(void *,void *,void *,void *,void *);'],sig='void %s();',src='''void {name}(){
+T['igUnsignedShortArrayMetaField_fieldInit']=dict(decl=['extern void *%s;','void *%s(void *);','SDA','void %s(void *,void *,int);','void *%s(void *,void *);','void %s(void *,int);','SDA','SDA','SDA','void %s(void *,void *,void *,void *,void *);'],sig='void %s();',src='''void {name}(){
  void *meta={0};
  void *field={1}(meta);
  {3}(meta,{2},1);
@@ -52,7 +52,7 @@ IT['fn_8003C9A0']=dict(decl=[None],sig='void %s(void *,UnknownGenValue *);',src=
  if(old) unknownGenDrop(old);
  *reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+{@11})=value;
 }''')
-IT['fn_802AAD5C']=dict(decl=['extern void *%s;','void *%s(void *);','extern char %s[];','void %s(void *,void *,int);','extern char %s[];','extern char %s[];','extern char %s[];','void %s(void *,void *,void *,void *,void *);'],sig='void %s();',src='''void {name}(){
+IT['igAdxAfsFile_fieldInit']=dict(decl=['extern void *%s;','void *%s(void *);','extern char %s[];','void %s(void *,void *,int);','extern char %s[];','extern char %s[];','extern char %s[];','void %s(void *,void *,void *,void *,void *);'],sig='void %s();',src='''void {name}(){
  void *meta={0};
  void *field={1}(meta);
  {3}(meta,{2},{@15});

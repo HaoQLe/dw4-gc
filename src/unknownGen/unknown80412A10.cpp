@@ -9,10 +9,10 @@ extern void *lbl_8055CA50;
 extern void *lbl_8055CA5C;
 }
 extern "C" {
-void *fn_80412A10(){return lbl_8055C9A4;}
-void *fn_80412A20(){return lbl_8055C9DC;}
-void *fn_80412A30(){return lbl_8055CA20;}
-void *fn_80412A40(){return lbl_8055CA50;}
-void *fn_80412A50(){return lbl_8055CA5C;}
+void *igPickMode_virtual58(){return lbl_8055C9A4;}
+void *igRotateMode_virtual58(){return lbl_8055C9DC;}
+void *igFlyMode_virtual58(){return lbl_8055CA20;}
+void *igCameraMode_virtual58(){return lbl_8055CA50;}
+void *igViewMode_virtual58(){return lbl_8055CA5C;}
 }
 #pragma pop

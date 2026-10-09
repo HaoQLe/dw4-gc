@@ -4,22 +4,22 @@
 extern "C" {
 void fn_80021B94();
 void *fn_8002942C();
-void fn_80030798();
-void fn_80032D80();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void igDirEntry_register();
+void igExternalIndexedEntry_fieldInit();
 extern char lbl_80465F8C[];
 extern char lbl_804728F8[];
 extern char lbl_80472EF4[];
 extern char lbl_8047650C[];
 extern char lbl_8055D4AC[8];
 extern void *lbl_80561B70;
-void *fn_80030570();
-void *fn_800305AC();
+void *igExternalIndexedEntry_getMeta();
+void *igExternalIndexedEntry_vtableRead();
 void fn_800306DC();
-void fn_80030704();
-void *fn_80030778();
+void igExternalIndexedEntry_register();
+void *igExternalIndexedEntry_getMetaCall();
 }
 struct UnknownGenRoot800305AC {
  void *unknown00;
@@ -43,11 +43,11 @@ struct UnknownGenObject800305AC : UnknownGenObject800305AC_1 {
  inline ~UnknownGenObject800305AC(){unknown00=lbl_804728F8;}
 };
 extern "C" {
-void *fn_80030570(){
+void *igExternalIndexedEntry_getMeta(){
  if(!lbl_80561B70 || !(reinterpret_cast<unsigned int *>(lbl_80561B70)[0x24/4]&4)) fn_800306DC();
  return lbl_80561B70;
 }
-void *fn_800305AC(){
+void *igExternalIndexedEntry_vtableRead(){
  UnknownGenObject800305AC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -58,12 +58,12 @@ void *fn_800305AC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800306DC(){
- fn_80066188((int)fn_80030704);
+ fn_80066188((int)igExternalIndexedEntry_register);
 }
-void fn_80030704(){
+void igExternalIndexedEntry_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561B70,(int)fn_80032D80,(int)fn_8002942C,(int)fn_80030778,(int)lbl_80465F8C,52,(int)fn_800305AC,(int)fn_80030798,0,(int)lbl_8055D4AC);
+ fn_80066204(0,(int)&lbl_80561B70,(int)igDirEntry_register,(int)fn_8002942C,(int)igExternalIndexedEntry_getMetaCall,(int)lbl_80465F8C,52,(int)igExternalIndexedEntry_vtableRead,(int)igExternalIndexedEntry_fieldInit,0,(int)lbl_8055D4AC);
 }
-void *fn_80030778(){return fn_80030570();}
+void *igExternalIndexedEntry_getMetaCall(){return igExternalIndexedEntry_getMeta();}
 }
 #pragma pop

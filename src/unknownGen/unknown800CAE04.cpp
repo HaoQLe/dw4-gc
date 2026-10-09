@@ -10,10 +10,10 @@ void *fn_800635C8(void *,void *,void *,int);
 void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
-void *fn_800CB1F4();
-void fn_800CB4AC();
-void *fn_800CBC9C();
+void igEventProducer_register();
+void *igGamecubeWindow_getMeta();
+void *igInterfaceManager_fieldInit();
+void igObject_register();
 extern char lbl_8047EC18[];
 extern char lbl_8047EC24[];
 extern char lbl_8047F350[];
@@ -30,33 +30,33 @@ extern void *lbl_80562B9C;
 extern void *lbl_80562BA4;
 extern void *lbl_80562BB0;
 void fn_800CAEE0();
-void *fn_800CAF88();
+void *igWindow_getMeta();
 void fn_800CAFC4();
-void fn_800CAFEC();
-void *fn_800CB058();
+void igWindow_register();
+void *igWindow_getMetaCall();
 void *fn_800CB078();
 void *fn_800CB080();
-void *fn_800CB094();
-void *fn_800CB100();
+void *igGamecubeWindow_getMetaCall();
+void *igInterfaceManager_getMeta();
 void fn_800CB13C();
-void fn_800CB164();
-void *fn_800CB1D4();
+void igInterfaceManager_register();
+void *igInterfaceManager_getMetaCall();
 }
 extern "C" {
-void *fn_800CAE04(){return lbl_80562B40;}
-void fn_800CAE0C(void *object,UnknownGenValue *value){
+void *igGamecubeAudioContext_virtual58(){return lbl_80562B40;}
+void igGamecubeAudioContext_virtual68(void *object,UnknownGenValue *value){
  if(value) ++value->unknown04;
  UnknownGenValue *old=*reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0xC);
  if(old) unknownGenDrop(old);
  *reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0xC)=value;
 }
-int fn_800CAE7C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
-int fn_800CAE84(){return 32;}
+int igGamecubeAudioContext_virtual6C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
+int igGamecubeAudioContext_virtual84(){return 32;}
 void *fn_800CAE8C(){return lbl_80562B24;}
-void *fn_800CAE94(){return lbl_80562B60;}
+void *igGamecubeAudioSourceList_virtual58(){return lbl_80562B60;}
 void *fn_800CAE9C(){return lbl_80562B2C;}
-int fn_800CAEA4(){return 60;}
-void fn_800CAEAC(int p0){
+int igGamecubeAudioSourceList_virtual5C(){return 60;}
+void igGamecubeAudioSourceList_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),60);
   return;
@@ -82,41 +82,41 @@ void *fn_800CAF4C(){
  if(!lbl_80562B74) lbl_80562B74=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562B74;
 }
-void *fn_800CAF88(){
+void *igWindow_getMeta(){
  if(!lbl_80562B74 || !(reinterpret_cast<unsigned int *>(lbl_80562B74)[0x24/4]&4)) fn_800CAFC4();
  return lbl_80562B74;
 }
 void fn_800CAFC4(){
- fn_80066188((int)fn_800CAFEC);
+ fn_80066188((int)igWindow_register);
 }
-void fn_800CAFEC(){
+void igWindow_register(){
  fn_800CAEE0();
- fn_80066204(1,(int)&lbl_80562B74,(int)fn_800CB4AC,(int)fn_800CB078,(int)fn_800CB058,(int)lbl_8047EC24,8,0,(int)fn_800CB080,0,0);
+ fn_80066204(1,(int)&lbl_80562B74,(int)igEventProducer_register,(int)fn_800CB078,(int)igWindow_getMetaCall,(int)lbl_8047EC24,8,0,(int)fn_800CB080,0,0);
 }
-void *fn_800CB058(){return fn_800CAF88();}
+void *igWindow_getMetaCall(){return igWindow_getMeta();}
 void *fn_800CB078(){return lbl_80562BB0;}
 void *fn_800CB080(){
  void *value0=lbl_80562B74;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)fn_800CB094;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+60)=(void *)igGamecubeWindow_getMetaCall;
  return value0;
 }
-void *fn_800CB094(){return fn_800CBC9C();}
+void *igGamecubeWindow_getMetaCall(){return igGamecubeWindow_getMeta();}
 void *fn_800CB0B4(){
  char *data=lbl_8047EC18;
  if(!lbl_80562B9C) lbl_80562B9C=fn_800635C8(data+0x72C,data+0x3E4,data+0x588,0x69);
  return lbl_80562B9C;
 }
-void *fn_800CB100(){
+void *igInterfaceManager_getMeta(){
  if(!lbl_80562BA4 || !(reinterpret_cast<unsigned int *>(lbl_80562BA4)[0x24/4]&4)) fn_800CB13C();
  return lbl_80562BA4;
 }
 void fn_800CB13C(){
- fn_80066188((int)fn_800CB164);
+ fn_80066188((int)igInterfaceManager_register);
 }
-void fn_800CB164(){
+void igInterfaceManager_register(){
  fn_800CAEE0();
- fn_80066204(1,(int)&lbl_80562BA4,(int)fn_80066B08,(int)fn_800237D0,(int)fn_800CB1D4,(int)lbl_8047F350,12,0,(int)fn_800CB1F4,0,(int)lbl_8055E948);
+ fn_80066204(1,(int)&lbl_80562BA4,(int)igObject_register,(int)fn_800237D0,(int)igInterfaceManager_getMetaCall,(int)lbl_8047F350,12,0,(int)igInterfaceManager_fieldInit,0,(int)lbl_8055E948);
 }
-void *fn_800CB1D4(){return fn_800CB100();}
+void *igInterfaceManager_getMetaCall(){return igInterfaceManager_getMeta();}
 }
 #pragma pop

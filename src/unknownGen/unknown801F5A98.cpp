@@ -32,7 +32,7 @@ public:
  virtual void s64();
 };
 extern "C" {
-void fn_801F5A98(int p0){
+void igInverseKinematicsSource_virtualB0(int p0){
  reinterpret_cast<UnknownGenV801F5A98_0 *>((void *)p0)->s64();
 }
 }

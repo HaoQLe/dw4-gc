@@ -86,7 +86,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_801E3DEC(int p0){
+void igDOFShader_virtual24(int p0){
  void *value0;
  void *value1;
  void *value2;
@@ -293,6 +293,6 @@ void fn_801E3DEC(int p0){
   return;
  }
 }
-void *fn_801E40AC(){return lbl_80564FC0;}
+void *igDOFShader_virtual58(){return lbl_80564FC0;}
 }
 #pragma pop

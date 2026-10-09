@@ -96,10 +96,10 @@ public:
  virtual void sB0(void *,void *,void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800E23D0(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igPointSpriteExt_virtualA0(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800E23D0_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sAC((void *)(int)(p1*6),(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
-void fn_800E2404(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igPointSpriteExt_virtualA4(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800E2404_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sB0((void *)(int)(p1*6),(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
 }

@@ -5,7 +5,7 @@ extern "C" {
 void *fn_800C37E4(void *,int);
 }
 extern "C" {
-void fn_801D8C8C(int p0,int p1){
+void igBumpMapShader_virtual94(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

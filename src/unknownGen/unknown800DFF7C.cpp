@@ -74,7 +74,7 @@ public:
  virtual void * s80(void *);
 };
 extern "C" {
-void *fn_800DFF7C(int p0,int p1){
+void *igGamecubeIndexArray_virtual88(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

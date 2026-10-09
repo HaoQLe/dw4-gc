@@ -8,19 +8,19 @@ extern void *kFailure__3Gap;
 extern void *kSuccess__3Gap;
 }
 extern "C" {
-void fn_80078410(int p0,int p1){
+void igGamecubeThread_virtual6C(int p0,int p1){
  OSResumeThread((reinterpret_cast<char *>((void *)p1)+56));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kSuccess__3Gap;
 }
-void fn_80078448(int p0,int p1){
+void igGamecubeThread_virtualB8(int p0,int p1){
  OSSuspendThread((reinterpret_cast<char *>((void *)p1)+56));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kSuccess__3Gap;
 }
-void fn_80078480(int p0,int p1){
+void igGamecubeThread_virtualC0(int p0,int p1){
  OSResumeThread((reinterpret_cast<char *>((void *)p1)+56));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kSuccess__3Gap;
 }
-void *fn_800784B8(int p0){
+void *igGamecubeThread_virtualC8(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }

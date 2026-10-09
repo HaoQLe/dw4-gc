@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805636BC;
 }
 extern "C" {
-void *fn_8011D398(){return lbl_805636BC;}
+void *igMousePosObserver_virtual58(){return lbl_805636BC;}
 }
 #pragma pop

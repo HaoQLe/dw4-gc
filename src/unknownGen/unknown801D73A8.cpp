@@ -30,7 +30,7 @@ public:
  virtual void * s5C(void *);
 };
 extern "C" {
-void *fn_801D73A8(int p0){
+void *igTransform_virtual9C(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104);

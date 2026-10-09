@@ -7,7 +7,7 @@ void fn_80117DD0(void *,int,int,int,void *);
 extern char lbl_8055CB78[];
 }
 extern "C" {
-void fn_80409E34(int p0){
+void igViewerGuiFactory_virtual34(int p0){
  fn_80117CA4(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),0,0,0,(reinterpret_cast<char *>(lbl_8055CB78)+644));
  fn_80117CA4(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),0,1,0,(reinterpret_cast<char *>(lbl_8055CB78)+644));
  fn_80117CA4(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),1,0,0,(reinterpret_cast<char *>(lbl_8055CB78)+660));

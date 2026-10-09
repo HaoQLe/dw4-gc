@@ -10,7 +10,7 @@ struct UnknownGenObject802BC81C_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_802BC81C(){
+void *beXboxImage24k_vtableRead(){
  UnknownGenObject802BC81C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804DB1A0;

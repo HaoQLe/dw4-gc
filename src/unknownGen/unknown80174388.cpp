@@ -7,7 +7,7 @@ void *fn_801829C4(void *,void *);
 extern void *lbl_80564A14;
 }
 extern "C" {
-void *fn_80174388(int p0,int p1){
+void *igHideActorSkinGraphs_virtual6C(int p0,int p1){
  void *value0;
  void *value1;
  value0=fn_80068128((void *)p1,lbl_80564A14);

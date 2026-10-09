@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80076078(){return 4;}
+int igVirtualCFuncMetaField_virtual64(){return 4;}
 }
 #pragma pop

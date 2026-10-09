@@ -74,25 +74,25 @@ public:
  virtual void * sEC();
 };
 extern "C" {
-void *fn_800C6394(){return lbl_805625B0;}
-void *fn_800C639C(){return lbl_805625CC;}
-void *fn_800C63A4(){return lbl_805625D4;}
-int fn_800C63AC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
-void *fn_800C63B4(int p0,int p1,int p2,int p3){
+void *igSubTextureBindAttr_virtual58(){return lbl_805625B0;}
+void *igStencilStateAttr_virtual58(){return lbl_805625CC;}
+void *igStencilFunctionAttr_virtual58(){return lbl_805625D4;}
+int igStencilFunctionAttr_virtual84(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
+void *igStencilFunctionAttr_virtual8C(int p0,int p1,int p2,int p3){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=(void *)p1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=(void *)p2;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)p3;
  return (void *)p0;
 }
-void *fn_800C63C4(int p0,int p1,int p2,int p3){
+void *igStencilFunctionAttr_virtual90(int p0,int p1,int p2,int p3){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p2)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p3)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);
  return (void *)p0;
 }
-void fn_800C63E0(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+24)=value;}
-void fn_800C63E8(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+20)=value;}
-void *fn_800C63F0(int p0){
+void igStencilFunctionAttr_virtual94(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+24)=value;}
+void igStencilFunctionAttr_virtual98(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+20)=value;}
+void *igSpriteAttr_virtual70(int p0){
  void *value0;
  void *value1;
  if(lbl_80562B08){
@@ -106,17 +106,17 @@ void *fn_800C63F0(int p0){
   return value0;
  }
 }
-void *fn_800C643C(){return lbl_8056260C;}
-void *fn_800C6444(){return lbl_80562614;}
-void *fn_800C644C(){return lbl_8056261C;}
-void *fn_800C6454(){return lbl_80562624;}
-void *fn_800C645C(int p0,int p1,int p2,int p3,int p4){
+void *igShadeModelAttr_virtual58(){return lbl_8056260C;}
+void *igSetRenderDestinationAttr_virtual58(){return lbl_80562614;}
+void *igScissorTypeAttr_virtual58(){return lbl_8056261C;}
+void *igScissorAttr_virtual58(){return lbl_80562624;}
+void *igScissorAttr_virtual80(int p0,int p1,int p2,int p3,int p4){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)p1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p2;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=(void *)p3;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=(void *)p4;
  return (void *)p0;
 }
-void *fn_800C6470(){return lbl_8056263C;}
+void *igSceneAmbientColorAttr_virtual58(){return lbl_8056263C;}
 }
 #pragma pop

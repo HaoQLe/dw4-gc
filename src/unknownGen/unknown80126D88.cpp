@@ -60,11 +60,11 @@ public:
  virtual void sD0(void *,void *);
 };
 extern "C" {
-void fn_80126D88(int p0,int p1,int p2){
+void igVec4ucMetaField_virtualD0(int p0,int p1,int p2){
  void *value0=fn_80023358();
  reinterpret_cast<UnknownGenV80126D88_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2**reinterpret_cast<unsigned short *>(reinterpret_cast<char *>((void *)p0)+20)));
 }
-void fn_80126DE0(int p0,int p1,int p2,int p3,int p4,int p5){
+void igVec4ucMetaField_virtual1D4(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_80123D28((void *)p2,(void *)p1,4,1,0);
 }
 }

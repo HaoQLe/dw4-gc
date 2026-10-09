@@ -6,7 +6,7 @@ void fn_803050A8(void *,void *,void *,int,int);
 extern char lbl_804262F0[];
 }
 extern "C" {
-void fn_80301320(int p0,int p1,int p2,int p3,int p4,int p5){
+void beLayerCtl_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_803050A8(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),(void *)p1,lbl_804262F0,0,-1);
 }
 }

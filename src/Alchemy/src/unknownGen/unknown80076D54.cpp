@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_80076D54(int p0,int p1,int p2){
+void *igGamecubeFile_virtual98(int p0,int p1,int p2){
  switch((int)p2){
  case 0:
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+108)=(void *)p1;

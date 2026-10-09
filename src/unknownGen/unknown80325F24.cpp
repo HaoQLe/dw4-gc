@@ -32,7 +32,7 @@ struct UnknownGenObject80325F24 : UnknownGenObject80325F24_2 {
  inline ~UnknownGenObject80325F24(){unknown00=lbl_804E6BEC;}
 };
 extern "C" {
-void *fn_80325F24(){
+void *beNDMWTitle2Info_vtableRead(){
  UnknownGenObject80325F24 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

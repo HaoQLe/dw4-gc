@@ -17,7 +17,7 @@ struct UnknownGenObject80343FEC : UnknownGenRoot80343FEC {
  inline ~UnknownGenObject80343FEC(){unknown00=lbl_804E4620;}
 };
 extern "C" {
-void *fn_80343FEC(){
+void *beNDMWShinkaObject_vtableRead(){
  UnknownGenObject80343FEC object;
  object.unknown00=lbl_804E4620;
  object.unknown0C.value=0;

@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_80564714;
 }
 extern "C" {
-void *fn_80160D04(int p0){
+void *igConvertTransform_virtual8C(int p0){
  void *value1;
  void *value2;
  void *value3;
@@ -26,6 +26,6 @@ void *fn_80160D04(int p0){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+48)=0;
  return (void *)1;
 }
-int fn_80160D84(){return 1;}
+int igConvertTransform_virtual84(){return 1;}
 }
 #pragma pop

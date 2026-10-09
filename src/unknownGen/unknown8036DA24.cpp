@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8036DA24(){}
+void beNDMWGameRam_virtual84(){}
 }
 #pragma pop

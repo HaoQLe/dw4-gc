@@ -14,7 +14,7 @@ extern char lbl_804D1748[];
 extern void *lbl_805350C4;
 }
 extern "C" {
-void fn_802D1084(){
+void beMatCtrlData_fieldInit(){
  void *value0=lbl_805350C4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D173C,1);

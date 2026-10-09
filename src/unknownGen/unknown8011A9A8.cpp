@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8011A9A8(){}
+void igGuiSystemRenderer_virtual60(){}
 }
 #pragma pop

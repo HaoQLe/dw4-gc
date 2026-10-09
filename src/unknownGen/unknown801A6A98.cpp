@@ -44,7 +44,7 @@ public:
  virtual void * s94();
 };
 extern "C" {
-void fn_801A6A98(int p0){
+void igReplaceByGroup_virtual2C(int p0){
  void *value3;
  void *value0;
  void *value1;

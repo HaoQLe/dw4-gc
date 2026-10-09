@@ -15,7 +15,7 @@ extern char lbl_804E1CB0[];
 extern void *lbl_80535E68;
 }
 extern "C" {
-void fn_8032E468(){
+void beNDMWShopCtrlA1_fieldInit(){
  void *value0=lbl_80535E68;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1C98,2);

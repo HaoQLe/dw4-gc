@@ -49,7 +49,7 @@ struct UnknownGenObject802C6420 {
  char unknownEC[4];
 };
 extern "C" {
-void *fn_802C6420(){
+void *beModelCtrlInfoWork_vtableRead(){
  UnknownGenObject802C6420 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804D9D3C;

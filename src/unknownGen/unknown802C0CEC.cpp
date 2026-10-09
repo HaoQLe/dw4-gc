@@ -34,7 +34,7 @@ struct UnknownGenObject802C0CEC : UnknownGenObject802C0CEC_2 {
  inline ~UnknownGenObject802C0CEC(){unknown00=lbl_804DAB14;}
 };
 extern "C" {
-void *fn_802C0CEC(){
+void *bePoint01Info_vtableRead(){
  UnknownGenObject802C0CEC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

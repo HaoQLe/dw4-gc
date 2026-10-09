@@ -7,10 +7,10 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_80135250();
-void fn_8013A9EC();
 void *fn_8013AFE4();
-void fn_80141408();
-void fn_8015207C();
+void igChildContainer_register();
+void igNodeTraversal_fieldInit();
+void igOptTraverseGraph_register();
 extern char lbl_8049C458[];
 extern char lbl_8049E0AC[];
 extern char lbl_8049E0C0[];
@@ -24,16 +24,16 @@ extern char lbl_804AA710[];
 extern char lbl_804AAF48[];
 extern void *lbl_80564028;
 extern void *lbl_8056402C;
-void *fn_80140F78();
-void *fn_80140FB4();
+void *igNormalizeNormals_getMeta();
+void *igNormalizeNormals_vtableRead();
 void fn_8014112C();
-void fn_80141154();
-void *fn_801411BC();
-void *fn_801411DC();
-void *fn_80141218();
+void igNormalizeNormals_register();
+void *igNormalizeNormals_getMetaCall();
+void *igNodeTraversal_getMeta();
+void *igNodeTraversal_vtableRead();
 void fn_80141348();
-void fn_80141370();
-void *fn_801413E8();
+void igNodeTraversal_register();
+void *igNodeTraversal_getMetaCall();
 }
 struct UnknownGenRoot80140FB4 {
  void *unknown00;
@@ -69,11 +69,11 @@ struct UnknownGenObject80141218 : UnknownGenRoot80141218 {
  inline ~UnknownGenObject80141218(){unknown00=lbl_804A5E2C;}
 };
 extern "C" {
-void *fn_80140F78(){
+void *igNormalizeNormals_getMeta(){
  if(!lbl_80564028 || !(reinterpret_cast<unsigned int *>(lbl_80564028)[0x24/4]&4)) fn_8014112C();
  return lbl_80564028;
 }
-void *fn_80140FB4(){
+void *igNormalizeNormals_vtableRead(){
  UnknownGenObject80140FB4 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -87,18 +87,18 @@ void *fn_80140FB4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8014112C(){
- fn_80066188((int)fn_80141154);
+ fn_80066188((int)igNormalizeNormals_register);
 }
-void fn_80141154(){
+void igNormalizeNormals_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564028,(int)fn_8013A9EC,(int)fn_8013AFE4,(int)fn_801411BC,(int)lbl_8049E0AC,52,(int)fn_80140FB4,0,0,0);
+ fn_80066204(0,(int)&lbl_80564028,(int)igOptTraverseGraph_register,(int)fn_8013AFE4,(int)igNormalizeNormals_getMetaCall,(int)lbl_8049E0AC,52,(int)igNormalizeNormals_vtableRead,0,0,0);
 }
-void *fn_801411BC(){return fn_80140F78();}
-void *fn_801411DC(){
+void *igNormalizeNormals_getMetaCall(){return igNormalizeNormals_getMeta();}
+void *igNodeTraversal_getMeta(){
  if(!lbl_8056402C || !(reinterpret_cast<unsigned int *>(lbl_8056402C)[0x24/4]&4)) fn_80141348();
  return lbl_8056402C;
 }
-void *fn_80141218(){
+void *igNodeTraversal_vtableRead(){
  UnknownGenObject80141218 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -111,12 +111,12 @@ void *fn_80141218(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80141348(){
- fn_80066188((int)fn_80141370);
+ fn_80066188((int)igNodeTraversal_register);
 }
-void fn_80141370(){
+void igNodeTraversal_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_8056402C,(int)fn_8015207C,(int)fn_80135250,(int)fn_801413E8,(int)lbl_8049C458,44,(int)fn_80141218,(int)fn_80141408,0,(int)lbl_8049E0C0);
+ fn_80066204(0,(int)&lbl_8056402C,(int)igChildContainer_register,(int)fn_80135250,(int)igNodeTraversal_getMetaCall,(int)lbl_8049C458,44,(int)igNodeTraversal_vtableRead,(int)igNodeTraversal_fieldInit,0,(int)lbl_8049E0C0);
 }
-void *fn_801413E8(){return fn_801411DC();}
+void *igNodeTraversal_getMetaCall(){return igNodeTraversal_getMeta();}
 }
 #pragma pop

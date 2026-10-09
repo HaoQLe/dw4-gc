@@ -28,7 +28,7 @@ struct UnknownGenObject802CA388 : UnknownGenObject802CA388_0 {
  inline ~UnknownGenObject802CA388(){unknown00=lbl_804D9400;}
 };
 extern "C" {
-void *fn_802CA388(){
+void *beModelCtrlAIMap_vtableRead(){
  UnknownGenObject802CA388 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

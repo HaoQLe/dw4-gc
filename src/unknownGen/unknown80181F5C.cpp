@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_8056506C;
 }
 extern "C" {
-void *fn_80181F5C(){return lbl_8056506C;}
+void *igObjectPropertyForCompiledGraph_virtual7C(){return lbl_8056506C;}
 }
 #pragma pop

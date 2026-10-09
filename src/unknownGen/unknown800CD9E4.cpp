@@ -64,7 +64,7 @@ extern void *lbl_80562CE8;
 extern void *lbl_80565A28;
 }
 extern "C" {
-void *fn_800CD9E4(){return lbl_80562BC4;}
+void *igDefaultInterfaceManager_virtual58(){return lbl_80562BC4;}
 void *fn_800CD9EC(){return lbl_80562C08;}
 void *fn_800CD9F4(){return lbl_80562C14;}
 void *fn_800CD9FC(){return lbl_80562B74;}
@@ -85,12 +85,12 @@ void fn_800CDA3C(){}
 void fn_800CDA40(){}
 void fn_800CDA44(){}
 void fn_800CDA48(){}
-void *fn_800CDA4C(){return lbl_80562BC0;}
+void *igControllerList_virtual58(){return lbl_80562BC0;}
 void *fn_800CDA54(){return lbl_80562BBC;}
 void *fn_800CDA5C(){return lbl_80562BB8;}
-void *fn_800CDA64(){return lbl_80565A28;}
+void *igNonRefCountedObjectStack_virtual58(){return lbl_80565A28;}
 void *fn_800CDA6C(){return lbl_80562BB4;}
-void *fn_800CDA74(){return lbl_80562BAC;}
+void *igEventProducerList_virtual58(){return lbl_80562BAC;}
 void *fn_800CDA7C(){return lbl_80562BA0;}
 void *fn_800CDA84(){return lbl_80562B98;}
 void fn_800CDA8C(){}
@@ -105,8 +105,8 @@ void *fn_800CDA9C(int p0){
 void fn_800CDAB0(){}
 void *fn_800CDAB4(){return lbl_80562BB0;}
 void *fn_800CDABC(){return lbl_80562B74;}
-void *fn_800CDAC4(){return lbl_80562C14;}
-void *fn_800CDACC(){return lbl_80562BB0;}
+void *igControllerList_virtual60(){return lbl_80562C14;}
+void *igEventProducerList_virtual60(){return lbl_80562BB0;}
 void fn_800CDAD4(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)>(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)){
   fn_8004155C((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),4);

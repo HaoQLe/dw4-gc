@@ -11,7 +11,7 @@ void *fn_802C73E8(void *object){
  fn_802C7558();
  return fn_8006546C(lbl_80534D4C,object);
 }
-void *fn_802C7428(){
+void *beModelCtrlInfoRideOn3_getMeta(){
  if(!lbl_80534D4C || !(reinterpret_cast<unsigned int *>(lbl_80534D4C)[0x24/4]&4)) fn_802C7558();
  return lbl_80534D4C;
 }

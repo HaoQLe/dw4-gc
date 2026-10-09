@@ -60,7 +60,7 @@ public:
  virtual void s60(void *,void *);
 };
 extern "C" {
-void *fn_801F4138(int p0,int p1,int p2){
+void *igInverseKinematicsAnimation_virtual64(int p0,int p1,int p2){
  void *value0;
  value0=reinterpret_cast<UnknownGenV801F4138_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+32))+12))->s6C((void *)p2,(void *)p2,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+32));
  if((int)(int)value0==-1){

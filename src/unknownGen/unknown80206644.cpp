@@ -12,7 +12,7 @@ static inline void *UnknownGenCast80206644_6(void *q){
  return 0;
 }
 extern "C" {
-void fn_80206644(int p0,int p1){
+void igStringKey_virtual60(int p0,int p1){
  void *value0;
  value0=UnknownGenCast80206644_6((void *)p1);
  strcmp(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8));

@@ -17,7 +17,7 @@ extern void *lbl_80535744;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void fn_802E4D64(){
+void beActionStarterData2_fieldInit(){
  void *meta=lbl_8053573C;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804D2E9C,0x1);
@@ -27,7 +27,7 @@ void *fn_802E4DE4(){
  if(!lbl_80535744) lbl_80535744=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80535744;
 }
-void *fn_802E4E38(){
+void *beActionStarterDataList_getMeta(){
  if(!lbl_80535744 || !(reinterpret_cast<unsigned int *>(lbl_80535744)[0x24/4]&4)) fn_802E4EF8();
  return lbl_80535744;
 }

@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_8056506C;
 }
 extern "C" {
-void *fn_8015C450(){return lbl_8056506C;}
+void *igCollapseNodeForCompiledGraph_virtual7C(){return lbl_8056506C;}
 }
 #pragma pop

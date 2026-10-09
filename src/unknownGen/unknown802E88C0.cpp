@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80535888;
 }
 extern "C" {
-void *fn_802E88C0(){return lbl_80535888;}
+void *ParticleInfo_virtual58(){return lbl_80535888;}
 }
 #pragma pop

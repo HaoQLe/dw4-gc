@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800C1928(){}
+void igMorphedGeometryAttr_virtual70(){}
 }
 #pragma pop

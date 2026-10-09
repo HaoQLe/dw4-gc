@@ -17,7 +17,7 @@ extern char lbl_804D2348[];
 extern void *lbl_805353E4;
 }
 extern "C" {
-void fn_802DB35C(){
+void beDemoManager_fieldInit(){
  void *value0=lbl_805353E4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D22F4,7);

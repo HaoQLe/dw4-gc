@@ -6,7 +6,7 @@ void fn_80128CF4(void *,void *);
 void fn_8012A92C(void *,void *,void *);
 }
 extern "C" {
-void fn_800EAC58(int p0,int p1){
+void igGamecubeVisualContext_virtual35C(int p0,int p1){
  void *value0;
  void *local0;
  value0=(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+236);

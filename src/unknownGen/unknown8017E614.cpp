@@ -37,7 +37,7 @@ void *fn_8017E674(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+0))+4)=(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+0))+4))+1);
  return (void *)p0;
 }
-void *fn_8017E694(){return lbl_80564A14;}
-int fn_8017E69C(){return 1;}
+void *igMacrotextureStrip_virtual8C(){return lbl_80564A14;}
+int igMergeIGB_virtual7C(){return 1;}
 }
 #pragma pop

@@ -5,7 +5,7 @@ extern "C" {
 void fn_8040E5E8(void *);
 }
 extern "C" {
-void fn_802F2AB0(int p0){
+void beCameraCtrl_virtual88(int p0){
  void *value0;
  void *value1;
  void *value2;

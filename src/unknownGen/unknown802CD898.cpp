@@ -24,7 +24,7 @@ struct UnknownGenObject802CD898 : UnknownGenObject802CD898_0 {
  inline ~UnknownGenObject802CD898(){unknown00=lbl_804D86C8;}
 };
 extern "C" {
-void *fn_802CD898(){
+void *beMeterCtrlOneData_vtableRead(){
  UnknownGenObject802CD898 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

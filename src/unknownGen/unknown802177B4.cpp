@@ -10,11 +10,11 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_80216620();
-void fn_80216B40();
-void *fn_80216BE0();
-void fn_80217A8C();
+void igMeanAndStandardDeviation_fieldInit();
+void *igMersenneTwisterRandomNumber_getMetaCall();
+void igObject_register();
+void igRandomNumber_register();
 extern char lbl_804BA4E4[];
 extern char lbl_804BA504[];
 extern char lbl_804BB42C[];
@@ -27,16 +27,16 @@ extern char lbl_80560C04[8];
 extern void *lbl_805659E4;
 extern void *lbl_80565A30;
 extern void *lbl_80565A3C;
-void *fn_802177F0();
+void *igMersenneTwisterRandomNumber_vtableRead();
 void fn_8021783C();
-void fn_80217864();
-void *fn_802178D4();
-void fn_802178DC();
-void *fn_80217958();
-void *fn_80217994();
+void igMersenneTwisterRandomNumber_register();
+void *igMersenneTwisterRandomNumber_parentMeta();
+void igMersenneTwisterRandomNumber_fieldInit();
+void *igMeanAndStandardDeviation_getMeta();
+void *igMeanAndStandardDeviation_vtableRead();
 void fn_802179D4();
-void fn_802179FC();
-void *fn_80217A6C();
+void igMeanAndStandardDeviation_register();
+void *igMeanAndStandardDeviation_getMetaCall();
 }
 struct UnknownGenObject802177F0_0 {
  void *unknown00;
@@ -47,11 +47,11 @@ struct UnknownGenObject80217994_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_802177B4(){
+void *igMersenneTwisterRandomNumber_getMeta(){
  if(!lbl_80565A30 || !(reinterpret_cast<unsigned int *>(lbl_80565A30)[0x24/4]&4)) fn_8021783C();
  return lbl_80565A30;
 }
-void *fn_802177F0(){
+void *igMersenneTwisterRandomNumber_vtableRead(){
  UnknownGenObject802177F0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804BC590;
@@ -59,14 +59,14 @@ void *fn_802177F0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8021783C(){
- fn_80066188((int)fn_80217864);
+ fn_80066188((int)igMersenneTwisterRandomNumber_register);
 }
-void fn_80217864(){
+void igMersenneTwisterRandomNumber_register(){
  fn_80216620();
- fn_80066204(0,(int)&lbl_80565A30,(int)fn_80216B40,(int)fn_802178D4,(int)fn_80216BE0,(int)lbl_804BA4E4,2508,(int)fn_802177F0,(int)fn_802178DC,0,0);
+ fn_80066204(0,(int)&lbl_80565A30,(int)igRandomNumber_register,(int)igMersenneTwisterRandomNumber_parentMeta,(int)igMersenneTwisterRandomNumber_getMetaCall,(int)lbl_804BA4E4,2508,(int)igMersenneTwisterRandomNumber_vtableRead,(int)igMersenneTwisterRandomNumber_fieldInit,0,0);
 }
-void *fn_802178D4(){return lbl_805659E4;}
-void fn_802178DC(){
+void *igMersenneTwisterRandomNumber_parentMeta(){return lbl_805659E4;}
+void igMersenneTwisterRandomNumber_fieldInit(){
  void *value0=lbl_80565A30;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_80560BE0,2);
@@ -74,23 +74,23 @@ void fn_802178DC(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)624;
  fn_800659C0(value0,lbl_80560BF4,lbl_80560BFC,lbl_80560C04,value1);
 }
-void *fn_80217958(){
+void *igMeanAndStandardDeviation_getMeta(){
  if(!lbl_80565A3C || !(reinterpret_cast<unsigned int *>(lbl_80565A3C)[0x24/4]&4)) fn_802179D4();
  return lbl_80565A3C;
 }
-void *fn_80217994(){
+void *igMeanAndStandardDeviation_vtableRead(){
  UnknownGenObject80217994_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804BC534;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_802179D4(){
- fn_80066188((int)fn_802179FC);
+ fn_80066188((int)igMeanAndStandardDeviation_register);
 }
-void fn_802179FC(){
+void igMeanAndStandardDeviation_register(){
  fn_80216620();
- fn_80066204(0,(int)&lbl_80565A3C,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80217A6C,(int)lbl_804BA504,20,(int)fn_80217994,(int)fn_80217A8C,0,0);
+ fn_80066204(0,(int)&lbl_80565A3C,(int)igObject_register,(int)fn_800237D0,(int)igMeanAndStandardDeviation_getMetaCall,(int)lbl_804BA504,20,(int)igMeanAndStandardDeviation_vtableRead,(int)igMeanAndStandardDeviation_fieldInit,0,0);
 }
-void *fn_80217A6C(){return fn_80217958();}
+void *igMeanAndStandardDeviation_getMetaCall(){return igMeanAndStandardDeviation_getMeta();}
 }
 #pragma pop

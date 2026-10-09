@@ -15,7 +15,7 @@ extern void *lbl_80534BF8;
 extern void *lbl_80534C04;
 }
 extern "C" {
-void fn_802C571C(){
+void beModelCtrlSCSound_fieldInit(){
  void *meta=lbl_80534BF8;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804D05C8,0x2);
@@ -25,7 +25,7 @@ void *fn_802C579C(void *object){
  fn_802C587C();
  return fn_8006546C(lbl_80534C04,object);
 }
-void *fn_802C57DC(){
+void *beModelCtrlSCHitBox_getMeta(){
  if(!lbl_80534C04 || !(reinterpret_cast<unsigned int *>(lbl_80534C04)[0x24/4]&4)) fn_802C587C();
  return lbl_80534C04;
 }

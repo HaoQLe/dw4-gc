@@ -119,7 +119,7 @@ void *fn_80177DE0(int p0,int p1){
  return (void *)p0;
 }
 void fn_80177F30(){}
-void fn_80177F34(int p0){
+void igItemInterface_virtual34(int p0){
  fn_800667CC();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)p0;
 }

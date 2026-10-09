@@ -6,9 +6,9 @@ void fn_80068128(void *,void *);
 extern void *lbl_80565468;
 }
 extern "C" {
-int fn_801993C8(){return 1;}
-int fn_801993D0(){return 0;}
-void fn_801993D8(int p0,int p1,int p2,int p3,int p4,int p5){
+int igScaleActors_virtual7C(){return 1;}
+int igScaleActors_virtual70(){return 0;}
+void igScaleActors_virtual74(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_80068128((void *)p1,lbl_80565468);
 }
 }

@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_802F8398(){}
+void beFileListInfoManager_virtual68(){}
 }
 #pragma pop

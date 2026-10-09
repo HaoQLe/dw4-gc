@@ -6,7 +6,7 @@ void DVDClose(void *);
 void fn_80068390(void *,void *);
 }
 extern "C" {
-void fn_800763E4(int p0){
+void igGamecubeFile_virtual60(int p0){
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+104)){
   DVDClose((reinterpret_cast<char *>((void *)p0)+44));
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+104)=0;

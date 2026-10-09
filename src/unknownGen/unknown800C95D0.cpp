@@ -53,8 +53,8 @@ public:
  virtual void sB8();
 };
 extern "C" {
-void fn_800C95D0(){}
-void fn_800C95D4(int p0){
+void igGamecubeAudioContext_virtualB0(){}
+void igGamecubeAudioContext_virtualB4(int p0){
  reinterpret_cast<UnknownGenV800C95D4_0 *>((void *)p0)->sB8();
 }
 }

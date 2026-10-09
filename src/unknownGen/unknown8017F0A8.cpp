@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_8017F0A8(){return 1;}
+int igNormalizeNormals_virtual90(){return 1;}
 }
 #pragma pop

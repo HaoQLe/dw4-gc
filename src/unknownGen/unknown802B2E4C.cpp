@@ -21,7 +21,7 @@ extern void *lbl_805621F4;
 void *fn_802B2F34();
 }
 extern "C" {
-void fn_802B2E4C(){
+void beWeaponInfo_fieldInit(){
  void *value0=lbl_8053453C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CEDA0,3);
@@ -43,7 +43,7 @@ void *fn_802B2F34(){
  if(!lbl_8053454C) lbl_8053454C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8053454C;
 }
-void *fn_802B2F88(){
+void *beWeaponSeqDataList_getMeta(){
  if(!lbl_8053454C || !(reinterpret_cast<unsigned int *>(lbl_8053454C)[0x24/4]&4)) fn_802B3048();
  return lbl_8053454C;
 }

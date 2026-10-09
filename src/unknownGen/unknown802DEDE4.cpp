@@ -23,7 +23,7 @@ struct UnknownGenObject802DEDE4 : UnknownGenObject802DEDE4_0 {
  inline ~UnknownGenObject802DEDE4(){unknown00=lbl_804D4F54;}
 };
 extern "C" {
-void *fn_802DEDE4(){
+void *beCriHandle_vtableRead(){
  UnknownGenObject802DEDE4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

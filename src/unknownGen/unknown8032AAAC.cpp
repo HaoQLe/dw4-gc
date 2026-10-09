@@ -32,7 +32,7 @@ struct UnknownGenObject8032AAAC : UnknownGenObject8032AAAC_2 {
  inline ~UnknownGenObject8032AAAC(){unknown00=lbl_804E69FC;}
 };
 extern "C" {
-void *fn_8032AAAC(){
+void *beNDMWStatusInfo_vtableRead(){
  UnknownGenObject8032AAAC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

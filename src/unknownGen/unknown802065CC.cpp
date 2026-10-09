@@ -53,7 +53,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void *fn_802065CC(int p0,int p1){
+void *igStringKey_virtual5C(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800BDD3C(){}
+void igCopyRenderDestinationAttr_virtual68(){}
 }
 #pragma pop

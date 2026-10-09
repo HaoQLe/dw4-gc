@@ -17,7 +17,7 @@ struct UnknownGenObject802B6D64 : UnknownGenRoot802B6D64 {
  inline ~UnknownGenObject802B6D64(){unknown00=lbl_804DBE70;}
 };
 extern "C" {
-void *fn_802B6D64(){
+void *beTextureCtrlWork_vtableRead(){
  UnknownGenObject802B6D64 object;
  object.unknown00=lbl_804DBE70;
  object.unknown08.value=0;

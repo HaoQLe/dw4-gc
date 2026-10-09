@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564744;
 }
 extern "C" {
-void *fn_80181324(){return lbl_80564744;}
+void *igObjectPropertyForTimeSwitch_virtual7C(){return lbl_80564744;}
 }
 #pragma pop

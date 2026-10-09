@@ -7,7 +7,7 @@ void fn_802F24B0(void *);
 extern void *lbl_80534AAC;
 }
 extern "C" {
-void fn_8034E6DC(int p0){
+void beNDMWMdlPlayer2_virtual64(int p0){
  fn_802F24B0((void *)p0);
  void *value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_80534AAC);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+44)=value0;

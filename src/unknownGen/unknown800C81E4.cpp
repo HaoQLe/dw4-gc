@@ -32,7 +32,7 @@ public:
  virtual void s64();
 };
 extern "C" {
-void fn_800C81E4(int p0){
+void igGamecubeAudioContext_virtual30(int p0){
  reinterpret_cast<UnknownGenV800C81E4_0 *>((void *)p0)->s64();
  fn_800667D4((void *)p0);
 }

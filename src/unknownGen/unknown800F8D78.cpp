@@ -232,7 +232,7 @@ public:
  virtual void s37C(void *);
 };
 extern "C" {
-void fn_800F8D78(int p0,int p1,int p2,int p3,int p4,int p5){
+void igGamecubeVisualContext_virtual360(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  fn_800E9E84((void *)p0,(void *)p1);
  reinterpret_cast<UnknownGenV800F8D78_0 *>((void *)p0)->s37C((void *)1);

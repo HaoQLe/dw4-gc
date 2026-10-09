@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_801A6FD8(){return 1;}
+int igCreateBoundingBoxes_virtual84(){return 1;}
 }
 #pragma pop

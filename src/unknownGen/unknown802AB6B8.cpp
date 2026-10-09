@@ -17,7 +17,7 @@ struct UnknownGenObject802AB6B8 : UnknownGenRoot802AB6B8 {
  inline ~UnknownGenObject802AB6B8(){unknown00=lbl_804CD764;}
 };
 extern "C" {
-void *fn_802AB6B8(){
+void *igAdxAudio_vtableRead(){
  UnknownGenObject802AB6B8 object;
  object.unknown00=lbl_804CD764;
  object.unknown28.value=0;

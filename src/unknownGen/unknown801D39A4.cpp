@@ -6,7 +6,7 @@ void fn_801D397C(void *);
 void fn_801D4CFC(void *);
 }
 extern "C" {
-void *fn_801D39A4(int p0){
+void *igAttrStackManager_virtual5C(int p0){
  void *value2;
  void *value0;
  void *value1;

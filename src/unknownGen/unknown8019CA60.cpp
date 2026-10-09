@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564A14;
 }
 extern "C" {
-void *fn_8019CA60(){return lbl_80564A14;}
+void *igSmartCompileGraph_virtual8C(){return lbl_80564A14;}
 }
 #pragma pop

@@ -6,24 +6,24 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_8011148C();
 void fn_801AA6DC();
-void fn_801BF938();
-void *fn_801C61BC();
-void fn_801C61F8();
-void fn_801C681C();
+void igBumpMapShader_fieldInit();
+void *igBumpMapShader_getMeta();
+void igBumpMapShader_vtableRead();
+void igGroup_register();
 extern char lbl_804B0F90[];
 extern char lbl_804B0FBC[];
 extern void *lbl_80565230;
-void fn_801C6784();
-void *fn_801C67FC();
+void igBumpMapShader_register();
+void *igBumpMapShader_getMetaCall();
 }
 extern "C" {
 void fn_801C675C(){
- fn_80066188((int)fn_801C6784);
+ fn_80066188((int)igBumpMapShader_register);
 }
-void fn_801C6784(){
+void igBumpMapShader_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80565230,(int)fn_801BF938,(int)fn_8011148C,(int)fn_801C67FC,(int)lbl_804B0FBC,200,(int)fn_801C61F8,(int)fn_801C681C,0,(int)lbl_804B0F90);
+ fn_80066204(0,(int)&lbl_80565230,(int)igGroup_register,(int)fn_8011148C,(int)igBumpMapShader_getMetaCall,(int)lbl_804B0FBC,200,(int)igBumpMapShader_vtableRead,(int)igBumpMapShader_fieldInit,0,(int)lbl_804B0F90);
 }
-void *fn_801C67FC(){return fn_801C61BC();}
+void *igBumpMapShader_getMetaCall(){return igBumpMapShader_getMeta();}
 }
 #pragma pop

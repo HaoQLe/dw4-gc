@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8020AF78(void *,void *);
+void *igTraversal_virtual24(void *,void *);
 extern void *lbl_805656E4;
 }
 class UnknownGenV801DB534_0 {
@@ -40,13 +40,13 @@ public:
  virtual void s80(void *);
 };
 extern "C" {
-void *fn_801DB534(int p0,int p1){
+void *igCommonTraversal_virtual24(int p0,int p1){
  void *value5;
  void *value1;
  void *value2;
  void *value3;
  void *value4;
- value5=fn_8020AF78((void *)p0,(void *)p1);
+ value5=igTraversal_virtual24((void *)p0,(void *)p1);
  if(!(unsigned char)p1){
   void *value0=lbl_805656E4;
   if(value0){

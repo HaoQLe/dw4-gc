@@ -14,7 +14,7 @@ extern char lbl_804D203C[];
 extern void *lbl_8053533C;
 }
 extern "C" {
-void fn_802D93C8(){
+void beUnicodeObj_fieldInit(){
  void *value0=lbl_8053533C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2030,1);

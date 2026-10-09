@@ -3,7 +3,6 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void fn_8002907C();
 void *fn_80029E64(void *);
 void fn_80053650(void *,int);
 void *fn_800607F4(void *);
@@ -18,7 +17,8 @@ void fn_8006665C(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
 void fn_801BB3B8();
-void fn_801BF938();
+void igGroup_register();
+void igObjectList_register();
 extern char lbl_80472FA0[];
 extern char lbl_8047650C[];
 extern char lbl_80476C7C[];
@@ -39,17 +39,17 @@ extern void *lbl_805621F4;
 extern void *lbl_80564D80;
 extern void *lbl_80564D84;
 extern void *lbl_80564D8C;
-void *fn_801BABD0();
-void *fn_801BAC0C();
+void *igModelViewMatrixBoneSelectList_getMeta();
+void *igModelViewMatrixBoneSelectList_vtableRead();
 void fn_801BAC7C();
-void fn_801BACA4();
-void *fn_801BAD10();
-void *fn_801BADA4();
-void *fn_801BADE0();
+void igModelViewMatrixBoneSelectList_register();
+void *igModelViewMatrixBoneSelectList_getMetaCall();
+void *igModelViewMatrixBoneSelect_getMeta();
+void *igModelViewMatrixBoneSelect_vtableRead();
 void fn_801BAF58();
-void fn_801BAF80();
-void *fn_801BAFF0();
-void fn_801BB010();
+void igModelViewMatrixBoneSelect_register();
+void *igModelViewMatrixBoneSelect_getMetaCall();
+void igModelViewMatrixBoneSelect_fieldInit();
 }
 struct UnknownGenObject801BAC0C_0 {
  void *unknown00;
@@ -84,11 +84,11 @@ void *fn_801BAB94(){
  if(!lbl_80564D80) lbl_80564D80=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564D80;
 }
-void *fn_801BABD0(){
+void *igModelViewMatrixBoneSelectList_getMeta(){
  if(!lbl_80564D80 || !(reinterpret_cast<unsigned int *>(lbl_80564D80)[0x24/4]&4)) fn_801BAC7C();
  return lbl_80564D80;
 }
-void *fn_801BAC0C(){
+void *igModelViewMatrixBoneSelectList_vtableRead(){
  UnknownGenObject801BAC0C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -99,13 +99,13 @@ void *fn_801BAC0C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801BAC7C(){
- fn_80066188((int)fn_801BACA4);
+ fn_80066188((int)igModelViewMatrixBoneSelectList_register);
 }
-void fn_801BACA4(){
+void igModelViewMatrixBoneSelectList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564D80,(int)fn_8002907C,(int)fn_80024180,(int)fn_801BAD10,(int)lbl_804AEC3C,20,(int)fn_801BAC0C,0,0,(int)lbl_8056048C);
+ fn_80066204(0,(int)&lbl_80564D80,(int)igObjectList_register,(int)fn_80024180,(int)igModelViewMatrixBoneSelectList_getMetaCall,(int)lbl_804AEC3C,20,(int)igModelViewMatrixBoneSelectList_vtableRead,0,0,(int)lbl_8056048C);
 }
-void *fn_801BAD10(){return fn_801BABD0();}
+void *igModelViewMatrixBoneSelectList_getMetaCall(){return igModelViewMatrixBoneSelectList_getMeta();}
 void *fn_801BAD30(void *object){
  fn_801BAF58();
  return fn_8006546C(lbl_80564D84,object);
@@ -114,11 +114,11 @@ void *fn_801BAD68(){
  if(!lbl_80564D84) lbl_80564D84=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564D84;
 }
-void *fn_801BADA4(){
+void *igModelViewMatrixBoneSelect_getMeta(){
  if(!lbl_80564D84 || !(reinterpret_cast<unsigned int *>(lbl_80564D84)[0x24/4]&4)) fn_801BAF58();
  return lbl_80564D84;
 }
-void *fn_801BADE0(){
+void *igModelViewMatrixBoneSelect_vtableRead(){
  UnknownGenObject801BADE0 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -131,14 +131,14 @@ void *fn_801BADE0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801BAF58(){
- fn_80066188((int)fn_801BAF80);
+ fn_80066188((int)igModelViewMatrixBoneSelect_register);
 }
-void fn_801BAF80(){
+void igModelViewMatrixBoneSelect_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564D84,(int)fn_801BF938,(int)fn_8011148C,(int)fn_801BAFF0,(int)lbl_804AEC5C,36,(int)fn_801BADE0,(int)fn_801BB010,0,0);
+ fn_80066204(0,(int)&lbl_80564D84,(int)igGroup_register,(int)fn_8011148C,(int)igModelViewMatrixBoneSelect_getMetaCall,(int)lbl_804AEC5C,36,(int)igModelViewMatrixBoneSelect_vtableRead,(int)igModelViewMatrixBoneSelect_fieldInit,0,0);
 }
-void *fn_801BAFF0(){return fn_801BADA4();}
-void fn_801BB010(){
+void *igModelViewMatrixBoneSelect_getMetaCall(){return igModelViewMatrixBoneSelect_getMeta();}
+void igModelViewMatrixBoneSelect_fieldInit(){
  void *value0=lbl_80564D84;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_80560494,1);
@@ -154,7 +154,7 @@ void *fn_801BB0C4(){
  if(!lbl_80564D8C) lbl_80564D8C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564D8C;
 }
-void *fn_801BB100(){
+void *igLod_getMeta(){
  if(!lbl_80564D8C || !(reinterpret_cast<unsigned int *>(lbl_80564D8C)[0x24/4]&4)) fn_801BB3B8();
  return lbl_80564D8C;
 }

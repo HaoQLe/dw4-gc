@@ -41,7 +41,7 @@ public:
  virtual void s88();
 };
 extern "C" {
-void fn_800F222C(int p0){
+void igGamecubeImage_virtual50(int p0){
  void *value0;
  fn_800F2294((void *)p0);
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);

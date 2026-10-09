@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_800F3DE4(int p0,int p1,int p2){
+void *igGamecubeImageConvert_virtual74(int p0,int p1,int p2){
  void *value2;
  void *value3;
  void *value0;

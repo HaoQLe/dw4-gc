@@ -59,7 +59,7 @@ public:
  virtual void sD0(void *,void *);
 };
 extern "C" {
-void fn_80124144(int p0,int p1,int p2){
+void igMatrix44dMetaField_virtual1C4(int p0,int p1,int p2){
  void *value0=fn_8012021C();
  reinterpret_cast<UnknownGenV80124144_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)));
 }

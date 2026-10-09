@@ -21,7 +21,7 @@ struct UnknownGenObject802CB010 : UnknownGenObject802CB010_0 {
  inline ~UnknownGenObject802CB010(){unknown00=lbl_804D90F8;}
 };
 extern "C" {
-void *fn_802CB010(){
+void *beModelCtrlAIMAP_vtableRead(){
  UnknownGenObject802CB010 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

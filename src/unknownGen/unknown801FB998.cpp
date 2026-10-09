@@ -5,7 +5,7 @@ extern "C" {
 void *fn_801F78C8(void *);
 }
 extern "C" {
-void *fn_801FB998(int p0,int p1){
+void *igPlanarShadowProcessor_virtual60(int p0,int p1){
  void *value3;
  void *value0;
  void *value1;

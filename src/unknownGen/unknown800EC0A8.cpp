@@ -5,10 +5,10 @@ extern "C" {
 void fn_8012E1D8(void *,int);
 }
 extern "C" {
-void fn_800EC0A8(int p0){
+void igGamecubeVisualContext_virtual2D0(int p0){
  fn_8012E1D8((reinterpret_cast<char *>((void *)p0)+1024),1);
 }
-void *fn_800EC0D0(int p0,int p1){
+void *igGamecubeVisualContext_virtual2CC(int p0,int p1){
  float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+1024);
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p1)+0)=value0;
  float value1=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+1028);

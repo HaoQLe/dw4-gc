@@ -4,21 +4,21 @@
 extern "C" {
 void fn_80021B94();
 void *fn_800237D0();
-void *fn_80026B50();
-void fn_80026B8C();
-void fn_80026DC0();
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
+void igObject_register();
+void igRegistry_fieldInit();
+void *igRegistry_getMeta();
+void igRegistry_vtableRead();
 extern char lbl_80463DA4[];
 extern char lbl_80463DB4[];
 extern void *lbl_80561658;
-void *fn_80026DA0();
+void *igRegistry_getMetaCall();
 }
 extern "C" {
-void fn_80026D28(){
+void igRegistry_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561658,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80026DA0,(int)lbl_80463DB4,24,(int)fn_80026B8C,(int)fn_80026DC0,0,(int)lbl_80463DA4);
+ fn_80066204(0,(int)&lbl_80561658,(int)igObject_register,(int)fn_800237D0,(int)igRegistry_getMetaCall,(int)lbl_80463DB4,24,(int)igRegistry_vtableRead,(int)igRegistry_fieldInit,0,(int)lbl_80463DA4);
 }
-void *fn_80026DA0(){return fn_80026B50();}
+void *igRegistry_getMetaCall(){return igRegistry_getMeta();}
 }
 #pragma pop

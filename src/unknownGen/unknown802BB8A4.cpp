@@ -14,7 +14,7 @@ extern char lbl_804CF81C[];
 extern void *lbl_80534814;
 }
 extern "C" {
-void fn_802BB8A4(){
+void beSeCtl_fieldInit(){
  void *value0=lbl_80534814;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF810,1);

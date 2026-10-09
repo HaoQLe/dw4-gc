@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80515CB0;
 }
 extern "C" {
-void *fn_8028B264(){return lbl_80515CB0;}
+void *igMessageDefaultReceiver_virtual58(){return lbl_80515CB0;}
 }
 #pragma pop

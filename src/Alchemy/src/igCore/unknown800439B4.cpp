@@ -10,7 +10,7 @@ inline int unknown80043DE4FindPointer(Unknown80042DECStorage *storage, Unknown80
 
 #pragma push
 #pragma auto_inline off
-extern "C" void *fn_800439B4(){ return lbl_80561D00; }
+extern "C" void *igDirEntry_virtual58(){ return lbl_80561D00; }
 extern "C" int fn_800439BC(Unknown80042DECOwner *object, Unknown80042DECValue *entry){
     Unknown80042DECValue *value;
     int index=fn_800432E8(object,lbl_80561D10,entry->unknown18);
@@ -54,7 +54,7 @@ extern "C" void fn_80043BFC(Unknown80042DECOwner *object, const char *text){
     if(object->unknown14) reinterpret_cast<Gap::Core::igStringPoolItemId>(object->unknown14-sizeof(Gap::Core::igStringPoolItem))->release();
     object->unknown14=next;
 }
-extern "C" unsigned char fn_80043C94(Unknown80042DECOwner *object, Unknown80042DECValue *entry){
+extern "C" unsigned char igDirectory_virtual64(Unknown80042DECOwner *object, Unknown80042DECValue *entry){
     if(entry->unknown20){
         Unknown80042DECValue *found=fn_80043B00(object,entry->unknown20);
         if(found){ entry->slot5C(found->unknown18); return 1; }
@@ -101,7 +101,7 @@ extern "C" void fn_80043F4C(Unknown80042DECOwner *object){
         object->unknown44->slot5C();
     }
 }
-extern "C" void fn_80043FC4(Unknown80042DECOwner *object, void *value, int count){
+extern "C" void igDoubleArrayMetaField_virtualD0(Unknown80042DECOwner *object, void *value, int count){
     fn_800321EC(object)->slotD0(value,count*object->unknown34);
 }
 #pragma pop

@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_80051360(int p0){
+void *igIGBFile_virtual6C(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104))+20)==4){
   return (void *)(int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+264)+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80));
  }

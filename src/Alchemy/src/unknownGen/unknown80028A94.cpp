@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800288F8();
+void *igObjectRefMetaField_getMeta();
 }
 extern "C" {
-void *fn_80028A94(){return fn_800288F8();}
+void *igObjectRefMetaField_getMetaCall(){return igObjectRefMetaField_getMeta();}
 }
 #pragma pop

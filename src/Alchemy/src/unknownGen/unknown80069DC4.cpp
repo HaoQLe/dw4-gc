@@ -5,7 +5,7 @@ extern "C" {
 void fn_80069A1C(void *,void *,void *,void *);
 }
 extern "C" {
-void fn_80069DC4(int p0,int p1){
+void igObjectRefArrayMetaField_virtual78(int p0,int p1){
  void *value0;
  value0=(void *)0;
  while((int)(int)value0<(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68)){

@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_802EB8BC(){}
-int fn_802EB8C0(){return 0;}
+void be_virtual68(){}
+int be_virtual6C(){return 0;}
 }
 #pragma pop

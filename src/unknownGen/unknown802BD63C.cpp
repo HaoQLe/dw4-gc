@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beSaveApi_register();
+void *beSvConnectCheck_getMeta();
+void beSvConnectCheck_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800A325C(void *);
 void fn_802B1AC8();
-void *fn_802BD4D4();
-void fn_802BD520();
 void *fn_802BD764();
-void fn_802BF3C4();
 extern char lbl_8041DF44[];
 extern char lbl_8053490C[];
-void fn_802BD6D8();
-void *fn_802BD744();
+void beSvConnectCheck_register();
+void *beSvConnectCheck_getMetaCall();
 }
 extern "C" {
 UnknownGenHolder *dtor_802BD63C(UnknownGenHolder *object,short flags){
@@ -28,12 +28,12 @@ UnknownGenHolder *dtor_802BD63C(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_802BD6B0(){
- fn_80066188((int)fn_802BD6D8);
+ fn_80066188((int)beSvConnectCheck_register);
 }
-void fn_802BD6D8(){
+void beSvConnectCheck_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_8053490C,(int)fn_802BF3C4,(int)fn_802BD764,(int)fn_802BD744,(int)lbl_8041DF44,244,(int)fn_802BD520,0,0,0);
+ fn_80066204(0,(int)lbl_8053490C,(int)beSaveApi_register,(int)fn_802BD764,(int)beSvConnectCheck_getMetaCall,(int)lbl_8041DF44,244,(int)beSvConnectCheck_vtableRead,0,0,0);
 }
-void *fn_802BD744(){return fn_802BD4D4();}
+void *beSvConnectCheck_getMetaCall(){return beSvConnectCheck_getMeta();}
 }
 #pragma pop

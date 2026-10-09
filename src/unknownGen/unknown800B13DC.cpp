@@ -15,10 +15,10 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
-void fn_800B1950();
 void *fn_800CE788();
+void igRenderDestinationAttr_fieldInit();
+void igVisualAttribute_register();
 extern char lbl_80477D08[];
 extern char lbl_8047899C[];
 extern char lbl_80478A18[];
@@ -40,17 +40,17 @@ extern void *lbl_80562644;
 extern void *lbl_80562650;
 extern void *lbl_80562654;
 extern void *lbl_80562658;
-void *fn_800B1418();
-void *fn_800B1454();
+void *igRenderListAttr_getMeta();
+void *igRenderListAttr_vtableRead();
 void fn_800B14F4();
-void fn_800B151C();
-void *fn_800B1590();
-void fn_800B15B0();
-void *fn_800B1774();
-void *fn_800B17B0();
+void igRenderListAttr_register();
+void *igRenderListAttr_getMetaCall();
+void igRenderListAttr_fieldInit();
+void *igRenderDestinationAttr_getMeta();
+void *igRenderDestinationAttr_vtableRead();
 void fn_800B1890();
-void fn_800B18B8();
-void *fn_800B1930();
+void igRenderDestinationAttr_register();
+void *igRenderDestinationAttr_getMetaCall();
 }
 struct UnknownGenRoot800B1454 {
  void *unknown00;
@@ -81,11 +81,11 @@ void *fn_800B13DC(){
  if(!lbl_80562644) lbl_80562644=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562644;
 }
-void *fn_800B1418(){
+void *igRenderListAttr_getMeta(){
  if(!lbl_80562644 || !(reinterpret_cast<unsigned int *>(lbl_80562644)[0x24/4]&4)) fn_800B14F4();
  return lbl_80562644;
 }
-void *fn_800B1454(){
+void *igRenderListAttr_vtableRead(){
  UnknownGenObject800B1454 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -94,14 +94,14 @@ void *fn_800B1454(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B14F4(){
- fn_80066188((int)fn_800B151C);
+ fn_80066188((int)igRenderListAttr_register);
 }
-void fn_800B151C(){
+void igRenderListAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562644,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B1590,(int)lbl_8047899C,20,(int)fn_800B1454,(int)fn_800B15B0,0,(int)lbl_8055E1D0);
+ fn_80066204(0,(int)&lbl_80562644,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igRenderListAttr_getMetaCall,(int)lbl_8047899C,20,(int)igRenderListAttr_vtableRead,(int)igRenderListAttr_fieldInit,0,(int)lbl_8055E1D0);
 }
-void *fn_800B1590(){return fn_800B1418();}
-void fn_800B15B0(){
+void *igRenderListAttr_getMetaCall(){return igRenderListAttr_getMeta();}
+void igRenderListAttr_fieldInit(){
  void *value0=lbl_80562644;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E1D8,2);
@@ -138,11 +138,11 @@ void *fn_800B1738(){
  if(!lbl_80562658) lbl_80562658=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562658;
 }
-void *fn_800B1774(){
+void *igRenderDestinationAttr_getMeta(){
  if(!lbl_80562658 || !(reinterpret_cast<unsigned int *>(lbl_80562658)[0x24/4]&4)) fn_800B1890();
  return lbl_80562658;
 }
-void *fn_800B17B0(){
+void *igRenderDestinationAttr_vtableRead(){
  UnknownGenObject800B17B0 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -152,12 +152,12 @@ void *fn_800B17B0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B1890(){
- fn_80066188((int)fn_800B18B8);
+ fn_80066188((int)igRenderDestinationAttr_register);
 }
-void fn_800B18B8(){
+void igRenderDestinationAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562658,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B1930,(int)lbl_80478B04,68,(int)fn_800B17B0,(int)fn_800B1950,0,(int)lbl_80478AF8);
+ fn_80066204(0,(int)&lbl_80562658,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igRenderDestinationAttr_getMetaCall,(int)lbl_80478B04,68,(int)igRenderDestinationAttr_vtableRead,(int)igRenderDestinationAttr_fieldInit,0,(int)lbl_80478AF8);
 }
-void *fn_800B1930(){return fn_800B1774();}
+void *igRenderDestinationAttr_getMetaCall(){return igRenderDestinationAttr_getMeta();}
 }
 #pragma pop

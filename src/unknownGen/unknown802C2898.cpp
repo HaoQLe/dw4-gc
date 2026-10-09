@@ -23,7 +23,7 @@ struct UnknownGenL802C2898_8 {
  float m0C;
 };
 extern "C" {
-void fn_802C2898(){
+void bePadData_fieldInit(){
  UnknownGenL802C2898_10 local1;
  UnknownGenL802C2898_8 local0;
  void *value0=lbl_80534AC8;

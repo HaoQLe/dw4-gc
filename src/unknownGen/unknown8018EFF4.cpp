@@ -5,7 +5,7 @@ extern "C" {
 void fn_8018EF94();
 }
 extern "C" {
-void *fn_8018EFF4(int p0,int p1){
+void *igImageHistogram_LA_virtual94(int p0,int p1){
  void *value2;
  void *value3;
  void *value4;

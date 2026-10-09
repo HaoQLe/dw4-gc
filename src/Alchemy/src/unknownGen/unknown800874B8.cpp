@@ -3,10 +3,10 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80068390(void *,void *);
-void fn_8008E8A4(void *,void *);
+void igProgramFile_virtual64(void *,void *);
 }
 extern "C" {
-void fn_800874B8(int p0,int p1){
+void igElfFile_virtual64(int p0,int p1){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+80)){
   fn_80068390((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+80));
  }
@@ -19,7 +19,7 @@ void fn_800874B8(int p0,int p1){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+96)){
   fn_80068390((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+96));
  }
- fn_8008E8A4((void *)p0,(void *)p1);
+ igProgramFile_virtual64((void *)p0,(void *)p1);
 }
 void *fn_80087548(int p0,int p1){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80)){

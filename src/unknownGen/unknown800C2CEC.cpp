@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800C2CEC(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12)=value;}
+void igShadeModelAttr_virtual80(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12)=value;}
 }
 #pragma pop

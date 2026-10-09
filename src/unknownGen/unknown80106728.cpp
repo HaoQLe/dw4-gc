@@ -11,16 +11,16 @@ extern void *lbl_80562E3C;
 extern void *lbl_80562E9C;
 }
 extern "C" {
-void *fn_80106728(){return lbl_80562D9C;}
-void fn_80106730(){}
-void fn_80106734(){}
-int fn_80106738(){return 0;}
-void *fn_80106740(){return lbl_80562D84;}
+void *igVertexStream_virtual58(){return lbl_80562D9C;}
+void igVertexStream_virtual60(){}
+void igVertexStream_virtual64(){}
+int igVertexStream_virtual68(){return 0;}
+void *igVertexArray2_virtual58(){return lbl_80562D84;}
 void *fn_80106748(){return lbl_80562DDC;}
 void *fn_80106750(){return lbl_80562E18;}
-void *fn_80106758(){return lbl_80562E1C;}
-void *fn_80106760(){return lbl_80562E3C;}
-int fn_80106768(){return 0;}
-void *fn_80106770(){return lbl_80562E9C;}
+void *igPrimLengthArray1_1_virtual58(){return lbl_80562E1C;}
+void *igPointSpriteExt_virtual58(){return lbl_80562E3C;}
+int igPointSpriteExt_virtualBC(){return 0;}
+void *igParticleArray_virtual58(){return lbl_80562E9C;}
 }
 #pragma pop

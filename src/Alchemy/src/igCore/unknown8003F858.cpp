@@ -20,7 +20,7 @@ extern "C" {
     unsigned long strlen(const char *);
 }
 
-extern "C" Unknown8003F858Result fn_8003F858(void *, Gap::igUnsignedInt value, const char *first, Gap::igInt firstCount, const char *second, Gap::igInt secondCount, const char *pattern, char *output, Gap::igInt limit){
+extern "C" Unknown8003F858Result igCallStackTracer_virtual70(void *, Gap::igUnsignedInt value, const char *first, Gap::igInt firstCount, const char *second, Gap::igInt secondCount, const char *pattern, char *output, Gap::igInt limit){
     Unknown8003F858Result result = kSuccess__3Gap;
     if(!pattern || !*pattern) pattern = lbl_8056211C;
     if(!pattern || !*pattern) pattern = lbl_80468F04;

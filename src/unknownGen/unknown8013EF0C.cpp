@@ -8,7 +8,7 @@ void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013F0D0();
-void fn_80140664();
+void igObjectPropertyForNode_register();
 extern char lbl_8049DDC0[];
 extern char lbl_804A56B4[];
 extern char lbl_804A5BE8[];
@@ -18,11 +18,11 @@ extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F8A8[8];
 extern void *lbl_80563F8C;
-void *fn_8013EF0C();
-void *fn_8013EF48();
+void *igObjectPropertyForSegment_getMeta();
+void *igObjectPropertyForSegment_vtableRead();
 void fn_8013F014();
-void fn_8013F03C();
-void *fn_8013F0B0();
+void igObjectPropertyForSegment_register();
+void *igObjectPropertyForSegment_getMetaCall();
 }
 struct UnknownGenRoot8013EF48 {
  void *unknown00;
@@ -42,11 +42,11 @@ struct UnknownGenObject8013EF48 : UnknownGenObject8013EF48_1 {
  inline ~UnknownGenObject8013EF48(){unknown00=lbl_804A56B4;}
 };
 extern "C" {
-void *fn_8013EF0C(){
+void *igObjectPropertyForSegment_getMeta(){
  if(!lbl_80563F8C || !(reinterpret_cast<unsigned int *>(lbl_80563F8C)[0x24/4]&4)) fn_8013F014();
  return lbl_80563F8C;
 }
-void *fn_8013EF48(){
+void *igObjectPropertyForSegment_vtableRead(){
  UnknownGenObject8013EF48 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -58,12 +58,12 @@ void *fn_8013EF48(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013F014(){
- fn_80066188((int)fn_8013F03C);
+ fn_80066188((int)igObjectPropertyForSegment_register);
 }
-void fn_8013F03C(){
+void igObjectPropertyForSegment_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563F8C,(int)fn_80140664,(int)fn_8013BF68,(int)fn_8013F0B0,(int)lbl_8049DDC0,44,(int)fn_8013EF48,(int)fn_8013F0D0,0,(int)lbl_8055F8A8);
+ fn_80066204(0,(int)&lbl_80563F8C,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForSegment_getMetaCall,(int)lbl_8049DDC0,44,(int)igObjectPropertyForSegment_vtableRead,(int)fn_8013F0D0,0,(int)lbl_8055F8A8);
 }
-void *fn_8013F0B0(){return fn_8013EF0C();}
+void *igObjectPropertyForSegment_getMetaCall(){return igObjectPropertyForSegment_getMeta();}
 }
 #pragma pop

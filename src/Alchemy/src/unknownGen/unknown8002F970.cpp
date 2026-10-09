@@ -6,8 +6,6 @@ void arkRegister__Q33Gap4Core6igFileFv();
 void fn_80021B94();
 void *fn_80021D70();
 void *fn_80029E64(void *);
-void fn_8002A6D8();
-void *fn_8003B898();
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
@@ -22,6 +20,8 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *igGamecubeFolder_getMeta();
+void igMetaField_register();
 extern char lbl_80463100[];
 extern char lbl_80465CE0[];
 extern char lbl_80465CF4[];
@@ -42,18 +42,18 @@ extern void *lbl_80561B34;
 extern void *lbl_80561B38;
 extern void *lbl_80561B3C;
 extern void *lbl_805621F4;
-void *fn_8002FA04();
-void *fn_8002FA40();
+void *igFloatMetaField_getMeta();
+void *igFloatMetaField_vtableRead();
 void fn_8002FACC();
-void fn_8002FAF4();
-void *fn_8002FB60();
-void *fn_8002FC80();
-void *fn_8002FCBC();
+void igFloatMetaField_register();
+void *igFloatMetaField_getMetaCall();
+void *igFloatArrayMetaField_getMeta();
+void *igFloatArrayMetaField_vtableRead();
 void fn_8002FD58();
-void fn_8002FD80();
-void *fn_8002FDF4();
-void *fn_8002FE14();
-void fn_8002FE1C();
+void igFloatArrayMetaField_register();
+void *igFloatArrayMetaField_getMetaCall();
+void *igFloatArrayMetaField_parentMeta();
+void igFloatArrayMetaField_fieldInit();
 }
 struct UnknownGenRoot8002FA40 {
  void *unknown00;
@@ -87,7 +87,7 @@ struct UnknownGenObject8002FCBC : UnknownGenObject8002FCBC_1 {
  inline ~UnknownGenObject8002FCBC(){unknown00=lbl_804726B0;}
 };
 extern "C" {
-void *fn_8002F970(){return fn_8003B898();}
+void *igGamecubeFolder_getMetaCall(){return igGamecubeFolder_getMeta();}
 void *fn_8002F990(void *object){
  fn_8002FACC();
  return fn_8006546C(lbl_80561B20,object);
@@ -96,23 +96,23 @@ void *fn_8002F9C8(){
  if(!lbl_80561B20) lbl_80561B20=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80561B20;
 }
-void *fn_8002FA04(){
+void *igFloatMetaField_getMeta(){
  if(!lbl_80561B20 || !(reinterpret_cast<unsigned int *>(lbl_80561B20)[0x24/4]&4)) fn_8002FACC();
  return lbl_80561B20;
 }
-void *fn_8002FA40(){
+void *igFloatMetaField_vtableRead(){
  UnknownGenObject8002FA40 object;
  object.unknown00=lbl_804725BC;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8002FACC(){
- fn_80066188((int)fn_8002FAF4);
+ fn_80066188((int)igFloatMetaField_register);
 }
-void fn_8002FAF4(){
+void igFloatMetaField_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561B20,(int)fn_8002A6D8,(int)fn_80021D70,(int)fn_8002FB60,(int)lbl_80465CE0,52,(int)fn_8002FA40,0,0,(int)lbl_8055D45C);
+ fn_80066204(0,(int)&lbl_80561B20,(int)igMetaField_register,(int)fn_80021D70,(int)igFloatMetaField_getMetaCall,(int)lbl_80465CE0,52,(int)igFloatMetaField_vtableRead,0,0,(int)lbl_8055D45C);
 }
-void *fn_8002FB60(){return fn_8002FA04();}
+void *igFloatMetaField_getMetaCall(){return igFloatMetaField_getMeta();}
 void fn_8002FB80(){
  if(!lbl_80561B24){
   void *object=(lbl_80561B24=fn_8006546C(lbl_80561B20,fn_800607F4(lbl_805621F4)));
@@ -134,26 +134,26 @@ void *fn_8002FC48(void *object){
  fn_8002FD58();
  return fn_8006546C(lbl_80561B28,object);
 }
-void *fn_8002FC80(){
+void *igFloatArrayMetaField_getMeta(){
  if(!lbl_80561B28 || !(reinterpret_cast<unsigned int *>(lbl_80561B28)[0x24/4]&4)) fn_8002FD58();
  return lbl_80561B28;
 }
-void *fn_8002FCBC(){
+void *igFloatArrayMetaField_vtableRead(){
  UnknownGenObject8002FCBC object;
  object.unknown00=lbl_804725BC;
  object.unknown00=lbl_804726B0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8002FD58(){
- fn_80066188((int)fn_8002FD80);
+ fn_80066188((int)igFloatArrayMetaField_register);
 }
-void fn_8002FD80(){
+void igFloatArrayMetaField_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561B28,(int)fn_8002FAF4,(int)fn_8002FE14,(int)fn_8002FDF4,(int)lbl_80465CF4,56,(int)fn_8002FCBC,(int)fn_8002FE1C,0,(int)lbl_8055D464);
+ fn_80066204(0,(int)&lbl_80561B28,(int)igFloatMetaField_register,(int)igFloatArrayMetaField_parentMeta,(int)igFloatArrayMetaField_getMetaCall,(int)lbl_80465CF4,56,(int)igFloatArrayMetaField_vtableRead,(int)igFloatArrayMetaField_fieldInit,0,(int)lbl_8055D464);
 }
-void *fn_8002FDF4(){return fn_8002FC80();}
-void *fn_8002FE14(){return lbl_80561B20;}
-void fn_8002FE1C(){
+void *igFloatArrayMetaField_getMetaCall(){return igFloatArrayMetaField_getMeta();}
+void *igFloatArrayMetaField_parentMeta(){return lbl_80561B20;}
+void igFloatArrayMetaField_fieldInit(){
  void *meta=lbl_80561B28;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_8055D46C,1);
@@ -189,7 +189,7 @@ void *fn_80030000(){
  if(!lbl_80561B3C) lbl_80561B3C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80561B3C;
 }
-void *fn_8003003C(){
+void *igFile_getMeta(){
  if(!lbl_80561B3C || !(reinterpret_cast<unsigned int *>(lbl_80561B3C)[0x24/4]&4)) arkRegister__Q33Gap4Core6igFileFv();
  return lbl_80561B3C;
 }

@@ -28,7 +28,7 @@ extern char lbl_804D3490[];
 extern void *lbl_80535888;
 }
 extern "C" {
-void fn_802E86C4(){
+void ParticleInfo_fieldInit(){
  void *value0=lbl_80535888;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D3364,18);

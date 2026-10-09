@@ -166,7 +166,7 @@ public:
  virtual void sCC(void *);
 };
 extern "C" {
-void fn_80213D1C(int p0,int p1){
+void igGamecubeEnvironmentMapShader_virtualC0(int p0,int p1){
  reinterpret_cast<UnknownGenV80213D1C_0 *>((void *)p0)->sD0((void *)p1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+60)=1;
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){

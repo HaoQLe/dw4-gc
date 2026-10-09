@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_805622A4;
 }
 extern "C" {
-void fn_801547B0(){}
+void igChildEditForNode_virtual6C(){}
 void *fn_801547B4(){return lbl_805622A4;}
 }
 #pragma pop

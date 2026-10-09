@@ -21,7 +21,7 @@ struct UnknownGenObject802CC53C : UnknownGenObject802CC53C_0 {
  inline ~UnknownGenObject802CC53C(){unknown00=lbl_804D8BD0;}
 };
 extern "C" {
-void *fn_802CC53C(){
+void *beModelCtrlLABEL_vtableRead(){
  UnknownGenObject802CC53C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

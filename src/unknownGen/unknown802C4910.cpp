@@ -32,7 +32,7 @@ struct UnknownGenObject802C4910 : UnknownGenObject802C4910_2 {
  inline ~UnknownGenObject802C4910(){unknown00=lbl_804DA004;}
 };
 extern "C" {
-void *fn_802C4910(){
+void *beMovieInfo_vtableRead(){
  UnknownGenObject802C4910 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

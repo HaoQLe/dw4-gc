@@ -15,7 +15,7 @@ extern char lbl_804CFC18[];
 extern void *lbl_80534930;
 }
 extern "C" {
-void fn_802BE38C(){
+void beSvWriteMediaApi_fieldInit(){
  void *value0=lbl_80534930;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFC00,2);

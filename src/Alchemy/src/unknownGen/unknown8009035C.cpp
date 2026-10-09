@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_8009035C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+24);}
+int igStandardQueue_virtual7C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+24);}
 }
 #pragma pop

@@ -14,9 +14,9 @@ void *fn_80071694(void *,void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void *fn_801308D0();
-void fn_801369C8();
-void fn_8013A878();
-void fn_8013B97C();
+void igOptBase_register();
+void igOptVisitObject_register();
+void igRemoveAnimationTrackChannel_fieldInit();
 extern char lbl_8049C458[];
 extern char lbl_8049C9B0[];
 extern char lbl_8049C9C0[];
@@ -47,33 +47,33 @@ extern void *lbl_80563CB4;
 extern void *lbl_80563CC0;
 extern void *lbl_80563CC4;
 extern void *lbl_80563CD0;
-void *fn_80135D1C();
-void *fn_80135D58();
+void *igRemoveJoints_getMeta();
+void *igRemoveJoints_vtableRead();
 void fn_80135E48();
-void fn_80135E70();
-void *fn_80135ED8();
-void *fn_80135EF8();
-void *fn_80135F34();
+void igRemoveJoints_register();
+void *igRemoveJoints_getMetaCall();
+void *igRemoveDynamic_getMeta();
+void *igRemoveDynamic_vtableRead();
 void fn_801360B4();
-void fn_801360DC();
-void *fn_8013614C();
-void fn_8013616C();
-void *fn_801361D4();
-void *fn_80136210();
+void igRemoveDynamic_register();
+void *igRemoveDynamic_getMetaCall();
+void igRemoveDynamic_fieldInit();
+void *igRemoveCenterOfRotation_getMeta();
+void *igRemoveCenterOfRotation_vtableRead();
 void fn_80136300();
-void fn_80136328();
-void *fn_80136390();
-void *fn_801363B0();
-void *fn_801363EC();
+void igRemoveCenterOfRotation_register();
+void *igRemoveCenterOfRotation_getMetaCall();
+void *igRemoveAttrs_getMeta();
+void *igRemoveAttrs_vtableRead();
 void fn_80136554();
-void fn_8013657C();
-void *fn_801365F0();
-void fn_80136610();
-void *fn_801366A8();
-void *fn_801366E4();
+void igRemoveAttrs_register();
+void *igRemoveAttrs_getMetaCall();
+void igRemoveAttrs_fieldInit();
+void *igRemoveAnimationTrackChannel_getMeta();
+void *igRemoveAnimationTrackChannel_vtableRead();
 void fn_8013690C();
-void fn_80136934();
-void *fn_801369A8();
+void igRemoveAnimationTrackChannel_register();
+void *igRemoveAnimationTrackChannel_getMetaCall();
 }
 struct UnknownGenRoot80135D58 {
  void *unknown00;
@@ -167,11 +167,11 @@ struct UnknownGenObject801366E4 : UnknownGenObject801366E4_1 {
  inline ~UnknownGenObject801366E4(){unknown00=lbl_804A3C68;}
 };
 extern "C" {
-void *fn_80135D1C(){
+void *igRemoveJoints_getMeta(){
  if(!lbl_80563CB0 || !(reinterpret_cast<unsigned int *>(lbl_80563CB0)[0x24/4]&4)) fn_80135E48();
  return lbl_80563CB0;
 }
-void *fn_80135D58(){
+void *igRemoveJoints_vtableRead(){
  UnknownGenObject80135D58 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -182,18 +182,18 @@ void *fn_80135D58(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80135E48(){
- fn_80066188((int)fn_80135E70);
+ fn_80066188((int)igRemoveJoints_register);
 }
-void fn_80135E70(){
+void igRemoveJoints_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563CB0,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_80135ED8,(int)lbl_8049C9B0,40,(int)fn_80135D58,0,0,0);
+ fn_80066204(0,(int)&lbl_80563CB0,(int)igOptBase_register,(int)fn_801308D0,(int)igRemoveJoints_getMetaCall,(int)lbl_8049C9B0,40,(int)igRemoveJoints_vtableRead,0,0,0);
 }
-void *fn_80135ED8(){return fn_80135D1C();}
-void *fn_80135EF8(){
+void *igRemoveJoints_getMetaCall(){return igRemoveJoints_getMeta();}
+void *igRemoveDynamic_getMeta(){
  if(!lbl_80563CB4 || !(reinterpret_cast<unsigned int *>(lbl_80563CB4)[0x24/4]&4)) fn_801360B4();
  return lbl_80563CB4;
 }
-void *fn_80135F34(){
+void *igRemoveDynamic_vtableRead(){
  UnknownGenObject80135F34 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -207,24 +207,24 @@ void *fn_80135F34(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801360B4(){
- fn_80066188((int)fn_801360DC);
+ fn_80066188((int)igRemoveDynamic_register);
 }
-void fn_801360DC(){
+void igRemoveDynamic_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563CB4,(int)fn_8013A878,(int)fn_8012FEB0,(int)fn_8013614C,(int)lbl_8049C9C0,52,(int)fn_80135F34,(int)fn_8013616C,0,0);
+ fn_80066204(0,(int)&lbl_80563CB4,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igRemoveDynamic_getMetaCall,(int)lbl_8049C9C0,52,(int)igRemoveDynamic_vtableRead,(int)igRemoveDynamic_fieldInit,0,0);
 }
-void *fn_8013614C(){return fn_80135EF8();}
-void fn_8013616C(){
+void *igRemoveDynamic_getMetaCall(){return igRemoveDynamic_getMeta();}
+void igRemoveDynamic_fieldInit(){
  void *value0=lbl_80563CB4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F61C,2);
  fn_800659C0(value0,lbl_8055F624,lbl_8055F62C,lbl_8055F634,value1);
 }
-void *fn_801361D4(){
+void *igRemoveCenterOfRotation_getMeta(){
  if(!lbl_80563CC0 || !(reinterpret_cast<unsigned int *>(lbl_80563CC0)[0x24/4]&4)) fn_80136300();
  return lbl_80563CC0;
 }
-void *fn_80136210(){
+void *igRemoveCenterOfRotation_vtableRead(){
  UnknownGenObject80136210 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -235,18 +235,18 @@ void *fn_80136210(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80136300(){
- fn_80066188((int)fn_80136328);
+ fn_80066188((int)igRemoveCenterOfRotation_register);
 }
-void fn_80136328(){
+void igRemoveCenterOfRotation_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563CC0,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_80136390,(int)lbl_8049C9FC,40,(int)fn_80136210,0,0,0);
+ fn_80066204(0,(int)&lbl_80563CC0,(int)igOptBase_register,(int)fn_801308D0,(int)igRemoveCenterOfRotation_getMetaCall,(int)lbl_8049C9FC,40,(int)igRemoveCenterOfRotation_vtableRead,0,0,0);
 }
-void *fn_80136390(){return fn_801361D4();}
-void *fn_801363B0(){
+void *igRemoveCenterOfRotation_getMetaCall(){return igRemoveCenterOfRotation_getMeta();}
+void *igRemoveAttrs_getMeta(){
  if(!lbl_80563CC4 || !(reinterpret_cast<unsigned int *>(lbl_80563CC4)[0x24/4]&4)) fn_80136554();
  return lbl_80563CC4;
 }
-void *fn_801363EC(){
+void *igRemoveAttrs_vtableRead(){
  UnknownGenObject801363EC object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -259,14 +259,14 @@ void *fn_801363EC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80136554(){
- fn_80066188((int)fn_8013657C);
+ fn_80066188((int)igRemoveAttrs_register);
 }
-void fn_8013657C(){
+void igRemoveAttrs_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563CC4,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_801365F0,(int)lbl_8049CA18,48,(int)fn_801363EC,(int)fn_80136610,0,(int)lbl_8055F63C);
+ fn_80066204(0,(int)&lbl_80563CC4,(int)igOptBase_register,(int)fn_801308D0,(int)igRemoveAttrs_getMetaCall,(int)lbl_8049CA18,48,(int)igRemoveAttrs_vtableRead,(int)igRemoveAttrs_fieldInit,0,(int)lbl_8055F63C);
 }
-void *fn_801365F0(){return fn_801363B0();}
-void fn_80136610(){
+void *igRemoveAttrs_getMetaCall(){return igRemoveAttrs_getMeta();}
+void igRemoveAttrs_fieldInit(){
  void *value0=lbl_80563CC4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F644,2);
@@ -277,11 +277,11 @@ void fn_80136610(){
  fn_80071694(value4,lbl_8049C458);
  fn_800659C0(value0,lbl_8055F64C,lbl_8055F654,lbl_8055F65C,value1);
 }
-void *fn_801366A8(){
+void *igRemoveAnimationTrackChannel_getMeta(){
  if(!lbl_80563CD0 || !(reinterpret_cast<unsigned int *>(lbl_80563CD0)[0x24/4]&4)) fn_8013690C();
  return lbl_80563CD0;
 }
-void *fn_801366E4(){
+void *igRemoveAnimationTrackChannel_vtableRead(){
  UnknownGenObject801366E4 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -298,12 +298,12 @@ void *fn_801366E4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013690C(){
- fn_80066188((int)fn_80136934);
+ fn_80066188((int)igRemoveAnimationTrackChannel_register);
 }
-void fn_80136934(){
+void igRemoveAnimationTrackChannel_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563CD0,(int)fn_8013A878,(int)fn_8012FEB0,(int)fn_801369A8,(int)lbl_8049CA28,64,(int)fn_801366E4,(int)fn_801369C8,0,(int)lbl_8055F664);
+ fn_80066204(0,(int)&lbl_80563CD0,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igRemoveAnimationTrackChannel_getMetaCall,(int)lbl_8049CA28,64,(int)igRemoveAnimationTrackChannel_vtableRead,(int)igRemoveAnimationTrackChannel_fieldInit,0,(int)lbl_8055F664);
 }
-void *fn_801369A8(){return fn_801366A8();}
+void *igRemoveAnimationTrackChannel_getMetaCall(){return igRemoveAnimationTrackChannel_getMeta();}
 }
 #pragma pop

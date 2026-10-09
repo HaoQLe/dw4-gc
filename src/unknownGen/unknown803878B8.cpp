@@ -5,11 +5,11 @@ extern "C" {
 
 }
 extern "C" {
-void fn_803878B8(){}
-void fn_803878BC(){}
-void fn_803878C0(){}
-void fn_803878C4(){}
-void fn_803878C8(){}
-void fn_803878CC(){}
+void beNDMWStatusSubSlot_virtual8C(){}
+void beNDMWStatusSubSlot_virtual90(){}
+void beNDMWStatusSubSlot_virtual94(){}
+void beNDMWStatusSubSlot_virtual98(){}
+void beNDMWStatusSubSlot_virtual9C(){}
+void beNDMWStatusSubSlot_virtualA0(){}
 }
 #pragma pop

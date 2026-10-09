@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80536158;
 }
 extern "C" {
-void *fn_8034F43C(){return lbl_80536158;}
+void *beNDMWMdlPlayer2_virtual58(){return lbl_80536158;}
 }
 #pragma pop

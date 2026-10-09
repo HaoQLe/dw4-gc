@@ -31,7 +31,7 @@ struct UnknownGenObject802D8760 : UnknownGenObject802D8760_2 {
  inline ~UnknownGenObject802D8760(){unknown00=lbl_804DE17C;}
 };
 extern "C" {
-void *fn_802D8760(){
+void *beGenerater_vtableRead(){
  UnknownGenObject802D8760 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

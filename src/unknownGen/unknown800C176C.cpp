@@ -4,20 +4,20 @@
 extern "C" {
 void *fn_800607F4(void *);
 void *fn_800B4128(void *);
-void fn_800F8590(void *,int,void *);
+void igGamecubeVisualContext_virtual32C(void *,int,void *);
 extern void *lbl_805621E8;
 extern void *lbl_80562250;
 extern char lbl_80562298[1];
 extern void *lbl_80562AFC;
 }
 extern "C" {
-int fn_800C176C(){return 32;}
-void fn_800C1774(){}
-void fn_800C1778(){}
-void fn_800C177C(){}
-void fn_800C1780(){}
-void fn_800C1784(int p0,int p1){
- fn_800F8590((void *)p1,1,(reinterpret_cast<char *>((void *)p0)+12));
+int igMatrixConstantAttr_virtual7C(){return 32;}
+void igMatrixOptStateAttr_virtual60(){}
+void igMatrixOptStateAttr_virtual68(){}
+void igMipMapAttr_virtual60(){}
+void igMipMapAttr_virtual68(){}
+void igModelViewMatrixAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual32C((void *)p1,1,(reinterpret_cast<char *>((void *)p0)+12));
 }
 void fn_800C17B4(){}
 void *fn_800C17B8(){

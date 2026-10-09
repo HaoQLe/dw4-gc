@@ -9,20 +9,20 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
-void fn_80143C60();
 void *fn_80143FCC();
-void fn_80144384();
+void igIterateGraph_fieldInit();
+void igIterator_register();
 extern char lbl_8049E55C[];
 extern char lbl_8049E568[];
 extern char lbl_804A9B8C[];
 extern char lbl_804A9C44[];
 extern void *lbl_805621F4;
 extern void *lbl_805640FC;
-void *fn_801441B4();
-void *fn_801441F0();
+void *igIterateGraph_getMeta();
+void *igIterateGraph_vtableRead();
 void fn_801442C4();
-void fn_801442EC();
-void *fn_80144364();
+void igIterateGraph_register();
+void *igIterateGraph_getMetaCall();
 }
 struct UnknownGenRoot801441F0 {
  void *unknown00;
@@ -45,11 +45,11 @@ void *fn_80144178(){
  if(!lbl_805640FC) lbl_805640FC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805640FC;
 }
-void *fn_801441B4(){
+void *igIterateGraph_getMeta(){
  if(!lbl_805640FC || !(reinterpret_cast<unsigned int *>(lbl_805640FC)[0x24/4]&4)) fn_801442C4();
  return lbl_805640FC;
 }
-void *fn_801441F0(){
+void *igIterateGraph_vtableRead(){
  UnknownGenObject801441F0 object;
  object.unknown00=lbl_804A9C44;
  object.unknown00=lbl_804A9B8C;
@@ -58,12 +58,12 @@ void *fn_801441F0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801442C4(){
- fn_80066188((int)fn_801442EC);
+ fn_80066188((int)igIterateGraph_register);
 }
-void fn_801442EC(){
+void igIterateGraph_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805640FC,(int)fn_80143C60,(int)fn_80143FCC,(int)fn_80144364,(int)lbl_8049E568,20,(int)fn_801441F0,(int)fn_80144384,0,(int)lbl_8049E55C);
+ fn_80066204(0,(int)&lbl_805640FC,(int)igIterator_register,(int)fn_80143FCC,(int)igIterateGraph_getMetaCall,(int)lbl_8049E568,20,(int)igIterateGraph_vtableRead,(int)igIterateGraph_fieldInit,0,(int)lbl_8049E55C);
 }
-void *fn_80144364(){return fn_801441B4();}
+void *igIterateGraph_getMetaCall(){return igIterateGraph_getMeta();}
 }
 #pragma pop

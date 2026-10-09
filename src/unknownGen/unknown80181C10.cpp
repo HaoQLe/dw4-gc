@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805652BC;
 }
 extern "C" {
-void *fn_80181C10(){return lbl_805652BC;}
+void *igObjectPropertyForBlendMatrixSelect_virtual7C(){return lbl_805652BC;}
 }
 #pragma pop

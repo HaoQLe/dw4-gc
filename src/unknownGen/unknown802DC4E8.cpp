@@ -11,7 +11,7 @@ void *fn_802DC4E8(void *object){
  fn_802DC658();
  return fn_8006546C(lbl_80535448,object);
 }
-void *fn_802DC528(){
+void *beDataObjObjectList_getMeta(){
  if(!lbl_80535448 || !(reinterpret_cast<unsigned int *>(lbl_80535448)[0x24/4]&4)) fn_802DC658();
  return lbl_80535448;
 }

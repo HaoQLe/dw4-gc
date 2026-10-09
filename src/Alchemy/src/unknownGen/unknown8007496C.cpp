@@ -42,11 +42,11 @@ public:
  virtual void s70();
 };
 extern "C" {
-unsigned short fn_8007496C(void *object){return *reinterpret_cast<unsigned short *>(reinterpret_cast<char *>(object)+20);}
-void fn_80074974(int p0,int p1,int p2,int p3,int p4,int p5){
+unsigned short igStructMetaField_virtual64(void *object){return *reinterpret_cast<unsigned short *>(reinterpret_cast<char *>(object)+20);}
+void igStructMetaField_virtualE0(int p0,int p1,int p2,int p3,int p4,int p5){
  strlen((void *)p2,(void *)p1);
 }
-void *fn_80074998(int p0,int p1){
+void *igStructMetaField_virtualE4(int p0,int p1){
  void *value1;
  void *value2;
  void *value0;
@@ -72,8 +72,8 @@ void *fn_80074998(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value2;
  return value2;
 }
-int fn_80074A14(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+52);}
-void fn_80074A1C(int p0,int p1,int p2,int p3,int p4,int p5){
+int igStructMetaField_virtual6C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+52);}
+void igStructMetaField_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56)){
   reinterpret_cast<void (*)(void *,void *,void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)),(void *)p1,(void *)p2,(void *)p3,(void *)p4,(void *)p5);
   return;
@@ -82,7 +82,7 @@ void fn_80074A1C(int p0,int p1,int p2,int p3,int p4,int p5){
   return;
  }
 }
-void fn_80074A5C(int p0,int p1,int p2,int p3,int p4,int p5){
+void igStructMetaField_virtual80(int p0,int p1,int p2,int p3,int p4,int p5){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60)){
   reinterpret_cast<void (*)(void *,void *,void *,void *,void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60))((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)),(void *)p1,(void *)p2,(void *)p3,(void *)p4,(void *)p5);
   return;
@@ -91,7 +91,7 @@ void fn_80074A5C(int p0,int p1,int p2,int p3,int p4,int p5){
   return;
  }
 }
-void fn_80074A9C(int p0,int p1){
+void igStructMetaField_virtual70(int p0,int p1){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56)){
   reinterpret_cast<void (*)(void *,void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60))((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)),(void *)p1);
   reinterpret_cast<void (*)(void *)>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))((void *)(int)(p1+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)));
@@ -101,7 +101,7 @@ void fn_80074A9C(int p0,int p1){
   return;
  }
 }
-void fn_80074B0C(int p0){
+void igStructMetaField_virtual78(int p0){
  reinterpret_cast<UnknownGenV80074B0C_0 *>((void *)p0)->s70();
 }
 }

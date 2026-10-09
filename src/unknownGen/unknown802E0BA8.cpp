@@ -14,7 +14,7 @@ extern char lbl_804D2954[];
 extern void *lbl_805355C4;
 }
 extern "C" {
-void fn_802E0BA8(){
+void beCopyModelCtrl2_fieldInit(){
  void *value0=lbl_805355C4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2948,1);

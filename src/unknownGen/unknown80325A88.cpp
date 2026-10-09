@@ -2,10 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *beNDMWWindowList_getMeta();
+void beNDMWWindowList_vtableRead();
 void *fn_800237D0();
 void *fn_80024180();
 void *fn_80024B94();
-void fn_8002907C();
 void *fn_80029E64(void *);
 void *fn_800365B4();
 void fn_8003EC68(void *,int);
@@ -17,15 +18,14 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void *fn_80285EDC();
 void *fn_802C2174();
 void *fn_802CDF04();
 void fn_803250AC();
 void *fn_80325974();
-void *fn_803259C8();
-void fn_80325A14();
 void fn_80326074();
+void igObjectList_register();
+void igObject_register();
 extern char lbl_804531BC[];
 extern char lbl_80453220[];
 extern char lbl_80453228[];
@@ -42,24 +42,24 @@ extern void *lbl_80535C7C;
 extern void *lbl_80535C80;
 extern void *lbl_80535CCC;
 extern void *lbl_805621F4;
-void fn_80325AB0();
-void *fn_80325B24();
+void beNDMWWindowList_register();
+void *beNDMWWindowList_getMetaCall();
 void *fn_80325BA4();
-void *fn_80325BF8();
+void *beNDMWWindow_getMeta();
 void fn_80325C44();
-void fn_80325C6C();
-void *fn_80325CE4();
-void fn_80325D04();
+void beNDMWWindow_register();
+void *beNDMWWindow_getMetaCall();
+void beNDMWWindow_fieldInit();
 }
 extern "C" {
 void fn_80325A88(){
- fn_80066188((int)fn_80325AB0);
+ fn_80066188((int)beNDMWWindowList_register);
 }
-void fn_80325AB0(){
+void beNDMWWindowList_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535C78,(int)fn_8002907C,(int)fn_80024180,(int)fn_80325B24,(int)lbl_804531BC,20,(int)fn_80325A14,0,0,(int)lbl_804E16A8);
+ fn_80066204(0,(int)lbl_80535C78,(int)igObjectList_register,(int)fn_80024180,(int)beNDMWWindowList_getMetaCall,(int)lbl_804531BC,20,(int)beNDMWWindowList_vtableRead,0,0,(int)lbl_804E16A8);
 }
-void *fn_80325B24(){return fn_803259C8();}
+void *beNDMWWindowList_getMetaCall(){return beNDMWWindowList_getMeta();}
 void *fn_80325B44(){
  if(!lbl_80535C7C) lbl_80535C7C=fn_800635C8(lbl_80453220,lbl_804E16B0,lbl_804E16DC,0xB);
  return lbl_80535C7C;
@@ -68,19 +68,19 @@ void *fn_80325BA4(){
  if(!lbl_80535C80) lbl_80535C80=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80535C80;
 }
-void *fn_80325BF8(){
+void *beNDMWWindow_getMeta(){
  if(!lbl_80535C80 || !(reinterpret_cast<unsigned int *>(lbl_80535C80)[0x24/4]&4)) fn_80325C44();
  return lbl_80535C80;
 }
 void fn_80325C44(){
- fn_80066188((int)fn_80325C6C);
+ fn_80066188((int)beNDMWWindow_register);
 }
-void fn_80325C6C(){
+void beNDMWWindow_register(){
  fn_803250AC();
- fn_80066204(1,(int)&lbl_80535C80,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80325CE4,(int)lbl_80453228,80,0,(int)fn_80325D04,0,(int)lbl_804E1708);
+ fn_80066204(1,(int)&lbl_80535C80,(int)igObject_register,(int)fn_800237D0,(int)beNDMWWindow_getMetaCall,(int)lbl_80453228,80,0,(int)beNDMWWindow_fieldInit,0,(int)lbl_804E1708);
 }
-void *fn_80325CE4(){return fn_80325BF8();}
-void fn_80325D04(){
+void *beNDMWWindow_getMetaCall(){return beNDMWWindow_getMeta();}
+void beNDMWWindow_fieldInit(){
  void *value0=lbl_80535C80;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1724,18);
@@ -127,7 +127,7 @@ void fn_80325D04(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value21)+52)=1;
  fn_800659C0(value0,lbl_804E176C,lbl_804E17B4,lbl_804E17FC,value1);
 }
-void *fn_80325ED8(){
+void *beNDMWTitle2Info_getMeta(){
  if(!lbl_80535CCC || !(reinterpret_cast<unsigned int *>(lbl_80535CCC)[0x24/4]&4)) fn_80326074();
  return lbl_80535CCC;
 }

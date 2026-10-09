@@ -3,7 +3,6 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80023CF4();
-void fn_80029D58();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
@@ -15,8 +14,9 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
-void *fn_800CF17C();
-void *fn_800D61B4();
+void *igGamecubeVisualContext_getMeta();
+void igNamedObject_register();
+void *igVertexArray2_fieldInit();
 extern char lbl_8047650C[];
 extern char lbl_804883CC[];
 extern char lbl_80488408[];
@@ -31,18 +31,18 @@ extern char lbl_8055EA88[4];
 extern void *lbl_805621F4;
 extern void *lbl_80562D78;
 extern void *lbl_80562D84;
-void *fn_800CEC64();
-void *fn_800CECA0();
+void *igVertexArray2Helper_getMeta();
+void *igVertexArray2Helper_vtableRead();
 void fn_800CED80();
-void fn_800CEDA8();
-void *fn_800CEE1C();
-void fn_800CEE3C();
+void igVertexArray2Helper_register();
+void *igVertexArray2Helper_getMetaCall();
+void igVertexArray2Helper_fieldInit();
 void *fn_800CEEF4();
-void *fn_800CEF30();
-void *fn_800CEF6C();
+void *igVertexArray2_getMeta();
+void *igVertexArray2_vtableRead();
 void fn_800CF0BC();
-void fn_800CF0E4();
-void *fn_800CF15C();
+void igVertexArray2_register();
+void *igVertexArray2_getMetaCall();
 }
 struct UnknownGenRoot800CECA0 {
  void *unknown00;
@@ -75,16 +75,16 @@ struct UnknownGenObject800CEF6C : UnknownGenObject800CEF6C_0 {
  inline ~UnknownGenObject800CEF6C(){unknown00=lbl_8049233C;}
 };
 extern "C" {
-void *fn_800CEC0C(){return fn_800D61B4();}
+void *igGamecubeVisualContext_getMetaCall(){return igGamecubeVisualContext_getMeta();}
 void *fn_800CEC2C(void *object){
  fn_800CED80();
  return fn_8006546C(lbl_80562D78,object);
 }
-void *fn_800CEC64(){
+void *igVertexArray2Helper_getMeta(){
  if(!lbl_80562D78 || !(reinterpret_cast<unsigned int *>(lbl_80562D78)[0x24/4]&4)) fn_800CED80();
  return lbl_80562D78;
 }
-void *fn_800CECA0(){
+void *igVertexArray2Helper_vtableRead(){
  UnknownGenObject800CECA0 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -93,14 +93,14 @@ void *fn_800CECA0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800CED80(){
- fn_80066188((int)fn_800CEDA8);
+ fn_80066188((int)igVertexArray2Helper_register);
 }
-void fn_800CEDA8(){
+void igVertexArray2Helper_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_80562D78,(int)fn_80029D58,(int)fn_80023CF4,(int)fn_800CEE1C,(int)lbl_804883CC,16,(int)fn_800CECA0,(int)fn_800CEE3C,0,(int)lbl_8055EA74);
+ fn_80066204(0,(int)&lbl_80562D78,(int)igNamedObject_register,(int)fn_80023CF4,(int)igVertexArray2Helper_getMetaCall,(int)lbl_804883CC,16,(int)igVertexArray2Helper_vtableRead,(int)igVertexArray2Helper_fieldInit,0,(int)lbl_8055EA74);
 }
-void *fn_800CEE1C(){return fn_800CEC64();}
-void fn_800CEE3C(){
+void *igVertexArray2Helper_getMetaCall(){return igVertexArray2Helper_getMeta();}
+void igVertexArray2Helper_fieldInit(){
  void *value0=lbl_80562D78;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EA7C,1);
@@ -117,11 +117,11 @@ void *fn_800CEEF4(){
  if(!lbl_80562D84) lbl_80562D84=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562D84;
 }
-void *fn_800CEF30(){
+void *igVertexArray2_getMeta(){
  if(!lbl_80562D84 || !(reinterpret_cast<unsigned int *>(lbl_80562D84)[0x24/4]&4)) fn_800CF0BC();
  return lbl_80562D84;
 }
-void *fn_800CEF6C(){
+void *igVertexArray2_vtableRead(){
  UnknownGenObject800CEF6C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -132,12 +132,12 @@ void *fn_800CEF6C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800CF0BC(){
- fn_80066188((int)fn_800CF0E4);
+ fn_80066188((int)igVertexArray2_register);
 }
-void fn_800CF0E4(){
+void igVertexArray2_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_80562D84,(int)fn_80029D58,(int)fn_80023CF4,(int)fn_800CF15C,(int)lbl_80488418,24,(int)fn_800CEF6C,(int)fn_800CF17C,0,(int)lbl_80488408);
+ fn_80066204(0,(int)&lbl_80562D84,(int)igNamedObject_register,(int)fn_80023CF4,(int)igVertexArray2_getMetaCall,(int)lbl_80488418,24,(int)igVertexArray2_vtableRead,(int)igVertexArray2_fieldInit,0,(int)lbl_80488408);
 }
-void *fn_800CF15C(){return fn_800CEF30();}
+void *igVertexArray2_getMetaCall(){return igVertexArray2_getMeta();}
 }
 #pragma pop

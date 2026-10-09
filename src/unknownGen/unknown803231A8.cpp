@@ -5,7 +5,7 @@ extern "C" {
 void fn_800667B4(void *);
 }
 extern "C" {
-void fn_803231A8(int p0){
+void beSvFileMakeApi_virtual28(int p0){
  void *value0;
  void *value1;
  void *value2;

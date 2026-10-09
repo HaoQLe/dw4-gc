@@ -35,7 +35,7 @@ struct UnknownGenObject802D46E4 : UnknownGenObject802D46E4_2 {
  inline ~UnknownGenObject802D46E4(){unknown00=lbl_804D71D0;}
 };
 extern "C" {
-void *fn_802D46E4(){
+void *beHitLandModelInfo_vtableRead(){
  UnknownGenObject802D46E4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

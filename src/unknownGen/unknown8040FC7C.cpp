@@ -32,7 +32,7 @@ public:
  virtual void s64();
 };
 extern "C" {
-void *fn_8040FC7C(int p0){
+void *igViewManager_virtual5C(int p0){
  reinterpret_cast<UnknownGenV8040FC7C_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s64();
  return (void *)1;
 }

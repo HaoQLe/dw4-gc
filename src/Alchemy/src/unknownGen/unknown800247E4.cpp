@@ -4,7 +4,6 @@
 extern "C" {
 void fn_80021B94();
 void *fn_800237D0();
-void fn_80024AB4();
 void *fn_80029E64(void *);
 void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
@@ -14,7 +13,8 @@ void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
+void igObject_register();
+void igStringTable_fieldInit();
 extern char lbl_80463578[];
 extern char lbl_80463584[];
 extern char lbl_80470EF4[];
@@ -22,11 +22,11 @@ extern void *lbl_80561560;
 extern void *lbl_80561564;
 extern void *lbl_80561578;
 extern void *lbl_805621F4;
-void *fn_800248F0();
-void *fn_8002492C();
+void *igStringTable_getMeta();
+void *igStringTable_vtableRead();
 void fn_800249F4();
-void fn_80024A1C();
-void *fn_80024A94();
+void igStringTable_register();
+void *igStringTable_getMetaCall();
 }
 struct UnknownGenRoot8002492C {
  void *unknown00;
@@ -60,11 +60,11 @@ void *fn_800248B4(){
  if(!lbl_80561578) lbl_80561578=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80561578;
 }
-void *fn_800248F0(){
+void *igStringTable_getMeta(){
  if(!lbl_80561578 || !(reinterpret_cast<unsigned int *>(lbl_80561578)[0x24/4]&4)) fn_800249F4();
  return lbl_80561578;
 }
-void *fn_8002492C(){
+void *igStringTable_vtableRead(){
  UnknownGenObject8002492C object;
  object.unknown00=lbl_80470EF4;
  object.unknown10.value=0;
@@ -72,12 +72,12 @@ void *fn_8002492C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800249F4(){
- fn_80066188((int)fn_80024A1C);
+ fn_80066188((int)igStringTable_register);
 }
-void fn_80024A1C(){
+void igStringTable_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561578,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80024A94,(int)lbl_80463584,24,(int)fn_8002492C,(int)fn_80024AB4,0,(int)lbl_80463578);
+ fn_80066204(0,(int)&lbl_80561578,(int)igObject_register,(int)fn_800237D0,(int)igStringTable_getMetaCall,(int)lbl_80463584,24,(int)igStringTable_vtableRead,(int)igStringTable_fieldInit,0,(int)lbl_80463578);
 }
-void *fn_80024A94(){return fn_800248F0();}
+void *igStringTable_getMetaCall(){return igStringTable_getMeta();}
 }
 #pragma pop

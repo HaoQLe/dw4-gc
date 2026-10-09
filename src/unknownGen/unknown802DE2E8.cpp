@@ -14,7 +14,7 @@ extern char lbl_804D25BC[];
 extern void *lbl_805354B8;
 }
 extern "C" {
-void fn_802DE2E8(){
+void beDBManagerInfo_fieldInit(){
  void *value0=lbl_805354B8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D25B0,1);

@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800D7DF0();
+void *igGamecubePointSpriteExt_getMeta();
 }
 extern "C" {
-void *fn_800D0E0C(){return fn_800D7DF0();}
+void *igGamecubePointSpriteExt_getMetaCall(){return igGamecubePointSpriteExt_getMeta();}
 }
 #pragma pop

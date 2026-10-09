@@ -2,8 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void __internalObjectList_register();
 void *fn_80029E64(void *);
-void fn_8002DD40();
 void fn_80053CF4(void *);
 void *fn_800607F4(void *);
 void fn_80066188(int);
@@ -20,7 +20,7 @@ void *fn_8002DC6C(){
  if(!lbl_805619CC) lbl_805619CC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805619CC;
 }
-void *fn_8002DCA8(){
+void *__internalObjectList_getMeta(){
  if(!lbl_805619CC || !(reinterpret_cast<unsigned int *>(lbl_805619CC)[0x24/4]&4)) fn_8002DD18();
  return lbl_805619CC;
 }
@@ -30,7 +30,7 @@ void *fn_8002DCE4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8002DD18(){
- fn_80066188((int)fn_8002DD40);
+ fn_80066188((int)__internalObjectList_register);
 }
 }
 #pragma pop

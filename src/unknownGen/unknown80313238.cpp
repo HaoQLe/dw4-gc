@@ -6,7 +6,7 @@ void *fn_8028A730(void *,void *);
 extern char lbl_80534AAC[];
 }
 extern "C" {
-void fn_80313238(int p0){
+void beSelectCtrl_virtual88(int p0){
  void *value0;
  if(!*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
   value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>((lbl_80534AAC+0)));

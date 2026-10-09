@@ -6,7 +6,7 @@ void fn_802D02F0();
 extern void *lbl_8053508C;
 }
 extern "C" {
-void *fn_802D014C(){
+void *beMatCtrlInfoRam_getMeta(){
  if(!lbl_8053508C || !(reinterpret_cast<unsigned int *>(lbl_8053508C)[0x24/4]&4)) fn_802D02F0();
  return lbl_8053508C;
 }

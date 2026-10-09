@@ -15,6 +15,6 @@ void *fn_8006ACF4(void *p0,void *p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(p0)+56)=*reinterpret_cast<void **>(reinterpret_cast<char *>(p1)+56);
  return p0;
 }
-void *fn_8006AD54(){return fn_8006CCE0();}
+void *igObjectRefArrayMetaField_virtual08(){return fn_8006CCE0();}
 }
 #pragma pop

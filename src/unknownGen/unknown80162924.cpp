@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80162924(){return 1;}
+int igCreateInfosFromRegistry_virtual7C(){return 1;}
 }
 #pragma pop

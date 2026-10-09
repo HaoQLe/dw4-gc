@@ -8,7 +8,7 @@ void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_80152CDC();
 void fn_801532FC();
-void fn_8015349C();
+void igAttrEditForNode_register();
 extern char lbl_804A0260[];
 extern char lbl_804A026C[];
 extern char lbl_804A6338[];
@@ -19,11 +19,11 @@ extern char lbl_804A88A4[];
 extern char lbl_804AA614[];
 extern char lbl_804AAF48[];
 extern void *lbl_80564580;
-void *fn_801530E8();
-void *fn_80153124();
+void *igAttrEditForLightSet_getMeta();
+void *igAttrEditForLightSet_vtableRead();
 void fn_8015323C();
-void fn_80153264();
-void *fn_801532DC();
+void igAttrEditForLightSet_register();
+void *igAttrEditForLightSet_getMetaCall();
 }
 struct UnknownGenRoot80153124 {
  void *unknown00;
@@ -44,11 +44,11 @@ struct UnknownGenObject80153124 : UnknownGenObject80153124_1 {
  inline ~UnknownGenObject80153124(){unknown00=lbl_804A8634;}
 };
 extern "C" {
-void *fn_801530E8(){
+void *igAttrEditForLightSet_getMeta(){
  if(!lbl_80564580 || !(reinterpret_cast<unsigned int *>(lbl_80564580)[0x24/4]&4)) fn_8015323C();
  return lbl_80564580;
 }
-void *fn_80153124(){
+void *igAttrEditForLightSet_vtableRead(){
  UnknownGenObject80153124 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -62,12 +62,12 @@ void *fn_80153124(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8015323C(){
- fn_80066188((int)fn_80153264);
+ fn_80066188((int)igAttrEditForLightSet_register);
 }
-void fn_80153264(){
+void igAttrEditForLightSet_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564580,(int)fn_8015349C,(int)fn_80152CDC,(int)fn_801532DC,(int)lbl_804A026C,40,(int)fn_80153124,(int)fn_801532FC,0,(int)lbl_804A0260);
+ fn_80066204(0,(int)&lbl_80564580,(int)igAttrEditForNode_register,(int)fn_80152CDC,(int)igAttrEditForLightSet_getMetaCall,(int)lbl_804A026C,40,(int)igAttrEditForLightSet_vtableRead,(int)fn_801532FC,0,(int)lbl_804A0260);
 }
-void *fn_801532DC(){return fn_801530E8();}
+void *igAttrEditForLightSet_getMetaCall(){return igAttrEditForLightSet_getMeta();}
 }
 #pragma pop

@@ -6,7 +6,7 @@ extern void *lbl_805635A4;
 extern void *lbl_805635A8;
 }
 extern "C" {
-void *fn_8011D1C8(){return lbl_805635A4;}
-void *fn_8011D1D0(){return lbl_805635A8;}
+void *igTextElement_virtual148(){return lbl_805635A4;}
+void *igTextElement_virtual1D4(){return lbl_805635A8;}
 }
 #pragma pop

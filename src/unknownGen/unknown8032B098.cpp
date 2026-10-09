@@ -22,7 +22,7 @@ struct UnknownGenObject8032B098 : UnknownGenRoot8032B098 {
  inline ~UnknownGenObject8032B098(){unknown00=lbl_804E68FC;}
 };
 extern "C" {
-void *fn_8032B098(){
+void *beNDMWStatusInfoWork_vtableRead(){
  UnknownGenObject8032B098 object;
  object.unknown00=lbl_804E68FC;
  object.unknown08.value=0;

@@ -15,7 +15,7 @@ extern char lbl_804D1440[];
 extern void *lbl_80534FE4;
 }
 extern "C" {
-void fn_802CE864(){
+void beMessengerWork_fieldInit(){
  void *value0=lbl_80534FE4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D13F8,6);

@@ -35,7 +35,7 @@ public:
  virtual void s70(void *);
 };
 extern "C" {
-void fn_80052000(int p0){
+void igIGBFile_virtual10(int p0){
  void *value6;
  void *value0;
  void *value1;

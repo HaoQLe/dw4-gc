@@ -29,11 +29,11 @@ void *fn_80406228(){
  if(!lbl_8055C974) lbl_8055C974=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8055C974;
 }
-void *fn_8040627C(){
+void *igViewerGuiFactory_getMeta(){
  if(!lbl_8055C974 || !(reinterpret_cast<unsigned int *>(lbl_8055C974)[0x24/4]&4)) fn_8040651C();
  return lbl_8055C974;
 }
-void *fn_804062C8(){
+void *igViewerGuiFactory_vtableRead(){
  UnknownGenObject804062C8 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804F1968;

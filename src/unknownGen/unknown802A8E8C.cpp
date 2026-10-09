@@ -30,7 +30,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_802A8E8C(int p0){
+void igAdx_virtual28(int p0){
  void *value0=reinterpret_cast<UnknownGenV802A8E8C_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);
  fn_800667B4((void *)p0);

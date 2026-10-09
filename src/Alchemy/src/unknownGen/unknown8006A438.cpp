@@ -42,7 +42,7 @@ public:
  virtual void s8C(void *);
 };
 extern "C" {
-void fn_8006A438(int p0){
+void igObjectRefArrayMetaField_virtual2C(int p0){
  fn_800667D0();
  reinterpret_cast<UnknownGenV8006A438_0 *>((void *)p0)->s8C((void *)0);
 }

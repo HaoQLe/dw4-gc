@@ -8,7 +8,7 @@ extern void *lbl_805642DC;
 }
 extern "C" {
 void *fn_801A7A78(){return lbl_805642DC;}
-void *fn_801A7A80(){return lbl_80564294;}
-void *fn_801A7A88(){return lbl_8056428C;}
+void *igZoomImage_virtual58(){return lbl_80564294;}
+void *igGaussianSmoothImage_virtual58(){return lbl_8056428C;}
 }
 #pragma pop

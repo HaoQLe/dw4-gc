@@ -32,7 +32,7 @@ struct UnknownGenObject802B4C40 : UnknownGenObject802B4C40_2 {
  inline ~UnknownGenObject802B4C40(){unknown00=lbl_804DC47C;}
 };
 extern "C" {
-void *fn_802B4C40(){
+void *beWaterPlainInfo_vtableRead(){
  UnknownGenObject802B4C40 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

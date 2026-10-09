@@ -16,7 +16,7 @@ extern char lbl_804D0194[];
 extern void *lbl_80534AAC;
 }
 extern "C" {
-void fn_802C2458(){
+void bePadManager_fieldInit(){
  void *value0=lbl_80534AAC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D0158,5);

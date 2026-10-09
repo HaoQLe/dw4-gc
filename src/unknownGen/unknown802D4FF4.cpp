@@ -18,7 +18,7 @@ void *fn_802D5034(){
  if(!lbl_805351DC) lbl_805351DC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805351DC;
 }
-void *fn_802D5088(){
+void *beHitLandModelTraversal_getMeta(){
  if(!lbl_805351DC || !(reinterpret_cast<unsigned int *>(lbl_805351DC)[0x24/4]&4)) fn_802D52E4();
  return lbl_805351DC;
 }

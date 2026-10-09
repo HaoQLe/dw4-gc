@@ -47,11 +47,11 @@ UnknownGenHolder *dtor_8015DC9C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_8015DD10(int p0,int p1,int p2,int p3,int p4,int p5){
+void igCompareAttr_virtual70(int p0,int p1,int p2,int p3,int p4,int p5){
  void *local0;
  fn_80188328(&local0,(void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(lbl_8056449C)+12),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+40));
 }
-void *fn_8015DD40(int p0,int p1){
+void *igCompareAttr_virtual88(int p0,int p1){
  void *value1;
  void *value2;
  void *value3;
@@ -79,8 +79,8 @@ void *fn_8015DD40(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value2;
  return value2;
 }
-void *fn_8015DDD0(){return lbl_80564490;}
-void *fn_8015DDD8(int p0){
+void *igCompareAttr_virtual58(){return lbl_80564490;}
+void *igCompareAttr_virtual74(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)0;

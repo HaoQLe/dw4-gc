@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8040EDE8(){}
+void igViewerStatisticsManager_virtual6C(){}
 }
 #pragma pop

@@ -14,13 +14,13 @@ extern void *lbl_80534358;
 extern void *lbl_80534364;
 }
 extern "C" {
-void fn_802AAD5C(){
+void igAdxAfsFile_fieldInit(){
  void *meta=lbl_80534358;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804CD950,0x2);
  fn_800659C0(meta,lbl_804CD958,lbl_804CD960,lbl_804CD968,field);
 }
-void *fn_802AADDC(){
+void *igFileNameList_getMeta(){
  if(!lbl_80534364 || !(reinterpret_cast<unsigned int *>(lbl_80534364)[0x24/4]&4)) fn_802AAE9C();
  return lbl_80534364;
 }

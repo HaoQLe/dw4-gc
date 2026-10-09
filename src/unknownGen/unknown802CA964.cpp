@@ -21,7 +21,7 @@ struct UnknownGenObject802CA964 : UnknownGenObject802CA964_0 {
  inline ~UnknownGenObject802CA964(){unknown00=lbl_804D9260;}
 };
 extern "C" {
-void *fn_802CA964(){
+void *beModelCtrlAIData_vtableRead(){
  UnknownGenObject802CA964 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

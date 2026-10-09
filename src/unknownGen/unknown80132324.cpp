@@ -8,10 +8,10 @@ void fn_8006665C(void *);
 void fn_800A325C(void *);
 void fn_8012FC48();
 void *fn_801308D0();
-void fn_801327DC();
-void fn_8013B97C();
 void *fn_801A1FE8();
 void fn_801A2070();
+void igOptBase_register();
+void igSpatialPartitionDeprecated_fieldInit();
 extern char lbl_8049C08C[];
 extern char lbl_8049C0EC[];
 extern char lbl_804A2FEC[];
@@ -22,16 +22,16 @@ extern char lbl_804AAF48[];
 extern char lbl_8055F560[8];
 extern void *lbl_80563B54;
 extern void *lbl_80563B58;
-void *fn_80132364();
-void *fn_801323A0();
+void *igSplitGeometries_getMeta();
+void *igSplitGeometries_vtableRead();
 void fn_80132490();
-void fn_801324B8();
-void *fn_80132520();
-void *fn_80132540();
-void *fn_8013257C();
+void igSplitGeometries_register();
+void *igSplitGeometries_getMetaCall();
+void *igSpatialPartitionDeprecated_getMeta();
+void *igSpatialPartitionDeprecated_vtableRead();
 void fn_80132720();
-void fn_80132748();
-void *fn_801327BC();
+void igSpatialPartitionDeprecated_register();
+void *igSpatialPartitionDeprecated_getMetaCall();
 }
 struct UnknownGenRoot801323A0 {
  void *unknown00;
@@ -68,11 +68,11 @@ struct UnknownGenObject8013257C : UnknownGenObject8013257C_0 {
 extern "C" {
 void *fn_80132324(){return fn_801A1FE8();}
 void fn_80132344(){return fn_801A2070();}
-void *fn_80132364(){
+void *igSplitGeometries_getMeta(){
  if(!lbl_80563B54 || !(reinterpret_cast<unsigned int *>(lbl_80563B54)[0x24/4]&4)) fn_80132490();
  return lbl_80563B54;
 }
-void *fn_801323A0(){
+void *igSplitGeometries_vtableRead(){
  UnknownGenObject801323A0 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -83,18 +83,18 @@ void *fn_801323A0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80132490(){
- fn_80066188((int)fn_801324B8);
+ fn_80066188((int)igSplitGeometries_register);
 }
-void fn_801324B8(){
+void igSplitGeometries_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563B54,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_80132520,(int)lbl_8049C08C,40,(int)fn_801323A0,0,0,0);
+ fn_80066204(0,(int)&lbl_80563B54,(int)igOptBase_register,(int)fn_801308D0,(int)igSplitGeometries_getMetaCall,(int)lbl_8049C08C,40,(int)igSplitGeometries_vtableRead,0,0,0);
 }
-void *fn_80132520(){return fn_80132364();}
-void *fn_80132540(){
+void *igSplitGeometries_getMetaCall(){return igSplitGeometries_getMeta();}
+void *igSpatialPartitionDeprecated_getMeta(){
  if(!lbl_80563B58 || !(reinterpret_cast<unsigned int *>(lbl_80563B58)[0x24/4]&4)) fn_80132720();
  return lbl_80563B58;
 }
-void *fn_8013257C(){
+void *igSpatialPartitionDeprecated_vtableRead(){
  UnknownGenObject8013257C object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -117,12 +117,12 @@ UnknownGenHolder *fn_801326AC(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_80132720(){
- fn_80066188((int)fn_80132748);
+ fn_80066188((int)igSpatialPartitionDeprecated_register);
 }
-void fn_80132748(){
+void igSpatialPartitionDeprecated_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563B58,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_801327BC,(int)lbl_8049C0EC,68,(int)fn_8013257C,(int)fn_801327DC,0,(int)lbl_8055F560);
+ fn_80066204(0,(int)&lbl_80563B58,(int)igOptBase_register,(int)fn_801308D0,(int)igSpatialPartitionDeprecated_getMetaCall,(int)lbl_8049C0EC,68,(int)igSpatialPartitionDeprecated_vtableRead,(int)igSpatialPartitionDeprecated_fieldInit,0,(int)lbl_8055F560);
 }
-void *fn_801327BC(){return fn_80132540();}
+void *igSpatialPartitionDeprecated_getMetaCall(){return igSpatialPartitionDeprecated_getMeta();}
 }
 #pragma pop

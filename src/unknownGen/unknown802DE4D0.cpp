@@ -31,7 +31,7 @@ struct UnknownGenObject802DE4D0 : UnknownGenObject802DE4D0_2 {
  inline ~UnknownGenObject802DE4D0(){unknown00=lbl_804E0860;}
 };
 extern "C" {
-void *fn_802DE4D0(){
+void *beDBManager_vtableRead(){
  UnknownGenObject802DE4D0 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

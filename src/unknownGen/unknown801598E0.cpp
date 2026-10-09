@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_801598E0(){}
+void igNode_virtual6C(){}
 }
 #pragma pop

@@ -6,7 +6,7 @@ static inline void unknownReserve(Unknown8003ED10Storage *storage, Gap::igInt va
     if(value >= reinterpret_cast<volatile Gap::igInt *>(&storage->unknown08)[0]) fn_8004155C(storage, value, 4);
 }
 
-extern "C" Gap::igInt fn_8003EF94(Unknown8003ED10 *object, const Gap::igUnsignedInt *value){
+extern "C" Gap::igInt igCallStackTable_virtual68(Unknown8003ED10 *object, const Gap::igUnsignedInt *value){
     Gap::igInt previous;
     const Gap::igUnsignedInt *element = value;
     Gap::igInt count = 0;

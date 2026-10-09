@@ -9,10 +9,10 @@ extern void *lbl_80535D9C;
 extern void *lbl_80535DA0;
 }
 extern "C" {
-void *fn_8039103C(){return lbl_80535D90;}
-void *fn_8039104C(){return lbl_80535D94;}
-void *fn_8039105C(){return lbl_80535D98;}
-void *fn_8039106C(){return lbl_80535D9C;}
+void *beNDMWStatusSelectE1_virtual58(){return lbl_80535D90;}
+void *beNDMWStatusSelectE0_virtual58(){return lbl_80535D94;}
+void *beNDMWStatusSelect01_virtual58(){return lbl_80535D98;}
+void *beNDMWStatusSelect00_virtual58(){return lbl_80535D9C;}
 void *fn_8039107C(){return lbl_80535DA0;}
 }
 #pragma pop

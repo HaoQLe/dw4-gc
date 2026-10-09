@@ -3,7 +3,6 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void fn_8002907C();
 void *fn_80029E64(void *);
 void fn_8003EC68(void *,int);
 void fn_80046E58(void *,void *);
@@ -17,10 +16,11 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
 void fn_800AFDEC();
 void fn_800CE04C();
+void igObjectList_register();
+void igVisualAttribute_register();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
@@ -41,17 +41,17 @@ extern void *lbl_805621F4;
 extern void *lbl_80562594;
 extern void *lbl_80562598;
 extern void *lbl_805625A4;
-void *fn_800AF990();
-void *fn_800AF9CC();
+void *igImageMipMapList_getMeta();
+void *igImageMipMapList_vtableRead();
 void fn_800AFA3C();
-void fn_800AFA64();
-void *fn_800AFAD0();
-void *fn_800AFB28();
-void *fn_800AFB64();
+void igImageMipMapList_register();
+void *igImageMipMapList_getMetaCall();
+void *igTextureAddressModeAttr_getMeta();
+void *igTextureAddressModeAttr_vtableRead();
 void fn_800AFBBC();
-void fn_800AFBE4();
-void *fn_800AFC54();
-void fn_800AFC74();
+void igTextureAddressModeAttr_register();
+void *igTextureAddressModeAttr_getMetaCall();
+void igTextureAddressModeAttr_fieldInit();
 }
 struct UnknownGenObject800AF9CC_0 {
  void *unknown00;
@@ -66,11 +66,11 @@ void *fn_800AF954(){
  if(!lbl_80562594) lbl_80562594=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562594;
 }
-void *fn_800AF990(){
+void *igImageMipMapList_getMeta(){
  if(!lbl_80562594 || !(reinterpret_cast<unsigned int *>(lbl_80562594)[0x24/4]&4)) fn_800AFA3C();
  return lbl_80562594;
 }
-void *fn_800AF9CC(){
+void *igImageMipMapList_vtableRead(){
  UnknownGenObject800AF9CC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -81,22 +81,22 @@ void *fn_800AF9CC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800AFA3C(){
- fn_80066188((int)fn_800AFA64);
+ fn_80066188((int)igImageMipMapList_register);
 }
-void fn_800AFA64(){
+void igImageMipMapList_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562594,(int)fn_8002907C,(int)fn_80024180,(int)fn_800AFAD0,(int)lbl_80478698,20,(int)fn_800AF9CC,0,0,(int)lbl_8055E0B0);
+ fn_80066204(0,(int)&lbl_80562594,(int)igObjectList_register,(int)fn_80024180,(int)igImageMipMapList_getMetaCall,(int)lbl_80478698,20,(int)igImageMipMapList_vtableRead,0,0,(int)lbl_8055E0B0);
 }
-void *fn_800AFAD0(){return fn_800AF990();}
+void *igImageMipMapList_getMetaCall(){return igImageMipMapList_getMeta();}
 void *fn_800AFAF0(void *object){
  fn_800AFBBC();
  return fn_8006546C(lbl_80562598,object);
 }
-void *fn_800AFB28(){
+void *igTextureAddressModeAttr_getMeta(){
  if(!lbl_80562598 || !(reinterpret_cast<unsigned int *>(lbl_80562598)[0x24/4]&4)) fn_800AFBBC();
  return lbl_80562598;
 }
-void *fn_800AFB64(){
+void *igTextureAddressModeAttr_vtableRead(){
  UnknownGenObject800AFB64_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -105,14 +105,14 @@ void *fn_800AFB64(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800AFBBC(){
- fn_80066188((int)fn_800AFBE4);
+ fn_80066188((int)igTextureAddressModeAttr_register);
 }
-void fn_800AFBE4(){
+void igTextureAddressModeAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562598,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800AFC54,(int)lbl_804786AC,20,(int)fn_800AFB64,(int)fn_800AFC74,0,0);
+ fn_80066204(0,(int)&lbl_80562598,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igTextureAddressModeAttr_getMetaCall,(int)lbl_804786AC,20,(int)igTextureAddressModeAttr_vtableRead,(int)igTextureAddressModeAttr_fieldInit,0,0);
 }
-void *fn_800AFC54(){return fn_800AFB28();}
-void fn_800AFC74(){
+void *igTextureAddressModeAttr_getMetaCall(){return igTextureAddressModeAttr_getMeta();}
+void igTextureAddressModeAttr_fieldInit(){
  void *value0=lbl_80562598;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E0B8,2);
@@ -127,7 +127,7 @@ void *fn_800AFD14(){
  if(!lbl_805625A4) lbl_805625A4=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805625A4;
 }
-void *fn_800AFD50(){
+void *igTexGenMatrixAttr_getMeta(){
  if(!lbl_805625A4 || !(reinterpret_cast<unsigned int *>(lbl_805625A4)[0x24/4]&4)) fn_800AFDEC();
  return lbl_805625A4;
 }

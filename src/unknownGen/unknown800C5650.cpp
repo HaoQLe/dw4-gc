@@ -296,16 +296,16 @@ public:
  virtual void * s240(void *);
 };
 extern "C" {
-void fn_800C5650(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
-void fn_800C5658(int p0,int p1){
+void igVertexBlendStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
+void igVertexPipelineModeAttr_virtual60(int p0,int p1){
  reinterpret_cast<UnknownGenV800C5658_0 *>((void *)p1)->s23C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
 }
-void fn_800C5690(int p0,int p1){
+void igVertexPipelineModeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C5690_1 *>((void *)p1)->s240((void *)p1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
 }
-void fn_800C56D0(){}
-void fn_800C56D4(int p0){
+void igVertexShaderAttr_virtual60(){}
+void igVertexShaderAttr_virtual70(int p0){
  void *value0;
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)==-1){
   return;

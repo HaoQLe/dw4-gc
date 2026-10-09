@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800F8E90(void *,void *,void *);
+void *igGamecubeVisualContext_virtual278(void *,void *,void *);
 extern void *lbl_80562A10;
 extern void *lbl_80562AE4;
 }
@@ -39,10 +39,10 @@ public:
  virtual void * s78();
 };
 extern "C" {
-void *fn_800BD508(){return lbl_80562A10;}
-void *fn_800BD510(int p0,int p1){
+void *igBlendFunctionAttr_virtual58(){return lbl_80562A10;}
+void *igBlendFunctionAttr_virtual60(int p0,int p1){
  void *value1;
- fn_800F8E90((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+ igGamecubeVisualContext_virtual278((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
  void *value0=lbl_80562AE4;
  if(value0){
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);

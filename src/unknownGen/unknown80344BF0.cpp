@@ -32,7 +32,7 @@ struct UnknownGenObject80344BF0 : UnknownGenObject80344BF0_2 {
  inline ~UnknownGenObject80344BF0(){unknown00=lbl_804E451C;}
 };
 extern "C" {
-void *fn_80344BF0(){
+void *beNDMWGameRamInfo_vtableRead(){
  UnknownGenObject80344BF0 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

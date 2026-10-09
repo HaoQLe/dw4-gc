@@ -11,7 +11,7 @@ void *fn_80343168(void *object){
  fn_80343260();
  return fn_8006546C(lbl_80536750,object);
 }
-void *fn_803431A8(){
+void *beNDMWItemWeapon_getMeta(){
  if(!lbl_80536750 || !(reinterpret_cast<unsigned int *>(lbl_80536750)[0x24/4]&4)) fn_80343260();
  return lbl_80536750;
 }

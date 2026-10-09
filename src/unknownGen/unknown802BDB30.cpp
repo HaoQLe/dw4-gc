@@ -23,7 +23,7 @@ struct UnknownGenObject802BDB30 : UnknownGenObject802BDB30_0 {
  inline ~UnknownGenObject802BDB30(){unknown00=lbl_804E0B64;}
 };
 extern "C" {
-void *fn_802BDB30(){
+void *beSvStartApi_vtableRead(){
  UnknownGenObject802BDB30 object;
  object.unknown00=lbl_804E0F88;
  object.unknown30.value=0;

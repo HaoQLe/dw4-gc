@@ -11,7 +11,7 @@ struct UnknownGenL8011CFC0_8 {
  int m10;
 };
 extern "C" {
-void fn_8011CFC0(int p0){
+void igTextElement_virtual174(int p0){
  UnknownGenL8011CFC0_8 local0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+52)=(void *)(int)((int)*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+52)+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
  local0.m08=(int)2;
@@ -19,7 +19,7 @@ void fn_8011CFC0(int p0){
  local0.m10=(int)(int)lbl_805635BC;
  fn_8011BFA4(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),&local0);
 }
-void *fn_8011D014(int p0,int p1){
+void *igTextElement_virtualC4(int p0,int p1){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8);

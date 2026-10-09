@@ -19,20 +19,20 @@ extern void *lbl_80535F94;
 extern void *lbl_80535F9C;
 }
 extern "C" {
-void *fn_80390328(){return lbl_80535EC0;}
-void *fn_80390338(){return lbl_80535ED8;}
-void *fn_80390348(){return lbl_80535EE8;}
-void *fn_80390358(){return lbl_80535EFC;}
-void *fn_80390368(){return lbl_80535F04;}
-void *fn_80390378(){return lbl_80535F20;}
-void *fn_80390388(){return lbl_80535F28;}
-void *fn_80390398(){return lbl_80535F70;}
-void *fn_803903A8(){return lbl_80535F30;}
-void *fn_803903B8(){return lbl_80535F34;}
-void *fn_803903C8(){return lbl_80535F38;}
+void *beNDMWStatusSubMenu_virtual58(){return lbl_80535EC0;}
+void *beNDMWStatusCtrlSkill_virtual58(){return lbl_80535ED8;}
+void *beNDMWStatusCtrlSendBit_virtual58(){return lbl_80535EE8;}
+void *beNDMWStatusCtrlBit_virtual58(){return lbl_80535EFC;}
+void *beNDMWStatusCtrlDisk_virtual58(){return lbl_80535F04;}
+void *beNDMWStatusCtrlFlag_virtual58(){return lbl_80535F20;}
+void *beNDMWStatusCtrlFolder_virtual58(){return lbl_80535F28;}
+void *beNDMWStatusCtrlD0_virtual58(){return lbl_80535F70;}
+void *beNDMWStatusSubSlot_virtual58(){return lbl_80535F30;}
+void *beNDMWStatusMainSlot_virtual58(){return lbl_80535F34;}
+void *beNDMWStatusPowerSocket_virtual58(){return lbl_80535F38;}
 void *fn_803903D8(){return lbl_80535F3C;}
-void *fn_803903E8(){return lbl_80535F68;}
-void *fn_803903F8(){return lbl_80535F94;}
+void *beNDMWStatusCtrlEquip_virtual58(){return lbl_80535F68;}
+void *beNDMWStatusCtrl00_virtual58(){return lbl_80535F94;}
 void *fn_80390408(){return lbl_80535F9C;}
 }
 #pragma pop

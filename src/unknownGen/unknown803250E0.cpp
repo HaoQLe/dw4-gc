@@ -6,7 +6,7 @@ void fn_80325630();
 extern void *lbl_80535C20;
 }
 extern "C" {
-void *fn_803250E0(){
+void *libNdmwRuntimePlugin_getMeta(){
  if(!lbl_80535C20 || !(reinterpret_cast<unsigned int *>(lbl_80535C20)[0x24/4]&4)) fn_80325630();
  return lbl_80535C20;
 }

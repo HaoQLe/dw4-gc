@@ -14,7 +14,7 @@ static inline void *UnknownGenCast802AE530_8(void *q){
  return 0;
 }
 extern "C" {
-void *fn_802AE530(int p0,int p1){
+void *igCriMovieCodec_virtual68(int p0,int p1){
  void *value0;
  void *value1;
  value0=UnknownGenCast802AE530_8(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+96));

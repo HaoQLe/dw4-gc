@@ -34,11 +34,11 @@ void *fn_80026B14(){
  if(!lbl_80561658) lbl_80561658=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80561658;
 }
-void *fn_80026B50(){
+void *igRegistry_getMeta(){
  if(!lbl_80561658 || !(reinterpret_cast<unsigned int *>(lbl_80561658)[0x24/4]&4)) arkRegister__Q33Gap4Core10igRegistryFv();
  return lbl_80561658;
 }
-void *fn_80026B8C(){
+void *igRegistry_vtableRead(){
  UnknownGenObject80026B8C object;
  object.unknown00=lbl_80471328;
  object.unknown08.value=0;

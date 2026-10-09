@@ -13,16 +13,16 @@ extern void *lbl_8056615C;
 extern void *lbl_80566178;
 }
 extern "C" {
-void *fn_8028FA0C(){return lbl_805660BC;}
-void *fn_8028FA14(){return lbl_80566118;}
-void *fn_8028FA1C(){return lbl_80566178;}
-void *fn_8028FA24(){return lbl_8056615C;}
-void *fn_8028FA2C(){return lbl_80566158;}
-void *fn_8028FA34(){return lbl_8056610C;}
-void *fn_8028FA3C(){return lbl_805660E8;}
-void *fn_8028FA44(){return lbl_805660E4;}
-void *fn_8028FA4C(){return lbl_805660DC;}
-void *fn_8028FA54(){return lbl_8056615C;}
-void *fn_8028FA5C(){return lbl_805660E8;}
+void *igCreateCollisionDatabase_virtual58(){return lbl_805660BC;}
+void *igCollisionGrid_virtual58(){return lbl_80566118;}
+void *igBoundingSphereMaker_virtual58(){return lbl_80566178;}
+void *igCollisionCell_virtual58(){return lbl_8056615C;}
+void *igCollisionCellList_virtual58(){return lbl_80566158;}
+void *igCollisionGridHelper_virtual58(){return lbl_8056610C;}
+void *igCollisionGroup_virtual58(){return lbl_805660E8;}
+void *igCollisionGroupList_virtual58(){return lbl_805660E4;}
+void *igCollisionInfo_virtual58(){return lbl_805660DC;}
+void *igCollisionCellList_virtual60(){return lbl_8056615C;}
+void *igCollisionGroupList_virtual60(){return lbl_805660E8;}
 }
 #pragma pop

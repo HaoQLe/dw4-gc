@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beCri_fieldInit();
+void *beCri_getMeta();
+void beCri_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800A325C(void *);
 void *fn_80284550();
-void fn_80286F0C();
 void fn_802B1AC8();
-void *fn_802DFD84();
-void fn_802DFDD0();
-void fn_802E00E0();
+void igInfoManager_register();
 extern char lbl_804209A8[];
 extern char lbl_804D2850[];
 extern char lbl_80535584[];
-void fn_802E0044();
-void *fn_802E00C0();
+void beCri_register();
+void *beCri_getMetaCall();
 }
 extern "C" {
 UnknownGenHolder *dtor_802DFFA8(UnknownGenHolder *object,short flags){
@@ -30,12 +30,12 @@ UnknownGenHolder *dtor_802DFFA8(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_802E001C(){
- fn_80066188((int)fn_802E0044);
+ fn_80066188((int)beCri_register);
 }
-void fn_802E0044(){
+void beCri_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535584,(int)fn_80286F0C,(int)fn_80284550,(int)fn_802E00C0,(int)lbl_804209A8,72,(int)fn_802DFDD0,(int)fn_802E00E0,0,(int)lbl_804D2850);
+ fn_80066204(0,(int)lbl_80535584,(int)igInfoManager_register,(int)fn_80284550,(int)beCri_getMetaCall,(int)lbl_804209A8,72,(int)beCri_vtableRead,(int)beCri_fieldInit,0,(int)lbl_804D2850);
 }
-void *fn_802E00C0(){return fn_802DFD84();}
+void *beCri_getMetaCall(){return beCri_getMeta();}
 }
 #pragma pop

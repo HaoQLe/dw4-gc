@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_800E9904(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+72);}
+int igGamecubeVisualContext_virtual318(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+72);}
 }
 #pragma pop

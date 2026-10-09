@@ -35,7 +35,7 @@ public:
  virtual void s70();
 };
 extern "C" {
-void fn_80201AAC(int p0){
+void igSelfShadowShader_virtual7C(int p0){
  reinterpret_cast<UnknownGenV80201AAC_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+144))->s70();
 }
 }

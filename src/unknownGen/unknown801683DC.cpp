@@ -31,7 +31,7 @@ public:
  virtual void s60();
 };
 extern "C" {
-void fn_801683DC(int p0){
+void igDefaultManager_virtual34(int p0){
  fn_800667CC();
  reinterpret_cast<UnknownGenV801683DC_0 *>((void *)p0)->s60();
 }

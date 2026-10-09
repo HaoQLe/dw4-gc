@@ -61,7 +61,7 @@ public:
  virtual void sD8(void *);
 };
 extern "C" {
-void fn_800865A0(int p0){
+void igElfFile_virtual158(int p0){
  reinterpret_cast<UnknownGenV800865A0_0 *>((void *)p0)->sD8(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+128));
 }
 }

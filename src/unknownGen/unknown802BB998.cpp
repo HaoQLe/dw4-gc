@@ -23,7 +23,7 @@ struct UnknownGenObject802BB998 : UnknownGenObject802BB998_0 {
  inline ~UnknownGenObject802BB998(){unknown00=lbl_804DB3F4;}
 };
 extern "C" {
-void *fn_802BB998(){
+void *beSaveUtilInfoRam_vtableRead(){
  UnknownGenObject802BB998 object;
  object.unknown00=lbl_804DCDF0;
  object.unknown28.value=0;

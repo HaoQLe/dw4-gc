@@ -5,7 +5,7 @@ extern "C" {
 void fn_80041810(void *,void *,int);
 }
 extern "C" {
-void fn_80160BC8(int p0,int p1,int p2,int p3,int p4,int p5){
+void igTransformSequence1_5_virtual90(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  fn_80041810(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56),(void *)p1,8);
  if(((unsigned int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+72)&0x1)){

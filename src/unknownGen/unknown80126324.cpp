@@ -59,9 +59,9 @@ public:
  virtual void sD0(void *,void *);
 };
 extern "C" {
-int fn_80126324(){return 16;}
-int fn_8012632C(){return 8;}
-void fn_80126334(int p0,int p1,int p2){
+int igVec2dMetaField_virtual64(){return 16;}
+int igVec2dMetaField_virtual160(){return 8;}
+void igVec2fMetaField_virtual1C4(int p0,int p1,int p2){
  void *value0=fn_8011F274();
  reinterpret_cast<UnknownGenV80126334_0 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)));
 }

@@ -27,7 +27,7 @@ void *fn_803420C4(){
  if(!lbl_80536718) lbl_80536718=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80536718;
 }
-void *fn_80342118(){
+void *beNDMWLoadCtrl2_getMeta(){
  if(!lbl_80536718 || !(reinterpret_cast<unsigned int *>(lbl_80536718)[0x24/4]&4)) fn_803422BC();
  return lbl_80536718;
 }

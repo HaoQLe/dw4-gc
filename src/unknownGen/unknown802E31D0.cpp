@@ -17,7 +17,7 @@ struct UnknownGenObject802E31D0 : UnknownGenRoot802E31D0 {
  inline ~UnknownGenObject802E31D0(){unknown00=lbl_804DCDF0;}
 };
 extern "C" {
-void *fn_802E31D0(){
+void *beBaseInfoRam_vtableRead(){
  UnknownGenObject802E31D0 object;
  object.unknown00=lbl_804DCDF0;
  object.unknown28.value=0;

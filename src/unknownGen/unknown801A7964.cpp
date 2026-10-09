@@ -6,7 +6,7 @@ void fn_80056378(void *);
 void fn_800667D4(void *);
 }
 extern "C" {
-void fn_801A7964(int p0){
+void igGaussianFilterFun_virtual30(int p0){
  fn_80056378(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20));
  fn_800667D4((void *)p0);
 }

@@ -35,7 +35,7 @@ public:
  virtual void s70();
 };
 extern "C" {
-void fn_800C2810(int p0){
+void igRenderListAttr_virtual30(int p0){
  reinterpret_cast<UnknownGenV800C2810_0 *>((void *)p0)->s70();
  fn_800667D4((void *)p0);
 }

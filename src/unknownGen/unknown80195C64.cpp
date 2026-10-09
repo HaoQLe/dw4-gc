@@ -9,7 +9,7 @@ extern void *lbl_80562140;
 extern void *lbl_80563C90;
 }
 extern "C" {
-void *fn_80195C64(int p0){
+void *igReplaceAttrForNode_virtual88(int p0){
  void *value2;
  void *value3;
  void *value1;

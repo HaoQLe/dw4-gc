@@ -21,7 +21,7 @@ struct UnknownGenL800D5130_8 {
  float m14;
 };
 extern "C" {
-void fn_800D5130(){
+void igCustomVectorState_fieldInit(){
  UnknownGenL800D5130_8 local0;
  void *value0=lbl_80563084;
  void *value1=fn_80065D88(value0);

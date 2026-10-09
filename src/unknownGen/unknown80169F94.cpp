@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_801CAC6C();
+void *igAnimationDatabase_getMeta();
 }
 extern "C" {
-void *fn_80169F94(){return fn_801CAC6C();}
-int fn_80169FB4(){return 1;}
+void *igEnbayaCompressAnimations_virtual8C(){return igAnimationDatabase_getMeta();}
+int igEnbayaCompressAnimations_virtual84(){return 1;}
 }
 #pragma pop

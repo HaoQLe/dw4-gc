@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564DB4;
 }
 extern "C" {
-void *fn_80154140(){return lbl_80564DB4;}
+void *igAttrEditForLightSet_virtual7C(){return lbl_80564DB4;}
 }
 #pragma pop

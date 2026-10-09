@@ -21,7 +21,7 @@ struct UnknownGenObject802CBF98 : UnknownGenObject802CBF98_0 {
  inline ~UnknownGenObject802CBF98(){unknown00=lbl_804D8D38;}
 };
 extern "C" {
-void *fn_802CBF98(){
+void *beModelCtrlJUMP_vtableRead(){
  UnknownGenObject802CBF98 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

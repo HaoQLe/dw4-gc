@@ -13,14 +13,14 @@ extern void *lbl_80535D84;
 extern void *lbl_80535D88;
 }
 extern "C" {
-void *fn_803AA658(){return lbl_80535D64;}
-void *fn_803AA668(){return lbl_80535D68;}
-void *fn_803AA678(){return lbl_80535D6C;}
-void *fn_803AA688(){return lbl_80535D70;}
-void *fn_803AA698(){return lbl_80535D74;}
-void *fn_803AA6A8(){return lbl_80535D78;}
-void *fn_803AA6B8(){return lbl_80535D7C;}
-void *fn_803AA6C8(){return lbl_80535D84;}
-void *fn_803AA6D8(){return lbl_80535D88;}
+void *beNDMWShopSelectB0_virtual58(){return lbl_80535D64;}
+void *beNDMWShopSelectA0_virtual58(){return lbl_80535D68;}
+void *beNDMWShopSelect52_virtual58(){return lbl_80535D6C;}
+void *beNDMWShopSelect34_virtual58(){return lbl_80535D70;}
+void *beNDMWShopSelect11_virtual58(){return lbl_80535D74;}
+void *beNDMWShopSelect03_virtual58(){return lbl_80535D78;}
+void *beNDMWShopSelect02_virtual58(){return lbl_80535D7C;}
+void *beNDMWShopSelect01_virtual58(){return lbl_80535D84;}
+void *beNDMWShopSelect00_virtual58(){return lbl_80535D88;}
 }
 #pragma pop

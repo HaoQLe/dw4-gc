@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805636DC;
 }
 extern "C" {
-void *fn_8011D3D8(){return lbl_805636DC;}
+void *igWindowSizeObserver_virtual58(){return lbl_805636DC;}
 }
 #pragma pop

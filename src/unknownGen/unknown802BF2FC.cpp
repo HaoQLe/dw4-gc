@@ -11,10 +11,10 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void fn_802B1AC8();
 void fn_802BF658();
 void *fn_802C0044();
+void igObject_register();
 extern char lbl_8041E170[];
 extern char lbl_804CFCAC[];
 extern char lbl_804CFCB4[];
@@ -24,30 +24,30 @@ extern char lbl_804CFD50[];
 extern void *lbl_8053496C;
 extern void *lbl_805349A4;
 extern void *lbl_805621F4;
-void *fn_802BF350();
+void *beSaveApi_getMeta();
 void fn_802BF39C();
-void fn_802BF3C4();
-void *fn_802BF43C();
-void fn_802BF45C();
+void beSaveApi_register();
+void *beSaveApi_getMetaCall();
+void beSaveApi_fieldInit();
 }
 extern "C" {
 void *fn_802BF2FC(){
  if(!lbl_8053496C) lbl_8053496C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8053496C;
 }
-void *fn_802BF350(){
+void *beSaveApi_getMeta(){
  if(!lbl_8053496C || !(reinterpret_cast<unsigned int *>(lbl_8053496C)[0x24/4]&4)) fn_802BF39C();
  return lbl_8053496C;
 }
 void fn_802BF39C(){
- fn_80066188((int)fn_802BF3C4);
+ fn_80066188((int)beSaveApi_register);
 }
-void fn_802BF3C4(){
+void beSaveApi_register(){
  fn_802B1AC8();
- fn_80066204(1,(int)&lbl_8053496C,(int)fn_80066B08,(int)fn_800237D0,(int)fn_802BF43C,(int)lbl_8041E170,212,0,(int)fn_802BF45C,0,(int)lbl_804CFCAC);
+ fn_80066204(1,(int)&lbl_8053496C,(int)igObject_register,(int)fn_800237D0,(int)beSaveApi_getMetaCall,(int)lbl_8041E170,212,0,(int)beSaveApi_fieldInit,0,(int)lbl_804CFCAC);
 }
-void *fn_802BF43C(){return fn_802BF350();}
-void fn_802BF45C(){
+void *beSaveApi_getMetaCall(){return beSaveApi_getMeta();}
+void beSaveApi_fieldInit(){
  void *value0=lbl_8053496C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFCB4,13);
@@ -66,7 +66,7 @@ void *fn_802BF52C(){
  if(!lbl_805349A4) lbl_805349A4=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805349A4;
 }
-void *fn_802BF580(){
+void *beSvPlatBaseData_getMeta(){
  if(!lbl_805349A4 || !(reinterpret_cast<unsigned int *>(lbl_805349A4)[0x24/4]&4)) fn_802BF658();
  return lbl_805349A4;
 }

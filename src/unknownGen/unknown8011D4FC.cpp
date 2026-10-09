@@ -8,9 +8,9 @@ extern void *lbl_80563804;
 extern void *lbl_80563810;
 }
 extern "C" {
-void *fn_8011D4FC(){return lbl_805637F4;}
-void *fn_8011D504(){return lbl_805637F8;}
-void *fn_8011D50C(){return lbl_80563804;}
-void *fn_8011D514(){return lbl_80563810;}
+void *igOnOffColorChanger_virtual58(){return lbl_805637F4;}
+void *igBasicColorChanger_virtual58(){return lbl_805637F8;}
+void *igColorChanger_virtual58(){return lbl_80563804;}
+void *igChildSizeObserver_virtual58(){return lbl_80563810;}
 }
 #pragma pop

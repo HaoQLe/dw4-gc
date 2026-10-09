@@ -18,7 +18,7 @@ void *fn_802AD288(){
  if(!lbl_80534474) lbl_80534474=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80534474;
 }
-void *fn_802AD2DC(){
+void *igMovieManager_getMeta(){
  if(!lbl_80534474 || !(reinterpret_cast<unsigned int *>(lbl_80534474)[0x24/4]&4)) fn_802AD500();
  return lbl_80534474;
 }

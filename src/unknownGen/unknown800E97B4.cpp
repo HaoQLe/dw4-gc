@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_805634A8;
 }
 extern "C" {
-void fn_800E97B4(){}
+void igGamecubeVisualContext_virtual8C(){}
 int fn_800E97B8(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+24);}
 int fn_800E97C0(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+28);}
 int fn_800E97C8(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+32);}

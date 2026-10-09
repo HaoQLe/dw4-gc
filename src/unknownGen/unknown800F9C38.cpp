@@ -4,7 +4,7 @@
 extern "C" {
 void *GXEnableTexOffsets(void *,int,int);
 void GXSetPointSize(void *,void *);
-void *fn_800E1B64(void *);
+void *igPointSpriteExt_virtual7C(void *);
 }
 class UnknownGenV800F9C38_0 {
 public:
@@ -602,7 +602,7 @@ public:
  virtual void * s344(void *,void *);
 };
 extern "C" {
-void *fn_800F9C38(int p0){
+void *igGamecubePointSpriteExt_virtual7C(int p0){
  void *value2;
  void *value3;
  void *value4;
@@ -614,7 +614,7 @@ void *fn_800F9C38(int p0){
  void *value0;
  void *value1;
  if(!((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))+20)&0x10)){
-  value6=fn_800E1B64((void *)p0);
+  value6=igPointSpriteExt_virtual7C((void *)p0);
   value5=value6;
  } else {
   *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;

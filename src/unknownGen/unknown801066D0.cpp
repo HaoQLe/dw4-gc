@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_801066D0(int p0){
+void igVertexArray2Helper_virtualDC(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);

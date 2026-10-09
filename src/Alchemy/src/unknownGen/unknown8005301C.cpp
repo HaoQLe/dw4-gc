@@ -173,7 +173,7 @@ public:
  virtual void s108(void *);
 };
 extern "C" {
-void *fn_8005301C(int p0){
+void *igIGBFile_virtual88(int p0){
  void *value3;
  void *value0;
  void *value1;

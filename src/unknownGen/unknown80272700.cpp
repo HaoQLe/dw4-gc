@@ -8,7 +8,7 @@ extern char lbl_804C9A50[];
 extern char lbl_804C9A94[];
 }
 extern "C" {
-void *fn_80272700(int p0,int p1){
+void *igLuaState_virtual60(int p0,int p1){
  void *value0;
  value0=fn_80272B28(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p1);
  if((int)(int)value0!=0){

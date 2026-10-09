@@ -9,7 +9,7 @@ extern char lbl_8055EE24[5];
 void *strcmp(void *,void *);
 }
 extern "C" {
-void *fn_800D90C4(int p0,int p1){
+void *igClut_virtual5C(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

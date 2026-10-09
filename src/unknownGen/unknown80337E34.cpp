@@ -16,12 +16,12 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void *fn_802CDF04();
 void *fn_802DC03C();
 void *fn_802E3840();
 void fn_803250AC();
 void fn_803382B4();
+void igObject_register();
 extern char lbl_80453438[];
 extern char lbl_804541C0[];
 extern char lbl_804E2558[];
@@ -35,26 +35,26 @@ extern void *lbl_80536108;
 extern void *lbl_8053614C;
 extern void *lbl_80536150;
 extern void *lbl_805621F4;
-void *fn_80337E34();
+void *beNDMWPanelObject_getMeta();
 void fn_80337E80();
-void fn_80337EA8();
-void *fn_80337F20();
-void fn_80337F40();
+void beNDMWPanelObject_register();
+void *beNDMWPanelObject_getMetaCall();
+void beNDMWPanelObject_fieldInit();
 }
 extern "C" {
-void *fn_80337E34(){
+void *beNDMWPanelObject_getMeta(){
  if(!lbl_80536108 || !(reinterpret_cast<unsigned int *>(lbl_80536108)[0x24/4]&4)) fn_80337E80();
  return lbl_80536108;
 }
 void fn_80337E80(){
- fn_80066188((int)fn_80337EA8);
+ fn_80066188((int)beNDMWPanelObject_register);
 }
-void fn_80337EA8(){
+void beNDMWPanelObject_register(){
  fn_803250AC();
- fn_80066204(1,(int)&lbl_80536108,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80337F20,(int)lbl_804541C0,60,0,(int)fn_80337F40,0,(int)lbl_804E2558);
+ fn_80066204(1,(int)&lbl_80536108,(int)igObject_register,(int)fn_800237D0,(int)beNDMWPanelObject_getMetaCall,(int)lbl_804541C0,60,0,(int)beNDMWPanelObject_fieldInit,0,(int)lbl_804E2558);
 }
-void *fn_80337F20(){return fn_80337E34();}
-void fn_80337F40(){
+void *beNDMWPanelObject_getMetaCall(){return beNDMWPanelObject_getMeta();}
+void beNDMWPanelObject_fieldInit(){
  void *value0=lbl_80536108;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E2570,16);
@@ -91,7 +91,7 @@ void *fn_80338104(){
  if(!lbl_80536150) lbl_80536150=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80536150;
 }
-void *fn_80338158(){
+void *beNDMWPanelWaza_getMeta(){
  if(!lbl_80536150 || !(reinterpret_cast<unsigned int *>(lbl_80536150)[0x24/4]&4)) fn_803382B4();
  return lbl_80536150;
 }

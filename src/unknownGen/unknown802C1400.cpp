@@ -23,7 +23,7 @@ struct UnknownGenObject802C1400 : UnknownGenObject802C1400_0 {
  inline ~UnknownGenObject802C1400(){unknown00=lbl_804DAA8C;}
 };
 extern "C" {
-void *fn_802C1400(){
+void *beParticleCtrl2InfoRam_vtableRead(){
  UnknownGenObject802C1400 object;
  object.unknown00=lbl_804DCDF0;
  object.unknown28.value=0;

@@ -26,21 +26,21 @@ extern "C" {
 
 #pragma push
 #pragma auto_inline off
-extern "C" unsigned int fn_8004401C(Unknown80042DECOwner *object){ return (object->unknown34 & 0x1FFF)<<3; }
-extern "C" int fn_80044028(void *, void *value, const char *text){
+extern "C" unsigned int igDoubleArrayMetaField_virtual64(Unknown80042DECOwner *object){ return (object->unknown34 & 0x1FFF)<<3; }
+extern "C" int igDoubleMetaField_virtualE0(void *, void *value, const char *text){
     int result=0;
     sscanf(text,lbl_8055D7E4,value,&result);
     return result;
 }
-extern "C" void fn_80044068(Unknown80044068String *result, void *, const double *value){
+extern "C" void igDoubleMetaField_virtualE4(Unknown80044068String *result, void *, const double *value){
     char buffer[0x400];
     sprintf(buffer,lbl_8055D7EC,*value);
     result->unknown00=reinterpret_cast<unsigned long>(buffer)==0 ? NULL : unknown80042DECAcquire(buffer);
 }
-extern "C" int fn_800440EC(void *){ return 8; }
+extern "C" int igDoubleMetaField_virtual64(void *){ return 8; }
 extern "C" void fn_800440F4(Unknown80042DECValue *object, double value){ object->slot8C(&value); }
-extern "C" int fn_80044128(void *){ return 8; }
-extern "C" void fn_80044130(Unknown80044130 *object){
+extern "C" int igDoubleMetaField_virtual6C(void *){ return 8; }
+extern "C" void igDriverDatabase_virtual2C(Unknown80044130 *object){
     fn_800667D0(object);
     unsigned char value;
     fn_8006DC50(reinterpret_cast<void **>(_arkCore__Q23Gap4Core)[0x38/4],2,lbl_80468F40,&value,object->unknown30,1);
@@ -56,7 +56,7 @@ extern "C" void fn_80044130(Unknown80044130 *object){
         if(storage->unknown08!=0 && index>=0 && index<storage->unknown08) storage->unknown10[index]=entry;
     }
 }
-extern "C" void fn_8004426C(Unknown80044130 *object){ fn_8004513C(object); fn_800667D4(object); }
+extern "C" void igDriverDatabase_virtual30(Unknown80044130 *object){ fn_8004513C(object); fn_800667D4(object); }
 extern "C" void fn_800442A0(Unknown80044130 *object, int index, void *value){ fn_80071F9C(object->unknown08->unknown10[index],value); }
 extern "C" const char *fn_800442D4(Unknown80044130 *object, int index){
     const char *value=reinterpret_cast<const char **>(object->unknown08->unknown10[index])[2];

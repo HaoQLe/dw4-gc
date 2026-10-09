@@ -236,7 +236,7 @@ public:
  virtual void s60(void *);
 };
 extern "C" {
-void fn_8011AA5C(int p0){
+void igGuiSystemRenderer_virtual68(int p0){
  reinterpret_cast<UnknownGenV8011AA5C_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s32C((void *)0,(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16))+96));
  reinterpret_cast<UnknownGenV8011AA5C_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->s60(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8));
 }

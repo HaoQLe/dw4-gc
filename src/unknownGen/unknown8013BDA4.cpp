@@ -7,7 +7,7 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void fn_8013BF70();
-void fn_80140664();
+void igObjectPropertyForNode_register();
 extern char lbl_8049DAFC[];
 extern char lbl_804A4BB8[];
 extern char lbl_804A5BE8[];
@@ -18,11 +18,11 @@ extern char lbl_804AAF48[];
 extern char lbl_8055F808[8];
 extern void *lbl_80563EEC;
 extern void *lbl_80563FD4;
-void *fn_8013BDA4();
-void *fn_8013BDE0();
+void *igObjectPropertyForCamera_getMeta();
+void *igObjectPropertyForCamera_vtableRead();
 void fn_8013BEAC();
-void fn_8013BED4();
-void *fn_8013BF48();
+void igObjectPropertyForCamera_register();
+void *igObjectPropertyForCamera_getMetaCall();
 void *fn_8013BF68();
 }
 struct UnknownGenRoot8013BDE0 {
@@ -43,11 +43,11 @@ struct UnknownGenObject8013BDE0 : UnknownGenObject8013BDE0_1 {
  inline ~UnknownGenObject8013BDE0(){unknown00=lbl_804A4BB8;}
 };
 extern "C" {
-void *fn_8013BDA4(){
+void *igObjectPropertyForCamera_getMeta(){
  if(!lbl_80563EEC || !(reinterpret_cast<unsigned int *>(lbl_80563EEC)[0x24/4]&4)) fn_8013BEAC();
  return lbl_80563EEC;
 }
-void *fn_8013BDE0(){
+void *igObjectPropertyForCamera_vtableRead(){
  UnknownGenObject8013BDE0 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -59,13 +59,13 @@ void *fn_8013BDE0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013BEAC(){
- fn_80066188((int)fn_8013BED4);
+ fn_80066188((int)igObjectPropertyForCamera_register);
 }
-void fn_8013BED4(){
+void igObjectPropertyForCamera_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563EEC,(int)fn_80140664,(int)fn_8013BF68,(int)fn_8013BF48,(int)lbl_8049DAFC,44,(int)fn_8013BDE0,(int)fn_8013BF70,0,(int)lbl_8055F808);
+ fn_80066204(0,(int)&lbl_80563EEC,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForCamera_getMetaCall,(int)lbl_8049DAFC,44,(int)igObjectPropertyForCamera_vtableRead,(int)fn_8013BF70,0,(int)lbl_8055F808);
 }
-void *fn_8013BF48(){return fn_8013BDA4();}
+void *igObjectPropertyForCamera_getMetaCall(){return igObjectPropertyForCamera_getMeta();}
 void *fn_8013BF68(){return lbl_80563FD4;}
 }
 #pragma pop

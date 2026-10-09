@@ -22,7 +22,7 @@ struct UnknownGenObject802D5CBC : UnknownGenObject802D5CBC_0 {
  inline ~UnknownGenObject802D5CBC(){unknown00=lbl_804D6EEC;}
 };
 extern "C" {
-void *fn_802D5CBC(){
+void *beHitLandDelivInfoRam_vtableRead(){
  UnknownGenObject802D5CBC object;
  object.unknown00=lbl_804DCDF0;
  object.unknown28.value=0;

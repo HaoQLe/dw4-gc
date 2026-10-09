@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564D84;
 }
 extern "C" {
-void *fn_801818D0(){return lbl_80564D84;}
+void *igObjectPropertyForModelViewMatrixBoneSelect_virtual7C(){return lbl_80564D84;}
 }
 #pragma pop

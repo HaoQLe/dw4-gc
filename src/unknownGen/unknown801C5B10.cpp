@@ -6,8 +6,8 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801C5D48();
-void fn_801C6000();
+void igCamera_register();
+void igDOFCamera_fieldInit();
 extern char lbl_8047650C[];
 extern char lbl_804B0E34[];
 extern char lbl_804B4038[];
@@ -16,12 +16,12 @@ extern char lbl_804B6F0C[];
 extern char lbl_805607F0[8];
 extern void *lbl_805651FC;
 extern void *lbl_8056520C;
-void *fn_801C5B10();
-void *fn_801C5B4C();
+void *igDOFCamera_getMeta();
+void *igDOFCamera_vtableRead();
 void fn_801C5C84();
-void fn_801C5CAC();
-void *fn_801C5D20();
-void *fn_801C5D40();
+void igDOFCamera_register();
+void *igDOFCamera_getMetaCall();
+void *igDOFCamera_parentMeta();
 }
 struct UnknownGenRoot801C5B4C {
  void *unknown00;
@@ -46,11 +46,11 @@ struct UnknownGenObject801C5B4C : UnknownGenObject801C5B4C_2 {
  inline ~UnknownGenObject801C5B4C(){unknown00=lbl_804B52F8;}
 };
 extern "C" {
-void *fn_801C5B10(){
+void *igDOFCamera_getMeta(){
  if(!lbl_805651FC || !(reinterpret_cast<unsigned int *>(lbl_805651FC)[0x24/4]&4)) fn_801C5C84();
  return lbl_805651FC;
 }
-void *fn_801C5B4C(){
+void *igDOFCamera_vtableRead(){
  UnknownGenObject801C5B4C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -62,13 +62,13 @@ void *fn_801C5B4C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801C5C84(){
- fn_80066188((int)fn_801C5CAC);
+ fn_80066188((int)igDOFCamera_register);
 }
-void fn_801C5CAC(){
+void igDOFCamera_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805651FC,(int)fn_801C6000,(int)fn_801C5D40,(int)fn_801C5D20,(int)lbl_804B0E34,68,(int)fn_801C5B4C,(int)fn_801C5D48,0,(int)lbl_805607F0);
+ fn_80066204(0,(int)&lbl_805651FC,(int)igCamera_register,(int)igDOFCamera_parentMeta,(int)igDOFCamera_getMetaCall,(int)lbl_804B0E34,68,(int)igDOFCamera_vtableRead,(int)igDOFCamera_fieldInit,0,(int)lbl_805607F0);
 }
-void *fn_801C5D20(){return fn_801C5B10();}
-void *fn_801C5D40(){return lbl_8056520C;}
+void *igDOFCamera_getMetaCall(){return igDOFCamera_getMeta();}
+void *igDOFCamera_parentMeta(){return lbl_8056520C;}
 }
 #pragma pop

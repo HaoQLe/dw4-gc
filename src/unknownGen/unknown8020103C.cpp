@@ -56,7 +56,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_8020103C(int p0){
+void igSelfShadowShader_virtual28(int p0){
  void *value4;
  void *value5;
  void *value1;

@@ -30,8 +30,8 @@ public:
  virtual void s5C(void *,void *,void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800C4AAC(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
-void fn_800C4AB4(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igTextureStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
+void igTextureStateAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C4AB4_0 *>((void *)p1)->s5C((void *)8,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
 }

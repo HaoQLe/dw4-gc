@@ -21,7 +21,7 @@ struct UnknownGenObject802AAFA4 : UnknownGenObject802AAFA4_0 {
  inline ~UnknownGenObject802AAFA4(){unknown00=lbl_804CE4CC;}
 };
 extern "C" {
-void *fn_802AAFA4(){
+void *igFileName_vtableRead(){
  UnknownGenObject802AAFA4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

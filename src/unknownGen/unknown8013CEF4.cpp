@@ -8,7 +8,7 @@ void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013D0B8();
-void fn_80140664();
+void igObjectPropertyForNode_register();
 extern char lbl_8049DBF0[];
 extern char lbl_804A4FC4[];
 extern char lbl_804A5BE8[];
@@ -18,11 +18,11 @@ extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F840[8];
 extern void *lbl_80563F24;
-void *fn_8013CEF4();
-void *fn_8013CF30();
+void *igObjectPropertyForModelViewMatrixBoneSelect_getMeta();
+void *igObjectPropertyForModelViewMatrixBoneSelect_vtableRead();
 void fn_8013CFFC();
-void fn_8013D024();
-void *fn_8013D098();
+void igObjectPropertyForModelViewMatrixBoneSelect_register();
+void *igObjectPropertyForModelViewMatrixBoneSelect_getMetaCall();
 }
 struct UnknownGenRoot8013CF30 {
  void *unknown00;
@@ -42,11 +42,11 @@ struct UnknownGenObject8013CF30 : UnknownGenObject8013CF30_1 {
  inline ~UnknownGenObject8013CF30(){unknown00=lbl_804A4FC4;}
 };
 extern "C" {
-void *fn_8013CEF4(){
+void *igObjectPropertyForModelViewMatrixBoneSelect_getMeta(){
  if(!lbl_80563F24 || !(reinterpret_cast<unsigned int *>(lbl_80563F24)[0x24/4]&4)) fn_8013CFFC();
  return lbl_80563F24;
 }
-void *fn_8013CF30(){
+void *igObjectPropertyForModelViewMatrixBoneSelect_vtableRead(){
  UnknownGenObject8013CF30 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -58,12 +58,12 @@ void *fn_8013CF30(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013CFFC(){
- fn_80066188((int)fn_8013D024);
+ fn_80066188((int)igObjectPropertyForModelViewMatrixBoneSelect_register);
 }
-void fn_8013D024(){
+void igObjectPropertyForModelViewMatrixBoneSelect_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563F24,(int)fn_80140664,(int)fn_8013BF68,(int)fn_8013D098,(int)lbl_8049DBF0,44,(int)fn_8013CF30,(int)fn_8013D0B8,0,(int)lbl_8055F840);
+ fn_80066204(0,(int)&lbl_80563F24,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForModelViewMatrixBoneSelect_getMetaCall,(int)lbl_8049DBF0,44,(int)igObjectPropertyForModelViewMatrixBoneSelect_vtableRead,(int)fn_8013D0B8,0,(int)lbl_8055F840);
 }
-void *fn_8013D098(){return fn_8013CEF4();}
+void *igObjectPropertyForModelViewMatrixBoneSelect_getMetaCall(){return igObjectPropertyForModelViewMatrixBoneSelect_getMeta();}
 }
 #pragma pop

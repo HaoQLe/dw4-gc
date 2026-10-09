@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80318470(){}
+void beWeapon_virtual84(){}
 }
 #pragma pop

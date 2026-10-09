@@ -14,7 +14,7 @@ extern char lbl_804D1880[];
 extern void *lbl_80535118;
 }
 extern "C" {
-void fn_802D23A4(){
+void beLuaDataObject_fieldInit(){
  void *value0=lbl_80535118;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1868,2);

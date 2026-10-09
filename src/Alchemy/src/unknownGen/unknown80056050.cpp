@@ -94,7 +94,7 @@ public:
  virtual void sD8(void *,void *);
 };
 extern "C" {
-void *fn_80056050(int p0){
+void *igMemoryDictionary_virtual128(int p0){
  void *value0;
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+44)){
   value0=reinterpret_cast<UnknownGenV80056050_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64))->s7C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24));

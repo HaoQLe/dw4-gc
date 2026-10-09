@@ -6,24 +6,24 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802E170C();
 void fn_80402E28();
-void *fn_804073BC();
-void fn_80407408();
-void fn_80407578();
-void fn_80407B3C();
+void igFlyMode_fieldInit();
+void *igFlyMode_getMeta();
+void igFlyMode_vtableRead();
+void igViewMode_register();
 extern char lbl_80462928[];
 extern char lbl_804F0BB4[];
 extern char lbl_8055CA20[];
-void fn_804074DC();
-void *fn_80407558();
+void igFlyMode_register();
+void *igFlyMode_getMetaCall();
 }
 extern "C" {
 void fn_804074B4(){
- fn_80066188((int)fn_804074DC);
+ fn_80066188((int)igFlyMode_register);
 }
-void fn_804074DC(){
+void igFlyMode_register(){
  fn_80402E28();
- fn_80066204(0,(int)lbl_8055CA20,(int)fn_80407B3C,(int)fn_802E170C,(int)fn_80407558,(int)lbl_80462928,160,(int)fn_80407408,(int)fn_80407578,0,(int)lbl_804F0BB4);
+ fn_80066204(0,(int)lbl_8055CA20,(int)igViewMode_register,(int)fn_802E170C,(int)igFlyMode_getMetaCall,(int)lbl_80462928,160,(int)igFlyMode_vtableRead,(int)igFlyMode_fieldInit,0,(int)lbl_804F0BB4);
 }
-void *fn_80407558(){return fn_804073BC();}
+void *igFlyMode_getMetaCall(){return igFlyMode_getMeta();}
 }
 #pragma pop

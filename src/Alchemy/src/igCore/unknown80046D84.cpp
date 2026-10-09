@@ -227,11 +227,11 @@ void fn_8004155C(void *,int,int);
 
 
 
-int fn_80046D84(Unknown80046D84Object *object,void *buffer,int count){ return fn_80031728(object)->slotD0(buffer,count*object->unknown38); }
-unsigned int fn_80046DDC(Unknown80046D84Object *object){return (object->unknown38&0x3FFF)*4;}
+int igEnumArrayMetaField_virtualD0(Unknown80046D84Object *object,void *buffer,int count){ return fn_80031728(object)->slotD0(buffer,count*object->unknown38); }
+unsigned int igEnumArrayMetaField_virtual64(Unknown80046D84Object *object){return (object->unknown38&0x3FFF)*4;}
 void fn_80046DE8(Unknown80046D84Object *object,unsigned int value){ object->slot8C(0);unsigned int *p=object->unknown20;for(int i=0;i<object->unknown38;++i) p[i]=value; }
 void fn_80046E58(Unknown80046D84Object *object,int value){object->slot8C(value);}
-int fn_80046E84(Unknown80046D84Object *object,unsigned int *value,const char *text){
+int igEnumArrayMetaField_virtualE0(Unknown80046D84Object *object,unsigned int *value,const char *text){
  int count=0;
  int result=sscanf(text,lbl_8055D794,value,&count);
  if((result==0 || result==-1) && text){
@@ -241,13 +241,13 @@ int fn_80046E84(Unknown80046D84Object *object,unsigned int *value,const char *te
  }
  return count;
 }
-Unknown80042DECResult fn_80046F3C(Unknown80046D84Object *object,unsigned int *value){return fn_800634A4(object->unknown34(),*value);}
+Unknown80042DECResult igEnumArrayMetaField_virtualE4(Unknown80046D84Object *object,unsigned int *value){return fn_800634A4(object->unknown34(),*value);}
 void *fn_80046F8C(void *object){ fn_8006388C(object);*reinterpret_cast<void ***>(object)=lbl_804758E4;if(object) fn_80046FD8(object);return object;}
 void *fn_80046FD8(void *object){fn_800638E0(object);*reinterpret_cast<void ***>(object)=lbl_804758E4;return object;}
 void *fn_80047014(void *object){fn_800639E4(object);*reinterpret_cast<void ***>(object)=lbl_804758E4;return object;}
-void fn_80047050(void *object){fn_80063B1C(object);}
+void igEnumArrayMetaField_virtual08(void *object){fn_80063B1C(object);}
 int fn_80047070(){return 4;}
-int fn_80047078(){return 4;}
+int igEnumArrayMetaField_virtual6C(){return 4;}
 void *fn_80047080(){return fn_800470F4();}
 void fn_800470A0(){unknown80042DECRelease(lbl_80562120);lbl_80562120=NULL;lbl_80562124=1;}
 void *fn_800470F4(){if(!lbl_80562120 && lbl_80561C2C && !lbl_80562124) lbl_80562120=fn_8003119C(fn_800607F4(lbl_805621F0));return lbl_80562120;}
@@ -288,7 +288,7 @@ void fn_80047418(Unknown8004714COwner *object,const char *text){
  if(object->unknown242C[0]) object->unknown252C=fn_800744AC(object->unknown38,object->unknown242C);else object->unknown252C=-1;
  object->unknown0C&=~2;
 }
-void fn_80047524(Unknown8004714COwner *object){
+void igEventTracker_virtual5C(Unknown8004714COwner *object){
  fn_800740F4(object->unknown34,0x100);fn_800740FC(object->unknown34,0x20);fn_80074104(object->unknown34);
  fn_800740F4(object->unknown38,0x1000);fn_800740FC(object->unknown38,0x100);fn_80074104(object->unknown38);
  fn_800740F4(object->unknown44,0x200);fn_800740FC(object->unknown44,0x20);fn_80074104(object->unknown44);
@@ -303,7 +303,7 @@ void fn_80047524(Unknown8004714COwner *object){
  object->unknown58=fn_80047148;
  fn_8004714C(object,1);
 }
-void fn_800476A0(Unknown8004714COwner *object){
+void igEventTracker_virtual60(Unknown8004714COwner *object){
  if((object->unknown0C>>1)&1) return;
  object->unknown0C|=2;
  fn_80074160(object->unknown34);fn_80074160(object->unknown38);fn_80074160(object->unknown44);fn_80074160(object->unknown40);fn_80074160(object->unknown44);
@@ -314,7 +314,7 @@ void fn_800476A0(Unknown8004714COwner *object){
  fn_8004714C(object,0);
  object->unknown0C&=~2;
 }
-void fn_8004778C(Unknown8004714COwner *object){
+void igEventTracker_virtual64(Unknown8004714COwner *object){
  Unknown8004730CLock lock(object->unknown08);
  object->unknown28=0;
  fn_80074218(object->unknown34);fn_80074218(object->unknown38);fn_80074218(object->unknown44);fn_80074218(object->unknown40);fn_80074218(object->unknown44);

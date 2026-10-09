@@ -36,7 +36,7 @@ public:
  virtual void s74();
 };
 extern "C" {
-void *fn_80410504(int p0){
+void *igViewManager_virtual6C(int p0){
  reinterpret_cast<UnknownGenV80410504_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s74();
  return (void *)1;
 }

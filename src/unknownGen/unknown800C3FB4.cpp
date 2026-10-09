@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800FF7CC(void *,void *,void *,void *);
+void igGamecubeVisualContext_virtual250(void *,void *,void *,void *);
 extern void *lbl_80562B0C;
 }
 class UnknownGenV800C3FB4_0 {
@@ -272,7 +272,7 @@ public:
  virtual void s7C(void *,void *,void *);
 };
 extern "C" {
-void fn_800C3FB4(int p0,int p1,int p2,int p3,int p4,int p5){
+void igTextureFunctionAttr_virtual60(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
  void *value0=lbl_80562B0C;
@@ -288,7 +288,7 @@ void fn_800C3FB4(int p0,int p1,int p2,int p3,int p4,int p5){
   reinterpret_cast<UnknownGenV800C3FB4_7 *>(lbl_80562B0C)->s7C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),value1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
   return;
  } else {
-  fn_800FF7CC((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p3);
+  igGamecubeVisualContext_virtual250((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p3);
   return;
  }
 }

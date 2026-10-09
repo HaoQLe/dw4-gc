@@ -7,18 +7,18 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
 void *fn_801AD7BC();
-void fn_801B09E4();
-void fn_801B665C();
+void igPlanarShadowProcessor_fieldInit();
+void igShaderProcessor_register();
 extern char lbl_804ADBC4[];
 extern char lbl_804ADBD4[];
 extern char lbl_804B39E8[];
 extern char lbl_804B3F6C[];
 extern void *lbl_80564B74;
-void *fn_801B6454();
-void *fn_801B6490();
+void *igPlanarShadowProcessor_getMeta();
+void *igPlanarShadowProcessor_vtableRead();
 void fn_801B659C();
-void fn_801B65C4();
-void *fn_801B663C();
+void igPlanarShadowProcessor_register();
+void *igPlanarShadowProcessor_getMetaCall();
 }
 struct UnknownGenRoot801B6490 {
  void *unknown00;
@@ -35,11 +35,11 @@ struct UnknownGenObject801B6490 : UnknownGenRoot801B6490 {
  inline ~UnknownGenObject801B6490(){unknown00=lbl_804B3F6C;}
 };
 extern "C" {
-void *fn_801B6454(){
+void *igPlanarShadowProcessor_getMeta(){
  if(!lbl_80564B74 || !(reinterpret_cast<unsigned int *>(lbl_80564B74)[0x24/4]&4)) fn_801B659C();
  return lbl_80564B74;
 }
-void *fn_801B6490(){
+void *igPlanarShadowProcessor_vtableRead(){
  UnknownGenObject801B6490 object;
  object.unknown00=lbl_804B39E8;
  object.unknown00=lbl_804B3F6C;
@@ -49,12 +49,12 @@ void *fn_801B6490(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B659C(){
- fn_80066188((int)fn_801B65C4);
+ fn_80066188((int)igPlanarShadowProcessor_register);
 }
-void fn_801B65C4(){
+void igPlanarShadowProcessor_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564B74,(int)fn_801B09E4,(int)fn_801AD7BC,(int)fn_801B663C,(int)lbl_804ADBD4,64,(int)fn_801B6490,(int)fn_801B665C,0,(int)lbl_804ADBC4);
+ fn_80066204(0,(int)&lbl_80564B74,(int)igShaderProcessor_register,(int)fn_801AD7BC,(int)igPlanarShadowProcessor_getMetaCall,(int)lbl_804ADBD4,64,(int)igPlanarShadowProcessor_vtableRead,(int)igPlanarShadowProcessor_fieldInit,0,(int)lbl_804ADBC4);
 }
-void *fn_801B663C(){return fn_801B6454();}
+void *igPlanarShadowProcessor_getMetaCall(){return igPlanarShadowProcessor_getMeta();}
 }
 #pragma pop

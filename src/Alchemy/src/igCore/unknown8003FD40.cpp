@@ -107,11 +107,11 @@ extern "C" {
     extern char lbl_8055D794[5], lbl_8055D7C0[3];
 }
 
-extern "C" void fn_8003FD40(Unknown8003FD40 *object, void *value, Gap::igUnsignedInt count){
+extern "C" void igCharArrayMetaField_virtualD0(Unknown8003FD40 *object, void *value, Gap::igUnsignedInt count){
     fn_80037E48(object)->slotD0(value, count * object->unknown34);
 }
 
-extern "C" Gap::igUnsignedInt fn_8003FD98(Unknown8003FD40 *object){
+extern "C" Gap::igUnsignedInt igCharArrayMetaField_virtual64(Unknown8003FD40 *object){
     return object->unknown34 & 0xFFFF;
 }
 
@@ -131,7 +131,7 @@ extern "C" void fn_8003FDF8(Unknown8003FD40 *object, char value){
     }
 }
 
-extern "C" int fn_8003FE64(void *, char *value, const char *text){
+extern "C" int igCharArrayMetaField_virtualE0(void *, char *value, const char *text){
     int consumed = 0;
     int number = 0;
     sscanf(text, lbl_8055D794, &number, &consumed);
@@ -155,7 +155,7 @@ struct Unknown8003FEBCString {
     inline Unknown8003FEBCString(const char *text) : unknown00(unknown8003FEBCAcquire(text)) {}
 };
 
-extern "C" Unknown8003FEBCString fn_8003FEBC(void *, const signed char *value){
+extern "C" Unknown8003FEBCString igCharArrayMetaField_virtualE4(void *, const signed char *value){
     char buffer[0x400];
     sprintf(buffer, lbl_8055D7C0, *value);
     return Unknown8003FEBCString(buffer);

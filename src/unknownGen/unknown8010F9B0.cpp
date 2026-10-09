@@ -10,19 +10,19 @@ void fn_8006665C(void *);
 void fn_800A325C(void *);
 void fn_8010CBD4();
 void *fn_8010F4FC();
-void fn_8010FD10();
-void fn_80112DF0();
+void igEventReceiver_register();
+void igGuiSystem_fieldInit();
 extern char lbl_80494B44[];
 extern char lbl_80494B60[];
 extern char lbl_8049618C[];
 extern char lbl_80497724[];
 extern void *lbl_805621F4;
 extern void *lbl_8056366C;
-void *fn_8010F9EC();
-void *fn_8010FA28();
+void *igGuiSystem_getMeta();
+void *igGuiSystem_vtableRead();
 void fn_8010FC50();
-void fn_8010FC78();
-void *fn_8010FCF0();
+void igGuiSystem_register();
+void *igGuiSystem_getMetaCall();
 }
 struct UnknownGenRoot8010FA28 {
  void *unknown00;
@@ -45,11 +45,11 @@ void *fn_8010F9B0(){
  if(!lbl_8056366C) lbl_8056366C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8056366C;
 }
-void *fn_8010F9EC(){
+void *igGuiSystem_getMeta(){
  if(!lbl_8056366C || !(reinterpret_cast<unsigned int *>(lbl_8056366C)[0x24/4]&4)) fn_8010FC50();
  return lbl_8056366C;
 }
-void *fn_8010FA28(){
+void *igGuiSystem_vtableRead(){
  UnknownGenObject8010FA28 object;
  object.unknown00=lbl_80497724;
  object.unknown00=lbl_8049618C;
@@ -73,12 +73,12 @@ UnknownGenHolder *dtor_8010FBDC(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_8010FC50(){
- fn_80066188((int)fn_8010FC78);
+ fn_80066188((int)igGuiSystem_register);
 }
-void fn_8010FC78(){
+void igGuiSystem_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_8056366C,(int)fn_80112DF0,(int)fn_8010F4FC,(int)fn_8010FCF0,(int)lbl_80494B60,36,(int)fn_8010FA28,(int)fn_8010FD10,0,(int)lbl_80494B44);
+ fn_80066204(0,(int)&lbl_8056366C,(int)igEventReceiver_register,(int)fn_8010F4FC,(int)igGuiSystem_getMetaCall,(int)lbl_80494B60,36,(int)igGuiSystem_vtableRead,(int)igGuiSystem_fieldInit,0,(int)lbl_80494B44);
 }
-void *fn_8010FCF0(){return fn_8010F9EC();}
+void *igGuiSystem_getMetaCall(){return igGuiSystem_getMeta();}
 }
 #pragma pop

@@ -4,26 +4,26 @@
 extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80285E14();
 void fn_802AA788();
-void *fn_802AD6F8();
-void fn_802AD744();
 void *fn_802AD8A0();
-void fn_802AD8B0();
+void igInsightPlugin_register();
+void igMoviePlugin_fieldInit();
+void *igMoviePlugin_getMeta();
+void igMoviePlugin_vtableRead();
 extern char lbl_8041C004[];
 extern char lbl_804CDDEC[];
 extern char lbl_80534490[];
-void fn_802AD804();
-void *fn_802AD880();
+void igMoviePlugin_register();
+void *igMoviePlugin_getMetaCall();
 }
 extern "C" {
 void fn_802AD7DC(){
- fn_80066188((int)fn_802AD804);
+ fn_80066188((int)igMoviePlugin_register);
 }
-void fn_802AD804(){
+void igMoviePlugin_register(){
  fn_802AA788();
- fn_80066204(0,(int)lbl_80534490,(int)fn_80285E14,(int)fn_802AD8A0,(int)fn_802AD880,(int)lbl_8041C004,12,(int)fn_802AD744,(int)fn_802AD8B0,0,(int)lbl_804CDDEC);
+ fn_80066204(0,(int)lbl_80534490,(int)igInsightPlugin_register,(int)fn_802AD8A0,(int)igMoviePlugin_getMetaCall,(int)lbl_8041C004,12,(int)igMoviePlugin_vtableRead,(int)igMoviePlugin_fieldInit,0,(int)lbl_804CDDEC);
 }
-void *fn_802AD880(){return fn_802AD6F8();}
+void *igMoviePlugin_getMetaCall(){return igMoviePlugin_getMeta();}
 }
 #pragma pop

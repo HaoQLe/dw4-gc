@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800C21A0(){}
+void igPixelShaderBindAttr_virtual68(){}
 }
 #pragma pop

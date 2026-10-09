@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80215958(int p0){
+void igCompressedAnimationSequenceQS_virtual94(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+56)=(unsigned char)(int)(void *)(int)((unsigned int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+56)&0xFE);

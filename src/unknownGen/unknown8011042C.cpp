@@ -7,19 +7,19 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8010CBD4();
-void fn_8010CFA4();
 void *fn_8010E6DC();
-void fn_80110668();
+void igActiveComponentsObserver_fieldInit();
+void igView_register();
 extern char lbl_80494CE4[];
 extern char lbl_80495AD8[];
 extern char lbl_80496284[];
 extern char lbl_8055F08C[8];
 extern void *lbl_805636AC;
-void *fn_80110464();
-void *fn_801104A0();
+void *igActiveComponentsObserver_getMeta();
+void *igActiveComponentsObserver_vtableRead();
 void fn_801105AC();
-void fn_801105D4();
-void *fn_80110648();
+void igActiveComponentsObserver_register();
+void *igActiveComponentsObserver_getMetaCall();
 }
 struct UnknownGenRoot801104A0 {
  void *unknown00;
@@ -38,11 +38,11 @@ void *fn_8011042C(void *object){
  fn_801105AC();
  return fn_8006546C(lbl_805636AC,object);
 }
-void *fn_80110464(){
+void *igActiveComponentsObserver_getMeta(){
  if(!lbl_805636AC || !(reinterpret_cast<unsigned int *>(lbl_805636AC)[0x24/4]&4)) fn_801105AC();
  return lbl_805636AC;
 }
-void *fn_801104A0(){
+void *igActiveComponentsObserver_vtableRead(){
  UnknownGenObject801104A0 object;
  object.unknown00=lbl_80495AD8;
  object.unknown00=lbl_80496284;
@@ -52,12 +52,12 @@ void *fn_801104A0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801105AC(){
- fn_80066188((int)fn_801105D4);
+ fn_80066188((int)igActiveComponentsObserver_register);
 }
-void fn_801105D4(){
+void igActiveComponentsObserver_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805636AC,(int)fn_8010CFA4,(int)fn_8010E6DC,(int)fn_80110648,(int)lbl_80494CE4,24,(int)fn_801104A0,(int)fn_80110668,0,(int)lbl_8055F08C);
+ fn_80066204(0,(int)&lbl_805636AC,(int)igView_register,(int)fn_8010E6DC,(int)igActiveComponentsObserver_getMetaCall,(int)lbl_80494CE4,24,(int)igActiveComponentsObserver_vtableRead,(int)igActiveComponentsObserver_fieldInit,0,(int)lbl_8055F08C);
 }
-void *fn_80110648(){return fn_80110464();}
+void *igActiveComponentsObserver_getMetaCall(){return igActiveComponentsObserver_getMeta();}
 }
 #pragma pop

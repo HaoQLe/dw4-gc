@@ -35,7 +35,7 @@ public:
  virtual void s70();
 };
 extern "C" {
-void fn_800C0800(int p0){
+void igGeometrySetAttr_virtual30(int p0){
  reinterpret_cast<UnknownGenV800C0800_0 *>((void *)p0)->s70();
  fn_800667D4((void *)p0);
 }

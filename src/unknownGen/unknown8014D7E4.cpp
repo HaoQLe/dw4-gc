@@ -8,9 +8,9 @@ void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void *fn_801308D0();
-void fn_8013A878();
-void fn_8013B97C();
-void fn_8014DCAC();
+void igCreateActorBounds_fieldInit();
+void igOptBase_register();
+void igOptVisitObject_register();
 extern char lbl_8049F91C[];
 extern char lbl_8049F938[];
 extern char lbl_8049F948[];
@@ -22,16 +22,16 @@ extern char lbl_804A72E4[];
 extern char lbl_804AAF48[];
 extern void *lbl_80564400;
 extern void *lbl_80564404;
-void *fn_8014D7E4();
-void *fn_8014D820();
+void *igCreateAnimationDatabases_getMeta();
+void *igCreateAnimationDatabases_vtableRead();
 void fn_8014D960();
-void fn_8014D988();
-void *fn_8014D9F0();
-void *fn_8014DA10();
-void *fn_8014DA4C();
+void igCreateAnimationDatabases_register();
+void *igCreateAnimationDatabases_getMetaCall();
+void *igCreateActorBounds_getMeta();
+void *igCreateActorBounds_vtableRead();
 void fn_8014DBEC();
-void fn_8014DC14();
-void *fn_8014DC8C();
+void igCreateActorBounds_register();
+void *igCreateActorBounds_getMetaCall();
 }
 struct UnknownGenRoot8014D820 {
  void *unknown00;
@@ -71,11 +71,11 @@ struct UnknownGenObject8014DA4C : UnknownGenObject8014DA4C_0 {
  inline ~UnknownGenObject8014DA4C(){unknown00=lbl_804A72E4;}
 };
 extern "C" {
-void *fn_8014D7E4(){
+void *igCreateAnimationDatabases_getMeta(){
  if(!lbl_80564400 || !(reinterpret_cast<unsigned int *>(lbl_80564400)[0x24/4]&4)) fn_8014D960();
  return lbl_80564400;
 }
-void *fn_8014D820(){
+void *igCreateAnimationDatabases_vtableRead(){
  UnknownGenObject8014D820 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -88,18 +88,18 @@ void *fn_8014D820(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8014D960(){
- fn_80066188((int)fn_8014D988);
+ fn_80066188((int)igCreateAnimationDatabases_register);
 }
-void fn_8014D988(){
+void igCreateAnimationDatabases_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564400,(int)fn_8013A878,(int)fn_8012FEB0,(int)fn_8014D9F0,(int)lbl_8049F91C,44,(int)fn_8014D820,0,0,0);
+ fn_80066204(0,(int)&lbl_80564400,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igCreateAnimationDatabases_getMetaCall,(int)lbl_8049F91C,44,(int)igCreateAnimationDatabases_vtableRead,0,0,0);
 }
-void *fn_8014D9F0(){return fn_8014D7E4();}
-void *fn_8014DA10(){
+void *igCreateAnimationDatabases_getMetaCall(){return igCreateAnimationDatabases_getMeta();}
+void *igCreateActorBounds_getMeta(){
  if(!lbl_80564404 || !(reinterpret_cast<unsigned int *>(lbl_80564404)[0x24/4]&4)) fn_8014DBEC();
  return lbl_80564404;
 }
-void *fn_8014DA4C(){
+void *igCreateActorBounds_vtableRead(){
  UnknownGenObject8014DA4C object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -113,12 +113,12 @@ void *fn_8014DA4C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8014DBEC(){
- fn_80066188((int)fn_8014DC14);
+ fn_80066188((int)igCreateActorBounds_register);
 }
-void fn_8014DC14(){
+void igCreateActorBounds_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564404,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_8014DC8C,(int)lbl_8049F948,60,(int)fn_8014DA4C,(int)fn_8014DCAC,0,(int)lbl_8049F938);
+ fn_80066204(0,(int)&lbl_80564404,(int)igOptBase_register,(int)fn_801308D0,(int)igCreateActorBounds_getMetaCall,(int)lbl_8049F948,60,(int)igCreateActorBounds_vtableRead,(int)igCreateActorBounds_fieldInit,0,(int)lbl_8049F938);
 }
-void *fn_8014DC8C(){return fn_8014DA10();}
+void *igCreateActorBounds_getMetaCall(){return igCreateActorBounds_getMeta();}
 }
 #pragma pop

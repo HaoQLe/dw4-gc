@@ -15,7 +15,7 @@ extern char lbl_804E3A44[];
 extern void *lbl_80536634;
 }
 extern "C" {
-void fn_80340BD0(){
+void beNDMWDegiData_fieldInit(){
  void *value0=lbl_80536634;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E39A8,13);

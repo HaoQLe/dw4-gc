@@ -138,7 +138,7 @@ public:
  virtual void s20C(void *);
 };
 extern "C" {
-void fn_800C384C(int p0){
+void igTextureAttr_virtual70(int p0){
  void *value0;
  void *value1;
  void *value2;

@@ -34,7 +34,7 @@ struct UnknownGenObject802D9684 : UnknownGenObject802D9684_2 {
  inline ~UnknownGenObject802D9684(){unknown00=lbl_804D609C;}
 };
 extern "C" {
-void *fn_802D9684(){
+void *beFontImage_vtableRead(){
  UnknownGenObject802D9684 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

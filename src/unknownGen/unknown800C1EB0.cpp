@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800C1EB0(int p0,int p1,int p2,int p3){
+void igParticleAttr_virtual80(int p0,int p1,int p2,int p3){
  void *value0;
  void *value1;
  void *value2;

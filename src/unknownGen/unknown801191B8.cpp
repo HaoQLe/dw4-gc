@@ -30,7 +30,7 @@ public:
  virtual void * s5C(void *,void *);
 };
 extern "C" {
-void fn_801191B8(int p0,int p1,int p2){
+void igEventDispatcher_virtualA0(int p0,int p1,int p2){
  void *value0;
  void *value1;
  void *value2;

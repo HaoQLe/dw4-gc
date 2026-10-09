@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80534368;
 }
 extern "C" {
-void *fn_802AAD4C(){return lbl_80534368;}
+void *igAdxAfsFile_parentMeta(){return lbl_80534368;}
 }
 #pragma pop

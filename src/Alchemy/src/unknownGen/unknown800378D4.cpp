@@ -4,7 +4,6 @@
 extern "C" {
 void fn_80021B94();
 void *fn_80021D70();
-void fn_8002A6D8();
 void *fn_80034048();
 void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
@@ -17,6 +16,7 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void igMetaField_register();
 extern char lbl_80467774[];
 extern char lbl_80467780[];
 extern char lbl_8055D660[4];
@@ -26,26 +26,26 @@ extern char lbl_8055D66C[4];
 extern void *lbl_80561E10;
 extern void *lbl_80561E14;
 extern void *lbl_805621F4;
-void *fn_800378D4();
+void *igCompoundMetaField_getMeta();
 void fn_80037910();
-void fn_80037938();
-void *fn_800379AC();
-void fn_800379CC();
+void igCompoundMetaField_register();
+void *igCompoundMetaField_getMetaCall();
+void igCompoundMetaField_fieldInit();
 }
 extern "C" {
-void *fn_800378D4(){
+void *igCompoundMetaField_getMeta(){
  if(!lbl_80561E10 || !(reinterpret_cast<unsigned int *>(lbl_80561E10)[0x24/4]&4)) fn_80037910();
  return lbl_80561E10;
 }
 void fn_80037910(){
- fn_80066188((int)fn_80037938);
+ fn_80066188((int)igCompoundMetaField_register);
 }
-void fn_80037938(){
+void igCompoundMetaField_register(){
  fn_80021B94();
- fn_80066204(1,(int)&lbl_80561E10,(int)fn_8002A6D8,(int)fn_80021D70,(int)fn_800379AC,(int)lbl_80467780,56,0,(int)fn_800379CC,0,(int)lbl_80467774);
+ fn_80066204(1,(int)&lbl_80561E10,(int)igMetaField_register,(int)fn_80021D70,(int)igCompoundMetaField_getMetaCall,(int)lbl_80467780,56,0,(int)igCompoundMetaField_fieldInit,0,(int)lbl_80467774);
 }
-void *fn_800379AC(){return fn_800378D4();}
-void fn_800379CC(){
+void *igCompoundMetaField_getMetaCall(){return igCompoundMetaField_getMeta();}
+void igCompoundMetaField_fieldInit(){
  void *value0=lbl_80561E10;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D660,1);

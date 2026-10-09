@@ -12,9 +12,9 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_801308D0();
-void fn_8013A494();
-void fn_8013B97C();
-void fn_80142630();
+void igMacroOpt_register();
+void igOptBase_register();
+void igOptimizeActorKeyframes_fieldInit();
 extern char lbl_8049D4FC[];
 extern char lbl_8049D51C[];
 extern char lbl_8049D568[];
@@ -33,23 +33,23 @@ extern void *lbl_80563E18;
 extern void *lbl_80563E1C;
 extern void *lbl_80563E28;
 extern void *lbl_8056407C;
-void *fn_80139DD0();
-void *fn_80139E0C();
+void *igOptimizeActorSkinsInScenes_getMeta();
+void *igOptimizeActorSkinsInScenes_vtableRead();
 void fn_80139F84();
-void fn_80139FAC();
-void *fn_8013A014();
-void *fn_8013A034();
-void *fn_8013A03C();
-void *fn_8013A078();
+void igOptimizeActorSkinsInScenes_register();
+void *igOptimizeActorSkinsInScenes_getMetaCall();
+void *igOptimizeActorSkinsInScenes_parentMeta();
+void *igOptimizeActorSkeletons_getMeta();
+void *igOptimizeActorSkeletons_vtableRead();
 void fn_8013A168();
-void fn_8013A190();
-void *fn_8013A200();
-void fn_8013A220();
-void *fn_8013A2B0();
-void *fn_8013A2EC();
+void igOptimizeActorSkeletons_register();
+void *igOptimizeActorSkeletons_getMetaCall();
+void igOptimizeActorSkeletons_fieldInit();
+void *igOptimizeActorKeyframes_getMeta();
+void *igOptimizeActorKeyframes_vtableRead();
 void fn_8013A3DC();
-void fn_8013A404();
-void *fn_8013A474();
+void igOptimizeActorKeyframes_register();
+void *igOptimizeActorKeyframes_getMetaCall();
 }
 struct UnknownGenRoot80139E0C {
  void *unknown00;
@@ -102,11 +102,11 @@ struct UnknownGenObject8013A2EC : UnknownGenObject8013A2EC_0 {
  inline ~UnknownGenObject8013A2EC(){unknown00=lbl_804A459C;}
 };
 extern "C" {
-void *fn_80139DD0(){
+void *igOptimizeActorSkinsInScenes_getMeta(){
  if(!lbl_80563E18 || !(reinterpret_cast<unsigned int *>(lbl_80563E18)[0x24/4]&4)) fn_80139F84();
  return lbl_80563E18;
 }
-void *fn_80139E0C(){
+void *igOptimizeActorSkinsInScenes_vtableRead(){
  UnknownGenObject80139E0C object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -120,19 +120,19 @@ void *fn_80139E0C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80139F84(){
- fn_80066188((int)fn_80139FAC);
+ fn_80066188((int)igOptimizeActorSkinsInScenes_register);
 }
-void fn_80139FAC(){
+void igOptimizeActorSkinsInScenes_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563E18,(int)fn_80142630,(int)fn_8013A034,(int)fn_8013A014,(int)lbl_8049D4FC,48,(int)fn_80139E0C,0,0,0);
+ fn_80066204(0,(int)&lbl_80563E18,(int)igMacroOpt_register,(int)igOptimizeActorSkinsInScenes_parentMeta,(int)igOptimizeActorSkinsInScenes_getMetaCall,(int)lbl_8049D4FC,48,(int)igOptimizeActorSkinsInScenes_vtableRead,0,0,0);
 }
-void *fn_8013A014(){return fn_80139DD0();}
-void *fn_8013A034(){return lbl_8056407C;}
-void *fn_8013A03C(){
+void *igOptimizeActorSkinsInScenes_getMetaCall(){return igOptimizeActorSkinsInScenes_getMeta();}
+void *igOptimizeActorSkinsInScenes_parentMeta(){return lbl_8056407C;}
+void *igOptimizeActorSkeletons_getMeta(){
  if(!lbl_80563E1C || !(reinterpret_cast<unsigned int *>(lbl_80563E1C)[0x24/4]&4)) fn_8013A168();
  return lbl_80563E1C;
 }
-void *fn_8013A078(){
+void *igOptimizeActorSkeletons_vtableRead(){
  UnknownGenObject8013A078 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -143,14 +143,14 @@ void *fn_8013A078(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013A168(){
- fn_80066188((int)fn_8013A190);
+ fn_80066188((int)igOptimizeActorSkeletons_register);
 }
-void fn_8013A190(){
+void igOptimizeActorSkeletons_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563E1C,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_8013A200,(int)lbl_8049D51C,44,(int)fn_8013A078,(int)fn_8013A220,0,0);
+ fn_80066204(0,(int)&lbl_80563E1C,(int)igOptBase_register,(int)fn_801308D0,(int)igOptimizeActorSkeletons_getMetaCall,(int)lbl_8049D51C,44,(int)igOptimizeActorSkeletons_vtableRead,(int)igOptimizeActorSkeletons_fieldInit,0,0);
 }
-void *fn_8013A200(){return fn_8013A03C();}
-void fn_8013A220(){
+void *igOptimizeActorSkeletons_getMetaCall(){return igOptimizeActorSkeletons_getMeta();}
+void igOptimizeActorSkeletons_fieldInit(){
  void *value0=lbl_80563E1C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F778,2);
@@ -160,11 +160,11 @@ void fn_8013A220(){
  fn_8003EC68(value3,1);
  fn_800659C0(value0,lbl_8055F780,lbl_8055F788,lbl_8055F790,value1);
 }
-void *fn_8013A2B0(){
+void *igOptimizeActorKeyframes_getMeta(){
  if(!lbl_80563E28 || !(reinterpret_cast<unsigned int *>(lbl_80563E28)[0x24/4]&4)) fn_8013A3DC();
  return lbl_80563E28;
 }
-void *fn_8013A2EC(){
+void *igOptimizeActorKeyframes_vtableRead(){
  UnknownGenObject8013A2EC object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -175,12 +175,12 @@ void *fn_8013A2EC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013A3DC(){
- fn_80066188((int)fn_8013A404);
+ fn_80066188((int)igOptimizeActorKeyframes_register);
 }
-void fn_8013A404(){
+void igOptimizeActorKeyframes_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563E28,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_8013A474,(int)lbl_8049D568,64,(int)fn_8013A2EC,(int)fn_8013A494,0,0);
+ fn_80066204(0,(int)&lbl_80563E28,(int)igOptBase_register,(int)fn_801308D0,(int)igOptimizeActorKeyframes_getMetaCall,(int)lbl_8049D568,64,(int)igOptimizeActorKeyframes_vtableRead,(int)igOptimizeActorKeyframes_fieldInit,0,0);
 }
-void *fn_8013A474(){return fn_8013A2B0();}
+void *igOptimizeActorKeyframes_getMetaCall(){return igOptimizeActorKeyframes_getMeta();}
 }
 #pragma pop

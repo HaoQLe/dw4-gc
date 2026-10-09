@@ -60,7 +60,7 @@ public:
  virtual void s90();
 };
 extern "C" {
-void fn_80154BAC(int p0,int p1){
+void igChildEditForNode_virtual98(int p0,int p1){
  void *value0;
  void *value1;
  void *local0;

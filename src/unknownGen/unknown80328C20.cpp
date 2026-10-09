@@ -11,7 +11,7 @@ void *fn_80328C20(void *object){
  fn_80328DA8();
  return fn_8006546C(lbl_80535D68,object);
 }
-void *fn_80328C60(){
+void *beNDMWShopSelectA0_getMeta(){
  if(!lbl_80535D68 || !(reinterpret_cast<unsigned int *>(lbl_80535D68)[0x24/4]&4)) fn_80328DA8();
  return lbl_80535D68;
 }

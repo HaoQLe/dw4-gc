@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beBaseInfoRam_register();
+void beGeneraterInfoRam_fieldInit();
+void *beGeneraterInfoRam_getMeta();
+void beGeneraterInfoRam_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800A325C(void *);
 void fn_802B1AC8();
 void *fn_802B2B2C();
-void *fn_802D6C8C();
-void fn_802D6CD8();
-void fn_802D6EF4();
-void fn_802E3284();
 extern char lbl_80420014[];
 extern char lbl_804D1D80[];
 extern char lbl_80535280[];
-void fn_802D6E58();
-void *fn_802D6ED4();
+void beGeneraterInfoRam_register();
+void *beGeneraterInfoRam_getMetaCall();
 }
 extern "C" {
 UnknownGenHolder *dtor_802D6DBC(UnknownGenHolder *object,short flags){
@@ -30,12 +30,12 @@ UnknownGenHolder *dtor_802D6DBC(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_802D6E30(){
- fn_80066188((int)fn_802D6E58);
+ fn_80066188((int)beGeneraterInfoRam_register);
 }
-void fn_802D6E58(){
+void beGeneraterInfoRam_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535280,(int)fn_802E3284,(int)fn_802B2B2C,(int)fn_802D6ED4,(int)lbl_80420014,48,(int)fn_802D6CD8,(int)fn_802D6EF4,0,(int)lbl_804D1D80);
+ fn_80066204(0,(int)lbl_80535280,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beGeneraterInfoRam_getMetaCall,(int)lbl_80420014,48,(int)beGeneraterInfoRam_vtableRead,(int)beGeneraterInfoRam_fieldInit,0,(int)lbl_804D1D80);
 }
-void *fn_802D6ED4(){return fn_802D6C8C();}
+void *beGeneraterInfoRam_getMetaCall(){return beGeneraterInfoRam_getMeta();}
 }
 #pragma pop

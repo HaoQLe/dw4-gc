@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_805622A4;
 }
 extern "C" {
-void *fn_8015472C(){return lbl_805622A4;}
-void fn_80154734(){}
+void *igChangePlayMode_virtual8C(){return lbl_805622A4;}
+void igChildEditForNode_virtual90(){}
 }
 #pragma pop

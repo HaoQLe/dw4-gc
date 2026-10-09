@@ -5,10 +5,10 @@ extern "C" {
 
 }
 extern "C" {
-int fn_802AA5D0(){return -1;}
-int fn_802AA5D8(){return -1;}
-int fn_802AA5E0(){return -1;}
-int fn_802AA5E8(){return 0;}
-int fn_802AA5F0(){return -1;}
+int igAdxFile_virtual80(){return -1;}
+int igAdxFile_virtual84(){return -1;}
+int igAdxFile_virtual8C(){return -1;}
+int igAdxFile_virtual90(){return 0;}
+int igAdxFile_virtual94(){return -1;}
 }
 #pragma pop

@@ -10,7 +10,7 @@ struct UnknownGenObject802DE734_0 {
  char unknown04[36];
 };
 extern "C" {
-void *fn_802DE734(){
+void *beCriVolume_vtableRead(){
  UnknownGenObject802DE734_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804D51D0;

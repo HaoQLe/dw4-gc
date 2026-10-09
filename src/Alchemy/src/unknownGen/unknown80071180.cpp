@@ -100,15 +100,15 @@ public:
  virtual void sD0(void *,void *);
 };
 extern "C" {
-void *fn_80071180(){return fn_80063B1C();}
+void *igShortArrayMetaField_virtual08(){return fn_80063B1C();}
 int fn_800711A0(){return 2;}
 void fn_800711A8(int p0,int p1){
  UnknownGenL800711A8_8 local0;
  local0.m08=(short)p1;
  reinterpret_cast<UnknownGenV800711A8_0 *>((void *)p0)->s8C(&local0);
 }
-int fn_800711DC(){return 2;}
-void fn_800711E4(int p0,int p1,int p2){
+int igShortArrayMetaField_virtual6C(){return 2;}
+void igStringArrayMetaField_virtualD0(int p0,int p1,int p2){
  void *value0=fn_800256C0();
  reinterpret_cast<UnknownGenV800711E4_2 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+60)));
 }

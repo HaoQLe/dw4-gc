@@ -32,7 +32,7 @@ struct UnknownGenObject803366C4 : UnknownGenObject803366C4_2 {
  inline ~UnknownGenObject803366C4(){unknown00=lbl_804E62B4;}
 };
 extern "C" {
-void *fn_803366C4(){
+void *beNDMWPanelWazaInfo_vtableRead(){
  UnknownGenObject803366C4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

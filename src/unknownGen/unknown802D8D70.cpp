@@ -29,7 +29,7 @@ struct UnknownGenObject802D8D70 : UnknownGenObject802D8D70_1 {
  inline ~UnknownGenObject802D8D70(){unknown00=lbl_804D637C;}
 };
 extern "C" {
-void *fn_802D8D70(){
+void *beFontInfoData_vtableRead(){
  UnknownGenObject802D8D70 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

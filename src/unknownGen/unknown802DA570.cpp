@@ -31,7 +31,7 @@ struct UnknownGenObject802DA570 : UnknownGenObject802DA570_1 {
  inline ~UnknownGenObject802DA570(){unknown00=lbl_804DDE84;}
 };
 extern "C" {
-void *fn_802DA570(){
+void *beFileListInfoManager_vtableRead(){
  UnknownGenObject802DA570 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

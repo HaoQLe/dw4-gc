@@ -39,7 +39,7 @@ public:
  virtual void * s80(void *,void *);
 };
 extern "C" {
-void fn_80118954(int p0,int p1,int p2,int p3){
+void igEventDispatcher_virtual78(int p0,int p1,int p2,int p3){
  void *value0;
  void *value1;
  void *value2;

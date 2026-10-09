@@ -17,7 +17,7 @@ struct UnknownGenObject802B49FC : UnknownGenRoot802B49FC {
  inline ~UnknownGenObject802B49FC(){unknown00=lbl_804DC4F4;}
 };
 extern "C" {
-void *fn_802B49FC(){
+void *beWaterMoveData_vtableRead(){
  UnknownGenObject802B49FC object;
  object.unknown00=lbl_804DC4F4;
  object.unknown14.value=0;

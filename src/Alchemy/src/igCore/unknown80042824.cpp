@@ -102,7 +102,7 @@ extern "C" {
 }
 #pragma push
 #pragma auto_inline off
-extern "C" void fn_80042824(Unknown80042824 *object){
+extern "C" void igDirectory_virtual30(Unknown80042824 *object){
     if(object->unknown20){
         for(int index = 0; index < object->unknown18->unknown08; ++index)
             fn_80070140(object->unknown20, object->unknown18->unknown10[index]->unknown14);

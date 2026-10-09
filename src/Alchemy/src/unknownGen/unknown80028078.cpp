@@ -7,9 +7,7 @@ void *fn_800237D0();
 void *fn_80023CF4();
 void *fn_80024180();
 void *fn_80028F84();
-void fn_8002907C();
 void *fn_80029A5C();
-void fn_80029D58();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
@@ -21,7 +19,9 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
+void igNamedObject_register();
+void igObjectList_register();
+void igObject_register();
 extern char lbl_80463100[];
 extern char lbl_80463FD4[];
 extern char lbl_80464048[];
@@ -50,24 +50,24 @@ extern void *lbl_805616CC;
 extern void *lbl_805616DC;
 extern void *lbl_805619F8;
 extern void *lbl_805621F4;
-void *fn_800280B4();
-void *fn_800280F0();
+void *igPluginRepositoryList_getMeta();
+void *igPluginRepositoryList_vtableRead();
 void fn_80028160();
-void fn_80028188();
-void *fn_800281F4();
+void igPluginRepositoryList_register();
+void *igPluginRepositoryList_getMetaCall();
 void *fn_80028214();
-void *fn_80028298();
-void *fn_800282D4();
+void *igPluginRepository_getMeta();
+void *igPluginRepository_vtableRead();
 void fn_800283B4();
-void fn_800283DC();
-void *fn_8002844C();
-void fn_8002846C();
-void *fn_80028530();
-void *fn_8002856C();
+void igPluginRepository_register();
+void *igPluginRepository_getMetaCall();
+void igPluginRepository_fieldInit();
+void *igObjectStringMap_getMeta();
+void *igObjectStringMap_vtableRead();
 void fn_80028634();
-void fn_8002865C();
-void *fn_800286D4();
-void fn_800286F4();
+void igObjectStringMap_register();
+void *igObjectStringMap_getMetaCall();
+void igObjectStringMap_fieldInit();
 }
 struct UnknownGenObject800280F0_0 {
  void *unknown00;
@@ -104,11 +104,11 @@ void *fn_80028078(){
  if(!lbl_805616C4) lbl_805616C4=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805616C4;
 }
-void *fn_800280B4(){
+void *igPluginRepositoryList_getMeta(){
  if(!lbl_805616C4 || !(reinterpret_cast<unsigned int *>(lbl_805616C4)[0x24/4]&4)) fn_80028160();
  return lbl_805616C4;
 }
-void *fn_800280F0(){
+void *igPluginRepositoryList_vtableRead(){
  UnknownGenObject800280F0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -119,13 +119,13 @@ void *fn_800280F0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80028160(){
- fn_80066188((int)fn_80028188);
+ fn_80066188((int)igPluginRepositoryList_register);
 }
-void fn_80028188(){
+void igPluginRepositoryList_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_805616C4,(int)fn_8002907C,(int)fn_80024180,(int)fn_800281F4,(int)lbl_80463FD4,20,(int)fn_800280F0,0,0,(int)lbl_8055D1C4);
+ fn_80066204(0,(int)&lbl_805616C4,(int)igObjectList_register,(int)fn_80024180,(int)igPluginRepositoryList_getMetaCall,(int)lbl_80463FD4,20,(int)igPluginRepositoryList_vtableRead,0,0,(int)lbl_8055D1C4);
 }
-void *fn_800281F4(){return fn_800280B4();}
+void *igPluginRepositoryList_getMetaCall(){return igPluginRepositoryList_getMeta();}
 void *fn_80028214(){
  char *data=lbl_80463100;
  if(!lbl_805616C8) lbl_805616C8=fn_800635C8(data+0xF38,data+0xF20,data+0xF2C,0x3);
@@ -135,11 +135,11 @@ void *fn_80028260(void *object){
  fn_800283B4();
  return fn_8006546C(lbl_805616CC,object);
 }
-void *fn_80028298(){
+void *igPluginRepository_getMeta(){
  if(!lbl_805616CC || !(reinterpret_cast<unsigned int *>(lbl_805616CC)[0x24/4]&4)) fn_800283B4();
  return lbl_805616CC;
 }
-void *fn_800282D4(){
+void *igPluginRepository_vtableRead(){
  UnknownGenObject800282D4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -148,14 +148,14 @@ void *fn_800282D4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800283B4(){
- fn_80066188((int)fn_800283DC);
+ fn_80066188((int)igPluginRepository_register);
 }
-void fn_800283DC(){
+void igPluginRepository_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_805616CC,(int)fn_80029D58,(int)fn_80023CF4,(int)fn_8002844C,(int)lbl_80464048,20,(int)fn_800282D4,(int)fn_8002846C,0,0);
+ fn_80066204(0,(int)&lbl_805616CC,(int)igNamedObject_register,(int)fn_80023CF4,(int)igPluginRepository_getMetaCall,(int)lbl_80464048,20,(int)igPluginRepository_vtableRead,(int)igPluginRepository_fieldInit,0,0);
 }
-void *fn_8002844C(){return fn_80028298();}
-void fn_8002846C(){
+void *igPluginRepository_getMetaCall(){return igPluginRepository_getMeta();}
+void igPluginRepository_fieldInit(){
  void *value0=lbl_805616CC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D1CC,2);
@@ -168,11 +168,11 @@ void *fn_800284F4(){
  if(!lbl_805616DC) lbl_805616DC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805616DC;
 }
-void *fn_80028530(){
+void *igObjectStringMap_getMeta(){
  if(!lbl_805616DC || !(reinterpret_cast<unsigned int *>(lbl_805616DC)[0x24/4]&4)) fn_80028634();
  return lbl_805616DC;
 }
-void *fn_8002856C(){
+void *igObjectStringMap_vtableRead(){
  UnknownGenObject8002856C object;
  object.unknown00=lbl_804763F0;
  object.unknown08.value=0;
@@ -180,14 +180,14 @@ void *fn_8002856C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80028634(){
- fn_80066188((int)fn_8002865C);
+ fn_80066188((int)igObjectStringMap_register);
 }
-void fn_8002865C(){
+void igObjectStringMap_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_805616DC,(int)fn_80066B08,(int)fn_800237D0,(int)fn_800286D4,(int)lbl_804640B0,16,(int)fn_8002856C,(int)fn_800286F4,0,(int)lbl_804640A4);
+ fn_80066204(0,(int)&lbl_805616DC,(int)igObject_register,(int)fn_800237D0,(int)igObjectStringMap_getMetaCall,(int)lbl_804640B0,16,(int)igObjectStringMap_vtableRead,(int)igObjectStringMap_fieldInit,0,(int)lbl_804640A4);
 }
-void *fn_800286D4(){return fn_80028530();}
-void fn_800286F4(){
+void *igObjectStringMap_getMetaCall(){return igObjectStringMap_getMeta();}
+void igObjectStringMap_fieldInit(){
  void *value0=lbl_805616DC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D1EC,2);

@@ -6,15 +6,15 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
-void fn_800D1B08();
-void *fn_800D1B78();
-void *fn_800D1C9C();
-void fn_800D1E48();
-void *fn_800D1EB4();
-void *fn_800D1EE8();
-void fn_800D2268();
-void *fn_800D26A4();
-void *fn_800D89FC();
+void *igGamecubeImageConvert_getMetaCall();
+void *igGamecubeImage_fieldInit();
+void *igGamecubeImage_getMetaCall();
+void *igGamecubeIndexArray_getMetaCall();
+void *igImageConvert_getMetaCall();
+void igImageConvert_register();
+void *igIndexArray_getMetaCall();
+void igIndexArray_register();
+void igMemoryImage_register();
 extern char lbl_8048ED44[];
 extern char lbl_8048ED5C[];
 extern char lbl_8048ED8C[];
@@ -32,20 +32,20 @@ extern void *lbl_80562F70;
 extern void *lbl_80563460;
 extern void *lbl_80563464;
 extern void *lbl_8056346C;
-void *fn_800D85A4();
+void *igGamecubeIndexArray_vtableRead();
 void fn_800D863C();
-void fn_800D8664();
-void *fn_800D86D4();
+void igGamecubeIndexArray_register();
+void *igGamecubeIndexArray_parentMeta();
 void *fn_800D86DC();
-void *fn_800D872C();
+void *igGamecubeImageConvert_vtableRead();
 void fn_800D8784();
-void fn_800D87AC();
-void *fn_800D881C();
+void igGamecubeImageConvert_register();
+void *igGamecubeImageConvert_parentMeta();
 void *fn_800D8824();
-void *fn_800D8874();
+void *igGamecubeImage_vtableRead();
 void fn_800D895C();
-void fn_800D8984();
-void *fn_800D89F4();
+void igGamecubeImage_register();
+void *igGamecubeImage_parentMeta();
 }
 struct UnknownGenRoot800D85A4 {
  void *unknown00;
@@ -85,11 +85,11 @@ struct UnknownGenObject800D8874 : UnknownGenObject800D8874_1 {
  inline ~UnknownGenObject800D8874(){unknown00=lbl_80491718;}
 };
 extern "C" {
-void *fn_800D8568(){
+void *igGamecubeIndexArray_getMeta(){
  if(!lbl_80563460 || !(reinterpret_cast<unsigned int *>(lbl_80563460)[0x24/4]&4)) fn_800D863C();
  return lbl_80563460;
 }
-void *fn_800D85A4(){
+void *igGamecubeIndexArray_vtableRead(){
  UnknownGenObject800D85A4 object;
  object.unknown00=lbl_804926E0;
  object.unknown08.value=0;
@@ -97,23 +97,23 @@ void *fn_800D85A4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800D863C(){
- fn_80066188((int)fn_800D8664);
+ fn_80066188((int)igGamecubeIndexArray_register);
 }
-void fn_800D8664(){
+void igGamecubeIndexArray_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_80563460,(int)fn_800D1B08,(int)fn_800D86D4,(int)fn_800D1C9C,(int)lbl_8048ED44,28,(int)fn_800D85A4,(int)fn_800D86DC,0,0);
+ fn_80066204(0,(int)&lbl_80563460,(int)igIndexArray_register,(int)igGamecubeIndexArray_parentMeta,(int)igGamecubeIndexArray_getMetaCall,(int)lbl_8048ED44,28,(int)igGamecubeIndexArray_vtableRead,(int)fn_800D86DC,0,0);
 }
-void *fn_800D86D4(){return lbl_80562F40;}
+void *igGamecubeIndexArray_parentMeta(){return lbl_80562F40;}
 void *fn_800D86DC(){
  void *value0=lbl_80563460;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)fn_800D1B78;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)igIndexArray_getMetaCall;
  return value0;
 }
-void *fn_800D86F0(){
+void *igGamecubeImageConvert_getMeta(){
  if(!lbl_80563464 || !(reinterpret_cast<unsigned int *>(lbl_80563464)[0x24/4]&4)) fn_800D8784();
  return lbl_80563464;
 }
-void *fn_800D872C(){
+void *igGamecubeImageConvert_vtableRead(){
  UnknownGenObject800D872C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804930AC;
@@ -122,23 +122,23 @@ void *fn_800D872C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800D8784(){
- fn_80066188((int)fn_800D87AC);
+ fn_80066188((int)igGamecubeImageConvert_register);
 }
-void fn_800D87AC(){
+void igGamecubeImageConvert_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_80563464,(int)fn_800D1E48,(int)fn_800D881C,(int)fn_800D1EE8,(int)lbl_8048ED5C,8,(int)fn_800D872C,(int)fn_800D8824,0,0);
+ fn_80066204(0,(int)&lbl_80563464,(int)igImageConvert_register,(int)igGamecubeImageConvert_parentMeta,(int)igGamecubeImageConvert_getMetaCall,(int)lbl_8048ED5C,8,(int)igGamecubeImageConvert_vtableRead,(int)fn_800D8824,0,0);
 }
-void *fn_800D881C(){return lbl_80562F5C;}
+void *igGamecubeImageConvert_parentMeta(){return lbl_80562F5C;}
 void *fn_800D8824(){
  void *value0=lbl_80563464;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)fn_800D1EB4;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)igImageConvert_getMetaCall;
  return value0;
 }
-void *fn_800D8838(){
+void *igGamecubeImage_getMeta(){
  if(!lbl_8056346C || !(reinterpret_cast<unsigned int *>(lbl_8056346C)[0x24/4]&4)) fn_800D895C();
  return lbl_8056346C;
 }
-void *fn_800D8874(){
+void *igGamecubeImage_vtableRead(){
  UnknownGenObject800D8874 object;
  object.unknown00=lbl_804927D4;
  object.unknown44.value=0;
@@ -148,12 +148,12 @@ void *fn_800D8874(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800D895C(){
- fn_80066188((int)fn_800D8984);
+ fn_80066188((int)igGamecubeImage_register);
 }
-void fn_800D8984(){
+void igGamecubeImage_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_8056346C,(int)fn_800D2268,(int)fn_800D89F4,(int)fn_800D26A4,(int)lbl_8048ED8C,216,(int)fn_800D8874,(int)fn_800D89FC,0,0);
+ fn_80066204(0,(int)&lbl_8056346C,(int)igMemoryImage_register,(int)igGamecubeImage_parentMeta,(int)igGamecubeImage_getMetaCall,(int)lbl_8048ED8C,216,(int)igGamecubeImage_vtableRead,(int)igGamecubeImage_fieldInit,0,0);
 }
-void *fn_800D89F4(){return lbl_80562F70;}
+void *igGamecubeImage_parentMeta(){return lbl_80562F70;}
 }
 #pragma pop

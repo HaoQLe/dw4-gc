@@ -266,9 +266,9 @@ public:
  virtual void sF0(void *);
 };
 extern "C" {
-void fn_800EA7C8(){}
-void fn_800EA7CC(){}
-void fn_800EA7D0(int p0,int p1,int p2,int p3){
+void igGamecubeVisualContext_virtual78(){}
+void igGamecubeVisualContext_virtual74(){}
+void igGamecubeVisualContext_virtual124(int p0,int p1,int p2,int p3){
  void *value0;
  value0=reinterpret_cast<UnknownGenV800EA7D0_0 *>((void *)p0)->sF8((void *)p1,(void *)p2,(void *)p3);
  if((int)(int)value0!=0){

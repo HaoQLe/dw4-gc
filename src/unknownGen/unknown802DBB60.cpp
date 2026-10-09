@@ -21,7 +21,7 @@ struct UnknownGenObject802DBB60 : UnknownGenRoot802DBB60 {
  inline ~UnknownGenObject802DBB60(){unknown00=lbl_804D5A14;}
 };
 extern "C" {
-void *fn_802DBB60(){
+void *beDemoKeepMes_vtableRead(){
  UnknownGenObject802DBB60 object;
  object.unknown00=lbl_804D5A14;
  object.unknown18.value=0;

@@ -5,6 +5,6 @@ extern "C" {
 void *fn_8006CCE0();
 }
 extern "C" {
-void *fn_800633A8(){return fn_8006CCE0();}
+void *igMemoryRefArrayMetaField_virtual08(){return fn_8006CCE0();}
 }
 #pragma pop

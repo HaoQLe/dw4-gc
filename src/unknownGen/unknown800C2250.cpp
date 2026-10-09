@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800F9504(void *,int);
+void igGamecubeVisualContext_virtual3BC(void *,int);
 extern char lbl_8047A2B8[];
 extern void *lbl_80562B04;
 }
@@ -35,7 +35,7 @@ public:
  virtual void * s68(void *,void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800C2250(int p0,int p1,int p2,int p3,int p4,int p5){
+void igPointSpriteSizeAttr_virtual68(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  if(!lbl_80562B04){
   value0=reinterpret_cast<UnknownGenV800C2250_0 *>((void *)p1)->s68(lbl_8047A2B8,(void *)p2,(void *)p3,(void *)p4,(void *)p5);
@@ -45,8 +45,8 @@ void fn_800C2250(int p0,int p1,int p2,int p3,int p4,int p5){
   return;
  }
 }
-void fn_800C2298(int p0,int p1){
- fn_800F9504((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)));
+void igPolygonModeAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual3BC((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)));
 }
 }
 #pragma pop

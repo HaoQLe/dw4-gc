@@ -26,7 +26,7 @@ struct Unknown8003EAE8String {
     inline Unknown8003EAE8String(const char *text) : unknown00(unknown8003EAE8Acquire(text)) {}
 };
 
-extern "C" Unknown8003EAE8String fn_8003EAE8(void *, const Gap::igBool *value){
+extern "C" Unknown8003EAE8String igBoolArrayMetaField_virtualE4(void *, const Gap::igBool *value){
     char buffer[0x400];
     sprintf(buffer, lbl_8055D7AC, *value ? lbl_8055D79C : lbl_8055D7A4);
     return Unknown8003EAE8String(buffer);

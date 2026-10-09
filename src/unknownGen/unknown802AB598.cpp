@@ -22,7 +22,7 @@ void *fn_802AB618(){
  if(!lbl_805343AC) lbl_805343AC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805343AC;
 }
-void *fn_802AB66C(){
+void *igAdxAudio_getMeta(){
  if(!lbl_805343AC || !(reinterpret_cast<unsigned int *>(lbl_805343AC)[0x24/4]&4)) fn_802AB744();
  return lbl_805343AC;
 }

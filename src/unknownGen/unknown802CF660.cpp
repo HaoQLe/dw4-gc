@@ -20,7 +20,7 @@ struct UnknownGenObject802CF660 {
  int unknown2C;
 };
 extern "C" {
-void *fn_802CF660(){
+void *beMessengerArgData_vtableRead(){
  UnknownGenObject802CF660 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804D8058;

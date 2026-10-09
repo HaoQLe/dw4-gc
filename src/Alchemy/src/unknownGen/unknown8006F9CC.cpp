@@ -6,7 +6,7 @@ void fn_800667D4(void *);
 void fn_8006F8CC(void *);
 }
 extern "C" {
-void fn_8006F9CC(int p0){
+void igResource_virtual30(int p0){
  void *value0;
  void *value1;
  void *value2;

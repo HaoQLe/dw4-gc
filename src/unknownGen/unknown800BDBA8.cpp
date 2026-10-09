@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800BDBA8(){}
-void fn_800BDBAC(){}
+void igColorScalerStateAttr_virtual60(){}
+void igColorScalerStateAttr_virtual68(){}
 }
 #pragma pop

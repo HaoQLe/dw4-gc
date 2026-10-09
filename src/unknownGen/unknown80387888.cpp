@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80387888(){}
+void beNDMWStatusSubSlot_virtualA4(){}
 }
 #pragma pop

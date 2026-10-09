@@ -11,7 +11,7 @@ extern void *lbl_805657D8;
 extern char lbl_805657DC[1];
 }
 extern "C" {
-void fn_801EB5AC(int p0,int p1){
+void igHeap_virtual24(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

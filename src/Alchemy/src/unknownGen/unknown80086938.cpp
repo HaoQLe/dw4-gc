@@ -6,7 +6,7 @@ void *fn_80086BDC(void *,void *);
 void fn_80086C4C(void *,void *,void *,void *);
 }
 extern "C" {
-void fn_80086938(int p0,int p1){
+void igElfFile_virtual18C(int p0,int p1){
  void *value0;
  void *local1;
  void *local0;

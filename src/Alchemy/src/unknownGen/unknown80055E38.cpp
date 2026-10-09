@@ -7,7 +7,7 @@ void memcpy(void *,void *,void *);
 void *strlen(void *,void *);
 }
 extern "C" {
-void *fn_80055E38(int p0,int p1){
+void *igMemoryDictionary_virtual120(int p0,int p1){
  void *value0;
  if((int)p1==0){
   return (void *)-1;

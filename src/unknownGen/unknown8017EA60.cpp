@@ -5,7 +5,7 @@ extern "C" {
 void fn_800667CC();
 }
 extern "C" {
-void fn_8017EA60(int p0){
+void igMessageInterface_virtual34(int p0){
  fn_800667CC();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p0;
 }

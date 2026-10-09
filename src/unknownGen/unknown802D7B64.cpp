@@ -18,7 +18,7 @@ struct UnknownGenObject802D7B64 : UnknownGenRoot802D7B64 {
  inline ~UnknownGenObject802D7B64(){unknown00=lbl_804D67BC;}
 };
 extern "C" {
-void *fn_802D7B64(){
+void *beGeneraterPlayerData_vtableRead(){
  UnknownGenObject802D7B64 object;
  object.unknown00=lbl_804D67BC;
  object.unknown10.value=0;

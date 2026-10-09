@@ -51,7 +51,7 @@ public:
  virtual void sB0(void *,void *);
 };
 extern "C" {
-void fn_80167DD4(int p0,int p1){
+void igDataTable_virtual70(int p0,int p1){
  if((int)p1>=0){
   reinterpret_cast<UnknownGenV80167DD4_0 *>((void *)p0)->sB0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24),(void *)p1);
   return;

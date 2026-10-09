@@ -28,7 +28,7 @@ static inline void *UnknownGenCast80154148_29(void *q){
  return 0;
 }
 extern "C" {
-void fn_80154148(int p0,int p1){
+void igAttrTraversal_virtual90(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

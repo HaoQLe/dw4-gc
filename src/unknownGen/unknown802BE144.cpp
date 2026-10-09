@@ -26,7 +26,7 @@ struct UnknownGenObject802BE144 : UnknownGenObject802BE144_0 {
  inline ~UnknownGenObject802BE144(){unknown00=lbl_804E0C74;}
 };
 extern "C" {
-void *fn_802BE144(){
+void *beSvWriteMediaApi_vtableRead(){
  UnknownGenObject802BE144 object;
  object.unknown00=lbl_804E0F88;
  object.unknown30.value=0;

@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beNDMWShopCtrlA0_fieldInit();
+void *beNDMWShopCtrlA0_getMeta();
+void beNDMWShopCtrlA0_vtableRead();
+void beNDMWWindowCtrl_register();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800A325C(void *);
 void fn_803250AC();
 void *fn_8032B8A4();
-void *fn_8032E570();
-void fn_8032E5BC();
-void fn_8032E9BC();
-void fn_80333F14();
 extern char lbl_8045396C[];
 extern char lbl_804E1CB8[];
 extern char lbl_80535E74[];
-void fn_8032E920();
-void *fn_8032E99C();
+void beNDMWShopCtrlA0_register();
+void *beNDMWShopCtrlA0_getMetaCall();
 }
 extern "C" {
 UnknownGenHolder *dtor_8032E884(UnknownGenHolder *object,short flags){
@@ -30,12 +30,12 @@ UnknownGenHolder *dtor_8032E884(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_8032E8F8(){
- fn_80066188((int)fn_8032E920);
+ fn_80066188((int)beNDMWShopCtrlA0_register);
 }
-void fn_8032E920(){
+void beNDMWShopCtrlA0_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535E74,(int)fn_80333F14,(int)fn_8032B8A4,(int)fn_8032E99C,(int)lbl_8045396C,92,(int)fn_8032E5BC,(int)fn_8032E9BC,0,(int)lbl_804E1CB8);
+ fn_80066204(0,(int)lbl_80535E74,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWShopCtrlA0_getMetaCall,(int)lbl_8045396C,92,(int)beNDMWShopCtrlA0_vtableRead,(int)beNDMWShopCtrlA0_fieldInit,0,(int)lbl_804E1CB8);
 }
-void *fn_8032E99C(){return fn_8032E570();}
+void *beNDMWShopCtrlA0_getMetaCall(){return beNDMWShopCtrlA0_getMeta();}
 }
 #pragma pop

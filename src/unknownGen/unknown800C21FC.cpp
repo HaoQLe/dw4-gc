@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805626B0;
 }
 extern "C" {
-void *fn_800C21FC(){return lbl_805626B0;}
+void *igPointSpriteSizeAttr_virtual58(){return lbl_805626B0;}
 }
 #pragma pop

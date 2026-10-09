@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_800D9CAC(int p0,int p1,int p2){
+void *igGamecubeVisualContext_virtual42C(int p0,int p1,int p2){
  if(((int)p1>=(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+304))+8)||!(void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+304))+16))+(p1<<2)))){
   return (void *)0;
  }

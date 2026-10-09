@@ -11,7 +11,7 @@ void *fn_80344988(void *object){
  fn_80344AB0();
  return fn_8006546C(lbl_80536820,object);
 }
-void *fn_803449C8(){
+void *beNDMWGameRamInfoRam_getMeta(){
  if(!lbl_80536820 || !(reinterpret_cast<unsigned int *>(lbl_80536820)[0x24/4]&4)) fn_80344AB0();
  return lbl_80536820;
 }

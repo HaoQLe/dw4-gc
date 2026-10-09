@@ -200,7 +200,7 @@ public:
  virtual void s304(void *);
 };
 extern "C" {
-void fn_800C2850(int p0){
+void igRenderListAttr_virtual70(int p0){
  void *value0;
  void *value1;
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)!=-1){

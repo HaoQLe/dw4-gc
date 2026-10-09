@@ -30,7 +30,7 @@ public:
  virtual void s5C(void *);
 };
 extern "C" {
-void fn_8006851C(int p0){
+void igObjectDirEntry_virtual30(int p0){
  reinterpret_cast<UnknownGenV8006851C_0 *>((void *)p0)->s5C((void *)0);
  fn_800667D4((void *)p0);
 }

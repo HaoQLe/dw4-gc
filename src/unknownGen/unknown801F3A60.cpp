@@ -5,10 +5,10 @@ extern "C" {
 void *fn_80041660(void *,int,int);
 void *fn_80068430(int,int);
 void *fn_801BDE9C(void *);
-void *fn_80201D8C(void *);
+void *igSimpleShader_virtual7C(void *);
 }
 extern "C" {
-void *fn_801F3A60(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igInterpretedShader_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value3;
  void *value0;
  void *value1;
@@ -26,7 +26,7 @@ void *fn_801F3A60(int p0,int p1,int p2,int p3,int p4,int p5){
  }
  value4=fn_801BDE9C(value3);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+40)=value4;
- fn_80201D8C((void *)p0);
+ igSimpleShader_virtual7C((void *)p0);
  value2=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+20)=(void *)0;
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+12)>=0){

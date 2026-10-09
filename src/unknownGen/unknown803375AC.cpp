@@ -13,7 +13,7 @@ void *fn_803375AC(){
  if(!lbl_805360E8) lbl_805360E8=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805360E8;
 }
-void *fn_80337600(){
+void *beNDMWPanelObjectItem_getMeta(){
  if(!lbl_805360E8 || !(reinterpret_cast<unsigned int *>(lbl_805360E8)[0x24/4]&4)) fn_803377D0();
  return lbl_805360E8;
 }

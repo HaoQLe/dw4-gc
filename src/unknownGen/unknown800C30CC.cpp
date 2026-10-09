@@ -5,9 +5,9 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800C30CC(){}
-void fn_800C30D0(){}
-void fn_800C30D4(){}
-void fn_800C30D8(){}
+void igTexGenMatrixAttr_virtual60(){}
+void igTexGenMatrixAttr_virtual68(){}
+void igTextureAddressModeAttr_virtual60(){}
+void igTextureAddressModeAttr_virtual68(){}
 }
 #pragma pop

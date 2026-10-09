@@ -15,7 +15,7 @@ extern char lbl_804D22C0[];
 extern void *lbl_805353CC;
 }
 extern "C" {
-void fn_802DABF8(){
+void beFileListInfo_fieldInit(){
  void *value0=lbl_805353CC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D22A8,2);

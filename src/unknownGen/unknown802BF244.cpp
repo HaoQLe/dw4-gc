@@ -15,7 +15,7 @@ extern char lbl_804CFCA4[];
 extern void *lbl_80534960;
 }
 extern "C" {
-void fn_802BF244(){
+void beSvFileMakeApi_fieldInit(){
  void *value0=lbl_80534960;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFC8C,2);

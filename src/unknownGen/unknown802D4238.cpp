@@ -15,7 +15,7 @@ void *fn_802D4258(){
  if(!lbl_805351A0) lbl_805351A0=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805351A0;
 }
-void *fn_802D42AC(){
+void *beKeyboardReceiver_getMeta(){
  if(!lbl_805351A0 || !(reinterpret_cast<unsigned int *>(lbl_805351A0)[0x24/4]&4)) fn_802D4390();
  return lbl_805351A0;
 }

@@ -668,7 +668,7 @@ public:
  virtual void * s78();
 };
 extern "C" {
-void fn_8040AAAC(int p0){
+void igViewerRenderer_virtual64(int p0){
  void *value0;
  void *value1;
  void *value2;

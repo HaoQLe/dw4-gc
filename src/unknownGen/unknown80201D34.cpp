@@ -38,14 +38,14 @@ public:
  virtual void s7C();
 };
 extern "C" {
-void fn_80201D34(int p0){
+void igSimpleShader_virtual24(int p0){
  fn_801FAE18((void *)p0);
  reinterpret_cast<UnknownGenV80201D34_0 *>((void *)p0)->s7C();
 }
-unsigned char fn_80201D74(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+32);}
-void fn_80201D7C(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+34)=value;}
-unsigned char fn_80201D84(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+34);}
-void *fn_80201D8C(void *p0){
+unsigned char igSimpleShader_virtualA4(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+32);}
+void igSimpleShader_virtualA8(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+34)=value;}
+unsigned char igSimpleShader_virtualAC(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+34);}
+void *igSimpleShader_virtual7C(void *p0){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(p0)+33)=0;
  return p0;
 }

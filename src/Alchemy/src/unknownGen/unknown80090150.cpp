@@ -37,7 +37,7 @@ public:
  virtual void s78();
 };
 extern "C" {
-void fn_80090150(int p0){
+void igStandardQueue_virtual70(int p0){
  reinterpret_cast<UnknownGenV80090150_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20))->s78();
 }
 }

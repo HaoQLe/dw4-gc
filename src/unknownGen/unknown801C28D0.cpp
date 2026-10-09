@@ -7,8 +7,8 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801C2B70();
-void fn_801C2DAC();
+void igCompressedAnimationSequenceQS_register();
+void igCompressedBezierAnimationSequenceQS_fieldInit();
 extern char lbl_804AFF00[];
 extern char lbl_804B4EB8[];
 extern char lbl_804B4F7C[];
@@ -17,12 +17,12 @@ extern char lbl_804BA150[];
 extern char lbl_805606DC[8];
 extern void *lbl_80565020;
 extern void *lbl_80565030;
-void *fn_801C2908();
-void *fn_801C2944();
+void *igCompressedBezierAnimationSequenceQS_getMeta();
+void *igCompressedBezierAnimationSequenceQS_vtableRead();
 void fn_801C2AAC();
-void fn_801C2AD4();
-void *fn_801C2B48();
-void *fn_801C2B68();
+void igCompressedBezierAnimationSequenceQS_register();
+void *igCompressedBezierAnimationSequenceQS_getMetaCall();
+void *igCompressedBezierAnimationSequenceQS_parentMeta();
 }
 struct UnknownGenRoot801C2944 {
  void *unknown00;
@@ -47,11 +47,11 @@ void *fn_801C28D0(void *object){
  fn_801C2AAC();
  return fn_8006546C(lbl_80565020,object);
 }
-void *fn_801C2908(){
+void *igCompressedBezierAnimationSequenceQS_getMeta(){
  if(!lbl_80565020 || !(reinterpret_cast<unsigned int *>(lbl_80565020)[0x24/4]&4)) fn_801C2AAC();
  return lbl_80565020;
 }
-void *fn_801C2944(){
+void *igCompressedBezierAnimationSequenceQS_vtableRead(){
  UnknownGenObject801C2944 object;
  object.unknown00=lbl_804BA150;
  object.unknown00=lbl_804B796C;
@@ -64,13 +64,13 @@ void *fn_801C2944(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801C2AAC(){
- fn_80066188((int)fn_801C2AD4);
+ fn_80066188((int)igCompressedBezierAnimationSequenceQS_register);
 }
-void fn_801C2AD4(){
+void igCompressedBezierAnimationSequenceQS_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80565020,(int)fn_801C2DAC,(int)fn_801C2B68,(int)fn_801C2B48,(int)lbl_804AFF00,80,(int)fn_801C2944,(int)fn_801C2B70,0,(int)lbl_805606DC);
+ fn_80066204(0,(int)&lbl_80565020,(int)igCompressedAnimationSequenceQS_register,(int)igCompressedBezierAnimationSequenceQS_parentMeta,(int)igCompressedBezierAnimationSequenceQS_getMetaCall,(int)lbl_804AFF00,80,(int)igCompressedBezierAnimationSequenceQS_vtableRead,(int)igCompressedBezierAnimationSequenceQS_fieldInit,0,(int)lbl_805606DC);
 }
-void *fn_801C2B48(){return fn_801C2908();}
-void *fn_801C2B68(){return lbl_80565030;}
+void *igCompressedBezierAnimationSequenceQS_getMetaCall(){return igCompressedBezierAnimationSequenceQS_getMeta();}
+void *igCompressedBezierAnimationSequenceQS_parentMeta(){return lbl_80565030;}
 }
 #pragma pop

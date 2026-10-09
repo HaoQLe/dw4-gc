@@ -6,24 +6,24 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
 void *fn_801B8D70();
-void *fn_801B9A7C();
-void fn_801B9AB8();
-void fn_801B9ED8();
-void fn_801C03BC();
+void igGeometry_register();
+void igMorphInstance2_fieldInit();
+void *igMorphInstance2_getMeta();
+void igMorphInstance2_vtableRead();
 extern char lbl_804AE900[];
 extern char lbl_804AE914[];
 extern void *lbl_80564D0C;
-void fn_801B9E40();
-void *fn_801B9EB8();
+void igMorphInstance2_register();
+void *igMorphInstance2_getMetaCall();
 }
 extern "C" {
 void fn_801B9E18(){
- fn_80066188((int)fn_801B9E40);
+ fn_80066188((int)igMorphInstance2_register);
 }
-void fn_801B9E40(){
+void igMorphInstance2_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564D0C,(int)fn_801C03BC,(int)fn_801B8D70,(int)fn_801B9EB8,(int)lbl_804AE914,60,(int)fn_801B9AB8,(int)fn_801B9ED8,0,(int)lbl_804AE900);
+ fn_80066204(0,(int)&lbl_80564D0C,(int)igGeometry_register,(int)fn_801B8D70,(int)igMorphInstance2_getMetaCall,(int)lbl_804AE914,60,(int)igMorphInstance2_vtableRead,(int)igMorphInstance2_fieldInit,0,(int)lbl_804AE900);
 }
-void *fn_801B9EB8(){return fn_801B9A7C();}
+void *igMorphInstance2_getMetaCall(){return igMorphInstance2_getMeta();}
 }
 #pragma pop

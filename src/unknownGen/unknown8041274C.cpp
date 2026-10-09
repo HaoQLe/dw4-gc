@@ -6,7 +6,7 @@ void *fn_8011ACBC(void *,void *);
 void fn_8011AD54(void *,void *);
 }
 extern "C" {
-void *fn_8041274C(int p0){
+void *igPickMode_virtual80(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80);

@@ -32,7 +32,7 @@ public:
  virtual void s64();
 };
 extern "C" {
-void fn_800D8CA4(int p0){
+void igClut_virtual60(int p0){
  reinterpret_cast<UnknownGenV800D8CA4_0 *>((void *)p0)->s64();
 }
 }

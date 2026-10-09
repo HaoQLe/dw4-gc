@@ -17,7 +17,7 @@ extern char lbl_804D2D3C[];
 extern void *lbl_805356AC;
 }
 extern "C" {
-void fn_802E3320(){
+void beBaseInfoRam_fieldInit(){
  void *value0=lbl_805356AC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2CD0,9);

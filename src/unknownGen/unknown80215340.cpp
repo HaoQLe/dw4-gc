@@ -30,11 +30,11 @@ public:
  virtual void s5C();
 };
 extern "C" {
-void fn_80215340(int p0){
+void igTransformSequence1_5_virtual60(int p0){
  reinterpret_cast<UnknownGenV80215340_0 *>((void *)p0)->s5C();
 }
-void fn_8021536C(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+32)=value;}
-void *fn_80215374(int p0){
+void igTransformSequence1_5_virtualD0(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+32)=value;}
+void *igTransformSequence1_5_virtual84(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+40)=(void *)1;
  return (void *)p0;
 }

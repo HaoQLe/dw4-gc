@@ -8,7 +8,7 @@ extern void *lbl_80534AAC;
 extern void *lbl_80535124;
 }
 extern "C" {
-void fn_8031B614(int p0){
+void beTimer_virtual64(int p0){
  void *value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_805346A8);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=value0;
  void *value1=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_80534AAC);

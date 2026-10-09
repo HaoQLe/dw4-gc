@@ -17,7 +17,7 @@ void *fn_800218F4(int p0,int p1,int p2){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+-4)=(reinterpret_cast<char *>(value1)+1);
  return value1;
 }
-void *fn_80021920(int p0){
+void *igFolder_virtual60(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)0;

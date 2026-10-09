@@ -6,7 +6,7 @@ void fn_800667B0();
 extern void *lbl_80565978;
 }
 extern "C" {
-void fn_8020AF78(int p0,int p1){
+void igTraversal_virtual24(int p0,int p1){
  void *value1;
  void *value2;
  void *value3;

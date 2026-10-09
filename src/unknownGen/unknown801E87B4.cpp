@@ -2,8 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_801DB534(void *,void *);
-void fn_801DB82C(void *);
+void igCommonTraversal_virtual24(void *,void *);
+void igCommonTraversal_virtual7C(void *);
 extern void *lbl_805657D0;
 }
 class UnknownGenV801E87EC_0 {
@@ -42,7 +42,7 @@ public:
 };
 extern "C" {
 void fn_801E87B4(int p0){
- fn_801DB82C((void *)p0);
+ igCommonTraversal_virtual7C((void *)p0);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+540)=(void *)0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+544)=(void *)0;
 }
@@ -50,7 +50,7 @@ void fn_801E87EC(int p0,int p1){
  void *value1;
  void *value2;
  void *value3;
- fn_801DB534((void *)p0,(void *)p1);
+ igCommonTraversal_virtual24((void *)p0,(void *)p1);
  if(!(unsigned char)p1){
   void *value0=lbl_805657D0;
   if(value0){

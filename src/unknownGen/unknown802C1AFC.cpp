@@ -34,7 +34,7 @@ struct UnknownGenObject802C1AFC : UnknownGenObject802C1AFC_2 {
  inline ~UnknownGenObject802C1AFC(){unknown00=lbl_804DA99C;}
 };
 extern "C" {
-void *fn_802C1AFC(){
+void *beParticleCtrl2Info_vtableRead(){
  UnknownGenObject802C1AFC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

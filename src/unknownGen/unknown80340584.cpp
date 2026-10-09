@@ -18,7 +18,7 @@ struct UnknownGenObject80340584 : UnknownGenRoot80340584 {
  inline ~UnknownGenObject80340584(){unknown00=lbl_804E5034;}
 };
 extern "C" {
-void *fn_80340584(){
+void *beNDMWLoadSlotPlayer_vtableRead(){
  UnknownGenObject80340584 object;
  object.unknown00=lbl_804E5034;
  object.unknown0C.value=0;

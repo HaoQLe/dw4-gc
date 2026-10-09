@@ -54,7 +54,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_80167F94(int p0,int p1,int p2){
+void igDataTable_virtualB4(int p0,int p1,int p2){
  void *value0;
  void *value1;
  void *value2;

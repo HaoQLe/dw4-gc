@@ -6,7 +6,7 @@ void *fn_8028A730(void *,void *);
 extern char lbl_805346A8[];
 }
 extern "C" {
-void fn_80302304(int p0){
+void beLua_virtual64(int p0){
  void *value2;
  void *value0;
  void *value1;

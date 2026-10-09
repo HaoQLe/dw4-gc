@@ -6,23 +6,23 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802E170C();
 void fn_80402E28();
-void *fn_80407040();
-void fn_8040708C();
-void fn_804071B0();
-void fn_80407B3C();
+void igRotateMode_fieldInit();
+void *igRotateMode_getMeta();
+void igRotateMode_vtableRead();
+void igViewMode_register();
 extern char lbl_80462858[];
 extern char lbl_8055C9DC[];
-void fn_8040711C();
-void *fn_80407190();
+void igRotateMode_register();
+void *igRotateMode_getMetaCall();
 }
 extern "C" {
 void fn_804070F4(){
- fn_80066188((int)fn_8040711C);
+ fn_80066188((int)igRotateMode_register);
 }
-void fn_8040711C(){
+void igRotateMode_register(){
  fn_80402E28();
- fn_80066204(0,(int)lbl_8055C9DC,(int)fn_80407B3C,(int)fn_802E170C,(int)fn_80407190,(int)lbl_80462858,148,(int)fn_8040708C,(int)fn_804071B0,0,0);
+ fn_80066204(0,(int)lbl_8055C9DC,(int)igViewMode_register,(int)fn_802E170C,(int)igRotateMode_getMetaCall,(int)lbl_80462858,148,(int)igRotateMode_vtableRead,(int)igRotateMode_fieldInit,0,0);
 }
-void *fn_80407190(){return fn_80407040();}
+void *igRotateMode_getMetaCall(){return igRotateMode_getMeta();}
 }
 #pragma pop

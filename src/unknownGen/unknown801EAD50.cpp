@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_801FADF8(void *);
+void igNode_virtual28(void *);
 }
 class UnknownGenV801EAD50_0 {
 public:
@@ -54,7 +54,7 @@ void fn_801EAD50(int p0){
   reinterpret_cast<UnknownGenV801EAD50_0 *>((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28))+16))+((int)value1<<2)))->s88((void *)p0);
   value1=(reinterpret_cast<char *>(value1)+1);
  }
- fn_801FADF8((void *)p0);
+ igNode_virtual28((void *)p0);
 }
 }
 #pragma pop

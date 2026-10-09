@@ -14,7 +14,7 @@ extern char lbl_804CF444[];
 extern void *lbl_80534714;
 }
 extern "C" {
-void fn_802B7C74(){
+void beSwitchCtrlInfo_fieldInit(){
  void *value0=lbl_80534714;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF438,1);

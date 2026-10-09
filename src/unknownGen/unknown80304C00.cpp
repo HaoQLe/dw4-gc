@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80304C00(){}
-void fn_80304C04(){}
+void beMessenger_virtual64(){}
+void beMessenger_virtual68(){}
 }
 #pragma pop

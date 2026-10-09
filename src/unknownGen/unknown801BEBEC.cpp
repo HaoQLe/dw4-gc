@@ -5,27 +5,27 @@ extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
-void fn_801B11F4();
-void *fn_801BE884();
-void fn_801BE8C0();
-void fn_801BECB4();
+void igIniShaderFactory_fieldInit();
+void *igIniShaderFactory_getMeta();
+void igIniShaderFactory_vtableRead();
+void igShaderFactory_register();
 extern char lbl_804AF37C[];
 extern char lbl_804AF390[];
 extern void *lbl_805648E8;
 extern void *lbl_80564E88;
-void fn_801BEC14();
-void *fn_801BEC8C();
-void *fn_801BECAC();
+void igIniShaderFactory_register();
+void *igIniShaderFactory_getMetaCall();
+void *igIniShaderFactory_parentMeta();
 }
 extern "C" {
 void fn_801BEBEC(){
- fn_80066188((int)fn_801BEC14);
+ fn_80066188((int)igIniShaderFactory_register);
 }
-void fn_801BEC14(){
+void igIniShaderFactory_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564E88,(int)fn_801B11F4,(int)fn_801BECAC,(int)fn_801BEC8C,(int)lbl_804AF390,60,(int)fn_801BE8C0,(int)fn_801BECB4,0,(int)lbl_804AF37C);
+ fn_80066204(0,(int)&lbl_80564E88,(int)igShaderFactory_register,(int)igIniShaderFactory_parentMeta,(int)igIniShaderFactory_getMetaCall,(int)lbl_804AF390,60,(int)igIniShaderFactory_vtableRead,(int)igIniShaderFactory_fieldInit,0,(int)lbl_804AF37C);
 }
-void *fn_801BEC8C(){return fn_801BE884();}
-void *fn_801BECAC(){return lbl_805648E8;}
+void *igIniShaderFactory_getMetaCall(){return igIniShaderFactory_getMeta();}
+void *igIniShaderFactory_parentMeta(){return lbl_805648E8;}
 }
 #pragma pop

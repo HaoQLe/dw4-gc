@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_802ADAE0(){return 1;}
+int igCriMovieCodec_virtual5C(){return 1;}
 }
 #pragma pop

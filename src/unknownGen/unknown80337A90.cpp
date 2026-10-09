@@ -27,7 +27,7 @@ struct UnknownGenObject80337A90 : UnknownGenObject80337A90_0 {
  inline ~UnknownGenObject80337A90(){unknown00=lbl_804E73AC;}
 };
 extern "C" {
-void *fn_80337A90(){
+void *beNDMWPanelObjectWaza_vtableRead(){
  UnknownGenObject80337A90 object;
  object.unknown00=lbl_804E613C;
  object.unknown24.value=0;

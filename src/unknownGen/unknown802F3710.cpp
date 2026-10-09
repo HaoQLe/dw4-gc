@@ -9,7 +9,7 @@ void fn_802F2BC0(void *,void *);
 void fn_802F3568(void *,void *);
 }
 extern "C" {
-void fn_802F3710(int p0,int p1){
+void beCameraCtrl_virtual84(int p0,int p1){
  void *value0;
  void *value1;
  value0=(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+216);

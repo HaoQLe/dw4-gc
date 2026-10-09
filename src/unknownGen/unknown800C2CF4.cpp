@@ -31,7 +31,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_800C2CF4(int p0){
+void igSpriteAttr_virtual30(int p0){
  void *value0;
  void *value1;
  value0=reinterpret_cast<UnknownGenV800C2CF4_0 *>((void *)p0)->s58();

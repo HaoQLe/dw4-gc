@@ -32,7 +32,7 @@ struct UnknownGenObject802AD328 : UnknownGenObject802AD328_1 {
  inline ~UnknownGenObject802AD328(){unknown00=lbl_804CE958;}
 };
 extern "C" {
-void *fn_802AD328(){
+void *igMovieManager_vtableRead(){
  UnknownGenObject802AD328 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

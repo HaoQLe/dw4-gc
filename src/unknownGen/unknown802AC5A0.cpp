@@ -14,7 +14,7 @@ struct UnknownGenObject802AC5A0_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_802AC5A0(){
+void *igTextureBindAttrList_vtableRead(){
  UnknownGenObject802AC5A0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;

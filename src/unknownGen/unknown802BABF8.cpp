@@ -15,7 +15,7 @@ extern char lbl_804CF7C0[];
 extern void *lbl_805347EC;
 }
 extern "C" {
-void fn_802BABF8(){
+void beSelectCtrl_fieldInit(){
  void *value0=lbl_805347EC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF7A8,2);

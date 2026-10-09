@@ -3,7 +3,6 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
-void fn_8002A6D8();
 void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
 void fn_800638E0(void *);
@@ -12,6 +11,7 @@ void fn_80063F14(void *);
 void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void igMetaField_register();
 extern char lbl_80463100[];
 extern char lbl_80470674[];
 extern char lbl_80471914[];
@@ -20,11 +20,11 @@ extern void *lbl_8056148C;
 extern void *lbl_80561490;
 extern void *lbl_805617BC;
 extern void *lbl_805621F4;
-void *fn_80021BF4();
-void *fn_80021C30();
+void *igVirtualCFuncMetaField_getMeta();
+void *igVirtualCFuncMetaField_vtableRead();
 void fn_80021CBC();
-void fn_80021CE4();
-void *fn_80021D50();
+void igVirtualCFuncMetaField_register();
+void *igVirtualCFuncMetaField_getMetaCall();
 void *fn_80021D70();
 }
 struct UnknownGenRoot80021C30 {
@@ -42,23 +42,23 @@ struct UnknownGenObject80021C30 : UnknownGenObject80021C30_0 {
  inline ~UnknownGenObject80021C30(){unknown00=lbl_80470674;}
 };
 extern "C" {
-void *fn_80021BF4(){
+void *igVirtualCFuncMetaField_getMeta(){
  if(!lbl_8056148C || !(reinterpret_cast<unsigned int *>(lbl_8056148C)[0x24/4]&4)) fn_80021CBC();
  return lbl_8056148C;
 }
-void *fn_80021C30(){
+void *igVirtualCFuncMetaField_vtableRead(){
  UnknownGenObject80021C30 object;
  object.unknown00=lbl_80470674;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80021CBC(){
- fn_80066188((int)fn_80021CE4);
+ fn_80066188((int)igVirtualCFuncMetaField_register);
 }
-void fn_80021CE4(){
+void igVirtualCFuncMetaField_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_8056148C,(int)fn_8002A6D8,(int)fn_80021D70,(int)fn_80021D50,(int)lbl_80463100,52,(int)fn_80021C30,0,0,(int)lbl_8055CF00);
+ fn_80066204(0,(int)&lbl_8056148C,(int)igMetaField_register,(int)fn_80021D70,(int)igVirtualCFuncMetaField_getMetaCall,(int)lbl_80463100,52,(int)igVirtualCFuncMetaField_vtableRead,0,0,(int)lbl_8055CF00);
 }
-void *fn_80021D50(){return fn_80021BF4();}
+void *igVirtualCFuncMetaField_getMetaCall(){return igVirtualCFuncMetaField_getMeta();}
 void *fn_80021D70(){return lbl_805617BC;}
 void fn_80021D78(){
  if(!lbl_80561490){

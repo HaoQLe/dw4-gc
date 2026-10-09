@@ -8,7 +8,7 @@ void *fn_8006CBF4(void *);
 extern char lbl_80476630[];
 }
 extern "C" {
-void *fn_8006C424(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igRawRefArrayMetaField_virtualAC(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  if((unsigned int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+38)==1){
   value0=fn_8004388C((void *)p2,(void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>((void *)p1)+(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8)),0,0);

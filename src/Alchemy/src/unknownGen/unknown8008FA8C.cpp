@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_8008FA8C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+148);}
+int igStackMemoryPool_virtual164(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+148);}
 }
 #pragma pop

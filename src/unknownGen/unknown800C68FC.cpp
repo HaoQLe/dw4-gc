@@ -39,7 +39,7 @@ public:
  virtual void s6C();
 };
 extern "C" {
-void *fn_800C68FC(int p0,int p1){
+void *igGeometryAttr2_virtual88(int p0,int p1){
  void *value0;
  void *value1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+20);
@@ -51,9 +51,9 @@ void *fn_800C68FC(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+1);
  return value1;
 }
-void fn_800C6920(){}
-void *fn_800C6924(){return lbl_80562880;}
-void *fn_800C692C(int p0,int p1){
+void igGeometryAttr2_virtual68(){}
+void *igGeometryAttr1_5_virtual58(){return lbl_80562880;}
+void *igGeometryAttr1_5_virtualAC(int p0,int p1){
  void *value0;
  void *value1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+48);
@@ -65,13 +65,13 @@ void *fn_800C692C(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+4)=(reinterpret_cast<char *>(value1)+1);
  return value1;
 }
-void fn_800C6950(int p0){
+void igGeometryAttr1_5_virtualA4(int p0){
  reinterpret_cast<UnknownGenV800C6950_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+48))->s6C();
 }
 void *fn_800C6980(){return lbl_80562888;}
-void *fn_800C6988(){return lbl_805628B0;}
-void *fn_800C6990(){return lbl_805628B4;}
-void *fn_800C6998(){return lbl_805628BC;}
-void *fn_800C69A0(){return lbl_805628D4;}
+void *igGenericAttrDefaultManager_virtual58(){return lbl_805628B0;}
+void *igFogStateAttr_virtual58(){return lbl_805628B4;}
+void *igFogAttr_virtual58(){return lbl_805628BC;}
+void *igFloatConstantAttr_virtual58(){return lbl_805628D4;}
 }
 #pragma pop

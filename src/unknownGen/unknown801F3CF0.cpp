@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_801F3CF0(){return 3;}
+int igInverseKinematicsAnimation_virtual5C(){return 3;}
 }
 #pragma pop

@@ -5,27 +5,27 @@ extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
-void *fn_801BD1CC();
-void fn_801BD208();
-void fn_801BD4A4();
-void fn_801CC7C0();
+void igAnimation_register();
+void igInverseKinematicsAnimation_fieldInit();
+void *igInverseKinematicsAnimation_getMeta();
+void igInverseKinematicsAnimation_vtableRead();
 extern char lbl_804AEFAC[];
 extern char lbl_804AEFB8[];
 extern void *lbl_80564E0C;
 extern void *lbl_80565510;
-void fn_801BD404();
-void *fn_801BD47C();
-void *fn_801BD49C();
+void igInverseKinematicsAnimation_register();
+void *igInverseKinematicsAnimation_getMetaCall();
+void *igInverseKinematicsAnimation_parentMeta();
 }
 extern "C" {
 void fn_801BD3DC(){
- fn_80066188((int)fn_801BD404);
+ fn_80066188((int)igInverseKinematicsAnimation_register);
 }
-void fn_801BD404(){
+void igInverseKinematicsAnimation_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564E0C,(int)fn_801CC7C0,(int)fn_801BD49C,(int)fn_801BD47C,(int)lbl_804AEFB8,176,(int)fn_801BD208,(int)fn_801BD4A4,0,(int)lbl_804AEFAC);
+ fn_80066204(0,(int)&lbl_80564E0C,(int)igAnimation_register,(int)igInverseKinematicsAnimation_parentMeta,(int)igInverseKinematicsAnimation_getMetaCall,(int)lbl_804AEFB8,176,(int)igInverseKinematicsAnimation_vtableRead,(int)igInverseKinematicsAnimation_fieldInit,0,(int)lbl_804AEFAC);
 }
-void *fn_801BD47C(){return fn_801BD1CC();}
-void *fn_801BD49C(){return lbl_80565510;}
+void *igInverseKinematicsAnimation_getMetaCall(){return igInverseKinematicsAnimation_getMeta();}
+void *igInverseKinematicsAnimation_parentMeta(){return lbl_80565510;}
 }
 #pragma pop

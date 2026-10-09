@@ -32,7 +32,7 @@ public:
  virtual void s5C(void *);
 };
 extern "C" {
-void *fn_800D9308(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igExternalImageEntry_virtualB0(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value2;
  void *value3;
  void *value4;

@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800C1F88(){}
+void igParticleAttr_virtual68(){}
 }
 #pragma pop

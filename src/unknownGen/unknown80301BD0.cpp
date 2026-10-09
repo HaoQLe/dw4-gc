@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80535168;
 }
 extern "C" {
-void *fn_80301BD0(){return lbl_80535168;}
+void *beLayerCtl_virtual58(){return lbl_80535168;}
 }
 #pragma pop

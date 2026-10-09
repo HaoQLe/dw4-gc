@@ -58,7 +58,7 @@ public:
  virtual void s5C(void *);
 };
 extern "C" {
-void fn_8032331C(int p0){
+void beSaveMemoryObj_virtual24(int p0){
  fn_800667B0();
  void *value0=reinterpret_cast<UnknownGenV8032331C_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);

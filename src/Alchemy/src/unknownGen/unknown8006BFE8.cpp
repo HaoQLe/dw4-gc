@@ -74,7 +74,7 @@ public:
  virtual void * s80(void *,void *);
 };
 extern "C" {
-void fn_8006BFE8(int p0,int p1,int p2){
+void igGamecubeThread_virtual8C(int p0,int p1,int p2){
  void *value0;
  value0=reinterpret_cast<UnknownGenV8006BFE8_0 *>((void *)p1)->s80((void *)p1,(void *)p2);
  if(!(unsigned char)(int)value0){
@@ -84,7 +84,7 @@ void fn_8006BFE8(int p0,int p1,int p2){
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  }
 }
-void fn_8006C054(int p0,int p1,int p2){
+void igGamecubeThread_virtual84(int p0,int p1,int p2){
  void *value0;
  value0=reinterpret_cast<UnknownGenV8006C054_1 *>((void *)p1)->s80((void *)p1,(void *)p2);
  if(!(unsigned char)(int)value0){

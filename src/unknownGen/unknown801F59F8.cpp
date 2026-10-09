@@ -33,7 +33,7 @@ public:
  virtual void s68(void *);
 };
 extern "C" {
-void *fn_801F59F8(int p0,int p1){
+void *igInverseKinematicsSource_virtual5C(int p0,int p1){
  void *value2;
  void *value0;
  void *value1;

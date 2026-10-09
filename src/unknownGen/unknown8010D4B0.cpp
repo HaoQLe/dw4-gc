@@ -10,10 +10,10 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8010CBD4();
-void fn_8010D9E4();
-void fn_80111654();
 void *fn_80111CD4();
-void fn_8011486C();
+void igBoxModel_register();
+void igGuiComponentModel_register();
+void igScrollListComponentModel_fieldInit();
 extern char lbl_804946C4[];
 extern char lbl_8049475C[];
 extern char lbl_80494768[];
@@ -31,19 +31,19 @@ extern void *lbl_80563598;
 extern void *lbl_805635AC;
 extern void *lbl_80563718;
 extern void *lbl_80563830;
-void *fn_8010D4B0();
-void *fn_8010D4EC();
+void *igSimpleChildHolderModel_getMeta();
+void *igSimpleChildHolderModel_vtableRead();
 void fn_8010D5E4();
-void fn_8010D60C();
-void *fn_8010D680();
+void igSimpleChildHolderModel_register();
+void *igSimpleChildHolderModel_getMetaCall();
 void *fn_8010D6A0();
-void fn_8010D6A8();
-void *fn_8010D728();
-void *fn_8010D764();
+void igSimpleChildHolderModel_fieldInit();
+void *igScrollListComponentModel_getMeta();
+void *igScrollListComponentModel_vtableRead();
 void fn_8010D91C();
-void fn_8010D944();
-void *fn_8010D9BC();
-void *fn_8010D9DC();
+void igScrollListComponentModel_register();
+void *igScrollListComponentModel_getMetaCall();
+void *igScrollListComponentModel_parentMeta();
 }
 struct UnknownGenRoot8010D4EC {
  void *unknown00;
@@ -90,11 +90,11 @@ struct UnknownGenObject8010D764 : UnknownGenObject8010D764_2 {
  inline ~UnknownGenObject8010D764(){unknown00=lbl_80497D64;}
 };
 extern "C" {
-void *fn_8010D4B0(){
+void *igSimpleChildHolderModel_getMeta(){
  if(!lbl_80563598 || !(reinterpret_cast<unsigned int *>(lbl_80563598)[0x24/4]&4)) fn_8010D5E4();
  return lbl_80563598;
 }
-void *fn_8010D4EC(){
+void *igSimpleChildHolderModel_vtableRead(){
  UnknownGenObject8010D4EC object;
  object.unknown00=lbl_80496040;
  object.unknown08.value=0;
@@ -104,15 +104,15 @@ void *fn_8010D4EC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010D5E4(){
- fn_80066188((int)fn_8010D60C);
+ fn_80066188((int)igSimpleChildHolderModel_register);
 }
-void fn_8010D60C(){
+void igSimpleChildHolderModel_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563598,(int)fn_80111654,(int)fn_8010D6A0,(int)fn_8010D680,(int)lbl_804946C4,52,(int)fn_8010D4EC,(int)fn_8010D6A8,0,(int)lbl_8055EEFC);
+ fn_80066204(0,(int)&lbl_80563598,(int)igGuiComponentModel_register,(int)fn_8010D6A0,(int)igSimpleChildHolderModel_getMetaCall,(int)lbl_804946C4,52,(int)igSimpleChildHolderModel_vtableRead,(int)igSimpleChildHolderModel_fieldInit,0,(int)lbl_8055EEFC);
 }
-void *fn_8010D680(){return fn_8010D4B0();}
+void *igSimpleChildHolderModel_getMetaCall(){return igSimpleChildHolderModel_getMeta();}
 void *fn_8010D6A0(){return lbl_80563718;}
-void fn_8010D6A8(){
+void igSimpleChildHolderModel_fieldInit(){
  void *value0=lbl_80563598;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EF04,2);
@@ -121,11 +121,11 @@ void fn_8010D6A8(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  fn_800659C0(value0,lbl_8055EF14,lbl_8055EF1C,lbl_8055EF24,value1);
 }
-void *fn_8010D728(){
+void *igScrollListComponentModel_getMeta(){
  if(!lbl_805635AC || !(reinterpret_cast<unsigned int *>(lbl_805635AC)[0x24/4]&4)) fn_8010D91C();
  return lbl_805635AC;
 }
-void *fn_8010D764(){
+void *igScrollListComponentModel_vtableRead(){
  UnknownGenObject8010D764 object;
  object.unknown00=lbl_80496040;
  object.unknown08.value=0;
@@ -139,13 +139,13 @@ void *fn_8010D764(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8010D91C(){
- fn_80066188((int)fn_8010D944);
+ fn_80066188((int)igScrollListComponentModel_register);
 }
-void fn_8010D944(){
+void igScrollListComponentModel_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805635AC,(int)fn_8011486C,(int)fn_8010D9DC,(int)fn_8010D9BC,(int)lbl_80494768,60,(int)fn_8010D764,(int)fn_8010D9E4,0,(int)lbl_8049475C);
+ fn_80066204(0,(int)&lbl_805635AC,(int)igBoxModel_register,(int)igScrollListComponentModel_parentMeta,(int)igScrollListComponentModel_getMetaCall,(int)lbl_80494768,60,(int)igScrollListComponentModel_vtableRead,(int)igScrollListComponentModel_fieldInit,0,(int)lbl_8049475C);
 }
-void *fn_8010D9BC(){return fn_8010D728();}
-void *fn_8010D9DC(){return lbl_80563830;}
+void *igScrollListComponentModel_getMetaCall(){return igScrollListComponentModel_getMeta();}
+void *igScrollListComponentModel_parentMeta(){return lbl_80563830;}
 }
 #pragma pop

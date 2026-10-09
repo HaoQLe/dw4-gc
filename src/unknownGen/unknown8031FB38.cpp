@@ -31,7 +31,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_8031FB38(int p0){
+void beSaveMemoryObj_virtual28(int p0){
  fn_8031FAC8((void *)p0);
  void *value0=reinterpret_cast<UnknownGenV8031FB38_0 *>((void *)p0)->s58();
  fn_80065704(value0,1);

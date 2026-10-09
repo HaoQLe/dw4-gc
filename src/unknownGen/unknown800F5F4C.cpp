@@ -480,8 +480,8 @@ public:
  virtual void sD0(void *,void *);
 };
 extern "C" {
-void fn_800F5F4C(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+20)=value;}
-void fn_800F5F54(int p0,int p1){
+void igGamecubeScissorExt_virtual74(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+20)=value;}
+void igGamecubeScissorExt_virtual78(int p0,int p1){
  void *local3;
  void *local2;
  void *local1;
@@ -501,22 +501,22 @@ void fn_800F5F54(int p0,int p1){
   return;
  }
 }
-unsigned char fn_800F6028(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+24);}
-void fn_800F6030(int p0,int p1,int p2,int p3,int p4){
+unsigned char igGamecubeScissorExt_virtual7C(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+24);}
+void igGamecubeScissorExt_virtual80(int p0,int p1,int p2,int p3,int p4){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=(void *)p1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=(void *)p2;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)p3;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+40)=(void *)p4;
  fn_800F933C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),(void *)p1,(void *)p2,(void *)p3,(void *)p4);
 }
-void *fn_800F6064(int p0,int p1,int p2,int p3,int p4){
+void *igGamecubeScissorExt_virtual84(int p0,int p1,int p2,int p3,int p4){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p2)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p3)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p4)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40);
  return (void *)p0;
 }
-void fn_800F6088(int p0){
+void igGamecubeIndexArray_virtual50(int p0){
  void *value0;
  void *value1;
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)==0){
@@ -529,7 +529,7 @@ void fn_800F6088(int p0){
   return;
  }
 }
-void fn_800F60F8(int p0){
+void igGamecubeIndexArray_virtual4C(int p0){
  void *value0;
  void *value1;
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)==0){

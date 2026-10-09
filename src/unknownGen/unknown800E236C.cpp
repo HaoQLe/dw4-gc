@@ -49,7 +49,7 @@ public:
  virtual void sA8(void *,void *);
 };
 extern "C" {
-void fn_800E236C(int p0,int p1,int p2){
+void igPointSpriteExt_virtual9C(int p0,int p1,int p2){
  void *value0;
  value0=(void *)0;
  do {

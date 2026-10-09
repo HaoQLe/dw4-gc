@@ -14,7 +14,7 @@ extern char lbl_804D055C[];
 extern void *lbl_80534BD0;
 }
 extern "C" {
-void fn_802C4DA4(){
+void beMovieInfoData_fieldInit(){
  void *value0=lbl_80534BD0;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D0538,3);

@@ -1,6 +1,6 @@
 #include "unknown8003ED10.h"
 
-extern "C" Gap::igInt fn_8003F2B8(Unknown8003ED10 *object, const Gap::igUnsignedInt *value){
+extern "C" Gap::igInt igCallStackTable_virtual74(Unknown8003ED10 *object, const Gap::igUnsignedInt *value){
     Unknown8003ED10Storage *storage;
     Gap::igUnsignedInt sum;
     Gap::igInt count;

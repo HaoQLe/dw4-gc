@@ -5,25 +5,25 @@ extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
-void fn_801C1208();
-void *fn_801C1524();
-void fn_801CE5BC();
-void *fn_801CEC5C();
+void igEnvironmentMapShader2_register();
+void *igGamecubeEnvironmentMapShader_fieldInit();
+void *igGamecubeEnvironmentMapShader_getMetaCall();
+void igGamecubeEnvironmentMapShader_vtableRead();
 extern char lbl_804B2BC8[];
 extern char lbl_804B2BDC[];
 extern void *lbl_80564F20;
 extern void *lbl_805655D8;
-void fn_801CEBDC();
-void *fn_801CEC54();
+void igGamecubeEnvironmentMapShader_register();
+void *igGamecubeEnvironmentMapShader_parentMeta();
 }
 extern "C" {
 void fn_801CEBB4(){
- fn_80066188((int)fn_801CEBDC);
+ fn_80066188((int)igGamecubeEnvironmentMapShader_register);
 }
-void fn_801CEBDC(){
+void igGamecubeEnvironmentMapShader_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805655D8,(int)fn_801C1208,(int)fn_801CEC54,(int)fn_801C1524,(int)lbl_804B2BDC,136,(int)fn_801CE5BC,(int)fn_801CEC5C,0,(int)lbl_804B2BC8);
+ fn_80066204(0,(int)&lbl_805655D8,(int)igEnvironmentMapShader2_register,(int)igGamecubeEnvironmentMapShader_parentMeta,(int)igGamecubeEnvironmentMapShader_getMetaCall,(int)lbl_804B2BDC,136,(int)igGamecubeEnvironmentMapShader_vtableRead,(int)igGamecubeEnvironmentMapShader_fieldInit,0,(int)lbl_804B2BC8);
 }
-void *fn_801CEC54(){return lbl_80564F20;}
+void *igGamecubeEnvironmentMapShader_parentMeta(){return lbl_80564F20;}
 }
 #pragma pop

@@ -31,7 +31,7 @@ struct UnknownGenObject802C3FDC : UnknownGenObject802C3FDC_2 {
  inline ~UnknownGenObject802C3FDC(){unknown00=lbl_804E0170;}
 };
 extern "C" {
-void *fn_802C3FDC(){
+void *beNumberCtrl_vtableRead(){
  UnknownGenObject802C3FDC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

@@ -97,7 +97,7 @@ public:
  virtual void * s78();
 };
 extern "C" {
-void fn_8011A9AC(int p0){
+void igGuiSystemRenderer_virtual64(int p0){
  void *value3;
  void *value0;
  void *value1;

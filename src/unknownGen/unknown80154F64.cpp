@@ -6,8 +6,8 @@ extern void *lbl_80564A14;
 extern void *lbl_80564ED0;
 }
 extern "C" {
-void *fn_80154F64(){return lbl_80564ED0;}
-int fn_80154F6C(){return 1;}
-void *fn_80154F74(){return lbl_80564A14;}
+void *igChildEditForNode_virtual7C(){return lbl_80564ED0;}
+int igCollapseAllHierarchies_virtual7C(){return 1;}
+void *igCollapseAllHierarchies_virtual8C(){return lbl_80564A14;}
 }
 #pragma pop

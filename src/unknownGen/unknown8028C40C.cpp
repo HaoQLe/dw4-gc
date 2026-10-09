@@ -24,7 +24,7 @@ struct UnknownGenObject8028C40C : UnknownGenObject8028C40C_0 {
  inline ~UnknownGenObject8028C40C(){unknown00=lbl_804CC650;}
 };
 extern "C" {
-void *fn_8028C40C(){
+void *igSearchSceneGraph_vtableRead(){
  UnknownGenObject8028C40C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

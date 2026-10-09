@@ -18,7 +18,7 @@ struct UnknownGenObject802D42F8 : UnknownGenRoot802D42F8 {
  inline ~UnknownGenObject802D42F8(){unknown00=lbl_804DE500;}
 };
 extern "C" {
-void *fn_802D42F8(){
+void *beKeyboardReceiver_vtableRead(){
  UnknownGenObject802D42F8 object;
  object.unknown00=lbl_80497724;
  object.unknown00=lbl_804DE500;

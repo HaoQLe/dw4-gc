@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805354C4;
 }
 extern "C" {
-void *fn_8031F908(){return lbl_805354C4;}
+void *beDBManager_virtual58(){return lbl_805354C4;}
 }
 #pragma pop

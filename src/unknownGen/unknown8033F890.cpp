@@ -15,7 +15,7 @@ extern char lbl_804E3894[];
 extern void *lbl_805365AC;
 }
 extern "C" {
-void fn_8033F890(){
+void beNDMWLoadSavePlWork_fieldInit(){
  void *value0=lbl_805365AC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E37EC,14);

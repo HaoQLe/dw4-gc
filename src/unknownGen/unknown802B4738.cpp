@@ -14,7 +14,7 @@ extern char lbl_804CF068[];
 extern void *lbl_805345EC;
 }
 extern "C" {
-void fn_802B4738(){
+void beWaterMove_fieldInit(){
  void *value0=lbl_805345EC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF02C,5);

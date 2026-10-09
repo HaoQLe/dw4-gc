@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8002DCA8();
+void *__internalObjectList_getMeta();
 extern void *lbl_805619D4;
 }
 extern "C" {
-void *fn_8002DDAC(){return fn_8002DCA8();}
-void *fn_8002DDCC(){return lbl_805619D4;}
+void *__internalObjectList_getMetaCall(){return __internalObjectList_getMeta();}
+void *__internalObjectList_parentMeta(){return lbl_805619D4;}
 }
 #pragma pop

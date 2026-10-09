@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800EBC94(void *,void *,void *,void *,void *,float,float);
+void igGamecubeVisualContext_virtual2E4(void *,void *,void *,void *,void *,float,float);
 }
 class UnknownGenV800C57C4_0 {
 public:
@@ -200,15 +200,15 @@ struct UnknownGenL800C57C4_8 {
  float m08;
 };
 extern "C" {
-void fn_800C5778(){}
-void fn_800C577C(){}
-void fn_800C5780(){}
-void fn_800C5784(int p0,int p1){
+void igVertexShaderAttr_virtual68(){}
+void igVertexShaderBindAttr_virtual60(){}
+void igVertexShaderBindAttr_virtual68(){}
+void igViewportAttr_virtual60(int p0,int p1){
  float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+32);
  float value1=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+36);
- fn_800EBC94((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24),value0,value1);
+ igGamecubeVisualContext_virtual2E4((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24),value0,value1);
 }
-void fn_800C57C4(int p0,int p1){
+void igViewportAttr_virtual68(int p0,int p1){
  void *local5;
  void *local4;
  void *local3;

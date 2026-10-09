@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_800DDA70(){return 0;}
+int igFileImagePng_virtualA0(){return 0;}
 }
 #pragma pop

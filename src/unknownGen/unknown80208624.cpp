@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_80208624(int p0,int p1){
+void *igTransformSequence1_5_virtualEC(int p0,int p1){
  if((int)(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+72)&p1)==0){
   return (void *)-1;
  }

@@ -8,8 +8,8 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013467C();
-void fn_801350B0();
-void fn_80147188();
+void igHierarchyChangedEvent_register();
+void igReplacedChildEvent_fieldInit();
 extern char lbl_8049C830[];
 extern char lbl_804A6460[];
 extern char lbl_804AA6A4[];
@@ -18,11 +18,11 @@ extern char lbl_804AA878[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F5F4[8];
 extern void *lbl_80563C64;
-void *fn_80134E88();
-void *fn_80134EC4();
+void *igReplacedChildEvent_getMeta();
+void *igReplacedChildEvent_vtableRead();
 void fn_80134FF4();
-void fn_8013501C();
-void *fn_80135090();
+void igReplacedChildEvent_register();
+void *igReplacedChildEvent_getMetaCall();
 }
 struct UnknownGenRoot80134EC4 {
  void *unknown00;
@@ -42,11 +42,11 @@ void *fn_80134E50(void *object){
  fn_80134FF4();
  return fn_8006546C(lbl_80563C64,object);
 }
-void *fn_80134E88(){
+void *igReplacedChildEvent_getMeta(){
  if(!lbl_80563C64 || !(reinterpret_cast<unsigned int *>(lbl_80563C64)[0x24/4]&4)) fn_80134FF4();
  return lbl_80563C64;
 }
-void *fn_80134EC4(){
+void *igReplacedChildEvent_vtableRead(){
  UnknownGenObject80134EC4 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -59,12 +59,12 @@ void *fn_80134EC4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80134FF4(){
- fn_80066188((int)fn_8013501C);
+ fn_80066188((int)igReplacedChildEvent_register);
 }
-void fn_8013501C(){
+void igReplacedChildEvent_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563C64,(int)fn_80147188,(int)fn_8013467C,(int)fn_80135090,(int)lbl_8049C830,44,(int)fn_80134EC4,(int)fn_801350B0,0,(int)lbl_8055F5F4);
+ fn_80066204(0,(int)&lbl_80563C64,(int)igHierarchyChangedEvent_register,(int)fn_8013467C,(int)igReplacedChildEvent_getMetaCall,(int)lbl_8049C830,44,(int)igReplacedChildEvent_vtableRead,(int)igReplacedChildEvent_fieldInit,0,(int)lbl_8055F5F4);
 }
-void *fn_80135090(){return fn_80134E88();}
+void *igReplacedChildEvent_getMetaCall(){return igReplacedChildEvent_getMeta();}
 }
 #pragma pop

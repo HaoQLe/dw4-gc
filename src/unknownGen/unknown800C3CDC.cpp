@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800C380C();
+void *igTextureAttr_virtual30();
 }
 extern "C" {
-void *fn_800C3CDC(){return fn_800C380C();}
+void *igTextureCubeAttr_virtual30(){return igTextureAttr_virtual30();}
 }
 #pragma pop

@@ -14,7 +14,7 @@ extern char lbl_804CF0D8[];
 extern void *lbl_80534628;
 }
 extern "C" {
-void fn_802B5650(){
+void beTransformSync_fieldInit(){
  void *value0=lbl_80534628;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF0CC,1);

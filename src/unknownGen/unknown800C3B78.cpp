@@ -158,7 +158,7 @@ public:
  virtual void s25C(void *,void *,void *);
 };
 extern "C" {
-void fn_800C3B78(int p0,int p1){
+void igTextureCoordSourceAttr_virtual68(int p0,int p1){
  void *local1;
  void *local0;
  local1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);

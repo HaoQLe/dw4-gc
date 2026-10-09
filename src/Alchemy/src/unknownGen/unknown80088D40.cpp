@@ -118,7 +118,7 @@ public:
  virtual void * sDC(void *,void *,void *);
 };
 extern "C" {
-void *fn_80088D40(int p0,int p1,int p2){
+void *igProgramFile_virtual2F8(int p0,int p1,int p2){
  void *value0;
  if((unsigned int)p1==0){
   value0=reinterpret_cast<UnknownGenV80088D40_0 *>((void *)p0)->sD8((void *)p2,(void *)p2);
@@ -127,7 +127,7 @@ void *fn_80088D40(int p0,int p1,int p2){
   return (void *)0;
  }
 }
-void *fn_80088D80(int p0,int p1,int p2,int p3){
+void *igProgramFile_virtual2FC(int p0,int p1,int p2,int p3){
  void *value0;
  if((unsigned int)p1==0){
   value0=reinterpret_cast<UnknownGenV80088D80_1 *>((void *)p0)->sDC((void *)p2,(void *)p3,(void *)p3);

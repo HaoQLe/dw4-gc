@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_80534730;
 }
 extern "C" {
-void *fn_8031BB98(){return lbl_80534730;}
-void fn_8031BBA8(){}
+void *beStaticInfoCtl_virtual80(){return lbl_80534730;}
+void beStaticInfoCtl_virtual84(){}
 }
 #pragma pop

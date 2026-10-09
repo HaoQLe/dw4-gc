@@ -78,10 +78,10 @@ extern "C" Unknown8003EB7C *fn_8003EC04(Unknown8003EB7C *object, const void *val
     return object;
 }
 
-extern "C" void fn_8003EC40(void *object){ fn_80063B1C(object); }
+extern "C" void igBoolArrayMetaField_virtual08(void *object){ fn_80063B1C(object); }
 extern "C" int fn_8003EC60(){ return 1; }
 extern "C" void fn_8003EC68(Unknown8003EB7C *object, Gap::igBool value){ object->slot8C(&value); }
-extern "C" int fn_8003EC9C(){ return 1; }
+extern "C" int igBoolArrayMetaField_virtual6C(){ return 1; }
 extern "C" void fn_8003ECA4(Unknown8003EB7C *object, Gap::igInt value){ object->unknown08 = value; }
 extern "C" void fn_8003ECAC(Unknown8003EB7C *object, Gap::igInt value){ object->unknown0C = value; }
 extern "C" void fn_8003ECB4(Unknown8003EB7C *object){

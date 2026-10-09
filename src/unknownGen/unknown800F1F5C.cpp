@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_800F1F5C(){return 0;}
+int igGamecubeVisualContext_virtual444(){return 0;}
 }
 #pragma pop

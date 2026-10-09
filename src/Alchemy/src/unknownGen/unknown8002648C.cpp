@@ -40,11 +40,11 @@ void *fn_800264C4(){
  if(!lbl_80561610) lbl_80561610=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80561610;
 }
-void *fn_80026500(){
+void *igResource_getMeta(){
  if(!lbl_80561610 || !(reinterpret_cast<unsigned int *>(lbl_80561610)[0x24/4]&4)) arkRegister__Q33Gap4Core10igResourceFv();
  return lbl_80561610;
 }
-void *fn_8002653C(){
+void *igResource_vtableRead(){
  UnknownGenObject8002653C object;
  fn_8006665C(&object);
  object.unknown00=lbl_804712CC;

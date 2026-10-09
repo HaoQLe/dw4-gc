@@ -21,7 +21,7 @@ struct UnknownGenObject802ABB98 : UnknownGenObject802ABB98_0 {
  inline ~UnknownGenObject802ABB98(){unknown00=lbl_804CE7D8;}
 };
 extern "C" {
-void *fn_802ABB98(){
+void *igMovieCodec_vtableRead(){
  UnknownGenObject802ABB98 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

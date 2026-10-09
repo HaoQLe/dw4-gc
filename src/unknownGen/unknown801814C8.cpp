@@ -15,7 +15,7 @@ static inline void *UnknownGenCast801814C8_9(void *q){
  return 0;
 }
 extern "C" {
-void fn_801814C8(int p0,int p1){
+void igObjectPropertyForCartoonShader_virtual90(int p0,int p1){
  void *value0;
  void *local0;
  fn_80188BA4(&local0);

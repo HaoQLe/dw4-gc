@@ -14,7 +14,7 @@ extern char lbl_804CF4D0[];
 extern void *lbl_80534740;
 }
 extern "C" {
-void fn_802B8AE8(){
+void beSoundInfo_fieldInit(){
  void *value0=lbl_80534740;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF4A0,4);

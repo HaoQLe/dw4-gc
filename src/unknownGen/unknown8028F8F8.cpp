@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_8028F8F8(){return 1;}
+int igCreateCollisionDatabase_virtual84(){return 1;}
 }
 #pragma pop

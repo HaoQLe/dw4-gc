@@ -11,7 +11,7 @@ void *fn_80333900(void *object){
  fn_80333B8C();
  return fn_8006546C(lbl_80535F94,object);
 }
-void *fn_80333940(){
+void *beNDMWStatusCtrl00_getMeta(){
  if(!lbl_80535F94 || !(reinterpret_cast<unsigned int *>(lbl_80535F94)[0x24/4]&4)) fn_80333B8C();
  return lbl_80535F94;
 }

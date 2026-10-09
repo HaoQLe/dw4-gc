@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80195A68(){}
+void igReplaceAttrForNode_virtual90(){}
 }
 #pragma pop

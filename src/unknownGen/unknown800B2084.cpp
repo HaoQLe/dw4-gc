@@ -14,10 +14,10 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
-void fn_800B2970();
 void fn_800CDCC8();
+void igPixelShaderAttr_fieldInit();
+void igVisualAttribute_register();
 extern char lbl_80478CBC[];
 extern char lbl_80478CD0[];
 extern char lbl_80478CE8[];
@@ -49,30 +49,30 @@ extern void *lbl_805626B0;
 extern void *lbl_805626B8;
 extern void *lbl_805626C0;
 extern char lbl_80566818[4];
-void *fn_800B20C0();
-void *fn_800B20FC();
+void *igPolygonModeAttr_getMeta();
+void *igPolygonModeAttr_vtableRead();
 void fn_800B2154();
-void fn_800B217C();
-void *fn_800B21EC();
-void fn_800B220C();
-void *fn_800B2298();
-void *fn_800B22D4();
+void igPolygonModeAttr_register();
+void *igPolygonModeAttr_getMetaCall();
+void igPolygonModeAttr_fieldInit();
+void *igPointSpriteSizeAttr_getMeta();
+void *igPointSpriteSizeAttr_vtableRead();
 void fn_800B232C();
-void fn_800B2354();
-void *fn_800B23C4();
-void fn_800B23E4();
-void *fn_800B2460();
-void *fn_800B249C();
+void igPointSpriteSizeAttr_register();
+void *igPointSpriteSizeAttr_getMetaCall();
+void igPointSpriteSizeAttr_fieldInit();
+void *igPixelShaderBindAttr_getMeta();
+void *igPixelShaderBindAttr_vtableRead();
 void fn_800B253C();
-void fn_800B2564();
-void *fn_800B25D8();
-void fn_800B25F8();
+void igPixelShaderBindAttr_register();
+void *igPixelShaderBindAttr_getMetaCall();
+void igPixelShaderBindAttr_fieldInit();
 void *fn_800B2678();
-void *fn_800B26B4();
-void *fn_800B26F0();
+void *igPixelShaderAttr_getMeta();
+void *igPixelShaderAttr_vtableRead();
 void fn_800B28B0();
-void fn_800B28D8();
-void *fn_800B2950();
+void igPixelShaderAttr_register();
+void *igPixelShaderAttr_getMetaCall();
 }
 struct UnknownGenObject800B20FC_0 {
  void *unknown00;
@@ -113,11 +113,11 @@ void *fn_800B2084(){
  if(!lbl_805626A8) lbl_805626A8=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805626A8;
 }
-void *fn_800B20C0(){
+void *igPolygonModeAttr_getMeta(){
  if(!lbl_805626A8 || !(reinterpret_cast<unsigned int *>(lbl_805626A8)[0x24/4]&4)) fn_800B2154();
  return lbl_805626A8;
 }
-void *fn_800B20FC(){
+void *igPolygonModeAttr_vtableRead(){
  UnknownGenObject800B20FC_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -126,14 +126,14 @@ void *fn_800B20FC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B2154(){
- fn_80066188((int)fn_800B217C);
+ fn_80066188((int)igPolygonModeAttr_register);
 }
-void fn_800B217C(){
+void igPolygonModeAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_805626A8,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B21EC,(int)lbl_80478CBC,16,(int)fn_800B20FC,(int)fn_800B220C,0,0);
+ fn_80066204(0,(int)&lbl_805626A8,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igPolygonModeAttr_getMetaCall,(int)lbl_80478CBC,16,(int)igPolygonModeAttr_vtableRead,(int)igPolygonModeAttr_fieldInit,0,0);
 }
-void *fn_800B21EC(){return fn_800B20C0();}
-void fn_800B220C(){
+void *igPolygonModeAttr_getMetaCall(){return igPolygonModeAttr_getMeta();}
+void igPolygonModeAttr_fieldInit(){
  void *value0=lbl_805626A8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E274,1);
@@ -142,11 +142,11 @@ void fn_800B220C(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_800CDCC8;
  fn_800659C0(value0,lbl_8055E278,lbl_8055E27C,lbl_8055E280,value1);
 }
-void *fn_800B2298(){
+void *igPointSpriteSizeAttr_getMeta(){
  if(!lbl_805626B0 || !(reinterpret_cast<unsigned int *>(lbl_805626B0)[0x24/4]&4)) fn_800B232C();
  return lbl_805626B0;
 }
-void *fn_800B22D4(){
+void *igPointSpriteSizeAttr_vtableRead(){
  UnknownGenObject800B22D4_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -155,14 +155,14 @@ void *fn_800B22D4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B232C(){
- fn_80066188((int)fn_800B2354);
+ fn_80066188((int)igPointSpriteSizeAttr_register);
 }
-void fn_800B2354(){
+void igPointSpriteSizeAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_805626B0,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B23C4,(int)lbl_80478CD0,16,(int)fn_800B22D4,(int)fn_800B23E4,0,0);
+ fn_80066204(0,(int)&lbl_805626B0,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igPointSpriteSizeAttr_getMetaCall,(int)lbl_80478CD0,16,(int)igPointSpriteSizeAttr_vtableRead,(int)igPointSpriteSizeAttr_fieldInit,0,0);
 }
-void *fn_800B23C4(){return fn_800B2298();}
-void fn_800B23E4(){
+void *igPointSpriteSizeAttr_getMetaCall(){return igPointSpriteSizeAttr_getMeta();}
+void igPointSpriteSizeAttr_fieldInit(){
  void *value0=lbl_805626B0;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E288,1);
@@ -170,11 +170,11 @@ void fn_800B23E4(){
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566818+0)));
  fn_800659C0(value0,lbl_8055E294,lbl_8055E298,lbl_8055E29C,value1);
 }
-void *fn_800B2460(){
+void *igPixelShaderBindAttr_getMeta(){
  if(!lbl_805626B8 || !(reinterpret_cast<unsigned int *>(lbl_805626B8)[0x24/4]&4)) fn_800B253C();
  return lbl_805626B8;
 }
-void *fn_800B249C(){
+void *igPixelShaderBindAttr_vtableRead(){
  UnknownGenObject800B249C object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -183,14 +183,14 @@ void *fn_800B249C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B253C(){
- fn_80066188((int)fn_800B2564);
+ fn_80066188((int)igPixelShaderBindAttr_register);
 }
-void fn_800B2564(){
+void igPixelShaderBindAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_805626B8,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B25D8,(int)lbl_80478CE8,16,(int)fn_800B249C,(int)fn_800B25F8,0,(int)lbl_8055E2A0);
+ fn_80066204(0,(int)&lbl_805626B8,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igPixelShaderBindAttr_getMetaCall,(int)lbl_80478CE8,16,(int)igPixelShaderBindAttr_vtableRead,(int)igPixelShaderBindAttr_fieldInit,0,(int)lbl_8055E2A0);
 }
-void *fn_800B25D8(){return fn_800B2460();}
-void fn_800B25F8(){
+void *igPixelShaderBindAttr_getMetaCall(){return igPixelShaderBindAttr_getMeta();}
+void igPixelShaderBindAttr_fieldInit(){
  void *value0=lbl_805626B8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E2A8,1);
@@ -203,11 +203,11 @@ void *fn_800B2678(){
  if(!lbl_805626C0) lbl_805626C0=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805626C0;
 }
-void *fn_800B26B4(){
+void *igPixelShaderAttr_getMeta(){
  if(!lbl_805626C0 || !(reinterpret_cast<unsigned int *>(lbl_805626C0)[0x24/4]&4)) fn_800B28B0();
  return lbl_805626C0;
 }
-void *fn_800B26F0(){
+void *igPixelShaderAttr_vtableRead(){
  UnknownGenObject800B26F0 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -221,12 +221,12 @@ void *fn_800B26F0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B28B0(){
- fn_80066188((int)fn_800B28D8);
+ fn_80066188((int)igPixelShaderAttr_register);
 }
-void fn_800B28D8(){
+void igPixelShaderAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_805626C0,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B2950,(int)lbl_80478D24,52,(int)fn_800B26F0,(int)fn_800B2970,0,(int)lbl_80478D10);
+ fn_80066204(0,(int)&lbl_805626C0,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igPixelShaderAttr_getMetaCall,(int)lbl_80478D24,52,(int)igPixelShaderAttr_vtableRead,(int)igPixelShaderAttr_fieldInit,0,(int)lbl_80478D10);
 }
-void *fn_800B2950(){return fn_800B26B4();}
+void *igPixelShaderAttr_getMetaCall(){return igPixelShaderAttr_getMeta();}
 }
 #pragma pop

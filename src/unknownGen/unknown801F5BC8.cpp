@@ -5,12 +5,12 @@ extern "C" {
 
 }
 extern "C" {
-int fn_801F5BC8(){return 3;}
-int fn_801F5BD0(){return 0;}
-int fn_801F5BD8(){return 0;}
-void fn_801F5BE0(){}
-int fn_801F5BE4(){return 0;}
-int fn_801F5BEC(){return 0;}
-void fn_801F5BF4(){}
+int igInverseKinematicsSource_virtual88(){return 3;}
+int igInverseKinematicsSource_virtual8C(){return 0;}
+int igInverseKinematicsSource_virtual90(){return 0;}
+void igInverseKinematicsSource_virtual94(){}
+int igInverseKinematicsSource_virtual98(){return 0;}
+int igInverseKinematicsSource_virtual9C(){return 0;}
+void igInverseKinematicsSource_virtualA0(){}
 }
 #pragma pop

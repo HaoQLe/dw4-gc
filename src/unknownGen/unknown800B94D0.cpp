@@ -23,7 +23,7 @@ struct UnknownGenL800B94D0_8 {
  float m14;
 };
 extern "C" {
-void fn_800B94D0(){
+void igColorAttr_fieldInit(){
  UnknownGenL800B94D0_8 local0;
  void *value0=lbl_80562994;
  void *value1=fn_80065D88(value0);

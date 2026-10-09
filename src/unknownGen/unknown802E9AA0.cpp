@@ -31,7 +31,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_802E9AA0(int p0,int p1){
+void beXboxImage24k_virtual24(int p0,int p1){
  void *value0;
  void *value1;
  fn_800667B0();

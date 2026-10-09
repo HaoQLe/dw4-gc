@@ -96,12 +96,12 @@ public:
  virtual void sC8();
 };
 extern "C" {
-void fn_80213268(int p0){
+void igEndianSwappedEnbayaAnimationSource_virtual50(int p0){
  void *value0=fn_803B5B70(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
  reinterpret_cast<UnknownGenV80213268_0 *>(value0)->s1C();
 }
-void *fn_8021329C(){return fn_801E626C();}
-void fn_802132BC(int p0){
+void *igGamecubeEnvironmentMapShader_virtual24(){return fn_801E626C();}
+void igGamecubeEnvironmentMapShader_virtual28(int p0){
  void *value0;
  void *value1;
  value0=reinterpret_cast<UnknownGenV802132BC_1 *>((void *)p0)->s58();
@@ -111,8 +111,8 @@ void fn_802132BC(int p0){
  }
  fn_801E628C((void *)p0);
 }
-void *fn_80213320(){return lbl_805655D8;}
-void *fn_80213328(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igGamecubeEnvironmentMapShader_virtual58(){return lbl_805655D8;}
+void *igGamecubeEnvironmentMapShader_virtual44(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  void *value1;
  void *value2;

@@ -6,6 +6,6 @@ void fn_8018EEEC();
 }
 extern "C" {
 void fn_8018EEEC(){}
-void fn_8018EEF0(){return fn_8018EEEC();}
+void igImageHistogram_RGB_virtual90(){return fn_8018EEEC();}
 }
 #pragma pop

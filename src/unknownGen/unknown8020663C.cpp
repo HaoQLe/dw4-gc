@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805647C0;
 }
 extern "C" {
-void *fn_8020663C(){return lbl_805647C0;}
+void *igStringKey_virtual58(){return lbl_805647C0;}
 }
 #pragma pop

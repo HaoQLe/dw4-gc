@@ -73,7 +73,7 @@ public:
  virtual void s108(void *);
 };
 extern "C" {
-void fn_80086B04(int p0,int p1,int p2){
+void igElfFile_virtual184(int p0,int p1,int p2){
  void *value0;
  value0=(void *)0;
  while((unsigned int)(int)value0<(unsigned int)p1){

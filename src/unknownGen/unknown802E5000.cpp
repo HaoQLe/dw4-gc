@@ -22,7 +22,7 @@ struct UnknownGenObject802E5000 : UnknownGenObject802E5000_0 {
  inline ~UnknownGenObject802E5000(){unknown00=lbl_804D3E68;}
 };
 extern "C" {
-void *fn_802E5000(){
+void *beActionStarterData_vtableRead(){
  UnknownGenObject802E5000 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

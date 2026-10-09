@@ -23,7 +23,7 @@ struct UnknownGenObject802BEDA0 : UnknownGenObject802BEDA0_0 {
  inline ~UnknownGenObject802BEDA0(){unknown00=lbl_804E0E94;}
 };
 extern "C" {
-void *fn_802BEDA0(){
+void *beSvFileFindApi_vtableRead(){
  UnknownGenObject802BEDA0 object;
  object.unknown00=lbl_804E0F88;
  object.unknown30.value=0;

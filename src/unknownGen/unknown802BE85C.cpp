@@ -11,7 +11,7 @@ void *fn_802BE85C(void *object){
  fn_802BEA04();
  return fn_8006546C(lbl_80534954,object);
 }
-void *fn_802BE89C(){
+void *beSvUseCheckApi_getMeta(){
  if(!lbl_80534954 || !(reinterpret_cast<unsigned int *>(lbl_80534954)[0x24/4]&4)) fn_802BEA04();
  return lbl_80534954;
 }

@@ -160,7 +160,7 @@ public:
  virtual void s84();
 };
 extern "C" {
-void fn_80207288(int p0,int p1){
+void igTransform_virtual24(int p0,int p1){
  fn_801FAE18((void *)p0,(void *)p1);
  if(!(unsigned char)p1){
   reinterpret_cast<UnknownGenV80207288_0 *>((void *)p0)->s70((void *)2,(void *)1);
@@ -169,7 +169,7 @@ void fn_80207288(int p0,int p1){
   return;
  }
 }
-void *fn_802072E4(int p0){
+void *igTransform_virtual68(int p0){
  void *value0;
  void *value1;
  void *value2;
@@ -189,7 +189,7 @@ void *fn_802072E4(int p0){
  return value1;
 }
 int fn_80207350(){return 0;}
-void fn_80207358(int p0,int p1){
+void igTransform_virtual6C(int p0,int p1){
  void *value0;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104);
  if(!value0){
@@ -201,8 +201,8 @@ void fn_80207358(int p0,int p1){
  }
 }
 void fn_802073A8(){}
-int fn_802073AC(){return 2;}
-void *fn_802073B4(int p0){
+int igTransform_virtual78(){return 2;}
+void *igTransform_virtual7C(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+104);

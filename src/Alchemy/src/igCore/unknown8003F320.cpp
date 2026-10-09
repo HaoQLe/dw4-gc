@@ -1,5 +1,5 @@
 #include "unknown8003ED10.h"
-extern "C" Gap::igBool fn_8003F320(Unknown8003ED10 *object, const Gap::igUnsignedInt *value, Gap::igInt offset){
+extern "C" Gap::igBool igCallStackTable_virtual78(Unknown8003ED10 *object, const Gap::igUnsignedInt *value, Gap::igInt offset){
     long count;
     Gap::igInt tried = 0;
     count = object->unknown14->unknown08;

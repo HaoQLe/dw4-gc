@@ -27,7 +27,7 @@ struct UnknownGenObject8033764C : UnknownGenObject8033764C_0 {
  inline ~UnknownGenObject8033764C(){unknown00=lbl_804E732C;}
 };
 extern "C" {
-void *fn_8033764C(){
+void *beNDMWPanelObjectItem_vtableRead(){
  UnknownGenObject8033764C object;
  object.unknown00=lbl_804E613C;
  object.unknown24.value=0;

@@ -8,7 +8,7 @@ void fn_801A2CFC(void *,void *,void *);
 extern void *lbl_80564634;
 }
 extern "C" {
-void *fn_801A20B4(int p0,int p1){
+void *igStatistics_virtual70(int p0,int p1){
  if(!lbl_80564634){
   return (void *)0;
  } else {

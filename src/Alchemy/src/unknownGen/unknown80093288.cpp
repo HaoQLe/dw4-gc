@@ -47,49 +47,49 @@ public:
  virtual void s80();
 };
 extern "C" {
-void *fn_80093288(){return lbl_80562048;}
-void *fn_80093290(){return lbl_80561F24;}
-unsigned char fn_80093298(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+141);}
-int fn_800932A0(){return 1;}
-void *fn_800932A8(int p0){
+void *igStandardQueue_virtual58(){return lbl_80562048;}
+void *igStackMemoryPool_virtual58(){return lbl_80561F24;}
+unsigned char igStackMemoryPool_virtual64(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+141);}
+int igStackMemoryPool_virtual74(){return 1;}
+void *igStackMemoryPool_virtualA4(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }
-int fn_800932B4(){return 1;}
-void *fn_800932BC(){return lbl_8056206C;}
-void fn_800932C4(int p0){
+int igStackMemoryPool_virtual14C(){return 1;}
+void *igStackMemoryPool_virtual1E4(){return lbl_8056206C;}
+void igStackMemoryPool_virtual1F4(int p0){
  reinterpret_cast<UnknownGenV800932C4_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->s80();
 }
-void *fn_800932F4(){return lbl_80562014;}
-void *fn_800932FC(){return lbl_80561F78;}
-unsigned char fn_80093304(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+149);}
-int fn_8009330C(){return 1;}
-void *fn_80093314(int p0){
+void *igProgramFile_virtual58(){return lbl_80562014;}
+void *igProgramFile_virtualDC(){return lbl_80561F78;}
+unsigned char igProgramFile_virtualE8(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+149);}
+int igProgramFile_virtualF8(){return 1;}
+void *igProgramFile_virtual128(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }
-int fn_80093320(){return 1;}
-void *fn_80093328(){return lbl_80561F50;}
-unsigned char fn_80093330(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+137);}
-int fn_80093338(){return 1;}
-void *fn_80093340(int p0){
+int igProgramFile_virtual1D0(){return 1;}
+void *igProgramFile_virtual268(){return lbl_80561F50;}
+unsigned char igProgramFile_virtual274(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+137);}
+int igProgramFile_virtual284(){return 1;}
+void *igProgramFile_virtual2B4(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }
-void fn_8009334C(){}
-void fn_80093350(){}
-int fn_80093354(){return 0;}
-int fn_8009335C(){return 0;}
-void *fn_80093364(){return lbl_80562020;}
-void *fn_8009336C(){return lbl_80561FDC;}
-unsigned char fn_80093374(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+126);}
-int fn_8009337C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+116);}
-int fn_80093384(){return 1;}
-void *fn_8009338C(int p0){
+void igProgramFile_virtual310(){}
+void igProgramFile_virtual318(){}
+int igProgramFile_virtual35C(){return 0;}
+int igProgramFile_virtual360(){return 0;}
+void *igElfFile_virtual58(){return lbl_80562020;}
+void *igElfFile_virtualDC(){return lbl_80561FDC;}
+unsigned char igElfFile_virtualE8(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+126);}
+int igElfFile_virtualEC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+116);}
+int igElfFile_virtualF8(){return 1;}
+void *igElfFile_virtual10C(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }
-void *fn_80093398(int p0){
+void *igElfFile_virtual110(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }

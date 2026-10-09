@@ -8,11 +8,11 @@ extern void *lbl_805647C8;
 extern void *lbl_80564894;
 }
 extern "C" {
-void *fn_80215474(){return lbl_8056475C;}
-int fn_8021547C(){return 0;}
-void *fn_80215484(){return lbl_805647B0;}
-int fn_8021548C(){return 1;}
-void *fn_80215494(){return lbl_805647C8;}
-void *fn_8021549C(){return lbl_80564894;}
+void *igTextureTransformMovieProcessor_virtual58(){return lbl_8056475C;}
+int igShaderProcessor_virtual5C(){return 0;}
+void *igSwitch_virtual58(){return lbl_805647B0;}
+int igSwitch_virtual90(){return 1;}
+void *igSorter_virtual58(){return lbl_805647C8;}
+void *igSkeleton_virtual58(){return lbl_80564894;}
 }
 #pragma pop

@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80086BD8(){}
+void igElfFile_virtual1DC(){}
 }
 #pragma pop

@@ -6,7 +6,7 @@ void PADInit();
 void fn_800667D0();
 }
 extern "C" {
-void fn_800CD178(){
+void igGamecubeControllerManager_virtual2C(){
  fn_800667D0();
  PADInit();
 }

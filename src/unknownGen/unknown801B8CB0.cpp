@@ -5,27 +5,27 @@ extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
-void *fn_801B8914();
-void fn_801B8950();
-void fn_801B8D78();
-void fn_801C03BC();
+void igGeometry_register();
+void igMultiResolutionMeshInstance_fieldInit();
+void *igMultiResolutionMeshInstance_getMeta();
+void igMultiResolutionMeshInstance_vtableRead();
 extern char lbl_804AE20C[];
 extern char lbl_804AE220[];
 extern void *lbl_80564C54;
 extern void *lbl_80564EF0;
-void fn_801B8CD8();
-void *fn_801B8D50();
+void igMultiResolutionMeshInstance_register();
+void *igMultiResolutionMeshInstance_getMetaCall();
 void *fn_801B8D70();
 }
 extern "C" {
 void fn_801B8CB0(){
- fn_80066188((int)fn_801B8CD8);
+ fn_80066188((int)igMultiResolutionMeshInstance_register);
 }
-void fn_801B8CD8(){
+void igMultiResolutionMeshInstance_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564C54,(int)fn_801C03BC,(int)fn_801B8D70,(int)fn_801B8D50,(int)lbl_804AE220,96,(int)fn_801B8950,(int)fn_801B8D78,0,(int)lbl_804AE20C);
+ fn_80066204(0,(int)&lbl_80564C54,(int)igGeometry_register,(int)fn_801B8D70,(int)igMultiResolutionMeshInstance_getMetaCall,(int)lbl_804AE220,96,(int)igMultiResolutionMeshInstance_vtableRead,(int)igMultiResolutionMeshInstance_fieldInit,0,(int)lbl_804AE20C);
 }
-void *fn_801B8D50(){return fn_801B8914();}
+void *igMultiResolutionMeshInstance_getMetaCall(){return igMultiResolutionMeshInstance_getMeta();}
 void *fn_801B8D70(){return lbl_80564EF0;}
 }
 #pragma pop

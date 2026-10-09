@@ -12,7 +12,7 @@ static inline void *UnknownGenCast800E668C_14(void *q){
  return 0;
 }
 extern "C" {
-void fn_800E668C(int p0,int p1,int p2){
+void igVertexArray2Helper_virtualD4(int p0,int p1,int p2){
  void *value5;
  void *value0;
  void *value1;

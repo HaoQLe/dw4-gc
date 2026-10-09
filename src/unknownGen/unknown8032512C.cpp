@@ -34,7 +34,7 @@ struct UnknownGenObject8032512C {
  char unknown5C[4];
 };
 extern "C" {
-void *fn_8032512C(){
+void *libNdmwRuntimePlugin_vtableRead(){
  UnknownGenObject8032512C object;
  fn_8006665C(&object);
  object.unknown00=lbl_804CDE20;

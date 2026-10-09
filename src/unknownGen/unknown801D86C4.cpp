@@ -60,8 +60,8 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void *fn_801D86C4(){return lbl_80565230;}
-void fn_801D86CC(int p0){
+void *igBumpMapShader_virtual58(){return lbl_80565230;}
+void igBumpMapShader_virtual28(int p0){
  void *value58;
  void *value59;
  void *value1;

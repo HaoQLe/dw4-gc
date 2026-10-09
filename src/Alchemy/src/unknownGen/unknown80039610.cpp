@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80039720();
 void fn_80066188(int);
 void fn_800847CC(void *);
+void igArenaMemoryPool_register();
 extern char lbl_80473928[];
 extern void *lbl_80561ED8;
 void fn_800396F8();
@@ -23,7 +23,7 @@ struct UnknownGenObject8003964C : UnknownGenRoot8003964C {
  inline ~UnknownGenObject8003964C(){unknown00=lbl_80473928;}
 };
 extern "C" {
-void *fn_80039610(){
+void *igArenaMemoryPool_getMeta(){
  if(!lbl_80561ED8 || !(reinterpret_cast<unsigned int *>(lbl_80561ED8)[0x24/4]&4)) fn_800396F8();
  return lbl_80561ED8;
 }
@@ -32,7 +32,7 @@ void *fn_8003964C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800396F8(){
- fn_80066188((int)fn_80039720);
+ fn_80066188((int)igArenaMemoryPool_register);
 }
 }
 #pragma pop

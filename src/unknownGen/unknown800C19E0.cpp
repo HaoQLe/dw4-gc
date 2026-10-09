@@ -5,7 +5,7 @@ extern "C" {
 void fn_80041660(void *,void *,int);
 }
 extern "C" {
-void fn_800C19E0(int p0,int p1,int p2,int p3,int p4,int p5){
+void igVector3MorphData_virtual60(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  void *value1;
  if((int)p1!=(int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){

@@ -6,7 +6,7 @@ void fn_80305308(void *,void *,void *);
 extern char lbl_804599C8[];
 }
 extern "C" {
-void fn_80379158(int p0,int p1,int p2,int p3,int p4,int p5){
+void beNDMWSaveCtrl_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_80305308(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20),(void *)p1,lbl_804599C8);
 }
 }

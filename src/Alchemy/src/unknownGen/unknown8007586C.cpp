@@ -99,14 +99,14 @@ public:
  virtual void sD0(void *,void *);
 };
 extern "C" {
-int fn_8007586C(){return 1;}
+int igUnsignedCharMetaField_virtual64(){return 1;}
 void fn_80075874(int p0,int p1){
  UnknownGenL80075874_8 local0;
  local0.m08=(unsigned char)p1;
  reinterpret_cast<UnknownGenV80075874_0 *>((void *)p0)->s8C(&local0);
 }
-int fn_800758A8(){return 1;}
-void fn_800758B0(int p0,int p1,int p2){
+int igUnsignedCharMetaField_virtual6C(){return 1;}
+void igUnsignedIntArrayMetaField_virtualD0(int p0,int p1,int p2){
  void *value0=fn_80022DF8();
  reinterpret_cast<UnknownGenV800758B0_2 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52)));
 }

@@ -2,6 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beBaseInfoManager_register();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
@@ -16,7 +17,6 @@ void *fn_802B381C();
 void *fn_802B7000();
 void fn_802CD1F0();
 void *fn_802D2484();
-void fn_802E3908();
 extern char lbl_8041CA68[];
 extern char lbl_8041F514[];
 extern char lbl_804D1084[];
@@ -30,30 +30,30 @@ extern void *lbl_80534F48;
 extern void *lbl_80534F4C;
 extern void *lbl_80534F5C;
 extern void *lbl_805621F4;
-void *fn_802CCDC4();
+void *beModelCtrl_getMeta();
 void fn_802CCE10();
-void fn_802CCE38();
-void *fn_802CCEB0();
-void fn_802CCED0();
+void beModelCtrl_register();
+void *beModelCtrl_getMetaCall();
+void beModelCtrl_fieldInit();
 }
 extern "C" {
 void *fn_802CCD64(){
  if(!lbl_80534F48) lbl_80534F48=fn_800635C8(lbl_8041CA68,lbl_804D1084,lbl_804D1108,0x21);
  return lbl_80534F48;
 }
-void *fn_802CCDC4(){
+void *beModelCtrl_getMeta(){
  if(!lbl_80534F4C || !(reinterpret_cast<unsigned int *>(lbl_80534F4C)[0x24/4]&4)) fn_802CCE10();
  return lbl_80534F4C;
 }
 void fn_802CCE10(){
- fn_80066188((int)fn_802CCE38);
+ fn_80066188((int)beModelCtrl_register);
 }
-void fn_802CCE38(){
+void beModelCtrl_register(){
  fn_802B1AC8();
- fn_80066204(1,(int)&lbl_80534F4C,(int)fn_802E3908,(int)fn_802B381C,(int)fn_802CCEB0,(int)lbl_8041F514,44,0,(int)fn_802CCED0,0,(int)lbl_804D118C);
+ fn_80066204(1,(int)&lbl_80534F4C,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beModelCtrl_getMetaCall,(int)lbl_8041F514,44,0,(int)beModelCtrl_fieldInit,0,(int)lbl_804D118C);
 }
-void *fn_802CCEB0(){return fn_802CCDC4();}
-void fn_802CCED0(){
+void *beModelCtrl_getMetaCall(){return beModelCtrl_getMeta();}
+void beModelCtrl_fieldInit(){
  void *value0=lbl_80534F4C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1198,3);
@@ -71,7 +71,7 @@ void *fn_802CCF98(){
  if(!lbl_80534F5C) lbl_80534F5C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80534F5C;
 }
-void *fn_802CCFEC(){
+void *beMeterCtrlNode_getMeta(){
  if(!lbl_80534F5C || !(reinterpret_cast<unsigned int *>(lbl_80534F5C)[0x24/4]&4)) fn_802CD1F0();
  return lbl_80534F5C;
 }

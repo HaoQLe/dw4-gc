@@ -22,7 +22,7 @@ extern void *lbl_80536188;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void fn_80338E78(){
+void beNDMWMdlPlayer_fieldInit(){
  void *value0=lbl_80536178;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E2780,3);
@@ -48,7 +48,7 @@ void *fn_80338FA0(){
  if(!lbl_80536188) lbl_80536188=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80536188;
 }
-void *fn_80338FF4(){
+void *beNDMWMdlPlayerInfoWork_getMeta(){
  if(!lbl_80536188 || !(reinterpret_cast<unsigned int *>(lbl_80536188)[0x24/4]&4)) fn_803393C0();
  return lbl_80536188;
 }

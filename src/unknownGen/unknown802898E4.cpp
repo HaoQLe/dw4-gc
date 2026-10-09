@@ -182,12 +182,12 @@ public:
  virtual void s2BC();
 };
 extern "C" {
-void fn_802898E4(int p0){
+void igFlushRenderer_virtual68(int p0){
  reinterpret_cast<UnknownGenV802898E4_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s2BC();
 }
-void *fn_80289914(){return lbl_80515D40;}
-void fn_80289924(){}
-void fn_80289928(){}
-void fn_8028992C(){}
+void *igFlushRenderer_virtual58(){return lbl_80515D40;}
+void igFlushRenderer_virtual64(){}
+void igFlushRenderer_virtual5C(){}
+void igFlushRenderer_virtual60(){}
 }
 #pragma pop

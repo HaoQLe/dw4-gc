@@ -35,11 +35,11 @@ public:
  virtual void s6C(void *,void *);
 };
 extern "C" {
-void fn_8028B590(int p0,int p1,int p2,int p3,int p4,int p5){
+void igFilterMessageDispatcher_virtual60(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_800694EC(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p2)+12),(void *)p1);
  fn_800694EC(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p2);
 }
-void fn_8028B5D8(int p0,int p1,int p2){
+void igFilterMessageDispatcher_virtual68(int p0,int p1,int p2){
  void *value0;
  value0=fn_8028B274((void *)p0,(void *)p2);
  if((int)(int)value0!=0){

@@ -12,7 +12,7 @@ extern "C" {
     extern char lbl_8055D794[5], lbl_8055D79C[5], lbl_8055D7A4[6], lbl_8055D7AC[3];
 }
 
-extern "C" int fn_8003EA18(void *, Gap::igBool *value, const char *text){
+extern "C" int igBoolArrayMetaField_virtualE0(void *, Gap::igBool *value, const char *text){
     int consumed = 0;
     int number = 0;
     sscanf(text, lbl_8055D794, &number, &consumed);

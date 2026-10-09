@@ -4,7 +4,6 @@
 extern "C" {
 void *fn_80065BDC(void *,void *);
 void fn_801DB310(void *,void *);
-void fn_801DB668();
 void fn_801DFB08(int,int);
 void fn_801E005C(int);
 void fn_801E0148(int,int);
@@ -22,6 +21,7 @@ void fn_801E0ABC(int,int);
 int fn_801E0B34();
 int fn_801E0B3C();
 void fn_8020B1A4(void *,void *,void *);
+void igCommonTraversal_virtual28();
 extern void *lbl_80564714;
 extern void *lbl_8056491C;
 extern void *lbl_80564A10;
@@ -74,7 +74,7 @@ public:
 };
 extern "C" {
 void fn_801DF5A8(int p0){
- fn_801DB668();
+ igCommonTraversal_virtual28();
  reinterpret_cast<UnknownGenV801DF5A8_0 *>((void *)p0)->s7C();
 }
 void fn_801DF5E8(int p0,int p1){

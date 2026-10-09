@@ -14,7 +14,7 @@ extern char lbl_804CD98C[];
 extern void *lbl_80534368;
 }
 extern "C" {
-void fn_802AB14C(){
+void igFileName_fieldInit(){
  void *value0=lbl_80534368;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CD980,1);

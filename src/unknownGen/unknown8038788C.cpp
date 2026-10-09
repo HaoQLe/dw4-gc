@@ -5,7 +5,7 @@ extern "C" {
 void fn_80382858(void *,void *,void *,void *);
 }
 extern "C" {
-void fn_8038788C(int p0,int p1){
+void beNDMWStatusSubSlot_virtual88(int p0,int p1){
  fn_80382858((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+108),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+84),(void *)p1);
 }
 }

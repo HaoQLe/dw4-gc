@@ -10,7 +10,7 @@ struct UnknownGenObject802D22A0_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_802D22A0(){
+void *beLuaDataObject_vtableRead(){
  UnknownGenObject802D22A0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804D77E0;

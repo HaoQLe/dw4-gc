@@ -17,7 +17,7 @@ extern char lbl_80566068[1];
 extern void *lbl_80566070;
 }
 extern "C" {
-void fn_80272594(int p0){
+void igLuaState_virtual24(int p0){
  void *value4;
  void *value5;
  void *value6;

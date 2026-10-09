@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beBaseInfoManager_register();
+void beNDMWPanelWaza_fieldInit();
+void *beNDMWPanelWaza_getMeta();
+void beNDMWPanelWaza_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B381C();
-void fn_802E3908();
 void fn_803250AC();
-void *fn_80338158();
-void fn_803381A4();
-void fn_80338378();
 extern char lbl_804542C8[];
 extern char lbl_804E26C8[];
 extern char lbl_80536150[];
-void fn_803382DC();
-void *fn_80338358();
+void beNDMWPanelWaza_register();
+void *beNDMWPanelWaza_getMetaCall();
 }
 extern "C" {
 void fn_803382B4(){
- fn_80066188((int)fn_803382DC);
+ fn_80066188((int)beNDMWPanelWaza_register);
 }
-void fn_803382DC(){
+void beNDMWPanelWaza_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80536150,(int)fn_802E3908,(int)fn_802B381C,(int)fn_80338358,(int)lbl_804542C8,36,(int)fn_803381A4,(int)fn_80338378,0,(int)lbl_804E26C8);
+ fn_80066204(0,(int)lbl_80536150,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beNDMWPanelWaza_getMetaCall,(int)lbl_804542C8,36,(int)beNDMWPanelWaza_vtableRead,(int)beNDMWPanelWaza_fieldInit,0,(int)lbl_804E26C8);
 }
-void *fn_80338358(){return fn_80338158();}
+void *beNDMWPanelWaza_getMetaCall(){return beNDMWPanelWaza_getMeta();}
 }
 #pragma pop

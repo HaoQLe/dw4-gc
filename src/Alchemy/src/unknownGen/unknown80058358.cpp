@@ -41,8 +41,8 @@ public:
  virtual void s88();
 };
 extern "C" {
-void fn_80058358(){}
-void fn_8005835C(int p0){
+void igMemoryDirEntry_virtual90(){}
+void igMemoryDirEntry_virtual84(int p0){
  reinterpret_cast<UnknownGenV8005835C_0 *>((void *)p0)->s88();
 }
 }

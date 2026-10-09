@@ -33,17 +33,17 @@ public:
  virtual void s68(void *,void *,void *);
 };
 extern "C" {
-void fn_80202BE4(){}
-void fn_80202BE8(int p0,int p1){
+void igShaderProcessor_virtual64(){}
+void igSimpleShader_virtualA0(int p0,int p1){
  reinterpret_cast<UnknownGenV80202BE8_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40))->s68((void *)p0,(void *)p1,(void *)p0);
 }
-void fn_80202C24(void *object,UnknownGenValue *value){
+void igSimpleShader_virtualB0(void *object,UnknownGenValue *value){
  if(value) ++value->unknown04;
  UnknownGenValue *old=*reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x24);
  if(old) unknownGenDrop(old);
  *reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x24)=value;
 }
-void fn_80202C94(void *object,UnknownGenValue *value){
+void igSimpleShader_virtualB4(void *object,UnknownGenValue *value){
  if(value) ++value->unknown04;
  UnknownGenValue *old=*reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x28);
  if(old) unknownGenDrop(old);

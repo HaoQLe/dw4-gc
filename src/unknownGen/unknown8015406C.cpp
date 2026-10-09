@@ -60,7 +60,7 @@ public:
  virtual void s90();
 };
 extern "C" {
-void fn_8015406C(int p0,int p1){
+void igAttrEditForLightSet_virtual94(int p0,int p1){
  void *value0;
  void *value1;
  void *local1;

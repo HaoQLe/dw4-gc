@@ -30,11 +30,11 @@ void *fn_80402E5C(){
  if(!lbl_8055C700) lbl_8055C700=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8055C700;
 }
-void *fn_80402EB0(){
+void *igViewerStatisticsManager_getMeta(){
  if(!lbl_8055C700 || !(reinterpret_cast<unsigned int *>(lbl_8055C700)[0x24/4]&4)) fn_80403150();
  return lbl_8055C700;
 }
-void *fn_80402EFC(){
+void *igViewerStatisticsManager_vtableRead(){
  UnknownGenObject80402EFC object;
  fn_8006665C(&object);
  object.unknown00=lbl_804F1C80;

@@ -129,7 +129,7 @@ public:
  virtual void s100(void *,void *);
 };
 extern "C" {
-void fn_80086A3C(int p0,int p1,int p2,int p3,int p4,int p5){
+void igElfFile_virtual180(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  void *value1;
  value0=(void *)0;

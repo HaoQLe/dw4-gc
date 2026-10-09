@@ -73,7 +73,7 @@ public:
  virtual void s108(void *);
 };
 extern "C" {
-void fn_80089F0C(int p0,int p1,int p2){
+void igProgramFile_virtual184(int p0,int p1,int p2){
  void *value0;
  value0=(void *)0;
  while((unsigned int)(int)value0<(unsigned int)p1){

@@ -6,7 +6,7 @@ void *fn_8031FCF0(void *);
 void fn_8031FF98(void *);
 }
 extern "C" {
-void *fn_80321488(int p0){
+void *beSvUseCheckApi_virtual60(int p0){
  void *value0;
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+28)){
   return (void *)1;

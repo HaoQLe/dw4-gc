@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_80068F60(int p0,int p1){
+void *igObjectDirEntry_virtual60(int p0,int p1){
  void *value0;
  if((unsigned int)p1==0){
   return (void *)p0;

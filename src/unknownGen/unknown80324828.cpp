@@ -7,16 +7,16 @@ extern void *lbl_80535068;
 extern void *lbl_8053513C;
 }
 extern "C" {
-void *fn_80324828(){return lbl_80534830;}
-void fn_80324838(){}
-void fn_8032483C(){}
-void fn_80324840(){}
-void fn_80324844(){}
-int fn_80324848(){return 0;}
-void fn_80324850(){}
-void fn_80324854(){}
-void *fn_80324858(){return lbl_80535068;}
-void fn_80324868(){}
-void *fn_8032486C(){return lbl_8053513C;}
+void *beSaveUtil_virtual58(){return lbl_80534830;}
+void beMemory_virtual5C(){}
+void beMemory_virtual60(){}
+void beMemory_virtual64(){}
+void beMemory_virtual68(){}
+int beMemory_virtual6C(){return 0;}
+void beMemory_virtual70(){}
+void beMemory_virtual74(){}
+void *beMemory_virtual58(){return lbl_80535068;}
+void beLightCtrl_virtual88(){}
+void *beLightCtrl_virtual80(){return lbl_8053513C;}
 }
 #pragma pop

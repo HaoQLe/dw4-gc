@@ -5,8 +5,8 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8040EDC4(){}
-void fn_8040EDC8(){}
-void fn_8040EDCC(){}
+void igStatisticsItem_virtual60(){}
+void igViewerStatisticsManager_virtual0C(){}
+void igViewerStatisticsManager_virtual10(){}
 }
 #pragma pop

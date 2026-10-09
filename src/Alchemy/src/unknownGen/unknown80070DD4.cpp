@@ -2,15 +2,15 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8004778C(void *);
 void *fn_80056378(void *);
 void fn_80070E2C();
+void igEventTracker_virtual64(void *);
 }
 extern "C" {
-void *fn_80070DD4(int p0){
+void *igShortArrayMetaField_virtual158(int p0){
  void *value0;
  void *value1;
- fn_8004778C((void *)p0);
+ igEventTracker_virtual64((void *)p0);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+9532)=(void *)fn_80070E2C;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+9524)=(void *)0;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+9528);

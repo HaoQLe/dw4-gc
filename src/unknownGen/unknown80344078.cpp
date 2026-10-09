@@ -2,6 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *beNDMWShinkaObject_getMeta();
+void beNDMWShinkaObject_vtableRead();
 void *fn_800237D0();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
@@ -12,11 +14,9 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void fn_803250AC();
-void *fn_80343FA0();
-void fn_80343FEC();
 void fn_8034474C();
+void igObject_register();
 extern char lbl_80453438[];
 extern char lbl_80455298[];
 extern char lbl_80455484[];
@@ -33,20 +33,20 @@ extern void *lbl_805367E8;
 extern void *lbl_805367EC;
 extern void *lbl_805367F0;
 extern void *lbl_805621F4;
-void fn_803440A0();
-void *fn_80344114();
-void fn_80344134();
+void beNDMWShinkaObject_register();
+void *beNDMWShinkaObject_getMetaCall();
+void beNDMWShinkaObject_fieldInit();
 }
 extern "C" {
 void fn_80344078(){
- fn_80066188((int)fn_803440A0);
+ fn_80066188((int)beNDMWShinkaObject_register);
 }
-void fn_803440A0(){
+void beNDMWShinkaObject_register(){
  fn_803250AC();
- fn_80066204(0,(int)&lbl_80536798,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80344114,(int)lbl_80455298,84,(int)fn_80343FEC,(int)fn_80344134,0,0);
+ fn_80066204(0,(int)&lbl_80536798,(int)igObject_register,(int)fn_800237D0,(int)beNDMWShinkaObject_getMetaCall,(int)lbl_80455298,84,(int)beNDMWShinkaObject_vtableRead,(int)beNDMWShinkaObject_fieldInit,0,0);
 }
-void *fn_80344114(){return fn_80343FA0();}
-void fn_80344134(){
+void *beNDMWShinkaObject_getMetaCall(){return beNDMWShinkaObject_getMeta();}
+void beNDMWShinkaObject_fieldInit(){
  void *meta=lbl_80536798;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804E3E08,0x13);
@@ -68,7 +68,7 @@ void *fn_803442B4(){
  if(!lbl_805367F0) lbl_805367F0=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805367F0;
 }
-void *fn_80344308(){
+void *beNDMWGameRam_getMeta(){
  if(!lbl_805367F0 || !(reinterpret_cast<unsigned int *>(lbl_805367F0)[0x24/4]&4)) fn_8034474C();
  return lbl_805367F0;
 }

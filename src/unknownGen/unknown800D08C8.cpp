@@ -38,7 +38,7 @@ void *fn_800D0958(){
  if(!lbl_80562E3C) lbl_80562E3C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562E3C;
 }
-void *fn_800D0994(){
+void *igPointSpriteExt_getMeta(){
  if(!lbl_80562E3C || !(reinterpret_cast<unsigned int *>(lbl_80562E3C)[0x24/4]&4)) fn_800D0B24();
  return lbl_80562E3C;
 }

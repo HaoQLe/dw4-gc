@@ -4,23 +4,23 @@
 extern "C" {
 void fn_80021B94();
 void *fn_8002942C();
-void fn_800304C4();
-void fn_80032D80();
-void *fn_8003BA04();
 void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void igDirEntry_register();
+void igExternalInfoEntry_fieldInit();
+void *igGamecubeFile_getMeta();
 extern char lbl_80465F2C[];
 extern char lbl_8047284C[];
 extern char lbl_80472EF4[];
 extern char lbl_8047650C[];
 extern void *lbl_80561B60;
-void *fn_800302A0();
-void *fn_800302DC();
+void *igExternalInfoEntry_getMeta();
+void *igExternalInfoEntry_vtableRead();
 void fn_8003040C();
-void fn_80030434();
-void *fn_800304A4();
+void igExternalInfoEntry_register();
+void *igExternalInfoEntry_getMetaCall();
 }
 struct UnknownGenRoot800302DC {
  void *unknown00;
@@ -43,16 +43,16 @@ struct UnknownGenObject800302DC : UnknownGenObject800302DC_1 {
  inline ~UnknownGenObject800302DC(){unknown00=lbl_8047284C;}
 };
 extern "C" {
-void *fn_80030248(){return fn_8003BA04();}
+void *igGamecubeFile_getMetaCall(){return igGamecubeFile_getMeta();}
 void *fn_80030268(void *object){
  fn_8003040C();
  return fn_8006546C(lbl_80561B60,object);
 }
-void *fn_800302A0(){
+void *igExternalInfoEntry_getMeta(){
  if(!lbl_80561B60 || !(reinterpret_cast<unsigned int *>(lbl_80561B60)[0x24/4]&4)) fn_8003040C();
  return lbl_80561B60;
 }
-void *fn_800302DC(){
+void *igExternalInfoEntry_vtableRead(){
  UnknownGenObject800302DC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -63,12 +63,12 @@ void *fn_800302DC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8003040C(){
- fn_80066188((int)fn_80030434);
+ fn_80066188((int)igExternalInfoEntry_register);
 }
-void fn_80030434(){
+void igExternalInfoEntry_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561B60,(int)fn_80032D80,(int)fn_8002942C,(int)fn_800304A4,(int)lbl_80465F2C,40,(int)fn_800302DC,(int)fn_800304C4,0,0);
+ fn_80066204(0,(int)&lbl_80561B60,(int)igDirEntry_register,(int)fn_8002942C,(int)igExternalInfoEntry_getMetaCall,(int)lbl_80465F2C,40,(int)igExternalInfoEntry_vtableRead,(int)igExternalInfoEntry_fieldInit,0,0);
 }
-void *fn_800304A4(){return fn_800302A0();}
+void *igExternalInfoEntry_getMetaCall(){return igExternalInfoEntry_getMeta();}
 }
 #pragma pop

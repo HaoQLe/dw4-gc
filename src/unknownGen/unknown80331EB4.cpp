@@ -14,7 +14,7 @@ extern char lbl_804E1F08[];
 extern void *lbl_80535F20;
 }
 extern "C" {
-void fn_80331EB4(){
+void beNDMWStatusCtrlFlag_fieldInit(){
  void *value0=lbl_80535F20;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1EFC,1);

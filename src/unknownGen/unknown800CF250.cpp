@@ -3,7 +3,6 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80023CF4();
-void fn_80029D58();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
@@ -12,8 +11,9 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
-void *fn_800CF554();
-void *fn_800D75D4();
+void *igGamecubeVertexArray2_getMeta();
+void igNamedObject_register();
+void *igVertexStream_fieldInit();
 extern char lbl_8047650C[];
 extern char lbl_80480EC0[];
 extern char lbl_804885C8[];
@@ -23,11 +23,11 @@ extern void *lbl_805621F4;
 extern void *lbl_80562D94;
 extern void *lbl_80562D98;
 extern void *lbl_80562D9C;
-void *fn_800CF37C();
-void *fn_800CF3B8();
+void *igVertexStream_getMeta();
+void *igVertexStream_vtableRead();
 void fn_800CF498();
-void fn_800CF4C0();
-void *fn_800CF534();
+void igVertexStream_register();
+void *igVertexStream_getMetaCall();
 }
 struct UnknownGenRoot800CF3B8 {
  void *unknown00;
@@ -46,7 +46,7 @@ struct UnknownGenObject800CF3B8 : UnknownGenObject800CF3B8_0 {
  inline ~UnknownGenObject800CF3B8(){unknown00=lbl_804922CC;}
 };
 extern "C" {
-void *fn_800CF250(){return fn_800D75D4();}
+void *igGamecubeVertexArray2_getMetaCall(){return igGamecubeVertexArray2_getMeta();}
 void *fn_800CF270(){
  char *data=lbl_80480EC0;
  if(!lbl_80562D94) lbl_80562D94=fn_800635C8(data+0x7648,data+0x7630,data+0x763C,0x3);
@@ -65,11 +65,11 @@ void *fn_800CF340(){
  if(!lbl_80562D9C) lbl_80562D9C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562D9C;
 }
-void *fn_800CF37C(){
+void *igVertexStream_getMeta(){
  if(!lbl_80562D9C || !(reinterpret_cast<unsigned int *>(lbl_80562D9C)[0x24/4]&4)) fn_800CF498();
  return lbl_80562D9C;
 }
-void *fn_800CF3B8(){
+void *igVertexStream_vtableRead(){
  UnknownGenObject800CF3B8 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -78,12 +78,12 @@ void *fn_800CF3B8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800CF498(){
- fn_80066188((int)fn_800CF4C0);
+ fn_80066188((int)igVertexStream_register);
 }
-void fn_800CF4C0(){
+void igVertexStream_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_80562D9C,(int)fn_80029D58,(int)fn_80023CF4,(int)fn_800CF534,(int)lbl_804885C8,36,(int)fn_800CF3B8,(int)fn_800CF554,0,(int)lbl_8055EA8C);
+ fn_80066204(0,(int)&lbl_80562D9C,(int)igNamedObject_register,(int)fn_80023CF4,(int)igVertexStream_getMetaCall,(int)lbl_804885C8,36,(int)igVertexStream_vtableRead,(int)igVertexStream_fieldInit,0,(int)lbl_8055EA8C);
 }
-void *fn_800CF534(){return fn_800CF37C();}
+void *igVertexStream_getMetaCall(){return igVertexStream_getMeta();}
 }
 #pragma pop

@@ -19,7 +19,7 @@ void *fn_801C0584(void *object){
  fn_801C0D64();
  return fn_8006546C(lbl_80564EFC,object);
 }
-void *fn_801C05BC(){
+void *igFrustCullTraversal_getMeta(){
  if(!lbl_80564EFC || !(reinterpret_cast<unsigned int *>(lbl_80564EFC)[0x24/4]&4)) fn_801C0D64();
  return lbl_80564EFC;
 }

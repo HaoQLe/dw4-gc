@@ -9,7 +9,7 @@ void *fn_803FEEA8(void *);
 extern char lbl_805343EC[];
 }
 extern "C" {
-void *fn_802AE600(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igCriMovieCodec_virtual6C(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value1;
  void *value0;
  void *value2;

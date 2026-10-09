@@ -34,7 +34,7 @@ public:
  virtual void s6C();
 };
 extern "C" {
-void fn_801F5B20(int p0){
+void igInverseKinematicsSource_virtualB4(int p0){
  reinterpret_cast<UnknownGenV801F5B20_0 *>((void *)p0)->s6C();
 }
 }

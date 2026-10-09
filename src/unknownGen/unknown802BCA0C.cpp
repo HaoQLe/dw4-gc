@@ -29,7 +29,7 @@ struct UnknownGenObject802BCA0C : UnknownGenObject802BCA0C_0 {
  inline ~UnknownGenObject802BCA0C(){unknown00=lbl_804DB130;}
 };
 extern "C" {
-void *fn_802BCA0C(){
+void *beSvPlatDataPS2_vtableRead(){
  UnknownGenObject802BCA0C object;
  object.unknown00=lbl_804DB2EC;
  object.unknown0C.value=0;

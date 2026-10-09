@@ -43,7 +43,7 @@ public:
  virtual void * s90();
 };
 extern "C" {
-void *fn_80410B18(int p0){
+void *igCameraMode_virtual80(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80);

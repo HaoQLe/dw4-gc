@@ -23,7 +23,7 @@ struct UnknownGenObject802E6AC8 : UnknownGenObject802E6AC8_0 {
  inline ~UnknownGenObject802E6AC8(){unknown00=lbl_804D3790;}
 };
 extern "C" {
-void *fn_802E6AC8(){
+void *beAction2MOTIONSET_vtableRead(){
  UnknownGenObject802E6AC8 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

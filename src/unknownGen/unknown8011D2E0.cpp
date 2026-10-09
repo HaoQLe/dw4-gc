@@ -7,8 +7,8 @@ extern void *lbl_80563620;
 extern void *lbl_80563624;
 }
 extern "C" {
-void *fn_8011D2E0(){return lbl_805635FC;}
-void *fn_8011D2E8(){return lbl_80563620;}
-void *fn_8011D2F0(){return lbl_80563624;}
+void *igRadioGroup_virtual58(){return lbl_805635FC;}
+void *igRadioGroup_virtualB4(){return lbl_80563620;}
+void *igRadioGroup_virtual118(){return lbl_80563624;}
 }
 #pragma pop

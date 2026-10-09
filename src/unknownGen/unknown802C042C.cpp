@@ -14,7 +14,7 @@ extern char lbl_804CFE8C[];
 extern void *lbl_805349F8;
 }
 extern "C" {
-void fn_802C042C(){
+void beSaveDataDeliver_fieldInit(){
  void *value0=lbl_805349F8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFE74,2);

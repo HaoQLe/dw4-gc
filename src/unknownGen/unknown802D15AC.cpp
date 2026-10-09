@@ -18,7 +18,7 @@ void *fn_802D15EC(){
  if(!lbl_805350F8) lbl_805350F8=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805350F8;
 }
-void *fn_802D1640(){
+void *beLuaState_getMeta(){
  if(!lbl_805350F8 || !(reinterpret_cast<unsigned int *>(lbl_805350F8)[0x24/4]&4)) fn_802D1784();
  return lbl_805350F8;
 }

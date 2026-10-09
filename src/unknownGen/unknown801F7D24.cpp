@@ -40,11 +40,11 @@ public:
  virtual void s7C();
 };
 extern "C" {
-void fn_801F7D24(int p0){
+void igLod_virtual44(int p0){
  fn_801EAB04((void *)p0);
  reinterpret_cast<UnknownGenV801F7D24_0 *>((void *)p0)->s7C();
 }
-void fn_801F7D64(int p0,int p1){
+void igLod_virtual6C(int p0,int p1){
  fn_801EB1CC((void *)p0,(void *)p1);
  fn_8012D498((reinterpret_cast<char *>((void *)p0)+52),(reinterpret_cast<char *>((void *)p0)+52),(void *)p1);
 }

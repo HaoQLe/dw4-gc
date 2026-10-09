@@ -27,7 +27,7 @@ struct UnknownGenObject802ABD34 : UnknownGenObject802ABD34_1 {
  inline ~UnknownGenObject802ABD34(){unknown00=lbl_804CE6AC;}
 };
 extern "C" {
-void *fn_802ABD34(){
+void *igCriMovieCodec_vtableRead(){
  UnknownGenObject802ABD34 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

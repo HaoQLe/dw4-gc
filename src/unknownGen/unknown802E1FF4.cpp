@@ -16,7 +16,7 @@ extern char lbl_804D2AAC[];
 extern void *lbl_8053561C;
 }
 extern "C" {
-void fn_802E1FF4(){
+void beCameraBoxData_fieldInit(){
  void *value0=lbl_8053561C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2A70,5);

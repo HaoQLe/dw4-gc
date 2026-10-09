@@ -6,9 +6,9 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
-void fn_800D1804();
-void *fn_800D18A4();
 void fn_800D842C();
+void *igGamecubeMultiTextureExt_getMetaCall();
+void igMultiTextureExt_register();
 extern char lbl_80473000[];
 extern char lbl_8048EC68[];
 extern char lbl_80491608[];
@@ -17,10 +17,10 @@ extern char lbl_80493EEC[];
 extern char lbl_8055EE00[8];
 extern void *lbl_80562F34;
 extern void *lbl_80563440;
-void *fn_800D8290();
+void *igGamecubeMultiTextureExt_vtableRead();
 void fn_800D8388();
-void fn_800D83B0();
-void *fn_800D8424();
+void igGamecubeMultiTextureExt_register();
+void *igGamecubeMultiTextureExt_parentMeta();
 }
 struct UnknownGenRoot800D8290 {
  void *unknown00;
@@ -45,11 +45,11 @@ struct UnknownGenObject800D8290 : UnknownGenObject800D8290_2 {
  inline ~UnknownGenObject800D8290(){unknown00=lbl_80491608;}
 };
 extern "C" {
-void *fn_800D8254(){
+void *igGamecubeMultiTextureExt_getMeta(){
  if(!lbl_80563440 || !(reinterpret_cast<unsigned int *>(lbl_80563440)[0x24/4]&4)) fn_800D8388();
  return lbl_80563440;
 }
-void *fn_800D8290(){
+void *igGamecubeMultiTextureExt_vtableRead(){
  UnknownGenObject800D8290 object;
  object.unknown00=lbl_80473000;
  object.unknown08.value=0;
@@ -60,12 +60,12 @@ void *fn_800D8290(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800D8388(){
- fn_80066188((int)fn_800D83B0);
+ fn_80066188((int)igGamecubeMultiTextureExt_register);
 }
-void fn_800D83B0(){
+void igGamecubeMultiTextureExt_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_80563440,(int)fn_800D1804,(int)fn_800D8424,(int)fn_800D18A4,(int)lbl_8048EC68,152,(int)fn_800D8290,(int)fn_800D842C,0,(int)lbl_8055EE00);
+ fn_80066204(0,(int)&lbl_80563440,(int)igMultiTextureExt_register,(int)igGamecubeMultiTextureExt_parentMeta,(int)igGamecubeMultiTextureExt_getMetaCall,(int)lbl_8048EC68,152,(int)igGamecubeMultiTextureExt_vtableRead,(int)fn_800D842C,0,(int)lbl_8055EE00);
 }
-void *fn_800D8424(){return lbl_80562F34;}
+void *igGamecubeMultiTextureExt_parentMeta(){return lbl_80562F34;}
 }
 #pragma pop

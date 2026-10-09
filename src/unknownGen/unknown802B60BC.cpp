@@ -34,7 +34,7 @@ struct UnknownGenObject802B60BC : UnknownGenObject802B60BC_2 {
  inline ~UnknownGenObject802B60BC(){unknown00=lbl_804DBFE8;}
 };
 extern "C" {
-void *fn_802B60BC(){
+void *beTextureCtrlInfo_vtableRead(){
  UnknownGenObject802B60BC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

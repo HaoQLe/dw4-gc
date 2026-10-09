@@ -10,7 +10,7 @@ struct UnknownGenObject802DF9B0_0 {
  char unknown04[36];
 };
 extern "C" {
-void *fn_802DF9B0(){
+void *beCriSndf_vtableRead(){
  UnknownGenObject802DF9B0_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804D4D74;

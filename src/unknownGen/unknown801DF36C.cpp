@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_801DB534(void *,void *);
+void igCommonTraversal_virtual24(void *,void *);
 extern void *lbl_805656E8;
 }
 extern "C" {
@@ -10,7 +10,7 @@ void fn_801DF36C(int p0,int p1){
  void *value1;
  void *value2;
  void *value3;
- fn_801DB534((void *)p0,(void *)p1);
+ igCommonTraversal_virtual24((void *)p0,(void *)p1);
  if(!(unsigned char)p1){
   void *value0=lbl_805656E8;
   if(value0){

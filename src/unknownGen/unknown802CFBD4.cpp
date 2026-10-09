@@ -25,7 +25,7 @@ struct UnknownGenObject802CFBD4 : UnknownGenObject802CFBD4_1 {
  inline ~UnknownGenObject802CFBD4(){unknown00=lbl_804E123C;}
 };
 extern "C" {
-void *fn_802CFBD4(){
+void *beMemory_vtableRead(){
  UnknownGenObject802CFBD4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

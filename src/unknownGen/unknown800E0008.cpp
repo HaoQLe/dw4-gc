@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800E0008(){}
-void fn_800E000C(){}
+void igGamecubeIndexArray_virtual6C(){}
+void igGamecubeIndexArray_virtual70(){}
 }
 #pragma pop

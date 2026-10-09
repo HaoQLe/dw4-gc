@@ -32,7 +32,7 @@ void *fn_801C304C(){
  if(!lbl_8056506C) lbl_8056506C=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8056506C;
 }
-void *fn_801C3088(){
+void *igCompiledGraph_getMeta(){
  if(!lbl_8056506C || !(reinterpret_cast<unsigned int *>(lbl_8056506C)[0x24/4]&4)) fn_801C3514();
  return lbl_8056506C;
 }

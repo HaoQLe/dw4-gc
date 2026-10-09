@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_8017A8FC(){return 1;}
+int igLimitActorBlendPalettes_virtual7C(){return 1;}
 }
 #pragma pop

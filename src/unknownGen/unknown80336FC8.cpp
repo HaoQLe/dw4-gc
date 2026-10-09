@@ -19,7 +19,7 @@ extern char lbl_804E2494[];
 extern void *lbl_805360A4;
 }
 extern "C" {
-void fn_80336FC8(){
+void beNDMWPanelWazaInfoWork_fieldInit(){
  void *value0=lbl_805360A4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E2410,11);

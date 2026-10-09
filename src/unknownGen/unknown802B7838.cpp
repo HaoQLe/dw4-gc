@@ -23,7 +23,7 @@ extern char lbl_804CF3C8[];
 extern void *lbl_805346A8;
 }
 extern "C" {
-void fn_802B7838(){
+void beSystem_fieldInit(){
  void *value0=lbl_805346A8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF290,26);

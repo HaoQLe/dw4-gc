@@ -8,7 +8,7 @@ void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_80152CDC();
 void fn_80153030();
-void fn_8015349C();
+void igAttrEditForNode_register();
 extern char lbl_804A0248[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
@@ -19,11 +19,11 @@ extern char lbl_804AA614[];
 extern char lbl_804AAF48[];
 extern char lbl_8055FD78[8];
 extern void *lbl_80564578;
-void *fn_80152E20();
-void *fn_80152E5C();
+void *igAttrEditForAttrSet_getMeta();
+void *igAttrEditForAttrSet_vtableRead();
 void fn_80152F74();
-void fn_80152F9C();
-void *fn_80153010();
+void igAttrEditForAttrSet_register();
+void *igAttrEditForAttrSet_getMetaCall();
 }
 struct UnknownGenRoot80152E5C {
  void *unknown00;
@@ -44,11 +44,11 @@ struct UnknownGenObject80152E5C : UnknownGenObject80152E5C_1 {
  inline ~UnknownGenObject80152E5C(){unknown00=lbl_804A876C;}
 };
 extern "C" {
-void *fn_80152E20(){
+void *igAttrEditForAttrSet_getMeta(){
  if(!lbl_80564578 || !(reinterpret_cast<unsigned int *>(lbl_80564578)[0x24/4]&4)) fn_80152F74();
  return lbl_80564578;
 }
-void *fn_80152E5C(){
+void *igAttrEditForAttrSet_vtableRead(){
  UnknownGenObject80152E5C object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -62,12 +62,12 @@ void *fn_80152E5C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80152F74(){
- fn_80066188((int)fn_80152F9C);
+ fn_80066188((int)igAttrEditForAttrSet_register);
 }
-void fn_80152F9C(){
+void igAttrEditForAttrSet_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564578,(int)fn_8015349C,(int)fn_80152CDC,(int)fn_80153010,(int)lbl_804A0248,40,(int)fn_80152E5C,(int)fn_80153030,0,(int)lbl_8055FD78);
+ fn_80066204(0,(int)&lbl_80564578,(int)igAttrEditForNode_register,(int)fn_80152CDC,(int)igAttrEditForAttrSet_getMetaCall,(int)lbl_804A0248,40,(int)igAttrEditForAttrSet_vtableRead,(int)fn_80153030,0,(int)lbl_8055FD78);
 }
-void *fn_80153010(){return fn_80152E20();}
+void *igAttrEditForAttrSet_getMetaCall(){return igAttrEditForAttrSet_getMeta();}
 }
 #pragma pop

@@ -2,8 +2,6 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8011FBA0();
-void *fn_801227CC();
 void fn_801256A4(int,int);
 void fn_80125734(int,int);
 void fn_80125790(int,int);
@@ -33,15 +31,17 @@ void *fn_80127FFC(void *,void *);
 void *fn_80128030(void *,void *);
 void *fn_80128064(void *,void *);
 void fn_80128098(void *,void *);
+void *igAABox_getMeta();
+void *igPlane_getMeta();
 extern void *lbl_8056395C;
 extern void *lbl_8056397C;
 extern void *lbl_80563A34;
 }
 extern "C" {
 void fn_80125430(){
- void *value3=fn_801227CC();
+ void *value3=igAABox_getMeta();
  void *value4=fn_80127DF0(lbl_8056395C,value3,(void *)fn_801256A4);
- void *value5=fn_8011FBA0();
+ void *value5=igPlane_getMeta();
  fn_80127DF0(lbl_8056395C,value5,(void *)fn_80125734);
  void *value0=lbl_8056395C;
  fn_80127DF0(value0,value0,(void *)fn_80125790);

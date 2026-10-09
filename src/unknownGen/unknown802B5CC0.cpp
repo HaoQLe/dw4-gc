@@ -18,7 +18,7 @@ struct UnknownGenObject802B5CC0 : UnknownGenRoot802B5CC0 {
  inline ~UnknownGenObject802B5CC0(){unknown00=lbl_804DC188;}
 };
 extern "C" {
-void *fn_802B5CC0(){
+void *beTimerData_vtableRead(){
  UnknownGenObject802B5CC0 object;
  object.unknown00=lbl_804DC188;
  object.unknown10.value=0;

@@ -131,7 +131,7 @@ public:
  virtual void s60(void *,void *,void *,void *);
 };
 extern "C" {
-void *fn_800BEB88(int p0){
+void *igGeometryAttr1_5_virtual70(int p0){
  void *value0;
  void *value1;
  void *value2;
@@ -147,15 +147,15 @@ void *fn_800BEB88(int p0){
   return value1;
  }
 }
-void fn_800BEBE8(){}
+void igGamecubeIndexArray_virtual8C(){}
 void *fn_800BEBEC(int p0,int p1){
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
   return (void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32))+16))+(p1<<2));
  }
  return (void *)0;
 }
-void fn_800BEC10(){return fn_800BEB3C();}
-void fn_800BEC30(int p0,int p1,int p2,int p3,int p4){
+void igGeometryAttr1_5_virtual68(){return fn_800BEB3C();}
+void igGeometryAttr1_5_virtual80(int p0,int p1,int p2,int p3,int p4){
  void *value5;
  void *value6;
  void *value0;

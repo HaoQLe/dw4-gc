@@ -5,24 +5,24 @@ extern "C" {
 void *fn_800237D0();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void fn_802AA788();
-void *fn_802AB66C();
-void fn_802AB6B8();
-void fn_802AB800();
+void igAdxAudio_fieldInit();
+void *igAdxAudio_getMeta();
+void igAdxAudio_vtableRead();
+void igObject_register();
 extern char lbl_8041BC68[];
 extern char lbl_805343AC[];
-void fn_802AB76C();
-void *fn_802AB7E0();
+void igAdxAudio_register();
+void *igAdxAudio_getMetaCall();
 }
 extern "C" {
 void fn_802AB744(){
- fn_80066188((int)fn_802AB76C);
+ fn_80066188((int)igAdxAudio_register);
 }
-void fn_802AB76C(){
+void igAdxAudio_register(){
  fn_802AA788();
- fn_80066204(0,(int)lbl_805343AC,(int)fn_80066B08,(int)fn_800237D0,(int)fn_802AB7E0,(int)lbl_8041BC68,48,(int)fn_802AB6B8,(int)fn_802AB800,0,0);
+ fn_80066204(0,(int)lbl_805343AC,(int)igObject_register,(int)fn_800237D0,(int)igAdxAudio_getMetaCall,(int)lbl_8041BC68,48,(int)igAdxAudio_vtableRead,(int)igAdxAudio_fieldInit,0,0);
 }
-void *fn_802AB7E0(){return fn_802AB66C();}
+void *igAdxAudio_getMetaCall(){return igAdxAudio_getMeta();}
 }
 #pragma pop

@@ -32,7 +32,7 @@ struct UnknownGenObject802B9FFC : UnknownGenObject802B9FFC_2 {
  inline ~UnknownGenObject802B9FFC(){unknown00=lbl_804DB81C;}
 };
 extern "C" {
-void *fn_802B9FFC(){
+void *beSelectCtrlInfo_vtableRead(){
  UnknownGenObject802B9FFC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

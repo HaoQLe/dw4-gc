@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_801CD4B8();
+void *igAnimationTrack_getMeta();
 }
 extern "C" {
-void *fn_8015EDF8(){return fn_801CD4B8();}
+void *igConvertAnimationsToCompressedSequencesQS_virtual8C(){return igAnimationTrack_getMeta();}
 }
 #pragma pop

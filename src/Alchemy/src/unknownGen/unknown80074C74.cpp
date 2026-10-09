@@ -6,7 +6,7 @@ void fn_80041660(void *,void *,int);
 extern void *kSuccess__3Gap;
 }
 extern "C" {
-void fn_80074C74(int p0,int p1,int p2){
+void igSymbolTable_virtual60(int p0,int p1,int p2){
  void *value0;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+28);
  if((int)(p2<<2)>=0){

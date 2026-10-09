@@ -34,7 +34,7 @@ public:
  virtual void s6C();
 };
 extern "C" {
-void fn_801F9040(int p0){
+void igMorphBase_virtual64(int p0){
  reinterpret_cast<UnknownGenV801F9040_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))->s6C();
 }
 int fn_801F9070(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+68);}

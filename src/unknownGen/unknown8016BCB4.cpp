@@ -8,7 +8,7 @@ extern void *lbl_80564A14;
 extern void *lbl_80565468;
 }
 extern "C" {
-void *fn_8016BCB4(int p0,int p1){
+void *igExposeActorSkinGraphs_virtual74(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;

@@ -8,9 +8,9 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800A325C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
-void fn_800B6210();
+void igGeometrySetAttr_fieldInit();
+void igVisualAttribute_register();
 extern char lbl_80477D08[];
 extern char lbl_804794F4[];
 extern char lbl_80479500[];
@@ -19,11 +19,11 @@ extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
 extern void *lbl_80562838;
 extern void *lbl_8056283C;
-void *fn_800B5FC0();
-void *fn_800B5FFC();
+void *igGeometrySetAttr_getMeta();
+void *igGeometrySetAttr_vtableRead();
 void fn_800B6150();
-void fn_800B6178();
-void *fn_800B61F0();
+void igGeometrySetAttr_register();
+void *igGeometrySetAttr_getMetaCall();
 }
 struct UnknownGenRoot800B5FFC {
  void *unknown00;
@@ -44,11 +44,11 @@ void *fn_800B5F74(){
  if(!lbl_80562838) lbl_80562838=fn_800635C8(data+0x17E0,data+0x17C8,data+0x17D4,0x3);
  return lbl_80562838;
 }
-void *fn_800B5FC0(){
+void *igGeometrySetAttr_getMeta(){
  if(!lbl_8056283C || !(reinterpret_cast<unsigned int *>(lbl_8056283C)[0x24/4]&4)) fn_800B6150();
  return lbl_8056283C;
 }
-void *fn_800B5FFC(){
+void *igGeometrySetAttr_vtableRead(){
  UnknownGenObject800B5FFC object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -69,12 +69,12 @@ UnknownGenHolder *fn_800B60DC(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_800B6150(){
- fn_80066188((int)fn_800B6178);
+ fn_80066188((int)igGeometrySetAttr_register);
 }
-void fn_800B6178(){
+void igGeometrySetAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_8056283C,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B61F0,(int)lbl_80479500,32,(int)fn_800B5FFC,(int)fn_800B6210,0,(int)lbl_804794F4);
+ fn_80066204(0,(int)&lbl_8056283C,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igGeometrySetAttr_getMetaCall,(int)lbl_80479500,32,(int)igGeometrySetAttr_vtableRead,(int)igGeometrySetAttr_fieldInit,0,(int)lbl_804794F4);
 }
-void *fn_800B61F0(){return fn_800B5FC0();}
+void *igGeometrySetAttr_getMetaCall(){return igGeometrySetAttr_getMeta();}
 }
 #pragma pop

@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800FEEB8(void *,void *,void *);
+void igGamecubeVisualContext_virtual1FC(void *,void *,void *);
 }
 class UnknownGenV800C38D4_0 {
 public:
@@ -117,11 +117,11 @@ public:
  virtual void s60(void *);
 };
 extern "C" {
-void fn_800C38D4(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igTextureBindAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C38D4_0 *>((void *)p1)->s5C((void *)8,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
-void fn_800C3908(){}
-void *fn_800C390C(int p0){
+void igTextureBindAttr_virtual68(){}
+void *igTextureBindAttr_virtual70(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
@@ -132,7 +132,7 @@ void *fn_800C390C(int p0){
   return value0;
  }
 }
-void *fn_800C3944(int p0){
+void *igTextureBindAttr_virtual74(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
@@ -143,16 +143,16 @@ void *fn_800C3944(int p0){
   return value0;
  }
 }
-void fn_800C397C(int p0,int p1){
+void igTextureBindAttr_virtual80(int p0,int p1){
  void *value0;
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12))+36);
  } else {
   value0=(void *)-1;
  }
- fn_800FEEB8((void *)p1,value0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+ igGamecubeVisualContext_virtual1FC((void *)p1,value0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
 }
-void fn_800C39C0(int p0,int p1){
+void igTextureBindAttr_virtual60(int p0,int p1){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
@@ -160,7 +160,7 @@ void fn_800C39C0(int p0,int p1){
   reinterpret_cast<UnknownGenV800C39C0_3 *>(value0)->s60((void *)p1);
   value1=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
   if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36)>=0){
-   fn_800FEEB8((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
+   igGamecubeVisualContext_virtual1FC((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(value1)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16));
    return;
   } else {
    return;

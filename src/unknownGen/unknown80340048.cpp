@@ -11,7 +11,7 @@ struct UnknownGenObject80340048_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_80340048(){
+void *beNDMWMcSlotPS2_vtableRead(){
  UnknownGenObject80340048_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804E5334;

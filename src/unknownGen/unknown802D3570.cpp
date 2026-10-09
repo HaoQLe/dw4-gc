@@ -13,7 +13,7 @@ void *fn_802D3570(){
  if(!lbl_80535158) lbl_80535158=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80535158;
 }
-void *fn_802D35C4(){
+void *beLayerGroupList_getMeta(){
  if(!lbl_80535158 || !(reinterpret_cast<unsigned int *>(lbl_80535158)[0x24/4]&4)) fn_802D3684();
  return lbl_80535158;
 }

@@ -6,7 +6,7 @@ void *fn_800C37E4(void *,int,void *);
 void fn_80198D60(void *,void *);
 }
 extern "C" {
-void fn_80198D04(int p0,int p1,int p2,int p3,int p4,int p5){
+void igResizeImage_virtual88(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  if(((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+40)&0x1)){
   if(!*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+68)){

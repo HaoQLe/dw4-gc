@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_801AC680();
 void *fn_801C47E4(void *);
+void *igTransform_getMeta();
 }
 extern "C" {
-void *fn_80161314(){return fn_801AC680();}
-void *fn_80161334(int p0){
+void *igConvertTransformsToCompressedSequencesQS_virtual8C(){return igTransform_getMeta();}
+void *igCreateActorBounds_virtual7C(int p0){
  void *value0;
  void *value1;
  void *value2;
@@ -23,6 +23,6 @@ void *fn_80161334(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+40)=value2;
  return (void *)1;
 }
-int fn_80161394(){return 0;}
+int igCreateActorBounds_virtual70(){return 0;}
 }
 #pragma pop

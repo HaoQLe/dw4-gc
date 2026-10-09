@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beParticleCtrl2InfoWork_fieldInit();
+void *beParticleCtrl2InfoWork_getMeta();
+void beParticleCtrl2InfoWork_vtableRead();
 void *fn_800237D0();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void fn_800A325C(void *);
 void fn_802B1AC8();
-void *fn_802C1800();
-void fn_802C184C();
-void fn_802C1A10();
+void igObject_register();
 extern char lbl_8041E4C4[];
 extern char lbl_804D0098[];
 extern char lbl_80534A84[];
-void fn_802C1974();
-void *fn_802C19F0();
+void beParticleCtrl2InfoWork_register();
+void *beParticleCtrl2InfoWork_getMetaCall();
 }
 extern "C" {
 UnknownGenHolder *dtor_802C18D8(UnknownGenHolder *object,short flags){
@@ -30,12 +30,12 @@ UnknownGenHolder *dtor_802C18D8(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_802C194C(){
- fn_80066188((int)fn_802C1974);
+ fn_80066188((int)beParticleCtrl2InfoWork_register);
 }
-void fn_802C1974(){
+void beParticleCtrl2InfoWork_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80534A84,(int)fn_80066B08,(int)fn_800237D0,(int)fn_802C19F0,(int)lbl_8041E4C4,24,(int)fn_802C184C,(int)fn_802C1A10,0,(int)lbl_804D0098);
+ fn_80066204(0,(int)lbl_80534A84,(int)igObject_register,(int)fn_800237D0,(int)beParticleCtrl2InfoWork_getMetaCall,(int)lbl_8041E4C4,24,(int)beParticleCtrl2InfoWork_vtableRead,(int)beParticleCtrl2InfoWork_fieldInit,0,(int)lbl_804D0098);
 }
-void *fn_802C19F0(){return fn_802C1800();}
+void *beParticleCtrl2InfoWork_getMetaCall(){return beParticleCtrl2InfoWork_getMeta();}
 }
 #pragma pop

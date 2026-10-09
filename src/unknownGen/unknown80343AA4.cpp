@@ -19,7 +19,7 @@ struct UnknownGenObject80343AA4 : UnknownGenRoot80343AA4 {
  inline ~UnknownGenObject80343AA4(){unknown00=lbl_804E47B8;}
 };
 extern "C" {
-void *fn_80343AA4(){
+void *beNDMWShinkaCtrl_vtableRead(){
  UnknownGenObject80343AA4 object;
  object.unknown00=lbl_804E47B8;
  object.unknown14.value=0;

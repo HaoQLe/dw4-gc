@@ -14,7 +14,7 @@ extern char lbl_804CFDBC[];
 extern void *lbl_805349A4;
 }
 extern "C" {
-void fn_802BF71C(){
+void beSvPlatBaseData_fieldInit(){
  void *value0=lbl_805349A4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFD8C,4);

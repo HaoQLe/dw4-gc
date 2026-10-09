@@ -10,9 +10,9 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
-void fn_800BA89C();
+void igBlendFunctionAttr_fieldInit();
+void igVisualAttribute_register();
 extern char lbl_80477D08[];
 extern char lbl_80479ED0[];
 extern char lbl_8047D430[];
@@ -23,11 +23,11 @@ extern void *lbl_805621F4;
 extern void *lbl_80562A08;
 extern void *lbl_80562A0C;
 extern void *lbl_80562A10;
-void *fn_800BA704();
-void *fn_800BA740();
+void *igBlendFunctionAttr_getMeta();
+void *igBlendFunctionAttr_vtableRead();
 void fn_800BA7E0();
-void fn_800BA808();
-void *fn_800BA87C();
+void igBlendFunctionAttr_register();
+void *igBlendFunctionAttr_getMetaCall();
 }
 struct UnknownGenRoot800BA740 {
  void *unknown00;
@@ -59,11 +59,11 @@ void *fn_800BA6C8(){
  if(!lbl_80562A10) lbl_80562A10=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562A10;
 }
-void *fn_800BA704(){
+void *igBlendFunctionAttr_getMeta(){
  if(!lbl_80562A10 || !(reinterpret_cast<unsigned int *>(lbl_80562A10)[0x24/4]&4)) fn_800BA7E0();
  return lbl_80562A10;
 }
-void *fn_800BA740(){
+void *igBlendFunctionAttr_vtableRead(){
  UnknownGenObject800BA740 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -72,12 +72,12 @@ void *fn_800BA740(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800BA7E0(){
- fn_80066188((int)fn_800BA808);
+ fn_80066188((int)igBlendFunctionAttr_register);
 }
-void fn_800BA808(){
+void igBlendFunctionAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562A10,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800BA87C,(int)lbl_80479ED0,52,(int)fn_800BA740,(int)fn_800BA89C,0,(int)lbl_8055E670);
+ fn_80066204(0,(int)&lbl_80562A10,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igBlendFunctionAttr_getMetaCall,(int)lbl_80479ED0,52,(int)igBlendFunctionAttr_vtableRead,(int)igBlendFunctionAttr_fieldInit,0,(int)lbl_8055E670);
 }
-void *fn_800BA87C(){return fn_800BA704();}
+void *igBlendFunctionAttr_getMetaCall(){return igBlendFunctionAttr_getMeta();}
 }
 #pragma pop

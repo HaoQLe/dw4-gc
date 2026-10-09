@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80068A48(void *object,UnknownGenValue *value){
+void igObjectDirEntry_virtual5C(void *object,UnknownGenValue *value){
  if(value) ++value->unknown04;
  UnknownGenValue *old=*reinterpret_cast<UnknownGenValue **>(reinterpret_cast<char *>(object)+0x18);
  if(old) unknownGenDrop(old);

@@ -6,7 +6,7 @@ void *fn_8005335C(void *,void *);
 void *strcmp(void *,void *);
 }
 extern "C" {
-void *fn_801FEBE8(int p0,int p1){
+void *igSceneInfo_virtual60(int p0,int p1){
  void *value1;
  void *value0;
  void *value2;

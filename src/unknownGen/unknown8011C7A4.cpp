@@ -183,7 +183,7 @@ public:
  virtual void s2C0(void *);
 };
 extern "C" {
-void fn_8011C7A4(int p0){
+void igClearRenderer_virtual68(int p0){
  reinterpret_cast<UnknownGenV8011C7A4_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s2C0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
 }
 }

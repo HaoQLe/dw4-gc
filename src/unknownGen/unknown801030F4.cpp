@@ -5,8 +5,8 @@ extern "C" {
 void fn_800667E0();
 }
 extern "C" {
-void fn_801030F4(){}
-void fn_801030F8(int p0){
+void igGamecubeVertexStream_virtual3C(){}
+void igGamecubeVertexStream_virtual44(int p0){
  void *value0;
  void *value1;
  void *value2;

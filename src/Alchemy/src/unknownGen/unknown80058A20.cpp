@@ -5,8 +5,8 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80058A20(){return -1;}
-int fn_80058A28(){return 0;}
-int fn_80058A30(){return -1;}
+int igMemoryFile_virtual8C(){return -1;}
+int igMemoryFile_virtual90(){return 0;}
+int igMemoryFile_virtual94(){return -1;}
 }
 #pragma pop

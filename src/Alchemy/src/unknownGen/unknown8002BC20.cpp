@@ -6,8 +6,6 @@ void fn_80021B94();
 void *fn_800284EC();
 void *fn_80029E64(void *);
 void *fn_8002B558();
-void fn_8002BF70();
-void fn_8002EABC();
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
 void *fn_800658E4(void *,void *);
@@ -17,6 +15,8 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
+void igInfo_register();
+void igMemoryPool_register();
 extern char lbl_80464CEC[];
 extern char lbl_80471B6C[];
 extern char lbl_80472460[];
@@ -29,12 +29,12 @@ extern char lbl_8055D2F0[4];
 extern void *lbl_8056189C;
 extern void *lbl_805618B4;
 extern void *lbl_805621F4;
-void *fn_8002BC58();
-void *fn_8002BC94();
+void *igMemoryPoolContextInfo_getMeta();
+void *igMemoryPoolContextInfo_vtableRead();
 void fn_8002BD8C();
-void fn_8002BDB4();
-void *fn_8002BE28();
-void fn_8002BE48();
+void igMemoryPoolContextInfo_register();
+void *igMemoryPoolContextInfo_getMetaCall();
+void igMemoryPoolContextInfo_fieldInit();
 void fn_8002BF48();
 }
 struct UnknownGenRoot8002BC94 {
@@ -61,11 +61,11 @@ void *fn_8002BC20(void *object){
  fn_8002BD8C();
  return fn_8006546C(lbl_8056189C,object);
 }
-void *fn_8002BC58(){
+void *igMemoryPoolContextInfo_getMeta(){
  if(!lbl_8056189C || !(reinterpret_cast<unsigned int *>(lbl_8056189C)[0x24/4]&4)) fn_8002BD8C();
  return lbl_8056189C;
 }
-void *fn_8002BC94(){
+void *igMemoryPoolContextInfo_vtableRead(){
  UnknownGenObject8002BC94 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -75,14 +75,14 @@ void *fn_8002BC94(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8002BD8C(){
- fn_80066188((int)fn_8002BDB4);
+ fn_80066188((int)igMemoryPoolContextInfo_register);
 }
-void fn_8002BDB4(){
+void igMemoryPoolContextInfo_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_8056189C,(int)fn_8002EABC,(int)fn_800284EC,(int)fn_8002BE28,(int)lbl_80464CEC,24,(int)fn_8002BC94,(int)fn_8002BE48,0,(int)lbl_8055D2DC);
+ fn_80066204(0,(int)&lbl_8056189C,(int)igInfo_register,(int)fn_800284EC,(int)igMemoryPoolContextInfo_getMetaCall,(int)lbl_80464CEC,24,(int)igMemoryPoolContextInfo_vtableRead,(int)igMemoryPoolContextInfo_fieldInit,0,(int)lbl_8055D2DC);
 }
-void *fn_8002BE28(){return fn_8002BC58();}
-void fn_8002BE48(){
+void *igMemoryPoolContextInfo_getMetaCall(){return igMemoryPoolContextInfo_getMeta();}
+void igMemoryPoolContextInfo_fieldInit(){
  void *value0=lbl_8056189C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D2E4,1);
@@ -96,12 +96,12 @@ void *fn_8002BED0(){
  if(!lbl_805618B4) lbl_805618B4=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805618B4;
 }
-void *fn_8002BF0C(){
+void *igMemoryPool_getMeta(){
  if(!lbl_805618B4 || !(reinterpret_cast<unsigned int *>(lbl_805618B4)[0x24/4]&4)) fn_8002BF48();
  return lbl_805618B4;
 }
 void fn_8002BF48(){
- fn_80066188((int)fn_8002BF70);
+ fn_80066188((int)igMemoryPool_register);
 }
 }
 #pragma pop

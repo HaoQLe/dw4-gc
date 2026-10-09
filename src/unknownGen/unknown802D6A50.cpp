@@ -19,7 +19,7 @@ struct UnknownGenObject802D6A50 : UnknownGenRoot802D6A50 {
  inline ~UnknownGenObject802D6A50(){unknown00=lbl_804D6BFC;}
 };
 extern "C" {
-void *fn_802D6A50(){
+void *beGeneraterInfoWork_vtableRead(){
  UnknownGenObject802D6A50 object;
  object.unknown00=lbl_804D6BFC;
  object.unknown14.value=0;

@@ -33,7 +33,7 @@ extern char lbl_804D09C4[];
 extern void *lbl_80534C64;
 }
 extern "C" {
-void fn_802C6D18(){
+void beModelCtrlInfoWork_fieldInit(){
  void *value0=lbl_80534C64;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D076C,50);

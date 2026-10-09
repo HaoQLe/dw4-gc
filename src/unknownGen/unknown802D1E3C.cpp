@@ -21,7 +21,7 @@ struct UnknownGenObject802D1E3C : UnknownGenObject802D1E3C_0 {
  inline ~UnknownGenObject802D1E3C(){unknown00=lbl_804D7980;}
 };
 extern "C" {
-void *fn_802D1E3C(){
+void *beLuaData_vtableRead(){
  UnknownGenObject802D1E3C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

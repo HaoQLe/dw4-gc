@@ -7,20 +7,20 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *fn_80284550();
-void fn_80286F0C();
 void fn_80402E28();
-void fn_804069B8();
+void igInfoManager_register();
+void igViewerDataPumpManager_fieldInit();
 extern char lbl_8046272C[];
 extern char lbl_8047650C[];
 extern char lbl_804CBA60[];
 extern char lbl_804F09A4[];
 extern char lbl_804F18F0[];
 extern void *lbl_8055C998;
-void *fn_804067A8();
-void *fn_804067F4();
+void *igViewerDataPumpManager_getMeta();
+void *igViewerDataPumpManager_vtableRead();
 void fn_804068F4();
-void fn_8040691C();
-void *fn_80406998();
+void igViewerDataPumpManager_register();
+void *igViewerDataPumpManager_getMetaCall();
 }
 struct UnknownGenRoot804067F4 {
  void *unknown00;
@@ -46,11 +46,11 @@ void *fn_80406768(void *object){
  fn_804068F4();
  return fn_8006546C(lbl_8055C998,object);
 }
-void *fn_804067A8(){
+void *igViewerDataPumpManager_getMeta(){
  if(!lbl_8055C998 || !(reinterpret_cast<unsigned int *>(lbl_8055C998)[0x24/4]&4)) fn_804068F4();
  return lbl_8055C998;
 }
-void *fn_804067F4(){
+void *igViewerDataPumpManager_vtableRead(){
  UnknownGenObject804067F4 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -60,12 +60,12 @@ void *fn_804067F4(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_804068F4(){
- fn_80066188((int)fn_8040691C);
+ fn_80066188((int)igViewerDataPumpManager_register);
 }
-void fn_8040691C(){
+void igViewerDataPumpManager_register(){
  fn_80402E28();
- fn_80066204(0,(int)&lbl_8055C998,(int)fn_80286F0C,(int)fn_80284550,(int)fn_80406998,(int)lbl_8046272C,20,(int)fn_804067F4,(int)fn_804069B8,0,(int)lbl_804F09A4);
+ fn_80066204(0,(int)&lbl_8055C998,(int)igInfoManager_register,(int)fn_80284550,(int)igViewerDataPumpManager_getMetaCall,(int)lbl_8046272C,20,(int)igViewerDataPumpManager_vtableRead,(int)igViewerDataPumpManager_fieldInit,0,(int)lbl_804F09A4);
 }
-void *fn_80406998(){return fn_804067A8();}
+void *igViewerDataPumpManager_getMetaCall(){return igViewerDataPumpManager_getMeta();}
 }
 #pragma pop

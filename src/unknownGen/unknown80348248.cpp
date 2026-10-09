@@ -10,7 +10,7 @@ extern char lbl_80535584[];
 extern char lbl_80536828[];
 }
 extern "C" {
-void *fn_80348248(int p0,int p1){
+void *beNDMWAfsSetup_virtual6C(int p0,int p1){
  void *value0;
  void *value1;
  value0=fn_80068128((void *)p1,*reinterpret_cast<void **>((lbl_80536828+0)));

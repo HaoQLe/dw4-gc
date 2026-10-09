@@ -2,8 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800F7CF4(void *,void *,void *,void *,void *,float);
-void fn_800F7DCC(void *,int);
+void igGamecubeVisualContext_virtual190(void *,int);
+void *igGamecubeVisualContext_virtual1C0(void *,void *,void *,void *,void *,float);
 }
 class UnknownGenV800C12BC_0 {
 public:
@@ -822,11 +822,11 @@ public:
  virtual void * s194(void *);
 };
 extern "C" {
-void fn_800C1280(int p0,int p1){
+void igMaterialAttr_virtual60(int p0,int p1){
  float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+12);
- fn_800F7CF4((void *)p1,(reinterpret_cast<char *>((void *)p0)+32),(reinterpret_cast<char *>((void *)p0)+16),(reinterpret_cast<char *>((void *)p0)+64),(reinterpret_cast<char *>((void *)p0)+48),value0);
+ igGamecubeVisualContext_virtual1C0((void *)p1,(reinterpret_cast<char *>((void *)p0)+32),(reinterpret_cast<char *>((void *)p0)+16),(reinterpret_cast<char *>((void *)p0)+64),(reinterpret_cast<char *>((void *)p0)+48),value0);
 }
-void fn_800C12BC(int p0,int p1){
+void igMaterialAttr_virtual68(int p0,int p1){
  void *local0;
  reinterpret_cast<UnknownGenV800C12BC_0 *>((void *)p1)->s1AC(&local0);
  reinterpret_cast<UnknownGenV800C12BC_1 *>((void *)p0)->s8C(&local0);
@@ -839,10 +839,10 @@ void fn_800C12BC(int p0,int p1){
  reinterpret_cast<UnknownGenV800C12BC_8 *>((void *)p1)->s18C();
  reinterpret_cast<UnknownGenV800C12BC_9 *>((void *)p0)->s80();
 }
-void fn_800C13D8(int p0,int p1){
- fn_800F7DCC((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)));
+void igMaterialModeAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual190((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)));
 }
-void fn_800C1404(int p0,int p1){
+void igMaterialModeAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C1404_10 *>((void *)p1)->s194((void *)p1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
 }

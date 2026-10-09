@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_80169024(int p0,int p1,int p2,int p3){
+void *igTransformSequence1_5_virtual100(int p0,int p1,int p2,int p3){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+92)=(void *)p3;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+88)=(void *)p2;
  return (void *)p0;

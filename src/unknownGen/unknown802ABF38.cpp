@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805343D8;
 }
 extern "C" {
-void *fn_802ABF38(){return lbl_805343D8;}
+void *igCriMovieCodec_parentMeta(){return lbl_805343D8;}
 }
 #pragma pop

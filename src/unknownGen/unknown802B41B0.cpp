@@ -29,7 +29,7 @@ struct UnknownGenObject802B41B0 : UnknownGenObject802B41B0_0 {
  inline ~UnknownGenObject802B41B0(){unknown00=lbl_804DC704;}
 };
 extern "C" {
-void *fn_802B41B0(){
+void *beWaterPlainInfoRam_vtableRead(){
  UnknownGenObject802B41B0 object;
  object.unknown00=lbl_804DCDF0;
  object.unknown28.value=0;

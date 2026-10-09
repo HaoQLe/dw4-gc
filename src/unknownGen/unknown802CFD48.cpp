@@ -15,7 +15,7 @@ extern char lbl_804D1634[];
 extern void *lbl_80535068;
 }
 extern "C" {
-void fn_802CFD48(){
+void beMemory_fieldInit(){
  void *value0=lbl_80535068;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D15F8,5);

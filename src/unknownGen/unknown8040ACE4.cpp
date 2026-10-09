@@ -99,7 +99,7 @@ public:
  virtual void s70(void *);
 };
 extern "C" {
-void fn_8040ACE4(int p0){
+void igViewerRenderer_virtual5C(int p0){
  void *value3;
  void *value0;
  void *value1;

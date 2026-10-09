@@ -50,6 +50,6 @@ void fn_8015B9DC(int p0){
  fn_80188CAC((void *)p0,&local0);
  fn_80188C0C(&local0,-1);
 }
-void *fn_8015BA2C(){return lbl_80564714;}
+void *igCollapseNodeForTransform_virtual7C(){return lbl_80564714;}
 }
 #pragma pop

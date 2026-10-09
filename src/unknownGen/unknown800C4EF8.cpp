@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_80562B18;
 }
 extern "C" {
-void fn_800C4EF8(){
+void igVectorConstantAttr_virtual90(){
  void *value1;
  void *value0=lbl_80562B18;
  if(value0){

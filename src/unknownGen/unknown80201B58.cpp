@@ -26,7 +26,7 @@ void *fn_80201B58(int p0){
  }
  return value1;
 }
-void fn_80201BA0(int p0,int p1){
+void igShader_virtual24(int p0,int p1){
  fn_801FAE18((void *)p0,(void *)p1);
  if(!(unsigned char)p1){
   fn_801D6834(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));

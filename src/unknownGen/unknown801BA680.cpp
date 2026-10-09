@@ -36,11 +36,11 @@ void *fn_801BA6B8(){
  if(!lbl_80564D48) lbl_80564D48=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564D48;
 }
-void *fn_801BA6F4(){
+void *igMorphBase_getMeta(){
  if(!lbl_80564D48 || !(reinterpret_cast<unsigned int *>(lbl_80564D48)[0x24/4]&4)) fn_801BA980();
  return lbl_80564D48;
 }
-void *fn_801BA730(){
+void *igMorphBase_vtableRead(){
  UnknownGenObject801BA730 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804B4254;

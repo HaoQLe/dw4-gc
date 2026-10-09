@@ -2,6 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void *beNDMWStatusCtrlFolder_getMeta();
+void beNDMWStatusCtrlFolder_vtableRead();
+void beNDMWWindowCtrl_register();
 void *fn_8006546C(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
@@ -10,10 +13,7 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_8032B8A4();
-void *fn_80331F9C();
-void fn_80331FE8();
 void fn_8033285C();
-void fn_80333F14();
 extern char lbl_80453B68[];
 extern char lbl_804E1F0C[];
 extern char lbl_804E1F10[];
@@ -21,20 +21,20 @@ extern char lbl_804E1F14[];
 extern char lbl_804E1F18[];
 extern void *lbl_80535F28;
 extern void *lbl_80535F30;
-void fn_80332210();
-void *fn_80332284();
-void fn_803322A4();
+void beNDMWStatusCtrlFolder_register();
+void *beNDMWStatusCtrlFolder_getMetaCall();
+void beNDMWStatusCtrlFolder_fieldInit();
 }
 extern "C" {
 void fn_803321E8(){
- fn_80066188((int)fn_80332210);
+ fn_80066188((int)beNDMWStatusCtrlFolder_register);
 }
-void fn_80332210(){
+void beNDMWStatusCtrlFolder_register(){
  fn_803250AC();
- fn_80066204(0,(int)&lbl_80535F28,(int)fn_80333F14,(int)fn_8032B8A4,(int)fn_80332284,(int)lbl_80453B68,88,(int)fn_80331FE8,(int)fn_803322A4,0,0);
+ fn_80066204(0,(int)&lbl_80535F28,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWStatusCtrlFolder_getMetaCall,(int)lbl_80453B68,88,(int)beNDMWStatusCtrlFolder_vtableRead,(int)beNDMWStatusCtrlFolder_fieldInit,0,0);
 }
-void *fn_80332284(){return fn_80331F9C();}
-void fn_803322A4(){
+void *beNDMWStatusCtrlFolder_getMetaCall(){return beNDMWStatusCtrlFolder_getMeta();}
+void beNDMWStatusCtrlFolder_fieldInit(){
  void *meta=lbl_80535F28;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804E1F0C,0x1);
@@ -44,7 +44,7 @@ void *fn_80332324(void *object){
  fn_8033285C();
  return fn_8006546C(lbl_80535F30,object);
 }
-void *fn_80332364(){
+void *beNDMWStatusSubSlot_getMeta(){
  if(!lbl_80535F30 || !(reinterpret_cast<unsigned int *>(lbl_80535F30)[0x24/4]&4)) fn_8033285C();
  return lbl_80535F30;
 }

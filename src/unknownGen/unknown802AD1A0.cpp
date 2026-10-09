@@ -14,7 +14,7 @@ extern char lbl_804CDD70[];
 extern void *lbl_8053446C;
 }
 extern "C" {
-void fn_802AD1A0(){
+void igMovieRenderer_fieldInit(){
  void *value0=lbl_8053446C;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CDD64,1);

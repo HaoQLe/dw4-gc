@@ -17,7 +17,7 @@ struct UnknownGenObject802BF5CC : UnknownGenRoot802BF5CC {
  inline ~UnknownGenObject802BF5CC(){unknown00=lbl_804DB2EC;}
 };
 extern "C" {
-void *fn_802BF5CC(){
+void *beSvPlatBaseData_vtableRead(){
  UnknownGenObject802BF5CC object;
  object.unknown00=lbl_804DB2EC;
  object.unknown0C.value=0;

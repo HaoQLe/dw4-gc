@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void *fn_80071668(int p0,int p1,int p2){
+void *igStringArrayMetaField_virtualE4(int p0,int p1,int p2){
  void *value0;
  void *value1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p2)+0);

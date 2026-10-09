@@ -6,7 +6,7 @@ void fn_800667D0();
 void fn_800667D4();
 }
 extern "C" {
-void fn_80189BF0(){return fn_800667D0();}
-void fn_80189C10(){return fn_800667D4();}
+void igPromoteAttrs_virtual2C(){return fn_800667D0();}
+void igPromoteAttrs_virtual30(){return fn_800667D4();}
 }
 #pragma pop

@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_801E29D4(){}
+void igGamecubeEnvironmentMapShader_virtualB4(){}
 }
 #pragma pop

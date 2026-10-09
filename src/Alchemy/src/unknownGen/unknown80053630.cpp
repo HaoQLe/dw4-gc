@@ -42,12 +42,12 @@ public:
  virtual void s8C(void *);
 };
 extern "C" {
-void *fn_80053630(){return fn_80063B1C();}
+void *igIntArrayMetaField_virtual08(){return fn_80063B1C();}
 void fn_80053650(int p0,int p1){
  void *local0;
  local0=(void *)p1;
  reinterpret_cast<UnknownGenV80053650_0 *>((void *)p0)->s8C(&local0);
 }
-int fn_80053684(){return 4;}
+int igIntArrayMetaField_virtual6C(){return 4;}
 }
 #pragma pop

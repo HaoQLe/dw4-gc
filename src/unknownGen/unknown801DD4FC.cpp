@@ -5,6 +5,6 @@ extern "C" {
 void *fn_801F4654();
 }
 extern "C" {
-void *fn_801DD4FC(){return fn_801F4654();}
+void *igInverseKinematicsJoint_virtual9C(){return fn_801F4654();}
 }
 #pragma pop

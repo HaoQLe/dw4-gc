@@ -6,9 +6,9 @@ extern void *lbl_805635D0;
 extern void *lbl_805635EC;
 }
 extern "C" {
-void *fn_8011D250(){return lbl_805635D0;}
-void fn_8011D258(){}
-void fn_8011D25C(){}
-void *fn_8011D260(){return lbl_805635EC;}
+void *igClearRenderer_virtual58(){return lbl_805635D0;}
+void igClearRenderer_virtual64(){}
+void igClearRenderer_virtual60(){}
+void *igOnOffValueObserver_virtual58(){return lbl_805635EC;}
 }
 #pragma pop

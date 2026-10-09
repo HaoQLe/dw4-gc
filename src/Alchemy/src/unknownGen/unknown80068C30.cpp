@@ -24,7 +24,7 @@ public:
  virtual void s44();
 };
 extern "C" {
-void fn_80068C30(int p0,int p1){
+void igObjectDirEntry_virtual90(int p0,int p1){
  void *value0;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
  if(value0){
@@ -37,7 +37,7 @@ void fn_80068C30(int p0,int p1){
   }
  }
 }
-void fn_80068C7C(int p0){
+void igObjectDirEntry_virtual94(int p0){
  reinterpret_cast<UnknownGenV80068C7C_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->s44();
 }
 }

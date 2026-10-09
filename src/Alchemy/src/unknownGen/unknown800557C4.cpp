@@ -66,7 +66,7 @@ public:
  virtual void s6C(void *,void *,void *);
 };
 extern "C" {
-void *fn_800557C4(int p0){
+void *igMemoryDictionary_virtual10C(int p0){
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+44)){
   return (void *)0;
  } else {

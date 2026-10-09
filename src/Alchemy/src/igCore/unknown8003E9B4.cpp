@@ -61,7 +61,7 @@ struct Unknown8003E9B4 {
 };
 extern "C" Unknown8003E9B4Target *fn_80038948(void *);
 
-extern "C" void fn_8003E9B4(Unknown8003E9B4 *object, void *value, Gap::igUnsignedInt count){
+extern "C" void igBoolArrayMetaField_virtualD0(Unknown8003E9B4 *object, void *value, Gap::igUnsignedInt count){
     fn_80038948(object)->unknownD0(value, count * object->unknown34);
 }
 

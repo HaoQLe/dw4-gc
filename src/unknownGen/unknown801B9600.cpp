@@ -4,15 +4,15 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80024180();
-void fn_8002907C();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_801AA6DC();
-void fn_801B9998();
+void igMorphSequenceData_fieldInit();
+void igObjectList_register();
+void igObject_register();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
@@ -26,16 +26,16 @@ extern char lbl_80560460[8];
 extern void *lbl_805621F4;
 extern void *lbl_80564CEC;
 extern void *lbl_80564CF0;
-void *fn_801B963C();
-void *fn_801B9678();
+void *igMorphSequenceDataList_getMeta();
+void *igMorphSequenceDataList_vtableRead();
 void fn_801B96E8();
-void fn_801B9710();
-void *fn_801B977C();
-void *fn_801B979C();
-void *fn_801B97D8();
+void igMorphSequenceDataList_register();
+void *igMorphSequenceDataList_getMetaCall();
+void *igMorphSequenceData_getMeta();
+void *igMorphSequenceData_vtableRead();
 void fn_801B98D8();
-void fn_801B9900();
-void *fn_801B9978();
+void igMorphSequenceData_register();
+void *igMorphSequenceData_getMetaCall();
 }
 struct UnknownGenObject801B9678_0 {
  void *unknown00;
@@ -59,11 +59,11 @@ void *fn_801B9600(){
  if(!lbl_80564CEC) lbl_80564CEC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564CEC;
 }
-void *fn_801B963C(){
+void *igMorphSequenceDataList_getMeta(){
  if(!lbl_80564CEC || !(reinterpret_cast<unsigned int *>(lbl_80564CEC)[0x24/4]&4)) fn_801B96E8();
  return lbl_80564CEC;
 }
-void *fn_801B9678(){
+void *igMorphSequenceDataList_vtableRead(){
  UnknownGenObject801B9678_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -74,18 +74,18 @@ void *fn_801B9678(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B96E8(){
- fn_80066188((int)fn_801B9710);
+ fn_80066188((int)igMorphSequenceDataList_register);
 }
-void fn_801B9710(){
+void igMorphSequenceDataList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564CEC,(int)fn_8002907C,(int)fn_80024180,(int)fn_801B977C,(int)lbl_804AE850,20,(int)fn_801B9678,0,0,(int)lbl_80560460);
+ fn_80066204(0,(int)&lbl_80564CEC,(int)igObjectList_register,(int)fn_80024180,(int)igMorphSequenceDataList_getMetaCall,(int)lbl_804AE850,20,(int)igMorphSequenceDataList_vtableRead,0,0,(int)lbl_80560460);
 }
-void *fn_801B977C(){return fn_801B963C();}
-void *fn_801B979C(){
+void *igMorphSequenceDataList_getMetaCall(){return igMorphSequenceDataList_getMeta();}
+void *igMorphSequenceData_getMeta(){
  if(!lbl_80564CF0 || !(reinterpret_cast<unsigned int *>(lbl_80564CF0)[0x24/4]&4)) fn_801B98D8();
  return lbl_80564CF0;
 }
-void *fn_801B97D8(){
+void *igMorphSequenceData_vtableRead(){
  UnknownGenObject801B97D8 object;
  object.unknown00=lbl_804B7CB8;
  object.unknown0C.value=0;
@@ -94,12 +94,12 @@ void *fn_801B97D8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B98D8(){
- fn_80066188((int)fn_801B9900);
+ fn_80066188((int)igMorphSequenceData_register);
 }
-void fn_801B9900(){
+void igMorphSequenceData_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564CF0,(int)fn_80066B08,(int)fn_800237D0,(int)fn_801B9978,(int)lbl_804AE874,32,(int)fn_801B97D8,(int)fn_801B9998,0,(int)lbl_804AE868);
+ fn_80066204(0,(int)&lbl_80564CF0,(int)igObject_register,(int)fn_800237D0,(int)igMorphSequenceData_getMetaCall,(int)lbl_804AE874,32,(int)igMorphSequenceData_vtableRead,(int)igMorphSequenceData_fieldInit,0,(int)lbl_804AE868);
 }
-void *fn_801B9978(){return fn_801B979C();}
+void *igMorphSequenceData_getMetaCall(){return igMorphSequenceData_getMeta();}
 }
 #pragma pop

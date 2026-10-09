@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80565FEC;
 }
 extern "C" {
-void *fn_802D1840(){return lbl_80565FEC;}
+void *beLuaState_parentMeta(){return lbl_80565FEC;}
 }
 #pragma pop

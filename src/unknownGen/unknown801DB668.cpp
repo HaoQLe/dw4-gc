@@ -30,8 +30,8 @@ public:
  virtual void s5C(void *);
 };
 extern "C" {
-void fn_801DB668(){return fn_800667B4();}
-void fn_801DB688(int p0){
+void igCommonTraversal_virtual28(){return fn_800667B4();}
+void igCommonTraversal_virtual78(int p0){
  reinterpret_cast<UnknownGenV801DB688_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68))->s5C(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52));
 }
 }

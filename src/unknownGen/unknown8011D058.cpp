@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8011D058(){}
+void igTextElement_virtual5C(){}
 }
 #pragma pop

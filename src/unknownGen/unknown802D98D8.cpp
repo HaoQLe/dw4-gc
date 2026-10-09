@@ -43,7 +43,7 @@ void *fn_802D9A38(){
  if(!lbl_80535358) lbl_80535358=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80535358;
 }
-void *fn_802D9A8C(){
+void *beFont_getMeta(){
  if(!lbl_80535358 || !(reinterpret_cast<unsigned int *>(lbl_80535358)[0x24/4]&4)) fn_802D9DF4();
  return lbl_80535358;
 }

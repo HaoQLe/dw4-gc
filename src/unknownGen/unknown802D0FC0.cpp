@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beMatCtrlData_fieldInit();
+void *beMatCtrlData_getMeta();
+void beMatCtrlData_vtableRead();
 void *fn_80023CF4();
-void fn_80029D58();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void *fn_802D0E90();
-void fn_802D0EDC();
-void fn_802D1084();
+void igNamedObject_register();
 extern char lbl_8041F9C0[];
 extern char lbl_804D1734[];
 extern char lbl_805350C4[];
-void fn_802D0FE8();
-void *fn_802D1064();
+void beMatCtrlData_register();
+void *beMatCtrlData_getMetaCall();
 }
 extern "C" {
 void fn_802D0FC0(){
- fn_80066188((int)fn_802D0FE8);
+ fn_80066188((int)beMatCtrlData_register);
 }
-void fn_802D0FE8(){
+void beMatCtrlData_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805350C4,(int)fn_80029D58,(int)fn_80023CF4,(int)fn_802D1064,(int)lbl_8041F9C0,16,(int)fn_802D0EDC,(int)fn_802D1084,0,(int)lbl_804D1734);
+ fn_80066204(0,(int)lbl_805350C4,(int)igNamedObject_register,(int)fn_80023CF4,(int)beMatCtrlData_getMetaCall,(int)lbl_8041F9C0,16,(int)beMatCtrlData_vtableRead,(int)beMatCtrlData_fieldInit,0,(int)lbl_804D1734);
 }
-void *fn_802D1064(){return fn_802D0E90();}
+void *beMatCtrlData_getMetaCall(){return beMatCtrlData_getMeta();}
 }
 #pragma pop

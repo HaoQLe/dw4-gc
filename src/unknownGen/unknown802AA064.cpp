@@ -5,7 +5,7 @@ extern "C" {
 void *fn_8029EF04(void *);
 }
 extern "C" {
-void *fn_802AA064(int p0){
+void *igAdxFile_virtual60(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+63)=0;

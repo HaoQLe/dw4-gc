@@ -29,7 +29,7 @@ void *fn_801EB290(int p0,int p1,int p2,int p3,int p4,int p5){
  }
  return *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);
 }
-void *fn_801EB310(int p0,int p1,int p2,int p3,int p4,int p5){
+void *igHashedUserInfo_virtual94(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value4;
  void *value0;
  void *value1;

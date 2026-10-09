@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80561914;
 }
 extern "C" {
-void *fn_80058228(){return lbl_80561914;}
+void *igMemoryDirEntry_virtual58(){return lbl_80561914;}
 }
 #pragma pop

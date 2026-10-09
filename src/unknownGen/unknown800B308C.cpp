@@ -13,12 +13,12 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800A325C(void *);
 void fn_800ABC8C();
-void fn_800AC034();
 void *fn_800AC294();
-void fn_800B3A18();
 void *fn_800B3D08();
-void fn_800B3F08();
 void *fn_800B6C60();
+void igMorphData_register();
+void igVector3MorphData_fieldInit();
+void igVisualAttribute_register();
 extern char lbl_80478F00[];
 extern char lbl_80478F1C[];
 extern char lbl_80478F40[];
@@ -50,30 +50,30 @@ extern void *lbl_80562720;
 extern void *lbl_80562728;
 extern void *lbl_80562734;
 extern void *lbl_80562764;
-void *fn_800B30C8();
-void *fn_800B3104();
+void *igNormalizeNormalsStateAttr_getMeta();
+void *igNormalizeNormalsStateAttr_vtableRead();
 void fn_800B315C();
-void fn_800B3184();
-void *fn_800B31F4();
-void fn_800B3214();
-void *fn_800B327C();
-void *fn_800B32B8();
+void igNormalizeNormalsStateAttr_register();
+void *igNormalizeNormalsStateAttr_getMetaCall();
+void igNormalizeNormalsStateAttr_fieldInit();
+void *igMultiPassStateAttr_getMeta();
+void *igMultiPassStateAttr_vtableRead();
 void fn_800B3310();
-void fn_800B3338();
-void *fn_800B33A8();
-void fn_800B33C8();
-void *fn_800B346C();
-void *fn_800B34A8();
+void igMultiPassStateAttr_register();
+void *igMultiPassStateAttr_getMetaCall();
+void igMultiPassStateAttr_fieldInit();
+void *igMorphedGeometryAttr_getMeta();
+void *igMorphedGeometryAttr_vtableRead();
 void fn_800B35FC();
-void fn_800B3624();
-void *fn_800B369C();
-void fn_800B36BC();
-void *fn_800B375C();
-void *fn_800B3798();
+void igMorphedGeometryAttr_register();
+void *igMorphedGeometryAttr_getMetaCall();
+void igMorphedGeometryAttr_fieldInit();
+void *igVector3MorphData_getMeta();
+void *igVector3MorphData_vtableRead();
 void fn_800B3950();
-void fn_800B3978();
-void *fn_800B39F0();
-void *fn_800B3A10();
+void igVector3MorphData_register();
+void *igVector3MorphData_getMetaCall();
+void *igVector3MorphData_parentMeta();
 }
 struct UnknownGenObject800B3104_0 {
  void *unknown00;
@@ -115,11 +115,11 @@ void *fn_800B308C(){
  if(!lbl_80562718) lbl_80562718=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562718;
 }
-void *fn_800B30C8(){
+void *igNormalizeNormalsStateAttr_getMeta(){
  if(!lbl_80562718 || !(reinterpret_cast<unsigned int *>(lbl_80562718)[0x24/4]&4)) fn_800B315C();
  return lbl_80562718;
 }
-void *fn_800B3104(){
+void *igNormalizeNormalsStateAttr_vtableRead(){
  UnknownGenObject800B3104_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -128,24 +128,24 @@ void *fn_800B3104(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B315C(){
- fn_80066188((int)fn_800B3184);
+ fn_80066188((int)igNormalizeNormalsStateAttr_register);
 }
-void fn_800B3184(){
+void igNormalizeNormalsStateAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562718,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B31F4,(int)lbl_80478F00,16,(int)fn_800B3104,(int)fn_800B3214,0,0);
+ fn_80066204(0,(int)&lbl_80562718,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igNormalizeNormalsStateAttr_getMetaCall,(int)lbl_80478F00,16,(int)igNormalizeNormalsStateAttr_vtableRead,(int)igNormalizeNormalsStateAttr_fieldInit,0,0);
 }
-void *fn_800B31F4(){return fn_800B30C8();}
-void fn_800B3214(){
+void *igNormalizeNormalsStateAttr_getMetaCall(){return igNormalizeNormalsStateAttr_getMeta();}
+void igNormalizeNormalsStateAttr_fieldInit(){
  void *value0=lbl_80562718;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E2EC,1);
  fn_800659C0(value0,lbl_8055E2F0,lbl_8055E2F4,lbl_8055E2F8,value1);
 }
-void *fn_800B327C(){
+void *igMultiPassStateAttr_getMeta(){
  if(!lbl_80562720 || !(reinterpret_cast<unsigned int *>(lbl_80562720)[0x24/4]&4)) fn_800B3310();
  return lbl_80562720;
 }
-void *fn_800B32B8(){
+void *igMultiPassStateAttr_vtableRead(){
  UnknownGenObject800B32B8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_8047D578;
@@ -154,14 +154,14 @@ void *fn_800B32B8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800B3310(){
- fn_80066188((int)fn_800B3338);
+ fn_80066188((int)igMultiPassStateAttr_register);
 }
-void fn_800B3338(){
+void igMultiPassStateAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562720,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B33A8,(int)lbl_80478F1C,16,(int)fn_800B32B8,(int)fn_800B33C8,0,0);
+ fn_80066204(0,(int)&lbl_80562720,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igMultiPassStateAttr_getMetaCall,(int)lbl_80478F1C,16,(int)igMultiPassStateAttr_vtableRead,(int)igMultiPassStateAttr_fieldInit,0,0);
 }
-void *fn_800B33A8(){return fn_800B327C();}
-void fn_800B33C8(){
+void *igMultiPassStateAttr_getMetaCall(){return igMultiPassStateAttr_getMeta();}
+void igMultiPassStateAttr_fieldInit(){
  void *value0=lbl_80562720;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E2FC,1);
@@ -171,11 +171,11 @@ void *fn_800B3430(){
  if(!lbl_80562728) lbl_80562728=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80562728;
 }
-void *fn_800B346C(){
+void *igMorphedGeometryAttr_getMeta(){
  if(!lbl_80562728 || !(reinterpret_cast<unsigned int *>(lbl_80562728)[0x24/4]&4)) fn_800B35FC();
  return lbl_80562728;
 }
-void *fn_800B34A8(){
+void *igMorphedGeometryAttr_vtableRead(){
  UnknownGenObject800B34A8 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
@@ -196,14 +196,14 @@ UnknownGenHolder *dtor_800B3588(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_800B35FC(){
- fn_80066188((int)fn_800B3624);
+ fn_80066188((int)igMorphedGeometryAttr_register);
 }
-void fn_800B3624(){
+void igMorphedGeometryAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562728,(int)fn_800AC034,(int)fn_800AC294,(int)fn_800B369C,(int)lbl_80478F4C,20,(int)fn_800B34A8,(int)fn_800B36BC,0,(int)lbl_80478F40);
+ fn_80066204(0,(int)&lbl_80562728,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igMorphedGeometryAttr_getMetaCall,(int)lbl_80478F4C,20,(int)igMorphedGeometryAttr_vtableRead,(int)igMorphedGeometryAttr_fieldInit,0,(int)lbl_80478F40);
 }
-void *fn_800B369C(){return fn_800B346C();}
-void fn_800B36BC(){
+void *igMorphedGeometryAttr_getMetaCall(){return igMorphedGeometryAttr_getMeta();}
+void igMorphedGeometryAttr_fieldInit(){
  void *value0=lbl_80562728;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E30C,2);
@@ -216,11 +216,11 @@ void fn_800B36BC(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
  fn_800659C0(value0,lbl_8055E314,lbl_8055E31C,lbl_8055E324,value1);
 }
-void *fn_800B375C(){
+void *igVector3MorphData_getMeta(){
  if(!lbl_80562734 || !(reinterpret_cast<unsigned int *>(lbl_80562734)[0x24/4]&4)) fn_800B3950();
  return lbl_80562734;
 }
-void *fn_800B3798(){
+void *igVector3MorphData_vtableRead(){
  UnknownGenObject800B3798 object;
  object.unknown00=lbl_8047E058;
  object.unknown00=lbl_8047BC70;
@@ -242,13 +242,13 @@ UnknownGenHolder *dtor_800B38DC(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_800B3950(){
- fn_80066188((int)fn_800B3978);
+ fn_80066188((int)igVector3MorphData_register);
 }
-void fn_800B3978(){
+void igVector3MorphData_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562734,(int)fn_800B3F08,(int)fn_800B3A10,(int)fn_800B39F0,(int)lbl_80478F90,44,(int)fn_800B3798,(int)fn_800B3A18,0,(int)lbl_80478F7C);
+ fn_80066204(0,(int)&lbl_80562734,(int)igMorphData_register,(int)igVector3MorphData_parentMeta,(int)igVector3MorphData_getMetaCall,(int)lbl_80478F90,44,(int)igVector3MorphData_vtableRead,(int)igVector3MorphData_fieldInit,0,(int)lbl_80478F7C);
 }
-void *fn_800B39F0(){return fn_800B375C();}
-void *fn_800B3A10(){return lbl_80562764;}
+void *igVector3MorphData_getMetaCall(){return igVector3MorphData_getMeta();}
+void *igVector3MorphData_parentMeta(){return lbl_80562764;}
 }
 #pragma pop

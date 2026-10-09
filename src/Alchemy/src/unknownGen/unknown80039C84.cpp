@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80039D94();
 void fn_80066188(int);
 void fn_8008B264(void *);
+void igMallocMemoryPool_register();
 extern char lbl_80473790[];
 extern void *lbl_80561FB0;
 void fn_80039D6C();
@@ -23,7 +23,7 @@ struct UnknownGenObject80039CC0 : UnknownGenRoot80039CC0 {
  inline ~UnknownGenObject80039CC0(){unknown00=lbl_80473790;}
 };
 extern "C" {
-void *fn_80039C84(){
+void *igMallocMemoryPool_getMeta(){
  if(!lbl_80561FB0 || !(reinterpret_cast<unsigned int *>(lbl_80561FB0)[0x24/4]&4)) fn_80039D6C();
  return lbl_80561FB0;
 }
@@ -32,7 +32,7 @@ void *fn_80039CC0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80039D6C(){
- fn_80066188((int)fn_80039D94);
+ fn_80066188((int)igMallocMemoryPool_register);
 }
 }
 #pragma pop

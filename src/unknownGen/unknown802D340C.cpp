@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beBaseInfo_register();
+void beLayerInfo_fieldInit();
+void *beLayerInfo_getMeta();
+void beLayerInfo_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void *fn_802D3228();
-void fn_802D3274();
-void fn_802D34D0();
-void fn_802E3D20();
 extern char lbl_8041FB80[];
 extern char lbl_804D1904[];
 extern char lbl_80535150[];
-void fn_802D3434();
-void *fn_802D34B0();
+void beLayerInfo_register();
+void *beLayerInfo_getMetaCall();
 }
 extern "C" {
 void fn_802D340C(){
- fn_80066188((int)fn_802D3434);
+ fn_80066188((int)beLayerInfo_register);
 }
-void fn_802D3434(){
+void beLayerInfo_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535150,(int)fn_802E3D20,(int)fn_802B2E3C,(int)fn_802D34B0,(int)lbl_8041FB80,32,(int)fn_802D3274,(int)fn_802D34D0,0,(int)lbl_804D1904);
+ fn_80066204(0,(int)lbl_80535150,(int)beBaseInfo_register,(int)fn_802B2E3C,(int)beLayerInfo_getMetaCall,(int)lbl_8041FB80,32,(int)beLayerInfo_vtableRead,(int)beLayerInfo_fieldInit,0,(int)lbl_804D1904);
 }
-void *fn_802D34B0(){return fn_802D3228();}
+void *beLayerInfo_getMetaCall(){return beLayerInfo_getMeta();}
 }
 #pragma pop

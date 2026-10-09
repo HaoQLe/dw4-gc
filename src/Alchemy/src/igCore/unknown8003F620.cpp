@@ -80,13 +80,13 @@ static inline Unknown8003F620Provider *unknownProvider(){
     return reinterpret_cast<Unknown8003F620Provider **>(reinterpret_cast<char *>(Gap::Core::_arkCore) + 0x50)[0];
 }
 
-extern "C" Gap::igBool fn_8003F620(){
+extern "C" Gap::igBool igCallStackTracer_virtual64(){
     Unknown8003F620Provider *object = unknownProvider();
     if(object && object->slot5C()) return true;
     return false;
 }
 
-extern "C" Unknown8003F620Result fn_8003F670(Unknown8003F620 *object, Gap::igUnsignedInt value, const char *arg6, char *arg7, Gap::igInt arg8){
+extern "C" Unknown8003F620Result igCallStackTracer_virtual68(Unknown8003F620 *object, Gap::igUnsignedInt value, const char *arg6, char *arg7, Gap::igInt arg8){
     char first[0x100], second[0x100];
     Gap::igInt firstCount, secondCount;
     Unknown8003F620Result result = object->slot6C(value, first, 0xFF, &firstCount, second, 0xFF, &secondCount);
@@ -94,7 +94,7 @@ extern "C" Unknown8003F620Result fn_8003F670(Unknown8003F620 *object, Gap::igUns
     return result;
 }
 
-extern "C" Unknown8003F620Result fn_8003F724(Unknown8003F620 *, Gap::igUnsignedInt value, char *arg6, Gap::igInt arg7, Gap::igInt *arg8, void *arg9, Gap::igInt arg10, Gap::igInt *arg11){
+extern "C" Unknown8003F620Result igCallStackTracer_virtual6C(Unknown8003F620 *, Gap::igUnsignedInt value, char *arg6, Gap::igInt arg7, Gap::igInt *arg8, void *arg9, Gap::igInt arg10, Gap::igInt *arg11){
     Unknown8003F620Provider *object = unknownProvider();
     if(object && object->slot5C()){
         Gap::igInt first = 0, second = 0;

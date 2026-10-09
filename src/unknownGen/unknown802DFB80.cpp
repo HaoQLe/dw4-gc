@@ -29,7 +29,7 @@ struct UnknownGenObject802DFB80 : UnknownGenObject802DFB80_2 {
  inline ~UnknownGenObject802DFB80(){unknown00=lbl_804D4D04;}
 };
 extern "C" {
-void *fn_802DFB80(){
+void *beCriAcxData_vtableRead(){
  UnknownGenObject802DFB80 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

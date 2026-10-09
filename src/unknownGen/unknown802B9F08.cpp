@@ -14,7 +14,7 @@ extern char lbl_804CF6C0[];
 extern void *lbl_805347A8;
 }
 extern "C" {
-void fn_802B9F08(){
+void beShadow01_fieldInit(){
  void *value0=lbl_805347A8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF6A8,2);

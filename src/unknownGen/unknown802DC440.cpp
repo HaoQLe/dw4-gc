@@ -14,7 +14,7 @@ extern char lbl_804D2430[];
 extern void *lbl_80535440;
 }
 extern "C" {
-void fn_802DC440(){
+void beDataObjFloatList_fieldInit(){
  void *value0=lbl_80535440;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2424,1);

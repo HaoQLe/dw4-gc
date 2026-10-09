@@ -46,13 +46,13 @@ struct UnknownGenL80054BC8_8 {
  int m0C;
 };
 extern "C" {
-int fn_80054BC0(){return 8;}
+int igLongMetaField_virtual64(){return 8;}
 void fn_80054BC8(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  UnknownGenL80054BC8_8 local0;
  local0.m08=(int)p2;
  local0.m0C=(int)p3;
  reinterpret_cast<UnknownGenV80054BC8_0 *>((void *)p0)->s8C(&local0,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
-int fn_80054C00(){return 8;}
+int igLongMetaField_virtual6C(){return 8;}
 }
 #pragma pop

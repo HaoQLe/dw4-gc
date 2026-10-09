@@ -7,6 +7,6 @@ extern void *lbl_80564374;
 }
 extern "C" {
 void *fn_80168184(){return lbl_8056417C;}
-void *fn_8016818C(){return lbl_80564374;}
+void *igDefaultManager_virtual58(){return lbl_80564374;}
 }
 #pragma pop

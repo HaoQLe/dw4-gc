@@ -15,7 +15,7 @@ extern char lbl_804D0CC4[];
 extern void *lbl_80534DC4;
 }
 extern "C" {
-void fn_802C876C(){
+void beModelCtrlMoveObject_fieldInit(){
  void *value0=lbl_80534DC4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D0C58,9);

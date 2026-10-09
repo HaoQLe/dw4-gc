@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_800E6B4C(){return 0;}
+int igVertexArray2Helper_virtualE4(){return 0;}
 }
 #pragma pop

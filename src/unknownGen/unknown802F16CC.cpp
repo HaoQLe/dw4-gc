@@ -9,7 +9,7 @@ void fn_802F0C30(void *,void *);
 void fn_802F0EB0(void *,void *);
 }
 extern "C" {
-void fn_802F16CC(int p0,int p1){
+void beAction2_virtual84(int p0,int p1){
  void *value0;
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p1)+20)){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+56);

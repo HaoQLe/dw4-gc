@@ -13,7 +13,7 @@ static inline Gap::igInt unknownLength(const Gap::igUnsignedInt *value){
     return count;
 }
 
-extern "C" Gap::igInt fn_8003F0D8(Unknown8003ED10 *object, const Gap::igUnsignedInt *value){
+extern "C" Gap::igInt igCallStackTable_virtual70(Unknown8003ED10 *object, const Gap::igUnsignedInt *value){
     if(object->unknown14 && object->unknown14->unknown08){
         Gap::igInt index = object->slot74(value);
         struct State {

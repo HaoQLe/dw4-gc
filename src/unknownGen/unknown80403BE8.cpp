@@ -33,7 +33,7 @@ void *fn_80403C88(){
  if(!lbl_8055C788) lbl_8055C788=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_8055C788;
 }
-void *fn_80403CDC(){
+void *igViewerSceneInfoManager_getMeta(){
  if(!lbl_8055C788 || !(reinterpret_cast<unsigned int *>(lbl_8055C788)[0x24/4]&4)) fn_80404638();
  return lbl_8055C788;
 }

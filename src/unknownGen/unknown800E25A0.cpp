@@ -274,7 +274,7 @@ public:
  virtual void sD4(void *);
 };
 extern "C" {
-void fn_800E25A0(int p0,int p1,int p2){
+void igPointSpriteExt_virtualAC(int p0,int p1,int p2){
  if((unsigned int)p1==0){
   reinterpret_cast<UnknownGenV800E25A0_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sCC((void *)0,(void *)(int)(p2*6));
   return;
@@ -283,7 +283,7 @@ void fn_800E25A0(int p0,int p1,int p2){
   return;
  }
 }
-void fn_800E2604(int p0,int p1,int p2){
+void igPointSpriteExt_virtualB0(int p0,int p1,int p2){
  if((unsigned int)p1==0){
   reinterpret_cast<UnknownGenV800E2604_2 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->sD0((void *)0,(void *)(int)(p2*6));
   return;

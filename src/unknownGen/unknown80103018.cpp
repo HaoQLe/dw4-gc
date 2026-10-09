@@ -60,10 +60,10 @@ public:
  virtual void * s6C();
 };
 extern "C" {
-void fn_80103018(int p0){
+void igGamecubeVertexArray2_virtual30(int p0){
  reinterpret_cast<UnknownGenV80103018_0 *>((void *)p0)->s60();
 }
-void *fn_80103044(int p0){
+void *igGamecubeVertexArray2_virtual60(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);

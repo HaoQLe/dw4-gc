@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80534370;
 }
 extern "C" {
-void *fn_802A9CDC(){return lbl_80534370;}
+void *igAdxFile_virtual58(){return lbl_80534370;}
 }
 #pragma pop

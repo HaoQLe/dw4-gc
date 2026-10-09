@@ -21,7 +21,7 @@ struct UnknownGenObject802CADEC : UnknownGenObject802CADEC_0 {
  inline ~UnknownGenObject802CADEC(){unknown00=lbl_804D9170;}
 };
 extern "C" {
-void *fn_802CADEC(){
+void *beModelCtrlMUTEKI_vtableRead(){
  UnknownGenObject802CADEC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

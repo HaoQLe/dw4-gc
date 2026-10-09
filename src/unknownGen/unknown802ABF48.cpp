@@ -18,7 +18,7 @@ extern void *lbl_805343DC;
 extern void *lbl_805343EC;
 }
 extern "C" {
-void fn_802ABF48(){
+void igCriMovieCodec_fieldInit(){
  void *value0=lbl_805343DC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CDB14,3);
@@ -38,7 +38,7 @@ void *fn_802AC024(void *object){
  fn_802AC0F8();
  return fn_8006546C(lbl_805343EC,object);
 }
-void *fn_802AC064(){
+void *igCriMovieData_getMeta(){
  if(!lbl_805343EC || !(reinterpret_cast<unsigned int *>(lbl_805343EC)[0x24/4]&4)) fn_802AC0F8();
  return lbl_805343EC;
 }

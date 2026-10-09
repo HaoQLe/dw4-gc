@@ -31,7 +31,7 @@ public:
  virtual void s60();
 };
 extern "C" {
-void fn_80055438(int p0){
+void igMemoryDictionary_virtualF4(int p0){
  reinterpret_cast<UnknownGenV80055438_0 *>((void *)p0)->s60();
 }
 }

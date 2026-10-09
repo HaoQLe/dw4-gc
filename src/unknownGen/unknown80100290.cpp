@@ -8,7 +8,7 @@ void fn_800E3274(void *);
 void fn_800FC1FC(void *,void *);
 }
 extern "C" {
-void fn_80100290(int p0){
+void igGamecubeVertexArray1_1_virtual30(int p0){
  void *value0;
  if(((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)&0x4)){
   fn_800FC1FC(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+72),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+76));

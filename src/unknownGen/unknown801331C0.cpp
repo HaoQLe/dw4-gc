@@ -7,8 +7,8 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_801308D0();
-void fn_8013345C();
-void fn_8013B97C();
+void igOptBase_register();
+void igShareAttrs_fieldInit();
 extern char lbl_8049C3DC[];
 extern char lbl_8049C3E8[];
 extern char lbl_804A3238[];
@@ -16,11 +16,11 @@ extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern void *lbl_80563BC8;
-void *fn_801331C0();
-void *fn_801331FC();
+void *igShareAttrs_getMeta();
+void *igShareAttrs_vtableRead();
 void fn_8013339C();
-void fn_801333C4();
-void *fn_8013343C();
+void igShareAttrs_register();
+void *igShareAttrs_getMetaCall();
 }
 struct UnknownGenRoot801331FC {
  void *unknown00;
@@ -41,11 +41,11 @@ struct UnknownGenObject801331FC : UnknownGenObject801331FC_0 {
  inline ~UnknownGenObject801331FC(){unknown00=lbl_804A3238;}
 };
 extern "C" {
-void *fn_801331C0(){
+void *igShareAttrs_getMeta(){
  if(!lbl_80563BC8 || !(reinterpret_cast<unsigned int *>(lbl_80563BC8)[0x24/4]&4)) fn_8013339C();
  return lbl_80563BC8;
 }
-void *fn_801331FC(){
+void *igShareAttrs_vtableRead(){
  UnknownGenObject801331FC object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -59,12 +59,12 @@ void *fn_801331FC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013339C(){
- fn_80066188((int)fn_801333C4);
+ fn_80066188((int)igShareAttrs_register);
 }
-void fn_801333C4(){
+void igShareAttrs_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563BC8,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_8013343C,(int)lbl_8049C3E8,52,(int)fn_801331FC,(int)fn_8013345C,0,(int)lbl_8049C3DC);
+ fn_80066204(0,(int)&lbl_80563BC8,(int)igOptBase_register,(int)fn_801308D0,(int)igShareAttrs_getMetaCall,(int)lbl_8049C3E8,52,(int)igShareAttrs_vtableRead,(int)igShareAttrs_fieldInit,0,(int)lbl_8049C3DC);
 }
-void *fn_8013343C(){return fn_801331C0();}
+void *igShareAttrs_getMetaCall(){return igShareAttrs_getMeta();}
 }
 #pragma pop

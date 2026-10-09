@@ -49,30 +49,30 @@ extern void *lbl_80565B34;
 extern void *lbl_80565B44;
 }
 extern "C" {
-void *fn_8021EB38(){return lbl_80565A30;}
-void *fn_8021EB40(){return fn_8021B338();}
-void *fn_8021EB60(){return lbl_80565AA8;}
-void *fn_8021EB68(){return lbl_80565AB0;}
-void *fn_8021EB70(){return lbl_80565AB8;}
-void *fn_8021EB78(){return lbl_80565AC4;}
-void *fn_8021EB80(){return lbl_80565B00;}
-void *fn_8021EB88(){return lbl_80565B08;}
-void *fn_8021EB90(){return lbl_80565B44;}
-void *fn_8021EB98(){return lbl_80565B34;}
-void *fn_8021EBA0(){return lbl_80565B2C;}
-void *fn_8021EBA8(){return lbl_80565B28;}
-void *fn_8021EBB0(){return lbl_80565B24;}
-void *fn_8021EBB8(){return lbl_80565B20;}
-void *fn_8021EBC0(){return lbl_80565AFC;}
-void *fn_8021EBC8(){return lbl_80565AF4;}
-void *fn_8021EBD0(){return lbl_80565AEC;}
-void *fn_8021EBD8(){return lbl_80565AE4;}
-void *fn_8021EBE0(){return lbl_80565AC0;}
-void *fn_8021EBE8(){return lbl_80565AF0;}
-void *fn_8021EBF0(){return lbl_80565AAC;}
-void *fn_8021EBF8(){return lbl_80565ACC;}
-void *fn_8021EC00(){return lbl_80565A98;}
-void fn_8021EC08(int p0){
+void *igMersenneTwisterRandomNumber_virtual58(){return lbl_80565A30;}
+void *igMersenneTwisterRandomNumber_virtual60(){return fn_8021B338();}
+void *igMersenneTwisterRandomNumber_virtualBC(){return lbl_80565AA8;}
+void *igMersenneTwisterRandomNumber_virtual11C(){return lbl_80565AB0;}
+void *igMersenneTwisterRandomNumber_virtual180(){return lbl_80565AB8;}
+void *igMersenneTwisterRandomNumber_virtual1E4(){return lbl_80565AC4;}
+void *igMersenneTwisterRandomNumber_virtual248(){return lbl_80565B00;}
+void *igDataPump_virtual58(){return lbl_80565B08;}
+void *igDataPump_virtualB4(){return lbl_80565B44;}
+void *igDataPump_virtual110(){return lbl_80565B34;}
+void *igBoolObject_virtual58(){return lbl_80565B2C;}
+void *igBoolObject_virtualB4(){return lbl_80565B28;}
+void *igBoolObject_virtual17C(){return lbl_80565B24;}
+void *igBoolObject_virtual244(){return lbl_80565B20;}
+void *igBoolObject_virtual2A0(){return lbl_80565AFC;}
+void *igDataPumpInfo_virtual58(){return lbl_80565AF4;}
+void *igDataPumpList_virtual58(){return lbl_80565AEC;}
+void *igDataPumpManager_virtual58(){return lbl_80565AE4;}
+void *igDataPumpManager_virtualB4(){return lbl_80565AC0;}
+void *igDataPumpManager_virtual110(){return lbl_80565AF0;}
+void *igDataPumpManager_virtual174(){return lbl_80565AAC;}
+void *igDataPumpManager_virtual1D0(){return lbl_80565ACC;}
+void *igFloatHistogram_virtual58(){return lbl_80565A98;}
+void igFloatHistogram_virtual38(int p0){
  fn_800667D8();
  float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+12);
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+24)=value0;
@@ -81,7 +81,7 @@ void fn_8021EC08(int p0){
  float value2=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+20);
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+32)=value2;
 }
-void fn_8021EC4C(int p0){
+void igFloatHistogram_virtual40(int p0){
  float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+24);
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+12)=value0;
  float value1=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+28);
@@ -90,37 +90,37 @@ void fn_8021EC4C(int p0){
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+20)=value2;
  fn_800667E4();
 }
-void *fn_8021EC84(){return lbl_805659DC;}
-void *fn_8021EC8C(){return lbl_80565A90;}
-void *fn_8021EC94(){return lbl_80565A8C;}
-void *fn_8021EC9C(){return lbl_80565A88;}
-void *fn_8021ECA4(){return lbl_80565A70;}
-void *fn_8021ECAC(){return lbl_80565A6C;}
-void *fn_8021ECB4(){return lbl_80565A68;}
-void *fn_8021ECBC(){return lbl_80565A60;}
-void *fn_8021ECC4(){return lbl_80565A5C;}
-void *fn_8021ECCC(){return lbl_80565A58;}
+void *igHistogramBase_virtual58(){return lbl_805659DC;}
+void *igFloatObject_virtual58(){return lbl_80565A90;}
+void *igFloatObject_virtualB4(){return lbl_80565A8C;}
+void *igFloatObject_virtual17C(){return lbl_80565A88;}
+void *igIntObject_virtual58(){return lbl_80565A70;}
+void *igIntObject_virtualB4(){return lbl_80565A6C;}
+void *igIntObject_virtual17C(){return lbl_80565A68;}
+void *igMatrixObject_virtual58(){return lbl_80565A60;}
+void *igMatrixObjectList_virtual58(){return lbl_80565A5C;}
+void *igNonRefCountedMatrixObjectList_virtual58(){return lbl_80565A58;}
 void *fn_8021ECD4(){return lbl_80565A54;}
-void *fn_8021ECDC(){return lbl_80565A4C;}
-void *fn_8021ECE4(){return lbl_80565A3C;}
+void *igMatrixStack_virtual58(){return lbl_80565A4C;}
+void *igMeanAndStandardDeviation_virtual58(){return lbl_80565A3C;}
 void *fn_8021ECEC(){return lbl_805659E4;}
 void *fn_8021ECF4(){return lbl_80565A24;}
-void fn_8021ECFC(int p0){
+void igIntHistogram_virtual38(int p0){
  fn_800667D8();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+24)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20);
 }
-void fn_8021ED40(int p0){
+void igIntHistogram_virtual40(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);
  fn_800667E4();
 }
-void *fn_8021ED78(){return lbl_80565A78;}
-void *fn_8021ED80(){return lbl_80565A08;}
-void *fn_8021ED88(){return lbl_80565A04;}
-void *fn_8021ED90(){return lbl_805659EC;}
-void *fn_8021ED98(){return lbl_805659E8;}
+void *igIntHistogram_virtual58(){return lbl_80565A78;}
+void *igUnresolvedSymbol_virtual58(){return lbl_80565A08;}
+void *igUnresolvedSymbolList_virtual58(){return lbl_80565A04;}
+void *igObjectRegistryMap_virtual58(){return lbl_805659EC;}
+void *igObjectRegistryMap_virtualB4(){return lbl_805659E8;}
 }
 #pragma pop

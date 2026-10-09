@@ -21,6 +21,6 @@ void fn_800F4998(int p0,int p1,int p2,int p3,int p4,int p5){
   return;
  }
 }
-void fn_800F49C0(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+20)=value;}
+void igGamecubeMultiTextureExt_virtual74(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+20)=value;}
 }
 #pragma pop

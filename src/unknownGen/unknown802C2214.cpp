@@ -29,7 +29,7 @@ struct UnknownGenObject802C2214 : UnknownGenObject802C2214_1 {
  inline ~UnknownGenObject802C2214(){unknown00=lbl_804DF18C;}
 };
 extern "C" {
-void *fn_802C2214(){
+void *bePadManager_vtableRead(){
  UnknownGenObject802C2214 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

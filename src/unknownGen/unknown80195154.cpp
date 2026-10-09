@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80195154(){return 1;}
+int igRepairHierarchy_virtual7C(){return 1;}
 }
 #pragma pop

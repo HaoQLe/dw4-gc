@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800F8DF0(void *,void *);
+void igGamecubeVisualContext_virtual34C(void *,void *);
 }
 extern "C" {
-void fn_800C55D0(int p0,int p1){
- fn_800F8DF0((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
+void igVertexBlendStateAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual34C((void *)p1,(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
 }
 }
 #pragma pop

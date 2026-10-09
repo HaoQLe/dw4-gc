@@ -15,7 +15,7 @@ void fn_8040C54C(int p0,int p1,int p2){
   return;
  }
 }
-void *fn_8040C598(){return lbl_8055C880;}
-void fn_8040C5A8(){}
+void *igViewerRenderer_virtual58(){return lbl_8055C880;}
+void igViewerRenderer_virtual60(){}
 }
 #pragma pop

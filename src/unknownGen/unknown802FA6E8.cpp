@@ -5,6 +5,6 @@ extern "C" {
 void *fn_802F24B0();
 }
 extern "C" {
-void *fn_802FA6E8(){return fn_802F24B0();}
+void *beFont_virtual64(){return fn_802F24B0();}
 }
 #pragma pop

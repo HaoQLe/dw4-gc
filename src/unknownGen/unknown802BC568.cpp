@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beSvPlatBaseData_register();
+void beSvPlatDataXbox_fieldInit();
+void *beSvPlatDataXbox_getMeta();
+void beSvPlatDataXbox_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802BC428();
-void *fn_802BC438();
-void fn_802BC484();
-void fn_802BC62C();
-void fn_802BF680();
 extern char lbl_8041DC84[];
 extern char lbl_804CF904[];
 extern char lbl_80534840[];
-void fn_802BC590();
-void *fn_802BC60C();
+void beSvPlatDataXbox_register();
+void *beSvPlatDataXbox_getMetaCall();
 }
 extern "C" {
 void fn_802BC568(){
- fn_80066188((int)fn_802BC590);
+ fn_80066188((int)beSvPlatDataXbox_register);
 }
-void fn_802BC590(){
+void beSvPlatDataXbox_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80534840,(int)fn_802BF680,(int)fn_802BC428,(int)fn_802BC60C,(int)lbl_8041DC84,44,(int)fn_802BC484,(int)fn_802BC62C,0,(int)lbl_804CF904);
+ fn_80066204(0,(int)lbl_80534840,(int)beSvPlatBaseData_register,(int)fn_802BC428,(int)beSvPlatDataXbox_getMetaCall,(int)lbl_8041DC84,44,(int)beSvPlatDataXbox_vtableRead,(int)beSvPlatDataXbox_fieldInit,0,(int)lbl_804CF904);
 }
-void *fn_802BC60C(){return fn_802BC438();}
+void *beSvPlatDataXbox_getMetaCall(){return beSvPlatDataXbox_getMeta();}
 }
 #pragma pop

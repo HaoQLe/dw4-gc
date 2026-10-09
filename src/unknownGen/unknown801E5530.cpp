@@ -5,7 +5,7 @@ extern "C" {
 void *fn_803B5B70(void *);
 }
 extern "C" {
-void fn_801E5530(int p0){
+void igEnbayaAnimationSource_virtual44(int p0){
  void *value0=fn_803B5B70(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+32)=value0;
 }

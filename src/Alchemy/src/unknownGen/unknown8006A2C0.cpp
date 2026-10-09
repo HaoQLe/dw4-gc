@@ -5,7 +5,7 @@ extern "C" {
 void *fn_80067CC4(void *,void *);
 }
 extern "C" {
-void *fn_8006A2C0(int p0,int p1,int p2){
+void *igObjectRefArrayMetaField_virtualB8(int p0,int p1,int p2){
  void *value1;
  void *value2;
  void *value0;

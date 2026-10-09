@@ -11,11 +11,11 @@ void *fn_80065D88(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_80066B08();
 void fn_8012FC48();
 void *fn_801308D0();
-void fn_80137324();
-void fn_8013B97C();
+void igObject_register();
+void igOptBase_register();
+void igQuantizeImage_fieldInit();
 extern char lbl_8049BC80[];
 extern char lbl_8049CC68[];
 extern char lbl_8049CCFC[];
@@ -32,17 +32,17 @@ extern char lbl_8055F6A8[4];
 extern void *lbl_80563D10;
 extern void *lbl_80563D18;
 extern void *lbl_80563D1C;
-void *fn_80136E90();
-void *fn_80136ECC();
+void *igRebindActors_getMeta();
+void *igRebindActors_vtableRead();
 void fn_80136FBC();
-void fn_80136FE4();
-void *fn_80137054();
-void fn_80137074();
-void *fn_80137160();
-void *fn_8013719C();
+void igRebindActors_register();
+void *igRebindActors_getMetaCall();
+void igRebindActors_fieldInit();
+void *igQuantizeImage_getMeta();
+void *igQuantizeImage_vtableRead();
 void fn_80137264();
-void fn_8013728C();
-void *fn_80137304();
+void igQuantizeImage_register();
+void *igQuantizeImage_getMetaCall();
 }
 struct UnknownGenRoot80136ECC {
  void *unknown00;
@@ -72,11 +72,11 @@ struct UnknownGenObject8013719C : UnknownGenRoot8013719C {
  inline ~UnknownGenObject8013719C(){unknown00=lbl_804A3E10;}
 };
 extern "C" {
-void *fn_80136E90(){
+void *igRebindActors_getMeta(){
  if(!lbl_80563D10 || !(reinterpret_cast<unsigned int *>(lbl_80563D10)[0x24/4]&4)) fn_80136FBC();
  return lbl_80563D10;
 }
-void *fn_80136ECC(){
+void *igRebindActors_vtableRead(){
  UnknownGenObject80136ECC object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -87,14 +87,14 @@ void *fn_80136ECC(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80136FBC(){
- fn_80066188((int)fn_80136FE4);
+ fn_80066188((int)igRebindActors_register);
 }
-void fn_80136FE4(){
+void igRebindActors_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563D10,(int)fn_8013B97C,(int)fn_801308D0,(int)fn_80137054,(int)lbl_8049CC68,44,(int)fn_80136ECC,(int)fn_80137074,0,0);
+ fn_80066204(0,(int)&lbl_80563D10,(int)igOptBase_register,(int)fn_801308D0,(int)igRebindActors_getMetaCall,(int)lbl_8049CC68,44,(int)igRebindActors_vtableRead,(int)igRebindActors_fieldInit,0,0);
 }
-void *fn_80137054(){return fn_80136E90();}
-void fn_80137074(){
+void *igRebindActors_getMetaCall(){return igRebindActors_getMeta();}
+void igRebindActors_fieldInit(){
  void *value0=lbl_80563D10;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F69C,1);
@@ -109,11 +109,11 @@ void *fn_80137128(void *object){
  fn_80137264();
  return fn_8006546C(lbl_80563D1C,object);
 }
-void *fn_80137160(){
+void *igQuantizeImage_getMeta(){
  if(!lbl_80563D1C || !(reinterpret_cast<unsigned int *>(lbl_80563D1C)[0x24/4]&4)) fn_80137264();
  return lbl_80563D1C;
 }
-void *fn_8013719C(){
+void *igQuantizeImage_vtableRead(){
  UnknownGenObject8013719C object;
  object.unknown00=lbl_804A3E10;
  object.unknown08.value=0;
@@ -121,12 +121,12 @@ void *fn_8013719C(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_80137264(){
- fn_80066188((int)fn_8013728C);
+ fn_80066188((int)igQuantizeImage_register);
 }
-void fn_8013728C(){
+void igQuantizeImage_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563D1C,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80137304,(int)lbl_8049CD08,24,(int)fn_8013719C,(int)fn_80137324,0,(int)lbl_8049CCFC);
+ fn_80066204(0,(int)&lbl_80563D1C,(int)igObject_register,(int)fn_800237D0,(int)igQuantizeImage_getMetaCall,(int)lbl_8049CD08,24,(int)igQuantizeImage_vtableRead,(int)igQuantizeImage_fieldInit,0,(int)lbl_8049CCFC);
 }
-void *fn_80137304(){return fn_80137160();}
+void *igQuantizeImage_getMetaCall(){return igQuantizeImage_getMeta();}
 }
 #pragma pop

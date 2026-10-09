@@ -9,7 +9,7 @@ extern void *lbl_80562140;
 extern void *lbl_80564300;
 }
 extern "C" {
-void *fn_8016C948(int p0){
+void *igFieldUpdate_virtual88(int p0){
  void *value2;
  void *value3;
  void *value1;
@@ -36,6 +36,6 @@ void *fn_8016C948(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value3;
  return value3;
 }
-void fn_8016C9C8(){}
+void igUpdatedFieldEvent_virtual30(){}
 }
 #pragma pop

@@ -5,7 +5,7 @@ extern "C" {
 extern void *lbl_80562AEC;
 }
 extern "C" {
-void fn_800BE804(){
+void igFloatConstantAttr_virtual90(){
  void *value1;
  void *value0=lbl_80562AEC;
  if(value0){

@@ -15,7 +15,7 @@ extern char lbl_804E2AA4[];
 extern void *lbl_80536204;
 }
 extern "C" {
-void fn_8033AC44(){
+void beNDMWMdlItemInfoWork_fieldInit(){
  void *value0=lbl_80536204;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E2A44,8);

@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_80324AC0(int p0){
+void beTextureCtrl_virtual88(int p0){
  void *value0;
  void *value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=1;

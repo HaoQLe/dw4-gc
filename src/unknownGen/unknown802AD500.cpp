@@ -5,25 +5,25 @@ extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_80284550();
-void fn_80286F0C();
 void fn_802AA788();
-void *fn_802AD2DC();
-void fn_802AD328();
-void fn_802AD5C4();
+void igInfoManager_register();
+void igMovieManager_fieldInit();
+void *igMovieManager_getMeta();
+void igMovieManager_vtableRead();
 extern char lbl_8041BFA4[];
 extern char lbl_804CDD74[];
 extern char lbl_80534474[];
-void fn_802AD528();
-void *fn_802AD5A4();
+void igMovieManager_register();
+void *igMovieManager_getMetaCall();
 }
 extern "C" {
 void fn_802AD500(){
- fn_80066188((int)fn_802AD528);
+ fn_80066188((int)igMovieManager_register);
 }
-void fn_802AD528(){
+void igMovieManager_register(){
  fn_802AA788();
- fn_80066204(0,(int)lbl_80534474,(int)fn_80286F0C,(int)fn_80284550,(int)fn_802AD5A4,(int)lbl_8041BFA4,40,(int)fn_802AD328,(int)fn_802AD5C4,0,(int)lbl_804CDD74);
+ fn_80066204(0,(int)lbl_80534474,(int)igInfoManager_register,(int)fn_80284550,(int)igMovieManager_getMetaCall,(int)lbl_8041BFA4,40,(int)igMovieManager_vtableRead,(int)igMovieManager_fieldInit,0,(int)lbl_804CDD74);
 }
-void *fn_802AD5A4(){return fn_802AD2DC();}
+void *igMovieManager_getMetaCall(){return igMovieManager_getMeta();}
 }
 #pragma pop

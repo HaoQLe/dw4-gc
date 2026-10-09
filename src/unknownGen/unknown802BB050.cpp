@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beBaseInfoData_register();
+void beSeInfoData_fieldInit();
+void *beSeInfoData_getMeta();
+void beSeInfoData_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B8770();
-void *fn_802BAF04();
-void fn_802BAF50();
-void fn_802BB114();
-void fn_802E40FC();
 extern char lbl_8041D9FC[];
 extern char lbl_804CF7C8[];
 extern char lbl_805347FC[];
-void fn_802BB078();
-void *fn_802BB0F4();
+void beSeInfoData_register();
+void *beSeInfoData_getMetaCall();
 }
 extern "C" {
 void fn_802BB050(){
- fn_80066188((int)fn_802BB078);
+ fn_80066188((int)beSeInfoData_register);
 }
-void fn_802BB078(){
+void beSeInfoData_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805347FC,(int)fn_802E40FC,(int)fn_802B8770,(int)fn_802BB0F4,(int)lbl_8041D9FC,20,(int)fn_802BAF50,(int)fn_802BB114,0,(int)lbl_804CF7C8);
+ fn_80066204(0,(int)lbl_805347FC,(int)beBaseInfoData_register,(int)fn_802B8770,(int)beSeInfoData_getMetaCall,(int)lbl_8041D9FC,20,(int)beSeInfoData_vtableRead,(int)beSeInfoData_fieldInit,0,(int)lbl_804CF7C8);
 }
-void *fn_802BB0F4(){return fn_802BAF04();}
+void *beSeInfoData_getMetaCall(){return beSeInfoData_getMeta();}
 }
 #pragma pop

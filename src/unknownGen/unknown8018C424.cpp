@@ -5,7 +5,7 @@ extern "C" {
 void fn_8018C2C8(void *,int);
 }
 extern "C" {
-void fn_8018C424(int p0,int p1){
+void igImageHistogram_LA_virtual9C(int p0,int p1){
  void *value0;
  void *value1;
  if((int)p1>0){
@@ -31,10 +31,10 @@ void fn_8018C424(int p0,int p1){
  }
  fn_8018C2C8((void *)p0,2);
 }
-void fn_8018C4EC(int p0,int p1,int p2,int p3,int p4,int p5){
+void igImageHistogram_RGB_virtual9C(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_8018C2C8((void *)p0,3);
 }
-void fn_8018C510(int p0,int p1){
+void igImageHistogram_RGBA_virtual9C(int p0,int p1){
  void *value0;
  void *value1;
  if((int)p1>0){

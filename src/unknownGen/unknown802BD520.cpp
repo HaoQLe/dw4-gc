@@ -23,7 +23,7 @@ struct UnknownGenObject802BD520 : UnknownGenObject802BD520_0 {
  inline ~UnknownGenObject802BD520(){unknown00=lbl_804E0A54;}
 };
 extern "C" {
-void *fn_802BD520(){
+void *beSvConnectCheck_vtableRead(){
  UnknownGenObject802BD520 object;
  object.unknown00=lbl_804E0F88;
  object.unknown30.value=0;

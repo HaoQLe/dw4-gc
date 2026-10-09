@@ -17,7 +17,7 @@ extern void *lbl_80535DE8;
 extern void *lbl_80535DF8;
 }
 extern "C" {
-void fn_8032B8B4(){
+void beNDMWShopJunk_fieldInit(){
  void *value0=lbl_80535DE8;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1AF4,3);
@@ -30,7 +30,7 @@ void *fn_8032B954(void *object){
  fn_8032BC90();
  return fn_8006546C(lbl_80535DF8,object);
 }
-void *fn_8032B994(){
+void *beNDMWShopDevice_getMeta(){
  if(!lbl_80535DF8 || !(reinterpret_cast<unsigned int *>(lbl_80535DF8)[0x24/4]&4)) fn_8032BC90();
  return lbl_80535DF8;
 }

@@ -15,7 +15,7 @@ extern char lbl_804CF754[];
 extern void *lbl_805347D0;
 }
 extern "C" {
-void fn_802BA830(){
+void beSelectCtrlInfoWork_fieldInit(){
  void *value0=lbl_805347D0;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF718,5);

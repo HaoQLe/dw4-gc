@@ -14,7 +14,7 @@ extern char lbl_804D1918[];
 extern void *lbl_80535150;
 }
 extern "C" {
-void fn_802D34D0(){
+void beLayerInfo_fieldInit(){
  void *value0=lbl_80535150;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D190C,1);

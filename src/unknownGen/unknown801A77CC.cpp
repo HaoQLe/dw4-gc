@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805642A8;
 }
 extern "C" {
-void *fn_801A77CC(){return lbl_805642A8;}
+void *igGaussianFilterFun_virtual58(){return lbl_805642A8;}
 }
 #pragma pop

@@ -15,8 +15,8 @@ extern void *lbl_805645F4;
 extern char lbl_805645F8[1];
 }
 extern "C" {
-void *fn_8016C2A8(){return lbl_805622A4;}
-void *fn_8016C2B0(int p0){
+void *igFieldSource_virtual7C(){return lbl_805622A4;}
+void *igFieldSource_virtual88(int p0){
  void *value2;
  void *value3;
  void *value1;

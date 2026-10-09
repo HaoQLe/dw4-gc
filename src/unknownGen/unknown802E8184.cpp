@@ -41,7 +41,7 @@ void *fn_802E82C4(){
  if(!lbl_80535884) lbl_80535884=fn_800635C8(lbl_804213CC,lbl_804D3330,lbl_804D3344,0x5);
  return lbl_80535884;
 }
-void *fn_802E8324(){
+void *ParticleInfo_getMeta(){
  if(!lbl_80535888 || !(reinterpret_cast<unsigned int *>(lbl_80535888)[0x24/4]&4)) fn_802E85F0();
  return lbl_80535888;
 }

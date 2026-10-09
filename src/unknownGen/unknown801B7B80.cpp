@@ -2,16 +2,16 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void _edge_fieldInit();
 void *fn_80024180();
-void fn_8002907C();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801B7EB0();
-void fn_801BF270();
+void igHeapable_register();
+void igObjectList_register();
 extern char lbl_80472FA0[];
 extern char lbl_80476C7C[];
 extern char lbl_80476E0C[];
@@ -27,17 +27,17 @@ extern void *lbl_805621F4;
 extern void *lbl_80564BE8;
 extern void *lbl_80564BEC;
 extern void *lbl_80564EBC;
-void *fn_801B7BBC();
-void *fn_801B7BF8();
+void *_edgeList_getMeta();
+void *_edgeList_vtableRead();
 void fn_801B7C68();
-void fn_801B7C90();
-void *fn_801B7CFC();
-void *fn_801B7D1C();
-void *fn_801B7D58();
+void _edgeList_register();
+void *_edgeList_getMetaCall();
+void *_edge_getMeta();
+void *_edge_vtableRead();
 void fn_801B7DEC();
-void fn_801B7E14();
-void *fn_801B7E88();
-void *fn_801B7EA8();
+void _edge_register();
+void *_edge_getMetaCall();
+void *_edge_parentMeta();
 }
 struct UnknownGenObject801B7BF8_0 {
  void *unknown00;
@@ -59,11 +59,11 @@ void *fn_801B7B80(){
  if(!lbl_80564BE8) lbl_80564BE8=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80564BE8;
 }
-void *fn_801B7BBC(){
+void *_edgeList_getMeta(){
  if(!lbl_80564BE8 || !(reinterpret_cast<unsigned int *>(lbl_80564BE8)[0x24/4]&4)) fn_801B7C68();
  return lbl_80564BE8;
 }
-void *fn_801B7BF8(){
+void *_edgeList_vtableRead(){
  UnknownGenObject801B7BF8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -74,18 +74,18 @@ void *fn_801B7BF8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B7C68(){
- fn_80066188((int)fn_801B7C90);
+ fn_80066188((int)_edgeList_register);
 }
-void fn_801B7C90(){
+void _edgeList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564BE8,(int)fn_8002907C,(int)fn_80024180,(int)fn_801B7CFC,(int)lbl_804ADF48,20,(int)fn_801B7BF8,0,0,(int)lbl_805603D4);
+ fn_80066204(0,(int)&lbl_80564BE8,(int)igObjectList_register,(int)fn_80024180,(int)_edgeList_getMetaCall,(int)lbl_804ADF48,20,(int)_edgeList_vtableRead,0,0,(int)lbl_805603D4);
 }
-void *fn_801B7CFC(){return fn_801B7BBC();}
-void *fn_801B7D1C(){
+void *_edgeList_getMetaCall(){return _edgeList_getMeta();}
+void *_edge_getMeta(){
  if(!lbl_80564BEC || !(reinterpret_cast<unsigned int *>(lbl_80564BEC)[0x24/4]&4)) fn_801B7DEC();
  return lbl_80564BEC;
 }
-void *fn_801B7D58(){
+void *_edge_vtableRead(){
  UnknownGenObject801B7D58 object;
  object.unknown00=lbl_804B817C;
  object.unknown00=lbl_804B8120;
@@ -93,13 +93,13 @@ void *fn_801B7D58(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801B7DEC(){
- fn_80066188((int)fn_801B7E14);
+ fn_80066188((int)_edge_register);
 }
-void fn_801B7E14(){
+void _edge_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564BEC,(int)fn_801BF270,(int)fn_801B7EA8,(int)fn_801B7E88,(int)lbl_805603DC,44,(int)fn_801B7D58,(int)fn_801B7EB0,0,(int)lbl_804ADF54);
+ fn_80066204(0,(int)&lbl_80564BEC,(int)igHeapable_register,(int)_edge_parentMeta,(int)_edge_getMetaCall,(int)lbl_805603DC,44,(int)_edge_vtableRead,(int)_edge_fieldInit,0,(int)lbl_804ADF54);
 }
-void *fn_801B7E88(){return fn_801B7D1C();}
-void *fn_801B7EA8(){return lbl_80564EBC;}
+void *_edge_getMetaCall(){return _edge_getMeta();}
+void *_edge_parentMeta(){return lbl_80564EBC;}
 }
 #pragma pop

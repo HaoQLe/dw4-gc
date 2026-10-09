@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800F93A0(void *,int);
+void igGamecubeVisualContext_virtual38C(void *,int);
 }
 class UnknownGenV800C2C34_0 {
 public:
@@ -35,7 +35,7 @@ public:
  virtual void * s70();
 };
 extern "C" {
-void *fn_800C2C34(int p0){
+void *igSetRenderDestinationAttr_virtual70(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);
@@ -46,8 +46,8 @@ void *fn_800C2C34(int p0){
   return value0;
  }
 }
-void fn_800C2C6C(int p0,int p1){
- fn_800F93A0((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)));
+void igShadeModelAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual38C((void *)p1,(int)(int)(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12)));
 }
 }
 #pragma pop

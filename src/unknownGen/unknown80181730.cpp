@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564F20;
 }
 extern "C" {
-void *fn_80181730(){return lbl_80564F20;}
+void *igObjectPropertyForEnvironmentMapShader_virtual7C(){return lbl_80564F20;}
 }
 #pragma pop

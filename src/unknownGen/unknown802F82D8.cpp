@@ -10,13 +10,13 @@ extern void *lbl_80534FBC;
 extern void *lbl_8055C788;
 }
 extern "C" {
-void fn_802F82D8(int p0){
+void beFileListInfoManager_virtual5C(int p0){
  fn_8028A398(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
 }
-void fn_802F8300(int p0){
+void beFileListInfoManager_virtual60(int p0){
  fn_8028A400(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),(void *)p0);
 }
-void fn_802F8328(int p0){
+void beFileListInfoManager_virtual64(int p0){
  void *value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_805346A8);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=value0;
  void *value1=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_80534FBC);

@@ -6,7 +6,7 @@ void *fn_8028A730(void *,void *);
 extern char lbl_80534474[];
 }
 extern "C" {
-void fn_8031EB48(int p0){
+void beMovie_virtual88(int p0){
  void *value3;
  void *value0;
  void *value1;

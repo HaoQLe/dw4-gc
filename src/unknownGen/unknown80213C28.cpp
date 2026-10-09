@@ -5,7 +5,7 @@ extern "C" {
 void fn_801E6CE8(void *);
 }
 extern "C" {
-void fn_80213C28(int p0){
+void igGamecubeEnvironmentMapShader_virtualD0(int p0){
  void *value0;
  void *value1;
  void *value2;

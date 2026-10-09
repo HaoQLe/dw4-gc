@@ -4,17 +4,17 @@
 extern "C" {
 void *fn_8003657C(void *);
 void *fn_80130CE4(void *);
-void fn_801845B4();
+void igOptStatistics_virtual94();
 extern void *lbl_8056464C;
 extern void *lbl_80564650;
 }
 extern "C" {
-void fn_801A3654(){
+void igStatisticsNodeUsage_virtual94(){
  void *value1;
  void *value4;
  void *value3;
  void *value5;
- fn_801845B4();
+ igOptStatistics_virtual94();
  void *value0=lbl_8056464C;
  if(value0){
   value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+4);

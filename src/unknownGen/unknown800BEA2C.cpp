@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_800BEA2C(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
+void igFogStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
 }
 #pragma pop

@@ -18,7 +18,7 @@ struct UnknownGenObject8033F2AC : UnknownGenRoot8033F2AC {
  inline ~UnknownGenObject8033F2AC(){unknown00=lbl_804E5664;}
 };
 extern "C" {
-void *fn_8033F2AC(){
+void *beNDMWMcUtilCtrl_vtableRead(){
  UnknownGenObject8033F2AC object;
  object.unknown00=lbl_804E5664;
  object.unknown28.value=0;

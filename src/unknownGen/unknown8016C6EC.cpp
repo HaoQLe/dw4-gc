@@ -30,7 +30,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_8016C6EC(int p0,int p1){
+void igFieldUpdate_virtual6C(int p0,int p1){
  void *value7;
  void *value0;
  void *value1;

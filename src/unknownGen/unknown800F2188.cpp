@@ -41,7 +41,7 @@ public:
  virtual void s88();
 };
 extern "C" {
-void fn_800F2188(int p0){
+void igGamecubeImage_virtual4C(int p0){
  if((unsigned int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24)==103){
   reinterpret_cast<UnknownGenV800F2188_0 *>((void *)p0)->s88();
   return;

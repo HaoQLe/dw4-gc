@@ -23,7 +23,7 @@ struct UnknownGenObject802CEB88 : UnknownGenObject802CEB88_0 {
  inline ~UnknownGenObject802CEB88(){unknown00=lbl_804D8390;}
 };
 extern "C" {
-void *fn_802CEB88(){
+void *beMessengerGroup_vtableRead(){
  UnknownGenObject802CEB88 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

@@ -8,7 +8,7 @@ void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013E968();
-void fn_80140664();
+void igObjectPropertyForNode_register();
 extern char lbl_8049DD54[];
 extern char lbl_804A4B24[];
 extern char lbl_804A5BE8[];
@@ -18,11 +18,11 @@ extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F890[8];
 extern void *lbl_80563F74;
-void *fn_8013E7A4();
-void *fn_8013E7E0();
+void *igObjectPropertyForCompiledGraph_getMeta();
+void *igObjectPropertyForCompiledGraph_vtableRead();
 void fn_8013E8AC();
-void fn_8013E8D4();
-void *fn_8013E948();
+void igObjectPropertyForCompiledGraph_register();
+void *igObjectPropertyForCompiledGraph_getMetaCall();
 }
 struct UnknownGenRoot8013E7E0 {
  void *unknown00;
@@ -42,11 +42,11 @@ struct UnknownGenObject8013E7E0 : UnknownGenObject8013E7E0_1 {
  inline ~UnknownGenObject8013E7E0(){unknown00=lbl_804A4B24;}
 };
 extern "C" {
-void *fn_8013E7A4(){
+void *igObjectPropertyForCompiledGraph_getMeta(){
  if(!lbl_80563F74 || !(reinterpret_cast<unsigned int *>(lbl_80563F74)[0x24/4]&4)) fn_8013E8AC();
  return lbl_80563F74;
 }
-void *fn_8013E7E0(){
+void *igObjectPropertyForCompiledGraph_vtableRead(){
  UnknownGenObject8013E7E0 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -58,12 +58,12 @@ void *fn_8013E7E0(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8013E8AC(){
- fn_80066188((int)fn_8013E8D4);
+ fn_80066188((int)igObjectPropertyForCompiledGraph_register);
 }
-void fn_8013E8D4(){
+void igObjectPropertyForCompiledGraph_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563F74,(int)fn_80140664,(int)fn_8013BF68,(int)fn_8013E948,(int)lbl_8049DD54,44,(int)fn_8013E7E0,(int)fn_8013E968,0,(int)lbl_8055F890);
+ fn_80066204(0,(int)&lbl_80563F74,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForCompiledGraph_getMetaCall,(int)lbl_8049DD54,44,(int)igObjectPropertyForCompiledGraph_vtableRead,(int)fn_8013E968,0,(int)lbl_8055F890);
 }
-void *fn_8013E948(){return fn_8013E7A4();}
+void *igObjectPropertyForCompiledGraph_getMetaCall(){return igObjectPropertyForCompiledGraph_getMeta();}
 }
 #pragma pop

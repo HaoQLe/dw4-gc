@@ -9,7 +9,7 @@ void *fn_8017BBDC(void *,void *);
 extern char lbl_804A0B5C[];
 }
 extern "C" {
-void fn_80162D28(int p0){
+void igDataPumpLock_virtual74(int p0){
  void *value0;
  void *value1;
  void *value2;

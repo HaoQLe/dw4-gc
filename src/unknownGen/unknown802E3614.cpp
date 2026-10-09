@@ -16,7 +16,7 @@ extern char lbl_804D2DA8[];
 extern void *lbl_805356D4;
 }
 extern "C" {
-void fn_802E3614(){
+void beBaseInfoRamTimer_fieldInit(){
  void *value0=lbl_805356D4;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2D60,6);

@@ -23,7 +23,7 @@ struct UnknownGenObject802BC484 : UnknownGenObject802BC484_0 {
  inline ~UnknownGenObject802BC484(){unknown00=lbl_804DB218;}
 };
 extern "C" {
-void *fn_802BC484(){
+void *beSvPlatDataXbox_vtableRead(){
  UnknownGenObject802BC484 object;
  object.unknown00=lbl_804DB2EC;
  object.unknown0C.value=0;

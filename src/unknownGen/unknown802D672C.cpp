@@ -33,7 +33,7 @@ struct UnknownGenObject802D672C : UnknownGenObject802D672C_2 {
  inline ~UnknownGenObject802D672C(){unknown00=lbl_804D6C84;}
 };
 extern "C" {
-void *fn_802D672C(){
+void *beGroupKeep_vtableRead(){
  UnknownGenObject802D672C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

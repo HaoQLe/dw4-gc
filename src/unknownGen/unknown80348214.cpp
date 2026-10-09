@@ -7,7 +7,7 @@ void fn_802F667C();
 extern void *lbl_80535584;
 }
 extern "C" {
-void fn_80348214(int p0){
+void beNDMWAfsSetup_virtual68(int p0){
  void *value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_80535584);
  fn_802F667C();
 }

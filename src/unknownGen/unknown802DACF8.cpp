@@ -10,7 +10,7 @@ struct UnknownGenObject802DACF8_0 {
  char unknown04[4];
 };
 extern "C" {
-void *fn_802DACF8(){
+void *beFile_vtableRead(){
  UnknownGenObject802DACF8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804D5DB4;

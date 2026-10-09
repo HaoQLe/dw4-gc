@@ -6,7 +6,7 @@ void *fn_8028A730(void *,void *);
 extern char lbl_80535124[];
 }
 extern "C" {
-void fn_80302E88(int p0){
+void beMatCtrl_virtual88(int p0){
  void *value6;
  void *value0;
  void *value1;

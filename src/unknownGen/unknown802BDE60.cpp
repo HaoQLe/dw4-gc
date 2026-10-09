@@ -23,7 +23,7 @@ struct UnknownGenObject802BDE60 : UnknownGenObject802BDE60_0 {
  inline ~UnknownGenObject802BDE60(){unknown00=lbl_804E0BEC;}
 };
 extern "C" {
-void *fn_802BDE60(){
+void *beSvGetFreeSizeApi_vtableRead(){
  UnknownGenObject802BDE60 object;
  object.unknown00=lbl_804E0F88;
  object.unknown30.value=0;

@@ -41,8 +41,14 @@ syminfo={}
 for l in open(CONFIG/'symbols.txt'):
   m=re.match(r'(\S+) = (\.\w+):0x([0-9A-F]+); // type:(\w+)(?: size:0x([0-9A-F]+))?',l)
   if m: syminfo[m[1]]=(m[2],int(m[3],16),m[4],int(m[5] or '0',16))
-# Address-named symbols that generated units may define.
-GENERATED_PREFIXES=('fn_','dtor_')
+# Symbols generated units may define: address-named ones and functions named from their Alchemy class
+# (config/<version>/alchemy_class_functions.txt, see tools/alchemymeta).
+_ATTR=CONFIG/'alchemy_class_functions.txt'
+CLASS_NAMED={l.rstrip('\n').split('\t')[3] for l in open(_ATTR) if not l.startswith('#')} if _ATTR.exists() else set()
+def generatable(n): return bool(re.fullmatch(r'(fn|dtor)_[0-9A-F]{8}',n)) or n in CLASS_NAMED
+def tag(n):
+  """Address tag for helper type names: the address-name suffix, or the function's address."""
+  return n[3:] if re.fullmatch(r'(fn|dtor)_[0-9A-F]{8}',n) else '%08X'%syminfo[n][1]
 protos={}   # symbol -> declaration line
 def fn(sym,decl):
   d=decl%sym
@@ -264,7 +270,7 @@ def dedicated_arity(n):
   (written after the previous call and read by nothing else)."""
   if not _dedicated:
     for c in idx:
-      if c not in syminfo or not c.startswith(GENERATED_PREFIXES): continue
+      if c not in syminfo or not generatable(c): continue
       b=callshape.rd(syminfo[c][1],idx[c]['size']);relat={o&~3:x for o,*x in idx[c]['rel']}
       fresh={};ffresh={}
       for i in range(0,len(b),4):
@@ -298,7 +304,7 @@ def caller_arity(n):
   """Largest argument count any analyzable caller passes to n (0 if none seen)."""
   if not _arity:
     for c in idx:
-      if not c.startswith(GENERATED_PREFIXES) or c not in syminfo: continue
+      if not generatable(c) or c not in syminfo: continue
       try: calls=callshape.analyze(syminfo[c][1],idx[c]['size'],[tuple(x) for x in idx[c]['rel']])
       except Exception: continue
       for target,regs,stack in calls or []:
@@ -399,7 +405,7 @@ def VT(name,rel):
     osize=(saveoff-8)&~7
     for x in pre: fn(x,'extern char %s[];')
     fn(outdtor,'void %s(void *,short);')
-    cls='UnknownGenObject%s'%name[3:]
+    cls='UnknownGenObject%s'%tag(name)
     lines=['struct %s {'%cls,' void *unknown00;'];used=4
     for o in sorted(set(zeros)):
       if o>used: lines.append(' char unknown%02X[%d];'%(used,o-used))
@@ -430,13 +436,13 @@ def VT(name,rel):
   for x in pre+levels: fn(x,'extern char %s[];')
   # Base-most level first; members must ascend through the hierarchy.
   order=list(reversed(levels))
-  cls=lambda i:'UnknownGenObject%s%s'%(name[3:],'' if i==len(order)-1 else '_%d'%i)
+  cls=lambda i:'UnknownGenObject%s%s'%(tag(name),'' if i==len(order)-1 else '_%d'%i)
   lines=[];used=4;prev=None
   if ctor and order:
     # A root with a trivial destructor runs the base constructor, so members exist only after the call
     # and no exception cleanup is registered (the original's extab has no actions).
     fn(ctor,'void %s(void *);')
-    root='UnknownGenRoot%s'%name[3:]
+    root='UnknownGenRoot%s'%tag(name)
     lines+=['struct %s {'%root,' void *unknown00;',' inline void operator delete(void *){}',' inline %s(){%s(this);}'%(root,ctor),'};'];prev=root
   for li,lv in enumerate(order):
     mem=sorted(o for o,(ow,t) in owner.items() if ow==lv)
@@ -479,7 +485,7 @@ def _masked(n):
     elif t==10: w=_st.unpack('>I',b[o&~3:(o&~3)+4])[0]&0xFC000003;b[o&~3:(o&~3)+4]=_st.pack('>I',w)
   return bytes(b),tuple(t for o,t,sy,ad in idx[n]['rel'])
 TT={}
-FAMREP={'F1':'fn_80021D70','F2':'fn_80021D50','F3':'fn_80021BF4','F6':'fn_8002216C','F7':'fn_80022BB0','F8':'fn_80021D78'}
+FAMREP={'F1':'fn_80021D70','F2':'igVirtualCFuncMetaField_getMetaCall','F3':'igVirtualCFuncMetaField_getMeta','F6':'fn_8002216C','F7':'fn_80022BB0','F8':'fn_80021D78'}
 FM={}
 for _f,_r in FAMREP.items(): FM[_masked(_r)]=_f
 _famcache={}
@@ -1745,7 +1751,7 @@ def _flow(name,rel,nparam_override,hints={}):
         for a in args: ensure(a,lines)
         rv=[v for v,k in enumerate(vals) if k[0]=='ret' and k[1] is st]
         want=bool(rv and used[rv[0]])
-        cls='UnknownGenV%s_%d'%(name[3:],len(PRE))
+        cls='UnknownGenV%s_%d'%(tag(name),len(PRE))
         slots=[' virtual void s%02X();'%o for o in range(8,off,4)]
         params=','.join('void *' for a in args)
         slots.append(' virtual %s s%02X(%s);'%('void *' if want else 'void',off,params))
@@ -1866,7 +1872,7 @@ def _flow(name,rel,nparam_override,hints={}):
       elif st[0]=='icastdef':
         v=st[1];X,cc=vals[v][1],vals[v][2];ensure(X,lines)
         # The helper's condition is emitted with X as its parameter and its own locals.
-        hn='UnknownGenCast%s_%d'%(name[3:],v);outer=topdecl[:];del topdecl[:];subst[X]='q'
+        hn='UnknownGenCast%s_%d'%(tag(name),v);outer=topdecl[:];del topdecl[:];subst[X]='q'
         try: c_=cond(cc)
         finally: del subst[X]
         hdecl=topdecl[:];topdecl[:]=outer
@@ -1896,7 +1902,7 @@ def _flow(name,rel,nparam_override,hints={}):
   for k_ in reversed(range(len(locs))):
     L_=locs[k_]
     if L_ not in lagg: ldecl.append(' void *local%d;'%k_);continue
-    cls_='UnknownGenL%s_%X'%(name[3:],L_);fl=[];at=L_
+    cls_='UnknownGenL%s_%X'%(tag(name),L_);fl=[];at=L_
     for o in sorted(lgroups[L_]):
       ty=lgroups[L_][o];sz={'int':4,'float':4,'double':8,'short':2,'unsigned char':1}[ty]
       if o<at: raise ValueError('local member overlap')
@@ -1936,7 +1942,7 @@ _DATA_SPLITS=[(int(m[1],16),int(m[2],16)) for b_ in (CONFIG/'splits.txt').read_t
 SIG={'F1':'void *%s();','F2':'void *%s();','F3':'void *%s();','F7':'void *%s();','F6':'void *%s(void *);','F8':'void %s();'}
 def select(lo,hi,iso=False):
   """Unrecovered generator candidates in [lo,hi): those generated together, or (iso) those generated alone."""
-  ns=sorted([n for n in idx if n.startswith(GENERATED_PREFIXES) and n in syminfo and lo<=syminfo[n][1]<hi],key=lambda n:syminfo[n][1])
+  ns=sorted([n for n in idx if n in syminfo and generatable(n) and lo<=syminfo[n][1]<hi],key=lambda n:syminfo[n][1])
   return [n for n in ns if n not in _done and n not in _bad and (n in ISOLATED)==iso]
 def prepass(names,iso_sigs=True):
   g={}

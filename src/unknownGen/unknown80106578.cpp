@@ -95,47 +95,47 @@ public:
  virtual void s11C();
 };
 extern "C" {
-void *fn_80106578(){return lbl_805630C4;}
-void *fn_80106580(){return lbl_805630F0;}
+void *igTgaLoader_virtual58(){return lbl_805630C4;}
+void *igFileImagePng_virtual58(){return lbl_805630F0;}
 void *fn_80106588(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)(int)(unsigned short)p1;
  return (void *)p0;
 }
-void *fn_80106594(){return lbl_80563374;}
-void *fn_8010659C(){return lbl_805633B8;}
-void *fn_801065A4(){return lbl_805633C0;}
-void *fn_801065AC(){return lbl_80563400;}
-void *fn_801065B4(){return lbl_80563460;}
-void *fn_801065BC(){return lbl_805633E4;}
-void *fn_801065C4(){return lbl_80563440;}
-void *fn_801065CC(){return lbl_80563464;}
-void *fn_801065D4(){return lbl_8056346C;}
-void fn_801065DC(){}
-int fn_801065E0(){return 0;}
-void fn_801065E8(){}
-int fn_801065EC(){return 0;}
-void fn_801065F4(){}
-int fn_801065F8(){return 0;}
-void fn_80106600(){}
-int fn_80106604(){return 0;}
-int fn_8010660C(){return 1;}
-void fn_80106614(){}
-void fn_80106618(){}
-void fn_8010661C(){}
-int fn_80106620(){return 0;}
-void fn_80106628(){}
-void *fn_8010662C(){return fn_80041020();}
-void *fn_8010664C(){return fn_80041024();}
-void fn_8010666C(){}
-void fn_80106670(){}
-void fn_80106674(int p0){
+void *igGamecubeVertexStream_virtual58(){return lbl_80563374;}
+void *igGamecubeVertexArray2_virtual58(){return lbl_805633B8;}
+void *igGamecubeVertexArray1_1_virtual58(){return lbl_805633C0;}
+void *igGamecubePointSpriteExt_virtual58(){return lbl_80563400;}
+void *igGamecubeIndexArray_virtual58(){return lbl_80563460;}
+void *igGamecubeScissorExt_virtual58(){return lbl_805633E4;}
+void *igGamecubeMultiTextureExt_virtual58(){return lbl_80563440;}
+void *igGamecubeImageConvert_virtual58(){return lbl_80563464;}
+void *igGamecubeImage_virtual58(){return lbl_8056346C;}
+void igGamecubeVisualContext_virtual98(){}
+int igGamecubeVisualContext_virtual9C(){return 0;}
+void igGamecubeVisualContext_virtualA0(){}
+int igGamecubeVisualContext_virtualA4(){return 0;}
+void igGamecubeVisualContext_virtualA8(){}
+int igGamecubeVisualContext_virtualAC(){return 0;}
+void igGamecubeVisualContext_virtualB0(){}
+int igGamecubeVisualContext_virtualB4(){return 0;}
+int igGamecubeVisualContext_virtualD0(){return 1;}
+void igGamecubeVisualContext_virtualC4(){}
+void igGamecubeVisualContext_virtual1E4(){}
+void igGamecubeVisualContext_virtual1E8(){}
+int igGamecubeVisualContext_virtual1F0(){return 0;}
+void igGamecubeVisualContext_virtual1F8(){}
+void *igGamecubeVisualContext_virtual5C(){return fn_80041020();}
+void *igGamecubeVisualContext_virtual60(){return fn_80041024();}
+void igGamecubeVisualContext_virtual84(){}
+void igGamecubeVisualContext_virtual88(){}
+void igGamecubeVisualContext_virtual120(int p0){
  reinterpret_cast<UnknownGenV80106674_0 *>((void *)p0)->s11C();
 }
 void *fn_801066A0(){return lbl_80562E24;}
 void *fn_801066A8(){return lbl_80562CF0;}
-void *fn_801066B0(){return lbl_80562CF4;}
+void *igVisualContextCapabilityManager_virtual58(){return lbl_80562CF4;}
 void *fn_801066B8(){return lbl_80562D00;}
 int fn_801066C0(){return 0;}
-void *fn_801066C8(){return lbl_80562D78;}
+void *igVertexArray2Helper_virtual58(){return lbl_80562D78;}
 }
 #pragma pop

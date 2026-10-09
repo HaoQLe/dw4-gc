@@ -39,7 +39,7 @@ void fn_801E57B8(){
 void fn_801E57DC(){
  fn_801E5620(0);
 }
-void fn_801E5800(int p0){
+void igEnbayaAnimationState_virtual44(int p0){
  if((void *)(int)*reinterpret_cast<unsigned char *>((lbl_805657B4+0))){
   reinterpret_cast<UnknownGenV801E5800_0 *>((void *)p0)->s5C();
   return;

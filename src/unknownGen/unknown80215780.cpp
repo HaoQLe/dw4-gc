@@ -38,18 +38,18 @@ public:
  virtual void s68();
 };
 extern "C" {
-void fn_80215780(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+36)=value;}
-void *fn_80215788(){return lbl_80564B74;}
-void *fn_80215790(){return lbl_80564B98;}
-int fn_80215798(){return 0;}
-void *fn_802157A0(){return lbl_80564BD4;}
-void *fn_802157A8(){return lbl_80564C88;}
-void *fn_802157B0(){return lbl_80564D20;}
-int fn_802157B8(){return 1;}
-void fn_802157C0(int p0){
+void igAttrSet_virtual98(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+36)=value;}
+void *igPlanarShadowProcessor_virtual58(){return lbl_80564B74;}
+void *igNodeRefResolver_virtual58(){return lbl_80564B98;}
+int igNode_virtual64(){return 0;}
+void *igMultiTextureShader_virtual58(){return lbl_80564BD4;}
+void *igMultiResolutionMeshCore_virtual58(){return lbl_80564C88;}
+void *igMorphInstance_virtual58(){return lbl_80564D20;}
+int igGeometry_virtual90(){return 1;}
+void igMorphBase_virtual60(int p0){
  reinterpret_cast<UnknownGenV802157C0_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56))->s68();
 }
-void *fn_802157F0(){return lbl_80564D8C;}
-int fn_802157F8(){return 1;}
+void *igLod_virtual58(){return lbl_80564D8C;}
+int igLod_virtual90(){return 1;}
 }
 #pragma pop

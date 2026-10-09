@@ -27,7 +27,7 @@ void *fn_8033BDE4(){
  if(!lbl_80536258) lbl_80536258=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80536258;
 }
-void *fn_8033BE38(){
+void *beNDMWLogo_getMeta(){
  if(!lbl_80536258 || !(reinterpret_cast<unsigned int *>(lbl_80536258)[0x24/4]&4)) fn_8033BFDC();
  return lbl_80536258;
 }

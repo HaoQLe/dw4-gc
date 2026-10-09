@@ -7,7 +7,7 @@ void *fn_80069090(void *);
 void fn_800691E8(void *,void *);
 }
 extern "C" {
-void *fn_80202278(int p0){
+void *igShaderData_virtual44(int p0){
  void *value0;
  void *value1;
  fn_800667E0();

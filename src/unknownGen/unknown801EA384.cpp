@@ -65,7 +65,7 @@ public:
  virtual void * s70();
 };
 extern "C" {
-void *fn_801EA384(int p0){
+void *igGeometry_virtual7C(int p0){
  void *value0;
  void *value1;
  void *value2;

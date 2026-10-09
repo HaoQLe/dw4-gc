@@ -66,7 +66,7 @@ public:
  virtual void sEC(void *,void *,void *);
 };
 extern "C" {
-void fn_80086690(int p0,int p1,int p2){
+void igElfFile_virtual160(int p0,int p1,int p2){
  reinterpret_cast<UnknownGenV80086690_0 *>((void *)p0)->sEC((void *)0,(void *)p1,(void *)p2);
 }
 }

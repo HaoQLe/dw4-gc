@@ -159,7 +159,7 @@ public:
  virtual void * s70();
 };
 extern "C" {
-void fn_801E456C(int p0){
+void igDOFShader_virtual28(int p0){
  void *value78;
  void *value79;
  void *value1;
@@ -558,7 +558,7 @@ void fn_801E456C(int p0){
  }
  fn_801EAD50((void *)p0);
 }
-void *fn_801E4D0C(){
+void *igDOFShader_virtual7C(){
  void *value3;
  void *value0=lbl_805656F4;
  if(value0){

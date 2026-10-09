@@ -6,20 +6,20 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
-void fn_800CF0E4();
-void *fn_800CF15C();
-void *fn_800CF250();
 void *fn_8010307C();
+void *igGamecubeVertexArray2_getMetaCall();
+void *igVertexArray2_getMetaCall();
+void igVertexArray2_register();
 extern char lbl_8047650C[];
 extern char lbl_8048E298[];
 extern char lbl_804912BC[];
 extern char lbl_8049233C[];
 extern void *lbl_80562D84;
 extern void *lbl_805633B8;
-void *fn_800D7610();
+void *igGamecubeVertexArray2_vtableRead();
 void fn_800D7770();
-void fn_800D7798();
-void *fn_800D7808();
+void igGamecubeVertexArray2_register();
+void *igGamecubeVertexArray2_parentMeta();
 void *fn_800D7810();
 }
 struct UnknownGenRoot800D7610 {
@@ -43,11 +43,11 @@ struct UnknownGenObject800D7610 : UnknownGenObject800D7610_1 {
 };
 extern "C" {
 void *fn_800D75B4(){return fn_8010307C();}
-void *fn_800D75D4(){
+void *igGamecubeVertexArray2_getMeta(){
  if(!lbl_805633B8 || !(reinterpret_cast<unsigned int *>(lbl_805633B8)[0x24/4]&4)) fn_800D7770();
  return lbl_805633B8;
 }
-void *fn_800D7610(){
+void *igGamecubeVertexArray2_vtableRead(){
  UnknownGenObject800D7610 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -59,16 +59,16 @@ void *fn_800D7610(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_800D7770(){
- fn_80066188((int)fn_800D7798);
+ fn_80066188((int)igGamecubeVertexArray2_register);
 }
-void fn_800D7798(){
+void igGamecubeVertexArray2_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_805633B8,(int)fn_800CF0E4,(int)fn_800D7808,(int)fn_800CF250,(int)lbl_8048E298,24,(int)fn_800D7610,(int)fn_800D7810,0,0);
+ fn_80066204(0,(int)&lbl_805633B8,(int)igVertexArray2_register,(int)igGamecubeVertexArray2_parentMeta,(int)igGamecubeVertexArray2_getMetaCall,(int)lbl_8048E298,24,(int)igGamecubeVertexArray2_vtableRead,(int)fn_800D7810,0,0);
 }
-void *fn_800D7808(){return lbl_80562D84;}
+void *igGamecubeVertexArray2_parentMeta(){return lbl_80562D84;}
 void *fn_800D7810(){
  void *value0=lbl_805633B8;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)fn_800CF15C;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(value0)+64)=(void *)igVertexArray2_getMetaCall;
  return value0;
 }
 }

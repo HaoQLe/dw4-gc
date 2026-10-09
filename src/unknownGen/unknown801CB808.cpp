@@ -3,7 +3,6 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void fn_8002907C();
 void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
@@ -11,9 +10,10 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801C93B0();
-void fn_801CBCBC();
 void *fn_801CBE9C();
+void igAnimationCombiner_fieldInit();
+void igAnimationSystem_register();
+void igObjectList_register();
 extern char lbl_80472FA0[];
 extern char lbl_8047650C[];
 extern char lbl_80476C7C[];
@@ -30,17 +30,17 @@ extern void *lbl_805621F4;
 extern void *lbl_805653A0;
 extern void *lbl_805654B0;
 extern void *lbl_805654B4;
-void *fn_801CB87C();
-void *fn_801CB8B8();
+void *igAnimationCombinerList_getMeta();
+void *igAnimationCombinerList_vtableRead();
 void fn_801CB928();
-void fn_801CB950();
-void *fn_801CB9BC();
-void *fn_801CBA14();
-void *fn_801CBA50();
+void igAnimationCombinerList_register();
+void *igAnimationCombinerList_getMetaCall();
+void *igAnimationCombiner_getMeta();
+void *igAnimationCombiner_vtableRead();
 void fn_801CBBF0();
-void fn_801CBC18();
-void *fn_801CBC94();
-void *fn_801CBCB4();
+void igAnimationCombiner_register();
+void *igAnimationCombiner_getMetaCall();
+void *igAnimationCombiner_parentMeta();
 }
 struct UnknownGenObject801CB8B8_0 {
  void *unknown00;
@@ -77,11 +77,11 @@ void *fn_801CB840(){
  if(!lbl_805654B0) lbl_805654B0=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805654B0;
 }
-void *fn_801CB87C(){
+void *igAnimationCombinerList_getMeta(){
  if(!lbl_805654B0 || !(reinterpret_cast<unsigned int *>(lbl_805654B0)[0x24/4]&4)) fn_801CB928();
  return lbl_805654B0;
 }
-void *fn_801CB8B8(){
+void *igAnimationCombinerList_vtableRead(){
  UnknownGenObject801CB8B8_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_80472FA0;
@@ -92,22 +92,22 @@ void *fn_801CB8B8(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801CB928(){
- fn_80066188((int)fn_801CB950);
+ fn_80066188((int)igAnimationCombinerList_register);
 }
-void fn_801CB950(){
+void igAnimationCombinerList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805654B0,(int)fn_8002907C,(int)fn_80024180,(int)fn_801CB9BC,(int)lbl_804B2344,20,(int)fn_801CB8B8,0,0,(int)lbl_805609C8);
+ fn_80066204(0,(int)&lbl_805654B0,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationCombinerList_getMetaCall,(int)lbl_804B2344,20,(int)igAnimationCombinerList_vtableRead,0,0,(int)lbl_805609C8);
 }
-void *fn_801CB9BC(){return fn_801CB87C();}
+void *igAnimationCombinerList_getMetaCall(){return igAnimationCombinerList_getMeta();}
 void *fn_801CB9DC(void *object){
  fn_801CBBF0();
  return fn_8006546C(lbl_805654B4,object);
 }
-void *fn_801CBA14(){
+void *igAnimationCombiner_getMeta(){
  if(!lbl_805654B4 || !(reinterpret_cast<unsigned int *>(lbl_805654B4)[0x24/4]&4)) fn_801CBBF0();
  return lbl_805654B4;
 }
-void *fn_801CBA50(){
+void *igAnimationCombiner_vtableRead(){
  UnknownGenObject801CBA50 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;
@@ -120,13 +120,13 @@ void *fn_801CBA50(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_801CBBF0(){
- fn_80066188((int)fn_801CBC18);
+ fn_80066188((int)igAnimationCombiner_register);
 }
-void fn_801CBC18(){
+void igAnimationCombiner_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805654B4,(int)fn_801C93B0,(int)fn_801CBCB4,(int)fn_801CBC94,(int)lbl_804B236C,96,(int)fn_801CBA50,(int)fn_801CBCBC,(int)fn_801CBE9C,(int)lbl_804B235C);
+ fn_80066204(0,(int)&lbl_805654B4,(int)igAnimationSystem_register,(int)igAnimationCombiner_parentMeta,(int)igAnimationCombiner_getMetaCall,(int)lbl_804B236C,96,(int)igAnimationCombiner_vtableRead,(int)igAnimationCombiner_fieldInit,(int)fn_801CBE9C,(int)lbl_804B235C);
 }
-void *fn_801CBC94(){return fn_801CBA14();}
-void *fn_801CBCB4(){return lbl_805653A0;}
+void *igAnimationCombiner_getMetaCall(){return igAnimationCombiner_getMeta();}
+void *igAnimationCombiner_parentMeta(){return lbl_805653A0;}
 }
 #pragma pop

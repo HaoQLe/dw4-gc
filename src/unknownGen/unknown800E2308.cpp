@@ -48,7 +48,7 @@ public:
  virtual void sA4(void *,void *);
 };
 extern "C" {
-void fn_800E2308(int p0,int p1,int p2){
+void igPointSpriteExt_virtual98(int p0,int p1,int p2){
  void *value0;
  value0=(void *)0;
  do {

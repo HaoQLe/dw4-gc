@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8002BF0C();
+void *igMemoryPool_getMeta();
 }
 extern "C" {
-void *fn_8002BFD8(){return fn_8002BF0C();}
+void *igMemoryPool_getMetaCall(){return igMemoryPool_getMeta();}
 }
 #pragma pop

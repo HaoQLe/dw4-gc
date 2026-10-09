@@ -13,12 +13,12 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8010CBD4();
 void *fn_8010EE6C();
-void fn_8010F21C();
-void *fn_801110DC();
-void fn_80111118();
-void fn_801116E8();
 void *fn_80111CD4();
-void fn_801BF938();
+void igGroup_register();
+void igGuiComponentModel_fieldInit();
+void *igGuiComponentNode_getMeta();
+void igGuiComponentNode_vtableRead();
+void igModel_register();
 extern char lbl_80494FF4[];
 extern char lbl_80495014[];
 extern char lbl_80496040[];
@@ -33,15 +33,15 @@ extern void *lbl_805621F4;
 extern void *lbl_80563710;
 extern void *lbl_80563718;
 extern void *lbl_80564ED0;
-void fn_801113F8();
-void *fn_8011146C();
+void igGuiComponentNode_register();
+void *igGuiComponentNode_getMetaCall();
 void *fn_8011148C();
-void fn_80111494();
-void *fn_80111558();
-void *fn_80111594();
+void igGuiComponentNode_fieldInit();
+void *igGuiComponentModel_getMeta();
+void *igGuiComponentModel_vtableRead();
 void fn_8011162C();
-void fn_80111654();
-void *fn_801116C8();
+void igGuiComponentModel_register();
+void *igGuiComponentModel_getMetaCall();
 }
 struct UnknownGenRoot80111594 {
  void *unknown00;
@@ -59,15 +59,15 @@ struct UnknownGenObject80111594 : UnknownGenObject80111594_0 {
 };
 extern "C" {
 void fn_801113D0(){
- fn_80066188((int)fn_801113F8);
+ fn_80066188((int)igGuiComponentNode_register);
 }
-void fn_801113F8(){
+void igGuiComponentNode_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563710,(int)fn_801BF938,(int)fn_8011148C,(int)fn_8011146C,(int)lbl_80494FF4,36,(int)fn_80111118,(int)fn_80111494,0,(int)lbl_8055F0B4);
+ fn_80066204(0,(int)&lbl_80563710,(int)igGroup_register,(int)fn_8011148C,(int)igGuiComponentNode_getMetaCall,(int)lbl_80494FF4,36,(int)igGuiComponentNode_vtableRead,(int)igGuiComponentNode_fieldInit,0,(int)lbl_8055F0B4);
 }
-void *fn_8011146C(){return fn_801110DC();}
+void *igGuiComponentNode_getMetaCall(){return igGuiComponentNode_getMeta();}
 void *fn_8011148C(){return lbl_80564ED0;}
-void fn_80111494(){
+void igGuiComponentNode_fieldInit(){
  void *value0=lbl_80563710;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F0BC,1);
@@ -81,11 +81,11 @@ void *fn_8011151C(){
  if(!lbl_80563718) lbl_80563718=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_80563718;
 }
-void *fn_80111558(){
+void *igGuiComponentModel_getMeta(){
  if(!lbl_80563718 || !(reinterpret_cast<unsigned int *>(lbl_80563718)[0x24/4]&4)) fn_8011162C();
  return lbl_80563718;
 }
-void *fn_80111594(){
+void *igGuiComponentModel_vtableRead(){
  UnknownGenObject80111594 object;
  object.unknown00=lbl_80496040;
  object.unknown08.value=0;
@@ -93,12 +93,12 @@ void *fn_80111594(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8011162C(){
- fn_80066188((int)fn_80111654);
+ fn_80066188((int)igGuiComponentModel_register);
 }
-void fn_80111654(){
+void igGuiComponentModel_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_80563718,(int)fn_8010F21C,(int)fn_8010EE6C,(int)fn_801116C8,(int)lbl_80495014,36,(int)fn_80111594,(int)fn_801116E8,0,(int)lbl_8055F0CC);
+ fn_80066204(0,(int)&lbl_80563718,(int)igModel_register,(int)fn_8010EE6C,(int)igGuiComponentModel_getMetaCall,(int)lbl_80495014,36,(int)igGuiComponentModel_vtableRead,(int)igGuiComponentModel_fieldInit,0,(int)lbl_8055F0CC);
 }
-void *fn_801116C8(){return fn_80111558();}
+void *igGuiComponentModel_getMetaCall(){return igGuiComponentModel_getMeta();}
 }
 #pragma pop

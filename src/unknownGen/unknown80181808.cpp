@@ -15,7 +15,7 @@ static inline void *UnknownGenCast80181808_9(void *q){
  return 0;
 }
 extern "C" {
-void fn_80181808(int p0,int p1){
+void igObjectPropertyForModelViewMatrixBoneSelect_virtual90(int p0,int p1){
  void *value0;
  void *local0;
  fn_80188BA4(&local0);

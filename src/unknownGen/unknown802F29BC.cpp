@@ -7,10 +7,10 @@ extern void *lbl_805356F4;
 }
 extern "C" {
 void *fn_802F29BC(){return lbl_805356F4;}
-void *fn_802F29CC(int p0){
+void *beBkColor_virtual88(int p0){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+32)=0;
  return (void *)p0;
 }
-void *fn_802F29D8(){return lbl_80535698;}
+void *beBkColor_virtual80(){return lbl_80535698;}
 }
 #pragma pop

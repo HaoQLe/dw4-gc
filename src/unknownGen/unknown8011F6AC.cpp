@@ -22,7 +22,7 @@ struct UnknownGenL8011F6AC_8 {
  float m10;
 };
 extern "C" {
-void fn_8011F6AC(){
+void igSphere_fieldInit(){
  UnknownGenL8011F6AC_8 local0;
  void *value0=lbl_8056395C;
  void *value1=fn_80065D88(value0);

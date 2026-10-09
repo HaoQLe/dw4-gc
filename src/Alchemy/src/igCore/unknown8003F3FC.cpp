@@ -36,7 +36,7 @@ static inline void unknownResize(Unknown8003ED10Storage *storage, Gap::igInt val
     }
 }
 
-extern "C" void fn_8003F3FC(Unknown8003ED10 *object, Gap::igInt value){
+extern "C" void igCallStackTable_virtual7C(Unknown8003ED10 *object, Gap::igInt value){
     fn_8003ECAC(object, value);
     if(value){
         if(!object->unknown14){

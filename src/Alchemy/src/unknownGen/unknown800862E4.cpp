@@ -5,7 +5,7 @@ extern "C" {
 void fn_800593F4(void *);
 }
 extern "C" {
-void fn_800862E4(int p0){
+void igElfFile_virtual138(int p0){
  void *local0;
  fn_800593F4(&local0);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=local0;

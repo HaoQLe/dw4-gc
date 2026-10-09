@@ -7,8 +7,8 @@ void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
-void fn_8013A878();
-void fn_8014E6AC();
+void igConvertImage_fieldInit();
+void igOptVisitObject_register();
 extern char lbl_8049FAC8[];
 extern char lbl_8049FAD4[];
 extern char lbl_804A46AC[];
@@ -17,11 +17,11 @@ extern char lbl_804A6460[];
 extern char lbl_804A7498[];
 extern char lbl_804AAF48[];
 extern void *lbl_80564440;
-void *fn_8014E3F8();
-void *fn_8014E434();
+void *igConvertImage_getMeta();
+void *igConvertImage_vtableRead();
 void fn_8014E5EC();
-void fn_8014E614();
-void *fn_8014E68C();
+void igConvertImage_register();
+void *igConvertImage_getMetaCall();
 }
 struct UnknownGenRoot8014E434 {
  void *unknown00;
@@ -47,11 +47,11 @@ struct UnknownGenObject8014E434 : UnknownGenObject8014E434_1 {
  inline ~UnknownGenObject8014E434(){unknown00=lbl_804A7498;}
 };
 extern "C" {
-void *fn_8014E3F8(){
+void *igConvertImage_getMeta(){
  if(!lbl_80564440 || !(reinterpret_cast<unsigned int *>(lbl_80564440)[0x24/4]&4)) fn_8014E5EC();
  return lbl_80564440;
 }
-void *fn_8014E434(){
+void *igConvertImage_vtableRead(){
  UnknownGenObject8014E434 object;
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
@@ -66,12 +66,12 @@ void *fn_8014E434(){
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 void fn_8014E5EC(){
- fn_80066188((int)fn_8014E614);
+ fn_80066188((int)igConvertImage_register);
 }
-void fn_8014E614(){
+void igConvertImage_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564440,(int)fn_8013A878,(int)fn_8012FEB0,(int)fn_8014E68C,(int)lbl_8049FAD4,84,(int)fn_8014E434,(int)fn_8014E6AC,0,(int)lbl_8049FAC8);
+ fn_80066204(0,(int)&lbl_80564440,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertImage_getMetaCall,(int)lbl_8049FAD4,84,(int)igConvertImage_vtableRead,(int)igConvertImage_fieldInit,0,(int)lbl_8049FAC8);
 }
-void *fn_8014E68C(){return fn_8014E3F8();}
+void *igConvertImage_getMetaCall(){return igConvertImage_getMeta();}
 }
 #pragma pop

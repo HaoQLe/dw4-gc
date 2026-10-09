@@ -66,27 +66,27 @@ const char *fn_8004D2F0(Unknown8004D2F0 *object,const char *text){
  object->unknown28.adopt(text);
  return text;
 }
-int fn_8004D38C(Unknown8004D2F0 *object){return (object->unknown34&0x3FFF)<<2;}
-void fn_8004D398(Unknown8004D2F0 *object,void *a,int b){
+int igFloatArrayMetaField_virtual64(Unknown8004D2F0 *object){return (object->unknown34&0x3FFF)<<2;}
+void igFloatArrayMetaField_virtualD0(Unknown8004D2F0 *object,void *a,int b){
  fn_8002FC18(object)->slotD0(a,b*object->unknown34);
 }
-int fn_8004D3F0(void *,void *a,const char *text){
+int igFloatMetaField_virtualE0(void *,void *a,const char *text){
  int value=0;
  sscanf(text,lbl_8055D880,a,&value);
  return value;
 }
-Unknown800442F8String fn_8004D430(void *,const float *value){
+Unknown800442F8String igFloatMetaField_virtualE4(void *,const float *value){
  char buffer[0x400];
  sprintf(buffer,lbl_8055D888,*value);
  return Unknown800442F8String(buffer);
 }
-int fn_8004D4B4(){return 4;}
+int igFloatMetaField_virtual64(){return 4;}
 void fn_8004D4BC(Unknown8004D4BC *object,float value){object->slot8C(&value);}
-int fn_8004D4F0(){return 4;}
+int igFloatMetaField_virtual6C(){return 4;}
 void fn_8004D4F8(Unknown8004D4BC *object,void *argument){
  object->unknown08.adopt(reinterpret_cast<Unknown800442F8Stream *>(object->slot5C(argument).value)->unknown08.text());
 }
-Unknown800442F8Reference fn_8004D5E8(Unknown8004D2F0 *object,const char *name){
+Unknown800442F8Reference igFolder_virtual5C(Unknown8004D2F0 *object,const char *name){
  Unknown800442F8Reference reference(fn_80024FB4(fn_80068430(object)));
  fn_80072384(reference.value,lbl_8055D88C,*reinterpret_cast<const char **>(reinterpret_cast<char *>(object)+8),name);
  return reference;

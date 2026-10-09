@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800F8214(void *,void *,void *);
+void igGamecubeVisualContext_virtual344(void *,void *,void *);
 }
 class UnknownGenV800C484C_0 {
 public:
@@ -30,15 +30,15 @@ public:
  virtual void s5C(void *,void *,void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800C484C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igTextureMatrixAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C484C_0 *>((void *)p1)->s5C((void *)8,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
 void *fn_800C4880(int p0){
  *reinterpret_cast<short *>(reinterpret_cast<char *>((void *)p0)+10)=(short)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16);
  return (void *)p0;
 }
-void fn_800C488C(int p0,int p1){
- fn_800F8214((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
+void igTextureMatrixStateAttr_virtual60(int p0,int p1){
+ igGamecubeVisualContext_virtual344((void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16),(void *)(int)*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12));
 }
 }
 #pragma pop

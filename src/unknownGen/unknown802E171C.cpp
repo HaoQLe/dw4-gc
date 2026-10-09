@@ -18,7 +18,7 @@ extern void *lbl_805355E0;
 extern void *lbl_80535604;
 }
 extern "C" {
-void fn_802E171C(){
+void beCameraMode_fieldInit(){
  void *value0=lbl_805355E0;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2990,8);
@@ -34,7 +34,7 @@ void fn_802E171C(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value6)+60)=0;
  fn_800659C0(value0,lbl_804D29B0,lbl_804D29D0,lbl_804D29F0,value1);
 }
-void *fn_802E17F4(){
+void *beCameraCtrlInfo_getMeta(){
  if(!lbl_80535604 || !(reinterpret_cast<unsigned int *>(lbl_80535604)[0x24/4]&4)) fn_802E19D8();
  return lbl_80535604;
 }

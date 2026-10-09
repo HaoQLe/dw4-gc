@@ -29,7 +29,7 @@ struct UnknownGenObject802DE904 : UnknownGenObject802DE904_2 {
  inline ~UnknownGenObject802DE904(){unknown00=lbl_804D5104;}
 };
 extern "C" {
-void *fn_802DE904(){
+void *beCriSfpData_vtableRead(){
  UnknownGenObject802DE904 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

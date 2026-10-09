@@ -192,7 +192,7 @@ void fn_8006226C(int p0){
  void *value0=_arkCore__Q23Gap4Core;
  reinterpret_cast<UnknownGenV8006226C_1 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+48))->s108((void *)p0,value0);
 }
-void fn_800622A4(int p0,int p1,int p2){
+void igMemoryRefArrayMetaField_virtualD0(int p0,int p1,int p2){
  void *value0=fn_8002B210();
  reinterpret_cast<UnknownGenV800622A4_2 *>(value0)->sD0((void *)p1,(void *)(int)(p2*(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+80)));
 }

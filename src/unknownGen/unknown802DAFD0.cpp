@@ -14,7 +14,7 @@ extern char lbl_804D22DC[];
 extern void *lbl_805353DC;
 }
 extern "C" {
-void fn_802DAFD0(){
+void beFileChkObj_fieldInit(){
  void *value0=lbl_805353DC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D22D0,1);

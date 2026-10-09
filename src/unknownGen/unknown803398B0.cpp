@@ -16,7 +16,7 @@ extern char lbl_804E29E8[];
 extern void *lbl_805361BC;
 }
 extern "C" {
-void fn_803398B0(){
+void beNDMWMdlPEBaseInfoWork_fieldInit(){
  void *value0=lbl_805361BC;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E2970,10);

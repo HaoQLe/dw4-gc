@@ -31,7 +31,7 @@ public:
  virtual void s60(void *,void *,void *);
 };
 extern "C" {
-void *fn_800CD4BC(int p0,int p1){
+void *igGamecubeWindow_virtual9C(int p0,int p1){
  void *value0;
  void *value1;
  void *value2;
@@ -54,7 +54,7 @@ void *fn_800CD4BC(int p0,int p1){
   return (void *)0;
  }
 }
-void fn_800CD53C(int p0){
+void igGamecubeWindow_virtual64(int p0){
  reinterpret_cast<UnknownGenV800CD53C_0 *>((void *)p0)->s60(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12));
 }
 }

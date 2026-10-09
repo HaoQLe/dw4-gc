@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80565230;
 }
 extern "C" {
-void *fn_80181660(){return lbl_80565230;}
+void *igObjectPropertyForBumpMapShader_virtual7C(){return lbl_80565230;}
 }
 #pragma pop

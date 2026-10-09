@@ -5,6 +5,6 @@ extern "C" {
 void fn_8018F080();
 }
 extern "C" {
-void fn_8018F108(){return fn_8018F080();}
+void igImageHistogram_RGBA_virtual98(){return fn_8018F080();}
 }
 #pragma pop

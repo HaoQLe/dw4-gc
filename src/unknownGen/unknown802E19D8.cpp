@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beBaseInfo_register();
+void beCameraCtrlInfo_fieldInit();
+void *beCameraCtrlInfo_getMeta();
+void beCameraCtrlInfo_vtableRead();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void *fn_802E17F4();
-void fn_802E1840();
-void fn_802E1A9C();
-void fn_802E3D20();
 extern char lbl_80420AD4[];
 extern char lbl_804D2A10[];
 extern char lbl_80535604[];
-void fn_802E1A00();
-void *fn_802E1A7C();
+void beCameraCtrlInfo_register();
+void *beCameraCtrlInfo_getMetaCall();
 }
 extern "C" {
 void fn_802E19D8(){
- fn_80066188((int)fn_802E1A00);
+ fn_80066188((int)beCameraCtrlInfo_register);
 }
-void fn_802E1A00(){
+void beCameraCtrlInfo_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535604,(int)fn_802E3D20,(int)fn_802B2E3C,(int)fn_802E1A7C,(int)lbl_80420AD4,32,(int)fn_802E1840,(int)fn_802E1A9C,0,(int)lbl_804D2A10);
+ fn_80066204(0,(int)lbl_80535604,(int)beBaseInfo_register,(int)fn_802B2E3C,(int)beCameraCtrlInfo_getMetaCall,(int)lbl_80420AD4,32,(int)beCameraCtrlInfo_vtableRead,(int)beCameraCtrlInfo_fieldInit,0,(int)lbl_804D2A10);
 }
-void *fn_802E1A7C(){return fn_802E17F4();}
+void *beCameraCtrlInfo_getMetaCall(){return beCameraCtrlInfo_getMeta();}
 }
 #pragma pop

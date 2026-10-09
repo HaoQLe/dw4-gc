@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beNDMWPanelWazaInfoWork_fieldInit();
+void *beNDMWPanelWazaInfoWork_getMeta();
+void beNDMWPanelWazaInfoWork_vtableRead();
 void *fn_800237D0();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_80066B08();
 void fn_800A325C(void *);
 void fn_803250AC();
-void *fn_80336C64();
-void fn_80336CB0();
-void fn_80336FC8();
+void igObject_register();
 extern char lbl_804540B8[];
 extern char lbl_804E23F4[];
 extern char lbl_805360A4[];
-void fn_80336F2C();
-void *fn_80336FA8();
+void beNDMWPanelWazaInfoWork_register();
+void *beNDMWPanelWazaInfoWork_getMetaCall();
 }
 extern "C" {
 UnknownGenHolder *dtor_80336E90(UnknownGenHolder *object,short flags){
@@ -30,12 +30,12 @@ UnknownGenHolder *dtor_80336E90(UnknownGenHolder *object,short flags){
  return object;
 }
 void fn_80336F04(){
- fn_80066188((int)fn_80336F2C);
+ fn_80066188((int)beNDMWPanelWazaInfoWork_register);
 }
-void fn_80336F2C(){
+void beNDMWPanelWazaInfoWork_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_805360A4,(int)fn_80066B08,(int)fn_800237D0,(int)fn_80336FA8,(int)lbl_804540B8,48,(int)fn_80336CB0,(int)fn_80336FC8,0,(int)lbl_804E23F4);
+ fn_80066204(0,(int)lbl_805360A4,(int)igObject_register,(int)fn_800237D0,(int)beNDMWPanelWazaInfoWork_getMetaCall,(int)lbl_804540B8,48,(int)beNDMWPanelWazaInfoWork_vtableRead,(int)beNDMWPanelWazaInfoWork_fieldInit,0,(int)lbl_804E23F4);
 }
-void *fn_80336FA8(){return fn_80336C64();}
+void *beNDMWPanelWazaInfoWork_getMetaCall(){return beNDMWPanelWazaInfoWork_getMeta();}
 }
 #pragma pop

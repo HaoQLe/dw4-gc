@@ -15,14 +15,14 @@ extern void *lbl_80534B94;
 extern void *lbl_80534BA0;
 }
 extern "C" {
-void fn_802C4464(){
+void beLoadingNode_fieldInit(){
  void *meta=lbl_80534B94;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804D0470,0x2);
  fn_800659C0(meta,lbl_804D0478,lbl_804D0480,lbl_804D0488,field);
 }
 void *fn_802C44E4(){return fn_803116A4();}
-void *fn_802C4504(){
+void *beNodeAnim_getMeta(){
  if(!lbl_80534BA0 || !(reinterpret_cast<unsigned int *>(lbl_80534BA0)[0x24/4]&4)) fn_802C46E0();
  return lbl_80534BA0;
 }

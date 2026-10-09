@@ -30,7 +30,7 @@ public:
  virtual void s5C(void *,void *,void *,void *,void *,void *);
 };
 extern "C" {
-void fn_800C5088(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
+void igVertexBlendMatrixAttr_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  reinterpret_cast<UnknownGenV800C5088_0 *>((void *)p1)->s5C((void *)13,(void *)p2,(void *)p3,(void *)p4,(void *)p5,(void *)p6);
 }
 }

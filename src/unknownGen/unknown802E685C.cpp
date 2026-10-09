@@ -23,7 +23,7 @@ struct UnknownGenObject802E685C : UnknownGenObject802E685C_0 {
  inline ~UnknownGenObject802E685C(){unknown00=lbl_804D3808;}
 };
 extern "C" {
-void *fn_802E685C(){
+void *beAction2JOINTSET_vtableRead(){
  UnknownGenObject802E685C object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

@@ -21,7 +21,7 @@ struct UnknownGenObject802E0CB4 : UnknownGenObject802E0CB4_0 {
  inline ~UnknownGenObject802E0CB4(){unknown00=lbl_804D49D4;}
 };
 extern "C" {
-void *fn_802E0CB4(){
+void *beChangePosTransformInfoRam_vtableRead(){
  UnknownGenObject802E0CB4 object;
  object.unknown00=lbl_804DCDF0;
  object.unknown28.value=0;

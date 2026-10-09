@@ -83,7 +83,7 @@ void fn_8004C2B8(void *record,int index,const Unknown8004A41CValue *value){
   fn_8004C1BC(record,index+2,reinterpret_cast<unsigned int>(value->unknown08));
  }
 }
-void fn_8004C324(Unknown8004C324 *object,Unknown8004C324Source *source){
+void igExternalDirEntry_virtual7C(Unknown8004C324 *object,Unknown8004C324Source *source){
  object->unknown28.adopt(source->unknownC8);
  object->slotAC(source->unknownA0);
  if(!object->unknown18 && !lbl_80562134){
@@ -93,12 +93,12 @@ void fn_8004C324(Unknown8004C324 *object,Unknown8004C324Source *source){
  fn_80042A44(source,object->unknown0C,object->unknown18);
 }
 void fn_8004C430(Unknown8004C324 *object,const char *text){object->unknown1C.adopt(text);}
-void fn_8004C4C8(Unknown8004C324 *object,Unknown80042DECValue *value){
+void igExternalDirEntry_virtual5C(Unknown8004C324 *object,Unknown80042DECValue *value){
  unknown80042DECRetain(value);
  unknown80042DECRelease(reinterpret_cast<Unknown80042DECValue *>(object->unknown18));
  object->unknown18=value;
 }
-int fn_8004C538(Unknown8004C538 *object,int value){
+int igExternalDirEntry_virtualB0(Unknown8004C538 *object,int value){
  Unknown800442F8Reference reference(reinterpret_cast<Unknown80042DECValue *>(fn_8002EBEC(fn_80068430(object))));
  reinterpret_cast<Unknown8004C538Target *>(reference.value)->unknownA0=value;
  reinterpret_cast<Unknown8004C538Target *>(reference.value)->slot74(object->unknown1C);
@@ -117,7 +117,7 @@ int fn_8004C538(Unknown8004C538 *object,int value){
  if(!object->unknown18) object->slot5C(fn_80043A68(reference.value,lbl_8055D874));
  return object->unknown18 ? 1 : 0;
 }
-int fn_8004C6AC(Unknown8004C538 *object,void (*callback)(Unknown8004C538 *)){
+int igExternalDirEntry_virtualAC(Unknown8004C538 *object,void (*callback)(Unknown8004C538 *)){
  void *table=reinterpret_cast<void **>(_arkCore__Q23Gap4Core)[0x40/4];
  Unknown800442F8Reference value=fn_8006F35C(table,object->unknown1C);
  if(!value.value){
@@ -143,20 +143,20 @@ int fn_8004C6AC(Unknown8004C538 *object,void (*callback)(Unknown8004C538 *)){
  }
  return 0;
 }
-void fn_8004C924(Unknown8004C924 *object){
- fn_800427A0(object);
+void igExternalDirEntry_virtual2C(Unknown8004C924 *object){
+ igDirEntry_virtual2C(object);
  object->unknown10=2;
  object->unknown14=0;
 }
-void fn_8004C960(Unknown8004C924 *object){
+void igExternalDirEntry_virtual30(Unknown8004C924 *object){
  object->slot5C(NULL);
  fn_800667D4(object);
 }
-void fn_8004C9A4(Unknown8004C924 *object,Unknown8004C924Source *source){
+void igExternalIndexedEntry_virtual80(Unknown8004C924 *object,Unknown8004C924Source *source){
  object->slot5C(fn_80042A14(reinterpret_cast<void **>(source->unknown18->unknown10)[object->unknown1C],object->unknown20));
  fn_80042A44(source,object->unknown0C,object->unknown18);
 }
-void fn_8004CA1C(Unknown8004C924 *object,Unknown8004C924Source *source){
+void igExternalInfoEntry_virtual7C(Unknown8004C924 *object,Unknown8004C924Source *source){
  Unknown8004C924Value *value=fn_80042FB8(reinterpret_cast<void **>(source->unknown18->unknown10)[object->unknown20],object->unknown24);
  if(value) fn_80042A44(source,object->unknown0C,value->slot60(reinterpret_cast<void *>(object->unknown1C)));
  else fn_80042A44(source,object->unknown0C,NULL);

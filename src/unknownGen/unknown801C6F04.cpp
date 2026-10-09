@@ -18,7 +18,7 @@ void *fn_801C6F3C(){
  if(!lbl_805652BC) lbl_805652BC=fn_80029E64(fn_800607F4(lbl_805621F4));
  return lbl_805652BC;
 }
-void *fn_801C6F78(){
+void *igBlendMatrixSelect_getMeta(){
  if(!lbl_805652BC || !(reinterpret_cast<unsigned int *>(lbl_805652BC)[0x24/4]&4)) fn_801C71C0();
  return lbl_805652BC;
 }

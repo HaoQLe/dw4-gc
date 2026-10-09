@@ -14,7 +14,7 @@ extern char lbl_804D1A6C[];
 extern void *lbl_805351A0;
 }
 extern "C" {
-void fn_802D4454(){
+void beKeyboardReceiver_fieldInit(){
  void *value0=lbl_805351A0;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1A60,1);

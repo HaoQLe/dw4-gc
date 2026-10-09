@@ -5,7 +5,7 @@ extern "C" {
 void fn_800C0538(void *);
 }
 extern "C" {
-void fn_800C07C8(int p0){
+void igGeometrySetAttr_virtual74(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24)!=0){
   if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+16)==-1){
    fn_800C0538((void *)p0);

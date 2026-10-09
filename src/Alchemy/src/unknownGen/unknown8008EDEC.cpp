@@ -38,12 +38,12 @@ public:
  virtual void s7C();
 };
 extern "C" {
-void fn_8008EDEC(int p0){
+void igStackMemoryPool_virtual80(int p0){
  reinterpret_cast<UnknownGenV8008EDEC_0 *>((void *)p0)->s7C();
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+140)=0;
 }
-unsigned char fn_8008EE2C(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+140);}
-void *fn_8008EE34(int p0){
+unsigned char igStackMemoryPool_virtual84(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+140);}
+void *igStackMemoryPool_virtual8C(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kFailure__3Gap;
  return (void *)p0;
 }

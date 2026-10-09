@@ -15,7 +15,7 @@ extern char lbl_804E41C0[];
 extern void *lbl_80536840;
 }
 extern "C" {
-void fn_80345698(){
+void beNDMWAfsStageLoad_fieldInit(){
  void *value0=lbl_80536840;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E41A8,2);

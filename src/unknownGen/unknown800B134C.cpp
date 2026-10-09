@@ -21,7 +21,7 @@ struct UnknownGenL800B134C_8 {
  float m14;
 };
 extern "C" {
-void fn_800B134C(){
+void igSceneAmbientColorAttr_fieldInit(){
  UnknownGenL800B134C_8 local0;
  void *value0=lbl_8056263C;
  void *value1=fn_80065D88(value0);

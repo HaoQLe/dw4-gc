@@ -21,7 +21,7 @@ struct UnknownGenObject8032ACFC : UnknownGenObject8032ACFC_0 {
  inline ~UnknownGenObject8032ACFC(){unknown00=lbl_804E6974;}
 };
 extern "C" {
-void *fn_8032ACFC(){
+void *beNDMWStatusInfoRam_vtableRead(){
  UnknownGenObject8032ACFC object;
  object.unknown00=lbl_804DCDF0;
  object.unknown28.value=0;

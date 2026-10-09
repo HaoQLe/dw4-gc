@@ -6,7 +6,7 @@ void fn_802C95F8();
 extern void *lbl_80534E14;
 }
 extern "C" {
-void *fn_802C94AC(){
+void *beModelCtrlInfoDataSeq_getMeta(){
  if(!lbl_80534E14 || !(reinterpret_cast<unsigned int *>(lbl_80534E14)[0x24/4]&4)) fn_802C95F8();
  return lbl_80534E14;
 }

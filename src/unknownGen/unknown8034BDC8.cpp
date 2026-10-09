@@ -17,6 +17,6 @@ UnknownGenHolder *dtor_8034BDC8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void *fn_8034BE3C(){return fn_803AE1A4();}
+void *beNDMWMdlEnemy_virtualB8(){return fn_803AE1A4();}
 }
 #pragma pop

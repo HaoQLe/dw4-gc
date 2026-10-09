@@ -7,9 +7,9 @@ extern void *lbl_80564404;
 extern void *lbl_8056441C;
 }
 extern "C" {
-void *fn_801A703C(){return lbl_80564400;}
-void *fn_801A7044(){return lbl_80564404;}
-int fn_801A704C(){return 0;}
-void *fn_801A7054(){return lbl_8056441C;}
+void *igCreateAnimationDatabases_virtual58(){return lbl_80564400;}
+void *igCreateActorBounds_virtual58(){return lbl_80564404;}
+int igCreateActorBounds_virtual84(){return 0;}
+void *igConvertTransformsToCompressedSequencesQS_virtual58(){return lbl_8056441C;}
 }
 #pragma pop

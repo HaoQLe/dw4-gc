@@ -121,7 +121,7 @@ public:
  virtual void * s1C8(void *);
 };
 extern "C" {
-void fn_800C1D4C(int p0,int p1){
+void igNormalizeNormalsStateAttr_virtual68(int p0,int p1){
  void *value0=reinterpret_cast<UnknownGenV800C1D4C_0 *>((void *)p1)->s1C8((void *)p1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+12)=(unsigned char)(int)value0;
 }

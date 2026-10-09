@@ -35,14 +35,14 @@ extern "C" {
     extern void *lbl_80562140;
     void fn_800667D0(void *);
     void fn_80066490(void *, int);
-    void fn_80032C84();
-    void fn_80029200();
-    void fn_8002C80C();
-    void fn_80030870();
-    void fn_80030570();
-    void fn_800302A0();
-    void fn_8002E9C0();
-    void fn_80026500();
+    void igDirEntry_getMeta();
+    void igObjectDirEntry_getMeta();
+    void igMemoryDirEntry_getMeta();
+    void igExternalDirEntry_getMeta();
+    void igExternalIndexedEntry_getMeta();
+    void igExternalInfoEntry_getMeta();
+    void igInfo_getMeta();
+    void igResource_getMeta();
 }
 inline unsigned char unknown800424B4Equal(const Unknown800424B4Pair& pair, void *first, void *second){
     return first == pair.unknown00 && second == pair.unknown04;
@@ -105,28 +105,28 @@ inline int unknown800424B4FindValue(Unknown800424B4Storage *storage, void *const
 extern "C" int fn_8004270C(Unknown800424B4Storage *storage, void *const &value, int start){
     return unknown800424B4FindValue(storage, value, start);
 }
-extern "C" void fn_80042754(){}
-extern "C" void fn_80042758(){}
-extern "C" void fn_8004275C(){}
-extern "C" int fn_80042760(){ return 0; }
-extern "C" void fn_80042768(){}
-extern "C" int fn_8004276C(){ return -1; }
-extern "C" void fn_80042774(){}
-extern "C" void fn_80042778(){}
-extern "C" void fn_8004277C(){}
-extern "C" void fn_80042780(){}
-extern "C" void fn_80042784(){}
-extern "C" void fn_80042788(){}
-extern "C" void fn_8004278C(){}
-extern "C" void fn_80042790(){}
-extern "C" void fn_80042794(){}
-extern "C" void fn_80042798(){}
-extern "C" void fn_8004279C(){}
-extern "C" void fn_800427A0(void *object){ fn_800667D0(object); fn_80066490(object, 0); }
-extern "C" void fn_800427D8(void *object, void *value){ reinterpret_cast<void **>(object)[6] = value; }
-extern "C" void fn_800427E0(){}
-extern "C" void fn_800427E4(){}
+extern "C" void igDirEntry_virtual6C(){}
+extern "C" void igDirEntry_virtual70(){}
+extern "C" void igDirEntry_virtual68(){}
+extern "C" int igDirEntry_virtualA8(){ return 0; }
+extern "C" void igDirEntry_virtual74(){}
+extern "C" int igDirEntry_virtual78(){ return -1; }
+extern "C" void igDirEntry_virtualA4(){}
+extern "C" void igDirEntry_virtualA0(){}
+extern "C" void igDirEntry_virtual98(){}
+extern "C" void igDirEntry_virtual9C(){}
+extern "C" void igDirEntry_virtual8C(){}
+extern "C" void igDirEntry_virtual90(){}
+extern "C" void igDirEntry_virtual94(){}
+extern "C" void igDirEntry_virtual84(){}
+extern "C" void igDirEntry_virtual88(){}
+extern "C" void igDirEntry_virtual80(){}
+extern "C" void igDirEntry_virtual7C(){}
+extern "C" void igDirEntry_virtual2C(void *object){ fn_800667D0(object); fn_80066490(object, 0); }
+extern "C" void igDirEntry_virtual5C(void *object, void *value){ reinterpret_cast<void **>(object)[6] = value; }
+extern "C" void igDirEntry_virtual60(){}
+extern "C" void igDirEntry_virtual64(){}
 extern "C" void fn_800427E8(){
-    fn_80032C84(); fn_80029200(); fn_8002C80C(); fn_80030870();
-    fn_80030570(); fn_800302A0(); fn_8002E9C0(); fn_80026500();
+    igDirEntry_getMeta(); igObjectDirEntry_getMeta(); igMemoryDirEntry_getMeta(); igExternalDirEntry_getMeta();
+    igExternalIndexedEntry_getMeta(); igExternalInfoEntry_getMeta(); igInfo_getMeta(); igResource_getMeta();
 }

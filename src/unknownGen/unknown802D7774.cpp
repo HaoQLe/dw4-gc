@@ -2,28 +2,28 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
+void beGeneraterData_fieldInit();
+void *beGeneraterData_getMeta();
+void beGeneraterData_vtableRead();
 void *fn_80023CF4();
-void fn_80029D58();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void *fn_802D74B4();
-void fn_802D7500();
-void fn_802D7838();
+void igNamedObject_register();
 extern char lbl_8042004C[];
 extern char lbl_804D1DB8[];
 extern char lbl_80535294[];
-void fn_802D779C();
-void *fn_802D7818();
+void beGeneraterData_register();
+void *beGeneraterData_getMetaCall();
 }
 extern "C" {
 void fn_802D7774(){
- fn_80066188((int)fn_802D779C);
+ fn_80066188((int)beGeneraterData_register);
 }
-void fn_802D779C(){
+void beGeneraterData_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535294,(int)fn_80029D58,(int)fn_80023CF4,(int)fn_802D7818,(int)lbl_8042004C,68,(int)fn_802D7500,(int)fn_802D7838,0,(int)lbl_804D1DB8);
+ fn_80066204(0,(int)lbl_80535294,(int)igNamedObject_register,(int)fn_80023CF4,(int)beGeneraterData_getMetaCall,(int)lbl_8042004C,68,(int)beGeneraterData_vtableRead,(int)beGeneraterData_fieldInit,0,(int)lbl_804D1DB8);
 }
-void *fn_802D7818(){return fn_802D74B4();}
+void *beGeneraterData_getMetaCall(){return beGeneraterData_getMeta();}
 }
 #pragma pop

@@ -5,8 +5,8 @@ extern "C" {
 
 }
 extern "C" {
-int fn_802159BC(){return 0;}
-int fn_802159C4(){return 0;}
-void fn_802159CC(){}
+int igCompressedAnimationSequenceQS_virtual98(){return 0;}
+int igCompressedAnimationSequenceQS_virtual9C(){return 0;}
+void igCompressedAnimationSequenceQS_virtualA0(){}
 }
 #pragma pop

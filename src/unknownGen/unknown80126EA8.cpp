@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-int fn_80126EA8(){return 4;}
-int fn_80126EB0(){return 1;}
+int igVec4ucMetaField_virtual64(){return 4;}
+int igVec4ucMetaField_virtual160(){return 1;}
 }
 #pragma pop

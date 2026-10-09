@@ -33,7 +33,7 @@ struct UnknownGenObject802C09AC : UnknownGenObject802C09AC_2 {
  inline ~UnknownGenObject802C09AC(){unknown00=lbl_804DABA4;}
 };
 extern "C" {
-void *fn_802C09AC(){
+void *beResetNode_vtableRead(){
  UnknownGenObject802C09AC object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

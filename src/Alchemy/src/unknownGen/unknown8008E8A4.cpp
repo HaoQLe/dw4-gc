@@ -56,7 +56,7 @@ public:
  virtual void s5C();
 };
 extern "C" {
-void fn_8008E8A4(int p0,int p1){
+void igProgramFile_virtual64(int p0,int p1){
  reinterpret_cast<UnknownGenV8008E8A4_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+12))->s60((void *)p1);
  reinterpret_cast<UnknownGenV8008E8A4_1 *>((void *)p1)->s5C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=kSuccess__3Gap;

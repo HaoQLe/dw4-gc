@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_805648D0;
 }
 extern "C" {
-void *fn_801EFDCC(){return lbl_805648D0;}
+void *igShaderProcessor_virtual58(){return lbl_805648D0;}
 }
 #pragma pop

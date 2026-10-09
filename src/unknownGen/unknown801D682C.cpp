@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_801D682C(){return 1;}
+int igBillboardProcessor_virtual60(){return 1;}
 }
 #pragma pop

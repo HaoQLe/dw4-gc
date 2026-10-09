@@ -65,7 +65,7 @@ public:
  virtual void * s6C(void *,void *,void *);
 };
 extern "C" {
-void fn_800555EC(int p0,int p1,int p2,int p3,int p4){
+void igMemoryDictionary_virtualFC(int p0,int p1,int p2,int p3,int p4){
  void *value0;
  if(!*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+45)){
   reinterpret_cast<void (*)(void *,void *,void *,void *,void *)>((void *)p3)((void *)p4,(void *)-1,(void *)p2,(void *)p3,(void *)p4);

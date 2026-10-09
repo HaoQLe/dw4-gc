@@ -5,25 +5,25 @@ extern "C" {
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_8010DF8C();
-void fn_8010E2EC();
 void fn_802AA788();
-void *fn_802ACFAC();
-void fn_802ACFF8();
-void fn_802AD1A0();
+void igMovieRenderer_fieldInit();
+void *igMovieRenderer_getMeta();
+void igMovieRenderer_vtableRead();
+void igRenderer_register();
 extern char lbl_8041BF84[];
 extern char lbl_804CDD5C[];
 extern char lbl_8053446C[];
-void fn_802AD104();
-void *fn_802AD180();
+void igMovieRenderer_register();
+void *igMovieRenderer_getMetaCall();
 }
 extern "C" {
 void fn_802AD0DC(){
- fn_80066188((int)fn_802AD104);
+ fn_80066188((int)igMovieRenderer_register);
 }
-void fn_802AD104(){
+void igMovieRenderer_register(){
  fn_802AA788();
- fn_80066204(0,(int)lbl_8053446C,(int)fn_8010E2EC,(int)fn_8010DF8C,(int)fn_802AD180,(int)lbl_8041BF84,16,(int)fn_802ACFF8,(int)fn_802AD1A0,0,(int)lbl_804CDD5C);
+ fn_80066204(0,(int)lbl_8053446C,(int)igRenderer_register,(int)fn_8010DF8C,(int)igMovieRenderer_getMetaCall,(int)lbl_8041BF84,16,(int)igMovieRenderer_vtableRead,(int)igMovieRenderer_fieldInit,0,(int)lbl_804CDD5C);
 }
-void *fn_802AD180(){return fn_802ACFAC();}
+void *igMovieRenderer_getMetaCall(){return igMovieRenderer_getMeta();}
 }
 #pragma pop

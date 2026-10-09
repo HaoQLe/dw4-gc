@@ -6,24 +6,24 @@ void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
 void *fn_801B623C();
-void *fn_801C6F78();
-void fn_801C6FB4();
-void fn_801C727C();
-void fn_801C8C48();
+void igAttrSet_register();
+void igBlendMatrixSelect_fieldInit();
+void *igBlendMatrixSelect_getMeta();
+void igBlendMatrixSelect_vtableRead();
 extern char lbl_804B13B4[];
 extern char lbl_8056081C[8];
 extern void *lbl_805652BC;
-void fn_801C71E8();
-void *fn_801C725C();
+void igBlendMatrixSelect_register();
+void *igBlendMatrixSelect_getMetaCall();
 }
 extern "C" {
 void fn_801C71C0(){
- fn_80066188((int)fn_801C71E8);
+ fn_80066188((int)igBlendMatrixSelect_register);
 }
-void fn_801C71E8(){
+void igBlendMatrixSelect_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805652BC,(int)fn_801C8C48,(int)fn_801B623C,(int)fn_801C725C,(int)lbl_804B13B4,172,(int)fn_801C6FB4,(int)fn_801C727C,0,(int)lbl_8056081C);
+ fn_80066204(0,(int)&lbl_805652BC,(int)igAttrSet_register,(int)fn_801B623C,(int)igBlendMatrixSelect_getMetaCall,(int)lbl_804B13B4,172,(int)igBlendMatrixSelect_vtableRead,(int)igBlendMatrixSelect_fieldInit,0,(int)lbl_8056081C);
 }
-void *fn_801C725C(){return fn_801C6F78();}
+void *igBlendMatrixSelect_getMetaCall(){return igBlendMatrixSelect_getMeta();}
 }
 #pragma pop

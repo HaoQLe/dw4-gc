@@ -10,7 +10,7 @@ extern void *kFailure__3Gap;
 extern void *kSuccess__3Gap;
 }
 extern "C" {
-void fn_80202F34(int p0,int p1,int p2){
+void igSimpleUserInfo_virtual98(int p0,int p1,int p2){
  void *value0;
  void *value1;
  void *value2;

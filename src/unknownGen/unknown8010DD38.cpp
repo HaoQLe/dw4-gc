@@ -20,7 +20,7 @@ struct UnknownGenL8010DD38_8 {
  float m10;
 };
 extern "C" {
-void fn_8010DD38(){
+void igScalerModel_fieldInit(){
  UnknownGenL8010DD38_8 local0;
  void *value0=lbl_805635C8;
  void *value1=fn_80065D88(value0);

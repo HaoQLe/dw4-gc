@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-int fn_801A1160(){return 1;}
+int igSpatialPartitionDeprecated_virtual7C(){return 1;}
 }
 #pragma pop

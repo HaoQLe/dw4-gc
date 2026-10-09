@@ -21,7 +21,7 @@ struct UnknownGenObject802CF0F4 : UnknownGenRoot802CF0F4 {
  inline ~UnknownGenObject802CF0F4(){unknown00=lbl_804D81F0;}
 };
 extern "C" {
-void *fn_802CF0F4(){
+void *beMessengerDelay_vtableRead(){
  UnknownGenObject802CF0F4 object;
  object.unknown00=lbl_804D81F0;
  object.unknown18.value=0;

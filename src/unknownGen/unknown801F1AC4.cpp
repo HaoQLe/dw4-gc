@@ -61,7 +61,7 @@ public:
  virtual void s68();
 };
 extern "C" {
-void fn_801F1AC4(int p0){
+void igIniShaderFactory_virtual44(int p0){
  fn_800667E0();
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)!=2){
   reinterpret_cast<UnknownGenV801F1AC4_0 *>((void *)p0)->s68();
@@ -70,7 +70,7 @@ void fn_801F1AC4(int p0){
   return;
  }
 }
-void fn_801F1B10(int p0){
+void igIniShaderFactory_virtual48(int p0){
  if((int)(int)*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+20)!=2){
   reinterpret_cast<UnknownGenV801F1B10_1 *>((void *)p0)->s68();
   return;

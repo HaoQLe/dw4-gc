@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8008EBBC(){}
+void igStackMemoryPool_virtual1BC(){}
 }
 #pragma pop

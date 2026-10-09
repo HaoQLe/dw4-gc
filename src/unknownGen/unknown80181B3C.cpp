@@ -5,6 +5,6 @@ extern "C" {
 extern void *lbl_80564B94;
 }
 extern "C" {
-void *fn_80181B3C(){return lbl_80564B94;}
+void *igObjectPropertyForOverrideAttrSet_virtual7C(){return lbl_80564B94;}
 }
 #pragma pop

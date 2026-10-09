@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8034F44C(int p0){
+void beNDMWStatus_virtual88(int p0){
  void *value0;
  void *value1;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32);

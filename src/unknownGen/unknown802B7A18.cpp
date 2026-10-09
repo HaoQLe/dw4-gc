@@ -33,7 +33,7 @@ struct UnknownGenObject802B7A18 : UnknownGenObject802B7A18_2 {
  inline ~UnknownGenObject802B7A18(){unknown00=lbl_804DBDF8;}
 };
 extern "C" {
-void *fn_802B7A18(){
+void *beSwitchCtrlInfo_vtableRead(){
  UnknownGenObject802B7A18 object;
  object.unknown00=lbl_8047650C;
  object.unknown08.value=0;

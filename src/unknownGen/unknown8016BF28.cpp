@@ -29,7 +29,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void fn_8016BF28(int p0){
+void igFieldSource_virtual6C(int p0){
  void *value0;
  void *value4;
  void *value5;

@@ -5,7 +5,7 @@ extern "C" {
 void fn_80055464(void *,void *);
 }
 extern "C" {
-void *fn_80055CC0(int p0,int p1){
+void *igMemoryDictionary_virtual114(int p0,int p1){
  void *value0;
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+44)){
   return (void *)-1;
@@ -20,7 +20,7 @@ void *fn_80055CC0(int p0,int p1){
  }
  return value0;
 }
-void *fn_80055D18(int p0,int p1){
+void *igMemoryDictionary_virtual118(int p0,int p1){
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+44)){
   return (void *)-1;
  } else {

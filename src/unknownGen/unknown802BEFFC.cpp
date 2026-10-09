@@ -26,7 +26,7 @@ struct UnknownGenObject802BEFFC : UnknownGenObject802BEFFC_0 {
  inline ~UnknownGenObject802BEFFC(){unknown00=lbl_804E0F1C;}
 };
 extern "C" {
-void *fn_802BEFFC(){
+void *beSvFileMakeApi_vtableRead(){
  UnknownGenObject802BEFFC object;
  object.unknown00=lbl_804E0F88;
  object.unknown30.value=0;

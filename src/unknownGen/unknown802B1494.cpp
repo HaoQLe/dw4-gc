@@ -5,6 +5,6 @@ extern "C" {
 
 }
 extern "C" {
-void fn_802B1494(){}
+void igMovieRenderer_virtual64(){}
 }
 #pragma pop

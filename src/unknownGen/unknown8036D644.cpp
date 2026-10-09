@@ -5,7 +5,7 @@ extern "C" {
 
 }
 extern "C" {
-void fn_8036D644(int p0){
+void beNDMWGameRam_virtual88(int p0){
  void *value0;
  void *value1;
  void *value2;

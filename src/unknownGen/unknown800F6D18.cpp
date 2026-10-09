@@ -5,7 +5,7 @@ extern "C" {
 extern char lbl_805668CC[4];
 }
 extern "C" {
-float fn_800F6D18(){
+float igGamecubeVisualContext_virtual17C(){
  return *reinterpret_cast<float *>((lbl_805668CC+0));
 }
 }

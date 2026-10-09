@@ -61,7 +61,9 @@ for c,v in classes.items():
     elif (w>>26)==31 and (w>>1)&0x3FF==444 and (w>>16)&31==4: k=0
     if (w>>26)==18 and w&1 and r and r[1]==INDEXED: cur=k
     if r and r[0]==4 and r[1] in getter and cur is not None:
-      fields['%s.%s'%(c,cstr(word(names+4*cur)))]=getter[r[1]]
+      fname=cstr(word(names+4*cur))
+      # Only enum-typed fields (a getter can also go to a field object created on the fly).
+      if any(f['name']==fname and f['type']=='igEnumMetaField' for f in v['fields']): fields['%s.%s'%(c,fname)]=getter[r[1]]
 json.dump(enums,open(OUT/'enums.json','w'),indent=1,sort_keys=True)
 json.dump(fields,open(OUT/'enum_fields.json','w'),indent=1,sort_keys=True)
 print('owned',sum(1 for v in enums.values() if v['owner']),'enum fields linked',len(fields),'of',sum(1 for v in classes.values() for f in v['fields'] if f['type']=='igEnumMetaField'))

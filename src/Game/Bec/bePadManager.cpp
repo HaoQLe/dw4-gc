@@ -54,7 +54,7 @@ void fn_80118518(igEventDispatcher *, void *receiver, void *windowResizeReceiver
 void fn_801184C4(igEventDispatcher *, void *receiver);
 void fn_8011853C(igEventDispatcher *, void *receiver, void *windowResizeReceiver);
 void fn_801184EC(igEventDispatcher *, void *receiver);
-void fn_8011B7BC(void *hotKeyReceiver, int key);
+void fn_8011B7BC(void *hotKeyReceiver, int button);   // removes or unbinds the hot keys of a controller button
 void fn_8040E6C0(igObject *viewerManager);
 void bePadData_setButtons(bePadData *pad, int buttons);
 void bePadData_setLStick(bePadData *pad, igVec2f stick);
@@ -80,7 +80,8 @@ void bePadManager_virtual60(bePadManager *self)
     fn_8028A400(self->_insight, self);
 }
 
-// Finds the system, creates the five pads, connects the keyboard receiver and sets the viewer's hot keys.
+// Finds the system, creates the five pads, connects the keyboard receiver and removes the viewer's
+// controller-button hot keys (fn_8011B7BC removes or unbinds the bindings of one button).
 void bePadManager_virtual64(bePadManager *self)
 {
     beSystem *system = static_cast<beSystem *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(lbl_805346A8)));

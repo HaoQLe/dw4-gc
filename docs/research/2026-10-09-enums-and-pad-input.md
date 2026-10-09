@@ -8,14 +8,14 @@ This batch extracts the game's enums and makes the controller-input classes hand
 
 - **Count:** 149 enums with 1,284 named values. Examples include rendering modes (`IG_GFX_ALPHA_FUNCTION`, `IG_BLENDING_*`), animation states (`Status`: `kPlaying`, `kPaused`, …), memory-pool flags, particle settings and every game class's `MsgAction`.
 - **Owner:** an enum's owner is the single class whose attributed functions call its getter; 131 have one.
-- **Enum fields:** a field initializer stores the enum getter's address into the field object (at `+0x34`) after fetching field *k*. This links 121 of the 129 reflected enum fields to their enum.
+- **Enum fields:** a field initializer stores the enum getter's address into the field object (at `+0x34`) after fetching field *k*. This links 120 of the 129 reflected enum fields to their enum. Only enum-typed fields are linked: a getter can also be stored into a field object created on the fly, as for `igMemoryRefMetaField._releaseOnReset`.
 - **`include/meta/enums.h`:** declares each enum as `struct <Name> { enum Value { … }; }`, so value names cannot clash. Enum fields in the class headers are typed `<Name>::Value`. A name registered more than once is prefixed with its owner (`beWeapon_MsgAction`, `beCameraCtrl_MsgAction`, …).
 - **Generator:** it writes enum members through `int` (`(void *)(int)p->_mode` for reads, `p->_mode = (Meta::X::Value)(int)v` for stores). The 94 re-emitted units all verify.
 - `tools/alchemymeta/dol.py` now holds the helpers shared by the extraction tools.
 
 ## Controller input
 
-Two hand-written files cover the input classes, `0x803116E0..0x80312190`. All 17 functions are exact, with both units complete in the report, including their `.rodata` and exception tables. The DOL SHA-1 is unchanged.
+Two hand-written files cover the input classes, `0x803116E0..0x80312190`. All 17 functions are exact, with both units complete in the report, including their `.rodata` and exception tables. Six generated units are replaced. The DOL SHA-1 is unchanged.
 
 | Measure | Before | After | Change |
 | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ Functions:
   - finds the game's `beSystem` and keeps a reference;
   - creates five `bePadData` in the manager's memory pool;
   - connects the keyboard receiver to the event dispatcher;
-  - sets eight hot keys on `igViewerSceneInfoManager`'s `_hotKeyReceiver`.
+  - removes or unbinds the viewer's hot keys on eight controller buttons (15, 3, 0, 10, 11, 1, 2, 12) through `igViewerSceneInfoManager`'s `_hotKeyReceiver` (`fn_8011B7BC`).
 - **`virtual68`:** disconnects the keyboard receiver.
 - **`virtual74` (per frame):** unless `beSystem::_isFrameSkip` is set, it handles each controller of the dispatcher's controller manager:
   - reads the port (vtable `0x80`) and connected state (`0x88`);

@@ -5,7 +5,7 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
 ## Resume here
 
 - **Enums and controller-input batch (user request 2026-10-09):** both parts verified.
-  - **Enums:** 149 enums (1,284 values) extracted (`tools/alchemymeta/enums.py`) into `include/meta/enums.h`; 121 enum fields typed.
+  - **Enums:** 149 enums (1,284 values) extracted (`tools/alchemymeta/enums.py`) into `include/meta/enums.h`; 120 enum fields typed.
   - **Input:** `src/Game/Bec/bePadData.cpp` and `bePadManager.cpp` are readable and exact (17 functions, `0x803116E0..0x80312190`, with their `.rodata`): sticks, dead zone, direction sectors, button trigger and auto-repeat, and per-frame controller polling.
   - **Totals:** matched code 36.914276% → 36.972034% (+2,392 bytes), linked 36.878735% → 36.936493%, matched data +212 bytes, 16,995 functions.
   - **Established:**

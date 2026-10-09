@@ -100,3 +100,66 @@ The first proposed step, done on `task/alchemy-class-headers`. No game source or
 - use the attribution and headers in source: names for `fn_` symbols that the generator and existing units accept, and generated units re-expressed against `Meta::` types;
 - recover one game subsystem readably as the template (for example `beWeapon`);
 - extract enum names and the remaining callback roles (`spC`, `sp10`).
+
+## Batch: class names and typed generated code (2026-10-09)
+
+Second step, on `task/class-names-and-types`. Code is unchanged throughout: the DOL SHA-1 is `e409a88a…`, and the report totals are identical (matched code 1,528,468 bytes, linked 1,526,996, matched data 233,902, 16,986 functions).
+
+### Names
+
+- **Rename:** `tools/alchemymeta/rename.py` renamed 11,857 attributed functions from their address names to `<class>_<role>` across 4,671 files: `symbols.txt`, sources, headers, the generator's state files and templates. Examples: `igSphere_register`, `igSphere_getMeta`, `beWeapon_virtual88`.
+- **Name choice:** a function gets the first of its roles in the order register, getMeta, getMetaCall, parentMeta, vtableRead, fieldInit, virtual. A later copy of a twice-registered class adds `_2`.
+- **API functions:** the registration API functions themselves (`fn_80066204`, `fn_80065924`, …) are not attributed, and keep their address names.
+- **Generator changes:**
+  - generatable functions are those named by address or named from their class (`generatable()`), not those with a name prefix;
+  - helper type names keep the function's address as their tag (`tag()`), so they are unchanged;
+  - `fastcmp.py` takes function addresses from `symbols.txt` instead of parsing names.
+- **Re-emission:** `emit.py` changed 913 units, all by the sorted order of extern declarations. All 4,497 units verify.
+
+### Typed field accesses
+
+- **Generator:** `gen.py` writes a field access as `reinterpret_cast<Meta::C *>(base)->member` when two things hold:
+  - the base value's class is known;
+  - the access matches a member in `tools/alchemymeta/layouts.json`: the same C type, or for word accesses, a pointer or an `int`.
+- **How a value's class is known:**
+  - a virtual function's first parameter;
+  - a reference member read from a value of known class;
+  - an inline cast tested against a class metaobject (`fn_80068128`);
+  - a value passed as the first argument of one class's virtual functions;
+  - metaobject globals and `getMeta` results (`igMetaObject`, which is itself reflected).
+- **Headers:** units include only the headers they use.
+- **`igObject::_refCount` at `+4`:** this member is not reflected. It comes from the release code, which decrements it and releases the object when its low 23 bits reach 0. It is listed in `headers.py`'s `EXTRA` with that evidence.
+- **Result:** 499 units changed with 2,026 typed accesses. All of them verify, and the checksum and report are unchanged.
+- **Reach:** this covers about 12% of field accesses in generated code; about 14,200 raw `reinterpret_cast<char *>` accesses remain. The class of most other pointers (parameters of non-virtual functions, call results, globals) is not known from current evidence.
+
+Example (`beWeapon_virtual88`):
+
+```cpp
+value0=reinterpret_cast<Meta::beWeapon *>((void *)p0)->_attachDataList;
+...
+reinterpret_cast<Meta::beWeapon *>((void *)p0)->_attachDataList=(Meta::beWeaponAttachDataList *)0;
+```
+
+**Not done:**
+- a full `cycle.sh` regeneration under the new names. Units were re-emitted from the existing results and verified, but the combined and isolation passes have not run since the rename;
+- typed parameters in signatures (callers in other units declare them differently);
+- names for non-attributed functions.
+
+**Review.** An independent review found no blocking issues. It did a clean build and compared against `work`'s build:
+- same SHA-1;
+- identical measures;
+- identical sets of matched functions once old names are mapped to new ones.
+
+It also found:
+- `symbols.txt` changed only in the names of the 11,857 renamed lines;
+- no stale references to renamed functions;
+- 749 changed units recompiled with their own flags, all matching under its own comparator (3,095 functions).
+
+Two latent typing risks it raised, both absent from today's output, are now hardened (re-emission leaves every unit unchanged):
+- **Shadowed members:** a member a more derived class hides behind the same name is now qualified with its own class.
+- **Cast typing:** this now requires a conjunction with exactly one class test whose result must be non-zero, against a metaobject load at offset 0.
+
+Remaining notes:
+- **`this` assumption:** virtual functions are assumed to take `this` in `r3`. A hidden struct-return pointer would break this.
+- **Reserved names:** eight class names start with `__internal…`, which are reserved identifiers in C++.
+- **Dropped attribution:** `fn_80216104` lost its attribution because of the `_2` suffix for the twice-registered class.

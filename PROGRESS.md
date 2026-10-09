@@ -4,6 +4,16 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Class names and typed generated code batch (user request 2026-10-09):** code is unchanged (`build.sha1` OK; report identical: matched code 1,528,468, linked 1,526,996, 16,986 functions).
+  - **Names:** 11,857 functions renamed to `<class>_<role>` (for example `igSphere_getMeta`, `beWeapon_virtual88`) by `tools/alchemymeta/rename.py`. The generator and fastcmp no longer depend on address names.
+  - **Typed accesses:** the generator writes accesses at reflected members as `Meta::` members when a value's class is known; 499 units now carry 2,026 typed accesses (about 12% of field accesses in generated code). `igObject::_refCount` (`+4`) is added from code evidence.
+  - **Verification:** all units verify, and an independent review did a clean build, an old-to-new function-set comparison and a 749-unit recompile with its own comparator. Its two latent typing risks are hardened, with no output change.
+  - **Not yet done:** a full `cycle.sh` run under the new names. Units were re-emitted from existing results and verified.
+  - **Next candidates (not started):**
+    - more type evidence (non-virtual parameters, call results, globals);
+    - typed parameters in signatures;
+    - one game subsystem (for example `beWeapon`) recovered as readable C++ against `include/meta`.
+  - Details: [port inventory and Alchemy metadata](docs/research/2026-10-08-port-inventory-and-alchemy-metadata.md#batch-class-names-and-typed-generated-code-2026-10-09).
 - **Alchemy class headers and attribution batch (user request 2026-10-08):** the first step toward readable source; no game source or build input changed; `build.sha1` OK.
   - **Headers:** `include/meta/` holds 1,434 class layouts (namespace `Meta`, typed reflected fields, reference fields typed by target class, parents as bases). A compile-time check of all 1,434 sizes and 4,202 field offsets passes with the pinned compiler.
   - **Attribution:** `config/GDJEB2/alchemy_class_functions.txt` attributes 11,858 functions (1.67 MB; 3,157 game functions, 639 KB) to one class each, through code-checked registration roles and own-vtable slots.

@@ -56,11 +56,14 @@ META_OF={v['meta']:k for k,v in LAYOUTS.items() if v.get('meta')}   # metaobject
 TYPE_TEST='fn_80068128'   # (object, metaobject): whether the object is of that class
 # Functions returning a class's metaobject (an igMetaObject).
 GET_META={l.split('\t')[3].rstrip('\n') for l in open(_ATTR) if not l.startswith('#') and l.split('\t')[2].split(',')[0] in ('getMeta','getMetaCall')} if _ATTR.exists() else set()
-def meta_member(c,off):
-  """(name, C type, target class) of the reflected member at off in class c or its parents."""
+def meta_member(c,off,owner=False):
+  """(name, C type, target class) of the reflected member at off in class c or its parents; with owner,
+  also the class declaring it and whether a class between c and it declares the same name."""
+  names=set()
   while c in LAYOUTS:
     m=LAYOUTS[c]['members'].get('%d'%off)
-    if m: return m
+    if m: return (m,c,m[0] in names) if owner else m
+    names|={x[0] for x in LAYOUTS[c]['members'].values()}
     c=LAYOUTS[c]['parent']
   return None
 def generatable(n): return bool(re.fullmatch(r'(fn|dtor)_[0-9A-F]{8}',n)) or n in CLASS_NAMED
@@ -1581,25 +1584,41 @@ def _flow(name,rel,nparam_override,hints={}):
     if k[0]=='load' and k[1] in META_OF and not k[2] and 'igMetaObject' in LAYOUTS: return 'igMetaObject'
     if k[0]=='ret' and k[1][0]=='call' and k[1][1] in GET_META and 'igMetaObject' in LAYOUTS: return 'igMetaObject'
     if k[0]=='icast':
-      # An inline cast tested against a class metaobject yields that class.
-      for q_ in _seqs(k[2]):
-        for st_ in q_:
-          if st_[0]=='call' and st_[1]==TYPE_TEST and len(st_[2])>1 and st_[2][0]==k[1] and vals[st_[2][1]][0] in ('load','sda'):
-            return META_OF.get(vals[st_[2][1]][1])
+      # An inline cast yields a class when its condition is a conjunction containing exactly one test of
+      # the value against a class metaobject, required true (the test's result compared != 0).
+      return icast_class(k[1],k[2])
     if k[0]=='field' and len(k)==3:
       m=meta_member(class_of(k[1]),k[2])
       return m[2] if m else None
     return None
+  def icast_class(X,c):
+    tests=[]
+    def walk_(c):
+      if c[0]=='||': return False
+      if c[0]=='&&': return walk_(c[1]) and walk_(c[2])
+      if c[0]=='SEQ':
+        for st_ in c[1]:
+          if st_[0]=='call' and st_[1]==TYPE_TEST: tests.append((st_,c[2]))
+      return True
+    if not walk_(c) or len(tests)!=1: return None
+    st_,leaf=tests[0]
+    args=st_[2]
+    if len(args)<2 or args[0]!=X or vals[args[1]][0]!='load' or vals[args[1]][2]: return None
+    a=leaf[0]
+    while isinstance(a,int) and vals[a][0]=='cast': a=vals[a][1]
+    if not (isinstance(a,int) and vals[a][0]=='ret' and vals[a][1] is st_ and leaf[1]=='!=' and leaf[2]==('imm',0)): return None
+    return META_OF.get(vals[args[1]][1])
   def member(base,off,acc):
     """Typed lvalue for the access of type acc ('word' for a pointer-sized word) at base+off, or None."""
     c=class_of(base)
-    m=meta_member(c,off)
-    if not m: return None
-    nm,ct,tg=m
+    mo=meta_member(c,off,True)
+    if not mo: return None
+    (nm,ct,tg),own,shadowed=mo
     if acc=='word':
       if ct not in ('int','unsigned int','void *','const char *') and not (ct.startswith('Meta::') and ct.endswith(' *')): return None
     elif ct!=acc: return None
-    return 'reinterpret_cast<Meta::%s *>(%s)->%s'%(LAYOUTS[c]['ident'],ex(base),nm),ct
+    # A member a more derived class hides behind the same name is qualified with its own class.
+    return 'reinterpret_cast<Meta::%s *>(%s)->%s%s'%(LAYOUTS[c]['ident'],ex(base),LAYOUTS[own]['ident']+'::' if shadowed else '',nm),ct
   def ex(v):
     """Pointer-typed expression for a value (constants stay int)."""
     k=vals[v]

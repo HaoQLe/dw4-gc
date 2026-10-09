@@ -1,9 +1,29 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-07. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
+- **Generator round 7 closed (user request 2026-10-08):** compound strategy for functions generated alone (`flow_cc.json`, isolation tags `IC`/`ICV`), covering short-circuit `&&`/`||` with calls in the condition, inline cast helpers, compare-tree switches and jump-table switches; task branch `task/generator-round7`, functional commit `1d8d741` on `work`.
+  - **Totals:** matched code 36.177937% → 36.905680% (+0.727743 pp), linked 36.142395% → 36.870140% (+0.727745 pp), +30,140 bytes each; matched data 15.532835% → 15.554115% (+320 bytes); 16,986 functions (+193, none lost); 4,737/7,643 units.
+  - **Yield by feature:**
+    - inline casts: 67 functions, 12,420 bytes;
+    - `&&`/`||`: 85 functions, 10,936 bytes, 34 of them with calls as comma expressions;
+    - switches: 30 functions, 4,964 bytes, 1 of them a jump table;
+    - other: 10 functions, 1,696 bytes.
+  - **Against the 568 KB `&&`-with-else pool:**
+    - that pool was mostly switches (185 functions, 281 KB) plus register-allocation misses;
+    - compound conditions recovered about 25 KB;
+    - `exit shape` still blocks 473 functions (374 KB).
+  - **Jump tables:** a generated unit now owns its table's `.data` range (`apply.py`). Only 3 of 115 `bctr` functions generate (other features block them), and 1 is exact. Not handled: `bgtlr` defaults, instructions scheduled into the dispatch, and tables inside explicit `.data` splits.
+  - **Verification:** each cycle's changed units were verified (192 and 1, none failing); `build.sha1` OK; `verify_units.py --all` 4,497 units passing after the final fastcmp change; all 192 `flow_cc.json` units regenerate byte for byte. An independent review rebuilt the tree, compared all 193 units with its own comparator (bytes, relocations and section contents; negative controls rejected), confirmed map provenance and the jump table at `0x804C9FB0`, and confirmed that no pre-existing unit changed.
+  - **Review notes (non-blocking):** fastcmp does not check that a unit's `.data` holds only tables, and `apply.py` does not guard against a table shared across units; both are covered by the checksum.
+  - **Next candidates (not started):**
+    - `flow op` instructions (410 KB; `xoris` int-to-float needs the `.sdata2` constant, `subfc`/`subfe` comparisons);
+    - remaining `exit shape` (374 KB);
+    - a per-function declaration-order search for the 337 candidates differing in at most 2 instruction lines;
+    - ternaries.
+  - Details: [generator round 7](docs/research/2026-10-08-generator-round7.md).
 - **Generator round 6 closed (user request 2026-10-07):** prototype conflicts resolved by bytes (isolation), signature pass confirmed stable, loops in FLOW; functional commits `ebcb89b` (isolation) and `275fe25` (loops and instruction forms), task branch `task/generator-round6`.
   - **Totals:** matched code 32.955182% → 36.177937% (+3.222755 pp), linked 32.919640% → 36.142395% (+3.222755 pp), +133,472 bytes each; matched data 15.137835% → 15.532835% (+5,940 bytes); 16,793 functions (+793, none lost); 4,544/7,465 units.
   - **Retained losses:** all 42 recovered (22 round-4, 20 round-5).

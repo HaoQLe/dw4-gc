@@ -7,7 +7,7 @@
 #include <meta/beWeaponAttachDataList.h>
 #include <meta/beMessenger.h>
 #include <meta/beBaseInfoRam.h>
-#include <game/ObjectRef.h>
+#include <game/Ref.h>
 
 using namespace Meta;
 
@@ -52,12 +52,12 @@ void beWeapon_virtual7C(beWeapon *self, beBaseInfoRam *ram)
 {
     if (!self->_attachDataList) {
         beWeaponAttachDataList *list = fn_802B38CC(poolFor(self));
-        ObjectRef holder(list);
+        Ref<beWeaponAttachDataList> holder(list);
         if (self->_attachDataList) release(self->_attachDataList);
         self->_attachDataList = list;
         for (int i = 0; i < 4; i++) {
-            AdoptedRef attachment(fn_802B3ADC(poolFor(self)));
-            fn_80069128(self->_attachDataList, attachment._object);
+            Ref<beWeaponAttachData> attachment(fn_802B3ADC(poolFor(self)), Ref<beWeaponAttachData>::adopt);
+            fn_80069128(self->_attachDataList, attachment);
         }
     }
     fn_80305308(self->_messenger, ram, lbl_80452628);

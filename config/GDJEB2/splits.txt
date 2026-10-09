@@ -8539,7 +8539,7 @@ unknownGen/unknown802B34B0.cpp:
 	extabindex  start:0x80013950 end:0x8001395C
 	.text       start:0x802B34B0 end:0x802B3608
 
-Game/Bec/ObjectRef.cpp:
+Game/Bec/beWeaponAttachDataListRef.cpp:
 	extab       start:0x80006384 end:0x8000638C
 	extabindex  start:0x8001395C end:0x80013968
 	.text       start:0x802B3608 end:0x802B367C
@@ -13628,11 +13628,6 @@ unknownGen/unknown80311CC0.cpp:
 	extab       start:0x8000B85C end:0x8000B86C
 	extabindex  start:0x8001A9E8 end:0x8001AA00
 	.text       start:0x80311CC0 end:0x80311D10
-
-unknownGen/unknown80311EB0.cpp:
-	extab       start:0x8000B884 end:0x8000B88C
-	extabindex  start:0x8001AA0C end:0x8001AA18
-	.text       start:0x80311EB0 end:0x80311F24
 
 unknownGen/unknown80311F78.cpp:
 	.text       start:0x80311F78 end:0x80311F84

@@ -847,7 +847,7 @@ config.libs = [
         "cflags": cflags_game,
         "progress_category": "game",
         "objects": [
-            Object(Matching, "Game/Bec/ObjectRef.cpp"),
+            Object(Matching, "Game/Bec/beWeaponAttachDataListRef.cpp"),
             Object(Matching, "Game/Bec/beWeapon.cpp"),
         ],
     },

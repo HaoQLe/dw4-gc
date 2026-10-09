@@ -3484,7 +3484,6 @@ unknownGen/unknown803116A4.cpp	803116A4	803116E0	eh,nosdata
 unknownGen/unknown80311860.cpp	80311860	80311880	eh
 unknownGen/unknown80311CB0.cpp	80311CB0	80311CC0	nosdata
 unknownGen/unknown80311CC0.cpp	80311CC0	80311D10	eh
-unknownGen/unknown80311EB0.cpp	80311EB0	80311F24	eh
 unknownGen/unknown80311F78.cpp	80311F78	80311F84	-
 unknownGen/unknown80312138.cpp	80312138	80312190	nosdata
 unknownGen/unknown803124B4.cpp	803124B4	803124C4	nosdata

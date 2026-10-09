@@ -3519,10 +3519,7 @@ unknownGen/unknown8031A084.cpp	8031A084	8031A0A4	eh
 unknownGen/unknown8031A2D8.cpp	8031A2D8	8031A318	eh
 unknownGen/unknown8031A318.cpp	8031A318	8031A340	-
 unknownGen/unknown8031AD48.cpp	8031AD48	8031AD7C	nosdata
-unknownGen/unknown8031B5FC.cpp	8031B5FC	8031B614	nosdata
-unknownGen/unknown8031B614.cpp	8031B614	8031B684	eh,nosdata
-unknownGen/unknown8031B684.cpp	8031B684	8031B690	-
-unknownGen/unknown8031B7EC.cpp	8031B7EC	8031B864	eh
+unknownGen/unknown8031B5FC.cpp	8031B5FC	8031B60C	nosdata
 unknownGen/unknown8031B9EC.cpp	8031B9EC	8031B9FC	nosdata
 unknownGen/unknown8031BB4C.cpp	8031BB4C	8031BB98	eh,nosdata
 unknownGen/unknown8031BB98.cpp	8031BB98	8031BBAC	nosdata

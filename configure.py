@@ -852,6 +852,7 @@ config.libs = [
             Object(Matching, "Game/Bec/beWeapon.cpp"),
             Object(Matching, "Game/Bec/bePadData.cpp"),
             Object(Matching, "Game/Bec/bePadManager.cpp"),
+            Object(Matching, "Game/Bec/beTimer.cpp"),
         ],
     },
     {

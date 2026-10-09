@@ -4,6 +4,19 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Enums and controller-input batch (user request 2026-10-09):** both parts verified.
+  - **Enums:** 149 enums (1,284 values) extracted (`tools/alchemymeta/enums.py`) into `include/meta/enums.h`; 121 enum fields typed.
+  - **Input:** `src/Game/Bec/bePadData.cpp` and `bePadManager.cpp` are readable and exact (17 functions, `0x803116E0..0x80312190`, with their `.rodata`): sticks, dead zone, direction sectors, button trigger and auto-repeat, and per-frame controller polling.
+  - **Totals:** matched code 36.914276% → 36.972034% (+2,392 bytes), linked 36.878735% → 36.936493%, matched data +212 bytes, 16,995 functions.
+  - **Established:**
+    - game `-sdata2 2`;
+    - MSL inline `sqrtf`;
+    - `Ref<T>` with one destructor per held type;
+    - separate files for `bePadData` and `bePadManager`.
+  - **Checks:** `build.sha1` OK; all 4,486 generated units verify.
+  - **Active remainder:** the `beWeapon` message handler (`virtual8C`, local branch `task/beweapon-8c-wip`, register numbering only).
+  - **Next candidates (not started):** more small game classes from the ranking (`beTimer`, `beCameraMode`, `beSeCtl`, `bePoint01`, the `beNDMW` menu pieces), and a template `Ref<igModelViewMatrixBoneSelect>` retry on the handler.
+  - Details: [enums and controller input](docs/research/2026-10-09-enums-and-pad-input.md).
 - **beWeapon readable-source batch (user request 2026-10-09):** the first game subsystem as hand-written, typed C++.
   - **Units:** `src/Game/Bec/beWeapon.cpp` (`0x80318230..0x80318474`: `virtual88`, `virtual80`, `virtual7C`, the `AdoptedRef` destructor, `virtual84`) and `src/Game/Bec/ObjectRef.cpp` (the `ObjectRef` destructor at `0x802B3608`), against `include/meta` and the new `include/game/ObjectRef.h`.
   - **Totals:** matched code 36.905680% → 36.914276% (+356 bytes, `virtual7C` newly matched), linked code 36.870140% → 36.878735%, matched data −40 bytes (an objdiff artifact of the discarded weak destructor copy; the executable is exact). `build.sha1` OK; all 4,492 generated units verify.

@@ -13616,24 +13616,17 @@ unknownGen/unknown803116A4.cpp:
 	extabindex  start:0x8001A9A0 end:0x8001A9AC
 	.text       start:0x803116A4 end:0x803116E0
 
-unknownGen/unknown80311860.cpp:
-	extab       start:0x8000B83C end:0x8000B844
-	extabindex  start:0x8001A9B8 end:0x8001A9C4
-	.text       start:0x80311860 end:0x80311880
+Game/Bec/bePadData.cpp:
+	extab       start:0x8000B834 end:0x8000B85C
+	extabindex  start:0x8001A9AC end:0x8001A9E8
+	.text       start:0x803116E0 end:0x80311CC0
+	.rodata     start:0x80426BA8 end:0x80426BDC
 
-unknownGen/unknown80311CB0.cpp:
-	.text       start:0x80311CB0 end:0x80311CC0
-
-unknownGen/unknown80311CC0.cpp:
-	extab       start:0x8000B85C end:0x8000B86C
-	extabindex  start:0x8001A9E8 end:0x8001AA00
-	.text       start:0x80311CC0 end:0x80311D10
-
-unknownGen/unknown80311F78.cpp:
-	.text       start:0x80311F78 end:0x80311F84
-
-unknownGen/unknown80312138.cpp:
-	.text       start:0x80312138 end:0x80312190
+Game/Bec/bePadManager.cpp:
+	extab       start:0x8000B85C end:0x8000B89C
+	extabindex  start:0x8001A9E8 end:0x8001AA30
+	.text       start:0x80311CC0 end:0x80312190
+	.rodata     start:0x80426C08 end:0x80426C0C
 
 unknownGen/unknown803124B4.cpp:
 	.text       start:0x803124B4 end:0x803124C4

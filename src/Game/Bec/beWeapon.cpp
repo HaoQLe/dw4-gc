@@ -8,14 +8,12 @@
 #include <meta/beMessenger.h>
 #include <meta/beBaseInfoRam.h>
 #include <game/Ref.h>
+#include <game/Pool.h>
 
 using namespace Meta;
 
 extern "C" {
-void *fn_80068430(igObject *object);          // memory pool of an object (its pool index at +4)
-void *fn_800607F4(void *poolSource);          // a pool from the memory manager
-extern unsigned char lbl_80562298;            // nonzero: objects allocate from their own pool
-extern char lbl_8056225C[];                   // default pool source (type unknown)
+extern char lbl_8056225C[];                   // this file's default pool source (type unknown)
 beWeaponAttachDataList *fn_802B38CC(void *pool);  // creates a beWeaponAttachDataList in pool
 beWeaponAttachData *fn_802B3ADC(void *pool);      // creates a beWeaponAttachData in pool
 void fn_80069128(void *list, void *object);   // appends to an object list
@@ -24,14 +22,6 @@ extern const char lbl_80452628[];             // "PLAYERARMS", first of the stri
 extern char lbl_8053453C[];                   // a metaobject pointer (class unknown)
 }
 
-
-// The pool new objects owned by object are created in.
-static inline void *poolFor(igObject *object)
-{
-    void *pool = fn_80068430(object);
-    if (lbl_80562298) return pool;
-    return fn_800607F4(*reinterpret_cast<void **>(lbl_8056225C));
-}
 
 extern "C" {
 
@@ -51,12 +41,12 @@ void *beWeapon_virtual80(beWeapon *)
 void beWeapon_virtual7C(beWeapon *self, beBaseInfoRam *ram)
 {
     if (!self->_attachDataList) {
-        beWeaponAttachDataList *list = fn_802B38CC(poolFor(self));
+        beWeaponAttachDataList *list = fn_802B38CC(poolFor(self, lbl_8056225C));
         Ref<beWeaponAttachDataList> holder(list);
         if (self->_attachDataList) release(self->_attachDataList);
         self->_attachDataList = list;
         for (int i = 0; i < 4; i++) {
-            Ref<beWeaponAttachData> attachment(fn_802B3ADC(poolFor(self)), Ref<beWeaponAttachData>::adopt);
+            Ref<beWeaponAttachData> attachment(fn_802B3ADC(poolFor(self, lbl_8056225C)), Ref<beWeaponAttachData>::adopt);
             fn_80069128(self->_attachDataList, attachment);
         }
     }

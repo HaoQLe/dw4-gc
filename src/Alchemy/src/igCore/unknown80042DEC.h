@@ -173,7 +173,7 @@ struct Unknown80042DECOwner {
 };
 extern "C" {
     void fn_80066E1C(void *);
-    void fn_800A325C(void *);
+    void __dl__FPv(void *);
     void *fn_80068430(void *);
     Unknown80042DECValue *fn_800695CC(void *, void *, void *);
     Unknown80042DECValue *fn_800696C8(void *, void *, void *);

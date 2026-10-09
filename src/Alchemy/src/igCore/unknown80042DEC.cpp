@@ -7,7 +7,7 @@ extern "C" void *fn_80042DEC(){ return lbl_805622A4; }
 extern "C" void *dtor_80042DF4(Unknown80042DECValue **reference, short flag){
     if(reference){
         unknown80042DECRelease(*reference);
-        if(flag > 0) fn_800A325C(reference);
+        if(flag > 0) __dl__FPv(reference);
     }
     return reference;
 }

@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800A325C(void *);
+void __dl__FPv(void *);
 }
 extern "C" {
 UnknownGenHolder *dtor_8030EFDC(UnknownGenHolder *object,short flags){
@@ -12,7 +12,7 @@ UnknownGenHolder *dtor_8030EFDC(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -23,7 +23,7 @@ UnknownGenHolder *dtor_8030F050(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -46,7 +46,7 @@ UnknownGenHolder *dtor_8030F1A4(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }

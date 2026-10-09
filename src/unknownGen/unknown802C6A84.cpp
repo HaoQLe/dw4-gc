@@ -8,7 +8,7 @@ void beModelCtrlInfoWork_vtableRead();
 void *fn_800237D0();
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void fn_800A325C(void *);
+void __dl__FPv(void *);
 void fn_802B1AC8();
 void igObject_register();
 extern char lbl_8041EAA0[];
@@ -25,7 +25,7 @@ UnknownGenHolder *dtor_802C6A84(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -36,7 +36,7 @@ UnknownGenHolder *dtor_802C6AF8(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -47,7 +47,7 @@ UnknownGenHolder *dtor_802C6B6C(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -58,7 +58,7 @@ UnknownGenHolder *dtor_802C6BE0(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }

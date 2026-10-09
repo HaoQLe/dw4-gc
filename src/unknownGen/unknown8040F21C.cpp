@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800A325C(void *);
+void __dl__FPv(void *);
 void fn_8028A2D0(void *,void *);
 void fn_8028A468(void *);
 void fn_8028A618(void *);
@@ -97,7 +97,7 @@ void *dtor_8040F21C(void *p0,int p1){
    }
   }
   if((int)(short)p1>0){
-   fn_800A325C(p0);
+   __dl__FPv(p0);
   }
  }
  return p0;

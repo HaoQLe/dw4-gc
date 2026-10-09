@@ -322,6 +322,14 @@ cflags_engine = [
 
 cflags_engine_size = ["-O4,s" if flag == "-O4,p" else flag for flag in cflags_engine]
 
+# Game code (Gap::Bec): optimized for speed, stmw/lmw saves, C++ exceptions, read-only strings, and only
+# objects up to 4 bytes in .sdata2 (established by matching beWeapon; see docs/research).
+cflags_game = [
+    *[("-Cpp_exceptions on" if flag == "-Cpp_exceptions off" else "-str reuse,readonly" if flag == "-str reuse" else flag) for flag in cflags_engine],
+    "-use_lmw_stmw on",
+    "-sdata2 4",
+]
+
 # REL flags
 cflags_rel = [
     *cflags_base,
@@ -832,6 +840,16 @@ config.libs = [
             Object(Matching, "Alchemy/src/igCore/unknown8004DC3C.cpp", cflags=cflags_engine_size),
             Object(Matching, "Alchemy/src/igCore/unknown8004DDC4.cpp", cflags=cflags_engine_size),
         ],        
+    },
+    {
+        "lib": "Game",
+        "mw_version": "GC/2.6",
+        "cflags": cflags_game,
+        "progress_category": "game",
+        "objects": [
+            Object(Matching, "Game/Bec/ObjectRef.cpp"),
+            Object(Matching, "Game/Bec/beWeapon.cpp"),
+        ],
     },
     {
         # Exact boilerplate units listed in config/<version>/generated_units.txt.

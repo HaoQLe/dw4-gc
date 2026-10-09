@@ -127,7 +127,7 @@ extern "C" {
 // These local views record observed offsets and calling conventions only.
 extern "C" {
     void fn_80066E1C(void *);
-    void fn_800A325C(void *);
+    void __dl__FPv(void *);
     void *fn_80054140(Gap::igUnsignedInt);
     void *fn_80053F28(void *);
     void *fn_80053FF4(void *, Gap::igInt);
@@ -633,7 +633,7 @@ namespace Gap{
 extern "C" void *dtor_8003DC20(UnknownRefObject **self, Gap::igInt flag){
     if(self){
         if(*self) (*self)->release();
-        if(static_cast<short>(flag) > 0) fn_800A325C(self);
+        if(static_cast<short>(flag) > 0) __dl__FPv(self);
     }
     return self;
 }

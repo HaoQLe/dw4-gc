@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800A325C(void *);
+void __dl__FPv(void *);
 void fn_80116F10(void *,void *,void *);
 }
 extern "C" {
@@ -13,7 +13,7 @@ UnknownGenHolder *dtor_80116DFC(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -24,7 +24,7 @@ UnknownGenHolder *dtor_80116E70(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }

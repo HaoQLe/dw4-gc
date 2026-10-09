@@ -7,7 +7,7 @@ void *fn_80029E64(void *);
 void *fn_800607F4(void *);
 void *fn_8006546C(void *,void *);
 void fn_8006665C(void *);
-void fn_800A325C(void *);
+void __dl__FPv(void *);
 extern char lbl_80471328[];
 extern void *lbl_80561658;
 extern void *lbl_805621F4;
@@ -53,7 +53,7 @@ UnknownGenHolder *dtor_80026C8C(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }

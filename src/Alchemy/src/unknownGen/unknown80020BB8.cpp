@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *dtor_8040F21C(void *,int);
-void fn_800A325C(void *);
+void __dl__FPv(void *);
 }
 extern "C" {
 UnknownGenHolder *dtor_80020BB8(UnknownGenHolder *object,short flags){
@@ -13,7 +13,7 @@ UnknownGenHolder *dtor_80020BB8(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -24,7 +24,7 @@ UnknownGenHolder *dtor_80020C2C(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -35,7 +35,7 @@ UnknownGenHolder *dtor_80020CA0(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -46,7 +46,7 @@ UnknownGenHolder *dtor_80020D14(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -57,7 +57,7 @@ UnknownGenHolder *dtor_80020D88(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -68,7 +68,7 @@ UnknownGenHolder *dtor_80020DFC(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }
@@ -160,7 +160,7 @@ void *dtor_80020E70(int p0,int p1){
   }
   dtor_8040F21C((void *)p0,-1);
   if((int)(short)p1>0){
-   fn_800A325C((void *)p0);
+   __dl__FPv((void *)p0);
   }
  }
  return (void *)p0;

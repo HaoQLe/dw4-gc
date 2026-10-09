@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800A325C(void *);
+void __dl__FPv(void *);
 void fn_80272110(void *,void *,void *);
 void *fn_802728B8(void *);
 void fn_80272A90(void *);
@@ -50,7 +50,7 @@ void *fn_80272068(int p0,int p1){
    fn_80272A90((void *)p0);
   }
   if((int)(short)p1>0){
-   fn_800A325C((void *)p0);
+   __dl__FPv((void *)p0);
   }
  }
  return (void *)p0;

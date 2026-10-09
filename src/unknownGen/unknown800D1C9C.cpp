@@ -11,7 +11,7 @@ void *fn_8006546C(void *,void *);
 void fn_80066188(int);
 void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_800A325C(void *);
+void __dl__FPv(void *);
 void fn_800CE2F8();
 void *fn_800D2544();
 void *fn_800D26C4();
@@ -137,7 +137,7 @@ UnknownGenHolder *fn_800D1FF8(UnknownGenHolder *object,short flags){
    --value->unknown04;
    if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
   }
-  if(flags>0) fn_800A325C(object);
+  if(flags>0) __dl__FPv(object);
  }
  return object;
 }

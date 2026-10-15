@@ -10,11 +10,11 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
   - **New tools:** `tools/hwdiff.py` and `tools/hwvariants.py` score hand-written files and their variants per function.
   - **`fn_800A3FDC` is now named `__cvt_sll_dbl`:** MWCC emits that call for this conversion.
   - **Still stalled on register allocation:**
-    - `beSeCtl_virtual90`: 51 lines (was 63), with `self` and the loop registers permuted and one extra `mr` for the delay;
+    - `beSeCtl_virtual90`: 49 lines (was 63), with `self` and the loop registers permuted and one extra `mr` for the delay;
     - the `beWeapon` handler.
 
     Drafts are on the local branches `task/small-classes-wip` and `task/beweapon-8c-wip`.
-  - **Next investigation:** apply the `hwvariants` combination search to the `beWeapon` handler; for `beSeCtl_virtual90`, try forms of the delay that produce the extra copy, such as an inline accessor or a by-value struct. `beCameraMode` needs the model and matrix classes.
+  - **Next investigation:** apply the `hwvariants` combination search to the `beWeapon` handler; for `beSeCtl_virtual90`, inline messenger helpers are ruled out; next, try the request fields read through a struct copy or accessor. `beCameraMode` needs the model and matrix classes.
   - Details: [small game classes](docs/research/2026-10-09-small-game-classes.md).
 - **Enums and controller-input batch (user request 2026-10-09):** both parts verified.
   - **Enums:** 149 enums (1,284 values) extracted (`tools/alchemymeta/enums.py`) into `include/meta/enums.h`; 120 enum fields typed.

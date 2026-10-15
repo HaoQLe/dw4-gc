@@ -31,7 +31,7 @@ Three readable drafts compiled to the original instructions, with identical opco
 | --- | --- | --- | --- |
 | `beWeapon_virtual8C` (message handler) | 1,440 | about 280 | `task/beweapon-8c-wip` |
 | `beTimer_virtual74` (per-frame update) | 392 | **matched** | `src/Game/Bec/beTimer.cpp` |
-| `beSeCtl_virtual90` (play an action's sound) | 340 | 51 at best | `task/small-classes-wip` |
+| `beSeCtl_virtual90` (play an action's sound) | 340 | 49 at best | `task/small-classes-wip` |
 
 **What `beSeCtl_virtual90` does:** it finds the `beSeInfoData` named by the request, then each of its `beSeData` actions named by the request. For each match it sends `MODELCTRL`, the sound name, the delay (a `short` converted through `long long` to `double` by `__cvt_sll_dbl`, formerly `fn_800A3FDC`: MWCC emits a call to `__cvt_sll_dbl` for this conversion at that address's call site) and `SETSOUND`.
 
@@ -60,12 +60,12 @@ A search over seven independent source choices (`build/GDJEB2/analysis/hw/combo7
 
 `beTimer_anyPadInput` must also stay out of line. Without a pragma, MWCC inlines it into `virtual74` (42 lines). `#pragma dont_inline on` within a push/pop broke `virtual70` (an inline helper there was outlined). `#pragma auto_inline off` around `beTimer_anyPadInput` keeps all functions exact.
 
-**`beSeCtl_virtual90` now:** a search over nine choices reached 51 lines, best with `found` and `actions` declared at the top. Remaining differences:
+**`beSeCtl_virtual90` now:** a search over nine choices reached 49 lines (counted after the `__cvt_sll_dbl` rename), best with `found` and `actions` declared at the top. Remaining differences:
 - `self` is in `r27`, but the original uses `r26`;
 - the two loops' index, offset and list registers are permuted;
 - the original loads the delay through `r0` and copies it to `r22` (`lha r0; mr r22, r0`), one instruction more.
 
-`short`, `int` and `long long` intermediates for the delay did not reproduce the copy.
+`short`, `int` and `long long` intermediates for the delay did not reproduce the copy, and inline helpers for the four messenger calls (taking the delay as `long long`, `short` or the whole `beSeData`) made it worse (80–93 lines).
 
 ## Tools
 

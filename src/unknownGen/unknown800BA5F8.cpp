@@ -51,33 +51,5 @@ void *fn_800BA644(){
  if(!lbl_80562A0C) lbl_80562A0C=fn_800635C8(data+0x21A8,data+0x2190,data+0x219C,0x3);
  return lbl_80562A0C;
 }
-void *igBlendFunctionAttr_create(void *object){
- igBlendFunctionAttr_arkRegister();
- return meta_createInstance(igBlendFunctionAttr_meta,object);
-}
-void *fn_800BA6C8(){
- if(!igBlendFunctionAttr_meta) igBlendFunctionAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
- return igBlendFunctionAttr_meta;
-}
-void *igBlendFunctionAttr_getMeta(){
- if(!igBlendFunctionAttr_meta || !(reinterpret_cast<unsigned int *>(igBlendFunctionAttr_meta)[0x24/4]&4)) igBlendFunctionAttr_arkRegister();
- return igBlendFunctionAttr_meta;
-}
-void *igBlendFunctionAttr_vtableRead(){
- UnknownGenObject800BA740 object;
- object.unknown00=lbl_8047D578;
- object.unknown00=lbl_8047E50C;
- object.unknown00=igBlendFunctionAttr_vtable;
- object.unknown18.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igBlendFunctionAttr_arkRegister(){
- meta_registerNow((int)igBlendFunctionAttr_register);
-}
-void igBlendFunctionAttr_register(){
- fn_800ABC8C();
- meta_registerClass(0,(int)&igBlendFunctionAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igBlendFunctionAttr_getMetaCall,(int)igBlendFunctionAttr_className,52,(int)igBlendFunctionAttr_vtableRead,(int)igBlendFunctionAttr_fieldInit,0,(int)igBlendFunctionAttr_dependencies);
-}
-void *igBlendFunctionAttr_getMetaCall(){return igBlendFunctionAttr_getMeta();}
 }
 #pragma pop

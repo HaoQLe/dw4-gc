@@ -29,13 +29,5 @@ UnknownGenHolder *dtor_802D027C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beMatCtrlInfoRam_arkRegister(){
- meta_registerNow((int)beMatCtrlInfoRam_register);
-}
-void beMatCtrlInfoRam_register(){
- fn_802B1AC8();
- meta_registerClass(0,(int)beMatCtrlInfoRam_meta,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beMatCtrlInfoRam_getMetaCall,(int)beMatCtrlInfoRam_className,48,(int)beMatCtrlInfoRam_vtableRead,(int)beMatCtrlInfoRam_fieldInit,0,(int)beMatCtrlInfoRam_dependencies);
-}
-void *beMatCtrlInfoRam_getMetaCall(){return beMatCtrlInfoRam_getMeta();}
 }
 #pragma pop

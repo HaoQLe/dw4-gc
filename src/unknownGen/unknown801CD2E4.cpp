@@ -63,51 +63,5 @@ void *fn_801CD2E4(){
  if(!igAnimationTrackList_meta) igAnimationTrackList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igAnimationTrackList_meta;
 }
-void *igAnimationTrackList_getMeta(){
- if(!igAnimationTrackList_meta || !(reinterpret_cast<unsigned int *>(igAnimationTrackList_meta)[0x24/4]&4)) igAnimationTrackList_arkRegister();
- return igAnimationTrackList_meta;
-}
-void *igAnimationTrackList_vtableRead(){
- UnknownGenObject801CD35C_0 object;
- igObject_construct(&object);
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_80476E0C;
- object.unknown00=igObjectList_vtable;
- object.unknown00=lbl_804B5A98;
- object.unknown00=igAnimationTrackList_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igAnimationTrackList_arkRegister(){
- meta_registerNow((int)igAnimationTrackList_register);
-}
-void igAnimationTrackList_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationTrackList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationTrackList_getMetaCall,(int)igAnimationTrackList_className,20,(int)igAnimationTrackList_vtableRead,0,0,(int)igAnimationTrackList_dependencies);
-}
-void *igAnimationTrackList_getMetaCall(){return igAnimationTrackList_getMeta();}
-void *igAnimationTrack_create(void *object){
- igAnimationTrack_arkRegister();
- return meta_createInstance(igAnimationTrack_meta,object);
-}
-void *igAnimationTrack_getMeta(){
- if(!igAnimationTrack_meta || !(reinterpret_cast<unsigned int *>(igAnimationTrack_meta)[0x24/4]&4)) igAnimationTrack_arkRegister();
- return igAnimationTrack_meta;
-}
-void *igAnimationTrack_vtableRead(){
- UnknownGenObject801CD4F4 object;
- object.unknown00=igNamedObject_vtable;
- object.unknown08.value=0;
- object.unknown00=igAnimationTrack_vtable;
- object.unknown0C.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igAnimationTrack_arkRegister(){
- meta_registerNow((int)igAnimationTrack_register);
-}
-void igAnimationTrack_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationTrack_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igAnimationTrack_getMetaCall,(int)igAnimationTrack_className,44,(int)igAnimationTrack_vtableRead,(int)igAnimationTrack_fieldInit,0,(int)igAnimationTrack_dependencies);
-}
-void *igAnimationTrack_getMetaCall(){return igAnimationTrack_getMeta();}
 }
 #pragma pop

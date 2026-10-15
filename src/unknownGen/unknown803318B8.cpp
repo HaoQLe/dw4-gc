@@ -29,13 +29,5 @@ UnknownGenHolder *dtor_803318B8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWStatusCtrlDisk_arkRegister(){
- meta_registerNow((int)beNDMWStatusCtrlDisk_register);
-}
-void beNDMWStatusCtrlDisk_register(){
- fn_803250AC();
- meta_registerClass(0,(int)beNDMWStatusCtrlDisk_meta,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWStatusCtrlDisk_getMetaCall,(int)beNDMWStatusCtrlDisk_className,108,(int)beNDMWStatusCtrlDisk_vtableRead,(int)beNDMWStatusCtrlDisk_fieldInit,0,(int)beNDMWStatusCtrlDisk_dependencies);
-}
-void *beNDMWStatusCtrlDisk_getMetaCall(){return beNDMWStatusCtrlDisk_getMeta();}
 }
 #pragma pop

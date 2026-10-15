@@ -37,16 +37,5 @@ void *igUnsignedShortArrayMetaField_virtual54(void *a,void *b){
  if(object) object=fn_80075F48(object,a);
  return object;
 }
-void *igUnsignedShortMetaField_getMeta(){
- if(!igUnsignedShortMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedShortMetaField_meta)[0x24/4]&4)) igUnsignedShortMetaField_arkRegister();
- return igUnsignedShortMetaField_meta;
-}
-void *fn_80021F6C(){
- UnknownGenObject80021F6C object;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igUnsignedShortMetaField_arkRegister(){
- meta_registerNow((int)igUnsignedShortMetaField_register);
-}
 }
 #pragma pop

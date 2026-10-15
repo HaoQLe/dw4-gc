@@ -29,13 +29,5 @@ UnknownGenHolder *dtor_8032B240(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWStatusInfoWork_arkRegister(){
- meta_registerNow((int)beNDMWStatusInfoWork_register);
-}
-void beNDMWStatusInfoWork_register(){
- fn_803250AC();
- meta_registerClass(0,(int)beNDMWStatusInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWStatusInfoWork_getMetaCall,(int)beNDMWStatusInfoWork_className,36,(int)beNDMWStatusInfoWork_vtableRead,(int)beNDMWStatusInfoWork_fieldInit,0,(int)beNDMWStatusInfoWork_dependencies);
-}
-void *beNDMWStatusInfoWork_getMetaCall(){return beNDMWStatusInfoWork_getMeta();}
 }
 #pragma pop

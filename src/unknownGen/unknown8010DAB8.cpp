@@ -59,28 +59,5 @@ UnknownGenHolder *dtor_8010DAB8(UnknownGenHolder *object,short flags){
  return object;
 }
 void *fn_8010DB2C(){return igGuiComponentAspect_meta;}
-void *igScalerModel_getMeta(){
- if(!igScalerModel_meta || !(reinterpret_cast<unsigned int *>(igScalerModel_meta)[0x24/4]&4)) igScalerModel_arkRegister();
- return igScalerModel_meta;
-}
-void *igScalerModel_vtableRead(){
- UnknownGenObject8010DB70 object;
- object.unknown00=igModel_vtable;
- object.unknown08.value=0;
- object.unknown00=igGuiComponentModel_vtable;
- object.unknown00=igSimpleChildHolderModel_vtable;
- object.unknown24.value=0;
- object.unknown00=igScalerModel_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igScalerModel_arkRegister(){
- meta_registerNow((int)igScalerModel_register);
-}
-void igScalerModel_register(){
- fn_8010CBD4();
- meta_registerClass(0,(int)&igScalerModel_meta,(int)igSimpleChildHolderModel_register,(int)fn_8010DD30,(int)igScalerModel_getMetaCall,(int)igScalerModel_className,64,(int)igScalerModel_vtableRead,(int)igScalerModel_fieldInit,0,0);
-}
-void *igScalerModel_getMetaCall(){return igScalerModel_getMeta();}
-void *fn_8010DD30(){return igSimpleChildHolderModel_meta;}
 }
 #pragma pop

@@ -47,28 +47,5 @@ void fn_801AACA8(){
  fn_80065DBC((int)fn_8020AEC0);
 }
 void *fn_801AACD4(){return fn_8020B028();}
-void *igTransientShaderData_getMeta(){
- if(!igTransientShaderData_meta || !(reinterpret_cast<unsigned int *>(igTransientShaderData_meta)[0x24/4]&4)) igTransientShaderData_arkRegister();
- return igTransientShaderData_meta;
-}
-void *igTransientShaderData_vtableRead(){
- UnknownGenObject801AAD30 object;
- object.unknown00=igShaderData_vtable;
- object.unknown08.value=0;
- object.unknown0C.value=0;
- object.unknown10.value=0;
- object.unknown14.value=0;
- object.unknown00=igTransientShaderData_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igTransientShaderData_arkRegister(){
- meta_registerNow((int)igTransientShaderData_register);
-}
-void igTransientShaderData_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igTransientShaderData_meta,(int)igShaderData_register,(int)igTransientShaderData_parentMeta,(int)igTransientShaderData_getMetaCall,(int)igTransientShaderData_className,24,(int)igTransientShaderData_vtableRead,(int)fn_801AAF40,0,(int)igTransientShaderData_dependencies);
-}
-void *igTransientShaderData_getMetaCall(){return igTransientShaderData_getMeta();}
-void *igTransientShaderData_parentMeta(){return igShaderData_meta;}
 }
 #pragma pop

@@ -60,50 +60,5 @@ void *fn_8028DCA0(){
  if(!igCollisionCellList_meta) igCollisionCellList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igCollisionCellList_meta;
 }
-void *igCollisionCellList_getMeta(){
- if(!igCollisionCellList_meta || !(reinterpret_cast<unsigned int *>(igCollisionCellList_meta)[0x24/4]&4)) igCollisionCellList_arkRegister();
- return igCollisionCellList_meta;
-}
-void *igCollisionCellList_vtableRead(){
- UnknownGenObject8028DD18_0 object;
- igObject_construct(&object);
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_80476E0C;
- object.unknown00=igObjectList_vtable;
- object.unknown00=lbl_804CCD70;
- object.unknown00=igCollisionCellList_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igCollisionCellList_arkRegister(){
- meta_registerNow((int)igCollisionCellList_register);
-}
-void igCollisionCellList_register(){
- fn_8028C93C();
- meta_registerClass(0,(int)&igCollisionCellList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCollisionCellList_getMetaCall,(int)igCollisionCellList_className,20,(int)igCollisionCellList_vtableRead,0,0,(int)igCollisionCellList_dependencies);
-}
-void *igCollisionCellList_getMetaCall(){return igCollisionCellList_getMeta();}
-void *igCollisionCell_create(void *object){
- igCollisionCell_arkRegister();
- return meta_createInstance(igCollisionCell_meta,object);
-}
-void *igCollisionCell_getMeta(){
- if(!igCollisionCell_meta || !(reinterpret_cast<unsigned int *>(igCollisionCell_meta)[0x24/4]&4)) igCollisionCell_arkRegister();
- return igCollisionCell_meta;
-}
-void *igCollisionCell_vtableRead(){
- UnknownGenObject8028DEB0 object;
- object.unknown00=igCollisionCell_vtable;
- object.unknown08.value=0;
- object.unknown10.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igCollisionCell_arkRegister(){
- meta_registerNow((int)igCollisionCell_register);
-}
-void igCollisionCell_register(){
- fn_8028C93C();
- meta_registerClass(0,(int)&igCollisionCell_meta,(int)igObject_register,(int)fn_800237D0,(int)igCollisionCell_getMetaCall,(int)igCollisionCell_className,32,(int)igCollisionCell_vtableRead,(int)igCollisionCell_fieldInit,0,(int)igCollisionCell_dependencies);
-}
-void *igCollisionCell_getMetaCall(){return igCollisionCell_getMeta();}
 }
 #pragma pop

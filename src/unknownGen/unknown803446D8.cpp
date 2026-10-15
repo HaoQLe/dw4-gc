@@ -29,13 +29,5 @@ UnknownGenHolder *dtor_803446D8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWGameRam_arkRegister(){
- meta_registerNow((int)beNDMWGameRam_register);
-}
-void beNDMWGameRam_register(){
- fn_803250AC();
- meta_registerClass(0,(int)beNDMWGameRam_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beNDMWGameRam_getMetaCall,(int)beNDMWGameRam_className,76,(int)beNDMWGameRam_vtableRead,(int)beNDMWGameRam_fieldInit,0,(int)beNDMWGameRam_dependencies);
-}
-void *beNDMWGameRam_getMetaCall(){return beNDMWGameRam_getMeta();}
 }
 #pragma pop

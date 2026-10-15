@@ -61,50 +61,5 @@ void *fn_801AFD64(){
  if(!igSkeletonBoneInfoList_meta) igSkeletonBoneInfoList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igSkeletonBoneInfoList_meta;
 }
-void *igSkeletonBoneInfoList_getMeta(){
- if(!igSkeletonBoneInfoList_meta || !(reinterpret_cast<unsigned int *>(igSkeletonBoneInfoList_meta)[0x24/4]&4)) igSkeletonBoneInfoList_arkRegister();
- return igSkeletonBoneInfoList_meta;
-}
-void *igSkeletonBoneInfoList_vtableRead(){
- UnknownGenObject801AFDDC_0 object;
- igObject_construct(&object);
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_80476E0C;
- object.unknown00=igObjectList_vtable;
- object.unknown00=lbl_804B92C0;
- object.unknown00=igSkeletonBoneInfoList_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igSkeletonBoneInfoList_arkRegister(){
- meta_registerNow((int)igSkeletonBoneInfoList_register);
-}
-void igSkeletonBoneInfoList_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igSkeletonBoneInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igSkeletonBoneInfoList_getMetaCall,(int)igSkeletonBoneInfoList_className,20,(int)igSkeletonBoneInfoList_vtableRead,0,0,(int)igSkeletonBoneInfoList_dependencies);
-}
-void *igSkeletonBoneInfoList_getMetaCall(){return igSkeletonBoneInfoList_getMeta();}
-void *igSkeletonBoneInfo_create(void *object){
- igSkeletonBoneInfo_arkRegister();
- return meta_createInstance(igSkeletonBoneInfo_meta,object);
-}
-void *igSkeletonBoneInfo_getMeta(){
- if(!igSkeletonBoneInfo_meta || !(reinterpret_cast<unsigned int *>(igSkeletonBoneInfo_meta)[0x24/4]&4)) igSkeletonBoneInfo_arkRegister();
- return igSkeletonBoneInfo_meta;
-}
-void *igSkeletonBoneInfo_vtableRead(){
- UnknownGenObject801AFF74 object;
- object.unknown00=igNamedObject_vtable;
- object.unknown08.value=0;
- object.unknown00=igSkeletonBoneInfo_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igSkeletonBoneInfo_arkRegister(){
- meta_registerNow((int)igSkeletonBoneInfo_register);
-}
-void igSkeletonBoneInfo_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igSkeletonBoneInfo_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igSkeletonBoneInfo_getMetaCall,(int)igSkeletonBoneInfo_className,24,(int)igSkeletonBoneInfo_vtableRead,(int)igSkeletonBoneInfo_fieldInit,0,0);
-}
-void *igSkeletonBoneInfo_getMetaCall(){return igSkeletonBoneInfo_getMeta();}
 }
 #pragma pop

@@ -1,0 +1,46 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+void *meta_newMetaObject(void *);
+void *fn_800607F4(void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
+void igObject_construct(void *);
+void fn_8012FC48();
+void *fn_80182E70();
+void igInterface_register();
+void igOptInterface_fieldInit();
+extern char igOptInterface_dependencies[];
+extern char igOptInterface_className[];
+extern char igOptInterface_vtable[];
+extern char lbl_804A6460[];
+extern char igInterface_vtable[];
+extern void *lbl_805621F4;
+extern void *igOptInterface_meta;
+extern void *igInterface_meta;
+void *igOptInterface_getMeta();
+void *igOptInterface_vtableRead();
+void igOptInterface_arkRegister();
+void igOptInterface_register();
+void *igOptInterface_getMetaCall();
+void *fn_8013B680();
+}
+struct UnknownGenRoot8013B470 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot8013B470(){igObject_construct(this);}
+};
+struct UnknownGenObject8013B470 : UnknownGenRoot8013B470 {
+ char unknown04[28];
+ UnknownGenRefMember unknown20;
+ UnknownGenString unknown24;
+ UnknownGenRefMember unknown28;
+ UnknownGenRefMember unknown2C;
+ char unknown30[8];
+ inline ~UnknownGenObject8013B470(){unknown00=igOptInterface_vtable;}
+};
+extern "C" {
+void *fn_8013B680(){return igInterface_meta;}
+}
+#pragma pop

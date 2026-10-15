@@ -59,51 +59,5 @@ void *fn_800B58C8(){
  if(!igLightList_meta) igLightList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igLightList_meta;
 }
-void *igLightList_getMeta(){
- if(!igLightList_meta || !(reinterpret_cast<unsigned int *>(igLightList_meta)[0x24/4]&4)) igLightList_arkRegister();
- return igLightList_meta;
-}
-void *igLightList_vtableRead(){
- UnknownGenObject800B5940_0 object;
- igObject_construct(&object);
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_80476E0C;
- object.unknown00=igObjectList_vtable;
- object.unknown00=lbl_8047DC7C;
- object.unknown00=igLightList_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igLightList_arkRegister(){
- meta_registerNow((int)igLightList_register);
-}
-void igLightList_register(){
- fn_800ABC8C();
- meta_registerClass(0,(int)&igLightList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igLightList_getMetaCall,(int)igLightList_className,20,(int)igLightList_vtableRead,0,0,(int)igLightList_dependencies);
-}
-void *igLightList_getMetaCall(){return igLightList_getMeta();}
-void *fn_800B5A64(){
- if(!igLightAttr_meta) igLightAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
- return igLightAttr_meta;
-}
-void *igLightAttr_getMeta(){
- if(!igLightAttr_meta || !(reinterpret_cast<unsigned int *>(igLightAttr_meta)[0x24/4]&4)) igLightAttr_arkRegister();
- return igLightAttr_meta;
-}
-void *igLightAttr_vtableRead(){
- UnknownGenObject800B5ADC object;
- object.unknown00=lbl_8047D578;
- object.unknown00=lbl_8047E50C;
- object.unknown00=igLightAttr_vtable;
- object.unknown8C.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igLightAttr_arkRegister(){
- meta_registerNow((int)igLightAttr_register);
-}
-void igLightAttr_register(){
- fn_800ABC8C();
- meta_registerClass(0,(int)&igLightAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igLightAttr_getMetaCall,(int)igLightAttr_className,148,(int)igLightAttr_vtableRead,(int)igLightAttr_fieldInit,0,(int)igLightAttr_dependencies);
-}
-void *igLightAttr_getMetaCall(){return igLightAttr_getMeta();}
 }
 #pragma pop

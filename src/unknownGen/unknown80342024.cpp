@@ -19,17 +19,5 @@ void *fn_80342024(){
  if(!lbl_80536714) lbl_80536714=fn_800635C8(lbl_80453438,lbl_804E3CA8,lbl_804E3CB8,0x4);
  return lbl_80536714;
 }
-void *beNDMWLoadCtrl2_create(void *object){
- beNDMWLoadCtrl2_arkRegister();
- return meta_createInstance(beNDMWLoadCtrl2_meta,object);
-}
-void *beNDMWLoadCtrl2_metaObject(){
- if(!beNDMWLoadCtrl2_meta) beNDMWLoadCtrl2_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
- return beNDMWLoadCtrl2_meta;
-}
-void *beNDMWLoadCtrl2_getMeta(){
- if(!beNDMWLoadCtrl2_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadCtrl2_meta)[0x24/4]&4)) beNDMWLoadCtrl2_arkRegister();
- return beNDMWLoadCtrl2_meta;
-}
 }
 #pragma pop

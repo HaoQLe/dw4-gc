@@ -40,13 +40,5 @@ UnknownGenHolder *dtor_802D4DD8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beHitLandModel_arkRegister(){
- meta_registerNow((int)beHitLandModel_register);
-}
-void beHitLandModel_register(){
- fn_802B1AC8();
- meta_registerClass(0,(int)beHitLandModel_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beHitLandModel_getMetaCall,(int)beHitLandModel_className,112,(int)beHitLandModel_vtableRead,(int)beHitLandModel_fieldInit,0,(int)beHitLandModel_dependencies);
-}
-void *beHitLandModel_getMetaCall(){return beHitLandModel_getMeta();}
 }
 #pragma pop

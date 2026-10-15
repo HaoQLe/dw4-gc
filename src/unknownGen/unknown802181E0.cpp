@@ -87,54 +87,5 @@ void igMatrixObject_fieldInit(){
  meta_appendFields(value0,igMatrixObject_fieldTypes,1);
  meta_setupFields(value0,igMatrixObject_fieldNames,igMatrixObject_fieldStorage,igMatrixObject_fieldOffsets,value1);
 }
-void *igIntObject_getMeta(){
- if(!igIntObject_meta || !(reinterpret_cast<unsigned int *>(igIntObject_meta)[0x24/4]&4)) igIntObject_arkRegister();
- return igIntObject_meta;
-}
-void *igIntObject_vtableRead(){
- UnknownGenObject8021833C_0 object;
- igObject_construct(&object);
- object.unknown00=igIntObject_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igIntObject_arkRegister(){
- meta_registerNow((int)igIntObject_register);
-}
-void igIntObject_register(){
- fn_80216620();
- meta_registerClass(0,(int)&igIntObject_meta,(int)igObject_register,(int)fn_800237D0,(int)igIntObject_getMetaCall,(int)igIntObject_className,12,(int)igIntObject_vtableRead,(int)igIntObject_fieldInit,0,0);
-}
-void *igIntObject_getMetaCall(){return igIntObject_getMeta();}
-void igIntObject_fieldInit(){
- void *value0=igIntObject_meta;
- void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,igIntObject_fieldTypes,1);
- meta_setupFields(value0,igIntObject_fieldNames,igIntObject_fieldStorage,igIntObject_fieldOffsets,value1);
-}
-void *igIntHistogram_create(void *object){
- igIntHistogram_arkRegister();
- return meta_createInstance(igIntHistogram_meta,object);
-}
-void *igIntHistogram_getMeta(){
- if(!igIntHistogram_meta || !(reinterpret_cast<unsigned int *>(igIntHistogram_meta)[0x24/4]&4)) igIntHistogram_arkRegister();
- return igIntHistogram_meta;
-}
-void *igIntHistogram_vtableRead(){
- UnknownGenObject80218510 object;
- object.unknown00=igHistogramBase_vtable;
- object.unknown08.value=0;
- object.unknown00=lbl_804BC70C;
- object.unknown00=igIntHistogram_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igIntHistogram_arkRegister(){
- meta_registerNow((int)igIntHistogram_register);
-}
-void igIntHistogram_register(){
- fn_80216620();
- meta_registerClass(0,(int)&igIntHistogram_meta,(int)igHistogramBase_register,(int)fn_80218670,(int)igIntHistogram_getMetaCall,(int)igIntHistogram_className,36,(int)igIntHistogram_vtableRead,(int)igIntHistogram_fieldInit,0,0);
-}
-void *igIntHistogram_getMetaCall(){return igIntHistogram_getMeta();}
-void *fn_80218670(){return igHistogramBase_meta;}
 }
 #pragma pop

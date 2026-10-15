@@ -1,0 +1,105 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+void *fn_800237D0();
+void *fn_80023FDC();
+void *meta_newMetaObject(void *);
+void *fn_800607F4(void *);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
+void igObject_construct(void *);
+void fn_801AA6DC();
+void igNonRefCountedObjectList_register();
+void igObjectPool_register();
+void igObject_register();
+void igRenderPackage_fieldInit();
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
+extern char igNonRefCountedObjectList_vtable[];
+extern char lbl_80476E0C[];
+extern char igRenderPackageList_className[];
+extern char igRenderPackagePool_className[];
+extern char igRenderPackage_dependencies[];
+extern char igRenderPackage_className[];
+extern char igRenderPackage_vtable[];
+extern char igRenderPackagePool_vtable[];
+extern char lbl_804B9650[];
+extern char igRenderPackageList_vtable[];
+extern char lbl_804B9718[];
+extern char igObjectPool_vtable[];
+extern char igRenderPackageList_dependencies[8];
+extern char igRenderPackagePool_dependencies[8];
+extern void *lbl_805621F4;
+extern void *igObjectPool_meta;
+extern void *igRenderPackageList_meta;
+extern void *igRenderPackagePool_meta;
+extern void *igRenderPackage_meta;
+void *igRenderPackageList_getMeta();
+void *igRenderPackageList_vtableRead();
+void igRenderPackageList_arkRegister();
+void igRenderPackageList_register();
+void *igRenderPackageList_getMetaCall();
+void *igRenderPackagePool_getMeta();
+void *igRenderPackagePool_vtableRead();
+void igRenderPackagePool_arkRegister();
+void igRenderPackagePool_register();
+void *igRenderPackagePool_getMetaCall();
+void *fn_801AF130();
+void *igRenderPackage_getMeta();
+void *igRenderPackage_vtableRead();
+void igRenderPackage_arkRegister();
+void igRenderPackage_register();
+void *igRenderPackage_getMetaCall();
+}
+struct UnknownGenObject801AEE64_0 {
+ void *unknown00;
+ char unknown04[20];
+};
+struct UnknownGenObject801AF000_0 {
+ void *unknown00;
+ char unknown04[36];
+};
+struct UnknownGenRoot801AF1E8 {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot801AF1E8(){igObject_construct(this);}
+};
+struct UnknownGenObject801AF1E8 : UnknownGenRoot801AF1E8 {
+ char unknown04[4];
+ UnknownGenRefMember unknown08;
+ char unknown0C[4];
+ UnknownGenRefMember unknown10;
+ char unknown14[8];
+ UnknownGenRefMember unknown1C;
+ char unknown20[8];
+ inline ~UnknownGenObject801AF1E8(){unknown00=igRenderPackage_vtable;}
+};
+extern "C" {
+void *fn_801AF170(){
+ if(!igRenderPackage_meta) igRenderPackage_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igRenderPackage_meta;
+}
+void *igRenderPackage_getMeta(){
+ if(!igRenderPackage_meta || !(reinterpret_cast<unsigned int *>(igRenderPackage_meta)[0x24/4]&4)) igRenderPackage_arkRegister();
+ return igRenderPackage_meta;
+}
+void *igRenderPackage_vtableRead(){
+ UnknownGenObject801AF1E8 object;
+ object.unknown00=igRenderPackage_vtable;
+ object.unknown08.value=0;
+ object.unknown10.value=0;
+ object.unknown1C.value=0;
+ return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
+}
+void igRenderPackage_arkRegister(){
+ meta_registerNow((int)igRenderPackage_register);
+}
+void igRenderPackage_register(){
+ fn_801AA6DC();
+ meta_registerClass(0,(int)&igRenderPackage_meta,(int)igObject_register,(int)fn_800237D0,(int)igRenderPackage_getMetaCall,(int)igRenderPackage_className,32,(int)igRenderPackage_vtableRead,(int)igRenderPackage_fieldInit,0,(int)igRenderPackage_dependencies);
+}
+void *igRenderPackage_getMetaCall(){return igRenderPackage_getMeta();}
+}
+#pragma pop

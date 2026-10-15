@@ -25,9 +25,5 @@ void beNDMWMdlEBullet_register(){
  meta_registerClass(0,(int)beNDMWMdlEBullet_meta,(int)beModelCtrl_register,(int)fn_803386E8,(int)beNDMWMdlEBullet_getMetaCall,(int)beNDMWMdlEBullet_className,44,(int)beNDMWMdlEBullet_vtableRead,0,0,0);
 }
 void *beNDMWMdlEBullet_getMetaCall(){return beNDMWMdlEBullet_getMeta();}
-void *beNDMWLogoInfo_getMeta(){
- if(!beNDMWLogoInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWLogoInfo_meta)[0x24/4]&4)) beNDMWLogoInfo_arkRegister();
- return beNDMWLogoInfo_meta;
-}
 }
 #pragma pop

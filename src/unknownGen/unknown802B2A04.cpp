@@ -27,13 +27,5 @@ UnknownGenHolder *dtor_802B2A04(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beWeaponInfoRam_arkRegister(){
- meta_registerNow((int)beWeaponInfoRam_register);
-}
-void beWeaponInfoRam_register(){
- fn_802B1AC8();
- meta_registerClass(0,(int)beWeaponInfoRam_meta,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beWeaponInfoRam_getMetaCall,(int)beWeaponInfoRam_className,44,(int)beWeaponInfoRam_vtableRead,0,0,0);
-}
-void *beWeaponInfoRam_getMetaCall(){return beWeaponInfoRam_getMeta();}
 }
 #pragma pop

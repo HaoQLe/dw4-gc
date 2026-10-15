@@ -59,47 +59,5 @@ void *fn_801B9600(){
  if(!igMorphSequenceDataList_meta) igMorphSequenceDataList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igMorphSequenceDataList_meta;
 }
-void *igMorphSequenceDataList_getMeta(){
- if(!igMorphSequenceDataList_meta || !(reinterpret_cast<unsigned int *>(igMorphSequenceDataList_meta)[0x24/4]&4)) igMorphSequenceDataList_arkRegister();
- return igMorphSequenceDataList_meta;
-}
-void *igMorphSequenceDataList_vtableRead(){
- UnknownGenObject801B9678_0 object;
- igObject_construct(&object);
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_80476E0C;
- object.unknown00=igObjectList_vtable;
- object.unknown00=lbl_804B7D78;
- object.unknown00=igMorphSequenceDataList_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igMorphSequenceDataList_arkRegister(){
- meta_registerNow((int)igMorphSequenceDataList_register);
-}
-void igMorphSequenceDataList_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igMorphSequenceDataList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMorphSequenceDataList_getMetaCall,(int)igMorphSequenceDataList_className,20,(int)igMorphSequenceDataList_vtableRead,0,0,(int)igMorphSequenceDataList_dependencies);
-}
-void *igMorphSequenceDataList_getMetaCall(){return igMorphSequenceDataList_getMeta();}
-void *igMorphSequenceData_getMeta(){
- if(!igMorphSequenceData_meta || !(reinterpret_cast<unsigned int *>(igMorphSequenceData_meta)[0x24/4]&4)) igMorphSequenceData_arkRegister();
- return igMorphSequenceData_meta;
-}
-void *igMorphSequenceData_vtableRead(){
- UnknownGenObject801B97D8 object;
- object.unknown00=igMorphSequenceData_vtable;
- object.unknown0C.value=0;
- object.unknown10.value=0;
- object.unknown14.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igMorphSequenceData_arkRegister(){
- meta_registerNow((int)igMorphSequenceData_register);
-}
-void igMorphSequenceData_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igMorphSequenceData_meta,(int)igObject_register,(int)fn_800237D0,(int)igMorphSequenceData_getMetaCall,(int)igMorphSequenceData_className,32,(int)igMorphSequenceData_vtableRead,(int)igMorphSequenceData_fieldInit,0,(int)igMorphSequenceData_dependencies);
-}
-void *igMorphSequenceData_getMetaCall(){return igMorphSequenceData_getMeta();}
 }
 #pragma pop

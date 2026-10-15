@@ -68,53 +68,5 @@ void *fn_801C83D4(){
  if(!igAttrStackList_meta) igAttrStackList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igAttrStackList_meta;
 }
-void *igAttrStackList_getMeta(){
- if(!igAttrStackList_meta || !(reinterpret_cast<unsigned int *>(igAttrStackList_meta)[0x24/4]&4)) igAttrStackList_arkRegister();
- return igAttrStackList_meta;
-}
-void *igAttrStackList_vtableRead(){
- UnknownGenObject801C844C_0 object;
- igObject_construct(&object);
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_80476E0C;
- object.unknown00=igObjectList_vtable;
- object.unknown00=lbl_804B6B34;
- object.unknown00=igAttrStackList_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igAttrStackList_arkRegister(){
- meta_registerNow((int)igAttrStackList_register);
-}
-void igAttrStackList_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igAttrStackList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAttrStackList_getMetaCall,(int)igAttrStackList_className,20,(int)igAttrStackList_vtableRead,0,0,(int)igAttrStackList_dependencies);
-}
-void *igAttrStackList_getMetaCall(){return igAttrStackList_getMeta();}
-void *igAttrStack_create(void *object){
- igAttrStack_arkRegister();
- return meta_createInstance(igAttrStack_meta,object);
-}
-void *igAttrStack_getMeta(){
- if(!igAttrStack_meta || !(reinterpret_cast<unsigned int *>(igAttrStack_meta)[0x24/4]&4)) igAttrStack_arkRegister();
- return igAttrStack_meta;
-}
-void *igAttrStack_vtableRead(){
- UnknownGenObject801C85E4 object;
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_80480B58;
- object.unknown00=igNonRefCountedObjectStack_vtable;
- object.unknown00=lbl_804B6A70;
- object.unknown00=igAttrStack_vtable;
- object.unknown14.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igAttrStack_arkRegister(){
- meta_registerNow((int)igAttrStack_register);
-}
-void igAttrStack_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igAttrStack_meta,(int)igNonRefCountedObjectStack_register,(int)fn_800CB530,(int)igAttrStack_getMetaCall,(int)igAttrStack_className,52,(int)igAttrStack_vtableRead,(int)igAttrStack_fieldInit,0,(int)igAttrStack_dependencies);
-}
-void *igAttrStack_getMetaCall(){return igAttrStack_getMeta();}
 }
 #pragma pop

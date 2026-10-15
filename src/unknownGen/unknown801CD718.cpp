@@ -72,56 +72,5 @@ void *fn_801CD718(){
  if(!igActorInfoList_meta) igActorInfoList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igActorInfoList_meta;
 }
-void *igActorInfoList_getMeta(){
- if(!igActorInfoList_meta || !(reinterpret_cast<unsigned int *>(igActorInfoList_meta)[0x24/4]&4)) igActorInfoList_arkRegister();
- return igActorInfoList_meta;
-}
-void *igActorInfoList_vtableRead(){
- UnknownGenObject801CD790_0 object;
- igObject_construct(&object);
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_80476E0C;
- object.unknown00=igObjectList_vtable;
- object.unknown00=lbl_804B5974;
- object.unknown00=igActorInfoList_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igActorInfoList_arkRegister(){
- meta_registerNow((int)igActorInfoList_register);
-}
-void igActorInfoList_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igActorInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igActorInfoList_getMetaCall,(int)igActorInfoList_className,20,(int)igActorInfoList_vtableRead,0,0,(int)igActorInfoList_dependencies);
-}
-void *igActorInfoList_getMetaCall(){return igActorInfoList_getMeta();}
-void *igActorInfo_create(void *object){
- igActorInfo_arkRegister();
- return meta_createInstance(igActorInfo_meta,object);
-}
-void *igActorInfo_getMeta(){
- if(!igActorInfo_meta || !(reinterpret_cast<unsigned int *>(igActorInfo_meta)[0x24/4]&4)) igActorInfo_arkRegister();
- return igActorInfo_meta;
-}
-void *igActorInfo_vtableRead(){
- UnknownGenObject801CD928 object;
- object.unknown00=igNamedObject_vtable;
- object.unknown08.value=0;
- object.unknown00=igInfo_vtable;
- object.unknown00=igActorInfo_vtable;
- object.unknown14.value=0;
- object.unknown18.value=0;
- object.unknown1C.value=0;
- object.unknown20.value=0;
- object.unknown24.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igActorInfo_arkRegister(){
- meta_registerNow((int)igActorInfo_register);
-}
-void igActorInfo_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igActorInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igActorInfo_getMetaCall,(int)igActorInfo_className,40,(int)igActorInfo_vtableRead,(int)igActorInfo_fieldInit,0,(int)igActorInfo_dependencies);
-}
-void *igActorInfo_getMetaCall(){return igActorInfo_getMeta();}
 }
 #pragma pop

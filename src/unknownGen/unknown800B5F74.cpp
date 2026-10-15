@@ -44,37 +44,5 @@ void *fn_800B5F74(){
  if(!lbl_80562838) lbl_80562838=fn_800635C8(data+0x17E0,data+0x17C8,data+0x17D4,0x3);
  return lbl_80562838;
 }
-void *igGeometrySetAttr_getMeta(){
- if(!igGeometrySetAttr_meta || !(reinterpret_cast<unsigned int *>(igGeometrySetAttr_meta)[0x24/4]&4)) igGeometrySetAttr_arkRegister();
- return igGeometrySetAttr_meta;
-}
-void *igGeometrySetAttr_vtableRead(){
- UnknownGenObject800B5FFC object;
- object.unknown00=lbl_8047D578;
- object.unknown00=lbl_8047E50C;
- object.unknown00=igGeometrySetAttr_vtable;
- object.unknown0C.value=0;
- object.unknown14.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-UnknownGenHolder *fn_800B60DC(UnknownGenHolder *object,short flags){
- if(object){
-  UnknownGenValue *value=object->unknown00;
-  if(value){
-   --value->unknown04;
-   if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
-  }
-  if(flags>0) __dl__FPv(object);
- }
- return object;
-}
-void igGeometrySetAttr_arkRegister(){
- meta_registerNow((int)igGeometrySetAttr_register);
-}
-void igGeometrySetAttr_register(){
- fn_800ABC8C();
- meta_registerClass(0,(int)&igGeometrySetAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igGeometrySetAttr_getMetaCall,(int)igGeometrySetAttr_className,32,(int)igGeometrySetAttr_vtableRead,(int)igGeometrySetAttr_fieldInit,0,(int)igGeometrySetAttr_dependencies);
-}
-void *igGeometrySetAttr_getMetaCall(){return igGeometrySetAttr_getMeta();}
 }
 #pragma pop

@@ -44,33 +44,5 @@ struct UnknownGenObject800D7610 : UnknownGenObject800D7610_1 {
 };
 extern "C" {
 void *fn_800D75B4(){return fn_8010307C();}
-void *igGamecubeVertexArray2_getMeta(){
- if(!igGamecubeVertexArray2_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexArray2_meta)[0x24/4]&4)) igGamecubeVertexArray2_arkRegister();
- return igGamecubeVertexArray2_meta;
-}
-void *igGamecubeVertexArray2_vtableRead(){
- UnknownGenObject800D7610 object;
- object.unknown00=igNamedObject_vtable;
- object.unknown08.value=0;
- object.unknown00=igVertexArray2_vtable;
- object.unknown0C.value=0;
- object.unknown10.value=0;
- object.unknown14.value=0;
- object.unknown00=igGamecubeVertexArray2_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igGamecubeVertexArray2_arkRegister(){
- meta_registerNow((int)igGamecubeVertexArray2_register);
-}
-void igGamecubeVertexArray2_register(){
- fn_800CE2F8();
- meta_registerClass(0,(int)&igGamecubeVertexArray2_meta,(int)igVertexArray2_register,(int)igGamecubeVertexArray2_parentMeta,(int)igGamecubeVertexArray2_getMetaCall,(int)igGamecubeVertexArray2_className,24,(int)igGamecubeVertexArray2_vtableRead,(int)fn_800D7810,0,0);
-}
-void *igGamecubeVertexArray2_parentMeta(){return igVertexArray2_meta;}
-void *fn_800D7810(){
- void *value0=igGamecubeVertexArray2_meta;
- reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igVertexArray2_getMetaCall;
- return value0;
-}
 }
 #pragma pop

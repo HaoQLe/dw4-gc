@@ -77,45 +77,5 @@ void *fn_8002277C(){
  }
  return lbl_805614AC;
 }
-void *igUnsignedLongArrayMetaField_create(void *object){
- igUnsignedLongArrayMetaField_arkRegister();
- return meta_createInstance(igUnsignedLongArrayMetaField_meta,object);
-}
-void *igUnsignedLongArrayMetaField_getMeta(){
- if(!igUnsignedLongArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedLongArrayMetaField_meta)[0x24/4]&4)) igUnsignedLongArrayMetaField_arkRegister();
- return igUnsignedLongArrayMetaField_meta;
-}
-void *igUnsignedLongArrayMetaField_vtableRead(){
- UnknownGenObject80022820 object;
- object.unknown00=igUnsignedLongArrayMetaField_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igUnsignedLongArrayMetaField_arkRegister(){
- meta_registerNow((int)igUnsignedLongArrayMetaField_register);
-}
-void igUnsignedLongArrayMetaField_register(){
- fn_80021B94();
- meta_registerClass(0,(int)&igUnsignedLongArrayMetaField_meta,(int)igUnsignedLongMetaField_register,(int)igUnsignedLongArrayMetaField_parentMeta,(int)igUnsignedLongArrayMetaField_getMetaCall,(int)igUnsignedLongArrayMetaField_className,56,(int)igUnsignedLongArrayMetaField_vtableRead,(int)igUnsignedLongArrayMetaField_fieldInit,0,(int)igUnsignedLongArrayMetaField_dependencies);
-}
-void *igUnsignedLongArrayMetaField_getMetaCall(){return igUnsignedLongArrayMetaField_getMeta();}
-void *igUnsignedLongArrayMetaField_parentMeta(){return igUnsignedLongMetaField_meta;}
-void igUnsignedLongArrayMetaField_fieldInit(){
- void *meta=igUnsignedLongArrayMetaField_meta;
- void *field=meta_fieldCount(meta);
- meta_appendFields(meta,igUnsignedLongArrayMetaField_fieldTypes,1);
- fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,igUnsignedLongArrayMetaField_fieldNames,igUnsignedLongArrayMetaField_fieldStorage,igUnsignedLongArrayMetaField_fieldOffsets,field);
-}
-void fn_800229F8(){
- if(!lbl_805614B4){
-  void *object=(lbl_805614B4=meta_createInstance(igUnsignedLongArrayMetaField_meta,fn_800607F4(lbl_805621F4)));
-  if(object){
-   fn_80053E6C(fn_80063B5C(),object);
-   unknownGenDrop(reinterpret_cast<UnknownGenValue *>(lbl_805614B4));
-   reinterpret_cast<short *>(lbl_805614B4)[0x12/2]=reinterpret_cast<int *>(fn_80063B5C())[0xC/4]-1;
-   fn_80063F14(lbl_805614B4);
-  }
- }
-}
 }
 #pragma pop

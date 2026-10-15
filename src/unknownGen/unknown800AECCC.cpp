@@ -34,14 +34,5 @@ UnknownGenHolder *dtor_800AECD8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igTextureCubeAttr_arkRegister(){
- meta_registerNow((int)igTextureCubeAttr_register);
-}
-void igTextureCubeAttr_register(){
- fn_800ABC8C();
- meta_registerClass(0,(int)&igTextureCubeAttr_meta,(int)igTextureAttr_register,(int)igTextureCubeAttr_parentMeta,(int)igTextureCubeAttr_getMetaCall,(int)igTextureCubeAttr_className,104,(int)igTextureCubeAttr_vtableRead,(int)igTextureCubeAttr_fieldInit,0,(int)igTextureCubeAttr_dependencies);
-}
-void *igTextureCubeAttr_getMetaCall(){return igTextureCubeAttr_getMeta();}
-void *igTextureCubeAttr_parentMeta(){return igTextureAttr_meta;}
 }
 #pragma pop

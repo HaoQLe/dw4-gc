@@ -29,13 +29,5 @@ UnknownGenHolder *dtor_802CE17C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beMessenger_arkRegister(){
- meta_registerNow((int)beMessenger_register);
-}
-void beMessenger_register(){
- fn_802B1AC8();
- meta_registerClass(0,(int)beMessenger_meta,(int)igInfoManager_register,(int)fn_80284550,(int)beMessenger_getMetaCall,(int)beMessenger_className,56,(int)beMessenger_vtableRead,(int)beMessenger_fieldInit,0,(int)beMessenger_dependencies);
-}
-void *beMessenger_getMetaCall(){return beMessenger_getMeta();}
 }
 #pragma pop

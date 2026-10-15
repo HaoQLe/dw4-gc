@@ -42,21 +42,5 @@ void *fn_801110A0(){
  if(!igGuiComponentNode_meta) igGuiComponentNode_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igGuiComponentNode_meta;
 }
-void *igGuiComponentNode_getMeta(){
- if(!igGuiComponentNode_meta || !(reinterpret_cast<unsigned int *>(igGuiComponentNode_meta)[0x24/4]&4)) igGuiComponentNode_arkRegister();
- return igGuiComponentNode_meta;
-}
-void *igGuiComponentNode_vtableRead(){
- UnknownGenObject80111118 object;
- object.unknown00=igNamedObject_vtable;
- object.unknown08.value=0;
- object.unknown00=igNode_vtable;
- object.unknown0C.value=0;
- object.unknown10.value=0;
- object.unknown00=igGroup_vtable;
- object.unknown1C.value=0;
- object.unknown00=igGuiComponentNode_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
 }
 #pragma pop

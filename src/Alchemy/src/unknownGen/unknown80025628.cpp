@@ -79,41 +79,5 @@ void *fn_800256C0(){
  }
  return lbl_805615B8;
 }
-void *igStringArrayMetaField_getMeta(){
- if(!igStringArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igStringArrayMetaField_meta)[0x24/4]&4)) igStringArrayMetaField_arkRegister();
- return igStringArrayMetaField_meta;
-}
-void *igStringArrayMetaField_vtableRead(){
- UnknownGenObject8002572C object;
- object.unknown00=igStringArrayMetaField_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igStringArrayMetaField_arkRegister(){
- meta_registerNow((int)igStringArrayMetaField_register);
-}
-void igStringArrayMetaField_register(){
- fn_80021B94();
- meta_registerClass(0,(int)&igStringArrayMetaField_meta,(int)igStringMetaField_register,(int)igStringArrayMetaField_parentMeta,(int)igStringArrayMetaField_getMetaCall,(int)igStringArrayMetaField_className,64,(int)igStringArrayMetaField_vtableRead,(int)igStringArrayMetaField_fieldInit,0,(int)igStringArrayMetaField_dependencies);
-}
-void *igStringArrayMetaField_getMetaCall(){return igStringArrayMetaField_getMeta();}
-void *igStringArrayMetaField_parentMeta(){return igStringMetaField_meta;}
-void igStringArrayMetaField_fieldInit(){
- void *meta=igStringArrayMetaField_meta;
- void *field=meta_fieldCount(meta);
- meta_appendFields(meta,igStringArrayMetaField_fieldTypes,1);
- fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,igStringArrayMetaField_fieldNames,igStringArrayMetaField_fieldStorage,igStringArrayMetaField_fieldOffsets,field);
-}
-void fn_80025910(){
- if(!lbl_805615CC){
-  void *object=(lbl_805615CC=meta_createInstance(igStringArrayMetaField_meta,fn_800607F4(lbl_805621F4)));
-  if(object){
-   fn_80053E6C(fn_80063B5C(),object);
-   unknownGenDrop(reinterpret_cast<UnknownGenValue *>(lbl_805615CC));
-   reinterpret_cast<short *>(lbl_805615CC)[0x12/2]=reinterpret_cast<int *>(fn_80063B5C())[0xC/4]-1;
-   fn_80063F14(lbl_805615CC);
-  }
- }
-}
 }
 #pragma pop

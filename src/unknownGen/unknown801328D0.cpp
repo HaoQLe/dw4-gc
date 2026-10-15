@@ -55,43 +55,5 @@ void *fn_801328D0(){
  if(!lbl_80563B78) lbl_80563B78=fn_800635C8(data+0x45C,data+0x554,data+0x560,0x3);
  return lbl_80563B78;
 }
-void *igSpatialPartition_getMeta(){
- if(!igSpatialPartition_meta || !(reinterpret_cast<unsigned int *>(igSpatialPartition_meta)[0x24/4]&4)) igSpatialPartition_arkRegister();
- return igSpatialPartition_meta;
-}
-void *igSpatialPartition_vtableRead(){
- UnknownGenObject80132958 object;
- object.unknown00=lbl_804A6460;
- object.unknown00=lbl_804AAF48;
- object.unknown00=lbl_804A4A04;
- object.unknown20.value=0;
- object.unknown24.value=0;
- object.unknown00=lbl_804A46AC;
- object.unknown28.value=0;
- object.unknown00=igSpatialPartition_vtable;
- object.unknown54.value=0;
- object.unknown58.value=0;
- object.unknown5C.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-UnknownGenHolder *fn_80132B48(UnknownGenHolder *object,short flags){
- if(object){
-  UnknownGenValue *value=object->unknown00;
-  if(value){
-   --value->unknown04;
-   if(!(reinterpret_cast<volatile unsigned int *>(value)[1]&0x7FFFFF)) fn_80066E1C(value);
-  }
-  if(flags>0) __dl__FPv(object);
- }
- return object;
-}
-void igSpatialPartition_arkRegister(){
- meta_registerNow((int)igSpatialPartition_register);
-}
-void igSpatialPartition_register(){
- fn_8012FC48();
- meta_registerClass(0,(int)&igSpatialPartition_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igSpatialPartition_getMetaCall,(int)igSpatialPartition_className,96,(int)igSpatialPartition_vtableRead,(int)igSpatialPartition_fieldInit,0,(int)igSpatialPartition_dependencies);
-}
-void *igSpatialPartition_getMetaCall(){return igSpatialPartition_getMeta();}
 }
 #pragma pop

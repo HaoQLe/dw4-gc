@@ -77,45 +77,5 @@ void *fn_80038948(){
  }
  return lbl_80561E4C;
 }
-void *igBoolArrayMetaField_create(void *object){
- igBoolArrayMetaField_arkRegister();
- return meta_createInstance(igBoolArrayMetaField_meta,object);
-}
-void *igBoolArrayMetaField_getMeta(){
- if(!igBoolArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igBoolArrayMetaField_meta)[0x24/4]&4)) igBoolArrayMetaField_arkRegister();
- return igBoolArrayMetaField_meta;
-}
-void *igBoolArrayMetaField_vtableRead(){
- UnknownGenObject800389EC object;
- object.unknown00=igBoolArrayMetaField_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igBoolArrayMetaField_arkRegister(){
- meta_registerNow((int)igBoolArrayMetaField_register);
-}
-void igBoolArrayMetaField_register(){
- fn_80021B94();
- meta_registerClass(0,(int)&igBoolArrayMetaField_meta,(int)igBoolMetaField_register,(int)igBoolArrayMetaField_parentMeta,(int)igBoolArrayMetaField_getMetaCall,(int)igBoolArrayMetaField_className,56,(int)igBoolArrayMetaField_vtableRead,(int)igBoolArrayMetaField_fieldInit,0,(int)igBoolArrayMetaField_dependencies);
-}
-void *igBoolArrayMetaField_getMetaCall(){return igBoolArrayMetaField_getMeta();}
-void *igBoolArrayMetaField_parentMeta(){return igBoolMetaField_meta;}
-void igBoolArrayMetaField_fieldInit(){
- void *meta=igBoolArrayMetaField_meta;
- void *field=meta_fieldCount(meta);
- meta_appendFields(meta,igBoolArrayMetaField_fieldTypes,1);
- fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,igBoolArrayMetaField_fieldNames,igBoolArrayMetaField_fieldStorage,igBoolArrayMetaField_fieldOffsets,field);
-}
-void fn_80038BC4(){
- if(!lbl_80561E54){
-  void *object=(lbl_80561E54=meta_createInstance(igBoolArrayMetaField_meta,fn_800607F4(lbl_805621F4)));
-  if(object){
-   fn_80053E6C(fn_80063B5C(),object);
-   unknownGenDrop(reinterpret_cast<UnknownGenValue *>(lbl_80561E54));
-   reinterpret_cast<short *>(lbl_80561E54)[0x12/2]=reinterpret_cast<int *>(fn_80063B5C())[0xC/4]-1;
-   fn_80063F14(lbl_80561E54);
-  }
- }
-}
 }
 #pragma pop

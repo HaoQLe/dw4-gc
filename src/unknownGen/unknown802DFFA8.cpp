@@ -29,13 +29,5 @@ UnknownGenHolder *dtor_802DFFA8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beCri_arkRegister(){
- meta_registerNow((int)beCri_register);
-}
-void beCri_register(){
- fn_802B1AC8();
- meta_registerClass(0,(int)beCri_meta,(int)igInfoManager_register,(int)fn_80284550,(int)beCri_getMetaCall,(int)beCri_className,72,(int)beCri_vtableRead,(int)beCri_fieldInit,0,(int)beCri_dependencies);
-}
-void *beCri_getMetaCall(){return beCri_getMeta();}
 }
 #pragma pop

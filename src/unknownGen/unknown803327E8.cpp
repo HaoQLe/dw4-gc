@@ -27,13 +27,5 @@ UnknownGenHolder *dtor_803327E8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWStatusSubSlot_arkRegister(){
- meta_registerNow((int)beNDMWStatusSubSlot_register);
-}
-void beNDMWStatusSubSlot_register(){
- fn_803250AC();
- meta_registerClass(0,(int)beNDMWStatusSubSlot_meta,(int)beNDMWStatusCtrlBaseEquip_register,(int)fn_80332910,(int)beNDMWStatusSubSlot_getMetaCall,(int)beNDMWStatusSubSlot_className,124,(int)beNDMWStatusSubSlot_vtableRead,0,0,0);
-}
-void *beNDMWStatusSubSlot_getMetaCall(){return beNDMWStatusSubSlot_getMeta();}
 }
 #pragma pop

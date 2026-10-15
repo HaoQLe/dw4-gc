@@ -37,16 +37,5 @@ void *igShortArrayMetaField_virtual54(void *a,void *b){
  if(object) object=fn_80071144(object,a);
  return object;
 }
-void *igShortMetaField_getMeta(){
- if(!igShortMetaField_meta || !(reinterpret_cast<unsigned int *>(igShortMetaField_meta)[0x24/4]&4)) igShortMetaField_arkRegister();
- return igShortMetaField_meta;
-}
-void *fn_80025B04(){
- UnknownGenObject80025B04 object;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igShortMetaField_arkRegister(){
- meta_registerNow((int)igShortMetaField_register);
-}
 }
 #pragma pop

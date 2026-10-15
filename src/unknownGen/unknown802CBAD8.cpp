@@ -39,9 +39,5 @@ void beModelCtrlMOVE_fieldInit(){
  meta_appendFields(meta,beModelCtrlMOVE_fieldTypes,0x2);
  meta_setupFields(meta,beModelCtrlMOVE_fieldNames,beModelCtrlMOVE_fieldStorage,beModelCtrlMOVE_fieldOffsets,field);
 }
-void *beModelCtrlMSGBOX_getMeta(){
- if(!beModelCtrlMSGBOX_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlMSGBOX_meta)[0x24/4]&4)) beModelCtrlMSGBOX_arkRegister();
- return beModelCtrlMSGBOX_meta;
-}
 }
 #pragma pop

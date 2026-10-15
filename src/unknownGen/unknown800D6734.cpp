@@ -21,13 +21,5 @@ void *fn_800D6734(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=(void *)0;
  return (void *)p0;
 }
-void igGamecubeVisualContext_arkRegister(){
- meta_registerNow((int)igGamecubeVisualContext_register);
-}
-void igGamecubeVisualContext_register(){
- fn_800CE2F8();
- meta_registerClass(0,(int)&igGamecubeVisualContext_meta,(int)igVisualContext_register,(int)igGamecubeVisualContext_parentMeta,(int)igGamecubeVisualContext_getMetaCall,(int)igGamecubeVisualContext_className,1768,(int)igGamecubeVisualContext_vtableRead,(int)fn_800D67E8,0,(int)igGamecubeVisualContext_dependencies);
-}
-void *igGamecubeVisualContext_parentMeta(){return igVisualContext_meta;}
 }
 #pragma pop

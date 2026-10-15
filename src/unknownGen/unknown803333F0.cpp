@@ -1,0 +1,38 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+void *beNDMWStatusCtrlEquip_getMeta();
+void beNDMWStatusCtrlEquip_vtableRead();
+void beNDMWWindowCtrl_register();
+void *meta_createInstance(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
+void fn_803250AC();
+void *fn_8032B8A4();
+void beNDMWStatusCtrlD0_arkRegister();
+extern char beNDMWStatusCtrlEquip_className[];
+extern char beNDMWStatusCtrlEquip_fieldTypes[];
+extern char beNDMWStatusCtrlEquip_fieldNames[];
+extern char beNDMWStatusCtrlEquip_fieldStorage[];
+extern char beNDMWStatusCtrlEquip_fieldOffsets[];
+extern void *beNDMWStatusCtrlEquip_meta;
+extern void *beNDMWStatusCtrlD0_meta;
+void beNDMWStatusCtrlEquip_register();
+void *beNDMWStatusCtrlEquip_getMetaCall();
+void beNDMWStatusCtrlEquip_fieldInit();
+}
+extern "C" {
+void *beNDMWStatusCtrlD0_create(void *object){
+ beNDMWStatusCtrlD0_arkRegister();
+ return meta_createInstance(beNDMWStatusCtrlD0_meta,object);
+}
+void *beNDMWStatusCtrlD0_getMeta(){
+ if(!beNDMWStatusCtrlD0_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusCtrlD0_meta)[0x24/4]&4)) beNDMWStatusCtrlD0_arkRegister();
+ return beNDMWStatusCtrlD0_meta;
+}
+}
+#pragma pop

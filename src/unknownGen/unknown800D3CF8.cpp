@@ -32,25 +32,5 @@ void *fn_800D3CF8(){
  if(!igGfxStateModifierList_meta) igGfxStateModifierList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igGfxStateModifierList_meta;
 }
-void *igGfxStateModifierList_getMeta(){
- if(!igGfxStateModifierList_meta || !(reinterpret_cast<unsigned int *>(igGfxStateModifierList_meta)[0x24/4]&4)) igGfxStateModifierList_arkRegister();
- return igGfxStateModifierList_meta;
-}
-void *igGfxStateModifierList_vtableRead(){
- UnknownGenObject800D3D70_0 object;
- igObject_construct(&object);
- object.unknown00=igDataList_vtable;
- object.unknown00=lbl_804936BC;
- object.unknown00=igGfxStateModifierList_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igGfxStateModifierList_arkRegister(){
- meta_registerNow((int)igGfxStateModifierList_register);
-}
-void igGfxStateModifierList_register(){
- fn_800CE2F8();
- meta_registerClass(0,(int)&igGfxStateModifierList_meta,(int)igDataList_register,(int)fn_80024D1C,(int)igGfxStateModifierList_getMetaCall,(int)igGfxStateModifierList_className,20,(int)igGfxStateModifierList_vtableRead,(int)fn_800D3E80,0,0);
-}
-void *igGfxStateModifierList_getMetaCall(){return igGfxStateModifierList_getMeta();}
 }
 #pragma pop

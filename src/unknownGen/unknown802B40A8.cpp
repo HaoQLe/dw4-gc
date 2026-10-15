@@ -26,9 +26,5 @@ void igModelViewMatrixBoneSelectList_2_register(){
  meta_registerClass(0,(int)igModelViewMatrixBoneSelectList_80534578_meta,(int)igObjectList_register,(int)fn_80024180,(int)igModelViewMatrixBoneSelectList_2_getMetaCall,(int)lbl_8041CAF8,20,(int)igModelViewMatrixBoneSelectList_2_vtableRead,0,0,(int)lbl_804CEE54);
 }
 void *igModelViewMatrixBoneSelectList_2_getMetaCall(){return igModelViewMatrixBoneSelectList_2_getMeta();}
-void *beWaterPlainInfoRam_getMeta(){
- if(!beWaterPlainInfoRam_meta || !(reinterpret_cast<unsigned int *>(beWaterPlainInfoRam_meta)[0x24/4]&4)) beWaterPlainInfoRam_arkRegister();
- return beWaterPlainInfoRam_meta;
-}
 }
 #pragma pop

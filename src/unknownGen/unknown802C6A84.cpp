@@ -62,13 +62,5 @@ UnknownGenHolder *dtor_802C6BE0(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beModelCtrlInfoWork_arkRegister(){
- meta_registerNow((int)beModelCtrlInfoWork_register);
-}
-void beModelCtrlInfoWork_register(){
- fn_802B1AC8();
- meta_registerClass(0,(int)beModelCtrlInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beModelCtrlInfoWork_getMetaCall,(int)beModelCtrlInfoWork_className,236,(int)beModelCtrlInfoWork_vtableRead,(int)beModelCtrlInfoWork_fieldInit,0,(int)beModelCtrlInfoWork_dependencies);
-}
-void *beModelCtrlInfoWork_getMetaCall(){return beModelCtrlInfoWork_getMeta();}
 }
 #pragma pop

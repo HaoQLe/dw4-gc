@@ -1,0 +1,97 @@
+#include <unknownGen.h>
+#pragma push
+#pragma auto_inline off
+extern "C" {
+void *fn_80024180();
+void *meta_newMetaObject(void *);
+void *fn_800607F4(void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
+void igObject_construct(void *);
+void fn_8012FC48();
+void *fn_8013B2B0();
+void *fn_8013B680();
+void *fn_8013BA10();
+void *fn_801420C0();
+void igBase_register();
+void igInterface_register();
+void igInterfaced_register();
+void igListenerInterface_fieldInit();
+void igManager_register();
+void igObjectList_register();
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
+extern char lbl_80476E0C[];
+extern char igLockBaseList_className[];
+extern char igLockBase_className[];
+extern char igListenerProducerBase_className[];
+extern char igListenerManager_className[];
+extern char igListenerInterface_dependencies[];
+extern char igListenerInterface_className[];
+extern char igListenerInterface_vtable[];
+extern char lbl_804A6460[];
+extern char igListenerManager_vtable[];
+extern char igLockBaseList_vtable[];
+extern char lbl_804A9F00[];
+extern char igInterface_vtable[];
+extern char igManager_vtable[];
+extern char igLockBaseList_dependencies[8];
+extern void *lbl_805621F4;
+extern void *igLockBaseList_meta;
+extern void *igLockBase_meta;
+extern void *igListenerProducerBase_meta;
+extern void *igListenerManager_meta;
+extern void *igListenerInterface_meta;
+void *igLockBaseList_getMeta();
+void *igLockBaseList_vtableRead();
+void igLockBaseList_arkRegister();
+void igLockBaseList_register();
+void *igLockBaseList_getMetaCall();
+void *igLockBase_getMeta();
+void igLockBase_arkRegister();
+void igLockBase_register();
+void *igLockBase_getMetaCall();
+void *igListenerProducerBase_getMeta();
+void igListenerProducerBase_arkRegister();
+void igListenerProducerBase_register();
+void *igListenerProducerBase_getMetaCall();
+void *igListenerManager_getMeta();
+void *igListenerManager_vtableRead();
+void igListenerManager_arkRegister();
+void igListenerManager_register();
+void *igListenerManager_getMetaCall();
+void *igListenerInterface_getMeta();
+void *igListenerInterface_vtableRead();
+void igListenerInterface_arkRegister();
+void igListenerInterface_register();
+void *igListenerInterface_getMetaCall();
+}
+struct UnknownGenObject80142D20_0 {
+ void *unknown00;
+ char unknown04[20];
+};
+struct UnknownGenObject8014308C_0 {
+ void *unknown00;
+ char unknown04[36];
+};
+struct UnknownGenRoot8014320C {
+ void *unknown00;
+ inline void operator delete(void *){}
+ inline UnknownGenRoot8014320C(){igObject_construct(this);}
+};
+struct UnknownGenObject8014320C : UnknownGenRoot8014320C {
+ char unknown04[28];
+ UnknownGenRefMember unknown20;
+ UnknownGenRefMember unknown24;
+ UnknownGenRefMember unknown28;
+ UnknownGenRefMember unknown2C;
+ char unknown30[8];
+ inline ~UnknownGenObject8014320C(){unknown00=igListenerInterface_vtable;}
+};
+extern "C" {
+void *fn_80143014(){
+ if(!igListenerManager_meta) igListenerManager_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igListenerManager_meta;
+}
+}
+#pragma pop

@@ -44,16 +44,5 @@ void *fn_80038700(){
  if(!igBoolMetaField_meta) igBoolMetaField_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igBoolMetaField_meta;
 }
-void *igBoolMetaField_getMeta(){
- if(!igBoolMetaField_meta || !(reinterpret_cast<unsigned int *>(igBoolMetaField_meta)[0x24/4]&4)) igBoolMetaField_arkRegister();
- return igBoolMetaField_meta;
-}
-void *fn_80038778(){
- UnknownGenObject80038778 object;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igBoolMetaField_arkRegister(){
- meta_registerNow((int)igBoolMetaField_register);
-}
 }
 #pragma pop

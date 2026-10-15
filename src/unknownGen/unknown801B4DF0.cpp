@@ -19,16 +19,5 @@ void *fn_801B4DF0(){
  if(!igProjectiveShadowShader_meta) igProjectiveShadowShader_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igProjectiveShadowShader_meta;
 }
-void *igProjectiveShadowShader_getMeta(){
- if(!igProjectiveShadowShader_meta || !(reinterpret_cast<unsigned int *>(igProjectiveShadowShader_meta)[0x24/4]&4)) igProjectiveShadowShader_arkRegister();
- return igProjectiveShadowShader_meta;
-}
-void *fn_801B4E68(){
- UnknownGenObject801B4E68 object;
- fn_801B5514(&object);
- void *result=*reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
- fn_801B4EB0(&object,-1);
- return result;
-}
 }
 #pragma pop

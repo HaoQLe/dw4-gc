@@ -19,17 +19,5 @@ void *fn_802C4E44(){
  if(!lbl_80534BE0) lbl_80534BE0=fn_800635C8(lbl_8041CD10,lbl_804D0568,lbl_804D0578,0x4);
  return lbl_80534BE0;
 }
-void *beMovie_create(void *object){
- beMovie_arkRegister();
- return meta_createInstance(beMovie_meta,object);
-}
-void *beMovie_metaObject(){
- if(!beMovie_meta) beMovie_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
- return beMovie_meta;
-}
-void *beMovie_getMeta(){
- if(!beMovie_meta || !(reinterpret_cast<unsigned int *>(beMovie_meta)[0x24/4]&4)) beMovie_arkRegister();
- return beMovie_meta;
-}
 }
 #pragma pop

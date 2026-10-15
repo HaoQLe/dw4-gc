@@ -27,13 +27,5 @@ UnknownGenHolder *dtor_802BD63C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beSvConnectCheck_arkRegister(){
- meta_registerNow((int)beSvConnectCheck_register);
-}
-void beSvConnectCheck_register(){
- fn_802B1AC8();
- meta_registerClass(0,(int)beSvConnectCheck_meta,(int)beSaveApi_register,(int)fn_802BD764,(int)beSvConnectCheck_getMetaCall,(int)beSvConnectCheck_className,244,(int)beSvConnectCheck_vtableRead,0,0,0);
-}
-void *beSvConnectCheck_getMetaCall(){return beSvConnectCheck_getMeta();}
 }
 #pragma pop

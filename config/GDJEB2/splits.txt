@@ -13779,12 +13779,10 @@ unknownGen/unknown8031B5FC.cpp:
 	.text       start:0x8031B5FC end:0x8031B60C
 
 Game/Bec/beTimer.cpp:
-	extab       start:0x8000BBF0 end:0x8000BC08
-	extabindex  start:0x8001AD00 end:0x8001AD24
-	.text       start:0x8031B60C end:0x8031B864
-
-unknownGen/unknown8031B9EC.cpp:
-	.text       start:0x8031B9EC end:0x8031B9FC
+	extab       start:0x8000BBF0 end:0x8000BC10
+	extabindex  start:0x8001AD00 end:0x8001AD30
+	.text       start:0x8031B60C end:0x8031B9FC
+	.rodata     start:0x804528E8 end:0x804528F4
 
 unknownGen/unknown8031BB4C.cpp:
 	extab       start:0x8000BC18 end:0x8000BC20

@@ -1,9 +1,16 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-15. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
+- **Class registration batch (user request 2026-10-15):** every Alchemy class's registration functions (`create`, `metaObject`, `getMeta`, `vtableRead`, `arkRegister`, `register`, `getMetaCall`, `fieldInit`) are named and, for 1,384 classes, readable source: `src/Meta/<Class>.cpp` and `src/Alchemy/src/Meta/<Class>.cpp` (569,584 code bytes) built from `include/meta/register.h`.
+  - **Tools:** `tools/alchemymeta/regnames.py` names about 9,300 symbols with recorded evidence, including `C_meta`, `C_vtable`, `C_className`, `C_arkRegister` (Alchemy's own name), the field tables, and the registration API. `metasrc.py` writes, verifies and applies the class files; `funcindex.py` indexes the original instructions. Functional commits: `91b8a87a`, `6894d30a`, `947bd5a4`, `452dff44`, `443f0c91`.
+  - **Totals:** matched code unchanged at 36.996758% (1,532,240), linked at 36.961216% (1,530,768), and complete data at 240,154. Generated units 4,481 → 3,838, all verifying. `build.sha1` OK.
+  - **Matched data:** 234,146 → 208,266. This is an objdiff accounting artifact: a unit's exception tables never count as matched while they include the weak destructor copies the linker discards, and each class file now holds one. The executable is unchanged.
+  - **Not converted:** 484 class blocks with original-assembly functions (357 `fieldInit`, 130 `vtableRead`, 23 `register`), and 22 blocks in forms the translator lacks.
+  - **Next investigation:** write the 484 unmatched blocks from the readable form, about 285 KB of original code and the batch's real byte opportunity. Start with `register` and `vtableRead`, which have known shapes.
+  - Details: [class registration](docs/research/2026-10-15-class-registration.md).
 - **Small game classes batch (user request 2026-10-09):** `src/Game/Bec/beTimer.cpp` (`0x8031B60C..0x8031B9FC`) is readable and exact for the whole class. It holds idle and count-down timers that run Lua files. `virtual70` and the per-frame update `virtual74` are newly matched, and `include/game/List.h` holds the shared list helpers.
   - **Totals:** matched code 36.972034% → 36.989901% (+740 bytes), linked 36.936493% → 36.954357% (+740), matched data +52 bytes, 16,995 → 16,997 functions. `build.sha1` OK; all 4,482 generated units verify; an independent review found no blocking issues.
   - **Shapes that matched:** the timer update needed its list variable declared at the top, a nested `if` for the pad condition, and `#pragma auto_inline off` around `beTimer_anyPadInput`.

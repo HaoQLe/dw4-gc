@@ -86,7 +86,7 @@ def main():
     if dry: return
     files=[CONFIG/'symbols.txt']
     files+=[p for d in ('src','include') for p in Path(d).rglob('*') if p.suffix in ('.c','.cpp','.h','.hpp','.inc')]
-    files+=list(Path('tools/unknowngen').glob('*.json'))+[Path('tools/unknowngen/texttempl.py'),Path('tools/unknowngen/gen.py')]
+    files+=list(Path('tools/unknowngen').glob('*.json'))+[Path('tools/unknowngen/texttempl.py'),Path('tools/unknowngen/gen.py'),Path('tools/alchemymeta/layouts.json')]
     files+=[p for p in Path('build/GDJEB2/analysis/unknowngen').rglob('*.json')] if Path('build/GDJEB2/analysis/unknowngen').exists() else []
     pat=re.compile(r'\b(?:fn|lbl)_[0-9A-F]{8}\b')
     changed=0

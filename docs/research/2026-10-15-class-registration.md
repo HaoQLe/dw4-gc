@@ -109,4 +109,6 @@ The linked executable and complete data are unchanged.
 | `create`/`getMeta` calling a real-named `arkRegister` (5 engine classes) | 5 + 5 |
 | `vtableRead` calling an out-of-line destructor in a destructor chain | 2 |
 
-**Next:** the 484 blocks hold the registration code the generator never matched, about 285 KB of original code. Writing those functions from this readable form is the way to new matched bytes.
+**Next:** the 484 blocks hold the registration code the generator never matched: 511 functions, 135,944 bytes (357 `fieldInit`, 105,080; 130 `vtableRead`, 28,276; 23 `register`, 2,512; one `getMeta`, 76).
+
+Their `fieldInit` functions address the field tables as offsets from one data block. For example, `igAnimationTransitionParams_fieldInit` uses `lbl_804AAFB8 + 0x7900`, `+0x793C`, `+0x794C` and `+0x795C`. So the original translation units defined those tables themselves and held many classes' data, more than 31 KB from that block's start. Matching them needs module-sized files that own their `.data`, not per-class files over external data.

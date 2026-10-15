@@ -13163,10 +13163,10 @@ unknownGen/unknown802F4030.cpp:
 	extabindex  start:0x80019D58 end:0x80019D64
 	.text       start:0x802F4030 end:0x802F4114
 
-unknownGen/unknown802F4114.cpp:
-	extab       start:0x8000A8CC end:0x8000A8D4
-	extabindex  start:0x80019D64 end:0x80019D70
-	.text       start:0x802F4114 end:0x802F414C
+Game/Bec/beCameraMode.cpp:
+	extab       start:0x8000A8CC end:0x8000A8DC
+	extabindex  start:0x80019D64 end:0x80019D7C
+	.text       start:0x802F4114 end:0x802F4268
 
 unknownGen/unknown802F445C.cpp:
 	.text       start:0x802F445C end:0x802F4494

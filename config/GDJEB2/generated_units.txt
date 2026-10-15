@@ -3372,7 +3372,6 @@ unknownGen/unknown802F3710.cpp	802F3710	802F37AC	eh
 unknownGen/unknown802F3FAC.cpp	802F3FAC	802F4020	eh
 unknownGen/unknown802F4020.cpp	802F4020	802F4030	nosdata
 unknownGen/unknown802F4030.cpp	802F4030	802F4114	eh,nosdata
-unknownGen/unknown802F4114.cpp	802F4114	802F414C	eh
 unknownGen/unknown802F445C.cpp	802F445C	802F4494	nosdata
 unknownGen/unknown802F487C.cpp	802F487C	802F488C	nosdata
 unknownGen/unknown802F488C.cpp	802F488C	802F48B8	eh

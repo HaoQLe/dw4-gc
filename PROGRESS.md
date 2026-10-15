@@ -4,10 +4,17 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- **Small game classes batch (user request 2026-10-09):** `src/Game/Bec/beTimer.cpp` (`0x8031B60C..0x8031B864`) is readable and exact: idle and count-down timers that run Lua files; `virtual70` is newly matched. `include/game/List.h` holds the shared list helpers.
-  - **Totals:** matched code 36.972034% → 36.980434% (+348 bytes), linked 36.936493% → 36.944893%, matched data +20 bytes, 16,996 functions. `build.sha1` OK; all 4,483 generated units verify.
-  - **Stalled on register allocation only:** `beTimer_virtual74` (10 lines) and `beSeCtl_virtual90` (63 lines), drafts on the local branch `task/small-classes-wip`, plus the `beWeapon` handler.
-  - **Next investigation:** a focused study of MWCC 2.6's register priority order using reduced test cases, then retry all three; `beCameraMode` (needs the model and matrix classes) is described.
+- **Small game classes batch (user request 2026-10-09):** `src/Game/Bec/beTimer.cpp` (`0x8031B60C..0x8031B9FC`) is readable and exact for the whole class. It holds idle and count-down timers that run Lua files. `virtual70` and the per-frame update `virtual74` are newly matched, and `include/game/List.h` holds the shared list helpers.
+  - **Totals:** matched code 36.972034% → 36.989901% (+740 bytes), linked 36.936493% → 36.954357% (+740), matched data +52 bytes, 16,995 → 16,997 functions. `build.sha1` OK; all 4,482 generated units verify; an independent review found no blocking issues.
+  - **Shapes that matched:** the timer update needed its list variable declared at the top, a nested `if` for the pad condition, and `#pragma auto_inline off` around `beTimer_anyPadInput`.
+  - **New tools:** `tools/hwdiff.py` and `tools/hwvariants.py` score hand-written files and their variants per function.
+  - **`fn_800A3FDC` is now named `__cvt_sll_dbl`:** MWCC emits that call for this conversion.
+  - **Still stalled on register allocation:**
+    - `beSeCtl_virtual90`: 51 lines (was 63), with `self` and the loop registers permuted and one extra `mr` for the delay;
+    - the `beWeapon` handler.
+
+    Drafts are on the local branches `task/small-classes-wip` and `task/beweapon-8c-wip`.
+  - **Next investigation:** apply the `hwvariants` combination search to the `beWeapon` handler; for `beSeCtl_virtual90`, try forms of the delay that produce the extra copy, such as an inline accessor or a by-value struct. `beCameraMode` needs the model and matrix classes.
   - Details: [small game classes](docs/research/2026-10-09-small-game-classes.md).
 - **Enums and controller-input batch (user request 2026-10-09):** both parts verified.
   - **Enums:** 149 enums (1,284 values) extracted (`tools/alchemymeta/enums.py`) into `include/meta/enums.h`; 120 enum fields typed.

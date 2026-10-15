@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802B2D78();
-extern void *lbl_8053453C;
+void beWeaponInfo_registerNow();
+extern void *beWeaponInfo_meta;
 }
 extern "C" {
 void *beWeaponInfo_getMeta(){
- if(!lbl_8053453C || !(reinterpret_cast<unsigned int *>(lbl_8053453C)[0x24/4]&4)) fn_802B2D78();
- return lbl_8053453C;
+ if(!beWeaponInfo_meta || !(reinterpret_cast<unsigned int *>(beWeaponInfo_meta)[0x24/4]&4)) beWeaponInfo_registerNow();
+ return beWeaponInfo_meta;
 }
 }
 #pragma pop

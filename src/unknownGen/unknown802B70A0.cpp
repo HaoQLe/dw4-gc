@@ -3,9 +3,9 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
+extern char igNamedObject_vtable[];
 extern char lbl_804CBA60[];
-extern char lbl_804E045C[];
+extern char beTargetObj_vtable[];
 }
 struct UnknownGenRoot802B70A0 {
  void *unknown00;
@@ -15,7 +15,7 @@ struct UnknownGenRoot802B70A0 {
 struct UnknownGenObject802B70A0_0 : UnknownGenRoot802B70A0 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject802B70A0_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject802B70A0_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject802B70A0_1 : UnknownGenObject802B70A0_0 {
  inline ~UnknownGenObject802B70A0_1(){unknown00=lbl_804CBA60;}
@@ -26,15 +26,15 @@ struct UnknownGenObject802B70A0 : UnknownGenObject802B70A0_1 {
  UnknownGenRefMember unknown14;
  UnknownGenRefMember unknown18;
  char unknown1C[12];
- inline ~UnknownGenObject802B70A0(){unknown00=lbl_804E045C;}
+ inline ~UnknownGenObject802B70A0(){unknown00=beTargetObj_vtable;}
 };
 extern "C" {
 void *beTargetObj_vtableRead(){
  UnknownGenObject802B70A0 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
  object.unknown00=lbl_804CBA60;
- object.unknown00=lbl_804E045C;
+ object.unknown00=beTargetObj_vtable;
  object.unknown10.value=0;
  object.unknown14.value=0;
  object.unknown18.value=0;

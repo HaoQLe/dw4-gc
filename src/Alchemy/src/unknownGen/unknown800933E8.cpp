@@ -6,10 +6,10 @@ extern "C" {
 void fn_80068390(void *,void *);
 extern void *kFailure__3Gap;
 extern void *kSuccess__3Gap;
-extern void *lbl_80562070;
-extern void *lbl_80562074;
+extern void *igGamecubeThreadManager_meta;
+extern void *igGamecubeThread_meta;
 extern void *lbl_8056209C;
-extern void *lbl_805620A0;
+extern void *igGamecubeSemaphore_meta;
 }
 class UnknownGenV80093458_0 {
 public:
@@ -47,8 +47,8 @@ public:
 };
 extern "C" {
 int igElfFile_virtual1D0(){return 1;}
-void *igGamecubeThreadManager_virtual58(){return lbl_80562070;}
-void *igGamecubeThread_virtual58(){return lbl_80562074;}
+void *igGamecubeThreadManager_virtual58(){return igGamecubeThreadManager_meta;}
+void *igGamecubeThread_virtual58(){return igGamecubeThread_meta;}
 int igGamecubeThread_virtualA8(){return 32;}
 int igGamecubeThread_virtualAC(){return 32;}
 void igGamecubeThread_virtual30(int p0){
@@ -97,7 +97,7 @@ void *igGamecubeThread_virtualD8(int p0){
  return (void *)p0;
 }
 void *fn_80093528(){return lbl_8056209C;}
-void *igGamecubeSemaphore_virtual58(){return lbl_805620A0;}
+void *igGamecubeSemaphore_virtual58(){return igGamecubeSemaphore_meta;}
 unsigned char igGamecubeSemaphore_virtual64(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+20);}
 }
 #pragma pop

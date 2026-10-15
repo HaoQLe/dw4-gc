@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_80331DF0();
-extern void *lbl_80535F20;
+void *meta_createInstance(void *,void *);
+void beNDMWStatusCtrlFlag_registerNow();
+extern void *beNDMWStatusCtrlFlag_meta;
 }
 extern "C" {
-void *fn_80331AD0(void *object){
- fn_80331DF0();
- return fn_8006546C(lbl_80535F20,object);
+void *beNDMWStatusCtrlFlag_create(void *object){
+ beNDMWStatusCtrlFlag_registerNow();
+ return meta_createInstance(beNDMWStatusCtrlFlag_meta,object);
 }
 void *beNDMWStatusCtrlFlag_getMeta(){
- if(!lbl_80535F20 || !(reinterpret_cast<unsigned int *>(lbl_80535F20)[0x24/4]&4)) fn_80331DF0();
- return lbl_80535F20;
+ if(!beNDMWStatusCtrlFlag_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusCtrlFlag_meta)[0x24/4]&4)) beNDMWStatusCtrlFlag_registerNow();
+ return beNDMWStatusCtrlFlag_meta;
 }
 }
 #pragma pop

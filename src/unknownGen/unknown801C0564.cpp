@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_801C0640(void *,short);
 void fn_801C0C50(void *);
-void fn_801C0D64();
+void igFrustCullTraversal_registerNow();
 void *fn_801E9C84();
-extern void *lbl_80564EFC;
+extern void *igFrustCullTraversal_meta;
 }
 struct UnknownGenObject801C05F8 {
  void *unknown00;
@@ -15,13 +15,13 @@ struct UnknownGenObject801C05F8 {
 };
 extern "C" {
 void *fn_801C0564(){return fn_801E9C84();}
-void *fn_801C0584(void *object){
- fn_801C0D64();
- return fn_8006546C(lbl_80564EFC,object);
+void *igFrustCullTraversal_create(void *object){
+ igFrustCullTraversal_registerNow();
+ return meta_createInstance(igFrustCullTraversal_meta,object);
 }
 void *igFrustCullTraversal_getMeta(){
- if(!lbl_80564EFC || !(reinterpret_cast<unsigned int *>(lbl_80564EFC)[0x24/4]&4)) fn_801C0D64();
- return lbl_80564EFC;
+ if(!igFrustCullTraversal_meta || !(reinterpret_cast<unsigned int *>(igFrustCullTraversal_meta)[0x24/4]&4)) igFrustCullTraversal_registerNow();
+ return igFrustCullTraversal_meta;
 }
 void *fn_801C05F8(){
  UnknownGenObject801C05F8 object;

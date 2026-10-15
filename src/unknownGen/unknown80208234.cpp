@@ -5,12 +5,12 @@ extern "C" {
 void fn_8003FDA4(void *,int,int);
 void *fn_800658F8(void *,void *);
 extern char lbl_804AB5D0[];
-extern void *lbl_8056469C;
+extern void *igTransformSequence1_5_meta;
 }
 extern "C" {
 void fn_80208234(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value1;
- void *value0=lbl_8056469C;
+ void *value0=igTransformSequence1_5_meta;
  if(value0){
   value1=fn_800658F8(value0,lbl_804AB5D0);
   if((int)(int)value1!=0){

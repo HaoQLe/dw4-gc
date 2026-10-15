@@ -4,52 +4,52 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80023FDC();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
 void igNonRefCountedObjectList_register();
 void igObjectPool_register();
 void igObject_register();
 void igRenderPackage_fieldInit();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
-extern char lbl_80476DA8[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
+extern char igNonRefCountedObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804AC718[];
-extern char lbl_804AC72C[];
+extern char igRenderPackageList_className[];
+extern char igRenderPackagePool_className[];
 extern char lbl_804AC740[];
-extern char lbl_804AC74C[];
-extern char lbl_804B9590[];
-extern char lbl_804B95EC[];
+extern char igRenderPackage_className[];
+extern char igRenderPackage_vtable[];
+extern char igRenderPackagePool_vtable[];
 extern char lbl_804B9650[];
-extern char lbl_804B96B4[];
+extern char igRenderPackageList_vtable[];
 extern char lbl_804B9718[];
-extern char lbl_804B9898[];
+extern char igObjectPool_vtable[];
 extern char lbl_80560204[8];
 extern char lbl_8056020C[8];
 extern void *lbl_805621F4;
-extern void *lbl_805647A0;
-extern void *lbl_8056485C;
-extern void *lbl_80564860;
-extern void *lbl_80564864;
+extern void *igObjectPool_meta;
+extern void *igRenderPackageList_meta;
+extern void *igRenderPackagePool_meta;
+extern void *igRenderPackage_meta;
 void *igRenderPackageList_getMeta();
 void *igRenderPackageList_vtableRead();
-void fn_801AEED4();
+void igRenderPackageList_registerNow();
 void igRenderPackageList_register();
 void *igRenderPackageList_getMetaCall();
 void *igRenderPackagePool_getMeta();
 void *igRenderPackagePool_vtableRead();
-void fn_801AF07C();
+void igRenderPackagePool_registerNow();
 void igRenderPackagePool_register();
 void *igRenderPackagePool_getMetaCall();
 void *fn_801AF130();
 void *igRenderPackage_getMeta();
 void *igRenderPackage_vtableRead();
-void fn_801AF2E8();
+void igRenderPackage_registerNow();
 void igRenderPackage_register();
 void *igRenderPackage_getMetaCall();
 }
@@ -74,89 +74,89 @@ struct UnknownGenObject801AF1E8 : UnknownGenRoot801AF1E8 {
  char unknown14[8];
  UnknownGenRefMember unknown1C;
  char unknown20[8];
- inline ~UnknownGenObject801AF1E8(){unknown00=lbl_804B9590;}
+ inline ~UnknownGenObject801AF1E8(){unknown00=igRenderPackage_vtable;}
 };
 extern "C" {
 void *fn_801AEDEC(){
- if(!lbl_8056485C) lbl_8056485C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_8056485C;
+ if(!igRenderPackageList_meta) igRenderPackageList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igRenderPackageList_meta;
 }
 void *igRenderPackageList_getMeta(){
- if(!lbl_8056485C || !(reinterpret_cast<unsigned int *>(lbl_8056485C)[0x24/4]&4)) fn_801AEED4();
- return lbl_8056485C;
+ if(!igRenderPackageList_meta || !(reinterpret_cast<unsigned int *>(igRenderPackageList_meta)[0x24/4]&4)) igRenderPackageList_registerNow();
+ return igRenderPackageList_meta;
 }
 void *igRenderPackageList_vtableRead(){
  UnknownGenObject801AEE64_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476DA8;
+ object.unknown00=igNonRefCountedObjectList_vtable;
  object.unknown00=lbl_804B9718;
- object.unknown00=lbl_804B96B4;
+ object.unknown00=igRenderPackageList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801AEED4(){
- fn_80066188((int)igRenderPackageList_register);
+void igRenderPackageList_registerNow(){
+ meta_registerNow((int)igRenderPackageList_register);
 }
 void igRenderPackageList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_8056485C,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igRenderPackageList_getMetaCall,(int)lbl_804AC718,20,(int)igRenderPackageList_vtableRead,0,0,(int)lbl_80560204);
+ meta_registerClass(0,(int)&igRenderPackageList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igRenderPackageList_getMetaCall,(int)igRenderPackageList_className,20,(int)igRenderPackageList_vtableRead,0,0,(int)lbl_80560204);
 }
 void *igRenderPackageList_getMetaCall(){return igRenderPackageList_getMeta();}
 void *fn_801AEF88(){
- if(!lbl_80564860) lbl_80564860=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564860;
+ if(!igRenderPackagePool_meta) igRenderPackagePool_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igRenderPackagePool_meta;
 }
 void *igRenderPackagePool_getMeta(){
- if(!lbl_80564860 || !(reinterpret_cast<unsigned int *>(lbl_80564860)[0x24/4]&4)) fn_801AF07C();
- return lbl_80564860;
+ if(!igRenderPackagePool_meta || !(reinterpret_cast<unsigned int *>(igRenderPackagePool_meta)[0x24/4]&4)) igRenderPackagePool_registerNow();
+ return igRenderPackagePool_meta;
 }
 void *igRenderPackagePool_vtableRead(){
  UnknownGenObject801AF000_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
- object.unknown00=lbl_804B9898;
+ object.unknown00=igObjectList_vtable;
+ object.unknown00=igObjectPool_vtable;
  object.unknown00=lbl_804B9650;
- object.unknown00=lbl_804B95EC;
+ object.unknown00=igRenderPackagePool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801AF07C(){
- fn_80066188((int)igRenderPackagePool_register);
+void igRenderPackagePool_registerNow(){
+ meta_registerNow((int)igRenderPackagePool_register);
 }
 void igRenderPackagePool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564860,(int)igObjectPool_register,(int)fn_801AF130,(int)igRenderPackagePool_getMetaCall,(int)lbl_804AC72C,32,(int)igRenderPackagePool_vtableRead,0,0,(int)lbl_8056020C);
+ meta_registerClass(0,(int)&igRenderPackagePool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igRenderPackagePool_getMetaCall,(int)igRenderPackagePool_className,32,(int)igRenderPackagePool_vtableRead,0,0,(int)lbl_8056020C);
 }
 void *igRenderPackagePool_getMetaCall(){return igRenderPackagePool_getMeta();}
-void *fn_801AF130(){return lbl_805647A0;}
-void *fn_801AF138(void *object){
- fn_801AF2E8();
- return fn_8006546C(lbl_80564864,object);
+void *fn_801AF130(){return igObjectPool_meta;}
+void *igRenderPackage_create(void *object){
+ igRenderPackage_registerNow();
+ return meta_createInstance(igRenderPackage_meta,object);
 }
 void *fn_801AF170(){
- if(!lbl_80564864) lbl_80564864=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564864;
+ if(!igRenderPackage_meta) igRenderPackage_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igRenderPackage_meta;
 }
 void *igRenderPackage_getMeta(){
- if(!lbl_80564864 || !(reinterpret_cast<unsigned int *>(lbl_80564864)[0x24/4]&4)) fn_801AF2E8();
- return lbl_80564864;
+ if(!igRenderPackage_meta || !(reinterpret_cast<unsigned int *>(igRenderPackage_meta)[0x24/4]&4)) igRenderPackage_registerNow();
+ return igRenderPackage_meta;
 }
 void *igRenderPackage_vtableRead(){
  UnknownGenObject801AF1E8 object;
- object.unknown00=lbl_804B9590;
+ object.unknown00=igRenderPackage_vtable;
  object.unknown08.value=0;
  object.unknown10.value=0;
  object.unknown1C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801AF2E8(){
- fn_80066188((int)igRenderPackage_register);
+void igRenderPackage_registerNow(){
+ meta_registerNow((int)igRenderPackage_register);
 }
 void igRenderPackage_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564864,(int)igObject_register,(int)fn_800237D0,(int)igRenderPackage_getMetaCall,(int)lbl_804AC74C,32,(int)igRenderPackage_vtableRead,(int)igRenderPackage_fieldInit,0,(int)lbl_804AC740);
+ meta_registerClass(0,(int)&igRenderPackage_meta,(int)igObject_register,(int)fn_800237D0,(int)igRenderPackage_getMetaCall,(int)igRenderPackage_className,32,(int)igRenderPackage_vtableRead,(int)igRenderPackage_fieldInit,0,(int)lbl_804AC740);
 }
 void *igRenderPackage_getMetaCall(){return igRenderPackage_getMeta();}
 }

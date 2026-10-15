@@ -48,7 +48,7 @@ void fn_8004595C(Unknown800442F8Owner *object,void *entry,void *dest,void *secon
  }
 }
 void fn_80045AB4(void *owner,Unknown80042DECStorage *storage,void *dest,int index){
- Unknown800442F8Reference reference(fn_80024FB4(fn_80068430(owner)));
+ Unknown800442F8Reference reference(igStringObj_create(fn_80068430(owner)));
  for(int i=0;i<storage->unknown08;++i){
   Unknown800468E8 *entry=reinterpret_cast<Unknown800468E8 *>(storage->unknown10[i]);
   fn_8006D674(dest,index,entry->unknown00->unknown08.text(),&reference,lbl_8055D4C4,0);

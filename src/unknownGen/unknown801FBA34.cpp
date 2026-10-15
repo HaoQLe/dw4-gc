@@ -4,18 +4,18 @@
 extern "C" {
 void *fn_800607F4(void *);
 void *fn_80065704(void *,int);
-void *fn_800ADBFC(void *);
-void *fn_800B041C(void *);
-void *fn_800B51C4(void *);
-void *fn_800B6340(void *);
-void *fn_800B8930(void *);
-void *fn_800B9D98(void *);
-void *fn_800BA690(void *);
-void *fn_800BB99C(void *);
+void *igTextureStateAttr_create(void *);
+void *igStencilFunctionAttr_create(void *);
+void *igLightingStateAttr_create(void *);
+void *igGeometryMaskAttr_create(void *);
+void *igCullFaceAttr_create(void *);
+void *igBlendStateAttr_create(void *);
+void *igBlendFunctionAttr_create(void *);
+void *igAlphaStateAttr_create(void *);
 void fn_801EAD50(void *);
 void fn_801FAE18(void *);
 extern void *lbl_805621F0;
-extern void *lbl_80564B3C;
+extern void *igPlanarShadowShader_meta;
 extern void *lbl_805657E8;
 extern void *lbl_805657EC;
 extern void *lbl_805657F0;
@@ -448,41 +448,41 @@ void igPlanarShadowShader_virtual24(int p0){
  value1=fn_80065704(value0,1);
  if((int)(int)value1==0){
   value2=fn_800607F4(lbl_805621F0);
-  value3=fn_800BA690(value2);
+  value3=igBlendFunctionAttr_create(value2);
   lbl_805657E8=value3;
   value4=fn_800607F4(lbl_805621F0);
-  value5=fn_800BA690(value4);
+  value5=igBlendFunctionAttr_create(value4);
   lbl_805657EC=value5;
   reinterpret_cast<UnknownGenV801FBA34_1 *>(value5)->s80((void *)0);
   reinterpret_cast<UnknownGenV801FBA34_2 *>(lbl_805657EC)->s84((void *)0);
   value6=fn_800607F4(lbl_805621F0);
-  value7=fn_800B9D98(value6);
+  value7=igBlendStateAttr_create(value6);
   lbl_805657F0=value7;
   reinterpret_cast<UnknownGenV801FBA34_3 *>(value7)->s80((void *)1);
   value8=fn_800607F4(lbl_805621F0);
-  value9=fn_800B51C4(value8);
+  value9=igLightingStateAttr_create(value8);
   lbl_805657F4=value9;
   reinterpret_cast<UnknownGenV801FBA34_4 *>(value9)->s80((void *)0);
   value10=fn_800607F4(lbl_805621F0);
-  value11=fn_800ADBFC(value10);
+  value11=igTextureStateAttr_create(value10);
   lbl_805657F8=value11;
   reinterpret_cast<UnknownGenV801FBA34_5 *>(value11)->s80((void *)0);
   value12=fn_800607F4(lbl_805621F0);
-  value13=fn_800BB99C(value12);
+  value13=igAlphaStateAttr_create(value12);
   lbl_80565800=value13;
   reinterpret_cast<UnknownGenV801FBA34_6 *>(value13)->s80((void *)0);
   value14=fn_800607F4(lbl_805621F0);
-  value15=fn_800B6340(value14);
+  value15=igGeometryMaskAttr_create(value14);
   lbl_805657FC=value15;
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value15)+12)=(void *)1;
   value16=fn_800607F4(lbl_805621F0);
-  value17=fn_800B041C(value16);
+  value17=igStencilFunctionAttr_create(value16);
   lbl_80565804=value17;
   reinterpret_cast<UnknownGenV801FBA34_7 *>(value17)->s80((void *)0);
   reinterpret_cast<UnknownGenV801FBA34_8 *>(lbl_80565804)->s88((void *)2);
   reinterpret_cast<UnknownGenV801FBA34_9 *>(lbl_80565804)->s8C((void *)0,(void *)3,(void *)3);
   value18=fn_800607F4(lbl_805621F0);
-  value19=fn_800B8930(value18);
+  value19=igCullFaceAttr_create(value18);
   lbl_80565808=value19;
   reinterpret_cast<UnknownGenV801FBA34_10 *>(value19)->s84((void *)0);
   return;
@@ -490,7 +490,7 @@ void igPlanarShadowShader_virtual24(int p0){
   return;
  }
 }
-void *igPlanarShadowShader_virtual58(){return lbl_80564B3C;}
+void *igPlanarShadowShader_virtual58(){return igPlanarShadowShader_meta;}
 void igPlanarShadowShader_virtual28(int p0){
  void *value18;
  void *value19;

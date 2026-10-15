@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void __dl__FPv(void *);
-void *fn_80139228(void *);
+void *igParameterSet_create(void *);
 void *fn_8018810C(void *,void *);
 void *fn_801884A0(void *,void *,void *,void *);
 extern void *lbl_8055FFF4;
@@ -31,7 +31,7 @@ void *fn_80188BA4(void *p0){
    fn_80066E1C(value0);
   }
  }
- value2=fn_80139228((void *)0);
+ value2=igParameterSet_create((void *)0);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(p0)+0)=value2;
  return p0;
 }

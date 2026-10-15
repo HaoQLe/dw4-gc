@@ -11,11 +11,11 @@ extern char lbl_804D00C8[];
 extern char lbl_804D00D8[];
 extern char lbl_804D00E8[];
 extern char lbl_804D00F8[];
-extern void *lbl_80534A90;
+extern void *beParticleCtrl2Info_meta;
 }
 extern "C" {
 void beParticleCtrl2Info_fieldInit(){
- void *value0=lbl_80534A90;
+ void *value0=beParticleCtrl2Info_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D00C8,4);
  void *value2=fn_800658E4(value0,value1);

@@ -12,7 +12,7 @@ extern char lbl_804D01B0[];
 extern char lbl_804D0208[];
 extern char lbl_804D0260[];
 extern char lbl_804D02B8[];
-extern void *lbl_80534AC8;
+extern void *bePadData_meta;
 }
 struct UnknownGenL802C2898_10 {
  float m10;
@@ -26,7 +26,7 @@ extern "C" {
 void bePadData_fieldInit(){
  UnknownGenL802C2898_10 local1;
  UnknownGenL802C2898_8 local0;
- void *value0=lbl_80534AC8;
+ void *value0=bePadData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D01B0,22);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));

@@ -11,11 +11,11 @@ extern char lbl_804E1BE0[];
 extern char lbl_804E1BE4[];
 extern char lbl_804E1BE8[];
 extern char lbl_804E1BEC[];
-extern void *lbl_80535E2C;
+extern void *beNDMWShopCtrlDeviceSell_meta;
 }
 extern "C" {
 void beNDMWShopCtrlDeviceSell_fieldInit(){
- void *value0=lbl_80535E2C;
+ void *value0=beNDMWShopCtrlDeviceSell_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1BE0,1);
  void *value2=fn_800658E4(value0,value1);

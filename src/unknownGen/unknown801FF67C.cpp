@@ -5,7 +5,7 @@ extern "C" {
 void *fn_80065704(void *,int);
 void fn_801FAE18(void *);
 void fn_802004A4();
-extern void *lbl_80564968;
+extern void *igSelfShadowShader_meta;
 }
 class UnknownGenV801FF67C_0 {
 public:
@@ -45,6 +45,6 @@ void igSelfShadowShader_virtual24(int p0){
   return;
  }
 }
-void *igSelfShadowShader_virtual58(){return lbl_80564968;}
+void *igSelfShadowShader_virtual58(){return igSelfShadowShader_meta;}
 }
 #pragma pop

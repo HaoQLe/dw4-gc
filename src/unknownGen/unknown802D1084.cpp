@@ -11,11 +11,11 @@ extern char lbl_804D173C[];
 extern char lbl_804D1740[];
 extern char lbl_804D1744[];
 extern char lbl_804D1748[];
-extern void *lbl_805350C4;
+extern void *beMatCtrlData_meta;
 }
 extern "C" {
 void beMatCtrlData_fieldInit(){
- void *value0=lbl_805350C4;
+ void *value0=beMatCtrlData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D173C,1);
  void *value2=fn_800658E4(value0,value1);

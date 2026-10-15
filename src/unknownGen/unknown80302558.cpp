@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535124;
+extern void *beLua_meta;
 }
 extern "C" {
 void beLua_virtual74(){}
-void *beLua_virtual58(){return lbl_80535124;}
+void *beLua_virtual58(){return beLua_meta;}
 }
 #pragma pop

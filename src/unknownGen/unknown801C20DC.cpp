@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
@@ -14,17 +14,17 @@ void fn_801E4DA0();
 void igDOFShader_fieldInit();
 void *igEndianSwappedEnbayaAnimationSource_getMeta();
 void igGroup_register();
-extern char lbl_8047650C[];
-extern char lbl_804AFC30[];
-extern char lbl_804B4038[];
-extern char lbl_804B49CC[];
-extern char lbl_804B4E20[];
+extern char igNamedObject_vtable[];
+extern char igDOFShader_className[];
+extern char igNode_vtable[];
+extern char igGroup_vtable[];
+extern char igDOFShader_vtable[];
 extern char lbl_805606BC[8];
 extern void *lbl_805621F4;
-extern void *lbl_80564FC0;
+extern void *igDOFShader_meta;
 void *igDOFShader_getMeta();
 void *igDOFShader_vtableRead();
-void fn_801C236C();
+void igDOFShader_registerNow();
 void igDOFShader_register();
 void *igDOFShader_getMetaCall();
 }
@@ -36,54 +36,54 @@ struct UnknownGenRoot801C21B4 {
 struct UnknownGenObject801C21B4_0 : UnknownGenRoot801C21B4 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject801C21B4_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject801C21B4_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject801C21B4_1 : UnknownGenObject801C21B4_0 {
  UnknownGenRefMember unknown0C;
  UnknownGenRefMember unknown10;
- inline ~UnknownGenObject801C21B4_1(){unknown00=lbl_804B4038;}
+ inline ~UnknownGenObject801C21B4_1(){unknown00=igNode_vtable;}
 };
 struct UnknownGenObject801C21B4_2 : UnknownGenObject801C21B4_1 {
  char unknown14[8];
  UnknownGenRefMember unknown1C;
- inline ~UnknownGenObject801C21B4_2(){unknown00=lbl_804B49CC;}
+ inline ~UnknownGenObject801C21B4_2(){unknown00=igGroup_vtable;}
 };
 struct UnknownGenObject801C21B4 : UnknownGenObject801C21B4_2 {
  char unknown20[44];
  UnknownGenRefMember unknown4C;
- inline ~UnknownGenObject801C21B4(){unknown00=lbl_804B4E20;}
+ inline ~UnknownGenObject801C21B4(){unknown00=igDOFShader_vtable;}
 };
 extern "C" {
 void *igEndianSwappedEnbayaAnimationSource_getMetaCall(){return igEndianSwappedEnbayaAnimationSource_getMeta();}
 void *fn_801C20FC(){return fn_801E4D7C();}
 void fn_801C211C(){return fn_801E4DA0();}
 void *fn_801C213C(){
- if(!lbl_80564FC0) lbl_80564FC0=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564FC0;
+ if(!igDOFShader_meta) igDOFShader_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igDOFShader_meta;
 }
 void *igDOFShader_getMeta(){
- if(!lbl_80564FC0 || !(reinterpret_cast<unsigned int *>(lbl_80564FC0)[0x24/4]&4)) fn_801C236C();
- return lbl_80564FC0;
+ if(!igDOFShader_meta || !(reinterpret_cast<unsigned int *>(igDOFShader_meta)[0x24/4]&4)) igDOFShader_registerNow();
+ return igDOFShader_meta;
 }
 void *igDOFShader_vtableRead(){
  UnknownGenObject801C21B4 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
- object.unknown00=lbl_804B4038;
+ object.unknown00=igNode_vtable;
  object.unknown0C.value=0;
  object.unknown10.value=0;
- object.unknown00=lbl_804B49CC;
+ object.unknown00=igGroup_vtable;
  object.unknown1C.value=0;
- object.unknown00=lbl_804B4E20;
+ object.unknown00=igDOFShader_vtable;
  object.unknown4C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801C236C(){
- fn_80066188((int)igDOFShader_register);
+void igDOFShader_registerNow(){
+ meta_registerNow((int)igDOFShader_register);
 }
 void igDOFShader_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564FC0,(int)igGroup_register,(int)fn_8011148C,(int)igDOFShader_getMetaCall,(int)lbl_804AFC30,80,(int)igDOFShader_vtableRead,(int)igDOFShader_fieldInit,0,(int)lbl_805606BC);
+ meta_registerClass(0,(int)&igDOFShader_meta,(int)igGroup_register,(int)fn_8011148C,(int)igDOFShader_getMetaCall,(int)igDOFShader_className,80,(int)igDOFShader_vtableRead,(int)igDOFShader_fieldInit,0,(int)lbl_805606BC);
 }
 void *igDOFShader_getMetaCall(){return igDOFShader_getMeta();}
 }

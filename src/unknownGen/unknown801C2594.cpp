@@ -3,22 +3,22 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800237D0();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
 void igCompressedTransformSequence1_5Data_fieldInit();
 void igObject_register();
-extern char lbl_804AFD84[];
-extern char lbl_804B71E8[];
+extern char igCompressedTransformSequence1_5Data_className[];
+extern char igCompressedTransformSequence1_5Data_vtable[];
 extern char lbl_805606D4[8];
 extern void *lbl_805621F4;
-extern void *lbl_80564FF4;
+extern void *igCompressedTransformSequence1_5Data_meta;
 void *igCompressedTransformSequence1_5Data_getMeta();
 void *igCompressedTransformSequence1_5Data_vtableRead();
-void fn_801C2744();
+void igCompressedTransformSequence1_5Data_registerNow();
 void igCompressedTransformSequence1_5Data_register();
 void *igCompressedTransformSequence1_5Data_getMetaCall();
 }
@@ -34,32 +34,32 @@ struct UnknownGenObject801C260C : UnknownGenRoot801C260C {
  UnknownGenRefMember unknown10;
  UnknownGenRefMember unknown14;
  char unknown18[32];
- inline ~UnknownGenObject801C260C(){unknown00=lbl_804B71E8;}
+ inline ~UnknownGenObject801C260C(){unknown00=igCompressedTransformSequence1_5Data_vtable;}
 };
 extern "C" {
 void *fn_801C2594(){
- if(!lbl_80564FF4) lbl_80564FF4=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564FF4;
+ if(!igCompressedTransformSequence1_5Data_meta) igCompressedTransformSequence1_5Data_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igCompressedTransformSequence1_5Data_meta;
 }
 void *igCompressedTransformSequence1_5Data_getMeta(){
- if(!lbl_80564FF4 || !(reinterpret_cast<unsigned int *>(lbl_80564FF4)[0x24/4]&4)) fn_801C2744();
- return lbl_80564FF4;
+ if(!igCompressedTransformSequence1_5Data_meta || !(reinterpret_cast<unsigned int *>(igCompressedTransformSequence1_5Data_meta)[0x24/4]&4)) igCompressedTransformSequence1_5Data_registerNow();
+ return igCompressedTransformSequence1_5Data_meta;
 }
 void *igCompressedTransformSequence1_5Data_vtableRead(){
  UnknownGenObject801C260C object;
- object.unknown00=lbl_804B71E8;
+ object.unknown00=igCompressedTransformSequence1_5Data_vtable;
  object.unknown08.value=0;
  object.unknown0C.value=0;
  object.unknown10.value=0;
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801C2744(){
- fn_80066188((int)igCompressedTransformSequence1_5Data_register);
+void igCompressedTransformSequence1_5Data_registerNow(){
+ meta_registerNow((int)igCompressedTransformSequence1_5Data_register);
 }
 void igCompressedTransformSequence1_5Data_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564FF4,(int)igObject_register,(int)fn_800237D0,(int)igCompressedTransformSequence1_5Data_getMetaCall,(int)lbl_804AFD84,48,(int)igCompressedTransformSequence1_5Data_vtableRead,(int)igCompressedTransformSequence1_5Data_fieldInit,0,(int)lbl_805606D4);
+ meta_registerClass(0,(int)&igCompressedTransformSequence1_5Data_meta,(int)igObject_register,(int)fn_800237D0,(int)igCompressedTransformSequence1_5Data_getMetaCall,(int)igCompressedTransformSequence1_5Data_className,48,(int)igCompressedTransformSequence1_5Data_vtableRead,(int)igCompressedTransformSequence1_5Data_fieldInit,0,(int)lbl_805606D4);
 }
 void *igCompressedTransformSequence1_5Data_getMetaCall(){return igCompressedTransformSequence1_5Data_getMeta();}
 }

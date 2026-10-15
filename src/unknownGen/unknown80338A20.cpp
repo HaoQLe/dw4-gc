@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534C64;
+extern void *beModelCtrlInfoWork_meta;
 }
 extern "C" {
-void *fn_80338A20(){return lbl_80534C64;}
+void *fn_80338A20(){return beModelCtrlInfoWork_meta;}
 }
 #pragma pop

@@ -11,11 +11,11 @@ extern char lbl_804D22D0[];
 extern char lbl_804D22D4[];
 extern char lbl_804D22D8[];
 extern char lbl_804D22DC[];
-extern void *lbl_805353DC;
+extern void *beFileChkObj_meta;
 }
 extern "C" {
 void beFileChkObj_fieldInit(){
- void *value0=lbl_805353DC;
+ void *value0=beFileChkObj_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D22D0,1);
  void *value2=fn_800658E4(value0,value1);

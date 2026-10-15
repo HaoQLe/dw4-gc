@@ -4,8 +4,8 @@
 extern "C" {
 void *fn_80068128(void *,void *);
 void *fn_80182484(void *,void *);
-extern void *lbl_80564A14;
-extern void *lbl_80565468;
+extern void *igSceneInfo_meta;
+extern void *igAnimationDatabase_meta;
 }
 extern "C" {
 void *igExposeActorSkinGraphs_virtual74(int p0,int p1){
@@ -14,11 +14,11 @@ void *igExposeActorSkinGraphs_virtual74(int p0,int p1){
  void *value2;
  void *value3;
  void *value4;
- value2=fn_80068128((void *)p1,lbl_80565468);
+ value2=fn_80068128((void *)p1,igAnimationDatabase_meta);
  if((unsigned char)(int)value2){
   value1=(void *)1;
  } else {
-  value3=fn_80068128((void *)p1,lbl_80564A14);
+  value3=fn_80068128((void *)p1,igSceneInfo_meta);
   if((unsigned char)(int)value3){
    value4=fn_80182484((void *)p0,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+20));
    value0=value4;

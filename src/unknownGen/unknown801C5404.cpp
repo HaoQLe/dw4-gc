@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_801C5874();
+void igCartoonShader_registerNow();
 extern void *lbl_805621F4;
-extern void *lbl_805651C0;
+extern void *igCartoonShader_meta;
 }
 extern "C" {
 void *fn_801C5404(){
- if(!lbl_805651C0) lbl_805651C0=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805651C0;
+ if(!igCartoonShader_meta) igCartoonShader_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igCartoonShader_meta;
 }
 void *igCartoonShader_getMeta(){
- if(!lbl_805651C0 || !(reinterpret_cast<unsigned int *>(lbl_805651C0)[0x24/4]&4)) fn_801C5874();
- return lbl_805651C0;
+ if(!igCartoonShader_meta || !(reinterpret_cast<unsigned int *>(igCartoonShader_meta)[0x24/4]&4)) igCartoonShader_registerNow();
+ return igCartoonShader_meta;
 }
 }
 #pragma pop

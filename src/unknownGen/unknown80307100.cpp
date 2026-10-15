@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534F70;
-extern void *lbl_80534FBC;
+extern void *beMeterCtrlInfo_meta;
+extern void *beMessenger_meta;
 }
 extern "C" {
-void *beMessenger_virtual58(){return lbl_80534FBC;}
+void *beMessenger_virtual58(){return beMessenger_meta;}
 void beMeterCtrl_virtual88(){}
-void *beMeterCtrl_virtual80(){return lbl_80534F70;}
+void *beMeterCtrl_virtual80(){return beMeterCtrlInfo_meta;}
 }
 #pragma pop

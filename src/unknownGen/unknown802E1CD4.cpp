@@ -11,11 +11,11 @@ extern char lbl_804D2A30[];
 extern char lbl_804D2A3C[];
 extern char lbl_804D2A48[];
 extern char lbl_804D2A54[];
-extern void *lbl_8053560C;
+extern void *beCameraDemoData_meta;
 }
 extern "C" {
 void beCameraDemoData_fieldInit(){
- void *value0=lbl_8053560C;
+ void *value0=beCameraDemoData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2A30,3);
  void *value2=fn_800658E4(value0,value1);

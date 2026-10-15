@@ -4,14 +4,14 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564714;
+extern void *igTransform_meta;
 }
 extern "C" {
 void *igConvertTransform_virtual8C(int p0){
  void *value1;
  void *value2;
  void *value3;
- void *value0=lbl_80564714;
+ void *value0=igTransform_meta;
  if(value0){
   value1=(void *)reinterpret_cast<Meta::igMetaObject *>(value0)->_refCount;
   reinterpret_cast<Meta::igMetaObject *>(value0)->_refCount=(unsigned int)(reinterpret_cast<char *>(value1)+1);

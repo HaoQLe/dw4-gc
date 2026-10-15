@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802E1C10();
-extern void *lbl_8053560C;
+void beCameraDemoData_registerNow();
+extern void *beCameraDemoData_meta;
 }
 extern "C" {
 void *beCameraDemoData_getMeta(){
- if(!lbl_8053560C || !(reinterpret_cast<unsigned int *>(lbl_8053560C)[0x24/4]&4)) fn_802E1C10();
- return lbl_8053560C;
+ if(!beCameraDemoData_meta || !(reinterpret_cast<unsigned int *>(beCameraDemoData_meta)[0x24/4]&4)) beCameraDemoData_registerNow();
+ return beCameraDemoData_meta;
 }
 }
 #pragma pop

@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802DE224();
-extern void *lbl_805354B8;
+void beDBManagerInfo_registerNow();
+extern void *beDBManagerInfo_meta;
 }
 extern "C" {
 void *beDBManagerInfo_getMeta(){
- if(!lbl_805354B8 || !(reinterpret_cast<unsigned int *>(lbl_805354B8)[0x24/4]&4)) fn_802DE224();
- return lbl_805354B8;
+ if(!beDBManagerInfo_meta || !(reinterpret_cast<unsigned int *>(beDBManagerInfo_meta)[0x24/4]&4)) beDBManagerInfo_registerNow();
+ return beDBManagerInfo_meta;
 }
 }
 #pragma pop

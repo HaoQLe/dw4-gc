@@ -3,17 +3,17 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800635C8(void *,void *,void *,int);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_801308D0();
 void igOptBase_register();
 void igReduceWeights_fieldInit();
-extern char lbl_8049BC80[];
+extern char igVertexBlending_className[];
 extern char lbl_8049CB68[];
-extern char lbl_8049CB80[];
-extern char lbl_804A3D00[];
+extern char igReduceWeights_className[];
+extern char igReduceWeights_vtable[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
@@ -22,10 +22,10 @@ extern char lbl_8055F684[8];
 extern char lbl_8055F68C[8];
 extern void *lbl_80563CE8;
 extern void *lbl_80563CEC;
-extern void *lbl_80563CF0;
+extern void *igReduceWeights_meta;
 void *igReduceWeights_getMeta();
 void *igReduceWeights_vtableRead();
-void fn_80136CD4();
+void igReduceWeights_registerNow();
 void igReduceWeights_register();
 void *igReduceWeights_getMetaCall();
 }
@@ -45,11 +45,11 @@ struct UnknownGenObject80136B6C : UnknownGenObject80136B6C_0 {
  char unknown2C[20];
  UnknownGenString unknown40;
  char unknown44[4];
- inline ~UnknownGenObject80136B6C(){unknown00=lbl_804A3D00;}
+ inline ~UnknownGenObject80136B6C(){unknown00=igReduceWeights_vtable;}
 };
 extern "C" {
 void *fn_80136A9C(){
- char *data=lbl_8049BC80;
+ char *data=igVertexBlending_className;
  if(!lbl_80563CE8) lbl_80563CE8=fn_800635C8(data+0xEA4,data+0xE8C,data+0xE98,0x3);
  return lbl_80563CE8;
 }
@@ -62,8 +62,8 @@ void *fn_80136AE8(){
  return lbl_80563CEC;
 }
 void *igReduceWeights_getMeta(){
- if(!lbl_80563CF0 || !(reinterpret_cast<unsigned int *>(lbl_80563CF0)[0x24/4]&4)) fn_80136CD4();
- return lbl_80563CF0;
+ if(!igReduceWeights_meta || !(reinterpret_cast<unsigned int *>(igReduceWeights_meta)[0x24/4]&4)) igReduceWeights_registerNow();
+ return igReduceWeights_meta;
 }
 void *igReduceWeights_vtableRead(){
  UnknownGenObject80136B6C object;
@@ -72,17 +72,17 @@ void *igReduceWeights_vtableRead(){
  object.unknown00=lbl_804A4A04;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A3D00;
+ object.unknown00=igReduceWeights_vtable;
  object.unknown28.value=0;
  object.unknown40.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80136CD4(){
- fn_80066188((int)igReduceWeights_register);
+void igReduceWeights_registerNow(){
+ meta_registerNow((int)igReduceWeights_register);
 }
 void igReduceWeights_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563CF0,(int)igOptBase_register,(int)fn_801308D0,(int)igReduceWeights_getMetaCall,(int)lbl_8049CB80,68,(int)igReduceWeights_vtableRead,(int)igReduceWeights_fieldInit,0,(int)lbl_8055F68C);
+ meta_registerClass(0,(int)&igReduceWeights_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igReduceWeights_getMetaCall,(int)igReduceWeights_className,68,(int)igReduceWeights_vtableRead,(int)igReduceWeights_fieldInit,0,(int)lbl_8055F68C);
 }
 void *igReduceWeights_getMetaCall(){return igReduceWeights_getMeta();}
 }

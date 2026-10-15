@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80066DFC(void *);
-extern char lbl_80472A58[];
+extern char igEventTracker_vtable[];
 }
 extern "C" {
 void *fn_800261F4(int p0,int p1){
@@ -32,7 +32,7 @@ void *fn_800261F4(int p0,int p1){
  void *value22;
  void *value23;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_80472A58;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igEventTracker_vtable;
   if((int)(p0+92)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+92);
    if(value0){

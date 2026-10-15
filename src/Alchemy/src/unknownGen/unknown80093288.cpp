@@ -3,13 +3,13 @@
 #pragma auto_inline off
 extern "C" {
 extern void *kFailure__3Gap;
-extern void *lbl_80561F24;
+extern void *igStackMemoryPool_meta;
 extern void *lbl_80561F50;
 extern void *lbl_80561F78;
 extern void *lbl_80561FDC;
-extern void *lbl_80562014;
-extern void *lbl_80562020;
-extern void *lbl_80562048;
+extern void *igProgramFile_meta;
+extern void *igElfFile_meta;
+extern void *igStandardQueue_meta;
 extern void *lbl_8056206C;
 }
 class UnknownGenV800932C4_0 {
@@ -47,8 +47,8 @@ public:
  virtual void s80();
 };
 extern "C" {
-void *igStandardQueue_virtual58(){return lbl_80562048;}
-void *igStackMemoryPool_virtual58(){return lbl_80561F24;}
+void *igStandardQueue_virtual58(){return igStandardQueue_meta;}
+void *igStackMemoryPool_virtual58(){return igStackMemoryPool_meta;}
 unsigned char igStackMemoryPool_virtual64(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+141);}
 int igStackMemoryPool_virtual74(){return 1;}
 void *igStackMemoryPool_virtualA4(int p0){
@@ -60,7 +60,7 @@ void *igStackMemoryPool_virtual1E4(){return lbl_8056206C;}
 void igStackMemoryPool_virtual1F4(int p0){
  reinterpret_cast<UnknownGenV800932C4_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+24))->s80();
 }
-void *igProgramFile_virtual58(){return lbl_80562014;}
+void *igProgramFile_virtual58(){return igProgramFile_meta;}
 void *igProgramFile_virtualDC(){return lbl_80561F78;}
 unsigned char igProgramFile_virtualE8(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+149);}
 int igProgramFile_virtualF8(){return 1;}
@@ -80,7 +80,7 @@ void igProgramFile_virtual310(){}
 void igProgramFile_virtual318(){}
 int igProgramFile_virtual35C(){return 0;}
 int igProgramFile_virtual360(){return 0;}
-void *igElfFile_virtual58(){return lbl_80562020;}
+void *igElfFile_virtual58(){return igElfFile_meta;}
 void *igElfFile_virtualDC(){return lbl_80561FDC;}
 unsigned char igElfFile_virtualE8(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+126);}
 int igElfFile_virtualEC(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+116);}

@@ -58,8 +58,8 @@ public:
 
 extern "C" {
     void *fn_80068430(void *);
-    Unknown80041020Storage *fn_80037020(void *);
-    Unknown80041020Entry *fn_800371F4(void *);
+    Unknown80041020Storage *igContextExtInfoList_create(void *);
+    Unknown80041020Entry *igContextExtInfo_create(void *);
     void fn_80066E1C(void *);
     Unknown80041020Metadata *fn_80065D60(const void *);
     Gap::igInt fn_80065CE0(Unknown80041020Metadata *);
@@ -70,8 +70,8 @@ extern "C" {
     void *fn_80053F28(void *);
     const char *fn_80054094(void *, const char *);
     int strcmp(const char *, const char *);
-    extern void *lbl_80562140, *lbl_80561E00;
-    extern unsigned char lbl_804676E4[];
+    extern void *lbl_80562140, *igContext_meta;
+    extern unsigned char igContextExt_className[];
 }
 
 inline void unknown80041020Retain(void *value){
@@ -100,19 +100,19 @@ extern "C" unsigned char fn_80041024(Unknown80041020 *){ return 1; }
 #pragma auto_inline off
 extern "C" void fn_8004102C(Unknown80041020 *object){
     if(!object->unknown08){
-        Unknown80041020Storage *storage = fn_80037020(fn_80068430(object));
+        Unknown80041020Storage *storage = igContextExtInfoList_create(fn_80068430(object));
         unknown80041020Retain(storage);
         unknown80041020Release(object->unknown08);
         object->unknown08 = storage;
         unknown80041020ReleaseValue(object->unknown08);
         object->slot58();
-        Unknown80041020Metadata *metadata = fn_80065D60(lbl_804676E4);
+        Unknown80041020Metadata *metadata = fn_80065D60(igContextExt_className);
         object->unknown0C = fn_80065CE0(metadata) - 1;
         if(object->unknown0C >= object->unknown08->unknown08) fn_8004155C(object->unknown08, object->unknown0C, 4);
         fn_800691E8(object->unknown08, object->unknown0C);
         for(Gap::igInt index = 0; index < object->unknown0C; ++index){
             Unknown80041020Metadata *element = fn_80065C34(metadata, index + 1);
-            Unknown80041020Entry *entry = fn_800371F4(fn_80068430(object));
+            Unknown80041020Entry *entry = igContextExtInfo_create(fn_80068430(object));
             unknown80041020Retain(element);
             unknown80041020Release(entry->unknown08);
             entry->unknown08 = element;
@@ -128,7 +128,7 @@ extern "C" void fn_8004102C(Unknown80041020 *object){
         }
     }
 }
-extern "C" void *fn_800412A0(){ return lbl_80561E00; }
+extern "C" void *fn_800412A0(){ return igContext_meta; }
 extern "C" Unknown80041020Storage *fn_800412A8(Unknown80041020 *object){
     if(!object->unknown08) fn_8004102C(object);
     if(object->unknown0C < 1) return NULL;

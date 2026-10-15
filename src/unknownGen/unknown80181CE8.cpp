@@ -8,11 +8,11 @@ void fn_80188BA4(void *);
 void fn_80188C0C(void *,int);
 void fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
-extern void *lbl_8056491C;
+extern void *igShader_meta;
 }
 static inline void *UnknownGenCast80181CE8_9(void *q){
  void *value1;
- if((q&&(value1=fn_80068128(q,lbl_8056491C),(unsigned char)(int)value1))) return q;
+ if((q&&(value1=fn_80068128(q,igShader_meta),(unsigned char)(int)value1))) return q;
  return 0;
 }
 extern "C" {

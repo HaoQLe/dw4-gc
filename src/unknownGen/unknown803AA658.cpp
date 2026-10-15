@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535D64;
-extern void *lbl_80535D68;
-extern void *lbl_80535D6C;
-extern void *lbl_80535D70;
-extern void *lbl_80535D74;
-extern void *lbl_80535D78;
-extern void *lbl_80535D7C;
-extern void *lbl_80535D84;
-extern void *lbl_80535D88;
+extern void *beNDMWShopSelectB0_meta;
+extern void *beNDMWShopSelectA0_meta;
+extern void *beNDMWShopSelect52_meta;
+extern void *beNDMWShopSelect34_meta;
+extern void *beNDMWShopSelect11_meta;
+extern void *beNDMWShopSelect03_meta;
+extern void *beNDMWShopSelect02_meta;
+extern void *beNDMWShopSelect01_meta;
+extern void *beNDMWShopSelect00_meta;
 }
 extern "C" {
-void *beNDMWShopSelectB0_virtual58(){return lbl_80535D64;}
-void *beNDMWShopSelectA0_virtual58(){return lbl_80535D68;}
-void *beNDMWShopSelect52_virtual58(){return lbl_80535D6C;}
-void *beNDMWShopSelect34_virtual58(){return lbl_80535D70;}
-void *beNDMWShopSelect11_virtual58(){return lbl_80535D74;}
-void *beNDMWShopSelect03_virtual58(){return lbl_80535D78;}
-void *beNDMWShopSelect02_virtual58(){return lbl_80535D7C;}
-void *beNDMWShopSelect01_virtual58(){return lbl_80535D84;}
-void *beNDMWShopSelect00_virtual58(){return lbl_80535D88;}
+void *beNDMWShopSelectB0_virtual58(){return beNDMWShopSelectB0_meta;}
+void *beNDMWShopSelectA0_virtual58(){return beNDMWShopSelectA0_meta;}
+void *beNDMWShopSelect52_virtual58(){return beNDMWShopSelect52_meta;}
+void *beNDMWShopSelect34_virtual58(){return beNDMWShopSelect34_meta;}
+void *beNDMWShopSelect11_virtual58(){return beNDMWShopSelect11_meta;}
+void *beNDMWShopSelect03_virtual58(){return beNDMWShopSelect03_meta;}
+void *beNDMWShopSelect02_virtual58(){return beNDMWShopSelect02_meta;}
+void *beNDMWShopSelect01_virtual58(){return beNDMWShopSelect01_meta;}
+void *beNDMWShopSelect00_virtual58(){return beNDMWShopSelect00_meta;}
 }
 #pragma pop

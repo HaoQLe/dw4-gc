@@ -12,7 +12,7 @@ extern char lbl_8055F360[8];
 extern char lbl_8055F378[8];
 extern char lbl_8055F380[8];
 extern char lbl_8055F388[8];
-extern void *lbl_8056395C;
+extern void *igSphere_meta;
 extern char lbl_805669D8[4];
 extern char lbl_805669DC[4];
 }
@@ -24,7 +24,7 @@ struct UnknownGenL8011F6AC_8 {
 extern "C" {
 void igSphere_fieldInit(){
  UnknownGenL8011F6AC_8 local0;
- void *value0=lbl_8056395C;
+ void *value0=igSphere_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F360,2);
  void *value2=fn_800658E4(value0,value1);

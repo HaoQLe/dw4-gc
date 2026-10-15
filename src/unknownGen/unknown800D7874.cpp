@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_800D7994();
+void igGamecubeVertexArray1_1_registerNow();
 extern void *lbl_805621F4;
-extern void *lbl_805633C0;
+extern void *igGamecubeVertexArray1_1_meta;
 }
 extern "C" {
 void *fn_800D7874(){
- if(!lbl_805633C0) lbl_805633C0=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805633C0;
+ if(!igGamecubeVertexArray1_1_meta) igGamecubeVertexArray1_1_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igGamecubeVertexArray1_1_meta;
 }
 void *igGamecubeVertexArray1_1_getMeta(){
- if(!lbl_805633C0 || !(reinterpret_cast<unsigned int *>(lbl_805633C0)[0x24/4]&4)) fn_800D7994();
- return lbl_805633C0;
+ if(!igGamecubeVertexArray1_1_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexArray1_1_meta)[0x24/4]&4)) igGamecubeVertexArray1_1_registerNow();
+ return igGamecubeVertexArray1_1_meta;
 }
 }
 #pragma pop

@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
-extern char lbl_804D9F7C[];
+extern char igNamedObject_vtable[];
+extern char beMovieInfoData_vtable[];
 extern char lbl_804DBC50[];
 }
 struct UnknownGenRoot802C4B60 {
@@ -15,7 +15,7 @@ struct UnknownGenRoot802C4B60 {
 struct UnknownGenObject802C4B60_0 : UnknownGenRoot802C4B60 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject802C4B60_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject802C4B60_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject802C4B60_1 : UnknownGenObject802C4B60_0 {
  inline ~UnknownGenObject802C4B60_1(){unknown00=lbl_804DBC50;}
@@ -26,15 +26,15 @@ struct UnknownGenObject802C4B60 : UnknownGenObject802C4B60_1 {
  UnknownGenString unknown14;
  UnknownGenRefMember unknown18;
  char unknown1C[12];
- inline ~UnknownGenObject802C4B60(){unknown00=lbl_804D9F7C;}
+ inline ~UnknownGenObject802C4B60(){unknown00=beMovieInfoData_vtable;}
 };
 extern "C" {
 void *beMovieInfoData_vtableRead(){
  UnknownGenObject802C4B60 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
  object.unknown00=lbl_804DBC50;
- object.unknown00=lbl_804D9F7C;
+ object.unknown00=beMovieInfoData_vtable;
  object.unknown10.value=0;
  object.unknown14.value=0;
  object.unknown18.value=0;

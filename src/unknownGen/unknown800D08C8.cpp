@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
-void fn_800D0B24();
+void igPointSpriteExt_registerNow();
 extern char lbl_80488B24[];
 extern char lbl_80488B84[];
 extern char lbl_8055EAE4[8];
@@ -15,7 +15,7 @@ extern char lbl_8055EAFC[8];
 extern void *lbl_805621F4;
 extern void *lbl_80562E34;
 extern void *lbl_80562E38;
-extern void *lbl_80562E3C;
+extern void *igPointSpriteExt_meta;
 }
 extern "C" {
 void *fn_800D08C8(){
@@ -35,12 +35,12 @@ void *fn_800D0910(){
  return lbl_80562E38;
 }
 void *fn_800D0958(){
- if(!lbl_80562E3C) lbl_80562E3C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80562E3C;
+ if(!igPointSpriteExt_meta) igPointSpriteExt_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igPointSpriteExt_meta;
 }
 void *igPointSpriteExt_getMeta(){
- if(!lbl_80562E3C || !(reinterpret_cast<unsigned int *>(lbl_80562E3C)[0x24/4]&4)) fn_800D0B24();
- return lbl_80562E3C;
+ if(!igPointSpriteExt_meta || !(reinterpret_cast<unsigned int *>(igPointSpriteExt_meta)[0x24/4]&4)) igPointSpriteExt_registerNow();
+ return igPointSpriteExt_meta;
 }
 }
 #pragma pop

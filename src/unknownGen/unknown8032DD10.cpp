@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_8032DF9C();
-extern void *lbl_80535E64;
+void *meta_createInstance(void *,void *);
+void beNDMWShopCtrlA2_registerNow();
+extern void *beNDMWShopCtrlA2_meta;
 }
 extern "C" {
-void *fn_8032DD10(void *object){
- fn_8032DF9C();
- return fn_8006546C(lbl_80535E64,object);
+void *beNDMWShopCtrlA2_create(void *object){
+ beNDMWShopCtrlA2_registerNow();
+ return meta_createInstance(beNDMWShopCtrlA2_meta,object);
 }
 void *beNDMWShopCtrlA2_getMeta(){
- if(!lbl_80535E64 || !(reinterpret_cast<unsigned int *>(lbl_80535E64)[0x24/4]&4)) fn_8032DF9C();
- return lbl_80535E64;
+ if(!beNDMWShopCtrlA2_meta || !(reinterpret_cast<unsigned int *>(beNDMWShopCtrlA2_meta)[0x24/4]&4)) beNDMWShopCtrlA2_registerNow();
+ return beNDMWShopCtrlA2_meta;
 }
 }
 #pragma pop

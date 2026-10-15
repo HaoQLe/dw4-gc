@@ -4,7 +4,7 @@
 extern "C" {
 void fn_80066DFC(void *);
 void fn_801CE7C0(void *,int);
-extern char lbl_804B3068[];
+extern char igGamecubeEnvironmentMapShader_vtable[];
 }
 extern "C" {
 void *fn_801CE69C(int p0,int p1){
@@ -17,7 +17,7 @@ void *fn_801CE69C(int p0,int p1){
  void *value6;
  void *value7;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804B3068;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igGamecubeEnvironmentMapShader_vtable;
   if((int)(p0+128)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+128);
    if(value0){

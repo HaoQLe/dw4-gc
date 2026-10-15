@@ -4,14 +4,14 @@
 extern "C" {
 void fn_80066DFC(void *);
 void fn_801B1950(void *,int);
-extern char lbl_804B40C4[];
+extern char igMultiTextureShader_vtable[];
 }
 extern "C" {
 void *fn_801B7948(int p0,int p1){
  void *value0;
  void *value1;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804B40C4;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igMultiTextureShader_vtable;
   if((int)(p0+68)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68);
    if(value0){

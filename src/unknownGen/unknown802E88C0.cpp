@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535888;
+extern void *ParticleInfo_meta;
 }
 extern "C" {
-void *ParticleInfo_virtual58(){return lbl_80535888;}
+void *ParticleInfo_virtual58(){return ParticleInfo_meta;}
 }
 #pragma pop

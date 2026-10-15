@@ -3,31 +3,31 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800237D0();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void igInterfaced_fieldInit();
 void igObject_register();
 void igOptVisitObject_register();
-extern char lbl_8049E7B8[];
+extern char igInternalizeShader_className[];
 extern char lbl_8049E7CC[];
-extern char lbl_8049E7E8[];
+extern char igInterfaced_className[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
-extern char lbl_804A63C8[];
+extern char igInternalizeShader_vtable[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern void *lbl_80564178;
-extern void *lbl_8056417C;
+extern void *igInternalizeShader_meta;
+extern void *igInterfaced_meta;
 void *igInternalizeShader_getMeta();
 void *igInternalizeShader_vtableRead();
-void fn_801464E8();
+void igInternalizeShader_registerNow();
 void igInternalizeShader_register();
 void *igInternalizeShader_getMetaCall();
 void *igInterfaced_getMeta();
-void fn_801465D4();
+void igInterfaced_registerNow();
 void igInterfaced_register();
 void *igInterfaced_getMetaCall();
 }
@@ -48,12 +48,12 @@ struct UnknownGenObject801463A8_1 : UnknownGenObject801463A8_0 {
 };
 struct UnknownGenObject801463A8 : UnknownGenObject801463A8_1 {
  char unknown2C[12];
- inline ~UnknownGenObject801463A8(){unknown00=lbl_804A63C8;}
+ inline ~UnknownGenObject801463A8(){unknown00=igInternalizeShader_vtable;}
 };
 extern "C" {
 void *igInternalizeShader_getMeta(){
- if(!lbl_80564178 || !(reinterpret_cast<unsigned int *>(lbl_80564178)[0x24/4]&4)) fn_801464E8();
- return lbl_80564178;
+ if(!igInternalizeShader_meta || !(reinterpret_cast<unsigned int *>(igInternalizeShader_meta)[0x24/4]&4)) igInternalizeShader_registerNow();
+ return igInternalizeShader_meta;
 }
 void *igInternalizeShader_vtableRead(){
  UnknownGenObject801463A8 object;
@@ -64,27 +64,27 @@ void *igInternalizeShader_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A63C8;
+ object.unknown00=igInternalizeShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801464E8(){
- fn_80066188((int)igInternalizeShader_register);
+void igInternalizeShader_registerNow(){
+ meta_registerNow((int)igInternalizeShader_register);
 }
 void igInternalizeShader_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564178,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igInternalizeShader_getMetaCall,(int)lbl_8049E7B8,44,(int)igInternalizeShader_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igInternalizeShader_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igInternalizeShader_getMetaCall,(int)igInternalizeShader_className,44,(int)igInternalizeShader_vtableRead,0,0,0);
 }
 void *igInternalizeShader_getMetaCall(){return igInternalizeShader_getMeta();}
 void *igInterfaced_getMeta(){
- if(!lbl_8056417C || !(reinterpret_cast<unsigned int *>(lbl_8056417C)[0x24/4]&4)) fn_801465D4();
- return lbl_8056417C;
+ if(!igInterfaced_meta || !(reinterpret_cast<unsigned int *>(igInterfaced_meta)[0x24/4]&4)) igInterfaced_registerNow();
+ return igInterfaced_meta;
 }
-void fn_801465D4(){
- fn_80066188((int)igInterfaced_register);
+void igInterfaced_registerNow(){
+ meta_registerNow((int)igInterfaced_register);
 }
 void igInterfaced_register(){
  fn_8012FC48();
- fn_80066204(1,(int)&lbl_8056417C,(int)igObject_register,(int)fn_800237D0,(int)igInterfaced_getMetaCall,(int)lbl_8049E7E8,32,0,(int)igInterfaced_fieldInit,0,(int)lbl_8049E7CC);
+ meta_registerClass(1,(int)&igInterfaced_meta,(int)igObject_register,(int)fn_800237D0,(int)igInterfaced_getMetaCall,(int)igInterfaced_className,32,0,(int)igInterfaced_fieldInit,0,(int)lbl_8049E7CC);
 }
 void *igInterfaced_getMetaCall(){return igInterfaced_getMeta();}
 }

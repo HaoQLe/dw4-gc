@@ -8,11 +8,11 @@ void *fn_8018810C(void *,void *);
 void *fn_80188264(void *);
 extern void *kFailure__3Gap;
 extern void *kSuccess__3Gap;
-extern void *lbl_805616E8;
+extern void *igObjectRefMetaField_meta;
 }
 static inline void *UnknownGenCast801A98C4_11(void *q){
  void *value2;
- if(((int)(int)q!=0&&(value2=fn_80068128(q,lbl_805616E8),(unsigned char)(int)value2))) return q;
+ if(((int)(int)q!=0&&(value2=fn_80068128(q,igObjectRefMetaField_meta),(unsigned char)(int)value2))) return q;
  return 0;
 }
 extern "C" {

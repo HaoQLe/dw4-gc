@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80342FAC(void *);
+void *beNDMWItemBlueArmor_create(void *);
 }
 extern "C" {
 void *fn_8037870C(int p0,int p1){
- void *value0=fn_80342FAC(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+0));
+ void *value0=beNDMWItemBlueArmor_create(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+0));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value0;
  return (void *)p0;
 }

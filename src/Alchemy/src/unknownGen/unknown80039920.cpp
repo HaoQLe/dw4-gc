@@ -5,18 +5,18 @@ extern "C" {
 void fn_80021B94();
 void *fn_80038F58();
 void fn_80058ABC(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igMemoryPool_register();
 void igStackMemoryPool_fieldInit();
-extern char lbl_80467F64[];
-extern char lbl_8046F904[];
+extern char igStackMemoryPool_className[];
+extern char igStackMemoryPool_vtable[];
 extern char lbl_8055D6B8[8];
-extern void *lbl_80561F24;
+extern void *igStackMemoryPool_meta;
 void *igStackMemoryPool_getMeta();
 void *igStackMemoryPool_vtableRead();
-void fn_80039A1C();
+void igStackMemoryPool_registerNow();
 void igStackMemoryPool_register();
 void *igStackMemoryPool_getMetaCall();
 }
@@ -29,29 +29,29 @@ struct UnknownGenObject80039994 : UnknownGenRoot80039994 {
  char unknown04[144];
  UnknownGenRefMember unknown94;
  char unknown98[8];
- inline ~UnknownGenObject80039994(){unknown00=lbl_8046F904;}
+ inline ~UnknownGenObject80039994(){unknown00=igStackMemoryPool_vtable;}
 };
 extern "C" {
-void *fn_80039920(void *object){
- fn_80039A1C();
- return fn_8006546C(lbl_80561F24,object);
+void *igStackMemoryPool_create(void *object){
+ igStackMemoryPool_registerNow();
+ return meta_createInstance(igStackMemoryPool_meta,object);
 }
 void *igStackMemoryPool_getMeta(){
- if(!lbl_80561F24 || !(reinterpret_cast<unsigned int *>(lbl_80561F24)[0x24/4]&4)) fn_80039A1C();
- return lbl_80561F24;
+ if(!igStackMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igStackMemoryPool_meta)[0x24/4]&4)) igStackMemoryPool_registerNow();
+ return igStackMemoryPool_meta;
 }
 void *igStackMemoryPool_vtableRead(){
  UnknownGenObject80039994 object;
- object.unknown00=lbl_8046F904;
+ object.unknown00=igStackMemoryPool_vtable;
  object.unknown94.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80039A1C(){
- fn_80066188((int)igStackMemoryPool_register);
+void igStackMemoryPool_registerNow(){
+ meta_registerNow((int)igStackMemoryPool_register);
 }
 void igStackMemoryPool_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561F24,(int)igMemoryPool_register,(int)fn_80038F58,(int)igStackMemoryPool_getMetaCall,(int)lbl_80467F64,152,(int)igStackMemoryPool_vtableRead,(int)igStackMemoryPool_fieldInit,0,(int)lbl_8055D6B8);
+ meta_registerClass(0,(int)&igStackMemoryPool_meta,(int)igMemoryPool_register,(int)fn_80038F58,(int)igStackMemoryPool_getMetaCall,(int)igStackMemoryPool_className,152,(int)igStackMemoryPool_vtableRead,(int)igStackMemoryPool_fieldInit,0,(int)lbl_8055D6B8);
 }
 void *igStackMemoryPool_getMetaCall(){return igStackMemoryPool_getMeta();}
 }

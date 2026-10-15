@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535FCC;
+extern void *beNDMWStageCtlInfo_meta;
 }
 extern "C" {
-void *beNDMWStageCtl_virtual80(){return lbl_80535FCC;}
+void *beNDMWStageCtl_virtual80(){return beNDMWStageCtlInfo_meta;}
 }
 #pragma pop

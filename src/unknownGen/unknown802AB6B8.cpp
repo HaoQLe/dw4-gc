@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804CD764[];
+extern char igAdxAudio_vtable[];
 }
 struct UnknownGenRoot802AB6B8 {
  void *unknown00;
@@ -14,12 +14,12 @@ struct UnknownGenObject802AB6B8 : UnknownGenRoot802AB6B8 {
  char unknown04[36];
  UnknownGenString unknown28;
  char unknown2C[4];
- inline ~UnknownGenObject802AB6B8(){unknown00=lbl_804CD764;}
+ inline ~UnknownGenObject802AB6B8(){unknown00=igAdxAudio_vtable;}
 };
 extern "C" {
 void *igAdxAudio_vtableRead(){
  UnknownGenObject802AB6B8 object;
- object.unknown00=lbl_804CD764;
+ object.unknown00=igAdxAudio_vtable;
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

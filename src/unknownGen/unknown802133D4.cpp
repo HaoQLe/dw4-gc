@@ -3,9 +3,9 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800607F4(void *);
-void *fn_800ADBFC(void *);
-void *fn_800ADE3C(void *);
-void *fn_800B51C4(void *);
+void *igTextureStateAttr_create(void *);
+void *igTextureMatrixStateAttr_create(void *);
+void *igLightingStateAttr_create(void *);
 void fn_801E6400();
 void fn_801E6530(void *);
 extern void *lbl_805621F0;
@@ -386,7 +386,7 @@ void igGamecubeEnvironmentMapShader_virtualC4(){
     fn_80066E1C(value0);
    }
   }
-  value13=fn_800ADE3C(value12);
+  value13=igTextureMatrixStateAttr_create(value12);
   lbl_8056598C=value13;
   reinterpret_cast<UnknownGenV802133D4_0 *>(value13)->s80((void *)0);
   reinterpret_cast<UnknownGenV802133D4_1 *>(lbl_8056598C)->s64((void *)0);
@@ -401,7 +401,7 @@ void igGamecubeEnvironmentMapShader_virtualC4(){
     fn_80066E1C(value2);
    }
   }
-  value15=fn_800ADBFC(value14);
+  value15=igTextureStateAttr_create(value14);
   lbl_80565990=value15;
   reinterpret_cast<UnknownGenV802133D4_2 *>(value15)->s80((void *)1);
   reinterpret_cast<UnknownGenV802133D4_3 *>(lbl_80565990)->s64((void *)1);
@@ -416,7 +416,7 @@ void igGamecubeEnvironmentMapShader_virtualC4(){
     fn_80066E1C(value4);
    }
   }
-  value17=fn_800ADBFC(value16);
+  value17=igTextureStateAttr_create(value16);
   lbl_80565994=value17;
   reinterpret_cast<UnknownGenV802133D4_4 *>(value17)->s80((void *)1);
   reinterpret_cast<UnknownGenV802133D4_5 *>(lbl_80565994)->s64((void *)2);
@@ -431,7 +431,7 @@ void igGamecubeEnvironmentMapShader_virtualC4(){
     fn_80066E1C(value6);
    }
   }
-  value19=fn_800ADBFC(value18);
+  value19=igTextureStateAttr_create(value18);
   lbl_80565998=value19;
   reinterpret_cast<UnknownGenV802133D4_6 *>(value19)->s80((void *)1);
   reinterpret_cast<UnknownGenV802133D4_7 *>(lbl_80565998)->s64((void *)5);
@@ -446,7 +446,7 @@ void igGamecubeEnvironmentMapShader_virtualC4(){
     fn_80066E1C(value8);
    }
   }
-  value21=fn_800ADBFC(value20);
+  value21=igTextureStateAttr_create(value20);
   lbl_8056599C=value21;
   reinterpret_cast<UnknownGenV802133D4_8 *>(value21)->s80((void *)1);
   reinterpret_cast<UnknownGenV802133D4_9 *>(lbl_8056599C)->s64((void *)6);
@@ -461,7 +461,7 @@ void igGamecubeEnvironmentMapShader_virtualC4(){
     fn_80066E1C(value10);
    }
   }
-  value23=fn_800B51C4(value22);
+  value23=igLightingStateAttr_create(value22);
   lbl_805659A0=value23;
   reinterpret_cast<UnknownGenV802133D4_10 *>(value23)->s80((void *)0);
   return;

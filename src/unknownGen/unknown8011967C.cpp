@@ -5,11 +5,11 @@
 extern "C" {
 void *fn_80068128(void *,void *);
 void *fn_801EA984(void *);
-extern void *lbl_80563710;
+extern void *igGuiComponentNode_meta;
 }
 static inline void *UnknownGenCast8011967C_14(void *q){
  void *value3;
- if((q&&(value3=fn_80068128(q,lbl_80563710),(unsigned char)(int)value3))) return q;
+ if((q&&(value3=fn_80068128(q,igGuiComponentNode_meta),(unsigned char)(int)value3))) return q;
  return 0;
 }
 extern "C" {

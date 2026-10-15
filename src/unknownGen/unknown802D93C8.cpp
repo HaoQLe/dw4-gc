@@ -11,11 +11,11 @@ extern char lbl_804D2030[];
 extern char lbl_804D2034[];
 extern char lbl_804D2038[];
 extern char lbl_804D203C[];
-extern void *lbl_8053533C;
+extern void *beUnicodeObj_meta;
 }
 extern "C" {
 void beUnicodeObj_fieldInit(){
- void *value0=lbl_8053533C;
+ void *value0=beUnicodeObj_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2030,1);
  void *value2=fn_800658E4(value0,value1);

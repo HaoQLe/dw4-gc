@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_802BC864();
-extern void *lbl_80534858;
+void beXboxImage24k_registerNow();
+extern void *beXboxImage24k_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802BC77C(){
- if(!lbl_80534858) lbl_80534858=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80534858;
+void *beXboxImage24k_metaObject(){
+ if(!beXboxImage24k_meta) beXboxImage24k_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beXboxImage24k_meta;
 }
 void *beXboxImage24k_getMeta(){
- if(!lbl_80534858 || !(reinterpret_cast<unsigned int *>(lbl_80534858)[0x24/4]&4)) fn_802BC864();
- return lbl_80534858;
+ if(!beXboxImage24k_meta || !(reinterpret_cast<unsigned int *>(beXboxImage24k_meta)[0x24/4]&4)) beXboxImage24k_registerNow();
+ return beXboxImage24k_meta;
 }
 }
 #pragma pop

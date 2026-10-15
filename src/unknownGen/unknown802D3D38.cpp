@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802D403C();
-extern void *lbl_80535174;
+void beLOA_registerNow();
+extern void *beLOA_meta;
 }
 extern "C" {
 void *beLOA_getMeta(){
- if(!lbl_80535174 || !(reinterpret_cast<unsigned int *>(lbl_80535174)[0x24/4]&4)) fn_802D403C();
- return lbl_80535174;
+ if(!beLOA_meta || !(reinterpret_cast<unsigned int *>(beLOA_meta)[0x24/4]&4)) beLOA_registerNow();
+ return beLOA_meta;
 }
 }
 #pragma pop

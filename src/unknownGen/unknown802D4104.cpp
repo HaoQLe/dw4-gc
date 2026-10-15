@@ -16,7 +16,7 @@ extern char lbl_804D19B8[];
 extern char lbl_804D19E0[];
 extern char lbl_804D1A08[];
 extern char lbl_804D1A30[];
-extern void *lbl_80535174;
+extern void *beLOA_meta;
 }
 struct UnknownGenL802D4104_8 {
  float m08;
@@ -27,7 +27,7 @@ struct UnknownGenL802D4104_8 {
 extern "C" {
 void beLOA_fieldInit(){
  UnknownGenL802D4104_8 local0;
- void *value0=lbl_80535174;
+ void *value0=beLOA_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D19B8,10);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+5));

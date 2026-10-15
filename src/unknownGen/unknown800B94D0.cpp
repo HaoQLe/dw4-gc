@@ -13,7 +13,7 @@ extern char lbl_8055E5F0[8];
 extern char lbl_8055E5F8[8];
 extern char lbl_8055E600[8];
 extern char lbl_8055E608[8];
-extern void *lbl_80562994;
+extern void *igColorAttr_meta;
 extern char lbl_80566810[4];
 }
 struct UnknownGenL800B94D0_8 {
@@ -25,7 +25,7 @@ struct UnknownGenL800B94D0_8 {
 extern "C" {
 void igColorAttr_fieldInit(){
  UnknownGenL800B94D0_8 local0;
- void *value0=lbl_80562994;
+ void *value0=igColorAttr_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055E5F0,2);
  void *value2=fn_800658E4(value0,value1);

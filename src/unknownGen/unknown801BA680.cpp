@@ -2,15 +2,15 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_8006665C(void *);
 void fn_801BA7A8(void *,short);
-void fn_801BA980();
-extern char lbl_804B4254[];
+void igMorphBase_registerNow();
+extern char igMorphBase_vtable[];
 extern void *lbl_805621F4;
-extern void *lbl_80564D48;
+extern void *igMorphBase_meta;
 }
 struct UnknownGenObject801BA730 {
  void *unknown00;
@@ -28,22 +28,22 @@ struct UnknownGenObject801BA730 {
  char unknown3C[4];
 };
 extern "C" {
-void *fn_801BA680(void *object){
- fn_801BA980();
- return fn_8006546C(lbl_80564D48,object);
+void *igMorphBase_create(void *object){
+ igMorphBase_registerNow();
+ return meta_createInstance(igMorphBase_meta,object);
 }
 void *fn_801BA6B8(){
- if(!lbl_80564D48) lbl_80564D48=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564D48;
+ if(!igMorphBase_meta) igMorphBase_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igMorphBase_meta;
 }
 void *igMorphBase_getMeta(){
- if(!lbl_80564D48 || !(reinterpret_cast<unsigned int *>(lbl_80564D48)[0x24/4]&4)) fn_801BA980();
- return lbl_80564D48;
+ if(!igMorphBase_meta || !(reinterpret_cast<unsigned int *>(igMorphBase_meta)[0x24/4]&4)) igMorphBase_registerNow();
+ return igMorphBase_meta;
 }
 void *igMorphBase_vtableRead(){
  UnknownGenObject801BA730 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804B4254;
+ object.unknown00=igMorphBase_vtable;
  object.unknown08=0;
  object.unknown0C=0;
  object.unknown18=0;

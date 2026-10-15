@@ -9,9 +9,9 @@ extern "C" {
 void fn_8028A398(void *,void *);
 void fn_8028A400(void *,void *);
 void *fn_8028A730(void *,void *);
-extern void *lbl_805346A8;
-extern void *lbl_80534FBC;
-extern void *lbl_8055C788;
+extern void *beSystem_meta;
+extern void *beMessenger_meta;
+extern void *igViewerSceneInfoManager_meta;
 }
 extern "C" {
 void beFileListInfoManager_virtual5C(int p0){
@@ -21,11 +21,11 @@ void beFileListInfoManager_virtual60(int p0){
  fn_8028A400(reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_insight,(void *)p0);
 }
 void beFileListInfoManager_virtual64(int p0){
- void *value0=fn_8028A730(reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_insight,lbl_805346A8);
+ void *value0=fn_8028A730(reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_insight,beSystem_meta);
  reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_system=(Meta::beSystem *)value0;
- void *value1=fn_8028A730(reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_insight,lbl_80534FBC);
+ void *value1=fn_8028A730(reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_insight,beMessenger_meta);
  reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_messenger=(Meta::beMessenger *)value1;
- void *value2=fn_8028A730(reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_insight,lbl_8055C788);
+ void *value2=fn_8028A730(reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_insight,igViewerSceneInfoManager_meta);
  reinterpret_cast<Meta::beFileListInfoManager *>((void *)p0)->_sceneInfoManager=(Meta::igViewerSceneInfoManager *)value2;
 }
 }

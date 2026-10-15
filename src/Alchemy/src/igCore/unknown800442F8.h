@@ -84,12 +84,12 @@ struct Unknown800442F8Owner {
     const char *unknown34;
 };
 extern "C" {
-    Unknown80042DECValue *fn_80024B5C(void *);
-    Unknown80042DECValue *fn_80024FB4(void *);
-    Unknown800442F8Stream *fn_8002FFC8(void *);
-    Unknown800442F8Stream *fn_8002F744(void *);
-    Unknown80042DECValue *fn_80026ADC(void *);
-    Unknown800442F8Nodes *fn_800338FC(void *);
+    Unknown80042DECValue *igStringRefList_create(void *);
+    Unknown80042DECValue *igStringObj_create(void *);
+    Unknown800442F8Stream *igFile_create(void *);
+    Unknown800442F8Stream *igFolder_create(void *);
+    Unknown80042DECValue *igRegistry_create(void *);
+    Unknown800442F8Nodes *igDataList_create(void *);
     int fn_8004270C(void *, const Unknown800442F8String &, int);
     void fn_8002080C(void *, const Unknown800442F8String &);
     Unknown800442F8String fn_800218F4(void *, int);

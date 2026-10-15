@@ -4,12 +4,12 @@
 extern "C" {
 void arkRegister__Q33Gap4Core10igResourceFv();
 void fn_800265C0(void *,short);
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_8006665C(void *);
-extern char lbl_804712CC[];
-extern void *lbl_80561610;
+extern char igResource_vtable[];
+extern void *igResource_meta;
 extern void *lbl_805621F4;
 }
 struct UnknownGenObject8002653C {
@@ -32,22 +32,22 @@ struct UnknownGenObject8002653C {
  char unknown44[12];
 };
 extern "C" {
-void *fn_8002648C(void *object){
+void *igResource_create(void *object){
  arkRegister__Q33Gap4Core10igResourceFv();
- return fn_8006546C(lbl_80561610,object);
+ return meta_createInstance(igResource_meta,object);
 }
 void *fn_800264C4(){
- if(!lbl_80561610) lbl_80561610=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80561610;
+ if(!igResource_meta) igResource_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igResource_meta;
 }
 void *igResource_getMeta(){
- if(!lbl_80561610 || !(reinterpret_cast<unsigned int *>(lbl_80561610)[0x24/4]&4)) arkRegister__Q33Gap4Core10igResourceFv();
- return lbl_80561610;
+ if(!igResource_meta || !(reinterpret_cast<unsigned int *>(igResource_meta)[0x24/4]&4)) arkRegister__Q33Gap4Core10igResourceFv();
+ return igResource_meta;
 }
 void *igResource_vtableRead(){
  UnknownGenObject8002653C object;
  fn_8006665C(&object);
- object.unknown00=lbl_804712CC;
+ object.unknown00=igResource_vtable;
  object.unknown0C=0;
  object.unknown10=0;
  object.unknown14=0;

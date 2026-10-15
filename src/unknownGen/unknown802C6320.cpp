@@ -2,27 +2,27 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_802C6C54();
+void *meta_createInstance(void *,void *);
+void beModelCtrlInfoWork_registerNow();
 void *fn_8030FEB0();
-extern void *lbl_80534C64;
+extern void *beModelCtrlInfoWork_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *fn_802C6320(){return fn_8030FEB0();}
-void *fn_802C6340(void *object){
- fn_802C6C54();
- return fn_8006546C(lbl_80534C64,object);
+void *beModelCtrlInfoWork_create(void *object){
+ beModelCtrlInfoWork_registerNow();
+ return meta_createInstance(beModelCtrlInfoWork_meta,object);
 }
-void *fn_802C6380(){
- if(!lbl_80534C64) lbl_80534C64=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80534C64;
+void *beModelCtrlInfoWork_metaObject(){
+ if(!beModelCtrlInfoWork_meta) beModelCtrlInfoWork_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beModelCtrlInfoWork_meta;
 }
 void *beModelCtrlInfoWork_getMeta(){
- if(!lbl_80534C64 || !(reinterpret_cast<unsigned int *>(lbl_80534C64)[0x24/4]&4)) fn_802C6C54();
- return lbl_80534C64;
+ if(!beModelCtrlInfoWork_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlInfoWork_meta)[0x24/4]&4)) beModelCtrlInfoWork_registerNow();
+ return beModelCtrlInfoWork_meta;
 }
 }
 #pragma pop

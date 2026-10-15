@@ -6,8 +6,8 @@ void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *fn_80071694(void *,void *);
 void fn_8012FC48();
@@ -15,11 +15,11 @@ void *fn_8012FEB0();
 void igOptVisitObject_register();
 void igPhotoshopScript_fieldInit();
 extern char lbl_8049D19C[];
-extern char lbl_8049D1AC[];
+extern char igPromoteAllAttrs_className[];
 extern char lbl_8049D1D0[];
-extern char lbl_8049D2AC[];
-extern char lbl_804A41D0[];
-extern char lbl_804A426C[];
+extern char igPhotoshopScript_className[];
+extern char igPromoteAllAttrs_vtable[];
+extern char igPhotoshopScript_vtable[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
@@ -28,17 +28,17 @@ extern char lbl_8055F6FC[8];
 extern char lbl_8055F704[8];
 extern char lbl_8055F70C[8];
 extern char lbl_8055F714[8];
-extern void *lbl_80563DAC;
-extern void *lbl_80563DB8;
+extern void *igPromoteAllAttrs_meta;
+extern void *igPhotoshopScript_meta;
 void *igPromoteAllAttrs_getMeta();
 void *igPromoteAllAttrs_vtableRead();
-void fn_80138920();
+void igPromoteAllAttrs_registerNow();
 void igPromoteAllAttrs_register();
 void *igPromoteAllAttrs_getMetaCall();
 void igPromoteAllAttrs_fieldInit();
 void *igPhotoshopScript_getMeta();
 void *igPhotoshopScript_vtableRead();
-void fn_80138C2C();
+void igPhotoshopScript_registerNow();
 void igPhotoshopScript_register();
 void *igPhotoshopScript_getMetaCall();
 }
@@ -61,7 +61,7 @@ struct UnknownGenObject80138768 : UnknownGenObject80138768_1 {
  UnknownGenString unknown2C;
  UnknownGenString unknown30;
  char unknown34[12];
- inline ~UnknownGenObject80138768(){unknown00=lbl_804A41D0;}
+ inline ~UnknownGenObject80138768(){unknown00=igPromoteAllAttrs_vtable;}
 };
 struct UnknownGenRoot80138AAC {
  void *unknown00;
@@ -81,12 +81,12 @@ struct UnknownGenObject80138AAC_1 : UnknownGenObject80138AAC_0 {
 struct UnknownGenObject80138AAC : UnknownGenObject80138AAC_1 {
  UnknownGenString unknown2C;
  char unknown30[8];
- inline ~UnknownGenObject80138AAC(){unknown00=lbl_804A426C;}
+ inline ~UnknownGenObject80138AAC(){unknown00=igPhotoshopScript_vtable;}
 };
 extern "C" {
 void *igPromoteAllAttrs_getMeta(){
- if(!lbl_80563DAC || !(reinterpret_cast<unsigned int *>(lbl_80563DAC)[0x24/4]&4)) fn_80138920();
- return lbl_80563DAC;
+ if(!igPromoteAllAttrs_meta || !(reinterpret_cast<unsigned int *>(igPromoteAllAttrs_meta)[0x24/4]&4)) igPromoteAllAttrs_registerNow();
+ return igPromoteAllAttrs_meta;
 }
 void *igPromoteAllAttrs_vtableRead(){
  UnknownGenObject80138768 object;
@@ -97,21 +97,21 @@ void *igPromoteAllAttrs_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A41D0;
+ object.unknown00=igPromoteAllAttrs_vtable;
  object.unknown2C.value=0;
  object.unknown30.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80138920(){
- fn_80066188((int)igPromoteAllAttrs_register);
+void igPromoteAllAttrs_registerNow(){
+ meta_registerNow((int)igPromoteAllAttrs_register);
 }
 void igPromoteAllAttrs_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563DAC,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igPromoteAllAttrs_getMetaCall,(int)lbl_8049D1AC,52,(int)igPromoteAllAttrs_vtableRead,(int)igPromoteAllAttrs_fieldInit,0,0);
+ meta_registerClass(0,(int)&igPromoteAllAttrs_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igPromoteAllAttrs_getMetaCall,(int)igPromoteAllAttrs_className,52,(int)igPromoteAllAttrs_vtableRead,(int)igPromoteAllAttrs_fieldInit,0,0);
 }
 void *igPromoteAllAttrs_getMetaCall(){return igPromoteAllAttrs_getMeta();}
 void igPromoteAllAttrs_fieldInit(){
- void *value0=lbl_80563DAC;
+ void *value0=igPromoteAllAttrs_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F6FC,2);
  void *value2=fn_800658E4(value0,value1);
@@ -121,8 +121,8 @@ void igPromoteAllAttrs_fieldInit(){
  fn_800659C0(value0,lbl_8055F704,lbl_8055F70C,lbl_8055F714,value1);
 }
 void *igPhotoshopScript_getMeta(){
- if(!lbl_80563DB8 || !(reinterpret_cast<unsigned int *>(lbl_80563DB8)[0x24/4]&4)) fn_80138C2C();
- return lbl_80563DB8;
+ if(!igPhotoshopScript_meta || !(reinterpret_cast<unsigned int *>(igPhotoshopScript_meta)[0x24/4]&4)) igPhotoshopScript_registerNow();
+ return igPhotoshopScript_meta;
 }
 void *igPhotoshopScript_vtableRead(){
  UnknownGenObject80138AAC object;
@@ -133,16 +133,16 @@ void *igPhotoshopScript_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A426C;
+ object.unknown00=igPhotoshopScript_vtable;
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80138C2C(){
- fn_80066188((int)igPhotoshopScript_register);
+void igPhotoshopScript_registerNow(){
+ meta_registerNow((int)igPhotoshopScript_register);
 }
 void igPhotoshopScript_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563DB8,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igPhotoshopScript_getMetaCall,(int)lbl_8049D2AC,56,(int)igPhotoshopScript_vtableRead,(int)igPhotoshopScript_fieldInit,0,0);
+ meta_registerClass(0,(int)&igPhotoshopScript_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igPhotoshopScript_getMetaCall,(int)igPhotoshopScript_className,56,(int)igPhotoshopScript_vtableRead,(int)igPhotoshopScript_fieldInit,0,0);
 }
 void *igPhotoshopScript_getMetaCall(){return igPhotoshopScript_getMeta();}
 }

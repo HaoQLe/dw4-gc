@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802AA850();
-extern void *lbl_80534350;
+void igAdx_registerNow();
+extern void *igAdx_meta;
 }
 extern "C" {
 void *igAdx_getMeta(){
- if(!lbl_80534350 || !(reinterpret_cast<unsigned int *>(lbl_80534350)[0x24/4]&4)) fn_802AA850();
- return lbl_80534350;
+ if(!igAdx_meta || !(reinterpret_cast<unsigned int *>(igAdx_meta)[0x24/4]&4)) igAdx_registerNow();
+ return igAdx_meta;
 }
 }
 #pragma pop

@@ -5,55 +5,55 @@ extern "C" {
 void *beModelCtrlInfoAI_getMeta();
 void beModelCtrlInfoAI_vtableRead();
 void *fn_800237D0();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void fn_802C822C();
+void beModelCtrlInfoHitBody_registerNow();
 void igObject_register();
-extern char lbl_8041EE64[];
+extern char beModelCtrlInfoAI_className[];
 extern char lbl_804D0B84[];
 extern char lbl_804D0B98[];
 extern char lbl_804D0BAC[];
 extern char lbl_804D0BC0[];
-extern void *lbl_80534D88;
-extern void *lbl_80534DA0;
+extern void *beModelCtrlInfoAI_meta;
+extern void *beModelCtrlInfoHitBody_meta;
 extern void *lbl_805621F4;
 void beModelCtrlInfoAI_register();
 void *beModelCtrlInfoAI_getMetaCall();
 void beModelCtrlInfoAI_fieldInit();
 }
 extern "C" {
-void fn_802C7F00(){
- fn_80066188((int)beModelCtrlInfoAI_register);
+void beModelCtrlInfoAI_registerNow(){
+ meta_registerNow((int)beModelCtrlInfoAI_register);
 }
 void beModelCtrlInfoAI_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)&lbl_80534D88,(int)igObject_register,(int)fn_800237D0,(int)beModelCtrlInfoAI_getMetaCall,(int)lbl_8041EE64,36,(int)beModelCtrlInfoAI_vtableRead,(int)beModelCtrlInfoAI_fieldInit,0,0);
+ meta_registerClass(0,(int)&beModelCtrlInfoAI_meta,(int)igObject_register,(int)fn_800237D0,(int)beModelCtrlInfoAI_getMetaCall,(int)beModelCtrlInfoAI_className,36,(int)beModelCtrlInfoAI_vtableRead,(int)beModelCtrlInfoAI_fieldInit,0,0);
 }
 void *beModelCtrlInfoAI_getMetaCall(){return beModelCtrlInfoAI_getMeta();}
 void beModelCtrlInfoAI_fieldInit(){
- void *meta=lbl_80534D88;
+ void *meta=beModelCtrlInfoAI_meta;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804D0B84,0x5);
  fn_800659C0(meta,lbl_804D0B98,lbl_804D0BAC,lbl_804D0BC0,field);
 }
-void *fn_802C803C(void *object){
- fn_802C822C();
- return fn_8006546C(lbl_80534DA0,object);
+void *beModelCtrlInfoHitBody_create(void *object){
+ beModelCtrlInfoHitBody_registerNow();
+ return meta_createInstance(beModelCtrlInfoHitBody_meta,object);
 }
-void *fn_802C807C(){
- if(!lbl_80534DA0) lbl_80534DA0=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80534DA0;
+void *beModelCtrlInfoHitBody_metaObject(){
+ if(!beModelCtrlInfoHitBody_meta) beModelCtrlInfoHitBody_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beModelCtrlInfoHitBody_meta;
 }
 void *beModelCtrlInfoHitBody_getMeta(){
- if(!lbl_80534DA0 || !(reinterpret_cast<unsigned int *>(lbl_80534DA0)[0x24/4]&4)) fn_802C822C();
- return lbl_80534DA0;
+ if(!beModelCtrlInfoHitBody_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlInfoHitBody_meta)[0x24/4]&4)) beModelCtrlInfoHitBody_registerNow();
+ return beModelCtrlInfoHitBody_meta;
 }
 }
 #pragma pop

@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_802BD6B0();
-extern void *lbl_8053490C;
+void *meta_createInstance(void *,void *);
+void beSvConnectCheck_registerNow();
+extern void *beSvConnectCheck_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802BD440(void *object){
- fn_802BD6B0();
- return fn_8006546C(lbl_8053490C,object);
+void *beSvConnectCheck_create(void *object){
+ beSvConnectCheck_registerNow();
+ return meta_createInstance(beSvConnectCheck_meta,object);
 }
-void *fn_802BD480(){
- if(!lbl_8053490C) lbl_8053490C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_8053490C;
+void *beSvConnectCheck_metaObject(){
+ if(!beSvConnectCheck_meta) beSvConnectCheck_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beSvConnectCheck_meta;
 }
 void *beSvConnectCheck_getMeta(){
- if(!lbl_8053490C || !(reinterpret_cast<unsigned int *>(lbl_8053490C)[0x24/4]&4)) fn_802BD6B0();
- return lbl_8053490C;
+ if(!beSvConnectCheck_meta || !(reinterpret_cast<unsigned int *>(beSvConnectCheck_meta)[0x24/4]&4)) beSvConnectCheck_registerNow();
+ return beSvConnectCheck_meta;
 }
 }
 #pragma pop

@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805361F4;
+extern void *beNDMWMdlMapBase_meta;
 }
 extern "C" {
-void *beNDMWMdlMapBase_virtual58(){return lbl_805361F4;}
+void *beNDMWMdlMapBase_virtual58(){return beNDMWMdlMapBase_meta;}
 }
 #pragma pop

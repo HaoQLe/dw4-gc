@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804DE34C[];
+extern char beHitLandModelOrder_vtable[];
 }
 struct UnknownGenRoot802D5538 {
  void *unknown00;
@@ -18,12 +18,12 @@ struct UnknownGenObject802D5538 : UnknownGenRoot802D5538 {
  char unknown34[4];
  UnknownGenRefMember unknown38;
  char unknown3C[12];
- inline ~UnknownGenObject802D5538(){unknown00=lbl_804DE34C;}
+ inline ~UnknownGenObject802D5538(){unknown00=beHitLandModelOrder_vtable;}
 };
 extern "C" {
 void *beHitLandModelOrder_vtableRead(){
  UnknownGenObject802D5538 object;
- object.unknown00=lbl_804DE34C;
+ object.unknown00=beHitLandModelOrder_vtable;
  object.unknown20.value=0;
  object.unknown30.value=0;
  object.unknown38.value=0;

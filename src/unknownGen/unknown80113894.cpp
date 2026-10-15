@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80113984();
+void igOnOffColorChanger_registerNow();
 extern void *lbl_805621F4;
-extern void *lbl_805637F4;
+extern void *igOnOffColorChanger_meta;
 }
 extern "C" {
 void *fn_80113894(){
- if(!lbl_805637F4) lbl_805637F4=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805637F4;
+ if(!igOnOffColorChanger_meta) igOnOffColorChanger_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igOnOffColorChanger_meta;
 }
 void *igOnOffColorChanger_getMeta(){
- if(!lbl_805637F4 || !(reinterpret_cast<unsigned int *>(lbl_805637F4)[0x24/4]&4)) fn_80113984();
- return lbl_805637F4;
+ if(!igOnOffColorChanger_meta || !(reinterpret_cast<unsigned int *>(igOnOffColorChanger_meta)[0x24/4]&4)) igOnOffColorChanger_registerNow();
+ return igOnOffColorChanger_meta;
 }
 }
 #pragma pop

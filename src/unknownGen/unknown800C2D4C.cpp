@@ -5,7 +5,7 @@
 extern "C" {
 void igGamecubeVisualContext_virtualEC(void *,void *);
 extern char lbl_8047A2B8[];
-extern void *lbl_805625F4;
+extern void *igSpriteAttr_meta;
 extern void *lbl_80562B08;
 }
 class UnknownGenV800C2D54_0 {
@@ -172,7 +172,7 @@ public:
  virtual void s7C();
 };
 extern "C" {
-void *igSpriteAttr_virtual58(){return lbl_805625F4;}
+void *igSpriteAttr_virtual58(){return igSpriteAttr_meta;}
 void igSpriteAttr_virtual68(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  if(!lbl_80562B08){

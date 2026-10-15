@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_802B6E34();
-extern void *lbl_8053468C;
+void *meta_createInstance(void *,void *);
+void beTextureCtrlWork_registerNow();
+extern void *beTextureCtrlWork_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802B6C84(void *object){
- fn_802B6E34();
- return fn_8006546C(lbl_8053468C,object);
+void *beTextureCtrlWork_create(void *object){
+ beTextureCtrlWork_registerNow();
+ return meta_createInstance(beTextureCtrlWork_meta,object);
 }
-void *fn_802B6CC4(){
- if(!lbl_8053468C) lbl_8053468C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_8053468C;
+void *beTextureCtrlWork_metaObject(){
+ if(!beTextureCtrlWork_meta) beTextureCtrlWork_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beTextureCtrlWork_meta;
 }
 void *beTextureCtrlWork_getMeta(){
- if(!lbl_8053468C || !(reinterpret_cast<unsigned int *>(lbl_8053468C)[0x24/4]&4)) fn_802B6E34();
- return lbl_8053468C;
+ if(!beTextureCtrlWork_meta || !(reinterpret_cast<unsigned int *>(beTextureCtrlWork_meta)[0x24/4]&4)) beTextureCtrlWork_registerNow();
+ return beTextureCtrlWork_meta;
 }
 }
 #pragma pop

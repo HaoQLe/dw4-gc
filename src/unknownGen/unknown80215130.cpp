@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_8056465C;
-extern void *lbl_80564668;
-extern void *lbl_8056469C;
-extern void *lbl_805655F4;
+extern void *igVertexArrayHelper_meta;
+extern void *igTraversal_meta;
+extern void *igTransformSequence1_5_meta;
+extern void *igEndianSwappedEnbayaAnimationSource_meta;
 }
 class UnknownGenV80215178_0 {
 public:
@@ -70,15 +70,15 @@ void *igGamecubeEnvironmentMapShader_virtual7C(int p0){
  return (void *)p0;
 }
 int igGamecubeEnvironmentMapShader_virtual68(){return 0;}
-void *igEndianSwappedEnbayaAnimationSource_virtual58(){return lbl_805655F4;}
-void *igVertexArrayHelper_virtual58(){return lbl_8056465C;}
-void *igTraversal_virtual58(){return lbl_80564668;}
+void *igEndianSwappedEnbayaAnimationSource_virtual58(){return igEndianSwappedEnbayaAnimationSource_meta;}
+void *igVertexArrayHelper_virtual58(){return igVertexArrayHelper_meta;}
+void *igTraversal_virtual58(){return igTraversal_meta;}
 void *igTraversal_virtual6C(int p0,int p1,int p2,int p3){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p3;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)p2;
  return (void *)p0;
 }
-void *igTransformSequence1_5_virtual58(){return lbl_8056469C;}
+void *igTransformSequence1_5_virtual58(){return igTransformSequence1_5_meta;}
 void igTransformSequence1_5_virtualD4(int p0){
  reinterpret_cast<UnknownGenV80215178_0 *>((void *)p0)->s64();
 }

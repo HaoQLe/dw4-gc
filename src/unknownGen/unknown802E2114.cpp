@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_802E22A0();
-extern void *lbl_80535634;
+void *meta_createInstance(void *,void *);
+void beCameraCtrlInfoRamShake_registerNow();
+extern void *beCameraCtrlInfoRamShake_meta;
 }
 extern "C" {
-void *fn_802E2114(void *object){
- fn_802E22A0();
- return fn_8006546C(lbl_80535634,object);
+void *beCameraCtrlInfoRamShake_create(void *object){
+ beCameraCtrlInfoRamShake_registerNow();
+ return meta_createInstance(beCameraCtrlInfoRamShake_meta,object);
 }
 void *beCameraCtrlInfoRamShake_getMeta(){
- if(!lbl_80535634 || !(reinterpret_cast<unsigned int *>(lbl_80535634)[0x24/4]&4)) fn_802E22A0();
- return lbl_80535634;
+ if(!beCameraCtrlInfoRamShake_meta || !(reinterpret_cast<unsigned int *>(beCameraCtrlInfoRamShake_meta)[0x24/4]&4)) beCameraCtrlInfoRamShake_registerNow();
+ return beCameraCtrlInfoRamShake_meta;
 }
 }
 #pragma pop

@@ -5,14 +5,14 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805625B0;
-extern void *lbl_805625CC;
-extern void *lbl_805625D4;
-extern void *lbl_8056260C;
-extern void *lbl_80562614;
-extern void *lbl_8056261C;
-extern void *lbl_80562624;
-extern void *lbl_8056263C;
+extern void *igSubTextureBindAttr_meta;
+extern void *igStencilStateAttr_meta;
+extern void *igStencilFunctionAttr_meta;
+extern void *igShadeModelAttr_meta;
+extern void *igSetRenderDestinationAttr_meta;
+extern void *igScissorTypeAttr_meta;
+extern void *igScissorAttr_meta;
+extern void *igSceneAmbientColorAttr_meta;
 extern void *lbl_80562B08;
 }
 class UnknownGenV800C63F0_0 {
@@ -77,9 +77,9 @@ public:
  virtual void * sEC();
 };
 extern "C" {
-void *igSubTextureBindAttr_virtual58(){return lbl_805625B0;}
-void *igStencilStateAttr_virtual58(){return lbl_805625CC;}
-void *igStencilFunctionAttr_virtual58(){return lbl_805625D4;}
+void *igSubTextureBindAttr_virtual58(){return igSubTextureBindAttr_meta;}
+void *igStencilStateAttr_virtual58(){return igStencilStateAttr_meta;}
+void *igStencilFunctionAttr_virtual58(){return igStencilFunctionAttr_meta;}
 int igStencilFunctionAttr_virtual84(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12);}
 void *igStencilFunctionAttr_virtual8C(int p0,int p1,int p2,int p3){
  reinterpret_cast<Meta::igStencilFunctionAttr *>((void *)p0)->_stenFailOp=(Meta::IG_GFX_STENCIL_OPERATION::Value)(int)(void *)p1;
@@ -109,10 +109,10 @@ void *igSpriteAttr_virtual70(int p0){
   return value0;
  }
 }
-void *igShadeModelAttr_virtual58(){return lbl_8056260C;}
-void *igSetRenderDestinationAttr_virtual58(){return lbl_80562614;}
-void *igScissorTypeAttr_virtual58(){return lbl_8056261C;}
-void *igScissorAttr_virtual58(){return lbl_80562624;}
+void *igShadeModelAttr_virtual58(){return igShadeModelAttr_meta;}
+void *igSetRenderDestinationAttr_virtual58(){return igSetRenderDestinationAttr_meta;}
+void *igScissorTypeAttr_virtual58(){return igScissorTypeAttr_meta;}
+void *igScissorAttr_virtual58(){return igScissorAttr_meta;}
 void *igScissorAttr_virtual80(int p0,int p1,int p2,int p3,int p4){
  reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_x=(int)(void *)p1;
  reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_y=(int)(void *)p2;
@@ -120,6 +120,6 @@ void *igScissorAttr_virtual80(int p0,int p1,int p2,int p3,int p4){
  reinterpret_cast<Meta::igScissorAttr *>((void *)p0)->_h=(int)(void *)p4;
  return (void *)p0;
 }
-void *igSceneAmbientColorAttr_virtual58(){return lbl_8056263C;}
+void *igSceneAmbientColorAttr_virtual58(){return igSceneAmbientColorAttr_meta;}
 }
 #pragma pop

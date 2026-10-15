@@ -3,11 +3,11 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_80472FA0[];
+extern char igDataList_vtable[];
 extern char lbl_80476298[];
-extern char lbl_80476C7C[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804D5874[];
+extern char beDataObjList_vtable[];
 }
 struct UnknownGenObject802DC0DC_0 {
  void *unknown00;
@@ -17,11 +17,11 @@ extern "C" {
 void *beDataObjList_vtableRead(){
  UnknownGenObject802DC0DC_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_80476298;
- object.unknown00=lbl_804D5874;
+ object.unknown00=beDataObjList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

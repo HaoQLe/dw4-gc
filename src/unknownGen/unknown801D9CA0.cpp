@@ -4,7 +4,7 @@
 extern "C" {
 void *fn_80065704(void *,int);
 void fn_801EAD50(void *);
-extern void *lbl_805651C0;
+extern void *igCartoonShader_meta;
 extern void *lbl_805656BC;
 extern void *lbl_805656C0;
 extern void *lbl_805656C4;
@@ -40,7 +40,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void *igCartoonShader_virtual58(){return lbl_805651C0;}
+void *igCartoonShader_virtual58(){return igCartoonShader_meta;}
 void igCartoonShader_virtual28(int p0){
  void *value18;
  void *value19;

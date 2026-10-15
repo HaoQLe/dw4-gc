@@ -4,7 +4,7 @@
 extern "C" {
 void fn_8006665C(void *);
 extern char lbl_80496CB8[];
-extern char lbl_804E6F70[];
+extern char beNDMWAfsStageLoad_vtable[];
 }
 struct UnknownGenRoot8034553C {
  void *unknown00;
@@ -14,13 +14,13 @@ struct UnknownGenRoot8034553C {
 struct UnknownGenObject8034553C : UnknownGenRoot8034553C {
  char unknown04[8];
  UnknownGenRefMember unknown0C;
- inline ~UnknownGenObject8034553C(){unknown00=lbl_804E6F70;}
+ inline ~UnknownGenObject8034553C(){unknown00=beNDMWAfsStageLoad_vtable;}
 };
 extern "C" {
 void *beNDMWAfsStageLoad_vtableRead(){
  UnknownGenObject8034553C object;
  object.unknown00=lbl_80496CB8;
- object.unknown00=lbl_804E6F70;
+ object.unknown00=beNDMWAfsStageLoad_vtable;
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

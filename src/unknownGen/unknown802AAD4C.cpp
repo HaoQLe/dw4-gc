@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534368;
+extern void *igFileName_meta;
 }
 extern "C" {
-void *igAdxAfsFile_parentMeta(){return lbl_80534368;}
+void *igAdxAfsFile_parentMeta(){return igFileName_meta;}
 }
 #pragma pop

@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802C9F68();
-extern void *lbl_80534E60;
+void beModelCtrlInfoDataAIM_registerNow();
+extern void *beModelCtrlInfoDataAIM_meta;
 }
 extern "C" {
 void *beModelCtrlInfoDataAIM_getMeta(){
- if(!lbl_80534E60 || !(reinterpret_cast<unsigned int *>(lbl_80534E60)[0x24/4]&4)) fn_802C9F68();
- return lbl_80534E60;
+ if(!beModelCtrlInfoDataAIM_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlInfoDataAIM_meta)[0x24/4]&4)) beModelCtrlInfoDataAIM_registerNow();
+ return beModelCtrlInfoDataAIM_meta;
 }
 }
 #pragma pop

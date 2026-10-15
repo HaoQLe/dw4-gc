@@ -4,7 +4,7 @@
 extern "C" {
 void *fn_80065704(void *,int);
 void fn_801EAD50(void *);
-extern void *lbl_80565230;
+extern void *igBumpMapShader_meta;
 extern void *lbl_80565644;
 extern void *lbl_80565648;
 extern void *lbl_8056564C;
@@ -60,7 +60,7 @@ public:
  virtual void * s58();
 };
 extern "C" {
-void *igBumpMapShader_virtual58(){return lbl_80565230;}
+void *igBumpMapShader_virtual58(){return igBumpMapShader_meta;}
 void igBumpMapShader_virtual28(int p0){
  void *value58;
  void *value59;

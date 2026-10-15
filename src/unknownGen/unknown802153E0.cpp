@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564728;
+extern void *igTimeTransform1_5_meta;
 }
 class UnknownGenV802153E0_0 {
 public:
@@ -68,7 +68,7 @@ void fn_8021540C(int p0){
  reinterpret_cast<UnknownGenV8021540C_1 *>((void *)p0)->s6C();
 }
 void igTransform_virtual98(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+96)=value;}
-void *igTimeTransform1_5_virtual58(){return lbl_80564728;}
+void *igTimeTransform1_5_virtual58(){return igTimeTransform1_5_meta;}
 void *igTimeTransform1_5_virtual9C(int p0,int p1,int p2,int p3){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+60)=(void *)p3;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+56)=(void *)p2;

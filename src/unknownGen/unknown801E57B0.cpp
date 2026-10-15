@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_801E5620(int);
-extern void *lbl_80564F94;
+extern void *igEnbayaAnimationState_meta;
 extern char lbl_805657B4[1];
 }
 class UnknownGenV801E5800_0 {
@@ -32,7 +32,7 @@ public:
  virtual void s5C();
 };
 extern "C" {
-void *fn_801E57B0(){return lbl_80564F94;}
+void *fn_801E57B0(){return igEnbayaAnimationState_meta;}
 void fn_801E57B8(){
  fn_801E5620(1);
 }

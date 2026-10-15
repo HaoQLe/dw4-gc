@@ -6,22 +6,22 @@ void beBaseInfoData_register();
 void beNDMWLoadCtrl2CtrlData_fieldInit();
 void *beNDMWLoadCtrl2CtrlData_getMeta();
 void beNDMWLoadCtrl2CtrlData_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B8770();
 void fn_803250AC();
-extern char lbl_804550B8[];
-extern char lbl_805366F8[];
+extern char beNDMWLoadCtrl2CtrlData_className[];
+extern char beNDMWLoadCtrl2CtrlData_meta[];
 void beNDMWLoadCtrl2CtrlData_register();
 void *beNDMWLoadCtrl2CtrlData_getMetaCall();
 }
 extern "C" {
-void fn_80341E34(){
- fn_80066188((int)beNDMWLoadCtrl2CtrlData_register);
+void beNDMWLoadCtrl2CtrlData_registerNow(){
+ meta_registerNow((int)beNDMWLoadCtrl2CtrlData_register);
 }
 void beNDMWLoadCtrl2CtrlData_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_805366F8,(int)beBaseInfoData_register,(int)fn_802B8770,(int)beNDMWLoadCtrl2CtrlData_getMetaCall,(int)lbl_804550B8,36,(int)beNDMWLoadCtrl2CtrlData_vtableRead,(int)beNDMWLoadCtrl2CtrlData_fieldInit,0,0);
+ meta_registerClass(0,(int)beNDMWLoadCtrl2CtrlData_meta,(int)beBaseInfoData_register,(int)fn_802B8770,(int)beNDMWLoadCtrl2CtrlData_getMetaCall,(int)beNDMWLoadCtrl2CtrlData_className,36,(int)beNDMWLoadCtrl2CtrlData_vtableRead,(int)beNDMWLoadCtrl2CtrlData_fieldInit,0,0);
 }
 void *beNDMWLoadCtrl2CtrlData_getMetaCall(){return beNDMWLoadCtrl2CtrlData_getMeta();}
 }

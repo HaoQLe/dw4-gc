@@ -5,24 +5,24 @@ extern "C" {
 void beNDMWAfsSetup_fieldInit();
 void *beNDMWAfsSetup_getMeta();
 void beNDMWAfsSetup_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_80284550();
 void fn_803250AC();
 void igInfoManager_register();
-extern char lbl_804556EC[];
+extern char beNDMWAfsSetup_className[];
 extern char lbl_804E41C8[];
-extern char lbl_8053684C[];
+extern char beNDMWAfsSetup_meta[];
 void beNDMWAfsSetup_register();
 void *beNDMWAfsSetup_getMetaCall();
 }
 extern "C" {
-void fn_803459E0(){
- fn_80066188((int)beNDMWAfsSetup_register);
+void beNDMWAfsSetup_registerNow(){
+ meta_registerNow((int)beNDMWAfsSetup_register);
 }
 void beNDMWAfsSetup_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_8053684C,(int)igInfoManager_register,(int)fn_80284550,(int)beNDMWAfsSetup_getMetaCall,(int)lbl_804556EC,40,(int)beNDMWAfsSetup_vtableRead,(int)beNDMWAfsSetup_fieldInit,0,(int)lbl_804E41C8);
+ meta_registerClass(0,(int)beNDMWAfsSetup_meta,(int)igInfoManager_register,(int)fn_80284550,(int)beNDMWAfsSetup_getMetaCall,(int)beNDMWAfsSetup_className,40,(int)beNDMWAfsSetup_vtableRead,(int)beNDMWAfsSetup_fieldInit,0,(int)lbl_804E41C8);
 }
 void *beNDMWAfsSetup_getMetaCall(){return beNDMWAfsSetup_getMeta();}
 }

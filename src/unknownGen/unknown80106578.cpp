@@ -5,21 +5,21 @@ extern "C" {
 void *fn_80041020();
 void *fn_80041024();
 extern void *lbl_80562CF0;
-extern void *lbl_80562CF4;
-extern void *lbl_80562D00;
-extern void *lbl_80562D78;
-extern void *lbl_80562E24;
-extern void *lbl_805630C4;
-extern void *lbl_805630F0;
-extern void *lbl_80563374;
-extern void *lbl_805633B8;
-extern void *lbl_805633C0;
-extern void *lbl_805633E4;
-extern void *lbl_80563400;
-extern void *lbl_80563440;
-extern void *lbl_80563460;
-extern void *lbl_80563464;
-extern void *lbl_8056346C;
+extern void *igVisualContextCapabilityManager_meta;
+extern void *igVisualContext_meta;
+extern void *igVertexArray2Helper_meta;
+extern void *igPrimLengthArray_meta;
+extern void *igTgaLoader_meta;
+extern void *igFileImagePng_meta;
+extern void *igGamecubeVertexStream_meta;
+extern void *igGamecubeVertexArray2_meta;
+extern void *igGamecubeVertexArray1_1_meta;
+extern void *igGamecubeScissorExt_meta;
+extern void *igGamecubePointSpriteExt_meta;
+extern void *igGamecubeMultiTextureExt_meta;
+extern void *igGamecubeIndexArray_meta;
+extern void *igGamecubeImageConvert_meta;
+extern void *igGamecubeImage_meta;
 }
 class UnknownGenV80106674_0 {
 public:
@@ -95,21 +95,21 @@ public:
  virtual void s11C();
 };
 extern "C" {
-void *igTgaLoader_virtual58(){return lbl_805630C4;}
-void *igFileImagePng_virtual58(){return lbl_805630F0;}
+void *igTgaLoader_virtual58(){return igTgaLoader_meta;}
+void *igFileImagePng_virtual58(){return igFileImagePng_meta;}
 void *fn_80106588(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)(int)(unsigned short)p1;
  return (void *)p0;
 }
-void *igGamecubeVertexStream_virtual58(){return lbl_80563374;}
-void *igGamecubeVertexArray2_virtual58(){return lbl_805633B8;}
-void *igGamecubeVertexArray1_1_virtual58(){return lbl_805633C0;}
-void *igGamecubePointSpriteExt_virtual58(){return lbl_80563400;}
-void *igGamecubeIndexArray_virtual58(){return lbl_80563460;}
-void *igGamecubeScissorExt_virtual58(){return lbl_805633E4;}
-void *igGamecubeMultiTextureExt_virtual58(){return lbl_80563440;}
-void *igGamecubeImageConvert_virtual58(){return lbl_80563464;}
-void *igGamecubeImage_virtual58(){return lbl_8056346C;}
+void *igGamecubeVertexStream_virtual58(){return igGamecubeVertexStream_meta;}
+void *igGamecubeVertexArray2_virtual58(){return igGamecubeVertexArray2_meta;}
+void *igGamecubeVertexArray1_1_virtual58(){return igGamecubeVertexArray1_1_meta;}
+void *igGamecubePointSpriteExt_virtual58(){return igGamecubePointSpriteExt_meta;}
+void *igGamecubeIndexArray_virtual58(){return igGamecubeIndexArray_meta;}
+void *igGamecubeScissorExt_virtual58(){return igGamecubeScissorExt_meta;}
+void *igGamecubeMultiTextureExt_virtual58(){return igGamecubeMultiTextureExt_meta;}
+void *igGamecubeImageConvert_virtual58(){return igGamecubeImageConvert_meta;}
+void *igGamecubeImage_virtual58(){return igGamecubeImage_meta;}
 void igGamecubeVisualContext_virtual98(){}
 int igGamecubeVisualContext_virtual9C(){return 0;}
 void igGamecubeVisualContext_virtualA0(){}
@@ -131,11 +131,11 @@ void igGamecubeVisualContext_virtual88(){}
 void igGamecubeVisualContext_virtual120(int p0){
  reinterpret_cast<UnknownGenV80106674_0 *>((void *)p0)->s11C();
 }
-void *fn_801066A0(){return lbl_80562E24;}
+void *fn_801066A0(){return igPrimLengthArray_meta;}
 void *fn_801066A8(){return lbl_80562CF0;}
-void *igVisualContextCapabilityManager_virtual58(){return lbl_80562CF4;}
-void *fn_801066B8(){return lbl_80562D00;}
+void *igVisualContextCapabilityManager_virtual58(){return igVisualContextCapabilityManager_meta;}
+void *fn_801066B8(){return igVisualContext_meta;}
 int fn_801066C0(){return 0;}
-void *igVertexArray2Helper_virtual58(){return lbl_80562D78;}
+void *igVertexArray2Helper_virtual58(){return igVertexArray2Helper_meta;}
 }
 #pragma pop

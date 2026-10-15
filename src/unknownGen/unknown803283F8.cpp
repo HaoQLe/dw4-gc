@@ -4,7 +4,7 @@
 extern "C" {
 void fn_8006665C(void *);
 extern char lbl_804E6A60[];
-extern char lbl_804EC6BC[];
+extern char beNDMWStatusTitle00_vtable[];
 extern char lbl_804EC720[];
 }
 struct UnknownGenRoot803283F8 {
@@ -28,7 +28,7 @@ struct UnknownGenObject803283F8_1 : UnknownGenObject803283F8_0 {
 };
 struct UnknownGenObject803283F8 : UnknownGenObject803283F8_1 {
  char unknown50[8];
- inline ~UnknownGenObject803283F8(){unknown00=lbl_804EC6BC;}
+ inline ~UnknownGenObject803283F8(){unknown00=beNDMWStatusTitle00_vtable;}
 };
 extern "C" {
 void *beNDMWStatusTitle00_vtableRead(){
@@ -42,7 +42,7 @@ void *beNDMWStatusTitle00_vtableRead(){
  object.unknown48.value=0;
  object.unknown4C.value=0;
  object.unknown00=lbl_804EC720;
- object.unknown00=lbl_804EC6BC;
+ object.unknown00=beNDMWStatusTitle00_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564FC0;
+extern void *igDOFShader_meta;
 }
 extern "C" {
-void *igObjectPropertyForDOFShader_virtual7C(){return lbl_80564FC0;}
+void *igObjectPropertyForDOFShader_virtual7C(){return igDOFShader_meta;}
 }
 #pragma pop

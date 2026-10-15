@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_802DC934();
-extern void *lbl_80535450;
+void *meta_createInstance(void *,void *);
+void beDataObjStringList_registerNow();
+extern void *beDataObjStringList_meta;
 }
 extern "C" {
-void *fn_802DC7C4(void *object){
- fn_802DC934();
- return fn_8006546C(lbl_80535450,object);
+void *beDataObjStringList_create(void *object){
+ beDataObjStringList_registerNow();
+ return meta_createInstance(beDataObjStringList_meta,object);
 }
 void *beDataObjStringList_getMeta(){
- if(!lbl_80535450 || !(reinterpret_cast<unsigned int *>(lbl_80535450)[0x24/4]&4)) fn_802DC934();
- return lbl_80535450;
+ if(!beDataObjStringList_meta || !(reinterpret_cast<unsigned int *>(beDataObjStringList_meta)[0x24/4]&4)) beDataObjStringList_registerNow();
+ return beDataObjStringList_meta;
 }
 }
 #pragma pop

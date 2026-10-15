@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534AAC;
+extern void *bePadManager_meta;
 }
 extern "C" {
 unsigned char fn_80361010(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+73);}
@@ -60,7 +60,7 @@ void fn_80361134(void *object,unsigned char value){*reinterpret_cast<unsigned ch
 void fn_8036113C(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
 void fn_80361144(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+29)=value;}
 unsigned char fn_8036114C(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+8);}
-void *fn_80361154(){return lbl_80534AAC;}
+void *fn_80361154(){return bePadManager_meta;}
 void *fn_80361164(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)p1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+48)=(void *)0;

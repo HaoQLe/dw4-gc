@@ -3,10 +3,10 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
+extern char igNamedObject_vtable[];
 extern char lbl_804CBA60[];
 extern char lbl_804DD724[];
-extern char lbl_804DE17C[];
+extern char beGenerater_vtable[];
 }
 struct UnknownGenRoot802D8760 {
  void *unknown00;
@@ -16,7 +16,7 @@ struct UnknownGenRoot802D8760 {
 struct UnknownGenObject802D8760_0 : UnknownGenRoot802D8760 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject802D8760_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject802D8760_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject802D8760_1 : UnknownGenObject802D8760_0 {
  inline ~UnknownGenObject802D8760_1(){unknown00=lbl_804CBA60;}
@@ -28,17 +28,17 @@ struct UnknownGenObject802D8760_2 : UnknownGenObject802D8760_1 {
 };
 struct UnknownGenObject802D8760 : UnknownGenObject802D8760_2 {
  char unknown1C[20];
- inline ~UnknownGenObject802D8760(){unknown00=lbl_804DE17C;}
+ inline ~UnknownGenObject802D8760(){unknown00=beGenerater_vtable;}
 };
 extern "C" {
 void *beGenerater_vtableRead(){
  UnknownGenObject802D8760 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
  object.unknown00=lbl_804CBA60;
  object.unknown00=lbl_804DD724;
  object.unknown18.value=0;
- object.unknown00=lbl_804DE17C;
+ object.unknown00=beGenerater_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

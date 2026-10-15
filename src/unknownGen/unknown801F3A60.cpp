@@ -7,7 +7,7 @@
 extern "C" {
 void *fn_80041660(void *,int,int);
 void *fn_80068430(int,int);
-void *fn_801BDE9C(void *);
+void *igInterpretedShaderProcessor_create(void *);
 void *igSimpleShader_virtual7C(void *);
 }
 extern "C" {
@@ -27,7 +27,7 @@ void *igInterpretedShader_virtual7C(int p0,int p1,int p2,int p3,int p4,int p5){
    fn_80066E1C(value0);
   }
  }
- value4=fn_801BDE9C(value3);
+ value4=igInterpretedShaderProcessor_create(value3);
  reinterpret_cast<Meta::igSimpleShader *>((void *)p0)->_processor=(Meta::igShaderProcessor *)value4;
  igSimpleShader_virtual7C((void *)p0);
  value2=reinterpret_cast<Meta::igSimpleShader *>((void *)p0)->_passMask;

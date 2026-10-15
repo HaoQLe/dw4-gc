@@ -3,21 +3,21 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
 void igObjectList_register();
 void igObjectPool_fieldInit();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804ABE4C[];
-extern char lbl_804B9898[];
-extern void *lbl_805647A0;
+extern char igObjectPool_className[];
+extern char igObjectPool_vtable[];
+extern void *igObjectPool_meta;
 void *igObjectPool_getMeta();
 void *igObjectPool_vtableRead();
-void fn_801ADA10();
+void igObjectPool_registerNow();
 void igObjectPool_register();
 void *igObjectPool_getMetaCall();
 }
@@ -27,24 +27,24 @@ struct UnknownGenObject801AD9AC_0 {
 };
 extern "C" {
 void *igObjectPool_getMeta(){
- if(!lbl_805647A0 || !(reinterpret_cast<unsigned int *>(lbl_805647A0)[0x24/4]&4)) fn_801ADA10();
- return lbl_805647A0;
+ if(!igObjectPool_meta || !(reinterpret_cast<unsigned int *>(igObjectPool_meta)[0x24/4]&4)) igObjectPool_registerNow();
+ return igObjectPool_meta;
 }
 void *igObjectPool_vtableRead(){
  UnknownGenObject801AD9AC_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
- object.unknown00=lbl_804B9898;
+ object.unknown00=igObjectList_vtable;
+ object.unknown00=igObjectPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801ADA10(){
- fn_80066188((int)igObjectPool_register);
+void igObjectPool_registerNow(){
+ meta_registerNow((int)igObjectPool_register);
 }
 void igObjectPool_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805647A0,(int)igObjectList_register,(int)fn_80024180,(int)igObjectPool_getMetaCall,(int)lbl_804ABE4C,32,(int)igObjectPool_vtableRead,(int)igObjectPool_fieldInit,0,0);
+ meta_registerClass(0,(int)&igObjectPool_meta,(int)igObjectList_register,(int)fn_80024180,(int)igObjectPool_getMetaCall,(int)igObjectPool_className,32,(int)igObjectPool_vtableRead,(int)igObjectPool_fieldInit,0,0);
 }
 void *igObjectPool_getMetaCall(){return igObjectPool_getMeta();}
 }

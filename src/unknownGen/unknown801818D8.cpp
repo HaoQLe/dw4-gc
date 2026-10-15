@@ -7,11 +7,11 @@ void fn_80188BA4(void *);
 void fn_80188C0C(void *,int);
 void fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
-extern void *lbl_805652EC;
+extern void *igBillboard_meta;
 }
 static inline void *UnknownGenCast801818D8_9(void *q){
  void *value1;
- if((q&&(value1=fn_80068128(q,lbl_805652EC),(unsigned char)(int)value1))) return q;
+ if((q&&(value1=fn_80068128(q,igBillboard_meta),(unsigned char)(int)value1))) return q;
  return 0;
 }
 extern "C" {

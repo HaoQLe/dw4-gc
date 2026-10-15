@@ -14,10 +14,10 @@ using namespace Meta;
 
 extern "C" {
 igObject *fn_8028A730(igInsightCore *insight, void *meta);   // the manager of a class
-extern char lbl_805346A8[];          // beSystem's metaobject pointer
-extern char lbl_80534AAC[];          // bePadManager's metaobject pointer
-extern char lbl_80535124[];          // beLua's metaobject pointer
-extern char lbl_80534630[];          // beTimer's metaobject pointer
+extern char beSystem_meta[];          // beSystem's metaobject pointer
+extern char bePadManager_meta[];          // bePadManager's metaobject pointer
+extern char beLua_meta[];          // beLua's metaobject pointer
+extern char beTimer_meta[];          // beTimer's metaobject pointer
 bePadData *bePadManager_getPad(bePadManager *manager, int player);
 bool fn_80316808(beSystem *system);  // _isActive && !_isFirstTime
 void fn_80301FA4(beLua *lua, const char *file, int);   // runs a Lua file
@@ -33,9 +33,9 @@ void beTimer_virtual60(beTimer *) {}
 // Finds the system, the pad manager and Lua.
 void beTimer_virtual64(beTimer *self)
 {
-    self->_system = static_cast<beSystem *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(lbl_805346A8)));
-    self->_padManager = static_cast<bePadManager *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(lbl_80534AAC)));
-    self->_luaManager = static_cast<beLua *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(lbl_80535124)));
+    self->_system = static_cast<beSystem *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(beSystem_meta)));
+    self->_padManager = static_cast<bePadManager *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(bePadManager_meta)));
+    self->_luaManager = static_cast<beLua *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(beLua_meta)));
 }
 
 void beTimer_virtual68(beTimer *) {}
@@ -101,7 +101,7 @@ void beTimer_virtual74(beTimer *self)
 // The class's metaobject.
 void *beTimer_virtual58(beTimer *)
 {
-    return *reinterpret_cast<void **>(lbl_80534630);
+    return *reinterpret_cast<void **>(beTimer_meta);
 }
 
 }

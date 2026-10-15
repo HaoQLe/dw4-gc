@@ -2,23 +2,23 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805648D4;
-extern void *lbl_805648E8;
-extern void *lbl_805648F8;
-extern void *lbl_8056490C;
-extern void *lbl_8056491C;
-extern void *lbl_80564A14;
-extern void *lbl_80564A4C;
+extern void *igShaderInfo_meta;
+extern void *igShaderFactory_meta;
+extern void *igShaderData_meta;
+extern void *igShader2_meta;
+extern void *igShader_meta;
+extern void *igSceneInfo_meta;
+extern void *igProjectiveTextureProcessor_meta;
 }
 extern "C" {
-void *igShaderInfo_virtual58(){return lbl_805648D4;}
-void *igShaderFactory_virtual58(){return lbl_805648E8;}
+void *igShaderInfo_virtual58(){return igShaderInfo_meta;}
+void *igShaderFactory_virtual58(){return igShaderFactory_meta;}
 void igShaderFactory_virtual6C(){}
-void *igShaderData_virtual58(){return lbl_805648F8;}
-void *fn_80215550(){return lbl_8056490C;}
-void *igShader_virtual58(){return lbl_8056491C;}
+void *igShaderData_virtual58(){return igShaderData_meta;}
+void *fn_80215550(){return igShader2_meta;}
+void *igShader_virtual58(){return igShader_meta;}
 int igShader_virtual90(){return 1;}
-void *igSceneInfo_virtual58(){return lbl_80564A14;}
-void *igProjectiveTextureProcessor_virtual58(){return lbl_80564A4C;}
+void *igSceneInfo_virtual58(){return igSceneInfo_meta;}
+void *igProjectiveTextureProcessor_virtual58(){return igProjectiveTextureProcessor_meta;}
 }
 #pragma pop

@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_802DCED0();
-extern void *lbl_80535460;
+void *meta_createInstance(void *,void *);
+void beDataObjBoolList_registerNow();
+extern void *beDataObjBoolList_meta;
 }
 extern "C" {
-void *fn_802DCD60(void *object){
- fn_802DCED0();
- return fn_8006546C(lbl_80535460,object);
+void *beDataObjBoolList_create(void *object){
+ beDataObjBoolList_registerNow();
+ return meta_createInstance(beDataObjBoolList_meta,object);
 }
 void *beDataObjBoolList_getMeta(){
- if(!lbl_80535460 || !(reinterpret_cast<unsigned int *>(lbl_80535460)[0x24/4]&4)) fn_802DCED0();
- return lbl_80535460;
+ if(!beDataObjBoolList_meta || !(reinterpret_cast<unsigned int *>(beDataObjBoolList_meta)[0x24/4]&4)) beDataObjBoolList_registerNow();
+ return beDataObjBoolList_meta;
 }
 }
 #pragma pop

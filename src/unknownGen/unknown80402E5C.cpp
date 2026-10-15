@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void fn_8006665C(void *);
 void fn_80402F78(void *,short);
-void fn_80403150();
-extern char lbl_804F1C80[];
-extern void *lbl_8055C700;
+void igViewerStatisticsManager_registerNow();
+extern char igViewerStatisticsManager_vtable[];
+extern void *igViewerStatisticsManager_meta;
 extern void *lbl_805621F4;
 }
 struct UnknownGenObject80402EFC {
@@ -26,18 +26,18 @@ struct UnknownGenObject80402EFC {
  char unknown2C[36];
 };
 extern "C" {
-void *fn_80402E5C(){
- if(!lbl_8055C700) lbl_8055C700=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_8055C700;
+void *igViewerStatisticsManager_metaObject(){
+ if(!igViewerStatisticsManager_meta) igViewerStatisticsManager_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igViewerStatisticsManager_meta;
 }
 void *igViewerStatisticsManager_getMeta(){
- if(!lbl_8055C700 || !(reinterpret_cast<unsigned int *>(lbl_8055C700)[0x24/4]&4)) fn_80403150();
- return lbl_8055C700;
+ if(!igViewerStatisticsManager_meta || !(reinterpret_cast<unsigned int *>(igViewerStatisticsManager_meta)[0x24/4]&4)) igViewerStatisticsManager_registerNow();
+ return igViewerStatisticsManager_meta;
 }
 void *igViewerStatisticsManager_vtableRead(){
  UnknownGenObject80402EFC object;
  fn_8006665C(&object);
- object.unknown00=lbl_804F1C80;
+ object.unknown00=igViewerStatisticsManager_vtable;
  object.unknown08=0;
  object.unknown0C=0;
  object.unknown10=0;

@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_8053446C;
-extern void *lbl_80534474;
+extern void *igMovieRenderer_meta;
+extern void *igMovieManager_meta;
 }
 extern "C" {
-void *igMovieRenderer_virtual58(){return lbl_8053446C;}
-void *igMovieManager_virtual58(){return lbl_80534474;}
+void *igMovieRenderer_virtual58(){return igMovieRenderer_meta;}
+void *igMovieManager_virtual58(){return igMovieManager_meta;}
 }
 #pragma pop

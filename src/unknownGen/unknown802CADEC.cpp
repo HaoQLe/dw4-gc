@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
-extern char lbl_804D9170[];
+extern char igNamedObject_vtable[];
+extern char beModelCtrlMUTEKI_vtable[];
 }
 struct UnknownGenRoot802CADEC {
  void *unknown00;
@@ -14,18 +14,18 @@ struct UnknownGenRoot802CADEC {
 struct UnknownGenObject802CADEC_0 : UnknownGenRoot802CADEC {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject802CADEC_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject802CADEC_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject802CADEC : UnknownGenObject802CADEC_0 {
  char unknown0C[4];
- inline ~UnknownGenObject802CADEC(){unknown00=lbl_804D9170;}
+ inline ~UnknownGenObject802CADEC(){unknown00=beModelCtrlMUTEKI_vtable;}
 };
 extern "C" {
 void *beModelCtrlMUTEKI_vtableRead(){
  UnknownGenObject802CADEC object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
- object.unknown00=lbl_804D9170;
+ object.unknown00=beModelCtrlMUTEKI_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

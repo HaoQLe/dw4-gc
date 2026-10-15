@@ -6,23 +6,23 @@ void beCriFxInfo_fieldInit();
 void *beCriFxInfo_getMeta();
 void beCriFxInfo_vtableRead();
 void *fn_800284EC();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igInfo_register();
-extern char lbl_8042084C[];
+extern char beCriFxInfo_className[];
 extern char lbl_804D26CC[];
-extern char lbl_80535514[];
+extern char beCriFxInfo_meta[];
 void beCriFxInfo_register();
 void *beCriFxInfo_getMetaCall();
 }
 extern "C" {
-void fn_802DF220(){
- fn_80066188((int)beCriFxInfo_register);
+void beCriFxInfo_registerNow(){
+ meta_registerNow((int)beCriFxInfo_register);
 }
 void beCriFxInfo_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535514,(int)igInfo_register,(int)fn_800284EC,(int)beCriFxInfo_getMetaCall,(int)lbl_8042084C,36,(int)beCriFxInfo_vtableRead,(int)beCriFxInfo_fieldInit,0,(int)lbl_804D26CC);
+ meta_registerClass(0,(int)beCriFxInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)beCriFxInfo_getMetaCall,(int)beCriFxInfo_className,36,(int)beCriFxInfo_vtableRead,(int)beCriFxInfo_fieldInit,0,(int)lbl_804D26CC);
 }
 void *beCriFxInfo_getMetaCall(){return beCriFxInfo_getMeta();}
 }

@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
+void meta_registerNow(int);
 void igRefMetaField_register();
-extern void *lbl_80561684;
-void fn_80027338();
+extern void *igRefMetaField_meta;
+void igRefMetaField_registerNow();
 }
 extern "C" {
 void *igRefMetaField_getMeta(){
- if(!lbl_80561684 || !(reinterpret_cast<unsigned int *>(lbl_80561684)[0x24/4]&4)) fn_80027338();
- return lbl_80561684;
+ if(!igRefMetaField_meta || !(reinterpret_cast<unsigned int *>(igRefMetaField_meta)[0x24/4]&4)) igRefMetaField_registerNow();
+ return igRefMetaField_meta;
 }
-void fn_80027338(){
- fn_80066188((int)igRefMetaField_register);
+void igRefMetaField_registerNow(){
+ meta_registerNow((int)igRefMetaField_register);
 }
 }
 #pragma pop

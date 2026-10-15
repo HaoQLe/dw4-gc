@@ -13,11 +13,11 @@ extern char lbl_804D2D60[];
 extern char lbl_804D2D78[];
 extern char lbl_804D2D90[];
 extern char lbl_804D2DA8[];
-extern void *lbl_805356D4;
+extern void *beBaseInfoRamTimer_meta;
 }
 extern "C" {
 void beBaseInfoRamTimer_fieldInit(){
- void *value0=lbl_805356D4;
+ void *value0=beBaseInfoRamTimer_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2D60,6);
  void *value2=fn_800658E4(value0,value1);

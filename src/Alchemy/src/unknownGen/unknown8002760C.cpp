@@ -2,14 +2,14 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
+void meta_registerNow(int);
 void fn_8006C4B8(void *);
 void igRawRefMetaField_register();
 extern char lbl_80471384[];
 extern char lbl_80471914[];
 extern char lbl_80476630[];
-extern void *lbl_80561694;
-void fn_800276DC();
+extern void *igRawRefMetaField_meta;
+void igRawRefMetaField_registerNow();
 }
 struct UnknownGenRoot80027648 {
  void *unknown00;
@@ -30,15 +30,15 @@ struct UnknownGenObject80027648 : UnknownGenObject80027648_1 {
 };
 extern "C" {
 void *igRawRefMetaField_getMeta(){
- if(!lbl_80561694 || !(reinterpret_cast<unsigned int *>(lbl_80561694)[0x24/4]&4)) fn_800276DC();
- return lbl_80561694;
+ if(!igRawRefMetaField_meta || !(reinterpret_cast<unsigned int *>(igRawRefMetaField_meta)[0x24/4]&4)) igRawRefMetaField_registerNow();
+ return igRawRefMetaField_meta;
 }
 void *fn_80027648(){
  UnknownGenObject80027648 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800276DC(){
- fn_80066188((int)igRawRefMetaField_register);
+void igRawRefMetaField_registerNow(){
+ meta_registerNow((int)igRawRefMetaField_register);
 }
 }
 #pragma pop

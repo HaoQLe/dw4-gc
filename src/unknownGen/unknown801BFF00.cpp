@@ -3,28 +3,28 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801C0394();
+void igGeometry_registerNow();
 void igObjectList_register();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804AF55C[];
-extern char lbl_804B730C[];
+extern char igGeometryList_className[];
+extern char igGeometryList_vtable[];
 extern char lbl_804B7370[];
 extern char lbl_80560648[8];
 extern void *lbl_805621F4;
-extern void *lbl_80564EEC;
-extern void *lbl_80564EF0;
+extern void *igGeometryList_meta;
+extern void *igGeometry_meta;
 void *igGeometryList_getMeta();
 void *igGeometryList_vtableRead();
-void fn_801C0020();
+void igGeometryList_registerNow();
 void igGeometryList_register();
 void *igGeometryList_getMetaCall();
 }
@@ -33,47 +33,47 @@ struct UnknownGenObject801BFFB0_0 {
  char unknown04[20];
 };
 extern "C" {
-void *fn_801BFF00(void *object){
- fn_801C0020();
- return fn_8006546C(lbl_80564EEC,object);
+void *igGeometryList_create(void *object){
+ igGeometryList_registerNow();
+ return meta_createInstance(igGeometryList_meta,object);
 }
 void *fn_801BFF38(){
- if(!lbl_80564EEC) lbl_80564EEC=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564EEC;
+ if(!igGeometryList_meta) igGeometryList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igGeometryList_meta;
 }
 void *igGeometryList_getMeta(){
- if(!lbl_80564EEC || !(reinterpret_cast<unsigned int *>(lbl_80564EEC)[0x24/4]&4)) fn_801C0020();
- return lbl_80564EEC;
+ if(!igGeometryList_meta || !(reinterpret_cast<unsigned int *>(igGeometryList_meta)[0x24/4]&4)) igGeometryList_registerNow();
+ return igGeometryList_meta;
 }
 void *igGeometryList_vtableRead(){
  UnknownGenObject801BFFB0_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_804B7370;
- object.unknown00=lbl_804B730C;
+ object.unknown00=igGeometryList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801C0020(){
- fn_80066188((int)igGeometryList_register);
+void igGeometryList_registerNow(){
+ meta_registerNow((int)igGeometryList_register);
 }
 void igGeometryList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564EEC,(int)igObjectList_register,(int)fn_80024180,(int)igGeometryList_getMetaCall,(int)lbl_804AF55C,20,(int)igGeometryList_vtableRead,0,0,(int)lbl_80560648);
+ meta_registerClass(0,(int)&igGeometryList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igGeometryList_getMetaCall,(int)igGeometryList_className,20,(int)igGeometryList_vtableRead,0,0,(int)lbl_80560648);
 }
 void *igGeometryList_getMetaCall(){return igGeometryList_getMeta();}
-void *fn_801C00D4(void *object){
- fn_801C0394();
- return fn_8006546C(lbl_80564EF0,object);
+void *igGeometry_create(void *object){
+ igGeometry_registerNow();
+ return meta_createInstance(igGeometry_meta,object);
 }
 void *fn_801C010C(){
- if(!lbl_80564EF0) lbl_80564EF0=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564EF0;
+ if(!igGeometry_meta) igGeometry_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igGeometry_meta;
 }
 void *igGeometry_getMeta(){
- if(!lbl_80564EF0 || !(reinterpret_cast<unsigned int *>(lbl_80564EF0)[0x24/4]&4)) fn_801C0394();
- return lbl_80564EF0;
+ if(!igGeometry_meta || !(reinterpret_cast<unsigned int *>(igGeometry_meta)[0x24/4]&4)) igGeometry_registerNow();
+ return igGeometry_meta;
 }
 }
 #pragma pop

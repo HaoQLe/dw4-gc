@@ -3,7 +3,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805646D0;
+extern void *igTransformSequence_meta;
 }
 class UnknownGenV80215340_0 {
 public:
@@ -39,6 +39,6 @@ void *igTransformSequence1_5_virtual84(int p0){
  reinterpret_cast<Meta::igTransformSequence1_5 *>((void *)p0)->_lastTime=(int)1;
  return (void *)p0;
 }
-void *fn_80215380(){return lbl_805646D0;}
+void *fn_80215380(){return igTransformSequence_meta;}
 }
 #pragma pop

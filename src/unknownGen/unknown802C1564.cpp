@@ -7,13 +7,13 @@ void beBaseInfoRam_register();
 void beParticleCtrl2InfoRam_fieldInit();
 void *beParticleCtrl2InfoRam_getMeta();
 void beParticleCtrl2InfoRam_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2B2C();
-extern char lbl_8041E490[];
+extern char beParticleCtrl2InfoRam_className[];
 extern char lbl_804D0058[];
-extern char lbl_80534A74[];
+extern char beParticleCtrl2InfoRam_meta[];
 void beParticleCtrl2InfoRam_register();
 void *beParticleCtrl2InfoRam_getMetaCall();
 }
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_802C1564(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_802C15D8(){
- fn_80066188((int)beParticleCtrl2InfoRam_register);
+void beParticleCtrl2InfoRam_registerNow(){
+ meta_registerNow((int)beParticleCtrl2InfoRam_register);
 }
 void beParticleCtrl2InfoRam_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80534A74,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beParticleCtrl2InfoRam_getMetaCall,(int)lbl_8041E490,56,(int)beParticleCtrl2InfoRam_vtableRead,(int)beParticleCtrl2InfoRam_fieldInit,0,(int)lbl_804D0058);
+ meta_registerClass(0,(int)beParticleCtrl2InfoRam_meta,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beParticleCtrl2InfoRam_getMetaCall,(int)beParticleCtrl2InfoRam_className,56,(int)beParticleCtrl2InfoRam_vtableRead,(int)beParticleCtrl2InfoRam_fieldInit,0,(int)lbl_804D0058);
 }
 void *beParticleCtrl2InfoRam_getMetaCall(){return beParticleCtrl2InfoRam_getMeta();}
 }

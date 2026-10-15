@@ -8,7 +8,7 @@ void *fn_800658F8(void *,void *);
 void fn_800667B0();
 void fn_800691E8(void *,int);
 extern char lbl_804B2E24[];
-extern void *lbl_805617BC;
+extern void *igMetaField_meta;
 extern void *lbl_805657D8;
 extern char lbl_805657DC[1];
 }
@@ -50,7 +50,7 @@ void *fn_801EB644(int p0,int p1){
  void *value0;
  void *value1;
  if((int)*reinterpret_cast<signed char *>((lbl_805657DC+0))==0){
-  value0=fn_800658F8(lbl_805617BC,lbl_804B2E24);
+  value0=fn_800658F8(igMetaField_meta,lbl_804B2E24);
   lbl_805657D8=value0;
   *reinterpret_cast<unsigned char *>((lbl_805657DC+0))=1;
  }

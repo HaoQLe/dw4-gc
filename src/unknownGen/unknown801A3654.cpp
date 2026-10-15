@@ -2,8 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8003657C(void *);
-void *fn_80130CE4(void *);
+void *igIntList_create(void *);
+void *igNodeUsageObjectDefinitionList_create(void *);
 void igOptStatistics_virtual94();
 extern void *lbl_8056464C;
 extern void *lbl_80564650;
@@ -23,7 +23,7 @@ void igStatisticsNodeUsage_virtual94(){
    fn_80066E1C(value0);
   }
  }
- value4=fn_80130CE4((void *)0);
+ value4=igNodeUsageObjectDefinitionList_create((void *)0);
  lbl_8056464C=value4;
  void *value2=lbl_80564650;
  if(value2){
@@ -33,7 +33,7 @@ void igStatisticsNodeUsage_virtual94(){
    fn_80066E1C(value2);
   }
  }
- value5=fn_8003657C((void *)0);
+ value5=igIntList_create((void *)0);
  lbl_80564650=value5;
 }
 }

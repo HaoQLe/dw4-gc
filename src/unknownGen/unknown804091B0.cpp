@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_8040956C();
-extern void *lbl_8055CB40;
+void *meta_createInstance(void *,void *);
+void igActorManager_registerNow();
+extern void *igActorManager_meta;
 }
 extern "C" {
-void *fn_804091B0(void *object){
- fn_8040956C();
- return fn_8006546C(lbl_8055CB40,object);
+void *igActorManager_create(void *object){
+ igActorManager_registerNow();
+ return meta_createInstance(igActorManager_meta,object);
 }
 void *igActorManager_getMeta(){
- if(!lbl_8055CB40 || !(reinterpret_cast<unsigned int *>(lbl_8055CB40)[0x24/4]&4)) fn_8040956C();
- return lbl_8055CB40;
+ if(!igActorManager_meta || !(reinterpret_cast<unsigned int *>(igActorManager_meta)[0x24/4]&4)) igActorManager_registerNow();
+ return igActorManager_meta;
 }
 }
 #pragma pop

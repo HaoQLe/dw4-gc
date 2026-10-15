@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535C20;
+extern void *libNdmwRuntimePlugin_meta;
 }
 extern "C" {
-void *libNdmwRuntimePlugin_virtual58(){return lbl_80535C20;}
+void *libNdmwRuntimePlugin_virtual58(){return libNdmwRuntimePlugin_meta;}
 void beNDMWStageCtl_virtual88(){}
 }
 #pragma pop

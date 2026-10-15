@@ -4,7 +4,7 @@
 #pragma auto_inline off
 extern "C" {
 extern char lbl_8047A2F4[];
-extern void *lbl_80562504;
+extern void *igTextureFunctionAttr_meta;
 extern void *lbl_80562B0C;
 }
 class UnknownGenV800C3EC8_0 {
@@ -212,7 +212,7 @@ public:
  virtual void s5C(void *,void *,void *,void *,void *,void *);
 };
 extern "C" {
-void *igTextureFunctionAttr_virtual58(){return lbl_80562504;}
+void *igTextureFunctionAttr_virtual58(){return igTextureFunctionAttr_meta;}
 void igTextureFunctionAttr_virtual68(int p0,int p1){
  void *value0;
  void *value1;

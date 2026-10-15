@@ -49,7 +49,7 @@ extern "C" {
     Unknown800413C4Metadata *fn_800412F8(Unknown800413C4 *, const char *);
     Unknown800413C4Value *fn_800414D0(Unknown800413C4 *, Unknown800413C4Metadata *);
     void *fn_80068430(void *);
-    Unknown800413C4Value *fn_8006546C(Unknown800413C4Metadata *, void *);
+    Unknown800413C4Value *meta_createInstance(Unknown800413C4Metadata *, void *);
     void fn_80066E1C(void *);
     void fn_80069128(Unknown800413C4Storage *, Unknown800413C4Value *);
     unsigned char fn_80068128(Unknown800413C4Value *, Unknown800413C4Metadata *);
@@ -66,7 +66,7 @@ extern "C" Unknown800413C4Value *fn_800413C4(Unknown800413C4 *object, const char
     if(!metadata) return NULL;
     Unknown800413C4Value *value = fn_800414D0(object, metadata);
     if(!value){
-        value = fn_8006546C(metadata, fn_80068430(object));
+        value = meta_createInstance(metadata, fn_80068430(object));
         if(value){
             if(!value->slot70(object)){
                 unknown800413C4ReleaseValue(value);

@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564D8C;
+extern void *igLod_meta;
 }
 extern "C" {
-void *igCollapseNodeForLod_virtual7C(){return lbl_80564D8C;}
+void *igCollapseNodeForLod_virtual7C(){return igLod_meta;}
 }
 #pragma pop

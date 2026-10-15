@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_802B7220();
-extern void *lbl_80534698;
+void *meta_createInstance(void *,void *);
+void beTargetObj_registerNow();
+extern void *beTargetObj_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802B6FC0(void *object){
- fn_802B7220();
- return fn_8006546C(lbl_80534698,object);
+void *beTargetObj_create(void *object){
+ beTargetObj_registerNow();
+ return meta_createInstance(beTargetObj_meta,object);
 }
-void *fn_802B7000(){
- if(!lbl_80534698) lbl_80534698=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80534698;
+void *beTargetObj_metaObject(){
+ if(!beTargetObj_meta) beTargetObj_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beTargetObj_meta;
 }
 void *beTargetObj_getMeta(){
- if(!lbl_80534698 || !(reinterpret_cast<unsigned int *>(lbl_80534698)[0x24/4]&4)) fn_802B7220();
- return lbl_80534698;
+ if(!beTargetObj_meta || !(reinterpret_cast<unsigned int *>(beTargetObj_meta)[0x24/4]&4)) beTargetObj_registerNow();
+ return beTargetObj_meta;
 }
 }
 #pragma pop

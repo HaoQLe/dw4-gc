@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535FDC;
+extern void *beNDMWSaveIntfInfo_meta;
 }
 extern "C" {
 void fn_8037D05C(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+0)=value;}
@@ -58,6 +58,6 @@ void *fn_8037D138(int p0){
 int fn_8037D154(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+40);}
 int fn_8037D15C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36);}
 int fn_8037D164(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36);}
-void *beNDMWSaveIntf_virtual80(){return lbl_80535FDC;}
+void *beNDMWSaveIntf_virtual80(){return beNDMWSaveIntfInfo_meta;}
 }
 #pragma pop

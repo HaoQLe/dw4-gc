@@ -4,26 +4,26 @@
 extern "C" {
 void __dl__FPv(void *);
 void *fn_800635C8(void *,void *,void *,int);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void igOptVisitObject_register();
 void igSpatialPartition_fieldInit();
-extern char lbl_8049BC80[];
+extern char igVertexBlending_className[];
 extern char lbl_8049C1EC[];
-extern char lbl_8049C1FC[];
-extern char lbl_804A3108[];
+extern char igSpatialPartition_className[];
+extern char igSpatialPartition_vtable[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern void *lbl_80563B78;
-extern void *lbl_80563B7C;
+extern void *igSpatialPartition_meta;
 void *igSpatialPartition_getMeta();
 void *igSpatialPartition_vtableRead();
-void fn_80132BBC();
+void igSpatialPartition_registerNow();
 void igSpatialPartition_register();
 void *igSpatialPartition_getMetaCall();
 }
@@ -47,17 +47,17 @@ struct UnknownGenObject80132958 : UnknownGenObject80132958_1 {
  UnknownGenRefMember unknown54;
  UnknownGenRefMember unknown58;
  UnknownGenRefMember unknown5C;
- inline ~UnknownGenObject80132958(){unknown00=lbl_804A3108;}
+ inline ~UnknownGenObject80132958(){unknown00=igSpatialPartition_vtable;}
 };
 extern "C" {
 void *fn_801328D0(){
- char *data=lbl_8049BC80;
+ char *data=igVertexBlending_className;
  if(!lbl_80563B78) lbl_80563B78=fn_800635C8(data+0x45C,data+0x554,data+0x560,0x3);
  return lbl_80563B78;
 }
 void *igSpatialPartition_getMeta(){
- if(!lbl_80563B7C || !(reinterpret_cast<unsigned int *>(lbl_80563B7C)[0x24/4]&4)) fn_80132BBC();
- return lbl_80563B7C;
+ if(!igSpatialPartition_meta || !(reinterpret_cast<unsigned int *>(igSpatialPartition_meta)[0x24/4]&4)) igSpatialPartition_registerNow();
+ return igSpatialPartition_meta;
 }
 void *igSpatialPartition_vtableRead(){
  UnknownGenObject80132958 object;
@@ -68,7 +68,7 @@ void *igSpatialPartition_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A3108;
+ object.unknown00=igSpatialPartition_vtable;
  object.unknown54.value=0;
  object.unknown58.value=0;
  object.unknown5C.value=0;
@@ -85,12 +85,12 @@ UnknownGenHolder *fn_80132B48(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_80132BBC(){
- fn_80066188((int)igSpatialPartition_register);
+void igSpatialPartition_registerNow(){
+ meta_registerNow((int)igSpatialPartition_register);
 }
 void igSpatialPartition_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563B7C,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igSpatialPartition_getMetaCall,(int)lbl_8049C1FC,96,(int)igSpatialPartition_vtableRead,(int)igSpatialPartition_fieldInit,0,(int)lbl_8049C1EC);
+ meta_registerClass(0,(int)&igSpatialPartition_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igSpatialPartition_getMetaCall,(int)igSpatialPartition_className,96,(int)igSpatialPartition_vtableRead,(int)igSpatialPartition_fieldInit,0,(int)lbl_8049C1EC);
 }
 void *igSpatialPartition_getMetaCall(){return igSpatialPartition_getMeta();}
 }

@@ -11,11 +11,11 @@ extern char lbl_804CF438[];
 extern char lbl_804CF43C[];
 extern char lbl_804CF440[];
 extern char lbl_804CF444[];
-extern void *lbl_80534714;
+extern void *beSwitchCtrlInfo_meta;
 }
 extern "C" {
 void beSwitchCtrlInfo_fieldInit(){
- void *value0=lbl_80534714;
+ void *value0=beSwitchCtrlInfo_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF438,1);
  void *value2=fn_800658E4(value0,value1);

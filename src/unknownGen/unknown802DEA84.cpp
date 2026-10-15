@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534734;
+extern void *beBinDataObject_meta;
 }
 extern "C" {
-void *fn_802DEA84(){return lbl_80534734;}
+void *fn_802DEA84(){return beBinDataObject_meta;}
 }
 #pragma pop

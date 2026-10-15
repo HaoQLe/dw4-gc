@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564A10;
+extern void *igSegment_meta;
 }
 extern "C" {
-void *igObjectPropertyForSegment_virtual7C(){return lbl_80564A10;}
+void *igObjectPropertyForSegment_virtual7C(){return igSegment_meta;}
 }
 #pragma pop

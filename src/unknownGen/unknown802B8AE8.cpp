@@ -11,11 +11,11 @@ extern char lbl_804CF4A0[];
 extern char lbl_804CF4B0[];
 extern char lbl_804CF4C0[];
 extern char lbl_804CF4D0[];
-extern void *lbl_80534740;
+extern void *beSoundInfo_meta;
 }
 extern "C" {
 void beSoundInfo_fieldInit(){
- void *value0=lbl_80534740;
+ void *value0=beSoundInfo_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF4A0,4);
  void *value2=fn_800658E4(value0,value1);

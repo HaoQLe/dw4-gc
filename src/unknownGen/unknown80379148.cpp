@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80536064;
+extern void *beNDMWSaveCtrlInfo_meta;
 }
 extern "C" {
-void *beNDMWSaveCtrl_virtual80(){return lbl_80536064;}
+void *beNDMWSaveCtrl_virtual80(){return beNDMWSaveCtrlInfo_meta;}
 }
 #pragma pop

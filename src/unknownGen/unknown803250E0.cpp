@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80325630();
-extern void *lbl_80535C20;
+void libNdmwRuntimePlugin_registerNow();
+extern void *libNdmwRuntimePlugin_meta;
 }
 extern "C" {
 void *libNdmwRuntimePlugin_getMeta(){
- if(!lbl_80535C20 || !(reinterpret_cast<unsigned int *>(lbl_80535C20)[0x24/4]&4)) fn_80325630();
- return lbl_80535C20;
+ if(!libNdmwRuntimePlugin_meta || !(reinterpret_cast<unsigned int *>(libNdmwRuntimePlugin_meta)[0x24/4]&4)) libNdmwRuntimePlugin_registerNow();
+ return libNdmwRuntimePlugin_meta;
 }
 }
 #pragma pop

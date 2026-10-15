@@ -3,13 +3,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805626B8;
-extern void *lbl_805626C0;
-extern void *lbl_805626EC;
-extern void *lbl_805626F8;
-extern void *lbl_80562718;
-extern void *lbl_80562720;
-extern void *lbl_80562734;
+extern void *igPixelShaderBindAttr_meta;
+extern void *igPixelShaderAttr_meta;
+extern void *igPixelPipelineModeAttr_meta;
+extern void *igParticleAttr_meta;
+extern void *igNormalizeNormalsStateAttr_meta;
+extern void *igMultiPassStateAttr_meta;
+extern void *igVector3MorphData_meta;
 }
 class UnknownGenV800C65CC_0 {
 public:
@@ -52,10 +52,10 @@ public:
  virtual void * s98();
 };
 extern "C" {
-void *igPixelShaderBindAttr_virtual58(){return lbl_805626B8;}
-void *igPixelShaderAttr_virtual58(){return lbl_805626C0;}
-void *igPixelPipelineModeAttr_virtual58(){return lbl_805626EC;}
-void *igParticleAttr_virtual58(){return lbl_805626F8;}
+void *igPixelShaderBindAttr_virtual58(){return igPixelShaderBindAttr_meta;}
+void *igPixelShaderAttr_virtual58(){return igPixelShaderAttr_meta;}
+void *igPixelPipelineModeAttr_virtual58(){return igPixelPipelineModeAttr_meta;}
+void *igParticleAttr_virtual58(){return igParticleAttr_meta;}
 void *igParticleAttr_virtual70(int p0){
  void *value0;
  void *value1;
@@ -67,10 +67,10 @@ void *igParticleAttr_virtual70(int p0){
   return value0;
  }
 }
-void *igNormalizeNormalsStateAttr_virtual58(){return lbl_80562718;}
-void *igMultiPassStateAttr_virtual58(){return lbl_80562720;}
+void *igNormalizeNormalsStateAttr_virtual58(){return igNormalizeNormalsStateAttr_meta;}
+void *igMultiPassStateAttr_virtual58(){return igMultiPassStateAttr_meta;}
 void igMultiPassStateAttr_virtual80(void *object,int value){*reinterpret_cast<int *>(reinterpret_cast<char *>(object)+12)=value;}
-void *igVector3MorphData_virtual58(){return lbl_80562734;}
+void *igVector3MorphData_virtual58(){return igVector3MorphData_meta;}
 int igVector3MorphData_virtual64(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+32);}
 }
 #pragma pop

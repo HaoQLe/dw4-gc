@@ -6,8 +6,8 @@ void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *fn_80071694(void *,void *);
 void fn_8012FC48();
@@ -15,14 +15,14 @@ void *fn_8012FEB0();
 void fn_80151D58();
 void igChildEdit_register();
 void igOptVisitObject_register();
-extern char lbl_804A00C4[];
-extern char lbl_804A00F0[];
+extern char igCollapseAllHierarchies_className[];
+extern char igChildEditForNode_className[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
-extern char lbl_804A8224[];
-extern char lbl_804A82BC[];
+extern char igCollapseAllHierarchies_vtable[];
+extern char igChildEditForNode_vtable[];
 extern char lbl_804A8358[];
 extern char lbl_804AA710[];
 extern char lbl_804AAF48[];
@@ -32,18 +32,18 @@ extern char lbl_8055FCF0[4];
 extern char lbl_8055FCF4[4];
 extern char lbl_8055FCF8[4];
 extern char lbl_8055FCFC[8];
-extern void *lbl_8056451C;
-extern void *lbl_80564524;
-extern void *lbl_80564530;
+extern void *igCollapseAllHierarchies_meta;
+extern void *igChildEditForNode_meta;
+extern void *igChildEdit_meta;
 void *igCollapseAllHierarchies_getMeta();
 void *igCollapseAllHierarchies_vtableRead();
-void fn_80151A1C();
+void igCollapseAllHierarchies_registerNow();
 void igCollapseAllHierarchies_register();
 void *igCollapseAllHierarchies_getMetaCall();
 void igCollapseAllHierarchies_fieldInit();
 void *igChildEditForNode_getMeta();
 void *igChildEditForNode_vtableRead();
-void fn_80151C94();
+void igChildEditForNode_registerNow();
 void igChildEditForNode_register();
 void *igChildEditForNode_getMetaCall();
 void *igChildEditForNode_parentMeta();
@@ -66,7 +66,7 @@ struct UnknownGenObject8015189C_1 : UnknownGenObject8015189C_0 {
 struct UnknownGenObject8015189C : UnknownGenObject8015189C_1 {
  UnknownGenString unknown2C;
  char unknown30[8];
- inline ~UnknownGenObject8015189C(){unknown00=lbl_804A8224;}
+ inline ~UnknownGenObject8015189C(){unknown00=igCollapseAllHierarchies_vtable;}
 };
 struct UnknownGenRoot80151B8C {
  void *unknown00;
@@ -81,12 +81,12 @@ struct UnknownGenObject80151B8C_0 : UnknownGenRoot80151B8C {
 };
 struct UnknownGenObject80151B8C : UnknownGenObject80151B8C_0 {
  char unknown28[8];
- inline ~UnknownGenObject80151B8C(){unknown00=lbl_804A82BC;}
+ inline ~UnknownGenObject80151B8C(){unknown00=igChildEditForNode_vtable;}
 };
 extern "C" {
 void *igCollapseAllHierarchies_getMeta(){
- if(!lbl_8056451C || !(reinterpret_cast<unsigned int *>(lbl_8056451C)[0x24/4]&4)) fn_80151A1C();
- return lbl_8056451C;
+ if(!igCollapseAllHierarchies_meta || !(reinterpret_cast<unsigned int *>(igCollapseAllHierarchies_meta)[0x24/4]&4)) igCollapseAllHierarchies_registerNow();
+ return igCollapseAllHierarchies_meta;
 }
 void *igCollapseAllHierarchies_vtableRead(){
  UnknownGenObject8015189C object;
@@ -97,20 +97,20 @@ void *igCollapseAllHierarchies_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A8224;
+ object.unknown00=igCollapseAllHierarchies_vtable;
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80151A1C(){
- fn_80066188((int)igCollapseAllHierarchies_register);
+void igCollapseAllHierarchies_registerNow(){
+ meta_registerNow((int)igCollapseAllHierarchies_register);
 }
 void igCollapseAllHierarchies_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_8056451C,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igCollapseAllHierarchies_getMetaCall,(int)lbl_804A00C4,48,(int)igCollapseAllHierarchies_vtableRead,(int)igCollapseAllHierarchies_fieldInit,0,0);
+ meta_registerClass(0,(int)&igCollapseAllHierarchies_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igCollapseAllHierarchies_getMetaCall,(int)igCollapseAllHierarchies_className,48,(int)igCollapseAllHierarchies_vtableRead,(int)igCollapseAllHierarchies_fieldInit,0,0);
 }
 void *igCollapseAllHierarchies_getMetaCall(){return igCollapseAllHierarchies_getMeta();}
 void igCollapseAllHierarchies_fieldInit(){
- void *value0=lbl_8056451C;
+ void *value0=igCollapseAllHierarchies_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055FCEC,1);
  void *value2=fn_800658E4(value0,value1);
@@ -118,8 +118,8 @@ void igCollapseAllHierarchies_fieldInit(){
  fn_800659C0(value0,lbl_8055FCF0,lbl_8055FCF4,lbl_8055FCF8,value1);
 }
 void *igChildEditForNode_getMeta(){
- if(!lbl_80564524 || !(reinterpret_cast<unsigned int *>(lbl_80564524)[0x24/4]&4)) fn_80151C94();
- return lbl_80564524;
+ if(!igChildEditForNode_meta || !(reinterpret_cast<unsigned int *>(igChildEditForNode_meta)[0x24/4]&4)) igChildEditForNode_registerNow();
+ return igChildEditForNode_meta;
 }
 void *igChildEditForNode_vtableRead(){
  UnknownGenObject80151B8C object;
@@ -130,17 +130,17 @@ void *igChildEditForNode_vtableRead(){
  object.unknown00=lbl_804A8358;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A82BC;
+ object.unknown00=igChildEditForNode_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80151C94(){
- fn_80066188((int)igChildEditForNode_register);
+void igChildEditForNode_registerNow(){
+ meta_registerNow((int)igChildEditForNode_register);
 }
 void igChildEditForNode_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564524,(int)igChildEdit_register,(int)igChildEditForNode_parentMeta,(int)igChildEditForNode_getMetaCall,(int)lbl_804A00F0,40,(int)igChildEditForNode_vtableRead,(int)fn_80151D58,0,(int)lbl_8055FCFC);
+ meta_registerClass(0,(int)&igChildEditForNode_meta,(int)igChildEdit_register,(int)igChildEditForNode_parentMeta,(int)igChildEditForNode_getMetaCall,(int)igChildEditForNode_className,40,(int)igChildEditForNode_vtableRead,(int)fn_80151D58,0,(int)lbl_8055FCFC);
 }
 void *igChildEditForNode_getMetaCall(){return igChildEditForNode_getMeta();}
-void *igChildEditForNode_parentMeta(){return lbl_80564530;}
+void *igChildEditForNode_parentMeta(){return igChildEdit_meta;}
 }
 #pragma pop

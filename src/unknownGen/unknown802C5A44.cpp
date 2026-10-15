@@ -4,7 +4,7 @@
 extern "C" {
 void fn_8006665C(void *);
 extern char lbl_804D9E80[];
-extern char lbl_804DEFCC[];
+extern char beModelCtrlSCEffect_vtable[];
 }
 struct UnknownGenRoot802C5A44 {
  void *unknown00;
@@ -16,13 +16,13 @@ struct UnknownGenObject802C5A44 : UnknownGenRoot802C5A44 {
  UnknownGenString unknown18;
  UnknownGenString unknown1C;
  char unknown20[32];
- inline ~UnknownGenObject802C5A44(){unknown00=lbl_804DEFCC;}
+ inline ~UnknownGenObject802C5A44(){unknown00=beModelCtrlSCEffect_vtable;}
 };
 extern "C" {
 void *beModelCtrlSCEffect_vtableRead(){
  UnknownGenObject802C5A44 object;
  object.unknown00=lbl_804D9E80;
- object.unknown00=lbl_804DEFCC;
+ object.unknown00=beModelCtrlSCEffect_vtable;
  object.unknown18.value=0;
  object.unknown1C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_802AD500();
-extern void *lbl_80534474;
+void *meta_createInstance(void *,void *);
+void igMovieManager_registerNow();
+extern void *igMovieManager_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802AD248(void *object){
- fn_802AD500();
- return fn_8006546C(lbl_80534474,object);
+void *igMovieManager_create(void *object){
+ igMovieManager_registerNow();
+ return meta_createInstance(igMovieManager_meta,object);
 }
-void *fn_802AD288(){
- if(!lbl_80534474) lbl_80534474=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80534474;
+void *igMovieManager_metaObject(){
+ if(!igMovieManager_meta) igMovieManager_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igMovieManager_meta;
 }
 void *igMovieManager_getMeta(){
- if(!lbl_80534474 || !(reinterpret_cast<unsigned int *>(lbl_80534474)[0x24/4]&4)) fn_802AD500();
- return lbl_80534474;
+ if(!igMovieManager_meta || !(reinterpret_cast<unsigned int *>(igMovieManager_meta)[0x24/4]&4)) igMovieManager_registerNow();
+ return igMovieManager_meta;
 }
 }
 #pragma pop

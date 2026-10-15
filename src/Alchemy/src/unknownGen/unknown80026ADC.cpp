@@ -4,12 +4,12 @@
 extern "C" {
 void __dl__FPv(void *);
 void arkRegister__Q33Gap4Core10igRegistryFv();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_8006665C(void *);
-extern char lbl_80471328[];
-extern void *lbl_80561658;
+extern char igRegistry_vtable[];
+extern void *igRegistry_meta;
 extern void *lbl_805621F4;
 }
 struct UnknownGenRoot80026B8C {
@@ -23,24 +23,24 @@ struct UnknownGenObject80026B8C : UnknownGenRoot80026B8C {
  UnknownGenRefMember unknown0C;
  UnknownGenRefMember unknown10;
  char unknown14[4];
- inline ~UnknownGenObject80026B8C(){unknown00=lbl_80471328;}
+ inline ~UnknownGenObject80026B8C(){unknown00=igRegistry_vtable;}
 };
 extern "C" {
-void *fn_80026ADC(void *object){
+void *igRegistry_create(void *object){
  arkRegister__Q33Gap4Core10igRegistryFv();
- return fn_8006546C(lbl_80561658,object);
+ return meta_createInstance(igRegistry_meta,object);
 }
 void *fn_80026B14(){
- if(!lbl_80561658) lbl_80561658=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80561658;
+ if(!igRegistry_meta) igRegistry_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igRegistry_meta;
 }
 void *igRegistry_getMeta(){
- if(!lbl_80561658 || !(reinterpret_cast<unsigned int *>(lbl_80561658)[0x24/4]&4)) arkRegister__Q33Gap4Core10igRegistryFv();
- return lbl_80561658;
+ if(!igRegistry_meta || !(reinterpret_cast<unsigned int *>(igRegistry_meta)[0x24/4]&4)) arkRegister__Q33Gap4Core10igRegistryFv();
+ return igRegistry_meta;
 }
 void *igRegistry_vtableRead(){
  UnknownGenObject80026B8C object;
- object.unknown00=lbl_80471328;
+ object.unknown00=igRegistry_vtable;
  object.unknown08.value=0;
  object.unknown0C.value=0;
  object.unknown10.value=0;

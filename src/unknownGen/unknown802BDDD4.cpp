@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_802BDF7C();
-extern void *lbl_80534920;
+void *meta_createInstance(void *,void *);
+void beSvGetFreeSizeApi_registerNow();
+extern void *beSvGetFreeSizeApi_meta;
 }
 extern "C" {
-void *fn_802BDDD4(void *object){
- fn_802BDF7C();
- return fn_8006546C(lbl_80534920,object);
+void *beSvGetFreeSizeApi_create(void *object){
+ beSvGetFreeSizeApi_registerNow();
+ return meta_createInstance(beSvGetFreeSizeApi_meta,object);
 }
 void *beSvGetFreeSizeApi_getMeta(){
- if(!lbl_80534920 || !(reinterpret_cast<unsigned int *>(lbl_80534920)[0x24/4]&4)) fn_802BDF7C();
- return lbl_80534920;
+ if(!beSvGetFreeSizeApi_meta || !(reinterpret_cast<unsigned int *>(beSvGetFreeSizeApi_meta)[0x24/4]&4)) beSvGetFreeSizeApi_registerNow();
+ return beSvGetFreeSizeApi_meta;
 }
 }
 #pragma pop

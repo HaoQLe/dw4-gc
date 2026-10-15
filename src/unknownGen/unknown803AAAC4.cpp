@@ -8,7 +8,7 @@ void *fn_8028A730(void *,void *);
 void fn_802F24B0(void *);
 void fn_80305308(void *,void *,void *);
 extern char lbl_8045C404[];
-extern void *lbl_8055C788;
+extern void *igViewerSceneInfoManager_meta;
 }
 extern "C" {
 void beNDMWMdlItem_virtual9C(int p0,int p1,int p2,int p3,int p4,int p5){
@@ -16,7 +16,7 @@ void beNDMWMdlItem_virtual9C(int p0,int p1,int p2,int p3,int p4,int p5){
 }
 void beNDMWMdlItem_virtual64(int p0){
  fn_802F24B0((void *)p0);
- void *value0=fn_8028A730(reinterpret_cast<Meta::beNDMWMdlItem *>((void *)p0)->_insight,lbl_8055C788);
+ void *value0=fn_8028A730(reinterpret_cast<Meta::beNDMWMdlItem *>((void *)p0)->_insight,igViewerSceneInfoManager_meta);
  reinterpret_cast<Meta::beNDMWMdlItem *>((void *)p0)->_viewerSIManager=(Meta::igViewerSceneInfoManager *)value0;
 }
 }

@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564DAC;
+extern void *igLightStateSet_meta;
 }
 extern "C" {
-void *igCollapseNodeForLightStateSet_virtual7C(){return lbl_80564DAC;}
+void *igCollapseNodeForLightStateSet_virtual7C(){return igLightStateSet_meta;}
 }
 #pragma pop

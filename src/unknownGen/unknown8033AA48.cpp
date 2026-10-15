@@ -3,13 +3,13 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804D9D3C[];
+extern char beModelCtrlInfoWork_vtable[];
 extern char lbl_804E5FD4[];
 }
 extern "C" {
 void *fn_8033AA48(int p0){
  fn_8006665C((void *)p0);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804D9D3C;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beModelCtrlInfoWork_vtable;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=(void *)0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)0;

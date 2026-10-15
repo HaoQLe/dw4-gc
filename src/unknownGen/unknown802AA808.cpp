@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804CD7E0[];
+extern char igAdx_vtable[];
 }
 struct UnknownGenObject802AA808_0 {
  void *unknown00;
@@ -13,7 +13,7 @@ extern "C" {
 void *igAdx_vtableRead(){
  UnknownGenObject802AA808_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804CD7E0;
+ object.unknown00=igAdx_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

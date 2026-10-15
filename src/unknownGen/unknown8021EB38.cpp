@@ -7,28 +7,28 @@ extern "C" {
 void fn_800667D8();
 void fn_800667E4();
 void *fn_8021B338();
-extern void *lbl_805659DC;
-extern void *lbl_805659E4;
+extern void *igHistogramBase_meta;
+extern void *igRandomNumber_meta;
 extern void *lbl_805659E8;
-extern void *lbl_805659EC;
-extern void *lbl_80565A04;
-extern void *lbl_80565A08;
+extern void *igObjectRegistryMap_meta;
+extern void *igUnresolvedSymbolList_meta;
+extern void *igUnresolvedSymbol_meta;
 extern void *lbl_80565A24;
-extern void *lbl_80565A30;
-extern void *lbl_80565A3C;
-extern void *lbl_80565A4C;
+extern void *igMersenneTwisterRandomNumber_meta;
+extern void *igMeanAndStandardDeviation_meta;
+extern void *igMatrixStack_meta;
 extern void *lbl_80565A54;
-extern void *lbl_80565A58;
-extern void *lbl_80565A5C;
-extern void *lbl_80565A60;
+extern void *igNonRefCountedMatrixObjectList_meta;
+extern void *igMatrixObjectList_meta;
+extern void *igMatrixObject_meta;
 extern void *lbl_80565A68;
 extern void *lbl_80565A6C;
-extern void *lbl_80565A70;
-extern void *lbl_80565A78;
+extern void *igIntObject_meta;
+extern void *igIntHistogram_meta;
 extern void *lbl_80565A88;
 extern void *lbl_80565A8C;
-extern void *lbl_80565A90;
-extern void *lbl_80565A98;
+extern void *igFloatObject_meta;
+extern void *igFloatHistogram_meta;
 extern void *lbl_80565AA8;
 extern void *lbl_80565AAC;
 extern void *lbl_80565AB0;
@@ -36,44 +36,44 @@ extern void *lbl_80565AB8;
 extern void *lbl_80565AC0;
 extern void *lbl_80565AC4;
 extern void *lbl_80565ACC;
-extern void *lbl_80565AE4;
-extern void *lbl_80565AEC;
-extern void *lbl_80565AF0;
-extern void *lbl_80565AF4;
+extern void *igDataPumpManager_meta;
+extern void *igDataPumpList_meta;
+extern void *igDataPumpInterface_meta;
+extern void *igDataPumpInfo_meta;
 extern void *lbl_80565AFC;
 extern void *lbl_80565B00;
-extern void *lbl_80565B08;
+extern void *igDataPump_meta;
 extern void *lbl_80565B20;
 extern void *lbl_80565B24;
 extern void *lbl_80565B28;
-extern void *lbl_80565B2C;
+extern void *igBoolObject_meta;
 extern void *lbl_80565B34;
 extern void *lbl_80565B44;
 }
 extern "C" {
-void *igMersenneTwisterRandomNumber_virtual58(){return lbl_80565A30;}
+void *igMersenneTwisterRandomNumber_virtual58(){return igMersenneTwisterRandomNumber_meta;}
 void *igMersenneTwisterRandomNumber_virtual60(){return fn_8021B338();}
 void *igMersenneTwisterRandomNumber_virtualBC(){return lbl_80565AA8;}
 void *igMersenneTwisterRandomNumber_virtual11C(){return lbl_80565AB0;}
 void *igMersenneTwisterRandomNumber_virtual180(){return lbl_80565AB8;}
 void *igMersenneTwisterRandomNumber_virtual1E4(){return lbl_80565AC4;}
 void *igMersenneTwisterRandomNumber_virtual248(){return lbl_80565B00;}
-void *igDataPump_virtual58(){return lbl_80565B08;}
+void *igDataPump_virtual58(){return igDataPump_meta;}
 void *igDataPump_virtualB4(){return lbl_80565B44;}
 void *igDataPump_virtual110(){return lbl_80565B34;}
-void *igBoolObject_virtual58(){return lbl_80565B2C;}
+void *igBoolObject_virtual58(){return igBoolObject_meta;}
 void *igBoolObject_virtualB4(){return lbl_80565B28;}
 void *igBoolObject_virtual17C(){return lbl_80565B24;}
 void *igBoolObject_virtual244(){return lbl_80565B20;}
 void *igBoolObject_virtual2A0(){return lbl_80565AFC;}
-void *igDataPumpInfo_virtual58(){return lbl_80565AF4;}
-void *igDataPumpList_virtual58(){return lbl_80565AEC;}
-void *igDataPumpManager_virtual58(){return lbl_80565AE4;}
+void *igDataPumpInfo_virtual58(){return igDataPumpInfo_meta;}
+void *igDataPumpList_virtual58(){return igDataPumpList_meta;}
+void *igDataPumpManager_virtual58(){return igDataPumpManager_meta;}
 void *igDataPumpManager_virtualB4(){return lbl_80565AC0;}
-void *igDataPumpManager_virtual110(){return lbl_80565AF0;}
+void *igDataPumpManager_virtual110(){return igDataPumpInterface_meta;}
 void *igDataPumpManager_virtual174(){return lbl_80565AAC;}
 void *igDataPumpManager_virtual1D0(){return lbl_80565ACC;}
-void *igFloatHistogram_virtual58(){return lbl_80565A98;}
+void *igFloatHistogram_virtual58(){return igFloatHistogram_meta;}
 void igFloatHistogram_virtual38(int p0){
  fn_800667D8();
  float value0=*reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+12);
@@ -92,20 +92,20 @@ void igFloatHistogram_virtual40(int p0){
  *reinterpret_cast<float *>(reinterpret_cast<char *>((void *)p0)+20)=value2;
  fn_800667E4();
 }
-void *igHistogramBase_virtual58(){return lbl_805659DC;}
-void *igFloatObject_virtual58(){return lbl_80565A90;}
+void *igHistogramBase_virtual58(){return igHistogramBase_meta;}
+void *igFloatObject_virtual58(){return igFloatObject_meta;}
 void *igFloatObject_virtualB4(){return lbl_80565A8C;}
 void *igFloatObject_virtual17C(){return lbl_80565A88;}
-void *igIntObject_virtual58(){return lbl_80565A70;}
+void *igIntObject_virtual58(){return igIntObject_meta;}
 void *igIntObject_virtualB4(){return lbl_80565A6C;}
 void *igIntObject_virtual17C(){return lbl_80565A68;}
-void *igMatrixObject_virtual58(){return lbl_80565A60;}
-void *igMatrixObjectList_virtual58(){return lbl_80565A5C;}
-void *igNonRefCountedMatrixObjectList_virtual58(){return lbl_80565A58;}
+void *igMatrixObject_virtual58(){return igMatrixObject_meta;}
+void *igMatrixObjectList_virtual58(){return igMatrixObjectList_meta;}
+void *igNonRefCountedMatrixObjectList_virtual58(){return igNonRefCountedMatrixObjectList_meta;}
 void *fn_8021ECD4(){return lbl_80565A54;}
-void *igMatrixStack_virtual58(){return lbl_80565A4C;}
-void *igMeanAndStandardDeviation_virtual58(){return lbl_80565A3C;}
-void *fn_8021ECEC(){return lbl_805659E4;}
+void *igMatrixStack_virtual58(){return igMatrixStack_meta;}
+void *igMeanAndStandardDeviation_virtual58(){return igMeanAndStandardDeviation_meta;}
+void *fn_8021ECEC(){return igRandomNumber_meta;}
 void *fn_8021ECF4(){return lbl_80565A24;}
 void igIntHistogram_virtual38(int p0){
  fn_800667D8();
@@ -119,10 +119,10 @@ void igIntHistogram_virtual40(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)reinterpret_cast<Meta::igIntHistogram *>((void *)p0)->_binWidthIgb;
  fn_800667E4();
 }
-void *igIntHistogram_virtual58(){return lbl_80565A78;}
-void *igUnresolvedSymbol_virtual58(){return lbl_80565A08;}
-void *igUnresolvedSymbolList_virtual58(){return lbl_80565A04;}
-void *igObjectRegistryMap_virtual58(){return lbl_805659EC;}
+void *igIntHistogram_virtual58(){return igIntHistogram_meta;}
+void *igUnresolvedSymbol_virtual58(){return igUnresolvedSymbol_meta;}
+void *igUnresolvedSymbolList_virtual58(){return igUnresolvedSymbolList_meta;}
+void *igObjectRegistryMap_virtual58(){return igObjectRegistryMap_meta;}
 void *igObjectRegistryMap_virtualB4(){return lbl_805659E8;}
 }
 #pragma pop

@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804E51E8[];
+extern char beNDMWMcSlotPS2_vtable[];
 extern char lbl_804E5334[];
 }
 struct UnknownGenObject80340048_0 {
@@ -15,7 +15,7 @@ void *beNDMWMcSlotPS2_vtableRead(){
  UnknownGenObject80340048_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804E5334;
- object.unknown00=lbl_804E51E8;
+ object.unknown00=beNDMWMcSlotPS2_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

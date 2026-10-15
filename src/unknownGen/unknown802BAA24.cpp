@@ -3,10 +3,10 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
+extern char igNamedObject_vtable[];
 extern char lbl_804CBA60[];
 extern char lbl_804DD724[];
-extern char lbl_804DF644[];
+extern char beSelectCtrl_vtable[];
 }
 struct UnknownGenRoot802BAA24 {
  void *unknown00;
@@ -16,7 +16,7 @@ struct UnknownGenRoot802BAA24 {
 struct UnknownGenObject802BAA24_0 : UnknownGenRoot802BAA24 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject802BAA24_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject802BAA24_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject802BAA24_1 : UnknownGenObject802BAA24_0 {
  inline ~UnknownGenObject802BAA24_1(){unknown00=lbl_804CBA60;}
@@ -28,17 +28,17 @@ struct UnknownGenObject802BAA24_2 : UnknownGenObject802BAA24_1 {
 };
 struct UnknownGenObject802BAA24 : UnknownGenObject802BAA24_2 {
  char unknown1C[20];
- inline ~UnknownGenObject802BAA24(){unknown00=lbl_804DF644;}
+ inline ~UnknownGenObject802BAA24(){unknown00=beSelectCtrl_vtable;}
 };
 extern "C" {
 void *beSelectCtrl_vtableRead(){
  UnknownGenObject802BAA24 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
  object.unknown00=lbl_804CBA60;
  object.unknown00=lbl_804DD724;
  object.unknown18.value=0;
- object.unknown00=lbl_804DF644;
+ object.unknown00=beSelectCtrl_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

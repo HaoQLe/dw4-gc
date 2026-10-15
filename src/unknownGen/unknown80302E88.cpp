@@ -6,7 +6,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_8028A730(void *,void *);
-extern char lbl_80535124[];
+extern char beLua_meta[];
 }
 extern "C" {
 void beMatCtrl_virtual88(int p0){
@@ -17,7 +17,7 @@ void beMatCtrl_virtual88(int p0){
  void *value3;
  void *value4;
  void *value5;
- value6=fn_8028A730(reinterpret_cast<Meta::beMatCtrl *>((void *)p0)->_insight,*reinterpret_cast<void **>((lbl_80535124+0)));
+ value6=fn_8028A730(reinterpret_cast<Meta::beMatCtrl *>((void *)p0)->_insight,*reinterpret_cast<void **>((beLua_meta+0)));
  reinterpret_cast<Meta::beMatCtrl *>((void *)p0)->_lua=(Meta::beLua *)value6;
  value0=reinterpret_cast<Meta::beMatCtrl *>((void *)p0)->_wkMatOnList;
  if(value0){

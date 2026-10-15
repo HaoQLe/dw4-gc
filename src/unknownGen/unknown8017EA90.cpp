@@ -9,11 +9,11 @@ void fn_80188BA4(void *);
 void fn_80188C0C(void *,int);
 void fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
-extern void *lbl_80564ED0;
+extern void *igGroup_meta;
 }
 static inline void *UnknownGenCast8017EA90_9(void *q){
  void *value1;
- if((q&&(value1=fn_80068128(q,lbl_80564ED0),(unsigned char)(int)value1))) return q;
+ if((q&&(value1=fn_80068128(q,igGroup_meta),(unsigned char)(int)value1))) return q;
  return 0;
 }
 extern "C" {

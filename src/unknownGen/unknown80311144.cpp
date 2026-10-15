@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534BF8;
-extern void *lbl_80534C04;
-extern void *lbl_80534C20;
+extern void *beModelCtrlSCSound_meta;
+extern void *beModelCtrlSCHitBox_meta;
+extern void *beModelCtrlSCEffect_meta;
 }
 extern "C" {
-void *beModelCtrlSCSound_virtual58(){return lbl_80534BF8;}
-void *beModelCtrlSCEffect_virtual58(){return lbl_80534C20;}
-void *beModelCtrlSCHitBox_virtual58(){return lbl_80534C04;}
+void *beModelCtrlSCSound_virtual58(){return beModelCtrlSCSound_meta;}
+void *beModelCtrlSCEffect_virtual58(){return beModelCtrlSCEffect_meta;}
+void *beModelCtrlSCHitBox_virtual58(){return beModelCtrlSCHitBox_meta;}
 }
 #pragma pop

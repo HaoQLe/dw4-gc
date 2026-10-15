@@ -4,7 +4,7 @@
 #pragma auto_inline off
 extern "C" {
 extern char lbl_8047A2A0[];
-extern void *lbl_8056292C;
+extern void *igDecalAttr_meta;
 extern void *lbl_80562AE8;
 }
 class UnknownGenV800BE0E4_0 {
@@ -68,7 +68,7 @@ public:
  virtual void * s68(void *);
 };
 extern "C" {
-void *igDecalAttr_virtual58(){return lbl_8056292C;}
+void *igDecalAttr_virtual58(){return igDecalAttr_meta;}
 void igDecalAttr_virtual60(int p0){
  void *value0=lbl_80562AE8;
  if(value0){

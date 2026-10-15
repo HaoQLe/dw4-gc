@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_80332AC8();
-extern void *lbl_80535F34;
+void *meta_createInstance(void *,void *);
+void beNDMWStatusMainSlot_registerNow();
+extern void *beNDMWStatusMainSlot_meta;
 }
 extern "C" {
-void *fn_80332920(void *object){
- fn_80332AC8();
- return fn_8006546C(lbl_80535F34,object);
+void *beNDMWStatusMainSlot_create(void *object){
+ beNDMWStatusMainSlot_registerNow();
+ return meta_createInstance(beNDMWStatusMainSlot_meta,object);
 }
 void *beNDMWStatusMainSlot_getMeta(){
- if(!lbl_80535F34 || !(reinterpret_cast<unsigned int *>(lbl_80535F34)[0x24/4]&4)) fn_80332AC8();
- return lbl_80535F34;
+ if(!beNDMWStatusMainSlot_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusMainSlot_meta)[0x24/4]&4)) beNDMWStatusMainSlot_registerNow();
+ return beNDMWStatusMainSlot_meta;
 }
 }
 #pragma pop

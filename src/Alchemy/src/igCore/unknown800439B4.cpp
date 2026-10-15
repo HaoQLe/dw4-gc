@@ -10,7 +10,7 @@ inline int unknown80043DE4FindPointer(Unknown80042DECStorage *storage, Unknown80
 
 #pragma push
 #pragma auto_inline off
-extern "C" void *igDirEntry_virtual58(){ return lbl_80561D00; }
+extern "C" void *igDirEntry_virtual58(){ return igDirEntry_meta; }
 extern "C" int fn_800439BC(Unknown80042DECOwner *object, Unknown80042DECValue *entry){
     Unknown80042DECValue *value;
     int index=fn_800432E8(object,lbl_80561D10,entry->unknown18);
@@ -32,7 +32,7 @@ extern "C" Unknown80042DECValue *fn_80043A68(void *storage, void *key){
 extern "C" Unknown80042DECValue *fn_80043AA4(void *storage, void *key){
     Unknown80042DECValue *entry=fn_800695CC(storage,lbl_80561748,key);
     if(!entry) return NULL;
-    if(fn_80068128(entry,lbl_80561710)) return entry->unknown18;
+    if(fn_80068128(entry,igObjectDirEntry_meta)) return entry->unknown18;
     return NULL;
 }
 extern "C" Unknown80042DECValue *fn_80043B00(void *storage, void *key){ return fn_800695CC(storage,lbl_80561748,key); }
@@ -42,7 +42,7 @@ extern "C" void fn_80043B50(Unknown80042DECOwner *object){
     unsigned int count=object->unknown08;
     for(unsigned int index=0; index<count; ++index){
         Unknown80042DECValue *entry=fn_80042B1C(object,index);
-        if(entry && fn_80068128(entry,lbl_80561710)){
+        if(entry && fn_80068128(entry,igObjectDirEntry_meta)){
             Unknown80042DECMetadata *metadata=entry->unknown1C;
             if(metadata && metadata->unknown3C) entry->unknown18->slot50(metadata);
         }
@@ -97,7 +97,7 @@ extern "C" int fn_80043DE4(Unknown80042DECOwner *object){
 extern "C" void fn_80043F4C(Unknown80042DECOwner *object){
     if(!object->unknown44){
         unknown80042DECRelease(reinterpret_cast<Unknown80042DECValue *>(object->unknown44));
-        object->unknown44=fn_80025FE8(NULL);
+        object->unknown44=igSemaphore_create(NULL);
         object->unknown44->slot5C();
     }
 }

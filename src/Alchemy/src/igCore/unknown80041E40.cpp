@@ -32,8 +32,8 @@ extern "C" {
     void fn_80041810(void *, int, int);
     void fn_80066E1C(void *);
     void *fn_80068430(void *);
-    Unknown80041E40Storage *fn_80028F4C(void *);
-    Unknown80041E40Storage *fn_800346F0(void *);
+    Unknown80041E40Storage *igObjectList_create(void *);
+    Unknown80041E40Storage *igPointerList_create(void *);
     void fn_80069184(void *, void *);
     void fn_80069128(void *, Unknown80041E40Value *);
     void fn_800694EC(void *, Unknown80041E40Value *);
@@ -105,7 +105,7 @@ inline void unknown80041E40ReleaseContents(Unknown80041E40Storage *storage, int 
 }
 extern "C" void fn_80042010(Unknown80041E40 *object){
     struct { Unknown80041E40Storage *value; } reference;
-    reference.value = fn_80028F4C(fn_80068430(object));
+    reference.value = igObjectList_create(fn_80068430(object));
     fn_80069184(reference.value, object->unknown08);
     Unknown80041E40Storage *storage = object->unknown08;
     unknown80041E40ReleaseContents(storage, 0);

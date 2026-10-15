@@ -3,30 +3,30 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *igLongTimer_fieldInit();
 void *igLongTimer_getMetaCall();
 void igTimer_register();
-extern char lbl_8046527C[];
-extern void *lbl_805614E4;
-extern void *lbl_80561978;
-void fn_8002CD58();
+extern char igLongTimer_className[];
+extern void *igTimer_meta;
+extern void *igLongTimer_meta;
+void igLongTimer_registerNow();
 void igLongTimer_register();
 void *igLongTimer_parentMeta();
 }
 extern "C" {
 void *igLongTimer_getMeta(){
- if(!lbl_80561978 || !(reinterpret_cast<unsigned int *>(lbl_80561978)[0x24/4]&4)) fn_8002CD58();
- return lbl_80561978;
+ if(!igLongTimer_meta || !(reinterpret_cast<unsigned int *>(igLongTimer_meta)[0x24/4]&4)) igLongTimer_registerNow();
+ return igLongTimer_meta;
 }
-void fn_8002CD58(){
- fn_80066188((int)igLongTimer_register);
+void igLongTimer_registerNow(){
+ meta_registerNow((int)igLongTimer_register);
 }
 void igLongTimer_register(){
  fn_80021B94();
- fn_80066204(1,(int)&lbl_80561978,(int)igTimer_register,(int)igLongTimer_parentMeta,(int)igLongTimer_getMetaCall,(int)lbl_8046527C,40,0,(int)igLongTimer_fieldInit,0,0);
+ meta_registerClass(1,(int)&igLongTimer_meta,(int)igTimer_register,(int)igLongTimer_parentMeta,(int)igLongTimer_getMetaCall,(int)igLongTimer_className,40,0,(int)igLongTimer_fieldInit,0,0);
 }
-void *igLongTimer_parentMeta(){return lbl_805614E4;}
+void *igLongTimer_parentMeta(){return igTimer_meta;}
 }
 #pragma pop

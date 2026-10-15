@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800607F4(void *);
-void *fn_800B4128(void *);
+void *igModelViewMatrixAttr_create(void *);
 void igGamecubeVisualContext_virtual32C(void *,int,void *);
 extern void *lbl_805621E8;
 extern void *lbl_80562250;
@@ -42,7 +42,7 @@ void *fn_800C17B8(){
     fn_80066E1C(value0);
    }
   }
-  value5=fn_800B4128(value2);
+  value5=igModelViewMatrixAttr_create(value2);
   lbl_80562AFC=value5;
  }
  return lbl_80562AFC;

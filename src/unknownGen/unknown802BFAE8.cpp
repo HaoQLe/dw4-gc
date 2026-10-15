@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805349D8;
+extern void *beSvSlotData_meta;
 }
 extern "C" {
-void *fn_802BFAE8(){return lbl_805349D8;}
+void *fn_802BFAE8(){return beSvSlotData_meta;}
 }
 #pragma pop

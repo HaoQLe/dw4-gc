@@ -4,14 +4,14 @@
 extern "C" {
 void fn_80066DFC(void *);
 void fn_80328940(void *,int);
-extern char lbl_804ED72C[];
+extern char beNDMWShopSelect02_vtable[];
 }
 extern "C" {
 void *fn_80329878(int p0,int p1){
  void *value0;
  void *value1;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804ED72C;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beNDMWShopSelect02_vtable;
   if((int)(p0+112)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+112);
    if(value0){

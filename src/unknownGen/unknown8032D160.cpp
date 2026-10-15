@@ -5,7 +5,7 @@ extern "C" {
 void fn_8006665C(void *);
 extern char lbl_804E6888[];
 extern char lbl_804E6A60[];
-extern char lbl_804ECCD8[];
+extern char beNDMWShopCtrlSell_vtable[];
 }
 struct UnknownGenRoot8032D160 {
  void *unknown00;
@@ -28,7 +28,7 @@ struct UnknownGenObject8032D160_1 : UnknownGenObject8032D160_0 {
 };
 struct UnknownGenObject8032D160 : UnknownGenObject8032D160_1 {
  char unknown50[8];
- inline ~UnknownGenObject8032D160(){unknown00=lbl_804ECCD8;}
+ inline ~UnknownGenObject8032D160(){unknown00=beNDMWShopCtrlSell_vtable;}
 };
 extern "C" {
 void *beNDMWShopCtrlSell_vtableRead(){
@@ -42,7 +42,7 @@ void *beNDMWShopCtrlSell_vtableRead(){
  object.unknown48.value=0;
  object.unknown4C.value=0;
  object.unknown00=lbl_804E6888;
- object.unknown00=lbl_804ECCD8;
+ object.unknown00=beNDMWShopCtrlSell_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

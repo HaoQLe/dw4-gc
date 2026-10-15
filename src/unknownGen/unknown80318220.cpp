@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534620;
+extern void *beWaterPlain_meta;
 }
 extern "C" {
-void *beWaterPlain_virtual58(){return lbl_80534620;}
+void *beWaterPlain_virtual58(){return beWaterPlain_meta;}
 }
 #pragma pop

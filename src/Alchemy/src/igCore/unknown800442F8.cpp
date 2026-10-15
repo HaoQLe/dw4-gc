@@ -17,7 +17,7 @@ inline void unknown800442F8SetString(Unknown80042DECStorage *storage,int index,c
 }
 inline void unknown800442F8Create(Unknown800442F8Reference &ref,void *context){
     unknown80042DECRelease(ref.value);
-    ref.value=fn_80024B5C(context);
+    ref.value=igStringRefList_create(context);
 }
 extern "C" void fn_800442F8(Unknown800442F8Owner *object, int index, const char *key, const char *text){
     Unknown800442F8Reference first, second;

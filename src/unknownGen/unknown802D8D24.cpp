@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802D8EB0();
-extern void *lbl_80535318;
+void beFontInfoData_registerNow();
+extern void *beFontInfoData_meta;
 }
 extern "C" {
 void *beFontInfoData_getMeta(){
- if(!lbl_80535318 || !(reinterpret_cast<unsigned int *>(lbl_80535318)[0x24/4]&4)) fn_802D8EB0();
- return lbl_80535318;
+ if(!beFontInfoData_meta || !(reinterpret_cast<unsigned int *>(beFontInfoData_meta)[0x24/4]&4)) beFontInfoData_registerNow();
+ return beFontInfoData_meta;
 }
 }
 #pragma pop

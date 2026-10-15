@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013DD10();
 void igObjectPropertyForNode_register();
-extern char lbl_8049DCB0[];
-extern char lbl_804A52A8[];
-extern char lbl_804A5BE8[];
+extern char igObjectPropertyForActor_className[];
+extern char igObjectPropertyForActor_vtable[];
+extern char igObjectPropertyForNode_vtable[];
 extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F868[8];
-extern void *lbl_80563F4C;
+extern void *igObjectPropertyForActor_meta;
 void *igObjectPropertyForActor_getMeta();
 void *igObjectPropertyForActor_vtableRead();
-void fn_8013DC54();
+void igObjectPropertyForActor_registerNow();
 void igObjectPropertyForActor_register();
 void *igObjectPropertyForActor_getMetaCall();
 }
@@ -35,16 +35,16 @@ struct UnknownGenObject8013DB88_0 : UnknownGenRoot8013DB88 {
  inline ~UnknownGenObject8013DB88_0(){unknown00=lbl_804A5C7C;}
 };
 struct UnknownGenObject8013DB88_1 : UnknownGenObject8013DB88_0 {
- inline ~UnknownGenObject8013DB88_1(){unknown00=lbl_804A5BE8;}
+ inline ~UnknownGenObject8013DB88_1(){unknown00=igObjectPropertyForNode_vtable;}
 };
 struct UnknownGenObject8013DB88 : UnknownGenObject8013DB88_1 {
  char unknown24[12];
- inline ~UnknownGenObject8013DB88(){unknown00=lbl_804A52A8;}
+ inline ~UnknownGenObject8013DB88(){unknown00=igObjectPropertyForActor_vtable;}
 };
 extern "C" {
 void *igObjectPropertyForActor_getMeta(){
- if(!lbl_80563F4C || !(reinterpret_cast<unsigned int *>(lbl_80563F4C)[0x24/4]&4)) fn_8013DC54();
- return lbl_80563F4C;
+ if(!igObjectPropertyForActor_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForActor_meta)[0x24/4]&4)) igObjectPropertyForActor_registerNow();
+ return igObjectPropertyForActor_meta;
 }
 void *igObjectPropertyForActor_vtableRead(){
  UnknownGenObject8013DB88 object;
@@ -53,16 +53,16 @@ void *igObjectPropertyForActor_vtableRead(){
  object.unknown00=lbl_804A6338;
  object.unknown00=lbl_804A5C7C;
  object.unknown20.value=0;
- object.unknown00=lbl_804A5BE8;
- object.unknown00=lbl_804A52A8;
+ object.unknown00=igObjectPropertyForNode_vtable;
+ object.unknown00=igObjectPropertyForActor_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8013DC54(){
- fn_80066188((int)igObjectPropertyForActor_register);
+void igObjectPropertyForActor_registerNow(){
+ meta_registerNow((int)igObjectPropertyForActor_register);
 }
 void igObjectPropertyForActor_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563F4C,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForActor_getMetaCall,(int)lbl_8049DCB0,44,(int)igObjectPropertyForActor_vtableRead,(int)fn_8013DD10,0,(int)lbl_8055F868);
+ meta_registerClass(0,(int)&igObjectPropertyForActor_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForActor_getMetaCall,(int)igObjectPropertyForActor_className,44,(int)igObjectPropertyForActor_vtableRead,(int)fn_8013DD10,0,(int)lbl_8055F868);
 }
 void *igObjectPropertyForActor_getMetaCall(){return igObjectPropertyForActor_getMeta();}
 }

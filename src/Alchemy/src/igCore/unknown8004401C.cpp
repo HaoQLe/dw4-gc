@@ -19,7 +19,7 @@ extern "C" {
     void fn_800667D4(void *);
     void fn_8006DC50(void *, int, const char *, unsigned char *, unsigned char, int);
     void fn_800691E8(void *, int);
-    Unknown80042DECValue *fn_80024FB4(void *);
+    Unknown80042DECValue *igStringObj_create(void *);
     void fn_8004513C(void *);
     void fn_80071F9C(void *, void *);
 }
@@ -49,7 +49,7 @@ extern "C" void igDriverDatabase_virtual2C(Unknown80044130 *object){
     fn_800691E8(object->unknown0C,13);
     fn_800691E8(object->unknown10,13);
     for(int index=0; index<13; ++index){
-        Unknown80042DECValue *entry=fn_80024FB4(fn_80068430(object));
+        Unknown80042DECValue *entry=igStringObj_create(fn_80068430(object));
         Unknown80042DECStorage *storage=object->unknown08;
         Unknown80042DECReference reference(entry);
         unknown80042DECRelease(storage->unknown10[index]);

@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
-extern char lbl_804D3970[];
+extern char igNamedObject_vtable[];
+extern char beAction2FLASHSET_vtable[];
 }
 struct UnknownGenRoot802E6278 {
  void *unknown00;
@@ -14,18 +14,18 @@ struct UnknownGenRoot802E6278 {
 struct UnknownGenObject802E6278_0 : UnknownGenRoot802E6278 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject802E6278_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject802E6278_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject802E6278 : UnknownGenObject802E6278_0 {
  char unknown0C[4];
- inline ~UnknownGenObject802E6278(){unknown00=lbl_804D3970;}
+ inline ~UnknownGenObject802E6278(){unknown00=beAction2FLASHSET_vtable;}
 };
 extern "C" {
 void *beAction2FLASHSET_vtableRead(){
  UnknownGenObject802E6278 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
- object.unknown00=lbl_804D3970;
+ object.unknown00=beAction2FLASHSET_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

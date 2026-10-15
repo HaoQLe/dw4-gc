@@ -5,41 +5,41 @@ extern "C" {
 void beBinDataObject_register();
 void *beCriAcxData_getMeta();
 void beCriAcxData_vtableRead();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802DEA84();
-void fn_802E001C();
-extern char lbl_80420998[];
-extern char lbl_80535580[];
-extern void *lbl_80535584;
+void beCri_registerNow();
+extern char beCriAcxData_className[];
+extern char beCriAcxData_meta[];
+extern void *beCri_meta;
 extern void *lbl_805621F4;
 void beCriAcxData_register();
 void *beCriAcxData_getMetaCall();
 }
 extern "C" {
-void fn_802DFC3C(){
- fn_80066188((int)beCriAcxData_register);
+void beCriAcxData_registerNow(){
+ meta_registerNow((int)beCriAcxData_register);
 }
 void beCriAcxData_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535580,(int)beBinDataObject_register,(int)fn_802DEA84,(int)beCriAcxData_getMetaCall,(int)lbl_80420998,24,(int)beCriAcxData_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beCriAcxData_meta,(int)beBinDataObject_register,(int)fn_802DEA84,(int)beCriAcxData_getMetaCall,(int)beCriAcxData_className,24,(int)beCriAcxData_vtableRead,0,0,0);
 }
 void *beCriAcxData_getMetaCall(){return beCriAcxData_getMeta();}
-void *fn_802DFCF0(void *object){
- fn_802E001C();
- return fn_8006546C(lbl_80535584,object);
+void *beCri_create(void *object){
+ beCri_registerNow();
+ return meta_createInstance(beCri_meta,object);
 }
-void *fn_802DFD30(){
- if(!lbl_80535584) lbl_80535584=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80535584;
+void *beCri_metaObject(){
+ if(!beCri_meta) beCri_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beCri_meta;
 }
 void *beCri_getMeta(){
- if(!lbl_80535584 || !(reinterpret_cast<unsigned int *>(lbl_80535584)[0x24/4]&4)) fn_802E001C();
- return lbl_80535584;
+ if(!beCri_meta || !(reinterpret_cast<unsigned int *>(beCri_meta)[0x24/4]&4)) beCri_registerNow();
+ return beCri_meta;
 }
 }
 #pragma pop

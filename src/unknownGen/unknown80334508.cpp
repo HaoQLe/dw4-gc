@@ -5,29 +5,29 @@ extern "C" {
 void beBaseInfoRam_register();
 void *beNDMWStageCtlInfoRam_getMeta();
 void beNDMWStageCtlInfoRam_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B2B2C();
 void fn_803250AC();
-void fn_80334758();
-extern char lbl_80453E08[];
-extern char lbl_80535FC8[];
-extern void *lbl_80535FCC;
+void beNDMWStageCtlInfo_registerNow();
+extern char beNDMWStageCtlInfoRam_className[];
+extern char beNDMWStageCtlInfoRam_meta[];
+extern void *beNDMWStageCtlInfo_meta;
 void beNDMWStageCtlInfoRam_register();
 void *beNDMWStageCtlInfoRam_getMetaCall();
 }
 extern "C" {
-void fn_80334508(){
- fn_80066188((int)beNDMWStageCtlInfoRam_register);
+void beNDMWStageCtlInfoRam_registerNow(){
+ meta_registerNow((int)beNDMWStageCtlInfoRam_register);
 }
 void beNDMWStageCtlInfoRam_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535FC8,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beNDMWStageCtlInfoRam_getMetaCall,(int)lbl_80453E08,44,(int)beNDMWStageCtlInfoRam_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beNDMWStageCtlInfoRam_meta,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beNDMWStageCtlInfoRam_getMetaCall,(int)beNDMWStageCtlInfoRam_className,44,(int)beNDMWStageCtlInfoRam_vtableRead,0,0,0);
 }
 void *beNDMWStageCtlInfoRam_getMetaCall(){return beNDMWStageCtlInfoRam_getMeta();}
 void *beNDMWStageCtlInfo_getMeta(){
- if(!lbl_80535FCC || !(reinterpret_cast<unsigned int *>(lbl_80535FCC)[0x24/4]&4)) fn_80334758();
- return lbl_80535FCC;
+ if(!beNDMWStageCtlInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWStageCtlInfo_meta)[0x24/4]&4)) beNDMWStageCtlInfo_registerNow();
+ return beNDMWStageCtlInfo_meta;
 }
 }
 #pragma pop

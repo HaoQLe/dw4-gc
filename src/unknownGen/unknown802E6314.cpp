@@ -5,29 +5,29 @@ extern "C" {
 void *beAction2FLASHSET_getMeta();
 void beAction2FLASHSET_vtableRead();
 void *fn_80023CF4();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void fn_802E64B0();
+void beAction2WAITCHECK_registerNow();
 void igNamedObject_register();
-extern char lbl_80421020[];
-extern char lbl_805357E4[];
-extern void *lbl_805357E8;
+extern char beAction2FLASHSET_className[];
+extern char beAction2FLASHSET_meta[];
+extern void *beAction2WAITCHECK_meta;
 void beAction2FLASHSET_register();
 void *beAction2FLASHSET_getMetaCall();
 }
 extern "C" {
-void fn_802E6314(){
- fn_80066188((int)beAction2FLASHSET_register);
+void beAction2FLASHSET_registerNow(){
+ meta_registerNow((int)beAction2FLASHSET_register);
 }
 void beAction2FLASHSET_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805357E4,(int)igNamedObject_register,(int)fn_80023CF4,(int)beAction2FLASHSET_getMetaCall,(int)lbl_80421020,12,(int)beAction2FLASHSET_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beAction2FLASHSET_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)beAction2FLASHSET_getMetaCall,(int)beAction2FLASHSET_className,12,(int)beAction2FLASHSET_vtableRead,0,0,0);
 }
 void *beAction2FLASHSET_getMetaCall(){return beAction2FLASHSET_getMeta();}
 void *beAction2WAITCHECK_getMeta(){
- if(!lbl_805357E8 || !(reinterpret_cast<unsigned int *>(lbl_805357E8)[0x24/4]&4)) fn_802E64B0();
- return lbl_805357E8;
+ if(!beAction2WAITCHECK_meta || !(reinterpret_cast<unsigned int *>(beAction2WAITCHECK_meta)[0x24/4]&4)) beAction2WAITCHECK_registerNow();
+ return beAction2WAITCHECK_meta;
 }
 }
 #pragma pop

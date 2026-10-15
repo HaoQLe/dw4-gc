@@ -12,12 +12,12 @@ extern char lbl_8055D3A4[8];
 extern char lbl_8055D3AC[8];
 extern char lbl_8055D3B4[8];
 extern char lbl_8055D3BC[8];
-extern void *lbl_805619D4;
+extern void *__internalNonRefCountedObjectList_meta;
 }
 extern "C" {
 void *__internalNonRefCountedObjectList_getMetaCall(){return __internalNonRefCountedObjectList_getMeta();}
 void __internalNonRefCountedObjectList_fieldInit(){
- void *value0=lbl_805619D4;
+ void *value0=__internalNonRefCountedObjectList_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D3A4,2);
  void *value2=fn_800658E4(value0,value1);

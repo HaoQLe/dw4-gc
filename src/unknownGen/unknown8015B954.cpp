@@ -11,9 +11,9 @@ void *fn_80188C0C(void *,int);
 void *fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
 extern void *lbl_80562140;
-extern void *lbl_805644E0;
-extern void *lbl_80564714;
-extern void *lbl_80564BC0;
+extern void *igCollapseNode_meta;
+extern void *igTransform_meta;
+extern void *igNode_meta;
 }
 extern "C" {
 void *fn_8015B954(int p0){
@@ -23,7 +23,7 @@ void *fn_8015B954(int p0){
  void *value4;
  void *value5;
  void *value6;
- void *value0=lbl_805644E0;
+ void *value0=igCollapseNode_meta;
  value1=(void *)reinterpret_cast<Meta::igMetaObject *>(value0)->_name;
  if(!value1){
   value3=(void *)0;
@@ -43,7 +43,7 @@ void *fn_8015B954(int p0){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value3;
  return value3;
 }
-void *fn_8015B9D4(){return lbl_80564BC0;}
+void *fn_8015B9D4(){return igNode_meta;}
 void fn_8015B9DC(int p0){
  void *local0;
  fn_80188BA4(&local0);
@@ -51,6 +51,6 @@ void fn_8015B9DC(int p0){
  fn_80188CAC((void *)p0,&local0);
  fn_80188C0C(&local0,-1);
 }
-void *igCollapseNodeForTransform_virtual7C(){return lbl_80564714;}
+void *igCollapseNodeForTransform_virtual7C(){return igTransform_meta;}
 }
 #pragma pop

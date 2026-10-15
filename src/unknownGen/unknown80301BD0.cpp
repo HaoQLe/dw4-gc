@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535168;
+extern void *beLayerCtl_meta;
 }
 extern "C" {
-void *beLayerCtl_virtual58(){return lbl_80535168;}
+void *beLayerCtl_virtual58(){return beLayerCtl_meta;}
 }
 #pragma pop

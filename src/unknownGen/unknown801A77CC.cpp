@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805642A8;
+extern void *igGaussianFilterFun_meta;
 }
 extern "C" {
-void *igGaussianFilterFun_virtual58(){return lbl_805642A8;}
+void *igGaussianFilterFun_virtual58(){return igGaussianFilterFun_meta;}
 }
 #pragma pop

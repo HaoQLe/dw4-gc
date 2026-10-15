@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564BD4;
+extern void *igMultiTextureShader_meta;
 }
 extern "C" {
-void *igObjectPropertyForMultiTextureShader_virtual7C(){return lbl_80564BD4;}
+void *igObjectPropertyForMultiTextureShader_virtual7C(){return igMultiTextureShader_meta;}
 }
 #pragma pop

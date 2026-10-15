@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564A14;
-extern void *lbl_80564ED0;
+extern void *igSceneInfo_meta;
+extern void *igGroup_meta;
 }
 extern "C" {
-void *igChildEditForNode_virtual7C(){return lbl_80564ED0;}
+void *igChildEditForNode_virtual7C(){return igGroup_meta;}
 int igCollapseAllHierarchies_virtual7C(){return 1;}
-void *igCollapseAllHierarchies_virtual8C(){return lbl_80564A14;}
+void *igCollapseAllHierarchies_virtual8C(){return igSceneInfo_meta;}
 }
 #pragma pop

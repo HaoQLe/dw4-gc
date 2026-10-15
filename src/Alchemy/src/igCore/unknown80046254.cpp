@@ -49,7 +49,7 @@ bool fn_800464BC(void *object,int kind,const char *first,int operation,const cha
  }
  case 3:{
   unsigned char a=0,b=0;
-  Unknown800442F8Reference reference(fn_80024FB4(fn_80068430(object)));
+  Unknown800442F8Reference reference(igStringObj_create(fn_80068430(object)));
   fn_80071F9C(reference.value,first);
   if(!fn_80072240(reference.value,&a)) return 0;
   fn_80071F9C(reference.value,second);
@@ -65,7 +65,7 @@ bool fn_80046718(void *,const char *first,int operation,const char *second){swit
 bool fn_800467C8(void *,int first,int operation,int second){switch(operation){case 0:return first==second;case 1:return first>=second;case 2:return first!=second;default:return false;}}
 bool fn_80046828(void *,double first,int operation,double second){switch(operation){case 0:return first==second;case 1:return first>=second;case 2:return first!=second;default:return false;}}
 bool fn_8004688C(void *,unsigned char first,int operation,unsigned char second){switch(operation){case 0:return first==second;case 2:return first!=second;default:return false;}}
-void *fn_800468E8(Unknown800468E8 *object){object->unknown08=lbl_80472C30;object->unknown00=reinterpret_cast<Unknown800442F8Stream *>(fn_80024FB4(fn_800607F4(lbl_805621F8)));object->unknown04=reinterpret_cast<Unknown800442F8Stream *>(fn_80024FB4(fn_800607F4(lbl_805621F8)));return object;}
+void *fn_800468E8(Unknown800468E8 *object){object->unknown08=lbl_80472C30;object->unknown00=reinterpret_cast<Unknown800442F8Stream *>(igStringObj_create(fn_800607F4(lbl_805621F8)));object->unknown04=reinterpret_cast<Unknown800442F8Stream *>(igStringObj_create(fn_800607F4(lbl_805621F8)));return object;}
 Unknown800468E8 *fn_80046940(Unknown800468E8 *object,int flag){
  if(object){object->unknown08=lbl_80472C30;unknown8004577CRelease(object->unknown00);object->unknown00=NULL;unknown8004577CRelease(object->unknown04);object->unknown04=NULL;if(static_cast<short>(flag)>0) fn_800564E8(object);}
  return object;
@@ -73,7 +73,7 @@ Unknown800468E8 *fn_80046940(Unknown800468E8 *object,int flag){
 Unknown800469E8 *fn_800469E8(Unknown800469E8 *object){
  reinterpret_cast<void **>(object)[1]=lbl_80472C3C;object->unknown00=1;reinterpret_cast<void **>(object)[1]=lbl_80472C24;
  void *context;if(lbl_80562298) context=fn_800607F4(lbl_805621E8);else context=fn_800607F4(lbl_80562200);
- object->unknown08=fn_800338FC(context);object->unknown0C=reinterpret_cast<Unknown800442F8Stream *>(fn_80024FB4(fn_800607F4(lbl_805621F8)));return object;
+ object->unknown08=igDataList_create(context);object->unknown0C=reinterpret_cast<Unknown800442F8Stream *>(igStringObj_create(fn_800607F4(lbl_805621F8)));return object;
 }
 Unknown800469E8 *fn_80046A6C(Unknown800469E8 *object,int flag){
  if(object){
@@ -92,9 +92,9 @@ Unknown800469E8 *fn_80046A6C(Unknown800469E8 *object,int flag){
 }
 Unknown80046B98 *fn_80046B98(Unknown80046B98 *object,int value){
  reinterpret_cast<void **>(object)[1]=lbl_80472C3C;object->unknown00=0;reinterpret_cast<void **>(object)[1]=lbl_80472C18;
- object->unknown08=value;object->unknown14=0;object->unknown18=NULL;object->unknown0C=reinterpret_cast<Unknown800442F8Stream *>(fn_80024FB4(fn_800607F4(lbl_805621F8)));
+ object->unknown08=value;object->unknown14=0;object->unknown18=NULL;object->unknown0C=reinterpret_cast<Unknown800442F8Stream *>(igStringObj_create(fn_800607F4(lbl_805621F8)));
  void *context;if(lbl_80562298) context=fn_800607F4(lbl_805621E8);else context=fn_800607F4(lbl_80562200);
- object->unknown10=fn_800338FC(context);return object;
+ object->unknown10=igDataList_create(context);return object;
 }
 Unknown80046B98 *fn_80046C28(Unknown80046B98 *object,int flag){
  if(object){

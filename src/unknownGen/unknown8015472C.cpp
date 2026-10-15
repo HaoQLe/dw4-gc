@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805622A4;
+extern void *igObject_meta;
 }
 extern "C" {
-void *igChangePlayMode_virtual8C(){return lbl_805622A4;}
+void *igChangePlayMode_virtual8C(){return igObject_meta;}
 void igChildEditForNode_virtual90(){}
 }
 #pragma pop

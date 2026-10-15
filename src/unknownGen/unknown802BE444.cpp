@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_802BE68C();
-extern void *lbl_8053493C;
+void *meta_createInstance(void *,void *);
+void beSvReadMediaApi_registerNow();
+extern void *beSvReadMediaApi_meta;
 }
 extern "C" {
-void *fn_802BE444(void *object){
- fn_802BE68C();
- return fn_8006546C(lbl_8053493C,object);
+void *beSvReadMediaApi_create(void *object){
+ beSvReadMediaApi_registerNow();
+ return meta_createInstance(beSvReadMediaApi_meta,object);
 }
 void *beSvReadMediaApi_getMeta(){
- if(!lbl_8053493C || !(reinterpret_cast<unsigned int *>(lbl_8053493C)[0x24/4]&4)) fn_802BE68C();
- return lbl_8053493C;
+ if(!beSvReadMediaApi_meta || !(reinterpret_cast<unsigned int *>(beSvReadMediaApi_meta)[0x24/4]&4)) beSvReadMediaApi_registerNow();
+ return beSvReadMediaApi_meta;
 }
 }
 #pragma pop

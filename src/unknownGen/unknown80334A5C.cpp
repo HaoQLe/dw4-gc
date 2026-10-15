@@ -8,40 +8,40 @@ void beNDMWStageCtl_vtableRead();
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B381C();
 void fn_803250AC();
-void fn_80334D34();
-extern char lbl_80453E5C[];
+void beNDMWSaveIntfInfo_registerNow();
+extern char beNDMWStageCtl_className[];
 extern char lbl_804E213C[];
 extern char lbl_804E2140[];
 extern char lbl_804E2144[];
 extern char lbl_804E2148[];
-extern void *lbl_80535FD4;
-extern void *lbl_80535FDC;
+extern void *beNDMWStageCtl_meta;
+extern void *beNDMWSaveIntfInfo_meta;
 void beNDMWStageCtl_register();
 void *beNDMWStageCtl_getMetaCall();
 void beNDMWStageCtl_fieldInit();
 }
 extern "C" {
-void fn_80334A5C(){
- fn_80066188((int)beNDMWStageCtl_register);
+void beNDMWStageCtl_registerNow(){
+ meta_registerNow((int)beNDMWStageCtl_register);
 }
 void beNDMWStageCtl_register(){
  fn_803250AC();
- fn_80066204(0,(int)&lbl_80535FD4,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beNDMWStageCtl_getMetaCall,(int)lbl_80453E5C,40,(int)beNDMWStageCtl_vtableRead,(int)beNDMWStageCtl_fieldInit,0,0);
+ meta_registerClass(0,(int)&beNDMWStageCtl_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beNDMWStageCtl_getMetaCall,(int)beNDMWStageCtl_className,40,(int)beNDMWStageCtl_vtableRead,(int)beNDMWStageCtl_fieldInit,0,0);
 }
 void *beNDMWStageCtl_getMetaCall(){return beNDMWStageCtl_getMeta();}
 void beNDMWStageCtl_fieldInit(){
- void *meta=lbl_80535FD4;
+ void *meta=beNDMWStageCtl_meta;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804E213C,0x1);
  fn_800659C0(meta,lbl_804E2140,lbl_804E2144,lbl_804E2148,field);
 }
 void *beNDMWSaveIntfInfo_getMeta(){
- if(!lbl_80535FDC || !(reinterpret_cast<unsigned int *>(lbl_80535FDC)[0x24/4]&4)) fn_80334D34();
- return lbl_80535FDC;
+ if(!beNDMWSaveIntfInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWSaveIntfInfo_meta)[0x24/4]&4)) beNDMWSaveIntfInfo_registerNow();
+ return beNDMWSaveIntfInfo_meta;
 }
 }
 #pragma pop

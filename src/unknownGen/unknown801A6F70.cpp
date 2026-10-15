@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80068128(void *,void *);
-extern void *lbl_80564A14;
+extern void *igSceneInfo_meta;
 }
 class UnknownGenV801A6F70_0 {
 public:
@@ -44,7 +44,7 @@ extern "C" {
 void *igCreateBoundingBoxes_virtual74(int p0,int p1){
  void *value0;
  void *value1;
- value0=fn_80068128((void *)p1,lbl_80564A14);
+ value0=fn_80068128((void *)p1,igSceneInfo_meta);
  if((unsigned char)(int)value0){
   value1=reinterpret_cast<UnknownGenV801A6F70_0 *>((void *)p0)->s84(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+20));
   return value1;

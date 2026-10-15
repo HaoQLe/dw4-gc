@@ -11,11 +11,11 @@ extern char lbl_804D0350[];
 extern char lbl_804D035C[];
 extern char lbl_804D0368[];
 extern char lbl_804D0374[];
-extern void *lbl_80534B38;
+extern void *beNumberCtrlInfoWork_meta;
 }
 extern "C" {
 void beNumberCtrlInfoWork_fieldInit(){
- void *value0=lbl_80534B38;
+ void *value0=beNumberCtrlInfoWork_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D0350,3);
  void *value2=fn_800658E4(value0,value1);

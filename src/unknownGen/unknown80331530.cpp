@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_8033192C();
-extern void *lbl_80535F04;
+void *meta_createInstance(void *,void *);
+void beNDMWStatusCtrlDisk_registerNow();
+extern void *beNDMWStatusCtrlDisk_meta;
 }
 extern "C" {
-void *fn_80331530(void *object){
- fn_8033192C();
- return fn_8006546C(lbl_80535F04,object);
+void *beNDMWStatusCtrlDisk_create(void *object){
+ beNDMWStatusCtrlDisk_registerNow();
+ return meta_createInstance(beNDMWStatusCtrlDisk_meta,object);
 }
 void *beNDMWStatusCtrlDisk_getMeta(){
- if(!lbl_80535F04 || !(reinterpret_cast<unsigned int *>(lbl_80535F04)[0x24/4]&4)) fn_8033192C();
- return lbl_80535F04;
+ if(!beNDMWStatusCtrlDisk_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusCtrlDisk_meta)[0x24/4]&4)) beNDMWStatusCtrlDisk_registerNow();
+ return beNDMWStatusCtrlDisk_meta;
 }
 }
 #pragma pop

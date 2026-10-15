@@ -9,17 +9,17 @@ void fn_80188BA4(void *);
 void fn_80188C0C(void *,int);
 void fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
-extern void *lbl_805627F4;
-extern void *lbl_80564DB4;
+extern void *igLightAttr_meta;
+extern void *igLightSet_meta;
 }
 static inline void *UnknownGenCast8015406C_9(void *q){
  void *value2;
- if((q&&(value2=fn_80068128(q,lbl_80564DB4),(unsigned char)(int)value2))) return q;
+ if((q&&(value2=fn_80068128(q,igLightSet_meta),(unsigned char)(int)value2))) return q;
  return 0;
 }
 static inline void *UnknownGenCast8015406C_15(void *q){
  void *value3;
- if((q&&(value3=fn_80068128(q,lbl_805627F4),(unsigned char)(int)value3))) return q;
+ if((q&&(value3=fn_80068128(q,igLightAttr_meta),(unsigned char)(int)value3))) return q;
  return 0;
 }
 class UnknownGenV8015406C_2 {

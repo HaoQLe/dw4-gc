@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80336F04();
-extern void *lbl_805360A4;
+void *meta_createInstance(void *,void *);
+void beNDMWPanelWazaInfoWork_registerNow();
+extern void *beNDMWPanelWazaInfoWork_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_80336BD0(void *object){
- fn_80336F04();
- return fn_8006546C(lbl_805360A4,object);
+void *beNDMWPanelWazaInfoWork_create(void *object){
+ beNDMWPanelWazaInfoWork_registerNow();
+ return meta_createInstance(beNDMWPanelWazaInfoWork_meta,object);
 }
-void *fn_80336C10(){
- if(!lbl_805360A4) lbl_805360A4=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805360A4;
+void *beNDMWPanelWazaInfoWork_metaObject(){
+ if(!beNDMWPanelWazaInfoWork_meta) beNDMWPanelWazaInfoWork_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beNDMWPanelWazaInfoWork_meta;
 }
 void *beNDMWPanelWazaInfoWork_getMeta(){
- if(!lbl_805360A4 || !(reinterpret_cast<unsigned int *>(lbl_805360A4)[0x24/4]&4)) fn_80336F04();
- return lbl_805360A4;
+ if(!beNDMWPanelWazaInfoWork_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelWazaInfoWork_meta)[0x24/4]&4)) beNDMWPanelWazaInfoWork_registerNow();
+ return beNDMWPanelWazaInfoWork_meta;
 }
 }
 #pragma pop

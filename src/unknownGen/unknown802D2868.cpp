@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_802D297C();
-extern void *lbl_80535138;
+void igLightSetList_registerNow();
+extern void *igLightSetList_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802D2868(){
- if(!lbl_80535138) lbl_80535138=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80535138;
+void *igLightSetList_metaObject(){
+ if(!igLightSetList_meta) igLightSetList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igLightSetList_meta;
 }
 void *igLightSetList_getMeta(){
- if(!lbl_80535138 || !(reinterpret_cast<unsigned int *>(lbl_80535138)[0x24/4]&4)) fn_802D297C();
- return lbl_80535138;
+ if(!igLightSetList_meta || !(reinterpret_cast<unsigned int *>(igLightSetList_meta)[0x24/4]&4)) igLightSetList_registerNow();
+ return igLightSetList_meta;
 }
 }
 #pragma pop

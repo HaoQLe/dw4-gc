@@ -4,24 +4,24 @@
 extern "C" {
 void __dl__FPv(void *);
 void *fn_800635C8(void *,void *,void *,int);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igGeometrySetAttr_fieldInit();
 void igVisualAttribute_register();
-extern char lbl_80477D08[];
+extern char igVisualContextAttrDefaultManager_className[];
 extern char lbl_804794F4[];
-extern char lbl_80479500[];
-extern char lbl_8047C364[];
+extern char igGeometrySetAttr_className[];
+extern char igGeometrySetAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
 extern void *lbl_80562838;
-extern void *lbl_8056283C;
+extern void *igGeometrySetAttr_meta;
 void *igGeometrySetAttr_getMeta();
 void *igGeometrySetAttr_vtableRead();
-void fn_800B6150();
+void igGeometrySetAttr_registerNow();
 void igGeometrySetAttr_register();
 void *igGeometrySetAttr_getMetaCall();
 }
@@ -36,23 +36,23 @@ struct UnknownGenObject800B5FFC : UnknownGenRoot800B5FFC {
  char unknown10[4];
  UnknownGenRefMember unknown14;
  char unknown18[8];
- inline ~UnknownGenObject800B5FFC(){unknown00=lbl_8047C364;}
+ inline ~UnknownGenObject800B5FFC(){unknown00=igGeometrySetAttr_vtable;}
 };
 extern "C" {
 void *fn_800B5F74(){
- char *data=lbl_80477D08;
+ char *data=igVisualContextAttrDefaultManager_className;
  if(!lbl_80562838) lbl_80562838=fn_800635C8(data+0x17E0,data+0x17C8,data+0x17D4,0x3);
  return lbl_80562838;
 }
 void *igGeometrySetAttr_getMeta(){
- if(!lbl_8056283C || !(reinterpret_cast<unsigned int *>(lbl_8056283C)[0x24/4]&4)) fn_800B6150();
- return lbl_8056283C;
+ if(!igGeometrySetAttr_meta || !(reinterpret_cast<unsigned int *>(igGeometrySetAttr_meta)[0x24/4]&4)) igGeometrySetAttr_registerNow();
+ return igGeometrySetAttr_meta;
 }
 void *igGeometrySetAttr_vtableRead(){
  UnknownGenObject800B5FFC object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
- object.unknown00=lbl_8047C364;
+ object.unknown00=igGeometrySetAttr_vtable;
  object.unknown0C.value=0;
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -68,12 +68,12 @@ UnknownGenHolder *fn_800B60DC(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_800B6150(){
- fn_80066188((int)igGeometrySetAttr_register);
+void igGeometrySetAttr_registerNow(){
+ meta_registerNow((int)igGeometrySetAttr_register);
 }
 void igGeometrySetAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_8056283C,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igGeometrySetAttr_getMetaCall,(int)lbl_80479500,32,(int)igGeometrySetAttr_vtableRead,(int)igGeometrySetAttr_fieldInit,0,(int)lbl_804794F4);
+ meta_registerClass(0,(int)&igGeometrySetAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igGeometrySetAttr_getMetaCall,(int)igGeometrySetAttr_className,32,(int)igGeometrySetAttr_vtableRead,(int)igGeometrySetAttr_fieldInit,0,(int)lbl_804794F4);
 }
 void *igGeometrySetAttr_getMetaCall(){return igGeometrySetAttr_getMeta();}
 }

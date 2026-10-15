@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802E6314();
-extern void *lbl_805357E4;
+void beAction2FLASHSET_registerNow();
+extern void *beAction2FLASHSET_meta;
 }
 extern "C" {
 void *beAction2FLASHSET_getMeta(){
- if(!lbl_805357E4 || !(reinterpret_cast<unsigned int *>(lbl_805357E4)[0x24/4]&4)) fn_802E6314();
- return lbl_805357E4;
+ if(!beAction2FLASHSET_meta || !(reinterpret_cast<unsigned int *>(beAction2FLASHSET_meta)[0x24/4]&4)) beAction2FLASHSET_registerNow();
+ return beAction2FLASHSET_meta;
 }
 }
 #pragma pop

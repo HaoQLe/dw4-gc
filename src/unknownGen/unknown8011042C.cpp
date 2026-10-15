@@ -2,22 +2,22 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8010CBD4();
 void *fn_8010E6DC();
 void igActiveComponentsObserver_fieldInit();
 void igView_register();
-extern char lbl_80494CE4[];
+extern char igActiveComponentsObserver_className[];
 extern char lbl_80495AD8[];
-extern char lbl_80496284[];
+extern char igActiveComponentsObserver_vtable[];
 extern char lbl_8055F08C[8];
-extern void *lbl_805636AC;
+extern void *igActiveComponentsObserver_meta;
 void *igActiveComponentsObserver_getMeta();
 void *igActiveComponentsObserver_vtableRead();
-void fn_801105AC();
+void igActiveComponentsObserver_registerNow();
 void igActiveComponentsObserver_register();
 void *igActiveComponentsObserver_getMetaCall();
 }
@@ -31,32 +31,32 @@ struct UnknownGenObject801104A0 : UnknownGenRoot801104A0 {
  UnknownGenRefMember unknown0C;
  UnknownGenRefMember unknown10;
  UnknownGenRefMember unknown14;
- inline ~UnknownGenObject801104A0(){unknown00=lbl_80496284;}
+ inline ~UnknownGenObject801104A0(){unknown00=igActiveComponentsObserver_vtable;}
 };
 extern "C" {
-void *fn_8011042C(void *object){
- fn_801105AC();
- return fn_8006546C(lbl_805636AC,object);
+void *igActiveComponentsObserver_create(void *object){
+ igActiveComponentsObserver_registerNow();
+ return meta_createInstance(igActiveComponentsObserver_meta,object);
 }
 void *igActiveComponentsObserver_getMeta(){
- if(!lbl_805636AC || !(reinterpret_cast<unsigned int *>(lbl_805636AC)[0x24/4]&4)) fn_801105AC();
- return lbl_805636AC;
+ if(!igActiveComponentsObserver_meta || !(reinterpret_cast<unsigned int *>(igActiveComponentsObserver_meta)[0x24/4]&4)) igActiveComponentsObserver_registerNow();
+ return igActiveComponentsObserver_meta;
 }
 void *igActiveComponentsObserver_vtableRead(){
  UnknownGenObject801104A0 object;
  object.unknown00=lbl_80495AD8;
- object.unknown00=lbl_80496284;
+ object.unknown00=igActiveComponentsObserver_vtable;
  object.unknown0C.value=0;
  object.unknown10.value=0;
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801105AC(){
- fn_80066188((int)igActiveComponentsObserver_register);
+void igActiveComponentsObserver_registerNow(){
+ meta_registerNow((int)igActiveComponentsObserver_register);
 }
 void igActiveComponentsObserver_register(){
  fn_8010CBD4();
- fn_80066204(0,(int)&lbl_805636AC,(int)igView_register,(int)fn_8010E6DC,(int)igActiveComponentsObserver_getMetaCall,(int)lbl_80494CE4,24,(int)igActiveComponentsObserver_vtableRead,(int)igActiveComponentsObserver_fieldInit,0,(int)lbl_8055F08C);
+ meta_registerClass(0,(int)&igActiveComponentsObserver_meta,(int)igView_register,(int)fn_8010E6DC,(int)igActiveComponentsObserver_getMetaCall,(int)igActiveComponentsObserver_className,24,(int)igActiveComponentsObserver_vtableRead,(int)igActiveComponentsObserver_fieldInit,0,(int)lbl_8055F08C);
 }
 void *igActiveComponentsObserver_getMetaCall(){return igActiveComponentsObserver_getMeta();}
 }

@@ -4,11 +4,11 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80068128(void *,void *);
-extern void *lbl_8056198C;
+extern void *igLongMetaField_meta;
 }
 static inline void *UnknownGenCast801A9010_14(void *q){
  void *value4;
- if(((unsigned int)(int)q!=0&&(value4=fn_80068128(q,lbl_8056198C),(unsigned char)(int)value4))) return q;
+ if(((unsigned int)(int)q!=0&&(value4=fn_80068128(q,igLongMetaField_meta),(unsigned char)(int)value4))) return q;
  return 0;
 }
 extern "C" {
@@ -17,7 +17,7 @@ void *fn_801A9010(int p0,int p1,int p2,int p3,int p4){
  void *value3;
  void *value0;
  void *value1;
- if(((int)p0!=0&&(value3=fn_80068128((void *)p0,lbl_8056198C),(unsigned char)(int)value3))){
+ if(((int)p0!=0&&(value3=fn_80068128((void *)p0,igLongMetaField_meta),(unsigned char)(int)value3))){
   value2=(void *)p0;
  } else {
   value2=(void *)0;

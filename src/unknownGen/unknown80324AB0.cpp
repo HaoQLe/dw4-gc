@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535148;
+extern void *beLightCtrl_meta;
 }
 extern "C" {
-void *beLightCtrl_virtual58(){return lbl_80535148;}
+void *beLightCtrl_virtual58(){return beLightCtrl_meta;}
 }
 #pragma pop

@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80407E08();
-extern void *lbl_8055CA64;
+void igViewManager_registerNow();
+extern void *igViewManager_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_80407C50(){
- if(!lbl_8055CA64) lbl_8055CA64=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_8055CA64;
+void *igViewManager_metaObject(){
+ if(!igViewManager_meta) igViewManager_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igViewManager_meta;
 }
 void *igViewManager_getMeta(){
- if(!lbl_8055CA64 || !(reinterpret_cast<unsigned int *>(lbl_8055CA64)[0x24/4]&4)) fn_80407E08();
- return lbl_8055CA64;
+ if(!igViewManager_meta || !(reinterpret_cast<unsigned int *>(igViewManager_meta)[0x24/4]&4)) igViewManager_registerNow();
+ return igViewManager_meta;
 }
 }
 #pragma pop

@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_802D1784();
-extern void *lbl_805350F8;
+void *meta_createInstance(void *,void *);
+void beLuaState_registerNow();
+extern void *beLuaState_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802D15AC(void *object){
- fn_802D1784();
- return fn_8006546C(lbl_805350F8,object);
+void *beLuaState_create(void *object){
+ beLuaState_registerNow();
+ return meta_createInstance(beLuaState_meta,object);
 }
-void *fn_802D15EC(){
- if(!lbl_805350F8) lbl_805350F8=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805350F8;
+void *beLuaState_metaObject(){
+ if(!beLuaState_meta) beLuaState_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beLuaState_meta;
 }
 void *beLuaState_getMeta(){
- if(!lbl_805350F8 || !(reinterpret_cast<unsigned int *>(lbl_805350F8)[0x24/4]&4)) fn_802D1784();
- return lbl_805350F8;
+ if(!beLuaState_meta || !(reinterpret_cast<unsigned int *>(beLuaState_meta)[0x24/4]&4)) beLuaState_registerNow();
+ return beLuaState_meta;
 }
 }
 #pragma pop

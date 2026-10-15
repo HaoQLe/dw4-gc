@@ -2,15 +2,15 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802C4A60();
+void beMovieInfo_registerNow();
 void *fn_803115F8();
-extern void *lbl_80534BCC;
+extern void *beMovieInfo_meta;
 }
 extern "C" {
 void *fn_802C48A4(){return fn_803115F8();}
 void *beMovieInfo_getMeta(){
- if(!lbl_80534BCC || !(reinterpret_cast<unsigned int *>(lbl_80534BCC)[0x24/4]&4)) fn_802C4A60();
- return lbl_80534BCC;
+ if(!beMovieInfo_meta || !(reinterpret_cast<unsigned int *>(beMovieInfo_meta)[0x24/4]&4)) beMovieInfo_registerNow();
+ return beMovieInfo_meta;
 }
 }
 #pragma pop

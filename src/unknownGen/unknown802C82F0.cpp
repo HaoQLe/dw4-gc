@@ -13,11 +13,11 @@ extern char lbl_804D0BE0[];
 extern char lbl_804D0BFC[];
 extern char lbl_804D0C18[];
 extern char lbl_804D0C34[];
-extern void *lbl_80534DA0;
+extern void *beModelCtrlInfoHitBody_meta;
 }
 extern "C" {
 void beModelCtrlInfoHitBody_fieldInit(){
- void *value0=lbl_80534DA0;
+ void *value0=beModelCtrlInfoHitBody_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D0BE0,7);
  void *value2=fn_800658E4(value0,value1);

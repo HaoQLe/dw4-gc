@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
+void meta_registerNow(int);
 void fn_800847CC(void *);
 void igArenaMemoryPool_register();
 extern char lbl_80473928[];
-extern void *lbl_80561ED8;
-void fn_800396F8();
+extern void *igArenaMemoryPool_meta;
+void igArenaMemoryPool_registerNow();
 }
 struct UnknownGenRoot8003964C {
  void *unknown00;
@@ -24,15 +24,15 @@ struct UnknownGenObject8003964C : UnknownGenRoot8003964C {
 };
 extern "C" {
 void *igArenaMemoryPool_getMeta(){
- if(!lbl_80561ED8 || !(reinterpret_cast<unsigned int *>(lbl_80561ED8)[0x24/4]&4)) fn_800396F8();
- return lbl_80561ED8;
+ if(!igArenaMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igArenaMemoryPool_meta)[0x24/4]&4)) igArenaMemoryPool_registerNow();
+ return igArenaMemoryPool_meta;
 }
 void *fn_8003964C(){
  UnknownGenObject8003964C object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800396F8(){
- fn_80066188((int)igArenaMemoryPool_register);
+void igArenaMemoryPool_registerNow(){
+ meta_registerNow((int)igArenaMemoryPool_register);
 }
 }
 #pragma pop

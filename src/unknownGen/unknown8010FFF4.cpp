@@ -12,7 +12,7 @@ extern char lbl_8055F064[8];
 extern char lbl_8055F074[8];
 extern char lbl_8055F07C[8];
 extern char lbl_8055F084[8];
-extern void *lbl_8056368C;
+extern void *igMouseCursor_meta;
 extern char lbl_805669AC[4];
 }
 struct UnknownGenL8010FFF4_8 {
@@ -22,7 +22,7 @@ struct UnknownGenL8010FFF4_8 {
 extern "C" {
 void igMouseCursor_fieldInit(){
  UnknownGenL8010FFF4_8 local0;
- void *value0=lbl_8056368C;
+ void *value0=igMouseCursor_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055F064,2);
  void *value2=fn_800658E4(value0,value1);

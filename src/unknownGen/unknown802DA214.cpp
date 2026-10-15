@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804D5EAC[];
+extern char beFontGeomAttrPair_vtable[];
 }
 struct UnknownGenRoot802DA214 {
  void *unknown00;
@@ -16,12 +16,12 @@ struct UnknownGenObject802DA214 : UnknownGenRoot802DA214 {
  UnknownGenString unknown0C;
  UnknownGenRefMember unknown10;
  char unknown14[4];
- inline ~UnknownGenObject802DA214(){unknown00=lbl_804D5EAC;}
+ inline ~UnknownGenObject802DA214(){unknown00=beFontGeomAttrPair_vtable;}
 };
 extern "C" {
 void *beFontGeomAttrPair_vtableRead(){
  UnknownGenObject802DA214 object;
- object.unknown00=lbl_804D5EAC;
+ object.unknown00=beFontGeomAttrPair_vtable;
  object.unknown08.value=0;
  object.unknown0C.value=0;
  object.unknown10.value=0;

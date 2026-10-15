@@ -192,9 +192,9 @@ extern "C" {
     bool fn_80043168(Unknown80042DECValue *, Unknown80042DECValue *, void *);
     void fn_80041A44(void *, int, int, const void *);
     unsigned char fn_80068128(void *, void *);
-    Unknown80042DECValue *fn_800291C8(void *);
-    Unknown80042DECValue *fn_8002C7D4(void *);
-    Unknown80042DECValue *fn_80032C4C(void *);
+    Unknown80042DECValue *igObjectDirEntry_create(void *);
+    Unknown80042DECValue *igMemoryDirEntry_create(void *);
+    Unknown80042DECValue *igDirEntry_create(void *);
     void *fn_80066180(void *);
     void *fn_80063244(void *);
     void *fn_80060834(void *);
@@ -204,12 +204,12 @@ extern "C" {
     void fn_80057A28(void *, void *);
     Unknown80042DECMetadata *fn_8005641C(void *);
     void fn_80068900(void *, void *);
-    Unknown80042DECProvider *fn_80025FE8(void *);
+    Unknown80042DECProvider *igSemaphore_create(void *);
     Unknown80042DECValue *fn_800321EC(void *);
     void *fn_80054140(unsigned int);
     void *fn_80053F28(void *);
     const char *fn_80054094(void *, const char *);
-    extern void *lbl_805622A4, *lbl_80561748, *lbl_80561D10, *lbl_80561A04, *lbl_80561D00, *lbl_80561710, *lbl_80562140;
+    extern void *igObject_meta, *lbl_80561748, *lbl_80561D10, *igIGBFile_meta, *igDirEntry_meta, *igObjectDirEntry_meta, *lbl_80562140;
 }
 inline void unknown80042DECRetain(Unknown80042DECValue *value){ if(value) ++value->unknown04; }
 inline void unknown80042DECRelease(Unknown80042DECValue *value){

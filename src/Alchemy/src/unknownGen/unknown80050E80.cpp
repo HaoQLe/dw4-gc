@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800346F0(void *);
+void *igPointerList_create(void *);
 void fn_80041660(void *,void *,int);
 void *fn_80042B1C(void *,void *);
 extern void *kSuccess__3Gap;
@@ -60,7 +60,7 @@ void fn_80050E80(int p0,int p1){
    fn_80066E1C(value0);
   }
  }
- value6=fn_800346F0(value2);
+ value6=igPointerList_create(value2);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p1)+44)=value6;
  value4=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+44);
  if((int)(int)value1>=0){

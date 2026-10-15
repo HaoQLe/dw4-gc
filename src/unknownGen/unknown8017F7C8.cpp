@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564BC0;
-extern void *lbl_80564D48;
+extern void *igNode_meta;
+extern void *igMorphBase_meta;
 }
 extern "C" {
-void *igNode_virtual58(){return lbl_80564BC0;}
-void *igMorphBase_virtual58(){return lbl_80564D48;}
+void *igNode_virtual58(){return igNode_meta;}
+void *igMorphBase_virtual58(){return igMorphBase_meta;}
 }
 #pragma pop

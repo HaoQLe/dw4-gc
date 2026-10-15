@@ -8,17 +8,17 @@ void fn_80188C0C(void *,int);
 void fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
 void fn_801EAC44(void *,void *);
-extern void *lbl_80564BC0;
-extern void *lbl_80564ED0;
+extern void *igNode_meta;
+extern void *igGroup_meta;
 }
 static inline void *UnknownGenCast80154AE0_9(void *q){
  void *value2;
- if((q&&(value2=fn_80068128(q,lbl_80564ED0),(unsigned char)(int)value2))) return q;
+ if((q&&(value2=fn_80068128(q,igGroup_meta),(unsigned char)(int)value2))) return q;
  return 0;
 }
 static inline void *UnknownGenCast80154AE0_15(void *q){
  void *value3;
- if((q&&(value3=fn_80068128(q,lbl_80564BC0),(unsigned char)(int)value3))) return q;
+ if((q&&(value3=fn_80068128(q,igNode_meta),(unsigned char)(int)value3))) return q;
  return 0;
 }
 class UnknownGenV80154AE0_2 {

@@ -11,11 +11,11 @@ extern char lbl_804D1FB8[];
 extern char lbl_804D1FD4[];
 extern char lbl_804D1FF0[];
 extern char lbl_804D200C[];
-extern void *lbl_80535318;
+extern void *beFontInfoData_meta;
 }
 extern "C" {
 void beFontInfoData_fieldInit(){
- void *value0=lbl_80535318;
+ void *value0=beFontInfoData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1FB8,7);
  void *value2=fn_800658E4(value0,value1);

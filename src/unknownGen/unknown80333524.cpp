@@ -5,7 +5,7 @@ extern "C" {
 void fn_80066DFC(void *);
 extern char lbl_804E6888[];
 extern char lbl_804E6A60[];
-extern char lbl_804EBC18[];
+extern char beNDMWStatusCtrlD0_vtable[];
 extern char lbl_804EC0D4[];
 }
 extern "C" {
@@ -29,7 +29,7 @@ void *fn_80333524(int p0,int p1){
  void *value16;
  void *value17;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804EBC18;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beNDMWStatusCtrlD0_vtable;
   if((int)(p0+112)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+112);
    if(value0){

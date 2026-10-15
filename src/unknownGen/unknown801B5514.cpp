@@ -3,20 +3,20 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
+extern char igNamedObject_vtable[];
 extern char lbl_804B3E38[];
-extern char lbl_804B4038[];
-extern char lbl_804B49CC[];
+extern char igNode_vtable[];
+extern char igGroup_vtable[];
 }
 extern "C" {
 void *fn_801B5514(int p0){
  fn_8006665C((void *)p0);
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_8047650C;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igNamedObject_vtable;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=(void *)0;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804B4038;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igNode_vtable;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=(void *)0;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804B49CC;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igGroup_vtable;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+28)=(void *)0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804B3E38;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+60)=(void *)0;

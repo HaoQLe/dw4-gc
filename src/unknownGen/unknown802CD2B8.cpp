@@ -11,11 +11,11 @@ extern char lbl_804D11D0[];
 extern char lbl_804D11DC[];
 extern char lbl_804D11E8[];
 extern char lbl_804D11F4[];
-extern void *lbl_80534F5C;
+extern void *beMeterCtrlNode_meta;
 }
 extern "C" {
 void beMeterCtrlNode_fieldInit(){
- void *value0=lbl_80534F5C;
+ void *value0=beMeterCtrlNode_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D11D0,3);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));

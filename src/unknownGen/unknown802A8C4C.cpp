@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80024FB4(void *);
+void *igStringObj_create(void *);
 void *fn_80060834(void *);
 extern char lbl_8041B9A0[];
 extern void *lbl_80534320;
@@ -21,7 +21,7 @@ void fn_802A8C4C(){
    fn_80066E1C(value0);
   }
  }
- value3=fn_80024FB4(value2);
+ value3=igStringObj_create(value2);
  lbl_80534320=value3;
 }
 }

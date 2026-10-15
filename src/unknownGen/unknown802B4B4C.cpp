@@ -11,11 +11,11 @@ extern char lbl_804CF08C[];
 extern char lbl_804CF098[];
 extern char lbl_804CF0A4[];
 extern char lbl_804CF0B0[];
-extern void *lbl_80534608;
+extern void *beWaterMoveData_meta;
 }
 extern "C" {
 void beWaterMoveData_fieldInit(){
- void *value0=lbl_80534608;
+ void *value0=beWaterMoveData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF08C,3);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));

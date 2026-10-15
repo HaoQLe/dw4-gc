@@ -5,29 +5,29 @@ extern "C" {
 void *beModelCtrlAIMAP_getMeta();
 void beModelCtrlAIMAP_vtableRead();
 void *fn_80023CF4();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void fn_802CB248();
+void beModelCtrlWCHECK_registerNow();
 void igNamedObject_register();
-extern char lbl_8041F240[];
-extern char lbl_80534ED0[];
-extern void *lbl_80534ED4;
+extern char beModelCtrlAIMAP_className[];
+extern char beModelCtrlAIMAP_meta[];
+extern void *beModelCtrlWCHECK_meta;
 void beModelCtrlAIMAP_register();
 void *beModelCtrlAIMAP_getMetaCall();
 }
 extern "C" {
-void fn_802CB0AC(){
- fn_80066188((int)beModelCtrlAIMAP_register);
+void beModelCtrlAIMAP_registerNow(){
+ meta_registerNow((int)beModelCtrlAIMAP_register);
 }
 void beModelCtrlAIMAP_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80534ED0,(int)igNamedObject_register,(int)fn_80023CF4,(int)beModelCtrlAIMAP_getMetaCall,(int)lbl_8041F240,12,(int)beModelCtrlAIMAP_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beModelCtrlAIMAP_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)beModelCtrlAIMAP_getMetaCall,(int)beModelCtrlAIMAP_className,12,(int)beModelCtrlAIMAP_vtableRead,0,0,0);
 }
 void *beModelCtrlAIMAP_getMetaCall(){return beModelCtrlAIMAP_getMeta();}
 void *beModelCtrlWCHECK_getMeta(){
- if(!lbl_80534ED4 || !(reinterpret_cast<unsigned int *>(lbl_80534ED4)[0x24/4]&4)) fn_802CB248();
- return lbl_80534ED4;
+ if(!beModelCtrlWCHECK_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlWCHECK_meta)[0x24/4]&4)) beModelCtrlWCHECK_registerNow();
+ return beModelCtrlWCHECK_meta;
 }
 }
 #pragma pop

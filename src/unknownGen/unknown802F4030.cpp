@@ -5,11 +5,11 @@
 extern "C" {
 void *fn_80068128(void *,void *);
 void *fn_801EA93C(void *);
-extern char lbl_8056520C[4];
+extern char igCamera_meta[4];
 }
 static inline void *UnknownGenCast802F4030_18(void *q){
  void *value8;
- if(((int)(int)q!=0&&(value8=fn_80068128(q,*reinterpret_cast<void **>((lbl_8056520C+0))),(unsigned char)(int)value8))) return q;
+ if(((int)(int)q!=0&&(value8=fn_80068128(q,*reinterpret_cast<void **>((igCamera_meta+0))),(unsigned char)(int)value8))) return q;
  return 0;
 }
 extern "C" {

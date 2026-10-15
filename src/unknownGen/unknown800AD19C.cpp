@@ -3,25 +3,25 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
-void fn_800AD3D0();
+void igVertexBlendMatrixAttr_registerNow();
 void igObjectList_register();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804780FC[];
-extern char lbl_8047E380[];
+extern char igVertexBlendMatrixAttrList_className[];
+extern char igVertexBlendMatrixAttrList_vtable[];
 extern char lbl_8047E3E4[];
 extern char lbl_8055DEF4[8];
-extern void *lbl_8056249C;
-extern void *lbl_805624A0;
+extern void *igVertexBlendMatrixAttrList_meta;
+extern void *igVertexBlendMatrixAttr_meta;
 void *igVertexBlendMatrixAttrList_getMeta();
 void *igVertexBlendMatrixAttrList_vtableRead();
-void fn_800AD248();
+void igVertexBlendMatrixAttrList_registerNow();
 void igVertexBlendMatrixAttrList_register();
 void *igVertexBlendMatrixAttrList_getMetaCall();
 }
@@ -31,34 +31,34 @@ struct UnknownGenObject800AD1D8_0 {
 };
 extern "C" {
 void *igVertexBlendMatrixAttrList_getMeta(){
- if(!lbl_8056249C || !(reinterpret_cast<unsigned int *>(lbl_8056249C)[0x24/4]&4)) fn_800AD248();
- return lbl_8056249C;
+ if(!igVertexBlendMatrixAttrList_meta || !(reinterpret_cast<unsigned int *>(igVertexBlendMatrixAttrList_meta)[0x24/4]&4)) igVertexBlendMatrixAttrList_registerNow();
+ return igVertexBlendMatrixAttrList_meta;
 }
 void *igVertexBlendMatrixAttrList_vtableRead(){
  UnknownGenObject800AD1D8_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_8047E3E4;
- object.unknown00=lbl_8047E380;
+ object.unknown00=igVertexBlendMatrixAttrList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800AD248(){
- fn_80066188((int)igVertexBlendMatrixAttrList_register);
+void igVertexBlendMatrixAttrList_registerNow(){
+ meta_registerNow((int)igVertexBlendMatrixAttrList_register);
 }
 void igVertexBlendMatrixAttrList_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_8056249C,(int)igObjectList_register,(int)fn_80024180,(int)igVertexBlendMatrixAttrList_getMetaCall,(int)lbl_804780FC,20,(int)igVertexBlendMatrixAttrList_vtableRead,0,0,(int)lbl_8055DEF4);
+ meta_registerClass(0,(int)&igVertexBlendMatrixAttrList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igVertexBlendMatrixAttrList_getMetaCall,(int)igVertexBlendMatrixAttrList_className,20,(int)igVertexBlendMatrixAttrList_vtableRead,0,0,(int)lbl_8055DEF4);
 }
 void *igVertexBlendMatrixAttrList_getMetaCall(){return igVertexBlendMatrixAttrList_getMeta();}
-void *fn_800AD2FC(void *object){
- fn_800AD3D0();
- return fn_8006546C(lbl_805624A0,object);
+void *igVertexBlendMatrixAttr_create(void *object){
+ igVertexBlendMatrixAttr_registerNow();
+ return meta_createInstance(igVertexBlendMatrixAttr_meta,object);
 }
 void *igVertexBlendMatrixAttr_getMeta(){
- if(!lbl_805624A0 || !(reinterpret_cast<unsigned int *>(lbl_805624A0)[0x24/4]&4)) fn_800AD3D0();
- return lbl_805624A0;
+ if(!igVertexBlendMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igVertexBlendMatrixAttr_meta)[0x24/4]&4)) igVertexBlendMatrixAttr_registerNow();
+ return igVertexBlendMatrixAttr_meta;
 }
 }
 #pragma pop

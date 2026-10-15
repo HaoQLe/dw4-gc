@@ -11,7 +11,7 @@ extern char lbl_8055ECD0[4];
 extern char lbl_8055ECD4[4];
 extern char lbl_8055ECD8[4];
 extern char lbl_8055ECDC[4];
-extern void *lbl_80563084;
+extern void *igCustomVectorState_meta;
 extern char lbl_805668CC[4];
 }
 struct UnknownGenL800D5130_8 {
@@ -23,7 +23,7 @@ struct UnknownGenL800D5130_8 {
 extern "C" {
 void igCustomVectorState_fieldInit(){
  UnknownGenL800D5130_8 local0;
- void *value0=lbl_80563084;
+ void *value0=igCustomVectorState_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055ECD0,1);
  void *value2=fn_800658E4(value0,value1);

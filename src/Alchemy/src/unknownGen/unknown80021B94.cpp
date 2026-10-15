@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80023880();
-void *fn_80023C40();
-void *fn_800240CC();
-void *fn_80031250();
-void fn_800374E8();
+void *igThreadManager_registerNow();
+void *igThread_registerNow();
+void *igThreadList_registerNow();
+void *igErrorHandler_registerNow();
+void igContextExt_registerNow();
 extern char lbl_80561488[1];
 extern char lbl_80561489[1];
 }
@@ -22,11 +22,11 @@ void fn_80021B94(){
  }
  if(!(void *)(int)*reinterpret_cast<unsigned char *>((lbl_80561488+0))){
   *reinterpret_cast<unsigned char *>((lbl_80561488+0))=1;
-  value0=fn_80023880();
-  value1=fn_800240CC();
-  value2=fn_80023C40();
-  value3=fn_80031250();
-  fn_800374E8();
+  value0=igThreadManager_registerNow();
+  value1=igThreadList_registerNow();
+  value2=igThread_registerNow();
+  value3=igErrorHandler_registerNow();
+  igContextExt_registerNow();
   return;
  } else {
   return;

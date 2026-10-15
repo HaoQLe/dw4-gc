@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804E52D8[];
+extern char beNDMWMcSlotXbox_vtable[];
 extern char lbl_804E5334[];
 }
 struct UnknownGenRoot8033FBBC {
@@ -15,13 +15,13 @@ struct UnknownGenObject8033FBBC : UnknownGenRoot8033FBBC {
  char unknown04[20];
  UnknownGenString unknown18;
  char unknown1C[4];
- inline ~UnknownGenObject8033FBBC(){unknown00=lbl_804E52D8;}
+ inline ~UnknownGenObject8033FBBC(){unknown00=beNDMWMcSlotXbox_vtable;}
 };
 extern "C" {
 void *beNDMWMcSlotXbox_vtableRead(){
  UnknownGenObject8033FBBC object;
  object.unknown00=lbl_804E5334;
- object.unknown00=lbl_804E52D8;
+ object.unknown00=beNDMWMcSlotXbox_vtable;
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

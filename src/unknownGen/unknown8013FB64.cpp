@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013FD28();
 void igObjectPropertyForNode_register();
-extern char lbl_8049DE54[];
-extern char lbl_804A5904[];
-extern char lbl_804A5BE8[];
+extern char igObjectPropertyForLod_className[];
+extern char igObjectPropertyForLod_vtable[];
+extern char igObjectPropertyForNode_vtable[];
 extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F8D0[8];
-extern void *lbl_80563FB4;
+extern void *igObjectPropertyForLod_meta;
 void *igObjectPropertyForLod_getMeta();
 void *igObjectPropertyForLod_vtableRead();
-void fn_8013FC6C();
+void igObjectPropertyForLod_registerNow();
 void igObjectPropertyForLod_register();
 void *igObjectPropertyForLod_getMetaCall();
 }
@@ -35,16 +35,16 @@ struct UnknownGenObject8013FBA0_0 : UnknownGenRoot8013FBA0 {
  inline ~UnknownGenObject8013FBA0_0(){unknown00=lbl_804A5C7C;}
 };
 struct UnknownGenObject8013FBA0_1 : UnknownGenObject8013FBA0_0 {
- inline ~UnknownGenObject8013FBA0_1(){unknown00=lbl_804A5BE8;}
+ inline ~UnknownGenObject8013FBA0_1(){unknown00=igObjectPropertyForNode_vtable;}
 };
 struct UnknownGenObject8013FBA0 : UnknownGenObject8013FBA0_1 {
  char unknown24[12];
- inline ~UnknownGenObject8013FBA0(){unknown00=lbl_804A5904;}
+ inline ~UnknownGenObject8013FBA0(){unknown00=igObjectPropertyForLod_vtable;}
 };
 extern "C" {
 void *igObjectPropertyForLod_getMeta(){
- if(!lbl_80563FB4 || !(reinterpret_cast<unsigned int *>(lbl_80563FB4)[0x24/4]&4)) fn_8013FC6C();
- return lbl_80563FB4;
+ if(!igObjectPropertyForLod_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForLod_meta)[0x24/4]&4)) igObjectPropertyForLod_registerNow();
+ return igObjectPropertyForLod_meta;
 }
 void *igObjectPropertyForLod_vtableRead(){
  UnknownGenObject8013FBA0 object;
@@ -53,16 +53,16 @@ void *igObjectPropertyForLod_vtableRead(){
  object.unknown00=lbl_804A6338;
  object.unknown00=lbl_804A5C7C;
  object.unknown20.value=0;
- object.unknown00=lbl_804A5BE8;
- object.unknown00=lbl_804A5904;
+ object.unknown00=igObjectPropertyForNode_vtable;
+ object.unknown00=igObjectPropertyForLod_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8013FC6C(){
- fn_80066188((int)igObjectPropertyForLod_register);
+void igObjectPropertyForLod_registerNow(){
+ meta_registerNow((int)igObjectPropertyForLod_register);
 }
 void igObjectPropertyForLod_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563FB4,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForLod_getMetaCall,(int)lbl_8049DE54,44,(int)igObjectPropertyForLod_vtableRead,(int)fn_8013FD28,0,(int)lbl_8055F8D0);
+ meta_registerClass(0,(int)&igObjectPropertyForLod_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForLod_getMetaCall,(int)igObjectPropertyForLod_className,44,(int)igObjectPropertyForLod_vtableRead,(int)fn_8013FD28,0,(int)lbl_8055F8D0);
 }
 void *igObjectPropertyForLod_getMetaCall(){return igObjectPropertyForLod_getMeta();}
 }

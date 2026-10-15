@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_802BF8D8();
-extern void *lbl_805349B8;
+void beSvSlotDataList_registerNow();
+extern void *beSvSlotDataList_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802BF7C4(){
- if(!lbl_805349B8) lbl_805349B8=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805349B8;
+void *beSvSlotDataList_metaObject(){
+ if(!beSvSlotDataList_meta) beSvSlotDataList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beSvSlotDataList_meta;
 }
 void *beSvSlotDataList_getMeta(){
- if(!lbl_805349B8 || !(reinterpret_cast<unsigned int *>(lbl_805349B8)[0x24/4]&4)) fn_802BF8D8();
- return lbl_805349B8;
+ if(!beSvSlotDataList_meta || !(reinterpret_cast<unsigned int *>(beSvSlotDataList_meta)[0x24/4]&4)) beSvSlotDataList_registerNow();
+ return beSvSlotDataList_meta;
 }
 }
 #pragma pop

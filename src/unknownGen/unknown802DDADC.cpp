@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80066DFC(void *);
-extern char lbl_804D52D0[];
+extern char beDataBase_vtable[];
 }
 extern "C" {
 void *fn_802DDADC(int p0,int p1){
@@ -32,7 +32,7 @@ void *fn_802DDADC(int p0,int p1){
  void *value22;
  void *value23;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804D52D0;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beDataBase_vtable;
   if((int)(p0+52)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52);
    if(value0){

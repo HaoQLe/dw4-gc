@@ -6,7 +6,7 @@
 extern "C" {
 void *fn_80041C90(void *,void *,void *);
 void *fn_80068430(int,int);
-void *fn_801B4794(void *);
+void *igProperty_create(void *);
 void fn_801EB254(int,int);
 void *fn_801EB290(int,int,int,int,int,int);
 }
@@ -26,7 +26,7 @@ void *fn_801EB290(int p0,int p1,int p2,int p3,int p4,int p5){
     fn_80066E1C(value0);
    }
   }
-  value3=fn_801B4794(value2);
+  value3=igProperty_create(value2);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=value3;
  }
  return *reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36);

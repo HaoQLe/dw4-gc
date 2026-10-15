@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void __dl__FPv(void *);
-extern void *lbl_805660A0;
+extern void *igSearchSceneGraph_meta;
 }
 extern "C" {
 UnknownGenHolder *dtor_8028C6FC(UnknownGenHolder *object,short flags){
@@ -17,6 +17,6 @@ UnknownGenHolder *dtor_8028C6FC(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void *igSearchSceneGraph_virtual58(){return lbl_805660A0;}
+void *igSearchSceneGraph_virtual58(){return igSearchSceneGraph_meta;}
 }
 #pragma pop

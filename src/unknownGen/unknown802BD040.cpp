@@ -11,11 +11,11 @@ extern char lbl_804CFAD4[];
 extern char lbl_804CFADC[];
 extern char lbl_804CFAE4[];
 extern char lbl_804CFAEC[];
-extern void *lbl_805348C4;
+extern void *beSvPs2McImage128k_meta;
 }
 extern "C" {
 void beSvPs2McImage128k_fieldInit(){
- void *value0=lbl_805348C4;
+ void *value0=beSvPs2McImage128k_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFAD4,2);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));

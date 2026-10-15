@@ -33,36 +33,36 @@ void *fn_80128064(void *,void *);
 void *fn_80128098(void *,void *);
 void *igPlane_getMeta();
 void *igSphere_getMeta();
-extern void *lbl_8056395C;
-extern void *lbl_8056397C;
-extern void *lbl_80563A34;
+extern void *igSphere_meta;
+extern void *igPlane_meta;
+extern void *igAABox_meta;
 void *fn_801229EC();
 }
 extern "C" {
 void *fn_801229CC(){return fn_801229EC();}
 void *fn_801229EC(){
- void *value0=lbl_80563A34;
+ void *value0=igAABox_meta;
  void *value3=fn_80127DF0(value0,value0,(void *)fn_8012305C);
  void *value4=igPlane_getMeta();
- void *value5=fn_80127DF0(lbl_80563A34,value4,(void *)fn_801230E4);
+ void *value5=fn_80127DF0(igAABox_meta,value4,(void *)fn_801230E4);
  void *value6=igSphere_getMeta();
- fn_80127DF0(lbl_80563A34,value6,(void *)fn_80122FCC);
- void *value1=lbl_80563A34;
+ fn_80127DF0(igAABox_meta,value6,(void *)fn_80122FCC);
+ void *value1=igAABox_meta;
  fn_80127EA0(value1,value1,(void *)fn_801232F8);
- fn_80127EA0(lbl_80563A34,lbl_8056397C,(void *)fn_801232A8);
- fn_80127EA0(lbl_80563A34,lbl_8056395C,(void *)fn_801233EC);
- void *value2=lbl_80563A34;
+ fn_80127EA0(igAABox_meta,igPlane_meta,(void *)fn_801232A8);
+ fn_80127EA0(igAABox_meta,igSphere_meta,(void *)fn_801233EC);
+ void *value2=igAABox_meta;
  fn_80127E48(value2,value2,(void *)fn_801236B0);
- fn_80127E48(lbl_80563A34,lbl_8056395C,(void *)fn_8012372C);
- fn_80127EF8(lbl_80563A34,(void *)fn_80123150);
- fn_80127F60(lbl_80563A34,(void *)fn_801234CC);
- fn_80127F2C(lbl_80563A34,(void *)fn_80123634);
- fn_80127FC8(lbl_80563A34,(void *)fn_801235B8);
- fn_80127F94(lbl_80563A34,(void *)fn_801237C4);
- fn_80127FFC(lbl_80563A34,(void *)fn_80123840);
- fn_80128030(lbl_80563A34,(void *)fn_80123860);
- fn_80128064(lbl_80563A34,(void *)fn_8012388C);
- void *value7=fn_80128098(lbl_80563A34,(void *)fn_801238A4);
+ fn_80127E48(igAABox_meta,igSphere_meta,(void *)fn_8012372C);
+ fn_80127EF8(igAABox_meta,(void *)fn_80123150);
+ fn_80127F60(igAABox_meta,(void *)fn_801234CC);
+ fn_80127F2C(igAABox_meta,(void *)fn_80123634);
+ fn_80127FC8(igAABox_meta,(void *)fn_801235B8);
+ fn_80127F94(igAABox_meta,(void *)fn_801237C4);
+ fn_80127FFC(igAABox_meta,(void *)fn_80123840);
+ fn_80128030(igAABox_meta,(void *)fn_80123860);
+ fn_80128064(igAABox_meta,(void *)fn_8012388C);
+ void *value7=fn_80128098(igAABox_meta,(void *)fn_801238A4);
  return value7;
 }
 void *fn_80122B40(int p0,int p1){

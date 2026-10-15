@@ -2,16 +2,16 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
-void *fn_8006546C(void *,void *);
-void fn_802C2080();
+void *meta_createInstance(void *,void *);
+void beParticleCtrl2_registerNow();
 extern char lbl_8041CD10[];
 extern char lbl_804D0108[];
 extern char lbl_804D0128[];
 extern void *lbl_80534AA4;
-extern void *lbl_80534AA8;
+extern void *beParticleCtrl2_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
@@ -19,17 +19,17 @@ void *fn_802C1E30(){
  if(!lbl_80534AA4) lbl_80534AA4=fn_800635C8(lbl_8041CD10,lbl_804D0108,lbl_804D0128,0x8);
  return lbl_80534AA4;
 }
-void *fn_802C1E90(void *object){
- fn_802C2080();
- return fn_8006546C(lbl_80534AA8,object);
+void *beParticleCtrl2_create(void *object){
+ beParticleCtrl2_registerNow();
+ return meta_createInstance(beParticleCtrl2_meta,object);
 }
-void *fn_802C1ED0(){
- if(!lbl_80534AA8) lbl_80534AA8=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80534AA8;
+void *beParticleCtrl2_metaObject(){
+ if(!beParticleCtrl2_meta) beParticleCtrl2_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beParticleCtrl2_meta;
 }
 void *beParticleCtrl2_getMeta(){
- if(!lbl_80534AA8 || !(reinterpret_cast<unsigned int *>(lbl_80534AA8)[0x24/4]&4)) fn_802C2080();
- return lbl_80534AA8;
+ if(!beParticleCtrl2_meta || !(reinterpret_cast<unsigned int *>(beParticleCtrl2_meta)[0x24/4]&4)) beParticleCtrl2_registerNow();
+ return beParticleCtrl2_meta;
 }
 }
 #pragma pop

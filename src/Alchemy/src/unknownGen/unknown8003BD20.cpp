@@ -4,23 +4,23 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *igCallStackTracer_getMetaCall();
 void igCallStackTracer_register();
 void *igGamecubeCallStackTracer_getMetaCall();
-extern char lbl_80468A00[];
-extern char lbl_804705F8[];
-extern char lbl_80472FA0[];
-extern char lbl_80473164[];
-extern char lbl_80474840[];
-extern char lbl_804748A0[];
+extern char igGamecubeCallStackTracer_className[];
+extern char igGamecubeCallStackTracer_vtable[];
+extern char igDataList_vtable[];
+extern char igCallStackTracer_vtable[];
+extern char igUnsignedIntListNoClean_vtable[];
+extern char igUnsignedIntList_vtable[];
 extern char lbl_80474900[];
-extern void *lbl_80561E30;
-extern void *lbl_805620F4;
+extern void *igCallStackTracer_meta;
+extern void *igGamecubeCallStackTracer_meta;
 void *igGamecubeCallStackTracer_vtableRead();
-void fn_8003BDD8();
+void igGamecubeCallStackTracer_registerNow();
 void igGamecubeCallStackTracer_register();
 void *igGamecubeCallStackTracer_parentMeta();
 void *fn_8003BE78();
@@ -31,30 +31,30 @@ struct UnknownGenObject8003BD5C_0 {
 };
 extern "C" {
 void *igGamecubeCallStackTracer_getMeta(){
- if(!lbl_805620F4 || !(reinterpret_cast<unsigned int *>(lbl_805620F4)[0x24/4]&4)) fn_8003BDD8();
- return lbl_805620F4;
+ if(!igGamecubeCallStackTracer_meta || !(reinterpret_cast<unsigned int *>(igGamecubeCallStackTracer_meta)[0x24/4]&4)) igGamecubeCallStackTracer_registerNow();
+ return igGamecubeCallStackTracer_meta;
 }
 void *igGamecubeCallStackTracer_vtableRead(){
  UnknownGenObject8003BD5C_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80474900;
- object.unknown00=lbl_804748A0;
- object.unknown00=lbl_80474840;
- object.unknown00=lbl_80473164;
- object.unknown00=lbl_804705F8;
+ object.unknown00=igUnsignedIntList_vtable;
+ object.unknown00=igUnsignedIntListNoClean_vtable;
+ object.unknown00=igCallStackTracer_vtable;
+ object.unknown00=igGamecubeCallStackTracer_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8003BDD8(){
- fn_80066188((int)igGamecubeCallStackTracer_register);
+void igGamecubeCallStackTracer_registerNow(){
+ meta_registerNow((int)igGamecubeCallStackTracer_register);
 }
 void igGamecubeCallStackTracer_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_805620F4,(int)igCallStackTracer_register,(int)igGamecubeCallStackTracer_parentMeta,(int)igGamecubeCallStackTracer_getMetaCall,(int)lbl_80468A00,20,(int)igGamecubeCallStackTracer_vtableRead,(int)fn_8003BE78,0,0);
+ meta_registerClass(0,(int)&igGamecubeCallStackTracer_meta,(int)igCallStackTracer_register,(int)igGamecubeCallStackTracer_parentMeta,(int)igGamecubeCallStackTracer_getMetaCall,(int)igGamecubeCallStackTracer_className,20,(int)igGamecubeCallStackTracer_vtableRead,(int)fn_8003BE78,0,0);
 }
-void *igGamecubeCallStackTracer_parentMeta(){return lbl_80561E30;}
+void *igGamecubeCallStackTracer_parentMeta(){return igCallStackTracer_meta;}
 void *fn_8003BE78(){
- void *value0=lbl_805620F4;
+ void *value0=igGamecubeCallStackTracer_meta;
  reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igCallStackTracer_getMetaCall;
  return value0;
 }

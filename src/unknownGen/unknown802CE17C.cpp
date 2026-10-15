@@ -6,14 +6,14 @@ void __dl__FPv(void *);
 void beMessenger_fieldInit();
 void *beMessenger_getMeta();
 void beMessenger_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_80284550();
 void fn_802B1AC8();
 void igInfoManager_register();
-extern char lbl_8041F694[];
+extern char beMessenger_className[];
 extern char lbl_804D134C[];
-extern char lbl_80534FBC[];
+extern char beMessenger_meta[];
 void beMessenger_register();
 void *beMessenger_getMetaCall();
 }
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_802CE17C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_802CE1F0(){
- fn_80066188((int)beMessenger_register);
+void beMessenger_registerNow(){
+ meta_registerNow((int)beMessenger_register);
 }
 void beMessenger_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80534FBC,(int)igInfoManager_register,(int)fn_80284550,(int)beMessenger_getMetaCall,(int)lbl_8041F694,56,(int)beMessenger_vtableRead,(int)beMessenger_fieldInit,0,(int)lbl_804D134C);
+ meta_registerClass(0,(int)beMessenger_meta,(int)igInfoManager_register,(int)fn_80284550,(int)beMessenger_getMetaCall,(int)beMessenger_className,56,(int)beMessenger_vtableRead,(int)beMessenger_fieldInit,0,(int)lbl_804D134C);
 }
 void *beMessenger_getMetaCall(){return beMessenger_getMeta();}
 }

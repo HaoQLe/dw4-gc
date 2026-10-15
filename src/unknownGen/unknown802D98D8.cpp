@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
-void *fn_8006546C(void *,void *);
-void fn_802D9DF4();
+void *meta_createInstance(void *,void *);
+void beFont_registerNow();
 extern char lbl_8041CD10[];
 extern char lbl_8041FBD8[];
 extern char lbl_804202E4[];
@@ -19,7 +19,7 @@ extern char lbl_804D20A4[];
 extern void *lbl_8053534C;
 extern void *lbl_80535350;
 extern void *lbl_80535354;
-extern void *lbl_80535358;
+extern void *beFont_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
@@ -35,17 +35,17 @@ void *fn_802D9998(){
  if(!lbl_80535354) lbl_80535354=fn_800635C8(lbl_8041CD10,lbl_804D2080,lbl_804D20A4,0x9);
  return lbl_80535354;
 }
-void *fn_802D99F8(void *object){
- fn_802D9DF4();
- return fn_8006546C(lbl_80535358,object);
+void *beFont_create(void *object){
+ beFont_registerNow();
+ return meta_createInstance(beFont_meta,object);
 }
-void *fn_802D9A38(){
- if(!lbl_80535358) lbl_80535358=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80535358;
+void *beFont_metaObject(){
+ if(!beFont_meta) beFont_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beFont_meta;
 }
 void *beFont_getMeta(){
- if(!lbl_80535358 || !(reinterpret_cast<unsigned int *>(lbl_80535358)[0x24/4]&4)) fn_802D9DF4();
- return lbl_80535358;
+ if(!beFont_meta || !(reinterpret_cast<unsigned int *>(beFont_meta)[0x24/4]&4)) beFont_registerNow();
+ return beFont_meta;
 }
 }
 #pragma pop

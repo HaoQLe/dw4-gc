@@ -5,34 +5,34 @@ extern "C" {
 void *beNDMWShopTitle00_getMeta();
 void beNDMWShopTitle00_vtableRead();
 void beNDMWWindowTitle_register();
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80326F88();
-void fn_803278A4();
-extern char lbl_8045349C[];
-extern char lbl_80535D48[];
-extern void *lbl_80535D4C;
+void beNDMWStatusTitle04_registerNow();
+extern char beNDMWShopTitle00_className[];
+extern char beNDMWShopTitle00_meta[];
+extern void *beNDMWStatusTitle04_meta;
 void beNDMWShopTitle00_register();
 void *beNDMWShopTitle00_getMetaCall();
 }
 extern "C" {
-void fn_80327564(){
- fn_80066188((int)beNDMWShopTitle00_register);
+void beNDMWShopTitle00_registerNow(){
+ meta_registerNow((int)beNDMWShopTitle00_register);
 }
 void beNDMWShopTitle00_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535D48,(int)beNDMWWindowTitle_register,(int)fn_80326F88,(int)beNDMWShopTitle00_getMetaCall,(int)lbl_8045349C,80,(int)beNDMWShopTitle00_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beNDMWShopTitle00_meta,(int)beNDMWWindowTitle_register,(int)fn_80326F88,(int)beNDMWShopTitle00_getMetaCall,(int)beNDMWShopTitle00_className,80,(int)beNDMWShopTitle00_vtableRead,0,0,0);
 }
 void *beNDMWShopTitle00_getMetaCall(){return beNDMWShopTitle00_getMeta();}
-void *fn_80327618(void *object){
- fn_803278A4();
- return fn_8006546C(lbl_80535D4C,object);
+void *beNDMWStatusTitle04_create(void *object){
+ beNDMWStatusTitle04_registerNow();
+ return meta_createInstance(beNDMWStatusTitle04_meta,object);
 }
 void *beNDMWStatusTitle04_getMeta(){
- if(!lbl_80535D4C || !(reinterpret_cast<unsigned int *>(lbl_80535D4C)[0x24/4]&4)) fn_803278A4();
- return lbl_80535D4C;
+ if(!beNDMWStatusTitle04_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusTitle04_meta)[0x24/4]&4)) beNDMWStatusTitle04_registerNow();
+ return beNDMWStatusTitle04_meta;
 }
 }
 #pragma pop

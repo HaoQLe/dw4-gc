@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_8055C700;
-extern void *lbl_8055C744;
+extern void *igViewerStatisticsManager_meta;
+extern void *igStatisticsItem_meta;
 }
 extern "C" {
-void *igViewerStatisticsManager_virtual58(){return lbl_8055C700;}
-void *igStatisticsItem_virtual58(){return lbl_8055C744;}
+void *igViewerStatisticsManager_virtual58(){return igViewerStatisticsManager_meta;}
+void *igStatisticsItem_virtual58(){return igStatisticsItem_meta;}
 }
 #pragma pop

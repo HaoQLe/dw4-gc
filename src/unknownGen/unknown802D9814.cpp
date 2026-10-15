@@ -5,22 +5,22 @@ extern "C" {
 void *beFontImage_getMeta();
 void *beFontImage_parentMeta();
 void beFontImage_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igBitmapFont_register();
-extern char lbl_804202C0[];
-extern char lbl_80535348[];
+extern char beFontImage_className[];
+extern char beFontImage_meta[];
 void beFontImage_register();
 void *beFontImage_getMetaCall();
 }
 extern "C" {
-void fn_802D9814(){
- fn_80066188((int)beFontImage_register);
+void beFontImage_registerNow(){
+ meta_registerNow((int)beFontImage_register);
 }
 void beFontImage_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535348,(int)igBitmapFont_register,(int)beFontImage_parentMeta,(int)beFontImage_getMetaCall,(int)lbl_804202C0,36,(int)beFontImage_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beFontImage_meta,(int)igBitmapFont_register,(int)beFontImage_parentMeta,(int)beFontImage_getMetaCall,(int)beFontImage_className,36,(int)beFontImage_vtableRead,0,0,0);
 }
 void *beFontImage_getMetaCall(){return beFontImage_getMeta();}
 }

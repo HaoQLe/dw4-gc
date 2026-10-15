@@ -5,34 +5,34 @@ extern "C" {
 void *beNDMWStatusTitle03_getMeta();
 void beNDMWStatusTitle03_vtableRead();
 void beNDMWWindowTitle_register();
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80326F88();
-void fn_80327F78();
-extern char lbl_804534C4[];
-extern char lbl_80535D50[];
-extern void *lbl_80535D54;
+void beNDMWStatusTitle02_registerNow();
+extern char beNDMWStatusTitle03_className[];
+extern char beNDMWStatusTitle03_meta[];
+extern void *beNDMWStatusTitle02_meta;
 void beNDMWStatusTitle03_register();
 void *beNDMWStatusTitle03_getMetaCall();
 }
 extern "C" {
-void fn_80327C38(){
- fn_80066188((int)beNDMWStatusTitle03_register);
+void beNDMWStatusTitle03_registerNow(){
+ meta_registerNow((int)beNDMWStatusTitle03_register);
 }
 void beNDMWStatusTitle03_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535D50,(int)beNDMWWindowTitle_register,(int)fn_80326F88,(int)beNDMWStatusTitle03_getMetaCall,(int)lbl_804534C4,80,(int)beNDMWStatusTitle03_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beNDMWStatusTitle03_meta,(int)beNDMWWindowTitle_register,(int)fn_80326F88,(int)beNDMWStatusTitle03_getMetaCall,(int)beNDMWStatusTitle03_className,80,(int)beNDMWStatusTitle03_vtableRead,0,0,0);
 }
 void *beNDMWStatusTitle03_getMetaCall(){return beNDMWStatusTitle03_getMeta();}
-void *fn_80327CEC(void *object){
- fn_80327F78();
- return fn_8006546C(lbl_80535D54,object);
+void *beNDMWStatusTitle02_create(void *object){
+ beNDMWStatusTitle02_registerNow();
+ return meta_createInstance(beNDMWStatusTitle02_meta,object);
 }
 void *beNDMWStatusTitle02_getMeta(){
- if(!lbl_80535D54 || !(reinterpret_cast<unsigned int *>(lbl_80535D54)[0x24/4]&4)) fn_80327F78();
- return lbl_80535D54;
+ if(!beNDMWStatusTitle02_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusTitle02_meta)[0x24/4]&4)) beNDMWStatusTitle02_registerNow();
+ return beNDMWStatusTitle02_meta;
 }
 }
 #pragma pop

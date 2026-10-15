@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535398;
+extern void *beFileListInfoManager_meta;
 }
 extern "C" {
-void *beFileListInfoManager_virtual58(){return lbl_80535398;}
+void *beFileListInfoManager_virtual58(){return beFileListInfoManager_meta;}
 }
 #pragma pop

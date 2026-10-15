@@ -5,34 +5,34 @@ extern "C" {
 void *beNDMWItemAbilityChip_getMeta();
 void beNDMWItemAbilityChip_vtableRead();
 void beNDMWItemBase_register();
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_803425BC();
-void fn_80342EE8();
-extern char lbl_80455160[];
-extern char lbl_80536744[];
-extern void *lbl_80536748;
+void beNDMWItemYellowArmor_registerNow();
+extern char beNDMWItemAbilityChip_className[];
+extern char beNDMWItemAbilityChip_meta[];
+extern void *beNDMWItemYellowArmor_meta;
 void beNDMWItemAbilityChip_register();
 void *beNDMWItemAbilityChip_getMetaCall();
 }
 extern "C" {
-void fn_80342D4C(){
- fn_80066188((int)beNDMWItemAbilityChip_register);
+void beNDMWItemAbilityChip_registerNow(){
+ meta_registerNow((int)beNDMWItemAbilityChip_register);
 }
 void beNDMWItemAbilityChip_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80536744,(int)beNDMWItemBase_register,(int)fn_803425BC,(int)beNDMWItemAbilityChip_getMetaCall,(int)lbl_80455160,20,(int)beNDMWItemAbilityChip_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beNDMWItemAbilityChip_meta,(int)beNDMWItemBase_register,(int)fn_803425BC,(int)beNDMWItemAbilityChip_getMetaCall,(int)beNDMWItemAbilityChip_className,20,(int)beNDMWItemAbilityChip_vtableRead,0,0,0);
 }
 void *beNDMWItemAbilityChip_getMetaCall(){return beNDMWItemAbilityChip_getMeta();}
-void *fn_80342E00(void *object){
- fn_80342EE8();
- return fn_8006546C(lbl_80536748,object);
+void *beNDMWItemYellowArmor_create(void *object){
+ beNDMWItemYellowArmor_registerNow();
+ return meta_createInstance(beNDMWItemYellowArmor_meta,object);
 }
 void *beNDMWItemYellowArmor_getMeta(){
- if(!lbl_80536748 || !(reinterpret_cast<unsigned int *>(lbl_80536748)[0x24/4]&4)) fn_80342EE8();
- return lbl_80536748;
+ if(!beNDMWItemYellowArmor_meta || !(reinterpret_cast<unsigned int *>(beNDMWItemYellowArmor_meta)[0x24/4]&4)) beNDMWItemYellowArmor_registerNow();
+ return beNDMWItemYellowArmor_meta;
 }
 }
 #pragma pop

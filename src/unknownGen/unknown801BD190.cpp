@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_801BD3DC();
+void igInverseKinematicsAnimation_registerNow();
 extern void *lbl_805621F4;
-extern void *lbl_80564E0C;
+extern void *igInverseKinematicsAnimation_meta;
 }
 extern "C" {
 void *fn_801BD190(){
- if(!lbl_80564E0C) lbl_80564E0C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564E0C;
+ if(!igInverseKinematicsAnimation_meta) igInverseKinematicsAnimation_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igInverseKinematicsAnimation_meta;
 }
 void *igInverseKinematicsAnimation_getMeta(){
- if(!lbl_80564E0C || !(reinterpret_cast<unsigned int *>(lbl_80564E0C)[0x24/4]&4)) fn_801BD3DC();
- return lbl_80564E0C;
+ if(!igInverseKinematicsAnimation_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsAnimation_meta)[0x24/4]&4)) igInverseKinematicsAnimation_registerNow();
+ return igInverseKinematicsAnimation_meta;
 }
 }
 #pragma pop

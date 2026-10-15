@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805622A4;
-extern void *lbl_80563FF8;
+extern void *igObject_meta;
+extern void *igObjectProperty_meta;
 }
 extern "C" {
-void *fn_801804D8(){return lbl_80563FF8;}
-void *fn_801804E0(){return lbl_805622A4;}
+void *fn_801804D8(){return igObjectProperty_meta;}
+void *fn_801804E0(){return igObject_meta;}
 }
 #pragma pop

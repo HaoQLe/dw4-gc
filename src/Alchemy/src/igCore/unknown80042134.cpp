@@ -32,8 +32,8 @@ extern "C" {
     void fn_80041810(void *, int, int);
     void fn_80066E1C(void *);
     void *fn_80068430(void *);
-    Unknown80041E40Storage *fn_80028F4C(void *);
-    Unknown80041E40Storage *fn_800346F0(void *);
+    Unknown80041E40Storage *igObjectList_create(void *);
+    Unknown80041E40Storage *igPointerList_create(void *);
     void fn_80069184(void *, void *);
     void fn_80069128(void *, Unknown80041E40Value *);
     void fn_800694EC(void *, Unknown80041E40Value *);
@@ -91,7 +91,7 @@ extern "C" void fn_80042134(Unknown80041E40 *receiver){
     state.object = receiver;
     state.object->unknown18 = 0;
     state.object->unknown10->unknown08 = 0;
-    Unknown80041E40Reference remaining(fn_800346F0(fn_80068430(state.object)));
+    Unknown80041E40Reference remaining(igPointerList_create(fn_80068430(state.object)));
     state.count = state.object->unknown0C->unknown08;
     state.pairs = reinterpret_cast<Unknown80041E40Pair *>(state.object->unknown0C->unknown10);
     Unknown80041E40Value **second;
@@ -108,7 +108,7 @@ extern "C" void fn_80042134(Unknown80041E40 *receiver){
                 fn_80041A44(storage, position, 1, second);
         }
     }
-    Unknown80041E40Reference ready(fn_800346F0(fn_80068430(state.object)));
+    Unknown80041E40Reference ready(igPointerList_create(fn_80068430(state.object)));
     Unknown80041E40Storage *const &pending = static_cast<Unknown80041E40Storage *>(remaining.value);
     while(pending->unknown08 > 0){
         ready.value->unknown08 = 0;

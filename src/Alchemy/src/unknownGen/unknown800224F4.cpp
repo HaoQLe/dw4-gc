@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
+void meta_registerNow(int);
 void *fn_80066DD8(int,int);
 void *fn_800680B4(void *,void *);
 void fn_80075C84(void *);
@@ -10,8 +10,8 @@ void *fn_80075CC0(void *,void *);
 void igUnsignedLongMetaField_register();
 extern char lbl_80471914[];
 extern char lbl_80476F60[];
-extern void *lbl_805614A8;
-void fn_80022634();
+extern void *igUnsignedLongMetaField_meta;
+void igUnsignedLongMetaField_registerNow();
 }
 struct UnknownGenRoot800225AC {
  void *unknown00;
@@ -30,7 +30,7 @@ struct UnknownGenObject800225AC : UnknownGenObject800225AC_0 {
 extern "C" {
 void *igUnsignedLongArrayMetaField_virtual54(void *a,void *b){
  if(*reinterpret_cast<unsigned char *>(Gap::Core::_arkCore)){
-  fn_80022634();
+  igUnsignedLongMetaField_registerNow();
   return fn_800680B4(a,b);
  }
  void *object=fn_80066DD8(0x34,0);
@@ -38,15 +38,15 @@ void *igUnsignedLongArrayMetaField_virtual54(void *a,void *b){
  return object;
 }
 void *igUnsignedLongMetaField_getMeta(){
- if(!lbl_805614A8 || !(reinterpret_cast<unsigned int *>(lbl_805614A8)[0x24/4]&4)) fn_80022634();
- return lbl_805614A8;
+ if(!igUnsignedLongMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedLongMetaField_meta)[0x24/4]&4)) igUnsignedLongMetaField_registerNow();
+ return igUnsignedLongMetaField_meta;
 }
 void *fn_800225AC(){
  UnknownGenObject800225AC object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80022634(){
- fn_80066188((int)igUnsignedLongMetaField_register);
+void igUnsignedLongMetaField_registerNow(){
+ meta_registerNow((int)igUnsignedLongMetaField_register);
 }
 }
 #pragma pop

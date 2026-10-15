@@ -2,24 +2,24 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_801308D0();
 void igOptBase_register();
 void igRepairHierarchy_fieldInit();
-extern char lbl_8049C948[];
-extern char lbl_804A39B0[];
+extern char igRepairHierarchy_className[];
+extern char igRepairHierarchy_vtable[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F614[8];
-extern void *lbl_80563CA0;
+extern void *igRepairHierarchy_meta;
 void *igRepairHierarchy_getMeta();
 void *igRepairHierarchy_vtableRead();
-void fn_80135BD0();
+void igRepairHierarchy_registerNow();
 void igRepairHierarchy_register();
 void *igRepairHierarchy_getMetaCall();
 }
@@ -37,16 +37,16 @@ struct UnknownGenObject80135AA0_0 : UnknownGenRoot80135AA0 {
 struct UnknownGenObject80135AA0 : UnknownGenObject80135AA0_0 {
  UnknownGenRefMember unknown28;
  char unknown2C[12];
- inline ~UnknownGenObject80135AA0(){unknown00=lbl_804A39B0;}
+ inline ~UnknownGenObject80135AA0(){unknown00=igRepairHierarchy_vtable;}
 };
 extern "C" {
-void *fn_80135A2C(void *object){
- fn_80135BD0();
- return fn_8006546C(lbl_80563CA0,object);
+void *igRepairHierarchy_create(void *object){
+ igRepairHierarchy_registerNow();
+ return meta_createInstance(igRepairHierarchy_meta,object);
 }
 void *igRepairHierarchy_getMeta(){
- if(!lbl_80563CA0 || !(reinterpret_cast<unsigned int *>(lbl_80563CA0)[0x24/4]&4)) fn_80135BD0();
- return lbl_80563CA0;
+ if(!igRepairHierarchy_meta || !(reinterpret_cast<unsigned int *>(igRepairHierarchy_meta)[0x24/4]&4)) igRepairHierarchy_registerNow();
+ return igRepairHierarchy_meta;
 }
 void *igRepairHierarchy_vtableRead(){
  UnknownGenObject80135AA0 object;
@@ -55,16 +55,16 @@ void *igRepairHierarchy_vtableRead(){
  object.unknown00=lbl_804A4A04;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A39B0;
+ object.unknown00=igRepairHierarchy_vtable;
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80135BD0(){
- fn_80066188((int)igRepairHierarchy_register);
+void igRepairHierarchy_registerNow(){
+ meta_registerNow((int)igRepairHierarchy_register);
 }
 void igRepairHierarchy_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563CA0,(int)igOptBase_register,(int)fn_801308D0,(int)igRepairHierarchy_getMetaCall,(int)lbl_8049C948,48,(int)igRepairHierarchy_vtableRead,(int)igRepairHierarchy_fieldInit,0,(int)lbl_8055F614);
+ meta_registerClass(0,(int)&igRepairHierarchy_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igRepairHierarchy_getMetaCall,(int)igRepairHierarchy_className,48,(int)igRepairHierarchy_vtableRead,(int)igRepairHierarchy_fieldInit,0,(int)lbl_8055F614);
 }
 void *igRepairHierarchy_getMetaCall(){return igRepairHierarchy_getMeta();}
 }

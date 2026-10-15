@@ -4,7 +4,7 @@
 extern "C" {
 void fn_8006665C(void *);
 void fn_802DDADC(void *,short);
-extern char lbl_804D52D0[];
+extern char beDataBase_vtable[];
 }
 struct UnknownGenObject802DDA50 {
  void *unknown00;
@@ -27,7 +27,7 @@ extern "C" {
 void *beDataBase_vtableRead(){
  UnknownGenObject802DDA50 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804D52D0;
+ object.unknown00=beDataBase_vtable;
  object.unknown08=0;
  object.unknown0C=0;
  object.unknown10=0;

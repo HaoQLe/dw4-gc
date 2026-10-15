@@ -4,7 +4,7 @@
 #pragma auto_inline off
 extern "C" {
 void *igGamecubeVisualContext_virtual278(void *,void *,void *);
-extern void *lbl_80562A10;
+extern void *igBlendFunctionAttr_meta;
 extern void *lbl_80562AE4;
 }
 class UnknownGenV800BD510_0 {
@@ -40,7 +40,7 @@ public:
  virtual void * s78();
 };
 extern "C" {
-void *igBlendFunctionAttr_virtual58(){return lbl_80562A10;}
+void *igBlendFunctionAttr_virtual58(){return igBlendFunctionAttr_meta;}
 void *igBlendFunctionAttr_virtual60(int p0,int p1){
  void *value1;
  igGamecubeVisualContext_virtual278((void *)p1,(void *)(int)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_src,(void *)(int)reinterpret_cast<Meta::igBlendFunctionAttr *>((void *)p0)->_dst);

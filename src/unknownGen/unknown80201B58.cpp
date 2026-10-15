@@ -6,18 +6,18 @@ extern "C" {
 void fn_801D6834(void *);
 void fn_801FAE18(void *,void *);
 void *fn_80201ADC();
-extern void *lbl_805627E0;
-extern void *lbl_805627F4;
+extern void *igLightStateAttr_meta;
+extern void *igLightAttr_meta;
 }
 extern "C" {
 void *fn_80201B58(int p0){
  void *value0;
  void *value1;
  void *value2;
- if((unsigned int)p0==(unsigned int)(int)lbl_805627F4){
+ if((unsigned int)p0==(unsigned int)(int)igLightAttr_meta){
   value1=(void *)1;
  } else {
-  if((unsigned int)p0==(unsigned int)(int)lbl_805627E0){
+  if((unsigned int)p0==(unsigned int)(int)igLightStateAttr_meta){
    value2=fn_80201ADC();
    value0=value2;
   } else {

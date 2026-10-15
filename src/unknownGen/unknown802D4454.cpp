@@ -11,11 +11,11 @@ extern char lbl_804D1A60[];
 extern char lbl_804D1A64[];
 extern char lbl_804D1A68[];
 extern char lbl_804D1A6C[];
-extern void *lbl_805351A0;
+extern void *beKeyboardReceiver_meta;
 }
 extern "C" {
 void beKeyboardReceiver_fieldInit(){
- void *value0=lbl_805351A0;
+ void *value0=beKeyboardReceiver_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1A60,1);
  void *value2=fn_800658E4(value0,value1);

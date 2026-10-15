@@ -4,16 +4,16 @@
 extern "C" {
 void __dl__FPv(void *);
 void *fn_800284EC();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802AA788();
 void igInfo_register();
 void igMovieInfo_fieldInit();
 void *igMovieInfo_getMeta();
 void igMovieInfo_vtableRead();
-extern char lbl_8041BE68[];
+extern char igMovieInfo_className[];
 extern char lbl_804CDBDC[];
-extern char lbl_80534414[];
+extern char igMovieInfo_meta[];
 void igMovieInfo_register();
 void *igMovieInfo_getMetaCall();
 }
@@ -40,12 +40,12 @@ UnknownGenHolder *dtor_802ACB58(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_802ACBCC(){
- fn_80066188((int)igMovieInfo_register);
+void igMovieInfo_registerNow(){
+ meta_registerNow((int)igMovieInfo_register);
 }
 void igMovieInfo_register(){
  fn_802AA788();
- fn_80066204(0,(int)lbl_80534414,(int)igInfo_register,(int)fn_800284EC,(int)igMovieInfo_getMetaCall,(int)lbl_8041BE68,104,(int)igMovieInfo_vtableRead,(int)igMovieInfo_fieldInit,0,(int)lbl_804CDBDC);
+ meta_registerClass(0,(int)igMovieInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igMovieInfo_getMetaCall,(int)igMovieInfo_className,104,(int)igMovieInfo_vtableRead,(int)igMovieInfo_fieldInit,0,(int)lbl_804CDBDC);
 }
 void *igMovieInfo_getMetaCall(){return igMovieInfo_getMeta();}
 }

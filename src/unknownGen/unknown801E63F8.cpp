@@ -3,11 +3,11 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800607F4(void *);
-void *fn_800ADBFC(void *);
-void *fn_800B9D98(void *);
-void *fn_800BB99C(void *);
+void *igTextureStateAttr_create(void *);
+void *igBlendStateAttr_create(void *);
+void *igAlphaStateAttr_create(void *);
 extern void *lbl_805621F0;
-extern void *lbl_80564F20;
+extern void *igEnvironmentMapShader2_meta;
 extern void *lbl_805657C0;
 extern void *lbl_805657C4;
 extern void *lbl_805657C8;
@@ -177,7 +177,7 @@ public:
  virtual void s80(void *);
 };
 extern "C" {
-void *fn_801E63F8(){return lbl_80564F20;}
+void *fn_801E63F8(){return igEnvironmentMapShader2_meta;}
 void fn_801E6400(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value2;
  void *value3;
@@ -190,20 +190,20 @@ void fn_801E6400(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value9;
  if(!lbl_805657C0){
   value2=fn_800607F4(lbl_805621F0);
-  value3=fn_800ADBFC(value2);
+  value3=igTextureStateAttr_create(value2);
   lbl_805657C0=value3;
   reinterpret_cast<UnknownGenV801E6400_0 *>(value3)->s80((void *)1);
   reinterpret_cast<UnknownGenV801E6400_1 *>(lbl_805657C0)->s64((void *)0);
  }
  if(!lbl_805657C4){
   value4=fn_800607F4(lbl_805621F0);
-  value5=fn_800B9D98(value4);
+  value5=igBlendStateAttr_create(value4);
   lbl_805657C4=value5;
   reinterpret_cast<UnknownGenV801E6400_2 *>(value5)->s80((void *)1);
  }
  if(!lbl_805657C8){
   value6=fn_800607F4(lbl_805621F0);
-  value7=fn_800B9D98(value6);
+  value7=igBlendStateAttr_create(value6);
   lbl_805657C8=value7;
   reinterpret_cast<UnknownGenV801E6400_3 *>(value7)->s80((void *)0);
  }
@@ -217,7 +217,7 @@ void fn_801E6400(int p0,int p1,int p2,int p3,int p4,int p5){
     fn_80066E1C(value0);
    }
   }
-  value9=fn_800BB99C(value8);
+  value9=igAlphaStateAttr_create(value8);
   lbl_805657CC=value9;
   reinterpret_cast<UnknownGenV801E6400_4 *>(value9)->s80((void *)0);
   return;

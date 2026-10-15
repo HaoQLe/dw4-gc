@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_80330A94();
-extern void *lbl_80535ED8;
+void *meta_createInstance(void *,void *);
+void beNDMWStatusCtrlSkill_registerNow();
+extern void *beNDMWStatusCtrlSkill_meta;
 }
 extern "C" {
-void *fn_80330724(void *object){
- fn_80330A94();
- return fn_8006546C(lbl_80535ED8,object);
+void *beNDMWStatusCtrlSkill_create(void *object){
+ beNDMWStatusCtrlSkill_registerNow();
+ return meta_createInstance(beNDMWStatusCtrlSkill_meta,object);
 }
 void *beNDMWStatusCtrlSkill_getMeta(){
- if(!lbl_80535ED8 || !(reinterpret_cast<unsigned int *>(lbl_80535ED8)[0x24/4]&4)) fn_80330A94();
- return lbl_80535ED8;
+ if(!beNDMWStatusCtrlSkill_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusCtrlSkill_meta)[0x24/4]&4)) beNDMWStatusCtrlSkill_registerNow();
+ return beNDMWStatusCtrlSkill_meta;
 }
 }
 #pragma pop

@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80536228;
+extern void *beNDMWMdlEnemy_meta;
 }
 extern "C" {
-void *beNDMWMdlEnemy_virtual58(){return lbl_80536228;}
+void *beNDMWMdlEnemy_virtual58(){return beNDMWMdlEnemy_meta;}
 }
 #pragma pop

@@ -7,13 +7,13 @@ void beNDMWShopCtrlA0_fieldInit();
 void *beNDMWShopCtrlA0_getMeta();
 void beNDMWShopCtrlA0_vtableRead();
 void beNDMWWindowCtrl_register();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_8032B8A4();
-extern char lbl_8045396C[];
+extern char beNDMWShopCtrlA0_className[];
 extern char lbl_804E1CB8[];
-extern char lbl_80535E74[];
+extern char beNDMWShopCtrlA0_meta[];
 void beNDMWShopCtrlA0_register();
 void *beNDMWShopCtrlA0_getMetaCall();
 }
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_8032E884(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_8032E8F8(){
- fn_80066188((int)beNDMWShopCtrlA0_register);
+void beNDMWShopCtrlA0_registerNow(){
+ meta_registerNow((int)beNDMWShopCtrlA0_register);
 }
 void beNDMWShopCtrlA0_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535E74,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWShopCtrlA0_getMetaCall,(int)lbl_8045396C,92,(int)beNDMWShopCtrlA0_vtableRead,(int)beNDMWShopCtrlA0_fieldInit,0,(int)lbl_804E1CB8);
+ meta_registerClass(0,(int)beNDMWShopCtrlA0_meta,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWShopCtrlA0_getMetaCall,(int)beNDMWShopCtrlA0_className,92,(int)beNDMWShopCtrlA0_vtableRead,(int)beNDMWShopCtrlA0_fieldInit,0,(int)lbl_804E1CB8);
 }
 void *beNDMWShopCtrlA0_getMetaCall(){return beNDMWShopCtrlA0_getMeta();}
 }

@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80068430(int,int);
-void *fn_800D23DC(void *);
+void *igImage_create(void *);
 void *fn_800D93C0(void *,void *);
 }
 class UnknownGenV800D9308_0 {
@@ -39,7 +39,7 @@ void *igExternalImageEntry_virtualB0(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  void *value1;
  value2=fn_80068430((int)(int)((void *)p0),(int)(int)((void *)p1));
- value3=fn_800D23DC(value2);
+ value3=igImage_create(value2);
  value4=fn_800D93C0((void *)p0,value3);
  if(!(unsigned char)(int)value4){
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+4);

@@ -10,7 +10,7 @@ extern "C" {
  const char *fn_8004B4D4(void *,int);
  int fn_8004C0E4(void *);
  void fn_8004C24C(void *,int,Unknown8004A41CValue *);
- extern char lbl_80463100[];
+ extern char igVirtualCFuncMetaField_className[];
  extern const char *lbl_8055D824,*lbl_8055D828,*lbl_8055D82C,*lbl_8055D830;
  extern char lbl_8055D4C4[1],lbl_8055D7AC[3],lbl_8055D7B8[7],lbl_8055D7C0[3],lbl_8055D7D0[3];
  extern char lbl_8055D7C4[2],lbl_8055D7C8[2],lbl_8055D7CC[2];

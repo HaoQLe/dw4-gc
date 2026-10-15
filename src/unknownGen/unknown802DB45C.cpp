@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_802DB570();
-extern void *lbl_80535404;
+void beDemoManagerWorkList_registerNow();
+extern void *beDemoManagerWorkList_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802DB45C(){
- if(!lbl_80535404) lbl_80535404=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80535404;
+void *beDemoManagerWorkList_metaObject(){
+ if(!beDemoManagerWorkList_meta) beDemoManagerWorkList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beDemoManagerWorkList_meta;
 }
 void *beDemoManagerWorkList_getMeta(){
- if(!lbl_80535404 || !(reinterpret_cast<unsigned int *>(lbl_80535404)[0x24/4]&4)) fn_802DB570();
- return lbl_80535404;
+ if(!beDemoManagerWorkList_meta || !(reinterpret_cast<unsigned int *>(beDemoManagerWorkList_meta)[0x24/4]&4)) beDemoManagerWorkList_registerNow();
+ return beDemoManagerWorkList_meta;
 }
 }
 #pragma pop

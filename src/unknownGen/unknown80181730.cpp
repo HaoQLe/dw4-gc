@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564F20;
+extern void *igEnvironmentMapShader2_meta;
 }
 extern "C" {
-void *igObjectPropertyForEnvironmentMapShader_virtual7C(){return lbl_80564F20;}
+void *igObjectPropertyForEnvironmentMapShader_virtual7C(){return igEnvironmentMapShader2_meta;}
 }
 #pragma pop

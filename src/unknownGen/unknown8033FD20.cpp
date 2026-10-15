@@ -2,32 +2,32 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_8033FE80();
+void beNDMWMcSlotGC_registerNow();
 extern char lbl_804E38D4[];
 extern char lbl_804E38D8[];
 extern char lbl_804E38DC[];
 extern char lbl_804E38E0[];
-extern void *lbl_805365EC;
-extern void *lbl_805365F4;
+extern void *beNDMWMcSlotXbox_meta;
+extern void *beNDMWMcSlotGC_meta;
 }
 extern "C" {
 void beNDMWMcSlotXbox_fieldInit(){
- void *meta=lbl_805365EC;
+ void *meta=beNDMWMcSlotXbox_meta;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804E38D4,0x1);
  fn_800659C0(meta,lbl_804E38D8,lbl_804E38DC,lbl_804E38E0,field);
 }
-void *fn_8033FDA0(void *object){
- fn_8033FE80();
- return fn_8006546C(lbl_805365F4,object);
+void *beNDMWMcSlotGC_create(void *object){
+ beNDMWMcSlotGC_registerNow();
+ return meta_createInstance(beNDMWMcSlotGC_meta,object);
 }
 void *beNDMWMcSlotGC_getMeta(){
- if(!lbl_805365F4 || !(reinterpret_cast<unsigned int *>(lbl_805365F4)[0x24/4]&4)) fn_8033FE80();
- return lbl_805365F4;
+ if(!beNDMWMcSlotGC_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcSlotGC_meta)[0x24/4]&4)) beNDMWMcSlotGC_registerNow();
+ return beNDMWMcSlotGC_meta;
 }
 }
 #pragma pop

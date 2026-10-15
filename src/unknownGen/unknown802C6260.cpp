@@ -13,11 +13,11 @@ extern char lbl_804D06F0[];
 extern char lbl_804D0700[];
 extern char lbl_804D0710[];
 extern char lbl_804D0720[];
-extern void *lbl_80534C50;
+extern void *beModelCtrlNode2_meta;
 }
 extern "C" {
 void beModelCtrlNode2_fieldInit(){
- void *value0=lbl_80534C50;
+ void *value0=beModelCtrlNode2_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D06F0,4);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));

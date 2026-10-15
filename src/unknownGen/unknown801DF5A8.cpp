@@ -22,22 +22,22 @@ int fn_801E0B34();
 int fn_801E0B3C();
 void fn_8020B1A4(void *,void *,void *);
 void igCommonTraversal_virtual28();
-extern void *lbl_80564714;
-extern void *lbl_8056491C;
-extern void *lbl_80564A10;
-extern void *lbl_80564A78;
-extern void *lbl_80564B3C;
-extern void *lbl_80564BD4;
-extern void *lbl_80564D84;
-extern void *lbl_80564DBC;
-extern void *lbl_80564EF0;
-extern void *lbl_80564F20;
-extern void *lbl_80564FC0;
-extern void *lbl_8056506C;
-extern void *lbl_805651C0;
-extern void *lbl_80565230;
-extern void *lbl_805652BC;
-extern void *lbl_805655A0;
+extern void *igTransform_meta;
+extern void *igShader_meta;
+extern void *igSegment_meta;
+extern void *igProjectiveShadowShader_meta;
+extern void *igPlanarShadowShader_meta;
+extern void *igMultiTextureShader_meta;
+extern void *igModelViewMatrixBoneSelect_meta;
+extern void *igJoint_meta;
+extern void *igGeometry_meta;
+extern void *igEnvironmentMapShader2_meta;
+extern void *igDOFShader_meta;
+extern void *igCompiledGraph_meta;
+extern void *igCartoonShader_meta;
+extern void *igBumpMapShader_meta;
+extern void *igBlendMatrixSelect_meta;
+extern void *igActor_meta;
 }
 class UnknownGenV801DF5A8_0 {
 public:
@@ -95,74 +95,74 @@ void fn_801DF5E8(int p0,int p1){
  void *value14;
  void *value15;
  fn_801DB310((void *)p0,(void *)p1);
- value0=fn_80065BDC((void *)p1,lbl_80564A78);
+ value0=fn_80065BDC((void *)p1,igProjectiveShadowShader_meta);
  if((unsigned char)(int)value0){
   fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E07B8);
  } else {
-  value1=fn_80065BDC((void *)p1,lbl_80564FC0);
+  value1=fn_80065BDC((void *)p1,igDOFShader_meta);
   if((unsigned char)(int)value1){
    fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E07C8);
    return;
   } else {
-   value2=fn_80065BDC((void *)p1,lbl_80564F20);
+   value2=fn_80065BDC((void *)p1,igEnvironmentMapShader2_meta);
    if((unsigned char)(int)value2){
     fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0828);
    } else {
-    value3=fn_80065BDC((void *)p1,lbl_80564BD4);
+    value3=fn_80065BDC((void *)p1,igMultiTextureShader_meta);
     if((unsigned char)(int)value3){
      fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E07D8);
      return;
     } else {
-     value4=fn_80065BDC((void *)p1,lbl_805651C0);
+     value4=fn_80065BDC((void *)p1,igCartoonShader_meta);
      if((unsigned char)(int)value4){
       fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E07E8);
      } else {
-      value5=fn_80065BDC((void *)p1,lbl_80565230);
+      value5=fn_80065BDC((void *)p1,igBumpMapShader_meta);
       if((unsigned char)(int)value5){
        fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E07F8);
        return;
       } else {
-       value6=fn_80065BDC((void *)p1,lbl_80564B3C);
+       value6=fn_80065BDC((void *)p1,igPlanarShadowShader_meta);
        if((unsigned char)(int)value6){
         fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0808);
        } else {
-        value7=fn_80065BDC((void *)p1,lbl_8056491C);
+        value7=fn_80065BDC((void *)p1,igShader_meta);
         if((unsigned char)(int)value7){
          fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0818);
          return;
         } else {
-         value8=fn_80065BDC((void *)p1,lbl_80564EF0);
+         value8=fn_80065BDC((void *)p1,igGeometry_meta);
          if((unsigned char)(int)value8){
           fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0148);
          } else {
-          value9=fn_80065BDC((void *)p1,lbl_80564DBC);
+          value9=fn_80065BDC((void *)p1,igJoint_meta);
           if((unsigned char)(int)value9){
            fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E005C);
            return;
           } else {
-           value10=fn_80065BDC((void *)p1,lbl_80564714);
+           value10=fn_80065BDC((void *)p1,igTransform_meta);
            if((unsigned char)(int)value10){
             fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801DFB08);
            } else {
-            value11=fn_80065BDC((void *)p1,lbl_8056506C);
+            value11=fn_80065BDC((void *)p1,igCompiledGraph_meta);
             if((unsigned char)(int)value11){
              fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0ABC);
              return;
             } else {
-             value12=fn_80065BDC((void *)p1,lbl_80564D84);
+             value12=fn_80065BDC((void *)p1,igModelViewMatrixBoneSelect_meta);
              if((unsigned char)(int)value12){
               fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0880);
              } else {
-              value13=fn_80065BDC((void *)p1,lbl_805652BC);
+              value13=fn_80065BDC((void *)p1,igBlendMatrixSelect_meta);
               if((unsigned char)(int)value13){
                fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0980);
                return;
               } else {
-               value14=fn_80065BDC((void *)p1,lbl_805655A0);
+               value14=fn_80065BDC((void *)p1,igActor_meta);
                if((unsigned char)(int)value14){
                 fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0B34);
                } else {
-                value15=fn_80065BDC((void *)p1,lbl_80564A10);
+                value15=fn_80065BDC((void *)p1,igSegment_meta);
                 if((unsigned char)(int)value15){
                  fn_8020B1A4((void *)p0,(void *)p1,(void *)fn_801E0B3C);
                  return;

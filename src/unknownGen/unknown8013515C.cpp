@@ -2,34 +2,34 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8012FC48();
 void igChildContainer_register();
 void igReplaceChild_fieldInit();
-extern char lbl_8049C878[];
+extern char igReplaceChild_className[];
 extern char lbl_8055F604[8];
-extern void *lbl_80563C74;
-extern void *lbl_8056453C;
+extern void *igReplaceChild_meta;
+extern void *igChildContainer_meta;
 void *igReplaceChild_getMeta();
-void fn_80135198();
+void igReplaceChild_registerNow();
 void igReplaceChild_register();
 void *igReplaceChild_getMetaCall();
 void *fn_80135250();
 }
 extern "C" {
 void *igReplaceChild_getMeta(){
- if(!lbl_80563C74 || !(reinterpret_cast<unsigned int *>(lbl_80563C74)[0x24/4]&4)) fn_80135198();
- return lbl_80563C74;
+ if(!igReplaceChild_meta || !(reinterpret_cast<unsigned int *>(igReplaceChild_meta)[0x24/4]&4)) igReplaceChild_registerNow();
+ return igReplaceChild_meta;
 }
-void fn_80135198(){
- fn_80066188((int)igReplaceChild_register);
+void igReplaceChild_registerNow(){
+ meta_registerNow((int)igReplaceChild_register);
 }
 void igReplaceChild_register(){
  fn_8012FC48();
- fn_80066204(1,(int)&lbl_80563C74,(int)igChildContainer_register,(int)fn_80135250,(int)igReplaceChild_getMetaCall,(int)lbl_8049C878,44,0,(int)igReplaceChild_fieldInit,0,(int)lbl_8055F604);
+ meta_registerClass(1,(int)&igReplaceChild_meta,(int)igChildContainer_register,(int)fn_80135250,(int)igReplaceChild_getMetaCall,(int)igReplaceChild_className,44,0,(int)igReplaceChild_fieldInit,0,(int)lbl_8055F604);
 }
 void *igReplaceChild_getMetaCall(){return igReplaceChild_getMeta();}
-void *fn_80135250(){return lbl_8056453C;}
+void *fn_80135250(){return igChildContainer_meta;}
 }
 #pragma pop

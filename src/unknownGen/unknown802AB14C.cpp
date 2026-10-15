@@ -11,11 +11,11 @@ extern char lbl_804CD980[];
 extern char lbl_804CD984[];
 extern char lbl_804CD988[];
 extern char lbl_804CD98C[];
-extern void *lbl_80534368;
+extern void *igFileName_meta;
 }
 extern "C" {
 void igFileName_fieldInit(){
- void *value0=lbl_80534368;
+ void *value0=igFileName_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CD980,1);
  void *value2=fn_800658E4(value0,value1);

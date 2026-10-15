@@ -7,8 +7,8 @@ void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
@@ -17,39 +17,39 @@ void *fn_80148B20();
 void igCollapseNode_fieldInit();
 void igItemBase_register();
 void igOptVisitObject_register();
-extern char lbl_8049FD3C[];
-extern char lbl_8049FD60[];
-extern char lbl_8049FD80[];
-extern char lbl_8049FDA4[];
-extern char lbl_8049FDD0[];
-extern char lbl_8049FDF0[];
-extern char lbl_8049FE0C[];
-extern char lbl_8049FE28[];
-extern char lbl_8049FE48[];
-extern char lbl_8049FE64[];
-extern char lbl_8049FE7C[];
-extern char lbl_8049FE98[];
-extern char lbl_8049FEB0[];
-extern char lbl_8049FECC[];
-extern char lbl_8049FEE4[];
+extern char igCombineTransforms_className[];
+extern char igCollapseNodeForCompiledGraph_className[];
+extern char igCollapseNodeForMultitextureShader_className[];
+extern char igCollapseNodeForModelViewMatrixBoneSelect_className[];
+extern char igCollapseNodeForMorphInstance_className[];
+extern char igCollapseNodeForAttrSet_className[];
+extern char igCollapseNodeForLightSet_className[];
+extern char igCollapseNodeForLightStateSet_className[];
+extern char igCollapseNodeForGeometry_className[];
+extern char igCollapseNodeForLod_className[];
+extern char igCollapseNodeForUserInfo_className[];
+extern char igCollapseNodeForGroup_className[];
+extern char igCollapseNodeForTransform_className[];
+extern char igCollapseNodeForNode_className[];
+extern char igCollapseNode_className[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
-extern char lbl_804A7800[];
-extern char lbl_804A7898[];
-extern char lbl_804A7930[];
-extern char lbl_804A79C8[];
-extern char lbl_804A7A60[];
-extern char lbl_804A7AF8[];
-extern char lbl_804A7B90[];
-extern char lbl_804A7C28[];
-extern char lbl_804A7CC0[];
-extern char lbl_804A7D58[];
-extern char lbl_804A7DF0[];
-extern char lbl_804A7E88[];
-extern char lbl_804A7F20[];
-extern char lbl_804A7FB8[];
+extern char igCombineTransforms_vtable[];
+extern char igCollapseNodeForCompiledGraph_vtable[];
+extern char igCollapseNodeForMultitextureShader_vtable[];
+extern char igCollapseNodeForModelViewMatrixBoneSelect_vtable[];
+extern char igCollapseNodeForMorphInstance_vtable[];
+extern char igCollapseNodeForAttrSet_vtable[];
+extern char igCollapseNodeForLightSet_vtable[];
+extern char igCollapseNodeForLightStateSet_vtable[];
+extern char igCollapseNodeForGeometry_vtable[];
+extern char igCollapseNodeForLod_vtable[];
+extern char igCollapseNodeForUserInfo_vtable[];
+extern char igCollapseNodeForGroup_vtable[];
+extern char igCollapseNodeForTransform_vtable[];
+extern char igCollapseNodeForNode_vtable[];
 extern char lbl_804A8050[];
 extern char lbl_804AAF48[];
 extern char lbl_8055FC8C[8];
@@ -57,95 +57,95 @@ extern char lbl_8055FC94[8];
 extern char lbl_8055FC9C[8];
 extern char lbl_8055FCA4[8];
 extern char lbl_8055FCAC[8];
-extern void *lbl_805644A0;
-extern void *lbl_805644AC;
-extern void *lbl_805644B0;
-extern void *lbl_805644B4;
-extern void *lbl_805644B8;
-extern void *lbl_805644BC;
-extern void *lbl_805644C0;
-extern void *lbl_805644C4;
-extern void *lbl_805644C8;
-extern void *lbl_805644CC;
-extern void *lbl_805644D0;
-extern void *lbl_805644D4;
-extern void *lbl_805644D8;
-extern void *lbl_805644DC;
-extern void *lbl_805644E0;
+extern void *igCombineTransforms_meta;
+extern void *igCollapseNodeForCompiledGraph_meta;
+extern void *igCollapseNodeForMultitextureShader_meta;
+extern void *igCollapseNodeForModelViewMatrixBoneSelect_meta;
+extern void *igCollapseNodeForMorphInstance_meta;
+extern void *igCollapseNodeForAttrSet_meta;
+extern void *igCollapseNodeForLightSet_meta;
+extern void *igCollapseNodeForLightStateSet_meta;
+extern void *igCollapseNodeForGeometry_meta;
+extern void *igCollapseNodeForLod_meta;
+extern void *igCollapseNodeForUserInfo_meta;
+extern void *igCollapseNodeForGroup_meta;
+extern void *igCollapseNodeForTransform_meta;
+extern void *igCollapseNodeForNode_meta;
+extern void *igCollapseNode_meta;
 extern char lbl_80566B14[4];
 void *igCombineTransforms_getMeta();
 void *igCombineTransforms_vtableRead();
-void fn_8014F62C();
+void igCombineTransforms_registerNow();
 void igCombineTransforms_register();
 void *igCombineTransforms_getMetaCall();
 void igCombineTransforms_fieldInit();
 void *igCollapseNodeForCompiledGraph_getMeta();
 void *igCollapseNodeForCompiledGraph_vtableRead();
-void fn_8014F898();
+void igCollapseNodeForCompiledGraph_registerNow();
 void igCollapseNodeForCompiledGraph_register();
 void *igCollapseNodeForCompiledGraph_getMetaCall();
 void *igCollapseNodeForMultitextureShader_getMeta();
 void *igCollapseNodeForMultitextureShader_vtableRead();
-void fn_8014FA80();
+void igCollapseNodeForMultitextureShader_registerNow();
 void igCollapseNodeForMultitextureShader_register();
 void *igCollapseNodeForMultitextureShader_getMetaCall();
 void *igCollapseNodeForModelViewMatrixBoneSelect_getMeta();
 void *igCollapseNodeForModelViewMatrixBoneSelect_vtableRead();
-void fn_8014FC68();
+void igCollapseNodeForModelViewMatrixBoneSelect_registerNow();
 void igCollapseNodeForModelViewMatrixBoneSelect_register();
 void *igCollapseNodeForModelViewMatrixBoneSelect_getMetaCall();
 void *igCollapseNodeForMorphInstance_getMeta();
 void *igCollapseNodeForMorphInstance_vtableRead();
-void fn_8014FE50();
+void igCollapseNodeForMorphInstance_registerNow();
 void igCollapseNodeForMorphInstance_register();
 void *igCollapseNodeForMorphInstance_getMetaCall();
 void *igCollapseNodeForAttrSet_getMeta();
 void *igCollapseNodeForAttrSet_vtableRead();
-void fn_80150038();
+void igCollapseNodeForAttrSet_registerNow();
 void igCollapseNodeForAttrSet_register();
 void *igCollapseNodeForAttrSet_getMetaCall();
 void *igCollapseNodeForLightSet_getMeta();
 void *igCollapseNodeForLightSet_vtableRead();
-void fn_80150220();
+void igCollapseNodeForLightSet_registerNow();
 void igCollapseNodeForLightSet_register();
 void *igCollapseNodeForLightSet_getMetaCall();
 void *igCollapseNodeForLightStateSet_getMeta();
 void *igCollapseNodeForLightStateSet_vtableRead();
-void fn_80150408();
+void igCollapseNodeForLightStateSet_registerNow();
 void igCollapseNodeForLightStateSet_register();
 void *igCollapseNodeForLightStateSet_getMetaCall();
 void *igCollapseNodeForGeometry_getMeta();
 void *igCollapseNodeForGeometry_vtableRead();
-void fn_801505F0();
+void igCollapseNodeForGeometry_registerNow();
 void igCollapseNodeForGeometry_register();
 void *igCollapseNodeForGeometry_getMetaCall();
 void *igCollapseNodeForLod_getMeta();
 void *igCollapseNodeForLod_vtableRead();
-void fn_801507D8();
+void igCollapseNodeForLod_registerNow();
 void igCollapseNodeForLod_register();
 void *igCollapseNodeForLod_getMetaCall();
 void *igCollapseNodeForUserInfo_getMeta();
 void *igCollapseNodeForUserInfo_vtableRead();
-void fn_801509C0();
+void igCollapseNodeForUserInfo_registerNow();
 void igCollapseNodeForUserInfo_register();
 void *igCollapseNodeForUserInfo_getMetaCall();
 void *igCollapseNodeForGroup_getMeta();
 void *igCollapseNodeForGroup_vtableRead();
-void fn_80150BA8();
+void igCollapseNodeForGroup_registerNow();
 void igCollapseNodeForGroup_register();
 void *igCollapseNodeForGroup_getMetaCall();
 void *igCollapseNodeForTransform_getMeta();
 void *igCollapseNodeForTransform_vtableRead();
-void fn_80150D90();
+void igCollapseNodeForTransform_registerNow();
 void igCollapseNodeForTransform_register();
 void *igCollapseNodeForTransform_getMetaCall();
 void *igCollapseNodeForNode_getMeta();
 void *igCollapseNodeForNode_vtableRead();
-void fn_80150F78();
+void igCollapseNodeForNode_registerNow();
 void igCollapseNodeForNode_register();
 void *igCollapseNodeForNode_getMetaCall();
 void *igCollapseNode_getMeta();
-void fn_80151064();
+void igCollapseNode_registerNow();
 void igCollapseNode_register();
 void *igCollapseNode_getMetaCall();
 }
@@ -167,7 +167,7 @@ struct UnknownGenObject8014F4AC_1 : UnknownGenObject8014F4AC_0 {
 struct UnknownGenObject8014F4AC : UnknownGenObject8014F4AC_1 {
  UnknownGenString unknown2C;
  char unknown30[8];
- inline ~UnknownGenObject8014F4AC(){unknown00=lbl_804A7800;}
+ inline ~UnknownGenObject8014F4AC(){unknown00=igCombineTransforms_vtable;}
 };
 struct UnknownGenRoot8014F79C {
  void *unknown00;
@@ -182,7 +182,7 @@ struct UnknownGenObject8014F79C_0 : UnknownGenRoot8014F79C {
 };
 struct UnknownGenObject8014F79C : UnknownGenObject8014F79C_0 {
  char unknown28[8];
- inline ~UnknownGenObject8014F79C(){unknown00=lbl_804A7898;}
+ inline ~UnknownGenObject8014F79C(){unknown00=igCollapseNodeForCompiledGraph_vtable;}
 };
 struct UnknownGenRoot8014F984 {
  void *unknown00;
@@ -197,7 +197,7 @@ struct UnknownGenObject8014F984_0 : UnknownGenRoot8014F984 {
 };
 struct UnknownGenObject8014F984 : UnknownGenObject8014F984_0 {
  char unknown28[8];
- inline ~UnknownGenObject8014F984(){unknown00=lbl_804A7930;}
+ inline ~UnknownGenObject8014F984(){unknown00=igCollapseNodeForMultitextureShader_vtable;}
 };
 struct UnknownGenRoot8014FB6C {
  void *unknown00;
@@ -212,7 +212,7 @@ struct UnknownGenObject8014FB6C_0 : UnknownGenRoot8014FB6C {
 };
 struct UnknownGenObject8014FB6C : UnknownGenObject8014FB6C_0 {
  char unknown28[8];
- inline ~UnknownGenObject8014FB6C(){unknown00=lbl_804A79C8;}
+ inline ~UnknownGenObject8014FB6C(){unknown00=igCollapseNodeForModelViewMatrixBoneSelect_vtable;}
 };
 struct UnknownGenRoot8014FD54 {
  void *unknown00;
@@ -227,7 +227,7 @@ struct UnknownGenObject8014FD54_0 : UnknownGenRoot8014FD54 {
 };
 struct UnknownGenObject8014FD54 : UnknownGenObject8014FD54_0 {
  char unknown28[8];
- inline ~UnknownGenObject8014FD54(){unknown00=lbl_804A7A60;}
+ inline ~UnknownGenObject8014FD54(){unknown00=igCollapseNodeForMorphInstance_vtable;}
 };
 struct UnknownGenRoot8014FF3C {
  void *unknown00;
@@ -242,7 +242,7 @@ struct UnknownGenObject8014FF3C_0 : UnknownGenRoot8014FF3C {
 };
 struct UnknownGenObject8014FF3C : UnknownGenObject8014FF3C_0 {
  char unknown28[8];
- inline ~UnknownGenObject8014FF3C(){unknown00=lbl_804A7AF8;}
+ inline ~UnknownGenObject8014FF3C(){unknown00=igCollapseNodeForAttrSet_vtable;}
 };
 struct UnknownGenRoot80150124 {
  void *unknown00;
@@ -257,7 +257,7 @@ struct UnknownGenObject80150124_0 : UnknownGenRoot80150124 {
 };
 struct UnknownGenObject80150124 : UnknownGenObject80150124_0 {
  char unknown28[8];
- inline ~UnknownGenObject80150124(){unknown00=lbl_804A7B90;}
+ inline ~UnknownGenObject80150124(){unknown00=igCollapseNodeForLightSet_vtable;}
 };
 struct UnknownGenRoot8015030C {
  void *unknown00;
@@ -272,7 +272,7 @@ struct UnknownGenObject8015030C_0 : UnknownGenRoot8015030C {
 };
 struct UnknownGenObject8015030C : UnknownGenObject8015030C_0 {
  char unknown28[8];
- inline ~UnknownGenObject8015030C(){unknown00=lbl_804A7C28;}
+ inline ~UnknownGenObject8015030C(){unknown00=igCollapseNodeForLightStateSet_vtable;}
 };
 struct UnknownGenRoot801504F4 {
  void *unknown00;
@@ -287,7 +287,7 @@ struct UnknownGenObject801504F4_0 : UnknownGenRoot801504F4 {
 };
 struct UnknownGenObject801504F4 : UnknownGenObject801504F4_0 {
  char unknown28[8];
- inline ~UnknownGenObject801504F4(){unknown00=lbl_804A7CC0;}
+ inline ~UnknownGenObject801504F4(){unknown00=igCollapseNodeForGeometry_vtable;}
 };
 struct UnknownGenRoot801506DC {
  void *unknown00;
@@ -302,7 +302,7 @@ struct UnknownGenObject801506DC_0 : UnknownGenRoot801506DC {
 };
 struct UnknownGenObject801506DC : UnknownGenObject801506DC_0 {
  char unknown28[8];
- inline ~UnknownGenObject801506DC(){unknown00=lbl_804A7D58;}
+ inline ~UnknownGenObject801506DC(){unknown00=igCollapseNodeForLod_vtable;}
 };
 struct UnknownGenRoot801508C4 {
  void *unknown00;
@@ -317,7 +317,7 @@ struct UnknownGenObject801508C4_0 : UnknownGenRoot801508C4 {
 };
 struct UnknownGenObject801508C4 : UnknownGenObject801508C4_0 {
  char unknown28[8];
- inline ~UnknownGenObject801508C4(){unknown00=lbl_804A7DF0;}
+ inline ~UnknownGenObject801508C4(){unknown00=igCollapseNodeForUserInfo_vtable;}
 };
 struct UnknownGenRoot80150AAC {
  void *unknown00;
@@ -332,7 +332,7 @@ struct UnknownGenObject80150AAC_0 : UnknownGenRoot80150AAC {
 };
 struct UnknownGenObject80150AAC : UnknownGenObject80150AAC_0 {
  char unknown28[8];
- inline ~UnknownGenObject80150AAC(){unknown00=lbl_804A7E88;}
+ inline ~UnknownGenObject80150AAC(){unknown00=igCollapseNodeForGroup_vtable;}
 };
 struct UnknownGenRoot80150C94 {
  void *unknown00;
@@ -347,7 +347,7 @@ struct UnknownGenObject80150C94_0 : UnknownGenRoot80150C94 {
 };
 struct UnknownGenObject80150C94 : UnknownGenObject80150C94_0 {
  char unknown28[8];
- inline ~UnknownGenObject80150C94(){unknown00=lbl_804A7F20;}
+ inline ~UnknownGenObject80150C94(){unknown00=igCollapseNodeForTransform_vtable;}
 };
 struct UnknownGenRoot80150E7C {
  void *unknown00;
@@ -362,12 +362,12 @@ struct UnknownGenObject80150E7C_0 : UnknownGenRoot80150E7C {
 };
 struct UnknownGenObject80150E7C : UnknownGenObject80150E7C_0 {
  char unknown28[8];
- inline ~UnknownGenObject80150E7C(){unknown00=lbl_804A7FB8;}
+ inline ~UnknownGenObject80150E7C(){unknown00=igCollapseNodeForNode_vtable;}
 };
 extern "C" {
 void *igCombineTransforms_getMeta(){
- if(!lbl_805644A0 || !(reinterpret_cast<unsigned int *>(lbl_805644A0)[0x24/4]&4)) fn_8014F62C();
- return lbl_805644A0;
+ if(!igCombineTransforms_meta || !(reinterpret_cast<unsigned int *>(igCombineTransforms_meta)[0x24/4]&4)) igCombineTransforms_registerNow();
+ return igCombineTransforms_meta;
 }
 void *igCombineTransforms_vtableRead(){
  UnknownGenObject8014F4AC object;
@@ -378,20 +378,20 @@ void *igCombineTransforms_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A7800;
+ object.unknown00=igCombineTransforms_vtable;
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8014F62C(){
- fn_80066188((int)igCombineTransforms_register);
+void igCombineTransforms_registerNow(){
+ meta_registerNow((int)igCombineTransforms_register);
 }
 void igCombineTransforms_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644A0,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igCombineTransforms_getMetaCall,(int)lbl_8049FD3C,52,(int)igCombineTransforms_vtableRead,(int)igCombineTransforms_fieldInit,0,0);
+ meta_registerClass(0,(int)&igCombineTransforms_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igCombineTransforms_getMetaCall,(int)igCombineTransforms_className,52,(int)igCombineTransforms_vtableRead,(int)igCombineTransforms_fieldInit,0,0);
 }
 void *igCombineTransforms_getMetaCall(){return igCombineTransforms_getMeta();}
 void igCombineTransforms_fieldInit(){
- void *value0=lbl_805644A0;
+ void *value0=igCombineTransforms_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055FC8C,2);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
@@ -399,8 +399,8 @@ void igCombineTransforms_fieldInit(){
  fn_800659C0(value0,lbl_8055FC94,lbl_8055FC9C,lbl_8055FCA4,value1);
 }
 void *igCollapseNodeForCompiledGraph_getMeta(){
- if(!lbl_805644AC || !(reinterpret_cast<unsigned int *>(lbl_805644AC)[0x24/4]&4)) fn_8014F898();
- return lbl_805644AC;
+ if(!igCollapseNodeForCompiledGraph_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForCompiledGraph_meta)[0x24/4]&4)) igCollapseNodeForCompiledGraph_registerNow();
+ return igCollapseNodeForCompiledGraph_meta;
 }
 void *igCollapseNodeForCompiledGraph_vtableRead(){
  UnknownGenObject8014F79C object;
@@ -410,20 +410,20 @@ void *igCollapseNodeForCompiledGraph_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7898;
+ object.unknown00=igCollapseNodeForCompiledGraph_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8014F898(){
- fn_80066188((int)igCollapseNodeForCompiledGraph_register);
+void igCollapseNodeForCompiledGraph_registerNow(){
+ meta_registerNow((int)igCollapseNodeForCompiledGraph_register);
 }
 void igCollapseNodeForCompiledGraph_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644AC,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForCompiledGraph_getMetaCall,(int)lbl_8049FD60,44,(int)igCollapseNodeForCompiledGraph_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForCompiledGraph_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForCompiledGraph_getMetaCall,(int)igCollapseNodeForCompiledGraph_className,44,(int)igCollapseNodeForCompiledGraph_vtableRead,0,0,0);
 }
 void *igCollapseNodeForCompiledGraph_getMetaCall(){return igCollapseNodeForCompiledGraph_getMeta();}
 void *igCollapseNodeForMultitextureShader_getMeta(){
- if(!lbl_805644B0 || !(reinterpret_cast<unsigned int *>(lbl_805644B0)[0x24/4]&4)) fn_8014FA80();
- return lbl_805644B0;
+ if(!igCollapseNodeForMultitextureShader_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForMultitextureShader_meta)[0x24/4]&4)) igCollapseNodeForMultitextureShader_registerNow();
+ return igCollapseNodeForMultitextureShader_meta;
 }
 void *igCollapseNodeForMultitextureShader_vtableRead(){
  UnknownGenObject8014F984 object;
@@ -433,20 +433,20 @@ void *igCollapseNodeForMultitextureShader_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7930;
+ object.unknown00=igCollapseNodeForMultitextureShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8014FA80(){
- fn_80066188((int)igCollapseNodeForMultitextureShader_register);
+void igCollapseNodeForMultitextureShader_registerNow(){
+ meta_registerNow((int)igCollapseNodeForMultitextureShader_register);
 }
 void igCollapseNodeForMultitextureShader_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644B0,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForMultitextureShader_getMetaCall,(int)lbl_8049FD80,44,(int)igCollapseNodeForMultitextureShader_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForMultitextureShader_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForMultitextureShader_getMetaCall,(int)igCollapseNodeForMultitextureShader_className,44,(int)igCollapseNodeForMultitextureShader_vtableRead,0,0,0);
 }
 void *igCollapseNodeForMultitextureShader_getMetaCall(){return igCollapseNodeForMultitextureShader_getMeta();}
 void *igCollapseNodeForModelViewMatrixBoneSelect_getMeta(){
- if(!lbl_805644B4 || !(reinterpret_cast<unsigned int *>(lbl_805644B4)[0x24/4]&4)) fn_8014FC68();
- return lbl_805644B4;
+ if(!igCollapseNodeForModelViewMatrixBoneSelect_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForModelViewMatrixBoneSelect_meta)[0x24/4]&4)) igCollapseNodeForModelViewMatrixBoneSelect_registerNow();
+ return igCollapseNodeForModelViewMatrixBoneSelect_meta;
 }
 void *igCollapseNodeForModelViewMatrixBoneSelect_vtableRead(){
  UnknownGenObject8014FB6C object;
@@ -456,20 +456,20 @@ void *igCollapseNodeForModelViewMatrixBoneSelect_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A79C8;
+ object.unknown00=igCollapseNodeForModelViewMatrixBoneSelect_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8014FC68(){
- fn_80066188((int)igCollapseNodeForModelViewMatrixBoneSelect_register);
+void igCollapseNodeForModelViewMatrixBoneSelect_registerNow(){
+ meta_registerNow((int)igCollapseNodeForModelViewMatrixBoneSelect_register);
 }
 void igCollapseNodeForModelViewMatrixBoneSelect_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644B4,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForModelViewMatrixBoneSelect_getMetaCall,(int)lbl_8049FDA4,44,(int)igCollapseNodeForModelViewMatrixBoneSelect_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForModelViewMatrixBoneSelect_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForModelViewMatrixBoneSelect_getMetaCall,(int)igCollapseNodeForModelViewMatrixBoneSelect_className,44,(int)igCollapseNodeForModelViewMatrixBoneSelect_vtableRead,0,0,0);
 }
 void *igCollapseNodeForModelViewMatrixBoneSelect_getMetaCall(){return igCollapseNodeForModelViewMatrixBoneSelect_getMeta();}
 void *igCollapseNodeForMorphInstance_getMeta(){
- if(!lbl_805644B8 || !(reinterpret_cast<unsigned int *>(lbl_805644B8)[0x24/4]&4)) fn_8014FE50();
- return lbl_805644B8;
+ if(!igCollapseNodeForMorphInstance_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForMorphInstance_meta)[0x24/4]&4)) igCollapseNodeForMorphInstance_registerNow();
+ return igCollapseNodeForMorphInstance_meta;
 }
 void *igCollapseNodeForMorphInstance_vtableRead(){
  UnknownGenObject8014FD54 object;
@@ -479,20 +479,20 @@ void *igCollapseNodeForMorphInstance_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7A60;
+ object.unknown00=igCollapseNodeForMorphInstance_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8014FE50(){
- fn_80066188((int)igCollapseNodeForMorphInstance_register);
+void igCollapseNodeForMorphInstance_registerNow(){
+ meta_registerNow((int)igCollapseNodeForMorphInstance_register);
 }
 void igCollapseNodeForMorphInstance_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644B8,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForMorphInstance_getMetaCall,(int)lbl_8049FDD0,44,(int)igCollapseNodeForMorphInstance_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForMorphInstance_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForMorphInstance_getMetaCall,(int)igCollapseNodeForMorphInstance_className,44,(int)igCollapseNodeForMorphInstance_vtableRead,0,0,0);
 }
 void *igCollapseNodeForMorphInstance_getMetaCall(){return igCollapseNodeForMorphInstance_getMeta();}
 void *igCollapseNodeForAttrSet_getMeta(){
- if(!lbl_805644BC || !(reinterpret_cast<unsigned int *>(lbl_805644BC)[0x24/4]&4)) fn_80150038();
- return lbl_805644BC;
+ if(!igCollapseNodeForAttrSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForAttrSet_meta)[0x24/4]&4)) igCollapseNodeForAttrSet_registerNow();
+ return igCollapseNodeForAttrSet_meta;
 }
 void *igCollapseNodeForAttrSet_vtableRead(){
  UnknownGenObject8014FF3C object;
@@ -502,20 +502,20 @@ void *igCollapseNodeForAttrSet_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7AF8;
+ object.unknown00=igCollapseNodeForAttrSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80150038(){
- fn_80066188((int)igCollapseNodeForAttrSet_register);
+void igCollapseNodeForAttrSet_registerNow(){
+ meta_registerNow((int)igCollapseNodeForAttrSet_register);
 }
 void igCollapseNodeForAttrSet_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644BC,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForAttrSet_getMetaCall,(int)lbl_8049FDF0,44,(int)igCollapseNodeForAttrSet_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForAttrSet_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForAttrSet_getMetaCall,(int)igCollapseNodeForAttrSet_className,44,(int)igCollapseNodeForAttrSet_vtableRead,0,0,0);
 }
 void *igCollapseNodeForAttrSet_getMetaCall(){return igCollapseNodeForAttrSet_getMeta();}
 void *igCollapseNodeForLightSet_getMeta(){
- if(!lbl_805644C0 || !(reinterpret_cast<unsigned int *>(lbl_805644C0)[0x24/4]&4)) fn_80150220();
- return lbl_805644C0;
+ if(!igCollapseNodeForLightSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLightSet_meta)[0x24/4]&4)) igCollapseNodeForLightSet_registerNow();
+ return igCollapseNodeForLightSet_meta;
 }
 void *igCollapseNodeForLightSet_vtableRead(){
  UnknownGenObject80150124 object;
@@ -525,20 +525,20 @@ void *igCollapseNodeForLightSet_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7B90;
+ object.unknown00=igCollapseNodeForLightSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80150220(){
- fn_80066188((int)igCollapseNodeForLightSet_register);
+void igCollapseNodeForLightSet_registerNow(){
+ meta_registerNow((int)igCollapseNodeForLightSet_register);
 }
 void igCollapseNodeForLightSet_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644C0,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForLightSet_getMetaCall,(int)lbl_8049FE0C,44,(int)igCollapseNodeForLightSet_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForLightSet_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForLightSet_getMetaCall,(int)igCollapseNodeForLightSet_className,44,(int)igCollapseNodeForLightSet_vtableRead,0,0,0);
 }
 void *igCollapseNodeForLightSet_getMetaCall(){return igCollapseNodeForLightSet_getMeta();}
 void *igCollapseNodeForLightStateSet_getMeta(){
- if(!lbl_805644C4 || !(reinterpret_cast<unsigned int *>(lbl_805644C4)[0x24/4]&4)) fn_80150408();
- return lbl_805644C4;
+ if(!igCollapseNodeForLightStateSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLightStateSet_meta)[0x24/4]&4)) igCollapseNodeForLightStateSet_registerNow();
+ return igCollapseNodeForLightStateSet_meta;
 }
 void *igCollapseNodeForLightStateSet_vtableRead(){
  UnknownGenObject8015030C object;
@@ -548,20 +548,20 @@ void *igCollapseNodeForLightStateSet_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7C28;
+ object.unknown00=igCollapseNodeForLightStateSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80150408(){
- fn_80066188((int)igCollapseNodeForLightStateSet_register);
+void igCollapseNodeForLightStateSet_registerNow(){
+ meta_registerNow((int)igCollapseNodeForLightStateSet_register);
 }
 void igCollapseNodeForLightStateSet_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644C4,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForLightStateSet_getMetaCall,(int)lbl_8049FE28,44,(int)igCollapseNodeForLightStateSet_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForLightStateSet_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForLightStateSet_getMetaCall,(int)igCollapseNodeForLightStateSet_className,44,(int)igCollapseNodeForLightStateSet_vtableRead,0,0,0);
 }
 void *igCollapseNodeForLightStateSet_getMetaCall(){return igCollapseNodeForLightStateSet_getMeta();}
 void *igCollapseNodeForGeometry_getMeta(){
- if(!lbl_805644C8 || !(reinterpret_cast<unsigned int *>(lbl_805644C8)[0x24/4]&4)) fn_801505F0();
- return lbl_805644C8;
+ if(!igCollapseNodeForGeometry_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForGeometry_meta)[0x24/4]&4)) igCollapseNodeForGeometry_registerNow();
+ return igCollapseNodeForGeometry_meta;
 }
 void *igCollapseNodeForGeometry_vtableRead(){
  UnknownGenObject801504F4 object;
@@ -571,20 +571,20 @@ void *igCollapseNodeForGeometry_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7CC0;
+ object.unknown00=igCollapseNodeForGeometry_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801505F0(){
- fn_80066188((int)igCollapseNodeForGeometry_register);
+void igCollapseNodeForGeometry_registerNow(){
+ meta_registerNow((int)igCollapseNodeForGeometry_register);
 }
 void igCollapseNodeForGeometry_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644C8,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForGeometry_getMetaCall,(int)lbl_8049FE48,44,(int)igCollapseNodeForGeometry_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForGeometry_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForGeometry_getMetaCall,(int)igCollapseNodeForGeometry_className,44,(int)igCollapseNodeForGeometry_vtableRead,0,0,0);
 }
 void *igCollapseNodeForGeometry_getMetaCall(){return igCollapseNodeForGeometry_getMeta();}
 void *igCollapseNodeForLod_getMeta(){
- if(!lbl_805644CC || !(reinterpret_cast<unsigned int *>(lbl_805644CC)[0x24/4]&4)) fn_801507D8();
- return lbl_805644CC;
+ if(!igCollapseNodeForLod_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLod_meta)[0x24/4]&4)) igCollapseNodeForLod_registerNow();
+ return igCollapseNodeForLod_meta;
 }
 void *igCollapseNodeForLod_vtableRead(){
  UnknownGenObject801506DC object;
@@ -594,20 +594,20 @@ void *igCollapseNodeForLod_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7D58;
+ object.unknown00=igCollapseNodeForLod_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801507D8(){
- fn_80066188((int)igCollapseNodeForLod_register);
+void igCollapseNodeForLod_registerNow(){
+ meta_registerNow((int)igCollapseNodeForLod_register);
 }
 void igCollapseNodeForLod_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644CC,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForLod_getMetaCall,(int)lbl_8049FE64,44,(int)igCollapseNodeForLod_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForLod_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForLod_getMetaCall,(int)igCollapseNodeForLod_className,44,(int)igCollapseNodeForLod_vtableRead,0,0,0);
 }
 void *igCollapseNodeForLod_getMetaCall(){return igCollapseNodeForLod_getMeta();}
 void *igCollapseNodeForUserInfo_getMeta(){
- if(!lbl_805644D0 || !(reinterpret_cast<unsigned int *>(lbl_805644D0)[0x24/4]&4)) fn_801509C0();
- return lbl_805644D0;
+ if(!igCollapseNodeForUserInfo_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForUserInfo_meta)[0x24/4]&4)) igCollapseNodeForUserInfo_registerNow();
+ return igCollapseNodeForUserInfo_meta;
 }
 void *igCollapseNodeForUserInfo_vtableRead(){
  UnknownGenObject801508C4 object;
@@ -617,20 +617,20 @@ void *igCollapseNodeForUserInfo_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7DF0;
+ object.unknown00=igCollapseNodeForUserInfo_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801509C0(){
- fn_80066188((int)igCollapseNodeForUserInfo_register);
+void igCollapseNodeForUserInfo_registerNow(){
+ meta_registerNow((int)igCollapseNodeForUserInfo_register);
 }
 void igCollapseNodeForUserInfo_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644D0,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForUserInfo_getMetaCall,(int)lbl_8049FE7C,44,(int)igCollapseNodeForUserInfo_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForUserInfo_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForUserInfo_getMetaCall,(int)igCollapseNodeForUserInfo_className,44,(int)igCollapseNodeForUserInfo_vtableRead,0,0,0);
 }
 void *igCollapseNodeForUserInfo_getMetaCall(){return igCollapseNodeForUserInfo_getMeta();}
 void *igCollapseNodeForGroup_getMeta(){
- if(!lbl_805644D4 || !(reinterpret_cast<unsigned int *>(lbl_805644D4)[0x24/4]&4)) fn_80150BA8();
- return lbl_805644D4;
+ if(!igCollapseNodeForGroup_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForGroup_meta)[0x24/4]&4)) igCollapseNodeForGroup_registerNow();
+ return igCollapseNodeForGroup_meta;
 }
 void *igCollapseNodeForGroup_vtableRead(){
  UnknownGenObject80150AAC object;
@@ -640,20 +640,20 @@ void *igCollapseNodeForGroup_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7E88;
+ object.unknown00=igCollapseNodeForGroup_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80150BA8(){
- fn_80066188((int)igCollapseNodeForGroup_register);
+void igCollapseNodeForGroup_registerNow(){
+ meta_registerNow((int)igCollapseNodeForGroup_register);
 }
 void igCollapseNodeForGroup_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644D4,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForGroup_getMetaCall,(int)lbl_8049FE98,44,(int)igCollapseNodeForGroup_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForGroup_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForGroup_getMetaCall,(int)igCollapseNodeForGroup_className,44,(int)igCollapseNodeForGroup_vtableRead,0,0,0);
 }
 void *igCollapseNodeForGroup_getMetaCall(){return igCollapseNodeForGroup_getMeta();}
 void *igCollapseNodeForTransform_getMeta(){
- if(!lbl_805644D8 || !(reinterpret_cast<unsigned int *>(lbl_805644D8)[0x24/4]&4)) fn_80150D90();
- return lbl_805644D8;
+ if(!igCollapseNodeForTransform_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForTransform_meta)[0x24/4]&4)) igCollapseNodeForTransform_registerNow();
+ return igCollapseNodeForTransform_meta;
 }
 void *igCollapseNodeForTransform_vtableRead(){
  UnknownGenObject80150C94 object;
@@ -663,20 +663,20 @@ void *igCollapseNodeForTransform_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7F20;
+ object.unknown00=igCollapseNodeForTransform_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80150D90(){
- fn_80066188((int)igCollapseNodeForTransform_register);
+void igCollapseNodeForTransform_registerNow(){
+ meta_registerNow((int)igCollapseNodeForTransform_register);
 }
 void igCollapseNodeForTransform_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644D8,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForTransform_getMetaCall,(int)lbl_8049FEB0,44,(int)igCollapseNodeForTransform_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForTransform_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForTransform_getMetaCall,(int)igCollapseNodeForTransform_className,44,(int)igCollapseNodeForTransform_vtableRead,0,0,0);
 }
 void *igCollapseNodeForTransform_getMetaCall(){return igCollapseNodeForTransform_getMeta();}
 void *igCollapseNodeForNode_getMeta(){
- if(!lbl_805644DC || !(reinterpret_cast<unsigned int *>(lbl_805644DC)[0x24/4]&4)) fn_80150F78();
- return lbl_805644DC;
+ if(!igCollapseNodeForNode_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForNode_meta)[0x24/4]&4)) igCollapseNodeForNode_registerNow();
+ return igCollapseNodeForNode_meta;
 }
 void *igCollapseNodeForNode_vtableRead(){
  UnknownGenObject80150E7C object;
@@ -686,27 +686,27 @@ void *igCollapseNodeForNode_vtableRead(){
  object.unknown00=lbl_804A8050;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A7FB8;
+ object.unknown00=igCollapseNodeForNode_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80150F78(){
- fn_80066188((int)igCollapseNodeForNode_register);
+void igCollapseNodeForNode_registerNow(){
+ meta_registerNow((int)igCollapseNodeForNode_register);
 }
 void igCollapseNodeForNode_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_805644DC,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForNode_getMetaCall,(int)lbl_8049FECC,44,(int)igCollapseNodeForNode_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igCollapseNodeForNode_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igCollapseNodeForNode_getMetaCall,(int)igCollapseNodeForNode_className,44,(int)igCollapseNodeForNode_vtableRead,0,0,0);
 }
 void *igCollapseNodeForNode_getMetaCall(){return igCollapseNodeForNode_getMeta();}
 void *igCollapseNode_getMeta(){
- if(!lbl_805644E0 || !(reinterpret_cast<unsigned int *>(lbl_805644E0)[0x24/4]&4)) fn_80151064();
- return lbl_805644E0;
+ if(!igCollapseNode_meta || !(reinterpret_cast<unsigned int *>(igCollapseNode_meta)[0x24/4]&4)) igCollapseNode_registerNow();
+ return igCollapseNode_meta;
 }
-void fn_80151064(){
- fn_80066188((int)igCollapseNode_register);
+void igCollapseNode_registerNow(){
+ meta_registerNow((int)igCollapseNode_register);
 }
 void igCollapseNode_register(){
  fn_8012FC48();
- fn_80066204(1,(int)&lbl_805644E0,(int)igItemBase_register,(int)fn_8013496C,(int)igCollapseNode_getMetaCall,(int)lbl_8049FEE4,44,0,(int)igCollapseNode_fieldInit,0,(int)lbl_8055FCAC);
+ meta_registerClass(1,(int)&igCollapseNode_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igCollapseNode_getMetaCall,(int)igCollapseNode_className,44,0,(int)igCollapseNode_fieldInit,0,(int)lbl_8055FCAC);
 }
 void *igCollapseNode_getMetaCall(){return igCollapseNode_getMeta();}
 }

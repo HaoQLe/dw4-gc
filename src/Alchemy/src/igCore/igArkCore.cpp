@@ -93,29 +93,29 @@ extern "C" {
     void fn_8005383C(void *, Gap::igInt);
     void *fn_800560F8(Gap::igUnsignedInt);
     void *fn_8003E848(void *);
-    void fn_8002A0A8();
-    void fn_8002AAD4();
-    void fn_80039D6C();
-    void fn_800396F8();
-    void fn_80038E9C();
-    void fn_8003922C();
-    void fn_8002CBBC();
-    void fn_80036A94();
-    void fn_800368D4();
-    void fn_80036684();
-    void fn_800364C4();
-    void fn_80035D80();
-    void fn_80035BC0();
-    void fn_800249F4();
-    void fn_80024334();
-    void fn_80038478();
-    void fn_80038244();
-    void fn_8003BDD8();
-    void fn_8002D584();
-    void fn_80030D50();
-    void fn_8002FACC();
-    void fn_8002CFA8();
-    void fn_8002320C();
+    void igMetaObject_registerNow();
+    void igMetaEnum_registerNow();
+    void igMallocMemoryPool_registerNow();
+    void igArenaMemoryPool_registerNow();
+    void igAliasMemoryPool_registerNow();
+    void igPageMemoryPool_registerNow();
+    void igMemoryDictionary_registerNow();
+    void igCharList_registerNow();
+    void igCharListNoClean_registerNow();
+    void igIntList_registerNow();
+    void igIntListNoClean_registerNow();
+    void igUnsignedIntList_registerNow();
+    void igUnsignedIntListNoClean_registerNow();
+    void igStringTable_registerNow();
+    void igSymbolTable_registerNow();
+    void igCallStackTable_registerNow();
+    void igCallStackTracer_registerNow();
+    void igGamecubeCallStackTracer_registerNow();
+    void igLocationTable_registerNow();
+    void igEventTracker_registerNow();
+    void igFloatMetaField_registerNow();
+    void igLongMetaField_registerNow();
+    void igUnsignedCharMetaField_registerNow();
     void *fn_80027824();
 
     extern void *lbl_805621C8;
@@ -289,39 +289,39 @@ extern "C" void *fn_8003E85C(UnknownCallbacks *, Gap::igInt);
 extern "C" void fn_8003E8B8(UnknownCallbacks *, void *);
 
 extern "C" {
-    void *fn_80026ADC(void *);
+    void *igRegistry_create(void *);
     Gap::igBool fn_8006CD10();
     void *fn_80060934();
-    UnknownRefObject *fn_8002C0C0(void *);
+    UnknownRefObject *igMemoryFile_create(void *);
     void fn_8005852C(const char *, const char *, unsigned long);
     void fn_8006CD50(void *, const char *, const char *);
-    void *fn_80031A84(void *);
+    void *igDriverDatabase_create(void *);
     void fn_80044A9C(void *, Gap::igInt);
-    void fn_8002F178();
-    void *fn_80027D28(void *);
+    void igIGBFile_registerNow();
+    void *igPluginHelper_create(void *);
     void fn_8006BAAC(void *);
     void fn_8006B75C(void *, const char *, const char *, Gap::igInt);
     void fn_8006F1B4();
-    void *fn_8002648C(void *);
-    UnknownRefObject *fn_80032668(void *);
+    void *igResource_create(void *);
+    UnknownRefObject *igDirectory_create(void *);
     void fn_8006F404(void *, UnknownRefObject *);
     void fn_80043D44(void *);
-    UnknownRefObject *fn_8002A420(void *);
+    UnknownRefObject *igMetaFieldInfo_create(void *);
     void fn_80066490(void *, const char *);
     void fn_80042F78(void *, void *);
     void fn_8006DC50(void *, Gap::igInt, const char *, void *, Gap::igInt, Gap::igInt);
     void fn_8006D534(void *, Gap::igInt, const char *, void *, Gap::igInt, Gap::igInt);
-    void *fn_80039920(void *);
+    void *igStackMemoryPool_create(void *);
     void *fn_80058CA4();
-    void *fn_80030C18(void *);
+    void *igEventTracker_create(void *);
     void fn_800472FC(void *, Gap::igInt);
     void fn_8004D0E8();
-    void *fn_80023670(void *);
+    void *igTimer_create(void *);
     void fn_8006B434(const char *, ...);
     void fn_8006B6CC();
     Gap::igInt fn_8006D2E8(void *, const char *, Gap::igInt);
     Gap::igInt fn_8006E2A4(void *);
-    void *fn_8002487C(void *);
+    void *igStringTable_create(void *);
     void fn_800740F4(void *, Gap::igInt);
     void fn_800740FC(void *, Gap::igInt);
     void fn_80074104(void *);
@@ -337,7 +337,7 @@ extern "C" {
     void fn_8006F33C();
     void fn_8006B35C(void *);
     void fn_8006B3C8(void *);
-    extern char lbl_80463100[], lbl_8046A9F8[];
+    extern char igVirtualCFuncMetaField_className[], lbl_8046A9F8[];
     extern unsigned char lbl_8055DBBC, lbl_80562298;
     extern const char *lbl_80562110;
     extern void *lbl_805621F0, *lbl_805621F4, *lbl_80562104, *lbl_805622FC;
@@ -469,33 +469,33 @@ namespace Gap{
                 storage = fn_8003E848(storage);
             reinterpret_cast<void**>(_unknown16 + 0x2C - 0x16)[0] = storage;
 
-            fn_8002A0A8();
+            igMetaObject_registerNow();
             _isBootstrapped = true;
             _numBSMetaObjects = reinterpret_cast<igInt*>(
                 reinterpret_cast<void**>(_unknown16 + 0x18 - 0x16)[0])[0x0C / 4];
             _numBSMetaFields = reinterpret_cast<igInt*>(lbl_8056229C)[0x0C / 4];
-            fn_8002AAD4();
-            fn_80039D6C();
-            fn_800396F8();
-            fn_80038E9C();
-            fn_8003922C();
-            fn_8002CBBC();
-            fn_80036A94();
-            fn_800368D4();
-            fn_80036684();
-            fn_800364C4();
-            fn_80035D80();
-            fn_80035BC0();
-            fn_800249F4();
-            fn_80024334();
-            fn_80038478();
-            fn_80038244();
-            fn_8003BDD8();
-            fn_8002D584();
-            fn_80030D50();
-            fn_8002FACC();
-            fn_8002CFA8();
-            fn_8002320C();
+            igMetaEnum_registerNow();
+            igMallocMemoryPool_registerNow();
+            igArenaMemoryPool_registerNow();
+            igAliasMemoryPool_registerNow();
+            igPageMemoryPool_registerNow();
+            igMemoryDictionary_registerNow();
+            igCharList_registerNow();
+            igCharListNoClean_registerNow();
+            igIntList_registerNow();
+            igIntListNoClean_registerNow();
+            igUnsignedIntList_registerNow();
+            igUnsignedIntListNoClean_registerNow();
+            igStringTable_registerNow();
+            igSymbolTable_registerNow();
+            igCallStackTable_registerNow();
+            igCallStackTracer_registerNow();
+            igGamecubeCallStackTracer_registerNow();
+            igLocationTable_registerNow();
+            igEventTracker_registerNow();
+            igFloatMetaField_registerNow();
+            igLongMetaField_registerNow();
+            igUnsignedCharMetaField_registerNow();
             lbl_80561688 = fn_80027824();
             reinterpret_cast<Unknown805621C8*>(lbl_805621C8)->unknownAC();
         }
@@ -524,41 +524,41 @@ namespace Gap{
     namespace Core{
 
         void igArkCore::initCore(){
-            const char *data = lbl_80463100;
+            const char *data = igVirtualCFuncMetaField_className;
             fn_8003D4AC(this);
-            ARK_FIELD(void *, 0x38) = fn_80026ADC(fn_800607F4(lbl_805621E0));
+            ARK_FIELD(void *, 0x38) = igRegistry_create(fn_800607F4(lbl_805621E0));
             if(lbl_8055DBBC && fn_8006CD10()){
                 if(lbl_80562110){
                     void *storage = fn_80060934();
                     storage = lbl_80562298 ? storage : fn_800607F4(lbl_805621F0);
                     UnknownObjectRef ref;
-                    ref.unknown00 = fn_8002C0C0(storage);
+                    ref.unknown00 = igMemoryFile_create(storage);
                     fn_8005852C(data + 0x5D54, lbl_80562110, strlen(lbl_80562110));
                     *reinterpret_cast<UnknownObjectRef*>(reinterpret_cast<char*>(ARK_FIELD(void *, 0x38)) + 0x0C) = ref;
                 }
                 fn_8006CD50(ARK_FIELD(void *, 0x38), lbl_8055D4C4, lbl_8055D4C4);
             }
-            ARK_FIELD(void *, 0x3C) = fn_80031A84(fn_800607F4(lbl_805621E0));
+            ARK_FIELD(void *, 0x3C) = igDriverDatabase_create(fn_800607F4(lbl_805621E0));
             fn_80044A9C(ARK_FIELD(void *, 0x3C), 0);
-            fn_8002F178();
-            ARK_FIELD(void *, 0x4C) = fn_80027D28(fn_800607F4(lbl_805621E0));
+            igIGBFile_registerNow();
+            ARK_FIELD(void *, 0x4C) = igPluginHelper_create(fn_800607F4(lbl_805621E0));
             fn_8006BAAC(ARK_FIELD(void *, 0x4C));
             fn_8006B75C(ARK_FIELD(void *, 0x4C), lbl_8055D76C, lbl_8055D774, 1);
             _numTrackedObjects = reinterpret_cast<igInt*>(ARK_FIELD(void *, 0x18))[3];
             _numTrackedFields = reinterpret_cast<igInt*>(lbl_8056229C)[3];
             fn_8006F1B4();
-            ARK_FIELD(void *, 0x40) = fn_8002648C(fn_800607F4(lbl_805621E0));
+            ARK_FIELD(void *, 0x40) = igResource_create(fn_800607F4(lbl_805621E0));
             lbl_80562104 = ARK_FIELD(void *, 0x40);
             void *storage = fn_80060934();
             storage = lbl_80562298 ? storage : fn_800607F4(lbl_805621F0);
             UnknownObjectRef ref;
-            UnknownRefObject *newObject = fn_80032668(storage);
+            UnknownRefObject *newObject = igDirectory_create(storage);
             ref.unknown00 = newObject;
             reinterpret_cast<UnknownStringRef*>(reinterpret_cast<char*>(newObject) + 0x14)->acquire(lbl_8046A9F8);
             fn_8006F404(ARK_FIELD(void *, 0x40), ref.unknown00);
             fn_80043D44(ref.unknown00);
             UnknownObjectRef ref2;
-            ref2.unknown00 = fn_8002A420(fn_800607F4(lbl_805621F4));
+            ref2.unknown00 = igMetaFieldInfo_create(fn_800607F4(lbl_805621F4));
             fn_80066490(ref2.unknown00, data + 0x5D60);
             fn_80042F78(ref.unknown00, ref2.unknown00);
             fn_8006DC50(ARK_FIELD(void *, 0x38), 2, data + 0x5D70, _unknown16 + 0x79 - 0x16, 1, 0);
@@ -567,13 +567,13 @@ namespace Gap{
             if(lbl_805621C8)
                 reinterpret_cast<Unknown805621C8*>(lbl_805621C8)->unknownB8();
             if(ARK_FIELD(igUnsignedInt, 0x48)){
-                ARK_FIELD(void *, 0x44) = fn_80039920(0);
+                ARK_FIELD(void *, 0x44) = igStackMemoryPool_create(0);
                 void *buffer = fn_800560F8(ARK_FIELD(igUnsignedInt, 0x48));
                 memset(buffer, 0, ARK_FIELD(igUnsignedInt, 0x48));
                 ARK_FIELD(UnknownVirtualObject *, 0x44)->unknown60(buffer, ARK_FIELD(igUnsignedInt, 0x48), 1);
                 ARK_FIELD(UnknownVirtualObject *, 0x44)->unknown8C(ARK_FIELD(UnknownVirtualObject *, 0x44)->unknownA8());
                 if(ARK_FIELD(unsigned char, 0x74) && ARK_FIELD(unsigned char, 0x75)){
-                    void *storage2 = fn_80030C18(fn_80058CA4());
+                    void *storage2 = igEventTracker_create(fn_80058CA4());
                     fn_800472FC(storage2, 0x4000);
                     reinterpret_cast<UnknownVirtualObject*>(storage2)->unknown5C();
                     ARK_FIELD(UnknownVirtualObject *, 0x44)->unknown168(storage2);
@@ -588,7 +588,7 @@ namespace Gap{
             }
             fn_8006D534(ARK_FIELD(void *, 0x38), 2, data + 0x5DC0, _unknown16 + 0x390 - 0x16, 0, 0);
             fn_8004D0E8();
-            lbl_805622FC = fn_80023670(ARK_FIELD(void *, 0x34));
+            lbl_805622FC = igTimer_create(ARK_FIELD(void *, 0x34));
             reinterpret_cast<UnknownVirtualObject*>(lbl_805622FC)->unknown6C();
             fn_8006B434(lbl_8055D77C, lbl_8055D748);
             fn_8006B6CC();
@@ -596,7 +596,7 @@ namespace Gap{
                 igInt index = fn_8006D2E8(ARK_FIELD(void *, 0x38), data + 0x5DDC, 1);
                 if(index != -1){
                     igInt count = fn_8006E2A4(ARK_FIELD(void *, 0x38));
-                    ARK_FIELD(void *, 0x68) = fn_8002487C(fn_800607F4(lbl_805621E0));
+                    ARK_FIELD(void *, 0x68) = igStringTable_create(fn_800607F4(lbl_805621E0));
                     fn_800740F4(ARK_FIELD(void *, 0x68), 0x200);
                     fn_800740FC(ARK_FIELD(void *, 0x68), 0x10);
                     fn_80074104(ARK_FIELD(void *, 0x68));

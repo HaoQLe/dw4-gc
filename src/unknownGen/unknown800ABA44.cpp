@@ -5,139 +5,139 @@ extern "C" {
 void *OSDisableInterrupts(void *);
 void OSRestoreInterrupts(void *);
 void __dl__FPv(void *);
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
-void fn_800AC458();
-void fn_800AC8A8();
-void fn_800ACBC4();
-void fn_800ACD9C();
-void fn_800ACFEC();
-void fn_800AD248();
-void fn_800AD3D0();
-void fn_800AD650();
-void fn_800AD898();
-void fn_800ADAA0();
-void fn_800ADD04();
-void fn_800ADF08();
-void fn_800AE0EC();
-void fn_800AE2B0();
-void fn_800AE618();
-void fn_800AE864();
-void fn_800AED4C();
-void fn_800AEFCC();
-void fn_800AF2F4();
-void fn_800AF66C();
-void fn_800AFA3C();
-void fn_800AFBBC();
-void fn_800AFDEC();
-void fn_800B007C();
-void fn_800B02FC();
-void fn_800B04E8();
-void fn_800B0818();
-void fn_800B0A74();
-void fn_800B0D08();
-void fn_800B0ED8();
-void fn_800B10B0();
-void fn_800B1294();
-void fn_800B14F4();
-void fn_800B1890();
-void fn_800B1C94();
-void fn_800B1EF8();
-void fn_800B2154();
-void fn_800B232C();
-void fn_800B253C();
-void fn_800B28B0();
-void fn_800B2B90();
-void fn_800B2D80();
-void fn_800B2F10();
-void fn_800B315C();
-void fn_800B3310();
-void fn_800B35FC();
-void fn_800B3950();
-void fn_800B3C28();
-void fn_800B3DF0();
-void fn_800B3EE0();
-void fn_800B4074();
-void fn_800B4238();
-void fn_800B44AC();
-void fn_800B46B0();
-void fn_800B488C();
-void fn_800B4A58();
-void fn_800B4C30();
-void fn_800B4ED4();
-void fn_800B5090();
-void fn_800B52CC();
-void fn_800B550C();
-void fn_800B5750();
-void fn_800B59B0();
-void fn_800B5B7C();
-void fn_800B6150();
-void fn_800B640C();
-void fn_800B6708();
-void fn_800B6AE4();
-void fn_800B6CD8();
-void fn_800B6F70();
-void fn_800B70B4();
-void fn_800B7268();
-void fn_800B7494();
-void fn_800B7654();
-void fn_800B7798();
-void fn_800B7A1C();
-void fn_800B7BF4();
-void fn_800B7DBC();
-void fn_800B7F84();
-void fn_800B8188();
-void fn_800B8388();
-void fn_800B8550();
-void fn_800B8728();
-void fn_800B8884();
-void fn_800B8A38();
-void fn_800B8D58();
-void fn_800B8F88();
-void fn_800B9198();
-void fn_800B9418();
-void fn_800B9660();
-void fn_800B9860();
-void fn_800B9AC4();
-void fn_800B9C78();
-void fn_800B9EA0();
-void fn_800BA0A8();
-void fn_800BA264();
-void fn_800BA4A8();
-void fn_800BA7E0();
-void fn_800BABAC();
-void fn_800BAD80();
-void fn_800BAFA8();
-void fn_800BB200();
-void fn_800BB394();
-void fn_800BB530();
-void fn_800BB704();
-void fn_800BB830();
-void fn_800BBAA4();
-void fn_800BBC90();
-void fn_800BBEA0();
-void fn_800BC0E4();
-void fn_800BC2E0();
-void fn_800BC4D0();
-void fn_800BC6F8();
-void fn_800BC8C4();
+void igVertexShaderBindAttr_registerNow();
+void igVertexShaderAttr_registerNow();
+void igVertexPipelineModeAttr_registerNow();
+void igVertexBlendStateAttr_registerNow();
+void igVertexBlendMatrixListAttr_registerNow();
+void igVertexBlendMatrixAttrList_registerNow();
+void igVertexBlendMatrixAttr_registerNow();
+void igVectorConstantAttr_registerNow();
+void igTimeAttr_registerNow();
+void igTextureUnloadAttr_registerNow();
+void igTextureStateAttr_registerNow();
+void igTextureMatrixStateAttr_registerNow();
+void igTextureMatrixAttrList_registerNow();
+void igTextureMatrixAttr_registerNow();
+void igTextureInfo_registerNow();
+void igTextureFunctionAttr_registerNow();
+void igTextureCubeAttr_registerNow();
+void igTextureCoordSourceAttr_registerNow();
+void igTextureBindAttr_registerNow();
+void igTextureAttr_registerNow();
+void igImageMipMapList_registerNow();
+void igTextureAddressModeAttr_registerNow();
+void igTexGenMatrixAttr_registerNow();
+void igSubTextureBindAttr_registerNow();
+void igStencilStateAttr_registerNow();
+void igStencilFunctionAttr_registerNow();
+void igSpriteAttr_registerNow();
+void igShadeModelAttr_registerNow();
+void igSetRenderDestinationAttr_registerNow();
+void igScissorTypeAttr_registerNow();
+void igScissorAttr_registerNow();
+void igSceneAmbientColorAttr_registerNow();
+void igRenderListAttr_registerNow();
+void igRenderDestinationAttr_registerNow();
+void igRefVertexBlendMatrixAttr_registerNow();
+void igProjectionMatrixAttr_registerNow();
+void igPolygonModeAttr_registerNow();
+void igPointSpriteSizeAttr_registerNow();
+void igPixelShaderBindAttr_registerNow();
+void igPixelShaderAttr_registerNow();
+void igPixelPipelineModeAttr_registerNow();
+void igParticleAttrList_registerNow();
+void igParticleAttr_registerNow();
+void igNormalizeNormalsStateAttr_registerNow();
+void igMultiPassStateAttr_registerNow();
+void igMorphedGeometryAttr_registerNow();
+void igVector3MorphData_registerNow();
+void igVec3fAlignedList_registerNow();
+void igMorphDataList_registerNow();
+void igMorphData_registerNow();
+void igModelViewMatrixAttrList_registerNow();
+void igModelViewMatrixAttr_registerNow();
+void igMipMapAttr_registerNow();
+void igMatrixOptStateAttr_registerNow();
+void igMatrixConstantAttr_registerNow();
+void igMaterialModeAttr_registerNow();
+void igMaterialAttr_registerNow();
+void igMacroTextureRegionAttr_registerNow();
+void igLineWidthAttr_registerNow();
+void igLightingStateAttr_registerNow();
+void igLightStateAttrList_registerNow();
+void igLightStateAttr_registerNow();
+void igLightList_registerNow();
+void igLightAttr_registerNow();
+void igGeometrySetAttr_registerNow();
+void igGeometryMaskAttr_registerNow();
+void igGeometryAttr2_registerNow();
+void igGeometryAttr1_5_registerNow();
+void igGeometryAttr_registerNow();
+void igGenericAttrDefaultManager_registerNow();
+void igFogStateAttr_registerNow();
+void igFogAttr_registerNow();
+void igFloatConstantAttr_registerNow();
+void igFileAttrDefaultManager_registerNow();
+void igDitherStateAttr_registerNow();
+void igDisplayListAttr_registerNow();
+void igDestinationAlphaStateAttr_registerNow();
+void igDestinationAlphaFunctionAttr_registerNow();
+void igDestinationAlphaAttr_registerNow();
+void igDepthWriteStateAttr_registerNow();
+void igDepthStateAttr_registerNow();
+void igDepthFunctionAttr_registerNow();
+void igDecalAttr_registerNow();
+void igCustomStateCollectionAttr_registerNow();
+void igCullFaceAttr_registerNow();
+void igCopyRenderDestinationAttr_registerNow();
+void igColorScalerStateAttr_registerNow();
+void igColorMaskAttr_registerNow();
+void igColorAttr_registerNow();
+void igClippingStateAttr_registerNow();
+void igClearAttr_registerNow();
+void igBlendingCorrectionStateAttr_registerNow();
+void igBlendingControlStateAttr_registerNow();
+void igBlendStateAttr_registerNow();
+void igBlendMatrixPaletteAttrList_registerNow();
+void igBlendMatrixPaletteAttr_registerNow();
+void igBlendMatricesAttr_registerNow();
+void igBlendFunctionAttr_registerNow();
+void igTextureList_registerNow();
+void igGeometryAttrList_registerNow();
+void igAttrPool_registerNow();
+void igAttrDefaultManager_registerNow();
+void igAttrListList_registerNow();
+void igNonRefCountedAttrList_registerNow();
+void igAttrList_registerNow();
+void igAttr_registerNow();
+void igAlphaStateAttr_registerNow();
+void igAlphaFunctionAttr_registerNow();
+void igTextureSwapTableAttr_registerNow();
+void igTextureSwapAttr_registerNow();
+void igTextureStageConstantColorSelectAttr_registerNow();
+void igTextureStageConstantAlphaSelectAttr_registerNow();
+void igTextureEnvironmentColorAttr_registerNow();
+void igTextureConstantAttr_registerNow();
 void *fn_800CE788();
 void igAttrDefaultManager_register();
 void igAttr_register();
 void igViewportAttr_fieldInit();
-extern char lbl_80477D08[];
-extern char lbl_80477D3C[];
-extern char lbl_80477D50[];
-extern char lbl_8047A61C[];
-extern char lbl_8047A680[];
+extern char igVisualContextAttrDefaultManager_className[];
+extern char igVisualAttribute_className[];
+extern char igViewportAttr_className[];
+extern char igVisualContextAttrDefaultManager_vtable[];
+extern char igViewportAttr_vtable[];
 extern char lbl_8047D514[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
@@ -150,27 +150,27 @@ extern char lbl_8055DE78[8];
 extern void *lbl_805621F4;
 extern char lbl_80562400[1];
 extern char lbl_80562401[1];
-extern void *lbl_80562404;
-extern void *lbl_8056240C;
-extern void *lbl_80562410;
-extern void *lbl_80562A58;
-extern void *lbl_80562A68;
+extern void *igVisualContextAttrDefaultManager_meta;
+extern void *igVisualAttribute_meta;
+extern void *igViewportAttr_meta;
+extern void *igAttrDefaultManager_meta;
+extern void *igAttr_meta;
 void fn_800ABC8C();
 void *igVisualContextAttrDefaultManager_getMeta();
 void *igVisualContextAttrDefaultManager_vtableRead();
-void fn_800ABE3C();
+void igVisualContextAttrDefaultManager_registerNow();
 void igVisualContextAttrDefaultManager_register();
 void *igVisualContextAttrDefaultManager_getMetaCall();
 void *fn_800ABEF8();
 void igVisualContextAttrDefaultManager_fieldInit();
 void *igVisualAttribute_getMeta();
-void fn_800AC00C();
+void igVisualAttribute_registerNow();
 void igVisualAttribute_register();
 void *igVisualAttribute_getMetaCall();
 void *fn_800AC0B8();
 void *igViewportAttr_getMeta();
 void *igViewportAttr_vtableRead();
-void fn_800AC1D8();
+void igViewportAttr_registerNow();
 void igViewportAttr_register();
 void *igViewportAttr_getMetaCall();
 void *fn_800AC294();
@@ -184,7 +184,7 @@ struct UnknownGenObject800ABD34 : UnknownGenRoot800ABD34 {
  char unknown04[4];
  UnknownGenRefMember unknown08;
  char unknown0C[4];
- inline ~UnknownGenObject800ABD34(){unknown00=lbl_8047A61C;}
+ inline ~UnknownGenObject800ABD34(){unknown00=igVisualContextAttrDefaultManager_vtable;}
 };
 struct UnknownGenRoot800AC138 {
  void *unknown00;
@@ -195,7 +195,7 @@ struct UnknownGenObject800AC138 : UnknownGenRoot800AC138 {
  char unknown04[24];
  UnknownGenRefMember unknown1C;
  char unknown20[16];
- inline ~UnknownGenObject800AC138(){unknown00=lbl_8047A680;}
+ inline ~UnknownGenObject800AC138(){unknown00=igViewportAttr_vtable;}
 };
 extern "C" {
 void fn_800ABA44(int p0){
@@ -207,123 +207,123 @@ void fn_800ABA68(int p0){
 }
 void fn_800ABA98(){}
 void fn_800ABA9C(){
- fn_800ABE3C();
- fn_800AC00C();
- fn_800AC1D8();
- fn_800AC458();
- fn_800AC8A8();
- fn_800ACBC4();
- fn_800ACD9C();
- fn_800ACFEC();
- fn_800AD3D0();
- fn_800AD248();
- fn_800AD650();
- fn_800AD898();
- fn_800ADAA0();
- fn_800ADD04();
- fn_800ADF08();
- fn_800AE2B0();
- fn_800AE0EC();
- fn_800AE618();
- fn_800AE864();
- fn_800AED4C();
- fn_800AEFCC();
- fn_800AF2F4();
- fn_800AFA3C();
- fn_800AF66C();
- fn_800AFBBC();
- fn_800AFDEC();
- fn_800B007C();
- fn_800B02FC();
- fn_800B04E8();
- fn_800B0818();
- fn_800B0A74();
- fn_800B0D08();
- fn_800B0ED8();
- fn_800B10B0();
- fn_800B1294();
- fn_800B14F4();
- fn_800B1890();
- fn_800B1C94();
- fn_800B1EF8();
- fn_800B2154();
- fn_800B232C();
- fn_800B253C();
- fn_800B28B0();
- fn_800B2B90();
- fn_800B2F10();
- fn_800B2D80();
- fn_800B315C();
- fn_800B3310();
- fn_800B3EE0();
- fn_800B3DF0();
- fn_800B3C28();
- fn_800B3950();
- fn_800B35FC();
- fn_800B4238();
- fn_800B4074();
- fn_800B44AC();
- fn_800B46B0();
- fn_800B488C();
- fn_800B4A58();
- fn_800B4C30();
- fn_800B4ED4();
- fn_800B5090();
- fn_800B52CC();
- fn_800B5750();
- fn_800B550C();
- fn_800B5B7C();
- fn_800B59B0();
- fn_800B6150();
- fn_800B640C();
- fn_800B6708();
- fn_800B6AE4();
- fn_800B6CD8();
- fn_800B6F70();
- fn_800B70B4();
- fn_800B7268();
- fn_800B7494();
- fn_800B7654();
- fn_800B7798();
- fn_800B7A1C();
- fn_800B7BF4();
- fn_800B7DBC();
- fn_800B7F84();
- fn_800B8188();
- fn_800B8388();
- fn_800B8550();
- fn_800B8728();
- fn_800B8884();
- fn_800B8A38();
- fn_800B8D58();
- fn_800B8F88();
- fn_800B9198();
- fn_800B9418();
- fn_800B9660();
- fn_800B9860();
- fn_800B9AC4();
- fn_800B9C78();
- fn_800B9EA0();
- fn_800BA264();
- fn_800BA0A8();
- fn_800BA4A8();
- fn_800BA7E0();
- fn_800BAD80();
- fn_800BABAC();
- fn_800BAFA8();
- fn_800BB200();
- fn_800BB830();
- fn_800BB704();
- fn_800BB530();
- fn_800BB394();
- fn_800BBAA4();
- fn_800BBC90();
- fn_800BBEA0();
- fn_800BC0E4();
- fn_800BC2E0();
- fn_800BC4D0();
- fn_800BC6F8();
- fn_800BC8C4();
+ igVisualContextAttrDefaultManager_registerNow();
+ igVisualAttribute_registerNow();
+ igViewportAttr_registerNow();
+ igVertexShaderBindAttr_registerNow();
+ igVertexShaderAttr_registerNow();
+ igVertexPipelineModeAttr_registerNow();
+ igVertexBlendStateAttr_registerNow();
+ igVertexBlendMatrixListAttr_registerNow();
+ igVertexBlendMatrixAttr_registerNow();
+ igVertexBlendMatrixAttrList_registerNow();
+ igVectorConstantAttr_registerNow();
+ igTimeAttr_registerNow();
+ igTextureUnloadAttr_registerNow();
+ igTextureStateAttr_registerNow();
+ igTextureMatrixStateAttr_registerNow();
+ igTextureMatrixAttr_registerNow();
+ igTextureMatrixAttrList_registerNow();
+ igTextureInfo_registerNow();
+ igTextureFunctionAttr_registerNow();
+ igTextureCubeAttr_registerNow();
+ igTextureCoordSourceAttr_registerNow();
+ igTextureBindAttr_registerNow();
+ igImageMipMapList_registerNow();
+ igTextureAttr_registerNow();
+ igTextureAddressModeAttr_registerNow();
+ igTexGenMatrixAttr_registerNow();
+ igSubTextureBindAttr_registerNow();
+ igStencilStateAttr_registerNow();
+ igStencilFunctionAttr_registerNow();
+ igSpriteAttr_registerNow();
+ igShadeModelAttr_registerNow();
+ igSetRenderDestinationAttr_registerNow();
+ igScissorTypeAttr_registerNow();
+ igScissorAttr_registerNow();
+ igSceneAmbientColorAttr_registerNow();
+ igRenderListAttr_registerNow();
+ igRenderDestinationAttr_registerNow();
+ igRefVertexBlendMatrixAttr_registerNow();
+ igProjectionMatrixAttr_registerNow();
+ igPolygonModeAttr_registerNow();
+ igPointSpriteSizeAttr_registerNow();
+ igPixelShaderBindAttr_registerNow();
+ igPixelShaderAttr_registerNow();
+ igPixelPipelineModeAttr_registerNow();
+ igParticleAttr_registerNow();
+ igParticleAttrList_registerNow();
+ igNormalizeNormalsStateAttr_registerNow();
+ igMultiPassStateAttr_registerNow();
+ igMorphData_registerNow();
+ igMorphDataList_registerNow();
+ igVec3fAlignedList_registerNow();
+ igVector3MorphData_registerNow();
+ igMorphedGeometryAttr_registerNow();
+ igModelViewMatrixAttr_registerNow();
+ igModelViewMatrixAttrList_registerNow();
+ igMipMapAttr_registerNow();
+ igMatrixOptStateAttr_registerNow();
+ igMatrixConstantAttr_registerNow();
+ igMaterialModeAttr_registerNow();
+ igMaterialAttr_registerNow();
+ igMacroTextureRegionAttr_registerNow();
+ igLineWidthAttr_registerNow();
+ igLightingStateAttr_registerNow();
+ igLightStateAttr_registerNow();
+ igLightStateAttrList_registerNow();
+ igLightAttr_registerNow();
+ igLightList_registerNow();
+ igGeometrySetAttr_registerNow();
+ igGeometryMaskAttr_registerNow();
+ igGeometryAttr2_registerNow();
+ igGeometryAttr1_5_registerNow();
+ igGeometryAttr_registerNow();
+ igGenericAttrDefaultManager_registerNow();
+ igFogStateAttr_registerNow();
+ igFogAttr_registerNow();
+ igFloatConstantAttr_registerNow();
+ igFileAttrDefaultManager_registerNow();
+ igDitherStateAttr_registerNow();
+ igDisplayListAttr_registerNow();
+ igDestinationAlphaStateAttr_registerNow();
+ igDestinationAlphaFunctionAttr_registerNow();
+ igDestinationAlphaAttr_registerNow();
+ igDepthWriteStateAttr_registerNow();
+ igDepthStateAttr_registerNow();
+ igDepthFunctionAttr_registerNow();
+ igDecalAttr_registerNow();
+ igCustomStateCollectionAttr_registerNow();
+ igCullFaceAttr_registerNow();
+ igCopyRenderDestinationAttr_registerNow();
+ igColorScalerStateAttr_registerNow();
+ igColorMaskAttr_registerNow();
+ igColorAttr_registerNow();
+ igClippingStateAttr_registerNow();
+ igClearAttr_registerNow();
+ igBlendingCorrectionStateAttr_registerNow();
+ igBlendingControlStateAttr_registerNow();
+ igBlendStateAttr_registerNow();
+ igBlendMatrixPaletteAttr_registerNow();
+ igBlendMatrixPaletteAttrList_registerNow();
+ igBlendMatricesAttr_registerNow();
+ igBlendFunctionAttr_registerNow();
+ igGeometryAttrList_registerNow();
+ igTextureList_registerNow();
+ igAttrPool_registerNow();
+ igAttrDefaultManager_registerNow();
+ igAttr_registerNow();
+ igAttrList_registerNow();
+ igNonRefCountedAttrList_registerNow();
+ igAttrListList_registerNow();
+ igAlphaStateAttr_registerNow();
+ igAlphaFunctionAttr_registerNow();
+ igTextureSwapTableAttr_registerNow();
+ igTextureSwapAttr_registerNow();
+ igTextureStageConstantColorSelectAttr_registerNow();
+ igTextureStageConstantAlphaSelectAttr_registerNow();
+ igTextureEnvironmentColorAttr_registerNow();
+ igTextureConstantAttr_registerNow();
 }
 void fn_800ABC8C(){
  if((int)*reinterpret_cast<signed char *>((lbl_80562401+0))==0){
@@ -335,18 +335,18 @@ void fn_800ABC8C(){
  }
  *reinterpret_cast<unsigned char *>((lbl_80562400+0))=1;
 }
-void *fn_800ABCC0(void *object){
- fn_800ABE3C();
- return fn_8006546C(lbl_80562404,object);
+void *igVisualContextAttrDefaultManager_create(void *object){
+ igVisualContextAttrDefaultManager_registerNow();
+ return meta_createInstance(igVisualContextAttrDefaultManager_meta,object);
 }
 void *igVisualContextAttrDefaultManager_getMeta(){
- if(!lbl_80562404 || !(reinterpret_cast<unsigned int *>(lbl_80562404)[0x24/4]&4)) fn_800ABE3C();
- return lbl_80562404;
+ if(!igVisualContextAttrDefaultManager_meta || !(reinterpret_cast<unsigned int *>(igVisualContextAttrDefaultManager_meta)[0x24/4]&4)) igVisualContextAttrDefaultManager_registerNow();
+ return igVisualContextAttrDefaultManager_meta;
 }
 void *igVisualContextAttrDefaultManager_vtableRead(){
  UnknownGenObject800ABD34 object;
  object.unknown00=lbl_8047D514;
- object.unknown00=lbl_8047A61C;
+ object.unknown00=igVisualContextAttrDefaultManager_vtable;
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -361,17 +361,17 @@ UnknownGenHolder *dtor_800ABDC8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_800ABE3C(){
- fn_80066188((int)igVisualContextAttrDefaultManager_register);
+void igVisualContextAttrDefaultManager_registerNow(){
+ meta_registerNow((int)igVisualContextAttrDefaultManager_register);
 }
 void igVisualContextAttrDefaultManager_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562404,(int)igAttrDefaultManager_register,(int)fn_800ABEF8,(int)igVisualContextAttrDefaultManager_getMetaCall,(int)lbl_80477D08,12,(int)igVisualContextAttrDefaultManager_vtableRead,(int)igVisualContextAttrDefaultManager_fieldInit,0,(int)lbl_8055DE60);
+ meta_registerClass(0,(int)&igVisualContextAttrDefaultManager_meta,(int)igAttrDefaultManager_register,(int)fn_800ABEF8,(int)igVisualContextAttrDefaultManager_getMetaCall,(int)igVisualContextAttrDefaultManager_className,12,(int)igVisualContextAttrDefaultManager_vtableRead,(int)igVisualContextAttrDefaultManager_fieldInit,0,(int)lbl_8055DE60);
 }
 void *igVisualContextAttrDefaultManager_getMetaCall(){return igVisualContextAttrDefaultManager_getMeta();}
-void *fn_800ABEF8(){return lbl_80562A58;}
+void *fn_800ABEF8(){return igAttrDefaultManager_meta;}
 void igVisualContextAttrDefaultManager_fieldInit(){
- void *value0=lbl_80562404;
+ void *value0=igVisualContextAttrDefaultManager_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055DE68,1);
  void *value2=fn_800658E4(value0,value1);
@@ -383,46 +383,46 @@ void igVisualContextAttrDefaultManager_fieldInit(){
  fn_800659C0(value0,lbl_8055DE6C,lbl_8055DE70,lbl_8055DE74,value1);
 }
 void *fn_800ABF94(){
- if(!lbl_8056240C) lbl_8056240C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_8056240C;
+ if(!igVisualAttribute_meta) igVisualAttribute_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igVisualAttribute_meta;
 }
 void *igVisualAttribute_getMeta(){
- if(!lbl_8056240C || !(reinterpret_cast<unsigned int *>(lbl_8056240C)[0x24/4]&4)) fn_800AC00C();
- return lbl_8056240C;
+ if(!igVisualAttribute_meta || !(reinterpret_cast<unsigned int *>(igVisualAttribute_meta)[0x24/4]&4)) igVisualAttribute_registerNow();
+ return igVisualAttribute_meta;
 }
-void fn_800AC00C(){
- fn_80066188((int)igVisualAttribute_register);
+void igVisualAttribute_registerNow(){
+ meta_registerNow((int)igVisualAttribute_register);
 }
 void igVisualAttribute_register(){
  fn_800ABC8C();
- fn_80066204(1,(int)&lbl_8056240C,(int)igAttr_register,(int)fn_800AC0B8,(int)igVisualAttribute_getMetaCall,(int)lbl_80477D3C,12,0,0,0,0);
+ meta_registerClass(1,(int)&igVisualAttribute_meta,(int)igAttr_register,(int)fn_800AC0B8,(int)igVisualAttribute_getMetaCall,(int)igVisualAttribute_className,12,0,0,0,0);
 }
 void *igVisualAttribute_getMetaCall(){return igVisualAttribute_getMeta();}
-void *fn_800AC0B8(){return lbl_80562A68;}
+void *fn_800AC0B8(){return igAttr_meta;}
 void *fn_800AC0C0(){
- if(!lbl_80562410) lbl_80562410=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80562410;
+ if(!igViewportAttr_meta) igViewportAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igViewportAttr_meta;
 }
 void *igViewportAttr_getMeta(){
- if(!lbl_80562410 || !(reinterpret_cast<unsigned int *>(lbl_80562410)[0x24/4]&4)) fn_800AC1D8();
- return lbl_80562410;
+ if(!igViewportAttr_meta || !(reinterpret_cast<unsigned int *>(igViewportAttr_meta)[0x24/4]&4)) igViewportAttr_registerNow();
+ return igViewportAttr_meta;
 }
 void *igViewportAttr_vtableRead(){
  UnknownGenObject800AC138 object;
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
- object.unknown00=lbl_8047A680;
+ object.unknown00=igViewportAttr_vtable;
  object.unknown1C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800AC1D8(){
- fn_80066188((int)igViewportAttr_register);
+void igViewportAttr_registerNow(){
+ meta_registerNow((int)igViewportAttr_register);
 }
 void igViewportAttr_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562410,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igViewportAttr_getMetaCall,(int)lbl_80477D50,40,(int)igViewportAttr_vtableRead,(int)igViewportAttr_fieldInit,0,(int)lbl_8055DE78);
+ meta_registerClass(0,(int)&igViewportAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igViewportAttr_getMetaCall,(int)igViewportAttr_className,40,(int)igViewportAttr_vtableRead,(int)igViewportAttr_fieldInit,0,(int)lbl_8055DE78);
 }
 void *igViewportAttr_getMetaCall(){return igViewportAttr_getMeta();}
-void *fn_800AC294(){return lbl_8056240C;}
+void *fn_800AC294(){return igVisualAttribute_meta;}
 }
 #pragma pop

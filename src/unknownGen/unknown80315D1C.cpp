@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534714;
-extern void *lbl_80534774;
+extern void *beSwitchCtrlInfo_meta;
+extern void *beSound_meta;
 }
 extern "C" {
-void *beSound_virtual58(){return lbl_80534774;}
+void *beSound_virtual58(){return beSound_meta;}
 void beSwitchCtrl_virtual88(){}
-void *beSwitchCtrl_virtual80(){return lbl_80534714;}
+void *beSwitchCtrl_virtual80(){return beSwitchCtrlInfo_meta;}
 }
 #pragma pop

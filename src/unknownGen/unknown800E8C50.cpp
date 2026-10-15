@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80023670(void *);
+void *igTimer_create(void *);
 void *fn_800607F4(void *);
 void fn_800667A4(void *);
 void *fn_80068430(void *);
-void *fn_800D2ED0(void *);
-void *fn_800D3334(void *);
+void *igCustomStateFieldList_create(void *);
+void *igCustomStateCollectionList_create(void *);
 void *fn_800E97C8(void *);
 void *fn_800E97E0(void *);
 extern void *lbl_805621E4;
@@ -627,7 +627,7 @@ void fn_800E8C50(int p0){
   }
  }
  value131=fn_800E97C8((void *)p0);
- value132=fn_80023670(value131);
+ value132=igTimer_create(value131);
  if((int)(int)value132!=0){
   value74=*reinterpret_cast<void **>(reinterpret_cast<char *>(value132)+4);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>(value132)+4)=(reinterpret_cast<char *>(value74)+1);
@@ -651,7 +651,7 @@ void fn_800E8C50(int p0){
    fn_80066E1C(value77);
   }
  }
- value134=fn_800D3334(value133);
+ value134=igCustomStateCollectionList_create(value133);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+304)=value134;
  value135=fn_800E97E0((void *)p0);
  value79=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+308);
@@ -662,7 +662,7 @@ void fn_800E8C50(int p0){
    fn_80066E1C(value79);
   }
  }
- value136=fn_800D2ED0(value135);
+ value136=igCustomStateFieldList_create(value135);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+308)=value136;
 }
 }

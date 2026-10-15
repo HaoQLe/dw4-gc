@@ -5,29 +5,29 @@ extern "C" {
 void beBaseInfoManager_register();
 void *beNumberCtrl_getMeta();
 void beNumberCtrl_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void fn_802C4390();
-extern char lbl_8041E844[];
-extern char lbl_80534B90[];
-extern void *lbl_80534B94;
+void beLoadingNode_registerNow();
+extern char beNumberCtrl_className[];
+extern char beNumberCtrl_meta[];
+extern void *beLoadingNode_meta;
 void beNumberCtrl_register();
 void *beNumberCtrl_getMetaCall();
 }
 extern "C" {
-void fn_802C40EC(){
- fn_80066188((int)beNumberCtrl_register);
+void beNumberCtrl_registerNow(){
+ meta_registerNow((int)beNumberCtrl_register);
 }
 void beNumberCtrl_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80534B90,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beNumberCtrl_getMetaCall,(int)lbl_8041E844,32,(int)beNumberCtrl_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beNumberCtrl_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beNumberCtrl_getMetaCall,(int)beNumberCtrl_className,32,(int)beNumberCtrl_vtableRead,0,0,0);
 }
 void *beNumberCtrl_getMetaCall(){return beNumberCtrl_getMeta();}
 void *beLoadingNode_getMeta(){
- if(!lbl_80534B94 || !(reinterpret_cast<unsigned int *>(lbl_80534B94)[0x24/4]&4)) fn_802C4390();
- return lbl_80534B94;
+ if(!beLoadingNode_meta || !(reinterpret_cast<unsigned int *>(beLoadingNode_meta)[0x24/4]&4)) beLoadingNode_registerNow();
+ return beLoadingNode_meta;
 }
 }
 #pragma pop

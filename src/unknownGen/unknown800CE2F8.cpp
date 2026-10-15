@@ -2,14 +2,14 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800D0270();
-void *fn_800D039C();
-void *fn_800D0B24();
-void *fn_800D17DC();
-void *fn_800D1900();
-void *fn_800D4BB8();
-void *fn_800D4CA0();
-void fn_800D5A04();
+void *igUserUCodeExt_registerNow();
+void *igScissorExt_registerNow();
+void *igPointSpriteExt_registerNow();
+void *igMultiTextureExt_registerNow();
+void *igLineWidthExt_registerNow();
+void *igDisableExt_registerNow();
+void *igDecalExt_registerNow();
+void igBlendEquationExt_registerNow();
 extern char lbl_80562CEC[1];
 extern char lbl_80562CED[1];
 }
@@ -28,14 +28,14 @@ void fn_800CE2F8(){
  }
  if(!(void *)(int)*reinterpret_cast<unsigned char *>((lbl_80562CEC+0))){
   *reinterpret_cast<unsigned char *>((lbl_80562CEC+0))=1;
-  value0=fn_800D0270();
-  value1=fn_800D039C();
-  value2=fn_800D0B24();
-  value3=fn_800D17DC();
-  value4=fn_800D1900();
-  value5=fn_800D4BB8();
-  value6=fn_800D4CA0();
-  fn_800D5A04();
+  value0=igUserUCodeExt_registerNow();
+  value1=igScissorExt_registerNow();
+  value2=igPointSpriteExt_registerNow();
+  value3=igMultiTextureExt_registerNow();
+  value4=igLineWidthExt_registerNow();
+  value5=igDisableExt_registerNow();
+  value6=igDecalExt_registerNow();
+  igBlendEquationExt_registerNow();
   return;
  } else {
   return;

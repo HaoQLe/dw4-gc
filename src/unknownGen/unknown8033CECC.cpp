@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_8033D008();
-extern void *lbl_805363A0;
+void *meta_createInstance(void *,void *);
+void beNDMWLoadIntf2Diffselect_registerNow();
+extern void *beNDMWLoadIntf2Diffselect_meta;
 }
 extern "C" {
-void *fn_8033CECC(void *object){
- fn_8033D008();
- return fn_8006546C(lbl_805363A0,object);
+void *beNDMWLoadIntf2Diffselect_create(void *object){
+ beNDMWLoadIntf2Diffselect_registerNow();
+ return meta_createInstance(beNDMWLoadIntf2Diffselect_meta,object);
 }
 void *beNDMWLoadIntf2Diffselect_getMeta(){
- if(!lbl_805363A0 || !(reinterpret_cast<unsigned int *>(lbl_805363A0)[0x24/4]&4)) fn_8033D008();
- return lbl_805363A0;
+ if(!beNDMWLoadIntf2Diffselect_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadIntf2Diffselect_meta)[0x24/4]&4)) beNDMWLoadIntf2Diffselect_registerNow();
+ return beNDMWLoadIntf2Diffselect_meta;
 }
 }
 #pragma pop

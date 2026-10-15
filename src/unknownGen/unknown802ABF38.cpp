@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805343D8;
+extern void *igMovieCodec_meta;
 }
 extern "C" {
-void *igCriMovieCodec_parentMeta(){return lbl_805343D8;}
+void *igCriMovieCodec_parentMeta(){return igMovieCodec_meta;}
 }
 #pragma pop

@@ -6,12 +6,12 @@ void __dl__FPv(void *);
 void beBaseInfoRam_register();
 void *beWeaponInfoRam_getMeta();
 void beWeaponInfoRam_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2B2C();
-extern char lbl_8041C9D0[];
-extern char lbl_80534538[];
+extern char beWeaponInfoRam_className[];
+extern char beWeaponInfoRam_meta[];
 void beWeaponInfoRam_register();
 void *beWeaponInfoRam_getMetaCall();
 }
@@ -27,12 +27,12 @@ UnknownGenHolder *dtor_802B2A04(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_802B2A78(){
- fn_80066188((int)beWeaponInfoRam_register);
+void beWeaponInfoRam_registerNow(){
+ meta_registerNow((int)beWeaponInfoRam_register);
 }
 void beWeaponInfoRam_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80534538,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beWeaponInfoRam_getMetaCall,(int)lbl_8041C9D0,44,(int)beWeaponInfoRam_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beWeaponInfoRam_meta,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beWeaponInfoRam_getMetaCall,(int)beWeaponInfoRam_className,44,(int)beWeaponInfoRam_vtableRead,0,0,0);
 }
 void *beWeaponInfoRam_getMetaCall(){return beWeaponInfoRam_getMeta();}
 }

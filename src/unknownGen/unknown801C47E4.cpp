@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_801C4994();
+void *meta_createInstance(void *,void *);
+void igCommonTraversal_registerNow();
 extern void *lbl_805621F4;
-extern void *lbl_80565118;
+extern void *igCommonTraversal_meta;
 }
 extern "C" {
-void *fn_801C47E4(void *object){
- fn_801C4994();
- return fn_8006546C(lbl_80565118,object);
+void *igCommonTraversal_create(void *object){
+ igCommonTraversal_registerNow();
+ return meta_createInstance(igCommonTraversal_meta,object);
 }
 void *fn_801C481C(){
- if(!lbl_80565118) lbl_80565118=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80565118;
+ if(!igCommonTraversal_meta) igCommonTraversal_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igCommonTraversal_meta;
 }
 void *igCommonTraversal_getMeta(){
- if(!lbl_80565118 || !(reinterpret_cast<unsigned int *>(lbl_80565118)[0x24/4]&4)) fn_801C4994();
- return lbl_80565118;
+ if(!igCommonTraversal_meta || !(reinterpret_cast<unsigned int *>(igCommonTraversal_meta)[0x24/4]&4)) igCommonTraversal_registerNow();
+ return igCommonTraversal_meta;
 }
 }
 #pragma pop

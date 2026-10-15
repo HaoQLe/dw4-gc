@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535C80;
+extern void *beNDMWWindow_meta;
 }
 extern "C" {
-void *fn_803287A8(){return lbl_80535C80;}
+void *fn_803287A8(){return beNDMWWindow_meta;}
 }
 #pragma pop

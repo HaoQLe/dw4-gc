@@ -9,16 +9,16 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void fn_80071694(void *,int);
 void *fn_80122100();
-void *fn_802D7948();
+void *beGeneraterPlayerDataList_metaObject();
 extern char lbl_804D1DC8[];
 extern char lbl_804D1DF8[];
 extern char lbl_804D1E28[];
 extern char lbl_804D1E58[];
-extern void *lbl_80535294;
+extern void *beGeneraterData_meta;
 }
 extern "C" {
 void beGeneraterData_fieldInit(){
- void *value0=lbl_80535294;
+ void *value0=beGeneraterData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1DC8,12);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));
@@ -34,7 +34,7 @@ void beGeneraterData_fieldInit(){
  void *value7=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+10));
  fn_80071694(value7,0);
  void *value8=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+11));
- void *value9=fn_802D7948();
+ void *value9=beGeneraterPlayerDataList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value8)+52)=1;
  fn_800659C0(value0,lbl_804D1DF8,lbl_804D1E28,lbl_804D1E58,value1);

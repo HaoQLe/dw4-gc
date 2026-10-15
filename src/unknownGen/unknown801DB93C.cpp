@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_801D40B0(void *,void *,void *,void *);
-extern void *lbl_80562A68;
+extern void *igAttr_meta;
 }
 extern "C" {
 void fn_801DB93C(int p0,int p1,int p2){
@@ -39,7 +39,7 @@ void fn_801DB93C(int p0,int p1,int p2){
   }
  }
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+36)=(void *)p1;
- fn_801D40B0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52),lbl_80562A68,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
+ fn_801D40B0(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+52),igAttr_meta,*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+36),*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32));
 }
 }
 #pragma pop

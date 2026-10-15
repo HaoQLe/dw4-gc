@@ -4,48 +4,48 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800ABC8C();
 void fn_800BB148();
 void igAttrPool_fieldInit();
 void igObjectList_register();
 void igObject_register();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_80479FD8[];
-extern char lbl_80479FE8[];
+extern char igTextureList_className[];
+extern char igGeometryAttrList_className[];
 extern char lbl_80479FFC[];
-extern char lbl_8047A008[];
-extern char lbl_8047D4B8[];
-extern char lbl_8047D9C0[];
+extern char igAttrPool_className[];
+extern char igAttrPool_vtable[];
+extern char igGeometryAttrList_vtable[];
 extern char lbl_8047DA24[];
-extern char lbl_8047DA88[];
+extern char igTextureList_vtable[];
 extern char lbl_8047DAEC[];
 extern char lbl_8055E6C8[8];
 extern char lbl_8055E6D0[8];
 extern void *lbl_805621F4;
-extern void *lbl_80562A40;
-extern void *lbl_80562A44;
-extern void *lbl_80562A48;
+extern void *igTextureList_meta;
+extern void *igGeometryAttrList_meta;
+extern void *igAttrPool_meta;
 void *igTextureList_getMeta();
 void *igTextureList_vtableRead();
-void fn_800BABAC();
+void igTextureList_registerNow();
 void igTextureList_register();
 void *igTextureList_getMetaCall();
 void *igGeometryAttrList_getMeta();
 void *igGeometryAttrList_vtableRead();
-void fn_800BAD80();
+void igGeometryAttrList_registerNow();
 void igGeometryAttrList_register();
 void *igGeometryAttrList_getMetaCall();
 void *igAttrPool_getMeta();
 void *igAttrPool_vtableRead();
-void fn_800BAFA8();
+void igAttrPool_registerNow();
 void igAttrPool_register();
 void *igAttrPool_getMetaCall();
 }
@@ -68,91 +68,91 @@ struct UnknownGenObject800BAEA8 : UnknownGenRoot800BAEA8 {
  UnknownGenRefMember unknown0C;
  UnknownGenRefMember unknown10;
  char unknown14[4];
- inline ~UnknownGenObject800BAEA8(){unknown00=lbl_8047D4B8;}
+ inline ~UnknownGenObject800BAEA8(){unknown00=igAttrPool_vtable;}
 };
 extern "C" {
-void *fn_800BAA8C(void *object){
- fn_800BABAC();
- return fn_8006546C(lbl_80562A40,object);
+void *igTextureList_create(void *object){
+ igTextureList_registerNow();
+ return meta_createInstance(igTextureList_meta,object);
 }
 void *fn_800BAAC4(){
- if(!lbl_80562A40) lbl_80562A40=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80562A40;
+ if(!igTextureList_meta) igTextureList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igTextureList_meta;
 }
 void *igTextureList_getMeta(){
- if(!lbl_80562A40 || !(reinterpret_cast<unsigned int *>(lbl_80562A40)[0x24/4]&4)) fn_800BABAC();
- return lbl_80562A40;
+ if(!igTextureList_meta || !(reinterpret_cast<unsigned int *>(igTextureList_meta)[0x24/4]&4)) igTextureList_registerNow();
+ return igTextureList_meta;
 }
 void *igTextureList_vtableRead(){
  UnknownGenObject800BAB3C_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_8047DAEC;
- object.unknown00=lbl_8047DA88;
+ object.unknown00=igTextureList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800BABAC(){
- fn_80066188((int)igTextureList_register);
+void igTextureList_registerNow(){
+ meta_registerNow((int)igTextureList_register);
 }
 void igTextureList_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562A40,(int)igObjectList_register,(int)fn_80024180,(int)igTextureList_getMetaCall,(int)lbl_80479FD8,20,(int)igTextureList_vtableRead,0,0,(int)lbl_8055E6C8);
+ meta_registerClass(0,(int)&igTextureList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igTextureList_getMetaCall,(int)igTextureList_className,20,(int)igTextureList_vtableRead,0,0,(int)lbl_8055E6C8);
 }
 void *igTextureList_getMetaCall(){return igTextureList_getMeta();}
-void *fn_800BAC60(void *object){
- fn_800BAD80();
- return fn_8006546C(lbl_80562A44,object);
+void *igGeometryAttrList_create(void *object){
+ igGeometryAttrList_registerNow();
+ return meta_createInstance(igGeometryAttrList_meta,object);
 }
 void *fn_800BAC98(){
- if(!lbl_80562A44) lbl_80562A44=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80562A44;
+ if(!igGeometryAttrList_meta) igGeometryAttrList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igGeometryAttrList_meta;
 }
 void *igGeometryAttrList_getMeta(){
- if(!lbl_80562A44 || !(reinterpret_cast<unsigned int *>(lbl_80562A44)[0x24/4]&4)) fn_800BAD80();
- return lbl_80562A44;
+ if(!igGeometryAttrList_meta || !(reinterpret_cast<unsigned int *>(igGeometryAttrList_meta)[0x24/4]&4)) igGeometryAttrList_registerNow();
+ return igGeometryAttrList_meta;
 }
 void *igGeometryAttrList_vtableRead(){
  UnknownGenObject800BAD10_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_8047DA24;
- object.unknown00=lbl_8047D9C0;
+ object.unknown00=igGeometryAttrList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800BAD80(){
- fn_80066188((int)igGeometryAttrList_register);
+void igGeometryAttrList_registerNow(){
+ meta_registerNow((int)igGeometryAttrList_register);
 }
 void igGeometryAttrList_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562A44,(int)igObjectList_register,(int)fn_80024180,(int)igGeometryAttrList_getMetaCall,(int)lbl_80479FE8,20,(int)igGeometryAttrList_vtableRead,0,0,(int)lbl_8055E6D0);
+ meta_registerClass(0,(int)&igGeometryAttrList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igGeometryAttrList_getMetaCall,(int)igGeometryAttrList_className,20,(int)igGeometryAttrList_vtableRead,0,0,(int)lbl_8055E6D0);
 }
 void *igGeometryAttrList_getMetaCall(){return igGeometryAttrList_getMeta();}
-void *fn_800BAE34(void *object){
- fn_800BAFA8();
- return fn_8006546C(lbl_80562A48,object);
+void *igAttrPool_create(void *object){
+ igAttrPool_registerNow();
+ return meta_createInstance(igAttrPool_meta,object);
 }
 void *igAttrPool_getMeta(){
- if(!lbl_80562A48 || !(reinterpret_cast<unsigned int *>(lbl_80562A48)[0x24/4]&4)) fn_800BAFA8();
- return lbl_80562A48;
+ if(!igAttrPool_meta || !(reinterpret_cast<unsigned int *>(igAttrPool_meta)[0x24/4]&4)) igAttrPool_registerNow();
+ return igAttrPool_meta;
 }
 void *igAttrPool_vtableRead(){
  UnknownGenObject800BAEA8 object;
- object.unknown00=lbl_8047D4B8;
+ object.unknown00=igAttrPool_vtable;
  object.unknown08.value=0;
  object.unknown0C.value=0;
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800BAFA8(){
- fn_80066188((int)igAttrPool_register);
+void igAttrPool_registerNow(){
+ meta_registerNow((int)igAttrPool_register);
 }
 void igAttrPool_register(){
  fn_800ABC8C();
- fn_80066204(0,(int)&lbl_80562A48,(int)igObject_register,(int)fn_800237D0,(int)igAttrPool_getMetaCall,(int)lbl_8047A008,20,(int)igAttrPool_vtableRead,(int)igAttrPool_fieldInit,(int)fn_800BB148,(int)lbl_80479FFC);
+ meta_registerClass(0,(int)&igAttrPool_meta,(int)igObject_register,(int)fn_800237D0,(int)igAttrPool_getMetaCall,(int)igAttrPool_className,20,(int)igAttrPool_vtableRead,(int)igAttrPool_fieldInit,(int)fn_800BB148,(int)lbl_80479FFC);
 }
 void *igAttrPool_getMetaCall(){return igAttrPool_getMeta();}
 }

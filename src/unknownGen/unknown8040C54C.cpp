@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8040C3A4(void *,void *,void *);
-extern void *lbl_8055C880;
+extern void *igViewerRenderer_meta;
 }
 extern "C" {
 void fn_8040C54C(int p0,int p1,int p2){
@@ -15,7 +15,7 @@ void fn_8040C54C(int p0,int p1,int p2){
   return;
  }
 }
-void *igViewerRenderer_virtual58(){return lbl_8055C880;}
+void *igViewerRenderer_virtual58(){return igViewerRenderer_meta;}
 void igViewerRenderer_virtual60(){}
 }
 #pragma pop

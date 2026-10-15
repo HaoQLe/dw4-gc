@@ -3,23 +3,23 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800237D0();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
 void igBoundingBoxesMaker_fieldInit();
 void igObject_register();
 extern char lbl_804B1294[];
-extern char lbl_804B12A8[];
-extern char lbl_804B6EB0[];
+extern char igBoundingBoxesMaker_className[];
+extern char igBoundingBoxesMaker_vtable[];
 extern void *lbl_805621F4;
-extern void *lbl_80565298;
+extern void *igBoundingBoxesMaker_meta;
 void *igBoundingBoxesMaker_getMeta();
 void *igBoundingBoxesMaker_vtableRead();
-void fn_801C6D18();
+void igBoundingBoxesMaker_registerNow();
 void igBoundingBoxesMaker_register();
 void *igBoundingBoxesMaker_getMetaCall();
 }
@@ -35,36 +35,36 @@ struct UnknownGenObject801C6BE0 : UnknownGenRoot801C6BE0 {
  char unknown1C[4];
  UnknownGenRefMember unknown20;
  UnknownGenRefMember unknown24;
- inline ~UnknownGenObject801C6BE0(){unknown00=lbl_804B6EB0;}
+ inline ~UnknownGenObject801C6BE0(){unknown00=igBoundingBoxesMaker_vtable;}
 };
 extern "C" {
-void *fn_801C6B30(void *object){
- fn_801C6D18();
- return fn_8006546C(lbl_80565298,object);
+void *igBoundingBoxesMaker_create(void *object){
+ igBoundingBoxesMaker_registerNow();
+ return meta_createInstance(igBoundingBoxesMaker_meta,object);
 }
 void *fn_801C6B68(){
- if(!lbl_80565298) lbl_80565298=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80565298;
+ if(!igBoundingBoxesMaker_meta) igBoundingBoxesMaker_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igBoundingBoxesMaker_meta;
 }
 void *igBoundingBoxesMaker_getMeta(){
- if(!lbl_80565298 || !(reinterpret_cast<unsigned int *>(lbl_80565298)[0x24/4]&4)) fn_801C6D18();
- return lbl_80565298;
+ if(!igBoundingBoxesMaker_meta || !(reinterpret_cast<unsigned int *>(igBoundingBoxesMaker_meta)[0x24/4]&4)) igBoundingBoxesMaker_registerNow();
+ return igBoundingBoxesMaker_meta;
 }
 void *igBoundingBoxesMaker_vtableRead(){
  UnknownGenObject801C6BE0 object;
- object.unknown00=lbl_804B6EB0;
+ object.unknown00=igBoundingBoxesMaker_vtable;
  object.unknown14.value=0;
  object.unknown18.value=0;
  object.unknown20.value=0;
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801C6D18(){
- fn_80066188((int)igBoundingBoxesMaker_register);
+void igBoundingBoxesMaker_registerNow(){
+ meta_registerNow((int)igBoundingBoxesMaker_register);
 }
 void igBoundingBoxesMaker_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80565298,(int)igObject_register,(int)fn_800237D0,(int)igBoundingBoxesMaker_getMetaCall,(int)lbl_804B12A8,40,(int)igBoundingBoxesMaker_vtableRead,(int)igBoundingBoxesMaker_fieldInit,0,(int)lbl_804B1294);
+ meta_registerClass(0,(int)&igBoundingBoxesMaker_meta,(int)igObject_register,(int)fn_800237D0,(int)igBoundingBoxesMaker_getMetaCall,(int)igBoundingBoxesMaker_className,40,(int)igBoundingBoxesMaker_vtableRead,(int)igBoundingBoxesMaker_fieldInit,0,(int)lbl_804B1294);
 }
 void *igBoundingBoxesMaker_getMetaCall(){return igBoundingBoxesMaker_getMeta();}
 }

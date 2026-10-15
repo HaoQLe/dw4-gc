@@ -10,16 +10,16 @@ void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void *fn_800D0068();
-void *fn_802B4548();
+void *beWaterMove_metaObject();
 extern char lbl_804CEE74[];
 extern char lbl_804CEEE0[];
 extern char lbl_804CEF4C[];
 extern char lbl_804CEFB8[];
-extern void *lbl_8053457C;
+extern void *beWaterPlainInfoRam_meta;
 }
 extern "C" {
 void beWaterPlainInfoRam_fieldInit(){
- void *value0=lbl_8053457C;
+ void *value0=beWaterPlainInfoRam_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CEE74,27);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+10));
@@ -38,7 +38,7 @@ void beWaterPlainInfoRam_fieldInit(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value8)+52)=1;
  void *value10=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+26));
- void *value11=fn_802B4548();
+ void *value11=beWaterMove_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value10)+56)=value11;
  fn_800659C0(value0,lbl_804CEEE0,lbl_804CEF4C,lbl_804CEFB8,value1);
 }

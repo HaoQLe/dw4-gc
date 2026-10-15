@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80536560;
-extern void *lbl_805365A8;
-extern void *lbl_805365AC;
-extern void *lbl_805365E8;
-extern void *lbl_805365EC;
-extern void *lbl_805365F4;
-extern void *lbl_80536600;
-extern void *lbl_80536604;
-extern void *lbl_8053661C;
+extern void *beNDMWMcUtilCtrl_meta;
+extern void *beNDMWLoadSavePlWorkList_meta;
+extern void *beNDMWLoadSavePlWork_meta;
+extern void *beNDMWMcSlotList_meta;
+extern void *beNDMWMcSlotXbox_meta;
+extern void *beNDMWMcSlotGC_meta;
+extern void *beNDMWMcSlotPS2_meta;
+extern void *beNDMWMcSlot_meta;
+extern void *beNDMWLoadSlotPlayerList_meta;
 }
 extern "C" {
-void *beNDMWLoadSlotPlayerList_virtual58(){return lbl_8053661C;}
-void *beNDMWMcSlotPS2_virtual58(){return lbl_80536600;}
-void *beNDMWMcSlotGC_virtual58(){return lbl_805365F4;}
-void *beNDMWMcSlotXbox_virtual58(){return lbl_805365EC;}
-void *fn_80346040(){return lbl_80536604;}
-void *beNDMWMcSlotList_virtual58(){return lbl_805365E8;}
-void *beNDMWLoadSavePlWork_virtual58(){return lbl_805365AC;}
-void *beNDMWLoadSavePlWorkList_virtual58(){return lbl_805365A8;}
-void *beNDMWMcUtilCtrl_virtual58(){return lbl_80536560;}
+void *beNDMWLoadSlotPlayerList_virtual58(){return beNDMWLoadSlotPlayerList_meta;}
+void *beNDMWMcSlotPS2_virtual58(){return beNDMWMcSlotPS2_meta;}
+void *beNDMWMcSlotGC_virtual58(){return beNDMWMcSlotGC_meta;}
+void *beNDMWMcSlotXbox_virtual58(){return beNDMWMcSlotXbox_meta;}
+void *fn_80346040(){return beNDMWMcSlot_meta;}
+void *beNDMWMcSlotList_virtual58(){return beNDMWMcSlotList_meta;}
+void *beNDMWLoadSavePlWork_virtual58(){return beNDMWLoadSavePlWork_meta;}
+void *beNDMWLoadSavePlWorkList_virtual58(){return beNDMWLoadSavePlWorkList_meta;}
+void *beNDMWMcUtilCtrl_virtual58(){return beNDMWMcUtilCtrl_meta;}
 }
 #pragma pop

@@ -3,12 +3,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564B74;
-extern void *lbl_80564B98;
-extern void *lbl_80564BD4;
-extern void *lbl_80564C88;
-extern void *lbl_80564D20;
-extern void *lbl_80564D8C;
+extern void *igPlanarShadowProcessor_meta;
+extern void *igNodeRefResolver_meta;
+extern void *igMultiTextureShader_meta;
+extern void *igMultiResolutionMeshCore_meta;
+extern void *igMorphInstance_meta;
+extern void *igLod_meta;
 }
 class UnknownGenV802157C0_0 {
 public:
@@ -40,17 +40,17 @@ public:
 };
 extern "C" {
 void igAttrSet_virtual98(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+36)=value;}
-void *igPlanarShadowProcessor_virtual58(){return lbl_80564B74;}
-void *igNodeRefResolver_virtual58(){return lbl_80564B98;}
+void *igPlanarShadowProcessor_virtual58(){return igPlanarShadowProcessor_meta;}
+void *igNodeRefResolver_virtual58(){return igNodeRefResolver_meta;}
 int igNode_virtual64(){return 0;}
-void *igMultiTextureShader_virtual58(){return lbl_80564BD4;}
-void *igMultiResolutionMeshCore_virtual58(){return lbl_80564C88;}
-void *igMorphInstance_virtual58(){return lbl_80564D20;}
+void *igMultiTextureShader_virtual58(){return igMultiTextureShader_meta;}
+void *igMultiResolutionMeshCore_virtual58(){return igMultiResolutionMeshCore_meta;}
+void *igMorphInstance_virtual58(){return igMorphInstance_meta;}
 int igGeometry_virtual90(){return 1;}
 void igMorphBase_virtual60(int p0){
  reinterpret_cast<UnknownGenV802157C0_0 *>(reinterpret_cast<Meta::igMorphBase *>((void *)p0)->_stripLengths)->s68();
 }
-void *igLod_virtual58(){return lbl_80564D8C;}
+void *igLod_virtual58(){return igLod_meta;}
 int igLod_virtual90(){return 1;}
 }
 #pragma pop

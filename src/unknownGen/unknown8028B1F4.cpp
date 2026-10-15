@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80515CCC;
-extern void *lbl_80515D1C;
+extern void *igInsightCore_meta;
+extern void *igWindowResizeEventReceiver_meta;
 }
 extern "C" {
-void *igInsightCore_virtual58(){return lbl_80515CCC;}
-void *igWindowResizeEventReceiver_virtual58(){return lbl_80515D1C;}
+void *igInsightCore_virtual58(){return igInsightCore_meta;}
+void *igWindowResizeEventReceiver_virtual58(){return igWindowResizeEventReceiver_meta;}
 }
 #pragma pop

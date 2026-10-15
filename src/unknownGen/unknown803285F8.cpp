@@ -5,41 +5,41 @@ extern "C" {
 void *beNDMWStatusTitle00_getMeta();
 void beNDMWStatusTitle00_vtableRead();
 void beNDMWWindow_register();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80326F88();
 void *fn_803287A8();
-extern char lbl_80453500[];
-extern char lbl_80453514[];
-extern char lbl_80535D5C[];
-extern void *lbl_80535D60;
+extern char beNDMWStatusTitle00_className[];
+extern char beNDMWWindowTitle_className[];
+extern char beNDMWStatusTitle00_meta[];
+extern void *beNDMWWindowTitle_meta;
 void beNDMWStatusTitle00_register();
 void *beNDMWStatusTitle00_getMetaCall();
 void *beNDMWWindowTitle_getMeta();
-void fn_803286F8();
+void beNDMWWindowTitle_registerNow();
 void beNDMWWindowTitle_register();
 void *beNDMWWindowTitle_getMetaCall();
 }
 extern "C" {
-void fn_803285F8(){
- fn_80066188((int)beNDMWStatusTitle00_register);
+void beNDMWStatusTitle00_registerNow(){
+ meta_registerNow((int)beNDMWStatusTitle00_register);
 }
 void beNDMWStatusTitle00_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535D5C,(int)beNDMWWindowTitle_register,(int)fn_80326F88,(int)beNDMWStatusTitle00_getMetaCall,(int)lbl_80453500,80,(int)beNDMWStatusTitle00_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beNDMWStatusTitle00_meta,(int)beNDMWWindowTitle_register,(int)fn_80326F88,(int)beNDMWStatusTitle00_getMetaCall,(int)beNDMWStatusTitle00_className,80,(int)beNDMWStatusTitle00_vtableRead,0,0,0);
 }
 void *beNDMWStatusTitle00_getMetaCall(){return beNDMWStatusTitle00_getMeta();}
 void *beNDMWWindowTitle_getMeta(){
- if(!lbl_80535D60 || !(reinterpret_cast<unsigned int *>(lbl_80535D60)[0x24/4]&4)) fn_803286F8();
- return lbl_80535D60;
+ if(!beNDMWWindowTitle_meta || !(reinterpret_cast<unsigned int *>(beNDMWWindowTitle_meta)[0x24/4]&4)) beNDMWWindowTitle_registerNow();
+ return beNDMWWindowTitle_meta;
 }
-void fn_803286F8(){
- fn_80066188((int)beNDMWWindowTitle_register);
+void beNDMWWindowTitle_registerNow(){
+ meta_registerNow((int)beNDMWWindowTitle_register);
 }
 void beNDMWWindowTitle_register(){
  fn_803250AC();
- fn_80066204(1,(int)&lbl_80535D60,(int)beNDMWWindow_register,(int)fn_803287A8,(int)beNDMWWindowTitle_getMetaCall,(int)lbl_80453514,80,0,0,0,0);
+ meta_registerClass(1,(int)&beNDMWWindowTitle_meta,(int)beNDMWWindow_register,(int)fn_803287A8,(int)beNDMWWindowTitle_getMetaCall,(int)beNDMWWindowTitle_className,80,0,0,0,0);
 }
 void *beNDMWWindowTitle_getMetaCall(){return beNDMWWindowTitle_getMeta();}
 }

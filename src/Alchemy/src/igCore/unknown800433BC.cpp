@@ -12,7 +12,7 @@ extern "C" int fn_800433BC(Unknown80042DECOwner *object, Unknown80042DECValue *v
     }
     if(value){
         value->slot48();
-        if(fn_80068128(object,lbl_80561A04)){
+        if(fn_80068128(object,igIGBFile_meta)){
             if(object->unknown40==1) value->slot3C();
             Unknown80042DECMetadata *metadata=value->slot58();
             void *(*callback)(Unknown80042DECMetadata *)=metadata->unknown40;
@@ -23,7 +23,7 @@ extern "C" int fn_800433BC(Unknown80042DECOwner *object, Unknown80042DECValue *v
         }
     }
     Unknown80042DECReference entry;
-    entry.value=fn_800291C8(fn_80068430(object));
+    entry.value=igObjectDirEntry_create(fn_80068430(object));
     entry.value->unknown0C=index;
     Unknown80042DECValue *copy=entry.value;
     unknown80042DECRetain(copy);
@@ -58,7 +58,7 @@ extern "C" int fn_8004366C(Unknown80042DECOwner *object, void *owner, Unknown800
     }
     if(!arg6) arg6=fn_80037E48();
     Unknown80042DECReference entry;
-    entry.value=fn_8002C7D4(fn_80068430(object));
+    entry.value=igMemoryDirEntry_create(fn_80068430(object));
     entry.value->unknown0C=index;
     Unknown80042DECValue *copy=entry.value;
     unknown80042DECRetain(copy);
@@ -88,7 +88,7 @@ extern "C" int fn_8004388C(Unknown80042DECOwner *object, Unknown80042DECValue *v
     int index=fn_800432E8(object,lbl_80561D10,value);
     if(object->unknown08 > 0 && index < object->unknown08 && fn_80042A14(object,index)==value) return -1;
     Unknown80042DECReference entry;
-    entry.value=fn_80032C4C(fn_80068430(object));
+    entry.value=igDirEntry_create(fn_80068430(object));
     fn_80066490(entry.value,name);
     entry.value->unknown10=word;
     entry.value->unknown14=2;

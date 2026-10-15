@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802BCC00();
-extern void *lbl_80534864;
+void beSvPlatDataPS2_registerNow();
+extern void *beSvPlatDataPS2_meta;
 }
 extern "C" {
 void *beSvPlatDataPS2_getMeta(){
- if(!lbl_80534864 || !(reinterpret_cast<unsigned int *>(lbl_80534864)[0x24/4]&4)) fn_802BCC00();
- return lbl_80534864;
+ if(!beSvPlatDataPS2_meta || !(reinterpret_cast<unsigned int *>(beSvPlatDataPS2_meta)[0x24/4]&4)) beSvPlatDataPS2_registerNow();
+ return beSvPlatDataPS2_meta;
 }
 }
 #pragma pop

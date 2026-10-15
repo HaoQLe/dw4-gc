@@ -7,7 +7,7 @@ void beNDMWWindowList_vtableRead();
 void *fn_800237D0();
 void *fn_80024180();
 void *fn_80024B94();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800365B4();
 void fn_8003EC68(void *,int);
 void *fn_800607F4(void *);
@@ -16,19 +16,19 @@ void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
-void *fn_80285EDC();
-void *fn_802C2174();
-void *fn_802CDF04();
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
+void *igInsightCore_metaObject();
+void *bePadManager_metaObject();
+void *beMessenger_metaObject();
 void fn_803250AC();
-void *fn_80325974();
-void fn_80326074();
+void *beNDMWWindowList_metaObject();
+void beNDMWTitle2Info_registerNow();
 void igObjectList_register();
 void igObject_register();
-extern char lbl_804531BC[];
+extern char beNDMWWindowList_className[];
 extern char lbl_80453220[];
-extern char lbl_80453228[];
+extern char beNDMWWindow_className[];
 extern char lbl_804E16A8[];
 extern char lbl_804E16B0[];
 extern char lbl_804E16DC[];
@@ -37,73 +37,73 @@ extern char lbl_804E1724[];
 extern char lbl_804E176C[];
 extern char lbl_804E17B4[];
 extern char lbl_804E17FC[];
-extern char lbl_80535C78[];
+extern char beNDMWWindowList_meta[];
 extern void *lbl_80535C7C;
-extern void *lbl_80535C80;
-extern void *lbl_80535CCC;
+extern void *beNDMWWindow_meta;
+extern void *beNDMWTitle2Info_meta;
 extern void *lbl_805621F4;
 void beNDMWWindowList_register();
 void *beNDMWWindowList_getMetaCall();
-void *fn_80325BA4();
+void *beNDMWWindow_metaObject();
 void *beNDMWWindow_getMeta();
-void fn_80325C44();
+void beNDMWWindow_registerNow();
 void beNDMWWindow_register();
 void *beNDMWWindow_getMetaCall();
 void beNDMWWindow_fieldInit();
 }
 extern "C" {
-void fn_80325A88(){
- fn_80066188((int)beNDMWWindowList_register);
+void beNDMWWindowList_registerNow(){
+ meta_registerNow((int)beNDMWWindowList_register);
 }
 void beNDMWWindowList_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535C78,(int)igObjectList_register,(int)fn_80024180,(int)beNDMWWindowList_getMetaCall,(int)lbl_804531BC,20,(int)beNDMWWindowList_vtableRead,0,0,(int)lbl_804E16A8);
+ meta_registerClass(0,(int)beNDMWWindowList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beNDMWWindowList_getMetaCall,(int)beNDMWWindowList_className,20,(int)beNDMWWindowList_vtableRead,0,0,(int)lbl_804E16A8);
 }
 void *beNDMWWindowList_getMetaCall(){return beNDMWWindowList_getMeta();}
 void *fn_80325B44(){
  if(!lbl_80535C7C) lbl_80535C7C=fn_800635C8(lbl_80453220,lbl_804E16B0,lbl_804E16DC,0xB);
  return lbl_80535C7C;
 }
-void *fn_80325BA4(){
- if(!lbl_80535C80) lbl_80535C80=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80535C80;
+void *beNDMWWindow_metaObject(){
+ if(!beNDMWWindow_meta) beNDMWWindow_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beNDMWWindow_meta;
 }
 void *beNDMWWindow_getMeta(){
- if(!lbl_80535C80 || !(reinterpret_cast<unsigned int *>(lbl_80535C80)[0x24/4]&4)) fn_80325C44();
- return lbl_80535C80;
+ if(!beNDMWWindow_meta || !(reinterpret_cast<unsigned int *>(beNDMWWindow_meta)[0x24/4]&4)) beNDMWWindow_registerNow();
+ return beNDMWWindow_meta;
 }
-void fn_80325C44(){
- fn_80066188((int)beNDMWWindow_register);
+void beNDMWWindow_registerNow(){
+ meta_registerNow((int)beNDMWWindow_register);
 }
 void beNDMWWindow_register(){
  fn_803250AC();
- fn_80066204(1,(int)&lbl_80535C80,(int)igObject_register,(int)fn_800237D0,(int)beNDMWWindow_getMetaCall,(int)lbl_80453228,80,0,(int)beNDMWWindow_fieldInit,0,(int)lbl_804E1708);
+ meta_registerClass(1,(int)&beNDMWWindow_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWWindow_getMetaCall,(int)beNDMWWindow_className,80,0,(int)beNDMWWindow_fieldInit,0,(int)lbl_804E1708);
 }
 void *beNDMWWindow_getMetaCall(){return beNDMWWindow_getMeta();}
 void beNDMWWindow_fieldInit(){
- void *value0=lbl_80535C80;
+ void *value0=beNDMWWindow_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1724,18);
  void *value2=fn_800658E4(value0,value1);
- void *value3=fn_80285EDC();
+ void *value3=igInsightCore_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+60)=0;
  void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
- void *value5=fn_802CDF04();
+ void *value5=beMessenger_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+60)=0;
  void *value6=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));
- void *value7=fn_802C2174();
+ void *value7=bePadManager_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value6)+60)=0;
  void *value8=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+4));
  fn_8003EC68(value8,1);
  void *value9=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+11));
- void *value10=fn_80325974();
+ void *value10=beNDMWWindowList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value9)+56)=value10;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value9)+52)=1;
  void *value11=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+12));
- void *value12=fn_80325BA4();
+ void *value12=beNDMWWindow_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value11)+56)=value12;
  void *value13=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+13));
  void *value14=fn_80024B94();
@@ -128,8 +128,8 @@ void beNDMWWindow_fieldInit(){
  fn_800659C0(value0,lbl_804E176C,lbl_804E17B4,lbl_804E17FC,value1);
 }
 void *beNDMWTitle2Info_getMeta(){
- if(!lbl_80535CCC || !(reinterpret_cast<unsigned int *>(lbl_80535CCC)[0x24/4]&4)) fn_80326074();
- return lbl_80535CCC;
+ if(!beNDMWTitle2Info_meta || !(reinterpret_cast<unsigned int *>(beNDMWTitle2Info_meta)[0x24/4]&4)) beNDMWTitle2Info_registerNow();
+ return beNDMWTitle2Info_meta;
 }
 }
 #pragma pop

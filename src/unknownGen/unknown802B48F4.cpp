@@ -5,30 +5,30 @@ extern "C" {
 void *beWaterMoveDataList_getMeta();
 void beWaterMoveDataList_vtableRead();
 void *fn_80024180();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void fn_802B4A88();
+void beWaterMoveData_registerNow();
 void igObjectList_register();
-extern char lbl_8041CCB0[];
+extern char beWaterMoveDataList_className[];
 extern char lbl_804CF07C[];
-extern char lbl_80534604[];
-extern void *lbl_80534608;
+extern char beWaterMoveDataList_meta[];
+extern void *beWaterMoveData_meta;
 void beWaterMoveDataList_register();
 void *beWaterMoveDataList_getMetaCall();
 }
 extern "C" {
-void fn_802B48F4(){
- fn_80066188((int)beWaterMoveDataList_register);
+void beWaterMoveDataList_registerNow(){
+ meta_registerNow((int)beWaterMoveDataList_register);
 }
 void beWaterMoveDataList_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80534604,(int)igObjectList_register,(int)fn_80024180,(int)beWaterMoveDataList_getMetaCall,(int)lbl_8041CCB0,20,(int)beWaterMoveDataList_vtableRead,0,0,(int)lbl_804CF07C);
+ meta_registerClass(0,(int)beWaterMoveDataList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beWaterMoveDataList_getMetaCall,(int)beWaterMoveDataList_className,20,(int)beWaterMoveDataList_vtableRead,0,0,(int)lbl_804CF07C);
 }
 void *beWaterMoveDataList_getMetaCall(){return beWaterMoveDataList_getMeta();}
 void *beWaterMoveData_getMeta(){
- if(!lbl_80534608 || !(reinterpret_cast<unsigned int *>(lbl_80534608)[0x24/4]&4)) fn_802B4A88();
- return lbl_80534608;
+ if(!beWaterMoveData_meta || !(reinterpret_cast<unsigned int *>(beWaterMoveData_meta)[0x24/4]&4)) beWaterMoveData_registerNow();
+ return beWaterMoveData_meta;
 }
 }
 #pragma pop

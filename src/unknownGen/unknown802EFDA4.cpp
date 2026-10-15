@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805357D4;
-extern void *lbl_80535830;
+extern void *beAction2Info_meta;
+extern void *be_meta;
 }
 extern "C" {
-void *be_virtual58(){return lbl_80535830;}
+void *be_virtual58(){return be_meta;}
 void beAction2_virtual88(){}
-void *beAction2_virtual80(){return lbl_805357D4;}
+void *beAction2_virtual80(){return beAction2Info_meta;}
 }
 #pragma pop

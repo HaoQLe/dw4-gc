@@ -5,7 +5,7 @@ extern "C" {
 void fn_800667D0();
 void fn_800DA440(void *,void *,void *);
 void *fn_800DDE54();
-extern void *lbl_80562F78;
+extern void *igImage_meta;
 }
 class UnknownGenV800F2418_0 {
 public:
@@ -38,6 +38,6 @@ void igGamecubeImage_virtual5C(int p0,int p1,int p2,int p3,int p4,int p5){
  fn_800DA440((void *)p0,(void *)p1,(void *)p2);
  reinterpret_cast<UnknownGenV800F2418_0 *>((void *)p1)->s58();
 }
-void *fn_800F2458(){return lbl_80562F78;}
+void *fn_800F2458(){return igImage_meta;}
 }
 #pragma pop

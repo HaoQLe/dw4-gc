@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805618B4;
+extern void *igMemoryPool_meta;
 }
 extern "C" {
-void *fn_8005D7A0(){return lbl_805618B4;}
+void *fn_8005D7A0(){return igMemoryPool_meta;}
 }
 #pragma pop

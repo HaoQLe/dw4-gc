@@ -20,11 +20,11 @@ extern char lbl_804CF290[];
 extern char lbl_804CF2F8[];
 extern char lbl_804CF360[];
 extern char lbl_804CF3C8[];
-extern void *lbl_805346A8;
+extern void *beSystem_meta;
 }
 extern "C" {
 void beSystem_fieldInit(){
- void *value0=lbl_805346A8;
+ void *value0=beSystem_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF290,26);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+3));

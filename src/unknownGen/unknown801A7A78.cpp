@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_8056428C;
-extern void *lbl_80564294;
-extern void *lbl_805642DC;
+extern void *igGaussianSmoothImage_meta;
+extern void *igZoomImage_meta;
+extern void *igFilterFun_meta;
 }
 extern "C" {
-void *fn_801A7A78(){return lbl_805642DC;}
-void *igZoomImage_virtual58(){return lbl_80564294;}
-void *igGaussianSmoothImage_virtual58(){return lbl_8056428C;}
+void *fn_801A7A78(){return igFilterFun_meta;}
+void *igZoomImage_virtual58(){return igZoomImage_meta;}
+void *igGaussianSmoothImage_virtual58(){return igGaussianSmoothImage_meta;}
 }
 #pragma pop

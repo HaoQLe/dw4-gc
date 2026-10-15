@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564A14;
+extern void *igSceneInfo_meta;
 }
 extern "C" {
-void *ParticleInfo_parentMeta(){return lbl_80564A14;}
+void *ParticleInfo_parentMeta(){return igSceneInfo_meta;}
 }
 #pragma pop

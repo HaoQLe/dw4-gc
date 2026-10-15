@@ -2,43 +2,43 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802AA850();
-void fn_802AAA90();
-void fn_802AAC90();
-void fn_802AAE9C();
-void fn_802AB088();
-void fn_802AB3B0();
-void fn_802AB744();
-void fn_802ABA3C();
-void fn_802ABC34();
-void fn_802ABE74();
-void fn_802AC0F8();
-void fn_802AC404();
-void fn_802AC614();
-void fn_802ACBCC();
-void fn_802AD0DC();
-void fn_802AD500();
-void fn_802AD7DC();
+void igAdx_registerNow();
+void igAdxAfsFileList_registerNow();
+void igAdxAfsFile_registerNow();
+void igFileNameList_registerNow();
+void igFileName_registerNow();
+void igAdxFile_registerNow();
+void igAdxAudio_registerNow();
+void igMovieCodecList_registerNow();
+void igMovieCodec_registerNow();
+void igCriMovieCodec_registerNow();
+void igCriMovieData_registerNow();
+void igMovieInfoList_registerNow();
+void igTextureBindAttrList_registerNow();
+void igMovieInfo_registerNow();
+void igMovieRenderer_registerNow();
+void igMovieManager_registerNow();
+void igMoviePlugin_registerNow();
 }
 extern "C" {
 void fn_802AA728(){
- fn_802AB088();
- fn_802AAE9C();
- fn_802AAC90();
- fn_802AAA90();
- fn_802AA850();
- fn_802AB3B0();
- fn_802AB744();
- fn_802ABC34();
- fn_802ABA3C();
- fn_802AC0F8();
- fn_802ABE74();
- fn_802ACBCC();
- fn_802AC614();
- fn_802AC404();
- fn_802AD500();
- fn_802AD0DC();
- fn_802AD7DC();
+ igFileName_registerNow();
+ igFileNameList_registerNow();
+ igAdxAfsFile_registerNow();
+ igAdxAfsFileList_registerNow();
+ igAdx_registerNow();
+ igAdxFile_registerNow();
+ igAdxAudio_registerNow();
+ igMovieCodec_registerNow();
+ igMovieCodecList_registerNow();
+ igCriMovieData_registerNow();
+ igCriMovieCodec_registerNow();
+ igMovieInfo_registerNow();
+ igTextureBindAttrList_registerNow();
+ igMovieInfoList_registerNow();
+ igMovieManager_registerNow();
+ igMovieRenderer_registerNow();
+ igMoviePlugin_registerNow();
 }
 }
 #pragma pop

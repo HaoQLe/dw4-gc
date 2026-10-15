@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805651C0;
+extern void *igCartoonShader_meta;
 }
 extern "C" {
-void *igObjectPropertyForCartoonShader_virtual7C(){return lbl_805651C0;}
+void *igObjectPropertyForCartoonShader_virtual7C(){return igCartoonShader_meta;}
 }
 #pragma pop

@@ -4,7 +4,7 @@
 extern "C" {
 void fn_80066DFC(void *);
 void fn_800D6440(void *,int);
-extern char lbl_804917D0[];
+extern char igGamecubeVisualContext_vtable[];
 }
 extern "C" {
 void *fn_800D62EC(int p0,int p1){
@@ -19,7 +19,7 @@ void *fn_800D62EC(int p0,int p1){
  void *value8;
  void *value9;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804917D0;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igGamecubeVisualContext_vtable;
   if((int)(p0+1116)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+1116);
    if(value0){

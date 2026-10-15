@@ -5,11 +5,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80562728;
-extern void *lbl_8056276C;
-extern void *lbl_80562774;
-extern void *lbl_80562780;
-extern void *lbl_80562788;
+extern void *igMorphedGeometryAttr_meta;
+extern void *igModelViewMatrixAttr_meta;
+extern void *igMipMapAttr_meta;
+extern void *igMatrixOptStateAttr_meta;
+extern void *igMatrixConstantAttr_meta;
 }
 extern "C" {
 void *igVector3MorphData_virtual70(int p0,int p1,int p2){
@@ -26,11 +26,11 @@ void *igVector3MorphData_virtual70(int p0,int p1,int p2){
  *reinterpret_cast<int *>(reinterpret_cast<char *>(value2)+(p1<<2))=(int)(int)value0;
  return value2;
 }
-void *igMorphedGeometryAttr_virtual58(){return lbl_80562728;}
-void *igModelViewMatrixAttr_virtual58(){return lbl_8056276C;}
-void *igMipMapAttr_virtual58(){return lbl_80562774;}
-void *igMatrixOptStateAttr_virtual58(){return lbl_80562780;}
+void *igMorphedGeometryAttr_virtual58(){return igMorphedGeometryAttr_meta;}
+void *igModelViewMatrixAttr_virtual58(){return igModelViewMatrixAttr_meta;}
+void *igMipMapAttr_virtual58(){return igMipMapAttr_meta;}
+void *igMatrixOptStateAttr_virtual58(){return igMatrixOptStateAttr_meta;}
 void igMatrixOptStateAttr_virtual80(void *object,unsigned char value){*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+12)=value;}
-void *igMatrixConstantAttr_virtual58(){return lbl_80562788;}
+void *igMatrixConstantAttr_virtual58(){return igMatrixConstantAttr_meta;}
 }
 #pragma pop

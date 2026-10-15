@@ -6,23 +6,23 @@ void beAction2InfoWork_fieldInit();
 void *beAction2InfoWork_getMeta();
 void beAction2InfoWork_vtableRead();
 void *fn_800237D0();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
-extern char lbl_80420EBC[];
+extern char beAction2InfoWork_className[];
 extern char lbl_804D2F04[];
-extern char lbl_80535764[];
+extern char beAction2InfoWork_meta[];
 void beAction2InfoWork_register();
 void *beAction2InfoWork_getMetaCall();
 }
 extern "C" {
-void fn_802E5714(){
- fn_80066188((int)beAction2InfoWork_register);
+void beAction2InfoWork_registerNow(){
+ meta_registerNow((int)beAction2InfoWork_register);
 }
 void beAction2InfoWork_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535764,(int)igObject_register,(int)fn_800237D0,(int)beAction2InfoWork_getMetaCall,(int)lbl_80420EBC,96,(int)beAction2InfoWork_vtableRead,(int)beAction2InfoWork_fieldInit,0,(int)lbl_804D2F04);
+ meta_registerClass(0,(int)beAction2InfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beAction2InfoWork_getMetaCall,(int)beAction2InfoWork_className,96,(int)beAction2InfoWork_vtableRead,(int)beAction2InfoWork_fieldInit,0,(int)lbl_804D2F04);
 }
 void *beAction2InfoWork_getMetaCall(){return beAction2InfoWork_getMeta();}
 }

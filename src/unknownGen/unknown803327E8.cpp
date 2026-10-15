@@ -6,12 +6,12 @@ void __dl__FPv(void *);
 void beNDMWStatusCtrlBaseEquip_register();
 void *beNDMWStatusSubSlot_getMeta();
 void beNDMWStatusSubSlot_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80332910();
-extern char lbl_80453B8C[];
-extern char lbl_80535F30[];
+extern char beNDMWStatusSubSlot_className[];
+extern char beNDMWStatusSubSlot_meta[];
 void beNDMWStatusSubSlot_register();
 void *beNDMWStatusSubSlot_getMetaCall();
 }
@@ -27,12 +27,12 @@ UnknownGenHolder *dtor_803327E8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_8033285C(){
- fn_80066188((int)beNDMWStatusSubSlot_register);
+void beNDMWStatusSubSlot_registerNow(){
+ meta_registerNow((int)beNDMWStatusSubSlot_register);
 }
 void beNDMWStatusSubSlot_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535F30,(int)beNDMWStatusCtrlBaseEquip_register,(int)fn_80332910,(int)beNDMWStatusSubSlot_getMetaCall,(int)lbl_80453B8C,124,(int)beNDMWStatusSubSlot_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beNDMWStatusSubSlot_meta,(int)beNDMWStatusCtrlBaseEquip_register,(int)fn_80332910,(int)beNDMWStatusSubSlot_getMetaCall,(int)beNDMWStatusSubSlot_className,124,(int)beNDMWStatusSubSlot_vtableRead,0,0,0);
 }
 void *beNDMWStatusSubSlot_getMetaCall(){return beNDMWStatusSubSlot_getMeta();}
 }

@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
+void meta_registerNow(int);
 void fn_8008B264(void *);
 void igMallocMemoryPool_register();
 extern char lbl_80473790[];
-extern void *lbl_80561FB0;
-void fn_80039D6C();
+extern void *igMallocMemoryPool_meta;
+void igMallocMemoryPool_registerNow();
 }
 struct UnknownGenRoot80039CC0 {
  void *unknown00;
@@ -24,15 +24,15 @@ struct UnknownGenObject80039CC0 : UnknownGenRoot80039CC0 {
 };
 extern "C" {
 void *igMallocMemoryPool_getMeta(){
- if(!lbl_80561FB0 || !(reinterpret_cast<unsigned int *>(lbl_80561FB0)[0x24/4]&4)) fn_80039D6C();
- return lbl_80561FB0;
+ if(!igMallocMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igMallocMemoryPool_meta)[0x24/4]&4)) igMallocMemoryPool_registerNow();
+ return igMallocMemoryPool_meta;
 }
 void *fn_80039CC0(){
  UnknownGenObject80039CC0 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80039D6C(){
- fn_80066188((int)igMallocMemoryPool_register);
+void igMallocMemoryPool_registerNow(){
+ meta_registerNow((int)igMallocMemoryPool_register);
 }
 }
 #pragma pop

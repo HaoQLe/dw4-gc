@@ -11,11 +11,11 @@ extern char lbl_804D31F8[];
 extern char lbl_804D31FC[];
 extern char lbl_804D3200[];
 extern char lbl_804D3204[];
-extern void *lbl_80535830;
+extern void *be_meta;
 }
 extern "C" {
 void be_fieldInit(){
- void *value0=lbl_80535830;
+ void *value0=be_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D31F8,1);
  void *value2=fn_800658E4(value0,value1);

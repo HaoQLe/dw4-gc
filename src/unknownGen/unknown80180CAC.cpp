@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564DBC;
+extern void *igJoint_meta;
 }
 extern "C" {
-void *igObjectPropertyForJoint_virtual7C(){return lbl_80564DBC;}
+void *igObjectPropertyForJoint_virtual7C(){return igJoint_meta;}
 }
 #pragma pop

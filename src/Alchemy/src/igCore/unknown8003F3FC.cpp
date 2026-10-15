@@ -3,7 +3,7 @@
 extern "C" {
     void fn_8003ECAC(void *, Gap::igInt);
     void *fn_80068430(void *);
-    Unknown8003ED10Storage *fn_800363B0(void *);
+    Unknown8003ED10Storage *igIntListNoClean_create(void *);
     void fn_80066E1C(void *);
     extern Gap::igUnsignedInt lbl_8055D7B0;
 }
@@ -42,7 +42,7 @@ extern "C" void igCallStackTable_virtual7C(Unknown8003ED10 *object, Gap::igInt v
         if(!object->unknown14){
             void *allocation = fn_80068430(object);
             unknownRelease(object->unknown14);
-            object->unknown14 = fn_800363B0(allocation);
+            object->unknown14 = igIntListNoClean_create(allocation);
         }
         if(value >= object->unknown14->unknown08) fn_8004155C(object->unknown14, value, 4);
         unknownResize(object->unknown14, value);

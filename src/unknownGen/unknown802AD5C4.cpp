@@ -8,22 +8,22 @@ void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void *fn_800C6F94();
 void *fn_8010DFFC();
-void *fn_802AB928();
-void *fn_802AC2F0();
-void *fn_802ACF58();
+void *igMovieCodecList_metaObject();
+void *igMovieInfoList_metaObject();
+void *igMovieRenderer_metaObject();
 extern char lbl_804CDD8C[];
 extern char lbl_804CDDA4[];
 extern char lbl_804CDDBC[];
 extern char lbl_804CDDD4[];
-extern void *lbl_80534474;
+extern void *igMovieManager_meta;
 }
 extern "C" {
 void igMovieManager_fieldInit(){
- void *value0=lbl_80534474;
+ void *value0=igMovieManager_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CDD8C,6);
  void *value2=fn_800658E4(value0,value1);
- void *value3=fn_802AC2F0();
+ void *value3=igMovieInfoList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+38)=0;
@@ -32,11 +32,11 @@ void igMovieManager_fieldInit(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+56)=value6;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value5)+38)=0;
  void *value7=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+3));
- void *value8=fn_802AB928();
+ void *value8=igMovieCodecList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value7)+56)=value8;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value7)+38)=0;
  void *value9=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+4));
- void *value10=fn_802ACF58();
+ void *value10=igMovieRenderer_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value9)+56)=value10;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value9)+52)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value9)+38)=0;

@@ -2,15 +2,15 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564428;
-extern void *lbl_80564440;
-extern void *lbl_8056446C;
+extern void *igConvertTransform_meta;
+extern void *igConvertImage_meta;
+extern void *igConvertAnimationsToCompressedSequencesQS_meta;
 }
 extern "C" {
 int igConvertTransformsToCompressedSequencesQS_virtual84(){return 1;}
-void *igConvertTransform_virtual58(){return lbl_80564428;}
-void *igConvertImage_virtual58(){return lbl_80564440;}
+void *igConvertTransform_virtual58(){return igConvertTransform_meta;}
+void *igConvertImage_virtual58(){return igConvertImage_meta;}
 int igConvertImage_virtual84(){return 1;}
-void *igConvertAnimationsToCompressedSequencesQS_virtual58(){return lbl_8056446C;}
+void *igConvertAnimationsToCompressedSequencesQS_virtual58(){return igConvertAnimationsToCompressedSequencesQS_meta;}
 }
 #pragma pop

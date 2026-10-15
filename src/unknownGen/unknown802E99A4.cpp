@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805348C4;
+extern void *beSvPs2McImage128k_meta;
 }
 extern "C" {
-void *beSvPs2McImage128k_virtual58(){return lbl_805348C4;}
+void *beSvPs2McImage128k_virtual58(){return beSvPs2McImage128k_meta;}
 }
 #pragma pop

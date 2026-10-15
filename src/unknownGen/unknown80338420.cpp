@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80338624();
-extern void *lbl_80536158;
+void *meta_createInstance(void *,void *);
+void beNDMWMdlPlayer2_registerNow();
+extern void *beNDMWMdlPlayer2_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_80338420(void *object){
- fn_80338624();
- return fn_8006546C(lbl_80536158,object);
+void *beNDMWMdlPlayer2_create(void *object){
+ beNDMWMdlPlayer2_registerNow();
+ return meta_createInstance(beNDMWMdlPlayer2_meta,object);
 }
-void *fn_80338460(){
- if(!lbl_80536158) lbl_80536158=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80536158;
+void *beNDMWMdlPlayer2_metaObject(){
+ if(!beNDMWMdlPlayer2_meta) beNDMWMdlPlayer2_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beNDMWMdlPlayer2_meta;
 }
 void *beNDMWMdlPlayer2_getMeta(){
- if(!lbl_80536158 || !(reinterpret_cast<unsigned int *>(lbl_80536158)[0x24/4]&4)) fn_80338624();
- return lbl_80536158;
+ if(!beNDMWMdlPlayer2_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlPlayer2_meta)[0x24/4]&4)) beNDMWMdlPlayer2_registerNow();
+ return beNDMWMdlPlayer2_meta;
 }
 }
 #pragma pop

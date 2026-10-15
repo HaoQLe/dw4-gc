@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802D45E4();
-extern void *lbl_805351A8;
+void beHitLandModelInfoRam_registerNow();
+extern void *beHitLandModelInfoRam_meta;
 }
 extern "C" {
 void *beHitLandModelInfoRam_getMeta(){
- if(!lbl_805351A8 || !(reinterpret_cast<unsigned int *>(lbl_805351A8)[0x24/4]&4)) fn_802D45E4();
- return lbl_805351A8;
+ if(!beHitLandModelInfoRam_meta || !(reinterpret_cast<unsigned int *>(beHitLandModelInfoRam_meta)[0x24/4]&4)) beHitLandModelInfoRam_registerNow();
+ return beHitLandModelInfoRam_meta;
 }
 }
 #pragma pop

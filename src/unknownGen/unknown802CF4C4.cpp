@@ -5,42 +5,42 @@ extern "C" {
 void *beMessengerArgDataList_getMeta();
 void beMessengerArgDataList_vtableRead();
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void fn_802CF8E8();
+void beMessengerArgData_registerNow();
 void igObjectList_register();
-extern char lbl_8041F810[];
+extern char beMessengerArgDataList_className[];
 extern char lbl_804D1520[];
-extern char lbl_80535038[];
-extern void *lbl_8053503C;
+extern char beMessengerArgDataList_meta[];
+extern void *beMessengerArgData_meta;
 extern void *lbl_805621F4;
 void beMessengerArgDataList_register();
 void *beMessengerArgDataList_getMetaCall();
 }
 extern "C" {
-void fn_802CF4C4(){
- fn_80066188((int)beMessengerArgDataList_register);
+void beMessengerArgDataList_registerNow(){
+ meta_registerNow((int)beMessengerArgDataList_register);
 }
 void beMessengerArgDataList_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535038,(int)igObjectList_register,(int)fn_80024180,(int)beMessengerArgDataList_getMetaCall,(int)lbl_8041F810,20,(int)beMessengerArgDataList_vtableRead,0,0,(int)lbl_804D1520);
+ meta_registerClass(0,(int)beMessengerArgDataList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beMessengerArgDataList_getMetaCall,(int)beMessengerArgDataList_className,20,(int)beMessengerArgDataList_vtableRead,0,0,(int)lbl_804D1520);
 }
 void *beMessengerArgDataList_getMetaCall(){return beMessengerArgDataList_getMeta();}
-void *fn_802CF580(void *object){
- fn_802CF8E8();
- return fn_8006546C(lbl_8053503C,object);
+void *beMessengerArgData_create(void *object){
+ beMessengerArgData_registerNow();
+ return meta_createInstance(beMessengerArgData_meta,object);
 }
-void *fn_802CF5C0(){
- if(!lbl_8053503C) lbl_8053503C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_8053503C;
+void *beMessengerArgData_metaObject(){
+ if(!beMessengerArgData_meta) beMessengerArgData_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beMessengerArgData_meta;
 }
 void *beMessengerArgData_getMeta(){
- if(!lbl_8053503C || !(reinterpret_cast<unsigned int *>(lbl_8053503C)[0x24/4]&4)) fn_802CF8E8();
- return lbl_8053503C;
+ if(!beMessengerArgData_meta || !(reinterpret_cast<unsigned int *>(beMessengerArgData_meta)[0x24/4]&4)) beMessengerArgData_registerNow();
+ return beMessengerArgData_meta;
 }
 }
 #pragma pop

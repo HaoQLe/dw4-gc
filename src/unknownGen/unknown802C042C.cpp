@@ -11,11 +11,11 @@ extern char lbl_804CFE74[];
 extern char lbl_804CFE7C[];
 extern char lbl_804CFE84[];
 extern char lbl_804CFE8C[];
-extern void *lbl_805349F8;
+extern void *beSaveDataDeliver_meta;
 }
 extern "C" {
 void beSaveDataDeliver_fieldInit(){
- void *value0=lbl_805349F8;
+ void *value0=beSaveDataDeliver_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFE74,2);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));

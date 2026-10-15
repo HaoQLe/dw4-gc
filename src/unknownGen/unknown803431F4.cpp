@@ -6,7 +6,7 @@ void fn_8006665C(void *);
 extern char lbl_804E4990[];
 extern char lbl_804E49FC[];
 extern char lbl_804E4A68[];
-extern char lbl_804EE570[];
+extern char beNDMWItemWeapon_vtable[];
 }
 struct UnknownGenObject803431F4_0 {
  void *unknown00;
@@ -19,7 +19,7 @@ void *beNDMWItemWeapon_vtableRead(){
  object.unknown00=lbl_804E4A68;
  object.unknown00=lbl_804E49FC;
  object.unknown00=lbl_804E4990;
- object.unknown00=lbl_804EE570;
+ object.unknown00=beNDMWItemWeapon_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

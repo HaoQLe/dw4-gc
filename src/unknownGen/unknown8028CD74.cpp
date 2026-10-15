@@ -4,15 +4,15 @@
 extern "C" {
 void *fn_80024180();
 void *fn_800284EC();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *fn_8011148C();
 void fn_8028C93C();
@@ -21,20 +21,20 @@ void igCollisionGroup_fieldInit();
 void igGroup_register();
 void igInfo_register();
 void igObjectList_register();
-extern char lbl_80472460[];
-extern char lbl_80472FA0[];
-extern char lbl_8047650C[];
-extern char lbl_80476C7C[];
+extern char igInfo_vtable[];
+extern char igDataList_vtable[];
+extern char igNamedObject_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804B4038[];
-extern char lbl_804B49CC[];
-extern char lbl_804CC7CC[];
-extern char lbl_804CC7DC[];
-extern char lbl_804CC7F4[];
-extern char lbl_804CCE30[];
-extern char lbl_804CCEC4[];
+extern char igNode_vtable[];
+extern char igGroup_vtable[];
+extern char igCollisionInfo_className[];
+extern char igCollisionGroupList_className[];
+extern char igCollisionGroup_className[];
+extern char igCollisionGroup_vtable[];
+extern char igCollisionGroupList_vtable[];
 extern char lbl_804CCF28[];
-extern char lbl_804CD050[];
+extern char igCollisionInfo_vtable[];
 extern char lbl_80561338[8];
 extern char lbl_80561340[4];
 extern char lbl_80561344[4];
@@ -43,23 +43,23 @@ extern char lbl_8056134C[4];
 extern char lbl_80561350[8];
 extern char lbl_80561358[8];
 extern void *lbl_805621F4;
-extern void *lbl_805660DC;
-extern void *lbl_805660E4;
-extern void *lbl_805660E8;
+extern void *igCollisionInfo_meta;
+extern void *igCollisionGroupList_meta;
+extern void *igCollisionGroup_meta;
 void *igCollisionInfo_getMeta();
 void *igCollisionInfo_vtableRead();
-void fn_8028CEE0();
+void igCollisionInfo_registerNow();
 void igCollisionInfo_register();
 void *igCollisionInfo_getMetaCall();
 void igCollisionInfo_fieldInit();
 void *igCollisionGroupList_getMeta();
 void *igCollisionGroupList_vtableRead();
-void fn_8028D104();
+void igCollisionGroupList_registerNow();
 void igCollisionGroupList_register();
 void *igCollisionGroupList_getMetaCall();
 void *igCollisionGroup_getMeta();
 void *igCollisionGroup_vtableRead();
-void fn_8028D3AC();
+void igCollisionGroup_registerNow();
 void igCollisionGroup_register();
 void *igCollisionGroup_getMetaCall();
 }
@@ -71,16 +71,16 @@ struct UnknownGenRoot8028CDE8 {
 struct UnknownGenObject8028CDE8_0 : UnknownGenRoot8028CDE8 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject8028CDE8_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject8028CDE8_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject8028CDE8_1 : UnknownGenObject8028CDE8_0 {
- inline ~UnknownGenObject8028CDE8_1(){unknown00=lbl_80472460;}
+ inline ~UnknownGenObject8028CDE8_1(){unknown00=igInfo_vtable;}
 };
 struct UnknownGenObject8028CDE8 : UnknownGenObject8028CDE8_1 {
  char unknown0C[8];
  UnknownGenRefMember unknown14;
  char unknown18[8];
- inline ~UnknownGenObject8028CDE8(){unknown00=lbl_804CD050;}
+ inline ~UnknownGenObject8028CDE8(){unknown00=igCollisionInfo_vtable;}
 };
 struct UnknownGenObject8028D094_0 {
  void *unknown00;
@@ -94,51 +94,51 @@ struct UnknownGenRoot8028D1F4 {
 struct UnknownGenObject8028D1F4_0 : UnknownGenRoot8028D1F4 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject8028D1F4_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject8028D1F4_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject8028D1F4_1 : UnknownGenObject8028D1F4_0 {
  UnknownGenRefMember unknown0C;
  UnknownGenRefMember unknown10;
- inline ~UnknownGenObject8028D1F4_1(){unknown00=lbl_804B4038;}
+ inline ~UnknownGenObject8028D1F4_1(){unknown00=igNode_vtable;}
 };
 struct UnknownGenObject8028D1F4_2 : UnknownGenObject8028D1F4_1 {
  char unknown14[8];
  UnknownGenRefMember unknown1C;
- inline ~UnknownGenObject8028D1F4_2(){unknown00=lbl_804B49CC;}
+ inline ~UnknownGenObject8028D1F4_2(){unknown00=igGroup_vtable;}
 };
 struct UnknownGenObject8028D1F4 : UnknownGenObject8028D1F4_2 {
  UnknownGenRefMember unknown20;
  char unknown24[60];
- inline ~UnknownGenObject8028D1F4(){unknown00=lbl_804CCE30;}
+ inline ~UnknownGenObject8028D1F4(){unknown00=igCollisionGroup_vtable;}
 };
 extern "C" {
-void *fn_8028CD74(void *object){
- fn_8028CEE0();
- return fn_8006546C(lbl_805660DC,object);
+void *igCollisionInfo_create(void *object){
+ igCollisionInfo_registerNow();
+ return meta_createInstance(igCollisionInfo_meta,object);
 }
 void *igCollisionInfo_getMeta(){
- if(!lbl_805660DC || !(reinterpret_cast<unsigned int *>(lbl_805660DC)[0x24/4]&4)) fn_8028CEE0();
- return lbl_805660DC;
+ if(!igCollisionInfo_meta || !(reinterpret_cast<unsigned int *>(igCollisionInfo_meta)[0x24/4]&4)) igCollisionInfo_registerNow();
+ return igCollisionInfo_meta;
 }
 void *igCollisionInfo_vtableRead(){
  UnknownGenObject8028CDE8 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
- object.unknown00=lbl_80472460;
- object.unknown00=lbl_804CD050;
+ object.unknown00=igInfo_vtable;
+ object.unknown00=igCollisionInfo_vtable;
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8028CEE0(){
- fn_80066188((int)igCollisionInfo_register);
+void igCollisionInfo_registerNow(){
+ meta_registerNow((int)igCollisionInfo_register);
 }
 void igCollisionInfo_register(){
  fn_8028C93C();
- fn_80066204(0,(int)&lbl_805660DC,(int)igInfo_register,(int)fn_800284EC,(int)igCollisionInfo_getMetaCall,(int)lbl_804CC7CC,24,(int)igCollisionInfo_vtableRead,(int)igCollisionInfo_fieldInit,0,(int)lbl_80561338);
+ meta_registerClass(0,(int)&igCollisionInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igCollisionInfo_getMetaCall,(int)igCollisionInfo_className,24,(int)igCollisionInfo_vtableRead,(int)igCollisionInfo_fieldInit,0,(int)lbl_80561338);
 }
 void *igCollisionInfo_getMetaCall(){return igCollisionInfo_getMeta();}
 void igCollisionInfo_fieldInit(){
- void *value0=lbl_805660DC;
+ void *value0=igCollisionInfo_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_80561340,1);
  void *value2=fn_800658E4(value0,value1);
@@ -147,54 +147,54 @@ void igCollisionInfo_fieldInit(){
  fn_800659C0(value0,lbl_80561344,lbl_80561348,lbl_8056134C,value1);
 }
 void *fn_8028D01C(){
- if(!lbl_805660E4) lbl_805660E4=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805660E4;
+ if(!igCollisionGroupList_meta) igCollisionGroupList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igCollisionGroupList_meta;
 }
 void *igCollisionGroupList_getMeta(){
- if(!lbl_805660E4 || !(reinterpret_cast<unsigned int *>(lbl_805660E4)[0x24/4]&4)) fn_8028D104();
- return lbl_805660E4;
+ if(!igCollisionGroupList_meta || !(reinterpret_cast<unsigned int *>(igCollisionGroupList_meta)[0x24/4]&4)) igCollisionGroupList_registerNow();
+ return igCollisionGroupList_meta;
 }
 void *igCollisionGroupList_vtableRead(){
  UnknownGenObject8028D094_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_804CCF28;
- object.unknown00=lbl_804CCEC4;
+ object.unknown00=igCollisionGroupList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8028D104(){
- fn_80066188((int)igCollisionGroupList_register);
+void igCollisionGroupList_registerNow(){
+ meta_registerNow((int)igCollisionGroupList_register);
 }
 void igCollisionGroupList_register(){
  fn_8028C93C();
- fn_80066204(0,(int)&lbl_805660E4,(int)igObjectList_register,(int)fn_80024180,(int)igCollisionGroupList_getMetaCall,(int)lbl_804CC7DC,20,(int)igCollisionGroupList_vtableRead,0,0,(int)lbl_80561350);
+ meta_registerClass(0,(int)&igCollisionGroupList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCollisionGroupList_getMetaCall,(int)igCollisionGroupList_className,20,(int)igCollisionGroupList_vtableRead,0,0,(int)lbl_80561350);
 }
 void *igCollisionGroupList_getMetaCall(){return igCollisionGroupList_getMeta();}
 void *igCollisionGroup_getMeta(){
- if(!lbl_805660E8 || !(reinterpret_cast<unsigned int *>(lbl_805660E8)[0x24/4]&4)) fn_8028D3AC();
- return lbl_805660E8;
+ if(!igCollisionGroup_meta || !(reinterpret_cast<unsigned int *>(igCollisionGroup_meta)[0x24/4]&4)) igCollisionGroup_registerNow();
+ return igCollisionGroup_meta;
 }
 void *igCollisionGroup_vtableRead(){
  UnknownGenObject8028D1F4 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
- object.unknown00=lbl_804B4038;
+ object.unknown00=igNode_vtable;
  object.unknown0C.value=0;
  object.unknown10.value=0;
- object.unknown00=lbl_804B49CC;
+ object.unknown00=igGroup_vtable;
  object.unknown1C.value=0;
- object.unknown00=lbl_804CCE30;
+ object.unknown00=igCollisionGroup_vtable;
  object.unknown20.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8028D3AC(){
- fn_80066188((int)igCollisionGroup_register);
+void igCollisionGroup_registerNow(){
+ meta_registerNow((int)igCollisionGroup_register);
 }
 void igCollisionGroup_register(){
  fn_8028C93C();
- fn_80066204(0,(int)&lbl_805660E8,(int)igGroup_register,(int)fn_8011148C,(int)igCollisionGroup_getMetaCall,(int)lbl_804CC7F4,96,(int)igCollisionGroup_vtableRead,(int)igCollisionGroup_fieldInit,0,(int)lbl_80561358);
+ meta_registerClass(0,(int)&igCollisionGroup_meta,(int)igGroup_register,(int)fn_8011148C,(int)igCollisionGroup_getMetaCall,(int)igCollisionGroup_className,96,(int)igCollisionGroup_vtableRead,(int)igCollisionGroup_fieldInit,0,(int)lbl_80561358);
 }
 void *igCollisionGroup_getMetaCall(){return igCollisionGroup_getMeta();}
 }

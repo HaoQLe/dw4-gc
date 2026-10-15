@@ -5,41 +5,41 @@ extern "C" {
 void *beActionStarter_getMeta();
 void beActionStarter_vtableRead();
 void beBaseInfoManager_register();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void fn_802E5714();
-extern char lbl_80420EAC[];
-extern char lbl_80535760[];
-extern void *lbl_80535764;
+void beAction2InfoWork_registerNow();
+extern char beActionStarter_className[];
+extern char beActionStarter_meta[];
+extern void *beAction2InfoWork_meta;
 extern void *lbl_805621F4;
 void beActionStarter_register();
 void *beActionStarter_getMetaCall();
 }
 extern "C" {
-void fn_802E5410(){
- fn_80066188((int)beActionStarter_register);
+void beActionStarter_registerNow(){
+ meta_registerNow((int)beActionStarter_register);
 }
 void beActionStarter_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_80535760,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beActionStarter_getMetaCall,(int)lbl_80420EAC,32,(int)beActionStarter_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beActionStarter_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beActionStarter_getMetaCall,(int)beActionStarter_className,32,(int)beActionStarter_vtableRead,0,0,0);
 }
 void *beActionStarter_getMetaCall(){return beActionStarter_getMeta();}
-void *fn_802E54C4(void *object){
- fn_802E5714();
- return fn_8006546C(lbl_80535764,object);
+void *beAction2InfoWork_create(void *object){
+ beAction2InfoWork_registerNow();
+ return meta_createInstance(beAction2InfoWork_meta,object);
 }
-void *fn_802E5504(){
- if(!lbl_80535764) lbl_80535764=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80535764;
+void *beAction2InfoWork_metaObject(){
+ if(!beAction2InfoWork_meta) beAction2InfoWork_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beAction2InfoWork_meta;
 }
 void *beAction2InfoWork_getMeta(){
- if(!lbl_80535764 || !(reinterpret_cast<unsigned int *>(lbl_80535764)[0x24/4]&4)) fn_802E5714();
- return lbl_80535764;
+ if(!beAction2InfoWork_meta || !(reinterpret_cast<unsigned int *>(beAction2InfoWork_meta)[0x24/4]&4)) beAction2InfoWork_registerNow();
+ return beAction2InfoWork_meta;
 }
 }
 #pragma pop

@@ -5,24 +5,24 @@ extern "C" {
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_802D1AB4();
+void beLuaInfo_registerNow();
 extern char lbl_804D1818[];
 extern char lbl_804D181C[];
 extern char lbl_804D1820[];
 extern char lbl_804D1824[];
-extern void *lbl_805350F8;
-extern void *lbl_80535100;
+extern void *beLuaState_meta;
+extern void *beLuaInfo_meta;
 }
 extern "C" {
 void beLuaState_fieldInit(){
- void *meta=lbl_805350F8;
+ void *meta=beLuaState_meta;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804D1818,0x1);
  fn_800659C0(meta,lbl_804D181C,lbl_804D1820,lbl_804D1824,field);
 }
 void *beLuaInfo_getMeta(){
- if(!lbl_80535100 || !(reinterpret_cast<unsigned int *>(lbl_80535100)[0x24/4]&4)) fn_802D1AB4();
- return lbl_80535100;
+ if(!beLuaInfo_meta || !(reinterpret_cast<unsigned int *>(beLuaInfo_meta)[0x24/4]&4)) beLuaInfo_registerNow();
+ return beLuaInfo_meta;
 }
 }
 #pragma pop

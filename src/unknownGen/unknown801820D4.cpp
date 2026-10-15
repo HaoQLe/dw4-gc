@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805622A4;
+extern void *igObject_meta;
 }
 extern "C" {
 void *igObjectTraversal_virtual74(int p0){
@@ -18,6 +18,6 @@ void *igObjectTraversal_virtual74(int p0){
  return value1;
 }
 void igObjectTraversal_virtual6C(){}
-void *igObjectTraversal_virtual7C(){return lbl_805622A4;}
+void *igObjectTraversal_virtual7C(){return igObject_meta;}
 }
 #pragma pop

@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535FB8;
+extern void *beNDMWStatus_meta;
 }
 extern "C" {
-void *beNDMWStatus_virtual58(){return lbl_80535FB8;}
+void *beNDMWStatus_virtual58(){return beNDMWStatus_meta;}
 void *fn_80352968(int p0,int p1,int p2,int p3,int p4,int p5,int p6){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=(void *)p4;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p2;

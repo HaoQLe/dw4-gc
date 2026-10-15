@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_801B8CB0();
-extern void *lbl_80564C54;
+void igMultiResolutionMeshInstance_registerNow();
+extern void *igMultiResolutionMeshInstance_meta;
 }
 extern "C" {
 void *igMultiResolutionMeshInstance_getMeta(){
- if(!lbl_80564C54 || !(reinterpret_cast<unsigned int *>(lbl_80564C54)[0x24/4]&4)) fn_801B8CB0();
- return lbl_80564C54;
+ if(!igMultiResolutionMeshInstance_meta || !(reinterpret_cast<unsigned int *>(igMultiResolutionMeshInstance_meta)[0x24/4]&4)) igMultiResolutionMeshInstance_registerNow();
+ return igMultiResolutionMeshInstance_meta;
 }
 }
 #pragma pop

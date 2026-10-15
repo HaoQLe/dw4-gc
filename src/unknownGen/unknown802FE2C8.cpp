@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805351AC;
+extern void *beHitLandModelInfo_meta;
 }
 extern "C" {
-void *beHitLandModel_virtual80(){return lbl_805351AC;}
+void *beHitLandModel_virtual80(){return beHitLandModelInfo_meta;}
 }
 #pragma pop

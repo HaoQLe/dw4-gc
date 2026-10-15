@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013FFA0();
 void igObjectPropertyForNode_register();
-extern char lbl_8049DE6C[];
-extern char lbl_804A5998[];
-extern char lbl_804A5BE8[];
+extern char igObjectPropertyForSwitch_className[];
+extern char igObjectPropertyForSwitch_vtable[];
+extern char igObjectPropertyForNode_vtable[];
 extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F8D8[8];
-extern void *lbl_80563FBC;
+extern void *igObjectPropertyForSwitch_meta;
 void *igObjectPropertyForSwitch_getMeta();
 void *igObjectPropertyForSwitch_vtableRead();
-void fn_8013FEE4();
+void igObjectPropertyForSwitch_registerNow();
 void igObjectPropertyForSwitch_register();
 void *igObjectPropertyForSwitch_getMetaCall();
 }
@@ -35,16 +35,16 @@ struct UnknownGenObject8013FE18_0 : UnknownGenRoot8013FE18 {
  inline ~UnknownGenObject8013FE18_0(){unknown00=lbl_804A5C7C;}
 };
 struct UnknownGenObject8013FE18_1 : UnknownGenObject8013FE18_0 {
- inline ~UnknownGenObject8013FE18_1(){unknown00=lbl_804A5BE8;}
+ inline ~UnknownGenObject8013FE18_1(){unknown00=igObjectPropertyForNode_vtable;}
 };
 struct UnknownGenObject8013FE18 : UnknownGenObject8013FE18_1 {
  char unknown24[12];
- inline ~UnknownGenObject8013FE18(){unknown00=lbl_804A5998;}
+ inline ~UnknownGenObject8013FE18(){unknown00=igObjectPropertyForSwitch_vtable;}
 };
 extern "C" {
 void *igObjectPropertyForSwitch_getMeta(){
- if(!lbl_80563FBC || !(reinterpret_cast<unsigned int *>(lbl_80563FBC)[0x24/4]&4)) fn_8013FEE4();
- return lbl_80563FBC;
+ if(!igObjectPropertyForSwitch_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForSwitch_meta)[0x24/4]&4)) igObjectPropertyForSwitch_registerNow();
+ return igObjectPropertyForSwitch_meta;
 }
 void *igObjectPropertyForSwitch_vtableRead(){
  UnknownGenObject8013FE18 object;
@@ -53,16 +53,16 @@ void *igObjectPropertyForSwitch_vtableRead(){
  object.unknown00=lbl_804A6338;
  object.unknown00=lbl_804A5C7C;
  object.unknown20.value=0;
- object.unknown00=lbl_804A5BE8;
- object.unknown00=lbl_804A5998;
+ object.unknown00=igObjectPropertyForNode_vtable;
+ object.unknown00=igObjectPropertyForSwitch_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8013FEE4(){
- fn_80066188((int)igObjectPropertyForSwitch_register);
+void igObjectPropertyForSwitch_registerNow(){
+ meta_registerNow((int)igObjectPropertyForSwitch_register);
 }
 void igObjectPropertyForSwitch_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563FBC,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForSwitch_getMetaCall,(int)lbl_8049DE6C,44,(int)igObjectPropertyForSwitch_vtableRead,(int)fn_8013FFA0,0,(int)lbl_8055F8D8);
+ meta_registerClass(0,(int)&igObjectPropertyForSwitch_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForSwitch_getMetaCall,(int)igObjectPropertyForSwitch_className,44,(int)igObjectPropertyForSwitch_vtableRead,(int)fn_8013FFA0,0,(int)lbl_8055F8D8);
 }
 void *igObjectPropertyForSwitch_getMetaCall(){return igObjectPropertyForSwitch_getMeta();}
 }

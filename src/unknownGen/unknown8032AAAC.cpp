@@ -3,10 +3,10 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_80472460[];
-extern char lbl_8047650C[];
+extern char igInfo_vtable[];
+extern char igNamedObject_vtable[];
 extern char lbl_804DCD14[];
-extern char lbl_804E69FC[];
+extern char beNDMWStatusInfo_vtable[];
 }
 struct UnknownGenRoot8032AAAC {
  void *unknown00;
@@ -16,10 +16,10 @@ struct UnknownGenRoot8032AAAC {
 struct UnknownGenObject8032AAAC_0 : UnknownGenRoot8032AAAC {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject8032AAAC_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject8032AAAC_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject8032AAAC_1 : UnknownGenObject8032AAAC_0 {
- inline ~UnknownGenObject8032AAAC_1(){unknown00=lbl_80472460;}
+ inline ~UnknownGenObject8032AAAC_1(){unknown00=igInfo_vtable;}
 };
 struct UnknownGenObject8032AAAC_2 : UnknownGenObject8032AAAC_1 {
  char unknown0C[8];
@@ -29,18 +29,18 @@ struct UnknownGenObject8032AAAC_2 : UnknownGenObject8032AAAC_1 {
 };
 struct UnknownGenObject8032AAAC : UnknownGenObject8032AAAC_2 {
  char unknown1C[12];
- inline ~UnknownGenObject8032AAAC(){unknown00=lbl_804E69FC;}
+ inline ~UnknownGenObject8032AAAC(){unknown00=beNDMWStatusInfo_vtable;}
 };
 extern "C" {
 void *beNDMWStatusInfo_vtableRead(){
  UnknownGenObject8032AAAC object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
- object.unknown00=lbl_80472460;
+ object.unknown00=igInfo_vtable;
  object.unknown00=lbl_804DCD14;
  object.unknown14.value=0;
  object.unknown18.value=0;
- object.unknown00=lbl_804E69FC;
+ object.unknown00=beNDMWStatusInfo_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804D9EFC[];
+extern char beModelCtrlSubCom_vtable[];
 }
 struct UnknownGenRoot802C5334 {
  void *unknown00;
@@ -14,12 +14,12 @@ struct UnknownGenObject802C5334 : UnknownGenRoot802C5334 {
  char unknown04[4];
  UnknownGenRefMember unknown08;
  char unknown0C[4];
- inline ~UnknownGenObject802C5334(){unknown00=lbl_804D9EFC;}
+ inline ~UnknownGenObject802C5334(){unknown00=beModelCtrlSubCom_vtable;}
 };
 extern "C" {
 void *beModelCtrlSubCom_vtableRead(){
  UnknownGenObject802C5334 object;
- object.unknown00=lbl_804D9EFC;
+ object.unknown00=beModelCtrlSubCom_vtable;
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

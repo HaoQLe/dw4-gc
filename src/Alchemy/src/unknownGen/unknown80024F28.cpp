@@ -5,19 +5,19 @@ extern "C" {
 void arkRegister__Q33Gap4Core11igStringObjFv();
 void fn_80021B94();
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void igObjectList_register();
 void *igStringObjList_getMeta();
 void igStringObjList_vtableRead();
-extern char lbl_80463654[];
-extern char lbl_80476A30[];
+extern char igStringObjList_className[];
+extern char igStringObj_vtable[];
 extern char lbl_8055D0B0[8];
-extern void *lbl_805615A4;
-extern void *lbl_805615A8;
+extern void *igStringObjList_meta;
+extern void *igStringObj_meta;
 extern void *lbl_805621F4;
 void *igStringObjList_getMetaCall();
 }
@@ -28,25 +28,25 @@ struct UnknownGenObject80025064_0 {
 extern "C" {
 void igStringObjList_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_805615A4,(int)igObjectList_register,(int)fn_80024180,(int)igStringObjList_getMetaCall,(int)lbl_80463654,20,(int)igStringObjList_vtableRead,0,0,(int)lbl_8055D0B0);
+ meta_registerClass(0,(int)&igStringObjList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igStringObjList_getMetaCall,(int)igStringObjList_className,20,(int)igStringObjList_vtableRead,0,0,(int)lbl_8055D0B0);
 }
 void *igStringObjList_getMetaCall(){return igStringObjList_getMeta();}
-void *fn_80024FB4(void *object){
+void *igStringObj_create(void *object){
  arkRegister__Q33Gap4Core11igStringObjFv();
- return fn_8006546C(lbl_805615A8,object);
+ return meta_createInstance(igStringObj_meta,object);
 }
 void *fn_80024FEC(){
- if(!lbl_805615A8) lbl_805615A8=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805615A8;
+ if(!igStringObj_meta) igStringObj_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igStringObj_meta;
 }
 void *igStringObj_getMeta(){
- if(!lbl_805615A8 || !(reinterpret_cast<unsigned int *>(lbl_805615A8)[0x24/4]&4)) arkRegister__Q33Gap4Core11igStringObjFv();
- return lbl_805615A8;
+ if(!igStringObj_meta || !(reinterpret_cast<unsigned int *>(igStringObj_meta)[0x24/4]&4)) arkRegister__Q33Gap4Core11igStringObjFv();
+ return igStringObj_meta;
 }
 void *igStringObj_vtableRead(){
  UnknownGenObject80025064_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80476A30;
+ object.unknown00=igStringObj_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8033C8A8();
-extern void *lbl_805362F8;
+void beNDMWLoadIntf2ChrDataSel_registerNow();
+extern void *beNDMWLoadIntf2ChrDataSel_meta;
 }
 extern "C" {
 void *beNDMWLoadIntf2ChrDataSel_getMeta(){
- if(!lbl_805362F8 || !(reinterpret_cast<unsigned int *>(lbl_805362F8)[0x24/4]&4)) fn_8033C8A8();
- return lbl_805362F8;
+ if(!beNDMWLoadIntf2ChrDataSel_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadIntf2ChrDataSel_meta)[0x24/4]&4)) beNDMWLoadIntf2ChrDataSel_registerNow();
+ return beNDMWLoadIntf2ChrDataSel_meta;
 }
 }
 #pragma pop

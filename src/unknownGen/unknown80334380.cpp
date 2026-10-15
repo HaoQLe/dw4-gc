@@ -6,20 +6,20 @@ void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void *fn_80325BA4();
+void *beNDMWWindow_metaObject();
 extern char lbl_804E20F4[];
 extern char lbl_804E2100[];
 extern char lbl_804E210C[];
 extern char lbl_804E2118[];
-extern void *lbl_80535FB8;
+extern void *beNDMWStatus_meta;
 }
 extern "C" {
 void beNDMWStatus_fieldInit(){
- void *value0=lbl_80535FB8;
+ void *value0=beNDMWStatus_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E20F4,3);
  void *value2=fn_800658E4(value0,value1);
- void *value3=fn_80325BA4();
+ void *value3=beNDMWWindow_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  fn_800659C0(value0,lbl_804E2100,lbl_804E210C,lbl_804E2118,value1);
 }

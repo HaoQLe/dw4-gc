@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_8055CA5C;
+extern void *igViewMode_meta;
 }
 extern "C" {
-void *fn_802E170C(){return lbl_8055CA5C;}
+void *fn_802E170C(){return igViewMode_meta;}
 }
 #pragma pop

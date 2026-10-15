@@ -11,11 +11,11 @@ extern char lbl_804E1EFC[];
 extern char lbl_804E1F00[];
 extern char lbl_804E1F04[];
 extern char lbl_804E1F08[];
-extern void *lbl_80535F20;
+extern void *beNDMWStatusCtrlFlag_meta;
 }
 extern "C" {
 void beNDMWStatusCtrlFlag_fieldInit(){
- void *value0=lbl_80535F20;
+ void *value0=beNDMWStatusCtrlFlag_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1EFC,1);
  void *value2=fn_800658E4(value0,value1);

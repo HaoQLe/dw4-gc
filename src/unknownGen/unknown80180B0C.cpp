@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805647B0;
+extern void *igSwitch_meta;
 }
 extern "C" {
-void *igObjectPropertyForSwitch_virtual7C(){return lbl_805647B0;}
+void *igObjectPropertyForSwitch_virtual7C(){return igSwitch_meta;}
 }
 #pragma pop

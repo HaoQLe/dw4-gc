@@ -7,13 +7,13 @@ void fn_80045D54(void *,char *text){int count=strlen(text)-1;while(count>=0 && (
 unsigned char fn_80045DC0(Unknown800442F8Owner *object,Unknown800442F8Stream **value){
  char buffer[0x1000];unsigned char result=0;
  fn_80045D08(object);
- if(sscanf(object->unknown34,lbl_80468F7C,buffer)==1){object->unknown34+=strlen(buffer);*value=reinterpret_cast<Unknown800442F8Stream *>(fn_80024FB4(fn_80068430(object)));fn_80071F9C(*value,buffer);result=1;}
+ if(sscanf(object->unknown34,lbl_80468F7C,buffer)==1){object->unknown34+=strlen(buffer);*value=reinterpret_cast<Unknown800442F8Stream *>(igStringObj_create(fn_80068430(object)));fn_80071F9C(*value,buffer);result=1;}
  return result;
 }
 unsigned char fn_80045E54(Unknown800442F8Owner *object,Unknown800442F8Stream **value){
  char buffer[0x1000];unsigned char result=0;
  fn_80045D08(object);
- if(sscanf(object->unknown34,lbl_80468FC4,buffer)==1){object->unknown34+=strlen(buffer);fn_80045D54(object,buffer);*value=reinterpret_cast<Unknown800442F8Stream *>(fn_80024FB4(fn_80068430(object)));fn_80071F9C(*value,buffer);result=1;}
+ if(sscanf(object->unknown34,lbl_80468FC4,buffer)==1){object->unknown34+=strlen(buffer);fn_80045D54(object,buffer);*value=reinterpret_cast<Unknown800442F8Stream *>(igStringObj_create(fn_80068430(object)));fn_80071F9C(*value,buffer);result=1;}
  return result;
 }
 unsigned char fn_80045EF4(Unknown800442F8Owner *object,int *value){

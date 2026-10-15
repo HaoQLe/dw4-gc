@@ -2,24 +2,24 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void igOptStatistics_fieldInit();
 void igOptVisitObject_register();
-extern char lbl_8049D7D0[];
+extern char igOptStatistics_className[];
 extern char lbl_804A46AC[];
-extern char lbl_804A47D8[];
+extern char igOptStatistics_vtable[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F7B8[8];
-extern void *lbl_80563E6C;
+extern void *igOptStatistics_meta;
 void *igOptStatistics_getMeta();
 void *igOptStatistics_vtableRead();
-void fn_8013AD3C();
+void igOptStatistics_registerNow();
 void igOptStatistics_register();
 void *igOptStatistics_getMetaCall();
 }
@@ -43,12 +43,12 @@ struct UnknownGenObject8013AB84 : UnknownGenObject8013AB84_1 {
  char unknown30[16];
  UnknownGenRefMember unknown40;
  char unknown44[12];
- inline ~UnknownGenObject8013AB84(){unknown00=lbl_804A47D8;}
+ inline ~UnknownGenObject8013AB84(){unknown00=igOptStatistics_vtable;}
 };
 extern "C" {
 void *igOptStatistics_getMeta(){
- if(!lbl_80563E6C || !(reinterpret_cast<unsigned int *>(lbl_80563E6C)[0x24/4]&4)) fn_8013AD3C();
- return lbl_80563E6C;
+ if(!igOptStatistics_meta || !(reinterpret_cast<unsigned int *>(igOptStatistics_meta)[0x24/4]&4)) igOptStatistics_registerNow();
+ return igOptStatistics_meta;
 }
 void *igOptStatistics_vtableRead(){
  UnknownGenObject8013AB84 object;
@@ -59,17 +59,17 @@ void *igOptStatistics_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A47D8;
+ object.unknown00=igOptStatistics_vtable;
  object.unknown2C.value=0;
  object.unknown40.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8013AD3C(){
- fn_80066188((int)igOptStatistics_register);
+void igOptStatistics_registerNow(){
+ meta_registerNow((int)igOptStatistics_register);
 }
 void igOptStatistics_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563E6C,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igOptStatistics_getMetaCall,(int)lbl_8049D7D0,68,(int)igOptStatistics_vtableRead,(int)igOptStatistics_fieldInit,0,(int)lbl_8055F7B8);
+ meta_registerClass(0,(int)&igOptStatistics_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igOptStatistics_getMetaCall,(int)igOptStatistics_className,68,(int)igOptStatistics_vtableRead,(int)igOptStatistics_fieldInit,0,(int)lbl_8055F7B8);
 }
 void *igOptStatistics_getMetaCall(){return igOptStatistics_getMeta();}
 }

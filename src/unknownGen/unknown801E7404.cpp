@@ -4,7 +4,7 @@
 extern "C" {
 void *fn_80068430(void *);
 void fn_80069128(void *,void *);
-void *fn_800BB5E4(void *);
+void *igAttrList_create(void *);
 void *fn_800C37E4(void *,int);
 void fn_800C3CFC(void *,int);
 void fn_801E754C(void *);
@@ -180,7 +180,7 @@ void fn_801E7404(int p0,int p1){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>((void *)p0)+60)=1;
  if(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+32)){
   value1=fn_80068430((void *)p0);
-  value2=fn_800BB5E4(value1);
+  value2=igAttrList_create(value1);
   fn_80069128(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+64),value2);
   fn_80069128(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+68),value2);
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value2)+4);

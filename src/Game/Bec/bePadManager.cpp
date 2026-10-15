@@ -44,11 +44,11 @@ extern "C" {
 void fn_8028A398(igInsightCore *insight, bePadManager *manager);   // registers the manager
 void fn_8028A400(igInsightCore *insight, bePadManager *manager);   // unregisters the manager
 igObject *fn_8028A730(igInsightCore *insight, void *meta);          // the manager of a class
-extern char lbl_805346A8[];          // beSystem's metaobject pointer
-extern char lbl_8055C788[];          // igViewerSceneInfoManager's metaobject pointer
+extern char beSystem_meta[];          // beSystem's metaobject pointer
+extern char igViewerSceneInfoManager_meta[];          // igViewerSceneInfoManager's metaobject pointer
 extern char lbl_80562258[];          // this file's default pool source (type unknown)
-extern char lbl_80534AAC[];          // bePadManager's metaobject pointer
-bePadData *fn_802C2708(void *pool);  // creates a bePadData in pool
+extern char bePadManager_meta[];          // bePadManager's metaobject pointer
+bePadData *bePadData_create(void *pool);  // creates a bePadData in pool
 void fn_80069128(void *list, void *object);   // appends to an object list
 void fn_80118518(igEventDispatcher *, void *receiver, void *windowResizeReceiver);
 void fn_801184C4(igEventDispatcher *, void *receiver);
@@ -84,12 +84,12 @@ void bePadManager_virtual60(bePadManager *self)
 // controller-button hot keys (fn_8011B7BC removes or unbinds the bindings of one button).
 void bePadManager_virtual64(bePadManager *self)
 {
-    beSystem *system = static_cast<beSystem *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(lbl_805346A8)));
+    beSystem *system = static_cast<beSystem *>(fn_8028A730(self->_insight, *reinterpret_cast<void **>(beSystem_meta)));
     if (system) addRef(system);
     if (self->_system) release(self->_system);
     self->_system = system;
     for (int i = 0; i < 5; i++) {
-        Ref<bePadData> pad(fn_802C2708(poolFor(self, lbl_80562258)), Ref<bePadData>::adopt);
+        Ref<bePadData> pad(bePadData_create(poolFor(self, lbl_80562258)), Ref<bePadData>::adopt);
         fn_80069128(self->_padList, pad);
     }
     igEventDispatcher *dispatcher = self->_insight->_dispatcher;
@@ -97,7 +97,7 @@ void bePadManager_virtual64(bePadManager *self)
     fn_801184C4(dispatcher, self->_kbReceiver);
     igHotKeyEventReceiver *hotKeys;
     igViewerSceneInfoManager *viewer = static_cast<igViewerSceneInfoManager *>(
-        fn_8028A730(self->_insight, *reinterpret_cast<void **>(lbl_8055C788)));
+        fn_8028A730(self->_insight, *reinterpret_cast<void **>(igViewerSceneInfoManager_meta)));
     hotKeys = viewer->_hotKeyReceiver;
     fn_8011B7BC(hotKeys, 15);
     fn_8011B7BC(hotKeys, 3);
@@ -161,7 +161,7 @@ bePadData *bePadManager_getPad(bePadManager *self, int player)
 // The class's metaobject.
 void *bePadManager_virtual58(bePadManager *)
 {
-    return *reinterpret_cast<void **>(lbl_80534AAC);
+    return *reinterpret_cast<void **>(bePadManager_meta);
 }
 
 }

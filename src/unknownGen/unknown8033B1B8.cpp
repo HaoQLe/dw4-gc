@@ -4,42 +4,42 @@
 extern "C" {
 void *beNDMWMdlEnemyInfoWork_getMeta();
 void beNDMWMdlPEBaseInfoWork_register();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80339484();
 void fn_8033B0CC();
-void fn_8033B470();
-extern char lbl_80454754[];
-extern char lbl_8053622C[];
-extern void *lbl_80536230;
+void beNDMWMdlEffect_registerNow();
+extern char beNDMWMdlEnemyInfoWork_className[];
+extern char beNDMWMdlEnemyInfoWork_meta[];
+extern void *beNDMWMdlEffect_meta;
 extern void *lbl_805621F4;
 void beNDMWMdlEnemyInfoWork_register();
 void *beNDMWMdlEnemyInfoWork_getMetaCall();
 }
 extern "C" {
-void fn_8033B1B8(){
- fn_80066188((int)beNDMWMdlEnemyInfoWork_register);
+void beNDMWMdlEnemyInfoWork_registerNow(){
+ meta_registerNow((int)beNDMWMdlEnemyInfoWork_register);
 }
 void beNDMWMdlEnemyInfoWork_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_8053622C,(int)beNDMWMdlPEBaseInfoWork_register,(int)fn_80339484,(int)beNDMWMdlEnemyInfoWork_getMetaCall,(int)lbl_80454754,276,(int)fn_8033B0CC,0,0,0);
+ meta_registerClass(0,(int)beNDMWMdlEnemyInfoWork_meta,(int)beNDMWMdlPEBaseInfoWork_register,(int)fn_80339484,(int)beNDMWMdlEnemyInfoWork_getMetaCall,(int)beNDMWMdlEnemyInfoWork_className,276,(int)fn_8033B0CC,0,0,0);
 }
 void *beNDMWMdlEnemyInfoWork_getMetaCall(){return beNDMWMdlEnemyInfoWork_getMeta();}
-void *fn_8033B26C(void *object){
- fn_8033B470();
- return fn_8006546C(lbl_80536230,object);
+void *beNDMWMdlEffect_create(void *object){
+ beNDMWMdlEffect_registerNow();
+ return meta_createInstance(beNDMWMdlEffect_meta,object);
 }
-void *fn_8033B2AC(){
- if(!lbl_80536230) lbl_80536230=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80536230;
+void *beNDMWMdlEffect_metaObject(){
+ if(!beNDMWMdlEffect_meta) beNDMWMdlEffect_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beNDMWMdlEffect_meta;
 }
 void *beNDMWMdlEffect_getMeta(){
- if(!lbl_80536230 || !(reinterpret_cast<unsigned int *>(lbl_80536230)[0x24/4]&4)) fn_8033B470();
- return lbl_80536230;
+ if(!beNDMWMdlEffect_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlEffect_meta)[0x24/4]&4)) beNDMWMdlEffect_registerNow();
+ return beNDMWMdlEffect_meta;
 }
 }
 #pragma pop

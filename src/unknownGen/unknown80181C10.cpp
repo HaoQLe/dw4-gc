@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805652BC;
+extern void *igBlendMatrixSelect_meta;
 }
 extern "C" {
-void *igObjectPropertyForBlendMatrixSelect_virtual7C(){return lbl_805652BC;}
+void *igObjectPropertyForBlendMatrixSelect_virtual7C(){return igBlendMatrixSelect_meta;}
 }
 #pragma pop

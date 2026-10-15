@@ -12,11 +12,11 @@ extern char lbl_804CF670[];
 extern char lbl_804CF67C[];
 extern char lbl_804CF688[];
 extern char lbl_804CF694[];
-extern void *lbl_80534798;
+extern void *beShadow01Info_meta;
 }
 extern "C" {
 void beShadow01Info_fieldInit(){
- void *value0=lbl_80534798;
+ void *value0=beShadow01Info_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF670,3);
  void *value2=fn_800658E4(value0,value1);

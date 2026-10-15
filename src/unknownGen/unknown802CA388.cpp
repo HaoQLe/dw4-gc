@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
-extern char lbl_804D9400[];
+extern char igNamedObject_vtable[];
+extern char beModelCtrlAIMap_vtable[];
 }
 struct UnknownGenRoot802CA388 {
  void *unknown00;
@@ -14,7 +14,7 @@ struct UnknownGenRoot802CA388 {
 struct UnknownGenObject802CA388_0 : UnknownGenRoot802CA388 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject802CA388_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject802CA388_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject802CA388 : UnknownGenObject802CA388_0 {
  char unknown0C[16];
@@ -25,14 +25,14 @@ struct UnknownGenObject802CA388 : UnknownGenObject802CA388_0 {
  UnknownGenString unknown2C;
  UnknownGenString unknown30;
  char unknown34[4];
- inline ~UnknownGenObject802CA388(){unknown00=lbl_804D9400;}
+ inline ~UnknownGenObject802CA388(){unknown00=beModelCtrlAIMap_vtable;}
 };
 extern "C" {
 void *beModelCtrlAIMap_vtableRead(){
  UnknownGenObject802CA388 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
- object.unknown00=lbl_804D9400;
+ object.unknown00=beModelCtrlAIMap_vtable;
  object.unknown1C.value=0;
  object.unknown20.value=0;
  object.unknown24.value=0;

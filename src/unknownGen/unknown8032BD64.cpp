@@ -2,37 +2,37 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_8032C140();
-void *fn_8034365C();
+void beNDMWShopCtrlXdataChip_registerNow();
+void *beNDMWItemBaseList_metaObject();
 extern char lbl_804E1B2C[];
 extern char lbl_804E1B30[];
 extern char lbl_804E1B34[];
 extern char lbl_804E1B38[];
-extern void *lbl_80535DF8;
-extern void *lbl_80535E00;
+extern void *beNDMWShopDevice_meta;
+extern void *beNDMWShopCtrlXdataChip_meta;
 }
 extern "C" {
 void beNDMWShopDevice_fieldInit(){
- void *value0=lbl_80535DF8;
+ void *value0=beNDMWShopDevice_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1B2C,1);
  void *value2=fn_800658E4(value0,value1);
- void *value3=fn_8034365C();
+ void *value3=beNDMWItemBaseList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  fn_800659C0(value0,lbl_804E1B30,lbl_804E1B34,lbl_804E1B38,value1);
 }
-void *fn_8032BE04(void *object){
- fn_8032C140();
- return fn_8006546C(lbl_80535E00,object);
+void *beNDMWShopCtrlXdataChip_create(void *object){
+ beNDMWShopCtrlXdataChip_registerNow();
+ return meta_createInstance(beNDMWShopCtrlXdataChip_meta,object);
 }
 void *beNDMWShopCtrlXdataChip_getMeta(){
- if(!lbl_80535E00 || !(reinterpret_cast<unsigned int *>(lbl_80535E00)[0x24/4]&4)) fn_8032C140();
- return lbl_80535E00;
+ if(!beNDMWShopCtrlXdataChip_meta || !(reinterpret_cast<unsigned int *>(beNDMWShopCtrlXdataChip_meta)[0x24/4]&4)) beNDMWShopCtrlXdataChip_registerNow();
+ return beNDMWShopCtrlXdataChip_meta;
 }
 }
 #pragma pop

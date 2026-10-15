@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void __dl__FPv(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_8011148C();
 void fn_801AA6DC();
 void igGroup_register();
@@ -12,8 +12,8 @@ void igSelfShadowShader_fieldInit();
 void *igSelfShadowShader_getMeta();
 void igSelfShadowShader_vtableRead();
 extern char lbl_804ACE04[];
-extern char lbl_804ACE48[];
-extern void *lbl_80564968;
+extern char igSelfShadowShader_className[];
+extern void *igSelfShadowShader_meta;
 void igSelfShadowShader_register();
 void *igSelfShadowShader_getMetaCall();
 }
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_801B3624(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_801B3698(){
- fn_80066188((int)igSelfShadowShader_register);
+void igSelfShadowShader_registerNow(){
+ meta_registerNow((int)igSelfShadowShader_register);
 }
 void igSelfShadowShader_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564968,(int)igGroup_register,(int)fn_8011148C,(int)igSelfShadowShader_getMetaCall,(int)lbl_804ACE48,232,(int)igSelfShadowShader_vtableRead,(int)igSelfShadowShader_fieldInit,0,(int)lbl_804ACE04);
+ meta_registerClass(0,(int)&igSelfShadowShader_meta,(int)igGroup_register,(int)fn_8011148C,(int)igSelfShadowShader_getMetaCall,(int)igSelfShadowShader_className,232,(int)igSelfShadowShader_vtableRead,(int)igSelfShadowShader_fieldInit,0,(int)lbl_804ACE04);
 }
 void *igSelfShadowShader_getMetaCall(){return igSelfShadowShader_getMeta();}
 }

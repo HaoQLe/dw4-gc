@@ -3,20 +3,20 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void igQueue_register();
 void *igStandardQueue_fieldInit();
 void *igStandardQueue_getMetaCall();
-extern char lbl_804685A0[];
-extern char lbl_8046F87C[];
+extern char igStandardQueue_className[];
+extern char igStandardQueue_vtable[];
 extern char lbl_8047156C[];
 extern char lbl_8055D700[8];
-extern void *lbl_805616A8;
-extern void *lbl_80562048;
+extern void *igQueue_meta;
+extern void *igStandardQueue_meta;
 void *igStandardQueue_vtableRead();
-void fn_8003AC74();
+void igStandardQueue_registerNow();
 void igStandardQueue_register();
 void *igStandardQueue_parentMeta();
 }
@@ -35,30 +35,30 @@ struct UnknownGenObject8003AB24 : UnknownGenObject8003AB24_0 {
  UnknownGenRefMember unknown10;
  UnknownGenRefMember unknown14;
  char unknown18[32];
- inline ~UnknownGenObject8003AB24(){unknown00=lbl_8046F87C;}
+ inline ~UnknownGenObject8003AB24(){unknown00=igStandardQueue_vtable;}
 };
 extern "C" {
 void *igStandardQueue_getMeta(){
- if(!lbl_80562048 || !(reinterpret_cast<unsigned int *>(lbl_80562048)[0x24/4]&4)) fn_8003AC74();
- return lbl_80562048;
+ if(!igStandardQueue_meta || !(reinterpret_cast<unsigned int *>(igStandardQueue_meta)[0x24/4]&4)) igStandardQueue_registerNow();
+ return igStandardQueue_meta;
 }
 void *igStandardQueue_vtableRead(){
  UnknownGenObject8003AB24 object;
  object.unknown00=lbl_8047156C;
  object.unknown08.value=0;
- object.unknown00=lbl_8046F87C;
+ object.unknown00=igStandardQueue_vtable;
  object.unknown0C.value=0;
  object.unknown10.value=0;
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8003AC74(){
- fn_80066188((int)igStandardQueue_register);
+void igStandardQueue_registerNow(){
+ meta_registerNow((int)igStandardQueue_register);
 }
 void igStandardQueue_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80562048,(int)igQueue_register,(int)igStandardQueue_parentMeta,(int)igStandardQueue_getMetaCall,(int)lbl_804685A0,44,(int)igStandardQueue_vtableRead,(int)igStandardQueue_fieldInit,0,(int)lbl_8055D700);
+ meta_registerClass(0,(int)&igStandardQueue_meta,(int)igQueue_register,(int)igStandardQueue_parentMeta,(int)igStandardQueue_getMetaCall,(int)igStandardQueue_className,44,(int)igStandardQueue_vtableRead,(int)igStandardQueue_fieldInit,0,(int)lbl_8055D700);
 }
-void *igStandardQueue_parentMeta(){return lbl_805616A8;}
+void *igStandardQueue_parentMeta(){return igQueue_meta;}
 }
 #pragma pop

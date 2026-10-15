@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805626B0;
+extern void *igPointSpriteSizeAttr_meta;
 }
 extern "C" {
-void *igPointSpriteSizeAttr_virtual58(){return lbl_805626B0;}
+void *igPointSpriteSizeAttr_virtual58(){return igPointSpriteSizeAttr_meta;}
 }
 #pragma pop

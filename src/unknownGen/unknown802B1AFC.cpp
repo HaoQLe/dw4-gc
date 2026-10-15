@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802B2428();
-extern void *lbl_80534498;
+void libBecRuntimePlugin_registerNow();
+extern void *libBecRuntimePlugin_meta;
 }
 extern "C" {
 void *libBecRuntimePlugin_getMeta(){
- if(!lbl_80534498 || !(reinterpret_cast<unsigned int *>(lbl_80534498)[0x24/4]&4)) fn_802B2428();
- return lbl_80534498;
+ if(!libBecRuntimePlugin_meta || !(reinterpret_cast<unsigned int *>(libBecRuntimePlugin_meta)[0x24/4]&4)) libBecRuntimePlugin_registerNow();
+ return libBecRuntimePlugin_meta;
 }
 }
 #pragma pop

@@ -11,11 +11,11 @@ extern char lbl_804CF148[];
 extern char lbl_804CF158[];
 extern char lbl_804CF168[];
 extern char lbl_804CF178[];
-extern void *lbl_8053464C;
+extern void *beTimerData_meta;
 }
 extern "C" {
 void beTimerData_fieldInit(){
- void *value0=lbl_8053464C;
+ void *value0=beTimerData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF148,4);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));

@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80066DFC(void *);
-extern char lbl_804CCBF0[];
+extern char igCollisionGrid_vtable[];
 }
 extern "C" {
 void *fn_8028D884(int p0,int p1){
@@ -24,7 +24,7 @@ void *fn_8028D884(int p0,int p1){
  void *value14;
  void *value15;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804CCBF0;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igCollisionGrid_vtable;
   if((int)(p0+56)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56);
    if(value0){

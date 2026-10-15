@@ -6,7 +6,7 @@ extern "C" {
 void fn_80041F84(void *,void *,void *);
 void fn_800424E8(void *,void *,void *,void *);
 void fn_800425BC(void *);
-extern void *lbl_80515C70;
+extern void *igSerialScheduler_meta;
 }
 extern "C" {
 void igSerialScheduler_virtual6C(int p0,int p1,int p2,int p3,int p4,int p5){
@@ -19,6 +19,6 @@ void igSerialScheduler_virtual70(int p0,int p1,int p2){
 void igSerialScheduler_virtual74(int p0){
  fn_800425BC(reinterpret_cast<Meta::igSerialScheduler *>((void *)p0)->_managerList);
 }
-void *igSerialScheduler_virtual58(){return lbl_80515C70;}
+void *igSerialScheduler_virtual58(){return igSerialScheduler_meta;}
 }
 #pragma pop

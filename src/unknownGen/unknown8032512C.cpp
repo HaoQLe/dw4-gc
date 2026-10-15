@@ -5,7 +5,7 @@ extern "C" {
 void fn_8006665C(void *);
 void fn_803251E8(void *,short);
 extern char lbl_804CDE20[];
-extern char lbl_804E6DB0[];
+extern char libNdmwRuntimePlugin_vtable[];
 }
 struct UnknownGenObject8032512C {
  void *unknown00;
@@ -38,7 +38,7 @@ void *libNdmwRuntimePlugin_vtableRead(){
  UnknownGenObject8032512C object;
  fn_8006665C(&object);
  object.unknown00=lbl_804CDE20;
- object.unknown00=lbl_804E6DB0;
+ object.unknown00=libNdmwRuntimePlugin_vtable;
  object.unknown08=0;
  object.unknown0C=0;
  object.unknown10=0;

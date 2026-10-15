@@ -93,7 +93,7 @@ extern "C" {
     void fn_800667D4(void *);
     Unknown80042824Value *fn_80042B1C(Unknown80042824 *, int);
     Unknown80042824Value *fn_80069724(void *, void *);
-    extern void *lbl_80561D10, *lbl_80561710, *lbl_805616E8;
+    extern void *lbl_80561D10, *igObjectDirEntry_meta, *igObjectRefMetaField_meta;
     void fn_80066E1C(void *);
     unsigned char fn_80068128(void *, void *);
     int fn_80065D88(void *);

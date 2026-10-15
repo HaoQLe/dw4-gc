@@ -4,7 +4,7 @@
 extern "C" {
 void *fn_80042B1C(void *,void *);
 void *fn_80068128(void *,void *);
-extern void *lbl_80561710;
+extern void *igObjectDirEntry_meta;
 }
 class UnknownGenV80184BCC_0 {
 public:
@@ -172,7 +172,7 @@ void *fn_80184BCC(int p0,int p1){
    }
    value4=fn_80042B1C((void *)p1,value2);
    if((int)(int)value4!=0){
-    value5=fn_80068128(value4,lbl_80561710);
+    value5=fn_80068128(value4,igObjectDirEntry_meta);
     if((unsigned char)(int)value5){
      value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value4)+24);
      if(value1){

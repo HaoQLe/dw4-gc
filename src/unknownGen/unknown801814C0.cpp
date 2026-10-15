@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805655A0;
+extern void *igActor_meta;
 }
 extern "C" {
-void *igObjectPropertyForActor_virtual7C(){return lbl_805655A0;}
+void *igObjectPropertyForActor_virtual7C(){return igActor_meta;}
 }
 #pragma pop

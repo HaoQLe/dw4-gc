@@ -4,7 +4,7 @@
 extern "C" {
 void fn_8006665C(void *);
 extern char lbl_804D9E80[];
-extern char lbl_804DEF48[];
+extern char beModelCtrlSCSound_vtable[];
 }
 struct UnknownGenRoot802C55B8 {
  void *unknown00;
@@ -15,13 +15,13 @@ struct UnknownGenObject802C55B8 : UnknownGenRoot802C55B8 {
  char unknown04[16];
  UnknownGenString unknown14;
  char unknown18[8];
- inline ~UnknownGenObject802C55B8(){unknown00=lbl_804DEF48;}
+ inline ~UnknownGenObject802C55B8(){unknown00=beModelCtrlSCSound_vtable;}
 };
 extern "C" {
 void *beModelCtrlSCSound_vtableRead(){
  UnknownGenObject802C55B8 object;
  object.unknown00=lbl_804D9E80;
- object.unknown00=lbl_804DEF48;
+ object.unknown00=beModelCtrlSCSound_vtable;
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

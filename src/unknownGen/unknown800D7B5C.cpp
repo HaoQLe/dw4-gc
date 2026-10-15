@@ -2,23 +2,23 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
 void fn_800D7D34();
 void *igGamecubeScissorExt_getMetaCall();
 void igScissorExt_register();
 extern char lbl_80473000[];
-extern char lbl_8048E4A4[];
-extern char lbl_80491580[];
+extern char igGamecubeScissorExt_className[];
+extern char igGamecubeScissorExt_vtable[];
 extern char lbl_80492D58[];
 extern char lbl_80493EEC[];
 extern char lbl_8055EDF8[8];
-extern void *lbl_80562E14;
-extern void *lbl_805633E4;
+extern void *igScissorExt_meta;
+extern void *igGamecubeScissorExt_meta;
 void *igGamecubeScissorExt_vtableRead();
-void fn_800D7C90();
+void igGamecubeScissorExt_registerNow();
 void igGamecubeScissorExt_register();
 void *igGamecubeScissorExt_parentMeta();
 }
@@ -42,12 +42,12 @@ struct UnknownGenObject800D7B98_2 : UnknownGenObject800D7B98_1 {
 };
 struct UnknownGenObject800D7B98 : UnknownGenObject800D7B98_2 {
  char unknown14[28];
- inline ~UnknownGenObject800D7B98(){unknown00=lbl_80491580;}
+ inline ~UnknownGenObject800D7B98(){unknown00=igGamecubeScissorExt_vtable;}
 };
 extern "C" {
 void *igGamecubeScissorExt_getMeta(){
- if(!lbl_805633E4 || !(reinterpret_cast<unsigned int *>(lbl_805633E4)[0x24/4]&4)) fn_800D7C90();
- return lbl_805633E4;
+ if(!igGamecubeScissorExt_meta || !(reinterpret_cast<unsigned int *>(igGamecubeScissorExt_meta)[0x24/4]&4)) igGamecubeScissorExt_registerNow();
+ return igGamecubeScissorExt_meta;
 }
 void *igGamecubeScissorExt_vtableRead(){
  UnknownGenObject800D7B98 object;
@@ -56,16 +56,16 @@ void *igGamecubeScissorExt_vtableRead(){
  object.unknown10.value=0;
  object.unknown00=lbl_80493EEC;
  object.unknown00=lbl_80492D58;
- object.unknown00=lbl_80491580;
+ object.unknown00=igGamecubeScissorExt_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800D7C90(){
- fn_80066188((int)igGamecubeScissorExt_register);
+void igGamecubeScissorExt_registerNow(){
+ meta_registerNow((int)igGamecubeScissorExt_register);
 }
 void igGamecubeScissorExt_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_805633E4,(int)igScissorExt_register,(int)igGamecubeScissorExt_parentMeta,(int)igGamecubeScissorExt_getMetaCall,(int)lbl_8048E4A4,44,(int)igGamecubeScissorExt_vtableRead,(int)fn_800D7D34,0,(int)lbl_8055EDF8);
+ meta_registerClass(0,(int)&igGamecubeScissorExt_meta,(int)igScissorExt_register,(int)igGamecubeScissorExt_parentMeta,(int)igGamecubeScissorExt_getMetaCall,(int)igGamecubeScissorExt_className,44,(int)igGamecubeScissorExt_vtableRead,(int)fn_800D7D34,0,(int)lbl_8055EDF8);
 }
-void *igGamecubeScissorExt_parentMeta(){return lbl_80562E14;}
+void *igGamecubeScissorExt_parentMeta(){return igScissorExt_meta;}
 }
 #pragma pop

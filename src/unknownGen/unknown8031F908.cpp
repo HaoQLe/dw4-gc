@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805354C4;
+extern void *beDBManager_meta;
 }
 extern "C" {
-void *beDBManager_virtual58(){return lbl_805354C4;}
+void *beDBManager_virtual58(){return beDBManager_meta;}
 }
 #pragma pop

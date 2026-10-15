@@ -2,30 +2,30 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
 void fn_801BE5D8();
 void *igInterpretedShader_getMeta();
 void igInterpretedShader_vtableRead();
 void igSimpleShader_register();
-extern char lbl_804AF354[];
+extern char igInterpretedShader_className[];
 extern char lbl_80560594[8];
-extern void *lbl_805648BC;
-extern void *lbl_80564E7C;
+extern void *igSimpleShader_meta;
+extern void *igInterpretedShader_meta;
 void igInterpretedShader_register();
 void *igInterpretedShader_getMetaCall();
 void *igInterpretedShader_parentMeta();
 }
 extern "C" {
-void fn_801BE514(){
- fn_80066188((int)igInterpretedShader_register);
+void igInterpretedShader_registerNow(){
+ meta_registerNow((int)igInterpretedShader_register);
 }
 void igInterpretedShader_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564E7C,(int)igSimpleShader_register,(int)igInterpretedShader_parentMeta,(int)igInterpretedShader_getMetaCall,(int)lbl_804AF354,52,(int)igInterpretedShader_vtableRead,(int)fn_801BE5D8,0,(int)lbl_80560594);
+ meta_registerClass(0,(int)&igInterpretedShader_meta,(int)igSimpleShader_register,(int)igInterpretedShader_parentMeta,(int)igInterpretedShader_getMetaCall,(int)igInterpretedShader_className,52,(int)igInterpretedShader_vtableRead,(int)fn_801BE5D8,0,(int)lbl_80560594);
 }
 void *igInterpretedShader_getMetaCall(){return igInterpretedShader_getMeta();}
-void *igInterpretedShader_parentMeta(){return lbl_805648BC;}
+void *igInterpretedShader_parentMeta(){return igSimpleShader_meta;}
 }
 #pragma pop

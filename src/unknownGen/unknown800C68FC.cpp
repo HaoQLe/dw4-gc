@@ -3,12 +3,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80562880;
-extern void *lbl_80562888;
-extern void *lbl_805628B0;
-extern void *lbl_805628B4;
-extern void *lbl_805628BC;
-extern void *lbl_805628D4;
+extern void *igGeometryAttr1_5_meta;
+extern void *igGeometryAttr_meta;
+extern void *igGenericAttrDefaultManager_meta;
+extern void *igFogStateAttr_meta;
+extern void *igFogAttr_meta;
+extern void *igFloatConstantAttr_meta;
 }
 class UnknownGenV800C6950_0 {
 public:
@@ -53,7 +53,7 @@ void *igGeometryAttr2_virtual88(int p0,int p1){
  return value1;
 }
 void igGeometryAttr2_virtual68(){}
-void *igGeometryAttr1_5_virtual58(){return lbl_80562880;}
+void *igGeometryAttr1_5_virtual58(){return igGeometryAttr1_5_meta;}
 void *igGeometryAttr1_5_virtualAC(int p0,int p1){
  void *value0;
  void *value1;
@@ -69,10 +69,10 @@ void *igGeometryAttr1_5_virtualAC(int p0,int p1){
 void igGeometryAttr1_5_virtualA4(int p0){
  reinterpret_cast<UnknownGenV800C6950_0 *>(reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_stripLengths)->s6C();
 }
-void *fn_800C6980(){return lbl_80562888;}
-void *igGenericAttrDefaultManager_virtual58(){return lbl_805628B0;}
-void *igFogStateAttr_virtual58(){return lbl_805628B4;}
-void *igFogAttr_virtual58(){return lbl_805628BC;}
-void *igFloatConstantAttr_virtual58(){return lbl_805628D4;}
+void *fn_800C6980(){return igGeometryAttr_meta;}
+void *igGenericAttrDefaultManager_virtual58(){return igGenericAttrDefaultManager_meta;}
+void *igFogStateAttr_virtual58(){return igFogStateAttr_meta;}
+void *igFogAttr_virtual58(){return igFogAttr_meta;}
+void *igFloatConstantAttr_virtual58(){return igFloatConstantAttr_meta;}
 }
 #pragma pop

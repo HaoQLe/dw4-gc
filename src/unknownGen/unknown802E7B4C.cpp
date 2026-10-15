@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void fn_8003EC68(void *,int);
 void fn_8004D4BC(void *,float);
 void *fn_800607F4(void *);
@@ -11,20 +11,20 @@ void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
 void *fn_800D0068();
-void fn_802E7FDC();
+void ParticleTimer_registerNow();
 extern char lbl_8041D5B0[];
 extern char lbl_8041E6AC[];
 extern char lbl_804D3210[];
 extern char lbl_804D323C[];
 extern char lbl_804D3268[];
 extern char lbl_804D3294[];
-extern void *lbl_80535838;
-extern void *lbl_80535868;
+extern void *ParticleArray_meta;
+extern void *ParticleTimer_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void ParticleArray_fieldInit(){
- void *value0=lbl_80535838;
+ void *value0=ParticleArray_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D3210,11);
  void *value2=fn_800658E4(value0,value1);
@@ -51,13 +51,13 @@ void ParticleArray_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value12)+38)=0;
  fn_800659C0(value0,lbl_804D323C,lbl_804D3268,lbl_804D3294,value1);
 }
-void *fn_802E7CAC(){
- if(!lbl_80535868) lbl_80535868=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80535868;
+void *ParticleTimer_metaObject(){
+ if(!ParticleTimer_meta) ParticleTimer_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return ParticleTimer_meta;
 }
 void *ParticleTimer_getMeta(){
- if(!lbl_80535868 || !(reinterpret_cast<unsigned int *>(lbl_80535868)[0x24/4]&4)) fn_802E7FDC();
- return lbl_80535868;
+ if(!ParticleTimer_meta || !(reinterpret_cast<unsigned int *>(ParticleTimer_meta)[0x24/4]&4)) ParticleTimer_registerNow();
+ return ParticleTimer_meta;
 }
 }
 #pragma pop

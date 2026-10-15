@@ -3,8 +3,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CE2F8();
 void *igGamecubeImageConvert_getMetaCall();
@@ -16,35 +16,35 @@ void igImageConvert_register();
 void *igIndexArray_getMetaCall();
 void igIndexArray_register();
 void igMemoryImage_register();
-extern char lbl_8048ED44[];
-extern char lbl_8048ED5C[];
-extern char lbl_8048ED8C[];
-extern char lbl_804914EC[];
-extern char lbl_8049168C[];
-extern char lbl_80491718[];
+extern char igGamecubeIndexArray_className[];
+extern char igGamecubeImageConvert_className[];
+extern char igGamecubeImage_className[];
+extern char igGamecubeIndexArray_vtable[];
+extern char igGamecubeImageConvert_vtable[];
+extern char igGamecubeImage_vtable[];
 extern char lbl_804926E0[];
 extern char lbl_804927D4[];
 extern char lbl_80492B34[];
 extern char lbl_80492C48[];
 extern char lbl_804930AC[];
-extern void *lbl_80562F40;
-extern void *lbl_80562F5C;
-extern void *lbl_80562F70;
-extern void *lbl_80563460;
-extern void *lbl_80563464;
-extern void *lbl_8056346C;
+extern void *igIndexArray_meta;
+extern void *igImageConvert_meta;
+extern void *igMemoryImage_meta;
+extern void *igGamecubeIndexArray_meta;
+extern void *igGamecubeImageConvert_meta;
+extern void *igGamecubeImage_meta;
 void *igGamecubeIndexArray_vtableRead();
-void fn_800D863C();
+void igGamecubeIndexArray_registerNow();
 void igGamecubeIndexArray_register();
 void *igGamecubeIndexArray_parentMeta();
 void *fn_800D86DC();
 void *igGamecubeImageConvert_vtableRead();
-void fn_800D8784();
+void igGamecubeImageConvert_registerNow();
 void igGamecubeImageConvert_register();
 void *igGamecubeImageConvert_parentMeta();
 void *fn_800D8824();
 void *igGamecubeImage_vtableRead();
-void fn_800D895C();
+void igGamecubeImage_registerNow();
 void igGamecubeImage_register();
 void *igGamecubeImage_parentMeta();
 }
@@ -60,7 +60,7 @@ struct UnknownGenObject800D85A4_0 : UnknownGenRoot800D85A4 {
 };
 struct UnknownGenObject800D85A4 : UnknownGenObject800D85A4_0 {
  char unknown0C[20];
- inline ~UnknownGenObject800D85A4(){unknown00=lbl_804914EC;}
+ inline ~UnknownGenObject800D85A4(){unknown00=igGamecubeIndexArray_vtable;}
 };
 struct UnknownGenObject800D872C_0 {
  void *unknown00;
@@ -83,61 +83,61 @@ struct UnknownGenObject800D8874_1 : UnknownGenObject800D8874_0 {
 };
 struct UnknownGenObject800D8874 : UnknownGenObject800D8874_1 {
  char unknown5C[132];
- inline ~UnknownGenObject800D8874(){unknown00=lbl_80491718;}
+ inline ~UnknownGenObject800D8874(){unknown00=igGamecubeImage_vtable;}
 };
 extern "C" {
 void *igGamecubeIndexArray_getMeta(){
- if(!lbl_80563460 || !(reinterpret_cast<unsigned int *>(lbl_80563460)[0x24/4]&4)) fn_800D863C();
- return lbl_80563460;
+ if(!igGamecubeIndexArray_meta || !(reinterpret_cast<unsigned int *>(igGamecubeIndexArray_meta)[0x24/4]&4)) igGamecubeIndexArray_registerNow();
+ return igGamecubeIndexArray_meta;
 }
 void *igGamecubeIndexArray_vtableRead(){
  UnknownGenObject800D85A4 object;
  object.unknown00=lbl_804926E0;
  object.unknown08.value=0;
- object.unknown00=lbl_804914EC;
+ object.unknown00=igGamecubeIndexArray_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800D863C(){
- fn_80066188((int)igGamecubeIndexArray_register);
+void igGamecubeIndexArray_registerNow(){
+ meta_registerNow((int)igGamecubeIndexArray_register);
 }
 void igGamecubeIndexArray_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_80563460,(int)igIndexArray_register,(int)igGamecubeIndexArray_parentMeta,(int)igGamecubeIndexArray_getMetaCall,(int)lbl_8048ED44,28,(int)igGamecubeIndexArray_vtableRead,(int)fn_800D86DC,0,0);
+ meta_registerClass(0,(int)&igGamecubeIndexArray_meta,(int)igIndexArray_register,(int)igGamecubeIndexArray_parentMeta,(int)igGamecubeIndexArray_getMetaCall,(int)igGamecubeIndexArray_className,28,(int)igGamecubeIndexArray_vtableRead,(int)fn_800D86DC,0,0);
 }
-void *igGamecubeIndexArray_parentMeta(){return lbl_80562F40;}
+void *igGamecubeIndexArray_parentMeta(){return igIndexArray_meta;}
 void *fn_800D86DC(){
- void *value0=lbl_80563460;
+ void *value0=igGamecubeIndexArray_meta;
  reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igIndexArray_getMetaCall;
  return value0;
 }
 void *igGamecubeImageConvert_getMeta(){
- if(!lbl_80563464 || !(reinterpret_cast<unsigned int *>(lbl_80563464)[0x24/4]&4)) fn_800D8784();
- return lbl_80563464;
+ if(!igGamecubeImageConvert_meta || !(reinterpret_cast<unsigned int *>(igGamecubeImageConvert_meta)[0x24/4]&4)) igGamecubeImageConvert_registerNow();
+ return igGamecubeImageConvert_meta;
 }
 void *igGamecubeImageConvert_vtableRead(){
  UnknownGenObject800D872C_0 object;
  fn_8006665C(&object);
  object.unknown00=lbl_804930AC;
  object.unknown00=lbl_80492C48;
- object.unknown00=lbl_8049168C;
+ object.unknown00=igGamecubeImageConvert_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800D8784(){
- fn_80066188((int)igGamecubeImageConvert_register);
+void igGamecubeImageConvert_registerNow(){
+ meta_registerNow((int)igGamecubeImageConvert_register);
 }
 void igGamecubeImageConvert_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_80563464,(int)igImageConvert_register,(int)igGamecubeImageConvert_parentMeta,(int)igGamecubeImageConvert_getMetaCall,(int)lbl_8048ED5C,8,(int)igGamecubeImageConvert_vtableRead,(int)fn_800D8824,0,0);
+ meta_registerClass(0,(int)&igGamecubeImageConvert_meta,(int)igImageConvert_register,(int)igGamecubeImageConvert_parentMeta,(int)igGamecubeImageConvert_getMetaCall,(int)igGamecubeImageConvert_className,8,(int)igGamecubeImageConvert_vtableRead,(int)fn_800D8824,0,0);
 }
-void *igGamecubeImageConvert_parentMeta(){return lbl_80562F5C;}
+void *igGamecubeImageConvert_parentMeta(){return igImageConvert_meta;}
 void *fn_800D8824(){
- void *value0=lbl_80563464;
+ void *value0=igGamecubeImageConvert_meta;
  reinterpret_cast<Meta::igMetaObject *>(value0)->_writeProxy=(void *)(void *)igImageConvert_getMetaCall;
  return value0;
 }
 void *igGamecubeImage_getMeta(){
- if(!lbl_8056346C || !(reinterpret_cast<unsigned int *>(lbl_8056346C)[0x24/4]&4)) fn_800D895C();
- return lbl_8056346C;
+ if(!igGamecubeImage_meta || !(reinterpret_cast<unsigned int *>(igGamecubeImage_meta)[0x24/4]&4)) igGamecubeImage_registerNow();
+ return igGamecubeImage_meta;
 }
 void *igGamecubeImage_vtableRead(){
  UnknownGenObject800D8874 object;
@@ -145,16 +145,16 @@ void *igGamecubeImage_vtableRead(){
  object.unknown44.value=0;
  object.unknown58.value=0;
  object.unknown00=lbl_80492B34;
- object.unknown00=lbl_80491718;
+ object.unknown00=igGamecubeImage_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800D895C(){
- fn_80066188((int)igGamecubeImage_register);
+void igGamecubeImage_registerNow(){
+ meta_registerNow((int)igGamecubeImage_register);
 }
 void igGamecubeImage_register(){
  fn_800CE2F8();
- fn_80066204(0,(int)&lbl_8056346C,(int)igMemoryImage_register,(int)igGamecubeImage_parentMeta,(int)igGamecubeImage_getMetaCall,(int)lbl_8048ED8C,216,(int)igGamecubeImage_vtableRead,(int)igGamecubeImage_fieldInit,0,0);
+ meta_registerClass(0,(int)&igGamecubeImage_meta,(int)igMemoryImage_register,(int)igGamecubeImage_parentMeta,(int)igGamecubeImage_getMetaCall,(int)igGamecubeImage_className,216,(int)igGamecubeImage_vtableRead,(int)igGamecubeImage_fieldInit,0,0);
 }
-void *igGamecubeImage_parentMeta(){return lbl_80562F70;}
+void *igGamecubeImage_parentMeta(){return igMemoryImage_meta;}
 }
 #pragma pop

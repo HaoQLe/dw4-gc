@@ -6,7 +6,7 @@ void *fn_80068128(void *,void *);
 void *fn_8029A440(void *);
 void fn_8029A480(void *,int);
 void *fn_803FEEA8(void *);
-extern char lbl_805343EC[];
+extern char igCriMovieData_meta[];
 }
 extern "C" {
 void *igCriMovieCodec_virtual6C(int p0,int p1,int p2,int p3,int p4,int p5){
@@ -16,7 +16,7 @@ void *igCriMovieCodec_virtual6C(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value3;
  void *value4;
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p1)+96);
- if((value0&&(value2=fn_80068128(value0,*reinterpret_cast<void **>((lbl_805343EC+0))),(unsigned char)(int)value2))){
+ if((value0&&(value2=fn_80068128(value0,*reinterpret_cast<void **>((igCriMovieData_meta+0))),(unsigned char)(int)value2))){
   value1=value0;
  } else {
   value1=(void *)0;

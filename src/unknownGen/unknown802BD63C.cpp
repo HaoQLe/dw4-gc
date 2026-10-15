@@ -6,12 +6,12 @@ void __dl__FPv(void *);
 void beSaveApi_register();
 void *beSvConnectCheck_getMeta();
 void beSvConnectCheck_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802BD764();
-extern char lbl_8041DF44[];
-extern char lbl_8053490C[];
+extern char beSvConnectCheck_className[];
+extern char beSvConnectCheck_meta[];
 void beSvConnectCheck_register();
 void *beSvConnectCheck_getMetaCall();
 }
@@ -27,12 +27,12 @@ UnknownGenHolder *dtor_802BD63C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_802BD6B0(){
- fn_80066188((int)beSvConnectCheck_register);
+void beSvConnectCheck_registerNow(){
+ meta_registerNow((int)beSvConnectCheck_register);
 }
 void beSvConnectCheck_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_8053490C,(int)beSaveApi_register,(int)fn_802BD764,(int)beSvConnectCheck_getMetaCall,(int)lbl_8041DF44,244,(int)beSvConnectCheck_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beSvConnectCheck_meta,(int)beSaveApi_register,(int)fn_802BD764,(int)beSvConnectCheck_getMetaCall,(int)beSvConnectCheck_className,244,(int)beSvConnectCheck_vtableRead,0,0,0);
 }
 void *beSvConnectCheck_getMetaCall(){return beSvConnectCheck_getMeta();}
 }

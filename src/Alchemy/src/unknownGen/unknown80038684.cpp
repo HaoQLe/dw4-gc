@@ -2,19 +2,19 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void fn_8003EBC8(void *);
 void *fn_8003EC04(void *,void *);
 void *fn_800607F4(void *);
-void fn_80066188(int);
+void meta_registerNow(int);
 void *fn_80066DD8(int,int);
 void *fn_800680B4(void *,void *);
 void igBoolMetaField_register();
 extern char lbl_80471914[];
 extern char lbl_80473E30[];
-extern void *lbl_80561E48;
+extern void *igBoolMetaField_meta;
 extern void *lbl_805621F4;
-void fn_80038800();
+void igBoolMetaField_registerNow();
 }
 struct UnknownGenRoot80038778 {
  void *unknown00;
@@ -33,7 +33,7 @@ struct UnknownGenObject80038778 : UnknownGenObject80038778_0 {
 extern "C" {
 void *igBoolArrayMetaField_virtual54(void *a,void *b){
  if(*reinterpret_cast<unsigned char *>(Gap::Core::_arkCore)){
-  fn_80038800();
+  igBoolMetaField_registerNow();
   return fn_800680B4(a,b);
  }
  void *object=fn_80066DD8(0x34,0);
@@ -41,19 +41,19 @@ void *igBoolArrayMetaField_virtual54(void *a,void *b){
  return object;
 }
 void *fn_80038700(){
- if(!lbl_80561E48) lbl_80561E48=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80561E48;
+ if(!igBoolMetaField_meta) igBoolMetaField_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igBoolMetaField_meta;
 }
 void *igBoolMetaField_getMeta(){
- if(!lbl_80561E48 || !(reinterpret_cast<unsigned int *>(lbl_80561E48)[0x24/4]&4)) fn_80038800();
- return lbl_80561E48;
+ if(!igBoolMetaField_meta || !(reinterpret_cast<unsigned int *>(igBoolMetaField_meta)[0x24/4]&4)) igBoolMetaField_registerNow();
+ return igBoolMetaField_meta;
 }
 void *fn_80038778(){
  UnknownGenObject80038778 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80038800(){
- fn_80066188((int)igBoolMetaField_register);
+void igBoolMetaField_registerNow(){
+ meta_registerNow((int)igBoolMetaField_register);
 }
 }
 #pragma pop

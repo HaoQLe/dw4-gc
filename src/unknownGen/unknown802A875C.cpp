@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805343AC;
+extern void *igAdxAudio_meta;
 }
 extern "C" {
-void *igAdxAudio_virtual58(){return lbl_805343AC;}
+void *igAdxAudio_virtual58(){return igAdxAudio_meta;}
 }
 #pragma pop

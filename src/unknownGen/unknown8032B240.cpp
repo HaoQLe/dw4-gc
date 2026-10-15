@@ -7,13 +7,13 @@ void beNDMWStatusInfoWork_fieldInit();
 void *beNDMWStatusInfoWork_getMeta();
 void beNDMWStatusInfoWork_vtableRead();
 void *fn_800237D0();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void igObject_register();
-extern char lbl_804536E4[];
+extern char beNDMWStatusInfoWork_className[];
 extern char lbl_804E1A70[];
-extern char lbl_80535DC8[];
+extern char beNDMWStatusInfoWork_meta[];
 void beNDMWStatusInfoWork_register();
 void *beNDMWStatusInfoWork_getMetaCall();
 }
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_8032B240(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_8032B2B4(){
- fn_80066188((int)beNDMWStatusInfoWork_register);
+void beNDMWStatusInfoWork_registerNow(){
+ meta_registerNow((int)beNDMWStatusInfoWork_register);
 }
 void beNDMWStatusInfoWork_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535DC8,(int)igObject_register,(int)fn_800237D0,(int)beNDMWStatusInfoWork_getMetaCall,(int)lbl_804536E4,36,(int)beNDMWStatusInfoWork_vtableRead,(int)beNDMWStatusInfoWork_fieldInit,0,(int)lbl_804E1A70);
+ meta_registerClass(0,(int)beNDMWStatusInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWStatusInfoWork_getMetaCall,(int)beNDMWStatusInfoWork_className,36,(int)beNDMWStatusInfoWork_vtableRead,(int)beNDMWStatusInfoWork_fieldInit,0,(int)lbl_804E1A70);
 }
 void *beNDMWStatusInfoWork_getMetaCall(){return beNDMWStatusInfoWork_getMeta();}
 }

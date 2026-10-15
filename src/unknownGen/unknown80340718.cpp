@@ -7,20 +7,20 @@ void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void *fn_803407E0();
+void *beNDMWDegiDataList_metaObject();
 extern char lbl_804E3968[];
 extern char lbl_804E3974[];
 extern char lbl_804E3980[];
 extern char lbl_804E398C[];
-extern void *lbl_80536620;
+extern void *beNDMWLoadSlotPlayer_meta;
 }
 extern "C" {
 void beNDMWLoadSlotPlayer_fieldInit(){
- void *value0=lbl_80536620;
+ void *value0=beNDMWLoadSlotPlayer_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E3968,3);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
- void *value3=fn_803407E0();
+ void *value3=beNDMWDegiDataList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
  void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));

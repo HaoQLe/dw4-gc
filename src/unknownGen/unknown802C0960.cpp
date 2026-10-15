@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802C0B3C();
-extern void *lbl_80534A50;
+void beResetNode_registerNow();
+extern void *beResetNode_meta;
 }
 extern "C" {
 void *beResetNode_getMeta(){
- if(!lbl_80534A50 || !(reinterpret_cast<unsigned int *>(lbl_80534A50)[0x24/4]&4)) fn_802C0B3C();
- return lbl_80534A50;
+ if(!beResetNode_meta || !(reinterpret_cast<unsigned int *>(beResetNode_meta)[0x24/4]&4)) beResetNode_registerNow();
+ return beResetNode_meta;
 }
 }
 #pragma pop

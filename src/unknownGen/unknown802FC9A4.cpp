@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535288;
+extern void *beGeneraterInfo_meta;
 }
 extern "C" {
-void *beGenerater_virtual80(){return lbl_80535288;}
+void *beGenerater_virtual80(){return beGeneraterInfo_meta;}
 }
 #pragma pop

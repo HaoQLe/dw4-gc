@@ -4,7 +4,7 @@
 extern "C" {
 void fn_80041660(void *,void *,int);
 void *fn_80068430(void *,void *);
-void *fn_80121660(void *);
+void *igQuaternionfList_create(void *);
 }
 extern "C" {
 void fn_8020ADD4(int p0){
@@ -30,7 +30,7 @@ void fn_8020ADD4(int p0){
     fn_80066E1C(value1);
    }
   }
-  value9=fn_80121660(value8);
+  value9=igQuaternionfList_create(value8);
   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value9;
   value3=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+56);
   value4=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12);

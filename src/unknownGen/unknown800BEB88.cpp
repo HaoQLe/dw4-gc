@@ -6,7 +6,7 @@
 extern "C" {
 void *fn_80068430(int,int);
 void fn_800BEB3C();
-void *fn_800D0030(void *);
+void *igVertexArray_create(void *);
 }
 class UnknownGenV800BEB88_0 {
 public:
@@ -167,7 +167,7 @@ void igGeometryAttr1_5_virtual80(int p0,int p1,int p2,int p3,int p4){
  void *value4;
  if(!reinterpret_cast<Meta::igGeometryAttr1_5 *>((void *)p0)->_vertexArray){
   value5=fn_80068430((int)(int)((void *)p0),(int)(int)((void *)p1));
-  value6=fn_800D0030(value5);
+  value6=igVertexArray_create(value5);
   if((int)(int)value6!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value6)+4);
    *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+4)=(reinterpret_cast<char *>(value0)+1);

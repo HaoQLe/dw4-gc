@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80068430(int,int);
-void *fn_800BC62C(void *);
+void *igTextureEnvironmentColorAttr_create(void *);
 }
 extern "C" {
 void fn_801FF70C(int p0,int p1,int p2,int p3,int p4,int p5){
@@ -20,7 +20,7 @@ void fn_801FF70C(int p0,int p1,int p2,int p3,int p4,int p5){
    fn_80066E1C(value0);
   }
  }
- value3=fn_800BC62C(value2);
+ value3=igTextureEnvironmentColorAttr_create(value2);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+188)=value3;
 }
 }

@@ -7,11 +7,11 @@ struct Unknown80041658 {
     Gap::igInt unknown0C;
 };
 extern "C" {
-    extern void *lbl_80561D3C;
+    extern void *igDataList_meta;
     void fn_8004155C(void *, Gap::igInt, Gap::igInt);
 }
 
-extern "C" void *fn_80041658(){ return lbl_80561D3C; }
+extern "C" void *fn_80041658(){ return igDataList_meta; }
 extern "C" void fn_80041660(Unknown80041658 *object, Gap::igInt count, Gap::igInt width){
     Gap::igInt previousCount = object->unknown0C;
     Gap::igInt capacity = previousCount > 4 ? previousCount : 4;

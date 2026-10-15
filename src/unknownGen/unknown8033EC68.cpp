@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_8033EEE8();
-extern void *lbl_80536520;
+void *meta_createInstance(void *,void *);
+void beNDMWLoadCtrl2CommonIntf_registerNow();
+extern void *beNDMWLoadCtrl2CommonIntf_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_8033EC68(void *object){
- fn_8033EEE8();
- return fn_8006546C(lbl_80536520,object);
+void *beNDMWLoadCtrl2CommonIntf_create(void *object){
+ beNDMWLoadCtrl2CommonIntf_registerNow();
+ return meta_createInstance(beNDMWLoadCtrl2CommonIntf_meta,object);
 }
-void *fn_8033ECA8(){
- if(!lbl_80536520) lbl_80536520=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80536520;
+void *beNDMWLoadCtrl2CommonIntf_metaObject(){
+ if(!beNDMWLoadCtrl2CommonIntf_meta) beNDMWLoadCtrl2CommonIntf_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beNDMWLoadCtrl2CommonIntf_meta;
 }
 void *beNDMWLoadCtrl2CommonIntf_getMeta(){
- if(!lbl_80536520 || !(reinterpret_cast<unsigned int *>(lbl_80536520)[0x24/4]&4)) fn_8033EEE8();
- return lbl_80536520;
+ if(!beNDMWLoadCtrl2CommonIntf_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadCtrl2CommonIntf_meta)[0x24/4]&4)) beNDMWLoadCtrl2CommonIntf_registerNow();
+ return beNDMWLoadCtrl2CommonIntf_meta;
 }
 }
 #pragma pop

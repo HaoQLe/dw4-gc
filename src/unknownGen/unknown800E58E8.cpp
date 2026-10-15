@@ -6,11 +6,11 @@
 extern "C" {
 void *fn_80068128(void *,void *);
 void *fn_800E3D94(void *,int,int);
-extern void *lbl_80563A14;
+extern void *igVec3fList_meta;
 }
 static inline void *UnknownGenCast800E58E8_11(void *q){
  void *value2;
- if((q&&(value2=fn_80068128(q,lbl_80563A14),(unsigned char)(int)value2))) return q;
+ if((q&&(value2=fn_80068128(q,igVec3fList_meta),(unsigned char)(int)value2))) return q;
  return 0;
 }
 extern "C" {

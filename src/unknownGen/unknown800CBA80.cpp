@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800635C8(void *,void *,void *,int);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_800CAEE0();
 void *fn_800CB078();
 void *igController_fieldInit();
@@ -12,12 +12,12 @@ void igEventProducer_register();
 void *igGamecubeControllerManager_getMeta();
 extern char lbl_8047FCC8[];
 extern char lbl_8047FD8C[];
-extern char lbl_8047FE50[];
+extern char igController_className[];
 extern char lbl_8055E988[8];
 extern void *lbl_80562C10;
-extern void *lbl_80562C14;
+extern void *igController_meta;
 void *igController_getMeta();
-void fn_800CBB28();
+void igController_registerNow();
 void igController_register();
 void *igController_getMetaCall();
 }
@@ -32,15 +32,15 @@ void *fn_800CBAA0(){
  return lbl_80562C10;
 }
 void *igController_getMeta(){
- if(!lbl_80562C14 || !(reinterpret_cast<unsigned int *>(lbl_80562C14)[0x24/4]&4)) fn_800CBB28();
- return lbl_80562C14;
+ if(!igController_meta || !(reinterpret_cast<unsigned int *>(igController_meta)[0x24/4]&4)) igController_registerNow();
+ return igController_meta;
 }
-void fn_800CBB28(){
- fn_80066188((int)igController_register);
+void igController_registerNow(){
+ meta_registerNow((int)igController_register);
 }
 void igController_register(){
  fn_800CAEE0();
- fn_80066204(1,(int)&lbl_80562C14,(int)igEventProducer_register,(int)fn_800CB078,(int)igController_getMetaCall,(int)lbl_8047FE50,16,0,(int)igController_fieldInit,0,0);
+ meta_registerClass(1,(int)&igController_meta,(int)igEventProducer_register,(int)fn_800CB078,(int)igController_getMetaCall,(int)igController_className,16,0,(int)igController_fieldInit,0,0);
 }
 void *igController_getMetaCall(){return igController_getMeta();}
 }

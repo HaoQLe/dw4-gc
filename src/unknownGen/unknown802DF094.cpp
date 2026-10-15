@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802DF220();
-extern void *lbl_80535514;
+void beCriFxInfo_registerNow();
+extern void *beCriFxInfo_meta;
 }
 extern "C" {
 void *beCriFxInfo_getMeta(){
- if(!lbl_80535514 || !(reinterpret_cast<unsigned int *>(lbl_80535514)[0x24/4]&4)) fn_802DF220();
- return lbl_80535514;
+ if(!beCriFxInfo_meta || !(reinterpret_cast<unsigned int *>(beCriFxInfo_meta)[0x24/4]&4)) beCriFxInfo_registerNow();
+ return beCriFxInfo_meta;
 }
 }
 #pragma pop

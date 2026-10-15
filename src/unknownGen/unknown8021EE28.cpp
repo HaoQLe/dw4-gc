@@ -16,24 +16,24 @@ extern void *lbl_805659B4;
 extern void *lbl_805659B8;
 extern void *lbl_805659BC;
 extern void *lbl_805659C0;
-extern void *lbl_805659C4;
+extern void *igLongStack_meta;
 extern void *lbl_805659CC;
 extern void *lbl_805659D0;
 extern void *lbl_805659D4;
 extern void *lbl_805659D8;
-extern void *lbl_80565A08;
-extern void *lbl_80565A60;
-extern void *lbl_80565A70;
-extern void *lbl_80565A90;
-extern void *lbl_80565B08;
-extern void *lbl_80565B2C;
+extern void *igUnresolvedSymbol_meta;
+extern void *igMatrixObject_meta;
+extern void *igIntObject_meta;
+extern void *igFloatObject_meta;
+extern void *igDataPump_meta;
+extern void *igBoolObject_meta;
 }
 extern "C" {
 void *igHistogramBase_virtualB4(){return lbl_805659D8;}
 void *igHistogramBase_virtual174(){return lbl_805659D4;}
 void *igHistogramBase_virtual234(){return lbl_805659D0;}
 void *igHistogramBase_virtual2F4(){return lbl_805659CC;}
-void *igLongStack_virtual58(){return lbl_805659C4;}
+void *igLongStack_virtual58(){return igLongStack_meta;}
 void *fn_8021EE50(){return lbl_805659C0;}
 void *fn_8021EE58(){return lbl_805659BC;}
 void *fn_8021EE60(){return lbl_805659B8;}
@@ -64,18 +64,18 @@ void *igIntHistogram_virtual2C(int p0){
   return value1;
  }
 }
-void *igBoolObject_virtual184(){return lbl_80565B2C;}
-void *igFloatObject_virtual184(){return lbl_80565A90;}
-void *igIntObject_virtual184(){return lbl_80565A70;}
-void *igNonRefCountedMatrixObjectList_virtual60(){return lbl_80565A60;}
+void *igBoolObject_virtual184(){return igBoolObject_meta;}
+void *igFloatObject_virtual184(){return igFloatObject_meta;}
+void *igIntObject_virtual184(){return igIntObject_meta;}
+void *igNonRefCountedMatrixObjectList_virtual60(){return igMatrixObject_meta;}
 void *fn_8021EF28(){return lbl_805659C0;}
 void *fn_8021EF30(){return lbl_805659B4;}
-void *igBoolObject_virtual120(){return lbl_80565B2C;}
-void *igDataPumpList_virtual60(){return lbl_80565B08;}
-void *igFloatObject_virtual120(){return lbl_80565A90;}
-void *igIntObject_virtual120(){return lbl_80565A70;}
-void *igMatrixObjectList_virtual60(){return lbl_80565A60;}
-void *igUnresolvedSymbolList_virtual60(){return lbl_80565A08;}
+void *igBoolObject_virtual120(){return igBoolObject_meta;}
+void *igDataPumpList_virtual60(){return igDataPump_meta;}
+void *igFloatObject_virtual120(){return igFloatObject_meta;}
+void *igIntObject_virtual120(){return igIntObject_meta;}
+void *igMatrixObjectList_virtual60(){return igMatrixObject_meta;}
+void *igUnresolvedSymbolList_virtual60(){return igUnresolvedSymbol_meta;}
 void *fn_8021EF68(){return lbl_805659C0;}
 void *fn_8021EF70(){return lbl_805659B4;}
 void igHistogramBase_virtual104(int p0){

@@ -11,7 +11,7 @@ extern char lbl_8055EF34[4];
 extern char lbl_8055EF40[4];
 extern char lbl_8055EF44[4];
 extern char lbl_8055EF48[4];
-extern void *lbl_805635C8;
+extern void *igScalerModel_meta;
 extern char lbl_805669A8[4];
 }
 struct UnknownGenL8010DD38_8 {
@@ -22,7 +22,7 @@ struct UnknownGenL8010DD38_8 {
 extern "C" {
 void igScalerModel_fieldInit(){
  UnknownGenL8010DD38_8 local0;
- void *value0=lbl_805635C8;
+ void *value0=igScalerModel_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055EF34,1);
  void *value2=fn_800658E4(value0,value1);

@@ -3,13 +3,13 @@
 #pragma auto_inline off
 extern "C" {
 extern void *kFailure__3Gap;
-extern void *lbl_80562BA4;
-extern void *lbl_80562C24;
-extern void *lbl_80562C50;
-extern void *lbl_80562C54;
+extern void *igInterfaceManager_meta;
+extern void *igGamecubeWindow_meta;
+extern void *igGamecubeControllerManager_meta;
+extern void *igGamecubeController_meta;
 }
 extern "C" {
-void *igGamecubeWindow_virtual58(){return lbl_80562C24;}
+void *igGamecubeWindow_virtual58(){return igGamecubeWindow_meta;}
 int igGamecubeWindow_virtual70(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+36);}
 void igGamecubeWindow_virtual74(){}
 void *igGamecubeWindow_virtual78(int p0,int p1,int p2){
@@ -39,9 +39,9 @@ void *igGamecubeWindow_virtualA0(int p0){
 int igGamecubeWindow_virtualA4(){return 0;}
 void igGamecubeWindow_virtual5C(){}
 unsigned char igGamecubeWindow_virtualAC(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+44);}
-void *igGamecubeControllerManager_virtual58(){return lbl_80562C50;}
+void *igGamecubeControllerManager_virtual58(){return igGamecubeControllerManager_meta;}
 int igGamecubeControllerManager_virtual64(){return 4;}
-void *igGamecubeController_virtual58(){return lbl_80562C54;}
+void *igGamecubeController_virtual58(){return igGamecubeController_meta;}
 int igGamecubeController_virtual60(){return 12;}
 void igGamecubeController_virtual64(){}
 int igGamecubeController_virtual68(){return 2;}
@@ -49,6 +49,6 @@ void igGamecubeController_virtual6C(){}
 int igGamecubeController_virtual78(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+32);}
 unsigned char igGamecubeController_virtual88(void *object){return *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(object)+48);}
 int igGamecubeController_virtual8C(void *object){return *reinterpret_cast<int *>(reinterpret_cast<char *>(object)+40);}
-void *fn_800CD9B8(){return lbl_80562BA4;}
+void *fn_800CD9B8(){return igInterfaceManager_meta;}
 }
 #pragma pop

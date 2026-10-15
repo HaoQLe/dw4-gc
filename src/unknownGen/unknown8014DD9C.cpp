@@ -8,8 +8,8 @@ void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
@@ -17,31 +17,31 @@ void *fn_8013AFE4();
 void igConvertTransform_fieldInit();
 void igOptTraverseGraph_register();
 void igOptVisitObject_register();
-extern char lbl_8049F9F0[];
-extern char lbl_8049FA28[];
+extern char igConvertTransformsToCompressedSequencesQS_className[];
+extern char igConvertTransform_className[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4744[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
-extern char lbl_804A736C[];
-extern char lbl_804A7404[];
+extern char igConvertTransformsToCompressedSequencesQS_vtable[];
+extern char igConvertTransform_vtable[];
 extern char lbl_804AAF48[];
 extern char lbl_8055FBE0[8];
 extern char lbl_8055FBE8[8];
 extern char lbl_8055FBF8[8];
 extern char lbl_8055FC00[8];
 extern char lbl_8055FC08[8];
-extern void *lbl_8056441C;
-extern void *lbl_80564428;
+extern void *igConvertTransformsToCompressedSequencesQS_meta;
+extern void *igConvertTransform_meta;
 void *igConvertTransformsToCompressedSequencesQS_getMeta();
 void *igConvertTransformsToCompressedSequencesQS_vtableRead();
-void fn_8014DF58();
+void igConvertTransformsToCompressedSequencesQS_registerNow();
 void igConvertTransformsToCompressedSequencesQS_register();
 void *igConvertTransformsToCompressedSequencesQS_getMetaCall();
 void igConvertTransformsToCompressedSequencesQS_fieldInit();
 void *igConvertTransform_getMeta();
 void *igConvertTransform_vtableRead();
-void fn_8014E26C();
+void igConvertTransform_registerNow();
 void igConvertTransform_register();
 void *igConvertTransform_getMetaCall();
 }
@@ -63,7 +63,7 @@ struct UnknownGenObject8014DDD8_1 : UnknownGenObject8014DDD8_0 {
 struct UnknownGenObject8014DDD8 : UnknownGenObject8014DDD8_1 {
  UnknownGenRefMember unknown2C;
  char unknown30[8];
- inline ~UnknownGenObject8014DDD8(){unknown00=lbl_804A736C;}
+ inline ~UnknownGenObject8014DDD8(){unknown00=igConvertTransformsToCompressedSequencesQS_vtable;}
 };
 struct UnknownGenRoot8014E0F4 {
  void *unknown00;
@@ -83,12 +83,12 @@ struct UnknownGenObject8014E0F4_1 : UnknownGenObject8014E0F4_0 {
 };
 struct UnknownGenObject8014E0F4 : UnknownGenObject8014E0F4_1 {
  char unknown30[24];
- inline ~UnknownGenObject8014E0F4(){unknown00=lbl_804A7404;}
+ inline ~UnknownGenObject8014E0F4(){unknown00=igConvertTransform_vtable;}
 };
 extern "C" {
 void *igConvertTransformsToCompressedSequencesQS_getMeta(){
- if(!lbl_8056441C || !(reinterpret_cast<unsigned int *>(lbl_8056441C)[0x24/4]&4)) fn_8014DF58();
- return lbl_8056441C;
+ if(!igConvertTransformsToCompressedSequencesQS_meta || !(reinterpret_cast<unsigned int *>(igConvertTransformsToCompressedSequencesQS_meta)[0x24/4]&4)) igConvertTransformsToCompressedSequencesQS_registerNow();
+ return igConvertTransformsToCompressedSequencesQS_meta;
 }
 void *igConvertTransformsToCompressedSequencesQS_vtableRead(){
  UnknownGenObject8014DDD8 object;
@@ -99,20 +99,20 @@ void *igConvertTransformsToCompressedSequencesQS_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A736C;
+ object.unknown00=igConvertTransformsToCompressedSequencesQS_vtable;
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8014DF58(){
- fn_80066188((int)igConvertTransformsToCompressedSequencesQS_register);
+void igConvertTransformsToCompressedSequencesQS_registerNow(){
+ meta_registerNow((int)igConvertTransformsToCompressedSequencesQS_register);
 }
 void igConvertTransformsToCompressedSequencesQS_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_8056441C,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertTransformsToCompressedSequencesQS_getMetaCall,(int)lbl_8049F9F0,52,(int)igConvertTransformsToCompressedSequencesQS_vtableRead,(int)igConvertTransformsToCompressedSequencesQS_fieldInit,0,(int)lbl_8055FBE0);
+ meta_registerClass(0,(int)&igConvertTransformsToCompressedSequencesQS_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertTransformsToCompressedSequencesQS_getMetaCall,(int)igConvertTransformsToCompressedSequencesQS_className,52,(int)igConvertTransformsToCompressedSequencesQS_vtableRead,(int)igConvertTransformsToCompressedSequencesQS_fieldInit,0,(int)lbl_8055FBE0);
 }
 void *igConvertTransformsToCompressedSequencesQS_getMetaCall(){return igConvertTransformsToCompressedSequencesQS_getMeta();}
 void igConvertTransformsToCompressedSequencesQS_fieldInit(){
- void *value0=lbl_8056441C;
+ void *value0=igConvertTransformsToCompressedSequencesQS_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055FBE8,2);
  void *value2=fn_800658E4(value0,value1);
@@ -125,8 +125,8 @@ void igConvertTransformsToCompressedSequencesQS_fieldInit(){
  fn_800659C0(value0,lbl_8055FBF8,lbl_8055FC00,lbl_8055FC08,value1);
 }
 void *igConvertTransform_getMeta(){
- if(!lbl_80564428 || !(reinterpret_cast<unsigned int *>(lbl_80564428)[0x24/4]&4)) fn_8014E26C();
- return lbl_80564428;
+ if(!igConvertTransform_meta || !(reinterpret_cast<unsigned int *>(igConvertTransform_meta)[0x24/4]&4)) igConvertTransform_registerNow();
+ return igConvertTransform_meta;
 }
 void *igConvertTransform_vtableRead(){
  UnknownGenObject8014E0F4 object;
@@ -138,15 +138,15 @@ void *igConvertTransform_vtableRead(){
  object.unknown00=lbl_804A4744;
  object.unknown28.value=0;
  object.unknown2C.value=0;
- object.unknown00=lbl_804A7404;
+ object.unknown00=igConvertTransform_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8014E26C(){
- fn_80066188((int)igConvertTransform_register);
+void igConvertTransform_registerNow(){
+ meta_registerNow((int)igConvertTransform_register);
 }
 void igConvertTransform_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564428,(int)igOptTraverseGraph_register,(int)fn_8013AFE4,(int)igConvertTransform_getMetaCall,(int)lbl_8049FA28,72,(int)igConvertTransform_vtableRead,(int)igConvertTransform_fieldInit,0,0);
+ meta_registerClass(0,(int)&igConvertTransform_meta,(int)igOptTraverseGraph_register,(int)fn_8013AFE4,(int)igConvertTransform_getMetaCall,(int)igConvertTransform_className,72,(int)igConvertTransform_vtableRead,(int)igConvertTransform_fieldInit,0,0);
 }
 void *igConvertTransform_getMetaCall(){return igConvertTransform_getMeta();}
 }

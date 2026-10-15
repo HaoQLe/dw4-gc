@@ -93,7 +93,7 @@ extern "C" {
     void fn_800667D4(void *);
     Unknown80042824Value *fn_80042B1C(Unknown80042824 *, int);
     Unknown80042824Value *fn_80069724(void *, void *);
-    extern void *lbl_80561D10, *lbl_80561710, *lbl_805616E8;
+    extern void *lbl_80561D10, *igObjectDirEntry_meta, *igObjectRefMetaField_meta;
     void fn_80066E1C(void *);
     unsigned char fn_80068128(void *, void *);
     int fn_80065D88(void *);
@@ -157,13 +157,13 @@ extern "C" int fn_80042B98(Unknown80042824 *object, Unknown80042824Value *volati
             }else object->unknown10[index]->slot5C(newValue);
             ++changes;
         }
-        Unknown80042824Value *entry = unknown80042824Cast(fn_80042B1C(object, index), lbl_80561710);
+        Unknown80042824Value *entry = unknown80042824Cast(fn_80042B1C(object, index), igObjectDirEntry_meta);
         if(entry){
             Unknown80042824Reference reference(entry->unknown18);
             if(!reference.value) continue;
             int count = fn_80065D88(reference.value->slot58());
             for(int field = 0; field < count; ++field){
-                Unknown80042824Value *metadata = unknown80042824Cast(fn_800658E4(reference.value->slot58(), field), lbl_805616E8);
+                Unknown80042824Value *metadata = unknown80042824Cast(fn_800658E4(reference.value->slot58(), field), igObjectRefMetaField_meta);
                 if(metadata){
                     Unknown80042824Value *value = *reinterpret_cast<Unknown80042824Value **>(reinterpret_cast<unsigned char *>(reference.value) + metadata->unknown08);
                     if(value == oldValue){

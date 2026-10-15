@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534740;
+extern void *beSoundInfo_meta;
 }
 extern "C" {
-void *beSound_virtual80(){return lbl_80534740;}
+void *beSound_virtual80(){return beSoundInfo_meta;}
 }
 #pragma pop

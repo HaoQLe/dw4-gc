@@ -2,26 +2,26 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void fn_8014C2F4(void *,short);
-void fn_8014C52C();
+void igDefaultManager_registerNow();
 void igInstanceLock_register();
-extern char lbl_8049F4A8[];
+extern char igDynamicLock_className[];
 extern char lbl_804A6460[];
 extern char lbl_804A6564[];
-extern char lbl_804A6F2C[];
-extern char lbl_804A6FA0[];
+extern char igDynamicLock_vtable[];
+extern char igDefaultManager_vtable[];
 extern char lbl_804AA8E4[];
-extern void *lbl_805641E8;
-extern void *lbl_80564370;
-extern void *lbl_80564374;
+extern void *igInstanceLock_meta;
+extern void *igDynamicLock_meta;
+extern void *igDefaultManager_meta;
 void *igDynamicLock_getMeta();
 void *igDynamicLock_vtableRead();
-void fn_8014C148();
+void igDynamicLock_registerNow();
 void igDynamicLock_register();
 void *igDynamicLock_getMetaCall();
 void *fn_8014C1F8();
@@ -46,8 +46,8 @@ struct UnknownGenObject8014C274 {
 };
 extern "C" {
 void *igDynamicLock_getMeta(){
- if(!lbl_80564370 || !(reinterpret_cast<unsigned int *>(lbl_80564370)[0x24/4]&4)) fn_8014C148();
- return lbl_80564370;
+ if(!igDynamicLock_meta || !(reinterpret_cast<unsigned int *>(igDynamicLock_meta)[0x24/4]&4)) igDynamicLock_registerNow();
+ return igDynamicLock_meta;
 }
 void *igDynamicLock_vtableRead(){
  UnknownGenObject8014C0E4_0 object;
@@ -55,30 +55,30 @@ void *igDynamicLock_vtableRead(){
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AA8E4;
  object.unknown00=lbl_804A6564;
- object.unknown00=lbl_804A6F2C;
+ object.unknown00=igDynamicLock_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8014C148(){
- fn_80066188((int)igDynamicLock_register);
+void igDynamicLock_registerNow(){
+ meta_registerNow((int)igDynamicLock_register);
 }
 void igDynamicLock_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564370,(int)igInstanceLock_register,(int)fn_8014C1F8,(int)igDynamicLock_getMetaCall,(int)lbl_8049F4A8,32,(int)igDynamicLock_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igDynamicLock_meta,(int)igInstanceLock_register,(int)fn_8014C1F8,(int)igDynamicLock_getMetaCall,(int)igDynamicLock_className,32,(int)igDynamicLock_vtableRead,0,0,0);
 }
 void *igDynamicLock_getMetaCall(){return igDynamicLock_getMeta();}
-void *fn_8014C1F8(){return lbl_805641E8;}
-void *fn_8014C200(void *object){
- fn_8014C52C();
- return fn_8006546C(lbl_80564374,object);
+void *fn_8014C1F8(){return igInstanceLock_meta;}
+void *igDefaultManager_create(void *object){
+ igDefaultManager_registerNow();
+ return meta_createInstance(igDefaultManager_meta,object);
 }
 void *igDefaultManager_getMeta(){
- if(!lbl_80564374 || !(reinterpret_cast<unsigned int *>(lbl_80564374)[0x24/4]&4)) fn_8014C52C();
- return lbl_80564374;
+ if(!igDefaultManager_meta || !(reinterpret_cast<unsigned int *>(igDefaultManager_meta)[0x24/4]&4)) igDefaultManager_registerNow();
+ return igDefaultManager_meta;
 }
 void *igDefaultManager_vtableRead(){
  UnknownGenObject8014C274 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804A6FA0;
+ object.unknown00=igDefaultManager_vtable;
  object.unknown08=0;
  object.unknown0C=0;
  object.unknown10=0;

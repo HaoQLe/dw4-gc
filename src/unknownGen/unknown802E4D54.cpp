@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535748;
+extern void *beActionStarterData_meta;
 }
 extern "C" {
-void *beActionStarterData2_parentMeta(){return lbl_80535748;}
+void *beActionStarterData2_parentMeta(){return beActionStarterData_meta;}
 }
 #pragma pop

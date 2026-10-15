@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_802BEA04();
-extern void *lbl_80534954;
+void *meta_createInstance(void *,void *);
+void beSvUseCheckApi_registerNow();
+extern void *beSvUseCheckApi_meta;
 }
 extern "C" {
-void *fn_802BE85C(void *object){
- fn_802BEA04();
- return fn_8006546C(lbl_80534954,object);
+void *beSvUseCheckApi_create(void *object){
+ beSvUseCheckApi_registerNow();
+ return meta_createInstance(beSvUseCheckApi_meta,object);
 }
 void *beSvUseCheckApi_getMeta(){
- if(!lbl_80534954 || !(reinterpret_cast<unsigned int *>(lbl_80534954)[0x24/4]&4)) fn_802BEA04();
- return lbl_80534954;
+ if(!beSvUseCheckApi_meta || !(reinterpret_cast<unsigned int *>(beSvUseCheckApi_meta)[0x24/4]&4)) beSvUseCheckApi_registerNow();
+ return beSvUseCheckApi_meta;
 }
 }
 #pragma pop

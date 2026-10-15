@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80536158;
+extern void *beNDMWMdlPlayer2_meta;
 }
 extern "C" {
-void *beNDMWMdlPlayer2_virtual58(){return lbl_80536158;}
+void *beNDMWMdlPlayer2_virtual58(){return beNDMWMdlPlayer2_meta;}
 }
 #pragma pop

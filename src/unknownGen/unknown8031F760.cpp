@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805354B8;
+extern void *beDBManagerInfo_meta;
 }
 extern "C" {
 void *fn_8031F760(int p0){
@@ -27,6 +27,6 @@ void *fn_8031F760(int p0){
  return (void *)0;
 }
 void beDBManager_virtual88(){}
-void *beDBManager_virtual80(){return lbl_805354B8;}
+void *beDBManager_virtual80(){return beDBManagerInfo_meta;}
 }
 #pragma pop

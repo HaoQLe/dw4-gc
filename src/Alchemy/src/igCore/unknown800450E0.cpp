@@ -10,7 +10,7 @@ extern "C" unsigned char fn_800450E0(Unknown800442F8Owner *object,const char *te
 extern "C" void fn_8004513C(Unknown800442F8Owner *object){ fn_80071FF4(object->unknown28); }
 extern "C" Unknown800442F8Nodes *fn_80045160(Unknown800442F8Owner *object){
     int index;
-    Unknown800442F8Nodes *storage=fn_800338FC(fn_80068430(object));
+    Unknown800442F8Nodes *storage=igDataList_create(fn_80068430(object));
     object->unknown2C=1;
     object->unknown34=object->unknown28->unknown08.text();
     Unknown800442F8Node *value;
@@ -42,7 +42,7 @@ extern "C" void *fn_800452CC(Unknown800442F8Node *object,short flag){
     return object;
 }
 extern "C" bool fn_80045314(Unknown800442F8Owner *object,void *first,void *second,void *third){
-    Unknown800442F8Reference reference(fn_80026ADC(fn_80068430(object)));
+    Unknown800442F8Reference reference(igRegistry_create(fn_80068430(object)));
     Unknown800442F8Nodes *storage=fn_80045160(object);
     for(int index=0;index<storage->unknown08;++index) fn_8004595C(object,storage->unknown10[index],reference.value,second);
     fn_8006D17C(first,reference.value,third);

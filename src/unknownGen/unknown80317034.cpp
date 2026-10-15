@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805346A8;
+extern void *beSystem_meta;
 }
 extern "C" {
-void *beSystem_virtual58(){return lbl_805346A8;}
+void *beSystem_virtual58(){return beSystem_meta;}
 }
 #pragma pop

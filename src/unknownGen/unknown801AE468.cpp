@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80066DFC(void *);
-extern char lbl_804B37AC[];
+extern char igSorter_vtable[];
 }
 extern "C" {
 void *fn_801AE468(int p0,int p1){
@@ -58,7 +58,7 @@ void *fn_801AE468(int p0,int p1){
  void *value48;
  void *value49;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804B37AC;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igSorter_vtable;
   if((int)(p0+116)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+116);
    if(value0){

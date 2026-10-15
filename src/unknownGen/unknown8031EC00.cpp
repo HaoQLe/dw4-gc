@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534BCC;
+extern void *beMovieInfo_meta;
 }
 extern "C" {
-void *beMovie_virtual80(){return lbl_80534BCC;}
+void *beMovie_virtual80(){return beMovieInfo_meta;}
 }
 #pragma pop

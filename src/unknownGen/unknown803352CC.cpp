@@ -5,30 +5,30 @@ extern "C" {
 void *beSaveIntfComMdlDataList_getMeta();
 void beSaveIntfComMdlDataList_vtableRead();
 void *fn_80024180();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
-void fn_803354A4();
+void beSaveIntfComMdlData_registerNow();
 void igObjectList_register();
-extern char lbl_80453EE0[];
+extern char beSaveIntfComMdlDataList_className[];
 extern char lbl_804E2198[];
-extern char lbl_80535FF8[];
-extern void *lbl_80535FFC;
+extern char beSaveIntfComMdlDataList_meta[];
+extern void *beSaveIntfComMdlData_meta;
 void beSaveIntfComMdlDataList_register();
 void *beSaveIntfComMdlDataList_getMetaCall();
 }
 extern "C" {
-void fn_803352CC(){
- fn_80066188((int)beSaveIntfComMdlDataList_register);
+void beSaveIntfComMdlDataList_registerNow(){
+ meta_registerNow((int)beSaveIntfComMdlDataList_register);
 }
 void beSaveIntfComMdlDataList_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535FF8,(int)igObjectList_register,(int)fn_80024180,(int)beSaveIntfComMdlDataList_getMetaCall,(int)lbl_80453EE0,20,(int)beSaveIntfComMdlDataList_vtableRead,0,0,(int)lbl_804E2198);
+ meta_registerClass(0,(int)beSaveIntfComMdlDataList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beSaveIntfComMdlDataList_getMetaCall,(int)beSaveIntfComMdlDataList_className,20,(int)beSaveIntfComMdlDataList_vtableRead,0,0,(int)lbl_804E2198);
 }
 void *beSaveIntfComMdlDataList_getMetaCall(){return beSaveIntfComMdlDataList_getMeta();}
 void *beSaveIntfComMdlData_getMeta(){
- if(!lbl_80535FFC || !(reinterpret_cast<unsigned int *>(lbl_80535FFC)[0x24/4]&4)) fn_803354A4();
- return lbl_80535FFC;
+ if(!beSaveIntfComMdlData_meta || !(reinterpret_cast<unsigned int *>(beSaveIntfComMdlData_meta)[0x24/4]&4)) beSaveIntfComMdlData_registerNow();
+ return beSaveIntfComMdlData_meta;
 }
 }
 #pragma pop

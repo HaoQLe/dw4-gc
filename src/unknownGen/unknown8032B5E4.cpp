@@ -5,7 +5,7 @@ extern "C" {
 void fn_80066DFC(void *);
 extern char lbl_804E6888[];
 extern char lbl_804E6A60[];
-extern char lbl_804ED088[];
+extern char beNDMWShopJunk_vtable[];
 }
 extern "C" {
 void *fn_8032B5E4(int p0,int p1){
@@ -26,7 +26,7 @@ void *fn_8032B5E4(int p0,int p1){
  void *value14;
  void *value15;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804ED088;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beNDMWShopJunk_vtable;
   if((int)(p0+92)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+92);
    if(value0){

@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805636DC;
+extern void *igWindowSizeObserver_meta;
 }
 extern "C" {
-void *igWindowSizeObserver_virtual58(){return lbl_805636DC;}
+void *igWindowSizeObserver_virtual58(){return igWindowSizeObserver_meta;}
 }
 #pragma pop

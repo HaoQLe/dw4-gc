@@ -5,7 +5,7 @@ extern "C" {
 void fn_80066DFC(void *);
 extern char lbl_804E6888[];
 extern char lbl_804E6A60[];
-extern char lbl_804EB83C[];
+extern char beNDMWStatusSubMenu_vtable[];
 }
 extern "C" {
 void *fn_803302B0(int p0,int p1){
@@ -30,7 +30,7 @@ void *fn_803302B0(int p0,int p1){
  void *value18;
  void *value19;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804EB83C;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beNDMWStatusSubMenu_vtable;
   if((int)(p0+100)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+100);
    if(value0){

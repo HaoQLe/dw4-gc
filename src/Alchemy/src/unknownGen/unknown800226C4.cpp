@@ -3,24 +3,24 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
-void fn_80022634();
+void igUnsignedLongMetaField_registerNow();
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
 void *fn_80063B5C();
 void fn_80063F14(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_80075C84(void *);
 void *igUnsignedLongMetaField_getMeta();
 void igUnsignedLongMetaField_register();
-extern char lbl_8046316C[];
-extern char lbl_8047085C[];
+extern char igUnsignedLongArrayMetaField_className[];
+extern char igUnsignedLongArrayMetaField_vtable[];
 extern char lbl_80471914[];
 extern char lbl_80476F60[];
 extern char lbl_8055CF38[8];
@@ -28,14 +28,14 @@ extern char lbl_8055CF40[4];
 extern char lbl_8055CF44[4];
 extern char lbl_8055CF48[4];
 extern char lbl_8055CF4C[4];
-extern void *lbl_805614A8;
+extern void *igUnsignedLongMetaField_meta;
 extern void *lbl_805614AC;
-extern void *lbl_805614B0;
+extern void *igUnsignedLongArrayMetaField_meta;
 extern void *lbl_805614B4;
 extern void *lbl_805621F4;
 void *igUnsignedLongArrayMetaField_getMeta();
 void *igUnsignedLongArrayMetaField_vtableRead();
-void fn_800228B8();
+void igUnsignedLongArrayMetaField_registerNow();
 void igUnsignedLongArrayMetaField_register();
 void *igUnsignedLongArrayMetaField_getMetaCall();
 void *igUnsignedLongArrayMetaField_parentMeta();
@@ -56,13 +56,13 @@ struct UnknownGenObject80022820_1 : UnknownGenObject80022820_0 {
 };
 struct UnknownGenObject80022820 : UnknownGenObject80022820_1 {
  char unknown10[48];
- inline ~UnknownGenObject80022820(){unknown00=lbl_8047085C;}
+ inline ~UnknownGenObject80022820(){unknown00=igUnsignedLongArrayMetaField_vtable;}
 };
 extern "C" {
 void *igUnsignedLongMetaField_getMetaCall(){return igUnsignedLongMetaField_getMeta();}
 void fn_800226E4(){
  if(!lbl_805614AC){
-  void *object=(lbl_805614AC=fn_8006546C(lbl_805614A8,fn_800607F4(lbl_805621F4)));
+  void *object=(lbl_805614AC=meta_createInstance(igUnsignedLongMetaField_meta,fn_800607F4(lbl_805621F4)));
   if(object){
    fn_80053E6C(fn_80063B5C(),object);
    unknownGenDrop(reinterpret_cast<UnknownGenValue *>(lbl_805614AC));
@@ -73,34 +73,34 @@ void fn_800226E4(){
 }
 void *fn_8002277C(){
  if(!lbl_805614AC){
-  fn_80022634();
+  igUnsignedLongMetaField_registerNow();
  }
  return lbl_805614AC;
 }
-void *fn_800227AC(void *object){
- fn_800228B8();
- return fn_8006546C(lbl_805614B0,object);
+void *igUnsignedLongArrayMetaField_create(void *object){
+ igUnsignedLongArrayMetaField_registerNow();
+ return meta_createInstance(igUnsignedLongArrayMetaField_meta,object);
 }
 void *igUnsignedLongArrayMetaField_getMeta(){
- if(!lbl_805614B0 || !(reinterpret_cast<unsigned int *>(lbl_805614B0)[0x24/4]&4)) fn_800228B8();
- return lbl_805614B0;
+ if(!igUnsignedLongArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedLongArrayMetaField_meta)[0x24/4]&4)) igUnsignedLongArrayMetaField_registerNow();
+ return igUnsignedLongArrayMetaField_meta;
 }
 void *igUnsignedLongArrayMetaField_vtableRead(){
  UnknownGenObject80022820 object;
- object.unknown00=lbl_8047085C;
+ object.unknown00=igUnsignedLongArrayMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800228B8(){
- fn_80066188((int)igUnsignedLongArrayMetaField_register);
+void igUnsignedLongArrayMetaField_registerNow(){
+ meta_registerNow((int)igUnsignedLongArrayMetaField_register);
 }
 void igUnsignedLongArrayMetaField_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_805614B0,(int)igUnsignedLongMetaField_register,(int)igUnsignedLongArrayMetaField_parentMeta,(int)igUnsignedLongArrayMetaField_getMetaCall,(int)lbl_8046316C,56,(int)igUnsignedLongArrayMetaField_vtableRead,(int)igUnsignedLongArrayMetaField_fieldInit,0,(int)lbl_8055CF38);
+ meta_registerClass(0,(int)&igUnsignedLongArrayMetaField_meta,(int)igUnsignedLongMetaField_register,(int)igUnsignedLongArrayMetaField_parentMeta,(int)igUnsignedLongArrayMetaField_getMetaCall,(int)igUnsignedLongArrayMetaField_className,56,(int)igUnsignedLongArrayMetaField_vtableRead,(int)igUnsignedLongArrayMetaField_fieldInit,0,(int)lbl_8055CF38);
 }
 void *igUnsignedLongArrayMetaField_getMetaCall(){return igUnsignedLongArrayMetaField_getMeta();}
-void *igUnsignedLongArrayMetaField_parentMeta(){return lbl_805614A8;}
+void *igUnsignedLongArrayMetaField_parentMeta(){return igUnsignedLongMetaField_meta;}
 void igUnsignedLongArrayMetaField_fieldInit(){
- void *meta=lbl_805614B0;
+ void *meta=igUnsignedLongArrayMetaField_meta;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_8055CF40,1);
  fn_80053650(fn_800658E4(meta,field),1);
@@ -108,7 +108,7 @@ void igUnsignedLongArrayMetaField_fieldInit(){
 }
 void fn_800229F8(){
  if(!lbl_805614B4){
-  void *object=(lbl_805614B4=fn_8006546C(lbl_805614B0,fn_800607F4(lbl_805621F4)));
+  void *object=(lbl_805614B4=meta_createInstance(igUnsignedLongArrayMetaField_meta,fn_800607F4(lbl_805621F4)));
   if(object){
    fn_80053E6C(fn_80063B5C(),object);
    unknownGenDrop(reinterpret_cast<UnknownGenValue *>(lbl_805614B4));

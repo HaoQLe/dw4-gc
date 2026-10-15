@@ -3,14 +3,14 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
@@ -20,32 +20,32 @@ void igFlattenHierarchy_fieldInit();
 void igObjectList_register();
 void igOptBase_register();
 void igOptVisitObject_register();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_8049ED54[];
-extern char lbl_8049ED68[];
-extern char lbl_8049ED7C[];
-extern char lbl_8049ED98[];
-extern char lbl_8049EDC0[];
-extern char lbl_8049EDDC[];
-extern char lbl_8049EDF4[];
-extern char lbl_8049EE0C[];
-extern char lbl_8049EE1C[];
+extern char igGeometryListList_className[];
+extern char igGatherTransforms_className[];
+extern char igGatherSpatialPartitions_className[];
+extern char igGatherCompileGraphs_className[];
+extern char igFlattenNodeForTransform_className[];
+extern char igFlattenNodeForGroup_className[];
+extern char igFlattenNodeForAttrSet_className[];
+extern char igFlattenNode_className[];
+extern char igFlattenHierarchy_className[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
-extern char lbl_804A670C[];
-extern char lbl_804A67A4[];
-extern char lbl_804A683C[];
-extern char lbl_804A68D4[];
-extern char lbl_804A695C[];
-extern char lbl_804A69F4[];
-extern char lbl_804A6A8C[];
+extern char igGatherTransforms_vtable[];
+extern char igGatherSpatialPartitions_vtable[];
+extern char igGatherCompileGraphs_vtable[];
+extern char igFlattenHierarchy_vtable[];
+extern char igFlattenNodeForAttrSet_vtable[];
+extern char igFlattenNodeForGroup_vtable[];
+extern char igFlattenNodeForTransform_vtable[];
 extern char lbl_804A8050[];
 extern char lbl_804A934C[];
-extern char lbl_804A93E4[];
+extern char igGeometryListList_vtable[];
 extern char lbl_804A9448[];
 extern char lbl_804AAF48[];
 extern char lbl_8055FAD0[8];
@@ -58,62 +58,62 @@ extern char lbl_8055FAEC[4];
 extern char lbl_8055FAF0[4];
 extern char lbl_8055FAF4[4];
 extern void *lbl_805621F4;
-extern void *lbl_80564238;
-extern void *lbl_8056423C;
-extern void *lbl_80564244;
-extern void *lbl_80564248;
-extern void *lbl_80564250;
-extern void *lbl_80564254;
-extern void *lbl_80564258;
-extern void *lbl_8056425C;
-extern void *lbl_80564260;
-extern void *lbl_805644E0;
+extern void *igGeometryListList_meta;
+extern void *igGatherTransforms_meta;
+extern void *igGatherSpatialPartitions_meta;
+extern void *igGatherCompileGraphs_meta;
+extern void *igFlattenNodeForTransform_meta;
+extern void *igFlattenNodeForGroup_meta;
+extern void *igFlattenNodeForAttrSet_meta;
+extern void *igFlattenNode_meta;
+extern void *igFlattenHierarchy_meta;
+extern void *igCollapseNode_meta;
 void *igGeometryListList_getMeta();
 void *igGeometryListList_vtableRead();
-void fn_80147BB0();
+void igGeometryListList_registerNow();
 void igGeometryListList_register();
 void *igGeometryListList_getMetaCall();
 void *igGatherTransforms_getMeta();
 void *igGatherTransforms_vtableRead();
-void fn_80147E20();
+void igGatherTransforms_registerNow();
 void igGatherTransforms_register();
 void *igGatherTransforms_getMetaCall();
 void igGatherTransforms_fieldInit();
 void *igGatherSpatialPartitions_getMeta();
 void *igGatherSpatialPartitions_vtableRead();
-void fn_801480BC();
+void igGatherSpatialPartitions_registerNow();
 void igGatherSpatialPartitions_register();
 void *igGatherSpatialPartitions_getMetaCall();
 void *igGatherCompileGraphs_getMeta();
 void *igGatherCompileGraphs_vtableRead();
-void fn_80148328();
+void igGatherCompileGraphs_registerNow();
 void igGatherCompileGraphs_register();
 void *igGatherCompileGraphs_getMetaCall();
 void igGatherCompileGraphs_fieldInit();
 void *igFlattenNodeForTransform_getMeta();
 void *igFlattenNodeForTransform_vtableRead();
-void fn_80148590();
+void igFlattenNodeForTransform_registerNow();
 void igFlattenNodeForTransform_register();
 void *igFlattenNodeForTransform_getMetaCall();
 void *fn_80148640();
 void *igFlattenNodeForGroup_getMeta();
 void *igFlattenNodeForGroup_vtableRead();
-void fn_80148790();
+void igFlattenNodeForGroup_registerNow();
 void igFlattenNodeForGroup_register();
 void *igFlattenNodeForGroup_getMetaCall();
 void *igFlattenNodeForAttrSet_getMeta();
 void *igFlattenNodeForAttrSet_vtableRead();
-void fn_80148988();
+void igFlattenNodeForAttrSet_registerNow();
 void igFlattenNodeForAttrSet_register();
 void *igFlattenNodeForAttrSet_getMetaCall();
 void *igFlattenNode_getMeta();
-void fn_80148A74();
+void igFlattenNode_registerNow();
 void igFlattenNode_register();
 void *igFlattenNode_getMetaCall();
 void *fn_80148B20();
 void *igFlattenHierarchy_getMeta();
 void *igFlattenHierarchy_vtableRead();
-void fn_80148C94();
+void igFlattenHierarchy_registerNow();
 void igFlattenHierarchy_register();
 void *igFlattenHierarchy_getMetaCall();
 }
@@ -139,7 +139,7 @@ struct UnknownGenObject80147CA0_1 : UnknownGenObject80147CA0_0 {
 struct UnknownGenObject80147CA0 : UnknownGenObject80147CA0_1 {
  UnknownGenString unknown2C;
  char unknown30[8];
- inline ~UnknownGenObject80147CA0(){unknown00=lbl_804A670C;}
+ inline ~UnknownGenObject80147CA0(){unknown00=igGatherTransforms_vtable;}
 };
 struct UnknownGenRoot80147F7C {
  void *unknown00;
@@ -158,7 +158,7 @@ struct UnknownGenObject80147F7C_1 : UnknownGenObject80147F7C_0 {
 };
 struct UnknownGenObject80147F7C : UnknownGenObject80147F7C_1 {
  char unknown2C[12];
- inline ~UnknownGenObject80147F7C(){unknown00=lbl_804A67A4;}
+ inline ~UnknownGenObject80147F7C(){unknown00=igGatherSpatialPartitions_vtable;}
 };
 struct UnknownGenRoot801481A8 {
  void *unknown00;
@@ -178,7 +178,7 @@ struct UnknownGenObject801481A8_1 : UnknownGenObject801481A8_0 {
 struct UnknownGenObject801481A8 : UnknownGenObject801481A8_1 {
  UnknownGenString unknown2C;
  char unknown30[8];
- inline ~UnknownGenObject801481A8(){unknown00=lbl_804A683C;}
+ inline ~UnknownGenObject801481A8(){unknown00=igGatherCompileGraphs_vtable;}
 };
 struct UnknownGenRoot80148484 {
  void *unknown00;
@@ -196,7 +196,7 @@ struct UnknownGenObject80148484_1 : UnknownGenObject80148484_0 {
 };
 struct UnknownGenObject80148484 : UnknownGenObject80148484_1 {
  char unknown28[8];
- inline ~UnknownGenObject80148484(){unknown00=lbl_804A6A8C;}
+ inline ~UnknownGenObject80148484(){unknown00=igFlattenNodeForTransform_vtable;}
 };
 struct UnknownGenRoot80148684 {
  void *unknown00;
@@ -214,7 +214,7 @@ struct UnknownGenObject80148684_1 : UnknownGenObject80148684_0 {
 };
 struct UnknownGenObject80148684 : UnknownGenObject80148684_1 {
  char unknown28[8];
- inline ~UnknownGenObject80148684(){unknown00=lbl_804A69F4;}
+ inline ~UnknownGenObject80148684(){unknown00=igFlattenNodeForGroup_vtable;}
 };
 struct UnknownGenRoot8014887C {
  void *unknown00;
@@ -232,7 +232,7 @@ struct UnknownGenObject8014887C_1 : UnknownGenObject8014887C_0 {
 };
 struct UnknownGenObject8014887C : UnknownGenObject8014887C_1 {
  char unknown28[8];
- inline ~UnknownGenObject8014887C(){unknown00=lbl_804A695C;}
+ inline ~UnknownGenObject8014887C(){unknown00=igFlattenNodeForAttrSet_vtable;}
 };
 struct UnknownGenRoot80148B64 {
  void *unknown00;
@@ -249,42 +249,42 @@ struct UnknownGenObject80148B64 : UnknownGenObject80148B64_0 {
  char unknown28[4];
  UnknownGenString unknown2C;
  char unknown30[8];
- inline ~UnknownGenObject80148B64(){unknown00=lbl_804A68D4;}
+ inline ~UnknownGenObject80148B64(){unknown00=igFlattenHierarchy_vtable;}
 };
 extern "C" {
-void *fn_80147A90(void *object){
- fn_80147BB0();
- return fn_8006546C(lbl_80564238,object);
+void *igGeometryListList_create(void *object){
+ igGeometryListList_registerNow();
+ return meta_createInstance(igGeometryListList_meta,object);
 }
 void *fn_80147AC8(){
- if(!lbl_80564238) lbl_80564238=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564238;
+ if(!igGeometryListList_meta) igGeometryListList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igGeometryListList_meta;
 }
 void *igGeometryListList_getMeta(){
- if(!lbl_80564238 || !(reinterpret_cast<unsigned int *>(lbl_80564238)[0x24/4]&4)) fn_80147BB0();
- return lbl_80564238;
+ if(!igGeometryListList_meta || !(reinterpret_cast<unsigned int *>(igGeometryListList_meta)[0x24/4]&4)) igGeometryListList_registerNow();
+ return igGeometryListList_meta;
 }
 void *igGeometryListList_vtableRead(){
  UnknownGenObject80147B40_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_804A9448;
- object.unknown00=lbl_804A93E4;
+ object.unknown00=igGeometryListList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80147BB0(){
- fn_80066188((int)igGeometryListList_register);
+void igGeometryListList_registerNow(){
+ meta_registerNow((int)igGeometryListList_register);
 }
 void igGeometryListList_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564238,(int)igObjectList_register,(int)fn_80024180,(int)igGeometryListList_getMetaCall,(int)lbl_8049ED54,20,(int)igGeometryListList_vtableRead,0,0,(int)lbl_8055FAD0);
+ meta_registerClass(0,(int)&igGeometryListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igGeometryListList_getMetaCall,(int)igGeometryListList_className,20,(int)igGeometryListList_vtableRead,0,0,(int)lbl_8055FAD0);
 }
 void *igGeometryListList_getMetaCall(){return igGeometryListList_getMeta();}
 void *igGatherTransforms_getMeta(){
- if(!lbl_8056423C || !(reinterpret_cast<unsigned int *>(lbl_8056423C)[0x24/4]&4)) fn_80147E20();
- return lbl_8056423C;
+ if(!igGatherTransforms_meta || !(reinterpret_cast<unsigned int *>(igGatherTransforms_meta)[0x24/4]&4)) igGatherTransforms_registerNow();
+ return igGatherTransforms_meta;
 }
 void *igGatherTransforms_vtableRead(){
  UnknownGenObject80147CA0 object;
@@ -295,27 +295,27 @@ void *igGatherTransforms_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A670C;
+ object.unknown00=igGatherTransforms_vtable;
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80147E20(){
- fn_80066188((int)igGatherTransforms_register);
+void igGatherTransforms_registerNow(){
+ meta_registerNow((int)igGatherTransforms_register);
 }
 void igGatherTransforms_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_8056423C,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igGatherTransforms_getMetaCall,(int)lbl_8049ED68,48,(int)igGatherTransforms_vtableRead,(int)igGatherTransforms_fieldInit,0,0);
+ meta_registerClass(0,(int)&igGatherTransforms_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igGatherTransforms_getMetaCall,(int)igGatherTransforms_className,48,(int)igGatherTransforms_vtableRead,(int)igGatherTransforms_fieldInit,0,0);
 }
 void *igGatherTransforms_getMetaCall(){return igGatherTransforms_getMeta();}
 void igGatherTransforms_fieldInit(){
- void *value0=lbl_8056423C;
+ void *value0=igGatherTransforms_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055FAD8,1);
  fn_800659C0(value0,lbl_8055FADC,lbl_8055FAE0,lbl_8055FAE4,value1);
 }
 void *igGatherSpatialPartitions_getMeta(){
- if(!lbl_80564244 || !(reinterpret_cast<unsigned int *>(lbl_80564244)[0x24/4]&4)) fn_801480BC();
- return lbl_80564244;
+ if(!igGatherSpatialPartitions_meta || !(reinterpret_cast<unsigned int *>(igGatherSpatialPartitions_meta)[0x24/4]&4)) igGatherSpatialPartitions_registerNow();
+ return igGatherSpatialPartitions_meta;
 }
 void *igGatherSpatialPartitions_vtableRead(){
  UnknownGenObject80147F7C object;
@@ -326,20 +326,20 @@ void *igGatherSpatialPartitions_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A67A4;
+ object.unknown00=igGatherSpatialPartitions_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801480BC(){
- fn_80066188((int)igGatherSpatialPartitions_register);
+void igGatherSpatialPartitions_registerNow(){
+ meta_registerNow((int)igGatherSpatialPartitions_register);
 }
 void igGatherSpatialPartitions_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564244,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igGatherSpatialPartitions_getMetaCall,(int)lbl_8049ED7C,44,(int)igGatherSpatialPartitions_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igGatherSpatialPartitions_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igGatherSpatialPartitions_getMetaCall,(int)igGatherSpatialPartitions_className,44,(int)igGatherSpatialPartitions_vtableRead,0,0,0);
 }
 void *igGatherSpatialPartitions_getMetaCall(){return igGatherSpatialPartitions_getMeta();}
 void *igGatherCompileGraphs_getMeta(){
- if(!lbl_80564248 || !(reinterpret_cast<unsigned int *>(lbl_80564248)[0x24/4]&4)) fn_80148328();
- return lbl_80564248;
+ if(!igGatherCompileGraphs_meta || !(reinterpret_cast<unsigned int *>(igGatherCompileGraphs_meta)[0x24/4]&4)) igGatherCompileGraphs_registerNow();
+ return igGatherCompileGraphs_meta;
 }
 void *igGatherCompileGraphs_vtableRead(){
  UnknownGenObject801481A8 object;
@@ -350,27 +350,27 @@ void *igGatherCompileGraphs_vtableRead(){
  object.unknown24.value=0;
  object.unknown00=lbl_804A46AC;
  object.unknown28.value=0;
- object.unknown00=lbl_804A683C;
+ object.unknown00=igGatherCompileGraphs_vtable;
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80148328(){
- fn_80066188((int)igGatherCompileGraphs_register);
+void igGatherCompileGraphs_registerNow(){
+ meta_registerNow((int)igGatherCompileGraphs_register);
 }
 void igGatherCompileGraphs_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564248,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igGatherCompileGraphs_getMetaCall,(int)lbl_8049ED98,48,(int)igGatherCompileGraphs_vtableRead,(int)igGatherCompileGraphs_fieldInit,0,0);
+ meta_registerClass(0,(int)&igGatherCompileGraphs_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igGatherCompileGraphs_getMetaCall,(int)igGatherCompileGraphs_className,48,(int)igGatherCompileGraphs_vtableRead,(int)igGatherCompileGraphs_fieldInit,0,0);
 }
 void *igGatherCompileGraphs_getMetaCall(){return igGatherCompileGraphs_getMeta();}
 void igGatherCompileGraphs_fieldInit(){
- void *value0=lbl_80564248;
+ void *value0=igGatherCompileGraphs_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055FAE8,1);
  fn_800659C0(value0,lbl_8055FAEC,lbl_8055FAF0,lbl_8055FAF4,value1);
 }
 void *igFlattenNodeForTransform_getMeta(){
- if(!lbl_80564250 || !(reinterpret_cast<unsigned int *>(lbl_80564250)[0x24/4]&4)) fn_80148590();
- return lbl_80564250;
+ if(!igFlattenNodeForTransform_meta || !(reinterpret_cast<unsigned int *>(igFlattenNodeForTransform_meta)[0x24/4]&4)) igFlattenNodeForTransform_registerNow();
+ return igFlattenNodeForTransform_meta;
 }
 void *igFlattenNodeForTransform_vtableRead(){
  UnknownGenObject80148484 object;
@@ -381,21 +381,21 @@ void *igFlattenNodeForTransform_vtableRead(){
  object.unknown20.value=0;
  object.unknown24.value=0;
  object.unknown00=lbl_804A934C;
- object.unknown00=lbl_804A6A8C;
+ object.unknown00=igFlattenNodeForTransform_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80148590(){
- fn_80066188((int)igFlattenNodeForTransform_register);
+void igFlattenNodeForTransform_registerNow(){
+ meta_registerNow((int)igFlattenNodeForTransform_register);
 }
 void igFlattenNodeForTransform_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564250,(int)igFlattenNode_register,(int)fn_80148640,(int)igFlattenNodeForTransform_getMetaCall,(int)lbl_8049EDC0,44,(int)igFlattenNodeForTransform_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igFlattenNodeForTransform_meta,(int)igFlattenNode_register,(int)fn_80148640,(int)igFlattenNodeForTransform_getMetaCall,(int)igFlattenNodeForTransform_className,44,(int)igFlattenNodeForTransform_vtableRead,0,0,0);
 }
 void *igFlattenNodeForTransform_getMetaCall(){return igFlattenNodeForTransform_getMeta();}
-void *fn_80148640(){return lbl_8056425C;}
+void *fn_80148640(){return igFlattenNode_meta;}
 void *igFlattenNodeForGroup_getMeta(){
- if(!lbl_80564254 || !(reinterpret_cast<unsigned int *>(lbl_80564254)[0x24/4]&4)) fn_80148790();
- return lbl_80564254;
+ if(!igFlattenNodeForGroup_meta || !(reinterpret_cast<unsigned int *>(igFlattenNodeForGroup_meta)[0x24/4]&4)) igFlattenNodeForGroup_registerNow();
+ return igFlattenNodeForGroup_meta;
 }
 void *igFlattenNodeForGroup_vtableRead(){
  UnknownGenObject80148684 object;
@@ -406,20 +406,20 @@ void *igFlattenNodeForGroup_vtableRead(){
  object.unknown20.value=0;
  object.unknown24.value=0;
  object.unknown00=lbl_804A934C;
- object.unknown00=lbl_804A69F4;
+ object.unknown00=igFlattenNodeForGroup_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80148790(){
- fn_80066188((int)igFlattenNodeForGroup_register);
+void igFlattenNodeForGroup_registerNow(){
+ meta_registerNow((int)igFlattenNodeForGroup_register);
 }
 void igFlattenNodeForGroup_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564254,(int)igFlattenNode_register,(int)fn_80148640,(int)igFlattenNodeForGroup_getMetaCall,(int)lbl_8049EDDC,44,(int)igFlattenNodeForGroup_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igFlattenNodeForGroup_meta,(int)igFlattenNode_register,(int)fn_80148640,(int)igFlattenNodeForGroup_getMetaCall,(int)igFlattenNodeForGroup_className,44,(int)igFlattenNodeForGroup_vtableRead,0,0,0);
 }
 void *igFlattenNodeForGroup_getMetaCall(){return igFlattenNodeForGroup_getMeta();}
 void *igFlattenNodeForAttrSet_getMeta(){
- if(!lbl_80564258 || !(reinterpret_cast<unsigned int *>(lbl_80564258)[0x24/4]&4)) fn_80148988();
- return lbl_80564258;
+ if(!igFlattenNodeForAttrSet_meta || !(reinterpret_cast<unsigned int *>(igFlattenNodeForAttrSet_meta)[0x24/4]&4)) igFlattenNodeForAttrSet_registerNow();
+ return igFlattenNodeForAttrSet_meta;
 }
 void *igFlattenNodeForAttrSet_vtableRead(){
  UnknownGenObject8014887C object;
@@ -430,33 +430,33 @@ void *igFlattenNodeForAttrSet_vtableRead(){
  object.unknown20.value=0;
  object.unknown24.value=0;
  object.unknown00=lbl_804A934C;
- object.unknown00=lbl_804A695C;
+ object.unknown00=igFlattenNodeForAttrSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80148988(){
- fn_80066188((int)igFlattenNodeForAttrSet_register);
+void igFlattenNodeForAttrSet_registerNow(){
+ meta_registerNow((int)igFlattenNodeForAttrSet_register);
 }
 void igFlattenNodeForAttrSet_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564258,(int)igFlattenNode_register,(int)fn_80148640,(int)igFlattenNodeForAttrSet_getMetaCall,(int)lbl_8049EDF4,44,(int)igFlattenNodeForAttrSet_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igFlattenNodeForAttrSet_meta,(int)igFlattenNode_register,(int)fn_80148640,(int)igFlattenNodeForAttrSet_getMetaCall,(int)igFlattenNodeForAttrSet_className,44,(int)igFlattenNodeForAttrSet_vtableRead,0,0,0);
 }
 void *igFlattenNodeForAttrSet_getMetaCall(){return igFlattenNodeForAttrSet_getMeta();}
 void *igFlattenNode_getMeta(){
- if(!lbl_8056425C || !(reinterpret_cast<unsigned int *>(lbl_8056425C)[0x24/4]&4)) fn_80148A74();
- return lbl_8056425C;
+ if(!igFlattenNode_meta || !(reinterpret_cast<unsigned int *>(igFlattenNode_meta)[0x24/4]&4)) igFlattenNode_registerNow();
+ return igFlattenNode_meta;
 }
-void fn_80148A74(){
- fn_80066188((int)igFlattenNode_register);
+void igFlattenNode_registerNow(){
+ meta_registerNow((int)igFlattenNode_register);
 }
 void igFlattenNode_register(){
  fn_8012FC48();
- fn_80066204(1,(int)&lbl_8056425C,(int)igCollapseNode_register,(int)fn_80148B20,(int)igFlattenNode_getMetaCall,(int)lbl_8049EE0C,44,0,0,0,0);
+ meta_registerClass(1,(int)&igFlattenNode_meta,(int)igCollapseNode_register,(int)fn_80148B20,(int)igFlattenNode_getMetaCall,(int)igFlattenNode_className,44,0,0,0,0);
 }
 void *igFlattenNode_getMetaCall(){return igFlattenNode_getMeta();}
-void *fn_80148B20(){return lbl_805644E0;}
+void *fn_80148B20(){return igCollapseNode_meta;}
 void *igFlattenHierarchy_getMeta(){
- if(!lbl_80564260 || !(reinterpret_cast<unsigned int *>(lbl_80564260)[0x24/4]&4)) fn_80148C94();
- return lbl_80564260;
+ if(!igFlattenHierarchy_meta || !(reinterpret_cast<unsigned int *>(igFlattenHierarchy_meta)[0x24/4]&4)) igFlattenHierarchy_registerNow();
+ return igFlattenHierarchy_meta;
 }
 void *igFlattenHierarchy_vtableRead(){
  UnknownGenObject80148B64 object;
@@ -465,16 +465,16 @@ void *igFlattenHierarchy_vtableRead(){
  object.unknown00=lbl_804A4A04;
  object.unknown20.value=0;
  object.unknown24.value=0;
- object.unknown00=lbl_804A68D4;
+ object.unknown00=igFlattenHierarchy_vtable;
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80148C94(){
- fn_80066188((int)igFlattenHierarchy_register);
+void igFlattenHierarchy_registerNow(){
+ meta_registerNow((int)igFlattenHierarchy_register);
 }
 void igFlattenHierarchy_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80564260,(int)igOptBase_register,(int)fn_801308D0,(int)igFlattenHierarchy_getMetaCall,(int)lbl_8049EE1C,48,(int)igFlattenHierarchy_vtableRead,(int)igFlattenHierarchy_fieldInit,0,0);
+ meta_registerClass(0,(int)&igFlattenHierarchy_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igFlattenHierarchy_getMetaCall,(int)igFlattenHierarchy_className,48,(int)igFlattenHierarchy_vtableRead,(int)igFlattenHierarchy_fieldInit,0,0);
 }
 void *igFlattenHierarchy_getMetaCall(){return igFlattenHierarchy_getMeta();}
 }

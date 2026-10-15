@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
+void meta_registerNow(int);
 void fn_8006665C(void *);
 void igObject_register();
 }
@@ -17,8 +17,8 @@ void *fn_80066AAC(){
  fn_8006665C(&object);
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80066AE0(){
- fn_80066188((int)igObject_register);
+void igObject_registerNow(){
+ meta_registerNow((int)igObject_register);
 }
 }
 #pragma pop

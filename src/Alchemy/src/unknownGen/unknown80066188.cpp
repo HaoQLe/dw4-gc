@@ -5,7 +5,7 @@ extern "C" {
 void fn_8003E85C(void *,int);
 }
 extern "C" {
-void fn_80066188(int p0){
+void meta_registerNow(int p0){
  void *value2;
  void *value0;
  void *value1;

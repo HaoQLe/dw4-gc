@@ -7,11 +7,11 @@ void *fn_80068128(void *,void *);
 void fn_8029AF34(void *);
 void fn_8029B55C(void *);
 void fn_802AEA80(void *,void *);
-extern char lbl_805343EC[];
+extern char igCriMovieData_meta[];
 }
 static inline void *UnknownGenCast802AE530_8(void *q){
  void *value2;
- if((q&&(value2=fn_80068128(q,*reinterpret_cast<void **>((lbl_805343EC+0))),(unsigned char)(int)value2))) return q;
+ if((q&&(value2=fn_80068128(q,*reinterpret_cast<void **>((igCriMovieData_meta+0))),(unsigned char)(int)value2))) return q;
  return 0;
 }
 extern "C" {

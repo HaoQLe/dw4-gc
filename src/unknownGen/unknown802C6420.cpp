@@ -4,7 +4,7 @@
 extern "C" {
 void fn_8006665C(void *);
 void fn_802C64EC(void *,short);
-extern char lbl_804D9D3C[];
+extern char beModelCtrlInfoWork_vtable[];
 }
 struct UnknownGenObject802C6420 {
  void *unknown00;
@@ -52,7 +52,7 @@ extern "C" {
 void *beModelCtrlInfoWork_vtableRead(){
  UnknownGenObject802C6420 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804D9D3C;
+ object.unknown00=beModelCtrlInfoWork_vtable;
  object.unknown08=0;
  object.unknown0C=0;
  object.unknown14=0;

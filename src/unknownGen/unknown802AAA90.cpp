@@ -3,32 +3,32 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802AA788();
-void fn_802AAC90();
+void igAdxAfsFile_registerNow();
 void *igAdxAfsFileList_getMeta();
 void igAdxAfsFileList_vtableRead();
 void igObjectList_register();
-extern char lbl_8041BB38[];
+extern char igAdxAfsFileList_className[];
 extern char lbl_804CD948[];
-extern char lbl_80534354[];
-extern void *lbl_80534358;
+extern char igAdxAfsFileList_meta[];
+extern void *igAdxAfsFile_meta;
 void igAdxAfsFileList_register();
 void *igAdxAfsFileList_getMetaCall();
 }
 extern "C" {
-void fn_802AAA90(){
- fn_80066188((int)igAdxAfsFileList_register);
+void igAdxAfsFileList_registerNow(){
+ meta_registerNow((int)igAdxAfsFileList_register);
 }
 void igAdxAfsFileList_register(){
  fn_802AA788();
- fn_80066204(0,(int)lbl_80534354,(int)igObjectList_register,(int)fn_80024180,(int)igAdxAfsFileList_getMetaCall,(int)lbl_8041BB38,20,(int)igAdxAfsFileList_vtableRead,0,0,(int)lbl_804CD948);
+ meta_registerClass(0,(int)igAdxAfsFileList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAdxAfsFileList_getMetaCall,(int)igAdxAfsFileList_className,20,(int)igAdxAfsFileList_vtableRead,0,0,(int)lbl_804CD948);
 }
 void *igAdxAfsFileList_getMetaCall(){return igAdxAfsFileList_getMeta();}
 void *igAdxAfsFile_getMeta(){
- if(!lbl_80534358 || !(reinterpret_cast<unsigned int *>(lbl_80534358)[0x24/4]&4)) fn_802AAC90();
- return lbl_80534358;
+ if(!igAdxAfsFile_meta || !(reinterpret_cast<unsigned int *>(igAdxAfsFile_meta)[0x24/4]&4)) igAdxAfsFile_registerNow();
+ return igAdxAfsFile_meta;
 }
 }
 #pragma pop

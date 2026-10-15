@@ -4,11 +4,11 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80068128(void *,void *);
-extern void *lbl_80561684;
+extern void *igRefMetaField_meta;
 }
 extern "C" {
 void igMemoryDirEntry_virtualA8(int p0){
- fn_80068128(reinterpret_cast<Meta::igMemoryDirEntry *>((void *)p0)->_memType,lbl_80561684);
+ fn_80068128(reinterpret_cast<Meta::igMemoryDirEntry *>((void *)p0)->_memType,igRefMetaField_meta);
 }
 }
 #pragma pop

@@ -11,11 +11,11 @@ extern char lbl_804D1868[];
 extern char lbl_804D1870[];
 extern char lbl_804D1878[];
 extern char lbl_804D1880[];
-extern void *lbl_80535118;
+extern void *beLuaDataObject_meta;
 }
 extern "C" {
 void beLuaDataObject_fieldInit(){
- void *value0=lbl_80535118;
+ void *value0=beLuaDataObject_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1868,2);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));

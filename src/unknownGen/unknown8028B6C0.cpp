@@ -4,7 +4,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_800692E0(void *,void *,void *,int);
-extern void *lbl_80515CA0;
+extern void *igFilterMessageDispatcher_meta;
 }
 class UnknownGenV8028B750_0 {
 public:
@@ -77,7 +77,7 @@ void igFilterMessageDispatcher_virtual6C(int p0,int p1,int p2,int p3,int p4,int 
   return;
  }
 }
-void *igFilterMessageDispatcher_virtual58(){return lbl_80515CA0;}
+void *igFilterMessageDispatcher_virtual58(){return igFilterMessageDispatcher_meta;}
 void fn_8028B750(int p0,int p1,int p2){
  reinterpret_cast<UnknownGenV8028B750_0 *>(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+8))->s5C((void *)p1,(void *)p2);
 }

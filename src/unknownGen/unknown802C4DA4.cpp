@@ -11,11 +11,11 @@ extern char lbl_804D0538[];
 extern char lbl_804D0544[];
 extern char lbl_804D0550[];
 extern char lbl_804D055C[];
-extern void *lbl_80534BD0;
+extern void *beMovieInfoData_meta;
 }
 extern "C" {
 void beMovieInfoData_fieldInit(){
- void *value0=lbl_80534BD0;
+ void *value0=beMovieInfoData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D0538,3);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));

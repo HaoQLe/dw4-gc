@@ -7,13 +7,13 @@ void beNDMWStatusCtrlDisk_fieldInit();
 void *beNDMWStatusCtrlDisk_getMeta();
 void beNDMWStatusCtrlDisk_vtableRead();
 void beNDMWWindowCtrl_register();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_8032B8A4();
-extern char lbl_80453B08[];
+extern char beNDMWStatusCtrlDisk_className[];
 extern char lbl_804E1E84[];
-extern char lbl_80535F04[];
+extern char beNDMWStatusCtrlDisk_meta[];
 void beNDMWStatusCtrlDisk_register();
 void *beNDMWStatusCtrlDisk_getMetaCall();
 }
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_803318B8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_8033192C(){
- fn_80066188((int)beNDMWStatusCtrlDisk_register);
+void beNDMWStatusCtrlDisk_registerNow(){
+ meta_registerNow((int)beNDMWStatusCtrlDisk_register);
 }
 void beNDMWStatusCtrlDisk_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_80535F04,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWStatusCtrlDisk_getMetaCall,(int)lbl_80453B08,108,(int)beNDMWStatusCtrlDisk_vtableRead,(int)beNDMWStatusCtrlDisk_fieldInit,0,(int)lbl_804E1E84);
+ meta_registerClass(0,(int)beNDMWStatusCtrlDisk_meta,(int)beNDMWWindowCtrl_register,(int)fn_8032B8A4,(int)beNDMWStatusCtrlDisk_getMetaCall,(int)beNDMWStatusCtrlDisk_className,108,(int)beNDMWStatusCtrlDisk_vtableRead,(int)beNDMWStatusCtrlDisk_fieldInit,0,(int)lbl_804E1E84);
 }
 void *beNDMWStatusCtrlDisk_getMetaCall(){return beNDMWStatusCtrlDisk_getMeta();}
 }

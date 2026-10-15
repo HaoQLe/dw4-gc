@@ -3,27 +3,27 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
-void fn_801BD010();
+void igInverseKinematicsHandle_registerNow();
 void igObjectList_register();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804AEEEC[];
-extern char lbl_804B77DC[];
+extern char igInverseKinematicsHandleList_className[];
+extern char igInverseKinematicsHandleList_vtable[];
 extern char lbl_804B7840[];
 extern char lbl_8056053C[8];
 extern void *lbl_805621F4;
-extern void *lbl_80564DF4;
-extern void *lbl_80564DF8;
+extern void *igInverseKinematicsHandleList_meta;
+extern void *igInverseKinematicsHandle_meta;
 void *igInverseKinematicsHandleList_getMeta();
 void *igInverseKinematicsHandleList_vtableRead();
-void fn_801BCC04();
+void igInverseKinematicsHandleList_registerNow();
 void igInverseKinematicsHandleList_register();
 void *igInverseKinematicsHandleList_getMetaCall();
 }
@@ -33,34 +33,34 @@ struct UnknownGenObject801BCB94_0 {
 };
 extern "C" {
 void *fn_801BCB1C(){
- if(!lbl_80564DF4) lbl_80564DF4=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564DF4;
+ if(!igInverseKinematicsHandleList_meta) igInverseKinematicsHandleList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igInverseKinematicsHandleList_meta;
 }
 void *igInverseKinematicsHandleList_getMeta(){
- if(!lbl_80564DF4 || !(reinterpret_cast<unsigned int *>(lbl_80564DF4)[0x24/4]&4)) fn_801BCC04();
- return lbl_80564DF4;
+ if(!igInverseKinematicsHandleList_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsHandleList_meta)[0x24/4]&4)) igInverseKinematicsHandleList_registerNow();
+ return igInverseKinematicsHandleList_meta;
 }
 void *igInverseKinematicsHandleList_vtableRead(){
  UnknownGenObject801BCB94_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_804B7840;
- object.unknown00=lbl_804B77DC;
+ object.unknown00=igInverseKinematicsHandleList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801BCC04(){
- fn_80066188((int)igInverseKinematicsHandleList_register);
+void igInverseKinematicsHandleList_registerNow(){
+ meta_registerNow((int)igInverseKinematicsHandleList_register);
 }
 void igInverseKinematicsHandleList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80564DF4,(int)igObjectList_register,(int)fn_80024180,(int)igInverseKinematicsHandleList_getMetaCall,(int)lbl_804AEEEC,20,(int)igInverseKinematicsHandleList_vtableRead,0,0,(int)lbl_8056053C);
+ meta_registerClass(0,(int)&igInverseKinematicsHandleList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igInverseKinematicsHandleList_getMetaCall,(int)igInverseKinematicsHandleList_className,20,(int)igInverseKinematicsHandleList_vtableRead,0,0,(int)lbl_8056053C);
 }
 void *igInverseKinematicsHandleList_getMetaCall(){return igInverseKinematicsHandleList_getMeta();}
 void *igInverseKinematicsHandle_getMeta(){
- if(!lbl_80564DF8 || !(reinterpret_cast<unsigned int *>(lbl_80564DF8)[0x24/4]&4)) fn_801BD010();
- return lbl_80564DF8;
+ if(!igInverseKinematicsHandle_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsHandle_meta)[0x24/4]&4)) igInverseKinematicsHandle_registerNow();
+ return igInverseKinematicsHandle_meta;
 }
 }
 #pragma pop

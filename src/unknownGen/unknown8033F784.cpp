@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804E54CC[];
+extern char beNDMWLoadSavePlWork_vtable[];
 }
 struct UnknownGenObject8033F784_0 {
  void *unknown00;
@@ -13,7 +13,7 @@ extern "C" {
 void *beNDMWLoadSavePlWork_vtableRead(){
  UnknownGenObject8033F784_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804E54CC;
+ object.unknown00=beNDMWLoadSavePlWork_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

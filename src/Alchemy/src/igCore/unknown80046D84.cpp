@@ -174,9 +174,9 @@ void fn_800639E4(void *);
 void *fn_80046FD8(void *);
 void *fn_800470F4();
 void *fn_800607F4(void *);
-Unknown80042DECValue *fn_8003119C(void *);
+Unknown80042DECValue *igErrorHandler_create(void *);
 extern Unknown80042DECValue *lbl_80562120;
-extern void *lbl_80561C2C,*lbl_805621F0;
+extern void *igErrorHandler_meta,*lbl_805621F0;
 extern unsigned char lbl_80562124;
 extern void *lbl_804758E4[];
 extern char lbl_8055D794[5];
@@ -250,12 +250,12 @@ int fn_80047070(){return 4;}
 int igEnumArrayMetaField_virtual6C(){return 4;}
 void *fn_80047080(){return fn_800470F4();}
 void fn_800470A0(){unknown80042DECRelease(lbl_80562120);lbl_80562120=NULL;lbl_80562124=1;}
-void *fn_800470F4(){if(!lbl_80562120 && lbl_80561C2C && !lbl_80562124) lbl_80562120=fn_8003119C(fn_800607F4(lbl_805621F0));return lbl_80562120;}
+void *fn_800470F4(){if(!lbl_80562120 && igErrorHandler_meta && !lbl_80562124) lbl_80562120=igErrorHandler_create(fn_800607F4(lbl_805621F0));return lbl_80562120;}
 void fn_80047148(){}
 void fn_8004714C(Unknown8004714COwner *object,unsigned char active){
  if(active){
   if(!object->unknown08){
-   Unknown800442F8Reference reference(static_cast<const Unknown800442F8Reference &>(Unknown800442F8Reference(reinterpret_cast<Unknown80042DECValue *>(fn_80025FE8(fn_80068430(object))))));
+   Unknown800442F8Reference reference(static_cast<const Unknown800442F8Reference &>(Unknown800442F8Reference(reinterpret_cast<Unknown80042DECValue *>(igSemaphore_create(fn_80068430(object))))));
    reinterpret_cast<Unknown8004714CStream *>(reference.value)->slot5C();
    Unknown80042DECValue *p=reference.value;
    unknown80042DECRetain(p);

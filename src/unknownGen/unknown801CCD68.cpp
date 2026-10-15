@@ -4,28 +4,28 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
 void igAnimationTransitionParams_fieldInit();
 void igObjectList_register();
 void igObject_register();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804B283C[];
-extern char lbl_804B285C[];
-extern char lbl_804B289C[];
-extern char lbl_804B5AFC[];
-extern char lbl_804B5B58[];
-extern char lbl_804B5BB4[];
+extern char igAnimationTransitionPointList_className[];
+extern char igAnimationTransitionPoint_className[];
+extern char igAnimationTransitionParams_className[];
+extern char igAnimationTransitionParams_vtable[];
+extern char igAnimationTransitionPoint_vtable[];
+extern char igAnimationTransitionPointList_vtable[];
 extern char lbl_804B5C18[];
 extern char lbl_80560A08[8];
 extern char lbl_80560A10[8];
@@ -34,24 +34,24 @@ extern char lbl_80560A20[8];
 extern char lbl_80560A28[8];
 extern char lbl_80560A30[8];
 extern void *lbl_805621F4;
-extern void *lbl_80565548;
-extern void *lbl_8056554C;
-extern void *lbl_80565558;
+extern void *igAnimationTransitionPointList_meta;
+extern void *igAnimationTransitionPoint_meta;
+extern void *igAnimationTransitionParams_meta;
 void *igAnimationTransitionPointList_getMeta();
 void *igAnimationTransitionPointList_vtableRead();
-void fn_801CCE50();
+void igAnimationTransitionPointList_registerNow();
 void igAnimationTransitionPointList_register();
 void *igAnimationTransitionPointList_getMetaCall();
 void *igAnimationTransitionPoint_getMeta();
 void *igAnimationTransitionPoint_vtableRead();
-void fn_801CCFC8();
+void igAnimationTransitionPoint_registerNow();
 void igAnimationTransitionPoint_register();
 void *igAnimationTransitionPoint_getMetaCall();
 void igAnimationTransitionPoint_fieldInit();
 void *fn_801CD104();
 void *igAnimationTransitionParams_getMeta();
 void *igAnimationTransitionParams_vtableRead();
-void fn_801CD1BC();
+void igAnimationTransitionParams_registerNow();
 void igAnimationTransitionParams_register();
 void *igAnimationTransitionParams_getMetaCall();
 }
@@ -68,7 +68,7 @@ struct UnknownGenObject801CCF40 : UnknownGenRoot801CCF40 {
  char unknown04[12];
  UnknownGenRefMember unknown10;
  char unknown14[12];
- inline ~UnknownGenObject801CCF40(){unknown00=lbl_804B5B58;}
+ inline ~UnknownGenObject801CCF40(){unknown00=igAnimationTransitionPoint_vtable;}
 };
 struct UnknownGenObject801CD17C_0 {
  void *unknown00;
@@ -76,51 +76,51 @@ struct UnknownGenObject801CD17C_0 {
 };
 extern "C" {
 void *fn_801CCD68(){
- if(!lbl_80565548) lbl_80565548=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80565548;
+ if(!igAnimationTransitionPointList_meta) igAnimationTransitionPointList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igAnimationTransitionPointList_meta;
 }
 void *igAnimationTransitionPointList_getMeta(){
- if(!lbl_80565548 || !(reinterpret_cast<unsigned int *>(lbl_80565548)[0x24/4]&4)) fn_801CCE50();
- return lbl_80565548;
+ if(!igAnimationTransitionPointList_meta || !(reinterpret_cast<unsigned int *>(igAnimationTransitionPointList_meta)[0x24/4]&4)) igAnimationTransitionPointList_registerNow();
+ return igAnimationTransitionPointList_meta;
 }
 void *igAnimationTransitionPointList_vtableRead(){
  UnknownGenObject801CCDE0_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_804B5C18;
- object.unknown00=lbl_804B5BB4;
+ object.unknown00=igAnimationTransitionPointList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801CCE50(){
- fn_80066188((int)igAnimationTransitionPointList_register);
+void igAnimationTransitionPointList_registerNow(){
+ meta_registerNow((int)igAnimationTransitionPointList_register);
 }
 void igAnimationTransitionPointList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80565548,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationTransitionPointList_getMetaCall,(int)lbl_804B283C,20,(int)igAnimationTransitionPointList_vtableRead,0,0,(int)lbl_80560A08);
+ meta_registerClass(0,(int)&igAnimationTransitionPointList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationTransitionPointList_getMetaCall,(int)igAnimationTransitionPointList_className,20,(int)igAnimationTransitionPointList_vtableRead,0,0,(int)lbl_80560A08);
 }
 void *igAnimationTransitionPointList_getMetaCall(){return igAnimationTransitionPointList_getMeta();}
 void *igAnimationTransitionPoint_getMeta(){
- if(!lbl_8056554C || !(reinterpret_cast<unsigned int *>(lbl_8056554C)[0x24/4]&4)) fn_801CCFC8();
- return lbl_8056554C;
+ if(!igAnimationTransitionPoint_meta || !(reinterpret_cast<unsigned int *>(igAnimationTransitionPoint_meta)[0x24/4]&4)) igAnimationTransitionPoint_registerNow();
+ return igAnimationTransitionPoint_meta;
 }
 void *igAnimationTransitionPoint_vtableRead(){
  UnknownGenObject801CCF40 object;
- object.unknown00=lbl_804B5B58;
+ object.unknown00=igAnimationTransitionPoint_vtable;
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801CCFC8(){
- fn_80066188((int)igAnimationTransitionPoint_register);
+void igAnimationTransitionPoint_registerNow(){
+ meta_registerNow((int)igAnimationTransitionPoint_register);
 }
 void igAnimationTransitionPoint_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_8056554C,(int)igObject_register,(int)fn_800237D0,(int)igAnimationTransitionPoint_getMetaCall,(int)lbl_804B285C,24,(int)igAnimationTransitionPoint_vtableRead,(int)igAnimationTransitionPoint_fieldInit,0,(int)lbl_80560A10);
+ meta_registerClass(0,(int)&igAnimationTransitionPoint_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationTransitionPoint_getMetaCall,(int)igAnimationTransitionPoint_className,24,(int)igAnimationTransitionPoint_vtableRead,(int)igAnimationTransitionPoint_fieldInit,0,(int)lbl_80560A10);
 }
 void *igAnimationTransitionPoint_getMetaCall(){return igAnimationTransitionPoint_getMeta();}
 void igAnimationTransitionPoint_fieldInit(){
- void *value0=lbl_8056554C;
+ void *value0=igAnimationTransitionPoint_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_80560A18,2);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
@@ -129,25 +129,25 @@ void igAnimationTransitionPoint_fieldInit(){
  fn_800659C0(value0,lbl_80560A20,lbl_80560A28,lbl_80560A30,value1);
 }
 void *fn_801CD104(){
- if(!lbl_80565558) lbl_80565558=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80565558;
+ if(!igAnimationTransitionParams_meta) igAnimationTransitionParams_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igAnimationTransitionParams_meta;
 }
 void *igAnimationTransitionParams_getMeta(){
- if(!lbl_80565558 || !(reinterpret_cast<unsigned int *>(lbl_80565558)[0x24/4]&4)) fn_801CD1BC();
- return lbl_80565558;
+ if(!igAnimationTransitionParams_meta || !(reinterpret_cast<unsigned int *>(igAnimationTransitionParams_meta)[0x24/4]&4)) igAnimationTransitionParams_registerNow();
+ return igAnimationTransitionParams_meta;
 }
 void *igAnimationTransitionParams_vtableRead(){
  UnknownGenObject801CD17C_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804B5AFC;
+ object.unknown00=igAnimationTransitionParams_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801CD1BC(){
- fn_80066188((int)igAnimationTransitionParams_register);
+void igAnimationTransitionParams_registerNow(){
+ meta_registerNow((int)igAnimationTransitionParams_register);
 }
 void igAnimationTransitionParams_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_80565558,(int)igObject_register,(int)fn_800237D0,(int)igAnimationTransitionParams_getMetaCall,(int)lbl_804B289C,32,(int)igAnimationTransitionParams_vtableRead,(int)igAnimationTransitionParams_fieldInit,0,0);
+ meta_registerClass(0,(int)&igAnimationTransitionParams_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationTransitionParams_getMetaCall,(int)igAnimationTransitionParams_className,32,(int)igAnimationTransitionParams_vtableRead,(int)igAnimationTransitionParams_fieldInit,0,0);
 }
 void *igAnimationTransitionParams_getMetaCall(){return igAnimationTransitionParams_getMeta();}
 }

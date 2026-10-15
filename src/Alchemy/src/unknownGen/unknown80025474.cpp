@@ -3,10 +3,10 @@
 #pragma auto_inline off
 extern "C" {
 void *igStringMetaField_getMeta();
-extern void *lbl_80561684;
+extern void *igRefMetaField_meta;
 }
 extern "C" {
 void *igStringMetaField_getMetaCall(){return igStringMetaField_getMeta();}
-void *fn_80025494(){return lbl_80561684;}
+void *fn_80025494(){return igRefMetaField_meta;}
 }
 #pragma pop

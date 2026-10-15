@@ -11,23 +11,23 @@ void fn_80188BA4(void *);
 void fn_80188C0C(void *,int);
 void fn_80188CAC(void *,void *);
 void fn_80188CD0(void *);
-extern void *lbl_80564DAC;
-extern void *lbl_80564DB4;
-extern void *lbl_80565378;
+extern void *igLightStateSet_meta;
+extern void *igLightSet_meta;
+extern void *igAttrSet_meta;
 }
 static inline void *UnknownGenCast80154148_9(void *q){
  void *value3;
- if((q&&(value3=fn_80068128(q,lbl_80565378),(unsigned char)(int)value3))) return q;
+ if((q&&(value3=fn_80068128(q,igAttrSet_meta),(unsigned char)(int)value3))) return q;
  return 0;
 }
 static inline void *UnknownGenCast80154148_19(void *q){
  void *value4;
- if((q&&(value4=fn_80068128(q,lbl_80564DB4),(unsigned char)(int)value4))) return q;
+ if((q&&(value4=fn_80068128(q,igLightSet_meta),(unsigned char)(int)value4))) return q;
  return 0;
 }
 static inline void *UnknownGenCast80154148_29(void *q){
  void *value5;
- if((q&&(value5=fn_80068128(q,lbl_80564DAC),(unsigned char)(int)value5))) return q;
+ if((q&&(value5=fn_80068128(q,igLightStateSet_meta),(unsigned char)(int)value5))) return q;
  return 0;
 }
 extern "C" {

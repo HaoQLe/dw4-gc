@@ -11,11 +11,11 @@ extern char lbl_804D2194[];
 extern char lbl_804D21A0[];
 extern char lbl_804D21AC[];
 extern char lbl_804D21B8[];
-extern void *lbl_80535388;
+extern void *beFontGeomAttrPair_meta;
 }
 extern "C" {
 void beFontGeomAttrPair_fieldInit(){
- void *value0=lbl_80535388;
+ void *value0=beFontGeomAttrPair_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2194,3);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));

@@ -6,7 +6,7 @@ void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
 void *fn_80063B5C();
 void fn_80063F14(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
@@ -15,21 +15,21 @@ extern char lbl_8055D160[8];
 extern char lbl_8055D168[8];
 extern char lbl_8055D170[8];
 extern char lbl_8055D178[8];
-extern void *lbl_80561684;
+extern void *igRefMetaField_meta;
 extern void *lbl_80561688;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *igRefMetaField_getMetaCall(){return igRefMetaField_getMeta();}
 void igRefMetaField_fieldInit(){
- void *value0=lbl_80561684;
+ void *value0=igRefMetaField_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_8055D160,2);
  fn_800659C0(value0,lbl_8055D168,lbl_8055D170,lbl_8055D178,value1);
 }
 void fn_80027454(){
  if(!lbl_80561688){
-  void *object=(lbl_80561688=fn_8006546C(lbl_80561684,fn_800607F4(lbl_805621F4)));
+  void *object=(lbl_80561688=meta_createInstance(igRefMetaField_meta,fn_800607F4(lbl_805621F4)));
   if(object){
    fn_80053E6C(fn_80063B5C(),object);
    unknownGenDrop(reinterpret_cast<UnknownGenValue *>(lbl_80561688));

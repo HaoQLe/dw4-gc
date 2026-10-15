@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534918;
+extern void *beSvStartApi_meta;
 }
 extern "C" {
-void *beSvStartApi_virtual58(){return lbl_80534918;}
+void *beSvStartApi_virtual58(){return beSvStartApi_meta;}
 }
 #pragma pop

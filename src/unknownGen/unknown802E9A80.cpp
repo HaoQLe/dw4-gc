@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534858;
-extern void *lbl_80534864;
+extern void *beXboxImage24k_meta;
+extern void *beSvPlatDataPS2_meta;
 }
 extern "C" {
-void *beSvPlatDataPS2_virtual58(){return lbl_80534864;}
-void *beXboxImage24k_virtual58(){return lbl_80534858;}
+void *beSvPlatDataPS2_virtual58(){return beSvPlatDataPS2_meta;}
+void *beXboxImage24k_virtual58(){return beXboxImage24k_meta;}
 }
 #pragma pop

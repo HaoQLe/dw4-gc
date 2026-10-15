@@ -12,11 +12,11 @@ extern char lbl_804D1A7C[];
 extern char lbl_804D1A8C[];
 extern char lbl_804D1A9C[];
 extern char lbl_804D1AAC[];
-extern void *lbl_805351AC;
+extern void *beHitLandModelInfo_meta;
 }
 extern "C" {
 void beHitLandModelInfo_fieldInit(){
- void *value0=lbl_805351AC;
+ void *value0=beHitLandModelInfo_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D1A7C,4);
  void *value2=fn_800658E4(value0,value1);

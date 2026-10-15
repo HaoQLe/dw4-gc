@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804E61B4[];
+extern char beNDMWPanelWazaInfoWork_vtable[];
 }
 struct UnknownGenRoot80336CB0 {
  void *unknown00;
@@ -21,12 +21,12 @@ struct UnknownGenObject80336CB0 : UnknownGenRoot80336CB0 {
  UnknownGenRefMember unknown28;
  UnknownGenRefMember unknown2C;
  char unknown30[8];
- inline ~UnknownGenObject80336CB0(){unknown00=lbl_804E61B4;}
+ inline ~UnknownGenObject80336CB0(){unknown00=beNDMWPanelWazaInfoWork_vtable;}
 };
 extern "C" {
 void *beNDMWPanelWazaInfoWork_vtableRead(){
  UnknownGenObject80336CB0 object;
- object.unknown00=lbl_804E61B4;
+ object.unknown00=beNDMWPanelWazaInfoWork_vtable;
  object.unknown10.value=0;
  object.unknown14.value=0;
  object.unknown18.value=0;

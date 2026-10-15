@@ -7,13 +7,13 @@ void beBaseInfoManager_register();
 void beHitLandModel_fieldInit();
 void *beHitLandModel_getMeta();
 void beHitLandModel_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-extern char lbl_8041FDA8[];
+extern char beHitLandModel_className[];
 extern char lbl_804D1AE4[];
-extern char lbl_805351C4[];
+extern char beHitLandModel_meta[];
 void beHitLandModel_register();
 void *beHitLandModel_getMetaCall();
 }
@@ -40,12 +40,12 @@ UnknownGenHolder *dtor_802D4DD8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_802D4E4C(){
- fn_80066188((int)beHitLandModel_register);
+void beHitLandModel_registerNow(){
+ meta_registerNow((int)beHitLandModel_register);
 }
 void beHitLandModel_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805351C4,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beHitLandModel_getMetaCall,(int)lbl_8041FDA8,112,(int)beHitLandModel_vtableRead,(int)beHitLandModel_fieldInit,0,(int)lbl_804D1AE4);
+ meta_registerClass(0,(int)beHitLandModel_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beHitLandModel_getMetaCall,(int)beHitLandModel_className,112,(int)beHitLandModel_vtableRead,(int)beHitLandModel_fieldInit,0,(int)lbl_804D1AE4);
 }
 void *beHitLandModel_getMetaCall(){return beHitLandModel_getMeta();}
 }

@@ -11,11 +11,11 @@ extern char lbl_804CFE64[];
 extern char lbl_804CFE68[];
 extern char lbl_804CFE6C[];
 extern char lbl_804CFE70[];
-extern void *lbl_805349F0;
+extern void *beSaveMemoryObj_meta;
 }
 extern "C" {
 void beSaveMemoryObj_fieldInit(){
- void *value0=lbl_805349F0;
+ void *value0=beSaveMemoryObj_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CFE64,1);
  void *value2=fn_800658E4(value0,value1);

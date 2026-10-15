@@ -11,11 +11,11 @@ extern char lbl_804CF0CC[];
 extern char lbl_804CF0D0[];
 extern char lbl_804CF0D4[];
 extern char lbl_804CF0D8[];
-extern void *lbl_80534628;
+extern void *beTransformSync_meta;
 }
 extern "C" {
 void beTransformSync_fieldInit(){
- void *value0=lbl_80534628;
+ void *value0=beTransformSync_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF0CC,1);
  void *value2=fn_800658E4(value0,value1);

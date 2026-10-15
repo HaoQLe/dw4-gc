@@ -4,18 +4,18 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80068128(void *,void *);
-extern void *lbl_80564E70;
-extern void *lbl_80564E7C;
-extern void *lbl_80564E88;
+extern void *igInterpretedShaderData_meta;
+extern void *igInterpretedShader_meta;
+extern void *igIniShaderFactory_meta;
 }
 static inline void *UnknownGenCast80176744_16(void *q){
  void *value4;
- if((q&&(value4=fn_80068128(q,lbl_80564E70),(unsigned char)(int)value4))) return q;
+ if((q&&(value4=fn_80068128(q,igInterpretedShaderData_meta),(unsigned char)(int)value4))) return q;
  return 0;
 }
 static inline void *UnknownGenCast80176744_22(void *q){
  void *value5;
- if((q&&(value5=fn_80068128(q,lbl_80564E88),(unsigned char)(int)value5))) return q;
+ if((q&&(value5=fn_80068128(q,igIniShaderFactory_meta),(unsigned char)(int)value5))) return q;
  return 0;
 }
 class UnknownGenV80176744_2 {
@@ -80,7 +80,7 @@ void igInternalizeShader_virtual88(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value3;
  void *value0;
  void *value1;
- if(((int)p1!=0&&(value3=fn_80068128((void *)p1,lbl_80564E7C),(unsigned char)(int)value3))){
+ if(((int)p1!=0&&(value3=fn_80068128((void *)p1,igInterpretedShader_meta),(unsigned char)(int)value3))){
   value2=(void *)p1;
  } else {
   value2=(void *)0;

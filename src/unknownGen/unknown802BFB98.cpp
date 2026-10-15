@@ -5,29 +5,29 @@ extern "C" {
 void beSvSlotData_register();
 void *beSvSlotGC_getMeta();
 void beSvSlotGC_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802BFAE8();
-void fn_802BFD30();
-extern char lbl_8041E238[];
-extern char lbl_805349C0[];
-extern void *lbl_805349C4;
+void beSvSlotXbox_registerNow();
+extern char beSvSlotGC_className[];
+extern char beSvSlotGC_meta[];
+extern void *beSvSlotXbox_meta;
 void beSvSlotGC_register();
 void *beSvSlotGC_getMetaCall();
 }
 extern "C" {
-void fn_802BFB98(){
- fn_80066188((int)beSvSlotGC_register);
+void beSvSlotGC_registerNow(){
+ meta_registerNow((int)beSvSlotGC_register);
 }
 void beSvSlotGC_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805349C0,(int)beSvSlotData_register,(int)fn_802BFAE8,(int)beSvSlotGC_getMetaCall,(int)lbl_8041E238,24,(int)beSvSlotGC_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beSvSlotGC_meta,(int)beSvSlotData_register,(int)fn_802BFAE8,(int)beSvSlotGC_getMetaCall,(int)beSvSlotGC_className,24,(int)beSvSlotGC_vtableRead,0,0,0);
 }
 void *beSvSlotGC_getMetaCall(){return beSvSlotGC_getMeta();}
 void *beSvSlotXbox_getMeta(){
- if(!lbl_805349C4 || !(reinterpret_cast<unsigned int *>(lbl_805349C4)[0x24/4]&4)) fn_802BFD30();
- return lbl_805349C4;
+ if(!beSvSlotXbox_meta || !(reinterpret_cast<unsigned int *>(beSvSlotXbox_meta)[0x24/4]&4)) beSvSlotXbox_registerNow();
+ return beSvSlotXbox_meta;
 }
 }
 #pragma pop

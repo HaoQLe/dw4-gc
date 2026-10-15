@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013F838();
 void igObjectPropertyForNode_register();
-extern char lbl_8049DE1C[];
-extern char lbl_804A5870[];
-extern char lbl_804A5BE8[];
+extern char igObjectPropertyForJoint_className[];
+extern char igObjectPropertyForJoint_vtable[];
+extern char igObjectPropertyForNode_vtable[];
 extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F8C0[8];
-extern void *lbl_80563FA4;
+extern void *igObjectPropertyForJoint_meta;
 void *igObjectPropertyForJoint_getMeta();
 void *igObjectPropertyForJoint_vtableRead();
-void fn_8013F77C();
+void igObjectPropertyForJoint_registerNow();
 void igObjectPropertyForJoint_register();
 void *igObjectPropertyForJoint_getMetaCall();
 }
@@ -35,16 +35,16 @@ struct UnknownGenObject8013F6B0_0 : UnknownGenRoot8013F6B0 {
  inline ~UnknownGenObject8013F6B0_0(){unknown00=lbl_804A5C7C;}
 };
 struct UnknownGenObject8013F6B0_1 : UnknownGenObject8013F6B0_0 {
- inline ~UnknownGenObject8013F6B0_1(){unknown00=lbl_804A5BE8;}
+ inline ~UnknownGenObject8013F6B0_1(){unknown00=igObjectPropertyForNode_vtable;}
 };
 struct UnknownGenObject8013F6B0 : UnknownGenObject8013F6B0_1 {
  char unknown24[12];
- inline ~UnknownGenObject8013F6B0(){unknown00=lbl_804A5870;}
+ inline ~UnknownGenObject8013F6B0(){unknown00=igObjectPropertyForJoint_vtable;}
 };
 extern "C" {
 void *igObjectPropertyForJoint_getMeta(){
- if(!lbl_80563FA4 || !(reinterpret_cast<unsigned int *>(lbl_80563FA4)[0x24/4]&4)) fn_8013F77C();
- return lbl_80563FA4;
+ if(!igObjectPropertyForJoint_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForJoint_meta)[0x24/4]&4)) igObjectPropertyForJoint_registerNow();
+ return igObjectPropertyForJoint_meta;
 }
 void *igObjectPropertyForJoint_vtableRead(){
  UnknownGenObject8013F6B0 object;
@@ -53,16 +53,16 @@ void *igObjectPropertyForJoint_vtableRead(){
  object.unknown00=lbl_804A6338;
  object.unknown00=lbl_804A5C7C;
  object.unknown20.value=0;
- object.unknown00=lbl_804A5BE8;
- object.unknown00=lbl_804A5870;
+ object.unknown00=igObjectPropertyForNode_vtable;
+ object.unknown00=igObjectPropertyForJoint_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8013F77C(){
- fn_80066188((int)igObjectPropertyForJoint_register);
+void igObjectPropertyForJoint_registerNow(){
+ meta_registerNow((int)igObjectPropertyForJoint_register);
 }
 void igObjectPropertyForJoint_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563FA4,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForJoint_getMetaCall,(int)lbl_8049DE1C,44,(int)igObjectPropertyForJoint_vtableRead,(int)fn_8013F838,0,(int)lbl_8055F8C0);
+ meta_registerClass(0,(int)&igObjectPropertyForJoint_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForJoint_getMetaCall,(int)igObjectPropertyForJoint_className,44,(int)igObjectPropertyForJoint_vtableRead,(int)fn_8013F838,0,(int)lbl_8055F8C0);
 }
 void *igObjectPropertyForJoint_getMetaCall(){return igObjectPropertyForJoint_getMeta();}
 }

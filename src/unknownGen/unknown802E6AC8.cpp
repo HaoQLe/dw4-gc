@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_8047650C[];
-extern char lbl_804D3790[];
+extern char igNamedObject_vtable[];
+extern char beAction2MOTIONSET_vtable[];
 }
 struct UnknownGenRoot802E6AC8 {
  void *unknown00;
@@ -14,20 +14,20 @@ struct UnknownGenRoot802E6AC8 {
 struct UnknownGenObject802E6AC8_0 : UnknownGenRoot802E6AC8 {
  char unknown04[4];
  UnknownGenString unknown08;
- inline ~UnknownGenObject802E6AC8_0(){unknown00=lbl_8047650C;}
+ inline ~UnknownGenObject802E6AC8_0(){unknown00=igNamedObject_vtable;}
 };
 struct UnknownGenObject802E6AC8 : UnknownGenObject802E6AC8_0 {
  UnknownGenString unknown0C;
  char unknown10[4];
  UnknownGenString unknown14;
- inline ~UnknownGenObject802E6AC8(){unknown00=lbl_804D3790;}
+ inline ~UnknownGenObject802E6AC8(){unknown00=beAction2MOTIONSET_vtable;}
 };
 extern "C" {
 void *beAction2MOTIONSET_vtableRead(){
  UnknownGenObject802E6AC8 object;
- object.unknown00=lbl_8047650C;
+ object.unknown00=igNamedObject_vtable;
  object.unknown08.value=0;
- object.unknown00=lbl_804D3790;
+ object.unknown00=beAction2MOTIONSET_vtable;
  object.unknown0C.value=0;
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

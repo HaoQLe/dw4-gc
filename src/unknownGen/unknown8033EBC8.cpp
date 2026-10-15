@@ -11,11 +11,11 @@ extern char lbl_804E35A8[];
 extern char lbl_804E35AC[];
 extern char lbl_804E35B0[];
 extern char lbl_804E35B4[];
-extern void *lbl_80536518;
+extern void *beNDMWLoadCtrl2Info_meta;
 }
 extern "C" {
 void beNDMWLoadCtrl2Info_fieldInit(){
- void *value0=lbl_80536518;
+ void *value0=beNDMWLoadCtrl2Info_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E35A8,1);
  void *value2=fn_800658E4(value0,value1);

@@ -5,18 +5,18 @@ extern "C" {
 void fn_80021B94();
 void *fn_80024D1C();
 void fn_80029724();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void igDataList_register();
-extern char lbl_8046423C[];
-extern char lbl_80472FA0[];
-extern char lbl_80476DA8[];
+extern char igNonRefCountedObjectList_className[];
+extern char igDataList_vtable[];
+extern char igNonRefCountedObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern void *lbl_80561730;
+extern void *igNonRefCountedObjectList_meta;
 void *igNonRefCountedObjectList_getMeta();
 void *igNonRefCountedObjectList_vtableRead();
-void fn_8002966C();
+void igNonRefCountedObjectList_registerNow();
 void igNonRefCountedObjectList_register();
 void *igNonRefCountedObjectList_getMetaCall();
 }
@@ -26,23 +26,23 @@ struct UnknownGenObject80029614_0 {
 };
 extern "C" {
 void *igNonRefCountedObjectList_getMeta(){
- if(!lbl_80561730 || !(reinterpret_cast<unsigned int *>(lbl_80561730)[0x24/4]&4)) fn_8002966C();
- return lbl_80561730;
+ if(!igNonRefCountedObjectList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedObjectList_meta)[0x24/4]&4)) igNonRefCountedObjectList_registerNow();
+ return igNonRefCountedObjectList_meta;
 }
 void *igNonRefCountedObjectList_vtableRead(){
  UnknownGenObject80029614_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476DA8;
+ object.unknown00=igNonRefCountedObjectList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8002966C(){
- fn_80066188((int)igNonRefCountedObjectList_register);
+void igNonRefCountedObjectList_registerNow(){
+ meta_registerNow((int)igNonRefCountedObjectList_register);
 }
 void igNonRefCountedObjectList_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561730,(int)igDataList_register,(int)fn_80024D1C,(int)igNonRefCountedObjectList_getMetaCall,(int)lbl_8046423C,20,(int)igNonRefCountedObjectList_vtableRead,(int)fn_80029724,0,0);
+ meta_registerClass(0,(int)&igNonRefCountedObjectList_meta,(int)igDataList_register,(int)fn_80024D1C,(int)igNonRefCountedObjectList_getMetaCall,(int)igNonRefCountedObjectList_className,20,(int)igNonRefCountedObjectList_vtableRead,(int)fn_80029724,0,0);
 }
 void *igNonRefCountedObjectList_getMetaCall(){return igNonRefCountedObjectList_getMeta();}
 }

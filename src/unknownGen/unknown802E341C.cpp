@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_802E3558();
-extern void *lbl_805356D4;
+void *meta_createInstance(void *,void *);
+void beBaseInfoRamTimer_registerNow();
+extern void *beBaseInfoRamTimer_meta;
 }
 extern "C" {
-void *fn_802E341C(void *object){
- fn_802E3558();
- return fn_8006546C(lbl_805356D4,object);
+void *beBaseInfoRamTimer_create(void *object){
+ beBaseInfoRamTimer_registerNow();
+ return meta_createInstance(beBaseInfoRamTimer_meta,object);
 }
 void *beBaseInfoRamTimer_getMeta(){
- if(!lbl_805356D4 || !(reinterpret_cast<unsigned int *>(lbl_805356D4)[0x24/4]&4)) fn_802E3558();
- return lbl_805356D4;
+ if(!beBaseInfoRamTimer_meta || !(reinterpret_cast<unsigned int *>(beBaseInfoRamTimer_meta)[0x24/4]&4)) beBaseInfoRamTimer_registerNow();
+ return beBaseInfoRamTimer_meta;
 }
 }
 #pragma pop

@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013D820();
 void igObjectPropertyForNode_register();
-extern char lbl_8049DC68[];
-extern char lbl_804A5180[];
-extern char lbl_804A5BE8[];
+extern char igObjectPropertyForBumpMapShader_className[];
+extern char igObjectPropertyForBumpMapShader_vtable[];
+extern char igObjectPropertyForNode_vtable[];
 extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F858[8];
-extern void *lbl_80563F3C;
+extern void *igObjectPropertyForBumpMapShader_meta;
 void *igObjectPropertyForBumpMapShader_getMeta();
 void *igObjectPropertyForBumpMapShader_vtableRead();
-void fn_8013D764();
+void igObjectPropertyForBumpMapShader_registerNow();
 void igObjectPropertyForBumpMapShader_register();
 void *igObjectPropertyForBumpMapShader_getMetaCall();
 }
@@ -35,16 +35,16 @@ struct UnknownGenObject8013D698_0 : UnknownGenRoot8013D698 {
  inline ~UnknownGenObject8013D698_0(){unknown00=lbl_804A5C7C;}
 };
 struct UnknownGenObject8013D698_1 : UnknownGenObject8013D698_0 {
- inline ~UnknownGenObject8013D698_1(){unknown00=lbl_804A5BE8;}
+ inline ~UnknownGenObject8013D698_1(){unknown00=igObjectPropertyForNode_vtable;}
 };
 struct UnknownGenObject8013D698 : UnknownGenObject8013D698_1 {
  char unknown24[12];
- inline ~UnknownGenObject8013D698(){unknown00=lbl_804A5180;}
+ inline ~UnknownGenObject8013D698(){unknown00=igObjectPropertyForBumpMapShader_vtable;}
 };
 extern "C" {
 void *igObjectPropertyForBumpMapShader_getMeta(){
- if(!lbl_80563F3C || !(reinterpret_cast<unsigned int *>(lbl_80563F3C)[0x24/4]&4)) fn_8013D764();
- return lbl_80563F3C;
+ if(!igObjectPropertyForBumpMapShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForBumpMapShader_meta)[0x24/4]&4)) igObjectPropertyForBumpMapShader_registerNow();
+ return igObjectPropertyForBumpMapShader_meta;
 }
 void *igObjectPropertyForBumpMapShader_vtableRead(){
  UnknownGenObject8013D698 object;
@@ -53,16 +53,16 @@ void *igObjectPropertyForBumpMapShader_vtableRead(){
  object.unknown00=lbl_804A6338;
  object.unknown00=lbl_804A5C7C;
  object.unknown20.value=0;
- object.unknown00=lbl_804A5BE8;
- object.unknown00=lbl_804A5180;
+ object.unknown00=igObjectPropertyForNode_vtable;
+ object.unknown00=igObjectPropertyForBumpMapShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8013D764(){
- fn_80066188((int)igObjectPropertyForBumpMapShader_register);
+void igObjectPropertyForBumpMapShader_registerNow(){
+ meta_registerNow((int)igObjectPropertyForBumpMapShader_register);
 }
 void igObjectPropertyForBumpMapShader_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563F3C,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForBumpMapShader_getMetaCall,(int)lbl_8049DC68,44,(int)igObjectPropertyForBumpMapShader_vtableRead,(int)fn_8013D820,0,(int)lbl_8055F858);
+ meta_registerClass(0,(int)&igObjectPropertyForBumpMapShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForBumpMapShader_getMetaCall,(int)igObjectPropertyForBumpMapShader_className,44,(int)igObjectPropertyForBumpMapShader_vtableRead,(int)fn_8013D820,0,(int)lbl_8055F858);
 }
 void *igObjectPropertyForBumpMapShader_getMetaCall(){return igObjectPropertyForBumpMapShader_getMeta();}
 }

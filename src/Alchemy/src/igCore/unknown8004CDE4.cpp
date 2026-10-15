@@ -31,7 +31,7 @@ void fn_8004D0E8(){
  void *table=reinterpret_cast<void **>(_arkCore__Q23Gap4Core)[0x38/4];
  const char *fallback=lbl_8055D87C;
  if(table){
-  Unknown800442F8Reference reference(fn_80024FB4(fn_800607F4(lbl_805621F8)));
+  Unknown800442F8Reference reference(igStringObj_create(fn_800607F4(lbl_805621F8)));
   fn_8006D674(table,2,lbl_8046957C,&reference,fallback,0);
   fn_8004CFA4(reinterpret_cast<Unknown800442F8Stream *>(reference.value)->unknown08.text());
  }
@@ -87,7 +87,7 @@ void fn_8004D4F8(Unknown8004D4BC *object,void *argument){
  object->unknown08.adopt(reinterpret_cast<Unknown800442F8Stream *>(object->slot5C(argument).value)->unknown08.text());
 }
 Unknown800442F8Reference igFolder_virtual5C(Unknown8004D2F0 *object,const char *name){
- Unknown800442F8Reference reference(fn_80024FB4(fn_80068430(object)));
+ Unknown800442F8Reference reference(igStringObj_create(fn_80068430(object)));
  fn_80072384(reference.value,lbl_8055D88C,*reinterpret_cast<const char **>(reinterpret_cast<char *>(object)+8),name);
  return reference;
 }
@@ -100,13 +100,13 @@ Unknown80042DECResult fn_8004D6DC(Unknown8004D6DC *object,const char *name,int m
  if(!name && !object->unknown68) return Unknown80042DECResult(kFailure__3Gap);
  if(!name && object->unknown68) return reinterpret_cast<Unknown8004D6DCFile *>(object->unknown68)->slot5C(mode);
  if(!object->unknown68 && name){
-  unknown8004D6DCAssign(object->unknown68,reinterpret_cast<Unknown80042DECValue *>(fn_8002FFC8(object->unknown118)));
+  unknown8004D6DCAssign(object->unknown68,reinterpret_cast<Unknown80042DECValue *>(igFile_create(object->unknown118)));
   if(!object->unknown68) return Unknown80042DECResult(kFailure__3Gap);
   fn_8004CDE4(reinterpret_cast<Unknown8004CDE4 *>(object->unknown68),name);
   return reinterpret_cast<Unknown8004D6DCFile *>(object->unknown68)->slot5C(mode);
  }
  reinterpret_cast<Unknown8004D6DCFile *>(object->unknown68)->slot60();
- unknown8004D6DCAssign(object->unknown68,reinterpret_cast<Unknown80042DECValue *>(fn_8002FFC8(object->unknown118)));
+ unknown8004D6DCAssign(object->unknown68,reinterpret_cast<Unknown80042DECValue *>(igFile_create(object->unknown118)));
  fn_8004CDE4(reinterpret_cast<Unknown8004CDE4 *>(object->unknown68),name);
  return reinterpret_cast<Unknown8004D6DCFile *>(object->unknown68)->slot5C(mode);
 }

@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804E0D84[];
+extern char beSvUseCheckApi_vtable[];
 extern char lbl_804E0F88[];
 }
 struct UnknownGenRoot802BE8E8 {
@@ -20,7 +20,7 @@ struct UnknownGenObject802BE8E8_0 : UnknownGenRoot802BE8E8 {
 };
 struct UnknownGenObject802BE8E8 : UnknownGenObject802BE8E8_0 {
  char unknown3C[156];
- inline ~UnknownGenObject802BE8E8(){unknown00=lbl_804E0D84;}
+ inline ~UnknownGenObject802BE8E8(){unknown00=beSvUseCheckApi_vtable;}
 };
 extern "C" {
 void *beSvUseCheckApi_vtableRead(){
@@ -29,7 +29,7 @@ void *beSvUseCheckApi_vtableRead(){
  object.unknown30.value=0;
  object.unknown34.value=0;
  object.unknown38.value=0;
- object.unknown00=lbl_804E0D84;
+ object.unknown00=beSvUseCheckApi_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

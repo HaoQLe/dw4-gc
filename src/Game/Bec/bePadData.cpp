@@ -10,7 +10,7 @@ struct igVec2f;   // a 2D vector (defined below)
 extern "C" {
 void fn_800667B0(bePadData *self, void *argument);   // the base class's version of virtual24
 void fn_800667B4(bePadData *self);   // the base class's version of virtual28
-extern char lbl_80534AC8[];          // bePadData's metaobject pointer
+extern char bePadData_meta[];          // bePadData's metaobject pointer
 extern int __float_nan[];
 double atan2(double y, double x);
 void bePadData_stickDirection(bePadData *self, int *direction, igVec2f stick);
@@ -152,7 +152,7 @@ void bePadData_stickDirection(bePadData *self, int *direction, igVec2f stick)
 // The class's metaobject.
 void *bePadData_virtual58(bePadData *)
 {
-    return *reinterpret_cast<void **>(lbl_80534AC8);
+    return *reinterpret_cast<void **>(bePadData_meta);
 }
 
 }

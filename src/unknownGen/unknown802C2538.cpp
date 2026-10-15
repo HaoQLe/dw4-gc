@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_802C264C();
-extern void *lbl_80534AC4;
+void bePadDataList_registerNow();
+extern void *bePadDataList_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802C2538(){
- if(!lbl_80534AC4) lbl_80534AC4=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80534AC4;
+void *bePadDataList_metaObject(){
+ if(!bePadDataList_meta) bePadDataList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return bePadDataList_meta;
 }
 void *bePadDataList_getMeta(){
- if(!lbl_80534AC4 || !(reinterpret_cast<unsigned int *>(lbl_80534AC4)[0x24/4]&4)) fn_802C264C();
- return lbl_80534AC4;
+ if(!bePadDataList_meta || !(reinterpret_cast<unsigned int *>(bePadDataList_meta)[0x24/4]&4)) bePadDataList_registerNow();
+ return bePadDataList_meta;
 }
 }
 #pragma pop

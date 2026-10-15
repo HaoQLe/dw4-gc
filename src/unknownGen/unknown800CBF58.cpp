@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_800CAEE0();
 void igControllerManager_register();
@@ -12,24 +12,24 @@ void igController_register();
 void *igGamecubeControllerManager_getMetaCall();
 void igGamecubeController_fieldInit();
 void *igGamecubeController_getMetaCall();
-extern char lbl_8047FFA4[];
-extern char lbl_80480130[];
-extern char lbl_80480338[];
-extern char lbl_804803A0[];
+extern char igGamecubeControllerManager_className[];
+extern char igGamecubeController_className[];
+extern char igGamecubeControllerManager_vtable[];
+extern char igGamecubeController_vtable[];
 extern char lbl_80480590[];
 extern char lbl_804805F8[];
 extern char lbl_80480E60[];
 extern char lbl_8055E9D4[8];
-extern void *lbl_80562C08;
-extern void *lbl_80562C14;
-extern void *lbl_80562C50;
-extern void *lbl_80562C54;
+extern void *igControllerManager_meta;
+extern void *igController_meta;
+extern void *igGamecubeControllerManager_meta;
+extern void *igGamecubeController_meta;
 void *igGamecubeControllerManager_vtableRead();
-void fn_800CC038();
+void igGamecubeControllerManager_registerNow();
 void igGamecubeControllerManager_register();
 void *igGamecubeControllerManager_parentMeta();
 void *igGamecubeController_vtableRead();
-void fn_800CC1E4();
+void igGamecubeController_registerNow();
 void igGamecubeController_register();
 void *igGamecubeController_parentMeta();
 }
@@ -45,7 +45,7 @@ struct UnknownGenObject800CBF94_0 : UnknownGenRoot800CBF94 {
 };
 struct UnknownGenObject800CBF94 : UnknownGenObject800CBF94_0 {
  char unknown0C[4];
- inline ~UnknownGenObject800CBF94(){unknown00=lbl_80480338;}
+ inline ~UnknownGenObject800CBF94(){unknown00=igGamecubeControllerManager_vtable;}
 };
 struct UnknownGenRoot800CC144 {
  void *unknown00;
@@ -56,52 +56,52 @@ struct UnknownGenObject800CC144 : UnknownGenRoot800CC144 {
  char unknown04[36];
  UnknownGenRefMember unknown28;
  char unknown2C[20];
- inline ~UnknownGenObject800CC144(){unknown00=lbl_804803A0;}
+ inline ~UnknownGenObject800CC144(){unknown00=igGamecubeController_vtable;}
 };
 extern "C" {
 void *igGamecubeControllerManager_getMeta(){
- if(!lbl_80562C50 || !(reinterpret_cast<unsigned int *>(lbl_80562C50)[0x24/4]&4)) fn_800CC038();
- return lbl_80562C50;
+ if(!igGamecubeControllerManager_meta || !(reinterpret_cast<unsigned int *>(igGamecubeControllerManager_meta)[0x24/4]&4)) igGamecubeControllerManager_registerNow();
+ return igGamecubeControllerManager_meta;
 }
 void *igGamecubeControllerManager_vtableRead(){
  UnknownGenObject800CBF94 object;
  object.unknown00=lbl_80480E60;
  object.unknown00=lbl_80480590;
  object.unknown08.value=0;
- object.unknown00=lbl_80480338;
+ object.unknown00=igGamecubeControllerManager_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800CC038(){
- fn_80066188((int)igGamecubeControllerManager_register);
+void igGamecubeControllerManager_registerNow(){
+ meta_registerNow((int)igGamecubeControllerManager_register);
 }
 void igGamecubeControllerManager_register(){
  fn_800CAEE0();
- fn_80066204(0,(int)&lbl_80562C50,(int)igControllerManager_register,(int)igGamecubeControllerManager_parentMeta,(int)igGamecubeControllerManager_getMetaCall,(int)lbl_8047FFA4,12,(int)igGamecubeControllerManager_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igGamecubeControllerManager_meta,(int)igControllerManager_register,(int)igGamecubeControllerManager_parentMeta,(int)igGamecubeControllerManager_getMetaCall,(int)igGamecubeControllerManager_className,12,(int)igGamecubeControllerManager_vtableRead,0,0,0);
 }
-void *igGamecubeControllerManager_parentMeta(){return lbl_80562C08;}
-void *fn_800CC0D0(void *object){
- fn_800CC1E4();
- return fn_8006546C(lbl_80562C54,object);
+void *igGamecubeControllerManager_parentMeta(){return igControllerManager_meta;}
+void *igGamecubeController_create(void *object){
+ igGamecubeController_registerNow();
+ return meta_createInstance(igGamecubeController_meta,object);
 }
 void *igGamecubeController_getMeta(){
- if(!lbl_80562C54 || !(reinterpret_cast<unsigned int *>(lbl_80562C54)[0x24/4]&4)) fn_800CC1E4();
- return lbl_80562C54;
+ if(!igGamecubeController_meta || !(reinterpret_cast<unsigned int *>(igGamecubeController_meta)[0x24/4]&4)) igGamecubeController_registerNow();
+ return igGamecubeController_meta;
 }
 void *igGamecubeController_vtableRead(){
  UnknownGenObject800CC144 object;
  object.unknown00=lbl_80480E60;
  object.unknown00=lbl_804805F8;
- object.unknown00=lbl_804803A0;
+ object.unknown00=igGamecubeController_vtable;
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_800CC1E4(){
- fn_80066188((int)igGamecubeController_register);
+void igGamecubeController_registerNow(){
+ meta_registerNow((int)igGamecubeController_register);
 }
 void igGamecubeController_register(){
  fn_800CAEE0();
- fn_80066204(0,(int)&lbl_80562C54,(int)igController_register,(int)igGamecubeController_parentMeta,(int)igGamecubeController_getMetaCall,(int)lbl_80480130,52,(int)igGamecubeController_vtableRead,(int)igGamecubeController_fieldInit,0,(int)lbl_8055E9D4);
+ meta_registerClass(0,(int)&igGamecubeController_meta,(int)igController_register,(int)igGamecubeController_parentMeta,(int)igGamecubeController_getMetaCall,(int)igGamecubeController_className,52,(int)igGamecubeController_vtableRead,(int)igGamecubeController_fieldInit,0,(int)lbl_8055E9D4);
 }
-void *igGamecubeController_parentMeta(){return lbl_80562C14;}
+void *igGamecubeController_parentMeta(){return igController_meta;}
 }
 #pragma pop

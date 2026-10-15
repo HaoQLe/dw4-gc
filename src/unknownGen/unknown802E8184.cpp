@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800635C8(void *,void *,void *,int);
-void fn_802E85F0();
+void ParticleInfo_registerNow();
 void *fn_8031A048();
 extern char lbl_80421268[];
 extern char lbl_804212B4[];
@@ -21,7 +21,7 @@ extern void *lbl_80535878;
 extern void *lbl_8053587C;
 extern void *lbl_80535880;
 extern void *lbl_80535884;
-extern void *lbl_80535888;
+extern void *ParticleInfo_meta;
 }
 extern "C" {
 void *fn_802E8184(){return fn_8031A048();}
@@ -42,8 +42,8 @@ void *fn_802E82C4(){
  return lbl_80535884;
 }
 void *ParticleInfo_getMeta(){
- if(!lbl_80535888 || !(reinterpret_cast<unsigned int *>(lbl_80535888)[0x24/4]&4)) fn_802E85F0();
- return lbl_80535888;
+ if(!ParticleInfo_meta || !(reinterpret_cast<unsigned int *>(ParticleInfo_meta)[0x24/4]&4)) ParticleInfo_registerNow();
+ return ParticleInfo_meta;
 }
 }
 #pragma pop

@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802BC568();
-extern void *lbl_80534840;
+void beSvPlatDataXbox_registerNow();
+extern void *beSvPlatDataXbox_meta;
 }
 extern "C" {
 void *beSvPlatDataXbox_getMeta(){
- if(!lbl_80534840 || !(reinterpret_cast<unsigned int *>(lbl_80534840)[0x24/4]&4)) fn_802BC568();
- return lbl_80534840;
+ if(!beSvPlatDataXbox_meta || !(reinterpret_cast<unsigned int *>(beSvPlatDataXbox_meta)[0x24/4]&4)) beSvPlatDataXbox_registerNow();
+ return beSvPlatDataXbox_meta;
 }
 }
 #pragma pop

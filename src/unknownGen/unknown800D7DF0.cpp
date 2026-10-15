@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_800D8040();
-extern void *lbl_80563400;
+void igGamecubePointSpriteExt_registerNow();
+extern void *igGamecubePointSpriteExt_meta;
 }
 extern "C" {
 void *igGamecubePointSpriteExt_getMeta(){
- if(!lbl_80563400 || !(reinterpret_cast<unsigned int *>(lbl_80563400)[0x24/4]&4)) fn_800D8040();
- return lbl_80563400;
+ if(!igGamecubePointSpriteExt_meta || !(reinterpret_cast<unsigned int *>(igGamecubePointSpriteExt_meta)[0x24/4]&4)) igGamecubePointSpriteExt_registerNow();
+ return igGamecubePointSpriteExt_meta;
 }
 }
 #pragma pop

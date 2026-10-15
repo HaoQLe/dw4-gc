@@ -4,12 +4,12 @@
 extern "C" {
 void fn_80066DFC(void *);
 void fn_80328940(void *,int);
-extern char lbl_804EC224[];
+extern char beNDMWStatusSelectE0_vtable[];
 }
 extern "C" {
 void *fn_8032A328(int p0,int p1){
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804EC224;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beNDMWStatusSelectE0_vtable;
   fn_80328940((void *)p0,0);
   if((int)(short)p1>0){
    fn_80066DFC((void *)p0);

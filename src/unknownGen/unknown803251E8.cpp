@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80066DFC(void *);
-extern char lbl_804E6DB0[];
+extern char libNdmwRuntimePlugin_vtable[];
 }
 extern "C" {
 void *fn_803251E8(int p0,int p1){
@@ -50,7 +50,7 @@ void *fn_803251E8(int p0,int p1){
  void *value40;
  void *value41;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804E6DB0;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=libNdmwRuntimePlugin_vtable;
   if((int)(p0+88)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+88);
    if(value0){

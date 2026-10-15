@@ -5,7 +5,7 @@ extern "C" {
 void fn_8006665C(void *);
 extern char lbl_804E49FC[];
 extern char lbl_804E4A68[];
-extern char lbl_804EE41C[];
+extern char beNDMWItemYellowArmor_vtable[];
 }
 struct UnknownGenObject80342E8C_0 {
  void *unknown00;
@@ -17,7 +17,7 @@ void *beNDMWItemYellowArmor_vtableRead(){
  fn_8006665C(&object);
  object.unknown00=lbl_804E4A68;
  object.unknown00=lbl_804E49FC;
- object.unknown00=lbl_804EE41C;
+ object.unknown00=beNDMWItemYellowArmor_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
 }

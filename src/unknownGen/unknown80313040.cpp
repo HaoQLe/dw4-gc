@@ -7,13 +7,13 @@ extern "C" {
 void *fn_8028A730(void *,void *);
 void fn_803050A8(void *,void *,void *,int,int);
 extern char lbl_80426DC0[];
-extern char lbl_80534774[];
+extern char beSound_meta[];
 }
 extern "C" {
 void beSeCtl_virtual88(int p0){
  void *value0;
  if(!reinterpret_cast<Meta::beSeCtl *>((void *)p0)->_sndMng){
-  value0=fn_8028A730(reinterpret_cast<Meta::beSeCtl *>((void *)p0)->_insight,*reinterpret_cast<void **>((lbl_80534774+0)));
+  value0=fn_8028A730(reinterpret_cast<Meta::beSeCtl *>((void *)p0)->_insight,*reinterpret_cast<void **>((beSound_meta+0)));
   reinterpret_cast<Meta::beSeCtl *>((void *)p0)->_sndMng=(Meta::beSound *)value0;
   return;
  } else {

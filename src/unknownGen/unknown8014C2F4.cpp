@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80066DFC(void *);
-extern char lbl_804A6FA0[];
+extern char igDefaultManager_vtable[];
 }
 extern "C" {
 void *fn_8014C2F4(int p0,int p1){
@@ -28,7 +28,7 @@ void *fn_8014C2F4(int p0,int p1){
  void *value18;
  void *value19;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804A6FA0;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igDefaultManager_vtable;
   if((int)(p0+44)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+44);
    if(value0){

@@ -7,7 +7,7 @@ void *fn_80053F28(void *);
 void *fn_80054094(void *,void *);
 void *fn_80054140(int);
 extern void *lbl_80562140;
-extern void *lbl_8056402C;
+extern void *igNodeTraversal_meta;
 }
 extern "C" {
 void *igNodeTraversal_virtual88(int p0){
@@ -17,7 +17,7 @@ void *igNodeTraversal_virtual88(int p0){
  void *value4;
  void *value5;
  void *value6;
- void *value0=lbl_8056402C;
+ void *value0=igNodeTraversal_meta;
  value1=(void *)reinterpret_cast<Meta::igMetaObject *>(value0)->_name;
  if(!value1){
   value3=(void *)0;

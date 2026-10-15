@@ -6,18 +6,18 @@ void fn_80021B94();
 void *fn_800237D0();
 void *fn_80047080();
 void *fn_800470A0();
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void fn_80065D94(int);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void igObject_register();
-extern char lbl_80466C34[];
-extern char lbl_804759D8[];
-extern void *lbl_80561C2C;
+extern char igErrorHandler_className[];
+extern char igErrorHandler_vtable[];
+extern void *igErrorHandler_meta;
 void *igErrorHandler_getMeta();
 void *igErrorHandler_vtableRead();
-void fn_80031250();
+void igErrorHandler_registerNow();
 void igErrorHandler_register();
 void *igErrorHandler_getMetaCall();
 void fn_80031310();
@@ -29,26 +29,26 @@ struct UnknownGenObject80031210_0 {
  char unknown04[4];
 };
 extern "C" {
-void *fn_8003119C(void *object){
- fn_80031250();
- return fn_8006546C(lbl_80561C2C,object);
+void *igErrorHandler_create(void *object){
+ igErrorHandler_registerNow();
+ return meta_createInstance(igErrorHandler_meta,object);
 }
 void *igErrorHandler_getMeta(){
- if(!lbl_80561C2C || !(reinterpret_cast<unsigned int *>(lbl_80561C2C)[0x24/4]&4)) fn_80031250();
- return lbl_80561C2C;
+ if(!igErrorHandler_meta || !(reinterpret_cast<unsigned int *>(igErrorHandler_meta)[0x24/4]&4)) igErrorHandler_registerNow();
+ return igErrorHandler_meta;
 }
 void *igErrorHandler_vtableRead(){
  UnknownGenObject80031210_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804759D8;
+ object.unknown00=igErrorHandler_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80031250(){
- fn_80066188((int)igErrorHandler_register);
+void igErrorHandler_registerNow(){
+ meta_registerNow((int)igErrorHandler_register);
 }
 void igErrorHandler_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_80561C2C,(int)igObject_register,(int)fn_800237D0,(int)igErrorHandler_getMetaCall,(int)lbl_80466C34,8,(int)igErrorHandler_vtableRead,(int)fn_80031310,(int)fn_80031338,0);
+ meta_registerClass(0,(int)&igErrorHandler_meta,(int)igObject_register,(int)fn_800237D0,(int)igErrorHandler_getMetaCall,(int)igErrorHandler_className,8,(int)igErrorHandler_vtableRead,(int)fn_80031310,(int)fn_80031338,0);
 }
 void *igErrorHandler_getMetaCall(){return igErrorHandler_getMeta();}
 void fn_80031310(){

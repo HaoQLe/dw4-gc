@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80565FEC;
+extern void *igLuaState_meta;
 }
 extern "C" {
-void *beLuaState_parentMeta(){return lbl_80565FEC;}
+void *beLuaState_parentMeta(){return igLuaState_meta;}
 }
 #pragma pop

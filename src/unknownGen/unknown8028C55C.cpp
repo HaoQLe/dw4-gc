@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
+void meta_registerNow(int);
 void igSearchSceneGraph_register();
 }
 extern "C" {
-void fn_8028C55C(){
- fn_80066188((int)igSearchSceneGraph_register);
+void igSearchSceneGraph_registerNow(){
+ meta_registerNow((int)igSearchSceneGraph_register);
 }
 }
 #pragma pop

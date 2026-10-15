@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_8011098C();
-extern void *lbl_805636BC;
+void *meta_createInstance(void *,void *);
+void igMousePosObserver_registerNow();
+extern void *igMousePosObserver_meta;
 }
 extern "C" {
-void *fn_80110720(void *object){
- fn_8011098C();
- return fn_8006546C(lbl_805636BC,object);
+void *igMousePosObserver_create(void *object){
+ igMousePosObserver_registerNow();
+ return meta_createInstance(igMousePosObserver_meta,object);
 }
 void *igMousePosObserver_getMeta(){
- if(!lbl_805636BC || !(reinterpret_cast<unsigned int *>(lbl_805636BC)[0x24/4]&4)) fn_8011098C();
- return lbl_805636BC;
+ if(!igMousePosObserver_meta || !(reinterpret_cast<unsigned int *>(igMousePosObserver_meta)[0x24/4]&4)) igMousePosObserver_registerNow();
+ return igMousePosObserver_meta;
 }
 }
 #pragma pop

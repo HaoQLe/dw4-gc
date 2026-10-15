@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_8028A730(void *,void *);
-extern char lbl_80534AAC[];
-extern char lbl_80534FBC[];
+extern char bePadManager_meta[];
+extern char beMessenger_meta[];
 }
 extern "C" {
 void fn_8036C0C0(int p0,int p1,int p2,int p3,int p4){
@@ -27,9 +27,9 @@ void fn_8036C0C0(int p0,int p1,int p2,int p3,int p4){
  }
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+56)=(void *)p1;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=(void *)p2;
- value3=fn_8028A730((void *)p2,*reinterpret_cast<void **>((lbl_80534FBC+0)));
+ value3=fn_8028A730((void *)p2,*reinterpret_cast<void **>((beMessenger_meta+0)));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+12)=value3;
- value4=fn_8028A730((void *)p2,*reinterpret_cast<void **>((lbl_80534AAC+0)));
+ value4=fn_8028A730((void *)p2,*reinterpret_cast<void **>((bePadManager_meta+0)));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=value4;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=(void *)p3;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+44)=(void *)p4;

@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_801B617C();
+void igPlanarShadowShader_registerNow();
 extern void *lbl_805621F4;
-extern void *lbl_80564B3C;
+extern void *igPlanarShadowShader_meta;
 }
 extern "C" {
 void *fn_801B5CFC(){
- if(!lbl_80564B3C) lbl_80564B3C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80564B3C;
+ if(!igPlanarShadowShader_meta) igPlanarShadowShader_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igPlanarShadowShader_meta;
 }
 void *igPlanarShadowShader_getMeta(){
- if(!lbl_80564B3C || !(reinterpret_cast<unsigned int *>(lbl_80564B3C)[0x24/4]&4)) fn_801B617C();
- return lbl_80564B3C;
+ if(!igPlanarShadowShader_meta || !(reinterpret_cast<unsigned int *>(igPlanarShadowShader_meta)[0x24/4]&4)) igPlanarShadowShader_registerNow();
+ return igPlanarShadowShader_meta;
 }
 }
 #pragma pop

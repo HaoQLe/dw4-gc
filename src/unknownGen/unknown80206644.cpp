@@ -4,12 +4,12 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_80068128(void *,void *);
-extern void *lbl_805647C0;
+extern void *igStringKey_meta;
 void strcmp(void *,void *);
 }
 static inline void *UnknownGenCast80206644_6(void *q){
  void *value1;
- if(((int)(int)q!=0&&(value1=fn_80068128(q,lbl_805647C0),(unsigned char)(int)value1))) return q;
+ if(((int)(int)q!=0&&(value1=fn_80068128(q,igStringKey_meta),(unsigned char)(int)value1))) return q;
  return 0;
 }
 extern "C" {

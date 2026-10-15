@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_8032CF68();
-extern void *lbl_80535E2C;
+void *meta_createInstance(void *,void *);
+void beNDMWShopCtrlDeviceSell_registerNow();
+extern void *beNDMWShopCtrlDeviceSell_meta;
 }
 extern "C" {
-void *fn_8032CC2C(void *object){
- fn_8032CF68();
- return fn_8006546C(lbl_80535E2C,object);
+void *beNDMWShopCtrlDeviceSell_create(void *object){
+ beNDMWShopCtrlDeviceSell_registerNow();
+ return meta_createInstance(beNDMWShopCtrlDeviceSell_meta,object);
 }
 void *beNDMWShopCtrlDeviceSell_getMeta(){
- if(!lbl_80535E2C || !(reinterpret_cast<unsigned int *>(lbl_80535E2C)[0x24/4]&4)) fn_8032CF68();
- return lbl_80535E2C;
+ if(!beNDMWShopCtrlDeviceSell_meta || !(reinterpret_cast<unsigned int *>(beNDMWShopCtrlDeviceSell_meta)[0x24/4]&4)) beNDMWShopCtrlDeviceSell_registerNow();
+ return beNDMWShopCtrlDeviceSell_meta;
 }
 }
 #pragma pop

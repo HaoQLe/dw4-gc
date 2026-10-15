@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804DB130[];
-extern char lbl_804DB2EC[];
+extern char beSvPlatDataPS2_vtable[];
+extern char beSvPlatBaseData_vtable[];
 }
 struct UnknownGenRoot802BCA0C {
  void *unknown00;
@@ -14,7 +14,7 @@ struct UnknownGenRoot802BCA0C {
 struct UnknownGenObject802BCA0C_0 : UnknownGenRoot802BCA0C {
  char unknown04[8];
  UnknownGenRefMember unknown0C;
- inline ~UnknownGenObject802BCA0C_0(){unknown00=lbl_804DB2EC;}
+ inline ~UnknownGenObject802BCA0C_0(){unknown00=beSvPlatBaseData_vtable;}
 };
 struct UnknownGenObject802BCA0C : UnknownGenObject802BCA0C_0 {
  char unknown10[8];
@@ -26,14 +26,14 @@ struct UnknownGenObject802BCA0C : UnknownGenObject802BCA0C_0 {
  UnknownGenString unknownC0;
  char unknownC4[16];
  UnknownGenRefMember unknownD4;
- inline ~UnknownGenObject802BCA0C(){unknown00=lbl_804DB130;}
+ inline ~UnknownGenObject802BCA0C(){unknown00=beSvPlatDataPS2_vtable;}
 };
 extern "C" {
 void *beSvPlatDataPS2_vtableRead(){
  UnknownGenObject802BCA0C object;
- object.unknown00=lbl_804DB2EC;
+ object.unknown00=beSvPlatBaseData_vtable;
  object.unknown0C.value=0;
- object.unknown00=lbl_804DB130;
+ object.unknown00=beSvPlatDataPS2_vtable;
  object.unknown18.value=0;
  object.unknown1C.value=0;
  object.unknownB8.value=0;

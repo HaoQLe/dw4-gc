@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80562934;
+extern void *igCustomStateCollectionAttr_meta;
 }
 extern "C" {
-void *fn_800BDE8C(){return lbl_80562934;}
+void *fn_800BDE8C(){return igCustomStateCollectionAttr_meta;}
 }
 #pragma pop

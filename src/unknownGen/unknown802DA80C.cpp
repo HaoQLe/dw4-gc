@@ -10,30 +10,30 @@ void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void *fn_802B740C();
-void *fn_802CDF04();
-void *fn_80403C88();
+void *beSystem_metaObject();
+void *beMessenger_metaObject();
+void *igViewerSceneInfoManager_metaObject();
 extern char lbl_804D21E0[];
 extern char lbl_804D2210[];
 extern char lbl_804D2240[];
 extern char lbl_804D2270[];
-extern void *lbl_80535398;
+extern void *beFileListInfoManager_meta;
 }
 extern "C" {
 void beFileListInfoManager_fieldInit(){
- void *value0=lbl_80535398;
+ void *value0=beFileListInfoManager_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D21E0,12);
  void *value2=fn_800658E4(value0,value1);
- void *value3=fn_802B740C();
+ void *value3=beSystem_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+60)=0;
  void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
- void *value5=fn_802CDF04();
+ void *value5=beMessenger_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+60)=0;
  void *value6=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));
- void *value7=fn_80403C88();
+ void *value7=igViewerSceneInfoManager_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value6)+60)=0;
  void *value8=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+4));

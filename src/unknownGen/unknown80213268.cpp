@@ -10,7 +10,7 @@ void *fn_801E626C();
 void fn_801E628C(void *);
 void *fn_801E754C(void *);
 void *fn_803B5B70(void *);
-extern void *lbl_805655D8;
+extern void *igGamecubeEnvironmentMapShader_meta;
 }
 class UnknownGenV80213268_0 {
 public:
@@ -113,7 +113,7 @@ void igGamecubeEnvironmentMapShader_virtual28(int p0){
  }
  fn_801E628C((void *)p0);
 }
-void *igGamecubeEnvironmentMapShader_virtual58(){return lbl_805655D8;}
+void *igGamecubeEnvironmentMapShader_virtual58(){return igGamecubeEnvironmentMapShader_meta;}
 void *igGamecubeEnvironmentMapShader_virtual44(int p0,int p1,int p2,int p3,int p4,int p5){
  void *value0;
  void *value1;

@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_801B9E18();
-extern void *lbl_80564D0C;
+void igMorphInstance2_registerNow();
+extern void *igMorphInstance2_meta;
 }
 extern "C" {
 void *igMorphInstance2_getMeta(){
- if(!lbl_80564D0C || !(reinterpret_cast<unsigned int *>(lbl_80564D0C)[0x24/4]&4)) fn_801B9E18();
- return lbl_80564D0C;
+ if(!igMorphInstance2_meta || !(reinterpret_cast<unsigned int *>(igMorphInstance2_meta)[0x24/4]&4)) igMorphInstance2_registerNow();
+ return igMorphInstance2_meta;
 }
 }
 #pragma pop

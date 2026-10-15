@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_8053495C;
+extern void *beSvFileFindApi_meta;
 }
 extern "C" {
-void *beSvFileFindApi_virtual58(){return lbl_8053495C;}
+void *beSvFileFindApi_virtual58(){return beSvFileFindApi_meta;}
 }
 #pragma pop

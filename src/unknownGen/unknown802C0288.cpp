@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_802C0370();
-extern void *lbl_805349F8;
+void beSaveDataDeliver_registerNow();
+extern void *beSaveDataDeliver_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802C0288(){
- if(!lbl_805349F8) lbl_805349F8=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805349F8;
+void *beSaveDataDeliver_metaObject(){
+ if(!beSaveDataDeliver_meta) beSaveDataDeliver_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beSaveDataDeliver_meta;
 }
 void *beSaveDataDeliver_getMeta(){
- if(!lbl_805349F8 || !(reinterpret_cast<unsigned int *>(lbl_805349F8)[0x24/4]&4)) fn_802C0370();
- return lbl_805349F8;
+ if(!beSaveDataDeliver_meta || !(reinterpret_cast<unsigned int *>(beSaveDataDeliver_meta)[0x24/4]&4)) beSaveDataDeliver_registerNow();
+ return beSaveDataDeliver_meta;
 }
 }
 #pragma pop

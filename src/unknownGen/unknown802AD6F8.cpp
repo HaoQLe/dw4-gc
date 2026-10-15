@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802AD7DC();
-extern void *lbl_80534490;
+void igMoviePlugin_registerNow();
+extern void *igMoviePlugin_meta;
 }
 extern "C" {
 void *igMoviePlugin_getMeta(){
- if(!lbl_80534490 || !(reinterpret_cast<unsigned int *>(lbl_80534490)[0x24/4]&4)) fn_802AD7DC();
- return lbl_80534490;
+ if(!igMoviePlugin_meta || !(reinterpret_cast<unsigned int *>(igMoviePlugin_meta)[0x24/4]&4)) igMoviePlugin_registerNow();
+ return igMoviePlugin_meta;
 }
 }
 #pragma pop

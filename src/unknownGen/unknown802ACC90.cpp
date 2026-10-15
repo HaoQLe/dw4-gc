@@ -14,8 +14,8 @@ void fn_800CE098();
 void fn_800CE0E4();
 void *fn_800D2414();
 void *fn_801B3FA8();
-void *fn_802ABAF8();
-void *fn_802AC500();
+void *igMovieCodec_metaObject();
+void *igTextureBindAttrList_metaObject();
 void fn_802AC6D0();
 void fn_802AC730();
 extern char lbl_804CDBF8[];
@@ -27,12 +27,12 @@ extern char lbl_804CDD4C[];
 extern char lbl_804CDD50[];
 extern char lbl_804CDD54[];
 extern char lbl_804CDD58[];
-extern void *lbl_80534414;
-extern void *lbl_805622A4;
+extern void *igMovieInfo_meta;
+extern void *igObject_meta;
 }
 extern "C" {
 void igMovieInfo_fieldInit(){
- void *value0=lbl_80534414;
+ void *value0=igMovieInfo_meta;
  void *value2=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CDBF8,21);
  void *value3=fn_800658E4(value0,value2);
@@ -49,7 +49,7 @@ void igMovieInfo_fieldInit(){
  void *value8=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+6));
  fn_80053650(value8,-1);
  void *value9=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+7));
- void *value10=fn_802AC500();
+ void *value10=igTextureBindAttrList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value9)+56)=value10;
  void *value11=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+8));
  fn_80046E58(value11,lbl_804CDD4C);
@@ -64,7 +64,7 @@ void igMovieInfo_fieldInit(){
  void *value15=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+12));
  fn_80071694(value15,0);
  void *value16=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+13));
- void *value17=fn_802ABAF8();
+ void *value17=igMovieCodec_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value16)+56)=value17;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value16)+38)=0;
  void *value18=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+14));
@@ -87,7 +87,7 @@ void igMovieInfo_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value25)+38)=0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value25)+52)=(void *)fn_800CE0E4;
  void *value26=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+19));
- void *value1=lbl_805622A4;
+ void *value1=igObject_meta;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value26)+56)=value1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value26)+38)=0;
  void *value27=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+20));

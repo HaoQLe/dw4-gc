@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802CD9FC();
-extern void *lbl_80534F78;
+void beMeterCtrlOneData_registerNow();
+extern void *beMeterCtrlOneData_meta;
 }
 extern "C" {
 void *beMeterCtrlOneData_getMeta(){
- if(!lbl_80534F78 || !(reinterpret_cast<unsigned int *>(lbl_80534F78)[0x24/4]&4)) fn_802CD9FC();
- return lbl_80534F78;
+ if(!beMeterCtrlOneData_meta || !(reinterpret_cast<unsigned int *>(beMeterCtrlOneData_meta)[0x24/4]&4)) beMeterCtrlOneData_registerNow();
+ return beMeterCtrlOneData_meta;
 }
 }
 #pragma pop

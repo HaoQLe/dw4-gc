@@ -2,25 +2,25 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void *fn_8013BF68();
 void fn_8013CE40();
 void igObjectPropertyForNode_register();
-extern char lbl_8049DBD0[];
-extern char lbl_804A4F30[];
-extern char lbl_804A5BE8[];
+extern char igObjectPropertyForBillboard_className[];
+extern char igObjectPropertyForBillboard_vtable[];
+extern char igObjectPropertyForNode_vtable[];
 extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F838[8];
-extern void *lbl_80563F1C;
+extern void *igObjectPropertyForBillboard_meta;
 void *igObjectPropertyForBillboard_getMeta();
 void *igObjectPropertyForBillboard_vtableRead();
-void fn_8013CD84();
+void igObjectPropertyForBillboard_registerNow();
 void igObjectPropertyForBillboard_register();
 void *igObjectPropertyForBillboard_getMetaCall();
 }
@@ -35,16 +35,16 @@ struct UnknownGenObject8013CCB8_0 : UnknownGenRoot8013CCB8 {
  inline ~UnknownGenObject8013CCB8_0(){unknown00=lbl_804A5C7C;}
 };
 struct UnknownGenObject8013CCB8_1 : UnknownGenObject8013CCB8_0 {
- inline ~UnknownGenObject8013CCB8_1(){unknown00=lbl_804A5BE8;}
+ inline ~UnknownGenObject8013CCB8_1(){unknown00=igObjectPropertyForNode_vtable;}
 };
 struct UnknownGenObject8013CCB8 : UnknownGenObject8013CCB8_1 {
  char unknown24[12];
- inline ~UnknownGenObject8013CCB8(){unknown00=lbl_804A4F30;}
+ inline ~UnknownGenObject8013CCB8(){unknown00=igObjectPropertyForBillboard_vtable;}
 };
 extern "C" {
 void *igObjectPropertyForBillboard_getMeta(){
- if(!lbl_80563F1C || !(reinterpret_cast<unsigned int *>(lbl_80563F1C)[0x24/4]&4)) fn_8013CD84();
- return lbl_80563F1C;
+ if(!igObjectPropertyForBillboard_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForBillboard_meta)[0x24/4]&4)) igObjectPropertyForBillboard_registerNow();
+ return igObjectPropertyForBillboard_meta;
 }
 void *igObjectPropertyForBillboard_vtableRead(){
  UnknownGenObject8013CCB8 object;
@@ -53,16 +53,16 @@ void *igObjectPropertyForBillboard_vtableRead(){
  object.unknown00=lbl_804A6338;
  object.unknown00=lbl_804A5C7C;
  object.unknown20.value=0;
- object.unknown00=lbl_804A5BE8;
- object.unknown00=lbl_804A4F30;
+ object.unknown00=igObjectPropertyForNode_vtable;
+ object.unknown00=igObjectPropertyForBillboard_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8013CD84(){
- fn_80066188((int)igObjectPropertyForBillboard_register);
+void igObjectPropertyForBillboard_registerNow(){
+ meta_registerNow((int)igObjectPropertyForBillboard_register);
 }
 void igObjectPropertyForBillboard_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563F1C,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForBillboard_getMetaCall,(int)lbl_8049DBD0,44,(int)igObjectPropertyForBillboard_vtableRead,(int)fn_8013CE40,0,(int)lbl_8055F838);
+ meta_registerClass(0,(int)&igObjectPropertyForBillboard_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForBillboard_getMetaCall,(int)igObjectPropertyForBillboard_className,44,(int)igObjectPropertyForBillboard_vtableRead,(int)fn_8013CE40,0,(int)lbl_8055F838);
 }
 void *igObjectPropertyForBillboard_getMetaCall(){return igObjectPropertyForBillboard_getMeta();}
 }

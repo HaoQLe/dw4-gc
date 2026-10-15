@@ -11,11 +11,11 @@ extern char lbl_804D2960[];
 extern char lbl_804D2964[];
 extern char lbl_804D2968[];
 extern char lbl_804D296C[];
-extern void *lbl_805355CC;
+extern void *beChangePosTransformInfoRam_meta;
 }
 extern "C" {
 void beChangePosTransformInfoRam_fieldInit(){
- void *value0=lbl_805355CC;
+ void *value0=beChangePosTransformInfoRam_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D2960,1);
  void *value2=fn_800658E4(value0,value1);

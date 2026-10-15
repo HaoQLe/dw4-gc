@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805622A4;
+extern void *igObject_meta;
 }
 extern "C" {
-void *igFieldUpdate_virtual7C(){return lbl_805622A4;}
+void *igFieldUpdate_virtual7C(){return igObject_meta;}
 }
 #pragma pop

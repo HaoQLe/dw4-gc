@@ -5,34 +5,34 @@ extern "C" {
 void *beFile_getMeta();
 void beFile_vtableRead();
 void *fn_800237D0();
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void fn_802DAF0C();
+void beFileChkObj_registerNow();
 void igObject_register();
-extern char lbl_804204CC[];
-extern char lbl_805353D8[];
-extern void *lbl_805353DC;
+extern char beFile_className[];
+extern char beFile_meta[];
+extern void *beFileChkObj_meta;
 void beFile_register();
 void *beFile_getMetaCall();
 }
 extern "C" {
-void fn_802DAD40(){
- fn_80066188((int)beFile_register);
+void beFile_registerNow(){
+ meta_registerNow((int)beFile_register);
 }
 void beFile_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805353D8,(int)igObject_register,(int)fn_800237D0,(int)beFile_getMetaCall,(int)lbl_804204CC,8,(int)beFile_vtableRead,0,0,0);
+ meta_registerClass(0,(int)beFile_meta,(int)igObject_register,(int)fn_800237D0,(int)beFile_getMetaCall,(int)beFile_className,8,(int)beFile_vtableRead,0,0,0);
 }
 void *beFile_getMetaCall(){return beFile_getMeta();}
-void *fn_802DADF4(void *object){
- fn_802DAF0C();
- return fn_8006546C(lbl_805353DC,object);
+void *beFileChkObj_create(void *object){
+ beFileChkObj_registerNow();
+ return meta_createInstance(beFileChkObj_meta,object);
 }
 void *beFileChkObj_getMeta(){
- if(!lbl_805353DC || !(reinterpret_cast<unsigned int *>(lbl_805353DC)[0x24/4]&4)) fn_802DAF0C();
- return lbl_805353DC;
+ if(!beFileChkObj_meta || !(reinterpret_cast<unsigned int *>(beFileChkObj_meta)[0x24/4]&4)) beFileChkObj_registerNow();
+ return beFileChkObj_meta;
 }
 }
 #pragma pop

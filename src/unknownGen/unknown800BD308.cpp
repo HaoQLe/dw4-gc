@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800607F4(void *);
-void *fn_800BAE34(void *);
+void *igAttrPool_create(void *);
 extern void *lbl_805621E8;
 extern void *lbl_80562250;
 extern char lbl_80562298[1];
@@ -32,7 +32,7 @@ void *fn_800BD308(){
     fn_80066E1C(value0);
    }
   }
-  value5=fn_800BAE34(value2);
+  value5=igAttrPool_create(value2);
   lbl_80562AE0=value5;
  }
  return lbl_80562AE0;

@@ -4,11 +4,11 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_801AA6DC();
 void *fn_801CFB8C();
@@ -16,27 +16,27 @@ void *fn_801CFCA8();
 void igAnimationBinding_fieldInit();
 void igObjectList_register();
 void igObject_register();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804B258C[];
+extern char igAnimationBindingList_className[];
 extern char lbl_804B25CC[];
-extern char lbl_804B25DC[];
-extern char lbl_804B5E68[];
-extern char lbl_804B5EC4[];
+extern char igAnimationBinding_className[];
+extern char igAnimationBinding_vtable[];
+extern char igAnimationBindingList_vtable[];
 extern char lbl_804B5F28[];
 extern char lbl_805609D0[8];
 extern void *lbl_805621F4;
-extern void *lbl_805654F0;
-extern void *lbl_805654F4;
+extern void *igAnimationBindingList_meta;
+extern void *igAnimationBinding_meta;
 void *igAnimationBindingList_getMeta();
 void *igAnimationBindingList_vtableRead();
-void fn_801CBFC4();
+void igAnimationBindingList_registerNow();
 void igAnimationBindingList_register();
 void *igAnimationBindingList_getMetaCall();
 void *igAnimationBinding_getMeta();
 void *igAnimationBinding_vtableRead();
-void fn_801CC1EC();
+void igAnimationBinding_registerNow();
 void igAnimationBinding_register();
 void *igAnimationBinding_getMetaCall();
 }
@@ -56,59 +56,59 @@ struct UnknownGenObject801CC0EC : UnknownGenRoot801CC0EC {
  UnknownGenRefMember unknown14;
  UnknownGenRefMember unknown18;
  char unknown1C[12];
- inline ~UnknownGenObject801CC0EC(){unknown00=lbl_804B5E68;}
+ inline ~UnknownGenObject801CC0EC(){unknown00=igAnimationBinding_vtable;}
 };
 extern "C" {
 void *fn_801CBE9C(){return fn_801CFB8C();}
 void *fn_801CBEBC(){return fn_801CFCA8();}
 void *fn_801CBEDC(){
- if(!lbl_805654F0) lbl_805654F0=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805654F0;
+ if(!igAnimationBindingList_meta) igAnimationBindingList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igAnimationBindingList_meta;
 }
 void *igAnimationBindingList_getMeta(){
- if(!lbl_805654F0 || !(reinterpret_cast<unsigned int *>(lbl_805654F0)[0x24/4]&4)) fn_801CBFC4();
- return lbl_805654F0;
+ if(!igAnimationBindingList_meta || !(reinterpret_cast<unsigned int *>(igAnimationBindingList_meta)[0x24/4]&4)) igAnimationBindingList_registerNow();
+ return igAnimationBindingList_meta;
 }
 void *igAnimationBindingList_vtableRead(){
  UnknownGenObject801CBF54_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_804B5F28;
- object.unknown00=lbl_804B5EC4;
+ object.unknown00=igAnimationBindingList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801CBFC4(){
- fn_80066188((int)igAnimationBindingList_register);
+void igAnimationBindingList_registerNow(){
+ meta_registerNow((int)igAnimationBindingList_register);
 }
 void igAnimationBindingList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805654F0,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationBindingList_getMetaCall,(int)lbl_804B258C,20,(int)igAnimationBindingList_vtableRead,0,0,(int)lbl_805609D0);
+ meta_registerClass(0,(int)&igAnimationBindingList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationBindingList_getMetaCall,(int)igAnimationBindingList_className,20,(int)igAnimationBindingList_vtableRead,0,0,(int)lbl_805609D0);
 }
 void *igAnimationBindingList_getMetaCall(){return igAnimationBindingList_getMeta();}
-void *fn_801CC078(void *object){
- fn_801CC1EC();
- return fn_8006546C(lbl_805654F4,object);
+void *igAnimationBinding_create(void *object){
+ igAnimationBinding_registerNow();
+ return meta_createInstance(igAnimationBinding_meta,object);
 }
 void *igAnimationBinding_getMeta(){
- if(!lbl_805654F4 || !(reinterpret_cast<unsigned int *>(lbl_805654F4)[0x24/4]&4)) fn_801CC1EC();
- return lbl_805654F4;
+ if(!igAnimationBinding_meta || !(reinterpret_cast<unsigned int *>(igAnimationBinding_meta)[0x24/4]&4)) igAnimationBinding_registerNow();
+ return igAnimationBinding_meta;
 }
 void *igAnimationBinding_vtableRead(){
  UnknownGenObject801CC0EC object;
- object.unknown00=lbl_804B5E68;
+ object.unknown00=igAnimationBinding_vtable;
  object.unknown08.value=0;
  object.unknown14.value=0;
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801CC1EC(){
- fn_80066188((int)igAnimationBinding_register);
+void igAnimationBinding_registerNow(){
+ meta_registerNow((int)igAnimationBinding_register);
 }
 void igAnimationBinding_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805654F4,(int)igObject_register,(int)fn_800237D0,(int)igAnimationBinding_getMetaCall,(int)lbl_804B25DC,28,(int)igAnimationBinding_vtableRead,(int)igAnimationBinding_fieldInit,0,(int)lbl_804B25CC);
+ meta_registerClass(0,(int)&igAnimationBinding_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationBinding_getMetaCall,(int)igAnimationBinding_className,28,(int)igAnimationBinding_vtableRead,(int)igAnimationBinding_fieldInit,0,(int)lbl_804B25CC);
 }
 void *igAnimationBinding_getMetaCall(){return igAnimationBinding_getMeta();}
 }

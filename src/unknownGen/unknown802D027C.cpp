@@ -7,13 +7,13 @@ void beBaseInfoRam_register();
 void beMatCtrlInfoRam_fieldInit();
 void *beMatCtrlInfoRam_getMeta();
 void beMatCtrlInfoRam_vtableRead();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2B2C();
-extern char lbl_8041F920[];
+extern char beMatCtrlInfoRam_className[];
 extern char lbl_804D1674[];
-extern char lbl_8053508C[];
+extern char beMatCtrlInfoRam_meta[];
 void beMatCtrlInfoRam_register();
 void *beMatCtrlInfoRam_getMetaCall();
 }
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_802D027C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void fn_802D02F0(){
- fn_80066188((int)beMatCtrlInfoRam_register);
+void beMatCtrlInfoRam_registerNow(){
+ meta_registerNow((int)beMatCtrlInfoRam_register);
 }
 void beMatCtrlInfoRam_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_8053508C,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beMatCtrlInfoRam_getMetaCall,(int)lbl_8041F920,48,(int)beMatCtrlInfoRam_vtableRead,(int)beMatCtrlInfoRam_fieldInit,0,(int)lbl_804D1674);
+ meta_registerClass(0,(int)beMatCtrlInfoRam_meta,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beMatCtrlInfoRam_getMetaCall,(int)beMatCtrlInfoRam_className,48,(int)beMatCtrlInfoRam_vtableRead,(int)beMatCtrlInfoRam_fieldInit,0,(int)lbl_804D1674);
 }
 void *beMatCtrlInfoRam_getMetaCall(){return beMatCtrlInfoRam_getMeta();}
 }

@@ -4,7 +4,7 @@
 extern "C" {
 void fn_80066DFC(void *);
 extern char lbl_80497C9C[];
-extern char lbl_804F1880[];
+extern char igNormalsRenderer_vtable[];
 }
 extern "C" {
 void *fn_804084F4(int p0,int p1){
@@ -25,7 +25,7 @@ void *fn_804084F4(int p0,int p1){
  void *value14;
  void *value15;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804F1880;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igNormalsRenderer_vtable;
   if((int)(p0+40)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+40);
    if(value0){

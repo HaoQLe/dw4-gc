@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802B5FB4();
-extern void *lbl_80534660;
+void beTextureCtrlInfoList_registerNow();
+extern void *beTextureCtrlInfoList_meta;
 }
 extern "C" {
 void *beTextureCtrlInfoList_getMeta(){
- if(!lbl_80534660 || !(reinterpret_cast<unsigned int *>(lbl_80534660)[0x24/4]&4)) fn_802B5FB4();
- return lbl_80534660;
+ if(!beTextureCtrlInfoList_meta || !(reinterpret_cast<unsigned int *>(beTextureCtrlInfoList_meta)[0x24/4]&4)) beTextureCtrlInfoList_registerNow();
+ return beTextureCtrlInfoList_meta;
 }
 }
 #pragma pop

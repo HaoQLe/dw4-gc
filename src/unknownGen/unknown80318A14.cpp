@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_8053455C;
+extern void *beWeapon_meta;
 }
 extern "C" {
-void *beWeapon_virtual58(){return lbl_8053455C;}
+void *beWeapon_virtual58(){return beWeapon_meta;}
 }
 #pragma pop

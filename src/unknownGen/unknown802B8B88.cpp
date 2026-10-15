@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802B8C84();
-extern void *lbl_80534754;
+void beSoundData_registerNow();
+extern void *beSoundData_meta;
 }
 extern "C" {
 void *beSoundData_getMeta(){
- if(!lbl_80534754 || !(reinterpret_cast<unsigned int *>(lbl_80534754)[0x24/4]&4)) fn_802B8C84();
- return lbl_80534754;
+ if(!beSoundData_meta || !(reinterpret_cast<unsigned int *>(beSoundData_meta)[0x24/4]&4)) beSoundData_registerNow();
+ return beSoundData_meta;
 }
 }
 #pragma pop

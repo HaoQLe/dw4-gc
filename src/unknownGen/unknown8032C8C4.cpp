@@ -5,7 +5,7 @@ extern "C" {
 void fn_80066DFC(void *);
 extern char lbl_804E6888[];
 extern char lbl_804E6A60[];
-extern char lbl_804ECBBC[];
+extern char beNDMWShopCtrlDiskSell_vtable[];
 }
 extern "C" {
 void *fn_8032C8C4(int p0,int p1){
@@ -26,7 +26,7 @@ void *fn_8032C8C4(int p0,int p1){
  void *value14;
  void *value15;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804ECBBC;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beNDMWShopCtrlDiskSell_vtable;
   if((int)(p0+84)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+84);
    if(value0){

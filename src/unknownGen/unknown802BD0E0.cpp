@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802BD210();
-extern void *lbl_805348D0;
+void beSvPlatDataGC_registerNow();
+extern void *beSvPlatDataGC_meta;
 }
 extern "C" {
 void *beSvPlatDataGC_getMeta(){
- if(!lbl_805348D0 || !(reinterpret_cast<unsigned int *>(lbl_805348D0)[0x24/4]&4)) fn_802BD210();
- return lbl_805348D0;
+ if(!beSvPlatDataGC_meta || !(reinterpret_cast<unsigned int *>(beSvPlatDataGC_meta)[0x24/4]&4)) beSvPlatDataGC_registerNow();
+ return beSvPlatDataGC_meta;
 }
 }
 #pragma pop

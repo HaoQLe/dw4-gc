@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534680;
+extern void *beTextureCtrl_meta;
 }
 extern "C" {
-void *beTextureCtrl_virtual58(){return lbl_80534680;}
+void *beTextureCtrl_virtual58(){return beTextureCtrl_meta;}
 }
 #pragma pop

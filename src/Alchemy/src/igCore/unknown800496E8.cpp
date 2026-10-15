@@ -203,7 +203,7 @@ inline void unknown8004A41CDecimal(char *buffer,const char *custom,int value){sp
 template <class T> inline void unknown8004A41CFormatted(char *buffer,const char *custom,T value,const char *fallback){sprintf(buffer,*custom ? custom : fallback,value);}
 template <class T> inline void unknown8004A41CAppend(char *buffer,const char *format,T value){sprintf(buffer+strlen(buffer),format,value);}
 extern "C" char *fn_8004A41C(Unknown800496E8Owner *object,const Unknown800496E8Record *source,char *output,int capacity){
- const char *data=lbl_80463100;
+ const char *data=igVirtualCFuncMetaField_className;
  char name[0x100],piece[0x100],description[0x100];
  Unknown800496E8Record record(*source);
  char format[0x80],extra[0x80];

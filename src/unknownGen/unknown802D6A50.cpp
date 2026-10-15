@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804D6BFC[];
+extern char beGeneraterInfoWork_vtable[];
 }
 struct UnknownGenRoot802D6A50 {
  void *unknown00;
@@ -16,12 +16,12 @@ struct UnknownGenObject802D6A50 : UnknownGenRoot802D6A50 {
  char unknown18[4];
  UnknownGenString unknown1C;
  char unknown20[16];
- inline ~UnknownGenObject802D6A50(){unknown00=lbl_804D6BFC;}
+ inline ~UnknownGenObject802D6A50(){unknown00=beGeneraterInfoWork_vtable;}
 };
 extern "C" {
 void *beGeneraterInfoWork_vtableRead(){
  UnknownGenObject802D6A50 object;
- object.unknown00=lbl_804D6BFC;
+ object.unknown00=beGeneraterInfoWork_vtable;
  object.unknown14.value=0;
  object.unknown1C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

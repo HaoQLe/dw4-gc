@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80535094;
+extern void *beMatCtrlInfo_meta;
 }
 extern "C" {
-void *beMatCtrl_virtual80(){return lbl_80535094;}
+void *beMatCtrl_virtual80(){return beMatCtrlInfo_meta;}
 }
 #pragma pop

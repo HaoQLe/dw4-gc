@@ -3,7 +3,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80515D40;
+extern void *igFlushRenderer_meta;
 }
 class UnknownGenV802898E4_0 {
 public:
@@ -186,7 +186,7 @@ extern "C" {
 void igFlushRenderer_virtual68(int p0){
  reinterpret_cast<UnknownGenV802898E4_0 *>(reinterpret_cast<Meta::igFlushRenderer *>((void *)p0)->_visualContext)->s2BC();
 }
-void *igFlushRenderer_virtual58(){return lbl_80515D40;}
+void *igFlushRenderer_virtual58(){return igFlushRenderer_meta;}
 void igFlushRenderer_virtual64(){}
 void igFlushRenderer_virtual5C(){}
 void igFlushRenderer_virtual60(){}

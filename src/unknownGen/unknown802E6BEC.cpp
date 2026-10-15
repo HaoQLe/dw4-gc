@@ -5,50 +5,50 @@ extern "C" {
 void *beAction2MOTIONSET_getMeta();
 void beAction2MOTIONSET_vtableRead();
 void *fn_80023CF4();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void fn_802E6E3C();
+void beAction2DataList_registerNow();
 void igNamedObject_register();
-extern char lbl_80421094[];
+extern char beAction2MOTIONSET_className[];
 extern char lbl_804D3168[];
 extern char lbl_804D3174[];
 extern char lbl_804D3180[];
 extern char lbl_804D318C[];
-extern void *lbl_8053580C;
-extern void *lbl_8053581C;
+extern void *beAction2MOTIONSET_meta;
+extern void *beAction2DataList_meta;
 extern void *lbl_805621F4;
 void beAction2MOTIONSET_register();
 void *beAction2MOTIONSET_getMetaCall();
 void beAction2MOTIONSET_fieldInit();
 }
 extern "C" {
-void fn_802E6BEC(){
- fn_80066188((int)beAction2MOTIONSET_register);
+void beAction2MOTIONSET_registerNow(){
+ meta_registerNow((int)beAction2MOTIONSET_register);
 }
 void beAction2MOTIONSET_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)&lbl_8053580C,(int)igNamedObject_register,(int)fn_80023CF4,(int)beAction2MOTIONSET_getMetaCall,(int)lbl_80421094,24,(int)beAction2MOTIONSET_vtableRead,(int)beAction2MOTIONSET_fieldInit,0,0);
+ meta_registerClass(0,(int)&beAction2MOTIONSET_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)beAction2MOTIONSET_getMetaCall,(int)beAction2MOTIONSET_className,24,(int)beAction2MOTIONSET_vtableRead,(int)beAction2MOTIONSET_fieldInit,0,0);
 }
 void *beAction2MOTIONSET_getMetaCall(){return beAction2MOTIONSET_getMeta();}
 void beAction2MOTIONSET_fieldInit(){
- void *meta=lbl_8053580C;
+ void *meta=beAction2MOTIONSET_meta;
  void *field=fn_80065D88(meta);
  fn_80065924(meta,lbl_804D3168,0x3);
  fn_800659C0(meta,lbl_804D3174,lbl_804D3180,lbl_804D318C,field);
 }
-void *fn_802E6D28(){
- if(!lbl_8053581C) lbl_8053581C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_8053581C;
+void *beAction2DataList_metaObject(){
+ if(!beAction2DataList_meta) beAction2DataList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beAction2DataList_meta;
 }
 void *beAction2DataList_getMeta(){
- if(!lbl_8053581C || !(reinterpret_cast<unsigned int *>(lbl_8053581C)[0x24/4]&4)) fn_802E6E3C();
- return lbl_8053581C;
+ if(!beAction2DataList_meta || !(reinterpret_cast<unsigned int *>(beAction2DataList_meta)[0x24/4]&4)) beAction2DataList_registerNow();
+ return beAction2DataList_meta;
 }
 }
 #pragma pop

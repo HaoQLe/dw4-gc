@@ -4,32 +4,32 @@
 extern "C" {
 void *fn_800237D0();
 void *fn_80024180();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_8006546C(void *,void *);
+void *meta_createInstance(void *,void *);
 void *fn_800658E4(void *,void *);
 void fn_80065924(void *,void *,int);
 void fn_800659C0(void *,void *,void *,void *,void *);
 void *fn_80065D88(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void *fn_800BA194();
 void *fn_800BB7B8();
 void fn_801AA6DC();
 void fn_801C3D40(void *,short);
 void fn_801C3EF4(void *);
-void fn_801C4004();
+void igCompileTraversal_registerNow();
 void igObjectList_register();
 void igObject_register();
-extern char lbl_80472FA0[];
-extern char lbl_80476C7C[];
+extern char igDataList_vtable[];
+extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804B0434[];
+extern char igBlendListRecordList_className[];
 extern char lbl_804B044C[];
-extern char lbl_804B0458[];
-extern char lbl_804B70C4[];
-extern char lbl_804B7120[];
+extern char igBlendListRecord_className[];
+extern char igBlendListRecord_vtable[];
+extern char igBlendListRecordList_vtable[];
 extern char lbl_804B7184[];
 extern char lbl_80560708[8];
 extern char lbl_80560710[8];
@@ -37,17 +37,17 @@ extern char lbl_80560728[8];
 extern char lbl_80560730[8];
 extern char lbl_80560738[8];
 extern void *lbl_805621F4;
-extern void *lbl_805650AC;
-extern void *lbl_805650B0;
-extern void *lbl_805650BC;
+extern void *igBlendListRecordList_meta;
+extern void *igBlendListRecord_meta;
+extern void *igCompileTraversal_meta;
 void *igBlendListRecordList_getMeta();
 void *igBlendListRecordList_vtableRead();
-void fn_801C3968();
+void igBlendListRecordList_registerNow();
 void igBlendListRecordList_register();
 void *igBlendListRecordList_getMetaCall();
 void *igBlendListRecord_getMeta();
 void *igBlendListRecord_vtableRead();
-void fn_801C3B18();
+void igBlendListRecord_registerNow();
 void igBlendListRecord_register();
 void *igBlendListRecord_getMetaCall();
 void igBlendListRecord_fieldInit();
@@ -65,7 +65,7 @@ struct UnknownGenObject801C3A90 : UnknownGenRoot801C3A90 {
  char unknown04[4];
  UnknownGenRefMember unknown08;
  char unknown0C[4];
- inline ~UnknownGenObject801C3A90(){unknown00=lbl_804B70C4;}
+ inline ~UnknownGenObject801C3A90(){unknown00=igBlendListRecord_vtable;}
 };
 struct UnknownGenObject801C3CF8 {
  void *unknown00;
@@ -73,55 +73,55 @@ struct UnknownGenObject801C3CF8 {
 };
 extern "C" {
 void *fn_801C3880(){
- if(!lbl_805650AC) lbl_805650AC=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805650AC;
+ if(!igBlendListRecordList_meta) igBlendListRecordList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igBlendListRecordList_meta;
 }
 void *igBlendListRecordList_getMeta(){
- if(!lbl_805650AC || !(reinterpret_cast<unsigned int *>(lbl_805650AC)[0x24/4]&4)) fn_801C3968();
- return lbl_805650AC;
+ if(!igBlendListRecordList_meta || !(reinterpret_cast<unsigned int *>(igBlendListRecordList_meta)[0x24/4]&4)) igBlendListRecordList_registerNow();
+ return igBlendListRecordList_meta;
 }
 void *igBlendListRecordList_vtableRead(){
  UnknownGenObject801C38F8_0 object;
  fn_8006665C(&object);
- object.unknown00=lbl_80472FA0;
+ object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
- object.unknown00=lbl_80476C7C;
+ object.unknown00=igObjectList_vtable;
  object.unknown00=lbl_804B7184;
- object.unknown00=lbl_804B7120;
+ object.unknown00=igBlendListRecordList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801C3968(){
- fn_80066188((int)igBlendListRecordList_register);
+void igBlendListRecordList_registerNow(){
+ meta_registerNow((int)igBlendListRecordList_register);
 }
 void igBlendListRecordList_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805650AC,(int)igObjectList_register,(int)fn_80024180,(int)igBlendListRecordList_getMetaCall,(int)lbl_804B0434,20,(int)igBlendListRecordList_vtableRead,0,0,(int)lbl_80560708);
+ meta_registerClass(0,(int)&igBlendListRecordList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igBlendListRecordList_getMetaCall,(int)igBlendListRecordList_className,20,(int)igBlendListRecordList_vtableRead,0,0,(int)lbl_80560708);
 }
 void *igBlendListRecordList_getMetaCall(){return igBlendListRecordList_getMeta();}
-void *fn_801C3A1C(void *object){
- fn_801C3B18();
- return fn_8006546C(lbl_805650B0,object);
+void *igBlendListRecord_create(void *object){
+ igBlendListRecord_registerNow();
+ return meta_createInstance(igBlendListRecord_meta,object);
 }
 void *igBlendListRecord_getMeta(){
- if(!lbl_805650B0 || !(reinterpret_cast<unsigned int *>(lbl_805650B0)[0x24/4]&4)) fn_801C3B18();
- return lbl_805650B0;
+ if(!igBlendListRecord_meta || !(reinterpret_cast<unsigned int *>(igBlendListRecord_meta)[0x24/4]&4)) igBlendListRecord_registerNow();
+ return igBlendListRecord_meta;
 }
 void *igBlendListRecord_vtableRead(){
  UnknownGenObject801C3A90 object;
- object.unknown00=lbl_804B70C4;
+ object.unknown00=igBlendListRecord_vtable;
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801C3B18(){
- fn_80066188((int)igBlendListRecord_register);
+void igBlendListRecord_registerNow(){
+ meta_registerNow((int)igBlendListRecord_register);
 }
 void igBlendListRecord_register(){
  fn_801AA6DC();
- fn_80066204(0,(int)&lbl_805650B0,(int)igObject_register,(int)fn_800237D0,(int)igBlendListRecord_getMetaCall,(int)lbl_804B0458,16,(int)igBlendListRecord_vtableRead,(int)igBlendListRecord_fieldInit,0,(int)lbl_804B044C);
+ meta_registerClass(0,(int)&igBlendListRecord_meta,(int)igObject_register,(int)fn_800237D0,(int)igBlendListRecord_getMetaCall,(int)igBlendListRecord_className,16,(int)igBlendListRecord_vtableRead,(int)igBlendListRecord_fieldInit,0,(int)lbl_804B044C);
 }
 void *igBlendListRecord_getMetaCall(){return igBlendListRecord_getMeta();}
 void igBlendListRecord_fieldInit(){
- void *value0=lbl_805650B0;
+ void *value0=igBlendListRecord_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_80560710,2);
  void *value2=fn_800658E4(value0,value1);
@@ -135,13 +135,13 @@ void igBlendListRecord_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+38)=0;
  fn_800659C0(value0,lbl_80560728,lbl_80560730,lbl_80560738,value1);
 }
-void *fn_801C3C84(void *object){
- fn_801C4004();
- return fn_8006546C(lbl_805650BC,object);
+void *igCompileTraversal_create(void *object){
+ igCompileTraversal_registerNow();
+ return meta_createInstance(igCompileTraversal_meta,object);
 }
 void *igCompileTraversal_getMeta(){
- if(!lbl_805650BC || !(reinterpret_cast<unsigned int *>(lbl_805650BC)[0x24/4]&4)) fn_801C4004();
- return lbl_805650BC;
+ if(!igCompileTraversal_meta || !(reinterpret_cast<unsigned int *>(igCompileTraversal_meta)[0x24/4]&4)) igCompileTraversal_registerNow();
+ return igCompileTraversal_meta;
 }
 void *fn_801C3CF8(){
  UnknownGenObject801C3CF8 object;

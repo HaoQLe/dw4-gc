@@ -506,7 +506,7 @@ def _masked(n):
     elif t==10: w=_st.unpack('>I',b[o&~3:(o&~3)+4])[0]&0xFC000003;b[o&~3:(o&~3)+4]=_st.pack('>I',w)
   return bytes(b),tuple(t for o,t,sy,ad in idx[n]['rel'])
 TT={}
-FAMREP={'F1':'fn_80021D70','F2':'igVirtualCFuncMetaField_getMetaCall','F3':'igVirtualCFuncMetaField_getMeta','F6':'fn_8002216C','F7':'fn_80022BB0','F8':'fn_80021D78'}
+FAMREP={'F1':'fn_80021D70','F2':'igVirtualCFuncMetaField_getMetaCall','F3':'igVirtualCFuncMetaField_getMeta','F6':'igUnsignedShortArrayMetaField_create','F7':'fn_80022BB0','F8':'fn_80021D78'}
 FM={}
 for _f,_r in FAMREP.items(): FM[_masked(_r)]=_f
 _famcache={}

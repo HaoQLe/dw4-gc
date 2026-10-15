@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805647C0;
+extern void *igStringKey_meta;
 }
 extern "C" {
-void *igStringKey_virtual58(){return lbl_805647C0;}
+void *igStringKey_virtual58(){return igStringKey_meta;}
 }
 #pragma pop

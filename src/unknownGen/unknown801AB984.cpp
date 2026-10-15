@@ -3,21 +3,21 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800635C8(void *,void *,void *,int);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
 void *fn_80208234();
 void *igTransformSequence_fieldInit();
 void igTransformSource_register();
 extern char lbl_804AAFB8[];
 extern char lbl_804AB764[];
-extern char lbl_804AB774[];
-extern void *lbl_80564698;
+extern char igTransformSequence_className[];
+extern void *igTransformSource_meta;
 extern void *lbl_805646C8;
 extern void *lbl_805646CC;
-extern void *lbl_805646D0;
+extern void *igTransformSequence_meta;
 void *igTransformSequence_getMeta();
-void fn_801ABA78();
+void igTransformSequence_registerNow();
 void igTransformSequence_register();
 void *igTransformSequence_getMetaCall();
 void *fn_801ABB34();
@@ -35,17 +35,17 @@ void *fn_801AB9F0(){
  return lbl_805646CC;
 }
 void *igTransformSequence_getMeta(){
- if(!lbl_805646D0 || !(reinterpret_cast<unsigned int *>(lbl_805646D0)[0x24/4]&4)) fn_801ABA78();
- return lbl_805646D0;
+ if(!igTransformSequence_meta || !(reinterpret_cast<unsigned int *>(igTransformSequence_meta)[0x24/4]&4)) igTransformSequence_registerNow();
+ return igTransformSequence_meta;
 }
-void fn_801ABA78(){
- fn_80066188((int)igTransformSequence_register);
+void igTransformSequence_registerNow(){
+ meta_registerNow((int)igTransformSequence_register);
 }
 void igTransformSequence_register(){
  fn_801AA6DC();
- fn_80066204(1,(int)&lbl_805646D0,(int)igTransformSource_register,(int)fn_801ABB34,(int)igTransformSequence_getMetaCall,(int)lbl_804AB774,56,0,(int)igTransformSequence_fieldInit,0,(int)lbl_804AB764);
+ meta_registerClass(1,(int)&igTransformSequence_meta,(int)igTransformSource_register,(int)fn_801ABB34,(int)igTransformSequence_getMetaCall,(int)igTransformSequence_className,56,0,(int)igTransformSequence_fieldInit,0,(int)lbl_804AB764);
 }
 void *igTransformSequence_getMetaCall(){return igTransformSequence_getMeta();}
-void *fn_801ABB34(){return lbl_80564698;}
+void *fn_801ABB34(){return igTransformSource_meta;}
 }
 #pragma pop

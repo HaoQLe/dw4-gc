@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804D3BD8[];
-extern char lbl_804DCDF0[];
+extern char beAction2InfoRam_vtable[];
+extern char beBaseInfoRam_vtable[];
 }
 struct UnknownGenRoot802E5924 {
  void *unknown00;
@@ -14,7 +14,7 @@ struct UnknownGenRoot802E5924 {
 struct UnknownGenObject802E5924_0 : UnknownGenRoot802E5924 {
  char unknown04[36];
  UnknownGenRefMember unknown28;
- inline ~UnknownGenObject802E5924_0(){unknown00=lbl_804DCDF0;}
+ inline ~UnknownGenObject802E5924_0(){unknown00=beBaseInfoRam_vtable;}
 };
 struct UnknownGenObject802E5924 : UnknownGenObject802E5924_0 {
  UnknownGenRefMember unknown2C;
@@ -22,14 +22,14 @@ struct UnknownGenObject802E5924 : UnknownGenObject802E5924_0 {
  UnknownGenRefMember unknown34;
  UnknownGenRefMember unknown38;
  char unknown3C[4];
- inline ~UnknownGenObject802E5924(){unknown00=lbl_804D3BD8;}
+ inline ~UnknownGenObject802E5924(){unknown00=beAction2InfoRam_vtable;}
 };
 extern "C" {
 void *beAction2InfoRam_vtableRead(){
  UnknownGenObject802E5924 object;
- object.unknown00=lbl_804DCDF0;
+ object.unknown00=beBaseInfoRam_vtable;
  object.unknown28.value=0;
- object.unknown00=lbl_804D3BD8;
+ object.unknown00=beAction2InfoRam_vtable;
  object.unknown2C.value=0;
  object.unknown30.value=0;
  object.unknown34.value=0;

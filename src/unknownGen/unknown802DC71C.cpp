@@ -11,11 +11,11 @@ extern char lbl_804D243C[];
 extern char lbl_804D2440[];
 extern char lbl_804D2444[];
 extern char lbl_804D2448[];
-extern void *lbl_80535448;
+extern void *beDataObjObjectList_meta;
 }
 extern "C" {
 void beDataObjObjectList_fieldInit(){
- void *value0=lbl_80535448;
+ void *value0=beDataObjObjectList_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D243C,1);
  void *value2=fn_800658E4(value0,value1);

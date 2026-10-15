@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805361F0;
+extern void *beNDMWMdlMapCursor_meta;
 }
 extern "C" {
-void *beNDMWMdlMapCursor_virtual58(){return lbl_805361F0;}
+void *beNDMWMdlMapCursor_virtual58(){return beNDMWMdlMapCursor_meta;}
 }
 #pragma pop

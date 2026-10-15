@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_802B4674();
-extern void *lbl_805345EC;
+void beWaterMove_registerNow();
+extern void *beWaterMove_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802B4548(){
- if(!lbl_805345EC) lbl_805345EC=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_805345EC;
+void *beWaterMove_metaObject(){
+ if(!beWaterMove_meta) beWaterMove_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beWaterMove_meta;
 }
 void *beWaterMove_getMeta(){
- if(!lbl_805345EC || !(reinterpret_cast<unsigned int *>(lbl_805345EC)[0x24/4]&4)) fn_802B4674();
- return lbl_805345EC;
+ if(!beWaterMove_meta || !(reinterpret_cast<unsigned int *>(beWaterMove_meta)[0x24/4]&4)) beWaterMove_registerNow();
+ return beWaterMove_meta;
 }
 }
 #pragma pop

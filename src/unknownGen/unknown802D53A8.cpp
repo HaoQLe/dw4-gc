@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80564E3C;
+extern void *igIntersectTraversal_meta;
 }
 extern "C" {
-void *beHitLandModelTraversal_parentMeta(){return lbl_80564E3C;}
+void *beHitLandModelTraversal_parentMeta(){return igIntersectTraversal_meta;}
 }
 #pragma pop

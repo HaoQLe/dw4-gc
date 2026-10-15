@@ -2,20 +2,20 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_802C8520();
-extern void *lbl_80534DC0;
+void beModelCtrlMoveObjectList_registerNow();
+extern void *beModelCtrlMoveObjectList_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
-void *fn_802C840C(){
- if(!lbl_80534DC0) lbl_80534DC0=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80534DC0;
+void *beModelCtrlMoveObjectList_metaObject(){
+ if(!beModelCtrlMoveObjectList_meta) beModelCtrlMoveObjectList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return beModelCtrlMoveObjectList_meta;
 }
 void *beModelCtrlMoveObjectList_getMeta(){
- if(!lbl_80534DC0 || !(reinterpret_cast<unsigned int *>(lbl_80534DC0)[0x24/4]&4)) fn_802C8520();
- return lbl_80534DC0;
+ if(!beModelCtrlMoveObjectList_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlMoveObjectList_meta)[0x24/4]&4)) beModelCtrlMoveObjectList_registerNow();
+ return beModelCtrlMoveObjectList_meta;
 }
 }
 #pragma pop

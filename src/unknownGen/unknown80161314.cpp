@@ -4,7 +4,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_801C47E4(void *);
+void *igCommonTraversal_create(void *);
 void *igTransform_getMeta();
 }
 extern "C" {
@@ -21,7 +21,7 @@ void *igCreateActorBounds_virtual7C(int p0){
    fn_80066E1C(value0);
   }
  }
- value2=fn_801C47E4((void *)0);
+ value2=igCommonTraversal_create((void *)0);
  reinterpret_cast<Meta::igCreateActorBounds *>((void *)p0)->_traversal=(Meta::igCommonTraversal *)value2;
  return (void *)1;
 }

@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802BCF84();
-extern void *lbl_805348C4;
+void beSvPs2McImage128k_registerNow();
+extern void *beSvPs2McImage128k_meta;
 }
 extern "C" {
 void *beSvPs2McImage128k_getMeta(){
- if(!lbl_805348C4 || !(reinterpret_cast<unsigned int *>(lbl_805348C4)[0x24/4]&4)) fn_802BCF84();
- return lbl_805348C4;
+ if(!beSvPs2McImage128k_meta || !(reinterpret_cast<unsigned int *>(beSvPs2McImage128k_meta)[0x24/4]&4)) beSvPs2McImage128k_registerNow();
+ return beSvPs2McImage128k_meta;
 }
 }
 #pragma pop

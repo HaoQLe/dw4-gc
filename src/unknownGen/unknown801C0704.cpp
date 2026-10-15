@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80066DFC(void *);
-extern char lbl_804B326C[];
-extern char lbl_804B515C[];
+extern char igTraversal_vtable[];
+extern char igCommonTraversal_vtable[];
 }
 extern "C" {
 void *fn_801C0704(int p0,int p1){
@@ -61,7 +61,7 @@ void *fn_801C0704(int p0,int p1){
  void *value50;
  void *value51;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804B515C;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igCommonTraversal_vtable;
   if((int)(p0+336)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+336);
    if(value0){
@@ -313,7 +313,7 @@ void *fn_801C0704(int p0,int p1){
    }
   }
   if((unsigned int)p0!=0){
-   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804B326C;
+   *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igTraversal_vtable;
    if((int)(p0+28)!=0){
     value50=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+28);
     if(value50){

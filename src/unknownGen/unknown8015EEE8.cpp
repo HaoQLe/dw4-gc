@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80562F78;
+extern void *igImage_meta;
 }
 extern "C" {
-void *igConvertImage_virtual8C(){return lbl_80562F78;}
+void *igConvertImage_virtual8C(){return igImage_meta;}
 }
 #pragma pop

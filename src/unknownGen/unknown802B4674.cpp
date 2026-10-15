@@ -6,23 +6,23 @@ void beWaterMove_fieldInit();
 void *beWaterMove_getMeta();
 void beWaterMove_vtableRead();
 void *fn_800237D0();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
-extern char lbl_8041CC68[];
+extern char beWaterMove_className[];
 extern char lbl_804CF024[];
-extern char lbl_805345EC[];
+extern char beWaterMove_meta[];
 void beWaterMove_register();
 void *beWaterMove_getMetaCall();
 }
 extern "C" {
-void fn_802B4674(){
- fn_80066188((int)beWaterMove_register);
+void beWaterMove_registerNow(){
+ meta_registerNow((int)beWaterMove_register);
 }
 void beWaterMove_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805345EC,(int)igObject_register,(int)fn_800237D0,(int)beWaterMove_getMetaCall,(int)lbl_8041CC68,40,(int)beWaterMove_vtableRead,(int)beWaterMove_fieldInit,0,(int)lbl_804CF024);
+ meta_registerClass(0,(int)beWaterMove_meta,(int)igObject_register,(int)fn_800237D0,(int)beWaterMove_getMetaCall,(int)beWaterMove_className,40,(int)beWaterMove_vtableRead,(int)beWaterMove_fieldInit,0,(int)lbl_804CF024);
 }
 void *beWaterMove_getMetaCall(){return beWaterMove_getMeta();}
 }

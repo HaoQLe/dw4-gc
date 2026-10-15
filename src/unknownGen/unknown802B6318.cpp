@@ -11,11 +11,11 @@ extern char lbl_804CF198[];
 extern char lbl_804CF1A0[];
 extern char lbl_804CF1A8[];
 extern char lbl_804CF1B0[];
-extern void *lbl_80534664;
+extern void *beTextureCtrlInfo_meta;
 }
 extern "C" {
 void beTextureCtrlInfo_fieldInit(){
- void *value0=lbl_80534664;
+ void *value0=beTextureCtrlInfo_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CF198,2);
  void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));

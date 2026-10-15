@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006665C(void *);
-extern char lbl_804E0C74[];
+extern char beSvWriteMediaApi_vtable[];
 extern char lbl_804E0F88[];
 }
 struct UnknownGenRoot802BE144 {
@@ -23,7 +23,7 @@ struct UnknownGenObject802BE144 : UnknownGenObject802BE144_0 {
  UnknownGenRefMember unknownD4;
  UnknownGenRefMember unknownD8;
  char unknownDC[4];
- inline ~UnknownGenObject802BE144(){unknown00=lbl_804E0C74;}
+ inline ~UnknownGenObject802BE144(){unknown00=beSvWriteMediaApi_vtable;}
 };
 extern "C" {
 void *beSvWriteMediaApi_vtableRead(){
@@ -32,7 +32,7 @@ void *beSvWriteMediaApi_vtableRead(){
  object.unknown30.value=0;
  object.unknown34.value=0;
  object.unknown38.value=0;
- object.unknown00=lbl_804E0C74;
+ object.unknown00=beSvWriteMediaApi_vtable;
  object.unknownD4.value=0;
  object.unknownD8.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

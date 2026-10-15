@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_802DAD40();
-extern void *lbl_805353D8;
+void beFile_registerNow();
+extern void *beFile_meta;
 }
 extern "C" {
 void *beFile_getMeta(){
- if(!lbl_805353D8 || !(reinterpret_cast<unsigned int *>(lbl_805353D8)[0x24/4]&4)) fn_802DAD40();
- return lbl_805353D8;
+ if(!beFile_meta || !(reinterpret_cast<unsigned int *>(beFile_meta)[0x24/4]&4)) beFile_registerNow();
+ return beFile_meta;
 }
 }
 #pragma pop

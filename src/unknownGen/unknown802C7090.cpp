@@ -2,18 +2,18 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_8006546C(void *,void *);
-void fn_802C7200();
-extern void *lbl_80534D30;
+void *meta_createInstance(void *,void *);
+void beModelCtrlInfoRideOn4_registerNow();
+extern void *beModelCtrlInfoRideOn4_meta;
 }
 extern "C" {
-void *fn_802C7090(void *object){
- fn_802C7200();
- return fn_8006546C(lbl_80534D30,object);
+void *beModelCtrlInfoRideOn4_create(void *object){
+ beModelCtrlInfoRideOn4_registerNow();
+ return meta_createInstance(beModelCtrlInfoRideOn4_meta,object);
 }
 void *beModelCtrlInfoRideOn4_getMeta(){
- if(!lbl_80534D30 || !(reinterpret_cast<unsigned int *>(lbl_80534D30)[0x24/4]&4)) fn_802C7200();
- return lbl_80534D30;
+ if(!beModelCtrlInfoRideOn4_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlInfoRideOn4_meta)[0x24/4]&4)) beModelCtrlInfoRideOn4_registerNow();
+ return beModelCtrlInfoRideOn4_meta;
 }
 }
 #pragma pop

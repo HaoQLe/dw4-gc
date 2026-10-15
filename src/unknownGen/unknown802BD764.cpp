@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_8053496C;
+extern void *beSaveApi_meta;
 }
 extern "C" {
-void *fn_802BD764(){return lbl_8053496C;}
+void *fn_802BD764(){return beSaveApi_meta;}
 }
 #pragma pop

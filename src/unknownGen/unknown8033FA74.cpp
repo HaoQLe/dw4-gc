@@ -5,35 +5,35 @@ extern "C" {
 void *beNDMWMcSlotList_getMeta();
 void beNDMWMcSlotList_vtableRead();
 void *fn_80024180();
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
-void fn_8033FC54();
+void beNDMWMcSlotXbox_registerNow();
 void igObjectList_register();
-extern char lbl_80454E04[];
+extern char beNDMWMcSlotList_className[];
 extern char lbl_804E38CC[];
-extern char lbl_805365E8[];
-extern void *lbl_805365EC;
+extern char beNDMWMcSlotList_meta[];
+extern void *beNDMWMcSlotXbox_meta;
 void beNDMWMcSlotList_register();
 void *beNDMWMcSlotList_getMetaCall();
 }
 extern "C" {
-void fn_8033FA74(){
- fn_80066188((int)beNDMWMcSlotList_register);
+void beNDMWMcSlotList_registerNow(){
+ meta_registerNow((int)beNDMWMcSlotList_register);
 }
 void beNDMWMcSlotList_register(){
  fn_803250AC();
- fn_80066204(0,(int)lbl_805365E8,(int)igObjectList_register,(int)fn_80024180,(int)beNDMWMcSlotList_getMetaCall,(int)lbl_80454E04,20,(int)beNDMWMcSlotList_vtableRead,0,0,(int)lbl_804E38CC);
+ meta_registerClass(0,(int)beNDMWMcSlotList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beNDMWMcSlotList_getMetaCall,(int)beNDMWMcSlotList_className,20,(int)beNDMWMcSlotList_vtableRead,0,0,(int)lbl_804E38CC);
 }
 void *beNDMWMcSlotList_getMetaCall(){return beNDMWMcSlotList_getMeta();}
-void *fn_8033FB30(void *object){
- fn_8033FC54();
- return fn_8006546C(lbl_805365EC,object);
+void *beNDMWMcSlotXbox_create(void *object){
+ beNDMWMcSlotXbox_registerNow();
+ return meta_createInstance(beNDMWMcSlotXbox_meta,object);
 }
 void *beNDMWMcSlotXbox_getMeta(){
- if(!lbl_805365EC || !(reinterpret_cast<unsigned int *>(lbl_805365EC)[0x24/4]&4)) fn_8033FC54();
- return lbl_805365EC;
+ if(!beNDMWMcSlotXbox_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcSlotXbox_meta)[0x24/4]&4)) beNDMWMcSlotXbox_registerNow();
+ return beNDMWMcSlotXbox_meta;
 }
 }
 #pragma pop

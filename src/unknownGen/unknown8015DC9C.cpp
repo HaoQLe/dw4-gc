@@ -8,7 +8,7 @@ void *fn_80054094(void *,void *);
 void *fn_80054140(int);
 void *fn_80188328(void *,void *,void *,void *);
 extern void *lbl_80562140;
-extern void *lbl_80564490;
+extern void *igCompareAttr_meta;
 extern void *lbl_8056449C;
 }
 class UnknownGenV8015DD40_0 {
@@ -79,7 +79,7 @@ void *igCompareAttr_virtual88(int p0,int p1){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=value2;
  return value2;
 }
-void *igCompareAttr_virtual58(){return lbl_80564490;}
+void *igCompareAttr_virtual58(){return igCompareAttr_meta;}
 void *igCompareAttr_virtual74(int p0){
  void *value0;
  void *value1;

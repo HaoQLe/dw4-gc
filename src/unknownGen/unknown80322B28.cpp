@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_80534920;
+extern void *beSvGetFreeSizeApi_meta;
 }
 extern "C" {
-void *beSvGetFreeSizeApi_virtual58(){return lbl_80534920;}
+void *beSvGetFreeSizeApi_virtual58(){return beSvGetFreeSizeApi_meta;}
 }
 #pragma pop

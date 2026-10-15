@@ -2,11 +2,11 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805618F0;
-extern void *lbl_805641A8;
+extern void *igMemoryFile_meta;
+extern void *igInstanceScene_meta;
 }
 extern "C" {
-void *fn_80175B00(){return lbl_805618F0;}
-void *igInstanceScene_virtual58(){return lbl_805641A8;}
+void *fn_80175B00(){return igMemoryFile_meta;}
+void *igInstanceScene_virtual58(){return igInstanceScene_meta;}
 }
 #pragma pop

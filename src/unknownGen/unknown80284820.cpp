@@ -3,22 +3,22 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800237D0();
-void *fn_80029E64(void *);
+void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_80284294();
 void igMessenger_fieldInit();
 void igObject_register();
-extern char lbl_804169C8[];
+extern char igMessenger_className[];
 extern char lbl_804CB06C[];
-extern char lbl_804CB98C[];
-extern void *lbl_80515C7C;
+extern char igMessenger_vtable[];
+extern void *igMessenger_meta;
 extern void *lbl_805621F4;
 void *igMessenger_getMeta();
 void *igMessenger_vtableRead();
-void fn_8028494C();
+void igMessenger_registerNow();
 void igMessenger_register();
 void *igMessenger_getMetaCall();
 }
@@ -31,29 +31,29 @@ struct UnknownGenObject802848C0 : UnknownGenRoot802848C0 {
  char unknown04[4];
  UnknownGenRefMember unknown08;
  char unknown0C[4];
- inline ~UnknownGenObject802848C0(){unknown00=lbl_804CB98C;}
+ inline ~UnknownGenObject802848C0(){unknown00=igMessenger_vtable;}
 };
 extern "C" {
-void *fn_80284820(){
- if(!lbl_80515C7C) lbl_80515C7C=fn_80029E64(fn_800607F4(lbl_805621F4));
- return lbl_80515C7C;
+void *igMessenger_metaObject(){
+ if(!igMessenger_meta) igMessenger_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
+ return igMessenger_meta;
 }
 void *igMessenger_getMeta(){
- if(!lbl_80515C7C || !(reinterpret_cast<unsigned int *>(lbl_80515C7C)[0x24/4]&4)) fn_8028494C();
- return lbl_80515C7C;
+ if(!igMessenger_meta || !(reinterpret_cast<unsigned int *>(igMessenger_meta)[0x24/4]&4)) igMessenger_registerNow();
+ return igMessenger_meta;
 }
 void *igMessenger_vtableRead(){
  UnknownGenObject802848C0 object;
- object.unknown00=lbl_804CB98C;
+ object.unknown00=igMessenger_vtable;
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_8028494C(){
- fn_80066188((int)igMessenger_register);
+void igMessenger_registerNow(){
+ meta_registerNow((int)igMessenger_register);
 }
 void igMessenger_register(){
  fn_80284294();
- fn_80066204(0,(int)&lbl_80515C7C,(int)igObject_register,(int)fn_800237D0,(int)igMessenger_getMetaCall,(int)lbl_804169C8,12,(int)igMessenger_vtableRead,(int)igMessenger_fieldInit,0,(int)lbl_804CB06C);
+ meta_registerClass(0,(int)&igMessenger_meta,(int)igObject_register,(int)fn_800237D0,(int)igMessenger_getMetaCall,(int)igMessenger_className,12,(int)igMessenger_vtableRead,(int)igMessenger_fieldInit,0,(int)lbl_804CB06C);
 }
 void *igMessenger_getMetaCall(){return igMessenger_getMeta();}
 }

@@ -2,17 +2,17 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8006665C(void *);
 void fn_8012FC48();
 void fn_801357C0();
 void igOptReplaceNode_register();
 void igReplaceAttr_register();
-extern char lbl_8049C8B8[];
-extern char lbl_8049C8CC[];
-extern char lbl_804A37E4[];
-extern char lbl_804A3880[];
+extern char igReplaceByGroup_className[];
+extern char igReplaceAttrForNode_className[];
+extern char igReplaceByGroup_vtable[];
+extern char igReplaceAttrForNode_vtable[];
 extern char lbl_804A3918[];
 extern char lbl_804A4744[];
 extern char lbl_804A4878[];
@@ -22,19 +22,19 @@ extern char lbl_804A6460[];
 extern char lbl_804AA614[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F60C[8];
-extern void *lbl_80563C84;
-extern void *lbl_80563C88;
-extern void *lbl_80563C90;
-extern void *lbl_80563E88;
+extern void *igReplaceByGroup_meta;
+extern void *igReplaceAttrForNode_meta;
+extern void *igReplaceAttr_meta;
+extern void *igOptReplaceNode_meta;
 void *igReplaceByGroup_getMeta();
 void *igReplaceByGroup_vtableRead();
-void fn_801354C8();
+void igReplaceByGroup_registerNow();
 void igReplaceByGroup_register();
 void *igReplaceByGroup_getMetaCall();
 void *igReplaceByGroup_parentMeta();
 void *igReplaceAttrForNode_getMeta();
 void *igReplaceAttrForNode_vtableRead();
-void fn_801356FC();
+void igReplaceAttrForNode_registerNow();
 void igReplaceAttrForNode_register();
 void *igReplaceAttrForNode_getMetaCall();
 void *igReplaceAttrForNode_parentMeta();
@@ -60,7 +60,7 @@ struct UnknownGenObject80135340_2 : UnknownGenObject80135340_1 {
 };
 struct UnknownGenObject80135340 : UnknownGenObject80135340_2 {
  char unknown30[8];
- inline ~UnknownGenObject80135340(){unknown00=lbl_804A37E4;}
+ inline ~UnknownGenObject80135340(){unknown00=igReplaceByGroup_vtable;}
 };
 struct UnknownGenRoot801355BC {
  void *unknown00;
@@ -76,12 +76,12 @@ struct UnknownGenObject801355BC_0 : UnknownGenRoot801355BC {
 };
 struct UnknownGenObject801355BC : UnknownGenObject801355BC_0 {
  char unknown2C[12];
- inline ~UnknownGenObject801355BC(){unknown00=lbl_804A3880;}
+ inline ~UnknownGenObject801355BC(){unknown00=igReplaceAttrForNode_vtable;}
 };
 extern "C" {
 void *igReplaceByGroup_getMeta(){
- if(!lbl_80563C84 || !(reinterpret_cast<unsigned int *>(lbl_80563C84)[0x24/4]&4)) fn_801354C8();
- return lbl_80563C84;
+ if(!igReplaceByGroup_meta || !(reinterpret_cast<unsigned int *>(igReplaceByGroup_meta)[0x24/4]&4)) igReplaceByGroup_registerNow();
+ return igReplaceByGroup_meta;
 }
 void *igReplaceByGroup_vtableRead(){
  UnknownGenObject80135340 object;
@@ -94,21 +94,21 @@ void *igReplaceByGroup_vtableRead(){
  object.unknown28.value=0;
  object.unknown2C.value=0;
  object.unknown00=lbl_804A4878;
- object.unknown00=lbl_804A37E4;
+ object.unknown00=igReplaceByGroup_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801354C8(){
- fn_80066188((int)igReplaceByGroup_register);
+void igReplaceByGroup_registerNow(){
+ meta_registerNow((int)igReplaceByGroup_register);
 }
 void igReplaceByGroup_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563C84,(int)igOptReplaceNode_register,(int)igReplaceByGroup_parentMeta,(int)igReplaceByGroup_getMetaCall,(int)lbl_8049C8B8,52,(int)igReplaceByGroup_vtableRead,0,0,0);
+ meta_registerClass(0,(int)&igReplaceByGroup_meta,(int)igOptReplaceNode_register,(int)igReplaceByGroup_parentMeta,(int)igReplaceByGroup_getMetaCall,(int)igReplaceByGroup_className,52,(int)igReplaceByGroup_vtableRead,0,0,0);
 }
 void *igReplaceByGroup_getMetaCall(){return igReplaceByGroup_getMeta();}
-void *igReplaceByGroup_parentMeta(){return lbl_80563E88;}
+void *igReplaceByGroup_parentMeta(){return igOptReplaceNode_meta;}
 void *igReplaceAttrForNode_getMeta(){
- if(!lbl_80563C88 || !(reinterpret_cast<unsigned int *>(lbl_80563C88)[0x24/4]&4)) fn_801356FC();
- return lbl_80563C88;
+ if(!igReplaceAttrForNode_meta || !(reinterpret_cast<unsigned int *>(igReplaceAttrForNode_meta)[0x24/4]&4)) igReplaceAttrForNode_registerNow();
+ return igReplaceAttrForNode_meta;
 }
 void *igReplaceAttrForNode_vtableRead(){
  UnknownGenObject801355BC object;
@@ -120,17 +120,17 @@ void *igReplaceAttrForNode_vtableRead(){
  object.unknown20.value=0;
  object.unknown24.value=0;
  object.unknown28.value=0;
- object.unknown00=lbl_804A3880;
+ object.unknown00=igReplaceAttrForNode_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_801356FC(){
- fn_80066188((int)igReplaceAttrForNode_register);
+void igReplaceAttrForNode_registerNow(){
+ meta_registerNow((int)igReplaceAttrForNode_register);
 }
 void igReplaceAttrForNode_register(){
  fn_8012FC48();
- fn_80066204(0,(int)&lbl_80563C88,(int)igReplaceAttr_register,(int)igReplaceAttrForNode_parentMeta,(int)igReplaceAttrForNode_getMetaCall,(int)lbl_8049C8CC,44,(int)igReplaceAttrForNode_vtableRead,(int)fn_801357C0,0,(int)lbl_8055F60C);
+ meta_registerClass(0,(int)&igReplaceAttrForNode_meta,(int)igReplaceAttr_register,(int)igReplaceAttrForNode_parentMeta,(int)igReplaceAttrForNode_getMetaCall,(int)igReplaceAttrForNode_className,44,(int)igReplaceAttrForNode_vtableRead,(int)fn_801357C0,0,(int)lbl_8055F60C);
 }
 void *igReplaceAttrForNode_getMetaCall(){return igReplaceAttrForNode_getMeta();}
-void *igReplaceAttrForNode_parentMeta(){return lbl_80563C90;}
+void *igReplaceAttrForNode_parentMeta(){return igReplaceAttr_meta;}
 }
 #pragma pop

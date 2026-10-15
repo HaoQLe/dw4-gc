@@ -4,12 +4,12 @@
 extern "C" {
 void fn_80066DFC(void *);
 void fn_802C64EC(void *,int);
-extern char lbl_804E60CC[];
+extern char beNDMWMdlPlayer2InfoWork_vtable[];
 }
 extern "C" {
 void *fn_80338904(int p0,int p1){
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804E60CC;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=beNDMWMdlPlayer2InfoWork_vtable;
   fn_802C64EC((void *)p0,0);
   if((int)(short)p1>0){
    fn_80066DFC((void *)p0);

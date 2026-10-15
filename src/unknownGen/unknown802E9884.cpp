@@ -2,19 +2,19 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805348D0;
-extern void *lbl_805349B8;
-extern void *lbl_805349BC;
-extern void *lbl_805349C0;
-extern void *lbl_805349C4;
-extern void *lbl_805349D8;
+extern void *beSvPlatDataGC_meta;
+extern void *beSvSlotDataList_meta;
+extern void *beSvSlotPS2_meta;
+extern void *beSvSlotGC_meta;
+extern void *beSvSlotXbox_meta;
+extern void *beSvSlotData_meta;
 }
 extern "C" {
-void *beSvSlotXbox_virtual58(){return lbl_805349C4;}
-void *beSvSlotGC_virtual58(){return lbl_805349C0;}
-void *beSvSlotPS2_virtual58(){return lbl_805349BC;}
-void *fn_802E98B4(){return lbl_805349D8;}
-void *beSvSlotDataList_virtual58(){return lbl_805349B8;}
-void *beSvPlatDataGC_virtual58(){return lbl_805348D0;}
+void *beSvSlotXbox_virtual58(){return beSvSlotXbox_meta;}
+void *beSvSlotGC_virtual58(){return beSvSlotGC_meta;}
+void *beSvSlotPS2_virtual58(){return beSvSlotPS2_meta;}
+void *fn_802E98B4(){return beSvSlotData_meta;}
+void *beSvSlotDataList_virtual58(){return beSvSlotDataList_meta;}
+void *beSvPlatDataGC_virtual58(){return beSvPlatDataGC_meta;}
 }
 #pragma pop

@@ -10,11 +10,11 @@ extern char lbl_804CDB44[];
 extern char lbl_804CDB58[];
 extern char lbl_804CDB6C[];
 extern char lbl_804CDB80[];
-extern void *lbl_805343EC;
+extern void *igCriMovieData_meta;
 }
 extern "C" {
 void igCriMovieData_fieldInit(){
- void *value0=lbl_805343EC;
+ void *value0=igCriMovieData_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804CDB44,5);
  void *value2=fn_800658E4(value0,value1);

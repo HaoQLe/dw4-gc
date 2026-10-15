@@ -4,7 +4,7 @@
 extern "C" {
 void fn_8006665C(void *);
 void fn_802CF6E0(void *,short);
-extern char lbl_804D8058[];
+extern char beMessengerArgData_vtable[];
 }
 struct UnknownGenObject802CF660 {
  void *unknown00;
@@ -23,7 +23,7 @@ extern "C" {
 void *beMessengerArgData_vtableRead(){
  UnknownGenObject802CF660 object;
  fn_8006665C(&object);
- object.unknown00=lbl_804D8058;
+ object.unknown00=beMessengerArgData_vtable;
  object.unknown0C=0;
  object.unknown10=0;
  object.unknown14=0;

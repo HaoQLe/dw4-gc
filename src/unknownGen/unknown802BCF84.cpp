@@ -6,22 +6,22 @@ void beSvPs2McImage128k_fieldInit();
 void *beSvPs2McImage128k_getMeta();
 void beSvPs2McImage128k_vtableRead();
 void *fn_800237D0();
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
-extern char lbl_8041DDE4[];
-extern char lbl_805348C4[];
+extern char beSvPs2McImage128k_className[];
+extern char beSvPs2McImage128k_meta[];
 void beSvPs2McImage128k_register();
 void *beSvPs2McImage128k_getMetaCall();
 }
 extern "C" {
-void fn_802BCF84(){
- fn_80066188((int)beSvPs2McImage128k_register);
+void beSvPs2McImage128k_registerNow(){
+ meta_registerNow((int)beSvPs2McImage128k_register);
 }
 void beSvPs2McImage128k_register(){
  fn_802B1AC8();
- fn_80066204(0,(int)lbl_805348C4,(int)igObject_register,(int)fn_800237D0,(int)beSvPs2McImage128k_getMetaCall,(int)lbl_8041DDE4,16,(int)beSvPs2McImage128k_vtableRead,(int)beSvPs2McImage128k_fieldInit,0,0);
+ meta_registerClass(0,(int)beSvPs2McImage128k_meta,(int)igObject_register,(int)fn_800237D0,(int)beSvPs2McImage128k_getMetaCall,(int)beSvPs2McImage128k_className,16,(int)beSvPs2McImage128k_vtableRead,(int)beSvPs2McImage128k_fieldInit,0,0);
 }
 void *beSvPs2McImage128k_getMetaCall(){return beSvPs2McImage128k_getMeta();}
 }

@@ -3,8 +3,8 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_8028A730(void *,void *);
-extern void *lbl_805346A8;
-extern void *lbl_80534FBC;
+extern void *beSystem_meta;
+extern void *beMessenger_meta;
 }
 class UnknownGenV802F24B0_0 {
 public:
@@ -45,9 +45,9 @@ public:
 extern "C" {
 void fn_802F24B0(int p0){
  reinterpret_cast<UnknownGenV802F24B0_0 *>((void *)p0)->s88();
- void *value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_805346A8);
+ void *value0=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),beSystem_meta);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+16)=value0;
- void *value1=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),lbl_80534FBC);
+ void *value1=fn_8028A730(*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+12),beMessenger_meta);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+20)=value1;
 }
 }

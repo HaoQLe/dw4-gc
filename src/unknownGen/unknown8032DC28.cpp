@@ -12,11 +12,11 @@ extern char lbl_804E1C1C[];
 extern char lbl_804E1C38[];
 extern char lbl_804E1C54[];
 extern char lbl_804E1C70[];
-extern void *lbl_80535E44;
+extern void *beNDMWShopCtrlDigilabo_meta;
 }
 extern "C" {
 void beNDMWShopCtrlDigilabo_fieldInit(){
- void *value0=lbl_80535E44;
+ void *value0=beNDMWShopCtrlDigilabo_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804E1C1C,7);
  void *value2=fn_800658E4(value0,value1);

@@ -8,7 +8,7 @@ void *fn_80054094(void *,void *);
 void *fn_80054140(int);
 void fn_800667CC();
 extern void *lbl_80562140;
-extern void *lbl_80563FF8;
+extern void *igObjectProperty_meta;
 }
 extern "C" {
 void *igObjectPropertyForNode_virtual88(int p0){
@@ -18,7 +18,7 @@ void *igObjectPropertyForNode_virtual88(int p0){
  void *value4;
  void *value5;
  void *value6;
- void *value0=lbl_80563FF8;
+ void *value0=igObjectProperty_meta;
  value1=(void *)reinterpret_cast<Meta::igMetaObject *>(value0)->_name;
  if(!value1){
   value3=(void *)0;

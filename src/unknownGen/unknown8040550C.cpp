@@ -4,7 +4,7 @@
 extern "C" {
 void fn_80066DFC(void *);
 extern char lbl_80497C9C[];
-extern char lbl_804F19C8[];
+extern char igViewerRenderer_vtable[];
 }
 extern "C" {
 void *fn_8040550C(int p0,int p1){
@@ -49,7 +49,7 @@ void *fn_8040550C(int p0,int p1){
  void *value38;
  void *value39;
  if((int)p0!=0){
-  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804F19C8;
+  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igViewerRenderer_vtable;
   if((int)(p0+88)!=0){
    value0=*reinterpret_cast<void **>(reinterpret_cast<char *>((void *)p0)+88);
    if(value0){

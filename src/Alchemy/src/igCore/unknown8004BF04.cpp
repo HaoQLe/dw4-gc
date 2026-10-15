@@ -99,7 +99,7 @@ void igExternalDirEntry_virtual5C(Unknown8004C324 *object,Unknown80042DECValue *
  object->unknown18=value;
 }
 int igExternalDirEntry_virtualB0(Unknown8004C538 *object,int value){
- Unknown800442F8Reference reference(reinterpret_cast<Unknown80042DECValue *>(fn_8002EBEC(fn_80068430(object))));
+ Unknown800442F8Reference reference(reinterpret_cast<Unknown80042DECValue *>(igIGBFile_create(fn_80068430(object))));
  reinterpret_cast<Unknown8004C538Target *>(reference.value)->unknownA0=value;
  reinterpret_cast<Unknown8004C538Target *>(reference.value)->slot74(object->unknown1C);
  if(reinterpret_cast<Unknown8004C538Target *>(reference.value)->unknown08==0){
@@ -123,7 +123,7 @@ int igExternalDirEntry_virtualAC(Unknown8004C538 *object,void (*callback)(Unknow
  if(!value.value){
   void *context=fn_80068430(object);
   unknown80042DECRelease(value.value);
-  value.value=fn_80032668(context);
+  value.value=igDirectory_create(context);
   fn_80043BFC(value.value,object->unknown1C);
   fn_8006F404(table,value.value);
  }

@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-extern void *lbl_805652EC;
+extern void *igBillboard_meta;
 }
 extern "C" {
-void *igObjectPropertyForBillboard_virtual7C(){return lbl_805652EC;}
+void *igObjectPropertyForBillboard_virtual7C(){return igBillboard_meta;}
 }
 #pragma pop

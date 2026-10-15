@@ -4,7 +4,7 @@
 extern "C" {
 void *fn_80064904(void *,void *,void *);
 void *fn_80065D88(void *);
-extern void *lbl_805622A4;
+extern void *igObject_meta;
 }
 class UnknownGenV80067DB0_0 {
 public:
@@ -107,7 +107,7 @@ void *fn_80067DB0(int p0,int p1){
   value5=reinterpret_cast<UnknownGenV80067DB0_2 *>((void *)p0)->s58();
   value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value5)+40);
   value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+12);
-  value6=fn_80065D88(lbl_805622A4);
+  value6=fn_80065D88(igObject_meta);
   value2=value6;
   while((int)(int)value2<(int)(int)value1){
    value7=fn_80064904((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8))+((int)value2<<2)),(void *)p0,(void *)p1);

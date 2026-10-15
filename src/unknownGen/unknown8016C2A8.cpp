@@ -8,15 +8,15 @@ void *fn_80054094(void *,void *);
 void *fn_80054140(int);
 void *fn_800658F8(void *,void *);
 extern char lbl_804A1050[];
-extern void *lbl_805617BC;
+extern void *igMetaField_meta;
 extern void *lbl_80562140;
-extern void *lbl_805622A4;
-extern void *lbl_80564318;
+extern void *igObject_meta;
+extern void *igFieldSource_meta;
 extern void *lbl_805645F4;
 extern char lbl_805645F8[1];
 }
 extern "C" {
-void *igFieldSource_virtual7C(){return lbl_805622A4;}
+void *igFieldSource_virtual7C(){return igObject_meta;}
 void *igFieldSource_virtual88(int p0){
  void *value2;
  void *value3;
@@ -24,7 +24,7 @@ void *igFieldSource_virtual88(int p0){
  void *value4;
  void *value5;
  void *value6;
- void *value0=lbl_80564318;
+ void *value0=igFieldSource_meta;
  value1=(void *)reinterpret_cast<Meta::igMetaObject *>(value0)->_name;
  if(!value1){
   value3=(void *)0;
@@ -48,7 +48,7 @@ void *fn_8016C330(int p0,int p1){
  void *value0;
  void *value1;
  if((int)*reinterpret_cast<signed char *>((lbl_805645F8+0))==0){
-  value0=fn_800658F8(lbl_805617BC,lbl_804A1050);
+  value0=fn_800658F8(igMetaField_meta,lbl_804A1050);
   lbl_805645F4=value0;
   *reinterpret_cast<unsigned char *>((lbl_805645F8+0))=1;
  }

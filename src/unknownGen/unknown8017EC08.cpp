@@ -6,7 +6,7 @@ extern "C" {
 void *fn_801887D4(void *,void *,void *,void *);
 extern void *lbl_80564034;
 extern void *lbl_80564038;
-extern void *lbl_80564BC0;
+extern void *igNode_meta;
 }
 extern "C" {
 void *igNodeTraversal_virtual74(int p0){
@@ -28,6 +28,6 @@ void igNodeTraversal_virtual70(int p0,int p1){
  fn_801887D4(&local1,(void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(lbl_80564034)+12),reinterpret_cast<Meta::igNodeTraversal *>((void *)p0)->_childList);
  fn_801887D4(&local0,(void *)p1,*reinterpret_cast<void **>(reinterpret_cast<char *>(lbl_80564038)+12),reinterpret_cast<Meta::igNodeTraversal *>((void *)p0)->_parentList);
 }
-void *igNodeTraversal_virtual7C(){return lbl_80564BC0;}
+void *igNodeTraversal_virtual7C(){return igNode_meta;}
 }
 #pragma pop

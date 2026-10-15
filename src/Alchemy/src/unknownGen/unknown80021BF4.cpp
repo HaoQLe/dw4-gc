@@ -8,21 +8,21 @@ void *fn_800607F4(void *);
 void fn_800638E0(void *);
 void *fn_80063B5C();
 void fn_80063F14(void *);
-void *fn_8006546C(void *,void *);
-void fn_80066188(int);
-void fn_80066204(int,int,int,int,int,int,int,int,int,int,int);
+void *meta_createInstance(void *,void *);
+void meta_registerNow(int);
+void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igMetaField_register();
-extern char lbl_80463100[];
-extern char lbl_80470674[];
+extern char igVirtualCFuncMetaField_className[];
+extern char igVirtualCFuncMetaField_vtable[];
 extern char lbl_80471914[];
 extern char lbl_8055CF00[8];
-extern void *lbl_8056148C;
+extern void *igVirtualCFuncMetaField_meta;
 extern void *lbl_80561490;
-extern void *lbl_805617BC;
+extern void *igMetaField_meta;
 extern void *lbl_805621F4;
 void *igVirtualCFuncMetaField_getMeta();
 void *igVirtualCFuncMetaField_vtableRead();
-void fn_80021CBC();
+void igVirtualCFuncMetaField_registerNow();
 void igVirtualCFuncMetaField_register();
 void *igVirtualCFuncMetaField_getMetaCall();
 void *fn_80021D70();
@@ -39,30 +39,30 @@ struct UnknownGenObject80021C30_0 : UnknownGenRoot80021C30 {
 };
 struct UnknownGenObject80021C30 : UnknownGenObject80021C30_0 {
  char unknown10[48];
- inline ~UnknownGenObject80021C30(){unknown00=lbl_80470674;}
+ inline ~UnknownGenObject80021C30(){unknown00=igVirtualCFuncMetaField_vtable;}
 };
 extern "C" {
 void *igVirtualCFuncMetaField_getMeta(){
- if(!lbl_8056148C || !(reinterpret_cast<unsigned int *>(lbl_8056148C)[0x24/4]&4)) fn_80021CBC();
- return lbl_8056148C;
+ if(!igVirtualCFuncMetaField_meta || !(reinterpret_cast<unsigned int *>(igVirtualCFuncMetaField_meta)[0x24/4]&4)) igVirtualCFuncMetaField_registerNow();
+ return igVirtualCFuncMetaField_meta;
 }
 void *igVirtualCFuncMetaField_vtableRead(){
  UnknownGenObject80021C30 object;
- object.unknown00=lbl_80470674;
+ object.unknown00=igVirtualCFuncMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void fn_80021CBC(){
- fn_80066188((int)igVirtualCFuncMetaField_register);
+void igVirtualCFuncMetaField_registerNow(){
+ meta_registerNow((int)igVirtualCFuncMetaField_register);
 }
 void igVirtualCFuncMetaField_register(){
  fn_80021B94();
- fn_80066204(0,(int)&lbl_8056148C,(int)igMetaField_register,(int)fn_80021D70,(int)igVirtualCFuncMetaField_getMetaCall,(int)lbl_80463100,52,(int)igVirtualCFuncMetaField_vtableRead,0,0,(int)lbl_8055CF00);
+ meta_registerClass(0,(int)&igVirtualCFuncMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igVirtualCFuncMetaField_getMetaCall,(int)igVirtualCFuncMetaField_className,52,(int)igVirtualCFuncMetaField_vtableRead,0,0,(int)lbl_8055CF00);
 }
 void *igVirtualCFuncMetaField_getMetaCall(){return igVirtualCFuncMetaField_getMeta();}
-void *fn_80021D70(){return lbl_805617BC;}
+void *fn_80021D70(){return igMetaField_meta;}
 void fn_80021D78(){
  if(!lbl_80561490){
-  void *object=(lbl_80561490=fn_8006546C(lbl_8056148C,fn_800607F4(lbl_805621F4)));
+  void *object=(lbl_80561490=meta_createInstance(igVirtualCFuncMetaField_meta,fn_800607F4(lbl_805621F4)));
   if(object){
    fn_80053E6C(fn_80063B5C(),object);
    unknownGenDrop(reinterpret_cast<UnknownGenValue *>(lbl_80561490));

@@ -11,11 +11,11 @@ extern char lbl_804D31A8[];
 extern char lbl_804D31AC[];
 extern char lbl_804D31B0[];
 extern char lbl_804D31B4[];
-extern void *lbl_80535820;
+extern void *beAction2Data_meta;
 }
 extern "C" {
 void beAction2Data_fieldInit(){
- void *value0=lbl_80535820;
+ void *value0=beAction2Data_meta;
  void *value1=fn_80065D88(value0);
  fn_80065924(value0,lbl_804D31A8,1);
  void *value2=fn_800658E4(value0,value1);

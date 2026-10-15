@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_802DDADC(void *,short);
 extern char beDataBase_vtable[];
 }
@@ -26,7 +26,7 @@ struct UnknownGenObject802DDA50 {
 extern "C" {
 void *beDataBase_vtableRead(){
  UnknownGenObject802DDA50 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=beDataBase_vtable;
  object.unknown08=0;
  object.unknown0C=0;

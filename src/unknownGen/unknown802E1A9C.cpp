@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 extern char lbl_804D2A18[];
 extern char lbl_804D2A1C[];
 extern char lbl_804D2A20[];
@@ -16,11 +16,11 @@ extern void *igObject_meta;
 extern "C" {
 void beCameraCtrlInfo_fieldInit(){
  void *value0=beCameraCtrlInfo_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_804D2A18,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_804D2A18,1);
+ void *value2=meta_field(value0,value1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=igObject_meta;
- fn_800659C0(value0,lbl_804D2A1C,lbl_804D2A20,lbl_804D2A24,value1);
+ meta_setupFields(value0,lbl_804D2A1C,lbl_804D2A20,lbl_804D2A24,value1);
 }
 }
 #pragma pop

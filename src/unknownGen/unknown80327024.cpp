@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char lbl_804E6A60[];
 extern char lbl_804EC720[];
 extern char beNDMWShopTitle01_vtable[];
@@ -10,7 +10,7 @@ extern char beNDMWShopTitle01_vtable[];
 struct UnknownGenRoot80327024 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80327024(){fn_8006665C(this);}
+ inline UnknownGenRoot80327024(){igObject_construct(this);}
 };
 struct UnknownGenObject80327024_0 : UnknownGenRoot80327024 {
  char unknown04[48];

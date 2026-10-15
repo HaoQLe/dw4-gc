@@ -7,7 +7,7 @@ void fn_800265C0(void *,short);
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char igResource_vtable[];
 extern void *igResource_meta;
 extern void *lbl_805621F4;
@@ -46,7 +46,7 @@ void *igResource_getMeta(){
 }
 void *igResource_vtableRead(){
  UnknownGenObject8002653C object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igResource_vtable;
  object.unknown0C=0;
  object.unknown10=0;

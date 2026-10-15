@@ -6,9 +6,9 @@ void *beSaveIntfComMdlData_getMeta();
 void beSaveIntfComMdlData_vtableRead();
 void *fn_800237D0();
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -36,9 +36,9 @@ void beSaveIntfComMdlData_register(){
 void *beSaveIntfComMdlData_getMetaCall(){return beSaveIntfComMdlData_getMeta();}
 void beSaveIntfComMdlData_fieldInit(){
  void *meta=beSaveIntfComMdlData_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E21A0,0x3);
- fn_800659C0(meta,lbl_804E21AC,lbl_804E21B8,lbl_804E21C4,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E21A0,0x3);
+ meta_setupFields(meta,lbl_804E21AC,lbl_804E21B8,lbl_804E21C4,field);
 }
 void *beNDMWSaveIntfCtrlData_create(void *object){
  beNDMWSaveIntfCtrlData_registerNow();

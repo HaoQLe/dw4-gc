@@ -13,13 +13,13 @@ void *fn_800635C8(void *,void *,void *,int);
 void *fn_80063B5C();
 void fn_80063F14(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igDriverDatabase_fieldInit();
 void *igEnumMetaField_getMeta();
 void igEnumMetaField_register();
@@ -83,7 +83,7 @@ struct UnknownGenObject800317CC : UnknownGenObject800317CC_1 {
 struct UnknownGenRoot80031AF8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80031AF8(){fn_8006665C(this);}
+ inline UnknownGenRoot80031AF8(){igObject_construct(this);}
 };
 struct UnknownGenObject80031AF8 : UnknownGenRoot80031AF8 {
  char unknown04[4];
@@ -102,11 +102,11 @@ extern "C" {
 void *igEnumMetaField_getMetaCall(){return igEnumMetaField_getMeta();}
 void igEnumMetaField_fieldInit(){
  void *value0=igEnumMetaField_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055D518,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055D518,1);
+ void *value2=meta_field(value0,value1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
- fn_800659C0(value0,lbl_8055D51C,lbl_8055D520,lbl_8055D524,value1);
+ meta_setupFields(value0,lbl_8055D51C,lbl_8055D520,lbl_8055D524,value1);
 }
 void fn_80031690(){
  if(!lbl_80561C34){
@@ -149,10 +149,10 @@ void *igEnumArrayMetaField_getMetaCall(){return igEnumArrayMetaField_getMeta();}
 void *igEnumArrayMetaField_parentMeta(){return igEnumMetaField_meta;}
 void igEnumArrayMetaField_fieldInit(){
  void *meta=igEnumArrayMetaField_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055D530,1);
- fn_80053650(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055D534,lbl_8055D538,lbl_8055D53C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055D530,1);
+ fn_80053650(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055D534,lbl_8055D538,lbl_8055D53C,field);
 }
 void fn_800319A4(){
  if(!lbl_80561C40){

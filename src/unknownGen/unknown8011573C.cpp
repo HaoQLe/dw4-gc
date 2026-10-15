@@ -5,13 +5,13 @@ extern "C" {
 void *fn_800237D0();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8010CBD4();
 void *fn_8010DD30();
 void *fn_80111CD4();
@@ -45,7 +45,7 @@ void *igAction_getMetaCall();
 struct UnknownGenRoot80115778 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80115778(){fn_8006665C(this);}
+ inline UnknownGenRoot80115778(){igObject_construct(this);}
 };
 struct UnknownGenObject80115778_0 : UnknownGenRoot80115778 {
  char unknown04[4];
@@ -92,12 +92,12 @@ void igActivableHolderModel_register(){
 void *igActivableHolderModel_getMetaCall(){return igActivableHolderModel_getMeta();}
 void igActivableHolderModel_fieldInit(){
  void *value0=igActivableHolderModel_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F2C4,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F2C4,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80111CD4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055F2CC,lbl_8055F2D4,lbl_8055F2DC,value1);
+ meta_setupFields(value0,lbl_8055F2CC,lbl_8055F2D4,lbl_8055F2DC,value1);
 }
 void *fn_801159FC(){return igAction_meta;}
 void *fn_80115A04(){

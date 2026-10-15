@@ -5,7 +5,7 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8028D884(void *,short);
 void igCollisionGrid_registerNow();
 extern char igCollisionGrid_vtable[];
@@ -41,7 +41,7 @@ void *igCollisionGrid_getMeta(){
 }
 void *igCollisionGrid_vtableRead(){
  UnknownGenObject8028D80C object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igCollisionGrid_vtable;
  object.unknown08=0;
  object.unknown0C=0;

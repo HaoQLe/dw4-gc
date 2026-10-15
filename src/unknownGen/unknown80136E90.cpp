@@ -5,12 +5,12 @@ extern "C" {
 void *fn_800237D0();
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_801308D0();
 void igObject_register();
@@ -47,7 +47,7 @@ void *igQuantizeImage_getMetaCall();
 struct UnknownGenRoot80136ECC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80136ECC(){fn_8006665C(this);}
+ inline UnknownGenRoot80136ECC(){igObject_construct(this);}
 };
 struct UnknownGenObject80136ECC_0 : UnknownGenRoot80136ECC {
  char unknown04[28];
@@ -62,7 +62,7 @@ struct UnknownGenObject80136ECC : UnknownGenObject80136ECC_0 {
 struct UnknownGenRoot8013719C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8013719C(){fn_8006665C(this);}
+ inline UnknownGenRoot8013719C(){igObject_construct(this);}
 };
 struct UnknownGenObject8013719C : UnknownGenRoot8013719C {
  char unknown04[4];
@@ -96,9 +96,9 @@ void igRebindActors_register(){
 void *igRebindActors_getMetaCall(){return igRebindActors_getMeta();}
 void igRebindActors_fieldInit(){
  void *value0=igRebindActors_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F69C,1);
- fn_800659C0(value0,lbl_8055F6A0,lbl_8055F6A4,lbl_8055F6A8,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F69C,1);
+ meta_setupFields(value0,lbl_8055F6A0,lbl_8055F6A4,lbl_8055F6A8,value1);
 }
 void *fn_801370DC(){
  char *data=igVertexBlending_className;

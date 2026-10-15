@@ -9,7 +9,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *igGamecubeThread_getMeta();
 void igNonRefCountedObjectList_register();
 void igObjectList_register();
@@ -65,7 +65,7 @@ struct UnknownGenObject8002405C_0 {
 struct UnknownGenRoot800241FC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800241FC(){fn_8006665C(this);}
+ inline UnknownGenRoot800241FC(){igObject_construct(this);}
 };
 struct UnknownGenObject800241FC : UnknownGenRoot800241FC {
  char unknown04[24];
@@ -88,7 +88,7 @@ void *igNonRefCountedThreadList_getMeta(){
 }
 void *igNonRefCountedThreadList_vtableRead(){
  UnknownGenObject80023EB8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;
@@ -115,7 +115,7 @@ void *igThreadList_getMeta(){
 }
 void *igThreadList_vtableRead(){
  UnknownGenObject8002405C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

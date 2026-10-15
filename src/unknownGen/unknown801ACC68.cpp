@@ -5,10 +5,10 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void fn_8004D4BC(void *,float);
 void *fn_800607F4(void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_8011148C();
@@ -48,11 +48,11 @@ void *igTimeTransform1_5_getMetaCall(){return igTimeTransform1_5_getMeta();}
 void *igTimeTransform1_5_parentMeta(){return igTimeTransform_meta;}
 void igTimeTransform1_5_fieldInit(){
  void *value0=igTimeTransform1_5_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560138,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560138,2);
+ void *value2=meta_field(value0,value1);
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566CA4+0)));
- fn_800659C0(value0,lbl_80560140,lbl_80560148,lbl_80560150,value1);
+ meta_setupFields(value0,lbl_80560140,lbl_80560148,lbl_80560150,value1);
 }
 void *fn_801ACDA4(){
  if(!igTimeTransform_meta) igTimeTransform_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

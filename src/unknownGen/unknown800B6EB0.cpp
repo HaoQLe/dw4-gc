@@ -3,12 +3,12 @@
 #pragma auto_inline off
 extern "C" {
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800ABEF8();
 void *fn_800AC294();
@@ -71,7 +71,7 @@ void *igGenericAttrDefaultManager_getMeta(){
 }
 void *igGenericAttrDefaultManager_vtableRead(){
  UnknownGenObject800B6F24_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D514;
  object.unknown00=igGenericAttrDefaultManager_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -90,7 +90,7 @@ void *igFogStateAttr_getMeta(){
 }
 void *igFogStateAttr_vtableRead(){
  UnknownGenObject800B705C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igFogStateAttr_vtable;
@@ -106,9 +106,9 @@ void igFogStateAttr_register(){
 void *igFogStateAttr_getMetaCall(){return igFogStateAttr_getMeta();}
 void igFogStateAttr_fieldInit(){
  void *value0=igFogStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E474,1);
- fn_800659C0(value0,lbl_8055E478,lbl_8055E47C,lbl_8055E480,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E474,1);
+ meta_setupFields(value0,lbl_8055E478,lbl_8055E47C,lbl_8055E480,value1);
 }
 void *igFogAttr_getMeta(){
  if(!igFogAttr_meta || !(reinterpret_cast<unsigned int *>(igFogAttr_meta)[0x24/4]&4)) igFogAttr_registerNow();
@@ -116,7 +116,7 @@ void *igFogAttr_getMeta(){
 }
 void *igFogAttr_vtableRead(){
  UnknownGenObject800B7210_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igFogAttr_vtable;

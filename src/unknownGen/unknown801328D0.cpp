@@ -6,7 +6,7 @@ void __dl__FPv(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void igOptVisitObject_register();
@@ -30,7 +30,7 @@ void *igSpatialPartition_getMetaCall();
 struct UnknownGenRoot80132958 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80132958(){fn_8006665C(this);}
+ inline UnknownGenRoot80132958(){igObject_construct(this);}
 };
 struct UnknownGenObject80132958_0 : UnknownGenRoot80132958 {
  char unknown04[28];

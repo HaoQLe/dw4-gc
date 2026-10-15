@@ -8,9 +8,9 @@ void beNDMWItemInstant_vtableRead();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -39,9 +39,9 @@ void beNDMWItemInstant_register(){
 void *beNDMWItemInstant_getMetaCall(){return beNDMWItemInstant_getMeta();}
 void beNDMWItemInstant_fieldInit(){
  void *meta=beNDMWItemInstant_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E3D10,0x1);
- fn_800659C0(meta,lbl_804E3D14,lbl_804E3D18,lbl_804E3D1C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E3D10,0x1);
+ meta_setupFields(meta,lbl_804E3D14,lbl_804E3D18,lbl_804E3D1C,field);
 }
 void *beNDMWItemDisk_create(void *object){
  beNDMWItemDisk_registerNow();

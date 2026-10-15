@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char beCriSndf_vtable[];
 }
 struct UnknownGenObject802DF9B0_0 {
@@ -12,7 +12,7 @@ struct UnknownGenObject802DF9B0_0 {
 extern "C" {
 void *beCriSndf_vtableRead(){
  UnknownGenObject802DF9B0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=beCriSndf_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

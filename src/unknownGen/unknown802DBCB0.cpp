@@ -8,9 +8,9 @@ void *fn_800237D0();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -39,9 +39,9 @@ void beDemoKeepMes_register(){
 void *beDemoKeepMes_getMetaCall(){return beDemoKeepMes_getMeta();}
 void beDemoKeepMes_fieldInit(){
  void *meta=beDemoKeepMes_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D239C,0x7);
- fn_800659C0(meta,lbl_804D23B8,lbl_804D23D4,lbl_804D23F0,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D239C,0x7);
+ meta_setupFields(meta,lbl_804D23B8,lbl_804D23D4,lbl_804D23F0,field);
 }
 void *beDataObjListList_create(void *object){
  beDataObjListList_registerNow();

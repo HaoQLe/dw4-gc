@@ -6,9 +6,9 @@ void *beNDMWShopCtrl50_getMeta();
 void beNDMWShopCtrl50_vtableRead();
 void beNDMWWindowCtrl_register();
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -36,9 +36,9 @@ void beNDMWShopCtrl50_register(){
 void *beNDMWShopCtrl50_getMetaCall(){return beNDMWShopCtrl50_getMeta();}
 void beNDMWShopCtrl50_fieldInit(){
  void *meta=beNDMWShopCtrl50_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E1CE4,0x5);
- fn_800659C0(meta,lbl_804E1CF8,lbl_804E1D0C,lbl_804E1D20,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E1CE4,0x5);
+ meta_setupFields(meta,lbl_804E1CF8,lbl_804E1D0C,lbl_804E1D20,field);
 }
 void *beNDMWShopCtrl40_create(void *object){
  beNDMWShopCtrl40_registerNow();

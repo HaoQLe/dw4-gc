@@ -6,13 +6,13 @@ void *meta_newMetaObject(void *);
 void fn_8003EC68(void *,int);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igClearAttr_fieldInit();
@@ -61,7 +61,7 @@ void *igClippingStateAttr_getMeta(){
 }
 void *igClippingStateAttr_vtableRead(){
  UnknownGenObject800B9608_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igClippingStateAttr_vtable;
@@ -77,10 +77,10 @@ void igClippingStateAttr_register(){
 void *igClippingStateAttr_getMetaCall(){return igClippingStateAttr_getMeta();}
 void igClippingStateAttr_fieldInit(){
  void *meta=igClippingStateAttr_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055E610,1);
- fn_8003EC68(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055E614,lbl_8055E618,lbl_8055E61C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055E610,1);
+ fn_8003EC68(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055E614,lbl_8055E618,lbl_8055E61C,field);
 }
 void *igClearAttr_create(void *object){
  igClearAttr_registerNow();
@@ -92,7 +92,7 @@ void *igClearAttr_getMeta(){
 }
 void *igClearAttr_vtableRead(){
  UnknownGenObject800B9808_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igClearAttr_vtable;

@@ -5,13 +5,13 @@ extern "C" {
 void fn_8003D160();
 void fn_80046E58(void *,void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igColorMaskAttr_fieldInit();
@@ -56,7 +56,7 @@ void *igColorScalerStateAttr_getMeta(){
 }
 void *igColorScalerStateAttr_vtableRead(){
  UnknownGenObject800B8F30_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igColorScalerStateAttr_vtable;
@@ -72,12 +72,12 @@ void igColorScalerStateAttr_register(){
 void *igColorScalerStateAttr_getMetaCall(){return igColorScalerStateAttr_getMeta();}
 void igColorScalerStateAttr_fieldInit(){
  void *value0=igColorScalerStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E5BC,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E5BC,1);
+ void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E5D4);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_8003D160;
- fn_800659C0(value0,lbl_8055E5C8,lbl_8055E5CC,lbl_8055E5D0,value1);
+ meta_setupFields(value0,lbl_8055E5C8,lbl_8055E5CC,lbl_8055E5D0,value1);
 }
 void *igColorMaskAttr_create(void *object){
  igColorMaskAttr_registerNow();
@@ -89,7 +89,7 @@ void *igColorMaskAttr_getMeta(){
 }
 void *igColorMaskAttr_vtableRead(){
  UnknownGenObject800B9140_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igColorMaskAttr_vtable;

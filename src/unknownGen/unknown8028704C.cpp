@@ -7,7 +7,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80068128(void *,void *);
 void *fn_8010DF8C();
 void fn_80284294();
@@ -44,7 +44,7 @@ void *igFlushRenderer_getMetaCall();
 struct UnknownGenRoot802870EC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot802870EC(){fn_8006665C(this);}
+ inline UnknownGenRoot802870EC(){igObject_construct(this);}
 };
 struct UnknownGenObject802870EC_0 : UnknownGenRoot802870EC {
  char unknown04[4];

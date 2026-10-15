@@ -5,7 +5,7 @@ extern "C" {
 void *fn_800237D0();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8028C93C();
 void igCollisionGridHelper_fieldInit();
 void igObject_register();
@@ -22,7 +22,7 @@ void *igCollisionGridHelper_getMetaCall();
 struct UnknownGenRoot8028D52C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8028D52C(){fn_8006665C(this);}
+ inline UnknownGenRoot8028D52C(){igObject_construct(this);}
 };
 struct UnknownGenObject8028D52C : UnknownGenRoot8028D52C {
  char unknown04[4];

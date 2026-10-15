@@ -16,7 +16,7 @@ void fn_8006588C(void *,void *,void *);
 UnknownGenFactory *fn_800658F8(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_8013BA10();
 void *fn_801452A8();
@@ -120,7 +120,7 @@ void *igItemBaseListList_getMeta(){
 }
 void *igItemBaseListList_vtableRead(){
  UnknownGenObject80145924_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -142,7 +142,7 @@ void *igItemBaseList_getMeta(){
 }
 void *igItemBaseList_vtableRead(){
  UnknownGenObject80145A84_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -180,7 +180,7 @@ void *igInterfaceDeclarationList_getMeta(){
 }
 void *igInterfaceDeclarationList_vtableRead(){
  UnknownGenObject80145D04_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igCompoundList_vtable;
  object.unknown00=lbl_804A9674;
  object.unknown00=igInterfaceDeclarationList_vtable;

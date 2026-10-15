@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char lbl_804E4990[];
 extern char lbl_804E49FC[];
 extern char lbl_804E4A68[];
@@ -15,7 +15,7 @@ struct UnknownGenObject80343038_0 {
 extern "C" {
 void *beNDMWItemBlueArmor_vtableRead(){
  UnknownGenObject80343038_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804E4A68;
  object.unknown00=lbl_804E49FC;
  object.unknown00=lbl_804E4990;

@@ -4,13 +4,13 @@
 extern "C" {
 void *fn_80030000();
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void igFileImage_register();
 extern char igFileImagePng_className[];
@@ -35,7 +35,7 @@ void igFileImagePng_fieldInit();
 struct UnknownGenRoot800D5E64 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800D5E64(){fn_8006665C(this);}
+ inline UnknownGenRoot800D5E64(){igObject_construct(this);}
 };
 struct UnknownGenObject800D5E64_0 : UnknownGenRoot800D5E64 {
  char unknown04[64];
@@ -82,12 +82,12 @@ void *igFileImagePng_getMetaCall(){return igFileImagePng_getMeta();}
 void *igFileImagePng_parentMeta(){return igFileImage_meta;}
 void igFileImagePng_fieldInit(){
  void *value0=igFileImagePng_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055ED6C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055ED6C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80030000();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055ED70,lbl_8055ED74,lbl_8055ED78,value1);
+ meta_setupFields(value0,lbl_8055ED70,lbl_8055ED74,lbl_8055ED78,value1);
 }
 }
 #pragma pop

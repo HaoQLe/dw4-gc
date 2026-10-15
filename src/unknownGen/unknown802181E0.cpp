@@ -4,12 +4,12 @@
 extern "C" {
 void *fn_800237D0();
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80216620();
 void igHistogramBase_register();
 void igIntHistogram_fieldInit();
@@ -58,7 +58,7 @@ struct UnknownGenObject8021833C_0 {
 struct UnknownGenRoot80218510 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80218510(){fn_8006665C(this);}
+ inline UnknownGenRoot80218510(){igObject_construct(this);}
 };
 struct UnknownGenObject80218510_0 : UnknownGenRoot80218510 {
  char unknown04[4];
@@ -83,9 +83,9 @@ void igMatrixObject_register(){
 void *igMatrixObject_getMetaCall(){return igMatrixObject_getMeta();}
 void igMatrixObject_fieldInit(){
  void *value0=igMatrixObject_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560C24,1);
- fn_800659C0(value0,lbl_80560C2C,lbl_80560C30,lbl_80560C34,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560C24,1);
+ meta_setupFields(value0,lbl_80560C2C,lbl_80560C30,lbl_80560C34,value1);
 }
 void *igIntObject_getMeta(){
  if(!igIntObject_meta || !(reinterpret_cast<unsigned int *>(igIntObject_meta)[0x24/4]&4)) igIntObject_registerNow();
@@ -93,7 +93,7 @@ void *igIntObject_getMeta(){
 }
 void *igIntObject_vtableRead(){
  UnknownGenObject8021833C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igIntObject_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -107,9 +107,9 @@ void igIntObject_register(){
 void *igIntObject_getMetaCall(){return igIntObject_getMeta();}
 void igIntObject_fieldInit(){
  void *value0=igIntObject_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560C38,1);
- fn_800659C0(value0,lbl_80560C3C,lbl_80560C40,lbl_80560C44,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560C38,1);
+ meta_setupFields(value0,lbl_80560C3C,lbl_80560C40,lbl_80560C44,value1);
 }
 void *igIntHistogram_create(void *object){
  igIntHistogram_registerNow();

@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_802CF6E0(void *,short);
 extern char beMessengerArgData_vtable[];
 }
@@ -22,7 +22,7 @@ struct UnknownGenObject802CF660 {
 extern "C" {
 void *beMessengerArgData_vtableRead(){
  UnknownGenObject802CF660 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=beMessengerArgData_vtable;
  object.unknown0C=0;
  object.unknown10=0;

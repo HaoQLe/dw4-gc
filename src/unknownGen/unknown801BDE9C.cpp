@@ -6,13 +6,13 @@ void *fn_800284F4();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801AD7BC();
 void *fn_801B103C();
@@ -56,7 +56,7 @@ struct UnknownGenObject801BDF10_0 {
 struct UnknownGenRoot801BE084 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801BE084(){fn_8006665C(this);}
+ inline UnknownGenRoot801BE084(){igObject_construct(this);}
 };
 struct UnknownGenObject801BE084_0 : UnknownGenRoot801BE084 {
  char unknown04[4];
@@ -85,7 +85,7 @@ void *igInterpretedShaderProcessor_getMeta(){
 }
 void *igInterpretedShaderProcessor_vtableRead(){
  UnknownGenObject801BDF10_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igShaderProcessor_vtable;
  object.unknown00=igInterpretedShaderProcessor_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -130,16 +130,16 @@ void *igInterpretedShaderData_getMetaCall(){return igInterpretedShaderData_getMe
 void *igInterpretedShaderData_parentMeta(){return igTransientShaderData_meta;}
 void igInterpretedShaderData_fieldInit(){
  void *value0=igInterpretedShaderData_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560574,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560574,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_801B103C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value5=fn_800284F4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
- fn_800659C0(value0,lbl_8056057C,lbl_80560584,lbl_8056058C,value1);
+ meta_setupFields(value0,lbl_8056057C,lbl_80560584,lbl_8056058C,value1);
 }
 void *igInterpretedShader_getMeta(){
  if(!igInterpretedShader_meta || !(reinterpret_cast<unsigned int *>(igInterpretedShader_meta)[0x24/4]&4)) igInterpretedShader_registerNow();

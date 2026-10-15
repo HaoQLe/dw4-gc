@@ -10,7 +10,7 @@ void *meta_createInstance(void *,void *);
 void fn_80065D94(int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igObject_register();
 extern char igErrorHandler_className[];
 extern char igErrorHandler_vtable[];
@@ -39,7 +39,7 @@ void *igErrorHandler_getMeta(){
 }
 void *igErrorHandler_vtableRead(){
  UnknownGenObject80031210_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igErrorHandler_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

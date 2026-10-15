@@ -10,13 +10,13 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_80071694(void *,void *);
 void *fn_8011EDB4();
 void fn_801AA6DC();
@@ -115,7 +115,7 @@ void *igAnimationModifier_getMetaCall();
 struct UnknownGenRoot801C9E14 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C9E14(){fn_8006665C(this);}
+ inline UnknownGenRoot801C9E14(){igObject_construct(this);}
 };
 struct UnknownGenObject801C9E14_0 : UnknownGenRoot801C9E14 {
  char unknown04[4];
@@ -138,7 +138,7 @@ struct UnknownGenObject801CA0C8_0 {
 struct UnknownGenRoot801CA260 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801CA260(){fn_8006665C(this);}
+ inline UnknownGenRoot801CA260(){igObject_construct(this);}
 };
 struct UnknownGenObject801CA260 : UnknownGenRoot801CA260 {
  char unknown04[4];
@@ -153,7 +153,7 @@ struct UnknownGenObject801CA6AC_0 {
 struct UnknownGenRoot801CA858 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801CA858(){fn_8006665C(this);}
+ inline UnknownGenRoot801CA858(){igObject_construct(this);}
 };
 struct UnknownGenObject801CA858 : UnknownGenRoot801CA858 {
  char unknown04[8];
@@ -197,13 +197,13 @@ void igAnimationInfo_register(){
 void *igAnimationInfo_getMetaCall(){return igAnimationInfo_getMeta();}
 void igAnimationInfo_fieldInit(){
  void *value0=igAnimationInfo_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8056092C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8056092C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_801CA050();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- fn_800659C0(value0,lbl_80560930,lbl_80560934,lbl_80560938,value1);
+ meta_setupFields(value0,lbl_80560930,lbl_80560934,lbl_80560938,value1);
 }
 void *fn_801CA050(){
  if(!igAnimationTokenList_meta) igAnimationTokenList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -215,7 +215,7 @@ void *igAnimationTokenList_getMeta(){
 }
 void *igAnimationTokenList_vtableRead(){
  UnknownGenObject801CA0C8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -256,14 +256,14 @@ void igAnimationToken_register(){
 void *igAnimationToken_getMetaCall(){return igAnimationToken_getMeta();}
 void igAnimationToken_fieldInit(){
  void *value0=igAnimationToken_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8056094C,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8056094C,2);
+ void *value2=meta_field(value0,value1);
  fn_80071694(value2,(void *)0);
- void *value3=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value4=fn_801AB2B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
- fn_800659C0(value0,lbl_80560954,lbl_8056095C,lbl_80560964,value1);
+ meta_setupFields(value0,lbl_80560954,lbl_8056095C,lbl_80560964,value1);
 }
 void *fn_801CA478(){
  if(!igAnimationHierarchy_meta) igAnimationHierarchy_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -283,15 +283,15 @@ void igAnimationHierarchy_register(){
 void *igAnimationHierarchy_getMetaCall(){return igAnimationHierarchy_getMeta();}
 void igAnimationHierarchy_fieldInit(){
  void *value0=igAnimationHierarchy_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8056096C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8056096C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_8011EDB4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+60)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+53)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+64)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+65)=1;
- fn_800659C0(value0,lbl_80560970,lbl_80560974,lbl_80560978,value1);
+ meta_setupFields(value0,lbl_80560970,lbl_80560974,lbl_80560978,value1);
 }
 void *fn_801CA634(){
  if(!igAnimationModifierList_meta) igAnimationModifierList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -303,7 +303,7 @@ void *igAnimationModifierList_getMeta(){
 }
 void *igAnimationModifierList_vtableRead(){
  UnknownGenObject801CA6AC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

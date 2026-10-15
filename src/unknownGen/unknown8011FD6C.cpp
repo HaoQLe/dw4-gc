@@ -17,7 +17,7 @@ void fn_8006588C(void *,void *,void *);
 UnknownGenFactory *fn_800658F8(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8011D8BC();
 void *fn_8011E14C();
 void *fn_8011E3C8();
@@ -474,7 +474,7 @@ void *igGetCenterFunctionList_getMeta(){
 }
 void *igGetCenterFunctionList_vtableRead(){
  UnknownGenObject801202C0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B7A0;
  object.unknown00=igGetCenterFunctionList_vtable;
@@ -498,7 +498,7 @@ void *igIsEmptyFunctionList_getMeta(){
 }
 void *igIsEmptyFunctionList_vtableRead(){
  UnknownGenObject8012043C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B6E0;
  object.unknown00=igIsEmptyFunctionList_vtable;
@@ -522,7 +522,7 @@ void *igEmptyFunctionList_getMeta(){
 }
 void *igEmptyFunctionList_vtableRead(){
  UnknownGenObject801205B8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B620;
  object.unknown00=igEmptyFunctionList_vtable;
@@ -546,7 +546,7 @@ void *igTransformFunctionList_getMeta(){
 }
 void *igTransformFunctionList_vtableRead(){
  UnknownGenObject80120734_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B560;
  object.unknown00=igTransformFunctionList_vtable;
@@ -570,7 +570,7 @@ void *igContainsVecFunctionList_getMeta(){
 }
 void *igContainsVecFunctionList_vtableRead(){
  UnknownGenObject801208B0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B4A0;
  object.unknown00=igContainsVecFunctionList_vtable;
@@ -594,7 +594,7 @@ void *igExtendByVecFunctionList_getMeta(){
 }
 void *igExtendByVecFunctionList_vtableRead(){
  UnknownGenObject80120A2C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B3E0;
  object.unknown00=igExtendByVecFunctionList_vtable;
@@ -618,7 +618,7 @@ void *igContainsRayFunctionList_getMeta(){
 }
 void *igContainsRayFunctionList_vtableRead(){
  UnknownGenObject80120BA8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B320;
  object.unknown00=igContainsRayFunctionList_vtable;
@@ -642,7 +642,7 @@ void *igExtendByRayFunctionList_getMeta(){
 }
 void *igExtendByRayFunctionList_vtableRead(){
  UnknownGenObject80120D24_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B260;
  object.unknown00=igExtendByRayFunctionList_vtable;
@@ -666,7 +666,7 @@ void *igRayIntersectionFunctionList_getMeta(){
 }
 void *igRayIntersectionFunctionList_vtableRead(){
  UnknownGenObject80120EA0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B1A0;
  object.unknown00=igRayIntersectionFunctionList_vtable;
@@ -690,7 +690,7 @@ void *igContainsFunctionList_getMeta(){
 }
 void *igContainsFunctionList_vtableRead(){
  UnknownGenObject8012101C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B0E0;
  object.unknown00=igContainsFunctionList_vtable;
@@ -714,7 +714,7 @@ void *igExtendByFunctionList_getMeta(){
 }
 void *igExtendByFunctionList_vtableRead(){
  UnknownGenObject80121198_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049B020;
  object.unknown00=igExtendByFunctionList_vtable;
@@ -738,7 +738,7 @@ void *igIntersectionFunctionList_getMeta(){
 }
 void *igIntersectionFunctionList_vtableRead(){
  UnknownGenObject80121314_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049AF60;
  object.unknown00=igIntersectionFunctionList_vtable;
@@ -762,7 +762,7 @@ void *igMatrix44fList_getMeta(){
 }
 void *igMatrix44fList_vtableRead(){
  UnknownGenObject80121494_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049ADD8;
  object.unknown00=igMatrix44fList_vtable;
@@ -801,7 +801,7 @@ void *igQuaternionfList_getMeta(){
 }
 void *igQuaternionfList_vtableRead(){
  UnknownGenObject80121710_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049AC50;
  object.unknown00=igQuaternionfList_vtable;
@@ -836,7 +836,7 @@ void *igVec4ucList_getMeta(){
 }
 void *igVec4ucList_vtableRead(){
  UnknownGenObject80121950_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049AB90;
  object.unknown00=igVec4ucList_vtable;
@@ -867,7 +867,7 @@ void *igVec4fList_getMeta(){
 }
 void *igVec4fList_vtableRead(){
  UnknownGenObject80121B58_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049AA08;
  object.unknown00=igVec4fList_vtable;
@@ -902,7 +902,7 @@ void *igVec3fListList_getMeta(){
 }
 void *igVec3fListList_vtableRead(){
  UnknownGenObject80121D9C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -924,7 +924,7 @@ void *igVec3ucList_getMeta(){
 }
 void *igVec3ucList_vtableRead(){
  UnknownGenObject80121EFC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049A880;
  object.unknown00=igVec3ucList_vtable;
@@ -963,7 +963,7 @@ void *igVec3fList_getMeta(){
 }
 void *igVec3fList_vtableRead(){
  UnknownGenObject80122178_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8047DFF8;
  object.unknown00=igVec3fList_vtable;
@@ -998,7 +998,7 @@ void *igVec2fList_getMeta(){
 }
 void *igVec2fList_vtableRead(){
  UnknownGenObject801223B8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8049A638;
  object.unknown00=igVec2fList_vtable;
@@ -1037,7 +1037,7 @@ void *igAABoxList_getMeta(){
 }
 void *igAABoxList_vtableRead(){
  UnknownGenObject80122634_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -1067,7 +1067,7 @@ void *igAABox_getMeta(){
 }
 void *igAABox_vtableRead(){
  UnknownGenObject80122808_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8049B9DC;
  object.unknown00=igAABox_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

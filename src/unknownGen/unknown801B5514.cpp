@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char igNamedObject_vtable[];
 extern char lbl_804B3E38[];
 extern char igNode_vtable[];
@@ -10,7 +10,7 @@ extern char igGroup_vtable[];
 }
 extern "C" {
 void *fn_801B5514(int p0){
- fn_8006665C((void *)p0);
+ igObject_construct((void *)p0);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igNamedObject_vtable;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=(void *)0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igNode_vtable;

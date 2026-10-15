@@ -9,12 +9,12 @@ void *fn_8002942C();
 void *fn_800584BC();
 void *fn_800584E8();
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igDirEntry_register();
 void *igFile_getMeta();
 void igMemoryDirEntry_fieldInit();
@@ -65,7 +65,7 @@ struct UnknownGenObject8002C484_0 {
 struct UnknownGenRoot8002C61C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8002C61C(){fn_8006665C(this);}
+ inline UnknownGenRoot8002C61C(){igObject_construct(this);}
 };
 struct UnknownGenObject8002C61C_0 : UnknownGenRoot8002C61C {
  char unknown04[4];
@@ -79,7 +79,7 @@ struct UnknownGenObject8002C61C : UnknownGenObject8002C61C_0 {
 struct UnknownGenRoot8002C848 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8002C848(){fn_8006665C(this);}
+ inline UnknownGenRoot8002C848(){igObject_construct(this);}
 };
 struct UnknownGenObject8002C848_0 : UnknownGenRoot8002C848 {
  char unknown04[4];
@@ -107,7 +107,7 @@ void *igMemoryFileEntryList_getMeta(){
 }
 void *igMemoryFileEntryList_vtableRead(){
  UnknownGenObject8002C484_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -148,9 +148,9 @@ void igMemoryFileEntry_register(){
 void *igMemoryFileEntry_getMetaCall(){return igMemoryFileEntry_getMeta();}
 void igMemoryFileEntry_fieldInit(){
  void *value0=igMemoryFileEntry_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055D304,2);
- fn_800659C0(value0,lbl_8055D30C,lbl_8055D314,lbl_8055D31C,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055D304,2);
+ meta_setupFields(value0,lbl_8055D30C,lbl_8055D314,lbl_8055D31C,value1);
 }
 void *igMemoryDirEntry_create(void *object){
  igMemoryDirEntry_registerNow();

@@ -9,9 +9,9 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -44,9 +44,9 @@ void beWeaponSeqData_register(){
 void *beWeaponSeqData_getMetaCall(){return beWeaponSeqData_getMeta();}
 void beWeaponSeqData_fieldInit(){
  void *meta=beWeaponSeqData_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804CEDD8,0x1);
- fn_800659C0(meta,lbl_804CEDDC,lbl_804CEDE0,lbl_804CEDE4,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804CEDD8,0x1);
+ meta_setupFields(meta,lbl_804CEDDC,lbl_804CEDE0,lbl_804CEDE4,field);
 }
 void *fn_802B3370(){
  if(!lbl_80534558) lbl_80534558=fn_800635C8(lbl_8041CA68,lbl_804CEDE8,lbl_804CEDF4,0x3);

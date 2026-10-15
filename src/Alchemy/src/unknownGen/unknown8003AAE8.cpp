@@ -5,7 +5,7 @@ extern "C" {
 void fn_80021B94();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igQueue_register();
 void *igStandardQueue_fieldInit();
 void *igStandardQueue_getMetaCall();
@@ -23,7 +23,7 @@ void *igStandardQueue_parentMeta();
 struct UnknownGenRoot8003AB24 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8003AB24(){fn_8006665C(this);}
+ inline UnknownGenRoot8003AB24(){igObject_construct(this);}
 };
 struct UnknownGenObject8003AB24_0 : UnknownGenRoot8003AB24 {
  char unknown04[4];

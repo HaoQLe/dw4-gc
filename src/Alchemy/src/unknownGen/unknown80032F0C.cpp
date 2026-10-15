@@ -6,7 +6,7 @@ void fn_80021B94();
 void *fn_800237D0();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igDependencyOrderedList_fieldInit();
 void igObject_register();
 extern char lbl_8046737C[];
@@ -22,7 +22,7 @@ void *igDependencyOrderedList_getMetaCall();
 struct UnknownGenRoot80032F48 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80032F48(){fn_8006665C(this);}
+ inline UnknownGenRoot80032F48(){igObject_construct(this);}
 };
 struct UnknownGenObject80032F48 : UnknownGenRoot80032F48 {
  char unknown04[4];

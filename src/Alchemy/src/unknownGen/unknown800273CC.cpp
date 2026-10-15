@@ -7,9 +7,9 @@ void *fn_800607F4(void *);
 void *fn_80063B5C();
 void fn_80063F14(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void *igRefMetaField_getMeta();
 extern char lbl_8055D160[8];
 extern char lbl_8055D168[8];
@@ -23,9 +23,9 @@ extern "C" {
 void *igRefMetaField_getMetaCall(){return igRefMetaField_getMeta();}
 void igRefMetaField_fieldInit(){
  void *value0=igRefMetaField_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055D160,2);
- fn_800659C0(value0,lbl_8055D168,lbl_8055D170,lbl_8055D178,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055D160,2);
+ meta_setupFields(value0,lbl_8055D168,lbl_8055D170,lbl_8055D178,value1);
 }
 void fn_80027454(){
  if(!lbl_80561688){

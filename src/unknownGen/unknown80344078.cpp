@@ -9,9 +9,9 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -48,9 +48,9 @@ void beNDMWShinkaObject_register(){
 void *beNDMWShinkaObject_getMetaCall(){return beNDMWShinkaObject_getMeta();}
 void beNDMWShinkaObject_fieldInit(){
  void *meta=beNDMWShinkaObject_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E3E08,0x13);
- fn_800659C0(meta,lbl_804E3E54,lbl_804E3EA0,lbl_804E3EEC,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E3E08,0x13);
+ meta_setupFields(meta,lbl_804E3E54,lbl_804E3EA0,lbl_804E3EEC,field);
 }
 void *fn_803441B4(){
  if(!lbl_805367E8) lbl_805367E8=fn_800635C8(lbl_80455484,lbl_804E3F38,lbl_804E3F90,0x16);

@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80406344(void *,short);
 void igViewerGuiFactory_registerNow();
 extern char igViewerGuiFactory_vtable[];
@@ -35,7 +35,7 @@ void *igViewerGuiFactory_getMeta(){
 }
 void *igViewerGuiFactory_vtableRead(){
  UnknownGenObject804062C8 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igViewerGuiFactory_vtable;
  object.unknown08=0;
  object.unknown0C=0;

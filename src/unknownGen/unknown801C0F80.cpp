@@ -8,7 +8,7 @@ void *fn_800607F4(void *);
 void fn_80065DBC(int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
 void fn_801E871C(int);
@@ -59,7 +59,7 @@ void *igEnvironmentMapShader2List_getMeta(){
 }
 void *igEnvironmentMapShader2List_vtableRead(){
  UnknownGenObject801C1044_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

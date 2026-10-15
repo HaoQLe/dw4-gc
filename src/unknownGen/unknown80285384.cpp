@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80284294();
 void igFilterMessageDispatcher_fieldInit();
 void igMessageDispatcher_register();
@@ -24,7 +24,7 @@ void *igFilterMessageDispatcher_parentMeta();
 struct UnknownGenRoot802853D0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot802853D0(){fn_8006665C(this);}
+ inline UnknownGenRoot802853D0(){igObject_construct(this);}
 };
 struct UnknownGenObject802853D0 : UnknownGenRoot802853D0 {
  char unknown04[4];

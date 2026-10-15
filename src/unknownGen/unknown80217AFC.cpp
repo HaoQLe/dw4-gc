@@ -13,7 +13,7 @@ void fn_8006588C(void *,void *,void *);
 UnknownGenFactory *fn_800658F8(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8011FFD8();
 void fn_80216620();
 void igMatrixObject_registerNow();
@@ -86,7 +86,7 @@ void *igMatrixStack_getMeta(){
 }
 void *igMatrixStack_vtableRead(){
  UnknownGenObject80217BAC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_804BC4D4;
  object.unknown00=igMatrixStack_vtable;
@@ -121,7 +121,7 @@ void *igNonRefCountedMatrixObjectList_getMeta(){
 }
 void *igNonRefCountedMatrixObjectList_vtableRead(){
  UnknownGenObject80217DF0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;
@@ -151,7 +151,7 @@ void *igMatrixObjectList_getMeta(){
 }
 void *igMatrixObjectList_vtableRead(){
  UnknownGenObject80217FC4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

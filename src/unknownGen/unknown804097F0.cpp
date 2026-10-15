@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8010EE6C();
 void fn_80402E28();
 void igActorManagerParams_fieldInit();
@@ -25,7 +25,7 @@ void *igActorManagerParams_getMetaCall();
 struct UnknownGenRoot80409890 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80409890(){fn_8006665C(this);}
+ inline UnknownGenRoot80409890(){igObject_construct(this);}
 };
 struct UnknownGenObject80409890_0 : UnknownGenRoot80409890 {
  char unknown04[4];

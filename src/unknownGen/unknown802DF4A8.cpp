@@ -7,9 +7,9 @@ void beCriFxXbData_vtableRead();
 void *fn_800237D0();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -38,9 +38,9 @@ void beCriFxXbData_register(){
 void *beCriFxXbData_getMetaCall(){return beCriFxXbData_getMeta();}
 void beCriFxXbData_fieldInit(){
  void *meta=beCriFxXbData_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D2714,0xC);
- fn_800659C0(meta,lbl_804D2744,lbl_804D2774,lbl_804D27A4,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D2714,0xC);
+ meta_setupFields(meta,lbl_804D2744,lbl_804D2774,lbl_804D27A4,field);
 }
 void *beCriAudio_metaObject(){
  if(!beCriAudio_meta) beCriAudio_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

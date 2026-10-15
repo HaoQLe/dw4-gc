@@ -6,13 +6,13 @@ void *meta_newMetaObject(void *);
 void fn_8003EC68(void *,int);
 void fn_8004D4BC(void *,float);
 void *fn_800607F4(void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igMatrixConstantAttr_registerNow();
@@ -68,7 +68,7 @@ void *igMipMapAttr_getMeta(){
 }
 void *igMipMapAttr_vtableRead(){
  UnknownGenObject800B4454_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igMipMapAttr_vtable;
@@ -84,11 +84,11 @@ void igMipMapAttr_register(){
 void *igMipMapAttr_getMetaCall(){return igMipMapAttr_getMeta();}
 void igMipMapAttr_fieldInit(){
  void *value0=igMipMapAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E360,2);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E360,2);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_8056681C+0)));
- fn_800659C0(value0,lbl_8055E370,lbl_8055E378,lbl_8055E380,value1);
+ meta_setupFields(value0,lbl_8055E370,lbl_8055E378,lbl_8055E380,value1);
 }
 void *fn_800B45E0(){
  if(!igMatrixOptStateAttr_meta) igMatrixOptStateAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -100,7 +100,7 @@ void *igMatrixOptStateAttr_getMeta(){
 }
 void *igMatrixOptStateAttr_vtableRead(){
  UnknownGenObject800B4658_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igMatrixOptStateAttr_vtable;
@@ -116,10 +116,10 @@ void igMatrixOptStateAttr_register(){
 void *igMatrixOptStateAttr_getMetaCall(){return igMatrixOptStateAttr_getMeta();}
 void igMatrixOptStateAttr_fieldInit(){
  void *meta=igMatrixOptStateAttr_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055E388,1);
- fn_8003EC68(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055E38C,lbl_8055E390,lbl_8055E394,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055E388,1);
+ fn_8003EC68(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055E38C,lbl_8055E390,lbl_8055E394,field);
 }
 void *igMatrixConstantAttr_getMeta(){
  if(!igMatrixConstantAttr_meta || !(reinterpret_cast<unsigned int *>(igMatrixConstantAttr_meta)[0x24/4]&4)) igMatrixConstantAttr_registerNow();

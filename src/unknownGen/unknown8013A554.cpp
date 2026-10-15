@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_801308D0();
 void igOptBase_register();
@@ -24,7 +24,7 @@ void *igOptimizeActorAnimations_getMetaCall();
 struct UnknownGenRoot8013A590 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8013A590(){fn_8006665C(this);}
+ inline UnknownGenRoot8013A590(){igObject_construct(this);}
 };
 struct UnknownGenObject8013A590_0 : UnknownGenRoot8013A590 {
  char unknown04[28];

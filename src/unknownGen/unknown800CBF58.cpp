@@ -5,7 +5,7 @@ extern "C" {
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CAEE0();
 void igControllerManager_register();
 void igController_register();
@@ -36,7 +36,7 @@ void *igGamecubeController_parentMeta();
 struct UnknownGenRoot800CBF94 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800CBF94(){fn_8006665C(this);}
+ inline UnknownGenRoot800CBF94(){igObject_construct(this);}
 };
 struct UnknownGenObject800CBF94_0 : UnknownGenRoot800CBF94 {
  char unknown04[4];
@@ -50,7 +50,7 @@ struct UnknownGenObject800CBF94 : UnknownGenObject800CBF94_0 {
 struct UnknownGenRoot800CC144 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800CC144(){fn_8006665C(this);}
+ inline UnknownGenRoot800CC144(){igObject_construct(this);}
 };
 struct UnknownGenObject800CC144 : UnknownGenRoot800CC144 {
  char unknown04[36];

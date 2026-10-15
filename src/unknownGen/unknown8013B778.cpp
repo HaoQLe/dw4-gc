@@ -7,13 +7,13 @@ void *fn_80026B14();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_8013496C();
 void igBase_register();
@@ -64,7 +64,7 @@ struct UnknownGenObject8013B828_0 {
 struct UnknownGenRoot8013BAEC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8013BAEC(){fn_8006665C(this);}
+ inline UnknownGenRoot8013BAEC(){igObject_construct(this);}
 };
 struct UnknownGenObject8013BAEC : UnknownGenRoot8013BAEC {
  char unknown04[28];
@@ -89,7 +89,7 @@ void *igOptConfiguration_getMeta(){
 }
 void *igOptConfiguration_vtableRead(){
  UnknownGenObject8013B828_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igOptConfiguration_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -116,15 +116,15 @@ void *igOptBase_getMetaCall(){return igOptBase_getMeta();}
 void *fn_8013BA10(){return igBase_meta;}
 void igOptBase_fieldInit(){
  void *value0=igOptBase_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F7E8,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F7E8,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80026B14();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value5=fn_8013B7B0();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
- fn_800659C0(value0,lbl_8055F7F0,lbl_8055F7F8,lbl_8055F800,value1);
+ meta_setupFields(value0,lbl_8055F7F0,lbl_8055F7F8,lbl_8055F800,value1);
 }
 void *igObjectTraversal_getMeta(){
  if(!igObjectTraversal_meta || !(reinterpret_cast<unsigned int *>(igObjectTraversal_meta)[0x24/4]&4)) igObjectTraversal_registerNow();

@@ -6,13 +6,13 @@ void *fn_800237D0();
 void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_800CE788();
 void fn_8010CBD4();
 void igDependencyOrderedList_register();
@@ -119,7 +119,7 @@ void *igRadioGroup_getMetaCall();
 struct UnknownGenRoot8010DE3C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010DE3C(){fn_8006665C(this);}
+ inline UnknownGenRoot8010DE3C(){igObject_construct(this);}
 };
 struct UnknownGenObject8010DE3C_0 : UnknownGenRoot8010DE3C {
  char unknown04[4];
@@ -133,7 +133,7 @@ struct UnknownGenObject8010DE3C : UnknownGenObject8010DE3C_0 {
 struct UnknownGenRoot8010E074 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010E074(){fn_8006665C(this);}
+ inline UnknownGenRoot8010E074(){igObject_construct(this);}
 };
 struct UnknownGenObject8010E074_0 : UnknownGenRoot8010E074 {
  char unknown04[4];
@@ -165,7 +165,7 @@ struct UnknownGenObject8010E7E4_0 {
 struct UnknownGenRoot8010E9EC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010E9EC(){fn_8006665C(this);}
+ inline UnknownGenRoot8010E9EC(){igObject_construct(this);}
 };
 struct UnknownGenObject8010E9EC : UnknownGenRoot8010E9EC {
  char unknown04[4];
@@ -202,9 +202,9 @@ void *igClearRenderer_getMetaCall(){return igClearRenderer_getMeta();}
 void *fn_8010DF8C(){return igRenderer_meta;}
 void igClearRenderer_fieldInit(){
  void *value0=igClearRenderer_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EF4C,1);
- fn_800659C0(value0,lbl_8055EF50,lbl_8055EF54,lbl_8055EF58,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EF4C,1);
+ meta_setupFields(value0,lbl_8055EF50,lbl_8055EF54,lbl_8055EF58,value1);
 }
 void *fn_8010DFFC(){
  if(!igRendererOrderedList_meta) igRendererOrderedList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -248,12 +248,12 @@ void igRenderer_register(){
 void *igRenderer_getMetaCall(){return igRenderer_getMeta();}
 void igRenderer_fieldInit(){
  void *value0=igRenderer_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EF6C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EF6C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800CE788();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055EF70,lbl_8055EF74,lbl_8055EF78,value1);
+ meta_setupFields(value0,lbl_8055EF70,lbl_8055EF74,lbl_8055EF78,value1);
 }
 void *fn_8010E3FC(){
  if(!igOnOffValueObserverList_meta) igOnOffValueObserverList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -265,7 +265,7 @@ void *igOnOffValueObserverList_getMeta(){
 }
 void *igOnOffValueObserverList_vtableRead(){
  UnknownGenObject8010E474_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -287,7 +287,7 @@ void *igOnOffValueObserver_getMeta(){
 }
 void *igOnOffValueObserver_vtableRead(){
  UnknownGenObject8010E5D4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_80495AD8;
  object.unknown00=igOnOffValueObserver_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -303,13 +303,13 @@ void *igOnOffValueObserver_getMetaCall(){return igOnOffValueObserver_getMeta();}
 void *fn_8010E6DC(){return igView_meta;}
 void igOnOffValueObserver_fieldInit(){
  void *value0=igOnOffValueObserver_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EF8C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EF8C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_8010E974();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+60)=0;
- fn_800659C0(value0,lbl_8055EF98,lbl_8055EF9C,lbl_8055EFA0,value1);
+ meta_setupFields(value0,lbl_8055EF98,lbl_8055EF9C,lbl_8055EFA0,value1);
 }
 void *fn_8010E76C(){
  if(!igRadioGroupSelectedObserver_meta) igRadioGroupSelectedObserver_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -321,7 +321,7 @@ void *igRadioGroupSelectedObserver_getMeta(){
 }
 void *igRadioGroupSelectedObserver_vtableRead(){
  UnknownGenObject8010E7E4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_80495AD8;
  object.unknown00=igRadioGroupSelectedObserver_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -336,13 +336,13 @@ void igRadioGroupSelectedObserver_register(){
 void *igRadioGroupSelectedObserver_getMetaCall(){return igRadioGroupSelectedObserver_getMeta();}
 void igRadioGroupSelectedObserver_fieldInit(){
  void *value0=igRadioGroupSelectedObserver_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EFAC,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EFAC,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_8010E974();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+60)=0;
- fn_800659C0(value0,lbl_8055EFB0,lbl_8055EFB4,lbl_8055EFB8,value1);
+ meta_setupFields(value0,lbl_8055EFB0,lbl_8055EFB4,lbl_8055EFB8,value1);
 }
 void *fn_8010E974(){
  if(!igRadioGroup_meta) igRadioGroup_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

@@ -8,9 +8,9 @@ void beNDMWItemWeapon_vtableRead();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -70,9 +70,9 @@ void beNDMWItemRevisionPocketBase_register(){
 void *beNDMWItemRevisionPocketBase_getMetaCall(){return beNDMWItemRevisionPocketBase_getMeta();}
 void beNDMWItemRevisionPocketBase_fieldInit(){
  void *meta=beNDMWItemRevisionPocketBase_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E3D30,0x1);
- fn_800659C0(meta,lbl_804E3D34,lbl_804E3D38,lbl_804E3D3C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E3D30,0x1);
+ meta_setupFields(meta,lbl_804E3D34,lbl_804E3D38,lbl_804E3D3C,field);
 }
 void *beNDMWItemRevisionBase_getMeta(){
  if(!beNDMWItemRevisionBase_meta || !(reinterpret_cast<unsigned int *>(beNDMWItemRevisionBase_meta)[0x24/4]&4)) beNDMWItemRevisionBase_registerNow();
@@ -88,9 +88,9 @@ void beNDMWItemRevisionBase_register(){
 void *beNDMWItemRevisionBase_getMetaCall(){return beNDMWItemRevisionBase_getMeta();}
 void beNDMWItemRevisionBase_fieldInit(){
  void *meta=beNDMWItemRevisionBase_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E3D40,0x1);
- fn_800659C0(meta,lbl_804E3D44,lbl_804E3D48,lbl_804E3D4C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E3D40,0x1);
+ meta_setupFields(meta,lbl_804E3D44,lbl_804E3D48,lbl_804E3D4C,field);
 }
 void *beNDMWItemBaseList_create(void *object){
  beNDMWItemBaseList_registerNow();

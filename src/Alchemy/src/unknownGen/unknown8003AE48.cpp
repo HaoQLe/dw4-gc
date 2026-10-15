@@ -6,7 +6,7 @@ extern "C" {
 void fn_80021B94();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *igGamecubeThreadManager_getMetaCall();
 void *igGamecubeThread_fieldInit();
 void *igGamecubeThread_getMetaCall();
@@ -42,7 +42,7 @@ struct UnknownGenObject8003AE84_0 {
 struct UnknownGenRoot8003AFC0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8003AFC0(){fn_8006665C(this);}
+ inline UnknownGenRoot8003AFC0(){igObject_construct(this);}
 };
 struct UnknownGenObject8003AFC0_0 : UnknownGenRoot8003AFC0 {
  char unknown04[4];
@@ -65,7 +65,7 @@ void *igGamecubeThreadManager_getMeta(){
 }
 void *igGamecubeThreadManager_vtableRead(){
  UnknownGenObject8003AE84_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_80470C2C;
  object.unknown00=igGamecubeThreadManager_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

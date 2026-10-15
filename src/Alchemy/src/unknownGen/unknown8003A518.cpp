@@ -6,13 +6,13 @@ void fn_80021B94();
 void *fn_800237D0();
 void *fn_80030000();
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igElfFile_fieldInit();
 void igObject_register();
 extern char igProgramFile_className[];
@@ -42,7 +42,7 @@ void *igElfFile_parentMeta();
 struct UnknownGenRoot8003A554 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8003A554(){fn_8006665C(this);}
+ inline UnknownGenRoot8003A554(){igObject_construct(this);}
 };
 struct UnknownGenObject8003A554 : UnknownGenRoot8003A554 {
  char unknown04[4];
@@ -53,7 +53,7 @@ struct UnknownGenObject8003A554 : UnknownGenRoot8003A554 {
 struct UnknownGenRoot8003A7F8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8003A7F8(){fn_8006665C(this);}
+ inline UnknownGenRoot8003A7F8(){igObject_construct(this);}
 };
 struct UnknownGenObject8003A7F8_0 : UnknownGenRoot8003A7F8 {
  char unknown04[4];
@@ -88,16 +88,16 @@ void *igProgramFile_getMetaCall(){return igProgramFile_getMeta();}
 void igProgramFile_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(igProgramFile_meta)+25)=0;
  void *value0=igProgramFile_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055D6D8,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055D6D8,2);
+ void *value2=meta_field(value0,value1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
- void *value3=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value4=fn_80030000();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+52)=0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+38)=0;
- fn_800659C0(value0,lbl_8055D6E0,lbl_8055D6E8,lbl_8055D6F0,value1);
+ meta_setupFields(value0,lbl_8055D6E0,lbl_8055D6E8,lbl_8055D6F0,value1);
 }
 void *igElfFile_create(void *object){
  igElfFile_registerNow();

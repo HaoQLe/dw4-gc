@@ -9,9 +9,9 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -67,9 +67,9 @@ void beNDMWStatusCtrl00_register(){
 void *beNDMWStatusCtrl00_getMetaCall(){return beNDMWStatusCtrl00_getMeta();}
 void beNDMWStatusCtrl00_fieldInit(){
  void *meta=beNDMWStatusCtrl00_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E2064,0x1);
- fn_800659C0(meta,lbl_804E2068,lbl_804E206C,lbl_804E2070,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E2064,0x1);
+ meta_setupFields(meta,lbl_804E2068,lbl_804E206C,lbl_804E2070,field);
 }
 void *beNDMWListCtrl_getMeta(){
  if(!beNDMWListCtrl_meta || !(reinterpret_cast<unsigned int *>(beNDMWListCtrl_meta)[0x24/4]&4)) beNDMWListCtrl_registerNow();
@@ -85,9 +85,9 @@ void beNDMWListCtrl_register(){
 void *beNDMWListCtrl_getMetaCall(){return beNDMWListCtrl_getMeta();}
 void beNDMWListCtrl_fieldInit(){
  void *meta=beNDMWListCtrl_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E2074,0x3);
- fn_800659C0(meta,lbl_804E2080,lbl_804E208C,lbl_804E2098,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E2074,0x3);
+ meta_setupFields(meta,lbl_804E2080,lbl_804E208C,lbl_804E2098,field);
 }
 void *beNDMWWindowCtrl_metaObject(){
  if(!beNDMWWindowCtrl_meta) beNDMWWindowCtrl_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -107,9 +107,9 @@ void beNDMWWindowCtrl_register(){
 void *beNDMWWindowCtrl_getMetaCall(){return beNDMWWindowCtrl_getMeta();}
 void beNDMWWindowCtrl_fieldInit(){
  void *meta=beNDMWWindowCtrl_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E20A4,0x1);
- fn_800659C0(meta,lbl_804E20A8,lbl_804E20AC,lbl_804E20B0,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E20A4,0x1);
+ meta_setupFields(meta,lbl_804E20A8,lbl_804E20AC,lbl_804E20B0,field);
 }
 void *fn_80334024(){
  if(!lbl_80535FB4) lbl_80535FB4=fn_800635C8(lbl_80453438,lbl_804E20B4,lbl_804E20D0,0x7);

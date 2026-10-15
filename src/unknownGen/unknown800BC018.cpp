@@ -5,7 +5,7 @@ extern "C" {
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igTextureSwapAttr_fieldInit();
@@ -36,7 +36,7 @@ void *igTextureSwapAttr_getMeta(){
 }
 void *igTextureSwapAttr_vtableRead(){
  UnknownGenObject800BC08C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igTextureSwapAttr_vtable;

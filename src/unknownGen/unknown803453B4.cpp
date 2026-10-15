@@ -5,9 +5,9 @@ extern "C" {
 void *beNDMWAfsSetupData_getMeta();
 void beNDMWAfsSetupData_vtableRead();
 void *fn_80023CF4();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -35,9 +35,9 @@ void beNDMWAfsSetupData_register(){
 void *beNDMWAfsSetupData_getMetaCall(){return beNDMWAfsSetupData_getMeta();}
 void beNDMWAfsSetupData_fieldInit(){
  void *meta=beNDMWAfsSetupData_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E418C,0x1);
- fn_800659C0(meta,lbl_804E4190,lbl_804E4194,lbl_804E4198,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E418C,0x1);
+ meta_setupFields(meta,lbl_804E4190,lbl_804E4194,lbl_804E4198,field);
 }
 void *beNDMWAfsStageLoad_getMeta(){
  if(!beNDMWAfsStageLoad_meta || !(reinterpret_cast<unsigned int *>(beNDMWAfsStageLoad_meta)[0x24/4]&4)) beNDMWAfsStageLoad_registerNow();

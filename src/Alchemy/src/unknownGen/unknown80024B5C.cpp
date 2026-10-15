@@ -13,7 +13,7 @@ void fn_8006588C(void *,void *,void *);
 UnknownGenFactory *fn_800658F8(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igDataList_register();
 extern char igStringRefList_className[];
 extern char igStringRefList_vtable[];
@@ -60,7 +60,7 @@ void *igStringRefList_getMeta(){
 }
 void *igStringRefList_vtableRead(){
  UnknownGenObject80024C0C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476B54;
  object.unknown00=igStringRefList_vtable;
@@ -100,7 +100,7 @@ void *igStringObjList_getMeta(){
 }
 void *igStringObjList_vtableRead(){
  UnknownGenObject80024E90_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

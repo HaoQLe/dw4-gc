@@ -8,12 +8,12 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_80149C04();
 void igFileInfo_fieldInit();
@@ -156,7 +156,7 @@ struct UnknownGenObject8014A9D0_0 {
 struct UnknownGenRoot8014AB6C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014AB6C(){fn_8006665C(this);}
+ inline UnknownGenRoot8014AB6C(){igObject_construct(this);}
 };
 struct UnknownGenObject8014AB6C_0 : UnknownGenRoot8014AB6C {
  char unknown04[4];
@@ -182,7 +182,7 @@ void *igMitchellFilterFun_getMeta(){
 }
 void *igMitchellFilterFun_vtableRead(){
  UnknownGenObject80149D1C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
  object.unknown00=igMitchellFilterFun_vtable;
@@ -206,7 +206,7 @@ void *igLanczos3FilterFun_getMeta(){
 }
 void *igLanczos3FilterFun_vtableRead(){
  UnknownGenObject80149E98_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
  object.unknown00=igLanczos3FilterFun_vtable;
@@ -230,7 +230,7 @@ void *igBSplineFilterFun_getMeta(){
 }
 void *igBSplineFilterFun_vtableRead(){
  UnknownGenObject8014A014_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
  object.unknown00=igBSplineFilterFun_vtable;
@@ -254,7 +254,7 @@ void *igBellFilterFun_getMeta(){
 }
 void *igBellFilterFun_vtableRead(){
  UnknownGenObject8014A190_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
  object.unknown00=igBellFilterFun_vtable;
@@ -278,7 +278,7 @@ void *igTriangleFilterFun_getMeta(){
 }
 void *igTriangleFilterFun_vtableRead(){
  UnknownGenObject8014A30C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
  object.unknown00=igTriangleFilterFun_vtable;
@@ -302,7 +302,7 @@ void *igBoxFilterFun_getMeta(){
 }
 void *igBoxFilterFun_vtableRead(){
  UnknownGenObject8014A488_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
  object.unknown00=igBoxFilterFun_vtable;
@@ -322,7 +322,7 @@ void *igStdFilterFun_getMeta(){
 }
 void *igStdFilterFun_vtableRead(){
  UnknownGenObject8014A5CC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
  object.unknown00=igStdFilterFun_vtable;
@@ -351,9 +351,9 @@ void *igSerialFilterFun_getMetaCall(){return igSerialFilterFun_getMeta();}
 void *igSerialFilterFun_parentMeta(){return igFilterFun_meta;}
 void igSerialFilterFun_fieldInit(){
  void *value0=igSerialFilterFun_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FB6C,1);
- fn_800659C0(value0,lbl_8055FB78,lbl_8055FB7C,lbl_8055FB80,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FB6C,1);
+ meta_setupFields(value0,lbl_8055FB78,lbl_8055FB7C,lbl_8055FB80,value1);
 }
 void *fn_8014A834(){
  if(!igFilterFun_meta) igFilterFun_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -381,7 +381,7 @@ void *igFileInfoList_getMeta(){
 }
 void *igFileInfoList_vtableRead(){
  UnknownGenObject8014A9D0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

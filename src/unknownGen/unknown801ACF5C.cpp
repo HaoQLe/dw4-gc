@@ -7,7 +7,7 @@ void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
 void igGroup_register();
@@ -31,7 +31,7 @@ void *igTimeSwitch_getMetaCall();
 struct UnknownGenRoot801AD020 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801AD020(){fn_8006665C(this);}
+ inline UnknownGenRoot801AD020(){igObject_construct(this);}
 };
 struct UnknownGenObject801AD020_0 : UnknownGenRoot801AD020 {
  char unknown04[4];

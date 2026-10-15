@@ -10,7 +10,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igNamedObject_register();
 void igNode_fieldInit();
@@ -90,7 +90,7 @@ struct UnknownGenObject801B73CC_0 {
 struct UnknownGenRoot801B7568 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801B7568(){fn_8006665C(this);}
+ inline UnknownGenRoot801B7568(){igObject_construct(this);}
 };
 struct UnknownGenObject801B7568_0 : UnknownGenRoot801B7568 {
  char unknown04[4];
@@ -110,7 +110,7 @@ void *igIntersectPathList_getMeta(){
 }
 void *igIntersectPathList_vtableRead(){
  UnknownGenObject801B6E50_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -140,7 +140,7 @@ void *igNonRefCountedNodeList_getMeta(){
 }
 void *igNonRefCountedNodeList_vtableRead(){
  UnknownGenObject801B7024_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;
@@ -170,7 +170,7 @@ void *igNodeListList_getMeta(){
 }
 void *igNodeListList_vtableRead(){
  UnknownGenObject801B71F8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -200,7 +200,7 @@ void *igNodeList_getMeta(){
 }
 void *igNodeList_vtableRead(){
  UnknownGenObject801B73CC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

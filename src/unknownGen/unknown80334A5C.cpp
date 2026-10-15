@@ -5,9 +5,9 @@ extern "C" {
 void beBaseInfoManager_register();
 void *beNDMWStageCtl_getMeta();
 void beNDMWStageCtl_vtableRead();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B381C();
@@ -35,9 +35,9 @@ void beNDMWStageCtl_register(){
 void *beNDMWStageCtl_getMetaCall(){return beNDMWStageCtl_getMeta();}
 void beNDMWStageCtl_fieldInit(){
  void *meta=beNDMWStageCtl_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E213C,0x1);
- fn_800659C0(meta,lbl_804E2140,lbl_804E2144,lbl_804E2148,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E213C,0x1);
+ meta_setupFields(meta,lbl_804E2140,lbl_804E2144,lbl_804E2148,field);
 }
 void *beNDMWSaveIntfInfo_getMeta(){
  if(!beNDMWSaveIntfInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWSaveIntfInfo_meta)[0x24/4]&4)) beNDMWSaveIntfInfo_registerNow();

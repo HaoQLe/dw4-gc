@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8010CBD4();
 void *fn_80111CD4();
 void igBoxModel_register();
@@ -48,7 +48,7 @@ void *igScrollListComponentModel_parentMeta();
 struct UnknownGenRoot8010D4EC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010D4EC(){fn_8006665C(this);}
+ inline UnknownGenRoot8010D4EC(){igObject_construct(this);}
 };
 struct UnknownGenObject8010D4EC_0 : UnknownGenRoot8010D4EC {
  char unknown04[4];
@@ -67,7 +67,7 @@ struct UnknownGenObject8010D4EC : UnknownGenObject8010D4EC_1 {
 struct UnknownGenRoot8010D764 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010D764(){fn_8006665C(this);}
+ inline UnknownGenRoot8010D764(){igObject_construct(this);}
 };
 struct UnknownGenObject8010D764_0 : UnknownGenRoot8010D764 {
  char unknown04[4];
@@ -114,12 +114,12 @@ void *igSimpleChildHolderModel_getMetaCall(){return igSimpleChildHolderModel_get
 void *fn_8010D6A0(){return igGuiComponentModel_meta;}
 void igSimpleChildHolderModel_fieldInit(){
  void *value0=igSimpleChildHolderModel_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EF04,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EF04,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80111CD4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055EF14,lbl_8055EF1C,lbl_8055EF24,value1);
+ meta_setupFields(value0,lbl_8055EF14,lbl_8055EF1C,lbl_8055EF24,value1);
 }
 void *igScrollListComponentModel_getMeta(){
  if(!igScrollListComponentModel_meta || !(reinterpret_cast<unsigned int *>(igScrollListComponentModel_meta)[0x24/4]&4)) igScrollListComponentModel_registerNow();

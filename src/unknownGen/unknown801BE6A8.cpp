@@ -7,7 +7,7 @@ void *meta_createInstance(void *,void *);
 void fn_80065D94(int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igIniShaderFactory_registerNow();
 void *fn_801F2B38();
@@ -37,7 +37,7 @@ void *igIniShaderManager_getMeta(){
 }
 void *igIniShaderManager_vtableRead(){
  UnknownGenObject801BE6E4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igIniShaderManager_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

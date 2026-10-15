@@ -7,7 +7,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_8013B2B0();
 void *fn_8013B680();
@@ -77,7 +77,7 @@ struct UnknownGenObject8014308C_0 {
 struct UnknownGenRoot8014320C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014320C(){fn_8006665C(this);}
+ inline UnknownGenRoot8014320C(){igObject_construct(this);}
 };
 struct UnknownGenObject8014320C : UnknownGenRoot8014320C {
  char unknown04[28];
@@ -95,7 +95,7 @@ void *igLockBaseList_getMeta(){
 }
 void *igLockBaseList_vtableRead(){
  UnknownGenObject80142D20_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -145,7 +145,7 @@ void *igListenerManager_getMeta(){
 }
 void *igListenerManager_vtableRead(){
  UnknownGenObject8014308C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A6460;
  object.unknown00=igManager_vtable;
  object.unknown00=igListenerManager_vtable;

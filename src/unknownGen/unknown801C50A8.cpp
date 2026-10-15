@@ -5,7 +5,7 @@ extern "C" {
 void fn_80065DBC(int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801AD7BC();
 void fn_801DB2E8(int);
@@ -27,7 +27,7 @@ void *igCartoonShaderProcessor_getMetaCall();
 struct UnknownGenRoot801C5130 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C5130(){fn_8006665C(this);}
+ inline UnknownGenRoot801C5130(){igObject_construct(this);}
 };
 struct UnknownGenObject801C5130 : UnknownGenRoot801C5130 {
  char unknown04[4];

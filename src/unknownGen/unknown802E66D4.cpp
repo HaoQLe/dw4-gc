@@ -5,9 +5,9 @@ extern "C" {
 void *beAction2FADESET_getMeta();
 void beAction2FADESET_vtableRead();
 void *fn_80023CF4();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -35,9 +35,9 @@ void beAction2FADESET_register(){
 void *beAction2FADESET_getMetaCall(){return beAction2FADESET_getMeta();}
 void beAction2FADESET_fieldInit(){
  void *meta=beAction2FADESET_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D3118,0x2);
- fn_800659C0(meta,lbl_804D3120,lbl_804D3128,lbl_804D3130,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D3118,0x2);
+ meta_setupFields(meta,lbl_804D3120,lbl_804D3128,lbl_804D3130,field);
 }
 void *beAction2JOINTSET_getMeta(){
  if(!beAction2JOINTSET_meta || !(reinterpret_cast<unsigned int *>(beAction2JOINTSET_meta)[0x24/4]&4)) beAction2JOINTSET_registerNow();

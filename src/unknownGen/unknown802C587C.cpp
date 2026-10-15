@@ -6,9 +6,9 @@ void *beModelCtrlSCHitBox_getMeta();
 void beModelCtrlSCHitBox_vtableRead();
 void beModelCtrlSubComBase_register();
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -36,9 +36,9 @@ void beModelCtrlSCHitBox_register(){
 void *beModelCtrlSCHitBox_getMetaCall(){return beModelCtrlSCHitBox_getMeta();}
 void beModelCtrlSCHitBox_fieldInit(){
  void *meta=beModelCtrlSCHitBox_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D05E8,0x6);
- fn_800659C0(meta,lbl_804D0600,lbl_804D0618,lbl_804D0630,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D05E8,0x6);
+ meta_setupFields(meta,lbl_804D0600,lbl_804D0618,lbl_804D0630,field);
 }
 void *beModelCtrlSCEffect_create(void *object){
  beModelCtrlSCEffect_registerNow();

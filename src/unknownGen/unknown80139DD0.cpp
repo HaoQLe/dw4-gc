@@ -3,13 +3,13 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8003EC68(void *,int);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_801308D0();
 void igMacroOpt_register();
@@ -54,7 +54,7 @@ void *igOptimizeActorKeyframes_getMetaCall();
 struct UnknownGenRoot80139E0C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80139E0C(){fn_8006665C(this);}
+ inline UnknownGenRoot80139E0C(){igObject_construct(this);}
 };
 struct UnknownGenObject80139E0C_0 : UnknownGenRoot80139E0C {
  char unknown04[28];
@@ -74,7 +74,7 @@ struct UnknownGenObject80139E0C : UnknownGenObject80139E0C_1 {
 struct UnknownGenRoot8013A078 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8013A078(){fn_8006665C(this);}
+ inline UnknownGenRoot8013A078(){igObject_construct(this);}
 };
 struct UnknownGenObject8013A078_0 : UnknownGenRoot8013A078 {
  char unknown04[28];
@@ -89,7 +89,7 @@ struct UnknownGenObject8013A078 : UnknownGenObject8013A078_0 {
 struct UnknownGenRoot8013A2EC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8013A2EC(){fn_8006665C(this);}
+ inline UnknownGenRoot8013A2EC(){igObject_construct(this);}
 };
 struct UnknownGenObject8013A2EC_0 : UnknownGenRoot8013A2EC {
  char unknown04[28];
@@ -152,13 +152,13 @@ void igOptimizeActorSkeletons_register(){
 void *igOptimizeActorSkeletons_getMetaCall(){return igOptimizeActorSkeletons_getMeta();}
 void igOptimizeActorSkeletons_fieldInit(){
  void *value0=igOptimizeActorSkeletons_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F778,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F778,2);
+ void *value2=meta_field(value0,value1);
  fn_8003EC68(value2,1);
- void *value3=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8003EC68(value3,1);
- fn_800659C0(value0,lbl_8055F780,lbl_8055F788,lbl_8055F790,value1);
+ meta_setupFields(value0,lbl_8055F780,lbl_8055F788,lbl_8055F790,value1);
 }
 void *igOptimizeActorKeyframes_getMeta(){
  if(!igOptimizeActorKeyframes_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorKeyframes_meta)[0x24/4]&4)) igOptimizeActorKeyframes_registerNow();

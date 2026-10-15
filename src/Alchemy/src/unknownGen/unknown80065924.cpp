@@ -7,7 +7,7 @@ void fn_80065820(void *,void *);
 extern void *lbl_805621F4;
 }
 extern "C" {
-void fn_80065924(int p0,int p1,int p2){
+void meta_appendFields(int p0,int p1,int p2){
  void *value1;
  void *value2;
  void *value3;

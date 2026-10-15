@@ -8,9 +8,9 @@ void *fn_800237D0();
 void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -63,9 +63,9 @@ void beNDMWItemBase_register(){
 void *beNDMWItemBase_getMetaCall(){return beNDMWItemBase_getMeta();}
 void beNDMWItemBase_fieldInit(){
  void *meta=beNDMWItemBase_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E3D58,0x3);
- fn_800659C0(meta,lbl_804E3D64,lbl_804E3D70,lbl_804E3D7C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E3D58,0x3);
+ meta_setupFields(meta,lbl_804E3D64,lbl_804E3D70,lbl_804E3D7C,field);
 }
 void *beNDMWShinkaCtrl_metaObject(){
  if(!beNDMWShinkaCtrl_meta) beNDMWShinkaCtrl_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

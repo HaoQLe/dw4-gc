@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_80284540();
 void fn_80402E28();
 void igMessage_register();
@@ -25,7 +25,7 @@ void *igViewerModeChangeMessage_getMetaCall();
 struct UnknownGenRoot80404CEC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80404CEC(){fn_8006665C(this);}
+ inline UnknownGenRoot80404CEC(){igObject_construct(this);}
 };
 struct UnknownGenObject80404CEC : UnknownGenRoot80404CEC {
  char unknown04[8];

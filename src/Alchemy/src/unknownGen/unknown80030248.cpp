@@ -7,7 +7,7 @@ void *fn_8002942C();
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igDirEntry_register();
 void igExternalInfoEntry_fieldInit();
 void *igGamecubeFile_getMeta();
@@ -25,7 +25,7 @@ void *igExternalInfoEntry_getMetaCall();
 struct UnknownGenRoot800302DC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800302DC(){fn_8006665C(this);}
+ inline UnknownGenRoot800302DC(){igObject_construct(this);}
 };
 struct UnknownGenObject800302DC_0 : UnknownGenRoot800302DC {
  char unknown04[4];

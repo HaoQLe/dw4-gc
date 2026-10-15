@@ -7,13 +7,13 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void igGenericAttrStatistics_fieldInit();
 void igObjectList_register();
@@ -85,7 +85,7 @@ void *igGenericAttrStatistics_getMetaCall();
 struct UnknownGenRoot801312A0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801312A0(){fn_8006665C(this);}
+ inline UnknownGenRoot801312A0(){igObject_construct(this);}
 };
 struct UnknownGenObject801312A0 : UnknownGenRoot801312A0 {
  char unknown04[4];
@@ -96,7 +96,7 @@ struct UnknownGenObject801312A0 : UnknownGenRoot801312A0 {
 struct UnknownGenRoot801314E4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801314E4(){fn_8006665C(this);}
+ inline UnknownGenRoot801314E4(){igObject_construct(this);}
 };
 struct UnknownGenObject801314E4 : UnknownGenRoot801314E4 {
  char unknown04[4];
@@ -115,7 +115,7 @@ struct UnknownGenObject801318C4_0 {
 struct UnknownGenRoot80131A5C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80131A5C(){fn_8006665C(this);}
+ inline UnknownGenRoot80131A5C(){igObject_construct(this);}
 };
 struct UnknownGenObject80131A5C : UnknownGenRoot80131A5C {
  char unknown04[4];
@@ -149,13 +149,13 @@ void igAllNodeStatistics_register(){
 void *igAllNodeStatistics_getMetaCall(){return igAllNodeStatistics_getMeta();}
 void igAllNodeStatistics_fieldInit(){
  void *value0=igAllNodeStatistics_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F4F4,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F4F4,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_8013184C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- fn_800659C0(value0,lbl_8055F4F8,lbl_8055F4FC,lbl_8055F500,value1);
+ meta_setupFields(value0,lbl_8055F4F8,lbl_8055F4FC,lbl_8055F500,value1);
 }
 void *fn_8013146C(){
  if(!igAllAttrStatistics_meta) igAllAttrStatistics_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -181,13 +181,13 @@ void igAllAttrStatistics_register(){
 void *igAllAttrStatistics_getMetaCall(){return igAllAttrStatistics_getMeta();}
 void igAllAttrStatistics_fieldInit(){
  void *value0=igAllAttrStatistics_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F50C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F50C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_801316B0();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- fn_800659C0(value0,lbl_8055F510,lbl_8055F514,lbl_8055F518,value1);
+ meta_setupFields(value0,lbl_8055F510,lbl_8055F514,lbl_8055F518,value1);
 }
 void *fn_801316B0(){
  if(!igGenericAttrStatisticsList_meta) igGenericAttrStatisticsList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -199,7 +199,7 @@ void *igGenericAttrStatisticsList_getMeta(){
 }
 void *igGenericAttrStatisticsList_vtableRead(){
  UnknownGenObject80131728_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -225,7 +225,7 @@ void *igGenericNodeStatisticsList_getMeta(){
 }
 void *igGenericNodeStatisticsList_vtableRead(){
  UnknownGenObject801318C4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

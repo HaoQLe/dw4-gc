@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801AD7BC();
 void igPlanarShadowProcessor_fieldInit();
@@ -23,7 +23,7 @@ void *igPlanarShadowProcessor_getMetaCall();
 struct UnknownGenRoot801B6490 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801B6490(){fn_8006665C(this);}
+ inline UnknownGenRoot801B6490(){igObject_construct(this);}
 };
 struct UnknownGenObject801B6490 : UnknownGenRoot801B6490 {
  char unknown04[4];

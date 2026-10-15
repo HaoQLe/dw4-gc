@@ -7,13 +7,13 @@ void *fn_800284EC();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8011148C();
 void fn_8028C93C();
 void *fn_8028D794();
@@ -66,7 +66,7 @@ void *igCollisionGroup_getMetaCall();
 struct UnknownGenRoot8028CDE8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8028CDE8(){fn_8006665C(this);}
+ inline UnknownGenRoot8028CDE8(){igObject_construct(this);}
 };
 struct UnknownGenObject8028CDE8_0 : UnknownGenRoot8028CDE8 {
  char unknown04[4];
@@ -89,7 +89,7 @@ struct UnknownGenObject8028D094_0 {
 struct UnknownGenRoot8028D1F4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8028D1F4(){fn_8006665C(this);}
+ inline UnknownGenRoot8028D1F4(){igObject_construct(this);}
 };
 struct UnknownGenObject8028D1F4_0 : UnknownGenRoot8028D1F4 {
  char unknown04[4];
@@ -139,12 +139,12 @@ void igCollisionInfo_register(){
 void *igCollisionInfo_getMetaCall(){return igCollisionInfo_getMeta();}
 void igCollisionInfo_fieldInit(){
  void *value0=igCollisionInfo_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80561340,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80561340,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_8028D794();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_80561344,lbl_80561348,lbl_8056134C,value1);
+ meta_setupFields(value0,lbl_80561344,lbl_80561348,lbl_8056134C,value1);
 }
 void *fn_8028D01C(){
  if(!igCollisionGroupList_meta) igCollisionGroupList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -156,7 +156,7 @@ void *igCollisionGroupList_getMeta(){
 }
 void *igCollisionGroupList_vtableRead(){
  UnknownGenObject8028D094_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

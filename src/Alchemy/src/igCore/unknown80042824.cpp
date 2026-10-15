@@ -96,8 +96,8 @@ extern "C" {
     extern void *lbl_80561D10, *igObjectDirEntry_meta, *igObjectRefMetaField_meta;
     void fn_80066E1C(void *);
     unsigned char fn_80068128(void *, void *);
-    int fn_80065D88(void *);
-    Unknown80042824Value *fn_800658E4(void *, int);
+    int meta_fieldCount(void *);
+    Unknown80042824Value *meta_field(void *, int);
     void fn_8006A47C(void *, void *, void *);
 }
 #pragma push

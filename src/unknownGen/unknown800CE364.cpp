@@ -7,13 +7,13 @@ void *meta_newMetaObject(void *);
 void *fn_80037594();
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void igCapabilityManager_register();
 void igContext_register();
@@ -62,7 +62,7 @@ void *igVisualContext_getMetaCall();
 struct UnknownGenRoot800CE3D8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800CE3D8(){fn_8006665C(this);}
+ inline UnknownGenRoot800CE3D8(){igObject_construct(this);}
 };
 struct UnknownGenObject800CE3D8 : UnknownGenRoot800CE3D8 {
  char unknown04[4];
@@ -101,13 +101,13 @@ void *igVisualContextCapabilityManager_getMetaCall(){return igVisualContextCapab
 void *fn_800CE528(){return igCapabilityManager_meta;}
 void igVisualContextCapabilityManager_fieldInit(){
  void *value0=igVisualContextCapabilityManager_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EA48,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EA48,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800CE788();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
- fn_800659C0(value0,lbl_8055EA4C,lbl_8055EA50,lbl_8055EA54,value1);
+ meta_setupFields(value0,lbl_8055EA4C,lbl_8055EA50,lbl_8055EA54,value1);
 }
 void *igVisualContextList_create(void *object){
  igVisualContextList_registerNow();
@@ -119,7 +119,7 @@ void *igVisualContextList_getMeta(){
 }
 void *igVisualContextList_vtableRead(){
  UnknownGenObject800CE62C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;

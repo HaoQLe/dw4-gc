@@ -4,9 +4,9 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void beCriHandleList_registerNow();
 void *fn_802F7294();
 extern char lbl_804D2628[];
@@ -20,9 +20,9 @@ extern void *lbl_805621F4;
 extern "C" {
 void beCriSfpData_fieldInit(){
  void *meta=beCriSfpData_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D2628,0x4);
- fn_800659C0(meta,lbl_804D2638,lbl_804D2648,lbl_804D2658,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D2628,0x4);
+ meta_setupFields(meta,lbl_804D2638,lbl_804D2648,lbl_804D2658,field);
 }
 void *fn_802DEB14(){return fn_802F7294();}
 void *beCriHandleList_metaObject(){

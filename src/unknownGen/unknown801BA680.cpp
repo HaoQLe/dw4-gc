@@ -5,7 +5,7 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801BA7A8(void *,short);
 void igMorphBase_registerNow();
 extern char igMorphBase_vtable[];
@@ -42,7 +42,7 @@ void *igMorphBase_getMeta(){
 }
 void *igMorphBase_vtableRead(){
  UnknownGenObject801BA730 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igMorphBase_vtable;
  object.unknown08=0;
  object.unknown0C=0;

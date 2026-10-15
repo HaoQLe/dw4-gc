@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void *fn_8026960C();
 void *beSystem_metaObject();
 void *beLuaState_metaObject();
@@ -19,24 +19,24 @@ extern void *beLua_meta;
 extern "C" {
 void beLua_fieldInit(){
  void *value0=beLua_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_804D189C,4);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_804D189C,4);
+ void *value2=meta_field(value0,value1);
  void *value3=beSystem_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+60)=0;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value5=beBaseInfoList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
- void *value6=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));
+ void *value6=meta_field(value0,(reinterpret_cast<char *>(value1)+2));
  void *value7=beLuaState_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
- void *value8=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+3));
+ void *value8=meta_field(value0,(reinterpret_cast<char *>(value1)+3));
  void *value9=fn_8026960C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value8)+52)=1;
- fn_800659C0(value0,lbl_804D18AC,lbl_804D18BC,lbl_804D18CC,value1);
+ meta_setupFields(value0,lbl_804D18AC,lbl_804D18BC,lbl_804D18CC,value1);
 }
 }
 #pragma pop

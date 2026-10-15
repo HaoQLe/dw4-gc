@@ -3,13 +3,13 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80046E58(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void *fn_800AD708();
@@ -73,11 +73,11 @@ void igMatrixConstantAttr_register(){
 void *igMatrixConstantAttr_getMetaCall(){return igMatrixConstantAttr_getMeta();}
 void igMatrixConstantAttr_fieldInit(){
  void *value0=igMatrixConstantAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E398,2);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E398,2);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+48)=(void *)fn_800C1444;
- fn_800659C0(value0,lbl_8055E3A0,lbl_8055E3A8,lbl_8055E3B0,value1);
+ meta_setupFields(value0,lbl_8055E3A0,lbl_8055E3A8,lbl_8055E3B0,value1);
 }
 void *igMaterialModeAttr_getMeta(){
  if(!igMaterialModeAttr_meta || !(reinterpret_cast<unsigned int *>(igMaterialModeAttr_meta)[0x24/4]&4)) igMaterialModeAttr_registerNow();
@@ -85,7 +85,7 @@ void *igMaterialModeAttr_getMeta(){
 }
 void *igMaterialModeAttr_vtableRead(){
  UnknownGenObject800B4A00_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igMaterialModeAttr_vtable;
@@ -101,12 +101,12 @@ void igMaterialModeAttr_register(){
 void *igMaterialModeAttr_getMetaCall(){return igMaterialModeAttr_getMeta();}
 void igMaterialModeAttr_fieldInit(){
  void *value0=igMaterialModeAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E3B8,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E3B8,1);
+ void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E3C8);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_800CE17C;
- fn_800659C0(value0,lbl_8055E3BC,lbl_8055E3C0,lbl_8055E3C4,value1);
+ meta_setupFields(value0,lbl_8055E3BC,lbl_8055E3C0,lbl_8055E3C4,value1);
 }
 void *igMaterialAttr_getMeta(){
  if(!igMaterialAttr_meta || !(reinterpret_cast<unsigned int *>(igMaterialAttr_meta)[0x24/4]&4)) igMaterialAttr_registerNow();
@@ -114,7 +114,7 @@ void *igMaterialAttr_getMeta(){
 }
 void *igMaterialAttr_vtableRead(){
  UnknownGenObject800B4BD8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igMaterialAttr_vtable;

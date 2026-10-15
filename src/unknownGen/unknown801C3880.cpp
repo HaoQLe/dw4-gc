@@ -7,13 +7,13 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_800BA194();
 void *fn_800BB7B8();
 void fn_801AA6DC();
@@ -59,7 +59,7 @@ struct UnknownGenObject801C38F8_0 {
 struct UnknownGenRoot801C3A90 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C3A90(){fn_8006665C(this);}
+ inline UnknownGenRoot801C3A90(){igObject_construct(this);}
 };
 struct UnknownGenObject801C3A90 : UnknownGenRoot801C3A90 {
  char unknown04[4];
@@ -82,7 +82,7 @@ void *igBlendListRecordList_getMeta(){
 }
 void *igBlendListRecordList_vtableRead(){
  UnknownGenObject801C38F8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -122,18 +122,18 @@ void igBlendListRecord_register(){
 void *igBlendListRecord_getMetaCall(){return igBlendListRecord_getMeta();}
 void igBlendListRecord_fieldInit(){
  void *value0=igBlendListRecord_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560710,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560710,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800BA194();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value5=fn_800BB7B8();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+60)=0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+38)=0;
- fn_800659C0(value0,lbl_80560728,lbl_80560730,lbl_80560738,value1);
+ meta_setupFields(value0,lbl_80560728,lbl_80560730,lbl_80560738,value1);
 }
 void *igCompileTraversal_create(void *object){
  igCompileTraversal_registerNow();

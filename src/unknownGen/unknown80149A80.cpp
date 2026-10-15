@@ -5,7 +5,7 @@ extern "C" {
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void igGaussianFilterFun_fieldInit();
 void igSerialFilterFun_register();
@@ -37,7 +37,7 @@ void *igGaussianFilterFun_getMeta(){
 }
 void *igGaussianFilterFun_vtableRead(){
  UnknownGenObject80149AF4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A8FDC;
  object.unknown00=lbl_804A6BF0;
  object.unknown00=igGaussianFilterFun_vtable;

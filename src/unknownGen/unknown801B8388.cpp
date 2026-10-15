@@ -9,7 +9,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igObjectList_register();
 void igObject_register();
@@ -44,7 +44,7 @@ struct UnknownGenObject801B83C4_0 {
 struct UnknownGenRoot801B8560 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801B8560(){fn_8006665C(this);}
+ inline UnknownGenRoot801B8560(){igObject_construct(this);}
 };
 struct UnknownGenObject801B8560 : UnknownGenRoot801B8560 {
  char unknown04[44];
@@ -64,7 +64,7 @@ void *_vertexList_getMeta(){
 }
 void *_vertexList_vtableRead(){
  UnknownGenObject801B83C4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

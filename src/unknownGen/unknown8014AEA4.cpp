@@ -4,13 +4,13 @@
 extern "C" {
 void *fn_8002A638();
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_8013496C();
 void igFieldUpdate_fieldInit();
@@ -50,7 +50,7 @@ void *igFieldUpdate_getMetaCall();
 struct UnknownGenRoot8014AF18 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014AF18(){fn_8006665C(this);}
+ inline UnknownGenRoot8014AF18(){igObject_construct(this);}
 };
 struct UnknownGenObject8014AF18_0 : UnknownGenRoot8014AF18 {
  char unknown04[28];
@@ -65,7 +65,7 @@ struct UnknownGenObject8014AF18 : UnknownGenObject8014AF18_0 {
 struct UnknownGenRoot8014B19C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014B19C(){fn_8006665C(this);}
+ inline UnknownGenRoot8014B19C(){igObject_construct(this);}
 };
 struct UnknownGenObject8014B19C : UnknownGenRoot8014B19C {
  char unknown04[28];
@@ -108,12 +108,12 @@ void *igUpdatedFieldEvent_getMetaCall(){return igUpdatedFieldEvent_getMeta();}
 void *igUpdatedFieldEvent_parentMeta(){return igObjectChangedEvent_meta;}
 void igUpdatedFieldEvent_fieldInit(){
  void *value0=igUpdatedFieldEvent_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FB94,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FB94,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_8002A638();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055FBA0,lbl_8055FBA4,lbl_8055FBA8,value1);
+ meta_setupFields(value0,lbl_8055FBA0,lbl_8055FBA4,lbl_8055FBA8,value1);
 }
 void *igFieldUpdate_getMeta(){
  if(!igFieldUpdate_meta || !(reinterpret_cast<unsigned int *>(igFieldUpdate_meta)[0x24/4]&4)) igFieldUpdate_registerNow();

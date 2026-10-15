@@ -6,7 +6,7 @@ void fn_80021B94();
 void *fn_8002C31C();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igFile_register();
 void igFolder_register();
 void *igGamecubeFile_fieldInit();
@@ -34,7 +34,7 @@ void igGamecubeFile_register();
 struct UnknownGenRoot8003B8D4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8003B8D4(){fn_8006665C(this);}
+ inline UnknownGenRoot8003B8D4(){igObject_construct(this);}
 };
 struct UnknownGenObject8003B8D4_0 : UnknownGenRoot8003B8D4 {
  char unknown04[4];
@@ -48,7 +48,7 @@ struct UnknownGenObject8003B8D4 : UnknownGenObject8003B8D4_0 {
 struct UnknownGenRoot8003BA40 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8003BA40(){fn_8006665C(this);}
+ inline UnknownGenRoot8003BA40(){igObject_construct(this);}
 };
 struct UnknownGenObject8003BA40_0 : UnknownGenRoot8003BA40 {
  char unknown04[4];

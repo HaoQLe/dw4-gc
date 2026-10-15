@@ -8,7 +8,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801AF130();
 void igSelfShadowShader_registerNow();
@@ -184,7 +184,7 @@ void *igBlendMatricesAttrPool_getMeta(){
 }
 void *igBlendMatricesAttrPool_vtableRead(){
  UnknownGenObject801B1DF0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -211,7 +211,7 @@ void *igTextureMatrixAttrPool_getMeta(){
 }
 void *igTextureMatrixAttrPool_vtableRead(){
  UnknownGenObject801B1F98_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -238,7 +238,7 @@ void *igMatrixObjectPool_getMeta(){
 }
 void *igMatrixObjectPool_vtableRead(){
  UnknownGenObject801B2140_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -265,7 +265,7 @@ void *igVertexBlendMatrixListAttrPool_getMeta(){
 }
 void *igVertexBlendMatrixListAttrPool_vtableRead(){
  UnknownGenObject801B22E8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -292,7 +292,7 @@ void *igVertexBlendMatrixAttrPool_getMeta(){
 }
 void *igVertexBlendMatrixAttrPool_vtableRead(){
  UnknownGenObject801B2490_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -319,7 +319,7 @@ void *igProjectionMatrixAttrPool_getMeta(){
 }
 void *igProjectionMatrixAttrPool_vtableRead(){
  UnknownGenObject801B2638_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -346,7 +346,7 @@ void *igTimeAttrPool_getMeta(){
 }
 void *igTimeAttrPool_vtableRead(){
  UnknownGenObject801B27E0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -373,7 +373,7 @@ void *igModelViewMatrixAttrPool_getMeta(){
 }
 void *igModelViewMatrixAttrPool_vtableRead(){
  UnknownGenObject801B2988_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -400,7 +400,7 @@ void *igLightStateAttrPool_getMeta(){
 }
 void *igLightStateAttrPool_vtableRead(){
  UnknownGenObject801B2B30_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -423,7 +423,7 @@ void *igAttrStackManagerPopFunctionList_getMeta(){
 }
 void *igAttrStackManagerPopFunctionList_vtableRead(){
  UnknownGenObject801B2C9C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_804B8930;
  object.unknown00=igAttrStackManagerPopFunctionList_vtable;
@@ -451,7 +451,7 @@ void *igTraversalFunctionList_getMeta(){
 }
 void *igTraversalFunctionList_vtableRead(){
  UnknownGenObject801B2E54_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_804B8870;
  object.unknown00=igTraversalFunctionList_vtable;

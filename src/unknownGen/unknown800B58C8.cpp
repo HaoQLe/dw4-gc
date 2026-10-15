@@ -7,7 +7,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igLightAttr_fieldInit();
@@ -46,7 +46,7 @@ struct UnknownGenObject800B5940_0 {
 struct UnknownGenRoot800B5ADC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B5ADC(){fn_8006665C(this);}
+ inline UnknownGenRoot800B5ADC(){igObject_construct(this);}
 };
 struct UnknownGenObject800B5ADC : UnknownGenRoot800B5ADC {
  char unknown04[136];
@@ -65,7 +65,7 @@ void *igLightList_getMeta(){
 }
 void *igLightList_vtableRead(){
  UnknownGenObject800B5940_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

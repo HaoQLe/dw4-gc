@@ -3,12 +3,12 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800237D0();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80216620();
 void *fn_80218670();
 void igFloatHistogram_fieldInit();
@@ -45,7 +45,7 @@ struct UnknownGenObject80218724_0 {
 struct UnknownGenRoot802188C0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot802188C0(){fn_8006665C(this);}
+ inline UnknownGenRoot802188C0(){igObject_construct(this);}
 };
 struct UnknownGenObject802188C0_0 : UnknownGenRoot802188C0 {
  char unknown04[4];
@@ -66,7 +66,7 @@ void *igFloatObject_getMeta(){
 }
 void *igFloatObject_vtableRead(){
  UnknownGenObject80218724_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igFloatObject_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -80,9 +80,9 @@ void igFloatObject_register(){
 void *igFloatObject_getMetaCall(){return igFloatObject_getMeta();}
 void igFloatObject_fieldInit(){
  void *value0=igFloatObject_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560C48,1);
- fn_800659C0(value0,lbl_80560C4C,lbl_80560C50,lbl_80560C54,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560C48,1);
+ meta_setupFields(value0,lbl_80560C4C,lbl_80560C50,lbl_80560C54,value1);
 }
 void *igFloatHistogram_getMeta(){
  if(!igFloatHistogram_meta || !(reinterpret_cast<unsigned int *>(igFloatHistogram_meta)[0x24/4]&4)) igFloatHistogram_registerNow();

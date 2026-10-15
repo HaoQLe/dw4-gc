@@ -16,6 +16,14 @@ Registration API:
 - `meta_newMetaObject` (fn_80029E64): creates a metaobject in a pool.
 - `meta_createInstance` (fn_8006546C): creates an instance of a metaobject's class in a pool (or through its
   creation callback at +0x3C).
+- `meta_fieldCount` (fn_80065D88): the number of fields in `_metaFields` (its count at +0xC).
+- `meta_field` (fn_800658E4): field i of `_metaFields`.
+- `meta_appendFields` (fn_80065924): for each of count field-type functions, creates a field (in the
+  default pool) and appends it.
+- `meta_setupFields` (fn_800659C0): for the fields from index first to the end, sets each one's name, offset
+  and a third value from the three tables, then finishes it (fn_80063BA8, fn_80063F14).
+- `igObject_construct` (fn_8006665C): igObject's constructor: stores igObject's vtable and initializes the
+  reference count word at +4.
 
 Functions are found by shape in the current split objects (build/GDJEB2/analysis/reg/allfns.json, written by
 funcindex.py). Only names of the form fn_/lbl_XXXXXXXX are replaced, everywhere they
@@ -31,7 +39,8 @@ from paths import CONFIG
 import dol
 
 API={'fn_80066204':'meta_registerClass','fn_80066188':'meta_registerNow','fn_80029E64':'meta_newMetaObject',
-     'fn_8006546C':'meta_createInstance'}
+     'fn_8006546C':'meta_createInstance','fn_80065D88':'meta_fieldCount','fn_800658E4':'meta_field',
+     'fn_80065924':'meta_appendFields','fn_800659C0':'meta_setupFields','fn_8006665C':'igObject_construct'}
 
 def main():
     dry='--dry-run' in sys.argv
@@ -47,6 +56,8 @@ def main():
         if mapping.get(old,new)!=new: raise SystemExit('two names for %s: %s, %s'%(old,mapping[old],new))
         mapping[old]=new
     for old,new in API.items(): want(old,new)
+    # igObject has no vtableRead; its constructor (igObject_construct) stores this vtable.
+    want('lbl_804717F0','igObject_vtable')
     meta2cls={}
     for c,v in C.items():
         if v.get('meta'): meta2cls.setdefault(v['meta'],[]).append(c)

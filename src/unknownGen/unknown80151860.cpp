@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_80071694(void *,void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
@@ -51,7 +51,7 @@ void *igChildEditForNode_parentMeta();
 struct UnknownGenRoot8015189C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8015189C(){fn_8006665C(this);}
+ inline UnknownGenRoot8015189C(){igObject_construct(this);}
 };
 struct UnknownGenObject8015189C_0 : UnknownGenRoot8015189C {
  char unknown04[28];
@@ -71,7 +71,7 @@ struct UnknownGenObject8015189C : UnknownGenObject8015189C_1 {
 struct UnknownGenRoot80151B8C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80151B8C(){fn_8006665C(this);}
+ inline UnknownGenRoot80151B8C(){igObject_construct(this);}
 };
 struct UnknownGenObject80151B8C_0 : UnknownGenRoot80151B8C {
  char unknown04[28];
@@ -111,11 +111,11 @@ void igCollapseAllHierarchies_register(){
 void *igCollapseAllHierarchies_getMetaCall(){return igCollapseAllHierarchies_getMeta();}
 void igCollapseAllHierarchies_fieldInit(){
  void *value0=igCollapseAllHierarchies_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FCEC,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FCEC,1);
+ void *value2=meta_field(value0,value1);
  fn_80071694(value2,lbl_8055F71C);
- fn_800659C0(value0,lbl_8055FCF0,lbl_8055FCF4,lbl_8055FCF8,value1);
+ meta_setupFields(value0,lbl_8055FCF0,lbl_8055FCF4,lbl_8055FCF8,value1);
 }
 void *igChildEditForNode_getMeta(){
  if(!igChildEditForNode_meta || !(reinterpret_cast<unsigned int *>(igChildEditForNode_meta)[0x24/4]&4)) igChildEditForNode_registerNow();

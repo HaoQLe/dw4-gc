@@ -14,13 +14,13 @@ void *fn_800607F4(void *);
 void *fn_80063B5C();
 void fn_80063F14(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igCallStackTable_fieldInit();
 void *igCharMetaField_getMeta();
 void igCharMetaField_register();
@@ -98,7 +98,7 @@ struct UnknownGenObject800381D4_0 {
 struct UnknownGenRoot800383B0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800383B0(){fn_8006665C(this);}
+ inline UnknownGenRoot800383B0(){igObject_construct(this);}
 };
 struct UnknownGenObject800383B0 : UnknownGenRoot800383B0 {
  char unknown04[12];
@@ -150,10 +150,10 @@ void *igCharArrayMetaField_getMetaCall(){return igCharArrayMetaField_getMeta();}
 void *igCharArrayMetaField_parentMeta(){return igCharMetaField_meta;}
 void igCharArrayMetaField_fieldInit(){
  void *meta=igCharArrayMetaField_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055D680,1);
- fn_80053650(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055D684,lbl_8055D688,lbl_8055D68C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055D680,1);
+ fn_80053650(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055D684,lbl_8055D688,lbl_8055D68C,field);
 }
 void fn_800380C4(){
  if(!lbl_80561E28){
@@ -176,7 +176,7 @@ void *igCallStackTracer_getMeta(){
 }
 void *igCallStackTracer_vtableRead(){
  UnknownGenObject800381D4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80474900;
  object.unknown00=igUnsignedIntList_vtable;

@@ -6,12 +6,12 @@ void *fn_800237D0();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void *fn_800D5128();
 void fn_800D575C();
@@ -53,9 +53,9 @@ void igCustomMatrixState_register(){
 void *igCustomMatrixState_getMetaCall(){return igCustomMatrixState_getMeta();}
 void igCustomMatrixState_fieldInit(){
  void *value0=igCustomMatrixState_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055ECE8,1);
- fn_800659C0(value0,lbl_8055ECEC,lbl_8055ECF0,lbl_8055ECF4,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055ECE8,1);
+ meta_setupFields(value0,lbl_8055ECEC,lbl_8055ECF0,lbl_8055ECF4,value1);
 }
 void *igClut_create(void *object){
  igClut_registerNow();
@@ -71,7 +71,7 @@ void *igClut_getMeta(){
 }
 void *igClut_vtableRead(){
  UnknownGenObject800D5668_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igClut_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

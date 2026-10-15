@@ -6,13 +6,13 @@ void *fn_800237D0();
 void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igHashedUserInfo_registerNow();
 void igObjectList_register();
@@ -64,7 +64,7 @@ void igHeapable_fieldInit();
 struct UnknownGenRoot801BEE68 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801BEE68(){fn_8006665C(this);}
+ inline UnknownGenRoot801BEE68(){igObject_construct(this);}
 };
 struct UnknownGenObject801BEE68 : UnknownGenRoot801BEE68 {
  char unknown04[4];
@@ -101,13 +101,13 @@ void igHeap_register(){
 void *igHeap_getMetaCall(){return igHeap_getMeta();}
 void igHeap_fieldInit(){
  void *value0=igHeap_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_805605B0,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_805605B0,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_801BF030();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- fn_800659C0(value0,lbl_805605BC,lbl_805605C0,lbl_805605C4,value1);
+ meta_setupFields(value0,lbl_805605BC,lbl_805605C0,lbl_805605C4,value1);
 }
 void *fn_801BF030(){
  if(!igHeapableList_meta) igHeapableList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -119,7 +119,7 @@ void *igHeapableList_getMeta(){
 }
 void *igHeapableList_vtableRead(){
  UnknownGenObject801BF0A8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -141,7 +141,7 @@ void *igHeapable_getMeta(){
 }
 void *igHeapable_vtableRead(){
  UnknownGenObject801BF208_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igHeapable_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -155,9 +155,9 @@ void igHeapable_register(){
 void *igHeapable_getMetaCall(){return igHeapable_getMeta();}
 void igHeapable_fieldInit(){
  void *value0=igHeapable_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_805605D0,2);
- fn_800659C0(value0,lbl_805605D8,lbl_805605E0,lbl_805605E8,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_805605D0,2);
+ meta_setupFields(value0,lbl_805605D8,lbl_805605E0,lbl_805605E8,value1);
 }
 void *igHashedUserInfo_getMeta(){
  if(!igHashedUserInfo_meta || !(reinterpret_cast<unsigned int *>(igHashedUserInfo_meta)[0x24/4]&4)) igHashedUserInfo_registerNow();

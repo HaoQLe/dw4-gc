@@ -6,12 +6,12 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void *fn_801308D0();
@@ -124,7 +124,7 @@ struct UnknownGenObject80147B40_0 {
 struct UnknownGenRoot80147CA0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80147CA0(){fn_8006665C(this);}
+ inline UnknownGenRoot80147CA0(){igObject_construct(this);}
 };
 struct UnknownGenObject80147CA0_0 : UnknownGenRoot80147CA0 {
  char unknown04[28];
@@ -144,7 +144,7 @@ struct UnknownGenObject80147CA0 : UnknownGenObject80147CA0_1 {
 struct UnknownGenRoot80147F7C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80147F7C(){fn_8006665C(this);}
+ inline UnknownGenRoot80147F7C(){igObject_construct(this);}
 };
 struct UnknownGenObject80147F7C_0 : UnknownGenRoot80147F7C {
  char unknown04[28];
@@ -163,7 +163,7 @@ struct UnknownGenObject80147F7C : UnknownGenObject80147F7C_1 {
 struct UnknownGenRoot801481A8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801481A8(){fn_8006665C(this);}
+ inline UnknownGenRoot801481A8(){igObject_construct(this);}
 };
 struct UnknownGenObject801481A8_0 : UnknownGenRoot801481A8 {
  char unknown04[28];
@@ -183,7 +183,7 @@ struct UnknownGenObject801481A8 : UnknownGenObject801481A8_1 {
 struct UnknownGenRoot80148484 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80148484(){fn_8006665C(this);}
+ inline UnknownGenRoot80148484(){igObject_construct(this);}
 };
 struct UnknownGenObject80148484_0 : UnknownGenRoot80148484 {
  char unknown04[28];
@@ -201,7 +201,7 @@ struct UnknownGenObject80148484 : UnknownGenObject80148484_1 {
 struct UnknownGenRoot80148684 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80148684(){fn_8006665C(this);}
+ inline UnknownGenRoot80148684(){igObject_construct(this);}
 };
 struct UnknownGenObject80148684_0 : UnknownGenRoot80148684 {
  char unknown04[28];
@@ -219,7 +219,7 @@ struct UnknownGenObject80148684 : UnknownGenObject80148684_1 {
 struct UnknownGenRoot8014887C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014887C(){fn_8006665C(this);}
+ inline UnknownGenRoot8014887C(){igObject_construct(this);}
 };
 struct UnknownGenObject8014887C_0 : UnknownGenRoot8014887C {
  char unknown04[28];
@@ -237,7 +237,7 @@ struct UnknownGenObject8014887C : UnknownGenObject8014887C_1 {
 struct UnknownGenRoot80148B64 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80148B64(){fn_8006665C(this);}
+ inline UnknownGenRoot80148B64(){igObject_construct(this);}
 };
 struct UnknownGenObject80148B64_0 : UnknownGenRoot80148B64 {
  char unknown04[28];
@@ -266,7 +266,7 @@ void *igGeometryListList_getMeta(){
 }
 void *igGeometryListList_vtableRead(){
  UnknownGenObject80147B40_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -309,9 +309,9 @@ void igGatherTransforms_register(){
 void *igGatherTransforms_getMetaCall(){return igGatherTransforms_getMeta();}
 void igGatherTransforms_fieldInit(){
  void *value0=igGatherTransforms_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FAD8,1);
- fn_800659C0(value0,lbl_8055FADC,lbl_8055FAE0,lbl_8055FAE4,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FAD8,1);
+ meta_setupFields(value0,lbl_8055FADC,lbl_8055FAE0,lbl_8055FAE4,value1);
 }
 void *igGatherSpatialPartitions_getMeta(){
  if(!igGatherSpatialPartitions_meta || !(reinterpret_cast<unsigned int *>(igGatherSpatialPartitions_meta)[0x24/4]&4)) igGatherSpatialPartitions_registerNow();
@@ -364,9 +364,9 @@ void igGatherCompileGraphs_register(){
 void *igGatherCompileGraphs_getMetaCall(){return igGatherCompileGraphs_getMeta();}
 void igGatherCompileGraphs_fieldInit(){
  void *value0=igGatherCompileGraphs_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FAE8,1);
- fn_800659C0(value0,lbl_8055FAEC,lbl_8055FAF0,lbl_8055FAF4,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FAE8,1);
+ meta_setupFields(value0,lbl_8055FAEC,lbl_8055FAF0,lbl_8055FAF4,value1);
 }
 void *igFlattenNodeForTransform_getMeta(){
  if(!igFlattenNodeForTransform_meta || !(reinterpret_cast<unsigned int *>(igFlattenNodeForTransform_meta)[0x24/4]&4)) igFlattenNodeForTransform_registerNow();

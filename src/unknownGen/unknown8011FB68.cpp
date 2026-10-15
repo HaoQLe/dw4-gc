@@ -5,7 +5,7 @@ extern "C" {
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8011D8BC();
 void *fn_8011F6A4();
 void *fn_8011FD6C();
@@ -36,7 +36,7 @@ void *igPlane_getMeta(){
 }
 void *igPlane_vtableRead(){
  UnknownGenObject8011FBDC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8049B9DC;
  object.unknown00=igPlane_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

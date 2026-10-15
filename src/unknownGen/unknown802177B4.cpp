@@ -3,13 +3,13 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800237D0();
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80216620();
 void igMeanAndStandardDeviation_fieldInit();
 void *igMersenneTwisterRandomNumber_getMetaCall();
@@ -53,7 +53,7 @@ void *igMersenneTwisterRandomNumber_getMeta(){
 }
 void *igMersenneTwisterRandomNumber_vtableRead(){
  UnknownGenObject802177F0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804BC590;
  object.unknown00=igMersenneTwisterRandomNumber_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -68,11 +68,11 @@ void igMersenneTwisterRandomNumber_register(){
 void *igMersenneTwisterRandomNumber_parentMeta(){return igRandomNumber_meta;}
 void igMersenneTwisterRandomNumber_fieldInit(){
  void *value0=igMersenneTwisterRandomNumber_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560BE0,2);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560BE0,2);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)624;
- fn_800659C0(value0,lbl_80560BF4,lbl_80560BFC,lbl_80560C04,value1);
+ meta_setupFields(value0,lbl_80560BF4,lbl_80560BFC,lbl_80560C04,value1);
 }
 void *igMeanAndStandardDeviation_getMeta(){
  if(!igMeanAndStandardDeviation_meta || !(reinterpret_cast<unsigned int *>(igMeanAndStandardDeviation_meta)[0x24/4]&4)) igMeanAndStandardDeviation_registerNow();
@@ -80,7 +80,7 @@ void *igMeanAndStandardDeviation_getMeta(){
 }
 void *igMeanAndStandardDeviation_vtableRead(){
  UnknownGenObject80217994_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igMeanAndStandardDeviation_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

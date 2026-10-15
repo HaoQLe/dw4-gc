@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igGuiComponentNode_registerNow();
 extern char igNamedObject_vtable[];
 extern char igGuiComponentNode_vtable[];
@@ -16,7 +16,7 @@ extern void *igGuiComponentNode_meta;
 struct UnknownGenRoot80111118 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80111118(){fn_8006665C(this);}
+ inline UnknownGenRoot80111118(){igObject_construct(this);}
 };
 struct UnknownGenObject80111118_0 : UnknownGenRoot80111118 {
  char unknown04[4];

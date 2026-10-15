@@ -3,9 +3,9 @@
 #pragma auto_inline off
 extern "C" {
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void beModelCtrlSCHitBox_registerNow();
 extern char lbl_804D05C8[];
 extern char lbl_804D05D0[];
@@ -17,9 +17,9 @@ extern void *beModelCtrlSCHitBox_meta;
 extern "C" {
 void beModelCtrlSCSound_fieldInit(){
  void *meta=beModelCtrlSCSound_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D05C8,0x2);
- fn_800659C0(meta,lbl_804D05D0,lbl_804D05D8,lbl_804D05E0,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D05C8,0x2);
+ meta_setupFields(meta,lbl_804D05D0,lbl_804D05D8,lbl_804D05E0,field);
 }
 void *beModelCtrlSCHitBox_create(void *object){
  beModelCtrlSCHitBox_registerNow();

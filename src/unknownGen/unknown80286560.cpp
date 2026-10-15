@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8010F4FC();
 void fn_80284294();
 void *fn_80289930();
@@ -40,7 +40,7 @@ void *igWindowResizeEventReceiver_getMeta(){
 }
 void *igWindowResizeEventReceiver_vtableRead(){
  UnknownGenObject80286620_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igEventReceiver_vtable;
  object.unknown00=igWindowResizeEventReceiver_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

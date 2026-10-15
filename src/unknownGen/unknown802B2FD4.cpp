@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
@@ -16,7 +16,7 @@ struct UnknownGenObject802B2FD4_0 {
 extern "C" {
 void *beWeaponSeqDataList_vtableRead(){
  UnknownGenObject802B2FD4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

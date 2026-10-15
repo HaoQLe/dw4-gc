@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igSceneAmbientColorAttr_fieldInit();
@@ -31,7 +31,7 @@ void *igSceneAmbientColorAttr_getMeta(){
 }
 void *igSceneAmbientColorAttr_vtableRead(){
  UnknownGenObject800B123C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igSceneAmbientColorAttr_vtable;

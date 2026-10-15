@@ -5,9 +5,9 @@ extern "C" {
 void beBaseInfoManager_register();
 void *bePoint01_getMeta();
 void bePoint01_vtableRead();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -35,9 +35,9 @@ void bePoint01_register(){
 void *bePoint01_getMetaCall(){return bePoint01_getMeta();}
 void bePoint01_fieldInit(){
  void *meta=bePoint01_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D0048,0x1);
- fn_800659C0(meta,lbl_804D004C,lbl_804D0050,lbl_804D0054,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D0048,0x1);
+ meta_setupFields(meta,lbl_804D004C,lbl_804D0050,lbl_804D0054,field);
 }
 void *beParticleCtrl2InfoRam_getMeta(){
  if(!beParticleCtrl2InfoRam_meta || !(reinterpret_cast<unsigned int *>(beParticleCtrl2InfoRam_meta)[0x24/4]&4)) beParticleCtrl2InfoRam_registerNow();

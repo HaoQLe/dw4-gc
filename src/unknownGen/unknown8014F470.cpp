@@ -3,13 +3,13 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8004D4BC(void *,float);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_8012FEB0();
 void *fn_8013496C();
@@ -152,7 +152,7 @@ void *igCollapseNode_getMetaCall();
 struct UnknownGenRoot8014F4AC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014F4AC(){fn_8006665C(this);}
+ inline UnknownGenRoot8014F4AC(){igObject_construct(this);}
 };
 struct UnknownGenObject8014F4AC_0 : UnknownGenRoot8014F4AC {
  char unknown04[28];
@@ -172,7 +172,7 @@ struct UnknownGenObject8014F4AC : UnknownGenObject8014F4AC_1 {
 struct UnknownGenRoot8014F79C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014F79C(){fn_8006665C(this);}
+ inline UnknownGenRoot8014F79C(){igObject_construct(this);}
 };
 struct UnknownGenObject8014F79C_0 : UnknownGenRoot8014F79C {
  char unknown04[28];
@@ -187,7 +187,7 @@ struct UnknownGenObject8014F79C : UnknownGenObject8014F79C_0 {
 struct UnknownGenRoot8014F984 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014F984(){fn_8006665C(this);}
+ inline UnknownGenRoot8014F984(){igObject_construct(this);}
 };
 struct UnknownGenObject8014F984_0 : UnknownGenRoot8014F984 {
  char unknown04[28];
@@ -202,7 +202,7 @@ struct UnknownGenObject8014F984 : UnknownGenObject8014F984_0 {
 struct UnknownGenRoot8014FB6C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014FB6C(){fn_8006665C(this);}
+ inline UnknownGenRoot8014FB6C(){igObject_construct(this);}
 };
 struct UnknownGenObject8014FB6C_0 : UnknownGenRoot8014FB6C {
  char unknown04[28];
@@ -217,7 +217,7 @@ struct UnknownGenObject8014FB6C : UnknownGenObject8014FB6C_0 {
 struct UnknownGenRoot8014FD54 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014FD54(){fn_8006665C(this);}
+ inline UnknownGenRoot8014FD54(){igObject_construct(this);}
 };
 struct UnknownGenObject8014FD54_0 : UnknownGenRoot8014FD54 {
  char unknown04[28];
@@ -232,7 +232,7 @@ struct UnknownGenObject8014FD54 : UnknownGenObject8014FD54_0 {
 struct UnknownGenRoot8014FF3C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014FF3C(){fn_8006665C(this);}
+ inline UnknownGenRoot8014FF3C(){igObject_construct(this);}
 };
 struct UnknownGenObject8014FF3C_0 : UnknownGenRoot8014FF3C {
  char unknown04[28];
@@ -247,7 +247,7 @@ struct UnknownGenObject8014FF3C : UnknownGenObject8014FF3C_0 {
 struct UnknownGenRoot80150124 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80150124(){fn_8006665C(this);}
+ inline UnknownGenRoot80150124(){igObject_construct(this);}
 };
 struct UnknownGenObject80150124_0 : UnknownGenRoot80150124 {
  char unknown04[28];
@@ -262,7 +262,7 @@ struct UnknownGenObject80150124 : UnknownGenObject80150124_0 {
 struct UnknownGenRoot8015030C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8015030C(){fn_8006665C(this);}
+ inline UnknownGenRoot8015030C(){igObject_construct(this);}
 };
 struct UnknownGenObject8015030C_0 : UnknownGenRoot8015030C {
  char unknown04[28];
@@ -277,7 +277,7 @@ struct UnknownGenObject8015030C : UnknownGenObject8015030C_0 {
 struct UnknownGenRoot801504F4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801504F4(){fn_8006665C(this);}
+ inline UnknownGenRoot801504F4(){igObject_construct(this);}
 };
 struct UnknownGenObject801504F4_0 : UnknownGenRoot801504F4 {
  char unknown04[28];
@@ -292,7 +292,7 @@ struct UnknownGenObject801504F4 : UnknownGenObject801504F4_0 {
 struct UnknownGenRoot801506DC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801506DC(){fn_8006665C(this);}
+ inline UnknownGenRoot801506DC(){igObject_construct(this);}
 };
 struct UnknownGenObject801506DC_0 : UnknownGenRoot801506DC {
  char unknown04[28];
@@ -307,7 +307,7 @@ struct UnknownGenObject801506DC : UnknownGenObject801506DC_0 {
 struct UnknownGenRoot801508C4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801508C4(){fn_8006665C(this);}
+ inline UnknownGenRoot801508C4(){igObject_construct(this);}
 };
 struct UnknownGenObject801508C4_0 : UnknownGenRoot801508C4 {
  char unknown04[28];
@@ -322,7 +322,7 @@ struct UnknownGenObject801508C4 : UnknownGenObject801508C4_0 {
 struct UnknownGenRoot80150AAC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80150AAC(){fn_8006665C(this);}
+ inline UnknownGenRoot80150AAC(){igObject_construct(this);}
 };
 struct UnknownGenObject80150AAC_0 : UnknownGenRoot80150AAC {
  char unknown04[28];
@@ -337,7 +337,7 @@ struct UnknownGenObject80150AAC : UnknownGenObject80150AAC_0 {
 struct UnknownGenRoot80150C94 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80150C94(){fn_8006665C(this);}
+ inline UnknownGenRoot80150C94(){igObject_construct(this);}
 };
 struct UnknownGenObject80150C94_0 : UnknownGenRoot80150C94 {
  char unknown04[28];
@@ -352,7 +352,7 @@ struct UnknownGenObject80150C94 : UnknownGenObject80150C94_0 {
 struct UnknownGenRoot80150E7C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80150E7C(){fn_8006665C(this);}
+ inline UnknownGenRoot80150E7C(){igObject_construct(this);}
 };
 struct UnknownGenObject80150E7C_0 : UnknownGenRoot80150E7C {
  char unknown04[28];
@@ -392,11 +392,11 @@ void igCombineTransforms_register(){
 void *igCombineTransforms_getMetaCall(){return igCombineTransforms_getMeta();}
 void igCombineTransforms_fieldInit(){
  void *value0=igCombineTransforms_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FC8C,2);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FC8C,2);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566B14+0)));
- fn_800659C0(value0,lbl_8055FC94,lbl_8055FC9C,lbl_8055FCA4,value1);
+ meta_setupFields(value0,lbl_8055FC94,lbl_8055FC9C,lbl_8055FCA4,value1);
 }
 void *igCollapseNodeForCompiledGraph_getMeta(){
  if(!igCollapseNodeForCompiledGraph_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForCompiledGraph_meta)[0x24/4]&4)) igCollapseNodeForCompiledGraph_registerNow();

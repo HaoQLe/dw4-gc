@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igCamera_register();
 void igDOFCamera_fieldInit();
@@ -26,7 +26,7 @@ void *igDOFCamera_parentMeta();
 struct UnknownGenRoot801C5B4C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C5B4C(){fn_8006665C(this);}
+ inline UnknownGenRoot801C5B4C(){igObject_construct(this);}
 };
 struct UnknownGenObject801C5B4C_0 : UnknownGenRoot801C5B4C {
  char unknown04[4];

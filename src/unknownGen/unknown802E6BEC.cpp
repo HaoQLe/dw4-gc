@@ -7,9 +7,9 @@ void beAction2MOTIONSET_vtableRead();
 void *fn_80023CF4();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -38,9 +38,9 @@ void beAction2MOTIONSET_register(){
 void *beAction2MOTIONSET_getMetaCall(){return beAction2MOTIONSET_getMeta();}
 void beAction2MOTIONSET_fieldInit(){
  void *meta=beAction2MOTIONSET_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D3168,0x3);
- fn_800659C0(meta,lbl_804D3174,lbl_804D3180,lbl_804D318C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D3168,0x3);
+ meta_setupFields(meta,lbl_804D3174,lbl_804D3180,lbl_804D318C,field);
 }
 void *beAction2DataList_metaObject(){
  if(!beAction2DataList_meta) beAction2DataList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

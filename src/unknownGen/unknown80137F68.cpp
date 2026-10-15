@@ -9,7 +9,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void igCBBox_fieldInit();
 void igObjectList_register();
@@ -56,7 +56,7 @@ void *igCBBoxList_getMeta(){
 }
 void *igCBBoxList_vtableRead(){
  UnknownGenObject80137FE0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -82,7 +82,7 @@ void *igCBBox_getMeta(){
 }
 void *igCBBox_vtableRead(){
  UnknownGenObject80138178_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igCBBox_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

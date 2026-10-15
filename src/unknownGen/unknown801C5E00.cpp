@@ -7,7 +7,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801BBBF0();
 void igCamera_fieldInit();
@@ -27,7 +27,7 @@ void *igCamera_getMetaCall();
 struct UnknownGenRoot801C5EB0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C5EB0(){fn_8006665C(this);}
+ inline UnknownGenRoot801C5EB0(){igObject_construct(this);}
 };
 struct UnknownGenObject801C5EB0_0 : UnknownGenRoot801C5EB0 {
  char unknown04[4];

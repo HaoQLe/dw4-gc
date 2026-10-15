@@ -8,7 +8,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *igImageHistogramBase_fieldInit();
 void igUnsignedIntList_register();
@@ -53,7 +53,7 @@ void *igImageHistogramBase_getMetaCall();
 struct UnknownGenRoot8013747C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8013747C(){fn_8006665C(this);}
+ inline UnknownGenRoot8013747C(){igObject_construct(this);}
 };
 struct UnknownGenObject8013747C_0 : UnknownGenRoot8013747C {
  char unknown04[56];
@@ -70,7 +70,7 @@ struct UnknownGenObject8013747C : UnknownGenObject8013747C_0 {
 struct UnknownGenRoot8013774C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8013774C(){fn_8006665C(this);}
+ inline UnknownGenRoot8013774C(){igObject_construct(this);}
 };
 struct UnknownGenObject8013774C_0 : UnknownGenRoot8013774C {
  char unknown04[56];
@@ -87,7 +87,7 @@ struct UnknownGenObject8013774C : UnknownGenObject8013774C_0 {
 struct UnknownGenRoot80137A14 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80137A14(){fn_8006665C(this);}
+ inline UnknownGenRoot80137A14(){igObject_construct(this);}
 };
 struct UnknownGenObject80137A14_0 : UnknownGenRoot80137A14 {
  char unknown04[56];

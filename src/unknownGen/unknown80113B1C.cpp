@@ -8,13 +8,13 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8010CBD4();
 void *fn_8010DB2C();
 void *fn_8010E6DC();
@@ -105,7 +105,7 @@ struct UnknownGenObject80113CD0_0 {
 struct UnknownGenRoot80113E38 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80113E38(){fn_8006665C(this);}
+ inline UnknownGenRoot80113E38(){igObject_construct(this);}
 };
 struct UnknownGenObject80113E38_0 : UnknownGenRoot80113E38 {
  char unknown04[8];
@@ -131,7 +131,7 @@ struct UnknownGenObject80114248_0 {
 struct UnknownGenRoot8011449C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8011449C(){fn_8006665C(this);}
+ inline UnknownGenRoot8011449C(){igObject_construct(this);}
 };
 struct UnknownGenObject8011449C : UnknownGenRoot8011449C {
  char unknown04[40];
@@ -152,11 +152,11 @@ void *igBasicColorChanger_getMetaCall(){return igBasicColorChanger_getMeta();}
 void *igBasicColorChanger_parentMeta(){return igColorChanger_meta;}
 void igBasicColorChanger_fieldInit(){
  void *value0=igBasicColorChanger_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F1D0,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F1D0,2);
+ void *value2=meta_field(value0,value1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)4;
- fn_800659C0(value0,lbl_8055F1E0,lbl_8055F1E8,lbl_8055F1F0,value1);
+ meta_setupFields(value0,lbl_8055F1E0,lbl_8055F1E8,lbl_8055F1F0,value1);
 }
 void *fn_80113C58(){
  if(!igColorChanger_meta) igColorChanger_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -168,7 +168,7 @@ void *igColorChanger_getMeta(){
 }
 void *igColorChanger_vtableRead(){
  UnknownGenObject80113CD0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igColorChanger_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -217,7 +217,7 @@ void *igChildSizeObserverList_getMeta(){
 }
 void *igChildSizeObserverList_vtableRead(){
  UnknownGenObject801140B0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -243,7 +243,7 @@ void *igChildSizeObserver_getMeta(){
 }
 void *igChildSizeObserver_vtableRead(){
  UnknownGenObject80114248_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_80495AD8;
  object.unknown00=igChildSizeObserver_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
@@ -258,13 +258,13 @@ void igChildSizeObserver_register(){
 void *igChildSizeObserver_getMetaCall(){return igChildSizeObserver_getMeta();}
 void igChildSizeObserver_fieldInit(){
  void *value0=igChildSizeObserver_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F208,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F208,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80114424();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+60)=0;
- fn_800659C0(value0,lbl_8055F20C,lbl_8055F210,lbl_8055F214,value1);
+ meta_setupFields(value0,lbl_8055F20C,lbl_8055F210,lbl_8055F214,value1);
 }
 void *fn_801143D8(){
  char *data=lbl_80494570;

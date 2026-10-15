@@ -5,10 +5,10 @@ extern "C" {
 void beModelCtrl_register();
 void *fn_800365B4();
 void *fn_800635C8(void *,void *,void *,int);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -42,12 +42,12 @@ void *beNDMWMdlPEBase_getMetaCall();
 extern "C" {
 void beNDMWMdlPlayerInfoWork_fieldInit(){
  void *value0=beNDMWMdlPlayerInfoWork_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_804E27B8,8);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_804E27B8,8);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800365B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_804E27D8,lbl_804E27F8,lbl_804E2818,value1);
+ meta_setupFields(value0,lbl_804E27D8,lbl_804E27F8,lbl_804E2818,value1);
 }
 void *fn_80339534(){
  if(!lbl_805361AC) lbl_805361AC=fn_800635C8(lbl_80454460,lbl_804E2838,lbl_804E2860,0xA);

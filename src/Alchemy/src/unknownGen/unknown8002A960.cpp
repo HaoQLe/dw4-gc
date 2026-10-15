@@ -7,7 +7,7 @@ void *fn_800237D0();
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igMetaEnum_fieldInit();
 void igObject_register();
 extern char lbl_804649A8[];
@@ -23,7 +23,7 @@ void *igMetaEnum_getMetaCall();
 struct UnknownGenRoot8002A9D4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8002A9D4(){fn_8006665C(this);}
+ inline UnknownGenRoot8002A9D4(){igObject_construct(this);}
 };
 struct UnknownGenObject8002A9D4 : UnknownGenRoot8002A9D4 {
  char unknown04[4];

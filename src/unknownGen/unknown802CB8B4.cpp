@@ -5,9 +5,9 @@ extern "C" {
 void *beModelCtrlMOVEEX_getMeta();
 void beModelCtrlMOVEEX_vtableRead();
 void *fn_80023CF4();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -33,9 +33,9 @@ void beModelCtrlMOVEEX_register(){
 void *beModelCtrlMOVEEX_getMetaCall(){return beModelCtrlMOVEEX_getMeta();}
 void beModelCtrlMOVEEX_fieldInit(){
  void *meta=beModelCtrlMOVEEX_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D0FC4,0x6);
- fn_800659C0(meta,lbl_804D0FDC,lbl_804D0FF4,lbl_804D100C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D0FC4,0x6);
+ meta_setupFields(meta,lbl_804D0FDC,lbl_804D0FF4,lbl_804D100C,field);
 }
 }
 #pragma pop

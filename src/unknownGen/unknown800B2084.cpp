@@ -6,13 +6,13 @@ void *meta_newMetaObject(void *);
 void fn_80046E58(void *,void *);
 void fn_8004D4BC(void *,float);
 void *fn_800607F4(void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void fn_800CDCC8();
@@ -85,7 +85,7 @@ struct UnknownGenObject800B22D4_0 {
 struct UnknownGenRoot800B249C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B249C(){fn_8006665C(this);}
+ inline UnknownGenRoot800B249C(){igObject_construct(this);}
 };
 struct UnknownGenObject800B249C : UnknownGenRoot800B249C {
  char unknown04[8];
@@ -95,7 +95,7 @@ struct UnknownGenObject800B249C : UnknownGenRoot800B249C {
 struct UnknownGenRoot800B26F0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B26F0(){fn_8006665C(this);}
+ inline UnknownGenRoot800B26F0(){igObject_construct(this);}
 };
 struct UnknownGenObject800B26F0 : UnknownGenRoot800B26F0 {
  char unknown04[24];
@@ -119,7 +119,7 @@ void *igPolygonModeAttr_getMeta(){
 }
 void *igPolygonModeAttr_vtableRead(){
  UnknownGenObject800B20FC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igPolygonModeAttr_vtable;
@@ -135,12 +135,12 @@ void igPolygonModeAttr_register(){
 void *igPolygonModeAttr_getMetaCall(){return igPolygonModeAttr_getMeta();}
 void igPolygonModeAttr_fieldInit(){
  void *value0=igPolygonModeAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E274,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E274,1);
+ void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E284);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_800CDCC8;
- fn_800659C0(value0,lbl_8055E278,lbl_8055E27C,lbl_8055E280,value1);
+ meta_setupFields(value0,lbl_8055E278,lbl_8055E27C,lbl_8055E280,value1);
 }
 void *igPointSpriteSizeAttr_getMeta(){
  if(!igPointSpriteSizeAttr_meta || !(reinterpret_cast<unsigned int *>(igPointSpriteSizeAttr_meta)[0x24/4]&4)) igPointSpriteSizeAttr_registerNow();
@@ -148,7 +148,7 @@ void *igPointSpriteSizeAttr_getMeta(){
 }
 void *igPointSpriteSizeAttr_vtableRead(){
  UnknownGenObject800B22D4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igPointSpriteSizeAttr_vtable;
@@ -164,11 +164,11 @@ void igPointSpriteSizeAttr_register(){
 void *igPointSpriteSizeAttr_getMetaCall(){return igPointSpriteSizeAttr_getMeta();}
 void igPointSpriteSizeAttr_fieldInit(){
  void *value0=igPointSpriteSizeAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E288,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E288,1);
+ void *value2=meta_field(value0,value1);
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566818+0)));
- fn_800659C0(value0,lbl_8055E294,lbl_8055E298,lbl_8055E29C,value1);
+ meta_setupFields(value0,lbl_8055E294,lbl_8055E298,lbl_8055E29C,value1);
 }
 void *igPixelShaderBindAttr_getMeta(){
  if(!igPixelShaderBindAttr_meta || !(reinterpret_cast<unsigned int *>(igPixelShaderBindAttr_meta)[0x24/4]&4)) igPixelShaderBindAttr_registerNow();
@@ -192,12 +192,12 @@ void igPixelShaderBindAttr_register(){
 void *igPixelShaderBindAttr_getMetaCall(){return igPixelShaderBindAttr_getMeta();}
 void igPixelShaderBindAttr_fieldInit(){
  void *value0=igPixelShaderBindAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E2A8,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E2A8,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800B2678();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055E2AC,lbl_8055E2B0,lbl_8055E2B4,value1);
+ meta_setupFields(value0,lbl_8055E2AC,lbl_8055E2B0,lbl_8055E2B4,value1);
 }
 void *fn_800B2678(){
  if(!igPixelShaderAttr_meta) igPixelShaderAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

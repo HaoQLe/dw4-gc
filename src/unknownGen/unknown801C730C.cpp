@@ -7,12 +7,12 @@ void *fn_80035C70();
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801AD7BC();
 void igBillboardProcessor_fieldInit();
@@ -55,7 +55,7 @@ struct UnknownGenObject801C73BC_0 {
 struct UnknownGenRoot801C75C8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C75C8(){fn_8006665C(this);}
+ inline UnknownGenRoot801C75C8(){igObject_construct(this);}
 };
 struct UnknownGenObject801C75C8 : UnknownGenRoot801C75C8 {
  char unknown04[32];
@@ -78,7 +78,7 @@ void *igBitMask_getMeta(){
 }
 void *igBitMask_vtableRead(){
  UnknownGenObject801C73BC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80474900;
  object.unknown00=igUnsignedIntList_vtable;
@@ -95,9 +95,9 @@ void igBitMask_register(){
 void *igBitMask_getMetaCall(){return igBitMask_getMeta();}
 void igBitMask_fieldInit(){
  void *value0=igBitMask_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560824,1);
- fn_800659C0(value0,lbl_80560828,lbl_8056082C,lbl_80560830,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560824,1);
+ meta_setupFields(value0,lbl_80560828,lbl_8056082C,lbl_80560830,value1);
 }
 void *fn_801C7540(){
  char *data=lbl_804AAFB8;

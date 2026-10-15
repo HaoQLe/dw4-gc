@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void igSubTextureBindAttr_fieldInit();
 void igTextureBindAttr_register();
@@ -25,7 +25,7 @@ void *igSubTextureBindAttr_parentMeta();
 struct UnknownGenRoot800AFFCC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800AFFCC(){fn_8006665C(this);}
+ inline UnknownGenRoot800AFFCC(){igObject_construct(this);}
 };
 struct UnknownGenObject800AFFCC_0 : UnknownGenRoot800AFFCC {
  char unknown04[8];

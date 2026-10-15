@@ -10,7 +10,7 @@ void fn_8006588C(void *,void *,void *);
 UnknownGenFactory *fn_800658F8(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igDoubleList_register();
 void igShaderProcessor_register();
@@ -52,7 +52,7 @@ struct UnknownGenObject801AD3D4_0 {
 struct UnknownGenRoot801AD5F0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801AD5F0(){fn_8006665C(this);}
+ inline UnknownGenRoot801AD5F0(){igObject_construct(this);}
 };
 struct UnknownGenObject801AD5F0 : UnknownGenRoot801AD5F0 {
  char unknown04[20];
@@ -74,7 +74,7 @@ void *igSpecialDoubleList_getMeta(){
 }
 void *igSpecialDoubleList_vtableRead(){
  UnknownGenObject801AD3D4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80474F18;
  object.unknown00=igDoubleList_vtable;

@@ -5,9 +5,9 @@ extern "C" {
 void *beModelCtrlHITBOX_getMeta();
 void beModelCtrlHITBOX_vtableRead();
 void *fn_80023CF4();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -35,9 +35,9 @@ void beModelCtrlHITBOX_register(){
 void *beModelCtrlHITBOX_getMetaCall(){return beModelCtrlHITBOX_getMeta();}
 void beModelCtrlHITBOX_fieldInit(){
  void *meta=beModelCtrlHITBOX_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D0F24,0x5);
- fn_800659C0(meta,lbl_804D0F38,lbl_804D0F4C,lbl_804D0F60,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D0F24,0x5);
+ meta_setupFields(meta,lbl_804D0F38,lbl_804D0F4C,lbl_804D0F60,field);
 }
 void *beModelCtrlMUTEKI_getMeta(){
  if(!beModelCtrlMUTEKI_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlMUTEKI_meta)[0x24/4]&4)) beModelCtrlMUTEKI_registerNow();

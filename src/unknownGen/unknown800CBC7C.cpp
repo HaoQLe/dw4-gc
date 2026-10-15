@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CAEE0();
 void *igGamecubeController_getMeta();
 void *igGamecubeWindow_fieldInit();
@@ -25,7 +25,7 @@ void *igGamecubeWindow_parentMeta();
 struct UnknownGenRoot800CBCD8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800CBCD8(){fn_8006665C(this);}
+ inline UnknownGenRoot800CBCD8(){igObject_construct(this);}
 };
 struct UnknownGenObject800CBCD8 : UnknownGenRoot800CBCD8 {
  char unknown04[20];

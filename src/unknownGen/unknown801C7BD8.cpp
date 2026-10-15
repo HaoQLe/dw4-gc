@@ -8,7 +8,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void fn_801C7E6C(void *,short);
 void igAttrStackManager_registerNow();
@@ -63,7 +63,7 @@ void *igNonRefCountedAttrStackManagerList_getMeta(){
 }
 void *igNonRefCountedAttrStackManagerList_vtableRead(){
  UnknownGenObject801C7C4C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;
@@ -89,7 +89,7 @@ void *igAttrStackManager_getMeta(){
 }
 void *igAttrStackManager_vtableRead(){
  UnknownGenObject801C7DE8 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igAttrStackManager_vtable;
  object.unknown10=0;
  object.unknown14=0;

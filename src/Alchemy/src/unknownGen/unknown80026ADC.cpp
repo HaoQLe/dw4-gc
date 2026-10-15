@@ -7,7 +7,7 @@ void arkRegister__Q33Gap4Core10igRegistryFv();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char igRegistry_vtable[];
 extern void *igRegistry_meta;
 extern void *lbl_805621F4;
@@ -15,7 +15,7 @@ extern void *lbl_805621F4;
 struct UnknownGenRoot80026B8C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80026B8C(){fn_8006665C(this);}
+ inline UnknownGenRoot80026B8C(){igObject_construct(this);}
 };
 struct UnknownGenObject80026B8C : UnknownGenRoot80026B8C {
  char unknown04[4];

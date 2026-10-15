@@ -6,9 +6,9 @@ void *beModelCtrlAIData_getMeta();
 void beModelCtrlAIData_vtableRead();
 void *fn_80023CF4();
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -36,9 +36,9 @@ void beModelCtrlAIData_register(){
 void *beModelCtrlAIData_getMetaCall(){return beModelCtrlAIData_getMeta();}
 void beModelCtrlAIData_fieldInit(){
  void *meta=beModelCtrlAIData_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D0EF4,0x3);
- fn_800659C0(meta,lbl_804D0F00,lbl_804D0F0C,lbl_804D0F18,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D0EF4,0x3);
+ meta_setupFields(meta,lbl_804D0F00,lbl_804D0F0C,lbl_804D0F18,field);
 }
 void *beModelCtrlHITBOX_create(void *object){
  beModelCtrlHITBOX_registerNow();

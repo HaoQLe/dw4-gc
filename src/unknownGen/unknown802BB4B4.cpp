@@ -8,9 +8,9 @@ void *fn_80023CF4();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -39,9 +39,9 @@ void beSeData_register(){
 void *beSeData_getMetaCall(){return beSeData_getMeta();}
 void beSeData_fieldInit(){
  void *meta=beSeData_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804CF7E8,0x2);
- fn_800659C0(meta,lbl_804CF7F0,lbl_804CF7F8,lbl_804CF800,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804CF7E8,0x2);
+ meta_setupFields(meta,lbl_804CF7F0,lbl_804CF7F8,lbl_804CF800,field);
 }
 void *beSeCtl_create(void *object){
  beSeCtl_registerNow();

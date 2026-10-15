@@ -2,8 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800658E4(void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void *meta_fieldCount(void *);
 }
 class UnknownGenV80167F94_0 {
 public:
@@ -65,11 +65,11 @@ void igDataTable_virtualB4(int p0,int p1,int p2){
  value1=reinterpret_cast<void * (*)(void *,void *,void *)>((void *)p1)((void *)p0,(void *)0,(void *)p2);
  if((int)(int)value1==0){
   value2=reinterpret_cast<UnknownGenV80167F94_0 *>((void *)p0)->s58();
-  value3=fn_80065D88(value2);
+  value3=meta_fieldCount(value2);
   value0=(void *)0;
   while((int)(int)value0<(int)(int)value3){
    value4=reinterpret_cast<UnknownGenV80167F94_1 *>((void *)p0)->s58();
-   value5=fn_800658E4(value4,value0);
+   value5=meta_field(value4,value0);
    value6=reinterpret_cast<void * (*)(void *,void *,void *)>((void *)p1)((void *)p0,value5,(void *)p2);
    if((int)(int)value6==1){
     break;

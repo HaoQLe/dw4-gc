@@ -8,13 +8,13 @@ void fn_8003D160();
 void fn_80046E58(void *,void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void *fn_800D031C();
 void fn_800D5D1C();
@@ -57,7 +57,7 @@ void *igTgaLoader_parentMeta();
 struct UnknownGenRoot800D5BB8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800D5BB8(){fn_8006665C(this);}
+ inline UnknownGenRoot800D5BB8(){igObject_construct(this);}
 };
 struct UnknownGenObject800D5BB8 : UnknownGenRoot800D5BB8 {
  char unknown04[4];
@@ -100,12 +100,12 @@ void igBlendEquationExt_register(){
 void *igBlendEquationExt_getMetaCall(){return igBlendEquationExt_getMeta();}
 void igBlendEquationExt_fieldInit(){
  void *value0=igBlendEquationExt_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055ED20,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055ED20,1);
+ void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055ED30);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_8003D160;
- fn_800659C0(value0,lbl_8055ED24,lbl_8055ED28,lbl_8055ED2C,value1);
+ meta_setupFields(value0,lbl_8055ED24,lbl_8055ED28,lbl_8055ED2C,value1);
 }
 void *igTgaLoader_create(void *object){
  igTgaLoader_registerNow();

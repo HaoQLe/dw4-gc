@@ -4,9 +4,9 @@
 extern "C" {
 void *beResetNode_getMeta();
 void beResetNode_vtableRead();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_8011148C();
@@ -37,9 +37,9 @@ void beResetNode_register(){
 void *beResetNode_getMetaCall(){return beResetNode_getMeta();}
 void beResetNode_fieldInit(){
  void *meta=beResetNode_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804CFFC4,0x2);
- fn_800659C0(meta,lbl_804CFFCC,lbl_804CFFD4,lbl_804CFFDC,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804CFFC4,0x2);
+ meta_setupFields(meta,lbl_804CFFCC,lbl_804CFFD4,lbl_804CFFDC,field);
 }
 void *fn_802C0C80(){return fn_80313004();}
 void *bePoint01Info_getMeta(){

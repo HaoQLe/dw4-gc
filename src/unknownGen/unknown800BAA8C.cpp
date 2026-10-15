@@ -9,7 +9,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void fn_800BB148();
 void igAttrPool_fieldInit();
@@ -60,7 +60,7 @@ struct UnknownGenObject800BAD10_0 {
 struct UnknownGenRoot800BAEA8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800BAEA8(){fn_8006665C(this);}
+ inline UnknownGenRoot800BAEA8(){igObject_construct(this);}
 };
 struct UnknownGenObject800BAEA8 : UnknownGenRoot800BAEA8 {
  char unknown04[4];
@@ -85,7 +85,7 @@ void *igTextureList_getMeta(){
 }
 void *igTextureList_vtableRead(){
  UnknownGenObject800BAB3C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -115,7 +115,7 @@ void *igGeometryAttrList_getMeta(){
 }
 void *igGeometryAttrList_vtableRead(){
  UnknownGenObject800BAD10_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

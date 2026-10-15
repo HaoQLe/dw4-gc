@@ -10,7 +10,7 @@ void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igInfo_register();
 void igMetaField_register();
 extern char igVirtualCFuncMetaField_className[];
@@ -32,7 +32,7 @@ void igMetaField_registerNow();
 struct UnknownGenRoot8002A494 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8002A494(){fn_8006665C(this);}
+ inline UnknownGenRoot8002A494(){igObject_construct(this);}
 };
 struct UnknownGenObject8002A494_0 : UnknownGenRoot8002A494 {
  char unknown04[4];

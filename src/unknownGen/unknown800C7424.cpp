@@ -7,7 +7,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800C6F28();
 void igDataList_register();
 extern char igDataList_vtable[];
@@ -37,7 +37,7 @@ void *igGamecubeAudioSourceList_getMeta(){
 }
 void *igGamecubeAudioSourceList_vtableRead(){
  UnknownGenObject800C749C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8047EB58;
  object.unknown00=igGamecubeAudioSourceList_vtable;

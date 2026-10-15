@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800C6F28();
 void igAudioContext_register();
 void igGamecubeAudioContext_fieldInit();
@@ -24,7 +24,7 @@ void *igGamecubeAudioContext_parentMeta();
 struct UnknownGenRoot800C71A8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800C71A8(){fn_8006665C(this);}
+ inline UnknownGenRoot800C71A8(){igObject_construct(this);}
 };
 struct UnknownGenObject800C71A8 : UnknownGenRoot800C71A8 {
  char unknown04[8];

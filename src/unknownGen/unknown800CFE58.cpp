@@ -9,7 +9,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void *fn_800E2BEC();
 void *igGamecubeVertexArray1_1_getMeta();
@@ -54,7 +54,7 @@ void *igVertexArrayList_getMeta(){
 }
 void *igVertexArrayList_vtableRead(){
  UnknownGenObject800CFF0C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

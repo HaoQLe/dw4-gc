@@ -7,13 +7,13 @@ void fn_80053650(void *,int);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void *fn_800CE788();
@@ -55,7 +55,7 @@ void *igRenderDestinationAttr_getMetaCall();
 struct UnknownGenRoot800B1454 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B1454(){fn_8006665C(this);}
+ inline UnknownGenRoot800B1454(){igObject_construct(this);}
 };
 struct UnknownGenObject800B1454 : UnknownGenRoot800B1454 {
  char unknown04[12];
@@ -66,7 +66,7 @@ struct UnknownGenObject800B1454 : UnknownGenRoot800B1454 {
 struct UnknownGenRoot800B17B0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B17B0(){fn_8006665C(this);}
+ inline UnknownGenRoot800B17B0(){igObject_construct(this);}
 };
 struct UnknownGenObject800B17B0 : UnknownGenRoot800B17B0 {
  char unknown04[28];
@@ -103,19 +103,19 @@ void igRenderListAttr_register(){
 void *igRenderListAttr_getMetaCall(){return igRenderListAttr_getMeta();}
 void igRenderListAttr_fieldInit(){
  void *value0=igRenderListAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E1D8,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E1D8,2);
+ void *value2=meta_field(value0,value1);
  fn_80053650(value2,-1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
- void *value3=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value4=fn_800CE788();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+38)=0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+40)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+39)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+44)=3;
- fn_800659C0(value0,lbl_8055E1E8,lbl_8055E1F0,lbl_8055E1F8,value1);
+ meta_setupFields(value0,lbl_8055E1E8,lbl_8055E1F0,lbl_8055E1F8,value1);
 }
 void *fn_800B166C(){
  void *value0;

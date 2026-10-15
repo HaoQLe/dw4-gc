@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8010CBD4();
 void *fn_8010E6DC();
 void igGuiComponentAspect_fieldInit();
@@ -44,7 +44,7 @@ void *igGuiComponentController_getMeta(){
 }
 void *igGuiComponentController_vtableRead(){
  UnknownGenObject80111828_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_80495AD8;
  object.unknown00=igGuiComponentController_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

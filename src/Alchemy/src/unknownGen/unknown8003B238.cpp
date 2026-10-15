@@ -5,7 +5,7 @@ extern "C" {
 void fn_80021B94();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *igGamecubeSemaphore_fieldInit();
 void *igGamecubeSemaphore_getMetaCall();
 void igSemaphore_register();
@@ -23,7 +23,7 @@ void *igGamecubeSemaphore_parentMeta();
 struct UnknownGenRoot8003B274 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8003B274(){fn_8006665C(this);}
+ inline UnknownGenRoot8003B274(){igObject_construct(this);}
 };
 struct UnknownGenObject8003B274_0 : UnknownGenRoot8003B274 {
  char unknown04[4];

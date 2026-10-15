@@ -7,9 +7,9 @@ void beNDMWMcSlotPS2_vtableRead();
 void *fn_800237D0();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -57,9 +57,9 @@ void beNDMWMcSlot_register(){
 void *beNDMWMcSlot_getMetaCall(){return beNDMWMcSlot_getMeta();}
 void beNDMWMcSlot_fieldInit(){
  void *meta=beNDMWMcSlot_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E3904,0x5);
- fn_800659C0(meta,lbl_804E3918,lbl_804E392C,lbl_804E3940,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E3904,0x5);
+ meta_setupFields(meta,lbl_804E3918,lbl_804E392C,lbl_804E3940,field);
 }
 void *beNDMWLoadSlotPlayerList_metaObject(){
  if(!beNDMWLoadSlotPlayerList_meta) beNDMWLoadSlotPlayerList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

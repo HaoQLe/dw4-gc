@@ -5,9 +5,9 @@ extern "C" {
 void *beNumVerInsideData_getMeta();
 void beNumVerInsideData_vtableRead();
 void *fn_800237D0();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -35,9 +35,9 @@ void beNumVerInsideData_register(){
 void *beNumVerInsideData_getMetaCall(){return beNumVerInsideData_getMeta();}
 void beNumVerInsideData_fieldInit(){
  void *meta=beNumVerInsideData_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D0428,0x2);
- fn_800659C0(meta,lbl_804D0430,lbl_804D0438,lbl_804D0440,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D0428,0x2);
+ meta_setupFields(meta,lbl_804D0430,lbl_804D0438,lbl_804D0440,field);
 }
 void *beNumberCtrlInfoList_getMeta(){
  if(!beNumberCtrlInfoList_meta || !(reinterpret_cast<unsigned int *>(beNumberCtrlInfoList_meta)[0x24/4]&4)) beNumberCtrlInfoList_registerNow();

@@ -10,14 +10,14 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void fn_80065D94(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_80202550();
 void *fn_80202600();
@@ -92,7 +92,7 @@ struct UnknownGenObject801B097C_0 {
 struct UnknownGenRoot801B0AE0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801B0AE0(){fn_8006665C(this);}
+ inline UnknownGenRoot801B0AE0(){igObject_construct(this);}
 };
 struct UnknownGenObject801B0AE0_0 : UnknownGenRoot801B0AE0 {
  char unknown04[4];
@@ -115,7 +115,7 @@ struct UnknownGenObject801B0ECC_0 {
 struct UnknownGenRoot801B10B4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801B10B4(){fn_8006665C(this);}
+ inline UnknownGenRoot801B10B4(){igObject_construct(this);}
 };
 struct UnknownGenObject801B10B4_0 : UnknownGenRoot801B10B4 {
  char unknown04[4];
@@ -143,7 +143,7 @@ void *igShaderProcessor_getMeta(){
 }
 void *igShaderProcessor_vtableRead(){
  UnknownGenObject801B097C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igShaderProcessor_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -182,13 +182,13 @@ void igShaderInfo_register(){
 void *igShaderInfo_getMetaCall(){return igShaderInfo_getMeta();}
 void igShaderInfo_fieldInit(){
  void *value0=igShaderInfo_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8056027C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8056027C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_801B0E54();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- fn_800659C0(value0,lbl_80560280,lbl_80560284,lbl_80560288,value1);
+ meta_setupFields(value0,lbl_80560280,lbl_80560284,lbl_80560288,value1);
  fn_80065D94((void *)fn_801B0D4C);
 }
 void *fn_801B0D2C(){return fn_80202550();}
@@ -215,7 +215,7 @@ void *igShaderFactoryList_getMeta(){
 }
 void *igShaderFactoryList_vtableRead(){
  UnknownGenObject801B0ECC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

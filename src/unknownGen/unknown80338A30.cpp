@@ -6,9 +6,9 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void beNDMWMdlPlayer_registerNow();
 extern char lbl_80454368[];
 extern char lbl_804E26F8[];
@@ -25,9 +25,9 @@ extern void *lbl_805621F4;
 extern "C" {
 void beNDMWMdlPlayer2InfoWork_fieldInit(){
  void *meta=beNDMWMdlPlayer2InfoWork_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E26F8,0x4);
- fn_800659C0(meta,lbl_804E2708,lbl_804E2718,lbl_804E2728,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E26F8,0x4);
+ meta_setupFields(meta,lbl_804E2708,lbl_804E2718,lbl_804E2728,field);
 }
 void *fn_80338AB0(){
  if(!lbl_80536174) lbl_80536174=fn_800635C8(lbl_80454368,lbl_804E2738,lbl_804E2754,0x7);

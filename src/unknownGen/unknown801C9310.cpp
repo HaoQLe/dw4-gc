@@ -9,13 +9,13 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801AF130();
 void *fn_801CA478();
@@ -89,7 +89,7 @@ struct UnknownGenObject801C96DC_0 {
 struct UnknownGenRoot801C9994 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C9994(){fn_8006665C(this);}
+ inline UnknownGenRoot801C9994(){igObject_construct(this);}
 };
 struct UnknownGenObject801C9994 : UnknownGenRoot801C9994 {
  char unknown04[4];
@@ -120,12 +120,12 @@ void igAnimationSystem_register(){
 void *igAnimationSystem_getMetaCall(){return igAnimationSystem_getMeta();}
 void igAnimationSystem_fieldInit(){
  void *value0=igAnimationSystem_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_805608B0,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_805608B0,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_801CA478();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_805608B4,lbl_805608B8,lbl_805608BC,value1);
+ meta_setupFields(value0,lbl_805608B4,lbl_805608B8,lbl_805608BC,value1);
 }
 void *igAnimationStatePool_create(void *object){
  igAnimationStatePool_registerNow();
@@ -137,7 +137,7 @@ void *igAnimationStatePool_getMeta(){
 }
 void *igAnimationStatePool_vtableRead(){
  UnknownGenObject801C9534_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -164,7 +164,7 @@ void *igAnimationStateList_getMeta(){
 }
 void *igAnimationStateList_vtableRead(){
  UnknownGenObject801C96DC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

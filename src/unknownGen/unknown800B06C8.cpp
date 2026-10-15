@@ -5,7 +5,7 @@ extern "C" {
 void __dl__FPv(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igSpriteAttr_fieldInit();
@@ -25,7 +25,7 @@ void *igSpriteAttr_getMetaCall();
 struct UnknownGenRoot800B0704 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B0704(){fn_8006665C(this);}
+ inline UnknownGenRoot800B0704(){igObject_construct(this);}
 };
 struct UnknownGenObject800B0704 : UnknownGenRoot800B0704 {
  char unknown04[20];

@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_8013001C();
 void *fn_801301D4();
@@ -64,7 +64,7 @@ struct UnknownGenObject801470FC_0 {
 struct UnknownGenRoot8014724C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8014724C(){fn_8006665C(this);}
+ inline UnknownGenRoot8014724C(){igObject_construct(this);}
 };
 struct UnknownGenObject8014724C_0 : UnknownGenRoot8014724C {
  char unknown04[28];
@@ -95,7 +95,7 @@ void *igInstanceChangedListener_getMeta(){
 }
 void *igInstanceChangedListener_vtableRead(){
  UnknownGenObject80146FA0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
  object.unknown00=igListenerBase_vtable;
@@ -117,7 +117,7 @@ void *igHierarchyChangedEvent_getMeta(){
 }
 void *igHierarchyChangedEvent_vtableRead(){
  UnknownGenObject801470FC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
  object.unknown00=igMessageBase_vtable;

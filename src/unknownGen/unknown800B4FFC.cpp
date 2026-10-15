@@ -7,13 +7,13 @@ void *meta_newMetaObject(void *);
 void fn_8004D4BC(void *,float);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igLightStateAttr_fieldInit();
@@ -87,7 +87,7 @@ struct UnknownGenObject800B549C_0 {
 struct UnknownGenRoot800B5670 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B5670(){fn_8006665C(this);}
+ inline UnknownGenRoot800B5670(){igObject_construct(this);}
 };
 struct UnknownGenObject800B5670 : UnknownGenRoot800B5670 {
  char unknown04[8];
@@ -103,7 +103,7 @@ void *igLineWidthAttr_getMeta(){
 }
 void *igLineWidthAttr_vtableRead(){
  UnknownGenObject800B5038_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igLineWidthAttr_vtable;
@@ -119,11 +119,11 @@ void igLineWidthAttr_register(){
 void *igLineWidthAttr_getMetaCall(){return igLineWidthAttr_getMeta();}
 void igLineWidthAttr_fieldInit(){
  void *value0=igLineWidthAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E3D4,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E3D4,1);
+ void *value2=meta_field(value0,value1);
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566810+0)));
- fn_800659C0(value0,lbl_8055E3E0,lbl_8055E3E4,lbl_8055E3E8,value1);
+ meta_setupFields(value0,lbl_8055E3E0,lbl_8055E3E4,lbl_8055E3E8,value1);
 }
 void *igLightingStateAttr_create(void *object){
  igLightingStateAttr_registerNow();
@@ -139,7 +139,7 @@ void *igLightingStateAttr_getMeta(){
 }
 void *igLightingStateAttr_vtableRead(){
  UnknownGenObject800B5274_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igLightingStateAttr_vtable;
@@ -155,9 +155,9 @@ void igLightingStateAttr_register(){
 void *igLightingStateAttr_getMetaCall(){return igLightingStateAttr_getMeta();}
 void igLightingStateAttr_fieldInit(){
  void *value0=igLightingStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E3EC,1);
- fn_800659C0(value0,lbl_8055E3F0,lbl_8055E3F4,lbl_8055E3F8,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E3EC,1);
+ meta_setupFields(value0,lbl_8055E3F0,lbl_8055E3F4,lbl_8055E3F8,value1);
 }
 void *igLightStateAttrList_create(void *object){
  igLightStateAttrList_registerNow();
@@ -173,7 +173,7 @@ void *igLightStateAttrList_getMeta(){
 }
 void *igLightStateAttrList_vtableRead(){
  UnknownGenObject800B549C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

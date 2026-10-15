@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_801308D0();
 void *fn_8013496C();
@@ -74,7 +74,7 @@ struct UnknownGenObject80140A2C_0 {
 struct UnknownGenRoot80140CFC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80140CFC(){fn_8006665C(this);}
+ inline UnknownGenRoot80140CFC(){igObject_construct(this);}
 };
 struct UnknownGenObject80140CFC_0 : UnknownGenRoot80140CFC {
  char unknown04[28];
@@ -101,11 +101,11 @@ void igObjectProperty_register(){
 void *igObjectProperty_getMetaCall(){return igObjectProperty_getMeta();}
 void igObjectProperty_fieldInit(){
  void *value0=igObjectProperty_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F900,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F900,1);
+ void *value2=meta_field(value0,value1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=igObject_meta;
- fn_800659C0(value0,lbl_8055F904,lbl_8055F908,lbl_8055F90C,value1);
+ meta_setupFields(value0,lbl_8055F904,lbl_8055F908,lbl_8055F90C,value1);
 }
 void *igObjectChangedListener_getMeta(){
  if(!igObjectChangedListener_meta || !(reinterpret_cast<unsigned int *>(igObjectChangedListener_meta)[0x24/4]&4)) igObjectChangedListener_registerNow();
@@ -113,7 +113,7 @@ void *igObjectChangedListener_getMeta(){
 }
 void *igObjectChangedListener_vtableRead(){
  UnknownGenObject80140A2C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AAF48;
  object.unknown00=igListenerBase_vtable;
@@ -144,11 +144,11 @@ void *igObjectChangedEvent_getMetaCall(){return igObjectChangedEvent_getMeta();}
 void *fn_80140C3C(){return igMessageBase_meta;}
 void igObjectChangedEvent_fieldInit(){
  void *value0=igObjectChangedEvent_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F918,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F918,1);
+ void *value2=meta_field(value0,value1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=igObject_meta;
- fn_800659C0(value0,lbl_8055F91C,lbl_8055F920,lbl_8055F924,value1);
+ meta_setupFields(value0,lbl_8055F91C,lbl_8055F920,lbl_8055F924,value1);
 }
 void *igNormalizeTextureCoord_getMeta(){
  if(!igNormalizeTextureCoord_meta || !(reinterpret_cast<unsigned int *>(igNormalizeTextureCoord_meta)[0x24/4]&4)) igNormalizeTextureCoord_registerNow();

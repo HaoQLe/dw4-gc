@@ -6,13 +6,13 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igTextureMatrixAttr_registerNow();
@@ -107,7 +107,7 @@ void *igTextureUnloadAttr_getMeta(){
 }
 void *igTextureUnloadAttr_vtableRead(){
  UnknownGenObject800ADA48_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igTextureUnloadAttr_vtable;
@@ -123,15 +123,15 @@ void igTextureUnloadAttr_register(){
 void *igTextureUnloadAttr_getMetaCall(){return igTextureUnloadAttr_getMeta();}
 void igTextureUnloadAttr_fieldInit(){
  void *value0=igTextureUnloadAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055DF70,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055DF70,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800AF4A4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+60)=0;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+48)=(void *)fn_800C4B28;
- fn_800659C0(value0,lbl_8055DF78,lbl_8055DF80,lbl_8055DF88,value1);
+ meta_setupFields(value0,lbl_8055DF78,lbl_8055DF80,lbl_8055DF88,value1);
 }
 void *igTextureStateAttr_create(void *object){
  igTextureStateAttr_registerNow();
@@ -147,7 +147,7 @@ void *igTextureStateAttr_getMeta(){
 }
 void *igTextureStateAttr_vtableRead(){
  UnknownGenObject800ADCAC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igTextureStateAttr_vtable;
@@ -163,11 +163,11 @@ void igTextureStateAttr_register(){
 void *igTextureStateAttr_getMetaCall(){return igTextureStateAttr_getMeta();}
 void igTextureStateAttr_fieldInit(){
  void *value0=igTextureStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055DF90,2);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055DF90,2);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+48)=(void *)fn_800C49B4;
- fn_800659C0(value0,lbl_8055DF98,lbl_8055DFA0,lbl_8055DFA8,value1);
+ meta_setupFields(value0,lbl_8055DF98,lbl_8055DFA0,lbl_8055DFA8,value1);
 }
 void *igTextureMatrixStateAttr_create(void *object){
  igTextureMatrixStateAttr_registerNow();
@@ -179,7 +179,7 @@ void *igTextureMatrixStateAttr_getMeta(){
 }
 void *igTextureMatrixStateAttr_vtableRead(){
  UnknownGenObject800ADEB0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igTextureMatrixStateAttr_vtable;
@@ -195,11 +195,11 @@ void igTextureMatrixStateAttr_register(){
 void *igTextureMatrixStateAttr_getMetaCall(){return igTextureMatrixStateAttr_getMeta();}
 void igTextureMatrixStateAttr_fieldInit(){
  void *value0=igTextureMatrixStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055DFB0,2);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055DFB0,2);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+48)=(void *)fn_800C4880;
- fn_800659C0(value0,lbl_8055DFB8,lbl_8055DFC0,lbl_8055DFC8,value1);
+ meta_setupFields(value0,lbl_8055DFB8,lbl_8055DFC0,lbl_8055DFC8,value1);
 }
 void *igTextureMatrixAttrList_getMeta(){
  if(!igTextureMatrixAttrList_meta || !(reinterpret_cast<unsigned int *>(igTextureMatrixAttrList_meta)[0x24/4]&4)) igTextureMatrixAttrList_registerNow();
@@ -207,7 +207,7 @@ void *igTextureMatrixAttrList_getMeta(){
 }
 void *igTextureMatrixAttrList_vtableRead(){
  UnknownGenObject800AE07C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

@@ -2,14 +2,14 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char igNamedObject_vtable[];
 extern char lbl_804CBA60[];
 extern char lbl_804F1B40[];
 }
 extern "C" {
 void *fn_80404544(int p0){
- fn_8006665C((void *)p0);
+ igObject_construct((void *)p0);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=igNamedObject_vtable;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+8)=(void *)0;
  *reinterpret_cast<void * *>(reinterpret_cast<char *>((void *)p0)+0)=lbl_804CBA60;

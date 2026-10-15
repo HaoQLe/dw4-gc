@@ -6,13 +6,13 @@ void __dl__FPv(void *);
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void *fn_800C3A2C(int);
@@ -51,7 +51,7 @@ void *igTextureAttr_getMetaCall();
 struct UnknownGenRoot800AF1E0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800AF1E0(){fn_8006665C(this);}
+ inline UnknownGenRoot800AF1E0(){igObject_construct(this);}
 };
 struct UnknownGenObject800AF1E0 : UnknownGenRoot800AF1E0 {
  char unknown04[8];
@@ -62,7 +62,7 @@ struct UnknownGenObject800AF1E0 : UnknownGenRoot800AF1E0 {
 struct UnknownGenRoot800AF51C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800AF51C(){fn_8006665C(this);}
+ inline UnknownGenRoot800AF51C(){igObject_construct(this);}
 };
 struct UnknownGenObject800AF51C : UnknownGenRoot800AF51C {
  char unknown04[8];
@@ -118,14 +118,14 @@ void igTextureBindAttr_register(){
 void *igTextureBindAttr_getMetaCall(){return igTextureBindAttr_getMeta();}
 void igTextureBindAttr_fieldInit(){
  void *value0=igTextureBindAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E038,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E038,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800AF4A4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+48)=(void *)fn_800C3A2C;
- fn_800659C0(value0,lbl_8055E040,lbl_8055E048,lbl_8055E050,value1);
+ meta_setupFields(value0,lbl_8055E040,lbl_8055E048,lbl_8055E050,value1);
 }
 void fn_800AF44C(){return fn_800C3A9C();}
 void *igTextureAttr_create(void *object){

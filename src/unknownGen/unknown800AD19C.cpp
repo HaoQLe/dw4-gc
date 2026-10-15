@@ -6,7 +6,7 @@ void *fn_80024180();
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void igVertexBlendMatrixAttr_registerNow();
 void igObjectList_register();
@@ -36,7 +36,7 @@ void *igVertexBlendMatrixAttrList_getMeta(){
 }
 void *igVertexBlendMatrixAttrList_vtableRead(){
  UnknownGenObject800AD1D8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

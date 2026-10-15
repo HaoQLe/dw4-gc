@@ -5,7 +5,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void *igGamecubeImageConvert_getMetaCall();
 void *igGamecubeImage_fieldInit();
@@ -51,7 +51,7 @@ void *igGamecubeImage_parentMeta();
 struct UnknownGenRoot800D85A4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800D85A4(){fn_8006665C(this);}
+ inline UnknownGenRoot800D85A4(){igObject_construct(this);}
 };
 struct UnknownGenObject800D85A4_0 : UnknownGenRoot800D85A4 {
  char unknown04[4];
@@ -69,7 +69,7 @@ struct UnknownGenObject800D872C_0 {
 struct UnknownGenRoot800D8874 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800D8874(){fn_8006665C(this);}
+ inline UnknownGenRoot800D8874(){igObject_construct(this);}
 };
 struct UnknownGenObject800D8874_0 : UnknownGenRoot800D8874 {
  char unknown04[64];
@@ -116,7 +116,7 @@ void *igGamecubeImageConvert_getMeta(){
 }
 void *igGamecubeImageConvert_vtableRead(){
  UnknownGenObject800D872C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804930AC;
  object.unknown00=lbl_80492C48;
  object.unknown00=igGamecubeImageConvert_vtable;

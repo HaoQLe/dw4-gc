@@ -6,13 +6,13 @@ void *meta_newMetaObject(void *);
 void fn_80046E58(void *,void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void *fn_800B1738();
@@ -81,7 +81,7 @@ struct UnknownGenObject800B0A1C_0 {
 struct UnknownGenRoot800B0C68 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B0C68(){fn_8006665C(this);}
+ inline UnknownGenRoot800B0C68(){igObject_construct(this);}
 };
 struct UnknownGenObject800B0C68 : UnknownGenRoot800B0C68 {
  char unknown04[8];
@@ -107,7 +107,7 @@ void *igShadeModelAttr_getMeta(){
 }
 void *igShadeModelAttr_vtableRead(){
  UnknownGenObject800B0A1C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igShadeModelAttr_vtable;
@@ -123,12 +123,12 @@ void igShadeModelAttr_register(){
 void *igShadeModelAttr_getMetaCall(){return igShadeModelAttr_getMeta();}
 void igShadeModelAttr_fieldInit(){
  void *value0=igShadeModelAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E170,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E170,1);
+ void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E180);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_800CDDA8;
- fn_800659C0(value0,lbl_8055E174,lbl_8055E178,lbl_8055E17C,value1);
+ meta_setupFields(value0,lbl_8055E174,lbl_8055E178,lbl_8055E17C,value1);
 }
 void *igSetRenderDestinationAttr_create(void *object){
  igSetRenderDestinationAttr_registerNow();
@@ -160,12 +160,12 @@ void igSetRenderDestinationAttr_register(){
 void *igSetRenderDestinationAttr_getMetaCall(){return igSetRenderDestinationAttr_getMeta();}
 void igSetRenderDestinationAttr_fieldInit(){
  void *value0=igSetRenderDestinationAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E18C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E18C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800B1738();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055E190,lbl_8055E194,lbl_8055E198,value1);
+ meta_setupFields(value0,lbl_8055E190,lbl_8055E194,lbl_8055E198,value1);
 }
 void *igScissorTypeAttr_getMeta(){
  if(!igScissorTypeAttr_meta || !(reinterpret_cast<unsigned int *>(igScissorTypeAttr_meta)[0x24/4]&4)) igScissorTypeAttr_registerNow();
@@ -173,7 +173,7 @@ void *igScissorTypeAttr_getMeta(){
 }
 void *igScissorTypeAttr_vtableRead(){
  UnknownGenObject800B0E80_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igScissorTypeAttr_vtable;
@@ -189,12 +189,12 @@ void igScissorTypeAttr_register(){
 void *igScissorTypeAttr_getMetaCall(){return igScissorTypeAttr_getMeta();}
 void igScissorTypeAttr_fieldInit(){
  void *value0=igScissorTypeAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E19C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E19C,1);
+ void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E1AC);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_800CDB9C;
- fn_800659C0(value0,lbl_8055E1A0,lbl_8055E1A4,lbl_8055E1A8,value1);
+ meta_setupFields(value0,lbl_8055E1A0,lbl_8055E1A4,lbl_8055E1A8,value1);
 }
 void *igScissorAttr_getMeta(){
  if(!igScissorAttr_meta || !(reinterpret_cast<unsigned int *>(igScissorAttr_meta)[0x24/4]&4)) igScissorAttr_registerNow();
@@ -202,7 +202,7 @@ void *igScissorAttr_getMeta(){
 }
 void *igScissorAttr_vtableRead(){
  UnknownGenObject800B1058_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igScissorAttr_vtable;

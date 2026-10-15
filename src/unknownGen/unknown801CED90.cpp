@@ -5,7 +5,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *igEnbayaAnimationSource_getMetaCall();
 void igEnbayaAnimationSource_register();
@@ -32,7 +32,7 @@ void *igEndianSwappedEnbayaAnimationSource_getMeta(){
 }
 void *igEndianSwappedEnbayaAnimationSource_vtableRead(){
  UnknownGenObject801CEDCC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igEnbayaAnimationSource_vtable;
  object.unknown00=igEndianSwappedEnbayaAnimationSource_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

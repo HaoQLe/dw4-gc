@@ -7,13 +7,13 @@ void *fn_80029F84();
 void *fn_800343B8();
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_800BB61C();
 void fn_8012FC48();
 void *fn_8013B2B0();
@@ -95,7 +95,7 @@ void *igItemInterface_getMetaCall();
 struct UnknownGenRoot801444A8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801444A8(){fn_8006665C(this);}
+ inline UnknownGenRoot801444A8(){igObject_construct(this);}
 };
 struct UnknownGenObject801444A8 : UnknownGenRoot801444A8 {
  char unknown04[4];
@@ -106,7 +106,7 @@ struct UnknownGenObject801444A8 : UnknownGenRoot801444A8 {
 struct UnknownGenRoot801446EC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801446EC(){fn_8006665C(this);}
+ inline UnknownGenRoot801446EC(){igObject_construct(this);}
 };
 struct UnknownGenObject801446EC : UnknownGenRoot801446EC {
  char unknown04[4];
@@ -117,7 +117,7 @@ struct UnknownGenObject801446EC : UnknownGenRoot801446EC {
 struct UnknownGenRoot80144930 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80144930(){fn_8006665C(this);}
+ inline UnknownGenRoot80144930(){igObject_construct(this);}
 };
 struct UnknownGenObject80144930_0 : UnknownGenRoot80144930 {
  char unknown04[8];
@@ -138,7 +138,7 @@ struct UnknownGenObject80144C74_0 {
 struct UnknownGenRoot80144DF4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80144DF4(){fn_8006665C(this);}
+ inline UnknownGenRoot80144DF4(){igObject_construct(this);}
 };
 struct UnknownGenObject80144DF4 : UnknownGenRoot80144DF4 {
  char unknown04[28];
@@ -175,12 +175,12 @@ void igIterateField_register(){
 void *igIterateField_getMetaCall(){return igIterateField_getMeta();}
 void igIterateField_fieldInit(){
  void *value0=igIterateField_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F9D8,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F9D8,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80029F84();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055F9E0,lbl_8055F9E8,lbl_8055F9F0,value1);
+ meta_setupFields(value0,lbl_8055F9E0,lbl_8055F9E8,lbl_8055F9F0,value1);
 }
 void *igIterateDerived_create(void *object){
  igIterateDerived_registerNow();
@@ -207,12 +207,12 @@ void igIterateDerived_register(){
 void *igIterateDerived_getMetaCall(){return igIterateDerived_getMeta();}
 void igIterateDerived_fieldInit(){
  void *value0=igIterateDerived_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FA00,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FA00,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80029F84();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055FA08,lbl_8055FA10,lbl_8055FA18,value1);
+ meta_setupFields(value0,lbl_8055FA08,lbl_8055FA10,lbl_8055FA18,value1);
 }
 void *igIterateAttr_create(void *object){
  igIterateAttr_registerNow();
@@ -244,17 +244,17 @@ void *igIterateAttr_getMetaCall(){return igIterateAttr_getMeta();}
 void *igIterateAttr_parentMeta(){return igIterateGraph_meta;}
 void igIterateAttr_fieldInit(){
  void *value0=igIterateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FA20,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FA20,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800343B8();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value5=fn_800BB61C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
- fn_800659C0(value0,lbl_8055FA28,lbl_8055FA30,lbl_8055FA38,value1);
+ meta_setupFields(value0,lbl_8055FA28,lbl_8055FA30,lbl_8055FA38,value1);
 }
 void *fn_80144BFC(){
  if(!igItemManager_meta) igItemManager_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -266,7 +266,7 @@ void *igItemManager_getMeta(){
 }
 void *igItemManager_vtableRead(){
  UnknownGenObject80144C74_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A6460;
  object.unknown00=igManager_vtable;
  object.unknown00=igItemManager_vtable;

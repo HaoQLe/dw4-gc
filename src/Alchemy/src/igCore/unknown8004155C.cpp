@@ -51,7 +51,7 @@ extern "C" {
     extern Unknown8004155CIndex *lbl_80561D48;
     void fn_80068390(void *, void *);
     void *fn_80068430(void *);
-    Unknown8004155CMetadata *fn_800658E4(Unknown8004155CMetadata *, Gap::igInt);
+    Unknown8004155CMetadata *meta_field(Unknown8004155CMetadata *, Gap::igInt);
     Unknown8004155CResult fn_80062BB8(Unknown8004155CMetadata *, void *, Gap::igUnsignedInt, void *);
     void *memcpy(void *, const void *, unsigned long);
 }
@@ -68,7 +68,7 @@ extern "C" void fn_8004155C(Unknown8004155C *object, Gap::igInt count, Gap::igIn
         Unknown8004155CMetadata *metadata;
         previous = object->unknown10;
         const short &index = static_cast<short>(lbl_80561D48->unknown12);
-        metadata = fn_800658E4(reinterpret_cast<Unknown8004155CVirtual *>(object)->slot58(), static_cast<short>(index));
+        metadata = meta_field(reinterpret_cast<Unknown8004155CVirtual *>(object)->slot58(), static_cast<short>(index));
         value = metadata->unknown3C;
         fn_80062BB8(metadata, object, static_cast<Gap::igUnsignedInt>(count * width) / value->slot64(), fn_80068430(object));
         if(previous){

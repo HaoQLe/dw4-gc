@@ -7,7 +7,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igMultiResolutionMeshCore_fieldInit();
 void igObject_register();
@@ -25,7 +25,7 @@ void *igMultiResolutionMeshCore_getMetaCall();
 struct UnknownGenRoot801B8F24 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801B8F24(){fn_8006665C(this);}
+ inline UnknownGenRoot801B8F24(){igObject_construct(this);}
 };
 struct UnknownGenObject801B8F24 : UnknownGenRoot801B8F24 {
  char unknown04[4];

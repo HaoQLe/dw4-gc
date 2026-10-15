@@ -7,7 +7,7 @@ void *fn_80024D1C();
 void fn_80029724();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igDataList_register();
 extern char igNonRefCountedObjectList_className[];
 extern char igDataList_vtable[];
@@ -31,7 +31,7 @@ void *igNonRefCountedObjectList_getMeta(){
 }
 void *igNonRefCountedObjectList_vtableRead(){
  UnknownGenObject80029614_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;

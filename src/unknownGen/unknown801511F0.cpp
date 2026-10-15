@@ -4,13 +4,13 @@
 extern "C" {
 void *fn_80029F84();
 void *fn_800635C8(void *,void *,void *,int);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_80071694(void *,void *);
 void fn_8012FC48();
 void *fn_801308D0();
@@ -49,7 +49,7 @@ void *igCollapseGeometry_getMetaCall();
 struct UnknownGenRoot80151278 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80151278(){fn_8006665C(this);}
+ inline UnknownGenRoot80151278(){igObject_construct(this);}
 };
 struct UnknownGenObject80151278_0 : UnknownGenRoot80151278 {
  char unknown04[28];
@@ -66,7 +66,7 @@ struct UnknownGenObject80151278 : UnknownGenObject80151278_0 {
 struct UnknownGenRoot801515BC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801515BC(){fn_8006665C(this);}
+ inline UnknownGenRoot801515BC(){igObject_construct(this);}
 };
 struct UnknownGenObject801515BC_0 : UnknownGenRoot801515BC {
  char unknown04[28];
@@ -112,14 +112,14 @@ void igCollapseHierarchy_register(){
 void *igCollapseHierarchy_getMetaCall(){return igCollapseHierarchy_getMeta();}
 void igCollapseHierarchy_fieldInit(){
  void *value0=igCollapseHierarchy_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055FCC8,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055FCC8,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80029F84();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_80071694(value4,igNodeTraversal_className);
- fn_800659C0(value0,lbl_8055FCD0,lbl_8055FCD8,lbl_8055FCE0,value1);
+ meta_setupFields(value0,lbl_8055FCD0,lbl_8055FCD8,lbl_8055FCE0,value1);
 }
 void *fn_80151534(){
  char *data=igVertexBlending_className;

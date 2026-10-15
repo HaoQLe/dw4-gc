@@ -18,7 +18,7 @@ void fn_8006588C(void *,void *,void *);
 UnknownGenFactory *fn_800658F8(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igCompoundMetaField_register();
 void igDataList_register();
 extern char igDependencyList_className[];
@@ -85,7 +85,7 @@ void *igDependencyList_getMeta(){
 }
 void *igDependencyList_vtableRead(){
  UnknownGenObject800332A8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80475704;
  object.unknown00=igDependencyList_vtable;

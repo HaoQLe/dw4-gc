@@ -7,12 +7,12 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_800CB530();
 void *fn_8011148C();
 void fn_801AA6DC();
@@ -108,9 +108,9 @@ void igTransformRecorder_register(){
 void *igTransformRecorder_getMetaCall(){return igTransformRecorder_getMeta();}
 void igTransformRecorder_fieldInit(){
  void *value0=igTransformRecorder_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_805600E4,2);
- fn_800659C0(value0,lbl_805600F8,lbl_80560100,lbl_80560108,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_805600E4,2);
+ meta_setupFields(value0,lbl_805600F8,lbl_80560100,lbl_80560108,value1);
 }
 void *fn_801ABFD8(){
  if(!igNonRefCountedTransformList_meta) igNonRefCountedTransformList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -122,7 +122,7 @@ void *igNonRefCountedTransformList_getMeta(){
 }
 void *igNonRefCountedTransformList_vtableRead(){
  UnknownGenObject801AC050_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;
@@ -144,7 +144,7 @@ void *igTransformListList_getMeta(){
 }
 void *igTransformListList_vtableRead(){
  UnknownGenObject801AC1B0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -170,7 +170,7 @@ void *igTransformList_getMeta(){
 }
 void *igTransformList_vtableRead(){
  UnknownGenObject801AC34C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -196,7 +196,7 @@ void *igTransformStack_getMeta(){
 }
 void *igTransformStack_vtableRead(){
  UnknownGenObject801AC4E8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80480B58;
  object.unknown00=igNonRefCountedObjectStack_vtable;

@@ -7,10 +7,10 @@ void beBaseInfoManagerList_vtableRead();
 void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_80284550();
@@ -68,21 +68,21 @@ void beBaseInfoManager_register(){
 void *beBaseInfoManager_getMetaCall(){return beBaseInfoManager_getMeta();}
 void beBaseInfoManager_fieldInit(){
  void *value0=beBaseInfoManager_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_804D2DD8,4);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_804D2DD8,4);
+ void *value2=meta_field(value0,value1);
  void *value3=beSystem_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+60)=0;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value5=beMessenger_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+60)=0;
- void *value6=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+2));
+ void *value6=meta_field(value0,(reinterpret_cast<char *>(value1)+2));
  void *value7=beBaseInfoList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value6)+52)=1;
- fn_800659C0(value0,lbl_804D2DE8,lbl_804D2DF8,lbl_804D2E08,value1);
+ meta_setupFields(value0,lbl_804D2DE8,lbl_804D2DF8,lbl_804D2E08,value1);
 }
 void *beBaseInfoList_metaObject(){
  if(!beBaseInfoList_meta) beBaseInfoList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

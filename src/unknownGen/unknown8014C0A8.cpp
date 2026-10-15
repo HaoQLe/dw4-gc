@@ -5,7 +5,7 @@ extern "C" {
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void fn_8014C2F4(void *,short);
 void igDefaultManager_registerNow();
@@ -51,7 +51,7 @@ void *igDynamicLock_getMeta(){
 }
 void *igDynamicLock_vtableRead(){
  UnknownGenObject8014C0E4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804A6460;
  object.unknown00=lbl_804AA8E4;
  object.unknown00=lbl_804A6564;
@@ -77,7 +77,7 @@ void *igDefaultManager_getMeta(){
 }
 void *igDefaultManager_vtableRead(){
  UnknownGenObject8014C274 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDefaultManager_vtable;
  object.unknown08=0;
  object.unknown0C=0;

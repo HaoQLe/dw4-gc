@@ -5,10 +5,10 @@ extern "C" {
 void *fn_800237D0();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -49,18 +49,18 @@ void beSaveApi_register(){
 void *beSaveApi_getMetaCall(){return beSaveApi_getMeta();}
 void beSaveApi_fieldInit(){
  void *value0=beSaveApi_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_804CFCB4,13);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+10));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_804CFCB4,13);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+10));
  void *value3=beSaveMemoryObj_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+11));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+11));
  void *value5=beSaveMemoryObj_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
- void *value6=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+12));
+ void *value6=meta_field(value0,(reinterpret_cast<char *>(value1)+12));
  void *value7=beSaveMemoryObj_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
- fn_800659C0(value0,lbl_804CFCE8,lbl_804CFD1C,lbl_804CFD50,value1);
+ meta_setupFields(value0,lbl_804CFCE8,lbl_804CFD1C,lbl_804CFD50,value1);
 }
 void *beSvPlatBaseData_metaObject(){
  if(!beSvPlatBaseData_meta) beSvPlatBaseData_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

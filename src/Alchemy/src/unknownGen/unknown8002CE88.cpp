@@ -13,13 +13,13 @@ void fn_800638E0(void *);
 void *fn_80063B5C();
 void fn_80063F14(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *igGamecubeLongTimer_getMeta();
 void igLocationTable_fieldInit();
 void igMetaField_register();
@@ -96,7 +96,7 @@ struct UnknownGenObject8002D160 : UnknownGenObject8002D160_1 {
 struct UnknownGenRoot8002D44C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8002D44C(){fn_8006665C(this);}
+ inline UnknownGenRoot8002D44C(){igObject_construct(this);}
 };
 struct UnknownGenObject8002D44C : UnknownGenRoot8002D44C {
  char unknown04[12];
@@ -168,10 +168,10 @@ void *igLongArrayMetaField_getMetaCall(){return igLongArrayMetaField_getMeta();}
 void *igLongArrayMetaField_parentMeta(){return igLongMetaField_meta;}
 void igLongArrayMetaField_fieldInit(){
  void *meta=igLongArrayMetaField_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055D37C,1);
- fn_80053650(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055D380,lbl_8055D384,lbl_8055D388,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055D37C,1);
+ fn_80053650(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055D380,lbl_8055D384,lbl_8055D388,field);
 }
 void fn_8002D33C(){
  if(!lbl_80561998){

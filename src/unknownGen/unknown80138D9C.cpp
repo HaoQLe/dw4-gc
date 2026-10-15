@@ -7,12 +7,12 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void igObjectList_register();
 void igObject_register();
@@ -73,7 +73,7 @@ struct UnknownGenObject80139104_0 {
 struct UnknownGenRoot801392D8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801392D8(){fn_8006665C(this);}
+ inline UnknownGenRoot801392D8(){igObject_construct(this);}
 };
 struct UnknownGenObject801392D8 : UnknownGenRoot801392D8 {
  char unknown04[4];
@@ -96,7 +96,7 @@ void *igParameterSetConstraintList_getMeta(){
 }
 void *igParameterSetConstraintList_vtableRead(){
  UnknownGenObject80138E10_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -126,9 +126,9 @@ void igParameterSetConstraint_register(){
 void *igParameterSetConstraint_getMetaCall(){return igParameterSetConstraint_getMeta();}
 void igParameterSetConstraint_fieldInit(){
  void *value0=igParameterSetConstraint_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F728,1);
- fn_800659C0(value0,lbl_8055F72C,lbl_8055F730,lbl_8055F734,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F728,1);
+ meta_setupFields(value0,lbl_8055F72C,lbl_8055F730,lbl_8055F734,value1);
 }
 void *fn_8013908C(){
  if(!igParameterSetList_meta) igParameterSetList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -140,7 +140,7 @@ void *igParameterSetList_getMeta(){
 }
 void *igParameterSetList_vtableRead(){
  UnknownGenObject80139104_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

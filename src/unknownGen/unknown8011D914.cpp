@@ -13,15 +13,15 @@ void fn_800638E0(void *);
 void *fn_80063B5C();
 void fn_80063F14(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void fn_80065D94(int);
 void fn_80065DBC(int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8011D8BC();
 void *fn_8011F74C();
 void *fn_8012705C();
@@ -366,7 +366,7 @@ void *igVolumeList_getMeta(){
 }
 void *igVolumeList_vtableRead(){
  UnknownGenObject8011DB6C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -388,7 +388,7 @@ void *igVectorMorphing_getMeta(){
 }
 void *igVectorMorphing_vtableRead(){
  UnknownGenObject8011DCCC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igVectorMorphing_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -407,7 +407,7 @@ void *igVectorBlending_getMeta(){
 }
 void *igVectorBlending_vtableRead(){
  UnknownGenObject8011DE20_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igVectorBlending_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -517,10 +517,10 @@ void *igVec4fArrayMetaField_getMetaCall(){return igVec4fArrayMetaField_getMeta()
 void *igVec4fArrayMetaField_parentMeta(){return igVec4fMetaField_meta;}
 void igVec4fArrayMetaField_fieldInit(){
  void *meta=igVec4fArrayMetaField_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055F320,1);
- fn_80053650(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055F324,lbl_8055F328,lbl_8055F32C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055F320,1);
+ fn_80053650(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055F324,lbl_8055F328,lbl_8055F32C,field);
 }
 void fn_8011E648(){
  if(!lbl_805638F4){
@@ -759,7 +759,7 @@ void *igSphere_getMeta(){
 }
 void *igSphere_vtableRead(){
  UnknownGenObject8011F598_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8049B9DC;
  object.unknown00=igSphere_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

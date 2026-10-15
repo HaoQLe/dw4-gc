@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igProjectionMatrixAttr_registerNow();
@@ -40,7 +40,7 @@ void igRefVertexBlendMatrixAttr_fieldInit();
 struct UnknownGenRoot800B1BF4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B1BF4(){fn_8006665C(this);}
+ inline UnknownGenRoot800B1BF4(){igObject_construct(this);}
 };
 struct UnknownGenObject800B1BF4 : UnknownGenRoot800B1BF4 {
  char unknown04[8];
@@ -71,14 +71,14 @@ void igRefVertexBlendMatrixAttr_register(){
 void *igRefVertexBlendMatrixAttr_getMetaCall(){return igRefVertexBlendMatrixAttr_getMeta();}
 void igRefVertexBlendMatrixAttr_fieldInit(){
  void *value0=igRefVertexBlendMatrixAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E244,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E244,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_80218120();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+48)=(void *)fn_800C23E4;
- fn_800659C0(value0,lbl_8055E24C,lbl_8055E254,lbl_8055E25C,value1);
+ meta_setupFields(value0,lbl_8055E24C,lbl_8055E254,lbl_8055E25C,value1);
 }
 void *igProjectionMatrixAttr_create(void *object){
  igProjectionMatrixAttr_registerNow();

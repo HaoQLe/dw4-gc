@@ -12,7 +12,7 @@ void fn_80063F14(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igObject_register();
 void igStringTable_fieldInit();
 extern char lbl_80463578[];
@@ -31,7 +31,7 @@ void *igStringTable_getMetaCall();
 struct UnknownGenRoot8002492C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8002492C(){fn_8006665C(this);}
+ inline UnknownGenRoot8002492C(){igObject_construct(this);}
 };
 struct UnknownGenObject8002492C : UnknownGenRoot8002492C {
  char unknown04[12];

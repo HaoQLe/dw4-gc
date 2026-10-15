@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_803251E8(void *,short);
 extern char lbl_804CDE20[];
 extern char libNdmwRuntimePlugin_vtable[];
@@ -36,7 +36,7 @@ struct UnknownGenObject8032512C {
 extern "C" {
 void *libNdmwRuntimePlugin_vtableRead(){
  UnknownGenObject8032512C object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804CDE20;
  object.unknown00=libNdmwRuntimePlugin_vtable;
  object.unknown08=0;

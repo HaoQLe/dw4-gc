@@ -9,7 +9,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801AF130();
 void igAnimationCombinerBoneInfo_fieldInit();
@@ -76,7 +76,7 @@ struct UnknownGenObject801CB404_0 {
 struct UnknownGenRoot801CB59C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801CB59C(){fn_8006665C(this);}
+ inline UnknownGenRoot801CB59C(){igObject_construct(this);}
 };
 struct UnknownGenObject801CB59C : UnknownGenRoot801CB59C {
  char unknown04[8];
@@ -96,7 +96,7 @@ void *igAnimationCombinerBoneInfoPool_getMeta(){
 }
 void *igAnimationCombinerBoneInfoPool_vtableRead(){
  UnknownGenObject801CB0C4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -123,7 +123,7 @@ void *igAnimationCombinerBoneInfoListList_getMeta(){
 }
 void *igAnimationCombinerBoneInfoListList_vtableRead(){
  UnknownGenObject801CB26C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -149,7 +149,7 @@ void *igAnimationCombinerBoneInfoList_getMeta(){
 }
 void *igAnimationCombinerBoneInfoList_vtableRead(){
  UnknownGenObject801CB404_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

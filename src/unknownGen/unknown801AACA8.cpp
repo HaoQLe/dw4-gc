@@ -5,7 +5,7 @@ extern "C" {
 void fn_80065DBC(int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void fn_801AAF40();
 void fn_8020AEC0(int);
@@ -28,7 +28,7 @@ void *igTransientShaderData_parentMeta();
 struct UnknownGenRoot801AAD30 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801AAD30(){fn_8006665C(this);}
+ inline UnknownGenRoot801AAD30(){igObject_construct(this);}
 };
 struct UnknownGenObject801AAD30_0 : UnknownGenRoot801AAD30 {
  char unknown04[4];

@@ -5,12 +5,12 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igStencilFunctionAttr_fieldInit();
@@ -63,7 +63,7 @@ void *igStencilStateAttr_getMeta(){
 }
 void *igStencilStateAttr_vtableRead(){
  UnknownGenObject800B02A4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igStencilStateAttr_vtable;
@@ -79,9 +79,9 @@ void igStencilStateAttr_register(){
 void *igStencilStateAttr_getMetaCall(){return igStencilStateAttr_getMeta();}
 void igStencilStateAttr_fieldInit(){
  void *value0=igStencilStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E128,1);
- fn_800659C0(value0,lbl_8055E12C,lbl_8055E130,lbl_8055E134,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E128,1);
+ meta_setupFields(value0,lbl_8055E12C,lbl_8055E130,lbl_8055E134,value1);
 }
 void *igStencilFunctionAttr_create(void *object){
  igStencilFunctionAttr_registerNow();
@@ -93,7 +93,7 @@ void *igStencilFunctionAttr_getMeta(){
 }
 void *igStencilFunctionAttr_vtableRead(){
  UnknownGenObject800B0490_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igStencilFunctionAttr_vtable;

@@ -7,9 +7,9 @@ void bePlaySE_vtableRead();
 void *fn_800237D0();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -38,9 +38,9 @@ void bePlaySE_register(){
 void *bePlaySE_getMetaCall(){return bePlaySE_getMeta();}
 void bePlaySE_fieldInit(){
  void *meta=bePlaySE_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804CF63C,0x2);
- fn_800659C0(meta,lbl_804CF644,lbl_804CF64C,lbl_804CF654,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804CF63C,0x2);
+ meta_setupFields(meta,lbl_804CF644,lbl_804CF64C,lbl_804CF654,field);
 }
 void *beShadow01InfoList_metaObject(){
  if(!beShadow01InfoList_meta) beShadow01InfoList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));

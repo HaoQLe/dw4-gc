@@ -5,7 +5,7 @@ extern "C" {
 void *fn_80024180();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igObjectList_register();
 void igObjectPool_fieldInit();
@@ -32,7 +32,7 @@ void *igObjectPool_getMeta(){
 }
 void *igObjectPool_vtableRead(){
  UnknownGenObject801AD9AC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

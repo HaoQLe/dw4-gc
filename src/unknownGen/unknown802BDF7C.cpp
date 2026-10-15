@@ -6,9 +6,9 @@ void beSaveApi_register();
 void *beSvGetFreeSizeApi_getMeta();
 void beSvGetFreeSizeApi_vtableRead();
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -36,9 +36,9 @@ void beSvGetFreeSizeApi_register(){
 void *beSvGetFreeSizeApi_getMetaCall(){return beSvGetFreeSizeApi_getMeta();}
 void beSvGetFreeSizeApi_fieldInit(){
  void *meta=beSvGetFreeSizeApi_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804CFBC4,0x3);
- fn_800659C0(meta,lbl_804CFBD0,lbl_804CFBDC,lbl_804CFBE8,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804CFBC4,0x3);
+ meta_setupFields(meta,lbl_804CFBD0,lbl_804CFBDC,lbl_804CFBE8,field);
 }
 void *beSvWriteMediaApi_create(void *object){
  beSvWriteMediaApi_registerNow();

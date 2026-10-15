@@ -9,7 +9,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igObjectList_register();
 void *igStringObjList_getMeta();
 void igStringObjList_vtableRead();
@@ -45,7 +45,7 @@ void *igStringObj_getMeta(){
 }
 void *igStringObj_vtableRead(){
  UnknownGenObject80025064_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igStringObj_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

@@ -7,10 +7,10 @@ void beNDMWStatusPowerSocket_vtableRead();
 void beNDMWWindowCtrl_register();
 void fn_80053650(void *,int);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *beDataObjList_metaObject();
@@ -60,32 +60,32 @@ void beNDMWStatusCtrlBaseEquip_register(){
 void *beNDMWStatusCtrlBaseEquip_getMetaCall(){return beNDMWStatusCtrlBaseEquip_getMeta();}
 void beNDMWStatusCtrlBaseEquip_fieldInit(){
  void *value0=beNDMWStatusCtrlBaseEquip_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_804E1F28,10);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_804E1F28,10);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_80053650(value2,1);
- void *value3=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+3));
+ void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+3));
  void *value4=beDataObjList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
- void *value5=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+4));
+ void *value5=meta_field(value0,(reinterpret_cast<char *>(value1)+4));
  void *value6=beNDMWItemBaseList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+56)=value6;
- void *value7=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+5));
+ void *value7=meta_field(value0,(reinterpret_cast<char *>(value1)+5));
  void *value8=beNDMWItemBaseList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value7)+56)=value8;
- void *value9=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+6));
+ void *value9=meta_field(value0,(reinterpret_cast<char *>(value1)+6));
  void *value10=beNDMWItemBaseList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value9)+56)=value10;
- void *value11=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+7));
+ void *value11=meta_field(value0,(reinterpret_cast<char *>(value1)+7));
  void *value12=beNDMWItemBaseList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value11)+56)=value12;
- void *value13=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+8));
+ void *value13=meta_field(value0,(reinterpret_cast<char *>(value1)+8));
  void *value14=beNDMWItemBaseList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value13)+56)=value14;
- void *value15=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+9));
+ void *value15=meta_field(value0,(reinterpret_cast<char *>(value1)+9));
  void *value16=beNDMWItemBaseList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value15)+56)=value16;
- fn_800659C0(value0,lbl_804E1F50,lbl_804E1F78,lbl_804E1FA0,value1);
+ meta_setupFields(value0,lbl_804E1F50,lbl_804E1F78,lbl_804E1FA0,value1);
 }
 void *beNDMWStatusCtrlEquip_create(void *object){
  beNDMWStatusCtrlEquip_registerNow();

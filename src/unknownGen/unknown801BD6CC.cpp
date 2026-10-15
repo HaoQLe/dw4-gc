@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void fn_801BDB1C();
 void igIntersectTraversal_fieldInit();
@@ -28,7 +28,7 @@ void *fn_801BD9C8();
 struct UnknownGenRoot801BD744 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801BD744(){fn_8006665C(this);}
+ inline UnknownGenRoot801BD744(){igObject_construct(this);}
 };
 struct UnknownGenObject801BD744_0 : UnknownGenRoot801BD744 {
  char unknown04[24];

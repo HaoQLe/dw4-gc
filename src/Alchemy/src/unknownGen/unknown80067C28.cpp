@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_8006426C(void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_fieldCount(void *);
 extern void *igObject_meta;
 }
 class UnknownGenV80067C28_0 {
@@ -48,7 +48,7 @@ void fn_80067C28(int p0,int p1){
  value3=reinterpret_cast<UnknownGenV80067C28_0 *>((void *)p0)->s58((void *)p1);
  value0=*reinterpret_cast<void **>(reinterpret_cast<char *>(value3)+40);
  value1=*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+12);
- value4=fn_80065D88(igObject_meta);
+ value4=meta_fieldCount(igObject_meta);
  value2=value4;
  while((int)(int)value2<(int)(int)value1){
   fn_8006426C((void *)(int)*reinterpret_cast<int *>(reinterpret_cast<char *>(*reinterpret_cast<void **>(reinterpret_cast<char *>(value0)+8))+((int)value2<<2)),(void *)p0,(void *)p1);

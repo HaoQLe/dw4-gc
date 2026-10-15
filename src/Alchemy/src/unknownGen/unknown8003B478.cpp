@@ -8,7 +8,7 @@ void *fn_8002C31C();
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igFile_register();
 void igGamecubeHostFile_fieldInit();
 void *igGamecubeLongTimer_getMetaCall();
@@ -42,7 +42,7 @@ struct UnknownGenObject8003B4B4_0 {
 struct UnknownGenRoot8003B61C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8003B61C(){fn_8006665C(this);}
+ inline UnknownGenRoot8003B61C(){igObject_construct(this);}
 };
 struct UnknownGenObject8003B61C_0 : UnknownGenRoot8003B61C {
  char unknown04[4];
@@ -66,7 +66,7 @@ void *igGamecubeLongTimer_getMeta(){
 }
 void *igGamecubeLongTimer_vtableRead(){
  UnknownGenObject8003B4B4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804733EC;
  object.unknown00=lbl_80473354;
  object.unknown00=igGamecubeLongTimer_vtable;

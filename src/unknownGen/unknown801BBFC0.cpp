@@ -3,13 +3,13 @@
 #pragma auto_inline off
 extern "C" {
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_80218120();
 void igAnimationSequence_register();
@@ -59,12 +59,12 @@ void *igJoint_getMetaCall(){return igJoint_getMeta();}
 void *fn_801BC078(){return igTransform_meta;}
 void igJoint_fieldInit(){
  void *value0=igJoint_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_805604F4,2);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_805604F4,2);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value3=fn_80218120();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_805604FC,lbl_80560504,lbl_8056050C,value1);
+ meta_setupFields(value0,lbl_805604FC,lbl_80560504,lbl_8056050C,value1);
 }
 void *igInverseKinematicsSource_create(void *object){
  igInverseKinematicsSource_registerNow();
@@ -76,7 +76,7 @@ void *igInverseKinematicsSource_getMeta(){
 }
 void *igInverseKinematicsSource_vtableRead(){
  UnknownGenObject801BC174_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_804BA150;
  object.unknown00=lbl_804B796C;
  object.unknown00=igInverseKinematicsSource_vtable;

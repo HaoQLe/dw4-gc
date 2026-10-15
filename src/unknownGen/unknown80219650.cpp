@@ -3,12 +3,12 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800237D0();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80216620();
 void igObject_register();
 extern char igBoolObject_className[];
@@ -36,7 +36,7 @@ void *igBoolObject_getMeta(){
 }
 void *igBoolObject_vtableRead(){
  UnknownGenObject8021968C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igBoolObject_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -50,9 +50,9 @@ void igBoolObject_register(){
 void *igBoolObject_getMetaCall(){return igBoolObject_getMeta();}
 void igBoolObject_fieldInit(){
  void *value0=igBoolObject_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560C98,1);
- fn_800659C0(value0,lbl_80560C9C,lbl_80560CA0,lbl_80560CA4,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560C98,1);
+ meta_setupFields(value0,lbl_80560C9C,lbl_80560CA0,lbl_80560CA4,value1);
 }
 }
 #pragma pop

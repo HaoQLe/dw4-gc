@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_802C64EC(void *,short);
 extern char beModelCtrlInfoWork_vtable[];
 }
@@ -51,7 +51,7 @@ struct UnknownGenObject802C6420 {
 extern "C" {
 void *beModelCtrlInfoWork_vtableRead(){
  UnknownGenObject802C6420 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=beModelCtrlInfoWork_vtable;
  object.unknown08=0;
  object.unknown0C=0;

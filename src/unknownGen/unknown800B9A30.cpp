@@ -6,12 +6,12 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igBlendMatrixPaletteAttr_fieldInit();
@@ -108,7 +108,7 @@ void *igBlendingCorrectionStateAttr_getMeta(){
 }
 void *igBlendingCorrectionStateAttr_vtableRead(){
  UnknownGenObject800B9A6C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igBlendingCorrectionStateAttr_vtable;
@@ -124,9 +124,9 @@ void igBlendingCorrectionStateAttr_register(){
 void *igBlendingCorrectionStateAttr_getMetaCall(){return igBlendingCorrectionStateAttr_getMeta();}
 void igBlendingCorrectionStateAttr_fieldInit(){
  void *value0=igBlendingCorrectionStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E638,1);
- fn_800659C0(value0,lbl_8055E63C,lbl_8055E640,lbl_8055E644,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E638,1);
+ meta_setupFields(value0,lbl_8055E63C,lbl_8055E640,lbl_8055E644,value1);
 }
 void *igBlendingControlStateAttr_getMeta(){
  if(!igBlendingControlStateAttr_meta || !(reinterpret_cast<unsigned int *>(igBlendingControlStateAttr_meta)[0x24/4]&4)) igBlendingControlStateAttr_registerNow();
@@ -134,7 +134,7 @@ void *igBlendingControlStateAttr_getMeta(){
 }
 void *igBlendingControlStateAttr_vtableRead(){
  UnknownGenObject800B9C20_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igBlendingControlStateAttr_vtable;
@@ -150,9 +150,9 @@ void igBlendingControlStateAttr_register(){
 void *igBlendingControlStateAttr_getMetaCall(){return igBlendingControlStateAttr_getMeta();}
 void igBlendingControlStateAttr_fieldInit(){
  void *value0=igBlendingControlStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E648,1);
- fn_800659C0(value0,lbl_8055E64C,lbl_8055E650,lbl_8055E654,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E648,1);
+ meta_setupFields(value0,lbl_8055E64C,lbl_8055E650,lbl_8055E654,value1);
 }
 void *igBlendStateAttr_create(void *object){
  igBlendStateAttr_registerNow();
@@ -168,7 +168,7 @@ void *igBlendStateAttr_getMeta(){
 }
 void *igBlendStateAttr_vtableRead(){
  UnknownGenObject800B9E48_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igBlendStateAttr_vtable;
@@ -184,9 +184,9 @@ void igBlendStateAttr_register(){
 void *igBlendStateAttr_getMetaCall(){return igBlendStateAttr_getMeta();}
 void igBlendStateAttr_fieldInit(){
  void *value0=igBlendStateAttr_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055E658,1);
- fn_800659C0(value0,lbl_8055E65C,lbl_8055E660,lbl_8055E664,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055E658,1);
+ meta_setupFields(value0,lbl_8055E65C,lbl_8055E660,lbl_8055E664,value1);
 }
 void *fn_800B9FC0(){
  if(!igBlendMatrixPaletteAttrList_meta) igBlendMatrixPaletteAttrList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -198,7 +198,7 @@ void *igBlendMatrixPaletteAttrList_getMeta(){
 }
 void *igBlendMatrixPaletteAttrList_vtableRead(){
  UnknownGenObject800BA038_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -228,7 +228,7 @@ void *igBlendMatrixPaletteAttr_getMeta(){
 }
 void *igBlendMatrixPaletteAttr_vtableRead(){
  UnknownGenObject800BA20C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_8047D578;
  object.unknown00=lbl_8047E50C;
  object.unknown00=igBlendMatrixPaletteAttr_vtable;

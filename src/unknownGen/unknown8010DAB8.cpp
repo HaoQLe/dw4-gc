@@ -5,7 +5,7 @@ extern "C" {
 void __dl__FPv(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8010CBD4();
 void igScalerModel_fieldInit();
 void igSimpleChildHolderModel_register();
@@ -27,7 +27,7 @@ void *fn_8010DD30();
 struct UnknownGenRoot8010DB70 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010DB70(){fn_8006665C(this);}
+ inline UnknownGenRoot8010DB70(){igObject_construct(this);}
 };
 struct UnknownGenObject8010DB70_0 : UnknownGenRoot8010DB70 {
  char unknown04[4];

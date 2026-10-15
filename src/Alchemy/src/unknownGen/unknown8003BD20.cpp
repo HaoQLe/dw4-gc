@@ -6,7 +6,7 @@ extern "C" {
 void fn_80021B94();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *igCallStackTracer_getMetaCall();
 void igCallStackTracer_register();
 void *igGamecubeCallStackTracer_getMetaCall();
@@ -36,7 +36,7 @@ void *igGamecubeCallStackTracer_getMeta(){
 }
 void *igGamecubeCallStackTracer_vtableRead(){
  UnknownGenObject8003BD5C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80474900;
  object.unknown00=igUnsignedIntList_vtable;

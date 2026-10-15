@@ -10,7 +10,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80284294();
 void fn_80286008(void *,short);
 void igInsightCore_registerNow();
@@ -101,7 +101,7 @@ void *igInsightPluginList_getMeta(){
 }
 void *igInsightPluginList_vtableRead(){
  UnknownGenObject80285C70_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -143,7 +143,7 @@ void *igInsightCore_getMeta(){
 }
 void *igInsightCore_vtableRead(){
  UnknownGenObject80285F7C object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igInsightCore_vtable;
  object.unknown08=0;
  object.unknown0C=0;

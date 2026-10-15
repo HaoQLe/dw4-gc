@@ -9,7 +9,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_80284294();
 void igMessageFilter_fieldInit();
 void igObjectList_register();
@@ -77,7 +77,7 @@ struct UnknownGenObject80284F6C_0 {
 struct UnknownGenRoot80285128 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80285128(){fn_8006665C(this);}
+ inline UnknownGenRoot80285128(){igObject_construct(this);}
 };
 struct UnknownGenObject80285128 : UnknownGenRoot80285128 {
  char unknown04[4];
@@ -92,7 +92,7 @@ void *igMessage_getMeta(){
 }
 void *igMessage_vtableRead(){
  UnknownGenObject80284B04_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igMessage_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -114,7 +114,7 @@ void *igMessageReceiverList_getMeta(){
 }
 void *igMessageReceiverList_vtableRead(){
  UnknownGenObject80284CA0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -152,7 +152,7 @@ void *igMessageFilterList_getMeta(){
 }
 void *igMessageFilterList_vtableRead(){
  UnknownGenObject80284F6C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

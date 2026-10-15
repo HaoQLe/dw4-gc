@@ -14,14 +14,14 @@ void *fn_80063B5C();
 void fn_80063F14(void *);
 void *meta_createInstance(void *,void *);
 void fn_8006588C(void *,void *,void *);
-void *fn_800658E4(void *,void *);
+void *meta_field(void *,void *);
 UnknownGenFactory *fn_800658F8(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8006ACA4(void *);
 void igDataList_register();
 void igDirEntry_register();
@@ -106,7 +106,7 @@ struct UnknownGenObject80028FFC_0 {
 struct UnknownGenRoot8002923C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8002923C(){fn_8006665C(this);}
+ inline UnknownGenRoot8002923C(){igObject_construct(this);}
 };
 struct UnknownGenObject8002923C_0 : UnknownGenRoot8002923C {
  char unknown04[4];
@@ -165,10 +165,10 @@ void *igObjectRefArrayMetaField_getMetaCall(){return igObjectRefArrayMetaField_g
 void *igObjectRefArrayMetaField_parentMeta(){return igObjectRefMetaField_meta;}
 void igObjectRefArrayMetaField_fieldInit(){
  void *meta=igObjectRefArrayMetaField_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055D21C,1);
- fn_80053650(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055D220,lbl_8055D224,lbl_8055D228,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055D21C,1);
+ fn_80053650(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055D220,lbl_8055D224,lbl_8055D228,field);
 }
 void fn_80028EB4(){
  if(!lbl_80561700){
@@ -195,7 +195,7 @@ void *igObjectList_getMeta(){
 }
 void *igObjectList_vtableRead(){
  UnknownGenObject80028FFC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

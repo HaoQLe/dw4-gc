@@ -4,9 +4,9 @@
 extern "C" {
 extern void *_arkCore__Q23Gap4Core;
 void *fn_800590A0(void *);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_80068184(void *);
-extern char lbl_804717F0[];
+extern char igObject_vtable[];
 }
 class UnknownGenV80066710_0 {
 public:
@@ -106,9 +106,9 @@ void *fn_80066710(void *p0){
  void *value0;
  void *value1;
  void *value2;
- *reinterpret_cast<void * *>(reinterpret_cast<char *>(p0)+0)=lbl_804717F0;
+ *reinterpret_cast<void * *>(reinterpret_cast<char *>(p0)+0)=igObject_vtable;
  if((int)(int)p0!=0){
-  fn_8006665C(p0);
+  igObject_construct(p0);
  }
  if(*reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(_arkCore__Q23Gap4Core)+0)){
   value0=fn_80068184(p0);

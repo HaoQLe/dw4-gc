@@ -7,13 +7,13 @@ void *meta_newMetaObject(void *);
 void fn_80053650(void *,int);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
 void igLod_registerNow();
@@ -58,7 +58,7 @@ struct UnknownGenObject801BAC0C_0 {
 struct UnknownGenRoot801BADE0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801BADE0(){fn_8006665C(this);}
+ inline UnknownGenRoot801BADE0(){igObject_construct(this);}
 };
 struct UnknownGenObject801BADE0_0 : UnknownGenRoot801BADE0 {
  char unknown04[4];
@@ -90,7 +90,7 @@ void *igModelViewMatrixBoneSelectList_getMeta(){
 }
 void *igModelViewMatrixBoneSelectList_vtableRead(){
  UnknownGenObject801BAC0C_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -140,11 +140,11 @@ void igModelViewMatrixBoneSelect_register(){
 void *igModelViewMatrixBoneSelect_getMetaCall(){return igModelViewMatrixBoneSelect_getMeta();}
 void igModelViewMatrixBoneSelect_fieldInit(){
  void *value0=igModelViewMatrixBoneSelect_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560494,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560494,1);
+ void *value2=meta_field(value0,value1);
  fn_80053650(value2,-1);
- fn_800659C0(value0,lbl_80560498,lbl_8056049C,lbl_805604A0,value1);
+ meta_setupFields(value0,lbl_80560498,lbl_8056049C,lbl_805604A0,value1);
 }
 void *igLod_create(void *object){
  igLod_registerNow();

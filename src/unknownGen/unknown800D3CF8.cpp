@@ -7,7 +7,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void fn_800D3E80();
 void igDataList_register();
@@ -38,7 +38,7 @@ void *igGfxStateModifierList_getMeta(){
 }
 void *igGfxStateModifierList_vtableRead(){
  UnknownGenObject800D3D70_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_804936BC;
  object.unknown00=igGfxStateModifierList_vtable;

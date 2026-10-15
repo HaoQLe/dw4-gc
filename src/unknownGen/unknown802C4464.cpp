@@ -2,9 +2,9 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void beNodeAnim_registerNow();
 void *fn_803116A4();
 extern char lbl_804D0470[];
@@ -17,9 +17,9 @@ extern void *beNodeAnim_meta;
 extern "C" {
 void beLoadingNode_fieldInit(){
  void *meta=beLoadingNode_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D0470,0x2);
- fn_800659C0(meta,lbl_804D0478,lbl_804D0480,lbl_804D0488,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D0470,0x2);
+ meta_setupFields(meta,lbl_804D0478,lbl_804D0480,lbl_804D0488,field);
 }
 void *fn_802C44E4(){return fn_803116A4();}
 void *beNodeAnim_getMeta(){

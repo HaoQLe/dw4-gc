@@ -9,7 +9,7 @@ void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void *igGamecubeVertexArray2_getMeta();
 void igNamedObject_register();
@@ -32,7 +32,7 @@ void *igVertexStream_getMetaCall();
 struct UnknownGenRoot800CF3B8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800CF3B8(){fn_8006665C(this);}
+ inline UnknownGenRoot800CF3B8(){igObject_construct(this);}
 };
 struct UnknownGenObject800CF3B8_0 : UnknownGenRoot800CF3B8 {
  char unknown04[4];

@@ -8,7 +8,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igHeapable_register();
 void igObjectList_register();
@@ -46,7 +46,7 @@ struct UnknownGenObject801B7BF8_0 {
 struct UnknownGenRoot801B7D58 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801B7D58(){fn_8006665C(this);}
+ inline UnknownGenRoot801B7D58(){igObject_construct(this);}
 };
 struct UnknownGenObject801B7D58 : UnknownGenRoot801B7D58 {
  char unknown04[32];
@@ -65,7 +65,7 @@ void *_edgeList_getMeta(){
 }
 void *_edgeList_vtableRead(){
  UnknownGenObject801B7BF8_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

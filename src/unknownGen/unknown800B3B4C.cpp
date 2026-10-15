@@ -9,7 +9,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void igModelViewMatrixAttr_registerNow();
 void *fn_800C192C();
@@ -84,7 +84,7 @@ void *igVec3fAlignedList_getMeta(){
 }
 void *igVec3fAlignedList_vtableRead(){
  UnknownGenObject800B3BC4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_8047DFF8;
  object.unknown00=igVec3fList_vtable;
@@ -111,7 +111,7 @@ void *igMorphDataList_getMeta(){
 }
 void *igMorphDataList_vtableRead(){
  UnknownGenObject800B3D80_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -149,7 +149,7 @@ void *igModelViewMatrixAttrList_getMeta(){
 }
 void *igModelViewMatrixAttrList_vtableRead(){
  UnknownGenObject800B4004_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

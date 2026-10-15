@@ -10,7 +10,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igEventTracker_fieldInit();
 void igObject_register();
 extern char lbl_8046677C[];
@@ -58,7 +58,7 @@ void *igEventTracker_getMeta(){
 }
 void *igEventTracker_vtableRead(){
  UnknownGenObject80030CC8 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igEventTracker_vtable;
  object.unknown08=0;
  object.unknown30=0;

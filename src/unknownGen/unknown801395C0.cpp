@@ -3,12 +3,12 @@
 #pragma auto_inline off
 extern "C" {
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void igParameterExist_fieldInit();
 void igParameterSetConstraint_register();
@@ -54,7 +54,7 @@ void *igParameterExist_getMetaCall();
 struct UnknownGenRoot801395FC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801395FC(){fn_8006665C(this);}
+ inline UnknownGenRoot801395FC(){igObject_construct(this);}
 };
 struct UnknownGenObject801395FC_0 : UnknownGenRoot801395FC {
  char unknown04[4];
@@ -68,7 +68,7 @@ struct UnknownGenObject801395FC : UnknownGenObject801395FC_0 {
 struct UnknownGenRoot80139878 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80139878(){fn_8006665C(this);}
+ inline UnknownGenRoot80139878(){igObject_construct(this);}
 };
 struct UnknownGenObject80139878_0 : UnknownGenRoot80139878 {
  char unknown04[4];
@@ -84,7 +84,7 @@ struct UnknownGenObject80139878 : UnknownGenObject80139878_0 {
 struct UnknownGenRoot80139B24 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80139B24(){fn_8006665C(this);}
+ inline UnknownGenRoot80139B24(){igObject_construct(this);}
 };
 struct UnknownGenObject80139B24_0 : UnknownGenRoot80139B24 {
  char unknown04[4];
@@ -121,9 +121,9 @@ void *igParameterNonNull_getMetaCall(){return igParameterNonNull_getMeta();}
 void *fn_80139794(){return igParameterSetConstraint_meta;}
 void igParameterNonNull_fieldInit(){
  void *value0=igParameterNonNull_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F740,1);
- fn_800659C0(value0,lbl_8055F744,lbl_8055F748,lbl_8055F74C,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F740,1);
+ meta_setupFields(value0,lbl_8055F744,lbl_8055F748,lbl_8055F74C,value1);
 }
 void *igParameterMatch_create(void *object){
  igParameterMatch_registerNow();
@@ -152,9 +152,9 @@ void igParameterMatch_register(){
 void *igParameterMatch_getMetaCall(){return igParameterMatch_getMeta();}
 void igParameterMatch_fieldInit(){
  void *value0=igParameterMatch_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F750,2);
- fn_800659C0(value0,lbl_8055F758,lbl_8055F760,lbl_8055F768,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F750,2);
+ meta_setupFields(value0,lbl_8055F758,lbl_8055F760,lbl_8055F768,value1);
 }
 void *igParameterExist_create(void *object){
  igParameterExist_registerNow();

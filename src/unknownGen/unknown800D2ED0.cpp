@@ -8,13 +8,13 @@ void *meta_newMetaObject(void *);
 void *fn_8002A638();
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_80071694(void *,void *);
 void fn_800CE2F8();
 void fn_800D3C00();
@@ -108,7 +108,7 @@ struct UnknownGenObject800D2F80_0 {
 struct UnknownGenRoot800D3118 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800D3118(){fn_8006665C(this);}
+ inline UnknownGenRoot800D3118(){igObject_construct(this);}
 };
 struct UnknownGenObject800D3118_0 : UnknownGenRoot800D3118 {
  char unknown04[4];
@@ -128,7 +128,7 @@ struct UnknownGenObject800D33E4_0 {
 struct UnknownGenRoot800D357C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800D357C(){fn_8006665C(this);}
+ inline UnknownGenRoot800D357C(){igObject_construct(this);}
 };
 struct UnknownGenObject800D357C : UnknownGenRoot800D357C {
  char unknown04[16];
@@ -143,7 +143,7 @@ struct UnknownGenObject800D38CC_0 {
 struct UnknownGenRoot800D3A2C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800D3A2C(){fn_8006665C(this);}
+ inline UnknownGenRoot800D3A2C(){igObject_construct(this);}
 };
 struct UnknownGenObject800D3A2C_0 : UnknownGenRoot800D3A2C {
  char unknown04[4];
@@ -173,7 +173,7 @@ void *igCustomStateFieldList_getMeta(){
 }
 void *igCustomStateFieldList_vtableRead(){
  UnknownGenObject800D2F80_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -215,12 +215,12 @@ void igCustomStateField_register(){
 void *igCustomStateField_getMetaCall(){return igCustomStateField_getMeta();}
 void igCustomStateField_fieldInit(){
  void *value0=igCustomStateField_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EC08,2);
- void *value2=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+1));
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EC08,2);
+ void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value3=fn_8002A638();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055EC10,lbl_8055EC18,lbl_8055EC20,value1);
+ meta_setupFields(value0,lbl_8055EC10,lbl_8055EC18,lbl_8055EC20,value1);
 }
 void *igCustomStateCollectionList_create(void *object){
  igCustomStateCollectionList_registerNow();
@@ -236,7 +236,7 @@ void *igCustomStateCollectionList_getMeta(){
 }
 void *igCustomStateCollectionList_vtableRead(){
  UnknownGenObject800D33E4_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;
@@ -280,11 +280,11 @@ void igCustomStateCollection_register(){
 void *igCustomStateCollection_getMetaCall(){return igCustomStateCollection_getMeta();}
 void igCustomStateCollection_fieldInit(){
  void *value0=igCustomStateCollection_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EC38,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EC38,2);
+ void *value2=meta_field(value0,value1);
  fn_80071694(value2,lbl_8055EB78);
- fn_800659C0(value0,lbl_8055EC50,lbl_8055EC58,lbl_8055EC60,value1);
+ meta_setupFields(value0,lbl_8055EC50,lbl_8055EC58,lbl_8055EC60,value1);
 }
 void *igCustomState_getMeta(){
  if(!igCustomState_meta || !(reinterpret_cast<unsigned int *>(igCustomState_meta)[0x24/4]&4)) igCustomState_registerNow();
@@ -308,7 +308,7 @@ void *igGfxShaderConstantList_getMeta(){
 }
 void *igGfxShaderConstantList_vtableRead(){
  UnknownGenObject800D38CC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

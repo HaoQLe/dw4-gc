@@ -8,13 +8,13 @@ void *meta_newMetaObject(void *);
 void fn_80053650(void *,int);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8010CBD4();
 void *fn_8010CC08();
 void *fn_8010D6A0();
@@ -110,7 +110,7 @@ void *igHotKeyBinding_getMetaCall();
 struct UnknownGenRoot8010ED1C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010ED1C(){fn_8006665C(this);}
+ inline UnknownGenRoot8010ED1C(){igObject_construct(this);}
 };
 struct UnknownGenObject8010ED1C_0 : UnknownGenRoot8010ED1C {
  char unknown04[4];
@@ -124,7 +124,7 @@ struct UnknownGenObject8010ED1C : UnknownGenObject8010ED1C_0 {
 struct UnknownGenRoot8010EF2C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010EF2C(){fn_8006665C(this);}
+ inline UnknownGenRoot8010EF2C(){igObject_construct(this);}
 };
 struct UnknownGenObject8010EF2C_0 : UnknownGenRoot8010EF2C {
  char unknown04[4];
@@ -141,7 +141,7 @@ struct UnknownGenObject8010EF2C : UnknownGenObject8010EF2C_1 {
 struct UnknownGenRoot8010F16C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010F16C(){fn_8006665C(this);}
+ inline UnknownGenRoot8010F16C(){igObject_construct(this);}
 };
 struct UnknownGenObject8010F16C : UnknownGenRoot8010F16C {
  char unknown04[4];
@@ -152,7 +152,7 @@ struct UnknownGenObject8010F16C : UnknownGenRoot8010F16C {
 struct UnknownGenRoot8010F3AC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010F3AC(){fn_8006665C(this);}
+ inline UnknownGenRoot8010F3AC(){igObject_construct(this);}
 };
 struct UnknownGenObject8010F3AC : UnknownGenRoot8010F3AC {
  char unknown04[4];
@@ -167,7 +167,7 @@ struct UnknownGenObject8010F604_0 {
 struct UnknownGenRoot8010F79C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8010F79C(){fn_8006665C(this);}
+ inline UnknownGenRoot8010F79C(){igObject_construct(this);}
 };
 struct UnknownGenObject8010F79C : UnknownGenRoot8010F79C {
  char unknown04[12];
@@ -202,11 +202,11 @@ void *igRadioGroupModel_getMetaCall(){return igRadioGroupModel_getMeta();}
 void *fn_8010EE6C(){return igModel_meta;}
 void igRadioGroupModel_fieldInit(){
  void *value0=igRadioGroupModel_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EFBC,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EFBC,1);
+ void *value2=meta_field(value0,value1);
  fn_80053650(value2,-1);
- fn_800659C0(value0,lbl_8055EFC0,lbl_8055EFC4,lbl_8055EFC8,value1);
+ meta_setupFields(value0,lbl_8055EFC0,lbl_8055EFC4,lbl_8055EFC8,value1);
 }
 void *igOnOffModel_getMeta(){
  if(!igOnOffModel_meta || !(reinterpret_cast<unsigned int *>(igOnOffModel_meta)[0x24/4]&4)) igOnOffModel_registerNow();
@@ -230,9 +230,9 @@ void igOnOffModel_register(){
 void *igOnOffModel_getMetaCall(){return igOnOffModel_getMeta();}
 void igOnOffModel_fieldInit(){
  void *value0=igOnOffModel_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EFCC,1);
- fn_800659C0(value0,lbl_8055EFD8,lbl_8055EFDC,lbl_8055EFE0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EFCC,1);
+ meta_setupFields(value0,lbl_8055EFD8,lbl_8055EFDC,lbl_8055EFE0,value1);
 }
 void *fn_8010F0F4(){
  if(!igModel_meta) igModel_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -258,13 +258,13 @@ void igModel_register(){
 void *igModel_getMetaCall(){return igModel_getMeta();}
 void igModel_fieldInit(){
  void *value0=igModel_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EFF4,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EFF4,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_8010CC08();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- fn_800659C0(value0,lbl_8055F000,lbl_8055F004,lbl_8055F008,value1);
+ meta_setupFields(value0,lbl_8055F000,lbl_8055F004,lbl_8055F008,value1);
 }
 void *fn_8010F334(){
  if(!igHotKeyEventReceiver_meta) igHotKeyEventReceiver_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -292,13 +292,13 @@ void *igHotKeyEventReceiver_getMetaCall(){return igHotKeyEventReceiver_getMeta()
 void *fn_8010F4FC(){return igEventReceiver_meta;}
 void igHotKeyEventReceiver_fieldInit(){
  void *value0=igHotKeyEventReceiver_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055F014,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055F014,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_8010F58C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- fn_800659C0(value0,lbl_8055F018,lbl_8055F01C,lbl_8055F020,value1);
+ meta_setupFields(value0,lbl_8055F018,lbl_8055F01C,lbl_8055F020,value1);
 }
 void *fn_8010F58C(){
  if(!igHotKeyBindingList_meta) igHotKeyBindingList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -310,7 +310,7 @@ void *igHotKeyBindingList_getMeta(){
 }
 void *igHotKeyBindingList_vtableRead(){
  UnknownGenObject8010F604_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

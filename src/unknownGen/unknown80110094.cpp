@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8010CBD4();
 void *fn_8010DF8C();
 void igGuiSystemRenderer_fieldInit();
@@ -26,7 +26,7 @@ void *igGuiSystemRenderer_getMetaCall();
 struct UnknownGenRoot8011010C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8011010C(){fn_8006665C(this);}
+ inline UnknownGenRoot8011010C(){igObject_construct(this);}
 };
 struct UnknownGenObject8011010C_0 : UnknownGenRoot8011010C {
  char unknown04[4];

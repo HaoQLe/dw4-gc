@@ -8,13 +8,13 @@ void *fn_80024180();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_800BB61C();
 void *fn_8011148C();
 void fn_801AA6DC();
@@ -82,7 +82,7 @@ struct UnknownGenObject801C8894_0 {
 struct UnknownGenRoot801C8A68 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C8A68(){fn_8006665C(this);}
+ inline UnknownGenRoot801C8A68(){igObject_construct(this);}
 };
 struct UnknownGenObject801C8A68_0 : UnknownGenRoot801C8A68 {
  char unknown04[4];
@@ -111,7 +111,7 @@ struct UnknownGenObject801C8DEC_0 {
 struct UnknownGenRoot801C8F88 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801C8F88(){fn_8006665C(this);}
+ inline UnknownGenRoot801C8F88(){igObject_construct(this);}
 };
 struct UnknownGenObject801C8F88_0 : UnknownGenRoot801C8F88 {
  char unknown04[4];
@@ -133,7 +133,7 @@ void *igNonRefCountedAttrSetList_getMeta(){
 }
 void *igNonRefCountedAttrSetList_vtableRead(){
  UnknownGenObject801C8894_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;
@@ -184,15 +184,15 @@ void igAttrSet_register(){
 void *igAttrSet_getMetaCall(){return igAttrSet_getMeta();}
 void igAttrSet_fieldInit(){
  void *value0=igAttrSet_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560878,2);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560878,2);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800BB61C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+40)=0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+39)=2;
- fn_800659C0(value0,lbl_80560880,lbl_80560888,lbl_80560890,value1);
+ meta_setupFields(value0,lbl_80560880,lbl_80560888,lbl_80560890,value1);
 }
 void *fn_801C8D74(){
  if(!igAppearanceList_meta) igAppearanceList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -204,7 +204,7 @@ void *igAppearanceList_getMeta(){
 }
 void *igAppearanceList_vtableRead(){
  UnknownGenObject801C8DEC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igObjectList_vtable;

@@ -6,13 +6,13 @@ void *fn_80023CF4();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void *igGamecubeVisualContext_getMeta();
 void igNamedObject_register();
@@ -47,7 +47,7 @@ void *igVertexArray2_getMetaCall();
 struct UnknownGenRoot800CECA0 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800CECA0(){fn_8006665C(this);}
+ inline UnknownGenRoot800CECA0(){igObject_construct(this);}
 };
 struct UnknownGenObject800CECA0_0 : UnknownGenRoot800CECA0 {
  char unknown04[4];
@@ -61,7 +61,7 @@ struct UnknownGenObject800CECA0 : UnknownGenObject800CECA0_0 {
 struct UnknownGenRoot800CEF6C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800CEF6C(){fn_8006665C(this);}
+ inline UnknownGenRoot800CEF6C(){igObject_construct(this);}
 };
 struct UnknownGenObject800CEF6C_0 : UnknownGenRoot800CEF6C {
  char unknown04[4];
@@ -102,12 +102,12 @@ void igVertexArray2Helper_register(){
 void *igVertexArray2Helper_getMetaCall(){return igVertexArray2Helper_getMeta();}
 void igVertexArray2Helper_fieldInit(){
  void *value0=igVertexArray2Helper_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055EA7C,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055EA7C,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_800CEEF4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- fn_800659C0(value0,lbl_8055EA80,lbl_8055EA84,lbl_8055EA88,value1);
+ meta_setupFields(value0,lbl_8055EA80,lbl_8055EA84,lbl_8055EA88,value1);
 }
 void *igVertexArray2_create(void *object){
  igVertexArray2_registerNow();

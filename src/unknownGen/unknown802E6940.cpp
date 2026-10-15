@@ -5,9 +5,9 @@ extern "C" {
 void *beAction2JOINTSET_getMeta();
 void beAction2JOINTSET_vtableRead();
 void *fn_80023CF4();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -35,9 +35,9 @@ void beAction2JOINTSET_register(){
 void *beAction2JOINTSET_getMetaCall(){return beAction2JOINTSET_getMeta();}
 void beAction2JOINTSET_fieldInit(){
  void *meta=beAction2JOINTSET_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D3138,0x3);
- fn_800659C0(meta,lbl_804D3144,lbl_804D3150,lbl_804D315C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D3138,0x3);
+ meta_setupFields(meta,lbl_804D3144,lbl_804D3150,lbl_804D315C,field);
 }
 void *beAction2MOTIONSET_getMeta(){
  if(!beAction2MOTIONSET_meta || !(reinterpret_cast<unsigned int *>(beAction2MOTIONSET_meta)[0x24/4]&4)) beAction2MOTIONSET_registerNow();

@@ -5,9 +5,9 @@ extern "C" {
 void *beModelCtrlMUTEKI_getMeta();
 void beModelCtrlMUTEKI_vtableRead();
 void *fn_80023CF4();
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
@@ -35,9 +35,9 @@ void beModelCtrlMUTEKI_register(){
 void *beModelCtrlMUTEKI_getMetaCall(){return beModelCtrlMUTEKI_getMeta();}
 void beModelCtrlMUTEKI_fieldInit(){
  void *meta=beModelCtrlMUTEKI_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804D0F74,0x1);
- fn_800659C0(meta,lbl_804D0F78,lbl_804D0F7C,lbl_804D0F80,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804D0F74,0x1);
+ meta_setupFields(meta,lbl_804D0F78,lbl_804D0F7C,lbl_804D0F80,field);
 }
 void *beModelCtrlAIMAP_getMeta(){
  if(!beModelCtrlAIMAP_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlAIMAP_meta)[0x24/4]&4)) beModelCtrlAIMAP_registerNow();

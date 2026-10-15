@@ -6,9 +6,9 @@ void beNDMWItemBase_register();
 void *beNDMWItemDisk_getMeta();
 void beNDMWItemDisk_vtableRead();
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
@@ -36,9 +36,9 @@ void beNDMWItemDisk_register(){
 void *beNDMWItemDisk_getMetaCall(){return beNDMWItemDisk_getMeta();}
 void beNDMWItemDisk_fieldInit(){
  void *meta=beNDMWItemDisk_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E3D20,0x1);
- fn_800659C0(meta,lbl_804E3D24,lbl_804E3D28,lbl_804E3D2C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E3D20,0x1);
+ meta_setupFields(meta,lbl_804E3D24,lbl_804E3D28,lbl_804E3D2C,field);
 }
 void *beNDMWItemAbilityChip_create(void *object){
  beNDMWItemAbilityChip_registerNow();

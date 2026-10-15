@@ -2,13 +2,13 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void fn_8006665C(void *);
+void igObject_construct(void *);
 extern char beCriAudio_vtable[];
 }
 struct UnknownGenRoot802DF684 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot802DF684(){fn_8006665C(this);}
+ inline UnknownGenRoot802DF684(){igObject_construct(this);}
 };
 struct UnknownGenObject802DF684 : UnknownGenRoot802DF684 {
  char unknown04[4];

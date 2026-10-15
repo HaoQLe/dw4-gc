@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
 void fn_801AE468(void *,short);
@@ -76,7 +76,7 @@ void igStringKey_fieldInit();
 struct UnknownGenRoot801ADC10 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801ADC10(){fn_8006665C(this);}
+ inline UnknownGenRoot801ADC10(){igObject_construct(this);}
 };
 struct UnknownGenObject801ADC10_0 : UnknownGenRoot801ADC10 {
  char unknown04[4];
@@ -101,7 +101,7 @@ struct UnknownGenObject801ADC10 : UnknownGenObject801ADC10_2 {
 struct UnknownGenRoot801ADF48 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801ADF48(){fn_8006665C(this);}
+ inline UnknownGenRoot801ADF48(){igObject_construct(this);}
 };
 struct UnknownGenObject801ADF48 : UnknownGenRoot801ADF48 {
  char unknown04[4];
@@ -112,7 +112,7 @@ struct UnknownGenObject801ADF48 : UnknownGenRoot801ADF48 {
 struct UnknownGenRoot801AE178 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801AE178(){fn_8006665C(this);}
+ inline UnknownGenRoot801AE178(){igObject_construct(this);}
 };
 struct UnknownGenObject801AE178 : UnknownGenRoot801AE178 {
  char unknown04[4];
@@ -189,13 +189,13 @@ void igSwitch_register(){
 void *igSwitch_getMetaCall(){return igSwitch_getMeta();}
 void igSwitch_fieldInit(){
  void *value0=igSwitch_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_805601B4,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_805601B4,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_801C7344();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- fn_800659C0(value0,lbl_805601B8,lbl_805601BC,lbl_805601C0,value1);
+ meta_setupFields(value0,lbl_805601B8,lbl_805601BC,lbl_805601C0,value1);
 }
 void *igStringValue_getMeta(){
  if(!igStringValue_meta || !(reinterpret_cast<unsigned int *>(igStringValue_meta)[0x24/4]&4)) igStringValue_registerNow();
@@ -219,9 +219,9 @@ void *igStringValue_getMetaCall(){return igStringValue_getMeta();}
 void *igStringValue_parentMeta(){return igPropertyValue_meta;}
 void igStringValue_fieldInit(){
  void *value0=igStringValue_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_805601C4,1);
- fn_800659C0(value0,lbl_805601D0,lbl_805601D4,lbl_805601D8,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_805601C4,1);
+ meta_setupFields(value0,lbl_805601D0,lbl_805601D4,lbl_805601D8,value1);
 }
 void *igStringKey_create(void *object){
  igStringKey_registerNow();
@@ -249,9 +249,9 @@ void *igStringKey_getMetaCall(){return igStringKey_getMeta();}
 void *igStringKey_parentMeta(){return igPropertyKey_meta;}
 void igStringKey_fieldInit(){
  void *value0=igStringKey_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_805601DC,1);
- fn_800659C0(value0,lbl_805601E0,lbl_805601E4,lbl_805601E8,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_805601DC,1);
+ meta_setupFields(value0,lbl_805601E0,lbl_805601E4,lbl_805601E8,value1);
 }
 void *fn_801AE334(){
  if(!igSorter_meta) igSorter_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
@@ -263,7 +263,7 @@ void *igSorter_getMeta(){
 }
 void *igSorter_vtableRead(){
  UnknownGenObject801AE3AC object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igSorter_vtable;
  object.unknown08=0;
  object.unknown10=0;

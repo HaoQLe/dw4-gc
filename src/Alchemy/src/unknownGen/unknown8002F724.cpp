@@ -8,7 +8,7 @@ void *fn_8005068C();
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *igFolder_fieldInit();
 void igObject_register();
 extern char igFolder_className[];
@@ -23,7 +23,7 @@ void *igFolder_getMetaCall();
 struct UnknownGenRoot8002F7B8 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot8002F7B8(){fn_8006665C(this);}
+ inline UnknownGenRoot8002F7B8(){igObject_construct(this);}
 };
 struct UnknownGenObject8002F7B8 : UnknownGenRoot8002F7B8 {
  char unknown04[4];

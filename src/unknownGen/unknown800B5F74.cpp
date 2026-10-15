@@ -6,7 +6,7 @@ void __dl__FPv(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void igGeometrySetAttr_fieldInit();
@@ -28,7 +28,7 @@ void *igGeometrySetAttr_getMetaCall();
 struct UnknownGenRoot800B5FFC {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot800B5FFC(){fn_8006665C(this);}
+ inline UnknownGenRoot800B5FFC(){igObject_construct(this);}
 };
 struct UnknownGenObject800B5FFC : UnknownGenRoot800B5FFC {
  char unknown04[8];

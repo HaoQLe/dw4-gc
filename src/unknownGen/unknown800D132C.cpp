@@ -8,7 +8,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_800CE2F8();
 void fn_800D14D4();
 void igObject_register();
@@ -41,7 +41,7 @@ void *igParticleFormat_getMeta(){
 }
 void *igParticleFormat_vtableRead(){
  UnknownGenObject800D13DC_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igParticleFormat_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }

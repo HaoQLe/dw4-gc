@@ -4,7 +4,7 @@
 extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_80135250();
 void *fn_8013AFE4();
@@ -38,7 +38,7 @@ void *igNodeTraversal_getMetaCall();
 struct UnknownGenRoot80140FB4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80140FB4(){fn_8006665C(this);}
+ inline UnknownGenRoot80140FB4(){igObject_construct(this);}
 };
 struct UnknownGenObject80140FB4_0 : UnknownGenRoot80140FB4 {
  char unknown04[28];
@@ -58,7 +58,7 @@ struct UnknownGenObject80140FB4 : UnknownGenObject80140FB4_1 {
 struct UnknownGenRoot80141218 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot80141218(){fn_8006665C(this);}
+ inline UnknownGenRoot80141218(){igObject_construct(this);}
 };
 struct UnknownGenObject80141218 : UnknownGenRoot80141218 {
  char unknown04[28];

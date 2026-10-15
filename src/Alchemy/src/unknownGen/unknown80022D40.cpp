@@ -17,10 +17,10 @@ void fn_800638E0(void *);
 void *fn_80063B5C();
 void fn_80063F14(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void fn_80065D94(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
@@ -221,10 +221,10 @@ void *igUnsignedIntArrayMetaField_getMetaCall(){return igUnsignedIntArrayMetaFie
 void *igUnsignedIntArrayMetaField_parentMeta(){return igUnsignedIntMetaField_meta;}
 void igUnsignedIntArrayMetaField_fieldInit(){
  void *meta=igUnsignedIntArrayMetaField_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055CF60,1);
- fn_80053650(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055CF64,lbl_8055CF68,lbl_8055CF6C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055CF60,1);
+ fn_80053650(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055CF64,lbl_8055CF68,lbl_8055CF6C,field);
 }
 void fn_80023074(){
  if(!lbl_805614C8){
@@ -300,10 +300,10 @@ void *igUnsignedCharArrayMetaField_getMetaCall(){return igUnsignedCharArrayMetaF
 void *igUnsignedCharArrayMetaField_parentMeta(){return igUnsignedCharMetaField_meta;}
 void igUnsignedCharArrayMetaField_fieldInit(){
  void *meta=igUnsignedCharArrayMetaField_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_8055CF80,1);
- fn_80053650(fn_800658E4(meta,field),1);
- fn_800659C0(meta,lbl_8055CF84,lbl_8055CF88,lbl_8055CF8C,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_8055CF80,1);
+ fn_80053650(meta_field(meta,field),1);
+ meta_setupFields(meta,lbl_8055CF84,lbl_8055CF88,lbl_8055CF8C,field);
 }
 void fn_800235D8(){
  if(!lbl_805614DC){
@@ -362,17 +362,17 @@ void *igThreadManager_getMetaCall(){return igThreadManager_getMeta();}
 void igThreadManager_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(igThreadManager_meta)+24)=1;
  void *value0=igThreadManager_meta;
- void *value2=fn_80065D88(value0);
- fn_80065924(value0,lbl_8055CF98,2);
- void *value3=fn_800658E4(value0,value2);
+ void *value2=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_8055CF98,2);
+ void *value3=meta_field(value0,value2);
  void *value4=fn_80023E40();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+52)=1;
- void *value5=fn_800658E4(value0,(reinterpret_cast<char *>(value2)+1));
+ void *value5=meta_field(value0,(reinterpret_cast<char *>(value2)+1));
  void *value6=fn_80026020();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+56)=value6;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value5)+52)=1;
- fn_800659C0(value0,lbl_8055CFA8,lbl_8055CFB0,lbl_8055CFB8,value2);
+ meta_setupFields(value0,lbl_8055CFA8,lbl_8055CFB0,lbl_8055CFB8,value2);
  void *value1=igThreadManager_meta;
  reinterpret_cast<Meta::igMetaObject *>(value1)->_abstractProxy=(void *)(void *)igGamecubeThreadManager_getMetaCall;
  fn_80065D94((void *)fn_80023A50);

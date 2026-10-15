@@ -8,7 +8,7 @@ void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void fn_801AA6DC();
 void igMorphSequence_fieldInit();
 void igObject_register();
@@ -29,7 +29,7 @@ void *igMorphSequence_getMetaCall();
 struct UnknownGenRoot801B936C {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801B936C(){fn_8006665C(this);}
+ inline UnknownGenRoot801B936C(){igObject_construct(this);}
 };
 struct UnknownGenObject801B936C : UnknownGenRoot801B936C {
  char unknown04[8];

@@ -8,7 +8,7 @@ void *fn_80023FDC();
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void igContext_fieldInit();
 void igNonRefCountedObjectList_register();
 void igObject_register();
@@ -68,7 +68,7 @@ void *igContextList_getMeta(){
 }
 void *igContextList_vtableRead(){
  UnknownGenObject80037610_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igDataList_vtable;
  object.unknown00=lbl_80476E0C;
  object.unknown00=igNonRefCountedObjectList_vtable;

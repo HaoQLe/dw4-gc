@@ -7,13 +7,13 @@ void *fn_800237D0();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_8011148C();
 void fn_801AACA8();
 void igTransientShaderData_registerNow();
@@ -246,7 +246,7 @@ struct UnknownGenObject801AA7C0_0 {
 struct UnknownGenRoot801AAAB4 {
  void *unknown00;
  inline void operator delete(void *){}
- inline UnknownGenRoot801AAAB4(){fn_8006665C(this);}
+ inline UnknownGenRoot801AAAB4(){igObject_construct(this);}
 };
 struct UnknownGenObject801AAAB4 : UnknownGenRoot801AAAB4 {
  char unknown04[24];
@@ -479,7 +479,7 @@ void *igVertexArrayHelper_getMeta(){
 }
 void *igVertexArrayHelper_vtableRead(){
  UnknownGenObject801AA7C0_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=igVertexArrayHelper_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
@@ -509,15 +509,15 @@ void igUserInfo_register(){
 void *igUserInfo_getMetaCall(){return igUserInfo_getMeta();}
 void igUserInfo_fieldInit(){
  void *value0=igUserInfo_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_80560080,1);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_80560080,1);
+ void *value2=meta_field(value0,value1);
  void *value3=fn_801B45F8();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+40)=0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+39)=2;
- fn_800659C0(value0,lbl_80560084,lbl_80560088,lbl_8056008C,value1);
+ meta_setupFields(value0,lbl_80560084,lbl_80560088,lbl_8056008C,value1);
 }
 void *igTraversal_getMeta(){
  if(!igTraversal_meta || !(reinterpret_cast<unsigned int *>(igTraversal_meta)[0x24/4]&4)) igTraversal_registerNow();

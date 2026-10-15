@@ -5,7 +5,7 @@ extern "C" {
 void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
-void fn_8006665C(void *);
+void igObject_construct(void *);
 void *fn_801159FC();
 void fn_80402E28();
 void igAction_register();
@@ -36,7 +36,7 @@ void *igViewerAction_getMeta(){
 }
 void *igViewerAction_vtableRead(){
  UnknownGenObject80403A14_0 object;
- fn_8006665C(&object);
+ igObject_construct(&object);
  object.unknown00=lbl_80496CB8;
  object.unknown00=igViewerAction_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);

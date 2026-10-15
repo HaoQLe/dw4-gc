@@ -3,9 +3,9 @@
 #pragma auto_inline off
 extern "C" {
 void *meta_createInstance(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void beNDMWMcSlotGC_registerNow();
 extern char lbl_804E38D4[];
 extern char lbl_804E38D8[];
@@ -17,9 +17,9 @@ extern void *beNDMWMcSlotGC_meta;
 extern "C" {
 void beNDMWMcSlotXbox_fieldInit(){
  void *meta=beNDMWMcSlotXbox_meta;
- void *field=fn_80065D88(meta);
- fn_80065924(meta,lbl_804E38D4,0x1);
- fn_800659C0(meta,lbl_804E38D8,lbl_804E38DC,lbl_804E38E0,field);
+ void *field=meta_fieldCount(meta);
+ meta_appendFields(meta,lbl_804E38D4,0x1);
+ meta_setupFields(meta,lbl_804E38D8,lbl_804E38DC,lbl_804E38E0,field);
 }
 void *beNDMWMcSlotGC_create(void *object){
  beNDMWMcSlotGC_registerNow();

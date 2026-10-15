@@ -2,10 +2,10 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *fn_800658E4(void *,void *);
-void fn_80065924(void *,void *,int);
-void fn_800659C0(void *,void *,void *,void *,void *);
-void *fn_80065D88(void *);
+void *meta_field(void *,void *);
+void meta_appendFields(void *,void *,int);
+void meta_setupFields(void *,void *,void *,void *,void *);
+void *meta_fieldCount(void *);
 void *fn_800ADC34();
 void *fn_800B51FC();
 void *fn_800B9348();
@@ -20,24 +20,24 @@ extern void *beAction2InfoWork_meta;
 extern "C" {
 void beAction2InfoWork_fieldInit(){
  void *value0=beAction2InfoWork_meta;
- void *value1=fn_80065D88(value0);
- fn_80065924(value0,lbl_804D2F1C,21);
- void *value2=fn_800658E4(value0,value1);
+ void *value1=meta_fieldCount(value0);
+ meta_appendFields(value0,lbl_804D2F1C,21);
+ void *value2=meta_field(value0,value1);
  void *value3=beAction2Data_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- void *value4=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+17));
+ void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+17));
  void *value5=fn_800B9348();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
- void *value6=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+18));
+ void *value6=meta_field(value0,(reinterpret_cast<char *>(value1)+18));
  void *value7=fn_800B9DD0();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
- void *value8=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+19));
+ void *value8=meta_field(value0,(reinterpret_cast<char *>(value1)+19));
  void *value9=fn_800ADC34();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
- void *value10=fn_800658E4(value0,(reinterpret_cast<char *>(value1)+20));
+ void *value10=meta_field(value0,(reinterpret_cast<char *>(value1)+20));
  void *value11=fn_800B51FC();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value10)+56)=value11;
- fn_800659C0(value0,lbl_804D2F70,lbl_804D2FC4,lbl_804D3018,value1);
+ meta_setupFields(value0,lbl_804D2F70,lbl_804D2FC4,lbl_804D3018,value1);
 }
 }
 #pragma pop

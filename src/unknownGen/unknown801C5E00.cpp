@@ -20,7 +20,7 @@ extern void *lbl_805621F4;
 extern void *igCamera_meta;
 void *igCamera_getMeta();
 void *igCamera_vtableRead();
-void igCamera_registerNow();
+void igCamera_arkRegister();
 void igCamera_register();
 void *igCamera_getMetaCall();
 }
@@ -45,7 +45,7 @@ struct UnknownGenObject801C5EB0 : UnknownGenObject801C5EB0_1 {
 };
 extern "C" {
 void *igCamera_create(void *object){
- igCamera_registerNow();
+ igCamera_arkRegister();
  return meta_createInstance(igCamera_meta,object);
 }
 void *fn_801C5E38(){
@@ -53,7 +53,7 @@ void *fn_801C5E38(){
  return igCamera_meta;
 }
 void *igCamera_getMeta(){
- if(!igCamera_meta || !(reinterpret_cast<unsigned int *>(igCamera_meta)[0x24/4]&4)) igCamera_registerNow();
+ if(!igCamera_meta || !(reinterpret_cast<unsigned int *>(igCamera_meta)[0x24/4]&4)) igCamera_arkRegister();
  return igCamera_meta;
 }
 void *igCamera_vtableRead(){
@@ -66,7 +66,7 @@ void *igCamera_vtableRead(){
  object.unknown00=igCamera_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCamera_registerNow(){
+void igCamera_arkRegister(){
  meta_registerNow((int)igCamera_register);
 }
 void igCamera_register(){

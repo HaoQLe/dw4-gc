@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8B8[8];
+extern char igObjectPropertyForLightSet_dependencies[8];
 extern void *igObjectPropertyForLightSet_meta;
 void *igObjectPropertyForLightSet_getMeta();
 void *igObjectPropertyForLightSet_vtableRead();
-void igObjectPropertyForLightSet_registerNow();
+void igObjectPropertyForLightSet_arkRegister();
 void igObjectPropertyForLightSet_register();
 void *igObjectPropertyForLightSet_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013F438 : UnknownGenObject8013F438_1 {
 };
 extern "C" {
 void *igObjectPropertyForLightSet_getMeta(){
- if(!igObjectPropertyForLightSet_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForLightSet_meta)[0x24/4]&4)) igObjectPropertyForLightSet_registerNow();
+ if(!igObjectPropertyForLightSet_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForLightSet_meta)[0x24/4]&4)) igObjectPropertyForLightSet_arkRegister();
  return igObjectPropertyForLightSet_meta;
 }
 void *igObjectPropertyForLightSet_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForLightSet_vtableRead(){
  object.unknown00=igObjectPropertyForLightSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForLightSet_registerNow(){
+void igObjectPropertyForLightSet_arkRegister(){
  meta_registerNow((int)igObjectPropertyForLightSet_register);
 }
 void igObjectPropertyForLightSet_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForLightSet_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForLightSet_getMetaCall,(int)igObjectPropertyForLightSet_className,44,(int)igObjectPropertyForLightSet_vtableRead,(int)fn_8013F5C0,0,(int)lbl_8055F8B8);
+ meta_registerClass(0,(int)&igObjectPropertyForLightSet_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForLightSet_getMetaCall,(int)igObjectPropertyForLightSet_className,44,(int)igObjectPropertyForLightSet_vtableRead,(int)fn_8013F5C0,0,(int)igObjectPropertyForLightSet_dependencies);
 }
 void *igObjectPropertyForLightSet_getMetaCall(){return igObjectPropertyForLightSet_getMeta();}
 }

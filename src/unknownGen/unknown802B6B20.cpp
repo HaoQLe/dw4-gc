@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
 extern char beTextureCtrl_className[];
-extern char lbl_804CF1E8[];
+extern char beTextureCtrl_dependencies[];
 extern char beTextureCtrl_meta[];
 void beTextureCtrl_register();
 void *beTextureCtrl_getMetaCall();
 }
 extern "C" {
-void beTextureCtrl_registerNow(){
+void beTextureCtrl_arkRegister(){
  meta_registerNow((int)beTextureCtrl_register);
 }
 void beTextureCtrl_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beTextureCtrl_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beTextureCtrl_getMetaCall,(int)beTextureCtrl_className,40,(int)beTextureCtrl_vtableRead,(int)beTextureCtrl_fieldInit,0,(int)lbl_804CF1E8);
+ meta_registerClass(0,(int)beTextureCtrl_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beTextureCtrl_getMetaCall,(int)beTextureCtrl_className,40,(int)beTextureCtrl_vtableRead,(int)beTextureCtrl_fieldInit,0,(int)beTextureCtrl_dependencies);
 }
 void *beTextureCtrl_getMetaCall(){return beTextureCtrl_getMeta();}
 }

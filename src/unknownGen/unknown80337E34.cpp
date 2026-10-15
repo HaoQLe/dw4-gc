@@ -20,15 +20,15 @@ void *beMessenger_metaObject();
 void *beDataObjList_metaObject();
 void *beBaseInfoManager_metaObject();
 void fn_803250AC();
-void beNDMWPanelWaza_registerNow();
+void beNDMWPanelWaza_arkRegister();
 void igObject_register();
 extern char lbl_80453438[];
 extern char beNDMWPanelObject_className[];
-extern char lbl_804E2558[];
-extern char lbl_804E2570[];
-extern char lbl_804E25B0[];
-extern char lbl_804E25F0[];
-extern char lbl_804E2630[];
+extern char beNDMWPanelObject_dependencies[];
+extern char beNDMWPanelObject_fieldTypes[];
+extern char beNDMWPanelObject_fieldNames[];
+extern char beNDMWPanelObject_fieldStorage[];
+extern char beNDMWPanelObject_fieldOffsets[];
 extern char lbl_804E2670[];
 extern char lbl_804E269C[];
 extern void *beNDMWPanelObject_meta;
@@ -36,28 +36,28 @@ extern void *lbl_8053614C;
 extern void *beNDMWPanelWaza_meta;
 extern void *lbl_805621F4;
 void *beNDMWPanelObject_getMeta();
-void beNDMWPanelObject_registerNow();
+void beNDMWPanelObject_arkRegister();
 void beNDMWPanelObject_register();
 void *beNDMWPanelObject_getMetaCall();
 void beNDMWPanelObject_fieldInit();
 }
 extern "C" {
 void *beNDMWPanelObject_getMeta(){
- if(!beNDMWPanelObject_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelObject_meta)[0x24/4]&4)) beNDMWPanelObject_registerNow();
+ if(!beNDMWPanelObject_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelObject_meta)[0x24/4]&4)) beNDMWPanelObject_arkRegister();
  return beNDMWPanelObject_meta;
 }
-void beNDMWPanelObject_registerNow(){
+void beNDMWPanelObject_arkRegister(){
  meta_registerNow((int)beNDMWPanelObject_register);
 }
 void beNDMWPanelObject_register(){
  fn_803250AC();
- meta_registerClass(1,(int)&beNDMWPanelObject_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWPanelObject_getMetaCall,(int)beNDMWPanelObject_className,60,0,(int)beNDMWPanelObject_fieldInit,0,(int)lbl_804E2558);
+ meta_registerClass(1,(int)&beNDMWPanelObject_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWPanelObject_getMetaCall,(int)beNDMWPanelObject_className,60,0,(int)beNDMWPanelObject_fieldInit,0,(int)beNDMWPanelObject_dependencies);
 }
 void *beNDMWPanelObject_getMetaCall(){return beNDMWPanelObject_getMeta();}
 void beNDMWPanelObject_fieldInit(){
  void *value0=beNDMWPanelObject_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E2570,16);
+ meta_appendFields(value0,beNDMWPanelObject_fieldTypes,16);
  void *value2=meta_field(value0,value1);
  void *value3=beBaseInfoManager_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -77,14 +77,14 @@ void beNDMWPanelObject_fieldInit(){
  void *value11=meta_field(value0,(reinterpret_cast<char *>(value1)+13));
  void *value12=fn_800365B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value11)+56)=value12;
- meta_setupFields(value0,lbl_804E25B0,lbl_804E25F0,lbl_804E2630,value1);
+ meta_setupFields(value0,beNDMWPanelObject_fieldNames,beNDMWPanelObject_fieldStorage,beNDMWPanelObject_fieldOffsets,value1);
 }
 void *fn_80338064(){
  if(!lbl_8053614C) lbl_8053614C=fn_800635C8(lbl_80453438,lbl_804E2670,lbl_804E269C,0xB);
  return lbl_8053614C;
 }
 void *beNDMWPanelWaza_create(void *object){
- beNDMWPanelWaza_registerNow();
+ beNDMWPanelWaza_arkRegister();
  return meta_createInstance(beNDMWPanelWaza_meta,object);
 }
 void *beNDMWPanelWaza_metaObject(){
@@ -92,7 +92,7 @@ void *beNDMWPanelWaza_metaObject(){
  return beNDMWPanelWaza_meta;
 }
 void *beNDMWPanelWaza_getMeta(){
- if(!beNDMWPanelWaza_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelWaza_meta)[0x24/4]&4)) beNDMWPanelWaza_registerNow();
+ if(!beNDMWPanelWaza_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelWaza_meta)[0x24/4]&4)) beNDMWPanelWaza_arkRegister();
  return beNDMWPanelWaza_meta;
 }
 }

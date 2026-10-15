@@ -11,14 +11,14 @@ void igObject_construct(void *);
 void fn_800CE2F8();
 void fn_800D1124();
 void igObject_register();
-extern char lbl_804890B0[];
+extern char igParticleArray_dependencies[];
 extern char igParticleArray_className[];
 extern char igParticleArray_vtable[];
 extern void *lbl_805621F4;
 extern void *igParticleArray_meta;
 void *igParticleArray_getMeta();
 void *igParticleArray_vtableRead();
-void igParticleArray_registerNow();
+void igParticleArray_arkRegister();
 void igParticleArray_register();
 void *igParticleArray_getMetaCall();
 }
@@ -45,7 +45,7 @@ void *fn_800D0E7C(){
  return igParticleArray_meta;
 }
 void *igParticleArray_getMeta(){
- if(!igParticleArray_meta || !(reinterpret_cast<unsigned int *>(igParticleArray_meta)[0x24/4]&4)) igParticleArray_registerNow();
+ if(!igParticleArray_meta || !(reinterpret_cast<unsigned int *>(igParticleArray_meta)[0x24/4]&4)) igParticleArray_arkRegister();
  return igParticleArray_meta;
 }
 void *igParticleArray_vtableRead(){
@@ -58,12 +58,12 @@ void *igParticleArray_vtableRead(){
  object.unknown44.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParticleArray_registerNow(){
+void igParticleArray_arkRegister(){
  meta_registerNow((int)igParticleArray_register);
 }
 void igParticleArray_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igParticleArray_meta,(int)igObject_register,(int)fn_800237D0,(int)igParticleArray_getMetaCall,(int)igParticleArray_className,92,(int)igParticleArray_vtableRead,(int)fn_800D1124,0,(int)lbl_804890B0);
+ meta_registerClass(0,(int)&igParticleArray_meta,(int)igObject_register,(int)fn_800237D0,(int)igParticleArray_getMetaCall,(int)igParticleArray_className,92,(int)igParticleArray_vtableRead,(int)fn_800D1124,0,(int)igParticleArray_dependencies);
 }
 void *igParticleArray_getMetaCall(){return igParticleArray_getMeta();}
 }

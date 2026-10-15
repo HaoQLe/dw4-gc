@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beGeneraterPlayerDataList_registerNow();
+void beGeneraterPlayerDataList_arkRegister();
 extern void *beGeneraterPlayerDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beGeneraterPlayerDataList_metaObject(){
  return beGeneraterPlayerDataList_meta;
 }
 void *beGeneraterPlayerDataList_getMeta(){
- if(!beGeneraterPlayerDataList_meta || !(reinterpret_cast<unsigned int *>(beGeneraterPlayerDataList_meta)[0x24/4]&4)) beGeneraterPlayerDataList_registerNow();
+ if(!beGeneraterPlayerDataList_meta || !(reinterpret_cast<unsigned int *>(beGeneraterPlayerDataList_meta)[0x24/4]&4)) beGeneraterPlayerDataList_arkRegister();
  return beGeneraterPlayerDataList_meta;
 }
 }

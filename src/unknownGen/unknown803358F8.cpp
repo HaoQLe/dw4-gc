@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beNDMWSaveIntf_registerNow();
+void beNDMWSaveIntf_arkRegister();
 extern char lbl_80453438[];
 extern char lbl_804E22C0[];
 extern char lbl_804E22DC[];
@@ -20,7 +20,7 @@ void *fn_803358F8(){
  return lbl_80536050;
 }
 void *beNDMWSaveIntf_create(void *object){
- beNDMWSaveIntf_registerNow();
+ beNDMWSaveIntf_arkRegister();
  return meta_createInstance(beNDMWSaveIntf_meta,object);
 }
 void *beNDMWSaveIntf_metaObject(){
@@ -28,7 +28,7 @@ void *beNDMWSaveIntf_metaObject(){
  return beNDMWSaveIntf_meta;
 }
 void *beNDMWSaveIntf_getMeta(){
- if(!beNDMWSaveIntf_meta || !(reinterpret_cast<unsigned int *>(beNDMWSaveIntf_meta)[0x24/4]&4)) beNDMWSaveIntf_registerNow();
+ if(!beNDMWSaveIntf_meta || !(reinterpret_cast<unsigned int *>(beNDMWSaveIntf_meta)[0x24/4]&4)) beNDMWSaveIntf_arkRegister();
  return beNDMWSaveIntf_meta;
 }
 }

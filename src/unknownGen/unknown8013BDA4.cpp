@@ -15,12 +15,12 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F808[8];
+extern char igObjectPropertyForCamera_dependencies[8];
 extern void *igObjectPropertyForCamera_meta;
 extern void *igObjectPropertyForNode_meta;
 void *igObjectPropertyForCamera_getMeta();
 void *igObjectPropertyForCamera_vtableRead();
-void igObjectPropertyForCamera_registerNow();
+void igObjectPropertyForCamera_arkRegister();
 void igObjectPropertyForCamera_register();
 void *igObjectPropertyForCamera_getMetaCall();
 void *fn_8013BF68();
@@ -44,7 +44,7 @@ struct UnknownGenObject8013BDE0 : UnknownGenObject8013BDE0_1 {
 };
 extern "C" {
 void *igObjectPropertyForCamera_getMeta(){
- if(!igObjectPropertyForCamera_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForCamera_meta)[0x24/4]&4)) igObjectPropertyForCamera_registerNow();
+ if(!igObjectPropertyForCamera_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForCamera_meta)[0x24/4]&4)) igObjectPropertyForCamera_arkRegister();
  return igObjectPropertyForCamera_meta;
 }
 void *igObjectPropertyForCamera_vtableRead(){
@@ -58,12 +58,12 @@ void *igObjectPropertyForCamera_vtableRead(){
  object.unknown00=igObjectPropertyForCamera_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForCamera_registerNow(){
+void igObjectPropertyForCamera_arkRegister(){
  meta_registerNow((int)igObjectPropertyForCamera_register);
 }
 void igObjectPropertyForCamera_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForCamera_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForCamera_getMetaCall,(int)igObjectPropertyForCamera_className,44,(int)igObjectPropertyForCamera_vtableRead,(int)fn_8013BF70,0,(int)lbl_8055F808);
+ meta_registerClass(0,(int)&igObjectPropertyForCamera_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForCamera_getMetaCall,(int)igObjectPropertyForCamera_className,44,(int)igObjectPropertyForCamera_vtableRead,(int)fn_8013BF70,0,(int)igObjectPropertyForCamera_dependencies);
 }
 void *igObjectPropertyForCamera_getMetaCall(){return igObjectPropertyForCamera_getMeta();}
 void *fn_8013BF68(){return igObjectPropertyForNode_meta;}

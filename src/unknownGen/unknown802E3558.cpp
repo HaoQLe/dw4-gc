@@ -16,7 +16,7 @@ void beBaseInfoRamTimer_register();
 void *beBaseInfoRamTimer_getMetaCall();
 }
 extern "C" {
-void beBaseInfoRamTimer_registerNow(){
+void beBaseInfoRamTimer_arkRegister(){
  meta_registerNow((int)beBaseInfoRamTimer_register);
 }
 void beBaseInfoRamTimer_register(){

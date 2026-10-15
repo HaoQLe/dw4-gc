@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void beChangePosTransform_registerNow();
+void beChangePosTransform_arkRegister();
 extern char beChangePosTransformInfo_className[];
 extern char beChangePosTransformInfo_meta[];
 extern void *beChangePosTransform_meta;
@@ -21,7 +21,7 @@ void beChangePosTransformInfo_register();
 void *beChangePosTransformInfo_getMetaCall();
 }
 extern "C" {
-void beChangePosTransformInfo_registerNow(){
+void beChangePosTransformInfo_arkRegister(){
  meta_registerNow((int)beChangePosTransformInfo_register);
 }
 void beChangePosTransformInfo_register(){
@@ -30,7 +30,7 @@ void beChangePosTransformInfo_register(){
 }
 void *beChangePosTransformInfo_getMetaCall(){return beChangePosTransformInfo_getMeta();}
 void *beChangePosTransform_create(void *object){
- beChangePosTransform_registerNow();
+ beChangePosTransform_arkRegister();
  return meta_createInstance(beChangePosTransform_meta,object);
 }
 void *beChangePosTransform_metaObject(){
@@ -38,7 +38,7 @@ void *beChangePosTransform_metaObject(){
  return beChangePosTransform_meta;
 }
 void *beChangePosTransform_getMeta(){
- if(!beChangePosTransform_meta || !(reinterpret_cast<unsigned int *>(beChangePosTransform_meta)[0x24/4]&4)) beChangePosTransform_registerNow();
+ if(!beChangePosTransform_meta || !(reinterpret_cast<unsigned int *>(beChangePosTransform_meta)[0x24/4]&4)) beChangePosTransform_arkRegister();
  return beChangePosTransform_meta;
 }
 }

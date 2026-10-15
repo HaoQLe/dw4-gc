@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igBoundingBoxRenderer_registerNow();
+void igBoundingBoxRenderer_arkRegister();
 extern void *igBoundingBoxRenderer_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *igBoundingBoxRenderer_metaObject(){
  return igBoundingBoxRenderer_meta;
 }
 void *igBoundingBoxRenderer_getMeta(){
- if(!igBoundingBoxRenderer_meta || !(reinterpret_cast<unsigned int *>(igBoundingBoxRenderer_meta)[0x24/4]&4)) igBoundingBoxRenderer_registerNow();
+ if(!igBoundingBoxRenderer_meta || !(reinterpret_cast<unsigned int *>(igBoundingBoxRenderer_meta)[0x24/4]&4)) igBoundingBoxRenderer_arkRegister();
  return igBoundingBoxRenderer_meta;
 }
 }

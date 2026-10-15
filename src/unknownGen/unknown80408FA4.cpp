@@ -11,18 +11,18 @@ void *igBoundingBoxRenderer_getMeta();
 void igBoundingBoxRenderer_vtableRead();
 void igRenderer_register();
 extern char igBoundingBoxRenderer_className[];
-extern char lbl_804F0F94[];
+extern char igBoundingBoxRenderer_dependencies[];
 extern char igBoundingBoxRenderer_meta[];
 void igBoundingBoxRenderer_register();
 void *igBoundingBoxRenderer_getMetaCall();
 }
 extern "C" {
-void igBoundingBoxRenderer_registerNow(){
+void igBoundingBoxRenderer_arkRegister(){
  meta_registerNow((int)igBoundingBoxRenderer_register);
 }
 void igBoundingBoxRenderer_register(){
  fn_80402E28();
- meta_registerClass(0,(int)igBoundingBoxRenderer_meta,(int)igRenderer_register,(int)fn_8010DF8C,(int)igBoundingBoxRenderer_getMetaCall,(int)igBoundingBoxRenderer_className,44,(int)igBoundingBoxRenderer_vtableRead,(int)igBoundingBoxRenderer_fieldInit,0,(int)lbl_804F0F94);
+ meta_registerClass(0,(int)igBoundingBoxRenderer_meta,(int)igRenderer_register,(int)fn_8010DF8C,(int)igBoundingBoxRenderer_getMetaCall,(int)igBoundingBoxRenderer_className,44,(int)igBoundingBoxRenderer_vtableRead,(int)igBoundingBoxRenderer_fieldInit,0,(int)igBoundingBoxRenderer_dependencies);
 }
 void *igBoundingBoxRenderer_getMetaCall(){return igBoundingBoxRenderer_getMeta();}
 }

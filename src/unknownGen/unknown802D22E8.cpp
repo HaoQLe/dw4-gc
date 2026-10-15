@@ -16,7 +16,7 @@ void beLuaDataObject_register();
 void *beLuaDataObject_getMetaCall();
 }
 extern "C" {
-void beLuaDataObject_registerNow(){
+void beLuaDataObject_arkRegister(){
  meta_registerNow((int)beLuaDataObject_register);
 }
 void beLuaDataObject_register(){

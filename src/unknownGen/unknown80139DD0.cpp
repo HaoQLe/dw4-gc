@@ -25,29 +25,29 @@ extern char lbl_804A4A04[];
 extern char igMacroOpt_vtable[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F778[8];
-extern char lbl_8055F780[8];
-extern char lbl_8055F788[8];
-extern char lbl_8055F790[8];
+extern char igOptimizeActorSkeletons_fieldTypes[8];
+extern char igOptimizeActorSkeletons_fieldNames[8];
+extern char igOptimizeActorSkeletons_fieldStorage[8];
+extern char igOptimizeActorSkeletons_fieldOffsets[8];
 extern void *igOptimizeActorSkinsInScenes_meta;
 extern void *igOptimizeActorSkeletons_meta;
 extern void *igOptimizeActorKeyframes_meta;
 extern void *igMacroOpt_meta;
 void *igOptimizeActorSkinsInScenes_getMeta();
 void *igOptimizeActorSkinsInScenes_vtableRead();
-void igOptimizeActorSkinsInScenes_registerNow();
+void igOptimizeActorSkinsInScenes_arkRegister();
 void igOptimizeActorSkinsInScenes_register();
 void *igOptimizeActorSkinsInScenes_getMetaCall();
 void *igOptimizeActorSkinsInScenes_parentMeta();
 void *igOptimizeActorSkeletons_getMeta();
 void *igOptimizeActorSkeletons_vtableRead();
-void igOptimizeActorSkeletons_registerNow();
+void igOptimizeActorSkeletons_arkRegister();
 void igOptimizeActorSkeletons_register();
 void *igOptimizeActorSkeletons_getMetaCall();
 void igOptimizeActorSkeletons_fieldInit();
 void *igOptimizeActorKeyframes_getMeta();
 void *igOptimizeActorKeyframes_vtableRead();
-void igOptimizeActorKeyframes_registerNow();
+void igOptimizeActorKeyframes_arkRegister();
 void igOptimizeActorKeyframes_register();
 void *igOptimizeActorKeyframes_getMetaCall();
 }
@@ -103,7 +103,7 @@ struct UnknownGenObject8013A2EC : UnknownGenObject8013A2EC_0 {
 };
 extern "C" {
 void *igOptimizeActorSkinsInScenes_getMeta(){
- if(!igOptimizeActorSkinsInScenes_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorSkinsInScenes_meta)[0x24/4]&4)) igOptimizeActorSkinsInScenes_registerNow();
+ if(!igOptimizeActorSkinsInScenes_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorSkinsInScenes_meta)[0x24/4]&4)) igOptimizeActorSkinsInScenes_arkRegister();
  return igOptimizeActorSkinsInScenes_meta;
 }
 void *igOptimizeActorSkinsInScenes_vtableRead(){
@@ -119,7 +119,7 @@ void *igOptimizeActorSkinsInScenes_vtableRead(){
  object.unknown00=igOptimizeActorSkinsInScenes_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igOptimizeActorSkinsInScenes_registerNow(){
+void igOptimizeActorSkinsInScenes_arkRegister(){
  meta_registerNow((int)igOptimizeActorSkinsInScenes_register);
 }
 void igOptimizeActorSkinsInScenes_register(){
@@ -129,7 +129,7 @@ void igOptimizeActorSkinsInScenes_register(){
 void *igOptimizeActorSkinsInScenes_getMetaCall(){return igOptimizeActorSkinsInScenes_getMeta();}
 void *igOptimizeActorSkinsInScenes_parentMeta(){return igMacroOpt_meta;}
 void *igOptimizeActorSkeletons_getMeta(){
- if(!igOptimizeActorSkeletons_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorSkeletons_meta)[0x24/4]&4)) igOptimizeActorSkeletons_registerNow();
+ if(!igOptimizeActorSkeletons_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorSkeletons_meta)[0x24/4]&4)) igOptimizeActorSkeletons_arkRegister();
  return igOptimizeActorSkeletons_meta;
 }
 void *igOptimizeActorSkeletons_vtableRead(){
@@ -142,7 +142,7 @@ void *igOptimizeActorSkeletons_vtableRead(){
  object.unknown00=igOptimizeActorSkeletons_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igOptimizeActorSkeletons_registerNow(){
+void igOptimizeActorSkeletons_arkRegister(){
  meta_registerNow((int)igOptimizeActorSkeletons_register);
 }
 void igOptimizeActorSkeletons_register(){
@@ -153,15 +153,15 @@ void *igOptimizeActorSkeletons_getMetaCall(){return igOptimizeActorSkeletons_get
 void igOptimizeActorSkeletons_fieldInit(){
  void *value0=igOptimizeActorSkeletons_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F778,2);
+ meta_appendFields(value0,igOptimizeActorSkeletons_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  fn_8003EC68(value2,1);
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8003EC68(value3,1);
- meta_setupFields(value0,lbl_8055F780,lbl_8055F788,lbl_8055F790,value1);
+ meta_setupFields(value0,igOptimizeActorSkeletons_fieldNames,igOptimizeActorSkeletons_fieldStorage,igOptimizeActorSkeletons_fieldOffsets,value1);
 }
 void *igOptimizeActorKeyframes_getMeta(){
- if(!igOptimizeActorKeyframes_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorKeyframes_meta)[0x24/4]&4)) igOptimizeActorKeyframes_registerNow();
+ if(!igOptimizeActorKeyframes_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorKeyframes_meta)[0x24/4]&4)) igOptimizeActorKeyframes_arkRegister();
  return igOptimizeActorKeyframes_meta;
 }
 void *igOptimizeActorKeyframes_vtableRead(){
@@ -174,7 +174,7 @@ void *igOptimizeActorKeyframes_vtableRead(){
  object.unknown00=igOptimizeActorKeyframes_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igOptimizeActorKeyframes_registerNow(){
+void igOptimizeActorKeyframes_arkRegister(){
  meta_registerNow((int)igOptimizeActorKeyframes_register);
 }
 void igOptimizeActorKeyframes_register(){

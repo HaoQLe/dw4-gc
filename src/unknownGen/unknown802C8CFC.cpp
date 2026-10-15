@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void beModelCtrlInfoRamData_registerNow();
+void beModelCtrlInfoRamData_arkRegister();
 extern void *beModelCtrlInfoRamData_meta;
 }
 extern "C" {
 void *beModelCtrlInfoRamData_getMeta(){
- if(!beModelCtrlInfoRamData_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlInfoRamData_meta)[0x24/4]&4)) beModelCtrlInfoRamData_registerNow();
+ if(!beModelCtrlInfoRamData_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlInfoRamData_meta)[0x24/4]&4)) beModelCtrlInfoRamData_arkRegister();
  return beModelCtrlInfoRamData_meta;
 }
 }

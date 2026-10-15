@@ -18,7 +18,7 @@ extern char igNamedObject_vtable[];
 extern void *igExternalInfoEntry_meta;
 void *igExternalInfoEntry_getMeta();
 void *igExternalInfoEntry_vtableRead();
-void igExternalInfoEntry_registerNow();
+void igExternalInfoEntry_arkRegister();
 void igExternalInfoEntry_register();
 void *igExternalInfoEntry_getMetaCall();
 }
@@ -45,11 +45,11 @@ struct UnknownGenObject800302DC : UnknownGenObject800302DC_1 {
 extern "C" {
 void *igGamecubeFile_getMetaCall(){return igGamecubeFile_getMeta();}
 void *igExternalInfoEntry_create(void *object){
- igExternalInfoEntry_registerNow();
+ igExternalInfoEntry_arkRegister();
  return meta_createInstance(igExternalInfoEntry_meta,object);
 }
 void *igExternalInfoEntry_getMeta(){
- if(!igExternalInfoEntry_meta || !(reinterpret_cast<unsigned int *>(igExternalInfoEntry_meta)[0x24/4]&4)) igExternalInfoEntry_registerNow();
+ if(!igExternalInfoEntry_meta || !(reinterpret_cast<unsigned int *>(igExternalInfoEntry_meta)[0x24/4]&4)) igExternalInfoEntry_arkRegister();
  return igExternalInfoEntry_meta;
 }
 void *igExternalInfoEntry_vtableRead(){
@@ -62,7 +62,7 @@ void *igExternalInfoEntry_vtableRead(){
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igExternalInfoEntry_registerNow(){
+void igExternalInfoEntry_arkRegister(){
  meta_registerNow((int)igExternalInfoEntry_register);
 }
 void igExternalInfoEntry_register(){

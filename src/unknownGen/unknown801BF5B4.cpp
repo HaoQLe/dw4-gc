@@ -38,19 +38,19 @@ extern char igGroup_vtable[];
 extern char igGraphPath_vtable[];
 extern char igGraphPathList_vtable[];
 extern char lbl_804B7494[];
-extern char lbl_805605F0[8];
-extern char lbl_805605F8[4];
-extern char lbl_805605FC[4];
-extern char lbl_80560600[4];
-extern char lbl_80560604[4];
-extern char lbl_80560608[8];
+extern char igHashedUserInfo_dependencies[8];
+extern char igHashedUserInfo_fieldTypes[4];
+extern char igHashedUserInfo_fieldNames[4];
+extern char igHashedUserInfo_fieldStorage[4];
+extern char igHashedUserInfo_fieldOffsets[4];
+extern char igGroup_dependencies[8];
 extern char lbl_80560610[8];
-extern char lbl_80560618[4];
-extern char lbl_8056061C[4];
-extern char lbl_80560620[4];
-extern char lbl_80560624[4];
-extern char lbl_80560628[8];
-extern char lbl_80560630[8];
+extern char igGroup_fieldTypes[4];
+extern char igGroup_fieldNames[4];
+extern char igGroup_fieldStorage[4];
+extern char igGroup_fieldOffsets[4];
+extern char igGraphPathList_dependencies[8];
+extern char igGraphPath_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igHashedUserInfo_meta;
 extern void *igGroup_meta;
@@ -61,18 +61,18 @@ void *igHashedUserInfo_getMetaCall();
 void igHashedUserInfo_fieldInit();
 void *igGroup_getMeta();
 void *igGroup_vtableRead();
-void igGroup_registerNow();
+void igGroup_arkRegister();
 void igGroup_register();
 void *igGroup_getMetaCall();
 void igGroup_fieldInit();
 void *igGraphPathList_getMeta();
 void *igGraphPathList_vtableRead();
-void igGraphPathList_registerNow();
+void igGraphPathList_arkRegister();
 void igGraphPathList_register();
 void *igGraphPathList_getMetaCall();
 void *igGraphPath_getMeta();
 void *igGraphPath_vtableRead();
-void igGraphPath_registerNow();
+void igGraphPath_arkRegister();
 void igGraphPath_register();
 void *igGraphPath_getMetaCall();
 }
@@ -113,26 +113,26 @@ struct UnknownGenObject801BFCEC : UnknownGenRoot801BFCEC {
  inline ~UnknownGenObject801BFCEC(){unknown00=igGraphPath_vtable;}
 };
 extern "C" {
-void igHashedUserInfo_registerNow(){
+void igHashedUserInfo_arkRegister(){
  meta_registerNow((int)igHashedUserInfo_register);
 }
 void igHashedUserInfo_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igHashedUserInfo_meta,(int)igUserInfo_register,(int)fn_801B0404,(int)igHashedUserInfo_getMetaCall,(int)igHashedUserInfo_className,40,(int)igHashedUserInfo_vtableRead,(int)igHashedUserInfo_fieldInit,0,(int)lbl_805605F0);
+ meta_registerClass(0,(int)&igHashedUserInfo_meta,(int)igUserInfo_register,(int)fn_801B0404,(int)igHashedUserInfo_getMetaCall,(int)igHashedUserInfo_className,40,(int)igHashedUserInfo_vtableRead,(int)igHashedUserInfo_fieldInit,0,(int)igHashedUserInfo_dependencies);
 }
 void *igHashedUserInfo_getMetaCall(){return igHashedUserInfo_getMeta();}
 void igHashedUserInfo_fieldInit(){
  void *value0=igHashedUserInfo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_805605F8,1);
+ meta_appendFields(value0,igHashedUserInfo_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_801B47CC();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
- meta_setupFields(value0,lbl_805605FC,lbl_80560600,lbl_80560604,value1);
+ meta_setupFields(value0,igHashedUserInfo_fieldNames,igHashedUserInfo_fieldStorage,igHashedUserInfo_fieldOffsets,value1);
 }
 void *igGroup_create(void *object){
- igGroup_registerNow();
+ igGroup_arkRegister();
  return meta_createInstance(igGroup_meta,object);
 }
 void *fn_801BF730(){
@@ -140,7 +140,7 @@ void *fn_801BF730(){
  return igGroup_meta;
 }
 void *igGroup_getMeta(){
- if(!igGroup_meta || !(reinterpret_cast<unsigned int *>(igGroup_meta)[0x24/4]&4)) igGroup_registerNow();
+ if(!igGroup_meta || !(reinterpret_cast<unsigned int *>(igGroup_meta)[0x24/4]&4)) igGroup_arkRegister();
  return igGroup_meta;
 }
 void *igGroup_vtableRead(){
@@ -154,18 +154,18 @@ void *igGroup_vtableRead(){
  object.unknown1C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGroup_registerNow(){
+void igGroup_arkRegister(){
  meta_registerNow((int)igGroup_register);
 }
 void igGroup_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igGroup_meta,(int)igNode_register,(int)fn_801BBBF0,(int)igGroup_getMetaCall,(int)lbl_80560610,32,(int)igGroup_vtableRead,(int)igGroup_fieldInit,0,(int)lbl_80560608);
+ meta_registerClass(0,(int)&igGroup_meta,(int)igNode_register,(int)fn_801BBBF0,(int)igGroup_getMetaCall,(int)lbl_80560610,32,(int)igGroup_vtableRead,(int)igGroup_fieldInit,0,(int)igGroup_dependencies);
 }
 void *igGroup_getMetaCall(){return igGroup_getMeta();}
 void igGroup_fieldInit(){
  void *value0=igGroup_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560618,1);
+ meta_appendFields(value0,igGroup_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_801B7354();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -173,10 +173,10 @@ void igGroup_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+40)=0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+39)=2;
- meta_setupFields(value0,lbl_8056061C,lbl_80560620,lbl_80560624,value1);
+ meta_setupFields(value0,igGroup_fieldNames,igGroup_fieldStorage,igGroup_fieldOffsets,value1);
 }
 void *igGraphPathList_create(void *object){
- igGraphPathList_registerNow();
+ igGraphPathList_arkRegister();
  return meta_createInstance(igGraphPathList_meta,object);
 }
 void *fn_801BFAA0(){
@@ -184,7 +184,7 @@ void *fn_801BFAA0(){
  return igGraphPathList_meta;
 }
 void *igGraphPathList_getMeta(){
- if(!igGraphPathList_meta || !(reinterpret_cast<unsigned int *>(igGraphPathList_meta)[0x24/4]&4)) igGraphPathList_registerNow();
+ if(!igGraphPathList_meta || !(reinterpret_cast<unsigned int *>(igGraphPathList_meta)[0x24/4]&4)) igGraphPathList_arkRegister();
  return igGraphPathList_meta;
 }
 void *igGraphPathList_vtableRead(){
@@ -197,16 +197,16 @@ void *igGraphPathList_vtableRead(){
  object.unknown00=igGraphPathList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGraphPathList_registerNow(){
+void igGraphPathList_arkRegister(){
  meta_registerNow((int)igGraphPathList_register);
 }
 void igGraphPathList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igGraphPathList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igGraphPathList_getMetaCall,(int)igGraphPathList_className,20,(int)igGraphPathList_vtableRead,0,0,(int)lbl_80560628);
+ meta_registerClass(0,(int)&igGraphPathList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igGraphPathList_getMetaCall,(int)igGraphPathList_className,20,(int)igGraphPathList_vtableRead,0,0,(int)igGraphPathList_dependencies);
 }
 void *igGraphPathList_getMetaCall(){return igGraphPathList_getMeta();}
 void *igGraphPath_create(void *object){
- igGraphPath_registerNow();
+ igGraphPath_arkRegister();
  return meta_createInstance(igGraphPath_meta,object);
 }
 void *fn_801BFC74(){
@@ -214,7 +214,7 @@ void *fn_801BFC74(){
  return igGraphPath_meta;
 }
 void *igGraphPath_getMeta(){
- if(!igGraphPath_meta || !(reinterpret_cast<unsigned int *>(igGraphPath_meta)[0x24/4]&4)) igGraphPath_registerNow();
+ if(!igGraphPath_meta || !(reinterpret_cast<unsigned int *>(igGraphPath_meta)[0x24/4]&4)) igGraphPath_arkRegister();
  return igGraphPath_meta;
 }
 void *igGraphPath_vtableRead(){
@@ -223,12 +223,12 @@ void *igGraphPath_vtableRead(){
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGraphPath_registerNow(){
+void igGraphPath_arkRegister(){
  meta_registerNow((int)igGraphPath_register);
 }
 void igGraphPath_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igGraphPath_meta,(int)igObject_register,(int)fn_800237D0,(int)igGraphPath_getMetaCall,(int)igGraphPath_className,28,(int)igGraphPath_vtableRead,(int)igGraphPath_fieldInit,0,(int)lbl_80560630);
+ meta_registerClass(0,(int)&igGraphPath_meta,(int)igObject_register,(int)fn_800237D0,(int)igGraphPath_getMetaCall,(int)igGraphPath_className,28,(int)igGraphPath_vtableRead,(int)igGraphPath_fieldInit,0,(int)igGraphPath_dependencies);
 }
 void *igGraphPath_getMetaCall(){return igGraphPath_getMeta();}
 }

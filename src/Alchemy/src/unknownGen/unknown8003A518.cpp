@@ -19,22 +19,22 @@ extern char igProgramFile_className[];
 extern char igElfFile_className[];
 extern char igProgramFile_vtable[];
 extern char igElfFile_vtable[];
-extern char lbl_8055D6D0[8];
-extern char lbl_8055D6D8[8];
-extern char lbl_8055D6E0[8];
-extern char lbl_8055D6E8[8];
-extern char lbl_8055D6F0[8];
+extern char igProgramFile_dependencies[8];
+extern char igProgramFile_fieldTypes[8];
+extern char igProgramFile_fieldNames[8];
+extern char igProgramFile_fieldStorage[8];
+extern char igProgramFile_fieldOffsets[8];
 extern void *igProgramFile_meta;
 extern void *igElfFile_meta;
 void *igProgramFile_getMeta();
 void *igProgramFile_vtableRead();
-void igProgramFile_registerNow();
+void igProgramFile_arkRegister();
 void igProgramFile_register();
 void *igProgramFile_getMetaCall();
 void igProgramFile_fieldInit();
 void *igElfFile_getMeta();
 void *igElfFile_vtableRead();
-void igElfFile_registerNow();
+void igElfFile_arkRegister();
 void igElfFile_register();
 void *igElfFile_getMetaCall();
 void *igElfFile_parentMeta();
@@ -67,7 +67,7 @@ struct UnknownGenObject8003A7F8 : UnknownGenObject8003A7F8_0 {
 };
 extern "C" {
 void *igProgramFile_getMeta(){
- if(!igProgramFile_meta || !(reinterpret_cast<unsigned int *>(igProgramFile_meta)[0x24/4]&4)) igProgramFile_registerNow();
+ if(!igProgramFile_meta || !(reinterpret_cast<unsigned int *>(igProgramFile_meta)[0x24/4]&4)) igProgramFile_arkRegister();
  return igProgramFile_meta;
 }
 void *igProgramFile_vtableRead(){
@@ -77,19 +77,19 @@ void *igProgramFile_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igProgramFile_registerNow(){
+void igProgramFile_arkRegister(){
  meta_registerNow((int)igProgramFile_register);
 }
 void igProgramFile_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igProgramFile_meta,(int)igObject_register,(int)fn_800237D0,(int)igProgramFile_getMetaCall,(int)igProgramFile_className,16,(int)igProgramFile_vtableRead,(int)igProgramFile_fieldInit,0,(int)lbl_8055D6D0);
+ meta_registerClass(0,(int)&igProgramFile_meta,(int)igObject_register,(int)fn_800237D0,(int)igProgramFile_getMetaCall,(int)igProgramFile_className,16,(int)igProgramFile_vtableRead,(int)igProgramFile_fieldInit,0,(int)igProgramFile_dependencies);
 }
 void *igProgramFile_getMetaCall(){return igProgramFile_getMeta();}
 void igProgramFile_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(igProgramFile_meta)+25)=0;
  void *value0=igProgramFile_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055D6D8,2);
+ meta_appendFields(value0,igProgramFile_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
@@ -97,14 +97,14 @@ void igProgramFile_fieldInit(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+52)=0;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+38)=0;
- meta_setupFields(value0,lbl_8055D6E0,lbl_8055D6E8,lbl_8055D6F0,value1);
+ meta_setupFields(value0,igProgramFile_fieldNames,igProgramFile_fieldStorage,igProgramFile_fieldOffsets,value1);
 }
 void *igElfFile_create(void *object){
- igElfFile_registerNow();
+ igElfFile_arkRegister();
  return meta_createInstance(igElfFile_meta,object);
 }
 void *igElfFile_getMeta(){
- if(!igElfFile_meta || !(reinterpret_cast<unsigned int *>(igElfFile_meta)[0x24/4]&4)) igElfFile_registerNow();
+ if(!igElfFile_meta || !(reinterpret_cast<unsigned int *>(igElfFile_meta)[0x24/4]&4)) igElfFile_arkRegister();
  return igElfFile_meta;
 }
 void *igElfFile_vtableRead(){
@@ -115,7 +115,7 @@ void *igElfFile_vtableRead(){
  object.unknown00=igElfFile_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igElfFile_registerNow(){
+void igElfFile_arkRegister(){
  meta_registerNow((int)igElfFile_register);
 }
 void igElfFile_register(){

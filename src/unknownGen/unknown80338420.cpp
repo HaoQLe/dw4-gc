@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beNDMWMdlPlayer2_registerNow();
+void beNDMWMdlPlayer2_arkRegister();
 extern void *beNDMWMdlPlayer2_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beNDMWMdlPlayer2_create(void *object){
- beNDMWMdlPlayer2_registerNow();
+ beNDMWMdlPlayer2_arkRegister();
  return meta_createInstance(beNDMWMdlPlayer2_meta,object);
 }
 void *beNDMWMdlPlayer2_metaObject(){
@@ -19,7 +19,7 @@ void *beNDMWMdlPlayer2_metaObject(){
  return beNDMWMdlPlayer2_meta;
 }
 void *beNDMWMdlPlayer2_getMeta(){
- if(!beNDMWMdlPlayer2_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlPlayer2_meta)[0x24/4]&4)) beNDMWMdlPlayer2_registerNow();
+ if(!beNDMWMdlPlayer2_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlPlayer2_meta)[0x24/4]&4)) beNDMWMdlPlayer2_arkRegister();
  return beNDMWMdlPlayer2_meta;
 }
 }

@@ -12,12 +12,12 @@ void igAction_register();
 void igViewerAction_fieldInit();
 extern char igViewerAction_className[];
 extern char lbl_80496CB8[];
-extern char lbl_804F0038[];
+extern char igViewerAction_dependencies[];
 extern char igViewerAction_vtable[];
 extern void *igViewerAction_meta;
 void *igViewerAction_getMeta();
 void *igViewerAction_vtableRead();
-void igViewerAction_registerNow();
+void igViewerAction_arkRegister();
 void igViewerAction_register();
 void *igViewerAction_getMetaCall();
 }
@@ -27,11 +27,11 @@ struct UnknownGenObject80403A14_0 {
 };
 extern "C" {
 void *igViewerAction_create(void *object){
- igViewerAction_registerNow();
+ igViewerAction_arkRegister();
  return meta_createInstance(igViewerAction_meta,object);
 }
 void *igViewerAction_getMeta(){
- if(!igViewerAction_meta || !(reinterpret_cast<unsigned int *>(igViewerAction_meta)[0x24/4]&4)) igViewerAction_registerNow();
+ if(!igViewerAction_meta || !(reinterpret_cast<unsigned int *>(igViewerAction_meta)[0x24/4]&4)) igViewerAction_arkRegister();
  return igViewerAction_meta;
 }
 void *igViewerAction_vtableRead(){
@@ -41,12 +41,12 @@ void *igViewerAction_vtableRead(){
  object.unknown00=igViewerAction_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igViewerAction_registerNow(){
+void igViewerAction_arkRegister(){
  meta_registerNow((int)igViewerAction_register);
 }
 void igViewerAction_register(){
  fn_80402E28();
- meta_registerClass(0,(int)&igViewerAction_meta,(int)igAction_register,(int)fn_801159FC,(int)igViewerAction_getMetaCall,(int)igViewerAction_className,24,(int)igViewerAction_vtableRead,(int)igViewerAction_fieldInit,0,(int)lbl_804F0038);
+ meta_registerClass(0,(int)&igViewerAction_meta,(int)igAction_register,(int)fn_801159FC,(int)igViewerAction_getMetaCall,(int)igViewerAction_className,24,(int)igViewerAction_vtableRead,(int)igViewerAction_fieldInit,0,(int)igViewerAction_dependencies);
 }
 void *igViewerAction_getMetaCall(){return igViewerAction_getMeta();}
 }

@@ -9,7 +9,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B2E3C();
 void fn_803250AC();
-void beNDMWAfsSetupInfo_registerNow();
+void beNDMWAfsSetupInfo_arkRegister();
 extern char beNDMWGameRamInfo_className[];
 extern char beNDMWGameRamInfo_meta[];
 extern void *beNDMWAfsSetupInfo_meta;
@@ -17,7 +17,7 @@ void beNDMWGameRamInfo_register();
 void *beNDMWGameRamInfo_getMetaCall();
 }
 extern "C" {
-void beNDMWGameRamInfo_registerNow(){
+void beNDMWGameRamInfo_arkRegister(){
  meta_registerNow((int)beNDMWGameRamInfo_register);
 }
 void beNDMWGameRamInfo_register(){
@@ -26,7 +26,7 @@ void beNDMWGameRamInfo_register(){
 }
 void *beNDMWGameRamInfo_getMetaCall(){return beNDMWGameRamInfo_getMeta();}
 void *beNDMWAfsSetupInfo_getMeta(){
- if(!beNDMWAfsSetupInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWAfsSetupInfo_meta)[0x24/4]&4)) beNDMWAfsSetupInfo_registerNow();
+ if(!beNDMWAfsSetupInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWAfsSetupInfo_meta)[0x24/4]&4)) beNDMWAfsSetupInfo_arkRegister();
  return beNDMWAfsSetupInfo_meta;
 }
 }

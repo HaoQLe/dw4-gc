@@ -14,7 +14,7 @@ extern char lbl_80471914[];
 extern char lbl_80473E30[];
 extern void *igBoolMetaField_meta;
 extern void *lbl_805621F4;
-void igBoolMetaField_registerNow();
+void igBoolMetaField_arkRegister();
 }
 struct UnknownGenRoot80038778 {
  void *unknown00;
@@ -33,7 +33,7 @@ struct UnknownGenObject80038778 : UnknownGenObject80038778_0 {
 extern "C" {
 void *igBoolArrayMetaField_virtual54(void *a,void *b){
  if(*reinterpret_cast<unsigned char *>(Gap::Core::_arkCore)){
-  igBoolMetaField_registerNow();
+  igBoolMetaField_arkRegister();
   return fn_800680B4(a,b);
  }
  void *object=fn_80066DD8(0x34,0);
@@ -45,14 +45,14 @@ void *fn_80038700(){
  return igBoolMetaField_meta;
 }
 void *igBoolMetaField_getMeta(){
- if(!igBoolMetaField_meta || !(reinterpret_cast<unsigned int *>(igBoolMetaField_meta)[0x24/4]&4)) igBoolMetaField_registerNow();
+ if(!igBoolMetaField_meta || !(reinterpret_cast<unsigned int *>(igBoolMetaField_meta)[0x24/4]&4)) igBoolMetaField_arkRegister();
  return igBoolMetaField_meta;
 }
 void *fn_80038778(){
  UnknownGenObject80038778 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBoolMetaField_registerNow(){
+void igBoolMetaField_arkRegister(){
  meta_registerNow((int)igBoolMetaField_register);
 }
 }

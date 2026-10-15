@@ -10,7 +10,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B2E3C();
 void fn_803250AC();
-void beNDMWLoadIntf2NameSel_registerNow();
+void beNDMWLoadIntf2NameSel_arkRegister();
 extern char beNDMWLoadIntf2Info_className[];
 extern char beNDMWLoadIntf2Info_meta[];
 extern void *beNDMWLoadIntf2NameSel_meta;
@@ -18,7 +18,7 @@ void beNDMWLoadIntf2Info_register();
 void *beNDMWLoadIntf2Info_getMetaCall();
 }
 extern "C" {
-void beNDMWLoadIntf2Info_registerNow(){
+void beNDMWLoadIntf2Info_arkRegister(){
  meta_registerNow((int)beNDMWLoadIntf2Info_register);
 }
 void beNDMWLoadIntf2Info_register(){
@@ -27,11 +27,11 @@ void beNDMWLoadIntf2Info_register(){
 }
 void *beNDMWLoadIntf2Info_getMetaCall(){return beNDMWLoadIntf2Info_getMeta();}
 void *beNDMWLoadIntf2NameSel_create(void *object){
- beNDMWLoadIntf2NameSel_registerNow();
+ beNDMWLoadIntf2NameSel_arkRegister();
  return meta_createInstance(beNDMWLoadIntf2NameSel_meta,object);
 }
 void *beNDMWLoadIntf2NameSel_getMeta(){
- if(!beNDMWLoadIntf2NameSel_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadIntf2NameSel_meta)[0x24/4]&4)) beNDMWLoadIntf2NameSel_registerNow();
+ if(!beNDMWLoadIntf2NameSel_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadIntf2NameSel_meta)[0x24/4]&4)) beNDMWLoadIntf2NameSel_arkRegister();
  return beNDMWLoadIntf2NameSel_meta;
 }
 }

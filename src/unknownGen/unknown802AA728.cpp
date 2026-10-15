@@ -2,43 +2,43 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void igAdx_registerNow();
-void igAdxAfsFileList_registerNow();
-void igAdxAfsFile_registerNow();
-void igFileNameList_registerNow();
-void igFileName_registerNow();
-void igAdxFile_registerNow();
-void igAdxAudio_registerNow();
-void igMovieCodecList_registerNow();
-void igMovieCodec_registerNow();
-void igCriMovieCodec_registerNow();
-void igCriMovieData_registerNow();
-void igMovieInfoList_registerNow();
-void igTextureBindAttrList_registerNow();
-void igMovieInfo_registerNow();
-void igMovieRenderer_registerNow();
-void igMovieManager_registerNow();
-void igMoviePlugin_registerNow();
+void igAdx_arkRegister();
+void igAdxAfsFileList_arkRegister();
+void igAdxAfsFile_arkRegister();
+void igFileNameList_arkRegister();
+void igFileName_arkRegister();
+void igAdxFile_arkRegister();
+void igAdxAudio_arkRegister();
+void igMovieCodecList_arkRegister();
+void igMovieCodec_arkRegister();
+void igCriMovieCodec_arkRegister();
+void igCriMovieData_arkRegister();
+void igMovieInfoList_arkRegister();
+void igTextureBindAttrList_arkRegister();
+void igMovieInfo_arkRegister();
+void igMovieRenderer_arkRegister();
+void igMovieManager_arkRegister();
+void igMoviePlugin_arkRegister();
 }
 extern "C" {
 void fn_802AA728(){
- igFileName_registerNow();
- igFileNameList_registerNow();
- igAdxAfsFile_registerNow();
- igAdxAfsFileList_registerNow();
- igAdx_registerNow();
- igAdxFile_registerNow();
- igAdxAudio_registerNow();
- igMovieCodec_registerNow();
- igMovieCodecList_registerNow();
- igCriMovieData_registerNow();
- igCriMovieCodec_registerNow();
- igMovieInfo_registerNow();
- igTextureBindAttrList_registerNow();
- igMovieInfoList_registerNow();
- igMovieManager_registerNow();
- igMovieRenderer_registerNow();
- igMoviePlugin_registerNow();
+ igFileName_arkRegister();
+ igFileNameList_arkRegister();
+ igAdxAfsFile_arkRegister();
+ igAdxAfsFileList_arkRegister();
+ igAdx_arkRegister();
+ igAdxFile_arkRegister();
+ igAdxAudio_arkRegister();
+ igMovieCodec_arkRegister();
+ igMovieCodecList_arkRegister();
+ igCriMovieData_arkRegister();
+ igCriMovieCodec_arkRegister();
+ igMovieInfo_arkRegister();
+ igTextureBindAttrList_arkRegister();
+ igMovieInfoList_arkRegister();
+ igMovieManager_arkRegister();
+ igMovieRenderer_arkRegister();
+ igMoviePlugin_arkRegister();
 }
 }
 #pragma pop

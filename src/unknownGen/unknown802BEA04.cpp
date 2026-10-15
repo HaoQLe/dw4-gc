@@ -10,7 +10,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802BD764();
-void beSvFormatApi_registerNow();
+void beSvFormatApi_arkRegister();
 extern char beSvUseCheckApi_className[];
 extern char beSvUseCheckApi_meta[];
 extern void *beSvFormatApi_meta;
@@ -18,7 +18,7 @@ void beSvUseCheckApi_register();
 void *beSvUseCheckApi_getMetaCall();
 }
 extern "C" {
-void beSvUseCheckApi_registerNow(){
+void beSvUseCheckApi_arkRegister(){
  meta_registerNow((int)beSvUseCheckApi_register);
 }
 void beSvUseCheckApi_register(){
@@ -27,11 +27,11 @@ void beSvUseCheckApi_register(){
 }
 void *beSvUseCheckApi_getMetaCall(){return beSvUseCheckApi_getMeta();}
 void *beSvFormatApi_create(void *object){
- beSvFormatApi_registerNow();
+ beSvFormatApi_arkRegister();
  return meta_createInstance(beSvFormatApi_meta,object);
 }
 void *beSvFormatApi_getMeta(){
- if(!beSvFormatApi_meta || !(reinterpret_cast<unsigned int *>(beSvFormatApi_meta)[0x24/4]&4)) beSvFormatApi_registerNow();
+ if(!beSvFormatApi_meta || !(reinterpret_cast<unsigned int *>(beSvFormatApi_meta)[0x24/4]&4)) beSvFormatApi_arkRegister();
  return beSvFormatApi_meta;
 }
 }

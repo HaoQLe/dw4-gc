@@ -27,7 +27,7 @@ UnknownGenHolder *dtor_803327E8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWStatusSubSlot_registerNow(){
+void beNDMWStatusSubSlot_arkRegister(){
  meta_registerNow((int)beNDMWStatusSubSlot_register);
 }
 void beNDMWStatusSubSlot_register(){

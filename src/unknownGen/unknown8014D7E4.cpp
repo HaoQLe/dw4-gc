@@ -12,7 +12,7 @@ void igCreateActorBounds_fieldInit();
 void igOptBase_register();
 void igOptVisitObject_register();
 extern char igCreateAnimationDatabases_className[];
-extern char lbl_8049F938[];
+extern char igCreateActorBounds_dependencies[];
 extern char igCreateActorBounds_className[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
@@ -24,12 +24,12 @@ extern void *igCreateAnimationDatabases_meta;
 extern void *igCreateActorBounds_meta;
 void *igCreateAnimationDatabases_getMeta();
 void *igCreateAnimationDatabases_vtableRead();
-void igCreateAnimationDatabases_registerNow();
+void igCreateAnimationDatabases_arkRegister();
 void igCreateAnimationDatabases_register();
 void *igCreateAnimationDatabases_getMetaCall();
 void *igCreateActorBounds_getMeta();
 void *igCreateActorBounds_vtableRead();
-void igCreateActorBounds_registerNow();
+void igCreateActorBounds_arkRegister();
 void igCreateActorBounds_register();
 void *igCreateActorBounds_getMetaCall();
 }
@@ -72,7 +72,7 @@ struct UnknownGenObject8014DA4C : UnknownGenObject8014DA4C_0 {
 };
 extern "C" {
 void *igCreateAnimationDatabases_getMeta(){
- if(!igCreateAnimationDatabases_meta || !(reinterpret_cast<unsigned int *>(igCreateAnimationDatabases_meta)[0x24/4]&4)) igCreateAnimationDatabases_registerNow();
+ if(!igCreateAnimationDatabases_meta || !(reinterpret_cast<unsigned int *>(igCreateAnimationDatabases_meta)[0x24/4]&4)) igCreateAnimationDatabases_arkRegister();
  return igCreateAnimationDatabases_meta;
 }
 void *igCreateAnimationDatabases_vtableRead(){
@@ -87,7 +87,7 @@ void *igCreateAnimationDatabases_vtableRead(){
  object.unknown00=igCreateAnimationDatabases_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCreateAnimationDatabases_registerNow(){
+void igCreateAnimationDatabases_arkRegister(){
  meta_registerNow((int)igCreateAnimationDatabases_register);
 }
 void igCreateAnimationDatabases_register(){
@@ -96,7 +96,7 @@ void igCreateAnimationDatabases_register(){
 }
 void *igCreateAnimationDatabases_getMetaCall(){return igCreateAnimationDatabases_getMeta();}
 void *igCreateActorBounds_getMeta(){
- if(!igCreateActorBounds_meta || !(reinterpret_cast<unsigned int *>(igCreateActorBounds_meta)[0x24/4]&4)) igCreateActorBounds_registerNow();
+ if(!igCreateActorBounds_meta || !(reinterpret_cast<unsigned int *>(igCreateActorBounds_meta)[0x24/4]&4)) igCreateActorBounds_arkRegister();
  return igCreateActorBounds_meta;
 }
 void *igCreateActorBounds_vtableRead(){
@@ -112,12 +112,12 @@ void *igCreateActorBounds_vtableRead(){
  object.unknown30.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCreateActorBounds_registerNow(){
+void igCreateActorBounds_arkRegister(){
  meta_registerNow((int)igCreateActorBounds_register);
 }
 void igCreateActorBounds_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igCreateActorBounds_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igCreateActorBounds_getMetaCall,(int)igCreateActorBounds_className,60,(int)igCreateActorBounds_vtableRead,(int)igCreateActorBounds_fieldInit,0,(int)lbl_8049F938);
+ meta_registerClass(0,(int)&igCreateActorBounds_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igCreateActorBounds_getMetaCall,(int)igCreateActorBounds_className,60,(int)igCreateActorBounds_vtableRead,(int)igCreateActorBounds_fieldInit,0,(int)igCreateActorBounds_dependencies);
 }
 void *igCreateActorBounds_getMetaCall(){return igCreateActorBounds_getMeta();}
 }

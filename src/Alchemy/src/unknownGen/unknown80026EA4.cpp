@@ -22,19 +22,19 @@ extern char igRegistryValueList_vtable[];
 extern char lbl_804767E4[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_8055D140[8];
-extern char lbl_8055D148[8];
+extern char igRegistryValueList_dependencies[8];
+extern char igRegistryValue_dependencies[8];
 extern void *igRegistryValueList_meta;
 extern void *igRegistryValue_meta;
 extern void *lbl_805621F4;
 void *igRegistryValueList_getMeta();
 void *igRegistryValueList_vtableRead();
-void igRegistryValueList_registerNow();
+void igRegistryValueList_arkRegister();
 void igRegistryValueList_register();
 void *igRegistryValueList_getMetaCall();
 void *igRegistryValue_getMeta();
 void *igRegistryValue_vtableRead();
-void igRegistryValue_registerNow();
+void igRegistryValue_arkRegister();
 void igRegistryValue_register();
 void *igRegistryValue_getMetaCall();
 }
@@ -60,7 +60,7 @@ void *fn_80026EA4(){
  return igRegistryValueList_meta;
 }
 void *igRegistryValueList_getMeta(){
- if(!igRegistryValueList_meta || !(reinterpret_cast<unsigned int *>(igRegistryValueList_meta)[0x24/4]&4)) igRegistryValueList_registerNow();
+ if(!igRegistryValueList_meta || !(reinterpret_cast<unsigned int *>(igRegistryValueList_meta)[0x24/4]&4)) igRegistryValueList_arkRegister();
  return igRegistryValueList_meta;
 }
 void *igRegistryValueList_vtableRead(){
@@ -73,20 +73,20 @@ void *igRegistryValueList_vtableRead(){
  object.unknown00=igRegistryValueList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRegistryValueList_registerNow(){
+void igRegistryValueList_arkRegister(){
  meta_registerNow((int)igRegistryValueList_register);
 }
 void igRegistryValueList_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igRegistryValueList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igRegistryValueList_getMetaCall,(int)igRegistryValueList_className,20,(int)igRegistryValueList_vtableRead,0,0,(int)lbl_8055D140);
+ meta_registerClass(0,(int)&igRegistryValueList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igRegistryValueList_getMetaCall,(int)igRegistryValueList_className,20,(int)igRegistryValueList_vtableRead,0,0,(int)igRegistryValueList_dependencies);
 }
 void *igRegistryValueList_getMetaCall(){return igRegistryValueList_getMeta();}
 void *igRegistryValue_create(void *object){
- igRegistryValue_registerNow();
+ igRegistryValue_arkRegister();
  return meta_createInstance(igRegistryValue_meta,object);
 }
 void *igRegistryValue_getMeta(){
- if(!igRegistryValue_meta || !(reinterpret_cast<unsigned int *>(igRegistryValue_meta)[0x24/4]&4)) igRegistryValue_registerNow();
+ if(!igRegistryValue_meta || !(reinterpret_cast<unsigned int *>(igRegistryValue_meta)[0x24/4]&4)) igRegistryValue_arkRegister();
  return igRegistryValue_meta;
 }
 void *igRegistryValue_vtableRead(){
@@ -96,12 +96,12 @@ void *igRegistryValue_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRegistryValue_registerNow(){
+void igRegistryValue_arkRegister(){
  meta_registerNow((int)igRegistryValue_register);
 }
 void igRegistryValue_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igRegistryValue_meta,(int)igObject_register,(int)fn_800237D0,(int)igRegistryValue_getMetaCall,(int)igRegistryValue_className,20,(int)igRegistryValue_vtableRead,(int)igRegistryValue_fieldInit,0,(int)lbl_8055D148);
+ meta_registerClass(0,(int)&igRegistryValue_meta,(int)igObject_register,(int)fn_800237D0,(int)igRegistryValue_getMetaCall,(int)igRegistryValue_className,20,(int)igRegistryValue_vtableRead,(int)igRegistryValue_fieldInit,0,(int)igRegistryValue_dependencies);
 }
 void *igRegistryValue_getMetaCall(){return igRegistryValue_getMeta();}
 }

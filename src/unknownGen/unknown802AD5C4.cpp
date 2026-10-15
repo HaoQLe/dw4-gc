@@ -11,17 +11,17 @@ void *fn_8010DFFC();
 void *igMovieCodecList_metaObject();
 void *igMovieInfoList_metaObject();
 void *igMovieRenderer_metaObject();
-extern char lbl_804CDD8C[];
-extern char lbl_804CDDA4[];
-extern char lbl_804CDDBC[];
-extern char lbl_804CDDD4[];
+extern char igMovieManager_fieldTypes[];
+extern char igMovieManager_fieldNames[];
+extern char igMovieManager_fieldStorage[];
+extern char igMovieManager_fieldOffsets[];
 extern void *igMovieManager_meta;
 }
 extern "C" {
 void igMovieManager_fieldInit(){
  void *value0=igMovieManager_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CDD8C,6);
+ meta_appendFields(value0,igMovieManager_fieldTypes,6);
  void *value2=meta_field(value0,value1);
  void *value3=igMovieInfoList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -43,7 +43,7 @@ void igMovieManager_fieldInit(){
  void *value11=meta_field(value0,(reinterpret_cast<char *>(value1)+5));
  void *value12=fn_8010DFFC();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value11)+56)=value12;
- meta_setupFields(value0,lbl_804CDDA4,lbl_804CDDBC,lbl_804CDDD4,value1);
+ meta_setupFields(value0,igMovieManager_fieldNames,igMovieManager_fieldStorage,igMovieManager_fieldOffsets,value1);
 }
 }
 #pragma pop

@@ -34,17 +34,17 @@ extern void *igGamecubeIndexArray_meta;
 extern void *igGamecubeImageConvert_meta;
 extern void *igGamecubeImage_meta;
 void *igGamecubeIndexArray_vtableRead();
-void igGamecubeIndexArray_registerNow();
+void igGamecubeIndexArray_arkRegister();
 void igGamecubeIndexArray_register();
 void *igGamecubeIndexArray_parentMeta();
 void *fn_800D86DC();
 void *igGamecubeImageConvert_vtableRead();
-void igGamecubeImageConvert_registerNow();
+void igGamecubeImageConvert_arkRegister();
 void igGamecubeImageConvert_register();
 void *igGamecubeImageConvert_parentMeta();
 void *fn_800D8824();
 void *igGamecubeImage_vtableRead();
-void igGamecubeImage_registerNow();
+void igGamecubeImage_arkRegister();
 void igGamecubeImage_register();
 void *igGamecubeImage_parentMeta();
 }
@@ -87,7 +87,7 @@ struct UnknownGenObject800D8874 : UnknownGenObject800D8874_1 {
 };
 extern "C" {
 void *igGamecubeIndexArray_getMeta(){
- if(!igGamecubeIndexArray_meta || !(reinterpret_cast<unsigned int *>(igGamecubeIndexArray_meta)[0x24/4]&4)) igGamecubeIndexArray_registerNow();
+ if(!igGamecubeIndexArray_meta || !(reinterpret_cast<unsigned int *>(igGamecubeIndexArray_meta)[0x24/4]&4)) igGamecubeIndexArray_arkRegister();
  return igGamecubeIndexArray_meta;
 }
 void *igGamecubeIndexArray_vtableRead(){
@@ -97,7 +97,7 @@ void *igGamecubeIndexArray_vtableRead(){
  object.unknown00=igGamecubeIndexArray_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeIndexArray_registerNow(){
+void igGamecubeIndexArray_arkRegister(){
  meta_registerNow((int)igGamecubeIndexArray_register);
 }
 void igGamecubeIndexArray_register(){
@@ -111,7 +111,7 @@ void *fn_800D86DC(){
  return value0;
 }
 void *igGamecubeImageConvert_getMeta(){
- if(!igGamecubeImageConvert_meta || !(reinterpret_cast<unsigned int *>(igGamecubeImageConvert_meta)[0x24/4]&4)) igGamecubeImageConvert_registerNow();
+ if(!igGamecubeImageConvert_meta || !(reinterpret_cast<unsigned int *>(igGamecubeImageConvert_meta)[0x24/4]&4)) igGamecubeImageConvert_arkRegister();
  return igGamecubeImageConvert_meta;
 }
 void *igGamecubeImageConvert_vtableRead(){
@@ -122,7 +122,7 @@ void *igGamecubeImageConvert_vtableRead(){
  object.unknown00=igGamecubeImageConvert_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeImageConvert_registerNow(){
+void igGamecubeImageConvert_arkRegister(){
  meta_registerNow((int)igGamecubeImageConvert_register);
 }
 void igGamecubeImageConvert_register(){
@@ -136,7 +136,7 @@ void *fn_800D8824(){
  return value0;
 }
 void *igGamecubeImage_getMeta(){
- if(!igGamecubeImage_meta || !(reinterpret_cast<unsigned int *>(igGamecubeImage_meta)[0x24/4]&4)) igGamecubeImage_registerNow();
+ if(!igGamecubeImage_meta || !(reinterpret_cast<unsigned int *>(igGamecubeImage_meta)[0x24/4]&4)) igGamecubeImage_arkRegister();
  return igGamecubeImage_meta;
 }
 void *igGamecubeImage_vtableRead(){
@@ -148,7 +148,7 @@ void *igGamecubeImage_vtableRead(){
  object.unknown00=igGamecubeImage_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeImage_registerNow(){
+void igGamecubeImage_arkRegister(){
  meta_registerNow((int)igGamecubeImage_register);
 }
 void igGamecubeImage_register(){

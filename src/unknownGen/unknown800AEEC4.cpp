@@ -20,7 +20,7 @@ extern void *lbl_805621F4;
 extern void *igTextureCoordSourceAttr_meta;
 void *igTextureCoordSourceAttr_getMeta();
 void *igTextureCoordSourceAttr_vtableRead();
-void igTextureCoordSourceAttr_registerNow();
+void igTextureCoordSourceAttr_arkRegister();
 void igTextureCoordSourceAttr_register();
 void *igTextureCoordSourceAttr_getMetaCall();
 }
@@ -30,7 +30,7 @@ struct UnknownGenObject800AEF74_0 {
 };
 extern "C" {
 void *igTextureCoordSourceAttr_create(void *object){
- igTextureCoordSourceAttr_registerNow();
+ igTextureCoordSourceAttr_arkRegister();
  return meta_createInstance(igTextureCoordSourceAttr_meta,object);
 }
 void *fn_800AEEFC(){
@@ -38,7 +38,7 @@ void *fn_800AEEFC(){
  return igTextureCoordSourceAttr_meta;
 }
 void *igTextureCoordSourceAttr_getMeta(){
- if(!igTextureCoordSourceAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureCoordSourceAttr_meta)[0x24/4]&4)) igTextureCoordSourceAttr_registerNow();
+ if(!igTextureCoordSourceAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureCoordSourceAttr_meta)[0x24/4]&4)) igTextureCoordSourceAttr_arkRegister();
  return igTextureCoordSourceAttr_meta;
 }
 void *igTextureCoordSourceAttr_vtableRead(){
@@ -49,7 +49,7 @@ void *igTextureCoordSourceAttr_vtableRead(){
  object.unknown00=igTextureCoordSourceAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTextureCoordSourceAttr_registerNow(){
+void igTextureCoordSourceAttr_arkRegister(){
  meta_registerNow((int)igTextureCoordSourceAttr_register);
 }
 void igTextureCoordSourceAttr_register(){

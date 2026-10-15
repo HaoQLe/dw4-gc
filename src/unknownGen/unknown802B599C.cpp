@@ -10,17 +10,17 @@ void *beTimerDataList_metaObject();
 void *beSystem_metaObject();
 void *bePadManager_metaObject();
 void *beLua_metaObject();
-extern char lbl_804CF0F0[];
-extern char lbl_804CF104[];
-extern char lbl_804CF118[];
-extern char lbl_804CF12C[];
+extern char beTimer_fieldTypes[];
+extern char beTimer_fieldNames[];
+extern char beTimer_fieldStorage[];
+extern char beTimer_fieldOffsets[];
 extern void *beTimer_meta;
 }
 extern "C" {
 void beTimer_fieldInit(){
  void *value0=beTimer_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CF0F0,5);
+ meta_appendFields(value0,beTimer_fieldTypes,5);
  void *value2=meta_field(value0,value1);
  void *value3=beSystem_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -37,7 +37,7 @@ void beTimer_fieldInit(){
  void *value9=beTimerDataList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value8)+52)=1;
- meta_setupFields(value0,lbl_804CF104,lbl_804CF118,lbl_804CF12C,value1);
+ meta_setupFields(value0,beTimer_fieldNames,beTimer_fieldStorage,beTimer_fieldOffsets,value1);
 }
 }
 #pragma pop

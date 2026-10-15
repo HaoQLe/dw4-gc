@@ -17,7 +17,7 @@ void beLoadingNode_register();
 void *beLoadingNode_getMetaCall();
 }
 extern "C" {
-void beLoadingNode_registerNow(){
+void beLoadingNode_arkRegister(){
  meta_registerNow((int)beLoadingNode_register);
 }
 void beLoadingNode_register(){

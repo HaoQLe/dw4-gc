@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igOverrideAttrSet_registerNow();
+void igOverrideAttrSet_arkRegister();
 extern void *lbl_805621F4;
 extern void *igOverrideAttrSet_meta;
 }
@@ -14,7 +14,7 @@ void *fn_801B67B0(){
  return igOverrideAttrSet_meta;
 }
 void *igOverrideAttrSet_getMeta(){
- if(!igOverrideAttrSet_meta || !(reinterpret_cast<unsigned int *>(igOverrideAttrSet_meta)[0x24/4]&4)) igOverrideAttrSet_registerNow();
+ if(!igOverrideAttrSet_meta || !(reinterpret_cast<unsigned int *>(igOverrideAttrSet_meta)[0x24/4]&4)) igOverrideAttrSet_arkRegister();
  return igOverrideAttrSet_meta;
 }
 }

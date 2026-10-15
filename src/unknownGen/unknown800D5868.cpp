@@ -27,29 +27,29 @@ extern char igTgaLoader_className[];
 extern char igTgaLoader_vtable[];
 extern char lbl_8049304C[];
 extern char lbl_804930AC[];
-extern char lbl_8055ED20[4];
-extern char lbl_8055ED24[4];
-extern char lbl_8055ED28[4];
-extern char lbl_8055ED2C[4];
+extern char igBlendEquationExt_fieldTypes[4];
+extern char igBlendEquationExt_fieldNames[4];
+extern char igBlendEquationExt_fieldStorage[4];
+extern char igBlendEquationExt_fieldOffsets[4];
 extern char lbl_8055ED30[4];
-extern char lbl_8055ED34[8];
+extern char igTgaLoader_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igImageLoader_meta;
 extern void *igCapabilityManager_meta;
 extern void *igBlendEquationExt_meta;
 extern void *igTgaLoader_meta;
 void *igCapabilityManager_getMeta();
-void igCapabilityManager_registerNow();
+void igCapabilityManager_arkRegister();
 void igCapabilityManager_register();
 void *igCapabilityManager_getMetaCall();
 void *igBlendEquationExt_getMeta();
-void igBlendEquationExt_registerNow();
+void igBlendEquationExt_arkRegister();
 void igBlendEquationExt_register();
 void *igBlendEquationExt_getMetaCall();
 void igBlendEquationExt_fieldInit();
 void *igTgaLoader_getMeta();
 void *igTgaLoader_vtableRead();
-void igTgaLoader_registerNow();
+void igTgaLoader_arkRegister();
 void igTgaLoader_register();
 void *igTgaLoader_getMetaCall();
 void *igTgaLoader_parentMeta();
@@ -71,10 +71,10 @@ void *fn_800D5868(){
  return igCapabilityManager_meta;
 }
 void *igCapabilityManager_getMeta(){
- if(!igCapabilityManager_meta || !(reinterpret_cast<unsigned int *>(igCapabilityManager_meta)[0x24/4]&4)) igCapabilityManager_registerNow();
+ if(!igCapabilityManager_meta || !(reinterpret_cast<unsigned int *>(igCapabilityManager_meta)[0x24/4]&4)) igCapabilityManager_arkRegister();
  return igCapabilityManager_meta;
 }
-void igCapabilityManager_registerNow(){
+void igCapabilityManager_arkRegister(){
  meta_registerNow((int)igCapabilityManager_register);
 }
 void igCapabilityManager_register(){
@@ -87,10 +87,10 @@ void *fn_800D598C(){
  return igBlendEquationExt_meta;
 }
 void *igBlendEquationExt_getMeta(){
- if(!igBlendEquationExt_meta || !(reinterpret_cast<unsigned int *>(igBlendEquationExt_meta)[0x24/4]&4)) igBlendEquationExt_registerNow();
+ if(!igBlendEquationExt_meta || !(reinterpret_cast<unsigned int *>(igBlendEquationExt_meta)[0x24/4]&4)) igBlendEquationExt_arkRegister();
  return igBlendEquationExt_meta;
 }
-void igBlendEquationExt_registerNow(){
+void igBlendEquationExt_arkRegister(){
  meta_registerNow((int)igBlendEquationExt_register);
 }
 void igBlendEquationExt_register(){
@@ -101,18 +101,18 @@ void *igBlendEquationExt_getMetaCall(){return igBlendEquationExt_getMeta();}
 void igBlendEquationExt_fieldInit(){
  void *value0=igBlendEquationExt_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055ED20,1);
+ meta_appendFields(value0,igBlendEquationExt_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055ED30);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_8003D160;
- meta_setupFields(value0,lbl_8055ED24,lbl_8055ED28,lbl_8055ED2C,value1);
+ meta_setupFields(value0,igBlendEquationExt_fieldNames,igBlendEquationExt_fieldStorage,igBlendEquationExt_fieldOffsets,value1);
 }
 void *igTgaLoader_create(void *object){
- igTgaLoader_registerNow();
+ igTgaLoader_arkRegister();
  return meta_createInstance(igTgaLoader_meta,object);
 }
 void *igTgaLoader_getMeta(){
- if(!igTgaLoader_meta || !(reinterpret_cast<unsigned int *>(igTgaLoader_meta)[0x24/4]&4)) igTgaLoader_registerNow();
+ if(!igTgaLoader_meta || !(reinterpret_cast<unsigned int *>(igTgaLoader_meta)[0x24/4]&4)) igTgaLoader_arkRegister();
  return igTgaLoader_meta;
 }
 void *igTgaLoader_vtableRead(){
@@ -123,12 +123,12 @@ void *igTgaLoader_vtableRead(){
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTgaLoader_registerNow(){
+void igTgaLoader_arkRegister(){
  meta_registerNow((int)igTgaLoader_register);
 }
 void igTgaLoader_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igTgaLoader_meta,(int)igImageLoader_register,(int)igTgaLoader_parentMeta,(int)igTgaLoader_getMetaCall,(int)igTgaLoader_className,48,(int)igTgaLoader_vtableRead,(int)fn_800D5D1C,0,(int)lbl_8055ED34);
+ meta_registerClass(0,(int)&igTgaLoader_meta,(int)igImageLoader_register,(int)igTgaLoader_parentMeta,(int)igTgaLoader_getMetaCall,(int)igTgaLoader_className,48,(int)igTgaLoader_vtableRead,(int)fn_800D5D1C,0,(int)igTgaLoader_dependencies);
 }
 void *igTgaLoader_getMetaCall(){return igTgaLoader_getMeta();}
 void *igTgaLoader_parentMeta(){return igImageLoader_meta;}

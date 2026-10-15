@@ -13,7 +13,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B2E3C();
 void fn_803250AC();
-void beNDMWStageCtl_registerNow();
+void beNDMWStageCtl_arkRegister();
 extern char lbl_80453438[];
 extern char beNDMWStageCtlInfo_className[];
 extern char lbl_804E2124[];
@@ -26,7 +26,7 @@ void beNDMWStageCtlInfo_register();
 void *beNDMWStageCtlInfo_getMetaCall();
 }
 extern "C" {
-void beNDMWStageCtlInfo_registerNow(){
+void beNDMWStageCtlInfo_arkRegister(){
  meta_registerNow((int)beNDMWStageCtlInfo_register);
 }
 void beNDMWStageCtlInfo_register(){
@@ -39,7 +39,7 @@ void *fn_8033480C(){
  return lbl_80535FD0;
 }
 void *beNDMWStageCtl_create(void *object){
- beNDMWStageCtl_registerNow();
+ beNDMWStageCtl_arkRegister();
  return meta_createInstance(beNDMWStageCtl_meta,object);
 }
 void *beNDMWStageCtl_metaObject(){
@@ -47,7 +47,7 @@ void *beNDMWStageCtl_metaObject(){
  return beNDMWStageCtl_meta;
 }
 void *beNDMWStageCtl_getMeta(){
- if(!beNDMWStageCtl_meta || !(reinterpret_cast<unsigned int *>(beNDMWStageCtl_meta)[0x24/4]&4)) beNDMWStageCtl_registerNow();
+ if(!beNDMWStageCtl_meta || !(reinterpret_cast<unsigned int *>(beNDMWStageCtl_meta)[0x24/4]&4)) beNDMWStageCtl_arkRegister();
  return beNDMWStageCtl_meta;
 }
 }

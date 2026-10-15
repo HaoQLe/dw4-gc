@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beTimerDataList_registerNow();
+void beTimerDataList_arkRegister();
 extern void *beTimerDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beTimerDataList_metaObject(){
  return beTimerDataList_meta;
 }
 void *beTimerDataList_getMeta(){
- if(!beTimerDataList_meta || !(reinterpret_cast<unsigned int *>(beTimerDataList_meta)[0x24/4]&4)) beTimerDataList_registerNow();
+ if(!beTimerDataList_meta || !(reinterpret_cast<unsigned int *>(beTimerDataList_meta)[0x24/4]&4)) beTimerDataList_arkRegister();
  return beTimerDataList_meta;
 }
 }

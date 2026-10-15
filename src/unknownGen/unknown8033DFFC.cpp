@@ -16,7 +16,7 @@ void beNDMWLoadIntf2MakeChr_register();
 void *beNDMWLoadIntf2MakeChr_getMetaCall();
 }
 extern "C" {
-void beNDMWLoadIntf2MakeChr_registerNow(){
+void beNDMWLoadIntf2MakeChr_arkRegister(){
  meta_registerNow((int)beNDMWLoadIntf2MakeChr_register);
 }
 void beNDMWLoadIntf2MakeChr_register(){

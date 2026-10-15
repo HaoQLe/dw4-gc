@@ -11,18 +11,18 @@ void igViewerRenderer_fieldInit();
 void *igViewerRenderer_getMeta();
 void igViewerRenderer_vtableRead();
 extern char igViewerRenderer_className[];
-extern char lbl_804F0450[];
+extern char igViewerRenderer_dependencies[];
 extern char igViewerRenderer_meta[];
 void igViewerRenderer_register();
 void *igViewerRenderer_getMetaCall();
 }
 extern "C" {
-void igViewerRenderer_registerNow(){
+void igViewerRenderer_arkRegister(){
  meta_registerNow((int)igViewerRenderer_register);
 }
 void igViewerRenderer_register(){
  fn_80402E28();
- meta_registerClass(0,(int)igViewerRenderer_meta,(int)igRenderer_register,(int)fn_8010DF8C,(int)igViewerRenderer_getMetaCall,(int)igViewerRenderer_className,92,(int)igViewerRenderer_vtableRead,(int)igViewerRenderer_fieldInit,0,(int)lbl_804F0450);
+ meta_registerClass(0,(int)igViewerRenderer_meta,(int)igRenderer_register,(int)fn_8010DF8C,(int)igViewerRenderer_getMetaCall,(int)igViewerRenderer_className,92,(int)igViewerRenderer_vtableRead,(int)igViewerRenderer_fieldInit,0,(int)igViewerRenderer_dependencies);
 }
 void *igViewerRenderer_getMetaCall(){return igViewerRenderer_getMeta();}
 }

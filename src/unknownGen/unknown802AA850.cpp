@@ -11,7 +11,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802A8C4C();
 void *fn_802A8CC4();
 void fn_802AA788();
-void igAdxAfsFileList_registerNow();
+void igAdxAfsFileList_arkRegister();
 void *igAdx_getMeta();
 void igAdx_vtableRead();
 void igObject_register();
@@ -26,7 +26,7 @@ void *fn_802AA93C();
 void *fn_802AA95C();
 }
 extern "C" {
-void igAdx_registerNow(){
+void igAdx_arkRegister(){
  meta_registerNow((int)igAdx_register);
 }
 void igAdx_register(){
@@ -44,7 +44,7 @@ void *igAdxAfsFileList_metaObject(){
  return igAdxAfsFileList_meta;
 }
 void *igAdxAfsFileList_getMeta(){
- if(!igAdxAfsFileList_meta || !(reinterpret_cast<unsigned int *>(igAdxAfsFileList_meta)[0x24/4]&4)) igAdxAfsFileList_registerNow();
+ if(!igAdxAfsFileList_meta || !(reinterpret_cast<unsigned int *>(igAdxAfsFileList_meta)[0x24/4]&4)) igAdxAfsFileList_arkRegister();
  return igAdxAfsFileList_meta;
 }
 }

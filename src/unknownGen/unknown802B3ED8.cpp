@@ -13,7 +13,7 @@ void *igAppearanceListList_getMeta();
 void igAppearanceListList_vtableRead();
 void igObjectList_register();
 extern char igAppearanceListList_className[];
-extern char lbl_804CEE4C[];
+extern char igAppearanceListList_dependencies[];
 extern char igAppearanceListList_meta[];
 extern void *igModelViewMatrixBoneSelectList_80534578_meta;
 extern void *lbl_805621F4;
@@ -21,12 +21,12 @@ void igAppearanceListList_register();
 void *igAppearanceListList_getMetaCall();
 }
 extern "C" {
-void igAppearanceListList_registerNow(){
+void igAppearanceListList_arkRegister(){
  meta_registerNow((int)igAppearanceListList_register);
 }
 void igAppearanceListList_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)igAppearanceListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAppearanceListList_getMetaCall,(int)igAppearanceListList_className,20,(int)igAppearanceListList_vtableRead,0,0,(int)lbl_804CEE4C);
+ meta_registerClass(0,(int)igAppearanceListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAppearanceListList_getMetaCall,(int)igAppearanceListList_className,20,(int)igAppearanceListList_vtableRead,0,0,(int)igAppearanceListList_dependencies);
 }
 void *igAppearanceListList_getMetaCall(){return igAppearanceListList_getMeta();}
 void *igModelViewMatrixBoneSelectList_80534578_metaObject(){

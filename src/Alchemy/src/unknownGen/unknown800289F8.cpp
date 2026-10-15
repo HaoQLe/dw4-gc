@@ -6,7 +6,7 @@ void meta_registerNow(int);
 void igObjectRefMetaField_register();
 }
 extern "C" {
-void igObjectRefMetaField_registerNow(){
+void igObjectRefMetaField_arkRegister(){
  meta_registerNow((int)igObjectRefMetaField_register);
 }
 }

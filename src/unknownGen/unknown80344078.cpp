@@ -15,15 +15,15 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
-void beNDMWGameRam_registerNow();
+void beNDMWGameRam_arkRegister();
 void igObject_register();
 extern char lbl_80453438[];
 extern char beNDMWShinkaObject_className[];
 extern char lbl_80455484[];
-extern char lbl_804E3E08[];
-extern char lbl_804E3E54[];
-extern char lbl_804E3EA0[];
-extern char lbl_804E3EEC[];
+extern char beNDMWShinkaObject_fieldTypes[];
+extern char beNDMWShinkaObject_fieldNames[];
+extern char beNDMWShinkaObject_fieldStorage[];
+extern char beNDMWShinkaObject_fieldOffsets[];
 extern char lbl_804E3F38[];
 extern char lbl_804E3F90[];
 extern char lbl_804E3FE8[];
@@ -38,7 +38,7 @@ void *beNDMWShinkaObject_getMetaCall();
 void beNDMWShinkaObject_fieldInit();
 }
 extern "C" {
-void beNDMWShinkaObject_registerNow(){
+void beNDMWShinkaObject_arkRegister(){
  meta_registerNow((int)beNDMWShinkaObject_register);
 }
 void beNDMWShinkaObject_register(){
@@ -49,8 +49,8 @@ void *beNDMWShinkaObject_getMetaCall(){return beNDMWShinkaObject_getMeta();}
 void beNDMWShinkaObject_fieldInit(){
  void *meta=beNDMWShinkaObject_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804E3E08,0x13);
- meta_setupFields(meta,lbl_804E3E54,lbl_804E3EA0,lbl_804E3EEC,field);
+ meta_appendFields(meta,beNDMWShinkaObject_fieldTypes,0x13);
+ meta_setupFields(meta,beNDMWShinkaObject_fieldNames,beNDMWShinkaObject_fieldStorage,beNDMWShinkaObject_fieldOffsets,field);
 }
 void *fn_803441B4(){
  if(!lbl_805367E8) lbl_805367E8=fn_800635C8(lbl_80455484,lbl_804E3F38,lbl_804E3F90,0x16);
@@ -61,7 +61,7 @@ void *fn_80344214(){
  return lbl_805367EC;
 }
 void *beNDMWGameRam_create(void *object){
- beNDMWGameRam_registerNow();
+ beNDMWGameRam_arkRegister();
  return meta_createInstance(beNDMWGameRam_meta,object);
 }
 void *beNDMWGameRam_metaObject(){
@@ -69,7 +69,7 @@ void *beNDMWGameRam_metaObject(){
  return beNDMWGameRam_meta;
 }
 void *beNDMWGameRam_getMeta(){
- if(!beNDMWGameRam_meta || !(reinterpret_cast<unsigned int *>(beNDMWGameRam_meta)[0x24/4]&4)) beNDMWGameRam_registerNow();
+ if(!beNDMWGameRam_meta || !(reinterpret_cast<unsigned int *>(beNDMWGameRam_meta)[0x24/4]&4)) beNDMWGameRam_arkRegister();
  return beNDMWGameRam_meta;
 }
 }

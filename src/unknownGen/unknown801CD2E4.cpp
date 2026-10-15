@@ -23,19 +23,19 @@ extern char igAnimationTrack_className[];
 extern char igAnimationTrack_vtable[];
 extern char igAnimationTrackList_vtable[];
 extern char lbl_804B5A98[];
-extern char lbl_80560A38[8];
-extern char lbl_80560A40[8];
+extern char igAnimationTrackList_dependencies[8];
+extern char igAnimationTrack_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igAnimationTrackList_meta;
 extern void *igAnimationTrack_meta;
 void *igAnimationTrackList_getMeta();
 void *igAnimationTrackList_vtableRead();
-void igAnimationTrackList_registerNow();
+void igAnimationTrackList_arkRegister();
 void igAnimationTrackList_register();
 void *igAnimationTrackList_getMetaCall();
 void *igAnimationTrack_getMeta();
 void *igAnimationTrack_vtableRead();
-void igAnimationTrack_registerNow();
+void igAnimationTrack_arkRegister();
 void igAnimationTrack_register();
 void *igAnimationTrack_getMetaCall();
 }
@@ -64,7 +64,7 @@ void *fn_801CD2E4(){
  return igAnimationTrackList_meta;
 }
 void *igAnimationTrackList_getMeta(){
- if(!igAnimationTrackList_meta || !(reinterpret_cast<unsigned int *>(igAnimationTrackList_meta)[0x24/4]&4)) igAnimationTrackList_registerNow();
+ if(!igAnimationTrackList_meta || !(reinterpret_cast<unsigned int *>(igAnimationTrackList_meta)[0x24/4]&4)) igAnimationTrackList_arkRegister();
  return igAnimationTrackList_meta;
 }
 void *igAnimationTrackList_vtableRead(){
@@ -77,20 +77,20 @@ void *igAnimationTrackList_vtableRead(){
  object.unknown00=igAnimationTrackList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationTrackList_registerNow(){
+void igAnimationTrackList_arkRegister(){
  meta_registerNow((int)igAnimationTrackList_register);
 }
 void igAnimationTrackList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationTrackList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationTrackList_getMetaCall,(int)igAnimationTrackList_className,20,(int)igAnimationTrackList_vtableRead,0,0,(int)lbl_80560A38);
+ meta_registerClass(0,(int)&igAnimationTrackList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationTrackList_getMetaCall,(int)igAnimationTrackList_className,20,(int)igAnimationTrackList_vtableRead,0,0,(int)igAnimationTrackList_dependencies);
 }
 void *igAnimationTrackList_getMetaCall(){return igAnimationTrackList_getMeta();}
 void *igAnimationTrack_create(void *object){
- igAnimationTrack_registerNow();
+ igAnimationTrack_arkRegister();
  return meta_createInstance(igAnimationTrack_meta,object);
 }
 void *igAnimationTrack_getMeta(){
- if(!igAnimationTrack_meta || !(reinterpret_cast<unsigned int *>(igAnimationTrack_meta)[0x24/4]&4)) igAnimationTrack_registerNow();
+ if(!igAnimationTrack_meta || !(reinterpret_cast<unsigned int *>(igAnimationTrack_meta)[0x24/4]&4)) igAnimationTrack_arkRegister();
  return igAnimationTrack_meta;
 }
 void *igAnimationTrack_vtableRead(){
@@ -101,12 +101,12 @@ void *igAnimationTrack_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationTrack_registerNow(){
+void igAnimationTrack_arkRegister(){
  meta_registerNow((int)igAnimationTrack_register);
 }
 void igAnimationTrack_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationTrack_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igAnimationTrack_getMetaCall,(int)igAnimationTrack_className,44,(int)igAnimationTrack_vtableRead,(int)igAnimationTrack_fieldInit,0,(int)lbl_80560A40);
+ meta_registerClass(0,(int)&igAnimationTrack_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igAnimationTrack_getMetaCall,(int)igAnimationTrack_className,44,(int)igAnimationTrack_vtableRead,(int)igAnimationTrack_fieldInit,0,(int)igAnimationTrack_dependencies);
 }
 void *igAnimationTrack_getMetaCall(){return igAnimationTrack_getMeta();}
 }

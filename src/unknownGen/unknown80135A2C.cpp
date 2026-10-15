@@ -15,11 +15,11 @@ extern char igRepairHierarchy_vtable[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F614[8];
+extern char igRepairHierarchy_dependencies[8];
 extern void *igRepairHierarchy_meta;
 void *igRepairHierarchy_getMeta();
 void *igRepairHierarchy_vtableRead();
-void igRepairHierarchy_registerNow();
+void igRepairHierarchy_arkRegister();
 void igRepairHierarchy_register();
 void *igRepairHierarchy_getMetaCall();
 }
@@ -41,11 +41,11 @@ struct UnknownGenObject80135AA0 : UnknownGenObject80135AA0_0 {
 };
 extern "C" {
 void *igRepairHierarchy_create(void *object){
- igRepairHierarchy_registerNow();
+ igRepairHierarchy_arkRegister();
  return meta_createInstance(igRepairHierarchy_meta,object);
 }
 void *igRepairHierarchy_getMeta(){
- if(!igRepairHierarchy_meta || !(reinterpret_cast<unsigned int *>(igRepairHierarchy_meta)[0x24/4]&4)) igRepairHierarchy_registerNow();
+ if(!igRepairHierarchy_meta || !(reinterpret_cast<unsigned int *>(igRepairHierarchy_meta)[0x24/4]&4)) igRepairHierarchy_arkRegister();
  return igRepairHierarchy_meta;
 }
 void *igRepairHierarchy_vtableRead(){
@@ -59,12 +59,12 @@ void *igRepairHierarchy_vtableRead(){
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRepairHierarchy_registerNow(){
+void igRepairHierarchy_arkRegister(){
  meta_registerNow((int)igRepairHierarchy_register);
 }
 void igRepairHierarchy_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igRepairHierarchy_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igRepairHierarchy_getMetaCall,(int)igRepairHierarchy_className,48,(int)igRepairHierarchy_vtableRead,(int)igRepairHierarchy_fieldInit,0,(int)lbl_8055F614);
+ meta_registerClass(0,(int)&igRepairHierarchy_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igRepairHierarchy_getMetaCall,(int)igRepairHierarchy_className,48,(int)igRepairHierarchy_vtableRead,(int)igRepairHierarchy_fieldInit,0,(int)igRepairHierarchy_dependencies);
 }
 void *igRepairHierarchy_getMetaCall(){return igRepairHierarchy_getMeta();}
 }

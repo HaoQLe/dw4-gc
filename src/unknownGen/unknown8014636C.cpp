@@ -12,7 +12,7 @@ void igInterfaced_fieldInit();
 void igObject_register();
 void igOptVisitObject_register();
 extern char igInternalizeShader_className[];
-extern char lbl_8049E7CC[];
+extern char igInterfaced_dependencies[];
 extern char igInterfaced_className[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
@@ -23,11 +23,11 @@ extern void *igInternalizeShader_meta;
 extern void *igInterfaced_meta;
 void *igInternalizeShader_getMeta();
 void *igInternalizeShader_vtableRead();
-void igInternalizeShader_registerNow();
+void igInternalizeShader_arkRegister();
 void igInternalizeShader_register();
 void *igInternalizeShader_getMetaCall();
 void *igInterfaced_getMeta();
-void igInterfaced_registerNow();
+void igInterfaced_arkRegister();
 void igInterfaced_register();
 void *igInterfaced_getMetaCall();
 }
@@ -52,7 +52,7 @@ struct UnknownGenObject801463A8 : UnknownGenObject801463A8_1 {
 };
 extern "C" {
 void *igInternalizeShader_getMeta(){
- if(!igInternalizeShader_meta || !(reinterpret_cast<unsigned int *>(igInternalizeShader_meta)[0x24/4]&4)) igInternalizeShader_registerNow();
+ if(!igInternalizeShader_meta || !(reinterpret_cast<unsigned int *>(igInternalizeShader_meta)[0x24/4]&4)) igInternalizeShader_arkRegister();
  return igInternalizeShader_meta;
 }
 void *igInternalizeShader_vtableRead(){
@@ -67,7 +67,7 @@ void *igInternalizeShader_vtableRead(){
  object.unknown00=igInternalizeShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igInternalizeShader_registerNow(){
+void igInternalizeShader_arkRegister(){
  meta_registerNow((int)igInternalizeShader_register);
 }
 void igInternalizeShader_register(){
@@ -76,15 +76,15 @@ void igInternalizeShader_register(){
 }
 void *igInternalizeShader_getMetaCall(){return igInternalizeShader_getMeta();}
 void *igInterfaced_getMeta(){
- if(!igInterfaced_meta || !(reinterpret_cast<unsigned int *>(igInterfaced_meta)[0x24/4]&4)) igInterfaced_registerNow();
+ if(!igInterfaced_meta || !(reinterpret_cast<unsigned int *>(igInterfaced_meta)[0x24/4]&4)) igInterfaced_arkRegister();
  return igInterfaced_meta;
 }
-void igInterfaced_registerNow(){
+void igInterfaced_arkRegister(){
  meta_registerNow((int)igInterfaced_register);
 }
 void igInterfaced_register(){
  fn_8012FC48();
- meta_registerClass(1,(int)&igInterfaced_meta,(int)igObject_register,(int)fn_800237D0,(int)igInterfaced_getMetaCall,(int)igInterfaced_className,32,0,(int)igInterfaced_fieldInit,0,(int)lbl_8049E7CC);
+ meta_registerClass(1,(int)&igInterfaced_meta,(int)igObject_register,(int)fn_800237D0,(int)igInterfaced_getMetaCall,(int)igInterfaced_className,32,0,(int)igInterfaced_fieldInit,0,(int)igInterfaced_dependencies);
 }
 void *igInterfaced_getMetaCall(){return igInterfaced_getMeta();}
 }

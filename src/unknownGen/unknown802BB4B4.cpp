@@ -14,13 +14,13 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beSeCtl_registerNow();
+void beSeCtl_arkRegister();
 void igNamedObject_register();
 extern char beSeData_className[];
-extern char lbl_804CF7E8[];
-extern char lbl_804CF7F0[];
-extern char lbl_804CF7F8[];
-extern char lbl_804CF800[];
+extern char beSeData_fieldTypes[];
+extern char beSeData_fieldNames[];
+extern char beSeData_fieldStorage[];
+extern char beSeData_fieldOffsets[];
 extern void *beSeData_meta;
 extern void *beSeCtl_meta;
 extern void *lbl_805621F4;
@@ -29,7 +29,7 @@ void *beSeData_getMetaCall();
 void beSeData_fieldInit();
 }
 extern "C" {
-void beSeData_registerNow(){
+void beSeData_arkRegister(){
  meta_registerNow((int)beSeData_register);
 }
 void beSeData_register(){
@@ -40,11 +40,11 @@ void *beSeData_getMetaCall(){return beSeData_getMeta();}
 void beSeData_fieldInit(){
  void *meta=beSeData_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804CF7E8,0x2);
- meta_setupFields(meta,lbl_804CF7F0,lbl_804CF7F8,lbl_804CF800,field);
+ meta_appendFields(meta,beSeData_fieldTypes,0x2);
+ meta_setupFields(meta,beSeData_fieldNames,beSeData_fieldStorage,beSeData_fieldOffsets,field);
 }
 void *beSeCtl_create(void *object){
- beSeCtl_registerNow();
+ beSeCtl_arkRegister();
  return meta_createInstance(beSeCtl_meta,object);
 }
 void *beSeCtl_metaObject(){
@@ -52,7 +52,7 @@ void *beSeCtl_metaObject(){
  return beSeCtl_meta;
 }
 void *beSeCtl_getMeta(){
- if(!beSeCtl_meta || !(reinterpret_cast<unsigned int *>(beSeCtl_meta)[0x24/4]&4)) beSeCtl_registerNow();
+ if(!beSeCtl_meta || !(reinterpret_cast<unsigned int *>(beSeCtl_meta)[0x24/4]&4)) beSeCtl_arkRegister();
  return beSeCtl_meta;
 }
 }

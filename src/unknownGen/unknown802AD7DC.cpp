@@ -11,18 +11,18 @@ void igMoviePlugin_fieldInit();
 void *igMoviePlugin_getMeta();
 void igMoviePlugin_vtableRead();
 extern char igMoviePlugin_className[];
-extern char lbl_804CDDEC[];
+extern char igMoviePlugin_dependencies[];
 extern char igMoviePlugin_meta[];
 void igMoviePlugin_register();
 void *igMoviePlugin_getMetaCall();
 }
 extern "C" {
-void igMoviePlugin_registerNow(){
+void igMoviePlugin_arkRegister(){
  meta_registerNow((int)igMoviePlugin_register);
 }
 void igMoviePlugin_register(){
  fn_802AA788();
- meta_registerClass(0,(int)igMoviePlugin_meta,(int)igInsightPlugin_register,(int)fn_802AD8A0,(int)igMoviePlugin_getMetaCall,(int)igMoviePlugin_className,12,(int)igMoviePlugin_vtableRead,(int)igMoviePlugin_fieldInit,0,(int)lbl_804CDDEC);
+ meta_registerClass(0,(int)igMoviePlugin_meta,(int)igInsightPlugin_register,(int)fn_802AD8A0,(int)igMoviePlugin_getMetaCall,(int)igMoviePlugin_className,12,(int)igMoviePlugin_vtableRead,(int)igMoviePlugin_fieldInit,0,(int)igMoviePlugin_dependencies);
 }
 void *igMoviePlugin_getMetaCall(){return igMoviePlugin_getMeta();}
 }

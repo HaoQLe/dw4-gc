@@ -20,7 +20,7 @@ extern char lbl_80474900[];
 extern void *igCallStackTracer_meta;
 extern void *igGamecubeCallStackTracer_meta;
 void *igGamecubeCallStackTracer_vtableRead();
-void igGamecubeCallStackTracer_registerNow();
+void igGamecubeCallStackTracer_arkRegister();
 void igGamecubeCallStackTracer_register();
 void *igGamecubeCallStackTracer_parentMeta();
 void *fn_8003BE78();
@@ -31,7 +31,7 @@ struct UnknownGenObject8003BD5C_0 {
 };
 extern "C" {
 void *igGamecubeCallStackTracer_getMeta(){
- if(!igGamecubeCallStackTracer_meta || !(reinterpret_cast<unsigned int *>(igGamecubeCallStackTracer_meta)[0x24/4]&4)) igGamecubeCallStackTracer_registerNow();
+ if(!igGamecubeCallStackTracer_meta || !(reinterpret_cast<unsigned int *>(igGamecubeCallStackTracer_meta)[0x24/4]&4)) igGamecubeCallStackTracer_arkRegister();
  return igGamecubeCallStackTracer_meta;
 }
 void *igGamecubeCallStackTracer_vtableRead(){
@@ -45,7 +45,7 @@ void *igGamecubeCallStackTracer_vtableRead(){
  object.unknown00=igGamecubeCallStackTracer_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeCallStackTracer_registerNow(){
+void igGamecubeCallStackTracer_arkRegister(){
  meta_registerNow((int)igGamecubeCallStackTracer_register);
 }
 void igGamecubeCallStackTracer_register(){

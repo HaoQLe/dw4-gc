@@ -11,7 +11,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void beCriVolume_registerNow();
+void beCriVolume_arkRegister();
 extern char beDBManager_className[];
 extern char beDBManager_meta[];
 extern void *beCriVolume_meta;
@@ -20,7 +20,7 @@ void beDBManager_register();
 void *beDBManager_getMetaCall();
 }
 extern "C" {
-void beDBManager_registerNow(){
+void beDBManager_arkRegister(){
  meta_registerNow((int)beDBManager_register);
 }
 void beDBManager_register(){
@@ -33,7 +33,7 @@ void *beCriVolume_metaObject(){
  return beCriVolume_meta;
 }
 void *beCriVolume_getMeta(){
- if(!beCriVolume_meta || !(reinterpret_cast<unsigned int *>(beCriVolume_meta)[0x24/4]&4)) beCriVolume_registerNow();
+ if(!beCriVolume_meta || !(reinterpret_cast<unsigned int *>(beCriVolume_meta)[0x24/4]&4)) beCriVolume_arkRegister();
  return beCriVolume_meta;
 }
 }

@@ -16,7 +16,7 @@ void beSvPs2McImage128k_register();
 void *beSvPs2McImage128k_getMetaCall();
 }
 extern "C" {
-void beSvPs2McImage128k_registerNow(){
+void beSvPs2McImage128k_arkRegister(){
  meta_registerNow((int)beSvPs2McImage128k_register);
 }
 void beSvPs2McImage128k_register(){

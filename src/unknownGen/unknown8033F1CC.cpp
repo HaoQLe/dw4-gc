@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beNDMWMcUtilCtrl_registerNow();
+void beNDMWMcUtilCtrl_arkRegister();
 extern void *beNDMWMcUtilCtrl_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beNDMWMcUtilCtrl_create(void *object){
- beNDMWMcUtilCtrl_registerNow();
+ beNDMWMcUtilCtrl_arkRegister();
  return meta_createInstance(beNDMWMcUtilCtrl_meta,object);
 }
 void *beNDMWMcUtilCtrl_metaObject(){
@@ -19,7 +19,7 @@ void *beNDMWMcUtilCtrl_metaObject(){
  return beNDMWMcUtilCtrl_meta;
 }
 void *beNDMWMcUtilCtrl_getMeta(){
- if(!beNDMWMcUtilCtrl_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcUtilCtrl_meta)[0x24/4]&4)) beNDMWMcUtilCtrl_registerNow();
+ if(!beNDMWMcUtilCtrl_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcUtilCtrl_meta)[0x24/4]&4)) beNDMWMcUtilCtrl_arkRegister();
  return beNDMWMcUtilCtrl_meta;
 }
 }

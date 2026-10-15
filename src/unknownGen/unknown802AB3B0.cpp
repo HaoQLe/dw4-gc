@@ -17,7 +17,7 @@ void igAdxFile_register();
 void *igAdxFile_getMetaCall();
 }
 extern "C" {
-void igAdxFile_registerNow(){
+void igAdxFile_arkRegister(){
  meta_registerNow((int)igAdxFile_register);
 }
 void igAdxFile_register(){

@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beSvConnectCheck_registerNow();
+void beSvConnectCheck_arkRegister();
 extern void *beSvConnectCheck_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beSvConnectCheck_create(void *object){
- beSvConnectCheck_registerNow();
+ beSvConnectCheck_arkRegister();
  return meta_createInstance(beSvConnectCheck_meta,object);
 }
 void *beSvConnectCheck_metaObject(){
@@ -19,7 +19,7 @@ void *beSvConnectCheck_metaObject(){
  return beSvConnectCheck_meta;
 }
 void *beSvConnectCheck_getMeta(){
- if(!beSvConnectCheck_meta || !(reinterpret_cast<unsigned int *>(beSvConnectCheck_meta)[0x24/4]&4)) beSvConnectCheck_registerNow();
+ if(!beSvConnectCheck_meta || !(reinterpret_cast<unsigned int *>(beSvConnectCheck_meta)[0x24/4]&4)) beSvConnectCheck_arkRegister();
  return beSvConnectCheck_meta;
 }
 }

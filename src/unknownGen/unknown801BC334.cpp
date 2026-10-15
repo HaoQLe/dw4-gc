@@ -14,7 +14,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801BBBF0();
-void igInverseKinematicsJoint_registerNow();
+void igInverseKinematicsJoint_arkRegister();
 void *fn_801BCB1C();
 void igNode_register();
 void igObjectList_register();
@@ -28,25 +28,25 @@ extern char igNode_vtable[];
 extern char igInverseKinematicsSolver_vtable[];
 extern char igInverseKinematicsJointList_vtable[];
 extern char lbl_804B7908[];
-extern char lbl_8056051C[8];
-extern char lbl_80560524[4];
-extern char lbl_80560528[4];
-extern char lbl_8056052C[4];
-extern char lbl_80560530[4];
-extern char lbl_80560534[8];
+extern char igInverseKinematicsSolver_dependencies[8];
+extern char igInverseKinematicsSolver_fieldTypes[4];
+extern char igInverseKinematicsSolver_fieldNames[4];
+extern char igInverseKinematicsSolver_fieldStorage[4];
+extern char igInverseKinematicsSolver_fieldOffsets[4];
+extern char igInverseKinematicsJointList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igInverseKinematicsSolver_meta;
 extern void *igInverseKinematicsJointList_meta;
 extern void *igInverseKinematicsJoint_meta;
 void *igInverseKinematicsSolver_getMeta();
 void *igInverseKinematicsSolver_vtableRead();
-void igInverseKinematicsSolver_registerNow();
+void igInverseKinematicsSolver_arkRegister();
 void igInverseKinematicsSolver_register();
 void *igInverseKinematicsSolver_getMetaCall();
 void igInverseKinematicsSolver_fieldInit();
 void *igInverseKinematicsJointList_getMeta();
 void *igInverseKinematicsJointList_vtableRead();
-void igInverseKinematicsJointList_registerNow();
+void igInverseKinematicsJointList_arkRegister();
 void igInverseKinematicsJointList_register();
 void *igInverseKinematicsJointList_getMetaCall();
 }
@@ -77,7 +77,7 @@ struct UnknownGenObject801BC694_0 {
 };
 extern "C" {
 void *igInverseKinematicsSolver_getMeta(){
- if(!igInverseKinematicsSolver_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsSolver_meta)[0x24/4]&4)) igInverseKinematicsSolver_registerNow();
+ if(!igInverseKinematicsSolver_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsSolver_meta)[0x24/4]&4)) igInverseKinematicsSolver_arkRegister();
  return igInverseKinematicsSolver_meta;
 }
 void *igInverseKinematicsSolver_vtableRead(){
@@ -91,30 +91,30 @@ void *igInverseKinematicsSolver_vtableRead(){
  object.unknown1C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igInverseKinematicsSolver_registerNow(){
+void igInverseKinematicsSolver_arkRegister(){
  meta_registerNow((int)igInverseKinematicsSolver_register);
 }
 void igInverseKinematicsSolver_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igInverseKinematicsSolver_meta,(int)igNode_register,(int)fn_801BBBF0,(int)igInverseKinematicsSolver_getMetaCall,(int)igInverseKinematicsSolver_className,32,(int)igInverseKinematicsSolver_vtableRead,(int)igInverseKinematicsSolver_fieldInit,0,(int)lbl_8056051C);
+ meta_registerClass(0,(int)&igInverseKinematicsSolver_meta,(int)igNode_register,(int)fn_801BBBF0,(int)igInverseKinematicsSolver_getMetaCall,(int)igInverseKinematicsSolver_className,32,(int)igInverseKinematicsSolver_vtableRead,(int)igInverseKinematicsSolver_fieldInit,0,(int)igInverseKinematicsSolver_dependencies);
 }
 void *igInverseKinematicsSolver_getMetaCall(){return igInverseKinematicsSolver_getMeta();}
 void igInverseKinematicsSolver_fieldInit(){
  void *value0=igInverseKinematicsSolver_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560524,1);
+ meta_appendFields(value0,igInverseKinematicsSolver_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_801BCB1C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- meta_setupFields(value0,lbl_80560528,lbl_8056052C,lbl_80560530,value1);
+ meta_setupFields(value0,igInverseKinematicsSolver_fieldNames,igInverseKinematicsSolver_fieldStorage,igInverseKinematicsSolver_fieldOffsets,value1);
 }
 void *fn_801BC61C(){
  if(!igInverseKinematicsJointList_meta) igInverseKinematicsJointList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igInverseKinematicsJointList_meta;
 }
 void *igInverseKinematicsJointList_getMeta(){
- if(!igInverseKinematicsJointList_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsJointList_meta)[0x24/4]&4)) igInverseKinematicsJointList_registerNow();
+ if(!igInverseKinematicsJointList_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsJointList_meta)[0x24/4]&4)) igInverseKinematicsJointList_arkRegister();
  return igInverseKinematicsJointList_meta;
 }
 void *igInverseKinematicsJointList_vtableRead(){
@@ -127,12 +127,12 @@ void *igInverseKinematicsJointList_vtableRead(){
  object.unknown00=igInverseKinematicsJointList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igInverseKinematicsJointList_registerNow(){
+void igInverseKinematicsJointList_arkRegister(){
  meta_registerNow((int)igInverseKinematicsJointList_register);
 }
 void igInverseKinematicsJointList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igInverseKinematicsJointList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igInverseKinematicsJointList_getMetaCall,(int)igInverseKinematicsJointList_className,20,(int)igInverseKinematicsJointList_vtableRead,0,0,(int)lbl_80560534);
+ meta_registerClass(0,(int)&igInverseKinematicsJointList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igInverseKinematicsJointList_getMetaCall,(int)igInverseKinematicsJointList_className,20,(int)igInverseKinematicsJointList_vtableRead,0,0,(int)igInverseKinematicsJointList_dependencies);
 }
 void *igInverseKinematicsJointList_getMetaCall(){return igInverseKinematicsJointList_getMeta();}
 void *fn_801BC7B8(){
@@ -140,7 +140,7 @@ void *fn_801BC7B8(){
  return igInverseKinematicsJoint_meta;
 }
 void *igInverseKinematicsJoint_getMeta(){
- if(!igInverseKinematicsJoint_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsJoint_meta)[0x24/4]&4)) igInverseKinematicsJoint_registerNow();
+ if(!igInverseKinematicsJoint_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsJoint_meta)[0x24/4]&4)) igInverseKinematicsJoint_arkRegister();
  return igInverseKinematicsJoint_meta;
 }
 }

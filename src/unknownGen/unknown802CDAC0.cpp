@@ -10,17 +10,17 @@ void *meta_fieldCount(void *);
 void *beMeterCtrlNode_metaObject();
 void *beDataObjInt_metaObject();
 extern char lbl_8041E6AC[];
-extern char lbl_804D122C[];
-extern char lbl_804D1264[];
-extern char lbl_804D129C[];
-extern char lbl_804D12D4[];
+extern char beMeterCtrlOneData_fieldTypes[];
+extern char beMeterCtrlOneData_fieldNames[];
+extern char beMeterCtrlOneData_fieldStorage[];
+extern char beMeterCtrlOneData_fieldOffsets[];
 extern void *beMeterCtrlOneData_meta;
 }
 extern "C" {
 void beMeterCtrlOneData_fieldInit(){
  void *value0=beMeterCtrlOneData_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D122C,14);
+ meta_appendFields(value0,beMeterCtrlOneData_fieldTypes,14);
  void *value2=meta_field(value0,value1);
  void *value3=beMeterCtrlNode_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -34,7 +34,7 @@ void beMeterCtrlOneData_fieldInit(){
  void *value8=meta_field(value0,(reinterpret_cast<char *>(value1)+13));
  void *value9=beDataObjInt_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
- meta_setupFields(value0,lbl_804D1264,lbl_804D129C,lbl_804D12D4,value1);
+ meta_setupFields(value0,beMeterCtrlOneData_fieldNames,beMeterCtrlOneData_fieldStorage,beMeterCtrlOneData_fieldOffsets,value1);
 }
 }
 #pragma pop

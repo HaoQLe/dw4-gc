@@ -11,7 +11,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_800ABC8C();
-void igModelViewMatrixAttr_registerNow();
+void igModelViewMatrixAttr_arkRegister();
 void *fn_800C192C();
 void igObjectList_register();
 void igObject_register();
@@ -30,8 +30,8 @@ extern char lbl_8047DED4[];
 extern char igVec3fAlignedList_vtable[];
 extern char igVec3fList_vtable[];
 extern char lbl_8047DFF8[];
-extern char lbl_8055E340[8];
-extern char lbl_8055E348[8];
+extern char igMorphDataList_dependencies[8];
+extern char igModelViewMatrixAttrList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igVec3fAlignedList_meta;
 extern void *igMorphDataList_meta;
@@ -41,23 +41,23 @@ extern void *igModelViewMatrixAttr_meta;
 extern void *igVec3fList_meta;
 void *igVec3fAlignedList_getMeta();
 void *igVec3fAlignedList_vtableRead();
-void igVec3fAlignedList_registerNow();
+void igVec3fAlignedList_arkRegister();
 void igVec3fAlignedList_register();
 void *igVec3fAlignedList_getMetaCall();
 void *igVec3fAlignedList_parentMeta();
 void *fn_800B3CE8();
 void *igMorphDataList_getMeta();
 void *igMorphDataList_vtableRead();
-void igMorphDataList_registerNow();
+void igMorphDataList_arkRegister();
 void igMorphDataList_register();
 void *igMorphDataList_getMetaCall();
 void *igMorphData_getMeta();
-void igMorphData_registerNow();
+void igMorphData_arkRegister();
 void igMorphData_register();
 void *igMorphData_getMetaCall();
 void *igModelViewMatrixAttrList_getMeta();
 void *igModelViewMatrixAttrList_vtableRead();
-void igModelViewMatrixAttrList_registerNow();
+void igModelViewMatrixAttrList_arkRegister();
 void igModelViewMatrixAttrList_register();
 void *igModelViewMatrixAttrList_getMetaCall();
 }
@@ -79,7 +79,7 @@ void *fn_800B3B4C(){
  return igVec3fAlignedList_meta;
 }
 void *igVec3fAlignedList_getMeta(){
- if(!igVec3fAlignedList_meta || !(reinterpret_cast<unsigned int *>(igVec3fAlignedList_meta)[0x24/4]&4)) igVec3fAlignedList_registerNow();
+ if(!igVec3fAlignedList_meta || !(reinterpret_cast<unsigned int *>(igVec3fAlignedList_meta)[0x24/4]&4)) igVec3fAlignedList_arkRegister();
  return igVec3fAlignedList_meta;
 }
 void *igVec3fAlignedList_vtableRead(){
@@ -91,7 +91,7 @@ void *igVec3fAlignedList_vtableRead(){
  object.unknown00=igVec3fAlignedList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVec3fAlignedList_registerNow(){
+void igVec3fAlignedList_arkRegister(){
  meta_registerNow((int)igVec3fAlignedList_register);
 }
 void igVec3fAlignedList_register(){
@@ -106,7 +106,7 @@ void *fn_800B3D08(){
  return igMorphDataList_meta;
 }
 void *igMorphDataList_getMeta(){
- if(!igMorphDataList_meta || !(reinterpret_cast<unsigned int *>(igMorphDataList_meta)[0x24/4]&4)) igMorphDataList_registerNow();
+ if(!igMorphDataList_meta || !(reinterpret_cast<unsigned int *>(igMorphDataList_meta)[0x24/4]&4)) igMorphDataList_arkRegister();
  return igMorphDataList_meta;
 }
 void *igMorphDataList_vtableRead(){
@@ -119,19 +119,19 @@ void *igMorphDataList_vtableRead(){
  object.unknown00=igMorphDataList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMorphDataList_registerNow(){
+void igMorphDataList_arkRegister(){
  meta_registerNow((int)igMorphDataList_register);
 }
 void igMorphDataList_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igMorphDataList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMorphDataList_getMetaCall,(int)igMorphDataList_className,20,(int)igMorphDataList_vtableRead,0,0,(int)lbl_8055E340);
+ meta_registerClass(0,(int)&igMorphDataList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMorphDataList_getMetaCall,(int)igMorphDataList_className,20,(int)igMorphDataList_vtableRead,0,0,(int)igMorphDataList_dependencies);
 }
 void *igMorphDataList_getMetaCall(){return igMorphDataList_getMeta();}
 void *igMorphData_getMeta(){
- if(!igMorphData_meta || !(reinterpret_cast<unsigned int *>(igMorphData_meta)[0x24/4]&4)) igMorphData_registerNow();
+ if(!igMorphData_meta || !(reinterpret_cast<unsigned int *>(igMorphData_meta)[0x24/4]&4)) igMorphData_arkRegister();
  return igMorphData_meta;
 }
-void igMorphData_registerNow(){
+void igMorphData_arkRegister(){
  meta_registerNow((int)igMorphData_register);
 }
 void igMorphData_register(){
@@ -144,7 +144,7 @@ void *fn_800B3F8C(){
  return igModelViewMatrixAttrList_meta;
 }
 void *igModelViewMatrixAttrList_getMeta(){
- if(!igModelViewMatrixAttrList_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixAttrList_meta)[0x24/4]&4)) igModelViewMatrixAttrList_registerNow();
+ if(!igModelViewMatrixAttrList_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixAttrList_meta)[0x24/4]&4)) igModelViewMatrixAttrList_arkRegister();
  return igModelViewMatrixAttrList_meta;
 }
 void *igModelViewMatrixAttrList_vtableRead(){
@@ -157,16 +157,16 @@ void *igModelViewMatrixAttrList_vtableRead(){
  object.unknown00=igModelViewMatrixAttrList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igModelViewMatrixAttrList_registerNow(){
+void igModelViewMatrixAttrList_arkRegister(){
  meta_registerNow((int)igModelViewMatrixAttrList_register);
 }
 void igModelViewMatrixAttrList_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igModelViewMatrixAttrList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igModelViewMatrixAttrList_getMetaCall,(int)igModelViewMatrixAttrList_className,20,(int)igModelViewMatrixAttrList_vtableRead,0,0,(int)lbl_8055E348);
+ meta_registerClass(0,(int)&igModelViewMatrixAttrList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igModelViewMatrixAttrList_getMetaCall,(int)igModelViewMatrixAttrList_className,20,(int)igModelViewMatrixAttrList_vtableRead,0,0,(int)igModelViewMatrixAttrList_dependencies);
 }
 void *igModelViewMatrixAttrList_getMetaCall(){return igModelViewMatrixAttrList_getMeta();}
 void *igModelViewMatrixAttr_create(void *object){
- igModelViewMatrixAttr_registerNow();
+ igModelViewMatrixAttr_arkRegister();
  return meta_createInstance(igModelViewMatrixAttr_meta,object);
 }
 void *fn_800B4160(){
@@ -174,7 +174,7 @@ void *fn_800B4160(){
  return igModelViewMatrixAttr_meta;
 }
 void *igModelViewMatrixAttr_getMeta(){
- if(!igModelViewMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixAttr_meta)[0x24/4]&4)) igModelViewMatrixAttr_registerNow();
+ if(!igModelViewMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixAttr_meta)[0x24/4]&4)) igModelViewMatrixAttr_arkRegister();
  return igModelViewMatrixAttr_meta;
 }
 }

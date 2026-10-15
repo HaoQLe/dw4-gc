@@ -11,19 +11,19 @@ void igDataTable_fieldInit();
 void *igDataTable_getMeta();
 void igDataTable_vtableRead();
 void igNamedObject_register();
-extern char lbl_8049F68C[];
+extern char igDataTable_dependencies[];
 extern char igDataTable_className[];
 extern void *igDataTable_meta;
 void igDataTable_register();
 void *igDataTable_getMetaCall();
 }
 extern "C" {
-void igDataTable_registerNow(){
+void igDataTable_arkRegister(){
  meta_registerNow((int)igDataTable_register);
 }
 void igDataTable_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igDataTable_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igDataTable_getMetaCall,(int)igDataTable_className,48,(int)igDataTable_vtableRead,(int)igDataTable_fieldInit,(int)fn_8014CD4C,(int)lbl_8049F68C);
+ meta_registerClass(0,(int)&igDataTable_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igDataTable_getMetaCall,(int)igDataTable_className,48,(int)igDataTable_vtableRead,(int)igDataTable_fieldInit,(int)fn_8014CD4C,(int)igDataTable_dependencies);
 }
 void *igDataTable_getMetaCall(){return igDataTable_getMeta();}
 }

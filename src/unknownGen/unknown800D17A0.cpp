@@ -23,38 +23,38 @@ void igObject_register();
 extern char igMultiTextureExt_className[];
 extern char igLineWidthExt_className[];
 extern char igIndexArray_className[];
-extern char lbl_8055EB54[4];
-extern char lbl_8055EB60[4];
-extern char lbl_8055EB64[4];
-extern char lbl_8055EB68[4];
-extern char lbl_8055EB6C[8];
+extern char igLineWidthExt_fieldTypes[4];
+extern char igLineWidthExt_fieldNames[4];
+extern char igLineWidthExt_fieldStorage[4];
+extern char igLineWidthExt_fieldOffsets[4];
+extern char igIndexArray_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igMultiTextureExt_meta;
 extern void *igLineWidthExt_meta;
 extern void *igIndexArray_meta;
 extern char lbl_805668C8[4];
 void *igMultiTextureExt_getMeta();
-void igMultiTextureExt_registerNow();
+void igMultiTextureExt_arkRegister();
 void igMultiTextureExt_register();
 void *igMultiTextureExt_getMetaCall();
 void *fn_800D1890();
 void *igGamecubeMultiTextureExt_getMetaCall();
 void *igLineWidthExt_getMeta();
-void igLineWidthExt_registerNow();
+void igLineWidthExt_arkRegister();
 void igLineWidthExt_register();
 void *igLineWidthExt_getMetaCall();
 void igLineWidthExt_fieldInit();
 void *igIndexArray_getMeta();
-void igIndexArray_registerNow();
+void igIndexArray_arkRegister();
 void igIndexArray_register();
 void *igIndexArray_getMetaCall();
 }
 extern "C" {
 void *igMultiTextureExt_getMeta(){
- if(!igMultiTextureExt_meta || !(reinterpret_cast<unsigned int *>(igMultiTextureExt_meta)[0x24/4]&4)) igMultiTextureExt_registerNow();
+ if(!igMultiTextureExt_meta || !(reinterpret_cast<unsigned int *>(igMultiTextureExt_meta)[0x24/4]&4)) igMultiTextureExt_arkRegister();
  return igMultiTextureExt_meta;
 }
-void igMultiTextureExt_registerNow(){
+void igMultiTextureExt_arkRegister(){
  meta_registerNow((int)igMultiTextureExt_register);
 }
 void igMultiTextureExt_register(){
@@ -69,10 +69,10 @@ void *fn_800D1890(){
 }
 void *igGamecubeMultiTextureExt_getMetaCall(){return igGamecubeMultiTextureExt_getMeta();}
 void *igLineWidthExt_getMeta(){
- if(!igLineWidthExt_meta || !(reinterpret_cast<unsigned int *>(igLineWidthExt_meta)[0x24/4]&4)) igLineWidthExt_registerNow();
+ if(!igLineWidthExt_meta || !(reinterpret_cast<unsigned int *>(igLineWidthExt_meta)[0x24/4]&4)) igLineWidthExt_arkRegister();
  return igLineWidthExt_meta;
 }
-void igLineWidthExt_registerNow(){
+void igLineWidthExt_arkRegister(){
  meta_registerNow((int)igLineWidthExt_register);
 }
 void igLineWidthExt_register(){
@@ -83,13 +83,13 @@ void *igLineWidthExt_getMetaCall(){return igLineWidthExt_getMeta();}
 void igLineWidthExt_fieldInit(){
  void *value0=igLineWidthExt_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055EB54,1);
+ meta_appendFields(value0,igLineWidthExt_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_805668C8+0)));
- meta_setupFields(value0,lbl_8055EB60,lbl_8055EB64,lbl_8055EB68,value1);
+ meta_setupFields(value0,igLineWidthExt_fieldNames,igLineWidthExt_fieldStorage,igLineWidthExt_fieldOffsets,value1);
 }
 void *igIndexArray_create(void *object){
- igIndexArray_registerNow();
+ igIndexArray_arkRegister();
  return meta_createInstance(igIndexArray_meta,object);
 }
 void *fn_800D1A68(){
@@ -97,15 +97,15 @@ void *fn_800D1A68(){
  return igIndexArray_meta;
 }
 void *igIndexArray_getMeta(){
- if(!igIndexArray_meta || !(reinterpret_cast<unsigned int *>(igIndexArray_meta)[0x24/4]&4)) igIndexArray_registerNow();
+ if(!igIndexArray_meta || !(reinterpret_cast<unsigned int *>(igIndexArray_meta)[0x24/4]&4)) igIndexArray_arkRegister();
  return igIndexArray_meta;
 }
-void igIndexArray_registerNow(){
+void igIndexArray_arkRegister(){
  meta_registerNow((int)igIndexArray_register);
 }
 void igIndexArray_register(){
  fn_800CE2F8();
- meta_registerClass(1,(int)&igIndexArray_meta,(int)igObject_register,(int)fn_800237D0,(int)igIndexArray_getMetaCall,(int)igIndexArray_className,28,0,(int)fn_800D1B98,0,(int)lbl_8055EB6C);
+ meta_registerClass(1,(int)&igIndexArray_meta,(int)igObject_register,(int)fn_800237D0,(int)igIndexArray_getMetaCall,(int)igIndexArray_className,28,0,(int)fn_800D1B98,0,(int)igIndexArray_dependencies);
 }
 void *igIndexArray_getMetaCall(){return igIndexArray_getMeta();}
 }

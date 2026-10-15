@@ -12,7 +12,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B381C();
 void fn_803250AC();
 extern char beNDMWGameRam_className[];
-extern char lbl_804E4098[];
+extern char beNDMWGameRam_dependencies[];
 extern char beNDMWGameRam_meta[];
 void beNDMWGameRam_register();
 void *beNDMWGameRam_getMetaCall();
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_803446D8(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWGameRam_registerNow(){
+void beNDMWGameRam_arkRegister(){
  meta_registerNow((int)beNDMWGameRam_register);
 }
 void beNDMWGameRam_register(){
  fn_803250AC();
- meta_registerClass(0,(int)beNDMWGameRam_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beNDMWGameRam_getMetaCall,(int)beNDMWGameRam_className,76,(int)beNDMWGameRam_vtableRead,(int)beNDMWGameRam_fieldInit,0,(int)lbl_804E4098);
+ meta_registerClass(0,(int)beNDMWGameRam_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beNDMWGameRam_getMetaCall,(int)beNDMWGameRam_className,76,(int)beNDMWGameRam_vtableRead,(int)beNDMWGameRam_fieldInit,0,(int)beNDMWGameRam_dependencies);
 }
 void *beNDMWGameRam_getMetaCall(){return beNDMWGameRam_getMeta();}
 }

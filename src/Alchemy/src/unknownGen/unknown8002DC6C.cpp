@@ -9,7 +9,7 @@ void *fn_800607F4(void *);
 void meta_registerNow(int);
 extern void *__internalObjectList_meta;
 extern void *lbl_805621F4;
-void __internalObjectList_registerNow();
+void __internalObjectList_arkRegister();
 }
 struct UnknownGenObject8002DCE4_0 {
  void *unknown00;
@@ -21,7 +21,7 @@ void *fn_8002DC6C(){
  return __internalObjectList_meta;
 }
 void *__internalObjectList_getMeta(){
- if(!__internalObjectList_meta || !(reinterpret_cast<unsigned int *>(__internalObjectList_meta)[0x24/4]&4)) __internalObjectList_registerNow();
+ if(!__internalObjectList_meta || !(reinterpret_cast<unsigned int *>(__internalObjectList_meta)[0x24/4]&4)) __internalObjectList_arkRegister();
  return __internalObjectList_meta;
 }
 void *fn_8002DCE4(){
@@ -29,7 +29,7 @@ void *fn_8002DCE4(){
  fn_80053CF4(&object);
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void __internalObjectList_registerNow(){
+void __internalObjectList_arkRegister(){
  meta_registerNow((int)__internalObjectList_register);
 }
 }

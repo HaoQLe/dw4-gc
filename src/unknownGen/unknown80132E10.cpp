@@ -9,7 +9,7 @@ void fn_8012FC48();
 void *fn_8012FEB0();
 void igOptVisitObject_register();
 void igSmartCompileGraph_fieldInit();
-extern char lbl_8049C33C[];
+extern char igSmartCompileGraph_dependencies[];
 extern char igSmartCompileGraph_className[];
 extern char igSmartCompileGraph_vtable[];
 extern char lbl_804A46AC[];
@@ -19,7 +19,7 @@ extern char lbl_804AAF48[];
 extern void *igSmartCompileGraph_meta;
 void *igSmartCompileGraph_getMeta();
 void *igSmartCompileGraph_vtableRead();
-void igSmartCompileGraph_registerNow();
+void igSmartCompileGraph_arkRegister();
 void igSmartCompileGraph_register();
 void *igSmartCompileGraph_getMetaCall();
 }
@@ -48,7 +48,7 @@ struct UnknownGenObject80132E4C : UnknownGenObject80132E4C_1 {
 };
 extern "C" {
 void *igSmartCompileGraph_getMeta(){
- if(!igSmartCompileGraph_meta || !(reinterpret_cast<unsigned int *>(igSmartCompileGraph_meta)[0x24/4]&4)) igSmartCompileGraph_registerNow();
+ if(!igSmartCompileGraph_meta || !(reinterpret_cast<unsigned int *>(igSmartCompileGraph_meta)[0x24/4]&4)) igSmartCompileGraph_arkRegister();
  return igSmartCompileGraph_meta;
 }
 void *igSmartCompileGraph_vtableRead(){
@@ -66,12 +66,12 @@ void *igSmartCompileGraph_vtableRead(){
  object.unknown38.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSmartCompileGraph_registerNow(){
+void igSmartCompileGraph_arkRegister(){
  meta_registerNow((int)igSmartCompileGraph_register);
 }
 void igSmartCompileGraph_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igSmartCompileGraph_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igSmartCompileGraph_getMetaCall,(int)igSmartCompileGraph_className,60,(int)igSmartCompileGraph_vtableRead,(int)igSmartCompileGraph_fieldInit,0,(int)lbl_8049C33C);
+ meta_registerClass(0,(int)&igSmartCompileGraph_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igSmartCompileGraph_getMetaCall,(int)igSmartCompileGraph_className,60,(int)igSmartCompileGraph_vtableRead,(int)igSmartCompileGraph_fieldInit,0,(int)igSmartCompileGraph_dependencies);
 }
 void *igSmartCompileGraph_getMetaCall(){return igSmartCompileGraph_getMeta();}
 }

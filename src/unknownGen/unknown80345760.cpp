@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beNDMWAfsSetup_registerNow();
+void beNDMWAfsSetup_arkRegister();
 extern void *beNDMWAfsSetup_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beNDMWAfsSetup_create(void *object){
- beNDMWAfsSetup_registerNow();
+ beNDMWAfsSetup_arkRegister();
  return meta_createInstance(beNDMWAfsSetup_meta,object);
 }
 void *beNDMWAfsSetup_metaObject(){
@@ -19,7 +19,7 @@ void *beNDMWAfsSetup_metaObject(){
  return beNDMWAfsSetup_meta;
 }
 void *beNDMWAfsSetup_getMeta(){
- if(!beNDMWAfsSetup_meta || !(reinterpret_cast<unsigned int *>(beNDMWAfsSetup_meta)[0x24/4]&4)) beNDMWAfsSetup_registerNow();
+ if(!beNDMWAfsSetup_meta || !(reinterpret_cast<unsigned int *>(beNDMWAfsSetup_meta)[0x24/4]&4)) beNDMWAfsSetup_arkRegister();
  return beNDMWAfsSetup_meta;
 }
 }

@@ -18,10 +18,10 @@ void *igMovieCodec_metaObject();
 void *igTextureBindAttrList_metaObject();
 void fn_802AC6D0();
 void fn_802AC730();
-extern char lbl_804CDBF8[];
-extern char lbl_804CDC4C[];
-extern char lbl_804CDCA0[];
-extern char lbl_804CDCF4[];
+extern char igMovieInfo_fieldTypes[];
+extern char igMovieInfo_fieldNames[];
+extern char igMovieInfo_fieldStorage[];
+extern char igMovieInfo_fieldOffsets[];
 extern char lbl_804CDD48[];
 extern char lbl_804CDD4C[];
 extern char lbl_804CDD50[];
@@ -34,7 +34,7 @@ extern "C" {
 void igMovieInfo_fieldInit(){
  void *value0=igMovieInfo_meta;
  void *value2=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CDBF8,21);
+ meta_appendFields(value0,igMovieInfo_fieldTypes,21);
  void *value3=meta_field(value0,value2);
  fn_80071694(value3,0);
  void *value4=meta_field(value0,(reinterpret_cast<char *>(value2)+1));
@@ -92,7 +92,7 @@ void igMovieInfo_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value26)+38)=0;
  void *value27=meta_field(value0,(reinterpret_cast<char *>(value2)+20));
  fn_80053650(value27,-1);
- meta_setupFields(value0,lbl_804CDC4C,lbl_804CDCA0,lbl_804CDCF4,value2);
+ meta_setupFields(value0,igMovieInfo_fieldNames,igMovieInfo_fieldStorage,igMovieInfo_fieldOffsets,value2);
 }
 }
 #pragma pop

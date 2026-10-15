@@ -12,12 +12,12 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B381C();
 void fn_803250AC();
-void beNDMWSaveIntfInfo_registerNow();
+void beNDMWSaveIntfInfo_arkRegister();
 extern char beNDMWStageCtl_className[];
-extern char lbl_804E213C[];
-extern char lbl_804E2140[];
-extern char lbl_804E2144[];
-extern char lbl_804E2148[];
+extern char beNDMWStageCtl_fieldTypes[];
+extern char beNDMWStageCtl_fieldNames[];
+extern char beNDMWStageCtl_fieldStorage[];
+extern char beNDMWStageCtl_fieldOffsets[];
 extern void *beNDMWStageCtl_meta;
 extern void *beNDMWSaveIntfInfo_meta;
 void beNDMWStageCtl_register();
@@ -25,7 +25,7 @@ void *beNDMWStageCtl_getMetaCall();
 void beNDMWStageCtl_fieldInit();
 }
 extern "C" {
-void beNDMWStageCtl_registerNow(){
+void beNDMWStageCtl_arkRegister(){
  meta_registerNow((int)beNDMWStageCtl_register);
 }
 void beNDMWStageCtl_register(){
@@ -36,11 +36,11 @@ void *beNDMWStageCtl_getMetaCall(){return beNDMWStageCtl_getMeta();}
 void beNDMWStageCtl_fieldInit(){
  void *meta=beNDMWStageCtl_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804E213C,0x1);
- meta_setupFields(meta,lbl_804E2140,lbl_804E2144,lbl_804E2148,field);
+ meta_appendFields(meta,beNDMWStageCtl_fieldTypes,0x1);
+ meta_setupFields(meta,beNDMWStageCtl_fieldNames,beNDMWStageCtl_fieldStorage,beNDMWStageCtl_fieldOffsets,field);
 }
 void *beNDMWSaveIntfInfo_getMeta(){
- if(!beNDMWSaveIntfInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWSaveIntfInfo_meta)[0x24/4]&4)) beNDMWSaveIntfInfo_registerNow();
+ if(!beNDMWSaveIntfInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWSaveIntfInfo_meta)[0x24/4]&4)) beNDMWSaveIntfInfo_arkRegister();
  return beNDMWSaveIntfInfo_meta;
 }
 }

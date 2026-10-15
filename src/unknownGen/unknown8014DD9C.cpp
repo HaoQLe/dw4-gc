@@ -26,22 +26,22 @@ extern char lbl_804A6460[];
 extern char igConvertTransformsToCompressedSequencesQS_vtable[];
 extern char igConvertTransform_vtable[];
 extern char lbl_804AAF48[];
-extern char lbl_8055FBE0[8];
-extern char lbl_8055FBE8[8];
-extern char lbl_8055FBF8[8];
-extern char lbl_8055FC00[8];
-extern char lbl_8055FC08[8];
+extern char igConvertTransformsToCompressedSequencesQS_dependencies[8];
+extern char igConvertTransformsToCompressedSequencesQS_fieldTypes[8];
+extern char igConvertTransformsToCompressedSequencesQS_fieldNames[8];
+extern char igConvertTransformsToCompressedSequencesQS_fieldStorage[8];
+extern char igConvertTransformsToCompressedSequencesQS_fieldOffsets[8];
 extern void *igConvertTransformsToCompressedSequencesQS_meta;
 extern void *igConvertTransform_meta;
 void *igConvertTransformsToCompressedSequencesQS_getMeta();
 void *igConvertTransformsToCompressedSequencesQS_vtableRead();
-void igConvertTransformsToCompressedSequencesQS_registerNow();
+void igConvertTransformsToCompressedSequencesQS_arkRegister();
 void igConvertTransformsToCompressedSequencesQS_register();
 void *igConvertTransformsToCompressedSequencesQS_getMetaCall();
 void igConvertTransformsToCompressedSequencesQS_fieldInit();
 void *igConvertTransform_getMeta();
 void *igConvertTransform_vtableRead();
-void igConvertTransform_registerNow();
+void igConvertTransform_arkRegister();
 void igConvertTransform_register();
 void *igConvertTransform_getMetaCall();
 }
@@ -87,7 +87,7 @@ struct UnknownGenObject8014E0F4 : UnknownGenObject8014E0F4_1 {
 };
 extern "C" {
 void *igConvertTransformsToCompressedSequencesQS_getMeta(){
- if(!igConvertTransformsToCompressedSequencesQS_meta || !(reinterpret_cast<unsigned int *>(igConvertTransformsToCompressedSequencesQS_meta)[0x24/4]&4)) igConvertTransformsToCompressedSequencesQS_registerNow();
+ if(!igConvertTransformsToCompressedSequencesQS_meta || !(reinterpret_cast<unsigned int *>(igConvertTransformsToCompressedSequencesQS_meta)[0x24/4]&4)) igConvertTransformsToCompressedSequencesQS_arkRegister();
  return igConvertTransformsToCompressedSequencesQS_meta;
 }
 void *igConvertTransformsToCompressedSequencesQS_vtableRead(){
@@ -103,18 +103,18 @@ void *igConvertTransformsToCompressedSequencesQS_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igConvertTransformsToCompressedSequencesQS_registerNow(){
+void igConvertTransformsToCompressedSequencesQS_arkRegister(){
  meta_registerNow((int)igConvertTransformsToCompressedSequencesQS_register);
 }
 void igConvertTransformsToCompressedSequencesQS_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igConvertTransformsToCompressedSequencesQS_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertTransformsToCompressedSequencesQS_getMetaCall,(int)igConvertTransformsToCompressedSequencesQS_className,52,(int)igConvertTransformsToCompressedSequencesQS_vtableRead,(int)igConvertTransformsToCompressedSequencesQS_fieldInit,0,(int)lbl_8055FBE0);
+ meta_registerClass(0,(int)&igConvertTransformsToCompressedSequencesQS_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertTransformsToCompressedSequencesQS_getMetaCall,(int)igConvertTransformsToCompressedSequencesQS_className,52,(int)igConvertTransformsToCompressedSequencesQS_vtableRead,(int)igConvertTransformsToCompressedSequencesQS_fieldInit,0,(int)igConvertTransformsToCompressedSequencesQS_dependencies);
 }
 void *igConvertTransformsToCompressedSequencesQS_getMetaCall(){return igConvertTransformsToCompressedSequencesQS_getMeta();}
 void igConvertTransformsToCompressedSequencesQS_fieldInit(){
  void *value0=igConvertTransformsToCompressedSequencesQS_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FBE8,2);
+ meta_appendFields(value0,igConvertTransformsToCompressedSequencesQS_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80035694();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -122,10 +122,10 @@ void igConvertTransformsToCompressedSequencesQS_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
  void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8003EC68(value4,1);
- meta_setupFields(value0,lbl_8055FBF8,lbl_8055FC00,lbl_8055FC08,value1);
+ meta_setupFields(value0,igConvertTransformsToCompressedSequencesQS_fieldNames,igConvertTransformsToCompressedSequencesQS_fieldStorage,igConvertTransformsToCompressedSequencesQS_fieldOffsets,value1);
 }
 void *igConvertTransform_getMeta(){
- if(!igConvertTransform_meta || !(reinterpret_cast<unsigned int *>(igConvertTransform_meta)[0x24/4]&4)) igConvertTransform_registerNow();
+ if(!igConvertTransform_meta || !(reinterpret_cast<unsigned int *>(igConvertTransform_meta)[0x24/4]&4)) igConvertTransform_arkRegister();
  return igConvertTransform_meta;
 }
 void *igConvertTransform_vtableRead(){
@@ -141,7 +141,7 @@ void *igConvertTransform_vtableRead(){
  object.unknown00=igConvertTransform_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igConvertTransform_registerNow(){
+void igConvertTransform_arkRegister(){
  meta_registerNow((int)igConvertTransform_register);
 }
 void igConvertTransform_register(){

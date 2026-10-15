@@ -52,11 +52,11 @@ extern char igCollapseNodeForTransform_vtable[];
 extern char igCollapseNodeForNode_vtable[];
 extern char lbl_804A8050[];
 extern char lbl_804AAF48[];
-extern char lbl_8055FC8C[8];
-extern char lbl_8055FC94[8];
-extern char lbl_8055FC9C[8];
-extern char lbl_8055FCA4[8];
-extern char lbl_8055FCAC[8];
+extern char igCombineTransforms_fieldTypes[8];
+extern char igCombineTransforms_fieldNames[8];
+extern char igCombineTransforms_fieldStorage[8];
+extern char igCombineTransforms_fieldOffsets[8];
+extern char igCollapseNode_dependencies[8];
 extern void *igCombineTransforms_meta;
 extern void *igCollapseNodeForCompiledGraph_meta;
 extern void *igCollapseNodeForMultitextureShader_meta;
@@ -75,77 +75,77 @@ extern void *igCollapseNode_meta;
 extern char lbl_80566B14[4];
 void *igCombineTransforms_getMeta();
 void *igCombineTransforms_vtableRead();
-void igCombineTransforms_registerNow();
+void igCombineTransforms_arkRegister();
 void igCombineTransforms_register();
 void *igCombineTransforms_getMetaCall();
 void igCombineTransforms_fieldInit();
 void *igCollapseNodeForCompiledGraph_getMeta();
 void *igCollapseNodeForCompiledGraph_vtableRead();
-void igCollapseNodeForCompiledGraph_registerNow();
+void igCollapseNodeForCompiledGraph_arkRegister();
 void igCollapseNodeForCompiledGraph_register();
 void *igCollapseNodeForCompiledGraph_getMetaCall();
 void *igCollapseNodeForMultitextureShader_getMeta();
 void *igCollapseNodeForMultitextureShader_vtableRead();
-void igCollapseNodeForMultitextureShader_registerNow();
+void igCollapseNodeForMultitextureShader_arkRegister();
 void igCollapseNodeForMultitextureShader_register();
 void *igCollapseNodeForMultitextureShader_getMetaCall();
 void *igCollapseNodeForModelViewMatrixBoneSelect_getMeta();
 void *igCollapseNodeForModelViewMatrixBoneSelect_vtableRead();
-void igCollapseNodeForModelViewMatrixBoneSelect_registerNow();
+void igCollapseNodeForModelViewMatrixBoneSelect_arkRegister();
 void igCollapseNodeForModelViewMatrixBoneSelect_register();
 void *igCollapseNodeForModelViewMatrixBoneSelect_getMetaCall();
 void *igCollapseNodeForMorphInstance_getMeta();
 void *igCollapseNodeForMorphInstance_vtableRead();
-void igCollapseNodeForMorphInstance_registerNow();
+void igCollapseNodeForMorphInstance_arkRegister();
 void igCollapseNodeForMorphInstance_register();
 void *igCollapseNodeForMorphInstance_getMetaCall();
 void *igCollapseNodeForAttrSet_getMeta();
 void *igCollapseNodeForAttrSet_vtableRead();
-void igCollapseNodeForAttrSet_registerNow();
+void igCollapseNodeForAttrSet_arkRegister();
 void igCollapseNodeForAttrSet_register();
 void *igCollapseNodeForAttrSet_getMetaCall();
 void *igCollapseNodeForLightSet_getMeta();
 void *igCollapseNodeForLightSet_vtableRead();
-void igCollapseNodeForLightSet_registerNow();
+void igCollapseNodeForLightSet_arkRegister();
 void igCollapseNodeForLightSet_register();
 void *igCollapseNodeForLightSet_getMetaCall();
 void *igCollapseNodeForLightStateSet_getMeta();
 void *igCollapseNodeForLightStateSet_vtableRead();
-void igCollapseNodeForLightStateSet_registerNow();
+void igCollapseNodeForLightStateSet_arkRegister();
 void igCollapseNodeForLightStateSet_register();
 void *igCollapseNodeForLightStateSet_getMetaCall();
 void *igCollapseNodeForGeometry_getMeta();
 void *igCollapseNodeForGeometry_vtableRead();
-void igCollapseNodeForGeometry_registerNow();
+void igCollapseNodeForGeometry_arkRegister();
 void igCollapseNodeForGeometry_register();
 void *igCollapseNodeForGeometry_getMetaCall();
 void *igCollapseNodeForLod_getMeta();
 void *igCollapseNodeForLod_vtableRead();
-void igCollapseNodeForLod_registerNow();
+void igCollapseNodeForLod_arkRegister();
 void igCollapseNodeForLod_register();
 void *igCollapseNodeForLod_getMetaCall();
 void *igCollapseNodeForUserInfo_getMeta();
 void *igCollapseNodeForUserInfo_vtableRead();
-void igCollapseNodeForUserInfo_registerNow();
+void igCollapseNodeForUserInfo_arkRegister();
 void igCollapseNodeForUserInfo_register();
 void *igCollapseNodeForUserInfo_getMetaCall();
 void *igCollapseNodeForGroup_getMeta();
 void *igCollapseNodeForGroup_vtableRead();
-void igCollapseNodeForGroup_registerNow();
+void igCollapseNodeForGroup_arkRegister();
 void igCollapseNodeForGroup_register();
 void *igCollapseNodeForGroup_getMetaCall();
 void *igCollapseNodeForTransform_getMeta();
 void *igCollapseNodeForTransform_vtableRead();
-void igCollapseNodeForTransform_registerNow();
+void igCollapseNodeForTransform_arkRegister();
 void igCollapseNodeForTransform_register();
 void *igCollapseNodeForTransform_getMetaCall();
 void *igCollapseNodeForNode_getMeta();
 void *igCollapseNodeForNode_vtableRead();
-void igCollapseNodeForNode_registerNow();
+void igCollapseNodeForNode_arkRegister();
 void igCollapseNodeForNode_register();
 void *igCollapseNodeForNode_getMetaCall();
 void *igCollapseNode_getMeta();
-void igCollapseNode_registerNow();
+void igCollapseNode_arkRegister();
 void igCollapseNode_register();
 void *igCollapseNode_getMetaCall();
 }
@@ -366,7 +366,7 @@ struct UnknownGenObject80150E7C : UnknownGenObject80150E7C_0 {
 };
 extern "C" {
 void *igCombineTransforms_getMeta(){
- if(!igCombineTransforms_meta || !(reinterpret_cast<unsigned int *>(igCombineTransforms_meta)[0x24/4]&4)) igCombineTransforms_registerNow();
+ if(!igCombineTransforms_meta || !(reinterpret_cast<unsigned int *>(igCombineTransforms_meta)[0x24/4]&4)) igCombineTransforms_arkRegister();
  return igCombineTransforms_meta;
 }
 void *igCombineTransforms_vtableRead(){
@@ -382,7 +382,7 @@ void *igCombineTransforms_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCombineTransforms_registerNow(){
+void igCombineTransforms_arkRegister(){
  meta_registerNow((int)igCombineTransforms_register);
 }
 void igCombineTransforms_register(){
@@ -393,13 +393,13 @@ void *igCombineTransforms_getMetaCall(){return igCombineTransforms_getMeta();}
 void igCombineTransforms_fieldInit(){
  void *value0=igCombineTransforms_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FC8C,2);
+ meta_appendFields(value0,igCombineTransforms_fieldTypes,2);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566B14+0)));
- meta_setupFields(value0,lbl_8055FC94,lbl_8055FC9C,lbl_8055FCA4,value1);
+ meta_setupFields(value0,igCombineTransforms_fieldNames,igCombineTransforms_fieldStorage,igCombineTransforms_fieldOffsets,value1);
 }
 void *igCollapseNodeForCompiledGraph_getMeta(){
- if(!igCollapseNodeForCompiledGraph_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForCompiledGraph_meta)[0x24/4]&4)) igCollapseNodeForCompiledGraph_registerNow();
+ if(!igCollapseNodeForCompiledGraph_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForCompiledGraph_meta)[0x24/4]&4)) igCollapseNodeForCompiledGraph_arkRegister();
  return igCollapseNodeForCompiledGraph_meta;
 }
 void *igCollapseNodeForCompiledGraph_vtableRead(){
@@ -413,7 +413,7 @@ void *igCollapseNodeForCompiledGraph_vtableRead(){
  object.unknown00=igCollapseNodeForCompiledGraph_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForCompiledGraph_registerNow(){
+void igCollapseNodeForCompiledGraph_arkRegister(){
  meta_registerNow((int)igCollapseNodeForCompiledGraph_register);
 }
 void igCollapseNodeForCompiledGraph_register(){
@@ -422,7 +422,7 @@ void igCollapseNodeForCompiledGraph_register(){
 }
 void *igCollapseNodeForCompiledGraph_getMetaCall(){return igCollapseNodeForCompiledGraph_getMeta();}
 void *igCollapseNodeForMultitextureShader_getMeta(){
- if(!igCollapseNodeForMultitextureShader_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForMultitextureShader_meta)[0x24/4]&4)) igCollapseNodeForMultitextureShader_registerNow();
+ if(!igCollapseNodeForMultitextureShader_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForMultitextureShader_meta)[0x24/4]&4)) igCollapseNodeForMultitextureShader_arkRegister();
  return igCollapseNodeForMultitextureShader_meta;
 }
 void *igCollapseNodeForMultitextureShader_vtableRead(){
@@ -436,7 +436,7 @@ void *igCollapseNodeForMultitextureShader_vtableRead(){
  object.unknown00=igCollapseNodeForMultitextureShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForMultitextureShader_registerNow(){
+void igCollapseNodeForMultitextureShader_arkRegister(){
  meta_registerNow((int)igCollapseNodeForMultitextureShader_register);
 }
 void igCollapseNodeForMultitextureShader_register(){
@@ -445,7 +445,7 @@ void igCollapseNodeForMultitextureShader_register(){
 }
 void *igCollapseNodeForMultitextureShader_getMetaCall(){return igCollapseNodeForMultitextureShader_getMeta();}
 void *igCollapseNodeForModelViewMatrixBoneSelect_getMeta(){
- if(!igCollapseNodeForModelViewMatrixBoneSelect_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForModelViewMatrixBoneSelect_meta)[0x24/4]&4)) igCollapseNodeForModelViewMatrixBoneSelect_registerNow();
+ if(!igCollapseNodeForModelViewMatrixBoneSelect_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForModelViewMatrixBoneSelect_meta)[0x24/4]&4)) igCollapseNodeForModelViewMatrixBoneSelect_arkRegister();
  return igCollapseNodeForModelViewMatrixBoneSelect_meta;
 }
 void *igCollapseNodeForModelViewMatrixBoneSelect_vtableRead(){
@@ -459,7 +459,7 @@ void *igCollapseNodeForModelViewMatrixBoneSelect_vtableRead(){
  object.unknown00=igCollapseNodeForModelViewMatrixBoneSelect_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForModelViewMatrixBoneSelect_registerNow(){
+void igCollapseNodeForModelViewMatrixBoneSelect_arkRegister(){
  meta_registerNow((int)igCollapseNodeForModelViewMatrixBoneSelect_register);
 }
 void igCollapseNodeForModelViewMatrixBoneSelect_register(){
@@ -468,7 +468,7 @@ void igCollapseNodeForModelViewMatrixBoneSelect_register(){
 }
 void *igCollapseNodeForModelViewMatrixBoneSelect_getMetaCall(){return igCollapseNodeForModelViewMatrixBoneSelect_getMeta();}
 void *igCollapseNodeForMorphInstance_getMeta(){
- if(!igCollapseNodeForMorphInstance_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForMorphInstance_meta)[0x24/4]&4)) igCollapseNodeForMorphInstance_registerNow();
+ if(!igCollapseNodeForMorphInstance_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForMorphInstance_meta)[0x24/4]&4)) igCollapseNodeForMorphInstance_arkRegister();
  return igCollapseNodeForMorphInstance_meta;
 }
 void *igCollapseNodeForMorphInstance_vtableRead(){
@@ -482,7 +482,7 @@ void *igCollapseNodeForMorphInstance_vtableRead(){
  object.unknown00=igCollapseNodeForMorphInstance_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForMorphInstance_registerNow(){
+void igCollapseNodeForMorphInstance_arkRegister(){
  meta_registerNow((int)igCollapseNodeForMorphInstance_register);
 }
 void igCollapseNodeForMorphInstance_register(){
@@ -491,7 +491,7 @@ void igCollapseNodeForMorphInstance_register(){
 }
 void *igCollapseNodeForMorphInstance_getMetaCall(){return igCollapseNodeForMorphInstance_getMeta();}
 void *igCollapseNodeForAttrSet_getMeta(){
- if(!igCollapseNodeForAttrSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForAttrSet_meta)[0x24/4]&4)) igCollapseNodeForAttrSet_registerNow();
+ if(!igCollapseNodeForAttrSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForAttrSet_meta)[0x24/4]&4)) igCollapseNodeForAttrSet_arkRegister();
  return igCollapseNodeForAttrSet_meta;
 }
 void *igCollapseNodeForAttrSet_vtableRead(){
@@ -505,7 +505,7 @@ void *igCollapseNodeForAttrSet_vtableRead(){
  object.unknown00=igCollapseNodeForAttrSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForAttrSet_registerNow(){
+void igCollapseNodeForAttrSet_arkRegister(){
  meta_registerNow((int)igCollapseNodeForAttrSet_register);
 }
 void igCollapseNodeForAttrSet_register(){
@@ -514,7 +514,7 @@ void igCollapseNodeForAttrSet_register(){
 }
 void *igCollapseNodeForAttrSet_getMetaCall(){return igCollapseNodeForAttrSet_getMeta();}
 void *igCollapseNodeForLightSet_getMeta(){
- if(!igCollapseNodeForLightSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLightSet_meta)[0x24/4]&4)) igCollapseNodeForLightSet_registerNow();
+ if(!igCollapseNodeForLightSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLightSet_meta)[0x24/4]&4)) igCollapseNodeForLightSet_arkRegister();
  return igCollapseNodeForLightSet_meta;
 }
 void *igCollapseNodeForLightSet_vtableRead(){
@@ -528,7 +528,7 @@ void *igCollapseNodeForLightSet_vtableRead(){
  object.unknown00=igCollapseNodeForLightSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForLightSet_registerNow(){
+void igCollapseNodeForLightSet_arkRegister(){
  meta_registerNow((int)igCollapseNodeForLightSet_register);
 }
 void igCollapseNodeForLightSet_register(){
@@ -537,7 +537,7 @@ void igCollapseNodeForLightSet_register(){
 }
 void *igCollapseNodeForLightSet_getMetaCall(){return igCollapseNodeForLightSet_getMeta();}
 void *igCollapseNodeForLightStateSet_getMeta(){
- if(!igCollapseNodeForLightStateSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLightStateSet_meta)[0x24/4]&4)) igCollapseNodeForLightStateSet_registerNow();
+ if(!igCollapseNodeForLightStateSet_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLightStateSet_meta)[0x24/4]&4)) igCollapseNodeForLightStateSet_arkRegister();
  return igCollapseNodeForLightStateSet_meta;
 }
 void *igCollapseNodeForLightStateSet_vtableRead(){
@@ -551,7 +551,7 @@ void *igCollapseNodeForLightStateSet_vtableRead(){
  object.unknown00=igCollapseNodeForLightStateSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForLightStateSet_registerNow(){
+void igCollapseNodeForLightStateSet_arkRegister(){
  meta_registerNow((int)igCollapseNodeForLightStateSet_register);
 }
 void igCollapseNodeForLightStateSet_register(){
@@ -560,7 +560,7 @@ void igCollapseNodeForLightStateSet_register(){
 }
 void *igCollapseNodeForLightStateSet_getMetaCall(){return igCollapseNodeForLightStateSet_getMeta();}
 void *igCollapseNodeForGeometry_getMeta(){
- if(!igCollapseNodeForGeometry_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForGeometry_meta)[0x24/4]&4)) igCollapseNodeForGeometry_registerNow();
+ if(!igCollapseNodeForGeometry_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForGeometry_meta)[0x24/4]&4)) igCollapseNodeForGeometry_arkRegister();
  return igCollapseNodeForGeometry_meta;
 }
 void *igCollapseNodeForGeometry_vtableRead(){
@@ -574,7 +574,7 @@ void *igCollapseNodeForGeometry_vtableRead(){
  object.unknown00=igCollapseNodeForGeometry_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForGeometry_registerNow(){
+void igCollapseNodeForGeometry_arkRegister(){
  meta_registerNow((int)igCollapseNodeForGeometry_register);
 }
 void igCollapseNodeForGeometry_register(){
@@ -583,7 +583,7 @@ void igCollapseNodeForGeometry_register(){
 }
 void *igCollapseNodeForGeometry_getMetaCall(){return igCollapseNodeForGeometry_getMeta();}
 void *igCollapseNodeForLod_getMeta(){
- if(!igCollapseNodeForLod_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLod_meta)[0x24/4]&4)) igCollapseNodeForLod_registerNow();
+ if(!igCollapseNodeForLod_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForLod_meta)[0x24/4]&4)) igCollapseNodeForLod_arkRegister();
  return igCollapseNodeForLod_meta;
 }
 void *igCollapseNodeForLod_vtableRead(){
@@ -597,7 +597,7 @@ void *igCollapseNodeForLod_vtableRead(){
  object.unknown00=igCollapseNodeForLod_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForLod_registerNow(){
+void igCollapseNodeForLod_arkRegister(){
  meta_registerNow((int)igCollapseNodeForLod_register);
 }
 void igCollapseNodeForLod_register(){
@@ -606,7 +606,7 @@ void igCollapseNodeForLod_register(){
 }
 void *igCollapseNodeForLod_getMetaCall(){return igCollapseNodeForLod_getMeta();}
 void *igCollapseNodeForUserInfo_getMeta(){
- if(!igCollapseNodeForUserInfo_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForUserInfo_meta)[0x24/4]&4)) igCollapseNodeForUserInfo_registerNow();
+ if(!igCollapseNodeForUserInfo_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForUserInfo_meta)[0x24/4]&4)) igCollapseNodeForUserInfo_arkRegister();
  return igCollapseNodeForUserInfo_meta;
 }
 void *igCollapseNodeForUserInfo_vtableRead(){
@@ -620,7 +620,7 @@ void *igCollapseNodeForUserInfo_vtableRead(){
  object.unknown00=igCollapseNodeForUserInfo_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForUserInfo_registerNow(){
+void igCollapseNodeForUserInfo_arkRegister(){
  meta_registerNow((int)igCollapseNodeForUserInfo_register);
 }
 void igCollapseNodeForUserInfo_register(){
@@ -629,7 +629,7 @@ void igCollapseNodeForUserInfo_register(){
 }
 void *igCollapseNodeForUserInfo_getMetaCall(){return igCollapseNodeForUserInfo_getMeta();}
 void *igCollapseNodeForGroup_getMeta(){
- if(!igCollapseNodeForGroup_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForGroup_meta)[0x24/4]&4)) igCollapseNodeForGroup_registerNow();
+ if(!igCollapseNodeForGroup_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForGroup_meta)[0x24/4]&4)) igCollapseNodeForGroup_arkRegister();
  return igCollapseNodeForGroup_meta;
 }
 void *igCollapseNodeForGroup_vtableRead(){
@@ -643,7 +643,7 @@ void *igCollapseNodeForGroup_vtableRead(){
  object.unknown00=igCollapseNodeForGroup_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForGroup_registerNow(){
+void igCollapseNodeForGroup_arkRegister(){
  meta_registerNow((int)igCollapseNodeForGroup_register);
 }
 void igCollapseNodeForGroup_register(){
@@ -652,7 +652,7 @@ void igCollapseNodeForGroup_register(){
 }
 void *igCollapseNodeForGroup_getMetaCall(){return igCollapseNodeForGroup_getMeta();}
 void *igCollapseNodeForTransform_getMeta(){
- if(!igCollapseNodeForTransform_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForTransform_meta)[0x24/4]&4)) igCollapseNodeForTransform_registerNow();
+ if(!igCollapseNodeForTransform_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForTransform_meta)[0x24/4]&4)) igCollapseNodeForTransform_arkRegister();
  return igCollapseNodeForTransform_meta;
 }
 void *igCollapseNodeForTransform_vtableRead(){
@@ -666,7 +666,7 @@ void *igCollapseNodeForTransform_vtableRead(){
  object.unknown00=igCollapseNodeForTransform_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForTransform_registerNow(){
+void igCollapseNodeForTransform_arkRegister(){
  meta_registerNow((int)igCollapseNodeForTransform_register);
 }
 void igCollapseNodeForTransform_register(){
@@ -675,7 +675,7 @@ void igCollapseNodeForTransform_register(){
 }
 void *igCollapseNodeForTransform_getMetaCall(){return igCollapseNodeForTransform_getMeta();}
 void *igCollapseNodeForNode_getMeta(){
- if(!igCollapseNodeForNode_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForNode_meta)[0x24/4]&4)) igCollapseNodeForNode_registerNow();
+ if(!igCollapseNodeForNode_meta || !(reinterpret_cast<unsigned int *>(igCollapseNodeForNode_meta)[0x24/4]&4)) igCollapseNodeForNode_arkRegister();
  return igCollapseNodeForNode_meta;
 }
 void *igCollapseNodeForNode_vtableRead(){
@@ -689,7 +689,7 @@ void *igCollapseNodeForNode_vtableRead(){
  object.unknown00=igCollapseNodeForNode_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseNodeForNode_registerNow(){
+void igCollapseNodeForNode_arkRegister(){
  meta_registerNow((int)igCollapseNodeForNode_register);
 }
 void igCollapseNodeForNode_register(){
@@ -698,15 +698,15 @@ void igCollapseNodeForNode_register(){
 }
 void *igCollapseNodeForNode_getMetaCall(){return igCollapseNodeForNode_getMeta();}
 void *igCollapseNode_getMeta(){
- if(!igCollapseNode_meta || !(reinterpret_cast<unsigned int *>(igCollapseNode_meta)[0x24/4]&4)) igCollapseNode_registerNow();
+ if(!igCollapseNode_meta || !(reinterpret_cast<unsigned int *>(igCollapseNode_meta)[0x24/4]&4)) igCollapseNode_arkRegister();
  return igCollapseNode_meta;
 }
-void igCollapseNode_registerNow(){
+void igCollapseNode_arkRegister(){
  meta_registerNow((int)igCollapseNode_register);
 }
 void igCollapseNode_register(){
  fn_8012FC48();
- meta_registerClass(1,(int)&igCollapseNode_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igCollapseNode_getMetaCall,(int)igCollapseNode_className,44,0,(int)igCollapseNode_fieldInit,0,(int)lbl_8055FCAC);
+ meta_registerClass(1,(int)&igCollapseNode_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igCollapseNode_getMetaCall,(int)igCollapseNode_className,44,0,(int)igCollapseNode_fieldInit,0,(int)igCollapseNode_dependencies);
 }
 void *igCollapseNode_getMetaCall(){return igCollapseNode_getMeta();}
 }

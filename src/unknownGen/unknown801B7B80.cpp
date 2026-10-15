@@ -16,12 +16,12 @@ extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char _edgeList_className[];
-extern char lbl_804ADF54[];
+extern char _edge_dependencies[];
 extern char _edge_vtable[];
 extern char igHeapable_vtable[];
 extern char _edgeList_vtable[];
 extern char lbl_804B823C[];
-extern char lbl_805603D4[8];
+extern char _edgeList_dependencies[8];
 extern char lbl_805603DC[6];
 extern void *lbl_805621F4;
 extern void *_edgeList_meta;
@@ -29,12 +29,12 @@ extern void *_edge_meta;
 extern void *igHeapable_meta;
 void *_edgeList_getMeta();
 void *_edgeList_vtableRead();
-void _edgeList_registerNow();
+void _edgeList_arkRegister();
 void _edgeList_register();
 void *_edgeList_getMetaCall();
 void *_edge_getMeta();
 void *_edge_vtableRead();
-void _edge_registerNow();
+void _edge_arkRegister();
 void _edge_register();
 void *_edge_getMetaCall();
 void *_edge_parentMeta();
@@ -60,7 +60,7 @@ void *fn_801B7B80(){
  return _edgeList_meta;
 }
 void *_edgeList_getMeta(){
- if(!_edgeList_meta || !(reinterpret_cast<unsigned int *>(_edgeList_meta)[0x24/4]&4)) _edgeList_registerNow();
+ if(!_edgeList_meta || !(reinterpret_cast<unsigned int *>(_edgeList_meta)[0x24/4]&4)) _edgeList_arkRegister();
  return _edgeList_meta;
 }
 void *_edgeList_vtableRead(){
@@ -73,16 +73,16 @@ void *_edgeList_vtableRead(){
  object.unknown00=_edgeList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void _edgeList_registerNow(){
+void _edgeList_arkRegister(){
  meta_registerNow((int)_edgeList_register);
 }
 void _edgeList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&_edgeList_meta,(int)igObjectList_register,(int)fn_80024180,(int)_edgeList_getMetaCall,(int)_edgeList_className,20,(int)_edgeList_vtableRead,0,0,(int)lbl_805603D4);
+ meta_registerClass(0,(int)&_edgeList_meta,(int)igObjectList_register,(int)fn_80024180,(int)_edgeList_getMetaCall,(int)_edgeList_className,20,(int)_edgeList_vtableRead,0,0,(int)_edgeList_dependencies);
 }
 void *_edgeList_getMetaCall(){return _edgeList_getMeta();}
 void *_edge_getMeta(){
- if(!_edge_meta || !(reinterpret_cast<unsigned int *>(_edge_meta)[0x24/4]&4)) _edge_registerNow();
+ if(!_edge_meta || !(reinterpret_cast<unsigned int *>(_edge_meta)[0x24/4]&4)) _edge_arkRegister();
  return _edge_meta;
 }
 void *_edge_vtableRead(){
@@ -92,12 +92,12 @@ void *_edge_vtableRead(){
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void _edge_registerNow(){
+void _edge_arkRegister(){
  meta_registerNow((int)_edge_register);
 }
 void _edge_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&_edge_meta,(int)igHeapable_register,(int)_edge_parentMeta,(int)_edge_getMetaCall,(int)lbl_805603DC,44,(int)_edge_vtableRead,(int)_edge_fieldInit,0,(int)lbl_804ADF54);
+ meta_registerClass(0,(int)&_edge_meta,(int)igHeapable_register,(int)_edge_parentMeta,(int)_edge_getMetaCall,(int)lbl_805603DC,44,(int)_edge_vtableRead,(int)_edge_fieldInit,0,(int)_edge_dependencies);
 }
 void *_edge_getMetaCall(){return _edge_getMeta();}
 void *_edge_parentMeta(){return igHeapable_meta;}

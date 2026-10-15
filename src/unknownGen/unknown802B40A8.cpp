@@ -6,7 +6,7 @@ void *fn_80024180();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beWaterPlainInfoRam_registerNow();
+void beWaterPlainInfoRam_arkRegister();
 void *igModelViewMatrixBoneSelectList_2_getMeta();
 void igModelViewMatrixBoneSelectList_2_vtableRead();
 void igObjectList_register();
@@ -27,7 +27,7 @@ void igModelViewMatrixBoneSelectList_2_register(){
 }
 void *igModelViewMatrixBoneSelectList_2_getMetaCall(){return igModelViewMatrixBoneSelectList_2_getMeta();}
 void *beWaterPlainInfoRam_getMeta(){
- if(!beWaterPlainInfoRam_meta || !(reinterpret_cast<unsigned int *>(beWaterPlainInfoRam_meta)[0x24/4]&4)) beWaterPlainInfoRam_registerNow();
+ if(!beWaterPlainInfoRam_meta || !(reinterpret_cast<unsigned int *>(beWaterPlainInfoRam_meta)[0x24/4]&4)) beWaterPlainInfoRam_arkRegister();
  return beWaterPlainInfoRam_meta;
 }
 }

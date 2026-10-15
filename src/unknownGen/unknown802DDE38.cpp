@@ -12,17 +12,17 @@ void *meta_field(void *,void *);
 void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
-extern char lbl_804D24E8[];
-extern char lbl_804D2518[];
-extern char lbl_804D2548[];
-extern char lbl_804D2578[];
+extern char beDataBase_fieldTypes[];
+extern char beDataBase_fieldNames[];
+extern char beDataBase_fieldStorage[];
+extern char beDataBase_fieldOffsets[];
 extern void *beDataBase_meta;
 }
 extern "C" {
 void beDataBase_fieldInit(){
  void *value0=beDataBase_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D24E8,12);
+ meta_appendFields(value0,beDataBase_fieldTypes,12);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80029A5C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -71,7 +71,7 @@ void beDataBase_fieldInit(){
  void *value25=fn_80029A5C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value24)+56)=value25;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value24)+52)=1;
- meta_setupFields(value0,lbl_804D2518,lbl_804D2548,lbl_804D2578,value1);
+ meta_setupFields(value0,beDataBase_fieldNames,beDataBase_fieldStorage,beDataBase_fieldOffsets,value1);
 }
 }
 #pragma pop

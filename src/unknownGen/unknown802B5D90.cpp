@@ -16,7 +16,7 @@ void beTimerData_register();
 void *beTimerData_getMetaCall();
 }
 extern "C" {
-void beTimerData_registerNow(){
+void beTimerData_arkRegister(){
  meta_registerNow((int)beTimerData_register);
 }
 void beTimerData_register(){

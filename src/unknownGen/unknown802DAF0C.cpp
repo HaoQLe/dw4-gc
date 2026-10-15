@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
 extern char beFileChkObj_className[];
-extern char lbl_804D22C8[];
+extern char beFileChkObj_dependencies[];
 extern char beFileChkObj_meta[];
 void beFileChkObj_register();
 void *beFileChkObj_getMetaCall();
 }
 extern "C" {
-void beFileChkObj_registerNow(){
+void beFileChkObj_arkRegister(){
  meta_registerNow((int)beFileChkObj_register);
 }
 void beFileChkObj_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beFileChkObj_meta,(int)igObject_register,(int)fn_800237D0,(int)beFileChkObj_getMetaCall,(int)beFileChkObj_className,12,(int)beFileChkObj_vtableRead,(int)beFileChkObj_fieldInit,0,(int)lbl_804D22C8);
+ meta_registerClass(0,(int)beFileChkObj_meta,(int)igObject_register,(int)fn_800237D0,(int)beFileChkObj_getMetaCall,(int)beFileChkObj_className,12,(int)beFileChkObj_vtableRead,(int)beFileChkObj_fieldInit,0,(int)beFileChkObj_dependencies);
 }
 void *beFileChkObj_getMetaCall(){return beFileChkObj_getMeta();}
 }

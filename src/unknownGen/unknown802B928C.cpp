@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void bePlaySEList_registerNow();
+void bePlaySEList_arkRegister();
 extern void *bePlaySEList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *bePlaySEList_metaObject(){
  return bePlaySEList_meta;
 }
 void *bePlaySEList_getMeta(){
- if(!bePlaySEList_meta || !(reinterpret_cast<unsigned int *>(bePlaySEList_meta)[0x24/4]&4)) bePlaySEList_registerNow();
+ if(!bePlaySEList_meta || !(reinterpret_cast<unsigned int *>(bePlaySEList_meta)[0x24/4]&4)) bePlaySEList_arkRegister();
  return bePlaySEList_meta;
 }
 }

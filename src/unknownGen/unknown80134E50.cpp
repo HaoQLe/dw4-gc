@@ -16,11 +16,11 @@ extern char igReplacedChildEvent_vtable[];
 extern char igHierarchyChangedEvent_vtable[];
 extern char igMessageBase_vtable[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F5F4[8];
+extern char igReplacedChildEvent_dependencies[8];
 extern void *igReplacedChildEvent_meta;
 void *igReplacedChildEvent_getMeta();
 void *igReplacedChildEvent_vtableRead();
-void igReplacedChildEvent_registerNow();
+void igReplacedChildEvent_arkRegister();
 void igReplacedChildEvent_register();
 void *igReplacedChildEvent_getMetaCall();
 }
@@ -39,11 +39,11 @@ struct UnknownGenObject80134EC4 : UnknownGenRoot80134EC4 {
 };
 extern "C" {
 void *igReplacedChildEvent_create(void *object){
- igReplacedChildEvent_registerNow();
+ igReplacedChildEvent_arkRegister();
  return meta_createInstance(igReplacedChildEvent_meta,object);
 }
 void *igReplacedChildEvent_getMeta(){
- if(!igReplacedChildEvent_meta || !(reinterpret_cast<unsigned int *>(igReplacedChildEvent_meta)[0x24/4]&4)) igReplacedChildEvent_registerNow();
+ if(!igReplacedChildEvent_meta || !(reinterpret_cast<unsigned int *>(igReplacedChildEvent_meta)[0x24/4]&4)) igReplacedChildEvent_arkRegister();
  return igReplacedChildEvent_meta;
 }
 void *igReplacedChildEvent_vtableRead(){
@@ -58,12 +58,12 @@ void *igReplacedChildEvent_vtableRead(){
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igReplacedChildEvent_registerNow(){
+void igReplacedChildEvent_arkRegister(){
  meta_registerNow((int)igReplacedChildEvent_register);
 }
 void igReplacedChildEvent_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igReplacedChildEvent_meta,(int)igHierarchyChangedEvent_register,(int)fn_8013467C,(int)igReplacedChildEvent_getMetaCall,(int)igReplacedChildEvent_className,44,(int)igReplacedChildEvent_vtableRead,(int)igReplacedChildEvent_fieldInit,0,(int)lbl_8055F5F4);
+ meta_registerClass(0,(int)&igReplacedChildEvent_meta,(int)igHierarchyChangedEvent_register,(int)fn_8013467C,(int)igReplacedChildEvent_getMetaCall,(int)igReplacedChildEvent_className,44,(int)igReplacedChildEvent_vtableRead,(int)igReplacedChildEvent_fieldInit,0,(int)igReplacedChildEvent_dependencies);
 }
 void *igReplacedChildEvent_getMetaCall(){return igReplacedChildEvent_getMeta();}
 }

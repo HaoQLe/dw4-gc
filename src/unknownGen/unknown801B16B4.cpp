@@ -11,16 +11,16 @@ void igShader2_fieldInit();
 extern char igShader2_className[];
 extern void *igShader2_meta;
 void *igShader2_getMeta();
-void igShader2_registerNow();
+void igShader2_arkRegister();
 void igShader2_register();
 void *igShader2_getMetaCall();
 }
 extern "C" {
 void *igShader2_getMeta(){
- if(!igShader2_meta || !(reinterpret_cast<unsigned int *>(igShader2_meta)[0x24/4]&4)) igShader2_registerNow();
+ if(!igShader2_meta || !(reinterpret_cast<unsigned int *>(igShader2_meta)[0x24/4]&4)) igShader2_arkRegister();
  return igShader2_meta;
 }
-void igShader2_registerNow(){
+void igShader2_arkRegister(){
  meta_registerNow((int)igShader2_register);
 }
 void igShader2_register(){

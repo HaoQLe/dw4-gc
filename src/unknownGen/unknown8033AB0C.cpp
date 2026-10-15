@@ -12,7 +12,7 @@ void fn_803250AC();
 void *fn_80338A20();
 void fn_8033A934();
 extern char beNDMWMdlItemInfoWork_className[];
-extern char lbl_804E2A3C[];
+extern char beNDMWMdlItemInfoWork_dependencies[];
 extern char beNDMWMdlItemInfoWork_meta[];
 void beNDMWMdlItemInfoWork_register();
 void *beNDMWMdlItemInfoWork_getMetaCall();
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_8033AB0C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWMdlItemInfoWork_registerNow(){
+void beNDMWMdlItemInfoWork_arkRegister(){
  meta_registerNow((int)beNDMWMdlItemInfoWork_register);
 }
 void beNDMWMdlItemInfoWork_register(){
  fn_803250AC();
- meta_registerClass(0,(int)beNDMWMdlItemInfoWork_meta,(int)beModelCtrlInfoWork_register,(int)fn_80338A20,(int)beNDMWMdlItemInfoWork_getMetaCall,(int)beNDMWMdlItemInfoWork_className,268,(int)fn_8033A934,(int)beNDMWMdlItemInfoWork_fieldInit,0,(int)lbl_804E2A3C);
+ meta_registerClass(0,(int)beNDMWMdlItemInfoWork_meta,(int)beModelCtrlInfoWork_register,(int)fn_80338A20,(int)beNDMWMdlItemInfoWork_getMetaCall,(int)beNDMWMdlItemInfoWork_className,268,(int)fn_8033A934,(int)beNDMWMdlItemInfoWork_fieldInit,0,(int)beNDMWMdlItemInfoWork_dependencies);
 }
 void *beNDMWMdlItemInfoWork_getMetaCall(){return beNDMWMdlItemInfoWork_getMeta();}
 }

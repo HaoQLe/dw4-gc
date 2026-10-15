@@ -8,7 +8,7 @@ void *fn_80023CF4();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beModelCtrlPDMOVE_registerNow();
+void beModelCtrlPDMOVE_arkRegister();
 void igNamedObject_register();
 extern char beModelCtrlWCHECK_className[];
 extern char beModelCtrlWCHECK_meta[];
@@ -17,7 +17,7 @@ void beModelCtrlWCHECK_register();
 void *beModelCtrlWCHECK_getMetaCall();
 }
 extern "C" {
-void beModelCtrlWCHECK_registerNow(){
+void beModelCtrlWCHECK_arkRegister(){
  meta_registerNow((int)beModelCtrlWCHECK_register);
 }
 void beModelCtrlWCHECK_register(){
@@ -26,7 +26,7 @@ void beModelCtrlWCHECK_register(){
 }
 void *beModelCtrlWCHECK_getMetaCall(){return beModelCtrlWCHECK_getMeta();}
 void *beModelCtrlPDMOVE_getMeta(){
- if(!beModelCtrlPDMOVE_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlPDMOVE_meta)[0x24/4]&4)) beModelCtrlPDMOVE_registerNow();
+ if(!beModelCtrlPDMOVE_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlPDMOVE_meta)[0x24/4]&4)) beModelCtrlPDMOVE_arkRegister();
  return beModelCtrlPDMOVE_meta;
 }
 }

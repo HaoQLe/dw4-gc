@@ -13,13 +13,13 @@ void igView_register();
 void igViewerSceneInfoManagerController_fieldInit();
 extern char igViewerSceneInfoManagerController_className[];
 extern char lbl_80495AD8[];
-extern char lbl_804F03E4[];
+extern char igViewerSceneInfoManagerController_dependencies[];
 extern char igViewerSceneInfoManagerController_vtable[];
 extern void *igViewerSceneInfoManagerController_meta;
 extern void *lbl_805621F4;
 void *igViewerSceneInfoManagerController_getMeta();
 void *igViewerSceneInfoManagerController_vtableRead();
-void igViewerSceneInfoManagerController_registerNow();
+void igViewerSceneInfoManagerController_arkRegister();
 void igViewerSceneInfoManagerController_register();
 void *igViewerSceneInfoManagerController_getMetaCall();
 }
@@ -33,7 +33,7 @@ void *igViewerSceneInfoManagerController_metaObject(){
  return igViewerSceneInfoManagerController_meta;
 }
 void *igViewerSceneInfoManagerController_getMeta(){
- if(!igViewerSceneInfoManagerController_meta || !(reinterpret_cast<unsigned int *>(igViewerSceneInfoManagerController_meta)[0x24/4]&4)) igViewerSceneInfoManagerController_registerNow();
+ if(!igViewerSceneInfoManagerController_meta || !(reinterpret_cast<unsigned int *>(igViewerSceneInfoManagerController_meta)[0x24/4]&4)) igViewerSceneInfoManagerController_arkRegister();
  return igViewerSceneInfoManagerController_meta;
 }
 void *igViewerSceneInfoManagerController_vtableRead(){
@@ -43,12 +43,12 @@ void *igViewerSceneInfoManagerController_vtableRead(){
  object.unknown00=igViewerSceneInfoManagerController_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igViewerSceneInfoManagerController_registerNow(){
+void igViewerSceneInfoManagerController_arkRegister(){
  meta_registerNow((int)igViewerSceneInfoManagerController_register);
 }
 void igViewerSceneInfoManagerController_register(){
  fn_80402E28();
- meta_registerClass(0,(int)&igViewerSceneInfoManagerController_meta,(int)igView_register,(int)fn_8010E6DC,(int)igViewerSceneInfoManagerController_getMetaCall,(int)igViewerSceneInfoManagerController_className,20,(int)igViewerSceneInfoManagerController_vtableRead,(int)igViewerSceneInfoManagerController_fieldInit,0,(int)lbl_804F03E4);
+ meta_registerClass(0,(int)&igViewerSceneInfoManagerController_meta,(int)igView_register,(int)fn_8010E6DC,(int)igViewerSceneInfoManagerController_getMetaCall,(int)igViewerSceneInfoManagerController_className,20,(int)igViewerSceneInfoManagerController_vtableRead,(int)igViewerSceneInfoManagerController_fieldInit,0,(int)igViewerSceneInfoManagerController_dependencies);
 }
 void *igViewerSceneInfoManagerController_getMetaCall(){return igViewerSceneInfoManagerController_getMeta();}
 }

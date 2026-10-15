@@ -9,13 +9,13 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void igDependencyOrderedList_fieldInit();
 void igObject_register();
-extern char lbl_8046737C[];
+extern char igDependencyOrderedList_dependencies[];
 extern char igDependencyOrderedList_className[];
 extern char igDependencyOrderedList_vtable[];
 extern void *igDependencyOrderedList_meta;
 void *igDependencyOrderedList_getMeta();
 void *igDependencyOrderedList_vtableRead();
-void igDependencyOrderedList_registerNow();
+void igDependencyOrderedList_arkRegister();
 void igDependencyOrderedList_register();
 void *igDependencyOrderedList_getMetaCall();
 }
@@ -35,7 +35,7 @@ struct UnknownGenObject80032F48 : UnknownGenRoot80032F48 {
 };
 extern "C" {
 void *igDependencyOrderedList_getMeta(){
- if(!igDependencyOrderedList_meta || !(reinterpret_cast<unsigned int *>(igDependencyOrderedList_meta)[0x24/4]&4)) igDependencyOrderedList_registerNow();
+ if(!igDependencyOrderedList_meta || !(reinterpret_cast<unsigned int *>(igDependencyOrderedList_meta)[0x24/4]&4)) igDependencyOrderedList_arkRegister();
  return igDependencyOrderedList_meta;
 }
 void *igDependencyOrderedList_vtableRead(){
@@ -47,12 +47,12 @@ void *igDependencyOrderedList_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igDependencyOrderedList_registerNow(){
+void igDependencyOrderedList_arkRegister(){
  meta_registerNow((int)igDependencyOrderedList_register);
 }
 void igDependencyOrderedList_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igDependencyOrderedList_meta,(int)igObject_register,(int)fn_800237D0,(int)igDependencyOrderedList_getMetaCall,(int)igDependencyOrderedList_className,28,(int)igDependencyOrderedList_vtableRead,(int)igDependencyOrderedList_fieldInit,0,(int)lbl_8046737C);
+ meta_registerClass(0,(int)&igDependencyOrderedList_meta,(int)igObject_register,(int)fn_800237D0,(int)igDependencyOrderedList_getMetaCall,(int)igDependencyOrderedList_className,28,(int)igDependencyOrderedList_vtableRead,(int)igDependencyOrderedList_fieldInit,0,(int)igDependencyOrderedList_dependencies);
 }
 void *igDependencyOrderedList_getMetaCall(){return igDependencyOrderedList_getMeta();}
 }

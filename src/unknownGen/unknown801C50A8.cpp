@@ -13,14 +13,14 @@ void fn_801DB5DC();
 void *fn_801DB624();
 void igCartoonShaderProcessor_fieldInit();
 void igShaderProcessor_register();
-extern char lbl_804B0C18[];
+extern char igCartoonShaderProcessor_dependencies[];
 extern char igCartoonShaderProcessor_className[];
 extern char igShaderProcessor_vtable[];
 extern char igCartoonShaderProcessor_vtable[];
 extern void *igCartoonShaderProcessor_meta;
 void *igCartoonShaderProcessor_getMeta();
 void *igCartoonShaderProcessor_vtableRead();
-void igCartoonShaderProcessor_registerNow();
+void igCartoonShaderProcessor_arkRegister();
 void igCartoonShaderProcessor_register();
 void *igCartoonShaderProcessor_getMetaCall();
 }
@@ -45,7 +45,7 @@ void fn_801C50A8(){
 }
 void *fn_801C50D4(){return fn_801DB624();}
 void *igCartoonShaderProcessor_getMeta(){
- if(!igCartoonShaderProcessor_meta || !(reinterpret_cast<unsigned int *>(igCartoonShaderProcessor_meta)[0x24/4]&4)) igCartoonShaderProcessor_registerNow();
+ if(!igCartoonShaderProcessor_meta || !(reinterpret_cast<unsigned int *>(igCartoonShaderProcessor_meta)[0x24/4]&4)) igCartoonShaderProcessor_arkRegister();
  return igCartoonShaderProcessor_meta;
 }
 void *igCartoonShaderProcessor_vtableRead(){
@@ -57,12 +57,12 @@ void *igCartoonShaderProcessor_vtableRead(){
  object.unknown1C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCartoonShaderProcessor_registerNow(){
+void igCartoonShaderProcessor_arkRegister(){
  meta_registerNow((int)igCartoonShaderProcessor_register);
 }
 void igCartoonShaderProcessor_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igCartoonShaderProcessor_meta,(int)igShaderProcessor_register,(int)fn_801AD7BC,(int)igCartoonShaderProcessor_getMetaCall,(int)igCartoonShaderProcessor_className,44,(int)igCartoonShaderProcessor_vtableRead,(int)igCartoonShaderProcessor_fieldInit,0,(int)lbl_804B0C18);
+ meta_registerClass(0,(int)&igCartoonShaderProcessor_meta,(int)igShaderProcessor_register,(int)fn_801AD7BC,(int)igCartoonShaderProcessor_getMetaCall,(int)igCartoonShaderProcessor_className,44,(int)igCartoonShaderProcessor_vtableRead,(int)igCartoonShaderProcessor_fieldInit,0,(int)igCartoonShaderProcessor_dependencies);
 }
 void *igCartoonShaderProcessor_getMetaCall(){return igCartoonShaderProcessor_getMeta();}
 }

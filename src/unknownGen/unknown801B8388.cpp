@@ -17,23 +17,23 @@ extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char _vertexList_className[];
-extern char lbl_804AE018[];
+extern char _vertex_dependencies[];
 extern char _vertex_vtable[];
 extern char _vertexList_vtable[];
 extern char lbl_804B7F98[];
-extern char lbl_80560424[8];
+extern char _vertexList_dependencies[8];
 extern char lbl_8056042C[8];
 extern void *lbl_805621F4;
 extern void *_vertexList_meta;
 extern void *_vertex_meta;
 void *_vertexList_getMeta();
 void *_vertexList_vtableRead();
-void _vertexList_registerNow();
+void _vertexList_arkRegister();
 void _vertexList_register();
 void *_vertexList_getMetaCall();
 void *_vertex_getMeta();
 void *_vertex_vtableRead();
-void _vertex_registerNow();
+void _vertex_arkRegister();
 void _vertex_register();
 void *_vertex_getMetaCall();
 }
@@ -59,7 +59,7 @@ struct UnknownGenObject801B8560 : UnknownGenRoot801B8560 {
 };
 extern "C" {
 void *_vertexList_getMeta(){
- if(!_vertexList_meta || !(reinterpret_cast<unsigned int *>(_vertexList_meta)[0x24/4]&4)) _vertexList_registerNow();
+ if(!_vertexList_meta || !(reinterpret_cast<unsigned int *>(_vertexList_meta)[0x24/4]&4)) _vertexList_arkRegister();
  return _vertexList_meta;
 }
 void *_vertexList_vtableRead(){
@@ -72,12 +72,12 @@ void *_vertexList_vtableRead(){
  object.unknown00=_vertexList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void _vertexList_registerNow(){
+void _vertexList_arkRegister(){
  meta_registerNow((int)_vertexList_register);
 }
 void _vertexList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&_vertexList_meta,(int)igObjectList_register,(int)fn_80024180,(int)_vertexList_getMetaCall,(int)_vertexList_className,20,(int)_vertexList_vtableRead,0,0,(int)lbl_80560424);
+ meta_registerClass(0,(int)&_vertexList_meta,(int)igObjectList_register,(int)fn_80024180,(int)_vertexList_getMetaCall,(int)_vertexList_className,20,(int)_vertexList_vtableRead,0,0,(int)_vertexList_dependencies);
 }
 void *_vertexList_getMetaCall(){return _vertexList_getMeta();}
 void *fn_801B84E8(){
@@ -85,7 +85,7 @@ void *fn_801B84E8(){
  return _vertex_meta;
 }
 void *_vertex_getMeta(){
- if(!_vertex_meta || !(reinterpret_cast<unsigned int *>(_vertex_meta)[0x24/4]&4)) _vertex_registerNow();
+ if(!_vertex_meta || !(reinterpret_cast<unsigned int *>(_vertex_meta)[0x24/4]&4)) _vertex_arkRegister();
  return _vertex_meta;
 }
 void *_vertex_vtableRead(){
@@ -99,12 +99,12 @@ void *_vertex_vtableRead(){
  object.unknown44.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void _vertex_registerNow(){
+void _vertex_arkRegister(){
  meta_registerNow((int)_vertex_register);
 }
 void _vertex_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&_vertex_meta,(int)igObject_register,(int)fn_800237D0,(int)_vertex_getMetaCall,(int)lbl_8056042C,84,(int)_vertex_vtableRead,(int)_vertex_fieldInit,0,(int)lbl_804AE018);
+ meta_registerClass(0,(int)&_vertex_meta,(int)igObject_register,(int)fn_800237D0,(int)_vertex_getMetaCall,(int)lbl_8056042C,84,(int)_vertex_vtableRead,(int)_vertex_fieldInit,0,(int)_vertex_dependencies);
 }
 void *_vertex_getMetaCall(){return _vertex_getMeta();}
 }

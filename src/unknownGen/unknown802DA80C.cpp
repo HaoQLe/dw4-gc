@@ -13,17 +13,17 @@ void *meta_fieldCount(void *);
 void *beSystem_metaObject();
 void *beMessenger_metaObject();
 void *igViewerSceneInfoManager_metaObject();
-extern char lbl_804D21E0[];
-extern char lbl_804D2210[];
-extern char lbl_804D2240[];
-extern char lbl_804D2270[];
+extern char beFileListInfoManager_fieldTypes[];
+extern char beFileListInfoManager_fieldNames[];
+extern char beFileListInfoManager_fieldStorage[];
+extern char beFileListInfoManager_fieldOffsets[];
 extern void *beFileListInfoManager_meta;
 }
 extern "C" {
 void beFileListInfoManager_fieldInit(){
  void *value0=beFileListInfoManager_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D21E0,12);
+ meta_appendFields(value0,beFileListInfoManager_fieldTypes,12);
  void *value2=meta_field(value0,value1);
  void *value3=beSystem_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -58,7 +58,7 @@ void beFileListInfoManager_fieldInit(){
  void *value18=fn_8002E824();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value17)+56)=value18;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value17)+52)=1;
- meta_setupFields(value0,lbl_804D2210,lbl_804D2240,lbl_804D2270,value1);
+ meta_setupFields(value0,beFileListInfoManager_fieldNames,beFileListInfoManager_fieldStorage,beFileListInfoManager_fieldOffsets,value1);
 }
 }
 #pragma pop

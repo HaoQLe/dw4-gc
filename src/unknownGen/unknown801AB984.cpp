@@ -10,14 +10,14 @@ void *fn_80208234();
 void *igTransformSequence_fieldInit();
 void igTransformSource_register();
 extern char lbl_804AAFB8[];
-extern char lbl_804AB764[];
+extern char igTransformSequence_dependencies[];
 extern char igTransformSequence_className[];
 extern void *igTransformSource_meta;
 extern void *lbl_805646C8;
 extern void *lbl_805646CC;
 extern void *igTransformSequence_meta;
 void *igTransformSequence_getMeta();
-void igTransformSequence_registerNow();
+void igTransformSequence_arkRegister();
 void igTransformSequence_register();
 void *igTransformSequence_getMetaCall();
 void *fn_801ABB34();
@@ -35,15 +35,15 @@ void *fn_801AB9F0(){
  return lbl_805646CC;
 }
 void *igTransformSequence_getMeta(){
- if(!igTransformSequence_meta || !(reinterpret_cast<unsigned int *>(igTransformSequence_meta)[0x24/4]&4)) igTransformSequence_registerNow();
+ if(!igTransformSequence_meta || !(reinterpret_cast<unsigned int *>(igTransformSequence_meta)[0x24/4]&4)) igTransformSequence_arkRegister();
  return igTransformSequence_meta;
 }
-void igTransformSequence_registerNow(){
+void igTransformSequence_arkRegister(){
  meta_registerNow((int)igTransformSequence_register);
 }
 void igTransformSequence_register(){
  fn_801AA6DC();
- meta_registerClass(1,(int)&igTransformSequence_meta,(int)igTransformSource_register,(int)fn_801ABB34,(int)igTransformSequence_getMetaCall,(int)igTransformSequence_className,56,0,(int)igTransformSequence_fieldInit,0,(int)lbl_804AB764);
+ meta_registerClass(1,(int)&igTransformSequence_meta,(int)igTransformSource_register,(int)fn_801ABB34,(int)igTransformSequence_getMetaCall,(int)igTransformSequence_className,56,0,(int)igTransformSequence_fieldInit,0,(int)igTransformSequence_dependencies);
 }
 void *igTransformSequence_getMetaCall(){return igTransformSequence_getMeta();}
 void *fn_801ABB34(){return igTransformSource_meta;}

@@ -6,7 +6,7 @@ void meta_registerNow(int);
 void igMetaObject_register();
 }
 extern "C" {
-void igMetaObject_registerNow(){
+void igMetaObject_arkRegister(){
  meta_registerNow((int)igMetaObject_register);
 }
 }

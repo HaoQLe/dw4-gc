@@ -24,18 +24,18 @@ extern char igNonRefCountedObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igVisualContextCapabilityManager_className[];
 extern char igVisualContextList_className[];
-extern char lbl_80487FD8[];
+extern char igVisualContext_dependencies[];
 extern char igVisualContext_className[];
 extern char igVisualContextCapabilityManager_vtable[];
 extern char lbl_80492AD0[];
 extern char igVisualContextList_vtable[];
 extern char lbl_804943FC[];
-extern char lbl_8055EA40[8];
-extern char lbl_8055EA48[4];
-extern char lbl_8055EA4C[4];
-extern char lbl_8055EA50[4];
-extern char lbl_8055EA54[4];
-extern char lbl_8055EA58[8];
+extern char igVisualContextCapabilityManager_dependencies[8];
+extern char igVisualContextCapabilityManager_fieldTypes[4];
+extern char igVisualContextCapabilityManager_fieldNames[4];
+extern char igVisualContextCapabilityManager_fieldStorage[4];
+extern char igVisualContextCapabilityManager_fieldOffsets[4];
+extern char igVisualContextList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igVisualContextCapabilityManager_meta;
 extern void *igVisualContextList_meta;
@@ -43,19 +43,19 @@ extern void *igVisualContext_meta;
 extern void *igCapabilityManager_meta;
 void *igVisualContextCapabilityManager_getMeta();
 void *igVisualContextCapabilityManager_vtableRead();
-void igVisualContextCapabilityManager_registerNow();
+void igVisualContextCapabilityManager_arkRegister();
 void igVisualContextCapabilityManager_register();
 void *igVisualContextCapabilityManager_getMetaCall();
 void *fn_800CE528();
 void igVisualContextCapabilityManager_fieldInit();
 void *igVisualContextList_getMeta();
 void *igVisualContextList_vtableRead();
-void igVisualContextList_registerNow();
+void igVisualContextList_arkRegister();
 void igVisualContextList_register();
 void *igVisualContextList_getMetaCall();
 void *fn_800CE788();
 void *igVisualContext_getMeta();
-void igVisualContext_registerNow();
+void igVisualContext_arkRegister();
 void igVisualContext_register();
 void *igVisualContext_getMetaCall();
 }
@@ -76,11 +76,11 @@ struct UnknownGenObject800CE62C_0 {
 };
 extern "C" {
 void *igVisualContextCapabilityManager_create(void *object){
- igVisualContextCapabilityManager_registerNow();
+ igVisualContextCapabilityManager_arkRegister();
  return meta_createInstance(igVisualContextCapabilityManager_meta,object);
 }
 void *igVisualContextCapabilityManager_getMeta(){
- if(!igVisualContextCapabilityManager_meta || !(reinterpret_cast<unsigned int *>(igVisualContextCapabilityManager_meta)[0x24/4]&4)) igVisualContextCapabilityManager_registerNow();
+ if(!igVisualContextCapabilityManager_meta || !(reinterpret_cast<unsigned int *>(igVisualContextCapabilityManager_meta)[0x24/4]&4)) igVisualContextCapabilityManager_arkRegister();
  return igVisualContextCapabilityManager_meta;
 }
 void *igVisualContextCapabilityManager_vtableRead(){
@@ -90,31 +90,31 @@ void *igVisualContextCapabilityManager_vtableRead(){
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVisualContextCapabilityManager_registerNow(){
+void igVisualContextCapabilityManager_arkRegister(){
  meta_registerNow((int)igVisualContextCapabilityManager_register);
 }
 void igVisualContextCapabilityManager_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igVisualContextCapabilityManager_meta,(int)igCapabilityManager_register,(int)fn_800CE528,(int)igVisualContextCapabilityManager_getMetaCall,(int)igVisualContextCapabilityManager_className,12,(int)igVisualContextCapabilityManager_vtableRead,(int)igVisualContextCapabilityManager_fieldInit,0,(int)lbl_8055EA40);
+ meta_registerClass(0,(int)&igVisualContextCapabilityManager_meta,(int)igCapabilityManager_register,(int)fn_800CE528,(int)igVisualContextCapabilityManager_getMetaCall,(int)igVisualContextCapabilityManager_className,12,(int)igVisualContextCapabilityManager_vtableRead,(int)igVisualContextCapabilityManager_fieldInit,0,(int)igVisualContextCapabilityManager_dependencies);
 }
 void *igVisualContextCapabilityManager_getMetaCall(){return igVisualContextCapabilityManager_getMeta();}
 void *fn_800CE528(){return igCapabilityManager_meta;}
 void igVisualContextCapabilityManager_fieldInit(){
  void *value0=igVisualContextCapabilityManager_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055EA48,1);
+ meta_appendFields(value0,igVisualContextCapabilityManager_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_800CE788();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
- meta_setupFields(value0,lbl_8055EA4C,lbl_8055EA50,lbl_8055EA54,value1);
+ meta_setupFields(value0,igVisualContextCapabilityManager_fieldNames,igVisualContextCapabilityManager_fieldStorage,igVisualContextCapabilityManager_fieldOffsets,value1);
 }
 void *igVisualContextList_create(void *object){
- igVisualContextList_registerNow();
+ igVisualContextList_arkRegister();
  return meta_createInstance(igVisualContextList_meta,object);
 }
 void *igVisualContextList_getMeta(){
- if(!igVisualContextList_meta || !(reinterpret_cast<unsigned int *>(igVisualContextList_meta)[0x24/4]&4)) igVisualContextList_registerNow();
+ if(!igVisualContextList_meta || !(reinterpret_cast<unsigned int *>(igVisualContextList_meta)[0x24/4]&4)) igVisualContextList_arkRegister();
  return igVisualContextList_meta;
 }
 void *igVisualContextList_vtableRead(){
@@ -127,16 +127,16 @@ void *igVisualContextList_vtableRead(){
  object.unknown00=igVisualContextList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVisualContextList_registerNow(){
+void igVisualContextList_arkRegister(){
  meta_registerNow((int)igVisualContextList_register);
 }
 void igVisualContextList_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igVisualContextList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igVisualContextList_getMetaCall,(int)igVisualContextList_className,20,(int)igVisualContextList_vtableRead,0,0,(int)lbl_8055EA58);
+ meta_registerClass(0,(int)&igVisualContextList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igVisualContextList_getMetaCall,(int)igVisualContextList_className,20,(int)igVisualContextList_vtableRead,0,0,(int)igVisualContextList_dependencies);
 }
 void *igVisualContextList_getMetaCall(){return igVisualContextList_getMeta();}
 void *igVisualContext_create(void *object){
- igVisualContext_registerNow();
+ igVisualContext_arkRegister();
  return meta_createInstance(igVisualContext_meta,object);
 }
 void *fn_800CE788(){
@@ -144,15 +144,15 @@ void *fn_800CE788(){
  return igVisualContext_meta;
 }
 void *igVisualContext_getMeta(){
- if(!igVisualContext_meta || !(reinterpret_cast<unsigned int *>(igVisualContext_meta)[0x24/4]&4)) igVisualContext_registerNow();
+ if(!igVisualContext_meta || !(reinterpret_cast<unsigned int *>(igVisualContext_meta)[0x24/4]&4)) igVisualContext_arkRegister();
  return igVisualContext_meta;
 }
-void igVisualContext_registerNow(){
+void igVisualContext_arkRegister(){
  meta_registerNow((int)igVisualContext_register);
 }
 void igVisualContext_register(){
  fn_800CE2F8();
- meta_registerClass(1,(int)&igVisualContext_meta,(int)igContext_register,(int)fn_80037594,(int)igVisualContext_getMetaCall,(int)igVisualContext_className,320,0,(int)igVisualContext_fieldInit,0,(int)lbl_80487FD8);
+ meta_registerClass(1,(int)&igVisualContext_meta,(int)igContext_register,(int)fn_80037594,(int)igVisualContext_getMetaCall,(int)igVisualContext_className,320,0,(int)igVisualContext_fieldInit,0,(int)igVisualContext_dependencies);
 }
 void *igVisualContext_getMetaCall(){return igVisualContext_getMeta();}
 }

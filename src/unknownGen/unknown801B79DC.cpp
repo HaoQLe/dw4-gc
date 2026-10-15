@@ -10,7 +10,7 @@ void *igMultiTextureShader_getMeta();
 void igMultiTextureShader_vtableRead();
 void igShader_register();
 extern char igMultiTextureShader_className[];
-extern char lbl_805603CC[8];
+extern char igMultiTextureShader_dependencies[8];
 extern void *igShader_meta;
 extern void *igMultiTextureShader_meta;
 void igMultiTextureShader_register();
@@ -18,12 +18,12 @@ void *igMultiTextureShader_getMetaCall();
 void *igMultiTextureShader_parentMeta();
 }
 extern "C" {
-void igMultiTextureShader_registerNow(){
+void igMultiTextureShader_arkRegister(){
  meta_registerNow((int)igMultiTextureShader_register);
 }
 void igMultiTextureShader_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igMultiTextureShader_meta,(int)igShader_register,(int)igMultiTextureShader_parentMeta,(int)igMultiTextureShader_getMetaCall,(int)igMultiTextureShader_className,72,(int)igMultiTextureShader_vtableRead,(int)igMultiTextureShader_fieldInit,0,(int)lbl_805603CC);
+ meta_registerClass(0,(int)&igMultiTextureShader_meta,(int)igShader_register,(int)igMultiTextureShader_parentMeta,(int)igMultiTextureShader_getMetaCall,(int)igMultiTextureShader_className,72,(int)igMultiTextureShader_vtableRead,(int)igMultiTextureShader_fieldInit,0,(int)igMultiTextureShader_dependencies);
 }
 void *igMultiTextureShader_getMetaCall(){return igMultiTextureShader_getMeta();}
 void *igMultiTextureShader_parentMeta(){return igShader_meta;}

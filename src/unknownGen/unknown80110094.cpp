@@ -11,7 +11,7 @@ void fn_8010CBD4();
 void *fn_8010DF8C();
 void igGuiSystemRenderer_fieldInit();
 void igRenderer_register();
-extern char lbl_80494C54[];
+extern char igGuiSystemRenderer_dependencies[];
 extern char igGuiSystemRenderer_className[];
 extern char igGuiSystemRenderer_vtable[];
 extern char lbl_80497C9C[];
@@ -19,7 +19,7 @@ extern void *lbl_805621F4;
 extern void *igGuiSystemRenderer_meta;
 void *igGuiSystemRenderer_getMeta();
 void *igGuiSystemRenderer_vtableRead();
-void igGuiSystemRenderer_registerNow();
+void igGuiSystemRenderer_arkRegister();
 void igGuiSystemRenderer_register();
 void *igGuiSystemRenderer_getMetaCall();
 }
@@ -47,7 +47,7 @@ void *fn_80110094(){
  return igGuiSystemRenderer_meta;
 }
 void *igGuiSystemRenderer_getMeta(){
- if(!igGuiSystemRenderer_meta || !(reinterpret_cast<unsigned int *>(igGuiSystemRenderer_meta)[0x24/4]&4)) igGuiSystemRenderer_registerNow();
+ if(!igGuiSystemRenderer_meta || !(reinterpret_cast<unsigned int *>(igGuiSystemRenderer_meta)[0x24/4]&4)) igGuiSystemRenderer_arkRegister();
  return igGuiSystemRenderer_meta;
 }
 void *igGuiSystemRenderer_vtableRead(){
@@ -61,12 +61,12 @@ void *igGuiSystemRenderer_vtableRead(){
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGuiSystemRenderer_registerNow(){
+void igGuiSystemRenderer_arkRegister(){
  meta_registerNow((int)igGuiSystemRenderer_register);
 }
 void igGuiSystemRenderer_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igGuiSystemRenderer_meta,(int)igRenderer_register,(int)fn_8010DF8C,(int)igGuiSystemRenderer_getMetaCall,(int)igGuiSystemRenderer_className,28,(int)igGuiSystemRenderer_vtableRead,(int)igGuiSystemRenderer_fieldInit,0,(int)lbl_80494C54);
+ meta_registerClass(0,(int)&igGuiSystemRenderer_meta,(int)igRenderer_register,(int)fn_8010DF8C,(int)igGuiSystemRenderer_getMetaCall,(int)igGuiSystemRenderer_className,28,(int)igGuiSystemRenderer_vtableRead,(int)igGuiSystemRenderer_fieldInit,0,(int)igGuiSystemRenderer_dependencies);
 }
 void *igGuiSystemRenderer_getMetaCall(){return igGuiSystemRenderer_getMeta();}
 }

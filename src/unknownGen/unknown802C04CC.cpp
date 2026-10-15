@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beSvDeliver_registerNow();
+void beSvDeliver_arkRegister();
 extern void *beSvDeliver_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beSvDeliver_metaObject(){
  return beSvDeliver_meta;
 }
 void *beSvDeliver_getMeta(){
- if(!beSvDeliver_meta || !(reinterpret_cast<unsigned int *>(beSvDeliver_meta)[0x24/4]&4)) beSvDeliver_registerNow();
+ if(!beSvDeliver_meta || !(reinterpret_cast<unsigned int *>(beSvDeliver_meta)[0x24/4]&4)) beSvDeliver_arkRegister();
  return beSvDeliver_meta;
 }
 }

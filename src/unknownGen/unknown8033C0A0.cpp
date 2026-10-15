@@ -11,17 +11,17 @@ void *meta_fieldCount(void *);
 void *beSystem_metaObject();
 void *bePadManager_metaObject();
 void *beNDMWMcUtilCtrl_metaObject();
-extern char lbl_804E2B1C[];
-extern char lbl_804E2B48[];
-extern char lbl_804E2B74[];
-extern char lbl_804E2BA0[];
+extern char beNDMWLogo_fieldTypes[];
+extern char beNDMWLogo_fieldNames[];
+extern char beNDMWLogo_fieldStorage[];
+extern char beNDMWLogo_fieldOffsets[];
 extern void *beNDMWLogo_meta;
 }
 extern "C" {
 void beNDMWLogo_fieldInit(){
  void *value0=beNDMWLogo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E2B1C,11);
+ meta_appendFields(value0,beNDMWLogo_fieldTypes,11);
  void *value2=meta_field(value0,value1);
  void *value3=bePadManager_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -37,7 +37,7 @@ void beNDMWLogo_fieldInit(){
  fn_8003EC68(value8,1);
  void *value9=meta_field(value0,(reinterpret_cast<char *>(value1)+9));
  fn_80053650(value9,-1);
- meta_setupFields(value0,lbl_804E2B48,lbl_804E2B74,lbl_804E2BA0,value1);
+ meta_setupFields(value0,beNDMWLogo_fieldNames,beNDMWLogo_fieldStorage,beNDMWLogo_fieldOffsets,value1);
 }
 }
 #pragma pop

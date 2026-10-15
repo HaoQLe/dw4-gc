@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void igCompiledGraph_registerNow();
+void igCompiledGraph_arkRegister();
 extern char lbl_804AAFB8[];
 extern void *lbl_805621F4;
 extern void *lbl_80565064;
@@ -25,7 +25,7 @@ void *fn_801C2FC8(){
  return lbl_80565068;
 }
 void *igCompiledGraph_create(void *object){
- igCompiledGraph_registerNow();
+ igCompiledGraph_arkRegister();
  return meta_createInstance(igCompiledGraph_meta,object);
 }
 void *fn_801C304C(){
@@ -33,7 +33,7 @@ void *fn_801C304C(){
  return igCompiledGraph_meta;
 }
 void *igCompiledGraph_getMeta(){
- if(!igCompiledGraph_meta || !(reinterpret_cast<unsigned int *>(igCompiledGraph_meta)[0x24/4]&4)) igCompiledGraph_registerNow();
+ if(!igCompiledGraph_meta || !(reinterpret_cast<unsigned int *>(igCompiledGraph_meta)[0x24/4]&4)) igCompiledGraph_arkRegister();
  return igCompiledGraph_meta;
 }
 }

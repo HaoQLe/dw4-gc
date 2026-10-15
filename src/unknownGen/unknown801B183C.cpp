@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igShader_registerNow();
+void igShader_arkRegister();
 extern void *lbl_805621F4;
 extern void *igShader_meta;
 }
@@ -14,7 +14,7 @@ void *fn_801B183C(){
  return igShader_meta;
 }
 void *igShader_getMeta(){
- if(!igShader_meta || !(reinterpret_cast<unsigned int *>(igShader_meta)[0x24/4]&4)) igShader_registerNow();
+ if(!igShader_meta || !(reinterpret_cast<unsigned int *>(igShader_meta)[0x24/4]&4)) igShader_arkRegister();
  return igShader_meta;
 }
 }

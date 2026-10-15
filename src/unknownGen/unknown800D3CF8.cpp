@@ -19,7 +19,7 @@ extern void *lbl_805621F4;
 extern void *igGfxStateModifierList_meta;
 void *igGfxStateModifierList_getMeta();
 void *igGfxStateModifierList_vtableRead();
-void igGfxStateModifierList_registerNow();
+void igGfxStateModifierList_arkRegister();
 void igGfxStateModifierList_register();
 void *igGfxStateModifierList_getMetaCall();
 }
@@ -33,7 +33,7 @@ void *fn_800D3CF8(){
  return igGfxStateModifierList_meta;
 }
 void *igGfxStateModifierList_getMeta(){
- if(!igGfxStateModifierList_meta || !(reinterpret_cast<unsigned int *>(igGfxStateModifierList_meta)[0x24/4]&4)) igGfxStateModifierList_registerNow();
+ if(!igGfxStateModifierList_meta || !(reinterpret_cast<unsigned int *>(igGfxStateModifierList_meta)[0x24/4]&4)) igGfxStateModifierList_arkRegister();
  return igGfxStateModifierList_meta;
 }
 void *igGfxStateModifierList_vtableRead(){
@@ -44,7 +44,7 @@ void *igGfxStateModifierList_vtableRead(){
  object.unknown00=igGfxStateModifierList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGfxStateModifierList_registerNow(){
+void igGfxStateModifierList_arkRegister(){
  meta_registerNow((int)igGfxStateModifierList_register);
 }
 void igGfxStateModifierList_register(){

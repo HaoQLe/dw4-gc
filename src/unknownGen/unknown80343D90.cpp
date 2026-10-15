@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beNDMWShinkaObjectList_registerNow();
+void beNDMWShinkaObjectList_arkRegister();
 extern void *beNDMWShinkaObjectList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beNDMWShinkaObjectList_metaObject(){
  return beNDMWShinkaObjectList_meta;
 }
 void *beNDMWShinkaObjectList_getMeta(){
- if(!beNDMWShinkaObjectList_meta || !(reinterpret_cast<unsigned int *>(beNDMWShinkaObjectList_meta)[0x24/4]&4)) beNDMWShinkaObjectList_registerNow();
+ if(!beNDMWShinkaObjectList_meta || !(reinterpret_cast<unsigned int *>(beNDMWShinkaObjectList_meta)[0x24/4]&4)) beNDMWShinkaObjectList_arkRegister();
  return beNDMWShinkaObjectList_meta;
 }
 }

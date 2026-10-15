@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8C8[8];
+extern char igObjectPropertyForAttrSet_dependencies[8];
 extern void *igObjectPropertyForAttrSet_meta;
 void *igObjectPropertyForAttrSet_getMeta();
 void *igObjectPropertyForAttrSet_vtableRead();
-void igObjectPropertyForAttrSet_registerNow();
+void igObjectPropertyForAttrSet_arkRegister();
 void igObjectPropertyForAttrSet_register();
 void *igObjectPropertyForAttrSet_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013F928 : UnknownGenObject8013F928_1 {
 };
 extern "C" {
 void *igObjectPropertyForAttrSet_getMeta(){
- if(!igObjectPropertyForAttrSet_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForAttrSet_meta)[0x24/4]&4)) igObjectPropertyForAttrSet_registerNow();
+ if(!igObjectPropertyForAttrSet_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForAttrSet_meta)[0x24/4]&4)) igObjectPropertyForAttrSet_arkRegister();
  return igObjectPropertyForAttrSet_meta;
 }
 void *igObjectPropertyForAttrSet_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForAttrSet_vtableRead(){
  object.unknown00=igObjectPropertyForAttrSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForAttrSet_registerNow(){
+void igObjectPropertyForAttrSet_arkRegister(){
  meta_registerNow((int)igObjectPropertyForAttrSet_register);
 }
 void igObjectPropertyForAttrSet_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForAttrSet_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForAttrSet_getMetaCall,(int)igObjectPropertyForAttrSet_className,44,(int)igObjectPropertyForAttrSet_vtableRead,(int)fn_8013FAB0,0,(int)lbl_8055F8C8);
+ meta_registerClass(0,(int)&igObjectPropertyForAttrSet_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForAttrSet_getMetaCall,(int)igObjectPropertyForAttrSet_className,44,(int)igObjectPropertyForAttrSet_vtableRead,(int)fn_8013FAB0,0,(int)igObjectPropertyForAttrSet_dependencies);
 }
 void *igObjectPropertyForAttrSet_getMetaCall(){return igObjectPropertyForAttrSet_getMeta();}
 }

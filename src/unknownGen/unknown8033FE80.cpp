@@ -13,12 +13,12 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_8033FD10();
-void beNDMWMcSlotPS2_registerNow();
+void beNDMWMcSlotPS2_arkRegister();
 extern char beNDMWMcSlotGC_className[];
-extern char lbl_804E38E4[];
-extern char lbl_804E38EC[];
-extern char lbl_804E38F4[];
-extern char lbl_804E38FC[];
+extern char beNDMWMcSlotGC_fieldTypes[];
+extern char beNDMWMcSlotGC_fieldNames[];
+extern char beNDMWMcSlotGC_fieldStorage[];
+extern char beNDMWMcSlotGC_fieldOffsets[];
 extern void *beNDMWMcSlotGC_meta;
 extern void *beNDMWMcSlotPS2_meta;
 void beNDMWMcSlotGC_register();
@@ -26,7 +26,7 @@ void *beNDMWMcSlotGC_getMetaCall();
 void beNDMWMcSlotGC_fieldInit();
 }
 extern "C" {
-void beNDMWMcSlotGC_registerNow(){
+void beNDMWMcSlotGC_arkRegister(){
  meta_registerNow((int)beNDMWMcSlotGC_register);
 }
 void beNDMWMcSlotGC_register(){
@@ -37,15 +37,15 @@ void *beNDMWMcSlotGC_getMetaCall(){return beNDMWMcSlotGC_getMeta();}
 void beNDMWMcSlotGC_fieldInit(){
  void *meta=beNDMWMcSlotGC_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804E38E4,0x2);
- meta_setupFields(meta,lbl_804E38EC,lbl_804E38F4,lbl_804E38FC,field);
+ meta_appendFields(meta,beNDMWMcSlotGC_fieldTypes,0x2);
+ meta_setupFields(meta,beNDMWMcSlotGC_fieldNames,beNDMWMcSlotGC_fieldStorage,beNDMWMcSlotGC_fieldOffsets,field);
 }
 void *beNDMWMcSlotPS2_create(void *object){
- beNDMWMcSlotPS2_registerNow();
+ beNDMWMcSlotPS2_arkRegister();
  return meta_createInstance(beNDMWMcSlotPS2_meta,object);
 }
 void *beNDMWMcSlotPS2_getMeta(){
- if(!beNDMWMcSlotPS2_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcSlotPS2_meta)[0x24/4]&4)) beNDMWMcSlotPS2_registerNow();
+ if(!beNDMWMcSlotPS2_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcSlotPS2_meta)[0x24/4]&4)) beNDMWMcSlotPS2_arkRegister();
  return beNDMWMcSlotPS2_meta;
 }
 }

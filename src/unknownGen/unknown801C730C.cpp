@@ -27,24 +27,24 @@ extern char igBillboardProcessor_className[];
 extern char igShaderProcessor_vtable[];
 extern char igBillboardProcessor_vtable[];
 extern char igBitMask_vtable[];
-extern char lbl_80560824[4];
-extern char lbl_80560828[4];
-extern char lbl_8056082C[4];
-extern char lbl_80560830[4];
-extern char lbl_80560834[8];
+extern char igBitMask_fieldTypes[4];
+extern char igBitMask_fieldNames[4];
+extern char igBitMask_fieldStorage[4];
+extern char igBitMask_fieldOffsets[4];
+extern char igBillboardProcessor_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igBitMask_meta;
 extern void *lbl_805652D4;
 extern void *igBillboardProcessor_meta;
 void *igBitMask_getMeta();
 void *igBitMask_vtableRead();
-void igBitMask_registerNow();
+void igBitMask_arkRegister();
 void igBitMask_register();
 void *igBitMask_getMetaCall();
 void igBitMask_fieldInit();
 void *igBillboardProcessor_getMeta();
 void *igBillboardProcessor_vtableRead();
-void igBillboardProcessor_registerNow();
+void igBillboardProcessor_arkRegister();
 void igBillboardProcessor_register();
 void *igBillboardProcessor_getMetaCall();
 }
@@ -65,7 +65,7 @@ struct UnknownGenObject801C75C8 : UnknownGenRoot801C75C8 {
 };
 extern "C" {
 void *igBitMask_create(void *object){
- igBitMask_registerNow();
+ igBitMask_arkRegister();
  return meta_createInstance(igBitMask_meta,object);
 }
 void *fn_801C7344(){
@@ -73,7 +73,7 @@ void *fn_801C7344(){
  return igBitMask_meta;
 }
 void *igBitMask_getMeta(){
- if(!igBitMask_meta || !(reinterpret_cast<unsigned int *>(igBitMask_meta)[0x24/4]&4)) igBitMask_registerNow();
+ if(!igBitMask_meta || !(reinterpret_cast<unsigned int *>(igBitMask_meta)[0x24/4]&4)) igBitMask_arkRegister();
  return igBitMask_meta;
 }
 void *igBitMask_vtableRead(){
@@ -85,7 +85,7 @@ void *igBitMask_vtableRead(){
  object.unknown00=igBitMask_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBitMask_registerNow(){
+void igBitMask_arkRegister(){
  meta_registerNow((int)igBitMask_register);
 }
 void igBitMask_register(){
@@ -96,8 +96,8 @@ void *igBitMask_getMetaCall(){return igBitMask_getMeta();}
 void igBitMask_fieldInit(){
  void *value0=igBitMask_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560824,1);
- meta_setupFields(value0,lbl_80560828,lbl_8056082C,lbl_80560830,value1);
+ meta_appendFields(value0,igBitMask_fieldTypes,1);
+ meta_setupFields(value0,igBitMask_fieldNames,igBitMask_fieldStorage,igBitMask_fieldOffsets,value1);
 }
 void *fn_801C7540(){
  char *data=lbl_804AAFB8;
@@ -105,7 +105,7 @@ void *fn_801C7540(){
  return lbl_805652D4;
 }
 void *igBillboardProcessor_getMeta(){
- if(!igBillboardProcessor_meta || !(reinterpret_cast<unsigned int *>(igBillboardProcessor_meta)[0x24/4]&4)) igBillboardProcessor_registerNow();
+ if(!igBillboardProcessor_meta || !(reinterpret_cast<unsigned int *>(igBillboardProcessor_meta)[0x24/4]&4)) igBillboardProcessor_arkRegister();
  return igBillboardProcessor_meta;
 }
 void *igBillboardProcessor_vtableRead(){
@@ -115,12 +115,12 @@ void *igBillboardProcessor_vtableRead(){
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBillboardProcessor_registerNow(){
+void igBillboardProcessor_arkRegister(){
  meta_registerNow((int)igBillboardProcessor_register);
 }
 void igBillboardProcessor_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igBillboardProcessor_meta,(int)igShaderProcessor_register,(int)fn_801AD7BC,(int)igBillboardProcessor_getMetaCall,(int)igBillboardProcessor_className,40,(int)igBillboardProcessor_vtableRead,(int)igBillboardProcessor_fieldInit,0,(int)lbl_80560834);
+ meta_registerClass(0,(int)&igBillboardProcessor_meta,(int)igShaderProcessor_register,(int)fn_801AD7BC,(int)igBillboardProcessor_getMetaCall,(int)igBillboardProcessor_className,40,(int)igBillboardProcessor_vtableRead,(int)igBillboardProcessor_fieldInit,0,(int)igBillboardProcessor_dependencies);
 }
 void *igBillboardProcessor_getMetaCall(){return igBillboardProcessor_getMeta();}
 }

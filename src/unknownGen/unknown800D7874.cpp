@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igGamecubeVertexArray1_1_registerNow();
+void igGamecubeVertexArray1_1_arkRegister();
 extern void *lbl_805621F4;
 extern void *igGamecubeVertexArray1_1_meta;
 }
@@ -14,7 +14,7 @@ void *fn_800D7874(){
  return igGamecubeVertexArray1_1_meta;
 }
 void *igGamecubeVertexArray1_1_getMeta(){
- if(!igGamecubeVertexArray1_1_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexArray1_1_meta)[0x24/4]&4)) igGamecubeVertexArray1_1_registerNow();
+ if(!igGamecubeVertexArray1_1_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexArray1_1_meta)[0x24/4]&4)) igGamecubeVertexArray1_1_arkRegister();
  return igGamecubeVertexArray1_1_meta;
 }
 }

@@ -18,7 +18,7 @@ extern void *lbl_805621F4;
 extern void *igParticleFormat_meta;
 void *igParticleFormat_getMeta();
 void *igParticleFormat_vtableRead();
-void igParticleFormat_registerNow();
+void igParticleFormat_arkRegister();
 void igParticleFormat_register();
 void *igParticleFormat_getMetaCall();
 }
@@ -28,7 +28,7 @@ struct UnknownGenObject800D13DC_0 {
 };
 extern "C" {
 void *igParticleFormat_create(void *object){
- igParticleFormat_registerNow();
+ igParticleFormat_arkRegister();
  return meta_createInstance(igParticleFormat_meta,object);
 }
 void *fn_800D1364(){
@@ -36,7 +36,7 @@ void *fn_800D1364(){
  return igParticleFormat_meta;
 }
 void *igParticleFormat_getMeta(){
- if(!igParticleFormat_meta || !(reinterpret_cast<unsigned int *>(igParticleFormat_meta)[0x24/4]&4)) igParticleFormat_registerNow();
+ if(!igParticleFormat_meta || !(reinterpret_cast<unsigned int *>(igParticleFormat_meta)[0x24/4]&4)) igParticleFormat_arkRegister();
  return igParticleFormat_meta;
 }
 void *igParticleFormat_vtableRead(){
@@ -45,7 +45,7 @@ void *igParticleFormat_vtableRead(){
  object.unknown00=igParticleFormat_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParticleFormat_registerNow(){
+void igParticleFormat_arkRegister(){
  meta_registerNow((int)igParticleFormat_register);
 }
 void igParticleFormat_register(){

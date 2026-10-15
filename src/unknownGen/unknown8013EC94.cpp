@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8A0[8];
+extern char igObjectPropertyForProjectiveShadowShader_dependencies[8];
 extern void *igObjectPropertyForProjectiveShadowShader_meta;
 void *igObjectPropertyForProjectiveShadowShader_getMeta();
 void *igObjectPropertyForProjectiveShadowShader_vtableRead();
-void igObjectPropertyForProjectiveShadowShader_registerNow();
+void igObjectPropertyForProjectiveShadowShader_arkRegister();
 void igObjectPropertyForProjectiveShadowShader_register();
 void *igObjectPropertyForProjectiveShadowShader_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013ECD0 : UnknownGenObject8013ECD0_1 {
 };
 extern "C" {
 void *igObjectPropertyForProjectiveShadowShader_getMeta(){
- if(!igObjectPropertyForProjectiveShadowShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForProjectiveShadowShader_meta)[0x24/4]&4)) igObjectPropertyForProjectiveShadowShader_registerNow();
+ if(!igObjectPropertyForProjectiveShadowShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForProjectiveShadowShader_meta)[0x24/4]&4)) igObjectPropertyForProjectiveShadowShader_arkRegister();
  return igObjectPropertyForProjectiveShadowShader_meta;
 }
 void *igObjectPropertyForProjectiveShadowShader_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForProjectiveShadowShader_vtableRead(){
  object.unknown00=igObjectPropertyForProjectiveShadowShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForProjectiveShadowShader_registerNow(){
+void igObjectPropertyForProjectiveShadowShader_arkRegister(){
  meta_registerNow((int)igObjectPropertyForProjectiveShadowShader_register);
 }
 void igObjectPropertyForProjectiveShadowShader_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForProjectiveShadowShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForProjectiveShadowShader_getMetaCall,(int)igObjectPropertyForProjectiveShadowShader_className,44,(int)igObjectPropertyForProjectiveShadowShader_vtableRead,(int)fn_8013EE58,0,(int)lbl_8055F8A0);
+ meta_registerClass(0,(int)&igObjectPropertyForProjectiveShadowShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForProjectiveShadowShader_getMetaCall,(int)igObjectPropertyForProjectiveShadowShader_className,44,(int)igObjectPropertyForProjectiveShadowShader_vtableRead,(int)fn_8013EE58,0,(int)igObjectPropertyForProjectiveShadowShader_dependencies);
 }
 void *igObjectPropertyForProjectiveShadowShader_getMetaCall(){return igObjectPropertyForProjectiveShadowShader_getMeta();}
 }

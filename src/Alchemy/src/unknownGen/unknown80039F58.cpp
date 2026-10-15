@@ -30,7 +30,7 @@ extern char igMemoryDescriptorList_vtable[];
 extern char lbl_80473730[];
 extern char lbl_80474018[];
 extern char lbl_8055D0A0[6];
-extern char lbl_8055D6C8[8];
+extern char igMemoryDescriptorMetaField_dependencies[8];
 extern void *igMemoryDescriptorList_meta;
 extern char lbl_80562008[4];
 extern void *igMemoryDescriptorMetaField_meta;
@@ -38,13 +38,13 @@ extern void *lbl_80562010;
 extern void *lbl_805621F4;
 void *igMemoryDescriptorList_getMeta();
 void *igMemoryDescriptorList_vtableRead();
-void igMemoryDescriptorList_registerNow();
+void igMemoryDescriptorList_arkRegister();
 void igMemoryDescriptorList_register();
 void *igMemoryDescriptorList_getMetaCall();
 void fn_8003A0A4();
 void *igMemoryDescriptorMetaField_getMeta();
 void *igMemoryDescriptorMetaField_vtableRead();
-void igMemoryDescriptorMetaField_registerNow();
+void igMemoryDescriptorMetaField_arkRegister();
 void igMemoryDescriptorMetaField_register();
 void *igMemoryDescriptorMetaField_getMetaCall();
 void *fn_8003A3BC();
@@ -74,7 +74,7 @@ struct UnknownGenObject8003A19C : UnknownGenObject8003A19C_1 {
 };
 extern "C" {
 void *igMemoryDescriptorList_getMeta(){
- if(!igMemoryDescriptorList_meta || !(reinterpret_cast<unsigned int *>(igMemoryDescriptorList_meta)[0x24/4]&4)) igMemoryDescriptorList_registerNow();
+ if(!igMemoryDescriptorList_meta || !(reinterpret_cast<unsigned int *>(igMemoryDescriptorList_meta)[0x24/4]&4)) igMemoryDescriptorList_arkRegister();
  return igMemoryDescriptorList_meta;
 }
 void *igMemoryDescriptorList_vtableRead(){
@@ -85,7 +85,7 @@ void *igMemoryDescriptorList_vtableRead(){
  object.unknown00=igMemoryDescriptorList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMemoryDescriptorList_registerNow(){
+void igMemoryDescriptorList_arkRegister(){
  meta_registerNow((int)igMemoryDescriptorList_register);
 }
 void igMemoryDescriptorList_register(){
@@ -105,7 +105,7 @@ void fn_8003A0A4(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igMemoryDescriptorMetaField_getMeta(){
- if(!igMemoryDescriptorMetaField_meta || !(reinterpret_cast<unsigned int *>(igMemoryDescriptorMetaField_meta)[0x24/4]&4)) igMemoryDescriptorMetaField_registerNow();
+ if(!igMemoryDescriptorMetaField_meta || !(reinterpret_cast<unsigned int *>(igMemoryDescriptorMetaField_meta)[0x24/4]&4)) igMemoryDescriptorMetaField_arkRegister();
  return igMemoryDescriptorMetaField_meta;
 }
 void *igMemoryDescriptorMetaField_vtableRead(){
@@ -115,12 +115,12 @@ void *igMemoryDescriptorMetaField_vtableRead(){
  object.unknown00=igMemoryDescriptorMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMemoryDescriptorMetaField_registerNow(){
+void igMemoryDescriptorMetaField_arkRegister(){
  meta_registerNow((int)igMemoryDescriptorMetaField_register);
 }
 void igMemoryDescriptorMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igMemoryDescriptorMetaField_meta,(int)igCompoundMetaField_register,(int)fn_80033638,(int)igMemoryDescriptorMetaField_getMetaCall,(int)igMemoryDescriptorMetaField_className,56,(int)igMemoryDescriptorMetaField_vtableRead,0,0,(int)lbl_8055D6C8);
+ meta_registerClass(0,(int)&igMemoryDescriptorMetaField_meta,(int)igCompoundMetaField_register,(int)fn_80033638,(int)igMemoryDescriptorMetaField_getMetaCall,(int)igMemoryDescriptorMetaField_className,56,(int)igMemoryDescriptorMetaField_vtableRead,0,0,(int)igMemoryDescriptorMetaField_dependencies);
 }
 void *igMemoryDescriptorMetaField_getMetaCall(){return igMemoryDescriptorMetaField_getMeta();}
 void fn_8003A324(){
@@ -136,7 +136,7 @@ void fn_8003A324(){
 }
 void *fn_8003A3BC(){
  if(!lbl_80562010){
-  igMemoryDescriptorMetaField_registerNow();
+  igMemoryDescriptorMetaField_arkRegister();
  }
  return lbl_80562010;
 }

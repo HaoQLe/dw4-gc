@@ -14,13 +14,13 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beDataObjListList_registerNow();
+void beDataObjListList_arkRegister();
 void igObject_register();
 extern char beDemoKeepMes_className[];
-extern char lbl_804D239C[];
-extern char lbl_804D23B8[];
-extern char lbl_804D23D4[];
-extern char lbl_804D23F0[];
+extern char beDemoKeepMes_fieldTypes[];
+extern char beDemoKeepMes_fieldNames[];
+extern char beDemoKeepMes_fieldStorage[];
+extern char beDemoKeepMes_fieldOffsets[];
 extern void *beDemoKeepMes_meta;
 extern void *beDataObjListList_meta;
 extern void *lbl_805621F4;
@@ -29,7 +29,7 @@ void *beDemoKeepMes_getMetaCall();
 void beDemoKeepMes_fieldInit();
 }
 extern "C" {
-void beDemoKeepMes_registerNow(){
+void beDemoKeepMes_arkRegister(){
  meta_registerNow((int)beDemoKeepMes_register);
 }
 void beDemoKeepMes_register(){
@@ -40,11 +40,11 @@ void *beDemoKeepMes_getMetaCall(){return beDemoKeepMes_getMeta();}
 void beDemoKeepMes_fieldInit(){
  void *meta=beDemoKeepMes_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D239C,0x7);
- meta_setupFields(meta,lbl_804D23B8,lbl_804D23D4,lbl_804D23F0,field);
+ meta_appendFields(meta,beDemoKeepMes_fieldTypes,0x7);
+ meta_setupFields(meta,beDemoKeepMes_fieldNames,beDemoKeepMes_fieldStorage,beDemoKeepMes_fieldOffsets,field);
 }
 void *beDataObjListList_create(void *object){
- beDataObjListList_registerNow();
+ beDataObjListList_arkRegister();
  return meta_createInstance(beDataObjListList_meta,object);
 }
 void *beDataObjListList_metaObject(){
@@ -52,7 +52,7 @@ void *beDataObjListList_metaObject(){
  return beDataObjListList_meta;
 }
 void *beDataObjListList_getMeta(){
- if(!beDataObjListList_meta || !(reinterpret_cast<unsigned int *>(beDataObjListList_meta)[0x24/4]&4)) beDataObjListList_registerNow();
+ if(!beDataObjListList_meta || !(reinterpret_cast<unsigned int *>(beDataObjListList_meta)[0x24/4]&4)) beDataObjListList_arkRegister();
  return beDataObjListList_meta;
 }
 }

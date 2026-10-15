@@ -16,7 +16,7 @@ void beSvSlotXbox_register();
 void *beSvSlotXbox_getMetaCall();
 }
 extern "C" {
-void beSvSlotXbox_registerNow(){
+void beSvSlotXbox_arkRegister(){
  meta_registerNow((int)beSvSlotXbox_register);
 }
 void beSvSlotXbox_register(){

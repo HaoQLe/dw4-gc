@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
 extern char beDBManagerInfo_className[];
-extern char lbl_804D25A8[];
+extern char beDBManagerInfo_dependencies[];
 extern char beDBManagerInfo_meta[];
 void beDBManagerInfo_register();
 void *beDBManagerInfo_getMetaCall();
 }
 extern "C" {
-void beDBManagerInfo_registerNow(){
+void beDBManagerInfo_arkRegister(){
  meta_registerNow((int)beDBManagerInfo_register);
 }
 void beDBManagerInfo_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beDBManagerInfo_meta,(int)beBaseInfo_register,(int)fn_802B2E3C,(int)beDBManagerInfo_getMetaCall,(int)beDBManagerInfo_className,32,(int)beDBManagerInfo_vtableRead,(int)beDBManagerInfo_fieldInit,0,(int)lbl_804D25A8);
+ meta_registerClass(0,(int)beDBManagerInfo_meta,(int)beBaseInfo_register,(int)fn_802B2E3C,(int)beDBManagerInfo_getMetaCall,(int)beDBManagerInfo_className,32,(int)beDBManagerInfo_vtableRead,(int)beDBManagerInfo_fieldInit,0,(int)beDBManagerInfo_dependencies);
 }
 void *beDBManagerInfo_getMetaCall(){return beDBManagerInfo_getMeta();}
 }

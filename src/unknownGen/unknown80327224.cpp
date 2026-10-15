@@ -10,7 +10,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80326F88();
-void beNDMWShopTitle00_registerNow();
+void beNDMWShopTitle00_arkRegister();
 extern char beNDMWShopTitle01_className[];
 extern char beNDMWShopTitle01_meta[];
 extern void *beNDMWShopTitle00_meta;
@@ -18,7 +18,7 @@ void beNDMWShopTitle01_register();
 void *beNDMWShopTitle01_getMetaCall();
 }
 extern "C" {
-void beNDMWShopTitle01_registerNow(){
+void beNDMWShopTitle01_arkRegister(){
  meta_registerNow((int)beNDMWShopTitle01_register);
 }
 void beNDMWShopTitle01_register(){
@@ -27,11 +27,11 @@ void beNDMWShopTitle01_register(){
 }
 void *beNDMWShopTitle01_getMetaCall(){return beNDMWShopTitle01_getMeta();}
 void *beNDMWShopTitle00_create(void *object){
- beNDMWShopTitle00_registerNow();
+ beNDMWShopTitle00_arkRegister();
  return meta_createInstance(beNDMWShopTitle00_meta,object);
 }
 void *beNDMWShopTitle00_getMeta(){
- if(!beNDMWShopTitle00_meta || !(reinterpret_cast<unsigned int *>(beNDMWShopTitle00_meta)[0x24/4]&4)) beNDMWShopTitle00_registerNow();
+ if(!beNDMWShopTitle00_meta || !(reinterpret_cast<unsigned int *>(beNDMWShopTitle00_meta)[0x24/4]&4)) beNDMWShopTitle00_arkRegister();
  return beNDMWShopTitle00_meta;
 }
 }

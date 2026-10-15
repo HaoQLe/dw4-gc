@@ -20,23 +20,23 @@ extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igAnimationBindingList_className[];
-extern char lbl_804B25CC[];
+extern char igAnimationBinding_dependencies[];
 extern char igAnimationBinding_className[];
 extern char igAnimationBinding_vtable[];
 extern char igAnimationBindingList_vtable[];
 extern char lbl_804B5F28[];
-extern char lbl_805609D0[8];
+extern char igAnimationBindingList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igAnimationBindingList_meta;
 extern void *igAnimationBinding_meta;
 void *igAnimationBindingList_getMeta();
 void *igAnimationBindingList_vtableRead();
-void igAnimationBindingList_registerNow();
+void igAnimationBindingList_arkRegister();
 void igAnimationBindingList_register();
 void *igAnimationBindingList_getMetaCall();
 void *igAnimationBinding_getMeta();
 void *igAnimationBinding_vtableRead();
-void igAnimationBinding_registerNow();
+void igAnimationBinding_arkRegister();
 void igAnimationBinding_register();
 void *igAnimationBinding_getMetaCall();
 }
@@ -66,7 +66,7 @@ void *fn_801CBEDC(){
  return igAnimationBindingList_meta;
 }
 void *igAnimationBindingList_getMeta(){
- if(!igAnimationBindingList_meta || !(reinterpret_cast<unsigned int *>(igAnimationBindingList_meta)[0x24/4]&4)) igAnimationBindingList_registerNow();
+ if(!igAnimationBindingList_meta || !(reinterpret_cast<unsigned int *>(igAnimationBindingList_meta)[0x24/4]&4)) igAnimationBindingList_arkRegister();
  return igAnimationBindingList_meta;
 }
 void *igAnimationBindingList_vtableRead(){
@@ -79,20 +79,20 @@ void *igAnimationBindingList_vtableRead(){
  object.unknown00=igAnimationBindingList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationBindingList_registerNow(){
+void igAnimationBindingList_arkRegister(){
  meta_registerNow((int)igAnimationBindingList_register);
 }
 void igAnimationBindingList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationBindingList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationBindingList_getMetaCall,(int)igAnimationBindingList_className,20,(int)igAnimationBindingList_vtableRead,0,0,(int)lbl_805609D0);
+ meta_registerClass(0,(int)&igAnimationBindingList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationBindingList_getMetaCall,(int)igAnimationBindingList_className,20,(int)igAnimationBindingList_vtableRead,0,0,(int)igAnimationBindingList_dependencies);
 }
 void *igAnimationBindingList_getMetaCall(){return igAnimationBindingList_getMeta();}
 void *igAnimationBinding_create(void *object){
- igAnimationBinding_registerNow();
+ igAnimationBinding_arkRegister();
  return meta_createInstance(igAnimationBinding_meta,object);
 }
 void *igAnimationBinding_getMeta(){
- if(!igAnimationBinding_meta || !(reinterpret_cast<unsigned int *>(igAnimationBinding_meta)[0x24/4]&4)) igAnimationBinding_registerNow();
+ if(!igAnimationBinding_meta || !(reinterpret_cast<unsigned int *>(igAnimationBinding_meta)[0x24/4]&4)) igAnimationBinding_arkRegister();
  return igAnimationBinding_meta;
 }
 void *igAnimationBinding_vtableRead(){
@@ -103,12 +103,12 @@ void *igAnimationBinding_vtableRead(){
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationBinding_registerNow(){
+void igAnimationBinding_arkRegister(){
  meta_registerNow((int)igAnimationBinding_register);
 }
 void igAnimationBinding_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationBinding_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationBinding_getMetaCall,(int)igAnimationBinding_className,28,(int)igAnimationBinding_vtableRead,(int)igAnimationBinding_fieldInit,0,(int)lbl_804B25CC);
+ meta_registerClass(0,(int)&igAnimationBinding_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationBinding_getMetaCall,(int)igAnimationBinding_className,28,(int)igAnimationBinding_vtableRead,(int)igAnimationBinding_fieldInit,0,(int)igAnimationBinding_dependencies);
 }
 void *igAnimationBinding_getMetaCall(){return igAnimationBinding_getMeta();}
 }

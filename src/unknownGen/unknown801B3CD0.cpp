@@ -17,7 +17,7 @@ void igSceneInfo_fieldInit();
 extern char igInfo_vtable[];
 extern char igNamedObject_vtable[];
 extern char igSegment_className[];
-extern char lbl_804AD34C[];
+extern char igSceneInfo_dependencies[];
 extern char igSceneInfo_className[];
 extern char igSceneInfo_vtable[];
 extern char igNode_vtable[];
@@ -28,12 +28,12 @@ extern void *igSegment_meta;
 extern void *igSceneInfo_meta;
 void *igSegment_getMeta();
 void *igSegment_vtableRead();
-void igSegment_registerNow();
+void igSegment_arkRegister();
 void igSegment_register();
 void *igSegment_getMetaCall();
 void *igSceneInfo_getMeta();
 void *igSceneInfo_vtableRead();
-void igSceneInfo_registerNow();
+void igSceneInfo_arkRegister();
 void igSceneInfo_register();
 void *igSceneInfo_getMetaCall();
 }
@@ -89,7 +89,7 @@ void *fn_801B3CD0(){
  return igSegment_meta;
 }
 void *igSegment_getMeta(){
- if(!igSegment_meta || !(reinterpret_cast<unsigned int *>(igSegment_meta)[0x24/4]&4)) igSegment_registerNow();
+ if(!igSegment_meta || !(reinterpret_cast<unsigned int *>(igSegment_meta)[0x24/4]&4)) igSegment_arkRegister();
  return igSegment_meta;
 }
 void *igSegment_vtableRead(){
@@ -104,7 +104,7 @@ void *igSegment_vtableRead(){
  object.unknown00=igSegment_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSegment_registerNow(){
+void igSegment_arkRegister(){
  meta_registerNow((int)igSegment_register);
 }
 void igSegment_register(){
@@ -113,7 +113,7 @@ void igSegment_register(){
 }
 void *igSegment_getMetaCall(){return igSegment_getMeta();}
 void *igSceneInfo_create(void *object){
- igSceneInfo_registerNow();
+ igSceneInfo_arkRegister();
  return meta_createInstance(igSceneInfo_meta,object);
 }
 void *fn_801B3FA8(){
@@ -121,7 +121,7 @@ void *fn_801B3FA8(){
  return igSceneInfo_meta;
 }
 void *igSceneInfo_getMeta(){
- if(!igSceneInfo_meta || !(reinterpret_cast<unsigned int *>(igSceneInfo_meta)[0x24/4]&4)) igSceneInfo_registerNow();
+ if(!igSceneInfo_meta || !(reinterpret_cast<unsigned int *>(igSceneInfo_meta)[0x24/4]&4)) igSceneInfo_arkRegister();
  return igSceneInfo_meta;
 }
 void *igSceneInfo_vtableRead(){
@@ -136,12 +136,12 @@ void *igSceneInfo_vtableRead(){
  object.unknown3C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSceneInfo_registerNow(){
+void igSceneInfo_arkRegister(){
  meta_registerNow((int)igSceneInfo_register);
 }
 void igSceneInfo_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igSceneInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igSceneInfo_getMetaCall,(int)igSceneInfo_className,64,(int)igSceneInfo_vtableRead,(int)igSceneInfo_fieldInit,0,(int)lbl_804AD34C);
+ meta_registerClass(0,(int)&igSceneInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igSceneInfo_getMetaCall,(int)igSceneInfo_className,64,(int)igSceneInfo_vtableRead,(int)igSceneInfo_fieldInit,0,(int)igSceneInfo_dependencies);
 }
 void *igSceneInfo_getMetaCall(){return igSceneInfo_getMeta();}
 }

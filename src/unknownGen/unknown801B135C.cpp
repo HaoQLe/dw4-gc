@@ -11,14 +11,14 @@ void igObject_construct(void *);
 void fn_801AA6DC();
 void igObject_register();
 void igShaderData_fieldInit();
-extern char lbl_804ACB0C[];
+extern char igShaderData_dependencies[];
 extern char igShaderData_className[];
 extern char igShaderData_vtable[];
 extern void *lbl_805621F4;
 extern void *igShaderData_meta;
 void *igShaderData_getMeta();
 void *igShaderData_vtableRead();
-void igShaderData_registerNow();
+void igShaderData_arkRegister();
 void igShaderData_register();
 void *igShaderData_getMetaCall();
 }
@@ -41,7 +41,7 @@ void *fn_801B135C(){
  return igShaderData_meta;
 }
 void *igShaderData_getMeta(){
- if(!igShaderData_meta || !(reinterpret_cast<unsigned int *>(igShaderData_meta)[0x24/4]&4)) igShaderData_registerNow();
+ if(!igShaderData_meta || !(reinterpret_cast<unsigned int *>(igShaderData_meta)[0x24/4]&4)) igShaderData_arkRegister();
  return igShaderData_meta;
 }
 void *igShaderData_vtableRead(){
@@ -53,12 +53,12 @@ void *igShaderData_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igShaderData_registerNow(){
+void igShaderData_arkRegister(){
  meta_registerNow((int)igShaderData_register);
 }
 void igShaderData_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igShaderData_meta,(int)igObject_register,(int)fn_800237D0,(int)igShaderData_getMetaCall,(int)igShaderData_className,24,(int)igShaderData_vtableRead,(int)igShaderData_fieldInit,0,(int)lbl_804ACB0C);
+ meta_registerClass(0,(int)&igShaderData_meta,(int)igObject_register,(int)fn_800237D0,(int)igShaderData_getMetaCall,(int)igShaderData_className,24,(int)igShaderData_vtableRead,(int)igShaderData_fieldInit,0,(int)igShaderData_dependencies);
 }
 void *igShaderData_getMetaCall(){return igShaderData_getMeta();}
 }

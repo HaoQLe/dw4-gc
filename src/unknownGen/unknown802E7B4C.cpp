@@ -11,13 +11,13 @@ void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *fn_800D0068();
-void ParticleTimer_registerNow();
+void ParticleTimer_arkRegister();
 extern char lbl_8041D5B0[];
 extern char lbl_8041E6AC[];
-extern char lbl_804D3210[];
-extern char lbl_804D323C[];
-extern char lbl_804D3268[];
-extern char lbl_804D3294[];
+extern char ParticleArray_fieldTypes[];
+extern char ParticleArray_fieldNames[];
+extern char ParticleArray_fieldStorage[];
+extern char ParticleArray_fieldOffsets[];
 extern void *ParticleArray_meta;
 extern void *ParticleTimer_meta;
 extern void *lbl_805621F4;
@@ -26,7 +26,7 @@ extern "C" {
 void ParticleArray_fieldInit(){
  void *value0=ParticleArray_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D3210,11);
+ meta_appendFields(value0,ParticleArray_fieldTypes,11);
  void *value2=meta_field(value0,value1);
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_8041D5B0+0)));
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
@@ -49,14 +49,14 @@ void ParticleArray_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value11)+38)=0;
  void *value12=meta_field(value0,(reinterpret_cast<char *>(value1)+10));
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value12)+38)=0;
- meta_setupFields(value0,lbl_804D323C,lbl_804D3268,lbl_804D3294,value1);
+ meta_setupFields(value0,ParticleArray_fieldNames,ParticleArray_fieldStorage,ParticleArray_fieldOffsets,value1);
 }
 void *ParticleTimer_metaObject(){
  if(!ParticleTimer_meta) ParticleTimer_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return ParticleTimer_meta;
 }
 void *ParticleTimer_getMeta(){
- if(!ParticleTimer_meta || !(reinterpret_cast<unsigned int *>(ParticleTimer_meta)[0x24/4]&4)) ParticleTimer_registerNow();
+ if(!ParticleTimer_meta || !(reinterpret_cast<unsigned int *>(ParticleTimer_meta)[0x24/4]&4)) ParticleTimer_arkRegister();
  return ParticleTimer_meta;
 }
 }

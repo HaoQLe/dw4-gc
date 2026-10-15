@@ -6,7 +6,7 @@ void meta_registerNow(int);
 void igSearchSceneGraph_register();
 }
 extern "C" {
-void igSearchSceneGraph_registerNow(){
+void igSearchSceneGraph_arkRegister(){
  meta_registerNow((int)igSearchSceneGraph_register);
 }
 }

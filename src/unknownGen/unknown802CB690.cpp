@@ -11,13 +11,13 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beModelCtrlMOVEEX_registerNow();
+void beModelCtrlMOVEEX_arkRegister();
 void igNamedObject_register();
 extern char beModelCtrlMOVERL_className[];
-extern char lbl_804D0FA4[];
-extern char lbl_804D0FAC[];
-extern char lbl_804D0FB4[];
-extern char lbl_804D0FBC[];
+extern char beModelCtrlMOVERL_fieldTypes[];
+extern char beModelCtrlMOVERL_fieldNames[];
+extern char beModelCtrlMOVERL_fieldStorage[];
+extern char beModelCtrlMOVERL_fieldOffsets[];
 extern void *beModelCtrlMOVERL_meta;
 extern void *beModelCtrlMOVEEX_meta;
 void beModelCtrlMOVERL_register();
@@ -25,7 +25,7 @@ void *beModelCtrlMOVERL_getMetaCall();
 void beModelCtrlMOVERL_fieldInit();
 }
 extern "C" {
-void beModelCtrlMOVERL_registerNow(){
+void beModelCtrlMOVERL_arkRegister(){
  meta_registerNow((int)beModelCtrlMOVERL_register);
 }
 void beModelCtrlMOVERL_register(){
@@ -36,11 +36,11 @@ void *beModelCtrlMOVERL_getMetaCall(){return beModelCtrlMOVERL_getMeta();}
 void beModelCtrlMOVERL_fieldInit(){
  void *meta=beModelCtrlMOVERL_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D0FA4,0x2);
- meta_setupFields(meta,lbl_804D0FAC,lbl_804D0FB4,lbl_804D0FBC,field);
+ meta_appendFields(meta,beModelCtrlMOVERL_fieldTypes,0x2);
+ meta_setupFields(meta,beModelCtrlMOVERL_fieldNames,beModelCtrlMOVERL_fieldStorage,beModelCtrlMOVERL_fieldOffsets,field);
 }
 void *beModelCtrlMOVEEX_getMeta(){
- if(!beModelCtrlMOVEEX_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlMOVEEX_meta)[0x24/4]&4)) beModelCtrlMOVEEX_registerNow();
+ if(!beModelCtrlMOVEEX_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlMOVEEX_meta)[0x24/4]&4)) beModelCtrlMOVEEX_arkRegister();
  return beModelCtrlMOVEEX_meta;
 }
 }

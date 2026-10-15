@@ -14,24 +14,24 @@ void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
 void fn_800AC6A0(void *,short);
-void igVertexShaderAttr_registerNow();
+void igVertexShaderAttr_arkRegister();
 void igVisualAttribute_register();
 extern char igVertexShaderBindAttr_className[];
 extern char igVertexShaderBindAttr_vtable[];
 extern char igVertexShaderAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055DEA0[8];
-extern char lbl_8055DEA8[4];
-extern char lbl_8055DEAC[4];
-extern char lbl_8055DEB0[4];
-extern char lbl_8055DEB4[4];
+extern char igVertexShaderBindAttr_dependencies[8];
+extern char igVertexShaderBindAttr_fieldTypes[4];
+extern char igVertexShaderBindAttr_fieldNames[4];
+extern char igVertexShaderBindAttr_fieldStorage[4];
+extern char igVertexShaderBindAttr_fieldOffsets[4];
 extern void *lbl_805621F4;
 extern void *igVertexShaderBindAttr_meta;
 extern void *igVertexShaderAttr_meta;
 void *igVertexShaderBindAttr_getMeta();
 void *igVertexShaderBindAttr_vtableRead();
-void igVertexShaderBindAttr_registerNow();
+void igVertexShaderBindAttr_arkRegister();
 void igVertexShaderBindAttr_register();
 void *igVertexShaderBindAttr_getMetaCall();
 void igVertexShaderBindAttr_fieldInit();
@@ -64,7 +64,7 @@ struct UnknownGenObject800AC60C {
 };
 extern "C" {
 void *igVertexShaderBindAttr_getMeta(){
- if(!igVertexShaderBindAttr_meta || !(reinterpret_cast<unsigned int *>(igVertexShaderBindAttr_meta)[0x24/4]&4)) igVertexShaderBindAttr_registerNow();
+ if(!igVertexShaderBindAttr_meta || !(reinterpret_cast<unsigned int *>(igVertexShaderBindAttr_meta)[0x24/4]&4)) igVertexShaderBindAttr_arkRegister();
  return igVertexShaderBindAttr_meta;
 }
 void *igVertexShaderBindAttr_vtableRead(){
@@ -75,29 +75,29 @@ void *igVertexShaderBindAttr_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVertexShaderBindAttr_registerNow(){
+void igVertexShaderBindAttr_arkRegister(){
  meta_registerNow((int)igVertexShaderBindAttr_register);
 }
 void igVertexShaderBindAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igVertexShaderBindAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igVertexShaderBindAttr_getMetaCall,(int)igVertexShaderBindAttr_className,16,(int)igVertexShaderBindAttr_vtableRead,(int)igVertexShaderBindAttr_fieldInit,0,(int)lbl_8055DEA0);
+ meta_registerClass(0,(int)&igVertexShaderBindAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igVertexShaderBindAttr_getMetaCall,(int)igVertexShaderBindAttr_className,16,(int)igVertexShaderBindAttr_vtableRead,(int)igVertexShaderBindAttr_fieldInit,0,(int)igVertexShaderBindAttr_dependencies);
 }
 void *igVertexShaderBindAttr_getMetaCall(){return igVertexShaderBindAttr_getMeta();}
 void igVertexShaderBindAttr_fieldInit(){
  void *value0=igVertexShaderBindAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055DEA8,1);
+ meta_appendFields(value0,igVertexShaderBindAttr_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_800AC594();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_8055DEAC,lbl_8055DEB0,lbl_8055DEB4,value1);
+ meta_setupFields(value0,igVertexShaderBindAttr_fieldNames,igVertexShaderBindAttr_fieldStorage,igVertexShaderBindAttr_fieldOffsets,value1);
 }
 void *fn_800AC594(){
  if(!igVertexShaderAttr_meta) igVertexShaderAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igVertexShaderAttr_meta;
 }
 void *igVertexShaderAttr_getMeta(){
- if(!igVertexShaderAttr_meta || !(reinterpret_cast<unsigned int *>(igVertexShaderAttr_meta)[0x24/4]&4)) igVertexShaderAttr_registerNow();
+ if(!igVertexShaderAttr_meta || !(reinterpret_cast<unsigned int *>(igVertexShaderAttr_meta)[0x24/4]&4)) igVertexShaderAttr_arkRegister();
  return igVertexShaderAttr_meta;
 }
 void *igVertexShaderAttr_vtableRead(){

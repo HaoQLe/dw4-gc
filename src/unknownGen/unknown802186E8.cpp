@@ -20,21 +20,21 @@ extern char igFloatHistogram_vtable[];
 extern char lbl_804BBD94[];
 extern char igFloatObject_vtable[];
 extern char igHistogramBase_vtable[];
-extern char lbl_80560C48[4];
-extern char lbl_80560C4C[4];
-extern char lbl_80560C50[4];
-extern char lbl_80560C54[4];
+extern char igFloatObject_fieldTypes[4];
+extern char igFloatObject_fieldNames[4];
+extern char igFloatObject_fieldStorage[4];
+extern char igFloatObject_fieldOffsets[4];
 extern void *igFloatObject_meta;
 extern void *igFloatHistogram_meta;
 void *igFloatObject_getMeta();
 void *igFloatObject_vtableRead();
-void igFloatObject_registerNow();
+void igFloatObject_arkRegister();
 void igFloatObject_register();
 void *igFloatObject_getMetaCall();
 void igFloatObject_fieldInit();
 void *igFloatHistogram_getMeta();
 void *igFloatHistogram_vtableRead();
-void igFloatHistogram_registerNow();
+void igFloatHistogram_arkRegister();
 void igFloatHistogram_register();
 void *igFloatHistogram_getMetaCall();
 }
@@ -61,7 +61,7 @@ struct UnknownGenObject802188C0 : UnknownGenObject802188C0_1 {
 };
 extern "C" {
 void *igFloatObject_getMeta(){
- if(!igFloatObject_meta || !(reinterpret_cast<unsigned int *>(igFloatObject_meta)[0x24/4]&4)) igFloatObject_registerNow();
+ if(!igFloatObject_meta || !(reinterpret_cast<unsigned int *>(igFloatObject_meta)[0x24/4]&4)) igFloatObject_arkRegister();
  return igFloatObject_meta;
 }
 void *igFloatObject_vtableRead(){
@@ -70,7 +70,7 @@ void *igFloatObject_vtableRead(){
  object.unknown00=igFloatObject_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFloatObject_registerNow(){
+void igFloatObject_arkRegister(){
  meta_registerNow((int)igFloatObject_register);
 }
 void igFloatObject_register(){
@@ -81,11 +81,11 @@ void *igFloatObject_getMetaCall(){return igFloatObject_getMeta();}
 void igFloatObject_fieldInit(){
  void *value0=igFloatObject_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560C48,1);
- meta_setupFields(value0,lbl_80560C4C,lbl_80560C50,lbl_80560C54,value1);
+ meta_appendFields(value0,igFloatObject_fieldTypes,1);
+ meta_setupFields(value0,igFloatObject_fieldNames,igFloatObject_fieldStorage,igFloatObject_fieldOffsets,value1);
 }
 void *igFloatHistogram_getMeta(){
- if(!igFloatHistogram_meta || !(reinterpret_cast<unsigned int *>(igFloatHistogram_meta)[0x24/4]&4)) igFloatHistogram_registerNow();
+ if(!igFloatHistogram_meta || !(reinterpret_cast<unsigned int *>(igFloatHistogram_meta)[0x24/4]&4)) igFloatHistogram_arkRegister();
  return igFloatHistogram_meta;
 }
 void *igFloatHistogram_vtableRead(){
@@ -96,7 +96,7 @@ void *igFloatHistogram_vtableRead(){
  object.unknown00=igFloatHistogram_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFloatHistogram_registerNow(){
+void igFloatHistogram_arkRegister(){
  meta_registerNow((int)igFloatHistogram_register);
 }
 void igFloatHistogram_register(){

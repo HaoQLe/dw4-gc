@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void igGamecubePointSpriteExt_registerNow();
+void igGamecubePointSpriteExt_arkRegister();
 extern void *igGamecubePointSpriteExt_meta;
 }
 extern "C" {
 void *igGamecubePointSpriteExt_getMeta(){
- if(!igGamecubePointSpriteExt_meta || !(reinterpret_cast<unsigned int *>(igGamecubePointSpriteExt_meta)[0x24/4]&4)) igGamecubePointSpriteExt_registerNow();
+ if(!igGamecubePointSpriteExt_meta || !(reinterpret_cast<unsigned int *>(igGamecubePointSpriteExt_meta)[0x24/4]&4)) igGamecubePointSpriteExt_arkRegister();
  return igGamecubePointSpriteExt_meta;
 }
 }

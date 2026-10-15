@@ -18,7 +18,7 @@ extern char lbl_804AAF48[];
 extern void *igSeperateTransformChannels_meta;
 void *igSeperateTransformChannels_getMeta();
 void *igSeperateTransformChannels_vtableRead();
-void igSeperateTransformChannels_registerNow();
+void igSeperateTransformChannels_arkRegister();
 void igSeperateTransformChannels_register();
 void *igSeperateTransformChannels_getMetaCall();
 }
@@ -45,7 +45,7 @@ struct UnknownGenObject80133554 : UnknownGenObject80133554_1 {
 };
 extern "C" {
 void *igSeperateTransformChannels_getMeta(){
- if(!igSeperateTransformChannels_meta || !(reinterpret_cast<unsigned int *>(igSeperateTransformChannels_meta)[0x24/4]&4)) igSeperateTransformChannels_registerNow();
+ if(!igSeperateTransformChannels_meta || !(reinterpret_cast<unsigned int *>(igSeperateTransformChannels_meta)[0x24/4]&4)) igSeperateTransformChannels_arkRegister();
  return igSeperateTransformChannels_meta;
 }
 void *igSeperateTransformChannels_vtableRead(){
@@ -61,7 +61,7 @@ void *igSeperateTransformChannels_vtableRead(){
  object.unknown30.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSeperateTransformChannels_registerNow(){
+void igSeperateTransformChannels_arkRegister(){
  meta_registerNow((int)igSeperateTransformChannels_register);
 }
 void igSeperateTransformChannels_register(){

@@ -7,7 +7,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void igObject_construct(void *);
 void fn_801BA7A8(void *,short);
-void igMorphBase_registerNow();
+void igMorphBase_arkRegister();
 extern char igMorphBase_vtable[];
 extern void *lbl_805621F4;
 extern void *igMorphBase_meta;
@@ -29,7 +29,7 @@ struct UnknownGenObject801BA730 {
 };
 extern "C" {
 void *igMorphBase_create(void *object){
- igMorphBase_registerNow();
+ igMorphBase_arkRegister();
  return meta_createInstance(igMorphBase_meta,object);
 }
 void *fn_801BA6B8(){
@@ -37,7 +37,7 @@ void *fn_801BA6B8(){
  return igMorphBase_meta;
 }
 void *igMorphBase_getMeta(){
- if(!igMorphBase_meta || !(reinterpret_cast<unsigned int *>(igMorphBase_meta)[0x24/4]&4)) igMorphBase_registerNow();
+ if(!igMorphBase_meta || !(reinterpret_cast<unsigned int *>(igMorphBase_meta)[0x24/4]&4)) igMorphBase_arkRegister();
  return igMorphBase_meta;
 }
 void *igMorphBase_vtableRead(){

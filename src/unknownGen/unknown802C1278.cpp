@@ -12,12 +12,12 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void beParticleCtrl2InfoRam_registerNow();
+void beParticleCtrl2InfoRam_arkRegister();
 extern char bePoint01_className[];
-extern char lbl_804D0048[];
-extern char lbl_804D004C[];
-extern char lbl_804D0050[];
-extern char lbl_804D0054[];
+extern char bePoint01_fieldTypes[];
+extern char bePoint01_fieldNames[];
+extern char bePoint01_fieldStorage[];
+extern char bePoint01_fieldOffsets[];
 extern void *bePoint01_meta;
 extern void *beParticleCtrl2InfoRam_meta;
 void bePoint01_register();
@@ -25,7 +25,7 @@ void *bePoint01_getMetaCall();
 void bePoint01_fieldInit();
 }
 extern "C" {
-void bePoint01_registerNow(){
+void bePoint01_arkRegister(){
  meta_registerNow((int)bePoint01_register);
 }
 void bePoint01_register(){
@@ -36,11 +36,11 @@ void *bePoint01_getMetaCall(){return bePoint01_getMeta();}
 void bePoint01_fieldInit(){
  void *meta=bePoint01_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D0048,0x1);
- meta_setupFields(meta,lbl_804D004C,lbl_804D0050,lbl_804D0054,field);
+ meta_appendFields(meta,bePoint01_fieldTypes,0x1);
+ meta_setupFields(meta,bePoint01_fieldNames,bePoint01_fieldStorage,bePoint01_fieldOffsets,field);
 }
 void *beParticleCtrl2InfoRam_getMeta(){
- if(!beParticleCtrl2InfoRam_meta || !(reinterpret_cast<unsigned int *>(beParticleCtrl2InfoRam_meta)[0x24/4]&4)) beParticleCtrl2InfoRam_registerNow();
+ if(!beParticleCtrl2InfoRam_meta || !(reinterpret_cast<unsigned int *>(beParticleCtrl2InfoRam_meta)[0x24/4]&4)) beParticleCtrl2InfoRam_arkRegister();
  return beParticleCtrl2InfoRam_meta;
 }
 }

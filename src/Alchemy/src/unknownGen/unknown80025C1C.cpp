@@ -6,7 +6,7 @@ extern "C" {
 void __dl__FPv(void *);
 void fn_80021B94();
 void *fn_80023CF4();
-void igShortMetaField_registerNow();
+void igShortMetaField_arkRegister();
 void *meta_newMetaObject(void *);
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
@@ -30,11 +30,11 @@ extern char igSemaphore_className[];
 extern char igShortArrayMetaField_vtable[];
 extern char lbl_80471914[];
 extern char lbl_80476848[];
-extern char lbl_8055D120[8];
-extern char lbl_8055D128[4];
-extern char lbl_8055D12C[4];
-extern char lbl_8055D130[4];
-extern char lbl_8055D134[4];
+extern char igShortArrayMetaField_dependencies[8];
+extern char igShortArrayMetaField_fieldTypes[4];
+extern char igShortArrayMetaField_fieldNames[4];
+extern char igShortArrayMetaField_fieldStorage[4];
+extern char igShortArrayMetaField_fieldOffsets[4];
 extern void *igShortMetaField_meta;
 extern void *lbl_805615DC;
 extern void *igShortArrayMetaField_meta;
@@ -43,13 +43,13 @@ extern void *igSemaphore_meta;
 extern void *lbl_805621F4;
 void *igShortArrayMetaField_getMeta();
 void *igShortArrayMetaField_vtableRead();
-void igShortArrayMetaField_registerNow();
+void igShortArrayMetaField_arkRegister();
 void igShortArrayMetaField_register();
 void *igShortArrayMetaField_getMetaCall();
 void *igShortArrayMetaField_parentMeta();
 void igShortArrayMetaField_fieldInit();
 void *igSemaphore_getMeta();
-void igSemaphore_registerNow();
+void igSemaphore_arkRegister();
 void igSemaphore_register();
 void *igSemaphore_getMetaCall();
 void *fn_8002614C();
@@ -87,16 +87,16 @@ void fn_80025C3C(){
 }
 void *fn_80025CD4(){
  if(!lbl_805615DC){
-  igShortMetaField_registerNow();
+  igShortMetaField_arkRegister();
  }
  return lbl_805615DC;
 }
 void *igShortArrayMetaField_create(void *object){
- igShortArrayMetaField_registerNow();
+ igShortArrayMetaField_arkRegister();
  return meta_createInstance(igShortArrayMetaField_meta,object);
 }
 void *igShortArrayMetaField_getMeta(){
- if(!igShortArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igShortArrayMetaField_meta)[0x24/4]&4)) igShortArrayMetaField_registerNow();
+ if(!igShortArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igShortArrayMetaField_meta)[0x24/4]&4)) igShortArrayMetaField_arkRegister();
  return igShortArrayMetaField_meta;
 }
 void *igShortArrayMetaField_vtableRead(){
@@ -104,21 +104,21 @@ void *igShortArrayMetaField_vtableRead(){
  object.unknown00=igShortArrayMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igShortArrayMetaField_registerNow(){
+void igShortArrayMetaField_arkRegister(){
  meta_registerNow((int)igShortArrayMetaField_register);
 }
 void igShortArrayMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igShortArrayMetaField_meta,(int)igShortMetaField_register,(int)igShortArrayMetaField_parentMeta,(int)igShortArrayMetaField_getMetaCall,(int)igShortArrayMetaField_className,56,(int)igShortArrayMetaField_vtableRead,(int)igShortArrayMetaField_fieldInit,0,(int)lbl_8055D120);
+ meta_registerClass(0,(int)&igShortArrayMetaField_meta,(int)igShortMetaField_register,(int)igShortArrayMetaField_parentMeta,(int)igShortArrayMetaField_getMetaCall,(int)igShortArrayMetaField_className,56,(int)igShortArrayMetaField_vtableRead,(int)igShortArrayMetaField_fieldInit,0,(int)igShortArrayMetaField_dependencies);
 }
 void *igShortArrayMetaField_getMetaCall(){return igShortArrayMetaField_getMeta();}
 void *igShortArrayMetaField_parentMeta(){return igShortMetaField_meta;}
 void igShortArrayMetaField_fieldInit(){
  void *meta=igShortArrayMetaField_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_8055D128,1);
+ meta_appendFields(meta,igShortArrayMetaField_fieldTypes,1);
  fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,lbl_8055D12C,lbl_8055D130,lbl_8055D134,field);
+ meta_setupFields(meta,igShortArrayMetaField_fieldNames,igShortArrayMetaField_fieldStorage,igShortArrayMetaField_fieldOffsets,field);
 }
 void fn_80025F50(){
  if(!lbl_805615E4){
@@ -132,7 +132,7 @@ void fn_80025F50(){
  }
 }
 void *igSemaphore_create(void *object){
- igSemaphore_registerNow();
+ igSemaphore_arkRegister();
  return meta_createInstance(igSemaphore_meta,object);
 }
 void *fn_80026020(){
@@ -140,10 +140,10 @@ void *fn_80026020(){
  return igSemaphore_meta;
 }
 void *igSemaphore_getMeta(){
- if(!igSemaphore_meta || !(reinterpret_cast<unsigned int *>(igSemaphore_meta)[0x24/4]&4)) igSemaphore_registerNow();
+ if(!igSemaphore_meta || !(reinterpret_cast<unsigned int *>(igSemaphore_meta)[0x24/4]&4)) igSemaphore_arkRegister();
  return igSemaphore_meta;
 }
-void igSemaphore_registerNow(){
+void igSemaphore_arkRegister(){
  meta_registerNow((int)igSemaphore_register);
 }
 void igSemaphore_register(){

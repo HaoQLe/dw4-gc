@@ -16,7 +16,7 @@ extern char igEnbayaAnimationSource_vtable[];
 extern void *igEnbayaAnimationSource_meta;
 extern void *igEndianSwappedEnbayaAnimationSource_meta;
 void *igEndianSwappedEnbayaAnimationSource_vtableRead();
-void igEndianSwappedEnbayaAnimationSource_registerNow();
+void igEndianSwappedEnbayaAnimationSource_arkRegister();
 void igEndianSwappedEnbayaAnimationSource_register();
 void *igEndianSwappedEnbayaAnimationSource_parentMeta();
 void *fn_801CEEB8();
@@ -27,7 +27,7 @@ struct UnknownGenObject801CEDCC_0 {
 };
 extern "C" {
 void *igEndianSwappedEnbayaAnimationSource_getMeta(){
- if(!igEndianSwappedEnbayaAnimationSource_meta || !(reinterpret_cast<unsigned int *>(igEndianSwappedEnbayaAnimationSource_meta)[0x24/4]&4)) igEndianSwappedEnbayaAnimationSource_registerNow();
+ if(!igEndianSwappedEnbayaAnimationSource_meta || !(reinterpret_cast<unsigned int *>(igEndianSwappedEnbayaAnimationSource_meta)[0x24/4]&4)) igEndianSwappedEnbayaAnimationSource_arkRegister();
  return igEndianSwappedEnbayaAnimationSource_meta;
 }
 void *igEndianSwappedEnbayaAnimationSource_vtableRead(){
@@ -37,7 +37,7 @@ void *igEndianSwappedEnbayaAnimationSource_vtableRead(){
  object.unknown00=igEndianSwappedEnbayaAnimationSource_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igEndianSwappedEnbayaAnimationSource_registerNow(){
+void igEndianSwappedEnbayaAnimationSource_arkRegister(){
  meta_registerNow((int)igEndianSwappedEnbayaAnimationSource_register);
 }
 void igEndianSwappedEnbayaAnimationSource_register(){

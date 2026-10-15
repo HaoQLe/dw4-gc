@@ -9,7 +9,7 @@ void fn_8012FC48();
 void *fn_801308D0();
 void igOptBase_register();
 void igShareAttrs_fieldInit();
-extern char lbl_8049C3DC[];
+extern char igShareAttrs_dependencies[];
 extern char igShareAttrs_className[];
 extern char igShareAttrs_vtable[];
 extern char lbl_804A4A04[];
@@ -18,7 +18,7 @@ extern char lbl_804AAF48[];
 extern void *igShareAttrs_meta;
 void *igShareAttrs_getMeta();
 void *igShareAttrs_vtableRead();
-void igShareAttrs_registerNow();
+void igShareAttrs_arkRegister();
 void igShareAttrs_register();
 void *igShareAttrs_getMetaCall();
 }
@@ -42,7 +42,7 @@ struct UnknownGenObject801331FC : UnknownGenObject801331FC_0 {
 };
 extern "C" {
 void *igShareAttrs_getMeta(){
- if(!igShareAttrs_meta || !(reinterpret_cast<unsigned int *>(igShareAttrs_meta)[0x24/4]&4)) igShareAttrs_registerNow();
+ if(!igShareAttrs_meta || !(reinterpret_cast<unsigned int *>(igShareAttrs_meta)[0x24/4]&4)) igShareAttrs_arkRegister();
  return igShareAttrs_meta;
 }
 void *igShareAttrs_vtableRead(){
@@ -58,12 +58,12 @@ void *igShareAttrs_vtableRead(){
  object.unknown30.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igShareAttrs_registerNow(){
+void igShareAttrs_arkRegister(){
  meta_registerNow((int)igShareAttrs_register);
 }
 void igShareAttrs_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igShareAttrs_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igShareAttrs_getMetaCall,(int)igShareAttrs_className,52,(int)igShareAttrs_vtableRead,(int)igShareAttrs_fieldInit,0,(int)lbl_8049C3DC);
+ meta_registerClass(0,(int)&igShareAttrs_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igShareAttrs_getMetaCall,(int)igShareAttrs_className,52,(int)igShareAttrs_vtableRead,(int)igShareAttrs_fieldInit,0,(int)igShareAttrs_dependencies);
 }
 void *igShareAttrs_getMetaCall(){return igShareAttrs_getMeta();}
 }

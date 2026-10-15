@@ -22,9 +22,9 @@ extern char igMessageFilter_className[];
 extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804CB084[];
-extern char lbl_804CB08C[];
-extern char lbl_804CB094[];
+extern char igMessageReceiverList_dependencies[];
+extern char igMessageFilterList_dependencies[];
+extern char igMessageFilter_dependencies[];
 extern char igMessageFilter_vtable[];
 extern char igMessageFilterList_vtable[];
 extern char lbl_804CB860[];
@@ -39,26 +39,26 @@ extern void *igMessageFilter_meta;
 extern void *lbl_805621F4;
 void *igMessage_getMeta();
 void *igMessage_vtableRead();
-void igMessage_registerNow();
+void igMessage_arkRegister();
 void igMessage_register();
 void *igMessage_getMetaCall();
 void *igMessageReceiverList_getMeta();
 void *igMessageReceiverList_vtableRead();
-void igMessageReceiverList_registerNow();
+void igMessageReceiverList_arkRegister();
 void igMessageReceiverList_register();
 void *igMessageReceiverList_getMetaCall();
 void *igMessageReceiver_getMeta();
-void igMessageReceiver_registerNow();
+void igMessageReceiver_arkRegister();
 void igMessageReceiver_register();
 void *igMessageReceiver_getMetaCall();
 void *igMessageFilterList_getMeta();
 void *igMessageFilterList_vtableRead();
-void igMessageFilterList_registerNow();
+void igMessageFilterList_arkRegister();
 void igMessageFilterList_register();
 void *igMessageFilterList_getMetaCall();
 void *igMessageFilter_getMeta();
 void *igMessageFilter_vtableRead();
-void igMessageFilter_registerNow();
+void igMessageFilter_arkRegister();
 void igMessageFilter_register();
 void *igMessageFilter_getMetaCall();
 }
@@ -87,7 +87,7 @@ struct UnknownGenObject80285128 : UnknownGenRoot80285128 {
 };
 extern "C" {
 void *igMessage_getMeta(){
- if(!igMessage_meta || !(reinterpret_cast<unsigned int *>(igMessage_meta)[0x24/4]&4)) igMessage_registerNow();
+ if(!igMessage_meta || !(reinterpret_cast<unsigned int *>(igMessage_meta)[0x24/4]&4)) igMessage_arkRegister();
  return igMessage_meta;
 }
 void *igMessage_vtableRead(){
@@ -96,7 +96,7 @@ void *igMessage_vtableRead(){
  object.unknown00=igMessage_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMessage_registerNow(){
+void igMessage_arkRegister(){
  meta_registerNow((int)igMessage_register);
 }
 void igMessage_register(){
@@ -109,7 +109,7 @@ void *igMessageReceiverList_metaObject(){
  return igMessageReceiverList_meta;
 }
 void *igMessageReceiverList_getMeta(){
- if(!igMessageReceiverList_meta || !(reinterpret_cast<unsigned int *>(igMessageReceiverList_meta)[0x24/4]&4)) igMessageReceiverList_registerNow();
+ if(!igMessageReceiverList_meta || !(reinterpret_cast<unsigned int *>(igMessageReceiverList_meta)[0x24/4]&4)) igMessageReceiverList_arkRegister();
  return igMessageReceiverList_meta;
 }
 void *igMessageReceiverList_vtableRead(){
@@ -122,19 +122,19 @@ void *igMessageReceiverList_vtableRead(){
  object.unknown00=igMessageReceiverList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMessageReceiverList_registerNow(){
+void igMessageReceiverList_arkRegister(){
  meta_registerNow((int)igMessageReceiverList_register);
 }
 void igMessageReceiverList_register(){
  fn_80284294();
- meta_registerClass(0,(int)&igMessageReceiverList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMessageReceiverList_getMetaCall,(int)igMessageReceiverList_className,20,(int)igMessageReceiverList_vtableRead,0,0,(int)lbl_804CB084);
+ meta_registerClass(0,(int)&igMessageReceiverList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMessageReceiverList_getMetaCall,(int)igMessageReceiverList_className,20,(int)igMessageReceiverList_vtableRead,0,0,(int)igMessageReceiverList_dependencies);
 }
 void *igMessageReceiverList_getMetaCall(){return igMessageReceiverList_getMeta();}
 void *igMessageReceiver_getMeta(){
- if(!igMessageReceiver_meta || !(reinterpret_cast<unsigned int *>(igMessageReceiver_meta)[0x24/4]&4)) igMessageReceiver_registerNow();
+ if(!igMessageReceiver_meta || !(reinterpret_cast<unsigned int *>(igMessageReceiver_meta)[0x24/4]&4)) igMessageReceiver_arkRegister();
  return igMessageReceiver_meta;
 }
-void igMessageReceiver_registerNow(){
+void igMessageReceiver_arkRegister(){
  meta_registerNow((int)igMessageReceiver_register);
 }
 void igMessageReceiver_register(){
@@ -147,7 +147,7 @@ void *igMessageFilterList_metaObject(){
  return igMessageFilterList_meta;
 }
 void *igMessageFilterList_getMeta(){
- if(!igMessageFilterList_meta || !(reinterpret_cast<unsigned int *>(igMessageFilterList_meta)[0x24/4]&4)) igMessageFilterList_registerNow();
+ if(!igMessageFilterList_meta || !(reinterpret_cast<unsigned int *>(igMessageFilterList_meta)[0x24/4]&4)) igMessageFilterList_arkRegister();
  return igMessageFilterList_meta;
 }
 void *igMessageFilterList_vtableRead(){
@@ -160,20 +160,20 @@ void *igMessageFilterList_vtableRead(){
  object.unknown00=igMessageFilterList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMessageFilterList_registerNow(){
+void igMessageFilterList_arkRegister(){
  meta_registerNow((int)igMessageFilterList_register);
 }
 void igMessageFilterList_register(){
  fn_80284294();
- meta_registerClass(0,(int)&igMessageFilterList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMessageFilterList_getMetaCall,(int)igMessageFilterList_className,20,(int)igMessageFilterList_vtableRead,0,0,(int)lbl_804CB08C);
+ meta_registerClass(0,(int)&igMessageFilterList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMessageFilterList_getMetaCall,(int)igMessageFilterList_className,20,(int)igMessageFilterList_vtableRead,0,0,(int)igMessageFilterList_dependencies);
 }
 void *igMessageFilterList_getMetaCall(){return igMessageFilterList_getMeta();}
 void *igMessageFilter_create(void *object){
- igMessageFilter_registerNow();
+ igMessageFilter_arkRegister();
  return meta_createInstance(igMessageFilter_meta,object);
 }
 void *igMessageFilter_getMeta(){
- if(!igMessageFilter_meta || !(reinterpret_cast<unsigned int *>(igMessageFilter_meta)[0x24/4]&4)) igMessageFilter_registerNow();
+ if(!igMessageFilter_meta || !(reinterpret_cast<unsigned int *>(igMessageFilter_meta)[0x24/4]&4)) igMessageFilter_arkRegister();
  return igMessageFilter_meta;
 }
 void *igMessageFilter_vtableRead(){
@@ -183,12 +183,12 @@ void *igMessageFilter_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMessageFilter_registerNow(){
+void igMessageFilter_arkRegister(){
  meta_registerNow((int)igMessageFilter_register);
 }
 void igMessageFilter_register(){
  fn_80284294();
- meta_registerClass(0,(int)&igMessageFilter_meta,(int)igObject_register,(int)fn_800237D0,(int)igMessageFilter_getMetaCall,(int)igMessageFilter_className,16,(int)igMessageFilter_vtableRead,(int)igMessageFilter_fieldInit,0,(int)lbl_804CB094);
+ meta_registerClass(0,(int)&igMessageFilter_meta,(int)igObject_register,(int)fn_800237D0,(int)igMessageFilter_getMetaCall,(int)igMessageFilter_className,16,(int)igMessageFilter_vtableRead,(int)igMessageFilter_fieldInit,0,(int)igMessageFilter_dependencies);
 }
 void *igMessageFilter_getMetaCall(){return igMessageFilter_getMeta();}
 }

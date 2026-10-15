@@ -10,19 +10,19 @@ void igMorphBase_fieldInit();
 void *igMorphBase_getMeta();
 void igMorphBase_vtableRead();
 void igObject_register();
-extern char lbl_804AEAC0[];
+extern char igMorphBase_dependencies[];
 extern char igMorphBase_className[];
 extern void *igMorphBase_meta;
 void igMorphBase_register();
 void *igMorphBase_getMetaCall();
 }
 extern "C" {
-void igMorphBase_registerNow(){
+void igMorphBase_arkRegister(){
  meta_registerNow((int)igMorphBase_register);
 }
 void igMorphBase_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igMorphBase_meta,(int)igObject_register,(int)fn_800237D0,(int)igMorphBase_getMetaCall,(int)igMorphBase_className,60,(int)igMorphBase_vtableRead,(int)igMorphBase_fieldInit,0,(int)lbl_804AEAC0);
+ meta_registerClass(0,(int)&igMorphBase_meta,(int)igObject_register,(int)fn_800237D0,(int)igMorphBase_getMetaCall,(int)igMorphBase_className,60,(int)igMorphBase_vtableRead,(int)igMorphBase_fieldInit,0,(int)igMorphBase_dependencies);
 }
 void *igMorphBase_getMetaCall(){return igMorphBase_getMeta();}
 }

@@ -8,7 +8,7 @@ void igObject_construct(void *);
 void fn_800C6F28();
 void igAudioContext_register();
 void igGamecubeAudioContext_fieldInit();
-extern char lbl_8047E87C[];
+extern char igGamecubeAudioContext_dependencies[];
 extern char igGamecubeAudioContext_className[];
 extern char igGamecubeAudioContext_vtable[];
 extern char lbl_8047EA3C[];
@@ -17,7 +17,7 @@ extern void *igGamecubeAudioContext_meta;
 void *igGamecubeAudioContext_getMetaCall();
 void *igGamecubeAudioContext_getMeta();
 void *igGamecubeAudioContext_vtableRead();
-void igGamecubeAudioContext_registerNow();
+void igGamecubeAudioContext_arkRegister();
 void igGamecubeAudioContext_register();
 void *igGamecubeAudioContext_parentMeta();
 }
@@ -37,7 +37,7 @@ struct UnknownGenObject800C71A8 : UnknownGenRoot800C71A8 {
 extern "C" {
 void *igGamecubeAudioContext_getMetaCall(){return igGamecubeAudioContext_getMeta();}
 void *igGamecubeAudioContext_getMeta(){
- if(!igGamecubeAudioContext_meta || !(reinterpret_cast<unsigned int *>(igGamecubeAudioContext_meta)[0x24/4]&4)) igGamecubeAudioContext_registerNow();
+ if(!igGamecubeAudioContext_meta || !(reinterpret_cast<unsigned int *>(igGamecubeAudioContext_meta)[0x24/4]&4)) igGamecubeAudioContext_arkRegister();
  return igGamecubeAudioContext_meta;
 }
 void *igGamecubeAudioContext_vtableRead(){
@@ -49,12 +49,12 @@ void *igGamecubeAudioContext_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeAudioContext_registerNow(){
+void igGamecubeAudioContext_arkRegister(){
  meta_registerNow((int)igGamecubeAudioContext_register);
 }
 void igGamecubeAudioContext_register(){
  fn_800C6F28();
- meta_registerClass(0,(int)&igGamecubeAudioContext_meta,(int)igAudioContext_register,(int)igGamecubeAudioContext_parentMeta,(int)igGamecubeAudioContext_getMetaCall,(int)igGamecubeAudioContext_className,40,(int)igGamecubeAudioContext_vtableRead,(int)igGamecubeAudioContext_fieldInit,0,(int)lbl_8047E87C);
+ meta_registerClass(0,(int)&igGamecubeAudioContext_meta,(int)igAudioContext_register,(int)igGamecubeAudioContext_parentMeta,(int)igGamecubeAudioContext_getMetaCall,(int)igGamecubeAudioContext_className,40,(int)igGamecubeAudioContext_vtableRead,(int)igGamecubeAudioContext_fieldInit,0,(int)igGamecubeAudioContext_dependencies);
 }
 void *igGamecubeAudioContext_parentMeta(){return igAudioContext_meta;}
 }

@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igInverseKinematicsAnimation_registerNow();
+void igInverseKinematicsAnimation_arkRegister();
 extern void *lbl_805621F4;
 extern void *igInverseKinematicsAnimation_meta;
 }
@@ -14,7 +14,7 @@ void *fn_801BD190(){
  return igInverseKinematicsAnimation_meta;
 }
 void *igInverseKinematicsAnimation_getMeta(){
- if(!igInverseKinematicsAnimation_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsAnimation_meta)[0x24/4]&4)) igInverseKinematicsAnimation_registerNow();
+ if(!igInverseKinematicsAnimation_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsAnimation_meta)[0x24/4]&4)) igInverseKinematicsAnimation_arkRegister();
  return igInverseKinematicsAnimation_meta;
 }
 }

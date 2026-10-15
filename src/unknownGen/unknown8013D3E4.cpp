@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F850[8];
+extern char igObjectPropertyForEnvironmentMapShader_dependencies[8];
 extern void *igObjectPropertyForEnvironmentMapShader_meta;
 void *igObjectPropertyForEnvironmentMapShader_getMeta();
 void *igObjectPropertyForEnvironmentMapShader_vtableRead();
-void igObjectPropertyForEnvironmentMapShader_registerNow();
+void igObjectPropertyForEnvironmentMapShader_arkRegister();
 void igObjectPropertyForEnvironmentMapShader_register();
 void *igObjectPropertyForEnvironmentMapShader_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013D420 : UnknownGenObject8013D420_1 {
 };
 extern "C" {
 void *igObjectPropertyForEnvironmentMapShader_getMeta(){
- if(!igObjectPropertyForEnvironmentMapShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForEnvironmentMapShader_meta)[0x24/4]&4)) igObjectPropertyForEnvironmentMapShader_registerNow();
+ if(!igObjectPropertyForEnvironmentMapShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForEnvironmentMapShader_meta)[0x24/4]&4)) igObjectPropertyForEnvironmentMapShader_arkRegister();
  return igObjectPropertyForEnvironmentMapShader_meta;
 }
 void *igObjectPropertyForEnvironmentMapShader_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForEnvironmentMapShader_vtableRead(){
  object.unknown00=igObjectPropertyForEnvironmentMapShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForEnvironmentMapShader_registerNow(){
+void igObjectPropertyForEnvironmentMapShader_arkRegister(){
  meta_registerNow((int)igObjectPropertyForEnvironmentMapShader_register);
 }
 void igObjectPropertyForEnvironmentMapShader_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForEnvironmentMapShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForEnvironmentMapShader_getMetaCall,(int)igObjectPropertyForEnvironmentMapShader_className,44,(int)igObjectPropertyForEnvironmentMapShader_vtableRead,(int)fn_8013D5A8,0,(int)lbl_8055F850);
+ meta_registerClass(0,(int)&igObjectPropertyForEnvironmentMapShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForEnvironmentMapShader_getMetaCall,(int)igObjectPropertyForEnvironmentMapShader_className,44,(int)igObjectPropertyForEnvironmentMapShader_vtableRead,(int)fn_8013D5A8,0,(int)igObjectPropertyForEnvironmentMapShader_dependencies);
 }
 void *igObjectPropertyForEnvironmentMapShader_getMetaCall(){return igObjectPropertyForEnvironmentMapShader_getMeta();}
 }

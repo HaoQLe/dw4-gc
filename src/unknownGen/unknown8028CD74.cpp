@@ -35,31 +35,31 @@ extern char igCollisionGroup_vtable[];
 extern char igCollisionGroupList_vtable[];
 extern char lbl_804CCF28[];
 extern char igCollisionInfo_vtable[];
-extern char lbl_80561338[8];
-extern char lbl_80561340[4];
-extern char lbl_80561344[4];
-extern char lbl_80561348[4];
-extern char lbl_8056134C[4];
-extern char lbl_80561350[8];
-extern char lbl_80561358[8];
+extern char igCollisionInfo_dependencies[8];
+extern char igCollisionInfo_fieldTypes[4];
+extern char igCollisionInfo_fieldNames[4];
+extern char igCollisionInfo_fieldStorage[4];
+extern char igCollisionInfo_fieldOffsets[4];
+extern char igCollisionGroupList_dependencies[8];
+extern char igCollisionGroup_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igCollisionInfo_meta;
 extern void *igCollisionGroupList_meta;
 extern void *igCollisionGroup_meta;
 void *igCollisionInfo_getMeta();
 void *igCollisionInfo_vtableRead();
-void igCollisionInfo_registerNow();
+void igCollisionInfo_arkRegister();
 void igCollisionInfo_register();
 void *igCollisionInfo_getMetaCall();
 void igCollisionInfo_fieldInit();
 void *igCollisionGroupList_getMeta();
 void *igCollisionGroupList_vtableRead();
-void igCollisionGroupList_registerNow();
+void igCollisionGroupList_arkRegister();
 void igCollisionGroupList_register();
 void *igCollisionGroupList_getMetaCall();
 void *igCollisionGroup_getMeta();
 void *igCollisionGroup_vtableRead();
-void igCollisionGroup_registerNow();
+void igCollisionGroup_arkRegister();
 void igCollisionGroup_register();
 void *igCollisionGroup_getMetaCall();
 }
@@ -113,11 +113,11 @@ struct UnknownGenObject8028D1F4 : UnknownGenObject8028D1F4_2 {
 };
 extern "C" {
 void *igCollisionInfo_create(void *object){
- igCollisionInfo_registerNow();
+ igCollisionInfo_arkRegister();
  return meta_createInstance(igCollisionInfo_meta,object);
 }
 void *igCollisionInfo_getMeta(){
- if(!igCollisionInfo_meta || !(reinterpret_cast<unsigned int *>(igCollisionInfo_meta)[0x24/4]&4)) igCollisionInfo_registerNow();
+ if(!igCollisionInfo_meta || !(reinterpret_cast<unsigned int *>(igCollisionInfo_meta)[0x24/4]&4)) igCollisionInfo_arkRegister();
  return igCollisionInfo_meta;
 }
 void *igCollisionInfo_vtableRead(){
@@ -129,29 +129,29 @@ void *igCollisionInfo_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollisionInfo_registerNow(){
+void igCollisionInfo_arkRegister(){
  meta_registerNow((int)igCollisionInfo_register);
 }
 void igCollisionInfo_register(){
  fn_8028C93C();
- meta_registerClass(0,(int)&igCollisionInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igCollisionInfo_getMetaCall,(int)igCollisionInfo_className,24,(int)igCollisionInfo_vtableRead,(int)igCollisionInfo_fieldInit,0,(int)lbl_80561338);
+ meta_registerClass(0,(int)&igCollisionInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igCollisionInfo_getMetaCall,(int)igCollisionInfo_className,24,(int)igCollisionInfo_vtableRead,(int)igCollisionInfo_fieldInit,0,(int)igCollisionInfo_dependencies);
 }
 void *igCollisionInfo_getMetaCall(){return igCollisionInfo_getMeta();}
 void igCollisionInfo_fieldInit(){
  void *value0=igCollisionInfo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80561340,1);
+ meta_appendFields(value0,igCollisionInfo_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_8028D794();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_80561344,lbl_80561348,lbl_8056134C,value1);
+ meta_setupFields(value0,igCollisionInfo_fieldNames,igCollisionInfo_fieldStorage,igCollisionInfo_fieldOffsets,value1);
 }
 void *fn_8028D01C(){
  if(!igCollisionGroupList_meta) igCollisionGroupList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igCollisionGroupList_meta;
 }
 void *igCollisionGroupList_getMeta(){
- if(!igCollisionGroupList_meta || !(reinterpret_cast<unsigned int *>(igCollisionGroupList_meta)[0x24/4]&4)) igCollisionGroupList_registerNow();
+ if(!igCollisionGroupList_meta || !(reinterpret_cast<unsigned int *>(igCollisionGroupList_meta)[0x24/4]&4)) igCollisionGroupList_arkRegister();
  return igCollisionGroupList_meta;
 }
 void *igCollisionGroupList_vtableRead(){
@@ -164,16 +164,16 @@ void *igCollisionGroupList_vtableRead(){
  object.unknown00=igCollisionGroupList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollisionGroupList_registerNow(){
+void igCollisionGroupList_arkRegister(){
  meta_registerNow((int)igCollisionGroupList_register);
 }
 void igCollisionGroupList_register(){
  fn_8028C93C();
- meta_registerClass(0,(int)&igCollisionGroupList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCollisionGroupList_getMetaCall,(int)igCollisionGroupList_className,20,(int)igCollisionGroupList_vtableRead,0,0,(int)lbl_80561350);
+ meta_registerClass(0,(int)&igCollisionGroupList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCollisionGroupList_getMetaCall,(int)igCollisionGroupList_className,20,(int)igCollisionGroupList_vtableRead,0,0,(int)igCollisionGroupList_dependencies);
 }
 void *igCollisionGroupList_getMetaCall(){return igCollisionGroupList_getMeta();}
 void *igCollisionGroup_getMeta(){
- if(!igCollisionGroup_meta || !(reinterpret_cast<unsigned int *>(igCollisionGroup_meta)[0x24/4]&4)) igCollisionGroup_registerNow();
+ if(!igCollisionGroup_meta || !(reinterpret_cast<unsigned int *>(igCollisionGroup_meta)[0x24/4]&4)) igCollisionGroup_arkRegister();
  return igCollisionGroup_meta;
 }
 void *igCollisionGroup_vtableRead(){
@@ -189,12 +189,12 @@ void *igCollisionGroup_vtableRead(){
  object.unknown20.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollisionGroup_registerNow(){
+void igCollisionGroup_arkRegister(){
  meta_registerNow((int)igCollisionGroup_register);
 }
 void igCollisionGroup_register(){
  fn_8028C93C();
- meta_registerClass(0,(int)&igCollisionGroup_meta,(int)igGroup_register,(int)fn_8011148C,(int)igCollisionGroup_getMetaCall,(int)igCollisionGroup_className,96,(int)igCollisionGroup_vtableRead,(int)igCollisionGroup_fieldInit,0,(int)lbl_80561358);
+ meta_registerClass(0,(int)&igCollisionGroup_meta,(int)igGroup_register,(int)fn_8011148C,(int)igCollisionGroup_getMetaCall,(int)igCollisionGroup_className,96,(int)igCollisionGroup_vtableRead,(int)igCollisionGroup_fieldInit,0,(int)igCollisionGroup_dependencies);
 }
 void *igCollisionGroup_getMetaCall(){return igCollisionGroup_getMeta();}
 }

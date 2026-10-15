@@ -29,10 +29,10 @@ extern char igEnbayaAnimationSource_className[];
 extern char igEnbayaAnimationState_vtable[];
 extern char igEnbayaAnimationSource_vtable[];
 extern char igAnimationState_vtable[];
-extern char lbl_8056069C[8];
-extern char lbl_805606A4[8];
-extern char lbl_805606AC[8];
-extern char lbl_805606B4[8];
+extern char igEnbayaAnimationState_fieldTypes[8];
+extern char igEnbayaAnimationState_fieldNames[8];
+extern char igEnbayaAnimationState_fieldStorage[8];
+extern char igEnbayaAnimationState_fieldOffsets[8];
 extern void *lbl_805621F4;
 extern void *igEnbayaAnimationState_meta;
 extern void *lbl_80564FA0;
@@ -40,7 +40,7 @@ extern void *igEnbayaAnimationSource_meta;
 extern void *igAnimationState_meta;
 void *igEnbayaAnimationState_getMeta();
 void *igEnbayaAnimationState_vtableRead();
-void igEnbayaAnimationState_registerNow();
+void igEnbayaAnimationState_arkRegister();
 void igEnbayaAnimationState_register();
 void *igEnbayaAnimationState_getMetaCall();
 void *igEnbayaAnimationState_parentMeta();
@@ -49,7 +49,7 @@ void *fn_801C1D68();
 void *fn_801C1D88();
 void *igEnbayaAnimationSource_getMeta();
 void *igEnbayaAnimationSource_vtableRead();
-void igEnbayaAnimationSource_registerNow();
+void igEnbayaAnimationSource_arkRegister();
 void igEnbayaAnimationSource_register();
 void *igEnbayaAnimationSource_getMetaCall();
 }
@@ -77,7 +77,7 @@ struct UnknownGenObject801C1EA4_0 {
 };
 extern "C" {
 void *igEnbayaAnimationState_getMeta(){
- if(!igEnbayaAnimationState_meta || !(reinterpret_cast<unsigned int *>(igEnbayaAnimationState_meta)[0x24/4]&4)) igEnbayaAnimationState_registerNow();
+ if(!igEnbayaAnimationState_meta || !(reinterpret_cast<unsigned int *>(igEnbayaAnimationState_meta)[0x24/4]&4)) igEnbayaAnimationState_arkRegister();
  return igEnbayaAnimationState_meta;
 }
 void *igEnbayaAnimationState_vtableRead(){
@@ -89,7 +89,7 @@ void *igEnbayaAnimationState_vtableRead(){
  object.unknown00=igEnbayaAnimationState_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igEnbayaAnimationState_registerNow(){
+void igEnbayaAnimationState_arkRegister(){
  meta_registerNow((int)igEnbayaAnimationState_register);
 }
 void igEnbayaAnimationState_register(){
@@ -101,12 +101,12 @@ void *igEnbayaAnimationState_parentMeta(){return igAnimationState_meta;}
 void igEnbayaAnimationState_fieldInit(){
  void *value0=igEnbayaAnimationState_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8056069C,2);
+ meta_appendFields(value0,igEnbayaAnimationState_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8003EC68(value3,1);
- meta_setupFields(value0,lbl_805606A4,lbl_805606AC,lbl_805606B4,value1);
+ meta_setupFields(value0,igEnbayaAnimationState_fieldNames,igEnbayaAnimationState_fieldStorage,igEnbayaAnimationState_fieldOffsets,value1);
  fn_80065D94((void *)fn_801C1D88);
 }
 void *fn_801C1D68(){return fn_801E57B8();}
@@ -117,7 +117,7 @@ void *fn_801C1DA8(){
  return lbl_80564FA0;
 }
 void *igEnbayaAnimationSource_create(void *object){
- igEnbayaAnimationSource_registerNow();
+ igEnbayaAnimationSource_arkRegister();
  return meta_createInstance(igEnbayaAnimationSource_meta,object);
 }
 void *fn_801C1E2C(){
@@ -125,7 +125,7 @@ void *fn_801C1E2C(){
  return igEnbayaAnimationSource_meta;
 }
 void *igEnbayaAnimationSource_getMeta(){
- if(!igEnbayaAnimationSource_meta || !(reinterpret_cast<unsigned int *>(igEnbayaAnimationSource_meta)[0x24/4]&4)) igEnbayaAnimationSource_registerNow();
+ if(!igEnbayaAnimationSource_meta || !(reinterpret_cast<unsigned int *>(igEnbayaAnimationSource_meta)[0x24/4]&4)) igEnbayaAnimationSource_arkRegister();
  return igEnbayaAnimationSource_meta;
 }
 void *igEnbayaAnimationSource_vtableRead(){
@@ -134,7 +134,7 @@ void *igEnbayaAnimationSource_vtableRead(){
  object.unknown00=igEnbayaAnimationSource_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igEnbayaAnimationSource_registerNow(){
+void igEnbayaAnimationSource_arkRegister(){
  meta_registerNow((int)igEnbayaAnimationSource_register);
 }
 void igEnbayaAnimationSource_register(){

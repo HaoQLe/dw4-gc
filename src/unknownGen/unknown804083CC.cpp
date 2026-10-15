@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igNormalsRenderer_registerNow();
+void igNormalsRenderer_arkRegister();
 extern void *igNormalsRenderer_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *igNormalsRenderer_metaObject(){
  return igNormalsRenderer_meta;
 }
 void *igNormalsRenderer_getMeta(){
- if(!igNormalsRenderer_meta || !(reinterpret_cast<unsigned int *>(igNormalsRenderer_meta)[0x24/4]&4)) igNormalsRenderer_registerNow();
+ if(!igNormalsRenderer_meta || !(reinterpret_cast<unsigned int *>(igNormalsRenderer_meta)[0x24/4]&4)) igNormalsRenderer_arkRegister();
  return igNormalsRenderer_meta;
 }
 }

@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beTextureCtrlWork_registerNow();
+void beTextureCtrlWork_arkRegister();
 extern void *beTextureCtrlWork_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beTextureCtrlWork_create(void *object){
- beTextureCtrlWork_registerNow();
+ beTextureCtrlWork_arkRegister();
  return meta_createInstance(beTextureCtrlWork_meta,object);
 }
 void *beTextureCtrlWork_metaObject(){
@@ -19,7 +19,7 @@ void *beTextureCtrlWork_metaObject(){
  return beTextureCtrlWork_meta;
 }
 void *beTextureCtrlWork_getMeta(){
- if(!beTextureCtrlWork_meta || !(reinterpret_cast<unsigned int *>(beTextureCtrlWork_meta)[0x24/4]&4)) beTextureCtrlWork_registerNow();
+ if(!beTextureCtrlWork_meta || !(reinterpret_cast<unsigned int *>(beTextureCtrlWork_meta)[0x24/4]&4)) beTextureCtrlWork_arkRegister();
  return beTextureCtrlWork_meta;
 }
 }

@@ -14,11 +14,11 @@ extern char igNamedObject_vtable[];
 extern char igGamecubeVertexStream_className[];
 extern char igGamecubeVertexStream_vtable[];
 extern char igVertexStream_vtable[];
-extern char lbl_8055EDDC[8];
+extern char igGamecubeVertexStream_dependencies[8];
 extern void *igVertexStream_meta;
 extern void *igGamecubeVertexStream_meta;
 void *igGamecubeVertexStream_vtableRead();
-void igGamecubeVertexStream_registerNow();
+void igGamecubeVertexStream_arkRegister();
 void igGamecubeVertexStream_register();
 void *igGamecubeVertexStream_parentMeta();
 }
@@ -46,7 +46,7 @@ struct UnknownGenObject800D726C : UnknownGenObject800D726C_1 {
 };
 extern "C" {
 void *igGamecubeVertexStream_getMeta(){
- if(!igGamecubeVertexStream_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexStream_meta)[0x24/4]&4)) igGamecubeVertexStream_registerNow();
+ if(!igGamecubeVertexStream_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexStream_meta)[0x24/4]&4)) igGamecubeVertexStream_arkRegister();
  return igGamecubeVertexStream_meta;
 }
 void *igGamecubeVertexStream_vtableRead(){
@@ -60,12 +60,12 @@ void *igGamecubeVertexStream_vtableRead(){
  object.unknown64.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeVertexStream_registerNow(){
+void igGamecubeVertexStream_arkRegister(){
  meta_registerNow((int)igGamecubeVertexStream_register);
 }
 void igGamecubeVertexStream_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igGamecubeVertexStream_meta,(int)igVertexStream_register,(int)igGamecubeVertexStream_parentMeta,(int)igGamecubeVertexStream_getMetaCall,(int)igGamecubeVertexStream_className,112,(int)igGamecubeVertexStream_vtableRead,(int)fn_800D747C,(int)fn_800D75B4,(int)lbl_8055EDDC);
+ meta_registerClass(0,(int)&igGamecubeVertexStream_meta,(int)igVertexStream_register,(int)igGamecubeVertexStream_parentMeta,(int)igGamecubeVertexStream_getMetaCall,(int)igGamecubeVertexStream_className,112,(int)igGamecubeVertexStream_vtableRead,(int)fn_800D747C,(int)fn_800D75B4,(int)igGamecubeVertexStream_dependencies);
 }
 void *igGamecubeVertexStream_parentMeta(){return igVertexStream_meta;}
 }

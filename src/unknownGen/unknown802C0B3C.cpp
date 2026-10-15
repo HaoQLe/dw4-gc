@@ -11,14 +11,14 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_8011148C();
 void fn_802B1AC8();
-void bePoint01Info_registerNow();
+void bePoint01Info_arkRegister();
 void *fn_80313004();
 void igGroup_register();
 extern char beResetNode_className[];
-extern char lbl_804CFFC4[];
-extern char lbl_804CFFCC[];
-extern char lbl_804CFFD4[];
-extern char lbl_804CFFDC[];
+extern char beResetNode_fieldTypes[];
+extern char beResetNode_fieldNames[];
+extern char beResetNode_fieldStorage[];
+extern char beResetNode_fieldOffsets[];
 extern void *beResetNode_meta;
 extern void *bePoint01Info_meta;
 void beResetNode_register();
@@ -27,7 +27,7 @@ void beResetNode_fieldInit();
 void *fn_802C0C80();
 }
 extern "C" {
-void beResetNode_registerNow(){
+void beResetNode_arkRegister(){
  meta_registerNow((int)beResetNode_register);
 }
 void beResetNode_register(){
@@ -38,12 +38,12 @@ void *beResetNode_getMetaCall(){return beResetNode_getMeta();}
 void beResetNode_fieldInit(){
  void *meta=beResetNode_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804CFFC4,0x2);
- meta_setupFields(meta,lbl_804CFFCC,lbl_804CFFD4,lbl_804CFFDC,field);
+ meta_appendFields(meta,beResetNode_fieldTypes,0x2);
+ meta_setupFields(meta,beResetNode_fieldNames,beResetNode_fieldStorage,beResetNode_fieldOffsets,field);
 }
 void *fn_802C0C80(){return fn_80313004();}
 void *bePoint01Info_getMeta(){
- if(!bePoint01Info_meta || !(reinterpret_cast<unsigned int *>(bePoint01Info_meta)[0x24/4]&4)) bePoint01Info_registerNow();
+ if(!bePoint01Info_meta || !(reinterpret_cast<unsigned int *>(bePoint01Info_meta)[0x24/4]&4)) bePoint01Info_arkRegister();
  return bePoint01Info_meta;
 }
 }

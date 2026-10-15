@@ -19,35 +19,35 @@ extern char igParameterNonNull_vtable[];
 extern char igParameterMatch_vtable[];
 extern char igParameterExist_vtable[];
 extern char lbl_804AA298[];
-extern char lbl_8055F740[4];
-extern char lbl_8055F744[4];
-extern char lbl_8055F748[4];
-extern char lbl_8055F74C[4];
-extern char lbl_8055F750[8];
-extern char lbl_8055F758[8];
-extern char lbl_8055F760[8];
-extern char lbl_8055F768[8];
-extern char lbl_8055F770[8];
+extern char igParameterNonNull_fieldTypes[4];
+extern char igParameterNonNull_fieldNames[4];
+extern char igParameterNonNull_fieldStorage[4];
+extern char igParameterNonNull_fieldOffsets[4];
+extern char igParameterMatch_fieldTypes[8];
+extern char igParameterMatch_fieldNames[8];
+extern char igParameterMatch_fieldStorage[8];
+extern char igParameterMatch_fieldOffsets[8];
+extern char igParameterExist_dependencies[8];
 extern void *igParameterSetConstraint_meta;
 extern void *igParameterNonNull_meta;
 extern void *igParameterMatch_meta;
 extern void *igParameterExist_meta;
 void *igParameterNonNull_getMeta();
 void *igParameterNonNull_vtableRead();
-void igParameterNonNull_registerNow();
+void igParameterNonNull_arkRegister();
 void igParameterNonNull_register();
 void *igParameterNonNull_getMetaCall();
 void *fn_80139794();
 void igParameterNonNull_fieldInit();
 void *igParameterMatch_getMeta();
 void *igParameterMatch_vtableRead();
-void igParameterMatch_registerNow();
+void igParameterMatch_arkRegister();
 void igParameterMatch_register();
 void *igParameterMatch_getMetaCall();
 void igParameterMatch_fieldInit();
 void *igParameterExist_getMeta();
 void *igParameterExist_vtableRead();
-void igParameterExist_registerNow();
+void igParameterExist_arkRegister();
 void igParameterExist_register();
 void *igParameterExist_getMetaCall();
 }
@@ -99,7 +99,7 @@ struct UnknownGenObject80139B24 : UnknownGenObject80139B24_0 {
 };
 extern "C" {
 void *igParameterNonNull_getMeta(){
- if(!igParameterNonNull_meta || !(reinterpret_cast<unsigned int *>(igParameterNonNull_meta)[0x24/4]&4)) igParameterNonNull_registerNow();
+ if(!igParameterNonNull_meta || !(reinterpret_cast<unsigned int *>(igParameterNonNull_meta)[0x24/4]&4)) igParameterNonNull_arkRegister();
  return igParameterNonNull_meta;
 }
 void *igParameterNonNull_vtableRead(){
@@ -110,7 +110,7 @@ void *igParameterNonNull_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParameterNonNull_registerNow(){
+void igParameterNonNull_arkRegister(){
  meta_registerNow((int)igParameterNonNull_register);
 }
 void igParameterNonNull_register(){
@@ -122,15 +122,15 @@ void *fn_80139794(){return igParameterSetConstraint_meta;}
 void igParameterNonNull_fieldInit(){
  void *value0=igParameterNonNull_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F740,1);
- meta_setupFields(value0,lbl_8055F744,lbl_8055F748,lbl_8055F74C,value1);
+ meta_appendFields(value0,igParameterNonNull_fieldTypes,1);
+ meta_setupFields(value0,igParameterNonNull_fieldNames,igParameterNonNull_fieldStorage,igParameterNonNull_fieldOffsets,value1);
 }
 void *igParameterMatch_create(void *object){
- igParameterMatch_registerNow();
+ igParameterMatch_arkRegister();
  return meta_createInstance(igParameterMatch_meta,object);
 }
 void *igParameterMatch_getMeta(){
- if(!igParameterMatch_meta || !(reinterpret_cast<unsigned int *>(igParameterMatch_meta)[0x24/4]&4)) igParameterMatch_registerNow();
+ if(!igParameterMatch_meta || !(reinterpret_cast<unsigned int *>(igParameterMatch_meta)[0x24/4]&4)) igParameterMatch_arkRegister();
  return igParameterMatch_meta;
 }
 void *igParameterMatch_vtableRead(){
@@ -142,7 +142,7 @@ void *igParameterMatch_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParameterMatch_registerNow(){
+void igParameterMatch_arkRegister(){
  meta_registerNow((int)igParameterMatch_register);
 }
 void igParameterMatch_register(){
@@ -153,15 +153,15 @@ void *igParameterMatch_getMetaCall(){return igParameterMatch_getMeta();}
 void igParameterMatch_fieldInit(){
  void *value0=igParameterMatch_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F750,2);
- meta_setupFields(value0,lbl_8055F758,lbl_8055F760,lbl_8055F768,value1);
+ meta_appendFields(value0,igParameterMatch_fieldTypes,2);
+ meta_setupFields(value0,igParameterMatch_fieldNames,igParameterMatch_fieldStorage,igParameterMatch_fieldOffsets,value1);
 }
 void *igParameterExist_create(void *object){
- igParameterExist_registerNow();
+ igParameterExist_arkRegister();
  return meta_createInstance(igParameterExist_meta,object);
 }
 void *igParameterExist_getMeta(){
- if(!igParameterExist_meta || !(reinterpret_cast<unsigned int *>(igParameterExist_meta)[0x24/4]&4)) igParameterExist_registerNow();
+ if(!igParameterExist_meta || !(reinterpret_cast<unsigned int *>(igParameterExist_meta)[0x24/4]&4)) igParameterExist_arkRegister();
  return igParameterExist_meta;
 }
 void *igParameterExist_vtableRead(){
@@ -174,12 +174,12 @@ void *igParameterExist_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParameterExist_registerNow(){
+void igParameterExist_arkRegister(){
  meta_registerNow((int)igParameterExist_register);
 }
 void igParameterExist_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igParameterExist_meta,(int)igParameterSetConstraint_register,(int)fn_80139794,(int)igParameterExist_getMetaCall,(int)igParameterExist_className,24,(int)igParameterExist_vtableRead,(int)igParameterExist_fieldInit,0,(int)lbl_8055F770);
+ meta_registerClass(0,(int)&igParameterExist_meta,(int)igParameterSetConstraint_register,(int)fn_80139794,(int)igParameterExist_getMetaCall,(int)igParameterExist_className,24,(int)igParameterExist_vtableRead,(int)igParameterExist_fieldInit,0,(int)igParameterExist_dependencies);
 }
 void *igParameterExist_getMetaCall(){return igParameterExist_getMeta();}
 }

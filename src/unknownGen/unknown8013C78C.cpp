@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F828[8];
+extern char igObjectPropertyForOverrideAttrSet_dependencies[8];
 extern void *igObjectPropertyForOverrideAttrSet_meta;
 void *igObjectPropertyForOverrideAttrSet_getMeta();
 void *igObjectPropertyForOverrideAttrSet_vtableRead();
-void igObjectPropertyForOverrideAttrSet_registerNow();
+void igObjectPropertyForOverrideAttrSet_arkRegister();
 void igObjectPropertyForOverrideAttrSet_register();
 void *igObjectPropertyForOverrideAttrSet_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013C7C8 : UnknownGenObject8013C7C8_1 {
 };
 extern "C" {
 void *igObjectPropertyForOverrideAttrSet_getMeta(){
- if(!igObjectPropertyForOverrideAttrSet_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForOverrideAttrSet_meta)[0x24/4]&4)) igObjectPropertyForOverrideAttrSet_registerNow();
+ if(!igObjectPropertyForOverrideAttrSet_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForOverrideAttrSet_meta)[0x24/4]&4)) igObjectPropertyForOverrideAttrSet_arkRegister();
  return igObjectPropertyForOverrideAttrSet_meta;
 }
 void *igObjectPropertyForOverrideAttrSet_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForOverrideAttrSet_vtableRead(){
  object.unknown00=igObjectPropertyForOverrideAttrSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForOverrideAttrSet_registerNow(){
+void igObjectPropertyForOverrideAttrSet_arkRegister(){
  meta_registerNow((int)igObjectPropertyForOverrideAttrSet_register);
 }
 void igObjectPropertyForOverrideAttrSet_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForOverrideAttrSet_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForOverrideAttrSet_getMetaCall,(int)igObjectPropertyForOverrideAttrSet_className,44,(int)igObjectPropertyForOverrideAttrSet_vtableRead,(int)fn_8013C950,0,(int)lbl_8055F828);
+ meta_registerClass(0,(int)&igObjectPropertyForOverrideAttrSet_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForOverrideAttrSet_getMetaCall,(int)igObjectPropertyForOverrideAttrSet_className,44,(int)igObjectPropertyForOverrideAttrSet_vtableRead,(int)fn_8013C950,0,(int)igObjectPropertyForOverrideAttrSet_dependencies);
 }
 void *igObjectPropertyForOverrideAttrSet_getMetaCall(){return igObjectPropertyForOverrideAttrSet_getMeta();}
 }

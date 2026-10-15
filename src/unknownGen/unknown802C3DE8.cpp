@@ -13,7 +13,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void beNumberCtrl_registerNow();
+void beNumberCtrl_arkRegister();
 extern char lbl_8041CD10[];
 extern char beNumberCtrlInfo_className[];
 extern char lbl_804D0450[];
@@ -26,7 +26,7 @@ void beNumberCtrlInfo_register();
 void *beNumberCtrlInfo_getMetaCall();
 }
 extern "C" {
-void beNumberCtrlInfo_registerNow(){
+void beNumberCtrlInfo_arkRegister(){
  meta_registerNow((int)beNumberCtrlInfo_register);
 }
 void beNumberCtrlInfo_register(){
@@ -39,7 +39,7 @@ void *fn_802C3E9C(){
  return lbl_80534B8C;
 }
 void *beNumberCtrl_create(void *object){
- beNumberCtrl_registerNow();
+ beNumberCtrl_arkRegister();
  return meta_createInstance(beNumberCtrl_meta,object);
 }
 void *beNumberCtrl_metaObject(){
@@ -47,7 +47,7 @@ void *beNumberCtrl_metaObject(){
  return beNumberCtrl_meta;
 }
 void *beNumberCtrl_getMeta(){
- if(!beNumberCtrl_meta || !(reinterpret_cast<unsigned int *>(beNumberCtrl_meta)[0x24/4]&4)) beNumberCtrl_registerNow();
+ if(!beNumberCtrl_meta || !(reinterpret_cast<unsigned int *>(beNumberCtrl_meta)[0x24/4]&4)) beNumberCtrl_arkRegister();
  return beNumberCtrl_meta;
 }
 }

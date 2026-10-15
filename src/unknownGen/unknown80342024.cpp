@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beNDMWLoadCtrl2_registerNow();
+void beNDMWLoadCtrl2_arkRegister();
 extern char lbl_80453438[];
 extern char lbl_804E3CA8[];
 extern char lbl_804E3CB8[];
@@ -20,7 +20,7 @@ void *fn_80342024(){
  return lbl_80536714;
 }
 void *beNDMWLoadCtrl2_create(void *object){
- beNDMWLoadCtrl2_registerNow();
+ beNDMWLoadCtrl2_arkRegister();
  return meta_createInstance(beNDMWLoadCtrl2_meta,object);
 }
 void *beNDMWLoadCtrl2_metaObject(){
@@ -28,7 +28,7 @@ void *beNDMWLoadCtrl2_metaObject(){
  return beNDMWLoadCtrl2_meta;
 }
 void *beNDMWLoadCtrl2_getMeta(){
- if(!beNDMWLoadCtrl2_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadCtrl2_meta)[0x24/4]&4)) beNDMWLoadCtrl2_registerNow();
+ if(!beNDMWLoadCtrl2_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadCtrl2_meta)[0x24/4]&4)) beNDMWLoadCtrl2_arkRegister();
  return beNDMWLoadCtrl2_meta;
 }
 }

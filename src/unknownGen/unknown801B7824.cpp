@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igMultiTextureShader_registerNow();
+void igMultiTextureShader_arkRegister();
 extern void *lbl_805621F4;
 extern void *igMultiTextureShader_meta;
 }
@@ -14,7 +14,7 @@ void *fn_801B7824(){
  return igMultiTextureShader_meta;
 }
 void *igMultiTextureShader_getMeta(){
- if(!igMultiTextureShader_meta || !(reinterpret_cast<unsigned int *>(igMultiTextureShader_meta)[0x24/4]&4)) igMultiTextureShader_registerNow();
+ if(!igMultiTextureShader_meta || !(reinterpret_cast<unsigned int *>(igMultiTextureShader_meta)[0x24/4]&4)) igMultiTextureShader_arkRegister();
  return igMultiTextureShader_meta;
 }
 }

@@ -10,17 +10,17 @@ void *meta_fieldCount(void *);
 void *beBaseInfoManager_metaObject();
 void *beBaseInfo_metaObject();
 void *beBaseInfoDataList_metaObject();
-extern char lbl_804D2CD0[];
-extern char lbl_804D2CF4[];
-extern char lbl_804D2D18[];
-extern char lbl_804D2D3C[];
+extern char beBaseInfoRam_fieldTypes[];
+extern char beBaseInfoRam_fieldNames[];
+extern char beBaseInfoRam_fieldStorage[];
+extern char beBaseInfoRam_fieldOffsets[];
 extern void *beBaseInfoRam_meta;
 }
 extern "C" {
 void beBaseInfoRam_fieldInit(){
  void *value0=beBaseInfoRam_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D2CD0,9);
+ meta_appendFields(value0,beBaseInfoRam_fieldTypes,9);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value3=beBaseInfo_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -36,7 +36,7 @@ void beBaseInfoRam_fieldInit(){
  void *value7=meta_field(value0,(reinterpret_cast<char *>(value1)+8));
  void *value8=beBaseInfoDataList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value7)+56)=value8;
- meta_setupFields(value0,lbl_804D2CF4,lbl_804D2D18,lbl_804D2D3C,value1);
+ meta_setupFields(value0,beBaseInfoRam_fieldNames,beBaseInfoRam_fieldStorage,beBaseInfoRam_fieldOffsets,value1);
 }
 }
 #pragma pop

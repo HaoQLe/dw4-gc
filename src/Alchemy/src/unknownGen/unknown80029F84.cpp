@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *meta_newMetaObject(void *);
-void igMetaObject_registerNow();
+void igMetaObject_arkRegister();
 void *fn_800607F4(void *);
 extern void *igMetaObject_meta;
 extern void *lbl_805621F4;
@@ -14,7 +14,7 @@ void *fn_80029F84(){
  return igMetaObject_meta;
 }
 void *igMetaObject_getMeta(){
- if(!igMetaObject_meta || !(reinterpret_cast<unsigned int *>(igMetaObject_meta)[0x24/4]&4)) igMetaObject_registerNow();
+ if(!igMetaObject_meta || !(reinterpret_cast<unsigned int *>(igMetaObject_meta)[0x24/4]&4)) igMetaObject_arkRegister();
  return igMetaObject_meta;
 }
 }

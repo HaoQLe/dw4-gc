@@ -8,10 +8,10 @@ void *meta_field(void *,void *);
 void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
-extern char lbl_8055D3A4[8];
-extern char lbl_8055D3AC[8];
-extern char lbl_8055D3B4[8];
-extern char lbl_8055D3BC[8];
+extern char __internalNonRefCountedObjectList_fieldTypes[8];
+extern char __internalNonRefCountedObjectList_fieldNames[8];
+extern char __internalNonRefCountedObjectList_fieldStorage[8];
+extern char __internalNonRefCountedObjectList_fieldOffsets[8];
 extern void *__internalNonRefCountedObjectList_meta;
 }
 extern "C" {
@@ -19,7 +19,7 @@ void *__internalNonRefCountedObjectList_getMetaCall(){return __internalNonRefCou
 void __internalNonRefCountedObjectList_fieldInit(){
  void *value0=__internalNonRefCountedObjectList_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055D3A4,2);
+ meta_appendFields(value0,__internalNonRefCountedObjectList_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80028BFC();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+60)=value3;
@@ -29,7 +29,7 @@ void __internalNonRefCountedObjectList_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+64)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+65)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+66)=0;
- meta_setupFields(value0,lbl_8055D3AC,lbl_8055D3B4,lbl_8055D3BC,value1);
+ meta_setupFields(value0,__internalNonRefCountedObjectList_fieldNames,__internalNonRefCountedObjectList_fieldStorage,__internalNonRefCountedObjectList_fieldOffsets,value1);
 }
 }
 #pragma pop

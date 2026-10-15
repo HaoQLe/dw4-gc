@@ -18,7 +18,7 @@ extern char lbl_80474900[];
 extern char igImageHistogram_RGBA_className[];
 extern char igImageHistogram_RGB_className[];
 extern char igImageHistogram_LA_className[];
-extern char lbl_8049CDC0[];
+extern char igImageHistogramBase_dependencies[];
 extern char igImageHistogramBase_className[];
 extern char igImageHistogram_RGBA_vtable[];
 extern char igImageHistogram_RGB_vtable[];
@@ -31,22 +31,22 @@ extern void *igImageHistogram_LA_meta;
 extern void *igImageHistogramBase_meta;
 void *igImageHistogram_RGBA_getMeta();
 void *igImageHistogram_RGBA_vtableRead();
-void igImageHistogram_RGBA_registerNow();
+void igImageHistogram_RGBA_arkRegister();
 void igImageHistogram_RGBA_register();
 void *igImageHistogram_RGBA_getMetaCall();
 void *fn_801376D0();
 void *igImageHistogram_RGB_getMeta();
 void *igImageHistogram_RGB_vtableRead();
-void igImageHistogram_RGB_registerNow();
+void igImageHistogram_RGB_arkRegister();
 void igImageHistogram_RGB_register();
 void *igImageHistogram_RGB_getMetaCall();
 void *igImageHistogram_LA_getMeta();
 void *igImageHistogram_LA_vtableRead();
-void igImageHistogram_LA_registerNow();
+void igImageHistogram_LA_arkRegister();
 void igImageHistogram_LA_register();
 void *igImageHistogram_LA_getMetaCall();
 void *igImageHistogramBase_getMeta();
-void igImageHistogramBase_registerNow();
+void igImageHistogramBase_arkRegister();
 void igImageHistogramBase_register();
 void *igImageHistogramBase_getMetaCall();
 }
@@ -103,11 +103,11 @@ struct UnknownGenObject80137A14 : UnknownGenObject80137A14_0 {
 };
 extern "C" {
 void *igImageHistogram_RGBA_create(void *object){
- igImageHistogram_RGBA_registerNow();
+ igImageHistogram_RGBA_arkRegister();
  return meta_createInstance(igImageHistogram_RGBA_meta,object);
 }
 void *igImageHistogram_RGBA_getMeta(){
- if(!igImageHistogram_RGBA_meta || !(reinterpret_cast<unsigned int *>(igImageHistogram_RGBA_meta)[0x24/4]&4)) igImageHistogram_RGBA_registerNow();
+ if(!igImageHistogram_RGBA_meta || !(reinterpret_cast<unsigned int *>(igImageHistogram_RGBA_meta)[0x24/4]&4)) igImageHistogram_RGBA_arkRegister();
  return igImageHistogram_RGBA_meta;
 }
 void *igImageHistogram_RGBA_vtableRead(){
@@ -124,7 +124,7 @@ void *igImageHistogram_RGBA_vtableRead(){
  object.unknown00=igImageHistogram_RGBA_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igImageHistogram_RGBA_registerNow(){
+void igImageHistogram_RGBA_arkRegister(){
  meta_registerNow((int)igImageHistogram_RGBA_register);
 }
 void igImageHistogram_RGBA_register(){
@@ -134,11 +134,11 @@ void igImageHistogram_RGBA_register(){
 void *igImageHistogram_RGBA_getMetaCall(){return igImageHistogram_RGBA_getMeta();}
 void *fn_801376D0(){return igImageHistogramBase_meta;}
 void *igImageHistogram_RGB_create(void *object){
- igImageHistogram_RGB_registerNow();
+ igImageHistogram_RGB_arkRegister();
  return meta_createInstance(igImageHistogram_RGB_meta,object);
 }
 void *igImageHistogram_RGB_getMeta(){
- if(!igImageHistogram_RGB_meta || !(reinterpret_cast<unsigned int *>(igImageHistogram_RGB_meta)[0x24/4]&4)) igImageHistogram_RGB_registerNow();
+ if(!igImageHistogram_RGB_meta || !(reinterpret_cast<unsigned int *>(igImageHistogram_RGB_meta)[0x24/4]&4)) igImageHistogram_RGB_arkRegister();
  return igImageHistogram_RGB_meta;
 }
 void *igImageHistogram_RGB_vtableRead(){
@@ -155,7 +155,7 @@ void *igImageHistogram_RGB_vtableRead(){
  object.unknown00=igImageHistogram_RGB_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igImageHistogram_RGB_registerNow(){
+void igImageHistogram_RGB_arkRegister(){
  meta_registerNow((int)igImageHistogram_RGB_register);
 }
 void igImageHistogram_RGB_register(){
@@ -164,11 +164,11 @@ void igImageHistogram_RGB_register(){
 }
 void *igImageHistogram_RGB_getMetaCall(){return igImageHistogram_RGB_getMeta();}
 void *igImageHistogram_LA_create(void *object){
- igImageHistogram_LA_registerNow();
+ igImageHistogram_LA_arkRegister();
  return meta_createInstance(igImageHistogram_LA_meta,object);
 }
 void *igImageHistogram_LA_getMeta(){
- if(!igImageHistogram_LA_meta || !(reinterpret_cast<unsigned int *>(igImageHistogram_LA_meta)[0x24/4]&4)) igImageHistogram_LA_registerNow();
+ if(!igImageHistogram_LA_meta || !(reinterpret_cast<unsigned int *>(igImageHistogram_LA_meta)[0x24/4]&4)) igImageHistogram_LA_arkRegister();
  return igImageHistogram_LA_meta;
 }
 void *igImageHistogram_LA_vtableRead(){
@@ -185,7 +185,7 @@ void *igImageHistogram_LA_vtableRead(){
  object.unknown00=igImageHistogram_LA_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igImageHistogram_LA_registerNow(){
+void igImageHistogram_LA_arkRegister(){
  meta_registerNow((int)igImageHistogram_LA_register);
 }
 void igImageHistogram_LA_register(){
@@ -198,15 +198,15 @@ void *fn_80137C68(){
  return igImageHistogramBase_meta;
 }
 void *igImageHistogramBase_getMeta(){
- if(!igImageHistogramBase_meta || !(reinterpret_cast<unsigned int *>(igImageHistogramBase_meta)[0x24/4]&4)) igImageHistogramBase_registerNow();
+ if(!igImageHistogramBase_meta || !(reinterpret_cast<unsigned int *>(igImageHistogramBase_meta)[0x24/4]&4)) igImageHistogramBase_arkRegister();
  return igImageHistogramBase_meta;
 }
-void igImageHistogramBase_registerNow(){
+void igImageHistogramBase_arkRegister(){
  meta_registerNow((int)igImageHistogramBase_register);
 }
 void igImageHistogramBase_register(){
  fn_8012FC48();
- meta_registerClass(1,(int)&igImageHistogramBase_meta,(int)igUnsignedIntList_register,(int)fn_80035C70,(int)igImageHistogramBase_getMetaCall,(int)igImageHistogramBase_className,80,0,(int)igImageHistogramBase_fieldInit,0,(int)lbl_8049CDC0);
+ meta_registerClass(1,(int)&igImageHistogramBase_meta,(int)igUnsignedIntList_register,(int)fn_80035C70,(int)igImageHistogramBase_getMetaCall,(int)igImageHistogramBase_className,80,0,(int)igImageHistogramBase_fieldInit,0,(int)igImageHistogramBase_dependencies);
 }
 void *igImageHistogramBase_getMetaCall(){return igImageHistogramBase_getMeta();}
 }

@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F830[8];
+extern char igObjectPropertyForPlanarShadowShader_dependencies[8];
 extern void *igObjectPropertyForPlanarShadowShader_meta;
 void *igObjectPropertyForPlanarShadowShader_getMeta();
 void *igObjectPropertyForPlanarShadowShader_vtableRead();
-void igObjectPropertyForPlanarShadowShader_registerNow();
+void igObjectPropertyForPlanarShadowShader_arkRegister();
 void igObjectPropertyForPlanarShadowShader_register();
 void *igObjectPropertyForPlanarShadowShader_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013CA40 : UnknownGenObject8013CA40_1 {
 };
 extern "C" {
 void *igObjectPropertyForPlanarShadowShader_getMeta(){
- if(!igObjectPropertyForPlanarShadowShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForPlanarShadowShader_meta)[0x24/4]&4)) igObjectPropertyForPlanarShadowShader_registerNow();
+ if(!igObjectPropertyForPlanarShadowShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForPlanarShadowShader_meta)[0x24/4]&4)) igObjectPropertyForPlanarShadowShader_arkRegister();
  return igObjectPropertyForPlanarShadowShader_meta;
 }
 void *igObjectPropertyForPlanarShadowShader_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForPlanarShadowShader_vtableRead(){
  object.unknown00=igObjectPropertyForPlanarShadowShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForPlanarShadowShader_registerNow(){
+void igObjectPropertyForPlanarShadowShader_arkRegister(){
  meta_registerNow((int)igObjectPropertyForPlanarShadowShader_register);
 }
 void igObjectPropertyForPlanarShadowShader_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForPlanarShadowShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForPlanarShadowShader_getMetaCall,(int)igObjectPropertyForPlanarShadowShader_className,44,(int)igObjectPropertyForPlanarShadowShader_vtableRead,(int)fn_8013CBC8,0,(int)lbl_8055F830);
+ meta_registerClass(0,(int)&igObjectPropertyForPlanarShadowShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForPlanarShadowShader_getMetaCall,(int)igObjectPropertyForPlanarShadowShader_className,44,(int)igObjectPropertyForPlanarShadowShader_vtableRead,(int)fn_8013CBC8,0,(int)igObjectPropertyForPlanarShadowShader_dependencies);
 }
 void *igObjectPropertyForPlanarShadowShader_getMetaCall(){return igObjectPropertyForPlanarShadowShader_getMeta();}
 }

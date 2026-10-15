@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igTransformRecorder_registerNow();
+void igTransformRecorder_arkRegister();
 extern void *lbl_805621F4;
 extern void *igTransformRecorder_meta;
 }
@@ -14,7 +14,7 @@ void *fn_801ABCB8(){
  return igTransformRecorder_meta;
 }
 void *igTransformRecorder_getMeta(){
- if(!igTransformRecorder_meta || !(reinterpret_cast<unsigned int *>(igTransformRecorder_meta)[0x24/4]&4)) igTransformRecorder_registerNow();
+ if(!igTransformRecorder_meta || !(reinterpret_cast<unsigned int *>(igTransformRecorder_meta)[0x24/4]&4)) igTransformRecorder_arkRegister();
  return igTransformRecorder_meta;
 }
 }

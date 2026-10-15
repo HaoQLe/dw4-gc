@@ -21,21 +21,21 @@ extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igEnvironmentMapShader2List_className[];
-extern char lbl_804AF72C[];
+extern char igEnvironmentMapShader2_dependencies[];
 extern char igEnvironmentMapShader2_className[];
 extern char igEnvironmentMapShader2List_vtable[];
 extern char lbl_804B72A8[];
-extern char lbl_8056066C[8];
+extern char igEnvironmentMapShader2List_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igEnvironmentMapShader2List_meta;
 extern void *igEnvironmentMapShader2_meta;
 void *igEnvironmentMapShader2List_getMeta();
 void *igEnvironmentMapShader2List_vtableRead();
-void igEnvironmentMapShader2List_registerNow();
+void igEnvironmentMapShader2List_arkRegister();
 void igEnvironmentMapShader2List_register();
 void *igEnvironmentMapShader2List_getMetaCall();
 void *igEnvironmentMapShader2_getMeta();
-void igEnvironmentMapShader2_registerNow();
+void igEnvironmentMapShader2_arkRegister();
 void igEnvironmentMapShader2_register();
 void *igEnvironmentMapShader2_getMetaCall();
 }
@@ -54,7 +54,7 @@ void *fn_801C0FCC(){
  return igEnvironmentMapShader2List_meta;
 }
 void *igEnvironmentMapShader2List_getMeta(){
- if(!igEnvironmentMapShader2List_meta || !(reinterpret_cast<unsigned int *>(igEnvironmentMapShader2List_meta)[0x24/4]&4)) igEnvironmentMapShader2List_registerNow();
+ if(!igEnvironmentMapShader2List_meta || !(reinterpret_cast<unsigned int *>(igEnvironmentMapShader2List_meta)[0x24/4]&4)) igEnvironmentMapShader2List_arkRegister();
  return igEnvironmentMapShader2List_meta;
 }
 void *igEnvironmentMapShader2List_vtableRead(){
@@ -67,12 +67,12 @@ void *igEnvironmentMapShader2List_vtableRead(){
  object.unknown00=igEnvironmentMapShader2List_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igEnvironmentMapShader2List_registerNow(){
+void igEnvironmentMapShader2List_arkRegister(){
  meta_registerNow((int)igEnvironmentMapShader2List_register);
 }
 void igEnvironmentMapShader2List_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igEnvironmentMapShader2List_meta,(int)igObjectList_register,(int)fn_80024180,(int)igEnvironmentMapShader2List_getMetaCall,(int)igEnvironmentMapShader2List_className,20,(int)igEnvironmentMapShader2List_vtableRead,0,0,(int)lbl_8056066C);
+ meta_registerClass(0,(int)&igEnvironmentMapShader2List_meta,(int)igObjectList_register,(int)fn_80024180,(int)igEnvironmentMapShader2List_getMetaCall,(int)igEnvironmentMapShader2List_className,20,(int)igEnvironmentMapShader2List_vtableRead,0,0,(int)igEnvironmentMapShader2List_dependencies);
 }
 void *igEnvironmentMapShader2List_getMetaCall(){return igEnvironmentMapShader2List_getMeta();}
 void *fn_801C1168(){
@@ -80,15 +80,15 @@ void *fn_801C1168(){
  return igEnvironmentMapShader2_meta;
 }
 void *igEnvironmentMapShader2_getMeta(){
- if(!igEnvironmentMapShader2_meta || !(reinterpret_cast<unsigned int *>(igEnvironmentMapShader2_meta)[0x24/4]&4)) igEnvironmentMapShader2_registerNow();
+ if(!igEnvironmentMapShader2_meta || !(reinterpret_cast<unsigned int *>(igEnvironmentMapShader2_meta)[0x24/4]&4)) igEnvironmentMapShader2_arkRegister();
  return igEnvironmentMapShader2_meta;
 }
-void igEnvironmentMapShader2_registerNow(){
+void igEnvironmentMapShader2_arkRegister(){
  meta_registerNow((int)igEnvironmentMapShader2_register);
 }
 void igEnvironmentMapShader2_register(){
  fn_801AA6DC();
- meta_registerClass(1,(int)&igEnvironmentMapShader2_meta,(int)igGroup_register,(int)fn_8011148C,(int)igEnvironmentMapShader2_getMetaCall,(int)igEnvironmentMapShader2_className,112,0,(int)igEnvironmentMapShader2_fieldInit,0,(int)lbl_804AF72C);
+ meta_registerClass(1,(int)&igEnvironmentMapShader2_meta,(int)igGroup_register,(int)fn_8011148C,(int)igEnvironmentMapShader2_getMetaCall,(int)igEnvironmentMapShader2_className,112,0,(int)igEnvironmentMapShader2_fieldInit,0,(int)igEnvironmentMapShader2_dependencies);
 }
 void *igEnvironmentMapShader2_getMetaCall(){return igEnvironmentMapShader2_getMeta();}
 }

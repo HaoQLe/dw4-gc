@@ -9,7 +9,7 @@ extern char lbl_80471384[];
 extern char lbl_80471914[];
 extern char lbl_8047693C[];
 extern void *igStringMetaField_meta;
-void igStringMetaField_registerNow();
+void igStringMetaField_arkRegister();
 }
 struct UnknownGenRoot80025348 {
  void *unknown00;
@@ -30,14 +30,14 @@ struct UnknownGenObject80025348 : UnknownGenObject80025348_1 {
 };
 extern "C" {
 void *igStringMetaField_getMeta(){
- if(!igStringMetaField_meta || !(reinterpret_cast<unsigned int *>(igStringMetaField_meta)[0x24/4]&4)) igStringMetaField_registerNow();
+ if(!igStringMetaField_meta || !(reinterpret_cast<unsigned int *>(igStringMetaField_meta)[0x24/4]&4)) igStringMetaField_arkRegister();
  return igStringMetaField_meta;
 }
 void *fn_80025348(){
  UnknownGenObject80025348 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStringMetaField_registerNow(){
+void igStringMetaField_arkRegister(){
  meta_registerNow((int)igStringMetaField_register);
 }
 }

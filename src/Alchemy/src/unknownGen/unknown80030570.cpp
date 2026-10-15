@@ -13,11 +13,11 @@ extern char igExternalIndexedEntry_className[];
 extern char igExternalIndexedEntry_vtable[];
 extern char igDirEntry_vtable[];
 extern char igNamedObject_vtable[];
-extern char lbl_8055D4AC[8];
+extern char igExternalIndexedEntry_dependencies[8];
 extern void *igExternalIndexedEntry_meta;
 void *igExternalIndexedEntry_getMeta();
 void *igExternalIndexedEntry_vtableRead();
-void igExternalIndexedEntry_registerNow();
+void igExternalIndexedEntry_arkRegister();
 void igExternalIndexedEntry_register();
 void *igExternalIndexedEntry_getMetaCall();
 }
@@ -44,7 +44,7 @@ struct UnknownGenObject800305AC : UnknownGenObject800305AC_1 {
 };
 extern "C" {
 void *igExternalIndexedEntry_getMeta(){
- if(!igExternalIndexedEntry_meta || !(reinterpret_cast<unsigned int *>(igExternalIndexedEntry_meta)[0x24/4]&4)) igExternalIndexedEntry_registerNow();
+ if(!igExternalIndexedEntry_meta || !(reinterpret_cast<unsigned int *>(igExternalIndexedEntry_meta)[0x24/4]&4)) igExternalIndexedEntry_arkRegister();
  return igExternalIndexedEntry_meta;
 }
 void *igExternalIndexedEntry_vtableRead(){
@@ -57,12 +57,12 @@ void *igExternalIndexedEntry_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igExternalIndexedEntry_registerNow(){
+void igExternalIndexedEntry_arkRegister(){
  meta_registerNow((int)igExternalIndexedEntry_register);
 }
 void igExternalIndexedEntry_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igExternalIndexedEntry_meta,(int)igDirEntry_register,(int)fn_8002942C,(int)igExternalIndexedEntry_getMetaCall,(int)igExternalIndexedEntry_className,52,(int)igExternalIndexedEntry_vtableRead,(int)igExternalIndexedEntry_fieldInit,0,(int)lbl_8055D4AC);
+ meta_registerClass(0,(int)&igExternalIndexedEntry_meta,(int)igDirEntry_register,(int)fn_8002942C,(int)igExternalIndexedEntry_getMetaCall,(int)igExternalIndexedEntry_className,52,(int)igExternalIndexedEntry_vtableRead,(int)igExternalIndexedEntry_fieldInit,0,(int)igExternalIndexedEntry_dependencies);
 }
 void *igExternalIndexedEntry_getMetaCall(){return igExternalIndexedEntry_getMeta();}
 }

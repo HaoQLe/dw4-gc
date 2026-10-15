@@ -16,7 +16,7 @@ void beNumberCtrlInfoWork_register();
 void *beNumberCtrlInfoWork_getMetaCall();
 }
 extern "C" {
-void beNumberCtrlInfoWork_registerNow(){
+void beNumberCtrlInfoWork_arkRegister(){
  meta_registerNow((int)beNumberCtrlInfoWork_register);
 }
 void beNumberCtrlInfoWork_register(){

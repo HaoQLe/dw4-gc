@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8A8[8];
+extern char igObjectPropertyForSegment_dependencies[8];
 extern void *igObjectPropertyForSegment_meta;
 void *igObjectPropertyForSegment_getMeta();
 void *igObjectPropertyForSegment_vtableRead();
-void igObjectPropertyForSegment_registerNow();
+void igObjectPropertyForSegment_arkRegister();
 void igObjectPropertyForSegment_register();
 void *igObjectPropertyForSegment_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013EF48 : UnknownGenObject8013EF48_1 {
 };
 extern "C" {
 void *igObjectPropertyForSegment_getMeta(){
- if(!igObjectPropertyForSegment_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForSegment_meta)[0x24/4]&4)) igObjectPropertyForSegment_registerNow();
+ if(!igObjectPropertyForSegment_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForSegment_meta)[0x24/4]&4)) igObjectPropertyForSegment_arkRegister();
  return igObjectPropertyForSegment_meta;
 }
 void *igObjectPropertyForSegment_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForSegment_vtableRead(){
  object.unknown00=igObjectPropertyForSegment_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForSegment_registerNow(){
+void igObjectPropertyForSegment_arkRegister(){
  meta_registerNow((int)igObjectPropertyForSegment_register);
 }
 void igObjectPropertyForSegment_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForSegment_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForSegment_getMetaCall,(int)igObjectPropertyForSegment_className,44,(int)igObjectPropertyForSegment_vtableRead,(int)fn_8013F0D0,0,(int)lbl_8055F8A8);
+ meta_registerClass(0,(int)&igObjectPropertyForSegment_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForSegment_getMetaCall,(int)igObjectPropertyForSegment_className,44,(int)igObjectPropertyForSegment_vtableRead,(int)fn_8013F0D0,0,(int)igObjectPropertyForSegment_dependencies);
 }
 void *igObjectPropertyForSegment_getMetaCall(){return igObjectPropertyForSegment_getMeta();}
 }

@@ -16,7 +16,7 @@ void igInstanceScene_register();
 void *igInstanceScene_getMetaCall();
 }
 extern "C" {
-void igInstanceScene_registerNow(){
+void igInstanceScene_arkRegister(){
  meta_registerNow((int)igInstanceScene_register);
 }
 void igInstanceScene_register(){

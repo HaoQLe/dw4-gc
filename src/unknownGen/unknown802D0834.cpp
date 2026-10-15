@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beMatCtrlSearchList_registerNow();
+void beMatCtrlSearchList_arkRegister();
 extern void *beMatCtrlSearchList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beMatCtrlSearchList_metaObject(){
  return beMatCtrlSearchList_meta;
 }
 void *beMatCtrlSearchList_getMeta(){
- if(!beMatCtrlSearchList_meta || !(reinterpret_cast<unsigned int *>(beMatCtrlSearchList_meta)[0x24/4]&4)) beMatCtrlSearchList_registerNow();
+ if(!beMatCtrlSearchList_meta || !(reinterpret_cast<unsigned int *>(beMatCtrlSearchList_meta)[0x24/4]&4)) beMatCtrlSearchList_arkRegister();
  return beMatCtrlSearchList_meta;
 }
 }

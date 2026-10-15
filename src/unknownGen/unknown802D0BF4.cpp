@@ -8,17 +8,17 @@ void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *beMatCtrlSearchList_metaObject();
 void *beMatCtrlSearch_metaObject();
-extern char lbl_804D16DC[];
-extern char lbl_804D16F0[];
-extern char lbl_804D1704[];
-extern char lbl_804D1718[];
+extern char beMatCtrlSearch_fieldTypes[];
+extern char beMatCtrlSearch_fieldNames[];
+extern char beMatCtrlSearch_fieldStorage[];
+extern char beMatCtrlSearch_fieldOffsets[];
 extern void *beMatCtrlSearch_meta;
 }
 extern "C" {
 void beMatCtrlSearch_fieldInit(){
  void *value0=beMatCtrlSearch_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D16DC,5);
+ meta_appendFields(value0,beMatCtrlSearch_fieldTypes,5);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+3));
  void *value3=beMatCtrlSearch_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -28,7 +28,7 @@ void beMatCtrlSearch_fieldInit(){
  void *value5=beMatCtrlSearchList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
- meta_setupFields(value0,lbl_804D16F0,lbl_804D1704,lbl_804D1718,value1);
+ meta_setupFields(value0,beMatCtrlSearch_fieldNames,beMatCtrlSearch_fieldStorage,beMatCtrlSearch_fieldOffsets,value1);
 }
 }
 #pragma pop

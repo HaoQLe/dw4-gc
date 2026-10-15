@@ -11,13 +11,13 @@ void igObject_construct(void *);
 void igObject_register();
 void igPluginHelper_fieldInit();
 void *igStandardQueue_getMeta();
-extern char lbl_80463F30[];
+extern char igPluginHelper_dependencies[];
 extern char igPluginHelper_className[];
 extern char igPluginHelper_vtable[];
 extern void *igPluginHelper_meta;
 void *igPluginHelper_getMeta();
 void *igPluginHelper_vtableRead();
-void igPluginHelper_registerNow();
+void igPluginHelper_arkRegister();
 void igPluginHelper_register();
 void *igPluginHelper_getMetaCall();
 }
@@ -37,11 +37,11 @@ struct UnknownGenObject80027D9C : UnknownGenRoot80027D9C {
 extern "C" {
 void *igStandardQueue_getMetaCall(){return igStandardQueue_getMeta();}
 void *igPluginHelper_create(void *object){
- igPluginHelper_registerNow();
+ igPluginHelper_arkRegister();
  return meta_createInstance(igPluginHelper_meta,object);
 }
 void *igPluginHelper_getMeta(){
- if(!igPluginHelper_meta || !(reinterpret_cast<unsigned int *>(igPluginHelper_meta)[0x24/4]&4)) igPluginHelper_registerNow();
+ if(!igPluginHelper_meta || !(reinterpret_cast<unsigned int *>(igPluginHelper_meta)[0x24/4]&4)) igPluginHelper_arkRegister();
  return igPluginHelper_meta;
 }
 void *igPluginHelper_vtableRead(){
@@ -53,12 +53,12 @@ void *igPluginHelper_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igPluginHelper_registerNow(){
+void igPluginHelper_arkRegister(){
  meta_registerNow((int)igPluginHelper_register);
 }
 void igPluginHelper_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igPluginHelper_meta,(int)igObject_register,(int)fn_800237D0,(int)igPluginHelper_getMetaCall,(int)igPluginHelper_className,24,(int)igPluginHelper_vtableRead,(int)igPluginHelper_fieldInit,0,(int)lbl_80463F30);
+ meta_registerClass(0,(int)&igPluginHelper_meta,(int)igObject_register,(int)fn_800237D0,(int)igPluginHelper_getMetaCall,(int)igPluginHelper_className,24,(int)igPluginHelper_vtableRead,(int)igPluginHelper_fieldInit,0,(int)igPluginHelper_dependencies);
 }
 void *igPluginHelper_getMetaCall(){return igPluginHelper_getMeta();}
 }

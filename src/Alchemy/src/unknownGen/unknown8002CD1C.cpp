@@ -11,16 +11,16 @@ void igTimer_register();
 extern char igLongTimer_className[];
 extern void *igTimer_meta;
 extern void *igLongTimer_meta;
-void igLongTimer_registerNow();
+void igLongTimer_arkRegister();
 void igLongTimer_register();
 void *igLongTimer_parentMeta();
 }
 extern "C" {
 void *igLongTimer_getMeta(){
- if(!igLongTimer_meta || !(reinterpret_cast<unsigned int *>(igLongTimer_meta)[0x24/4]&4)) igLongTimer_registerNow();
+ if(!igLongTimer_meta || !(reinterpret_cast<unsigned int *>(igLongTimer_meta)[0x24/4]&4)) igLongTimer_arkRegister();
  return igLongTimer_meta;
 }
-void igLongTimer_registerNow(){
+void igLongTimer_arkRegister(){
  meta_registerNow((int)igLongTimer_register);
 }
 void igLongTimer_register(){

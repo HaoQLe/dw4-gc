@@ -17,7 +17,7 @@ void igFieldUpdate_fieldInit();
 void igItemBase_register();
 void igObjectChangedEvent_register();
 extern char igUpdatedFieldEvent_className[];
-extern char lbl_8049F120[];
+extern char igFieldUpdate_dependencies[];
 extern char igFieldUpdate_className[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
@@ -26,24 +26,24 @@ extern char igFieldUpdate_vtable[];
 extern char lbl_804A8AD0[];
 extern char igMessageBase_vtable[];
 extern char lbl_804AAF48[];
-extern char lbl_8055FB8C[8];
-extern char lbl_8055FB94[4];
-extern char lbl_8055FBA0[4];
-extern char lbl_8055FBA4[4];
-extern char lbl_8055FBA8[4];
+extern char igUpdatedFieldEvent_dependencies[8];
+extern char igUpdatedFieldEvent_fieldTypes[4];
+extern char igUpdatedFieldEvent_fieldNames[4];
+extern char igUpdatedFieldEvent_fieldStorage[4];
+extern char igUpdatedFieldEvent_fieldOffsets[4];
 extern void *igObjectChangedEvent_meta;
 extern void *igUpdatedFieldEvent_meta;
 extern void *igFieldUpdate_meta;
 void *igUpdatedFieldEvent_getMeta();
 void *igUpdatedFieldEvent_vtableRead();
-void igUpdatedFieldEvent_registerNow();
+void igUpdatedFieldEvent_arkRegister();
 void igUpdatedFieldEvent_register();
 void *igUpdatedFieldEvent_getMetaCall();
 void *igUpdatedFieldEvent_parentMeta();
 void igUpdatedFieldEvent_fieldInit();
 void *igFieldUpdate_getMeta();
 void *igFieldUpdate_vtableRead();
-void igFieldUpdate_registerNow();
+void igFieldUpdate_arkRegister();
 void igFieldUpdate_register();
 void *igFieldUpdate_getMetaCall();
 }
@@ -79,11 +79,11 @@ struct UnknownGenObject8014B19C : UnknownGenRoot8014B19C {
 };
 extern "C" {
 void *igUpdatedFieldEvent_create(void *object){
- igUpdatedFieldEvent_registerNow();
+ igUpdatedFieldEvent_arkRegister();
  return meta_createInstance(igUpdatedFieldEvent_meta,object);
 }
 void *igUpdatedFieldEvent_getMeta(){
- if(!igUpdatedFieldEvent_meta || !(reinterpret_cast<unsigned int *>(igUpdatedFieldEvent_meta)[0x24/4]&4)) igUpdatedFieldEvent_registerNow();
+ if(!igUpdatedFieldEvent_meta || !(reinterpret_cast<unsigned int *>(igUpdatedFieldEvent_meta)[0x24/4]&4)) igUpdatedFieldEvent_arkRegister();
  return igUpdatedFieldEvent_meta;
 }
 void *igUpdatedFieldEvent_vtableRead(){
@@ -97,26 +97,26 @@ void *igUpdatedFieldEvent_vtableRead(){
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igUpdatedFieldEvent_registerNow(){
+void igUpdatedFieldEvent_arkRegister(){
  meta_registerNow((int)igUpdatedFieldEvent_register);
 }
 void igUpdatedFieldEvent_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igUpdatedFieldEvent_meta,(int)igObjectChangedEvent_register,(int)igUpdatedFieldEvent_parentMeta,(int)igUpdatedFieldEvent_getMetaCall,(int)igUpdatedFieldEvent_className,40,(int)igUpdatedFieldEvent_vtableRead,(int)igUpdatedFieldEvent_fieldInit,0,(int)lbl_8055FB8C);
+ meta_registerClass(0,(int)&igUpdatedFieldEvent_meta,(int)igObjectChangedEvent_register,(int)igUpdatedFieldEvent_parentMeta,(int)igUpdatedFieldEvent_getMetaCall,(int)igUpdatedFieldEvent_className,40,(int)igUpdatedFieldEvent_vtableRead,(int)igUpdatedFieldEvent_fieldInit,0,(int)igUpdatedFieldEvent_dependencies);
 }
 void *igUpdatedFieldEvent_getMetaCall(){return igUpdatedFieldEvent_getMeta();}
 void *igUpdatedFieldEvent_parentMeta(){return igObjectChangedEvent_meta;}
 void igUpdatedFieldEvent_fieldInit(){
  void *value0=igUpdatedFieldEvent_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FB94,1);
+ meta_appendFields(value0,igUpdatedFieldEvent_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_8002A638();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_8055FBA0,lbl_8055FBA4,lbl_8055FBA8,value1);
+ meta_setupFields(value0,igUpdatedFieldEvent_fieldNames,igUpdatedFieldEvent_fieldStorage,igUpdatedFieldEvent_fieldOffsets,value1);
 }
 void *igFieldUpdate_getMeta(){
- if(!igFieldUpdate_meta || !(reinterpret_cast<unsigned int *>(igFieldUpdate_meta)[0x24/4]&4)) igFieldUpdate_registerNow();
+ if(!igFieldUpdate_meta || !(reinterpret_cast<unsigned int *>(igFieldUpdate_meta)[0x24/4]&4)) igFieldUpdate_arkRegister();
  return igFieldUpdate_meta;
 }
 void *igFieldUpdate_vtableRead(){
@@ -132,12 +132,12 @@ void *igFieldUpdate_vtableRead(){
  object.unknown30.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFieldUpdate_registerNow(){
+void igFieldUpdate_arkRegister(){
  meta_registerNow((int)igFieldUpdate_register);
 }
 void igFieldUpdate_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igFieldUpdate_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igFieldUpdate_getMetaCall,(int)igFieldUpdate_className,52,(int)igFieldUpdate_vtableRead,(int)igFieldUpdate_fieldInit,0,(int)lbl_8049F120);
+ meta_registerClass(0,(int)&igFieldUpdate_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igFieldUpdate_getMetaCall,(int)igFieldUpdate_className,52,(int)igFieldUpdate_vtableRead,(int)igFieldUpdate_fieldInit,0,(int)igFieldUpdate_dependencies);
 }
 void *igFieldUpdate_getMetaCall(){return igFieldUpdate_getMeta();}
 }

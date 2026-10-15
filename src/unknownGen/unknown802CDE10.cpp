@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void beMessenger_registerNow();
+void beMessenger_arkRegister();
 extern char beMeterCtrl_className[];
 extern char beMeterCtrl_meta[];
 extern void *beMessenger_meta;
@@ -21,7 +21,7 @@ void beMeterCtrl_register();
 void *beMeterCtrl_getMetaCall();
 }
 extern "C" {
-void beMeterCtrl_registerNow(){
+void beMeterCtrl_arkRegister(){
  meta_registerNow((int)beMeterCtrl_register);
 }
 void beMeterCtrl_register(){
@@ -30,7 +30,7 @@ void beMeterCtrl_register(){
 }
 void *beMeterCtrl_getMetaCall(){return beMeterCtrl_getMeta();}
 void *beMessenger_create(void *object){
- beMessenger_registerNow();
+ beMessenger_arkRegister();
  return meta_createInstance(beMessenger_meta,object);
 }
 void *beMessenger_metaObject(){
@@ -38,7 +38,7 @@ void *beMessenger_metaObject(){
  return beMessenger_meta;
 }
 void *beMessenger_getMeta(){
- if(!beMessenger_meta || !(reinterpret_cast<unsigned int *>(beMessenger_meta)[0x24/4]&4)) beMessenger_registerNow();
+ if(!beMessenger_meta || !(reinterpret_cast<unsigned int *>(beMessenger_meta)[0x24/4]&4)) beMessenger_arkRegister();
  return beMessenger_meta;
 }
 }

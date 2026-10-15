@@ -26,7 +26,7 @@ extern void *igTrackedElementList_meta;
 extern char lbl_80562FD4[4];
 void *igTrackedElementList_getMeta();
 void *igTrackedElementList_vtableRead();
-void igTrackedElementList_registerNow();
+void igTrackedElementList_arkRegister();
 void igTrackedElementList_register();
 void *igTrackedElementList_getMetaCall();
 void fn_800D286C();
@@ -43,7 +43,7 @@ void *fn_800D26E4(){
  return igTrackedElementList_meta;
 }
 void *igTrackedElementList_getMeta(){
- if(!igTrackedElementList_meta || !(reinterpret_cast<unsigned int *>(igTrackedElementList_meta)[0x24/4]&4)) igTrackedElementList_registerNow();
+ if(!igTrackedElementList_meta || !(reinterpret_cast<unsigned int *>(igTrackedElementList_meta)[0x24/4]&4)) igTrackedElementList_arkRegister();
  return igTrackedElementList_meta;
 }
 void *igTrackedElementList_vtableRead(){
@@ -54,7 +54,7 @@ void *igTrackedElementList_vtableRead(){
  object.unknown00=igTrackedElementList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTrackedElementList_registerNow(){
+void igTrackedElementList_arkRegister(){
  meta_registerNow((int)igTrackedElementList_register);
 }
 void igTrackedElementList_register(){

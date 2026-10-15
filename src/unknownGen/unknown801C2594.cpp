@@ -13,12 +13,12 @@ void igCompressedTransformSequence1_5Data_fieldInit();
 void igObject_register();
 extern char igCompressedTransformSequence1_5Data_className[];
 extern char igCompressedTransformSequence1_5Data_vtable[];
-extern char lbl_805606D4[8];
+extern char igCompressedTransformSequence1_5Data_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igCompressedTransformSequence1_5Data_meta;
 void *igCompressedTransformSequence1_5Data_getMeta();
 void *igCompressedTransformSequence1_5Data_vtableRead();
-void igCompressedTransformSequence1_5Data_registerNow();
+void igCompressedTransformSequence1_5Data_arkRegister();
 void igCompressedTransformSequence1_5Data_register();
 void *igCompressedTransformSequence1_5Data_getMetaCall();
 }
@@ -42,7 +42,7 @@ void *fn_801C2594(){
  return igCompressedTransformSequence1_5Data_meta;
 }
 void *igCompressedTransformSequence1_5Data_getMeta(){
- if(!igCompressedTransformSequence1_5Data_meta || !(reinterpret_cast<unsigned int *>(igCompressedTransformSequence1_5Data_meta)[0x24/4]&4)) igCompressedTransformSequence1_5Data_registerNow();
+ if(!igCompressedTransformSequence1_5Data_meta || !(reinterpret_cast<unsigned int *>(igCompressedTransformSequence1_5Data_meta)[0x24/4]&4)) igCompressedTransformSequence1_5Data_arkRegister();
  return igCompressedTransformSequence1_5Data_meta;
 }
 void *igCompressedTransformSequence1_5Data_vtableRead(){
@@ -54,12 +54,12 @@ void *igCompressedTransformSequence1_5Data_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCompressedTransformSequence1_5Data_registerNow(){
+void igCompressedTransformSequence1_5Data_arkRegister(){
  meta_registerNow((int)igCompressedTransformSequence1_5Data_register);
 }
 void igCompressedTransformSequence1_5Data_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igCompressedTransformSequence1_5Data_meta,(int)igObject_register,(int)fn_800237D0,(int)igCompressedTransformSequence1_5Data_getMetaCall,(int)igCompressedTransformSequence1_5Data_className,48,(int)igCompressedTransformSequence1_5Data_vtableRead,(int)igCompressedTransformSequence1_5Data_fieldInit,0,(int)lbl_805606D4);
+ meta_registerClass(0,(int)&igCompressedTransformSequence1_5Data_meta,(int)igObject_register,(int)fn_800237D0,(int)igCompressedTransformSequence1_5Data_getMetaCall,(int)igCompressedTransformSequence1_5Data_className,48,(int)igCompressedTransformSequence1_5Data_vtableRead,(int)igCompressedTransformSequence1_5Data_fieldInit,0,(int)igCompressedTransformSequence1_5Data_dependencies);
 }
 void *igCompressedTransformSequence1_5Data_getMetaCall(){return igCompressedTransformSequence1_5Data_getMeta();}
 }

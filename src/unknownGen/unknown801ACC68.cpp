@@ -19,10 +19,10 @@ void igTimeTransform1_5_vtableRead();
 void *igTimeTransform_fieldInit();
 extern char igTimeTransform1_5_className[];
 extern char igTimeTransform_className[];
-extern char lbl_80560138[8];
-extern char lbl_80560140[8];
-extern char lbl_80560148[8];
-extern char lbl_80560150[8];
+extern char igTimeTransform1_5_fieldTypes[8];
+extern char igTimeTransform1_5_fieldNames[8];
+extern char igTimeTransform1_5_fieldStorage[8];
+extern char igTimeTransform1_5_fieldOffsets[8];
 extern void *lbl_805621F4;
 extern void *igTimeTransform1_5_meta;
 extern void *igTimeTransform_meta;
@@ -32,12 +32,12 @@ void *igTimeTransform1_5_getMetaCall();
 void *igTimeTransform1_5_parentMeta();
 void igTimeTransform1_5_fieldInit();
 void *igTimeTransform_getMeta();
-void igTimeTransform_registerNow();
+void igTimeTransform_arkRegister();
 void igTimeTransform_register();
 void *igTimeTransform_getMetaCall();
 }
 extern "C" {
-void igTimeTransform1_5_registerNow(){
+void igTimeTransform1_5_arkRegister(){
  meta_registerNow((int)igTimeTransform1_5_register);
 }
 void igTimeTransform1_5_register(){
@@ -49,20 +49,20 @@ void *igTimeTransform1_5_parentMeta(){return igTimeTransform_meta;}
 void igTimeTransform1_5_fieldInit(){
  void *value0=igTimeTransform1_5_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560138,2);
+ meta_appendFields(value0,igTimeTransform1_5_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566CA4+0)));
- meta_setupFields(value0,lbl_80560140,lbl_80560148,lbl_80560150,value1);
+ meta_setupFields(value0,igTimeTransform1_5_fieldNames,igTimeTransform1_5_fieldStorage,igTimeTransform1_5_fieldOffsets,value1);
 }
 void *fn_801ACDA4(){
  if(!igTimeTransform_meta) igTimeTransform_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igTimeTransform_meta;
 }
 void *igTimeTransform_getMeta(){
- if(!igTimeTransform_meta || !(reinterpret_cast<unsigned int *>(igTimeTransform_meta)[0x24/4]&4)) igTimeTransform_registerNow();
+ if(!igTimeTransform_meta || !(reinterpret_cast<unsigned int *>(igTimeTransform_meta)[0x24/4]&4)) igTimeTransform_arkRegister();
  return igTimeTransform_meta;
 }
-void igTimeTransform_registerNow(){
+void igTimeTransform_arkRegister(){
  meta_registerNow((int)igTimeTransform_register);
 }
 void igTimeTransform_register(){

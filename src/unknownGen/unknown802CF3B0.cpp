@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beMessengerArgDataList_registerNow();
+void beMessengerArgDataList_arkRegister();
 extern void *beMessengerArgDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beMessengerArgDataList_metaObject(){
  return beMessengerArgDataList_meta;
 }
 void *beMessengerArgDataList_getMeta(){
- if(!beMessengerArgDataList_meta || !(reinterpret_cast<unsigned int *>(beMessengerArgDataList_meta)[0x24/4]&4)) beMessengerArgDataList_registerNow();
+ if(!beMessengerArgDataList_meta || !(reinterpret_cast<unsigned int *>(beMessengerArgDataList_meta)[0x24/4]&4)) beMessengerArgDataList_arkRegister();
  return beMessengerArgDataList_meta;
 }
 }

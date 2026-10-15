@@ -16,7 +16,7 @@ void beNDMWTitle2CtrlData_register();
 void *beNDMWTitle2CtrlData_getMetaCall();
 }
 extern "C" {
-void beNDMWTitle2CtrlData_registerNow(){
+void beNDMWTitle2CtrlData_arkRegister(){
  meta_registerNow((int)beNDMWTitle2CtrlData_register);
 }
 void beNDMWTitle2CtrlData_register(){

@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beCameraCtrl_registerNow();
+void beCameraCtrl_arkRegister();
 extern char lbl_8041CA68[];
 extern char lbl_804D2B40[];
 extern char lbl_804D2B7C[];
@@ -20,7 +20,7 @@ void *fn_802E247C(){
  return lbl_8053565C;
 }
 void *beCameraCtrl_create(void *object){
- beCameraCtrl_registerNow();
+ beCameraCtrl_arkRegister();
  return meta_createInstance(beCameraCtrl_meta,object);
 }
 void *beCameraCtrl_metaObject(){
@@ -28,7 +28,7 @@ void *beCameraCtrl_metaObject(){
  return beCameraCtrl_meta;
 }
 void *beCameraCtrl_getMeta(){
- if(!beCameraCtrl_meta || !(reinterpret_cast<unsigned int *>(beCameraCtrl_meta)[0x24/4]&4)) beCameraCtrl_registerNow();
+ if(!beCameraCtrl_meta || !(reinterpret_cast<unsigned int *>(beCameraCtrl_meta)[0x24/4]&4)) beCameraCtrl_arkRegister();
  return beCameraCtrl_meta;
 }
 }

@@ -32,29 +32,29 @@ extern char lbl_80475F5C[];
 extern char igNamedObject_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_8055D2FC[8];
-extern char lbl_8055D304[8];
-extern char lbl_8055D30C[8];
-extern char lbl_8055D314[8];
-extern char lbl_8055D31C[8];
-extern char lbl_8055D324[8];
+extern char igMemoryFileEntryList_dependencies[8];
+extern char igMemoryFileEntry_fieldTypes[8];
+extern char igMemoryFileEntry_fieldNames[8];
+extern char igMemoryFileEntry_fieldStorage[8];
+extern char igMemoryFileEntry_fieldOffsets[8];
+extern char igMemoryDirEntry_dependencies[8];
 extern void *igMemoryFileEntryList_meta;
 extern void *igMemoryFileEntry_meta;
 extern void *igMemoryDirEntry_meta;
 void *igMemoryFileEntryList_getMeta();
 void *igMemoryFileEntryList_vtableRead();
-void igMemoryFileEntryList_registerNow();
+void igMemoryFileEntryList_arkRegister();
 void igMemoryFileEntryList_register();
 void *igMemoryFileEntryList_getMetaCall();
 void *igMemoryFileEntry_getMeta();
 void *igMemoryFileEntry_vtableRead();
-void igMemoryFileEntry_registerNow();
+void igMemoryFileEntry_arkRegister();
 void igMemoryFileEntry_register();
 void *igMemoryFileEntry_getMetaCall();
 void igMemoryFileEntry_fieldInit();
 void *igMemoryDirEntry_getMeta();
 void *igMemoryDirEntry_vtableRead();
-void igMemoryDirEntry_registerNow();
+void igMemoryDirEntry_arkRegister();
 void igMemoryDirEntry_register();
 void *igMemoryDirEntry_getMetaCall();
 }
@@ -98,11 +98,11 @@ void *igFile_getMetaCall(){return igFile_getMeta();}
 void *fn_8002C3D0(){return fn_800584BC();}
 void *fn_8002C3F0(){return fn_800584E8();}
 void *igMemoryFileEntryList_create(void *object){
- igMemoryFileEntryList_registerNow();
+ igMemoryFileEntryList_arkRegister();
  return meta_createInstance(igMemoryFileEntryList_meta,object);
 }
 void *igMemoryFileEntryList_getMeta(){
- if(!igMemoryFileEntryList_meta || !(reinterpret_cast<unsigned int *>(igMemoryFileEntryList_meta)[0x24/4]&4)) igMemoryFileEntryList_registerNow();
+ if(!igMemoryFileEntryList_meta || !(reinterpret_cast<unsigned int *>(igMemoryFileEntryList_meta)[0x24/4]&4)) igMemoryFileEntryList_arkRegister();
  return igMemoryFileEntryList_meta;
 }
 void *igMemoryFileEntryList_vtableRead(){
@@ -115,20 +115,20 @@ void *igMemoryFileEntryList_vtableRead(){
  object.unknown00=igMemoryFileEntryList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMemoryFileEntryList_registerNow(){
+void igMemoryFileEntryList_arkRegister(){
  meta_registerNow((int)igMemoryFileEntryList_register);
 }
 void igMemoryFileEntryList_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igMemoryFileEntryList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMemoryFileEntryList_getMetaCall,(int)igMemoryFileEntryList_className,20,(int)igMemoryFileEntryList_vtableRead,0,0,(int)lbl_8055D2FC);
+ meta_registerClass(0,(int)&igMemoryFileEntryList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igMemoryFileEntryList_getMetaCall,(int)igMemoryFileEntryList_className,20,(int)igMemoryFileEntryList_vtableRead,0,0,(int)igMemoryFileEntryList_dependencies);
 }
 void *igMemoryFileEntryList_getMetaCall(){return igMemoryFileEntryList_getMeta();}
 void *igMemoryFileEntry_create(void *object){
- igMemoryFileEntry_registerNow();
+ igMemoryFileEntry_arkRegister();
  return meta_createInstance(igMemoryFileEntry_meta,object);
 }
 void *igMemoryFileEntry_getMeta(){
- if(!igMemoryFileEntry_meta || !(reinterpret_cast<unsigned int *>(igMemoryFileEntry_meta)[0x24/4]&4)) igMemoryFileEntry_registerNow();
+ if(!igMemoryFileEntry_meta || !(reinterpret_cast<unsigned int *>(igMemoryFileEntry_meta)[0x24/4]&4)) igMemoryFileEntry_arkRegister();
  return igMemoryFileEntry_meta;
 }
 void *igMemoryFileEntry_vtableRead(){
@@ -138,7 +138,7 @@ void *igMemoryFileEntry_vtableRead(){
  object.unknown00=igMemoryFileEntry_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMemoryFileEntry_registerNow(){
+void igMemoryFileEntry_arkRegister(){
  meta_registerNow((int)igMemoryFileEntry_register);
 }
 void igMemoryFileEntry_register(){
@@ -149,15 +149,15 @@ void *igMemoryFileEntry_getMetaCall(){return igMemoryFileEntry_getMeta();}
 void igMemoryFileEntry_fieldInit(){
  void *value0=igMemoryFileEntry_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055D304,2);
- meta_setupFields(value0,lbl_8055D30C,lbl_8055D314,lbl_8055D31C,value1);
+ meta_appendFields(value0,igMemoryFileEntry_fieldTypes,2);
+ meta_setupFields(value0,igMemoryFileEntry_fieldNames,igMemoryFileEntry_fieldStorage,igMemoryFileEntry_fieldOffsets,value1);
 }
 void *igMemoryDirEntry_create(void *object){
- igMemoryDirEntry_registerNow();
+ igMemoryDirEntry_arkRegister();
  return meta_createInstance(igMemoryDirEntry_meta,object);
 }
 void *igMemoryDirEntry_getMeta(){
- if(!igMemoryDirEntry_meta || !(reinterpret_cast<unsigned int *>(igMemoryDirEntry_meta)[0x24/4]&4)) igMemoryDirEntry_registerNow();
+ if(!igMemoryDirEntry_meta || !(reinterpret_cast<unsigned int *>(igMemoryDirEntry_meta)[0x24/4]&4)) igMemoryDirEntry_arkRegister();
  return igMemoryDirEntry_meta;
 }
 void *igMemoryDirEntry_vtableRead(){
@@ -168,12 +168,12 @@ void *igMemoryDirEntry_vtableRead(){
  object.unknown00=igMemoryDirEntry_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMemoryDirEntry_registerNow(){
+void igMemoryDirEntry_arkRegister(){
  meta_registerNow((int)igMemoryDirEntry_register);
 }
 void igMemoryDirEntry_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igMemoryDirEntry_meta,(int)igDirEntry_register,(int)fn_8002942C,(int)igMemoryDirEntry_getMetaCall,(int)igMemoryDirEntry_className,56,(int)igMemoryDirEntry_vtableRead,(int)igMemoryDirEntry_fieldInit,0,(int)lbl_8055D324);
+ meta_registerClass(0,(int)&igMemoryDirEntry_meta,(int)igDirEntry_register,(int)fn_8002942C,(int)igMemoryDirEntry_getMetaCall,(int)igMemoryDirEntry_className,56,(int)igMemoryDirEntry_vtableRead,(int)igMemoryDirEntry_fieldInit,0,(int)igMemoryDirEntry_dependencies);
 }
 void *igMemoryDirEntry_getMetaCall(){return igMemoryDirEntry_getMeta();}
 }

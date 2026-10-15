@@ -16,7 +16,7 @@ void beNDMWSaveIntfCtrlData_register();
 void *beNDMWSaveIntfCtrlData_getMetaCall();
 }
 extern "C" {
-void beNDMWSaveIntfCtrlData_registerNow(){
+void beNDMWSaveIntfCtrlData_arkRegister(){
  meta_registerNow((int)beNDMWSaveIntfCtrlData_register);
 }
 void beNDMWSaveIntfCtrlData_register(){

@@ -11,7 +11,7 @@ void fn_8012FC48();
 void *fn_80182E70();
 void igInterface_register();
 void igOptInterface_fieldInit();
-extern char lbl_8049D9EC[];
+extern char igOptInterface_dependencies[];
 extern char igOptInterface_className[];
 extern char igOptInterface_vtable[];
 extern char lbl_804A6460[];
@@ -21,7 +21,7 @@ extern void *igOptInterface_meta;
 extern void *igInterface_meta;
 void *igOptInterface_getMeta();
 void *igOptInterface_vtableRead();
-void igOptInterface_registerNow();
+void igOptInterface_arkRegister();
 void igOptInterface_register();
 void *igOptInterface_getMetaCall();
 void *fn_8013B680();
@@ -47,7 +47,7 @@ void *fn_8013B3F8(){
  return igOptInterface_meta;
 }
 void *igOptInterface_getMeta(){
- if(!igOptInterface_meta || !(reinterpret_cast<unsigned int *>(igOptInterface_meta)[0x24/4]&4)) igOptInterface_registerNow();
+ if(!igOptInterface_meta || !(reinterpret_cast<unsigned int *>(igOptInterface_meta)[0x24/4]&4)) igOptInterface_arkRegister();
  return igOptInterface_meta;
 }
 void *igOptInterface_vtableRead(){
@@ -61,12 +61,12 @@ void *igOptInterface_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igOptInterface_registerNow(){
+void igOptInterface_arkRegister(){
  meta_registerNow((int)igOptInterface_register);
 }
 void igOptInterface_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igOptInterface_meta,(int)igInterface_register,(int)fn_8013B680,(int)igOptInterface_getMetaCall,(int)igOptInterface_className,48,(int)igOptInterface_vtableRead,(int)igOptInterface_fieldInit,0,(int)lbl_8049D9EC);
+ meta_registerClass(0,(int)&igOptInterface_meta,(int)igInterface_register,(int)fn_8013B680,(int)igOptInterface_getMetaCall,(int)igOptInterface_className,48,(int)igOptInterface_vtableRead,(int)igOptInterface_fieldInit,0,(int)igOptInterface_dependencies);
 }
 void *igOptInterface_getMetaCall(){return igOptInterface_getMeta();}
 void *fn_8013B680(){return igInterface_meta;}

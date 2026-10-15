@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F878[8];
+extern char igObjectPropertyForTimeSwitch_dependencies[8];
 extern void *igObjectPropertyForTimeSwitch_meta;
 void *igObjectPropertyForTimeSwitch_getMeta();
 void *igObjectPropertyForTimeSwitch_vtableRead();
-void igObjectPropertyForTimeSwitch_registerNow();
+void igObjectPropertyForTimeSwitch_arkRegister();
 void igObjectPropertyForTimeSwitch_register();
 void *igObjectPropertyForTimeSwitch_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013E078 : UnknownGenObject8013E078_1 {
 };
 extern "C" {
 void *igObjectPropertyForTimeSwitch_getMeta(){
- if(!igObjectPropertyForTimeSwitch_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForTimeSwitch_meta)[0x24/4]&4)) igObjectPropertyForTimeSwitch_registerNow();
+ if(!igObjectPropertyForTimeSwitch_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForTimeSwitch_meta)[0x24/4]&4)) igObjectPropertyForTimeSwitch_arkRegister();
  return igObjectPropertyForTimeSwitch_meta;
 }
 void *igObjectPropertyForTimeSwitch_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForTimeSwitch_vtableRead(){
  object.unknown00=igObjectPropertyForTimeSwitch_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForTimeSwitch_registerNow(){
+void igObjectPropertyForTimeSwitch_arkRegister(){
  meta_registerNow((int)igObjectPropertyForTimeSwitch_register);
 }
 void igObjectPropertyForTimeSwitch_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForTimeSwitch_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForTimeSwitch_getMetaCall,(int)igObjectPropertyForTimeSwitch_className,44,(int)igObjectPropertyForTimeSwitch_vtableRead,(int)fn_8013E200,0,(int)lbl_8055F878);
+ meta_registerClass(0,(int)&igObjectPropertyForTimeSwitch_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForTimeSwitch_getMetaCall,(int)igObjectPropertyForTimeSwitch_className,44,(int)igObjectPropertyForTimeSwitch_vtableRead,(int)fn_8013E200,0,(int)igObjectPropertyForTimeSwitch_dependencies);
 }
 void *igObjectPropertyForTimeSwitch_getMetaCall(){return igObjectPropertyForTimeSwitch_getMeta();}
 }

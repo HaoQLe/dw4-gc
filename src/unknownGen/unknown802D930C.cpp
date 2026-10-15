@@ -16,7 +16,7 @@ void beUnicodeObj_register();
 void *beUnicodeObj_getMetaCall();
 }
 extern "C" {
-void beUnicodeObj_registerNow(){
+void beUnicodeObj_arkRegister(){
  meta_registerNow((int)beUnicodeObj_register);
 }
 void beUnicodeObj_register(){

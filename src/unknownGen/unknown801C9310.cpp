@@ -40,15 +40,15 @@ extern char lbl_804B66F8[];
 extern char igAnimationStatePool_vtable[];
 extern char lbl_804B67C0[];
 extern char igObjectPool_vtable[];
-extern char lbl_805608A8[8];
-extern char lbl_805608B0[4];
-extern char lbl_805608B4[4];
-extern char lbl_805608B8[4];
-extern char lbl_805608BC[4];
-extern char lbl_805608C0[8];
-extern char lbl_805608C8[8];
+extern char igAnimationSystem_dependencies[8];
+extern char igAnimationSystem_fieldTypes[4];
+extern char igAnimationSystem_fieldNames[4];
+extern char igAnimationSystem_fieldStorage[4];
+extern char igAnimationSystem_fieldOffsets[4];
+extern char igAnimationStatePool_dependencies[8];
+extern char igAnimationStateList_dependencies[8];
 extern char lbl_805608D8[7];
-extern char lbl_80560900[8];
+extern char igAnimationState_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igAnimationSystem_meta;
 extern void *igAnimationStatePool_meta;
@@ -58,23 +58,23 @@ extern void *lbl_805653B4;
 extern void *lbl_805653B8;
 extern void *igAnimationState_meta;
 void *igAnimationSystem_getMeta();
-void igAnimationSystem_registerNow();
+void igAnimationSystem_arkRegister();
 void igAnimationSystem_register();
 void *igAnimationSystem_getMetaCall();
 void igAnimationSystem_fieldInit();
 void *igAnimationStatePool_getMeta();
 void *igAnimationStatePool_vtableRead();
-void igAnimationStatePool_registerNow();
+void igAnimationStatePool_arkRegister();
 void igAnimationStatePool_register();
 void *igAnimationStatePool_getMetaCall();
 void *igAnimationStateList_getMeta();
 void *igAnimationStateList_vtableRead();
-void igAnimationStateList_registerNow();
+void igAnimationStateList_arkRegister();
 void igAnimationStateList_register();
 void *igAnimationStateList_getMetaCall();
 void *igAnimationState_getMeta();
 void *igAnimationState_vtableRead();
-void igAnimationState_registerNow();
+void igAnimationState_arkRegister();
 void igAnimationState_register();
 void *igAnimationState_getMetaCall();
 }
@@ -107,32 +107,32 @@ void *fn_801C9310(){
  return igAnimationSystem_meta;
 }
 void *igAnimationSystem_getMeta(){
- if(!igAnimationSystem_meta || !(reinterpret_cast<unsigned int *>(igAnimationSystem_meta)[0x24/4]&4)) igAnimationSystem_registerNow();
+ if(!igAnimationSystem_meta || !(reinterpret_cast<unsigned int *>(igAnimationSystem_meta)[0x24/4]&4)) igAnimationSystem_arkRegister();
  return igAnimationSystem_meta;
 }
-void igAnimationSystem_registerNow(){
+void igAnimationSystem_arkRegister(){
  meta_registerNow((int)igAnimationSystem_register);
 }
 void igAnimationSystem_register(){
  fn_801AA6DC();
- meta_registerClass(1,(int)&igAnimationSystem_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igAnimationSystem_getMetaCall,(int)igAnimationSystem_className,16,0,(int)igAnimationSystem_fieldInit,0,(int)lbl_805608A8);
+ meta_registerClass(1,(int)&igAnimationSystem_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igAnimationSystem_getMetaCall,(int)igAnimationSystem_className,16,0,(int)igAnimationSystem_fieldInit,0,(int)igAnimationSystem_dependencies);
 }
 void *igAnimationSystem_getMetaCall(){return igAnimationSystem_getMeta();}
 void igAnimationSystem_fieldInit(){
  void *value0=igAnimationSystem_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_805608B0,1);
+ meta_appendFields(value0,igAnimationSystem_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_801CA478();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_805608B4,lbl_805608B8,lbl_805608BC,value1);
+ meta_setupFields(value0,igAnimationSystem_fieldNames,igAnimationSystem_fieldStorage,igAnimationSystem_fieldOffsets,value1);
 }
 void *igAnimationStatePool_create(void *object){
- igAnimationStatePool_registerNow();
+ igAnimationStatePool_arkRegister();
  return meta_createInstance(igAnimationStatePool_meta,object);
 }
 void *igAnimationStatePool_getMeta(){
- if(!igAnimationStatePool_meta || !(reinterpret_cast<unsigned int *>(igAnimationStatePool_meta)[0x24/4]&4)) igAnimationStatePool_registerNow();
+ if(!igAnimationStatePool_meta || !(reinterpret_cast<unsigned int *>(igAnimationStatePool_meta)[0x24/4]&4)) igAnimationStatePool_arkRegister();
  return igAnimationStatePool_meta;
 }
 void *igAnimationStatePool_vtableRead(){
@@ -146,12 +146,12 @@ void *igAnimationStatePool_vtableRead(){
  object.unknown00=igAnimationStatePool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationStatePool_registerNow(){
+void igAnimationStatePool_arkRegister(){
  meta_registerNow((int)igAnimationStatePool_register);
 }
 void igAnimationStatePool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationStatePool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igAnimationStatePool_getMetaCall,(int)igAnimationStatePool_className,32,(int)igAnimationStatePool_vtableRead,0,0,(int)lbl_805608C0);
+ meta_registerClass(0,(int)&igAnimationStatePool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igAnimationStatePool_getMetaCall,(int)igAnimationStatePool_className,32,(int)igAnimationStatePool_vtableRead,0,0,(int)igAnimationStatePool_dependencies);
 }
 void *igAnimationStatePool_getMetaCall(){return igAnimationStatePool_getMeta();}
 void *fn_801C9664(){
@@ -159,7 +159,7 @@ void *fn_801C9664(){
  return igAnimationStateList_meta;
 }
 void *igAnimationStateList_getMeta(){
- if(!igAnimationStateList_meta || !(reinterpret_cast<unsigned int *>(igAnimationStateList_meta)[0x24/4]&4)) igAnimationStateList_registerNow();
+ if(!igAnimationStateList_meta || !(reinterpret_cast<unsigned int *>(igAnimationStateList_meta)[0x24/4]&4)) igAnimationStateList_arkRegister();
  return igAnimationStateList_meta;
 }
 void *igAnimationStateList_vtableRead(){
@@ -172,12 +172,12 @@ void *igAnimationStateList_vtableRead(){
  object.unknown00=igAnimationStateList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationStateList_registerNow(){
+void igAnimationStateList_arkRegister(){
  meta_registerNow((int)igAnimationStateList_register);
 }
 void igAnimationStateList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationStateList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationStateList_getMetaCall,(int)igAnimationStateList_className,20,(int)igAnimationStateList_vtableRead,0,0,(int)lbl_805608C8);
+ meta_registerClass(0,(int)&igAnimationStateList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationStateList_getMetaCall,(int)igAnimationStateList_className,20,(int)igAnimationStateList_vtableRead,0,0,(int)igAnimationStateList_dependencies);
 }
 void *igAnimationStateList_getMetaCall(){return igAnimationStateList_getMeta();}
 void *fn_801C9800(){
@@ -199,7 +199,7 @@ void *fn_801C9898(){
  return lbl_805653B8;
 }
 void *igAnimationState_create(void *object){
- igAnimationState_registerNow();
+ igAnimationState_arkRegister();
  return meta_createInstance(igAnimationState_meta,object);
 }
 void *fn_801C991C(){
@@ -207,7 +207,7 @@ void *fn_801C991C(){
  return igAnimationState_meta;
 }
 void *igAnimationState_getMeta(){
- if(!igAnimationState_meta || !(reinterpret_cast<unsigned int *>(igAnimationState_meta)[0x24/4]&4)) igAnimationState_registerNow();
+ if(!igAnimationState_meta || !(reinterpret_cast<unsigned int *>(igAnimationState_meta)[0x24/4]&4)) igAnimationState_arkRegister();
  return igAnimationState_meta;
 }
 void *igAnimationState_vtableRead(){
@@ -218,12 +218,12 @@ void *igAnimationState_vtableRead(){
  object.unknown78.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationState_registerNow(){
+void igAnimationState_arkRegister(){
  meta_registerNow((int)igAnimationState_register);
 }
 void igAnimationState_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationState_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationState_getMetaCall,(int)igAnimationState_className,160,(int)igAnimationState_vtableRead,(int)igAnimationState_fieldInit,0,(int)lbl_80560900);
+ meta_registerClass(0,(int)&igAnimationState_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationState_getMetaCall,(int)igAnimationState_className,160,(int)igAnimationState_vtableRead,(int)igAnimationState_fieldInit,0,(int)igAnimationState_dependencies);
 }
 void *igAnimationState_getMetaCall(){return igAnimationState_getMeta();}
 }

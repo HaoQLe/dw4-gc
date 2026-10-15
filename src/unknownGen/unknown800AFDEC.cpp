@@ -16,7 +16,7 @@ void igTexGenMatrixAttr_register();
 void *igTexGenMatrixAttr_getMetaCall();
 }
 extern "C" {
-void igTexGenMatrixAttr_registerNow(){
+void igTexGenMatrixAttr_arkRegister(){
  meta_registerNow((int)igTexGenMatrixAttr_register);
 }
 void igTexGenMatrixAttr_register(){

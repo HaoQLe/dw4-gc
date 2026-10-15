@@ -17,7 +17,7 @@ extern char igObjectPool_vtable[];
 extern void *igObjectPool_meta;
 void *igObjectPool_getMeta();
 void *igObjectPool_vtableRead();
-void igObjectPool_registerNow();
+void igObjectPool_arkRegister();
 void igObjectPool_register();
 void *igObjectPool_getMetaCall();
 }
@@ -27,7 +27,7 @@ struct UnknownGenObject801AD9AC_0 {
 };
 extern "C" {
 void *igObjectPool_getMeta(){
- if(!igObjectPool_meta || !(reinterpret_cast<unsigned int *>(igObjectPool_meta)[0x24/4]&4)) igObjectPool_registerNow();
+ if(!igObjectPool_meta || !(reinterpret_cast<unsigned int *>(igObjectPool_meta)[0x24/4]&4)) igObjectPool_arkRegister();
  return igObjectPool_meta;
 }
 void *igObjectPool_vtableRead(){
@@ -39,7 +39,7 @@ void *igObjectPool_vtableRead(){
  object.unknown00=igObjectPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPool_registerNow(){
+void igObjectPool_arkRegister(){
  meta_registerNow((int)igObjectPool_register);
 }
 void igObjectPool_register(){

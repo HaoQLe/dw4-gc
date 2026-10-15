@@ -16,7 +16,7 @@ void beCameraCtrlInfoRamShake_register();
 void *beCameraCtrlInfoRamShake_getMetaCall();
 }
 extern "C" {
-void beCameraCtrlInfoRamShake_registerNow(){
+void beCameraCtrlInfoRamShake_arkRegister(){
  meta_registerNow((int)beCameraCtrlInfoRamShake_register);
 }
 void beCameraCtrlInfoRamShake_register(){

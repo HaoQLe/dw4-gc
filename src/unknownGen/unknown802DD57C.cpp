@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beDataObjInt_registerNow();
+void beDataObjInt_arkRegister();
 extern void *beDataObjInt_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beDataObjInt_create(void *object){
- beDataObjInt_registerNow();
+ beDataObjInt_arkRegister();
  return meta_createInstance(beDataObjInt_meta,object);
 }
 void *beDataObjInt_metaObject(){
@@ -19,7 +19,7 @@ void *beDataObjInt_metaObject(){
  return beDataObjInt_meta;
 }
 void *beDataObjInt_getMeta(){
- if(!beDataObjInt_meta || !(reinterpret_cast<unsigned int *>(beDataObjInt_meta)[0x24/4]&4)) beDataObjInt_registerNow();
+ if(!beDataObjInt_meta || !(reinterpret_cast<unsigned int *>(beDataObjInt_meta)[0x24/4]&4)) beDataObjInt_arkRegister();
  return beDataObjInt_meta;
 }
 }

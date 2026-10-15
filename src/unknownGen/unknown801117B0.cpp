@@ -15,17 +15,17 @@ extern char igGuiComponentController_className[];
 extern char igGuiComponentAspect_className[];
 extern char lbl_80495AD8[];
 extern char igGuiComponentController_vtable[];
-extern char lbl_8055F0E4[8];
+extern char igGuiComponentAspect_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igGuiComponentController_meta;
 extern void *igGuiComponentAspect_meta;
 void *igGuiComponentController_getMeta();
 void *igGuiComponentController_vtableRead();
-void igGuiComponentController_registerNow();
+void igGuiComponentController_arkRegister();
 void igGuiComponentController_register();
 void *igGuiComponentController_getMetaCall();
 void *igGuiComponentAspect_getMeta();
-void igGuiComponentAspect_registerNow();
+void igGuiComponentAspect_arkRegister();
 void igGuiComponentAspect_register();
 void *igGuiComponentAspect_getMetaCall();
 }
@@ -39,7 +39,7 @@ void *fn_801117B0(){
  return igGuiComponentController_meta;
 }
 void *igGuiComponentController_getMeta(){
- if(!igGuiComponentController_meta || !(reinterpret_cast<unsigned int *>(igGuiComponentController_meta)[0x24/4]&4)) igGuiComponentController_registerNow();
+ if(!igGuiComponentController_meta || !(reinterpret_cast<unsigned int *>(igGuiComponentController_meta)[0x24/4]&4)) igGuiComponentController_arkRegister();
  return igGuiComponentController_meta;
 }
 void *igGuiComponentController_vtableRead(){
@@ -49,7 +49,7 @@ void *igGuiComponentController_vtableRead(){
  object.unknown00=igGuiComponentController_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGuiComponentController_registerNow(){
+void igGuiComponentController_arkRegister(){
  meta_registerNow((int)igGuiComponentController_register);
 }
 void igGuiComponentController_register(){
@@ -62,15 +62,15 @@ void *fn_80111924(){
  return igGuiComponentAspect_meta;
 }
 void *igGuiComponentAspect_getMeta(){
- if(!igGuiComponentAspect_meta || !(reinterpret_cast<unsigned int *>(igGuiComponentAspect_meta)[0x24/4]&4)) igGuiComponentAspect_registerNow();
+ if(!igGuiComponentAspect_meta || !(reinterpret_cast<unsigned int *>(igGuiComponentAspect_meta)[0x24/4]&4)) igGuiComponentAspect_arkRegister();
  return igGuiComponentAspect_meta;
 }
-void igGuiComponentAspect_registerNow(){
+void igGuiComponentAspect_arkRegister(){
  meta_registerNow((int)igGuiComponentAspect_register);
 }
 void igGuiComponentAspect_register(){
  fn_8010CBD4();
- meta_registerClass(1,(int)&igGuiComponentAspect_meta,(int)igView_register,(int)fn_8010E6DC,(int)igGuiComponentAspect_getMetaCall,(int)igGuiComponentAspect_className,40,0,(int)igGuiComponentAspect_fieldInit,0,(int)lbl_8055F0E4);
+ meta_registerClass(1,(int)&igGuiComponentAspect_meta,(int)igView_register,(int)fn_8010E6DC,(int)igGuiComponentAspect_getMetaCall,(int)igGuiComponentAspect_className,40,0,(int)igGuiComponentAspect_fieldInit,0,(int)igGuiComponentAspect_dependencies);
 }
 void *igGuiComponentAspect_getMetaCall(){return igGuiComponentAspect_getMeta();}
 }

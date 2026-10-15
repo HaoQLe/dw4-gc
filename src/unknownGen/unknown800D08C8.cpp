@@ -5,7 +5,7 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
-void igPointSpriteExt_registerNow();
+void igPointSpriteExt_arkRegister();
 extern char lbl_80488B24[];
 extern char lbl_80488B84[];
 extern char lbl_8055EAE4[8];
@@ -39,7 +39,7 @@ void *fn_800D0958(){
  return igPointSpriteExt_meta;
 }
 void *igPointSpriteExt_getMeta(){
- if(!igPointSpriteExt_meta || !(reinterpret_cast<unsigned int *>(igPointSpriteExt_meta)[0x24/4]&4)) igPointSpriteExt_registerNow();
+ if(!igPointSpriteExt_meta || !(reinterpret_cast<unsigned int *>(igPointSpriteExt_meta)[0x24/4]&4)) igPointSpriteExt_arkRegister();
  return igPointSpriteExt_meta;
 }
 }

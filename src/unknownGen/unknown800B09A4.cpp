@@ -30,20 +30,20 @@ extern char igScissorTypeAttr_vtable[];
 extern char igScissorAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E170[4];
-extern char lbl_8055E174[4];
-extern char lbl_8055E178[4];
-extern char lbl_8055E17C[4];
+extern char igShadeModelAttr_fieldTypes[4];
+extern char igShadeModelAttr_fieldNames[4];
+extern char igShadeModelAttr_fieldStorage[4];
+extern char igShadeModelAttr_fieldOffsets[4];
 extern char lbl_8055E180[4];
-extern char lbl_8055E184[8];
-extern char lbl_8055E18C[4];
-extern char lbl_8055E190[4];
-extern char lbl_8055E194[4];
-extern char lbl_8055E198[4];
-extern char lbl_8055E19C[4];
-extern char lbl_8055E1A0[4];
-extern char lbl_8055E1A4[4];
-extern char lbl_8055E1A8[4];
+extern char igSetRenderDestinationAttr_dependencies[8];
+extern char igSetRenderDestinationAttr_fieldTypes[4];
+extern char igSetRenderDestinationAttr_fieldNames[4];
+extern char igSetRenderDestinationAttr_fieldStorage[4];
+extern char igSetRenderDestinationAttr_fieldOffsets[4];
+extern char igScissorTypeAttr_fieldTypes[4];
+extern char igScissorTypeAttr_fieldNames[4];
+extern char igScissorTypeAttr_fieldStorage[4];
+extern char igScissorTypeAttr_fieldOffsets[4];
 extern char lbl_8055E1AC[4];
 extern void *lbl_805621F4;
 extern void *igShadeModelAttr_meta;
@@ -52,25 +52,25 @@ extern void *igScissorTypeAttr_meta;
 extern void *igScissorAttr_meta;
 void *igShadeModelAttr_getMeta();
 void *igShadeModelAttr_vtableRead();
-void igShadeModelAttr_registerNow();
+void igShadeModelAttr_arkRegister();
 void igShadeModelAttr_register();
 void *igShadeModelAttr_getMetaCall();
 void igShadeModelAttr_fieldInit();
 void *igSetRenderDestinationAttr_getMeta();
 void *igSetRenderDestinationAttr_vtableRead();
-void igSetRenderDestinationAttr_registerNow();
+void igSetRenderDestinationAttr_arkRegister();
 void igSetRenderDestinationAttr_register();
 void *igSetRenderDestinationAttr_getMetaCall();
 void igSetRenderDestinationAttr_fieldInit();
 void *igScissorTypeAttr_getMeta();
 void *igScissorTypeAttr_vtableRead();
-void igScissorTypeAttr_registerNow();
+void igScissorTypeAttr_arkRegister();
 void igScissorTypeAttr_register();
 void *igScissorTypeAttr_getMetaCall();
 void igScissorTypeAttr_fieldInit();
 void *igScissorAttr_getMeta();
 void *igScissorAttr_vtableRead();
-void igScissorAttr_registerNow();
+void igScissorAttr_arkRegister();
 void igScissorAttr_register();
 void *igScissorAttr_getMetaCall();
 }
@@ -102,7 +102,7 @@ void *fn_800B09A4(){
  return igShadeModelAttr_meta;
 }
 void *igShadeModelAttr_getMeta(){
- if(!igShadeModelAttr_meta || !(reinterpret_cast<unsigned int *>(igShadeModelAttr_meta)[0x24/4]&4)) igShadeModelAttr_registerNow();
+ if(!igShadeModelAttr_meta || !(reinterpret_cast<unsigned int *>(igShadeModelAttr_meta)[0x24/4]&4)) igShadeModelAttr_arkRegister();
  return igShadeModelAttr_meta;
 }
 void *igShadeModelAttr_vtableRead(){
@@ -113,7 +113,7 @@ void *igShadeModelAttr_vtableRead(){
  object.unknown00=igShadeModelAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igShadeModelAttr_registerNow(){
+void igShadeModelAttr_arkRegister(){
  meta_registerNow((int)igShadeModelAttr_register);
 }
 void igShadeModelAttr_register(){
@@ -124,14 +124,14 @@ void *igShadeModelAttr_getMetaCall(){return igShadeModelAttr_getMeta();}
 void igShadeModelAttr_fieldInit(){
  void *value0=igShadeModelAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E170,1);
+ meta_appendFields(value0,igShadeModelAttr_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E180);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_800CDDA8;
- meta_setupFields(value0,lbl_8055E174,lbl_8055E178,lbl_8055E17C,value1);
+ meta_setupFields(value0,igShadeModelAttr_fieldNames,igShadeModelAttr_fieldStorage,igShadeModelAttr_fieldOffsets,value1);
 }
 void *igSetRenderDestinationAttr_create(void *object){
- igSetRenderDestinationAttr_registerNow();
+ igSetRenderDestinationAttr_arkRegister();
  return meta_createInstance(igSetRenderDestinationAttr_meta,object);
 }
 void *fn_800B0BF0(){
@@ -139,7 +139,7 @@ void *fn_800B0BF0(){
  return igSetRenderDestinationAttr_meta;
 }
 void *igSetRenderDestinationAttr_getMeta(){
- if(!igSetRenderDestinationAttr_meta || !(reinterpret_cast<unsigned int *>(igSetRenderDestinationAttr_meta)[0x24/4]&4)) igSetRenderDestinationAttr_registerNow();
+ if(!igSetRenderDestinationAttr_meta || !(reinterpret_cast<unsigned int *>(igSetRenderDestinationAttr_meta)[0x24/4]&4)) igSetRenderDestinationAttr_arkRegister();
  return igSetRenderDestinationAttr_meta;
 }
 void *igSetRenderDestinationAttr_vtableRead(){
@@ -150,25 +150,25 @@ void *igSetRenderDestinationAttr_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSetRenderDestinationAttr_registerNow(){
+void igSetRenderDestinationAttr_arkRegister(){
  meta_registerNow((int)igSetRenderDestinationAttr_register);
 }
 void igSetRenderDestinationAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igSetRenderDestinationAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igSetRenderDestinationAttr_getMetaCall,(int)igSetRenderDestinationAttr_className,16,(int)igSetRenderDestinationAttr_vtableRead,(int)igSetRenderDestinationAttr_fieldInit,0,(int)lbl_8055E184);
+ meta_registerClass(0,(int)&igSetRenderDestinationAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igSetRenderDestinationAttr_getMetaCall,(int)igSetRenderDestinationAttr_className,16,(int)igSetRenderDestinationAttr_vtableRead,(int)igSetRenderDestinationAttr_fieldInit,0,(int)igSetRenderDestinationAttr_dependencies);
 }
 void *igSetRenderDestinationAttr_getMetaCall(){return igSetRenderDestinationAttr_getMeta();}
 void igSetRenderDestinationAttr_fieldInit(){
  void *value0=igSetRenderDestinationAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E18C,1);
+ meta_appendFields(value0,igSetRenderDestinationAttr_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_800B1738();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_8055E190,lbl_8055E194,lbl_8055E198,value1);
+ meta_setupFields(value0,igSetRenderDestinationAttr_fieldNames,igSetRenderDestinationAttr_fieldStorage,igSetRenderDestinationAttr_fieldOffsets,value1);
 }
 void *igScissorTypeAttr_getMeta(){
- if(!igScissorTypeAttr_meta || !(reinterpret_cast<unsigned int *>(igScissorTypeAttr_meta)[0x24/4]&4)) igScissorTypeAttr_registerNow();
+ if(!igScissorTypeAttr_meta || !(reinterpret_cast<unsigned int *>(igScissorTypeAttr_meta)[0x24/4]&4)) igScissorTypeAttr_arkRegister();
  return igScissorTypeAttr_meta;
 }
 void *igScissorTypeAttr_vtableRead(){
@@ -179,7 +179,7 @@ void *igScissorTypeAttr_vtableRead(){
  object.unknown00=igScissorTypeAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igScissorTypeAttr_registerNow(){
+void igScissorTypeAttr_arkRegister(){
  meta_registerNow((int)igScissorTypeAttr_register);
 }
 void igScissorTypeAttr_register(){
@@ -190,14 +190,14 @@ void *igScissorTypeAttr_getMetaCall(){return igScissorTypeAttr_getMeta();}
 void igScissorTypeAttr_fieldInit(){
  void *value0=igScissorTypeAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E19C,1);
+ meta_appendFields(value0,igScissorTypeAttr_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E1AC);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_800CDB9C;
- meta_setupFields(value0,lbl_8055E1A0,lbl_8055E1A4,lbl_8055E1A8,value1);
+ meta_setupFields(value0,igScissorTypeAttr_fieldNames,igScissorTypeAttr_fieldStorage,igScissorTypeAttr_fieldOffsets,value1);
 }
 void *igScissorAttr_getMeta(){
- if(!igScissorAttr_meta || !(reinterpret_cast<unsigned int *>(igScissorAttr_meta)[0x24/4]&4)) igScissorAttr_registerNow();
+ if(!igScissorAttr_meta || !(reinterpret_cast<unsigned int *>(igScissorAttr_meta)[0x24/4]&4)) igScissorAttr_arkRegister();
  return igScissorAttr_meta;
 }
 void *igScissorAttr_vtableRead(){
@@ -208,7 +208,7 @@ void *igScissorAttr_vtableRead(){
  object.unknown00=igScissorAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igScissorAttr_registerNow(){
+void igScissorAttr_arkRegister(){
  meta_registerNow((int)igScissorAttr_register);
 }
 void igScissorAttr_register(){

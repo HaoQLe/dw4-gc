@@ -24,27 +24,27 @@ extern char igFogAttr_vtable[];
 extern char lbl_8047D514[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E474[4];
-extern char lbl_8055E478[4];
-extern char lbl_8055E47C[4];
-extern char lbl_8055E480[4];
+extern char igFogStateAttr_fieldTypes[4];
+extern char igFogStateAttr_fieldNames[4];
+extern char igFogStateAttr_fieldStorage[4];
+extern char igFogStateAttr_fieldOffsets[4];
 extern void *igGenericAttrDefaultManager_meta;
 extern void *igFogStateAttr_meta;
 extern void *igFogAttr_meta;
 void *igGenericAttrDefaultManager_getMeta();
 void *igGenericAttrDefaultManager_vtableRead();
-void igGenericAttrDefaultManager_registerNow();
+void igGenericAttrDefaultManager_arkRegister();
 void igGenericAttrDefaultManager_register();
 void *igGenericAttrDefaultManager_getMetaCall();
 void *igFogStateAttr_getMeta();
 void *igFogStateAttr_vtableRead();
-void igFogStateAttr_registerNow();
+void igFogStateAttr_arkRegister();
 void igFogStateAttr_register();
 void *igFogStateAttr_getMetaCall();
 void igFogStateAttr_fieldInit();
 void *igFogAttr_getMeta();
 void *igFogAttr_vtableRead();
-void igFogAttr_registerNow();
+void igFogAttr_arkRegister();
 void igFogAttr_register();
 void *igFogAttr_getMetaCall();
 }
@@ -62,11 +62,11 @@ struct UnknownGenObject800B7210_0 {
 };
 extern "C" {
 void *igGenericAttrDefaultManager_create(void *object){
- igGenericAttrDefaultManager_registerNow();
+ igGenericAttrDefaultManager_arkRegister();
  return meta_createInstance(igGenericAttrDefaultManager_meta,object);
 }
 void *igGenericAttrDefaultManager_getMeta(){
- if(!igGenericAttrDefaultManager_meta || !(reinterpret_cast<unsigned int *>(igGenericAttrDefaultManager_meta)[0x24/4]&4)) igGenericAttrDefaultManager_registerNow();
+ if(!igGenericAttrDefaultManager_meta || !(reinterpret_cast<unsigned int *>(igGenericAttrDefaultManager_meta)[0x24/4]&4)) igGenericAttrDefaultManager_arkRegister();
  return igGenericAttrDefaultManager_meta;
 }
 void *igGenericAttrDefaultManager_vtableRead(){
@@ -76,7 +76,7 @@ void *igGenericAttrDefaultManager_vtableRead(){
  object.unknown00=igGenericAttrDefaultManager_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGenericAttrDefaultManager_registerNow(){
+void igGenericAttrDefaultManager_arkRegister(){
  meta_registerNow((int)igGenericAttrDefaultManager_register);
 }
 void igGenericAttrDefaultManager_register(){
@@ -85,7 +85,7 @@ void igGenericAttrDefaultManager_register(){
 }
 void *igGenericAttrDefaultManager_getMetaCall(){return igGenericAttrDefaultManager_getMeta();}
 void *igFogStateAttr_getMeta(){
- if(!igFogStateAttr_meta || !(reinterpret_cast<unsigned int *>(igFogStateAttr_meta)[0x24/4]&4)) igFogStateAttr_registerNow();
+ if(!igFogStateAttr_meta || !(reinterpret_cast<unsigned int *>(igFogStateAttr_meta)[0x24/4]&4)) igFogStateAttr_arkRegister();
  return igFogStateAttr_meta;
 }
 void *igFogStateAttr_vtableRead(){
@@ -96,7 +96,7 @@ void *igFogStateAttr_vtableRead(){
  object.unknown00=igFogStateAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFogStateAttr_registerNow(){
+void igFogStateAttr_arkRegister(){
  meta_registerNow((int)igFogStateAttr_register);
 }
 void igFogStateAttr_register(){
@@ -107,11 +107,11 @@ void *igFogStateAttr_getMetaCall(){return igFogStateAttr_getMeta();}
 void igFogStateAttr_fieldInit(){
  void *value0=igFogStateAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E474,1);
- meta_setupFields(value0,lbl_8055E478,lbl_8055E47C,lbl_8055E480,value1);
+ meta_appendFields(value0,igFogStateAttr_fieldTypes,1);
+ meta_setupFields(value0,igFogStateAttr_fieldNames,igFogStateAttr_fieldStorage,igFogStateAttr_fieldOffsets,value1);
 }
 void *igFogAttr_getMeta(){
- if(!igFogAttr_meta || !(reinterpret_cast<unsigned int *>(igFogAttr_meta)[0x24/4]&4)) igFogAttr_registerNow();
+ if(!igFogAttr_meta || !(reinterpret_cast<unsigned int *>(igFogAttr_meta)[0x24/4]&4)) igFogAttr_arkRegister();
  return igFogAttr_meta;
 }
 void *igFogAttr_vtableRead(){
@@ -122,7 +122,7 @@ void *igFogAttr_vtableRead(){
  object.unknown00=igFogAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFogAttr_registerNow(){
+void igFogAttr_arkRegister(){
  meta_registerNow((int)igFogAttr_register);
 }
 void igFogAttr_register(){

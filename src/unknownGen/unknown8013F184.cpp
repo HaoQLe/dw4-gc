@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8B0[8];
+extern char igObjectPropertyForLightStateSet_dependencies[8];
 extern void *igObjectPropertyForLightStateSet_meta;
 void *igObjectPropertyForLightStateSet_getMeta();
 void *igObjectPropertyForLightStateSet_vtableRead();
-void igObjectPropertyForLightStateSet_registerNow();
+void igObjectPropertyForLightStateSet_arkRegister();
 void igObjectPropertyForLightStateSet_register();
 void *igObjectPropertyForLightStateSet_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013F1C0 : UnknownGenObject8013F1C0_1 {
 };
 extern "C" {
 void *igObjectPropertyForLightStateSet_getMeta(){
- if(!igObjectPropertyForLightStateSet_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForLightStateSet_meta)[0x24/4]&4)) igObjectPropertyForLightStateSet_registerNow();
+ if(!igObjectPropertyForLightStateSet_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForLightStateSet_meta)[0x24/4]&4)) igObjectPropertyForLightStateSet_arkRegister();
  return igObjectPropertyForLightStateSet_meta;
 }
 void *igObjectPropertyForLightStateSet_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForLightStateSet_vtableRead(){
  object.unknown00=igObjectPropertyForLightStateSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForLightStateSet_registerNow(){
+void igObjectPropertyForLightStateSet_arkRegister(){
  meta_registerNow((int)igObjectPropertyForLightStateSet_register);
 }
 void igObjectPropertyForLightStateSet_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForLightStateSet_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForLightStateSet_getMetaCall,(int)igObjectPropertyForLightStateSet_className,44,(int)igObjectPropertyForLightStateSet_vtableRead,(int)fn_8013F348,0,(int)lbl_8055F8B0);
+ meta_registerClass(0,(int)&igObjectPropertyForLightStateSet_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForLightStateSet_getMetaCall,(int)igObjectPropertyForLightStateSet_className,44,(int)igObjectPropertyForLightStateSet_vtableRead,(int)fn_8013F348,0,(int)igObjectPropertyForLightStateSet_dependencies);
 }
 void *igObjectPropertyForLightStateSet_getMetaCall(){return igObjectPropertyForLightStateSet_getMeta();}
 }

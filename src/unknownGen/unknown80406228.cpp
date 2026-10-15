@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void igObject_construct(void *);
 void fn_80406344(void *,short);
-void igViewerGuiFactory_registerNow();
+void igViewerGuiFactory_arkRegister();
 extern char igViewerGuiFactory_vtable[];
 extern void *igViewerGuiFactory_meta;
 extern void *lbl_805621F4;
@@ -30,7 +30,7 @@ void *igViewerGuiFactory_metaObject(){
  return igViewerGuiFactory_meta;
 }
 void *igViewerGuiFactory_getMeta(){
- if(!igViewerGuiFactory_meta || !(reinterpret_cast<unsigned int *>(igViewerGuiFactory_meta)[0x24/4]&4)) igViewerGuiFactory_registerNow();
+ if(!igViewerGuiFactory_meta || !(reinterpret_cast<unsigned int *>(igViewerGuiFactory_meta)[0x24/4]&4)) igViewerGuiFactory_arkRegister();
  return igViewerGuiFactory_meta;
 }
 void *igViewerGuiFactory_vtableRead(){

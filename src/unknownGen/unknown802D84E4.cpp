@@ -15,14 +15,14 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beGenerater_registerNow();
+void beGenerater_arkRegister();
 void igNamedObject_register();
 extern char lbl_8041CA68[];
 extern char beGeneraterItemDataOne_className[];
-extern char lbl_804D1F00[];
-extern char lbl_804D1F0C[];
-extern char lbl_804D1F18[];
-extern char lbl_804D1F24[];
+extern char beGeneraterItemDataOne_fieldTypes[];
+extern char beGeneraterItemDataOne_fieldNames[];
+extern char beGeneraterItemDataOne_fieldStorage[];
+extern char beGeneraterItemDataOne_fieldOffsets[];
 extern char lbl_804D1F30[];
 extern char lbl_804D1F50[];
 extern void *beGeneraterItemDataOne_meta;
@@ -34,7 +34,7 @@ void *beGeneraterItemDataOne_getMetaCall();
 void beGeneraterItemDataOne_fieldInit();
 }
 extern "C" {
-void beGeneraterItemDataOne_registerNow(){
+void beGeneraterItemDataOne_arkRegister(){
  meta_registerNow((int)beGeneraterItemDataOne_register);
 }
 void beGeneraterItemDataOne_register(){
@@ -45,15 +45,15 @@ void *beGeneraterItemDataOne_getMetaCall(){return beGeneraterItemDataOne_getMeta
 void beGeneraterItemDataOne_fieldInit(){
  void *meta=beGeneraterItemDataOne_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D1F00,0x3);
- meta_setupFields(meta,lbl_804D1F0C,lbl_804D1F18,lbl_804D1F24,field);
+ meta_appendFields(meta,beGeneraterItemDataOne_fieldTypes,0x3);
+ meta_setupFields(meta,beGeneraterItemDataOne_fieldNames,beGeneraterItemDataOne_fieldStorage,beGeneraterItemDataOne_fieldOffsets,field);
 }
 void *fn_802D8620(){
  if(!lbl_80535300) lbl_80535300=fn_800635C8(lbl_8041CA68,lbl_804D1F30,lbl_804D1F50,0x8);
  return lbl_80535300;
 }
 void *beGenerater_create(void *object){
- beGenerater_registerNow();
+ beGenerater_arkRegister();
  return meta_createInstance(beGenerater_meta,object);
 }
 void *beGenerater_metaObject(){
@@ -61,7 +61,7 @@ void *beGenerater_metaObject(){
  return beGenerater_meta;
 }
 void *beGenerater_getMeta(){
- if(!beGenerater_meta || !(reinterpret_cast<unsigned int *>(beGenerater_meta)[0x24/4]&4)) beGenerater_registerNow();
+ if(!beGenerater_meta || !(reinterpret_cast<unsigned int *>(beGenerater_meta)[0x24/4]&4)) beGenerater_arkRegister();
  return beGenerater_meta;
 }
 }

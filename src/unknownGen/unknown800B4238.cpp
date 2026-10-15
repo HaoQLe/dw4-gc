@@ -17,7 +17,7 @@ void igModelViewMatrixAttr_register();
 void *igModelViewMatrixAttr_getMetaCall();
 }
 extern "C" {
-void igModelViewMatrixAttr_registerNow(){
+void igModelViewMatrixAttr_arkRegister(){
  meta_registerNow((int)igModelViewMatrixAttr_register);
 }
 void igModelViewMatrixAttr_register(){

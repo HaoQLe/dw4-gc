@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F890[8];
+extern char igObjectPropertyForCompiledGraph_dependencies[8];
 extern void *igObjectPropertyForCompiledGraph_meta;
 void *igObjectPropertyForCompiledGraph_getMeta();
 void *igObjectPropertyForCompiledGraph_vtableRead();
-void igObjectPropertyForCompiledGraph_registerNow();
+void igObjectPropertyForCompiledGraph_arkRegister();
 void igObjectPropertyForCompiledGraph_register();
 void *igObjectPropertyForCompiledGraph_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013E7E0 : UnknownGenObject8013E7E0_1 {
 };
 extern "C" {
 void *igObjectPropertyForCompiledGraph_getMeta(){
- if(!igObjectPropertyForCompiledGraph_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForCompiledGraph_meta)[0x24/4]&4)) igObjectPropertyForCompiledGraph_registerNow();
+ if(!igObjectPropertyForCompiledGraph_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForCompiledGraph_meta)[0x24/4]&4)) igObjectPropertyForCompiledGraph_arkRegister();
  return igObjectPropertyForCompiledGraph_meta;
 }
 void *igObjectPropertyForCompiledGraph_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForCompiledGraph_vtableRead(){
  object.unknown00=igObjectPropertyForCompiledGraph_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForCompiledGraph_registerNow(){
+void igObjectPropertyForCompiledGraph_arkRegister(){
  meta_registerNow((int)igObjectPropertyForCompiledGraph_register);
 }
 void igObjectPropertyForCompiledGraph_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForCompiledGraph_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForCompiledGraph_getMetaCall,(int)igObjectPropertyForCompiledGraph_className,44,(int)igObjectPropertyForCompiledGraph_vtableRead,(int)fn_8013E968,0,(int)lbl_8055F890);
+ meta_registerClass(0,(int)&igObjectPropertyForCompiledGraph_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForCompiledGraph_getMetaCall,(int)igObjectPropertyForCompiledGraph_className,44,(int)igObjectPropertyForCompiledGraph_vtableRead,(int)fn_8013E968,0,(int)igObjectPropertyForCompiledGraph_dependencies);
 }
 void *igObjectPropertyForCompiledGraph_getMetaCall(){return igObjectPropertyForCompiledGraph_getMeta();}
 }

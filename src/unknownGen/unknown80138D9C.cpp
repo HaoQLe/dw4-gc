@@ -23,19 +23,19 @@ extern char lbl_80476E0C[];
 extern char igParameterSetConstraintList_className[];
 extern char igParameterSetConstraint_className[];
 extern char igParameterSetList_className[];
-extern char lbl_8049D394[];
+extern char igParameterSet_dependencies[];
 extern char igParameterSet_className[];
 extern char igParameterSet_vtable[];
 extern char igParameterSetList_vtable[];
 extern char lbl_804AA360[];
 extern char igParameterSetConstraintList_vtable[];
 extern char lbl_804AA428[];
-extern char lbl_8055F720[8];
-extern char lbl_8055F728[4];
-extern char lbl_8055F72C[4];
-extern char lbl_8055F730[4];
-extern char lbl_8055F734[4];
-extern char lbl_8055F738[8];
+extern char igParameterSetConstraintList_dependencies[8];
+extern char igParameterSetConstraint_fieldTypes[4];
+extern char igParameterSetConstraint_fieldNames[4];
+extern char igParameterSetConstraint_fieldStorage[4];
+extern char igParameterSetConstraint_fieldOffsets[4];
+extern char igParameterSetList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igParameterSetConstraintList_meta;
 extern void *igParameterSetConstraint_meta;
@@ -43,22 +43,22 @@ extern void *igParameterSetList_meta;
 extern void *igParameterSet_meta;
 void *igParameterSetConstraintList_getMeta();
 void *igParameterSetConstraintList_vtableRead();
-void igParameterSetConstraintList_registerNow();
+void igParameterSetConstraintList_arkRegister();
 void igParameterSetConstraintList_register();
 void *igParameterSetConstraintList_getMetaCall();
 void *igParameterSetConstraint_getMeta();
-void igParameterSetConstraint_registerNow();
+void igParameterSetConstraint_arkRegister();
 void igParameterSetConstraint_register();
 void *igParameterSetConstraint_getMetaCall();
 void igParameterSetConstraint_fieldInit();
 void *igParameterSetList_getMeta();
 void *igParameterSetList_vtableRead();
-void igParameterSetList_registerNow();
+void igParameterSetList_arkRegister();
 void igParameterSetList_register();
 void *igParameterSetList_getMetaCall();
 void *igParameterSet_getMeta();
 void *igParameterSet_vtableRead();
-void igParameterSet_registerNow();
+void igParameterSet_arkRegister();
 void igParameterSet_register();
 void *igParameterSet_getMetaCall();
 }
@@ -87,11 +87,11 @@ struct UnknownGenObject801392D8 : UnknownGenRoot801392D8 {
 };
 extern "C" {
 void *igParameterSetConstraintList_create(void *object){
- igParameterSetConstraintList_registerNow();
+ igParameterSetConstraintList_arkRegister();
  return meta_createInstance(igParameterSetConstraintList_meta,object);
 }
 void *igParameterSetConstraintList_getMeta(){
- if(!igParameterSetConstraintList_meta || !(reinterpret_cast<unsigned int *>(igParameterSetConstraintList_meta)[0x24/4]&4)) igParameterSetConstraintList_registerNow();
+ if(!igParameterSetConstraintList_meta || !(reinterpret_cast<unsigned int *>(igParameterSetConstraintList_meta)[0x24/4]&4)) igParameterSetConstraintList_arkRegister();
  return igParameterSetConstraintList_meta;
 }
 void *igParameterSetConstraintList_vtableRead(){
@@ -104,19 +104,19 @@ void *igParameterSetConstraintList_vtableRead(){
  object.unknown00=igParameterSetConstraintList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParameterSetConstraintList_registerNow(){
+void igParameterSetConstraintList_arkRegister(){
  meta_registerNow((int)igParameterSetConstraintList_register);
 }
 void igParameterSetConstraintList_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igParameterSetConstraintList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igParameterSetConstraintList_getMetaCall,(int)igParameterSetConstraintList_className,20,(int)igParameterSetConstraintList_vtableRead,0,0,(int)lbl_8055F720);
+ meta_registerClass(0,(int)&igParameterSetConstraintList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igParameterSetConstraintList_getMetaCall,(int)igParameterSetConstraintList_className,20,(int)igParameterSetConstraintList_vtableRead,0,0,(int)igParameterSetConstraintList_dependencies);
 }
 void *igParameterSetConstraintList_getMetaCall(){return igParameterSetConstraintList_getMeta();}
 void *igParameterSetConstraint_getMeta(){
- if(!igParameterSetConstraint_meta || !(reinterpret_cast<unsigned int *>(igParameterSetConstraint_meta)[0x24/4]&4)) igParameterSetConstraint_registerNow();
+ if(!igParameterSetConstraint_meta || !(reinterpret_cast<unsigned int *>(igParameterSetConstraint_meta)[0x24/4]&4)) igParameterSetConstraint_arkRegister();
  return igParameterSetConstraint_meta;
 }
-void igParameterSetConstraint_registerNow(){
+void igParameterSetConstraint_arkRegister(){
  meta_registerNow((int)igParameterSetConstraint_register);
 }
 void igParameterSetConstraint_register(){
@@ -127,15 +127,15 @@ void *igParameterSetConstraint_getMetaCall(){return igParameterSetConstraint_get
 void igParameterSetConstraint_fieldInit(){
  void *value0=igParameterSetConstraint_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F728,1);
- meta_setupFields(value0,lbl_8055F72C,lbl_8055F730,lbl_8055F734,value1);
+ meta_appendFields(value0,igParameterSetConstraint_fieldTypes,1);
+ meta_setupFields(value0,igParameterSetConstraint_fieldNames,igParameterSetConstraint_fieldStorage,igParameterSetConstraint_fieldOffsets,value1);
 }
 void *fn_8013908C(){
  if(!igParameterSetList_meta) igParameterSetList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igParameterSetList_meta;
 }
 void *igParameterSetList_getMeta(){
- if(!igParameterSetList_meta || !(reinterpret_cast<unsigned int *>(igParameterSetList_meta)[0x24/4]&4)) igParameterSetList_registerNow();
+ if(!igParameterSetList_meta || !(reinterpret_cast<unsigned int *>(igParameterSetList_meta)[0x24/4]&4)) igParameterSetList_arkRegister();
  return igParameterSetList_meta;
 }
 void *igParameterSetList_vtableRead(){
@@ -148,16 +148,16 @@ void *igParameterSetList_vtableRead(){
  object.unknown00=igParameterSetList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParameterSetList_registerNow(){
+void igParameterSetList_arkRegister(){
  meta_registerNow((int)igParameterSetList_register);
 }
 void igParameterSetList_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igParameterSetList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igParameterSetList_getMetaCall,(int)igParameterSetList_className,20,(int)igParameterSetList_vtableRead,0,0,(int)lbl_8055F738);
+ meta_registerClass(0,(int)&igParameterSetList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igParameterSetList_getMetaCall,(int)igParameterSetList_className,20,(int)igParameterSetList_vtableRead,0,0,(int)igParameterSetList_dependencies);
 }
 void *igParameterSetList_getMetaCall(){return igParameterSetList_getMeta();}
 void *igParameterSet_create(void *object){
- igParameterSet_registerNow();
+ igParameterSet_arkRegister();
  return meta_createInstance(igParameterSet_meta,object);
 }
 void *fn_80139260(){
@@ -165,7 +165,7 @@ void *fn_80139260(){
  return igParameterSet_meta;
 }
 void *igParameterSet_getMeta(){
- if(!igParameterSet_meta || !(reinterpret_cast<unsigned int *>(igParameterSet_meta)[0x24/4]&4)) igParameterSet_registerNow();
+ if(!igParameterSet_meta || !(reinterpret_cast<unsigned int *>(igParameterSet_meta)[0x24/4]&4)) igParameterSet_arkRegister();
  return igParameterSet_meta;
 }
 void *igParameterSet_vtableRead(){
@@ -177,12 +177,12 @@ void *igParameterSet_vtableRead(){
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParameterSet_registerNow(){
+void igParameterSet_arkRegister(){
  meta_registerNow((int)igParameterSet_register);
 }
 void igParameterSet_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igParameterSet_meta,(int)igObject_register,(int)fn_800237D0,(int)igParameterSet_getMetaCall,(int)igParameterSet_className,28,(int)igParameterSet_vtableRead,(int)igParameterSet_fieldInit,0,(int)lbl_8049D394);
+ meta_registerClass(0,(int)&igParameterSet_meta,(int)igObject_register,(int)fn_800237D0,(int)igParameterSet_getMetaCall,(int)igParameterSet_className,28,(int)igParameterSet_vtableRead,(int)igParameterSet_fieldInit,0,(int)igParameterSet_dependencies);
 }
 void *igParameterSet_getMetaCall(){return igParameterSet_getMeta();}
 }

@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igGamecubeVisualContext_registerNow();
+void igGamecubeVisualContext_arkRegister();
 extern void *lbl_805621F4;
 extern void *igGamecubeVisualContext_meta;
 }
@@ -14,7 +14,7 @@ void *fn_800D6178(){
  return igGamecubeVisualContext_meta;
 }
 void *igGamecubeVisualContext_getMeta(){
- if(!igGamecubeVisualContext_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVisualContext_meta)[0x24/4]&4)) igGamecubeVisualContext_registerNow();
+ if(!igGamecubeVisualContext_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVisualContext_meta)[0x24/4]&4)) igGamecubeVisualContext_arkRegister();
  return igGamecubeVisualContext_meta;
 }
 }

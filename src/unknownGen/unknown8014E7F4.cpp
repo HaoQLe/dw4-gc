@@ -37,17 +37,17 @@ extern char igCompileActorSkins_vtable[];
 extern char igCompareAttrForTexture_vtable[];
 extern char igCompareAttr_vtable[];
 extern char lbl_804AAF48[];
-extern char lbl_8055FC30[8];
-extern char lbl_8055FC38[8];
-extern char lbl_8055FC40[8];
-extern char lbl_8055FC48[8];
-extern char lbl_8055FC50[8];
-extern char lbl_8055FC60[8];
-extern char lbl_8055FC68[8];
-extern char lbl_8055FC70[8];
-extern char lbl_8055FC78[8];
+extern char igConvertAnimationsToCompressedSequencesQS_dependencies[8];
+extern char igConvertAnimationsToCompressedSequencesQS_fieldTypes[8];
+extern char igConvertAnimationsToCompressedSequencesQS_fieldNames[8];
+extern char igConvertAnimationsToCompressedSequencesQS_fieldStorage[8];
+extern char igConvertAnimationsToCompressedSequencesQS_fieldOffsets[8];
+extern char igCompileGraph_fieldTypes[8];
+extern char igCompileGraph_fieldNames[8];
+extern char igCompileGraph_fieldStorage[8];
+extern char igCompileGraph_fieldOffsets[8];
 extern char lbl_8055FC80[4];
-extern char lbl_8055FC84[8];
+extern char igCompareAttr_dependencies[8];
 extern void *igConvertAnimationsToCompressedSequencesQS_meta;
 extern void *lbl_80564478;
 extern void *igCompileGraph_meta;
@@ -56,31 +56,31 @@ extern void *igCompareAttrForTexture_meta;
 extern void *igCompareAttr_meta;
 void *igConvertAnimationsToCompressedSequencesQS_getMeta();
 void *igConvertAnimationsToCompressedSequencesQS_vtableRead();
-void igConvertAnimationsToCompressedSequencesQS_registerNow();
+void igConvertAnimationsToCompressedSequencesQS_arkRegister();
 void igConvertAnimationsToCompressedSequencesQS_register();
 void *igConvertAnimationsToCompressedSequencesQS_getMetaCall();
 void igConvertAnimationsToCompressedSequencesQS_fieldInit();
 void *fn_8014EB10();
 void *igCompileGraph_getMeta();
 void *igCompileGraph_vtableRead();
-void igCompileGraph_registerNow();
+void igCompileGraph_arkRegister();
 void igCompileGraph_register();
 void *igCompileGraph_getMetaCall();
 void igCompileGraph_fieldInit();
 void *igCompileActorSkins_getMeta();
 void *igCompileActorSkins_vtableRead();
-void igCompileActorSkins_registerNow();
+void igCompileActorSkins_arkRegister();
 void igCompileActorSkins_register();
 void *igCompileActorSkins_getMetaCall();
 void *igCompareAttrForTexture_getMeta();
 void *igCompareAttrForTexture_vtableRead();
-void igCompareAttrForTexture_registerNow();
+void igCompareAttrForTexture_arkRegister();
 void igCompareAttrForTexture_register();
 void *igCompareAttrForTexture_getMetaCall();
 void *igCompareAttrForTexture_parentMeta();
 void *igCompareAttr_getMeta();
 void *igCompareAttr_vtableRead();
-void igCompareAttr_registerNow();
+void igCompareAttr_arkRegister();
 void igCompareAttr_register();
 void *igCompareAttr_getMetaCall();
 }
@@ -165,7 +165,7 @@ struct UnknownGenObject8014F214 : UnknownGenRoot8014F214 {
 };
 extern "C" {
 void *igConvertAnimationsToCompressedSequencesQS_getMeta(){
- if(!igConvertAnimationsToCompressedSequencesQS_meta || !(reinterpret_cast<unsigned int *>(igConvertAnimationsToCompressedSequencesQS_meta)[0x24/4]&4)) igConvertAnimationsToCompressedSequencesQS_registerNow();
+ if(!igConvertAnimationsToCompressedSequencesQS_meta || !(reinterpret_cast<unsigned int *>(igConvertAnimationsToCompressedSequencesQS_meta)[0x24/4]&4)) igConvertAnimationsToCompressedSequencesQS_arkRegister();
  return igConvertAnimationsToCompressedSequencesQS_meta;
 }
 void *igConvertAnimationsToCompressedSequencesQS_vtableRead(){
@@ -181,18 +181,18 @@ void *igConvertAnimationsToCompressedSequencesQS_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igConvertAnimationsToCompressedSequencesQS_registerNow(){
+void igConvertAnimationsToCompressedSequencesQS_arkRegister(){
  meta_registerNow((int)igConvertAnimationsToCompressedSequencesQS_register);
 }
 void igConvertAnimationsToCompressedSequencesQS_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igConvertAnimationsToCompressedSequencesQS_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertAnimationsToCompressedSequencesQS_getMetaCall,(int)igConvertAnimationsToCompressedSequencesQS_className,52,(int)igConvertAnimationsToCompressedSequencesQS_vtableRead,(int)igConvertAnimationsToCompressedSequencesQS_fieldInit,0,(int)lbl_8055FC30);
+ meta_registerClass(0,(int)&igConvertAnimationsToCompressedSequencesQS_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertAnimationsToCompressedSequencesQS_getMetaCall,(int)igConvertAnimationsToCompressedSequencesQS_className,52,(int)igConvertAnimationsToCompressedSequencesQS_vtableRead,(int)igConvertAnimationsToCompressedSequencesQS_fieldInit,0,(int)igConvertAnimationsToCompressedSequencesQS_dependencies);
 }
 void *igConvertAnimationsToCompressedSequencesQS_getMetaCall(){return igConvertAnimationsToCompressedSequencesQS_getMeta();}
 void igConvertAnimationsToCompressedSequencesQS_fieldInit(){
  void *value0=igConvertAnimationsToCompressedSequencesQS_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FC38,2);
+ meta_appendFields(value0,igConvertAnimationsToCompressedSequencesQS_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80035694();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -200,7 +200,7 @@ void igConvertAnimationsToCompressedSequencesQS_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
  void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8003EC68(value4,1);
- meta_setupFields(value0,lbl_8055FC40,lbl_8055FC48,lbl_8055FC50,value1);
+ meta_setupFields(value0,igConvertAnimationsToCompressedSequencesQS_fieldNames,igConvertAnimationsToCompressedSequencesQS_fieldStorage,igConvertAnimationsToCompressedSequencesQS_fieldOffsets,value1);
 }
 void *fn_8014EB10(){
  char *data=igVertexBlending_className;
@@ -208,7 +208,7 @@ void *fn_8014EB10(){
  return lbl_80564478;
 }
 void *igCompileGraph_getMeta(){
- if(!igCompileGraph_meta || !(reinterpret_cast<unsigned int *>(igCompileGraph_meta)[0x24/4]&4)) igCompileGraph_registerNow();
+ if(!igCompileGraph_meta || !(reinterpret_cast<unsigned int *>(igCompileGraph_meta)[0x24/4]&4)) igCompileGraph_arkRegister();
  return igCompileGraph_meta;
 }
 void *igCompileGraph_vtableRead(){
@@ -222,7 +222,7 @@ void *igCompileGraph_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCompileGraph_registerNow(){
+void igCompileGraph_arkRegister(){
  meta_registerNow((int)igCompileGraph_register);
 }
 void igCompileGraph_register(){
@@ -233,14 +233,14 @@ void *igCompileGraph_getMetaCall(){return igCompileGraph_getMeta();}
 void igCompileGraph_fieldInit(){
  void *value0=igCompileGraph_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FC60,2);
+ meta_appendFields(value0,igCompileGraph_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055FC80);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_8014EB10;
- meta_setupFields(value0,lbl_8055FC68,lbl_8055FC70,lbl_8055FC78,value1);
+ meta_setupFields(value0,igCompileGraph_fieldNames,igCompileGraph_fieldStorage,igCompileGraph_fieldOffsets,value1);
 }
 void *igCompileActorSkins_getMeta(){
- if(!igCompileActorSkins_meta || !(reinterpret_cast<unsigned int *>(igCompileActorSkins_meta)[0x24/4]&4)) igCompileActorSkins_registerNow();
+ if(!igCompileActorSkins_meta || !(reinterpret_cast<unsigned int *>(igCompileActorSkins_meta)[0x24/4]&4)) igCompileActorSkins_arkRegister();
  return igCompileActorSkins_meta;
 }
 void *igCompileActorSkins_vtableRead(){
@@ -253,7 +253,7 @@ void *igCompileActorSkins_vtableRead(){
  object.unknown00=igCompileActorSkins_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCompileActorSkins_registerNow(){
+void igCompileActorSkins_arkRegister(){
  meta_registerNow((int)igCompileActorSkins_register);
 }
 void igCompileActorSkins_register(){
@@ -262,7 +262,7 @@ void igCompileActorSkins_register(){
 }
 void *igCompileActorSkins_getMetaCall(){return igCompileActorSkins_getMeta();}
 void *igCompareAttrForTexture_getMeta(){
- if(!igCompareAttrForTexture_meta || !(reinterpret_cast<unsigned int *>(igCompareAttrForTexture_meta)[0x24/4]&4)) igCompareAttrForTexture_registerNow();
+ if(!igCompareAttrForTexture_meta || !(reinterpret_cast<unsigned int *>(igCompareAttrForTexture_meta)[0x24/4]&4)) igCompareAttrForTexture_arkRegister();
  return igCompareAttrForTexture_meta;
 }
 void *igCompareAttrForTexture_vtableRead(){
@@ -276,7 +276,7 @@ void *igCompareAttrForTexture_vtableRead(){
  object.unknown00=igCompareAttrForTexture_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCompareAttrForTexture_registerNow(){
+void igCompareAttrForTexture_arkRegister(){
  meta_registerNow((int)igCompareAttrForTexture_register);
 }
 void igCompareAttrForTexture_register(){
@@ -286,7 +286,7 @@ void igCompareAttrForTexture_register(){
 void *igCompareAttrForTexture_getMetaCall(){return igCompareAttrForTexture_getMeta();}
 void *igCompareAttrForTexture_parentMeta(){return igCompareAttr_meta;}
 void *igCompareAttr_getMeta(){
- if(!igCompareAttr_meta || !(reinterpret_cast<unsigned int *>(igCompareAttr_meta)[0x24/4]&4)) igCompareAttr_registerNow();
+ if(!igCompareAttr_meta || !(reinterpret_cast<unsigned int *>(igCompareAttr_meta)[0x24/4]&4)) igCompareAttr_arkRegister();
  return igCompareAttr_meta;
 }
 void *igCompareAttr_vtableRead(){
@@ -299,12 +299,12 @@ void *igCompareAttr_vtableRead(){
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCompareAttr_registerNow(){
+void igCompareAttr_arkRegister(){
  meta_registerNow((int)igCompareAttr_register);
 }
 void igCompareAttr_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igCompareAttr_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igCompareAttr_getMetaCall,(int)igCompareAttr_className,44,(int)igCompareAttr_vtableRead,(int)igCompareAttr_fieldInit,0,(int)lbl_8055FC84);
+ meta_registerClass(0,(int)&igCompareAttr_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igCompareAttr_getMetaCall,(int)igCompareAttr_className,44,(int)igCompareAttr_vtableRead,(int)igCompareAttr_fieldInit,0,(int)igCompareAttr_dependencies);
 }
 void *igCompareAttr_getMetaCall(){return igCompareAttr_getMeta();}
 }

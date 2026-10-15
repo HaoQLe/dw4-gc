@@ -9,17 +9,17 @@ void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void fn_80071694(void *,int);
 void *beCriFxXbData_metaObject();
-extern char lbl_804D26D4[];
-extern char lbl_804D26E4[];
-extern char lbl_804D26F4[];
-extern char lbl_804D2704[];
+extern char beCriFxInfo_fieldTypes[];
+extern char beCriFxInfo_fieldNames[];
+extern char beCriFxInfo_fieldStorage[];
+extern char beCriFxInfo_fieldOffsets[];
 extern void *beCriFxInfo_meta;
 }
 extern "C" {
 void beCriFxInfo_fieldInit(){
  void *value0=beCriFxInfo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D26D4,4);
+ meta_appendFields(value0,beCriFxInfo_fieldTypes,4);
  void *value2=meta_field(value0,value1);
  fn_80071694(value2,0);
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
@@ -29,7 +29,7 @@ void beCriFxInfo_fieldInit(){
  void *value5=meta_field(value0,(reinterpret_cast<char *>(value1)+3));
  void *value6=beCriFxXbData_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+56)=value6;
- meta_setupFields(value0,lbl_804D26E4,lbl_804D26F4,lbl_804D2704,value1);
+ meta_setupFields(value0,beCriFxInfo_fieldNames,beCriFxInfo_fieldStorage,beCriFxInfo_fieldOffsets,value1);
 }
 }
 #pragma pop

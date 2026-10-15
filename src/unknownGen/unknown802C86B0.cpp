@@ -16,7 +16,7 @@ void beModelCtrlMoveObject_register();
 void *beModelCtrlMoveObject_getMetaCall();
 }
 extern "C" {
-void beModelCtrlMoveObject_registerNow(){
+void beModelCtrlMoveObject_arkRegister(){
  meta_registerNow((int)beModelCtrlMoveObject_register);
 }
 void beModelCtrlMoveObject_register(){

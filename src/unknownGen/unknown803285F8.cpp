@@ -17,12 +17,12 @@ extern void *beNDMWWindowTitle_meta;
 void beNDMWStatusTitle00_register();
 void *beNDMWStatusTitle00_getMetaCall();
 void *beNDMWWindowTitle_getMeta();
-void beNDMWWindowTitle_registerNow();
+void beNDMWWindowTitle_arkRegister();
 void beNDMWWindowTitle_register();
 void *beNDMWWindowTitle_getMetaCall();
 }
 extern "C" {
-void beNDMWStatusTitle00_registerNow(){
+void beNDMWStatusTitle00_arkRegister(){
  meta_registerNow((int)beNDMWStatusTitle00_register);
 }
 void beNDMWStatusTitle00_register(){
@@ -31,10 +31,10 @@ void beNDMWStatusTitle00_register(){
 }
 void *beNDMWStatusTitle00_getMetaCall(){return beNDMWStatusTitle00_getMeta();}
 void *beNDMWWindowTitle_getMeta(){
- if(!beNDMWWindowTitle_meta || !(reinterpret_cast<unsigned int *>(beNDMWWindowTitle_meta)[0x24/4]&4)) beNDMWWindowTitle_registerNow();
+ if(!beNDMWWindowTitle_meta || !(reinterpret_cast<unsigned int *>(beNDMWWindowTitle_meta)[0x24/4]&4)) beNDMWWindowTitle_arkRegister();
  return beNDMWWindowTitle_meta;
 }
-void beNDMWWindowTitle_registerNow(){
+void beNDMWWindowTitle_arkRegister(){
  meta_registerNow((int)beNDMWWindowTitle_register);
 }
 void beNDMWWindowTitle_register(){

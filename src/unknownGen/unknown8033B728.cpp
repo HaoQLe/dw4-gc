@@ -9,7 +9,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_803386E8();
-void beNDMWLogoInfo_registerNow();
+void beNDMWLogoInfo_arkRegister();
 extern char beNDMWMdlEBullet_className[];
 extern char beNDMWMdlEBullet_meta[];
 extern void *beNDMWLogoInfo_meta;
@@ -17,7 +17,7 @@ void beNDMWMdlEBullet_register();
 void *beNDMWMdlEBullet_getMetaCall();
 }
 extern "C" {
-void beNDMWMdlEBullet_registerNow(){
+void beNDMWMdlEBullet_arkRegister(){
  meta_registerNow((int)beNDMWMdlEBullet_register);
 }
 void beNDMWMdlEBullet_register(){
@@ -26,7 +26,7 @@ void beNDMWMdlEBullet_register(){
 }
 void *beNDMWMdlEBullet_getMetaCall(){return beNDMWMdlEBullet_getMeta();}
 void *beNDMWLogoInfo_getMeta(){
- if(!beNDMWLogoInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWLogoInfo_meta)[0x24/4]&4)) beNDMWLogoInfo_registerNow();
+ if(!beNDMWLogoInfo_meta || !(reinterpret_cast<unsigned int *>(beNDMWLogoInfo_meta)[0x24/4]&4)) beNDMWLogoInfo_arkRegister();
  return beNDMWLogoInfo_meta;
 }
 }

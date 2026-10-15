@@ -17,7 +17,7 @@ void igObject_register();
 void igSymbolTable_fieldInit();
 extern char igNonRefCountedThreadList_className[];
 extern char igThreadList_className[];
-extern char lbl_804633D4[];
+extern char igSymbolTable_dependencies[];
 extern char igSymbolTable_className[];
 extern char igSymbolTable_vtable[];
 extern char igDataList_vtable[];
@@ -28,8 +28,8 @@ extern char igNonRefCountedThreadList_vtable[];
 extern char lbl_80476D44[];
 extern char igNonRefCountedObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_8055D080[8];
-extern char lbl_8055D088[8];
+extern char igNonRefCountedThreadList_dependencies[8];
+extern char igThreadList_dependencies[8];
 extern void *igNonRefCountedThreadList_meta;
 extern void *igThreadList_meta;
 extern void *igSymbolTable_meta;
@@ -38,19 +38,19 @@ extern void *igNonRefCountedObjectList_meta;
 extern void *lbl_805621F4;
 void *igNonRefCountedThreadList_getMeta();
 void *igNonRefCountedThreadList_vtableRead();
-void igNonRefCountedThreadList_registerNow();
+void igNonRefCountedThreadList_arkRegister();
 void igNonRefCountedThreadList_register();
 void *igNonRefCountedThreadList_getMetaCall();
 void *fn_80023FDC();
 void *igThreadList_getMeta();
 void *igThreadList_vtableRead();
-void igThreadList_registerNow();
+void igThreadList_arkRegister();
 void igThreadList_register();
 void *igThreadList_getMetaCall();
 void *fn_80024180();
 void *igSymbolTable_getMeta();
 void *igSymbolTable_vtableRead();
-void igSymbolTable_registerNow();
+void igSymbolTable_arkRegister();
 void igSymbolTable_register();
 void *igSymbolTable_getMetaCall();
 }
@@ -83,7 +83,7 @@ void *fn_80023E40(){
  return igNonRefCountedThreadList_meta;
 }
 void *igNonRefCountedThreadList_getMeta(){
- if(!igNonRefCountedThreadList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedThreadList_meta)[0x24/4]&4)) igNonRefCountedThreadList_registerNow();
+ if(!igNonRefCountedThreadList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedThreadList_meta)[0x24/4]&4)) igNonRefCountedThreadList_arkRegister();
  return igNonRefCountedThreadList_meta;
 }
 void *igNonRefCountedThreadList_vtableRead(){
@@ -96,12 +96,12 @@ void *igNonRefCountedThreadList_vtableRead(){
  object.unknown00=igNonRefCountedThreadList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNonRefCountedThreadList_registerNow(){
+void igNonRefCountedThreadList_arkRegister(){
  meta_registerNow((int)igNonRefCountedThreadList_register);
 }
 void igNonRefCountedThreadList_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igNonRefCountedThreadList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igNonRefCountedThreadList_getMetaCall,(int)igNonRefCountedThreadList_className,20,(int)igNonRefCountedThreadList_vtableRead,0,0,(int)lbl_8055D080);
+ meta_registerClass(0,(int)&igNonRefCountedThreadList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igNonRefCountedThreadList_getMetaCall,(int)igNonRefCountedThreadList_className,20,(int)igNonRefCountedThreadList_vtableRead,0,0,(int)igNonRefCountedThreadList_dependencies);
 }
 void *igNonRefCountedThreadList_getMetaCall(){return igNonRefCountedThreadList_getMeta();}
 void *fn_80023FDC(){return igNonRefCountedObjectList_meta;}
@@ -110,7 +110,7 @@ void *fn_80023FE4(){
  return igThreadList_meta;
 }
 void *igThreadList_getMeta(){
- if(!igThreadList_meta || !(reinterpret_cast<unsigned int *>(igThreadList_meta)[0x24/4]&4)) igThreadList_registerNow();
+ if(!igThreadList_meta || !(reinterpret_cast<unsigned int *>(igThreadList_meta)[0x24/4]&4)) igThreadList_arkRegister();
  return igThreadList_meta;
 }
 void *igThreadList_vtableRead(){
@@ -123,21 +123,21 @@ void *igThreadList_vtableRead(){
  object.unknown00=igThreadList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igThreadList_registerNow(){
+void igThreadList_arkRegister(){
  meta_registerNow((int)igThreadList_register);
 }
 void igThreadList_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igThreadList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igThreadList_getMetaCall,(int)igThreadList_className,20,(int)igThreadList_vtableRead,0,0,(int)lbl_8055D088);
+ meta_registerClass(0,(int)&igThreadList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igThreadList_getMetaCall,(int)igThreadList_className,20,(int)igThreadList_vtableRead,0,0,(int)igThreadList_dependencies);
 }
 void *igThreadList_getMetaCall(){return igThreadList_getMeta();}
 void *fn_80024180(){return igObjectList_meta;}
 void *igSymbolTable_create(void *object){
- igSymbolTable_registerNow();
+ igSymbolTable_arkRegister();
  return meta_createInstance(igSymbolTable_meta,object);
 }
 void *igSymbolTable_getMeta(){
- if(!igSymbolTable_meta || !(reinterpret_cast<unsigned int *>(igSymbolTable_meta)[0x24/4]&4)) igSymbolTable_registerNow();
+ if(!igSymbolTable_meta || !(reinterpret_cast<unsigned int *>(igSymbolTable_meta)[0x24/4]&4)) igSymbolTable_arkRegister();
  return igSymbolTable_meta;
 }
 void *igSymbolTable_vtableRead(){
@@ -149,12 +149,12 @@ void *igSymbolTable_vtableRead(){
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSymbolTable_registerNow(){
+void igSymbolTable_arkRegister(){
  meta_registerNow((int)igSymbolTable_register);
 }
 void igSymbolTable_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igSymbolTable_meta,(int)igObject_register,(int)fn_800237D0,(int)igSymbolTable_getMetaCall,(int)igSymbolTable_className,44,(int)igSymbolTable_vtableRead,(int)igSymbolTable_fieldInit,0,(int)lbl_804633D4);
+ meta_registerClass(0,(int)&igSymbolTable_meta,(int)igObject_register,(int)fn_800237D0,(int)igSymbolTable_getMetaCall,(int)igSymbolTable_className,44,(int)igSymbolTable_vtableRead,(int)igSymbolTable_fieldInit,0,(int)igSymbolTable_dependencies);
 }
 void *igSymbolTable_getMetaCall(){return igSymbolTable_getMeta();}
 }

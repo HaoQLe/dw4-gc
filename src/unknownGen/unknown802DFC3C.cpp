@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802DEA84();
-void beCri_registerNow();
+void beCri_arkRegister();
 extern char beCriAcxData_className[];
 extern char beCriAcxData_meta[];
 extern void *beCri_meta;
@@ -21,7 +21,7 @@ void beCriAcxData_register();
 void *beCriAcxData_getMetaCall();
 }
 extern "C" {
-void beCriAcxData_registerNow(){
+void beCriAcxData_arkRegister(){
  meta_registerNow((int)beCriAcxData_register);
 }
 void beCriAcxData_register(){
@@ -30,7 +30,7 @@ void beCriAcxData_register(){
 }
 void *beCriAcxData_getMetaCall(){return beCriAcxData_getMeta();}
 void *beCri_create(void *object){
- beCri_registerNow();
+ beCri_arkRegister();
  return meta_createInstance(beCri_meta,object);
 }
 void *beCri_metaObject(){
@@ -38,7 +38,7 @@ void *beCri_metaObject(){
  return beCri_meta;
 }
 void *beCri_getMeta(){
- if(!beCri_meta || !(reinterpret_cast<unsigned int *>(beCri_meta)[0x24/4]&4)) beCri_registerNow();
+ if(!beCri_meta || !(reinterpret_cast<unsigned int *>(beCri_meta)[0x24/4]&4)) beCri_arkRegister();
  return beCri_meta;
 }
 }

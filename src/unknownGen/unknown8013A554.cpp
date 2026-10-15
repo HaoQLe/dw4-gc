@@ -17,7 +17,7 @@ extern char lbl_804AAF48[];
 extern void *igOptimizeActorAnimations_meta;
 void *igOptimizeActorAnimations_getMeta();
 void *igOptimizeActorAnimations_vtableRead();
-void igOptimizeActorAnimations_registerNow();
+void igOptimizeActorAnimations_arkRegister();
 void igOptimizeActorAnimations_register();
 void *igOptimizeActorAnimations_getMetaCall();
 }
@@ -38,7 +38,7 @@ struct UnknownGenObject8013A590 : UnknownGenObject8013A590_0 {
 };
 extern "C" {
 void *igOptimizeActorAnimations_getMeta(){
- if(!igOptimizeActorAnimations_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorAnimations_meta)[0x24/4]&4)) igOptimizeActorAnimations_registerNow();
+ if(!igOptimizeActorAnimations_meta || !(reinterpret_cast<unsigned int *>(igOptimizeActorAnimations_meta)[0x24/4]&4)) igOptimizeActorAnimations_arkRegister();
  return igOptimizeActorAnimations_meta;
 }
 void *igOptimizeActorAnimations_vtableRead(){
@@ -51,7 +51,7 @@ void *igOptimizeActorAnimations_vtableRead(){
  object.unknown00=igOptimizeActorAnimations_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igOptimizeActorAnimations_registerNow(){
+void igOptimizeActorAnimations_arkRegister(){
  meta_registerNow((int)igOptimizeActorAnimations_register);
 }
 void igOptimizeActorAnimations_register(){

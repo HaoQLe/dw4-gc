@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beWaterMoveDataList_registerNow();
+void beWaterMoveDataList_arkRegister();
 extern void *beWaterMoveDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beWaterMoveDataList_metaObject(){
  return beWaterMoveDataList_meta;
 }
 void *beWaterMoveDataList_getMeta(){
- if(!beWaterMoveDataList_meta || !(reinterpret_cast<unsigned int *>(beWaterMoveDataList_meta)[0x24/4]&4)) beWaterMoveDataList_registerNow();
+ if(!beWaterMoveDataList_meta || !(reinterpret_cast<unsigned int *>(beWaterMoveDataList_meta)[0x24/4]&4)) beWaterMoveDataList_arkRegister();
  return beWaterMoveDataList_meta;
 }
 }

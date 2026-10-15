@@ -21,20 +21,20 @@ extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AA614[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F60C[8];
+extern char igReplaceAttrForNode_dependencies[8];
 extern void *igReplaceByGroup_meta;
 extern void *igReplaceAttrForNode_meta;
 extern void *igReplaceAttr_meta;
 extern void *igOptReplaceNode_meta;
 void *igReplaceByGroup_getMeta();
 void *igReplaceByGroup_vtableRead();
-void igReplaceByGroup_registerNow();
+void igReplaceByGroup_arkRegister();
 void igReplaceByGroup_register();
 void *igReplaceByGroup_getMetaCall();
 void *igReplaceByGroup_parentMeta();
 void *igReplaceAttrForNode_getMeta();
 void *igReplaceAttrForNode_vtableRead();
-void igReplaceAttrForNode_registerNow();
+void igReplaceAttrForNode_arkRegister();
 void igReplaceAttrForNode_register();
 void *igReplaceAttrForNode_getMetaCall();
 void *igReplaceAttrForNode_parentMeta();
@@ -80,7 +80,7 @@ struct UnknownGenObject801355BC : UnknownGenObject801355BC_0 {
 };
 extern "C" {
 void *igReplaceByGroup_getMeta(){
- if(!igReplaceByGroup_meta || !(reinterpret_cast<unsigned int *>(igReplaceByGroup_meta)[0x24/4]&4)) igReplaceByGroup_registerNow();
+ if(!igReplaceByGroup_meta || !(reinterpret_cast<unsigned int *>(igReplaceByGroup_meta)[0x24/4]&4)) igReplaceByGroup_arkRegister();
  return igReplaceByGroup_meta;
 }
 void *igReplaceByGroup_vtableRead(){
@@ -97,7 +97,7 @@ void *igReplaceByGroup_vtableRead(){
  object.unknown00=igReplaceByGroup_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igReplaceByGroup_registerNow(){
+void igReplaceByGroup_arkRegister(){
  meta_registerNow((int)igReplaceByGroup_register);
 }
 void igReplaceByGroup_register(){
@@ -107,7 +107,7 @@ void igReplaceByGroup_register(){
 void *igReplaceByGroup_getMetaCall(){return igReplaceByGroup_getMeta();}
 void *igReplaceByGroup_parentMeta(){return igOptReplaceNode_meta;}
 void *igReplaceAttrForNode_getMeta(){
- if(!igReplaceAttrForNode_meta || !(reinterpret_cast<unsigned int *>(igReplaceAttrForNode_meta)[0x24/4]&4)) igReplaceAttrForNode_registerNow();
+ if(!igReplaceAttrForNode_meta || !(reinterpret_cast<unsigned int *>(igReplaceAttrForNode_meta)[0x24/4]&4)) igReplaceAttrForNode_arkRegister();
  return igReplaceAttrForNode_meta;
 }
 void *igReplaceAttrForNode_vtableRead(){
@@ -123,12 +123,12 @@ void *igReplaceAttrForNode_vtableRead(){
  object.unknown00=igReplaceAttrForNode_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igReplaceAttrForNode_registerNow(){
+void igReplaceAttrForNode_arkRegister(){
  meta_registerNow((int)igReplaceAttrForNode_register);
 }
 void igReplaceAttrForNode_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igReplaceAttrForNode_meta,(int)igReplaceAttr_register,(int)igReplaceAttrForNode_parentMeta,(int)igReplaceAttrForNode_getMetaCall,(int)igReplaceAttrForNode_className,44,(int)igReplaceAttrForNode_vtableRead,(int)fn_801357C0,0,(int)lbl_8055F60C);
+ meta_registerClass(0,(int)&igReplaceAttrForNode_meta,(int)igReplaceAttr_register,(int)igReplaceAttrForNode_parentMeta,(int)igReplaceAttrForNode_getMetaCall,(int)igReplaceAttrForNode_className,44,(int)igReplaceAttrForNode_vtableRead,(int)fn_801357C0,0,(int)igReplaceAttrForNode_dependencies);
 }
 void *igReplaceAttrForNode_getMetaCall(){return igReplaceAttrForNode_getMeta();}
 void *igReplaceAttrForNode_parentMeta(){return igReplaceAttr_meta;}

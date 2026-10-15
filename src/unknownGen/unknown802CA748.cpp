@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beModelCtrlAIDataList_registerNow();
+void beModelCtrlAIDataList_arkRegister();
 extern void *beModelCtrlAIDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beModelCtrlAIDataList_metaObject(){
  return beModelCtrlAIDataList_meta;
 }
 void *beModelCtrlAIDataList_getMeta(){
- if(!beModelCtrlAIDataList_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlAIDataList_meta)[0x24/4]&4)) beModelCtrlAIDataList_registerNow();
+ if(!beModelCtrlAIDataList_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlAIDataList_meta)[0x24/4]&4)) beModelCtrlAIDataList_arkRegister();
  return beModelCtrlAIDataList_meta;
 }
 }

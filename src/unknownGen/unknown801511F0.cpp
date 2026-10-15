@@ -25,24 +25,24 @@ extern char lbl_804A6460[];
 extern char igCollapseHierarchy_vtable[];
 extern char igCollapseGeometry_vtable[];
 extern char lbl_804AAF48[];
-extern char lbl_8055FCC0[8];
-extern char lbl_8055FCC8[8];
-extern char lbl_8055FCD0[8];
-extern char lbl_8055FCD8[8];
-extern char lbl_8055FCE0[8];
+extern char igCollapseHierarchy_dependencies[8];
+extern char igCollapseHierarchy_fieldTypes[8];
+extern char igCollapseHierarchy_fieldNames[8];
+extern char igCollapseHierarchy_fieldStorage[8];
+extern char igCollapseHierarchy_fieldOffsets[8];
 extern void *lbl_805644F0;
 extern void *igCollapseHierarchy_meta;
 extern void *lbl_80564500;
 extern void *igCollapseGeometry_meta;
 void *igCollapseHierarchy_getMeta();
 void *igCollapseHierarchy_vtableRead();
-void igCollapseHierarchy_registerNow();
+void igCollapseHierarchy_arkRegister();
 void igCollapseHierarchy_register();
 void *igCollapseHierarchy_getMetaCall();
 void igCollapseHierarchy_fieldInit();
 void *igCollapseGeometry_getMeta();
 void *igCollapseGeometry_vtableRead();
-void igCollapseGeometry_registerNow();
+void igCollapseGeometry_arkRegister();
 void igCollapseGeometry_register();
 void *igCollapseGeometry_getMetaCall();
 }
@@ -87,7 +87,7 @@ void *fn_801511F0(){
  return lbl_805644F0;
 }
 void *igCollapseHierarchy_getMeta(){
- if(!igCollapseHierarchy_meta || !(reinterpret_cast<unsigned int *>(igCollapseHierarchy_meta)[0x24/4]&4)) igCollapseHierarchy_registerNow();
+ if(!igCollapseHierarchy_meta || !(reinterpret_cast<unsigned int *>(igCollapseHierarchy_meta)[0x24/4]&4)) igCollapseHierarchy_arkRegister();
  return igCollapseHierarchy_meta;
 }
 void *igCollapseHierarchy_vtableRead(){
@@ -102,24 +102,24 @@ void *igCollapseHierarchy_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseHierarchy_registerNow(){
+void igCollapseHierarchy_arkRegister(){
  meta_registerNow((int)igCollapseHierarchy_register);
 }
 void igCollapseHierarchy_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igCollapseHierarchy_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igCollapseHierarchy_getMetaCall,(int)igCollapseHierarchy_className,48,(int)igCollapseHierarchy_vtableRead,(int)igCollapseHierarchy_fieldInit,0,(int)lbl_8055FCC0);
+ meta_registerClass(0,(int)&igCollapseHierarchy_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igCollapseHierarchy_getMetaCall,(int)igCollapseHierarchy_className,48,(int)igCollapseHierarchy_vtableRead,(int)igCollapseHierarchy_fieldInit,0,(int)igCollapseHierarchy_dependencies);
 }
 void *igCollapseHierarchy_getMetaCall(){return igCollapseHierarchy_getMeta();}
 void igCollapseHierarchy_fieldInit(){
  void *value0=igCollapseHierarchy_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FCC8,2);
+ meta_appendFields(value0,igCollapseHierarchy_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80029F84();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_80071694(value4,igNodeTraversal_className);
- meta_setupFields(value0,lbl_8055FCD0,lbl_8055FCD8,lbl_8055FCE0,value1);
+ meta_setupFields(value0,igCollapseHierarchy_fieldNames,igCollapseHierarchy_fieldStorage,igCollapseHierarchy_fieldOffsets,value1);
 }
 void *fn_80151534(){
  char *data=igVertexBlending_className;
@@ -127,7 +127,7 @@ void *fn_80151534(){
  return lbl_80564500;
 }
 void *igCollapseGeometry_getMeta(){
- if(!igCollapseGeometry_meta || !(reinterpret_cast<unsigned int *>(igCollapseGeometry_meta)[0x24/4]&4)) igCollapseGeometry_registerNow();
+ if(!igCollapseGeometry_meta || !(reinterpret_cast<unsigned int *>(igCollapseGeometry_meta)[0x24/4]&4)) igCollapseGeometry_arkRegister();
  return igCollapseGeometry_meta;
 }
 void *igCollapseGeometry_vtableRead(){
@@ -141,7 +141,7 @@ void *igCollapseGeometry_vtableRead(){
  object.unknown38.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollapseGeometry_registerNow(){
+void igCollapseGeometry_arkRegister(){
  meta_registerNow((int)igCollapseGeometry_register);
 }
 void igCollapseGeometry_register(){

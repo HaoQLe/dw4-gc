@@ -31,7 +31,7 @@ extern char igItemDataBaseList_vtable[];
 extern char lbl_804A99B0[];
 extern char igCompoundList_vtable[];
 extern char lbl_8055F4B4[6];
-extern char lbl_8055FA40[8];
+extern char igItemDataBaseField_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igCompoundList_meta;
 extern void *igItemDataBaseList_meta;
@@ -40,14 +40,14 @@ extern void *igItemDataBaseField_meta;
 extern void *lbl_80564158;
 void *igItemDataBaseList_getMeta();
 void *igItemDataBaseList_vtableRead();
-void igItemDataBaseList_registerNow();
+void igItemDataBaseList_arkRegister();
 void igItemDataBaseList_register();
 void *igItemDataBaseList_getMetaCall();
 void *fn_801452A8();
 void fn_801452B0();
 void *igItemDataBaseField_getMeta();
 void *igItemDataBaseField_vtableRead();
-void igItemDataBaseField_registerNow();
+void igItemDataBaseField_arkRegister();
 void igItemDataBaseField_register();
 void *igItemDataBaseField_getMetaCall();
 void *fn_801455C8();
@@ -82,7 +82,7 @@ void *fn_80145120(){
  return igItemDataBaseList_meta;
 }
 void *igItemDataBaseList_getMeta(){
- if(!igItemDataBaseList_meta || !(reinterpret_cast<unsigned int *>(igItemDataBaseList_meta)[0x24/4]&4)) igItemDataBaseList_registerNow();
+ if(!igItemDataBaseList_meta || !(reinterpret_cast<unsigned int *>(igItemDataBaseList_meta)[0x24/4]&4)) igItemDataBaseList_arkRegister();
  return igItemDataBaseList_meta;
 }
 void *igItemDataBaseList_vtableRead(){
@@ -93,7 +93,7 @@ void *igItemDataBaseList_vtableRead(){
  object.unknown00=igItemDataBaseList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igItemDataBaseList_registerNow(){
+void igItemDataBaseList_arkRegister(){
  meta_registerNow((int)igItemDataBaseList_register);
 }
 void igItemDataBaseList_register(){
@@ -114,7 +114,7 @@ void fn_801452B0(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igItemDataBaseField_getMeta(){
- if(!igItemDataBaseField_meta || !(reinterpret_cast<unsigned int *>(igItemDataBaseField_meta)[0x24/4]&4)) igItemDataBaseField_registerNow();
+ if(!igItemDataBaseField_meta || !(reinterpret_cast<unsigned int *>(igItemDataBaseField_meta)[0x24/4]&4)) igItemDataBaseField_arkRegister();
  return igItemDataBaseField_meta;
 }
 void *igItemDataBaseField_vtableRead(){
@@ -124,12 +124,12 @@ void *igItemDataBaseField_vtableRead(){
  object.unknown00=igItemDataBaseField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igItemDataBaseField_registerNow(){
+void igItemDataBaseField_arkRegister(){
  meta_registerNow((int)igItemDataBaseField_register);
 }
 void igItemDataBaseField_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igItemDataBaseField_meta,(int)igCompoundMetaField_register,(int)fn_80033638,(int)igItemDataBaseField_getMetaCall,(int)igItemDataBaseField_className,56,(int)igItemDataBaseField_vtableRead,0,0,(int)lbl_8055FA40);
+ meta_registerClass(0,(int)&igItemDataBaseField_meta,(int)igCompoundMetaField_register,(int)fn_80033638,(int)igItemDataBaseField_getMetaCall,(int)igItemDataBaseField_className,56,(int)igItemDataBaseField_vtableRead,0,0,(int)igItemDataBaseField_dependencies);
 }
 void *igItemDataBaseField_getMetaCall(){return igItemDataBaseField_getMeta();}
 void fn_80145530(){
@@ -145,7 +145,7 @@ void fn_80145530(){
 }
 void *fn_801455C8(){
  if(!lbl_80564158){
-  igItemDataBaseField_registerNow();
+  igItemDataBaseField_arkRegister();
  }
  return lbl_80564158;
 }

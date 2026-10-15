@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F858[8];
+extern char igObjectPropertyForBumpMapShader_dependencies[8];
 extern void *igObjectPropertyForBumpMapShader_meta;
 void *igObjectPropertyForBumpMapShader_getMeta();
 void *igObjectPropertyForBumpMapShader_vtableRead();
-void igObjectPropertyForBumpMapShader_registerNow();
+void igObjectPropertyForBumpMapShader_arkRegister();
 void igObjectPropertyForBumpMapShader_register();
 void *igObjectPropertyForBumpMapShader_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013D698 : UnknownGenObject8013D698_1 {
 };
 extern "C" {
 void *igObjectPropertyForBumpMapShader_getMeta(){
- if(!igObjectPropertyForBumpMapShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForBumpMapShader_meta)[0x24/4]&4)) igObjectPropertyForBumpMapShader_registerNow();
+ if(!igObjectPropertyForBumpMapShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForBumpMapShader_meta)[0x24/4]&4)) igObjectPropertyForBumpMapShader_arkRegister();
  return igObjectPropertyForBumpMapShader_meta;
 }
 void *igObjectPropertyForBumpMapShader_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForBumpMapShader_vtableRead(){
  object.unknown00=igObjectPropertyForBumpMapShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForBumpMapShader_registerNow(){
+void igObjectPropertyForBumpMapShader_arkRegister(){
  meta_registerNow((int)igObjectPropertyForBumpMapShader_register);
 }
 void igObjectPropertyForBumpMapShader_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForBumpMapShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForBumpMapShader_getMetaCall,(int)igObjectPropertyForBumpMapShader_className,44,(int)igObjectPropertyForBumpMapShader_vtableRead,(int)fn_8013D820,0,(int)lbl_8055F858);
+ meta_registerClass(0,(int)&igObjectPropertyForBumpMapShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForBumpMapShader_getMetaCall,(int)igObjectPropertyForBumpMapShader_className,44,(int)igObjectPropertyForBumpMapShader_vtableRead,(int)fn_8013D820,0,(int)igObjectPropertyForBumpMapShader_dependencies);
 }
 void *igObjectPropertyForBumpMapShader_getMetaCall(){return igObjectPropertyForBumpMapShader_getMeta();}
 }

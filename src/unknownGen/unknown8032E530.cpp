@@ -3,16 +3,16 @@
 #pragma auto_inline off
 extern "C" {
 void *meta_createInstance(void *,void *);
-void beNDMWShopCtrlA0_registerNow();
+void beNDMWShopCtrlA0_arkRegister();
 extern void *beNDMWShopCtrlA0_meta;
 }
 extern "C" {
 void *beNDMWShopCtrlA0_create(void *object){
- beNDMWShopCtrlA0_registerNow();
+ beNDMWShopCtrlA0_arkRegister();
  return meta_createInstance(beNDMWShopCtrlA0_meta,object);
 }
 void *beNDMWShopCtrlA0_getMeta(){
- if(!beNDMWShopCtrlA0_meta || !(reinterpret_cast<unsigned int *>(beNDMWShopCtrlA0_meta)[0x24/4]&4)) beNDMWShopCtrlA0_registerNow();
+ if(!beNDMWShopCtrlA0_meta || !(reinterpret_cast<unsigned int *>(beNDMWShopCtrlA0_meta)[0x24/4]&4)) beNDMWShopCtrlA0_arkRegister();
  return beNDMWShopCtrlA0_meta;
 }
 }

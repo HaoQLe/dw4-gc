@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_803386E8();
-void beNDMWMdlItem_registerNow();
+void beNDMWMdlItem_arkRegister();
 extern char beNDMWMdlMapBase_className[];
 extern char beNDMWMdlMapBase_meta[];
 extern void *beNDMWMdlItem_meta;
@@ -21,7 +21,7 @@ void beNDMWMdlMapBase_register();
 void *beNDMWMdlMapBase_getMetaCall();
 }
 extern "C" {
-void beNDMWMdlMapBase_registerNow(){
+void beNDMWMdlMapBase_arkRegister(){
  meta_registerNow((int)beNDMWMdlMapBase_register);
 }
 void beNDMWMdlMapBase_register(){
@@ -30,7 +30,7 @@ void beNDMWMdlMapBase_register(){
 }
 void *beNDMWMdlMapBase_getMetaCall(){return beNDMWMdlMapBase_getMeta();}
 void *beNDMWMdlItem_create(void *object){
- beNDMWMdlItem_registerNow();
+ beNDMWMdlItem_arkRegister();
  return meta_createInstance(beNDMWMdlItem_meta,object);
 }
 void *beNDMWMdlItem_metaObject(){
@@ -38,7 +38,7 @@ void *beNDMWMdlItem_metaObject(){
  return beNDMWMdlItem_meta;
 }
 void *beNDMWMdlItem_getMeta(){
- if(!beNDMWMdlItem_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlItem_meta)[0x24/4]&4)) beNDMWMdlItem_registerNow();
+ if(!beNDMWMdlItem_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlItem_meta)[0x24/4]&4)) beNDMWMdlItem_arkRegister();
  return beNDMWMdlItem_meta;
 }
 }

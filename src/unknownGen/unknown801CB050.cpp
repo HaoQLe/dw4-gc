@@ -22,7 +22,7 @@ extern char lbl_80476E0C[];
 extern char igAnimationCombinerBoneInfoPool_className[];
 extern char igAnimationCombinerBoneInfoListList_className[];
 extern char igAnimationCombinerBoneInfoList_className[];
-extern char lbl_804B2208[];
+extern char igAnimationCombinerBoneInfo_dependencies[];
 extern char igAnimationCombinerBoneInfo_className[];
 extern char igAnimationCombinerBoneInfo_vtable[];
 extern char igAnimationCombinerBoneInfoList_vtable[];
@@ -32,9 +32,9 @@ extern char lbl_804B6258[];
 extern char igAnimationCombinerBoneInfoPool_vtable[];
 extern char lbl_804B6320[];
 extern char igObjectPool_vtable[];
-extern char lbl_805609B0[8];
-extern char lbl_805609B8[8];
-extern char lbl_805609C0[8];
+extern char igAnimationCombinerBoneInfoPool_dependencies[8];
+extern char igAnimationCombinerBoneInfoListList_dependencies[8];
+extern char igAnimationCombinerBoneInfoList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igAnimationCombinerBoneInfoPool_meta;
 extern void *igAnimationCombinerBoneInfoListList_meta;
@@ -42,22 +42,22 @@ extern void *igAnimationCombinerBoneInfoList_meta;
 extern void *igAnimationCombinerBoneInfo_meta;
 void *igAnimationCombinerBoneInfoPool_getMeta();
 void *igAnimationCombinerBoneInfoPool_vtableRead();
-void igAnimationCombinerBoneInfoPool_registerNow();
+void igAnimationCombinerBoneInfoPool_arkRegister();
 void igAnimationCombinerBoneInfoPool_register();
 void *igAnimationCombinerBoneInfoPool_getMetaCall();
 void *igAnimationCombinerBoneInfoListList_getMeta();
 void *igAnimationCombinerBoneInfoListList_vtableRead();
-void igAnimationCombinerBoneInfoListList_registerNow();
+void igAnimationCombinerBoneInfoListList_arkRegister();
 void igAnimationCombinerBoneInfoListList_register();
 void *igAnimationCombinerBoneInfoListList_getMetaCall();
 void *igAnimationCombinerBoneInfoList_getMeta();
 void *igAnimationCombinerBoneInfoList_vtableRead();
-void igAnimationCombinerBoneInfoList_registerNow();
+void igAnimationCombinerBoneInfoList_arkRegister();
 void igAnimationCombinerBoneInfoList_register();
 void *igAnimationCombinerBoneInfoList_getMetaCall();
 void *igAnimationCombinerBoneInfo_getMeta();
 void *igAnimationCombinerBoneInfo_vtableRead();
-void igAnimationCombinerBoneInfo_registerNow();
+void igAnimationCombinerBoneInfo_arkRegister();
 void igAnimationCombinerBoneInfo_register();
 void *igAnimationCombinerBoneInfo_getMetaCall();
 }
@@ -87,11 +87,11 @@ struct UnknownGenObject801CB59C : UnknownGenRoot801CB59C {
 };
 extern "C" {
 void *igAnimationCombinerBoneInfoPool_create(void *object){
- igAnimationCombinerBoneInfoPool_registerNow();
+ igAnimationCombinerBoneInfoPool_arkRegister();
  return meta_createInstance(igAnimationCombinerBoneInfoPool_meta,object);
 }
 void *igAnimationCombinerBoneInfoPool_getMeta(){
- if(!igAnimationCombinerBoneInfoPool_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerBoneInfoPool_meta)[0x24/4]&4)) igAnimationCombinerBoneInfoPool_registerNow();
+ if(!igAnimationCombinerBoneInfoPool_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerBoneInfoPool_meta)[0x24/4]&4)) igAnimationCombinerBoneInfoPool_arkRegister();
  return igAnimationCombinerBoneInfoPool_meta;
 }
 void *igAnimationCombinerBoneInfoPool_vtableRead(){
@@ -105,12 +105,12 @@ void *igAnimationCombinerBoneInfoPool_vtableRead(){
  object.unknown00=igAnimationCombinerBoneInfoPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationCombinerBoneInfoPool_registerNow(){
+void igAnimationCombinerBoneInfoPool_arkRegister(){
  meta_registerNow((int)igAnimationCombinerBoneInfoPool_register);
 }
 void igAnimationCombinerBoneInfoPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationCombinerBoneInfoPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igAnimationCombinerBoneInfoPool_getMetaCall,(int)igAnimationCombinerBoneInfoPool_className,32,(int)igAnimationCombinerBoneInfoPool_vtableRead,0,0,(int)lbl_805609B0);
+ meta_registerClass(0,(int)&igAnimationCombinerBoneInfoPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igAnimationCombinerBoneInfoPool_getMetaCall,(int)igAnimationCombinerBoneInfoPool_className,32,(int)igAnimationCombinerBoneInfoPool_vtableRead,0,0,(int)igAnimationCombinerBoneInfoPool_dependencies);
 }
 void *igAnimationCombinerBoneInfoPool_getMetaCall(){return igAnimationCombinerBoneInfoPool_getMeta();}
 void *fn_801CB1F4(){
@@ -118,7 +118,7 @@ void *fn_801CB1F4(){
  return igAnimationCombinerBoneInfoListList_meta;
 }
 void *igAnimationCombinerBoneInfoListList_getMeta(){
- if(!igAnimationCombinerBoneInfoListList_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerBoneInfoListList_meta)[0x24/4]&4)) igAnimationCombinerBoneInfoListList_registerNow();
+ if(!igAnimationCombinerBoneInfoListList_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerBoneInfoListList_meta)[0x24/4]&4)) igAnimationCombinerBoneInfoListList_arkRegister();
  return igAnimationCombinerBoneInfoListList_meta;
 }
 void *igAnimationCombinerBoneInfoListList_vtableRead(){
@@ -131,20 +131,20 @@ void *igAnimationCombinerBoneInfoListList_vtableRead(){
  object.unknown00=igAnimationCombinerBoneInfoListList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationCombinerBoneInfoListList_registerNow(){
+void igAnimationCombinerBoneInfoListList_arkRegister(){
  meta_registerNow((int)igAnimationCombinerBoneInfoListList_register);
 }
 void igAnimationCombinerBoneInfoListList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationCombinerBoneInfoListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationCombinerBoneInfoListList_getMetaCall,(int)igAnimationCombinerBoneInfoListList_className,20,(int)igAnimationCombinerBoneInfoListList_vtableRead,0,0,(int)lbl_805609B8);
+ meta_registerClass(0,(int)&igAnimationCombinerBoneInfoListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationCombinerBoneInfoListList_getMetaCall,(int)igAnimationCombinerBoneInfoListList_className,20,(int)igAnimationCombinerBoneInfoListList_vtableRead,0,0,(int)igAnimationCombinerBoneInfoListList_dependencies);
 }
 void *igAnimationCombinerBoneInfoListList_getMetaCall(){return igAnimationCombinerBoneInfoListList_getMeta();}
 void *igAnimationCombinerBoneInfoList_create(void *object){
- igAnimationCombinerBoneInfoList_registerNow();
+ igAnimationCombinerBoneInfoList_arkRegister();
  return meta_createInstance(igAnimationCombinerBoneInfoList_meta,object);
 }
 void *igAnimationCombinerBoneInfoList_getMeta(){
- if(!igAnimationCombinerBoneInfoList_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerBoneInfoList_meta)[0x24/4]&4)) igAnimationCombinerBoneInfoList_registerNow();
+ if(!igAnimationCombinerBoneInfoList_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerBoneInfoList_meta)[0x24/4]&4)) igAnimationCombinerBoneInfoList_arkRegister();
  return igAnimationCombinerBoneInfoList_meta;
 }
 void *igAnimationCombinerBoneInfoList_vtableRead(){
@@ -157,20 +157,20 @@ void *igAnimationCombinerBoneInfoList_vtableRead(){
  object.unknown00=igAnimationCombinerBoneInfoList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationCombinerBoneInfoList_registerNow(){
+void igAnimationCombinerBoneInfoList_arkRegister(){
  meta_registerNow((int)igAnimationCombinerBoneInfoList_register);
 }
 void igAnimationCombinerBoneInfoList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationCombinerBoneInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationCombinerBoneInfoList_getMetaCall,(int)igAnimationCombinerBoneInfoList_className,20,(int)igAnimationCombinerBoneInfoList_vtableRead,0,0,(int)lbl_805609C0);
+ meta_registerClass(0,(int)&igAnimationCombinerBoneInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationCombinerBoneInfoList_getMetaCall,(int)igAnimationCombinerBoneInfoList_className,20,(int)igAnimationCombinerBoneInfoList_vtableRead,0,0,(int)igAnimationCombinerBoneInfoList_dependencies);
 }
 void *igAnimationCombinerBoneInfoList_getMetaCall(){return igAnimationCombinerBoneInfoList_getMeta();}
 void *igAnimationCombinerBoneInfo_create(void *object){
- igAnimationCombinerBoneInfo_registerNow();
+ igAnimationCombinerBoneInfo_arkRegister();
  return meta_createInstance(igAnimationCombinerBoneInfo_meta,object);
 }
 void *igAnimationCombinerBoneInfo_getMeta(){
- if(!igAnimationCombinerBoneInfo_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerBoneInfo_meta)[0x24/4]&4)) igAnimationCombinerBoneInfo_registerNow();
+ if(!igAnimationCombinerBoneInfo_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerBoneInfo_meta)[0x24/4]&4)) igAnimationCombinerBoneInfo_arkRegister();
  return igAnimationCombinerBoneInfo_meta;
 }
 void *igAnimationCombinerBoneInfo_vtableRead(){
@@ -180,12 +180,12 @@ void *igAnimationCombinerBoneInfo_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationCombinerBoneInfo_registerNow(){
+void igAnimationCombinerBoneInfo_arkRegister(){
  meta_registerNow((int)igAnimationCombinerBoneInfo_register);
 }
 void igAnimationCombinerBoneInfo_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationCombinerBoneInfo_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationCombinerBoneInfo_getMetaCall,(int)igAnimationCombinerBoneInfo_className,60,(int)igAnimationCombinerBoneInfo_vtableRead,(int)igAnimationCombinerBoneInfo_fieldInit,0,(int)lbl_804B2208);
+ meta_registerClass(0,(int)&igAnimationCombinerBoneInfo_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationCombinerBoneInfo_getMetaCall,(int)igAnimationCombinerBoneInfo_className,60,(int)igAnimationCombinerBoneInfo_vtableRead,(int)igAnimationCombinerBoneInfo_fieldInit,0,(int)igAnimationCombinerBoneInfo_dependencies);
 }
 void *igAnimationCombinerBoneInfo_getMetaCall(){return igAnimationCombinerBoneInfo_getMeta();}
 }

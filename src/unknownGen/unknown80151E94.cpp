@@ -28,15 +28,15 @@ extern char lbl_804A6460[];
 extern char igChangePlayMode_vtable[];
 extern char igChangeInterpolationMethod_vtable[];
 extern char lbl_804AAF48[];
-extern char lbl_8055FD0C[8];
-extern char lbl_8055FD14[8];
-extern char lbl_8055FD1C[8];
-extern char lbl_8055FD24[8];
-extern char lbl_8055FD2C[8];
-extern char lbl_8055FD34[4];
-extern char lbl_8055FD38[4];
-extern char lbl_8055FD3C[4];
-extern char lbl_8055FD40[4];
+extern char igChildEdit_dependencies[8];
+extern char igChildEdit_fieldTypes[8];
+extern char igChildEdit_fieldNames[8];
+extern char igChildEdit_fieldStorage[8];
+extern char igChildEdit_fieldOffsets[8];
+extern char igChangePlayMode_fieldTypes[4];
+extern char igChangePlayMode_fieldNames[4];
+extern char igChangePlayMode_fieldStorage[4];
+extern char igChangePlayMode_fieldOffsets[4];
 extern char lbl_8055FD44[4];
 extern void *igObject_meta;
 extern void *igChildEdit_meta;
@@ -44,23 +44,23 @@ extern void *igChildContainer_meta;
 extern void *igChangePlayMode_meta;
 extern void *igChangeInterpolationMethod_meta;
 void *igChildEdit_getMeta();
-void igChildEdit_registerNow();
+void igChildEdit_arkRegister();
 void igChildEdit_register();
 void *igChildEdit_getMetaCall();
 void igChildEdit_fieldInit();
 void *igChildContainer_getMeta();
-void igChildContainer_registerNow();
+void igChildContainer_arkRegister();
 void igChildContainer_register();
 void *igChildContainer_getMetaCall();
 void *igChangePlayMode_getMeta();
 void *igChangePlayMode_vtableRead();
-void igChangePlayMode_registerNow();
+void igChangePlayMode_arkRegister();
 void igChangePlayMode_register();
 void *igChangePlayMode_getMetaCall();
 void igChangePlayMode_fieldInit();
 void *igChangeInterpolationMethod_getMeta();
 void *igChangeInterpolationMethod_vtableRead();
-void igChangeInterpolationMethod_registerNow();
+void igChangeInterpolationMethod_arkRegister();
 void igChangeInterpolationMethod_register();
 void *igChangeInterpolationMethod_getMetaCall();
 }
@@ -104,32 +104,32 @@ struct UnknownGenObject801523FC : UnknownGenObject801523FC_1 {
 };
 extern "C" {
 void *igChildEdit_getMeta(){
- if(!igChildEdit_meta || !(reinterpret_cast<unsigned int *>(igChildEdit_meta)[0x24/4]&4)) igChildEdit_registerNow();
+ if(!igChildEdit_meta || !(reinterpret_cast<unsigned int *>(igChildEdit_meta)[0x24/4]&4)) igChildEdit_arkRegister();
  return igChildEdit_meta;
 }
-void igChildEdit_registerNow(){
+void igChildEdit_arkRegister(){
  meta_registerNow((int)igChildEdit_register);
 }
 void igChildEdit_register(){
  fn_8012FC48();
- meta_registerClass(1,(int)&igChildEdit_meta,(int)igChildContainer_register,(int)fn_80135250,(int)igChildEdit_getMetaCall,(int)igChildEdit_className,40,0,(int)igChildEdit_fieldInit,0,(int)lbl_8055FD0C);
+ meta_registerClass(1,(int)&igChildEdit_meta,(int)igChildContainer_register,(int)fn_80135250,(int)igChildEdit_getMetaCall,(int)igChildEdit_className,40,0,(int)igChildEdit_fieldInit,0,(int)igChildEdit_dependencies);
 }
 void *igChildEdit_getMetaCall(){return igChildEdit_getMeta();}
 void igChildEdit_fieldInit(){
  void *value0=igChildEdit_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FD14,2);
+ meta_appendFields(value0,igChildEdit_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=igObject_meta;
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=igObject_meta;
- meta_setupFields(value0,lbl_8055FD1C,lbl_8055FD24,lbl_8055FD2C,value1);
+ meta_setupFields(value0,igChildEdit_fieldNames,igChildEdit_fieldStorage,igChildEdit_fieldOffsets,value1);
 }
 void *igChildContainer_getMeta(){
- if(!igChildContainer_meta || !(reinterpret_cast<unsigned int *>(igChildContainer_meta)[0x24/4]&4)) igChildContainer_registerNow();
+ if(!igChildContainer_meta || !(reinterpret_cast<unsigned int *>(igChildContainer_meta)[0x24/4]&4)) igChildContainer_arkRegister();
  return igChildContainer_meta;
 }
-void igChildContainer_registerNow(){
+void igChildContainer_arkRegister(){
  meta_registerNow((int)igChildContainer_register);
 }
 void igChildContainer_register(){
@@ -138,7 +138,7 @@ void igChildContainer_register(){
 }
 void *igChildContainer_getMetaCall(){return igChildContainer_getMeta();}
 void *igChangePlayMode_getMeta(){
- if(!igChangePlayMode_meta || !(reinterpret_cast<unsigned int *>(igChangePlayMode_meta)[0x24/4]&4)) igChangePlayMode_registerNow();
+ if(!igChangePlayMode_meta || !(reinterpret_cast<unsigned int *>(igChangePlayMode_meta)[0x24/4]&4)) igChangePlayMode_arkRegister();
  return igChangePlayMode_meta;
 }
 void *igChangePlayMode_vtableRead(){
@@ -153,7 +153,7 @@ void *igChangePlayMode_vtableRead(){
  object.unknown00=igChangePlayMode_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igChangePlayMode_registerNow(){
+void igChangePlayMode_arkRegister(){
  meta_registerNow((int)igChangePlayMode_register);
 }
 void igChangePlayMode_register(){
@@ -164,14 +164,14 @@ void *igChangePlayMode_getMetaCall(){return igChangePlayMode_getMeta();}
 void igChangePlayMode_fieldInit(){
  void *value0=igChangePlayMode_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FD34,1);
+ meta_appendFields(value0,igChangePlayMode_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055FD44);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_801AB9F0;
- meta_setupFields(value0,lbl_8055FD38,lbl_8055FD3C,lbl_8055FD40,value1);
+ meta_setupFields(value0,igChangePlayMode_fieldNames,igChangePlayMode_fieldStorage,igChangePlayMode_fieldOffsets,value1);
 }
 void *igChangeInterpolationMethod_getMeta(){
- if(!igChangeInterpolationMethod_meta || !(reinterpret_cast<unsigned int *>(igChangeInterpolationMethod_meta)[0x24/4]&4)) igChangeInterpolationMethod_registerNow();
+ if(!igChangeInterpolationMethod_meta || !(reinterpret_cast<unsigned int *>(igChangeInterpolationMethod_meta)[0x24/4]&4)) igChangeInterpolationMethod_arkRegister();
  return igChangeInterpolationMethod_meta;
 }
 void *igChangeInterpolationMethod_vtableRead(){
@@ -186,7 +186,7 @@ void *igChangeInterpolationMethod_vtableRead(){
  object.unknown00=igChangeInterpolationMethod_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igChangeInterpolationMethod_registerNow(){
+void igChangeInterpolationMethod_arkRegister(){
  meta_registerNow((int)igChangeInterpolationMethod_register);
 }
 void igChangeInterpolationMethod_register(){

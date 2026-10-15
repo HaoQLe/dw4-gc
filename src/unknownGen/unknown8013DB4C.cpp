@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F868[8];
+extern char igObjectPropertyForActor_dependencies[8];
 extern void *igObjectPropertyForActor_meta;
 void *igObjectPropertyForActor_getMeta();
 void *igObjectPropertyForActor_vtableRead();
-void igObjectPropertyForActor_registerNow();
+void igObjectPropertyForActor_arkRegister();
 void igObjectPropertyForActor_register();
 void *igObjectPropertyForActor_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013DB88 : UnknownGenObject8013DB88_1 {
 };
 extern "C" {
 void *igObjectPropertyForActor_getMeta(){
- if(!igObjectPropertyForActor_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForActor_meta)[0x24/4]&4)) igObjectPropertyForActor_registerNow();
+ if(!igObjectPropertyForActor_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForActor_meta)[0x24/4]&4)) igObjectPropertyForActor_arkRegister();
  return igObjectPropertyForActor_meta;
 }
 void *igObjectPropertyForActor_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForActor_vtableRead(){
  object.unknown00=igObjectPropertyForActor_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForActor_registerNow(){
+void igObjectPropertyForActor_arkRegister(){
  meta_registerNow((int)igObjectPropertyForActor_register);
 }
 void igObjectPropertyForActor_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForActor_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForActor_getMetaCall,(int)igObjectPropertyForActor_className,44,(int)igObjectPropertyForActor_vtableRead,(int)fn_8013DD10,0,(int)lbl_8055F868);
+ meta_registerClass(0,(int)&igObjectPropertyForActor_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForActor_getMetaCall,(int)igObjectPropertyForActor_className,44,(int)igObjectPropertyForActor_vtableRead,(int)fn_8013DD10,0,(int)igObjectPropertyForActor_dependencies);
 }
 void *igObjectPropertyForActor_getMetaCall(){return igObjectPropertyForActor_getMeta();}
 }

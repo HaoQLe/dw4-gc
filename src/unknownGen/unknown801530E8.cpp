@@ -9,7 +9,7 @@ void fn_8012FC48();
 void *fn_80152CDC();
 void fn_801532FC();
 void igAttrEditForNode_register();
-extern char lbl_804A0260[];
+extern char igAttrEditForLightSet_dependencies[];
 extern char igAttrEditForLightSet_className[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
@@ -21,7 +21,7 @@ extern char lbl_804AAF48[];
 extern void *igAttrEditForLightSet_meta;
 void *igAttrEditForLightSet_getMeta();
 void *igAttrEditForLightSet_vtableRead();
-void igAttrEditForLightSet_registerNow();
+void igAttrEditForLightSet_arkRegister();
 void igAttrEditForLightSet_register();
 void *igAttrEditForLightSet_getMetaCall();
 }
@@ -45,7 +45,7 @@ struct UnknownGenObject80153124 : UnknownGenObject80153124_1 {
 };
 extern "C" {
 void *igAttrEditForLightSet_getMeta(){
- if(!igAttrEditForLightSet_meta || !(reinterpret_cast<unsigned int *>(igAttrEditForLightSet_meta)[0x24/4]&4)) igAttrEditForLightSet_registerNow();
+ if(!igAttrEditForLightSet_meta || !(reinterpret_cast<unsigned int *>(igAttrEditForLightSet_meta)[0x24/4]&4)) igAttrEditForLightSet_arkRegister();
  return igAttrEditForLightSet_meta;
 }
 void *igAttrEditForLightSet_vtableRead(){
@@ -61,12 +61,12 @@ void *igAttrEditForLightSet_vtableRead(){
  object.unknown00=igAttrEditForLightSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAttrEditForLightSet_registerNow(){
+void igAttrEditForLightSet_arkRegister(){
  meta_registerNow((int)igAttrEditForLightSet_register);
 }
 void igAttrEditForLightSet_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igAttrEditForLightSet_meta,(int)igAttrEditForNode_register,(int)fn_80152CDC,(int)igAttrEditForLightSet_getMetaCall,(int)igAttrEditForLightSet_className,40,(int)igAttrEditForLightSet_vtableRead,(int)fn_801532FC,0,(int)lbl_804A0260);
+ meta_registerClass(0,(int)&igAttrEditForLightSet_meta,(int)igAttrEditForNode_register,(int)fn_80152CDC,(int)igAttrEditForLightSet_getMetaCall,(int)igAttrEditForLightSet_className,40,(int)igAttrEditForLightSet_vtableRead,(int)fn_801532FC,0,(int)igAttrEditForLightSet_dependencies);
 }
 void *igAttrEditForLightSet_getMetaCall(){return igAttrEditForLightSet_getMeta();}
 }

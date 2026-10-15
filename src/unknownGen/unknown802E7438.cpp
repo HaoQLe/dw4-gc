@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void be_registerNow();
+void be_arkRegister();
 extern char beAction2_className[];
 extern char beAction2_meta[];
 extern void *be_meta;
@@ -21,7 +21,7 @@ void beAction2_register();
 void *beAction2_getMetaCall();
 }
 extern "C" {
-void beAction2_registerNow(){
+void beAction2_arkRegister(){
  meta_registerNow((int)beAction2_register);
 }
 void beAction2_register(){
@@ -30,7 +30,7 @@ void beAction2_register(){
 }
 void *beAction2_getMetaCall(){return beAction2_getMeta();}
 void *be_create(void *object){
- be_registerNow();
+ be_arkRegister();
  return meta_createInstance(be_meta,object);
 }
 void *be_metaObject(){
@@ -38,7 +38,7 @@ void *be_metaObject(){
  return be_meta;
 }
 void *be_getMeta(){
- if(!be_meta || !(reinterpret_cast<unsigned int *>(be_meta)[0x24/4]&4)) be_registerNow();
+ if(!be_meta || !(reinterpret_cast<unsigned int *>(be_meta)[0x24/4]&4)) be_arkRegister();
  return be_meta;
 }
 }

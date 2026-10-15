@@ -4,7 +4,7 @@
 extern "C" {
 void fn_80021B94();
 void *fn_800237D0();
-void igEnumMetaField_registerNow();
+void igEnumMetaField_arkRegister();
 void fn_80046FD8(void *);
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
@@ -26,21 +26,21 @@ void igEnumMetaField_register();
 void igObject_register();
 extern char igEnumArrayMetaField_className[];
 extern char lbl_80466CA8[];
-extern char lbl_80466DD4[];
+extern char igDriverDatabase_dependencies[];
 extern char igDriverDatabase_className[];
 extern char lbl_80471914[];
 extern char igEnumArrayMetaField_vtable[];
 extern char igDriverDatabase_vtable[];
 extern char lbl_804758E4[];
-extern char lbl_8055D518[4];
-extern char lbl_8055D51C[4];
-extern char lbl_8055D520[4];
-extern char lbl_8055D524[4];
-extern char lbl_8055D528[8];
-extern char lbl_8055D530[4];
-extern char lbl_8055D534[4];
-extern char lbl_8055D538[4];
-extern char lbl_8055D53C[4];
+extern char igEnumMetaField_fieldTypes[4];
+extern char igEnumMetaField_fieldNames[4];
+extern char igEnumMetaField_fieldStorage[4];
+extern char igEnumMetaField_fieldOffsets[4];
+extern char igEnumArrayMetaField_dependencies[8];
+extern char igEnumArrayMetaField_fieldTypes[4];
+extern char igEnumArrayMetaField_fieldNames[4];
+extern char igEnumArrayMetaField_fieldStorage[4];
+extern char igEnumArrayMetaField_fieldOffsets[4];
 extern char lbl_8055D540[8];
 extern char lbl_8055D548[8];
 extern void *igEnumMetaField_meta;
@@ -52,14 +52,14 @@ extern void *igDriverDatabase_meta;
 extern void *lbl_805621F4;
 void *igEnumArrayMetaField_getMeta();
 void *igEnumArrayMetaField_vtableRead();
-void igEnumArrayMetaField_registerNow();
+void igEnumArrayMetaField_arkRegister();
 void igEnumArrayMetaField_register();
 void *igEnumArrayMetaField_getMetaCall();
 void *igEnumArrayMetaField_parentMeta();
 void igEnumArrayMetaField_fieldInit();
 void *igDriverDatabase_getMeta();
 void *igDriverDatabase_vtableRead();
-void igDriverDatabase_registerNow();
+void igDriverDatabase_arkRegister();
 void igDriverDatabase_register();
 void *igDriverDatabase_getMetaCall();
 }
@@ -103,10 +103,10 @@ void *igEnumMetaField_getMetaCall(){return igEnumMetaField_getMeta();}
 void igEnumMetaField_fieldInit(){
  void *value0=igEnumMetaField_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055D518,1);
+ meta_appendFields(value0,igEnumMetaField_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
- meta_setupFields(value0,lbl_8055D51C,lbl_8055D520,lbl_8055D524,value1);
+ meta_setupFields(value0,igEnumMetaField_fieldNames,igEnumMetaField_fieldStorage,igEnumMetaField_fieldOffsets,value1);
 }
 void fn_80031690(){
  if(!lbl_80561C34){
@@ -121,16 +121,16 @@ void fn_80031690(){
 }
 void *fn_80031728(){
  if(!lbl_80561C34){
-  igEnumMetaField_registerNow();
+  igEnumMetaField_arkRegister();
  }
  return lbl_80561C34;
 }
 void *igEnumArrayMetaField_create(void *object){
- igEnumArrayMetaField_registerNow();
+ igEnumArrayMetaField_arkRegister();
  return meta_createInstance(igEnumArrayMetaField_meta,object);
 }
 void *igEnumArrayMetaField_getMeta(){
- if(!igEnumArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igEnumArrayMetaField_meta)[0x24/4]&4)) igEnumArrayMetaField_registerNow();
+ if(!igEnumArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igEnumArrayMetaField_meta)[0x24/4]&4)) igEnumArrayMetaField_arkRegister();
  return igEnumArrayMetaField_meta;
 }
 void *igEnumArrayMetaField_vtableRead(){
@@ -138,21 +138,21 @@ void *igEnumArrayMetaField_vtableRead(){
  object.unknown00=igEnumArrayMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igEnumArrayMetaField_registerNow(){
+void igEnumArrayMetaField_arkRegister(){
  meta_registerNow((int)igEnumArrayMetaField_register);
 }
 void igEnumArrayMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igEnumArrayMetaField_meta,(int)igEnumMetaField_register,(int)igEnumArrayMetaField_parentMeta,(int)igEnumArrayMetaField_getMetaCall,(int)igEnumArrayMetaField_className,60,(int)igEnumArrayMetaField_vtableRead,(int)igEnumArrayMetaField_fieldInit,0,(int)lbl_8055D528);
+ meta_registerClass(0,(int)&igEnumArrayMetaField_meta,(int)igEnumMetaField_register,(int)igEnumArrayMetaField_parentMeta,(int)igEnumArrayMetaField_getMetaCall,(int)igEnumArrayMetaField_className,60,(int)igEnumArrayMetaField_vtableRead,(int)igEnumArrayMetaField_fieldInit,0,(int)igEnumArrayMetaField_dependencies);
 }
 void *igEnumArrayMetaField_getMetaCall(){return igEnumArrayMetaField_getMeta();}
 void *igEnumArrayMetaField_parentMeta(){return igEnumMetaField_meta;}
 void igEnumArrayMetaField_fieldInit(){
  void *meta=igEnumArrayMetaField_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_8055D530,1);
+ meta_appendFields(meta,igEnumArrayMetaField_fieldTypes,1);
  fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,lbl_8055D534,lbl_8055D538,lbl_8055D53C,field);
+ meta_setupFields(meta,igEnumArrayMetaField_fieldNames,igEnumArrayMetaField_fieldStorage,igEnumArrayMetaField_fieldOffsets,field);
 }
 void fn_800319A4(){
  if(!lbl_80561C40){
@@ -174,11 +174,11 @@ void *fn_80031A3C(){
  return lbl_80561C48;
 }
 void *igDriverDatabase_create(void *object){
- igDriverDatabase_registerNow();
+ igDriverDatabase_arkRegister();
  return meta_createInstance(igDriverDatabase_meta,object);
 }
 void *igDriverDatabase_getMeta(){
- if(!igDriverDatabase_meta || !(reinterpret_cast<unsigned int *>(igDriverDatabase_meta)[0x24/4]&4)) igDriverDatabase_registerNow();
+ if(!igDriverDatabase_meta || !(reinterpret_cast<unsigned int *>(igDriverDatabase_meta)[0x24/4]&4)) igDriverDatabase_arkRegister();
  return igDriverDatabase_meta;
 }
 void *igDriverDatabase_vtableRead(){
@@ -193,12 +193,12 @@ void *igDriverDatabase_vtableRead(){
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igDriverDatabase_registerNow(){
+void igDriverDatabase_arkRegister(){
  meta_registerNow((int)igDriverDatabase_register);
 }
 void igDriverDatabase_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igDriverDatabase_meta,(int)igObject_register,(int)fn_800237D0,(int)igDriverDatabase_getMetaCall,(int)igDriverDatabase_className,56,(int)igDriverDatabase_vtableRead,(int)igDriverDatabase_fieldInit,0,(int)lbl_80466DD4);
+ meta_registerClass(0,(int)&igDriverDatabase_meta,(int)igObject_register,(int)fn_800237D0,(int)igDriverDatabase_getMetaCall,(int)igDriverDatabase_className,56,(int)igDriverDatabase_vtableRead,(int)igDriverDatabase_fieldInit,0,(int)igDriverDatabase_dependencies);
 }
 void *igDriverDatabase_getMetaCall(){return igDriverDatabase_getMeta();}
 }

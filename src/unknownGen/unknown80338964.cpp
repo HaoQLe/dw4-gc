@@ -16,7 +16,7 @@ void beNDMWMdlPlayer2InfoWork_register();
 void *beNDMWMdlPlayer2InfoWork_getMetaCall();
 }
 extern "C" {
-void beNDMWMdlPlayer2InfoWork_registerNow(){
+void beNDMWMdlPlayer2InfoWork_arkRegister(){
  meta_registerNow((int)beNDMWMdlPlayer2InfoWork_register);
 }
 void beNDMWMdlPlayer2InfoWork_register(){

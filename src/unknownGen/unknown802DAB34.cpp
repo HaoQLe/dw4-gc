@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igInfo_register();
 extern char beFileListInfo_className[];
-extern char lbl_804D22A0[];
+extern char beFileListInfo_dependencies[];
 extern char beFileListInfo_meta[];
 void beFileListInfo_register();
 void *beFileListInfo_getMetaCall();
 }
 extern "C" {
-void beFileListInfo_registerNow(){
+void beFileListInfo_arkRegister(){
  meta_registerNow((int)beFileListInfo_register);
 }
 void beFileListInfo_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beFileListInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)beFileListInfo_getMetaCall,(int)beFileListInfo_className,28,(int)beFileListInfo_vtableRead,(int)beFileListInfo_fieldInit,0,(int)lbl_804D22A0);
+ meta_registerClass(0,(int)beFileListInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)beFileListInfo_getMetaCall,(int)beFileListInfo_className,28,(int)beFileListInfo_vtableRead,(int)beFileListInfo_fieldInit,0,(int)beFileListInfo_dependencies);
 }
 void *beFileListInfo_getMetaCall(){return beFileListInfo_getMeta();}
 }

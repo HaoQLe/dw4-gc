@@ -22,17 +22,17 @@ void igVisualAttribute_register();
 extern char igVisualContextAttrDefaultManager_className[];
 extern char igRenderListAttr_className[];
 extern char lbl_80478A18[];
-extern char lbl_80478AF8[];
+extern char igRenderDestinationAttr_dependencies[];
 extern char igRenderDestinationAttr_className[];
 extern char igRenderListAttr_vtable[];
 extern char igRenderDestinationAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E1D0[8];
-extern char lbl_8055E1D8[8];
-extern char lbl_8055E1E8[8];
-extern char lbl_8055E1F0[8];
-extern char lbl_8055E1F8[8];
+extern char igRenderListAttr_dependencies[8];
+extern char igRenderListAttr_fieldTypes[8];
+extern char igRenderListAttr_fieldNames[8];
+extern char igRenderListAttr_fieldStorage[8];
+extern char igRenderListAttr_fieldOffsets[8];
 extern char lbl_8055E200[8];
 extern char lbl_8055E208[8];
 extern void *lbl_805621F4;
@@ -42,13 +42,13 @@ extern void *lbl_80562654;
 extern void *igRenderDestinationAttr_meta;
 void *igRenderListAttr_getMeta();
 void *igRenderListAttr_vtableRead();
-void igRenderListAttr_registerNow();
+void igRenderListAttr_arkRegister();
 void igRenderListAttr_register();
 void *igRenderListAttr_getMetaCall();
 void igRenderListAttr_fieldInit();
 void *igRenderDestinationAttr_getMeta();
 void *igRenderDestinationAttr_vtableRead();
-void igRenderDestinationAttr_registerNow();
+void igRenderDestinationAttr_arkRegister();
 void igRenderDestinationAttr_register();
 void *igRenderDestinationAttr_getMetaCall();
 }
@@ -82,7 +82,7 @@ void *fn_800B13DC(){
  return igRenderListAttr_meta;
 }
 void *igRenderListAttr_getMeta(){
- if(!igRenderListAttr_meta || !(reinterpret_cast<unsigned int *>(igRenderListAttr_meta)[0x24/4]&4)) igRenderListAttr_registerNow();
+ if(!igRenderListAttr_meta || !(reinterpret_cast<unsigned int *>(igRenderListAttr_meta)[0x24/4]&4)) igRenderListAttr_arkRegister();
  return igRenderListAttr_meta;
 }
 void *igRenderListAttr_vtableRead(){
@@ -93,18 +93,18 @@ void *igRenderListAttr_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRenderListAttr_registerNow(){
+void igRenderListAttr_arkRegister(){
  meta_registerNow((int)igRenderListAttr_register);
 }
 void igRenderListAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igRenderListAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igRenderListAttr_getMetaCall,(int)igRenderListAttr_className,20,(int)igRenderListAttr_vtableRead,(int)igRenderListAttr_fieldInit,0,(int)lbl_8055E1D0);
+ meta_registerClass(0,(int)&igRenderListAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igRenderListAttr_getMetaCall,(int)igRenderListAttr_className,20,(int)igRenderListAttr_vtableRead,(int)igRenderListAttr_fieldInit,0,(int)igRenderListAttr_dependencies);
 }
 void *igRenderListAttr_getMetaCall(){return igRenderListAttr_getMeta();}
 void igRenderListAttr_fieldInit(){
  void *value0=igRenderListAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E1D8,2);
+ meta_appendFields(value0,igRenderListAttr_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  fn_80053650(value2,-1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
@@ -115,7 +115,7 @@ void igRenderListAttr_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+40)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+39)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+44)=3;
- meta_setupFields(value0,lbl_8055E1E8,lbl_8055E1F0,lbl_8055E1F8,value1);
+ meta_setupFields(value0,igRenderListAttr_fieldNames,igRenderListAttr_fieldStorage,igRenderListAttr_fieldOffsets,value1);
 }
 void *fn_800B166C(){
  void *value0;
@@ -131,7 +131,7 @@ void *fn_800B16B4(){
  return lbl_80562654;
 }
 void *igRenderDestinationAttr_create(void *object){
- igRenderDestinationAttr_registerNow();
+ igRenderDestinationAttr_arkRegister();
  return meta_createInstance(igRenderDestinationAttr_meta,object);
 }
 void *fn_800B1738(){
@@ -139,7 +139,7 @@ void *fn_800B1738(){
  return igRenderDestinationAttr_meta;
 }
 void *igRenderDestinationAttr_getMeta(){
- if(!igRenderDestinationAttr_meta || !(reinterpret_cast<unsigned int *>(igRenderDestinationAttr_meta)[0x24/4]&4)) igRenderDestinationAttr_registerNow();
+ if(!igRenderDestinationAttr_meta || !(reinterpret_cast<unsigned int *>(igRenderDestinationAttr_meta)[0x24/4]&4)) igRenderDestinationAttr_arkRegister();
  return igRenderDestinationAttr_meta;
 }
 void *igRenderDestinationAttr_vtableRead(){
@@ -151,12 +151,12 @@ void *igRenderDestinationAttr_vtableRead(){
  object.unknown40.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRenderDestinationAttr_registerNow(){
+void igRenderDestinationAttr_arkRegister(){
  meta_registerNow((int)igRenderDestinationAttr_register);
 }
 void igRenderDestinationAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igRenderDestinationAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igRenderDestinationAttr_getMetaCall,(int)igRenderDestinationAttr_className,68,(int)igRenderDestinationAttr_vtableRead,(int)igRenderDestinationAttr_fieldInit,0,(int)lbl_80478AF8);
+ meta_registerClass(0,(int)&igRenderDestinationAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igRenderDestinationAttr_getMetaCall,(int)igRenderDestinationAttr_className,68,(int)igRenderDestinationAttr_vtableRead,(int)igRenderDestinationAttr_fieldInit,0,(int)igRenderDestinationAttr_dependencies);
 }
 void *igRenderDestinationAttr_getMetaCall(){return igRenderDestinationAttr_getMeta();}
 }

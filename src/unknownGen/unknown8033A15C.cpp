@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_803386E8();
-void beNDMWMdlMapBase_registerNow();
+void beNDMWMdlMapBase_arkRegister();
 extern char beNDMWMdlMapCursor_className[];
 extern char beNDMWMdlMapCursor_meta[];
 extern void *beNDMWMdlMapBase_meta;
@@ -21,7 +21,7 @@ void beNDMWMdlMapCursor_register();
 void *beNDMWMdlMapCursor_getMetaCall();
 }
 extern "C" {
-void beNDMWMdlMapCursor_registerNow(){
+void beNDMWMdlMapCursor_arkRegister(){
  meta_registerNow((int)beNDMWMdlMapCursor_register);
 }
 void beNDMWMdlMapCursor_register(){
@@ -30,7 +30,7 @@ void beNDMWMdlMapCursor_register(){
 }
 void *beNDMWMdlMapCursor_getMetaCall(){return beNDMWMdlMapCursor_getMeta();}
 void *beNDMWMdlMapBase_create(void *object){
- beNDMWMdlMapBase_registerNow();
+ beNDMWMdlMapBase_arkRegister();
  return meta_createInstance(beNDMWMdlMapBase_meta,object);
 }
 void *beNDMWMdlMapBase_metaObject(){
@@ -38,7 +38,7 @@ void *beNDMWMdlMapBase_metaObject(){
  return beNDMWMdlMapBase_meta;
 }
 void *beNDMWMdlMapBase_getMeta(){
- if(!beNDMWMdlMapBase_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlMapBase_meta)[0x24/4]&4)) beNDMWMdlMapBase_registerNow();
+ if(!beNDMWMdlMapBase_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlMapBase_meta)[0x24/4]&4)) beNDMWMdlMapBase_arkRegister();
  return beNDMWMdlMapBase_meta;
 }
 }

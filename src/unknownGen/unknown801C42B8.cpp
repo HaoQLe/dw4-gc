@@ -22,23 +22,23 @@ extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igCompiledTransformList_className[];
-extern char lbl_804B05D0[];
+extern char igCompiledTransform_dependencies[];
 extern char igCompiledTransform_className[];
 extern char igCompiledTransform_vtable[];
 extern char igCompiledTransformList_vtable[];
 extern char lbl_804B7060[];
-extern char lbl_80560750[8];
+extern char igCompiledTransformList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igCompiledTransformList_meta;
 extern void *igCompiledTransform_meta;
 void *igCompiledTransformList_getMeta();
 void *igCompiledTransformList_vtableRead();
-void igCompiledTransformList_registerNow();
+void igCompiledTransformList_arkRegister();
 void igCompiledTransformList_register();
 void *igCompiledTransformList_getMetaCall();
 void *igCompiledTransform_getMeta();
 void *igCompiledTransform_vtableRead();
-void igCompiledTransform_registerNow();
+void igCompiledTransform_arkRegister();
 void igCompiledTransform_register();
 void *igCompiledTransform_getMetaCall();
 }
@@ -70,7 +70,7 @@ void *fn_801C4304(){
  return igCompiledTransformList_meta;
 }
 void *igCompiledTransformList_getMeta(){
- if(!igCompiledTransformList_meta || !(reinterpret_cast<unsigned int *>(igCompiledTransformList_meta)[0x24/4]&4)) igCompiledTransformList_registerNow();
+ if(!igCompiledTransformList_meta || !(reinterpret_cast<unsigned int *>(igCompiledTransformList_meta)[0x24/4]&4)) igCompiledTransformList_arkRegister();
  return igCompiledTransformList_meta;
 }
 void *igCompiledTransformList_vtableRead(){
@@ -83,20 +83,20 @@ void *igCompiledTransformList_vtableRead(){
  object.unknown00=igCompiledTransformList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCompiledTransformList_registerNow(){
+void igCompiledTransformList_arkRegister(){
  meta_registerNow((int)igCompiledTransformList_register);
 }
 void igCompiledTransformList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igCompiledTransformList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCompiledTransformList_getMetaCall,(int)igCompiledTransformList_className,20,(int)igCompiledTransformList_vtableRead,0,0,(int)lbl_80560750);
+ meta_registerClass(0,(int)&igCompiledTransformList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCompiledTransformList_getMetaCall,(int)igCompiledTransformList_className,20,(int)igCompiledTransformList_vtableRead,0,0,(int)igCompiledTransformList_dependencies);
 }
 void *igCompiledTransformList_getMetaCall(){return igCompiledTransformList_getMeta();}
 void *igCompiledTransform_create(void *object){
- igCompiledTransform_registerNow();
+ igCompiledTransform_arkRegister();
  return meta_createInstance(igCompiledTransform_meta,object);
 }
 void *igCompiledTransform_getMeta(){
- if(!igCompiledTransform_meta || !(reinterpret_cast<unsigned int *>(igCompiledTransform_meta)[0x24/4]&4)) igCompiledTransform_registerNow();
+ if(!igCompiledTransform_meta || !(reinterpret_cast<unsigned int *>(igCompiledTransform_meta)[0x24/4]&4)) igCompiledTransform_arkRegister();
  return igCompiledTransform_meta;
 }
 void *igCompiledTransform_vtableRead(){
@@ -106,12 +106,12 @@ void *igCompiledTransform_vtableRead(){
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCompiledTransform_registerNow(){
+void igCompiledTransform_arkRegister(){
  meta_registerNow((int)igCompiledTransform_register);
 }
 void igCompiledTransform_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igCompiledTransform_meta,(int)igObject_register,(int)fn_800237D0,(int)igCompiledTransform_getMetaCall,(int)igCompiledTransform_className,36,(int)igCompiledTransform_vtableRead,(int)igCompiledTransform_fieldInit,0,(int)lbl_804B05D0);
+ meta_registerClass(0,(int)&igCompiledTransform_meta,(int)igObject_register,(int)fn_800237D0,(int)igCompiledTransform_getMetaCall,(int)igCompiledTransform_className,36,(int)igCompiledTransform_vtableRead,(int)igCompiledTransform_fieldInit,0,(int)igCompiledTransform_dependencies);
 }
 void *igCompiledTransform_getMetaCall(){return igCompiledTransform_getMeta();}
 }

@@ -16,7 +16,7 @@ void beModelCtrlInfoDataAIH_register();
 void *beModelCtrlInfoDataAIH_getMetaCall();
 }
 extern "C" {
-void beModelCtrlInfoDataAIH_registerNow(){
+void beModelCtrlInfoDataAIH_arkRegister(){
  meta_registerNow((int)beModelCtrlInfoDataAIH_register);
 }
 void beModelCtrlInfoDataAIH_register(){

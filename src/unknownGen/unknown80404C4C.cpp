@@ -18,7 +18,7 @@ extern void *igViewerModeChangeMessage_meta;
 extern void *lbl_805621F4;
 void *igViewerModeChangeMessage_getMeta();
 void *igViewerModeChangeMessage_vtableRead();
-void igViewerModeChangeMessage_registerNow();
+void igViewerModeChangeMessage_arkRegister();
 void igViewerModeChangeMessage_register();
 void *igViewerModeChangeMessage_getMetaCall();
 }
@@ -38,7 +38,7 @@ void *igViewerModeChangeMessage_metaObject(){
  return igViewerModeChangeMessage_meta;
 }
 void *igViewerModeChangeMessage_getMeta(){
- if(!igViewerModeChangeMessage_meta || !(reinterpret_cast<unsigned int *>(igViewerModeChangeMessage_meta)[0x24/4]&4)) igViewerModeChangeMessage_registerNow();
+ if(!igViewerModeChangeMessage_meta || !(reinterpret_cast<unsigned int *>(igViewerModeChangeMessage_meta)[0x24/4]&4)) igViewerModeChangeMessage_arkRegister();
  return igViewerModeChangeMessage_meta;
 }
 void *igViewerModeChangeMessage_vtableRead(){
@@ -48,7 +48,7 @@ void *igViewerModeChangeMessage_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igViewerModeChangeMessage_registerNow(){
+void igViewerModeChangeMessage_arkRegister(){
  meta_registerNow((int)igViewerModeChangeMessage_register);
 }
 void igViewerModeChangeMessage_register(){

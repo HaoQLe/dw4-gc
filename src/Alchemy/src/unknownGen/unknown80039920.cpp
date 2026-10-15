@@ -12,11 +12,11 @@ void igMemoryPool_register();
 void igStackMemoryPool_fieldInit();
 extern char igStackMemoryPool_className[];
 extern char igStackMemoryPool_vtable[];
-extern char lbl_8055D6B8[8];
+extern char igStackMemoryPool_dependencies[8];
 extern void *igStackMemoryPool_meta;
 void *igStackMemoryPool_getMeta();
 void *igStackMemoryPool_vtableRead();
-void igStackMemoryPool_registerNow();
+void igStackMemoryPool_arkRegister();
 void igStackMemoryPool_register();
 void *igStackMemoryPool_getMetaCall();
 }
@@ -33,11 +33,11 @@ struct UnknownGenObject80039994 : UnknownGenRoot80039994 {
 };
 extern "C" {
 void *igStackMemoryPool_create(void *object){
- igStackMemoryPool_registerNow();
+ igStackMemoryPool_arkRegister();
  return meta_createInstance(igStackMemoryPool_meta,object);
 }
 void *igStackMemoryPool_getMeta(){
- if(!igStackMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igStackMemoryPool_meta)[0x24/4]&4)) igStackMemoryPool_registerNow();
+ if(!igStackMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igStackMemoryPool_meta)[0x24/4]&4)) igStackMemoryPool_arkRegister();
  return igStackMemoryPool_meta;
 }
 void *igStackMemoryPool_vtableRead(){
@@ -46,12 +46,12 @@ void *igStackMemoryPool_vtableRead(){
  object.unknown94.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStackMemoryPool_registerNow(){
+void igStackMemoryPool_arkRegister(){
  meta_registerNow((int)igStackMemoryPool_register);
 }
 void igStackMemoryPool_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igStackMemoryPool_meta,(int)igMemoryPool_register,(int)fn_80038F58,(int)igStackMemoryPool_getMetaCall,(int)igStackMemoryPool_className,152,(int)igStackMemoryPool_vtableRead,(int)igStackMemoryPool_fieldInit,0,(int)lbl_8055D6B8);
+ meta_registerClass(0,(int)&igStackMemoryPool_meta,(int)igMemoryPool_register,(int)fn_80038F58,(int)igStackMemoryPool_getMetaCall,(int)igStackMemoryPool_className,152,(int)igStackMemoryPool_vtableRead,(int)igStackMemoryPool_fieldInit,0,(int)igStackMemoryPool_dependencies);
 }
 void *igStackMemoryPool_getMetaCall(){return igStackMemoryPool_getMeta();}
 }

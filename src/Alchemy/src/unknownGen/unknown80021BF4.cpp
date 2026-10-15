@@ -15,14 +15,14 @@ void igMetaField_register();
 extern char igVirtualCFuncMetaField_className[];
 extern char igVirtualCFuncMetaField_vtable[];
 extern char lbl_80471914[];
-extern char lbl_8055CF00[8];
+extern char igVirtualCFuncMetaField_dependencies[8];
 extern void *igVirtualCFuncMetaField_meta;
 extern void *lbl_80561490;
 extern void *igMetaField_meta;
 extern void *lbl_805621F4;
 void *igVirtualCFuncMetaField_getMeta();
 void *igVirtualCFuncMetaField_vtableRead();
-void igVirtualCFuncMetaField_registerNow();
+void igVirtualCFuncMetaField_arkRegister();
 void igVirtualCFuncMetaField_register();
 void *igVirtualCFuncMetaField_getMetaCall();
 void *fn_80021D70();
@@ -43,7 +43,7 @@ struct UnknownGenObject80021C30 : UnknownGenObject80021C30_0 {
 };
 extern "C" {
 void *igVirtualCFuncMetaField_getMeta(){
- if(!igVirtualCFuncMetaField_meta || !(reinterpret_cast<unsigned int *>(igVirtualCFuncMetaField_meta)[0x24/4]&4)) igVirtualCFuncMetaField_registerNow();
+ if(!igVirtualCFuncMetaField_meta || !(reinterpret_cast<unsigned int *>(igVirtualCFuncMetaField_meta)[0x24/4]&4)) igVirtualCFuncMetaField_arkRegister();
  return igVirtualCFuncMetaField_meta;
 }
 void *igVirtualCFuncMetaField_vtableRead(){
@@ -51,12 +51,12 @@ void *igVirtualCFuncMetaField_vtableRead(){
  object.unknown00=igVirtualCFuncMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVirtualCFuncMetaField_registerNow(){
+void igVirtualCFuncMetaField_arkRegister(){
  meta_registerNow((int)igVirtualCFuncMetaField_register);
 }
 void igVirtualCFuncMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igVirtualCFuncMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igVirtualCFuncMetaField_getMetaCall,(int)igVirtualCFuncMetaField_className,52,(int)igVirtualCFuncMetaField_vtableRead,0,0,(int)lbl_8055CF00);
+ meta_registerClass(0,(int)&igVirtualCFuncMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igVirtualCFuncMetaField_getMetaCall,(int)igVirtualCFuncMetaField_className,52,(int)igVirtualCFuncMetaField_vtableRead,0,0,(int)igVirtualCFuncMetaField_dependencies);
 }
 void *igVirtualCFuncMetaField_getMetaCall(){return igVirtualCFuncMetaField_getMeta();}
 void *fn_80021D70(){return igMetaField_meta;}

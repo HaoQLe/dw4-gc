@@ -17,7 +17,7 @@ extern char lbl_8047E50C[];
 extern void *igBlendMatricesAttr_meta;
 void *igBlendMatricesAttr_getMeta();
 void *igBlendMatricesAttr_vtableRead();
-void igBlendMatricesAttr_registerNow();
+void igBlendMatricesAttr_arkRegister();
 void igBlendMatricesAttr_register();
 void *igBlendMatricesAttr_getMetaCall();
 }
@@ -27,11 +27,11 @@ struct UnknownGenObject800BA450_0 {
 };
 extern "C" {
 void *igBlendMatricesAttr_create(void *object){
- igBlendMatricesAttr_registerNow();
+ igBlendMatricesAttr_arkRegister();
  return meta_createInstance(igBlendMatricesAttr_meta,object);
 }
 void *igBlendMatricesAttr_getMeta(){
- if(!igBlendMatricesAttr_meta || !(reinterpret_cast<unsigned int *>(igBlendMatricesAttr_meta)[0x24/4]&4)) igBlendMatricesAttr_registerNow();
+ if(!igBlendMatricesAttr_meta || !(reinterpret_cast<unsigned int *>(igBlendMatricesAttr_meta)[0x24/4]&4)) igBlendMatricesAttr_arkRegister();
  return igBlendMatricesAttr_meta;
 }
 void *igBlendMatricesAttr_vtableRead(){
@@ -42,7 +42,7 @@ void *igBlendMatricesAttr_vtableRead(){
  object.unknown00=igBlendMatricesAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBlendMatricesAttr_registerNow(){
+void igBlendMatricesAttr_arkRegister(){
  meta_registerNow((int)igBlendMatricesAttr_register);
 }
 void igBlendMatricesAttr_register(){

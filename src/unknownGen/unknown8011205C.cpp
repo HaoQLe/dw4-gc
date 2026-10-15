@@ -10,12 +10,12 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8010CBD4();
 void igGeometryElement_fieldInit();
 void igObject_register();
-extern char lbl_80495200[];
+extern char igGeometryElement_dependencies[];
 extern char igGeometryElement_className[];
 extern void *lbl_805621F4;
 extern void *igGeometryElement_meta;
 void *igGeometryElement_getMeta();
-void igGeometryElement_registerNow();
+void igGeometryElement_arkRegister();
 void igGeometryElement_register();
 void *igGeometryElement_getMetaCall();
 }
@@ -25,15 +25,15 @@ void *fn_8011205C(){
  return igGeometryElement_meta;
 }
 void *igGeometryElement_getMeta(){
- if(!igGeometryElement_meta || !(reinterpret_cast<unsigned int *>(igGeometryElement_meta)[0x24/4]&4)) igGeometryElement_registerNow();
+ if(!igGeometryElement_meta || !(reinterpret_cast<unsigned int *>(igGeometryElement_meta)[0x24/4]&4)) igGeometryElement_arkRegister();
  return igGeometryElement_meta;
 }
-void igGeometryElement_registerNow(){
+void igGeometryElement_arkRegister(){
  meta_registerNow((int)igGeometryElement_register);
 }
 void igGeometryElement_register(){
  fn_8010CBD4();
- meta_registerClass(1,(int)&igGeometryElement_meta,(int)igObject_register,(int)fn_800237D0,(int)igGeometryElement_getMetaCall,(int)igGeometryElement_className,44,0,(int)igGeometryElement_fieldInit,0,(int)lbl_80495200);
+ meta_registerClass(1,(int)&igGeometryElement_meta,(int)igObject_register,(int)fn_800237D0,(int)igGeometryElement_getMetaCall,(int)igGeometryElement_className,44,0,(int)igGeometryElement_fieldInit,0,(int)igGeometryElement_dependencies);
 }
 void *igGeometryElement_getMetaCall(){return igGeometryElement_getMeta();}
 }

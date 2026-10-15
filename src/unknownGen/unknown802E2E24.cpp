@@ -14,12 +14,12 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void beBaseInfoRamList_registerNow();
+void beBaseInfoRamList_arkRegister();
 extern char beBkColor_className[];
-extern char lbl_804D2CA8[];
-extern char lbl_804D2CAC[];
-extern char lbl_804D2CB0[];
-extern char lbl_804D2CB4[];
+extern char beBkColor_fieldTypes[];
+extern char beBkColor_fieldNames[];
+extern char beBkColor_fieldStorage[];
+extern char beBkColor_fieldOffsets[];
 extern void *beBkColor_meta;
 extern void *beBaseInfoRamList_meta;
 extern void *lbl_805621F4;
@@ -28,7 +28,7 @@ void *beBkColor_getMetaCall();
 void beBkColor_fieldInit();
 }
 extern "C" {
-void beBkColor_registerNow(){
+void beBkColor_arkRegister(){
  meta_registerNow((int)beBkColor_register);
 }
 void beBkColor_register(){
@@ -39,15 +39,15 @@ void *beBkColor_getMetaCall(){return beBkColor_getMeta();}
 void beBkColor_fieldInit(){
  void *meta=beBkColor_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D2CA8,0x1);
- meta_setupFields(meta,lbl_804D2CAC,lbl_804D2CB0,lbl_804D2CB4,field);
+ meta_appendFields(meta,beBkColor_fieldTypes,0x1);
+ meta_setupFields(meta,beBkColor_fieldNames,beBkColor_fieldStorage,beBkColor_fieldOffsets,field);
 }
 void *beBaseInfoRamList_metaObject(){
  if(!beBaseInfoRamList_meta) beBaseInfoRamList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return beBaseInfoRamList_meta;
 }
 void *beBaseInfoRamList_getMeta(){
- if(!beBaseInfoRamList_meta || !(reinterpret_cast<unsigned int *>(beBaseInfoRamList_meta)[0x24/4]&4)) beBaseInfoRamList_registerNow();
+ if(!beBaseInfoRamList_meta || !(reinterpret_cast<unsigned int *>(beBaseInfoRamList_meta)[0x24/4]&4)) beBaseInfoRamList_arkRegister();
  return beBaseInfoRamList_meta;
 }
 }

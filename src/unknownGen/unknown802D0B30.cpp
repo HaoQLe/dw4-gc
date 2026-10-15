@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
 extern char beMatCtrlSearch_className[];
-extern char lbl_804D16D4[];
+extern char beMatCtrlSearch_dependencies[];
 extern char beMatCtrlSearch_meta[];
 void beMatCtrlSearch_register();
 void *beMatCtrlSearch_getMetaCall();
 }
 extern "C" {
-void beMatCtrlSearch_registerNow(){
+void beMatCtrlSearch_arkRegister(){
  meta_registerNow((int)beMatCtrlSearch_register);
 }
 void beMatCtrlSearch_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beMatCtrlSearch_meta,(int)igObject_register,(int)fn_800237D0,(int)beMatCtrlSearch_getMetaCall,(int)beMatCtrlSearch_className,28,(int)beMatCtrlSearch_vtableRead,(int)beMatCtrlSearch_fieldInit,0,(int)lbl_804D16D4);
+ meta_registerClass(0,(int)beMatCtrlSearch_meta,(int)igObject_register,(int)fn_800237D0,(int)beMatCtrlSearch_getMetaCall,(int)beMatCtrlSearch_className,28,(int)beMatCtrlSearch_vtableRead,(int)beMatCtrlSearch_fieldInit,0,(int)beMatCtrlSearch_dependencies);
 }
 void *beMatCtrlSearch_getMetaCall(){return beMatCtrlSearch_getMeta();}
 }

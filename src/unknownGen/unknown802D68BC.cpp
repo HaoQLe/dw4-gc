@@ -11,7 +11,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_8011148C();
 void fn_802B1AC8();
-void beGeneraterInfoWork_registerNow();
+void beGeneraterInfoWork_arkRegister();
 void igGroup_register();
 extern char beGroupKeep_className[];
 extern char beGroupKeep_meta[];
@@ -21,7 +21,7 @@ void beGroupKeep_register();
 void *beGroupKeep_getMetaCall();
 }
 extern "C" {
-void beGroupKeep_registerNow(){
+void beGroupKeep_arkRegister(){
  meta_registerNow((int)beGroupKeep_register);
 }
 void beGroupKeep_register(){
@@ -30,7 +30,7 @@ void beGroupKeep_register(){
 }
 void *beGroupKeep_getMetaCall(){return beGroupKeep_getMeta();}
 void *beGeneraterInfoWork_create(void *object){
- beGeneraterInfoWork_registerNow();
+ beGeneraterInfoWork_arkRegister();
  return meta_createInstance(beGeneraterInfoWork_meta,object);
 }
 void *beGeneraterInfoWork_metaObject(){
@@ -38,7 +38,7 @@ void *beGeneraterInfoWork_metaObject(){
  return beGeneraterInfoWork_meta;
 }
 void *beGeneraterInfoWork_getMeta(){
- if(!beGeneraterInfoWork_meta || !(reinterpret_cast<unsigned int *>(beGeneraterInfoWork_meta)[0x24/4]&4)) beGeneraterInfoWork_registerNow();
+ if(!beGeneraterInfoWork_meta || !(reinterpret_cast<unsigned int *>(beGeneraterInfoWork_meta)[0x24/4]&4)) beGeneraterInfoWork_arkRegister();
  return beGeneraterInfoWork_meta;
 }
 }

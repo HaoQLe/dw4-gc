@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beLayerGroupList_registerNow();
+void beLayerGroupList_arkRegister();
 extern void *beLayerGroupList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beLayerGroupList_metaObject(){
  return beLayerGroupList_meta;
 }
 void *beLayerGroupList_getMeta(){
- if(!beLayerGroupList_meta || !(reinterpret_cast<unsigned int *>(beLayerGroupList_meta)[0x24/4]&4)) beLayerGroupList_registerNow();
+ if(!beLayerGroupList_meta || !(reinterpret_cast<unsigned int *>(beLayerGroupList_meta)[0x24/4]&4)) beLayerGroupList_arkRegister();
  return beLayerGroupList_meta;
 }
 }

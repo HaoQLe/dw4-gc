@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void beOptInfo_registerNow();
+void beOptInfo_arkRegister();
 extern void *beOptInfo_meta;
 }
 extern "C" {
 void *beOptInfo_getMeta(){
- if(!beOptInfo_meta || !(reinterpret_cast<unsigned int *>(beOptInfo_meta)[0x24/4]&4)) beOptInfo_registerNow();
+ if(!beOptInfo_meta || !(reinterpret_cast<unsigned int *>(beOptInfo_meta)[0x24/4]&4)) beOptInfo_arkRegister();
  return beOptInfo_meta;
 }
 }

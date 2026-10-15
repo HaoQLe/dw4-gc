@@ -17,7 +17,7 @@ extern void *igTextureBindAttr_meta;
 extern void *igSubTextureBindAttr_meta;
 void *igSubTextureBindAttr_getMeta();
 void *igSubTextureBindAttr_vtableRead();
-void igSubTextureBindAttr_registerNow();
+void igSubTextureBindAttr_arkRegister();
 void igSubTextureBindAttr_register();
 void *igSubTextureBindAttr_getMetaCall();
 void *igSubTextureBindAttr_parentMeta();
@@ -38,7 +38,7 @@ struct UnknownGenObject800AFFCC : UnknownGenObject800AFFCC_0 {
 };
 extern "C" {
 void *igSubTextureBindAttr_getMeta(){
- if(!igSubTextureBindAttr_meta || !(reinterpret_cast<unsigned int *>(igSubTextureBindAttr_meta)[0x24/4]&4)) igSubTextureBindAttr_registerNow();
+ if(!igSubTextureBindAttr_meta || !(reinterpret_cast<unsigned int *>(igSubTextureBindAttr_meta)[0x24/4]&4)) igSubTextureBindAttr_arkRegister();
  return igSubTextureBindAttr_meta;
 }
 void *igSubTextureBindAttr_vtableRead(){
@@ -50,7 +50,7 @@ void *igSubTextureBindAttr_vtableRead(){
  object.unknown00=igSubTextureBindAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSubTextureBindAttr_registerNow(){
+void igSubTextureBindAttr_arkRegister(){
  meta_registerNow((int)igSubTextureBindAttr_register);
 }
 void igSubTextureBindAttr_register(){

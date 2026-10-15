@@ -3,16 +3,16 @@
 #pragma auto_inline off
 extern "C" {
 void *meta_createInstance(void *,void *);
-void beDataObjString_registerNow();
+void beDataObjString_arkRegister();
 extern void *beDataObjString_meta;
 }
 extern "C" {
 void *beDataObjString_create(void *object){
- beDataObjString_registerNow();
+ beDataObjString_arkRegister();
  return meta_createInstance(beDataObjString_meta,object);
 }
 void *beDataObjString_getMeta(){
- if(!beDataObjString_meta || !(reinterpret_cast<unsigned int *>(beDataObjString_meta)[0x24/4]&4)) beDataObjString_registerNow();
+ if(!beDataObjString_meta || !(reinterpret_cast<unsigned int *>(beDataObjString_meta)[0x24/4]&4)) beDataObjString_arkRegister();
  return beDataObjString_meta;
 }
 }

@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F838[8];
+extern char igObjectPropertyForBillboard_dependencies[8];
 extern void *igObjectPropertyForBillboard_meta;
 void *igObjectPropertyForBillboard_getMeta();
 void *igObjectPropertyForBillboard_vtableRead();
-void igObjectPropertyForBillboard_registerNow();
+void igObjectPropertyForBillboard_arkRegister();
 void igObjectPropertyForBillboard_register();
 void *igObjectPropertyForBillboard_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013CCB8 : UnknownGenObject8013CCB8_1 {
 };
 extern "C" {
 void *igObjectPropertyForBillboard_getMeta(){
- if(!igObjectPropertyForBillboard_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForBillboard_meta)[0x24/4]&4)) igObjectPropertyForBillboard_registerNow();
+ if(!igObjectPropertyForBillboard_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForBillboard_meta)[0x24/4]&4)) igObjectPropertyForBillboard_arkRegister();
  return igObjectPropertyForBillboard_meta;
 }
 void *igObjectPropertyForBillboard_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForBillboard_vtableRead(){
  object.unknown00=igObjectPropertyForBillboard_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForBillboard_registerNow(){
+void igObjectPropertyForBillboard_arkRegister(){
  meta_registerNow((int)igObjectPropertyForBillboard_register);
 }
 void igObjectPropertyForBillboard_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForBillboard_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForBillboard_getMetaCall,(int)igObjectPropertyForBillboard_className,44,(int)igObjectPropertyForBillboard_vtableRead,(int)fn_8013CE40,0,(int)lbl_8055F838);
+ meta_registerClass(0,(int)&igObjectPropertyForBillboard_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForBillboard_getMetaCall,(int)igObjectPropertyForBillboard_className,44,(int)igObjectPropertyForBillboard_vtableRead,(int)fn_8013CE40,0,(int)igObjectPropertyForBillboard_dependencies);
 }
 void *igObjectPropertyForBillboard_getMetaCall(){return igObjectPropertyForBillboard_getMeta();}
 }

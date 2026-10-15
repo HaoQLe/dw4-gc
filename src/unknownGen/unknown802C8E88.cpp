@@ -12,7 +12,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B8770();
 extern char beModelCtrlInfoRamData_className[];
-extern char lbl_804D0D00[];
+extern char beModelCtrlInfoRamData_dependencies[];
 extern char beModelCtrlInfoRamData_meta[];
 void beModelCtrlInfoRamData_register();
 void *beModelCtrlInfoRamData_getMetaCall();
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_802C8E88(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beModelCtrlInfoRamData_registerNow(){
+void beModelCtrlInfoRamData_arkRegister(){
  meta_registerNow((int)beModelCtrlInfoRamData_register);
 }
 void beModelCtrlInfoRamData_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beModelCtrlInfoRamData_meta,(int)beBaseInfoData_register,(int)fn_802B8770,(int)beModelCtrlInfoRamData_getMetaCall,(int)beModelCtrlInfoRamData_className,24,(int)beModelCtrlInfoRamData_vtableRead,(int)beModelCtrlInfoRamData_fieldInit,0,(int)lbl_804D0D00);
+ meta_registerClass(0,(int)beModelCtrlInfoRamData_meta,(int)beBaseInfoData_register,(int)fn_802B8770,(int)beModelCtrlInfoRamData_getMetaCall,(int)beModelCtrlInfoRamData_className,24,(int)beModelCtrlInfoRamData_vtableRead,(int)beModelCtrlInfoRamData_fieldInit,0,(int)beModelCtrlInfoRamData_dependencies);
 }
 void *beModelCtrlInfoRamData_getMetaCall(){return beModelCtrlInfoRamData_getMeta();}
 }

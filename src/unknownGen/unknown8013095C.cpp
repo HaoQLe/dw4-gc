@@ -23,7 +23,7 @@ extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igStatisticsNodeUsage_className[];
 extern char igNodeUsageObjectDefinitionList_className[];
-extern char lbl_8049BDDC[];
+extern char igNodeUsageObjectDefinition_dependencies[];
 extern char igNodeUsageObjectDefinition_className[];
 extern char igStatisticsNodeUsage_vtable[];
 extern char lbl_804A46AC[];
@@ -34,31 +34,31 @@ extern char igNodeUsageObjectDefinition_vtable[];
 extern char igNodeUsageObjectDefinitionList_vtable[];
 extern char lbl_804AAC5C[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F4CC[8];
-extern char lbl_8055F4D4[4];
-extern char lbl_8055F4D8[4];
-extern char lbl_8055F4DC[4];
-extern char lbl_8055F4E0[4];
-extern char lbl_8055F4E4[8];
+extern char igStatisticsNodeUsage_dependencies[8];
+extern char igStatisticsNodeUsage_fieldTypes[4];
+extern char igStatisticsNodeUsage_fieldNames[4];
+extern char igStatisticsNodeUsage_fieldStorage[4];
+extern char igStatisticsNodeUsage_fieldOffsets[4];
+extern char igNodeUsageObjectDefinitionList_dependencies[8];
 extern void *igStatisticsNodeUsage_meta;
 extern void *igNodeUsageObjectDefinitionList_meta;
 extern void *igNodeUsageObjectDefinition_meta;
 extern void *igOptStatistics_meta;
 void *igStatisticsNodeUsage_getMeta();
 void *igStatisticsNodeUsage_vtableRead();
-void igStatisticsNodeUsage_registerNow();
+void igStatisticsNodeUsage_arkRegister();
 void igStatisticsNodeUsage_register();
 void *igStatisticsNodeUsage_getMetaCall();
 void *igStatisticsNodeUsage_parentMeta();
 void igStatisticsNodeUsage_fieldInit();
 void *igNodeUsageObjectDefinitionList_getMeta();
 void *igNodeUsageObjectDefinitionList_vtableRead();
-void igNodeUsageObjectDefinitionList_registerNow();
+void igNodeUsageObjectDefinitionList_arkRegister();
 void igNodeUsageObjectDefinitionList_register();
 void *igNodeUsageObjectDefinitionList_getMetaCall();
 void *igNodeUsageObjectDefinition_getMeta();
 void *igNodeUsageObjectDefinition_vtableRead();
-void igNodeUsageObjectDefinition_registerNow();
+void igNodeUsageObjectDefinition_arkRegister();
 void igNodeUsageObjectDefinition_register();
 void *igNodeUsageObjectDefinition_getMetaCall();
 }
@@ -109,7 +109,7 @@ struct UnknownGenObject80130EF0 : UnknownGenRoot80130EF0 {
 };
 extern "C" {
 void *igStatisticsNodeUsage_getMeta(){
- if(!igStatisticsNodeUsage_meta || !(reinterpret_cast<unsigned int *>(igStatisticsNodeUsage_meta)[0x24/4]&4)) igStatisticsNodeUsage_registerNow();
+ if(!igStatisticsNodeUsage_meta || !(reinterpret_cast<unsigned int *>(igStatisticsNodeUsage_meta)[0x24/4]&4)) igStatisticsNodeUsage_arkRegister();
  return igStatisticsNodeUsage_meta;
 }
 void *igStatisticsNodeUsage_vtableRead(){
@@ -128,30 +128,30 @@ void *igStatisticsNodeUsage_vtableRead(){
  object.unknown44.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStatisticsNodeUsage_registerNow(){
+void igStatisticsNodeUsage_arkRegister(){
  meta_registerNow((int)igStatisticsNodeUsage_register);
 }
 void igStatisticsNodeUsage_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igStatisticsNodeUsage_meta,(int)igOptStatistics_register,(int)igStatisticsNodeUsage_parentMeta,(int)igStatisticsNodeUsage_getMetaCall,(int)igStatisticsNodeUsage_className,72,(int)igStatisticsNodeUsage_vtableRead,(int)igStatisticsNodeUsage_fieldInit,0,(int)lbl_8055F4CC);
+ meta_registerClass(0,(int)&igStatisticsNodeUsage_meta,(int)igOptStatistics_register,(int)igStatisticsNodeUsage_parentMeta,(int)igStatisticsNodeUsage_getMetaCall,(int)igStatisticsNodeUsage_className,72,(int)igStatisticsNodeUsage_vtableRead,(int)igStatisticsNodeUsage_fieldInit,0,(int)igStatisticsNodeUsage_dependencies);
 }
 void *igStatisticsNodeUsage_getMetaCall(){return igStatisticsNodeUsage_getMeta();}
 void *igStatisticsNodeUsage_parentMeta(){return igOptStatistics_meta;}
 void igStatisticsNodeUsage_fieldInit(){
  void *value0=igStatisticsNodeUsage_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F4D4,1);
+ meta_appendFields(value0,igStatisticsNodeUsage_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80029F84();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_8055F4D8,lbl_8055F4DC,lbl_8055F4E0,value1);
+ meta_setupFields(value0,igStatisticsNodeUsage_fieldNames,igStatisticsNodeUsage_fieldStorage,igStatisticsNodeUsage_fieldOffsets,value1);
 }
 void *igNodeUsageObjectDefinitionList_create(void *object){
- igNodeUsageObjectDefinitionList_registerNow();
+ igNodeUsageObjectDefinitionList_arkRegister();
  return meta_createInstance(igNodeUsageObjectDefinitionList_meta,object);
 }
 void *igNodeUsageObjectDefinitionList_getMeta(){
- if(!igNodeUsageObjectDefinitionList_meta || !(reinterpret_cast<unsigned int *>(igNodeUsageObjectDefinitionList_meta)[0x24/4]&4)) igNodeUsageObjectDefinitionList_registerNow();
+ if(!igNodeUsageObjectDefinitionList_meta || !(reinterpret_cast<unsigned int *>(igNodeUsageObjectDefinitionList_meta)[0x24/4]&4)) igNodeUsageObjectDefinitionList_arkRegister();
  return igNodeUsageObjectDefinitionList_meta;
 }
 void *igNodeUsageObjectDefinitionList_vtableRead(){
@@ -164,20 +164,20 @@ void *igNodeUsageObjectDefinitionList_vtableRead(){
  object.unknown00=igNodeUsageObjectDefinitionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNodeUsageObjectDefinitionList_registerNow(){
+void igNodeUsageObjectDefinitionList_arkRegister(){
  meta_registerNow((int)igNodeUsageObjectDefinitionList_register);
 }
 void igNodeUsageObjectDefinitionList_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igNodeUsageObjectDefinitionList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igNodeUsageObjectDefinitionList_getMetaCall,(int)igNodeUsageObjectDefinitionList_className,20,(int)igNodeUsageObjectDefinitionList_vtableRead,0,0,(int)lbl_8055F4E4);
+ meta_registerClass(0,(int)&igNodeUsageObjectDefinitionList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igNodeUsageObjectDefinitionList_getMetaCall,(int)igNodeUsageObjectDefinitionList_className,20,(int)igNodeUsageObjectDefinitionList_vtableRead,0,0,(int)igNodeUsageObjectDefinitionList_dependencies);
 }
 void *igNodeUsageObjectDefinitionList_getMetaCall(){return igNodeUsageObjectDefinitionList_getMeta();}
 void *igNodeUsageObjectDefinition_create(void *object){
- igNodeUsageObjectDefinition_registerNow();
+ igNodeUsageObjectDefinition_arkRegister();
  return meta_createInstance(igNodeUsageObjectDefinition_meta,object);
 }
 void *igNodeUsageObjectDefinition_getMeta(){
- if(!igNodeUsageObjectDefinition_meta || !(reinterpret_cast<unsigned int *>(igNodeUsageObjectDefinition_meta)[0x24/4]&4)) igNodeUsageObjectDefinition_registerNow();
+ if(!igNodeUsageObjectDefinition_meta || !(reinterpret_cast<unsigned int *>(igNodeUsageObjectDefinition_meta)[0x24/4]&4)) igNodeUsageObjectDefinition_arkRegister();
  return igNodeUsageObjectDefinition_meta;
 }
 void *igNodeUsageObjectDefinition_vtableRead(){
@@ -190,12 +190,12 @@ void *igNodeUsageObjectDefinition_vtableRead(){
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNodeUsageObjectDefinition_registerNow(){
+void igNodeUsageObjectDefinition_arkRegister(){
  meta_registerNow((int)igNodeUsageObjectDefinition_register);
 }
 void igNodeUsageObjectDefinition_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igNodeUsageObjectDefinition_meta,(int)igObject_register,(int)fn_800237D0,(int)igNodeUsageObjectDefinition_getMetaCall,(int)igNodeUsageObjectDefinition_className,28,(int)igNodeUsageObjectDefinition_vtableRead,(int)igNodeUsageObjectDefinition_fieldInit,0,(int)lbl_8049BDDC);
+ meta_registerClass(0,(int)&igNodeUsageObjectDefinition_meta,(int)igObject_register,(int)fn_800237D0,(int)igNodeUsageObjectDefinition_getMetaCall,(int)igNodeUsageObjectDefinition_className,28,(int)igNodeUsageObjectDefinition_vtableRead,(int)igNodeUsageObjectDefinition_fieldInit,0,(int)igNodeUsageObjectDefinition_dependencies);
 }
 void *igNodeUsageObjectDefinition_getMetaCall(){return igNodeUsageObjectDefinition_getMeta();}
 }

@@ -32,16 +32,16 @@ extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F61C[8];
-extern char lbl_8055F624[8];
-extern char lbl_8055F62C[8];
-extern char lbl_8055F634[8];
-extern char lbl_8055F63C[8];
-extern char lbl_8055F644[8];
-extern char lbl_8055F64C[8];
-extern char lbl_8055F654[8];
-extern char lbl_8055F65C[8];
-extern char lbl_8055F664[8];
+extern char igRemoveDynamic_fieldTypes[8];
+extern char igRemoveDynamic_fieldNames[8];
+extern char igRemoveDynamic_fieldStorage[8];
+extern char igRemoveDynamic_fieldOffsets[8];
+extern char igRemoveAttrs_dependencies[8];
+extern char igRemoveAttrs_fieldTypes[8];
+extern char igRemoveAttrs_fieldNames[8];
+extern char igRemoveAttrs_fieldStorage[8];
+extern char igRemoveAttrs_fieldOffsets[8];
+extern char igRemoveAnimationTrackChannel_dependencies[8];
 extern void *igRemoveJoints_meta;
 extern void *igRemoveDynamic_meta;
 extern void *igRemoveCenterOfRotation_meta;
@@ -49,29 +49,29 @@ extern void *igRemoveAttrs_meta;
 extern void *igRemoveAnimationTrackChannel_meta;
 void *igRemoveJoints_getMeta();
 void *igRemoveJoints_vtableRead();
-void igRemoveJoints_registerNow();
+void igRemoveJoints_arkRegister();
 void igRemoveJoints_register();
 void *igRemoveJoints_getMetaCall();
 void *igRemoveDynamic_getMeta();
 void *igRemoveDynamic_vtableRead();
-void igRemoveDynamic_registerNow();
+void igRemoveDynamic_arkRegister();
 void igRemoveDynamic_register();
 void *igRemoveDynamic_getMetaCall();
 void igRemoveDynamic_fieldInit();
 void *igRemoveCenterOfRotation_getMeta();
 void *igRemoveCenterOfRotation_vtableRead();
-void igRemoveCenterOfRotation_registerNow();
+void igRemoveCenterOfRotation_arkRegister();
 void igRemoveCenterOfRotation_register();
 void *igRemoveCenterOfRotation_getMetaCall();
 void *igRemoveAttrs_getMeta();
 void *igRemoveAttrs_vtableRead();
-void igRemoveAttrs_registerNow();
+void igRemoveAttrs_arkRegister();
 void igRemoveAttrs_register();
 void *igRemoveAttrs_getMetaCall();
 void igRemoveAttrs_fieldInit();
 void *igRemoveAnimationTrackChannel_getMeta();
 void *igRemoveAnimationTrackChannel_vtableRead();
-void igRemoveAnimationTrackChannel_registerNow();
+void igRemoveAnimationTrackChannel_arkRegister();
 void igRemoveAnimationTrackChannel_register();
 void *igRemoveAnimationTrackChannel_getMetaCall();
 }
@@ -168,7 +168,7 @@ struct UnknownGenObject801366E4 : UnknownGenObject801366E4_1 {
 };
 extern "C" {
 void *igRemoveJoints_getMeta(){
- if(!igRemoveJoints_meta || !(reinterpret_cast<unsigned int *>(igRemoveJoints_meta)[0x24/4]&4)) igRemoveJoints_registerNow();
+ if(!igRemoveJoints_meta || !(reinterpret_cast<unsigned int *>(igRemoveJoints_meta)[0x24/4]&4)) igRemoveJoints_arkRegister();
  return igRemoveJoints_meta;
 }
 void *igRemoveJoints_vtableRead(){
@@ -181,7 +181,7 @@ void *igRemoveJoints_vtableRead(){
  object.unknown00=igRemoveJoints_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRemoveJoints_registerNow(){
+void igRemoveJoints_arkRegister(){
  meta_registerNow((int)igRemoveJoints_register);
 }
 void igRemoveJoints_register(){
@@ -190,7 +190,7 @@ void igRemoveJoints_register(){
 }
 void *igRemoveJoints_getMetaCall(){return igRemoveJoints_getMeta();}
 void *igRemoveDynamic_getMeta(){
- if(!igRemoveDynamic_meta || !(reinterpret_cast<unsigned int *>(igRemoveDynamic_meta)[0x24/4]&4)) igRemoveDynamic_registerNow();
+ if(!igRemoveDynamic_meta || !(reinterpret_cast<unsigned int *>(igRemoveDynamic_meta)[0x24/4]&4)) igRemoveDynamic_arkRegister();
  return igRemoveDynamic_meta;
 }
 void *igRemoveDynamic_vtableRead(){
@@ -206,7 +206,7 @@ void *igRemoveDynamic_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRemoveDynamic_registerNow(){
+void igRemoveDynamic_arkRegister(){
  meta_registerNow((int)igRemoveDynamic_register);
 }
 void igRemoveDynamic_register(){
@@ -217,11 +217,11 @@ void *igRemoveDynamic_getMetaCall(){return igRemoveDynamic_getMeta();}
 void igRemoveDynamic_fieldInit(){
  void *value0=igRemoveDynamic_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F61C,2);
- meta_setupFields(value0,lbl_8055F624,lbl_8055F62C,lbl_8055F634,value1);
+ meta_appendFields(value0,igRemoveDynamic_fieldTypes,2);
+ meta_setupFields(value0,igRemoveDynamic_fieldNames,igRemoveDynamic_fieldStorage,igRemoveDynamic_fieldOffsets,value1);
 }
 void *igRemoveCenterOfRotation_getMeta(){
- if(!igRemoveCenterOfRotation_meta || !(reinterpret_cast<unsigned int *>(igRemoveCenterOfRotation_meta)[0x24/4]&4)) igRemoveCenterOfRotation_registerNow();
+ if(!igRemoveCenterOfRotation_meta || !(reinterpret_cast<unsigned int *>(igRemoveCenterOfRotation_meta)[0x24/4]&4)) igRemoveCenterOfRotation_arkRegister();
  return igRemoveCenterOfRotation_meta;
 }
 void *igRemoveCenterOfRotation_vtableRead(){
@@ -234,7 +234,7 @@ void *igRemoveCenterOfRotation_vtableRead(){
  object.unknown00=igRemoveCenterOfRotation_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRemoveCenterOfRotation_registerNow(){
+void igRemoveCenterOfRotation_arkRegister(){
  meta_registerNow((int)igRemoveCenterOfRotation_register);
 }
 void igRemoveCenterOfRotation_register(){
@@ -243,7 +243,7 @@ void igRemoveCenterOfRotation_register(){
 }
 void *igRemoveCenterOfRotation_getMetaCall(){return igRemoveCenterOfRotation_getMeta();}
 void *igRemoveAttrs_getMeta(){
- if(!igRemoveAttrs_meta || !(reinterpret_cast<unsigned int *>(igRemoveAttrs_meta)[0x24/4]&4)) igRemoveAttrs_registerNow();
+ if(!igRemoveAttrs_meta || !(reinterpret_cast<unsigned int *>(igRemoveAttrs_meta)[0x24/4]&4)) igRemoveAttrs_arkRegister();
  return igRemoveAttrs_meta;
 }
 void *igRemoveAttrs_vtableRead(){
@@ -258,27 +258,27 @@ void *igRemoveAttrs_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRemoveAttrs_registerNow(){
+void igRemoveAttrs_arkRegister(){
  meta_registerNow((int)igRemoveAttrs_register);
 }
 void igRemoveAttrs_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igRemoveAttrs_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igRemoveAttrs_getMetaCall,(int)igRemoveAttrs_className,48,(int)igRemoveAttrs_vtableRead,(int)igRemoveAttrs_fieldInit,0,(int)lbl_8055F63C);
+ meta_registerClass(0,(int)&igRemoveAttrs_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igRemoveAttrs_getMetaCall,(int)igRemoveAttrs_className,48,(int)igRemoveAttrs_vtableRead,(int)igRemoveAttrs_fieldInit,0,(int)igRemoveAttrs_dependencies);
 }
 void *igRemoveAttrs_getMetaCall(){return igRemoveAttrs_getMeta();}
 void igRemoveAttrs_fieldInit(){
  void *value0=igRemoveAttrs_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F644,2);
+ meta_appendFields(value0,igRemoveAttrs_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80029F84();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_80071694(value4,igNodeTraversal_className);
- meta_setupFields(value0,lbl_8055F64C,lbl_8055F654,lbl_8055F65C,value1);
+ meta_setupFields(value0,igRemoveAttrs_fieldNames,igRemoveAttrs_fieldStorage,igRemoveAttrs_fieldOffsets,value1);
 }
 void *igRemoveAnimationTrackChannel_getMeta(){
- if(!igRemoveAnimationTrackChannel_meta || !(reinterpret_cast<unsigned int *>(igRemoveAnimationTrackChannel_meta)[0x24/4]&4)) igRemoveAnimationTrackChannel_registerNow();
+ if(!igRemoveAnimationTrackChannel_meta || !(reinterpret_cast<unsigned int *>(igRemoveAnimationTrackChannel_meta)[0x24/4]&4)) igRemoveAnimationTrackChannel_arkRegister();
  return igRemoveAnimationTrackChannel_meta;
 }
 void *igRemoveAnimationTrackChannel_vtableRead(){
@@ -297,12 +297,12 @@ void *igRemoveAnimationTrackChannel_vtableRead(){
  object.unknown3C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRemoveAnimationTrackChannel_registerNow(){
+void igRemoveAnimationTrackChannel_arkRegister(){
  meta_registerNow((int)igRemoveAnimationTrackChannel_register);
 }
 void igRemoveAnimationTrackChannel_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igRemoveAnimationTrackChannel_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igRemoveAnimationTrackChannel_getMetaCall,(int)igRemoveAnimationTrackChannel_className,64,(int)igRemoveAnimationTrackChannel_vtableRead,(int)igRemoveAnimationTrackChannel_fieldInit,0,(int)lbl_8055F664);
+ meta_registerClass(0,(int)&igRemoveAnimationTrackChannel_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igRemoveAnimationTrackChannel_getMetaCall,(int)igRemoveAnimationTrackChannel_className,64,(int)igRemoveAnimationTrackChannel_vtableRead,(int)igRemoveAnimationTrackChannel_fieldInit,0,(int)igRemoveAnimationTrackChannel_dependencies);
 }
 void *igRemoveAnimationTrackChannel_getMetaCall(){return igRemoveAnimationTrackChannel_getMeta();}
 }

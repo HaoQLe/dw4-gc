@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void fn_801B4EB0(void *,short);
 void fn_801B5514(void *);
-void igProjectiveShadowShader_registerNow();
+void igProjectiveShadowShader_arkRegister();
 extern void *lbl_805621F4;
 extern void *igProjectiveShadowShader_meta;
 }
@@ -20,7 +20,7 @@ void *fn_801B4DF0(){
  return igProjectiveShadowShader_meta;
 }
 void *igProjectiveShadowShader_getMeta(){
- if(!igProjectiveShadowShader_meta || !(reinterpret_cast<unsigned int *>(igProjectiveShadowShader_meta)[0x24/4]&4)) igProjectiveShadowShader_registerNow();
+ if(!igProjectiveShadowShader_meta || !(reinterpret_cast<unsigned int *>(igProjectiveShadowShader_meta)[0x24/4]&4)) igProjectiveShadowShader_arkRegister();
  return igProjectiveShadowShader_meta;
 }
 void *fn_801B4E68(){

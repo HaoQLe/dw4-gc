@@ -12,12 +12,12 @@ void igLogoRenderer_fieldInit();
 void igRenderer_register();
 extern char igLogoRenderer_className[];
 extern char lbl_80497C9C[];
-extern char lbl_804F0E74[];
+extern char igLogoRenderer_dependencies[];
 extern char igLogoRenderer_vtable[];
 extern void *igLogoRenderer_meta;
 void *igLogoRenderer_getMeta();
 void *igLogoRenderer_vtableRead();
-void igLogoRenderer_registerNow();
+void igLogoRenderer_arkRegister();
 void igLogoRenderer_register();
 void *igLogoRenderer_getMetaCall();
 }
@@ -41,11 +41,11 @@ struct UnknownGenObject80408988 : UnknownGenObject80408988_0 {
 };
 extern "C" {
 void *igLogoRenderer_create(void *object){
- igLogoRenderer_registerNow();
+ igLogoRenderer_arkRegister();
  return meta_createInstance(igLogoRenderer_meta,object);
 }
 void *igLogoRenderer_getMeta(){
- if(!igLogoRenderer_meta || !(reinterpret_cast<unsigned int *>(igLogoRenderer_meta)[0x24/4]&4)) igLogoRenderer_registerNow();
+ if(!igLogoRenderer_meta || !(reinterpret_cast<unsigned int *>(igLogoRenderer_meta)[0x24/4]&4)) igLogoRenderer_arkRegister();
  return igLogoRenderer_meta;
 }
 void *igLogoRenderer_vtableRead(){
@@ -58,12 +58,12 @@ void *igLogoRenderer_vtableRead(){
  object.unknown20.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igLogoRenderer_registerNow(){
+void igLogoRenderer_arkRegister(){
  meta_registerNow((int)igLogoRenderer_register);
 }
 void igLogoRenderer_register(){
  fn_80402E28();
- meta_registerClass(0,(int)&igLogoRenderer_meta,(int)igRenderer_register,(int)fn_8010DF8C,(int)igLogoRenderer_getMetaCall,(int)igLogoRenderer_className,40,(int)igLogoRenderer_vtableRead,(int)igLogoRenderer_fieldInit,0,(int)lbl_804F0E74);
+ meta_registerClass(0,(int)&igLogoRenderer_meta,(int)igRenderer_register,(int)fn_8010DF8C,(int)igLogoRenderer_getMetaCall,(int)igLogoRenderer_className,40,(int)igLogoRenderer_vtableRead,(int)igLogoRenderer_fieldInit,0,(int)igLogoRenderer_dependencies);
 }
 void *igLogoRenderer_getMetaCall(){return igLogoRenderer_getMeta();}
 }

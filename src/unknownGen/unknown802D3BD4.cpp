@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
 extern char beLayerCtl_className[];
-extern char lbl_804D197C[];
+extern char beLayerCtl_dependencies[];
 extern char beLayerCtl_meta[];
 void beLayerCtl_register();
 void *beLayerCtl_getMetaCall();
 }
 extern "C" {
-void beLayerCtl_registerNow(){
+void beLayerCtl_arkRegister(){
  meta_registerNow((int)beLayerCtl_register);
 }
 void beLayerCtl_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beLayerCtl_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beLayerCtl_getMetaCall,(int)beLayerCtl_className,40,(int)beLayerCtl_vtableRead,(int)beLayerCtl_fieldInit,0,(int)lbl_804D197C);
+ meta_registerClass(0,(int)beLayerCtl_meta,(int)beBaseInfoManager_register,(int)fn_802B381C,(int)beLayerCtl_getMetaCall,(int)beLayerCtl_className,40,(int)beLayerCtl_vtableRead,(int)beLayerCtl_fieldInit,0,(int)beLayerCtl_dependencies);
 }
 void *beLayerCtl_getMetaCall(){return beLayerCtl_getMeta();}
 }

@@ -16,7 +16,7 @@ void beOptInfo_register();
 void *beOptInfo_getMetaCall();
 }
 extern "C" {
-void beOptInfo_registerNow(){
+void beOptInfo_arkRegister(){
  meta_registerNow((int)beOptInfo_register);
 }
 void beOptInfo_register(){

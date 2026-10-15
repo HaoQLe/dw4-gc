@@ -12,17 +12,17 @@ void *meta_fieldCount(void *);
 void *fn_801C89F0();
 void *beFontImageList_metaObject();
 void *beFontGeomAttrPairList_metaObject();
-extern char lbl_804D20E4[];
-extern char lbl_804D210C[];
-extern char lbl_804D2134[];
-extern char lbl_804D215C[];
+extern char beFont_fieldTypes[];
+extern char beFont_fieldNames[];
+extern char beFont_fieldStorage[];
+extern char beFont_fieldOffsets[];
 extern void *beFont_meta;
 }
 extern "C" {
 void beFont_fieldInit(){
  void *value0=beFont_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D20E4,10);
+ meta_appendFields(value0,beFont_fieldTypes,10);
  void *value2=meta_field(value0,value1);
  void *value3=fn_801C89F0();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -46,7 +46,7 @@ void beFont_fieldInit(){
  void *value13=fn_80024FEC();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value12)+56)=value13;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value12)+52)=1;
- meta_setupFields(value0,lbl_804D210C,lbl_804D2134,lbl_804D215C,value1);
+ meta_setupFields(value0,beFont_fieldNames,beFont_fieldStorage,beFont_fieldOffsets,value1);
 }
 }
 #pragma pop

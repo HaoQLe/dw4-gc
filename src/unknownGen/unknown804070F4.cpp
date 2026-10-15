@@ -16,7 +16,7 @@ void igRotateMode_register();
 void *igRotateMode_getMetaCall();
 }
 extern "C" {
-void igRotateMode_registerNow(){
+void igRotateMode_arkRegister(){
  meta_registerNow((int)igRotateMode_register);
 }
 void igRotateMode_register(){

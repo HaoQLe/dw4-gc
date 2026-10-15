@@ -9,7 +9,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void beSelectCtrlInfoRamData_registerNow();
+void beSelectCtrlInfoRamData_arkRegister();
 extern char beSelectCtrlInfo_className[];
 extern char beSelectCtrlInfo_meta[];
 extern void *beSelectCtrlInfoRamData_meta;
@@ -17,7 +17,7 @@ void beSelectCtrlInfo_register();
 void *beSelectCtrlInfo_getMetaCall();
 }
 extern "C" {
-void beSelectCtrlInfo_registerNow(){
+void beSelectCtrlInfo_arkRegister(){
  meta_registerNow((int)beSelectCtrlInfo_register);
 }
 void beSelectCtrlInfo_register(){
@@ -26,7 +26,7 @@ void beSelectCtrlInfo_register(){
 }
 void *beSelectCtrlInfo_getMetaCall(){return beSelectCtrlInfo_getMeta();}
 void *beSelectCtrlInfoRamData_getMeta(){
- if(!beSelectCtrlInfoRamData_meta || !(reinterpret_cast<unsigned int *>(beSelectCtrlInfoRamData_meta)[0x24/4]&4)) beSelectCtrlInfoRamData_registerNow();
+ if(!beSelectCtrlInfoRamData_meta || !(reinterpret_cast<unsigned int *>(beSelectCtrlInfoRamData_meta)[0x24/4]&4)) beSelectCtrlInfoRamData_arkRegister();
  return beSelectCtrlInfoRamData_meta;
 }
 }

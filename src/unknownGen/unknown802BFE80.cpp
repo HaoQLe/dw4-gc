@@ -12,28 +12,28 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beSaveMemoryObj_registerNow();
+void beSaveMemoryObj_arkRegister();
 void igObject_register();
 extern char beSvSlotData_className[];
-extern char lbl_804CFE14[];
-extern char lbl_804CFE28[];
-extern char lbl_804CFE3C[];
-extern char lbl_804CFE50[];
+extern char beSvSlotData_fieldTypes[];
+extern char beSvSlotData_fieldNames[];
+extern char beSvSlotData_fieldStorage[];
+extern char beSvSlotData_fieldOffsets[];
 extern void *beSvSlotData_meta;
 extern void *beSaveMemoryObj_meta;
 extern void *lbl_805621F4;
 void *beSvSlotData_getMeta();
-void beSvSlotData_registerNow();
+void beSvSlotData_arkRegister();
 void beSvSlotData_register();
 void *beSvSlotData_getMetaCall();
 void beSvSlotData_fieldInit();
 }
 extern "C" {
 void *beSvSlotData_getMeta(){
- if(!beSvSlotData_meta || !(reinterpret_cast<unsigned int *>(beSvSlotData_meta)[0x24/4]&4)) beSvSlotData_registerNow();
+ if(!beSvSlotData_meta || !(reinterpret_cast<unsigned int *>(beSvSlotData_meta)[0x24/4]&4)) beSvSlotData_arkRegister();
  return beSvSlotData_meta;
 }
-void beSvSlotData_registerNow(){
+void beSvSlotData_arkRegister(){
  meta_registerNow((int)beSvSlotData_register);
 }
 void beSvSlotData_register(){
@@ -44,11 +44,11 @@ void *beSvSlotData_getMetaCall(){return beSvSlotData_getMeta();}
 void beSvSlotData_fieldInit(){
  void *meta=beSvSlotData_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804CFE14,0x5);
- meta_setupFields(meta,lbl_804CFE28,lbl_804CFE3C,lbl_804CFE50,field);
+ meta_appendFields(meta,beSvSlotData_fieldTypes,0x5);
+ meta_setupFields(meta,beSvSlotData_fieldNames,beSvSlotData_fieldStorage,beSvSlotData_fieldOffsets,field);
 }
 void *beSaveMemoryObj_create(void *object){
- beSaveMemoryObj_registerNow();
+ beSaveMemoryObj_arkRegister();
  return meta_createInstance(beSaveMemoryObj_meta,object);
 }
 void *beSaveMemoryObj_metaObject(){
@@ -56,7 +56,7 @@ void *beSaveMemoryObj_metaObject(){
  return beSaveMemoryObj_meta;
 }
 void *beSaveMemoryObj_getMeta(){
- if(!beSaveMemoryObj_meta || !(reinterpret_cast<unsigned int *>(beSaveMemoryObj_meta)[0x24/4]&4)) beSaveMemoryObj_registerNow();
+ if(!beSaveMemoryObj_meta || !(reinterpret_cast<unsigned int *>(beSaveMemoryObj_meta)[0x24/4]&4)) beSaveMemoryObj_arkRegister();
  return beSaveMemoryObj_meta;
 }
 }

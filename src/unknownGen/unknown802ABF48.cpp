@@ -9,11 +9,11 @@ void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *fn_800C6F94();
 void *fn_800CE788();
-void igCriMovieData_registerNow();
-extern char lbl_804CDB14[];
-extern char lbl_804CDB20[];
-extern char lbl_804CDB2C[];
-extern char lbl_804CDB38[];
+void igCriMovieData_arkRegister();
+extern char igCriMovieCodec_fieldTypes[];
+extern char igCriMovieCodec_fieldNames[];
+extern char igCriMovieCodec_fieldStorage[];
+extern char igCriMovieCodec_fieldOffsets[];
 extern void *igCriMovieCodec_meta;
 extern void *igCriMovieData_meta;
 }
@@ -21,7 +21,7 @@ extern "C" {
 void igCriMovieCodec_fieldInit(){
  void *value0=igCriMovieCodec_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CDB14,3);
+ meta_appendFields(value0,igCriMovieCodec_fieldTypes,3);
  void *value2=meta_field(value0,value1);
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
@@ -32,14 +32,14 @@ void igCriMovieCodec_fieldInit(){
  void *value6=fn_800C6F94();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+56)=value6;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value5)+38)=0;
- meta_setupFields(value0,lbl_804CDB20,lbl_804CDB2C,lbl_804CDB38,value1);
+ meta_setupFields(value0,igCriMovieCodec_fieldNames,igCriMovieCodec_fieldStorage,igCriMovieCodec_fieldOffsets,value1);
 }
 void *igCriMovieData_create(void *object){
- igCriMovieData_registerNow();
+ igCriMovieData_arkRegister();
  return meta_createInstance(igCriMovieData_meta,object);
 }
 void *igCriMovieData_getMeta(){
- if(!igCriMovieData_meta || !(reinterpret_cast<unsigned int *>(igCriMovieData_meta)[0x24/4]&4)) igCriMovieData_registerNow();
+ if(!igCriMovieData_meta || !(reinterpret_cast<unsigned int *>(igCriMovieData_meta)[0x24/4]&4)) igCriMovieData_arkRegister();
  return igCriMovieData_meta;
 }
 }

@@ -34,7 +34,7 @@ extern char igStdFilterFun_className[];
 extern char igSerialFilterFun_className[];
 extern char igFilterFun_className[];
 extern char igFileInfoList_className[];
-extern char lbl_8049F070[];
+extern char igFileInfo_dependencies[];
 extern char igFileInfo_className[];
 extern char lbl_804A6BF0[];
 extern char igFileInfo_vtable[];
@@ -48,11 +48,11 @@ extern char igBSplineFilterFun_vtable[];
 extern char igLanczos3FilterFun_vtable[];
 extern char igMitchellFilterFun_vtable[];
 extern char lbl_804A8FDC[];
-extern char lbl_8055FB6C[4];
-extern char lbl_8055FB78[4];
-extern char lbl_8055FB7C[4];
-extern char lbl_8055FB80[4];
-extern char lbl_8055FB84[8];
+extern char igSerialFilterFun_fieldTypes[4];
+extern char igSerialFilterFun_fieldNames[4];
+extern char igSerialFilterFun_fieldStorage[4];
+extern char igSerialFilterFun_fieldOffsets[4];
+extern char igFileInfoList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igMitchellFilterFun_meta;
 extern void *igLanczos3FilterFun_meta;
@@ -67,57 +67,57 @@ extern void *igFileInfoList_meta;
 extern void *igFileInfo_meta;
 void *igMitchellFilterFun_getMeta();
 void *igMitchellFilterFun_vtableRead();
-void igMitchellFilterFun_registerNow();
+void igMitchellFilterFun_arkRegister();
 void igMitchellFilterFun_register();
 void *igMitchellFilterFun_getMetaCall();
 void *igLanczos3FilterFun_getMeta();
 void *igLanczos3FilterFun_vtableRead();
-void igLanczos3FilterFun_registerNow();
+void igLanczos3FilterFun_arkRegister();
 void igLanczos3FilterFun_register();
 void *igLanczos3FilterFun_getMetaCall();
 void *igBSplineFilterFun_getMeta();
 void *igBSplineFilterFun_vtableRead();
-void igBSplineFilterFun_registerNow();
+void igBSplineFilterFun_arkRegister();
 void igBSplineFilterFun_register();
 void *igBSplineFilterFun_getMetaCall();
 void *igBellFilterFun_getMeta();
 void *igBellFilterFun_vtableRead();
-void igBellFilterFun_registerNow();
+void igBellFilterFun_arkRegister();
 void igBellFilterFun_register();
 void *igBellFilterFun_getMetaCall();
 void *igTriangleFilterFun_getMeta();
 void *igTriangleFilterFun_vtableRead();
-void igTriangleFilterFun_registerNow();
+void igTriangleFilterFun_arkRegister();
 void igTriangleFilterFun_register();
 void *igTriangleFilterFun_getMetaCall();
 void *igBoxFilterFun_getMeta();
 void *igBoxFilterFun_vtableRead();
-void igBoxFilterFun_registerNow();
+void igBoxFilterFun_arkRegister();
 void igBoxFilterFun_register();
 void *igBoxFilterFun_getMetaCall();
 void *igStdFilterFun_getMeta();
 void *igStdFilterFun_vtableRead();
-void igStdFilterFun_registerNow();
+void igStdFilterFun_arkRegister();
 void igStdFilterFun_register();
 void *igStdFilterFun_getMetaCall();
 void *igSerialFilterFun_getMeta();
-void igSerialFilterFun_registerNow();
+void igSerialFilterFun_arkRegister();
 void igSerialFilterFun_register();
 void *igSerialFilterFun_getMetaCall();
 void *igSerialFilterFun_parentMeta();
 void igSerialFilterFun_fieldInit();
 void *igFilterFun_getMeta();
-void igFilterFun_registerNow();
+void igFilterFun_arkRegister();
 void igFilterFun_register();
 void *igFilterFun_getMetaCall();
 void *igFileInfoList_getMeta();
 void *igFileInfoList_vtableRead();
-void igFileInfoList_registerNow();
+void igFileInfoList_arkRegister();
 void igFileInfoList_register();
 void *igFileInfoList_getMetaCall();
 void *igFileInfo_getMeta();
 void *igFileInfo_vtableRead();
-void igFileInfo_registerNow();
+void igFileInfo_arkRegister();
 void igFileInfo_register();
 void *igFileInfo_getMetaCall();
 }
@@ -173,11 +173,11 @@ struct UnknownGenObject8014AB6C : UnknownGenObject8014AB6C_0 {
 };
 extern "C" {
 void *igMitchellFilterFun_create(void *object){
- igMitchellFilterFun_registerNow();
+ igMitchellFilterFun_arkRegister();
  return meta_createInstance(igMitchellFilterFun_meta,object);
 }
 void *igMitchellFilterFun_getMeta(){
- if(!igMitchellFilterFun_meta || !(reinterpret_cast<unsigned int *>(igMitchellFilterFun_meta)[0x24/4]&4)) igMitchellFilterFun_registerNow();
+ if(!igMitchellFilterFun_meta || !(reinterpret_cast<unsigned int *>(igMitchellFilterFun_meta)[0x24/4]&4)) igMitchellFilterFun_arkRegister();
  return igMitchellFilterFun_meta;
 }
 void *igMitchellFilterFun_vtableRead(){
@@ -188,7 +188,7 @@ void *igMitchellFilterFun_vtableRead(){
  object.unknown00=igMitchellFilterFun_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMitchellFilterFun_registerNow(){
+void igMitchellFilterFun_arkRegister(){
  meta_registerNow((int)igMitchellFilterFun_register);
 }
 void igMitchellFilterFun_register(){
@@ -197,11 +197,11 @@ void igMitchellFilterFun_register(){
 }
 void *igMitchellFilterFun_getMetaCall(){return igMitchellFilterFun_getMeta();}
 void *igLanczos3FilterFun_create(void *object){
- igLanczos3FilterFun_registerNow();
+ igLanczos3FilterFun_arkRegister();
  return meta_createInstance(igLanczos3FilterFun_meta,object);
 }
 void *igLanczos3FilterFun_getMeta(){
- if(!igLanczos3FilterFun_meta || !(reinterpret_cast<unsigned int *>(igLanczos3FilterFun_meta)[0x24/4]&4)) igLanczos3FilterFun_registerNow();
+ if(!igLanczos3FilterFun_meta || !(reinterpret_cast<unsigned int *>(igLanczos3FilterFun_meta)[0x24/4]&4)) igLanczos3FilterFun_arkRegister();
  return igLanczos3FilterFun_meta;
 }
 void *igLanczos3FilterFun_vtableRead(){
@@ -212,7 +212,7 @@ void *igLanczos3FilterFun_vtableRead(){
  object.unknown00=igLanczos3FilterFun_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igLanczos3FilterFun_registerNow(){
+void igLanczos3FilterFun_arkRegister(){
  meta_registerNow((int)igLanczos3FilterFun_register);
 }
 void igLanczos3FilterFun_register(){
@@ -221,11 +221,11 @@ void igLanczos3FilterFun_register(){
 }
 void *igLanczos3FilterFun_getMetaCall(){return igLanczos3FilterFun_getMeta();}
 void *igBSplineFilterFun_create(void *object){
- igBSplineFilterFun_registerNow();
+ igBSplineFilterFun_arkRegister();
  return meta_createInstance(igBSplineFilterFun_meta,object);
 }
 void *igBSplineFilterFun_getMeta(){
- if(!igBSplineFilterFun_meta || !(reinterpret_cast<unsigned int *>(igBSplineFilterFun_meta)[0x24/4]&4)) igBSplineFilterFun_registerNow();
+ if(!igBSplineFilterFun_meta || !(reinterpret_cast<unsigned int *>(igBSplineFilterFun_meta)[0x24/4]&4)) igBSplineFilterFun_arkRegister();
  return igBSplineFilterFun_meta;
 }
 void *igBSplineFilterFun_vtableRead(){
@@ -236,7 +236,7 @@ void *igBSplineFilterFun_vtableRead(){
  object.unknown00=igBSplineFilterFun_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBSplineFilterFun_registerNow(){
+void igBSplineFilterFun_arkRegister(){
  meta_registerNow((int)igBSplineFilterFun_register);
 }
 void igBSplineFilterFun_register(){
@@ -245,11 +245,11 @@ void igBSplineFilterFun_register(){
 }
 void *igBSplineFilterFun_getMetaCall(){return igBSplineFilterFun_getMeta();}
 void *igBellFilterFun_create(void *object){
- igBellFilterFun_registerNow();
+ igBellFilterFun_arkRegister();
  return meta_createInstance(igBellFilterFun_meta,object);
 }
 void *igBellFilterFun_getMeta(){
- if(!igBellFilterFun_meta || !(reinterpret_cast<unsigned int *>(igBellFilterFun_meta)[0x24/4]&4)) igBellFilterFun_registerNow();
+ if(!igBellFilterFun_meta || !(reinterpret_cast<unsigned int *>(igBellFilterFun_meta)[0x24/4]&4)) igBellFilterFun_arkRegister();
  return igBellFilterFun_meta;
 }
 void *igBellFilterFun_vtableRead(){
@@ -260,7 +260,7 @@ void *igBellFilterFun_vtableRead(){
  object.unknown00=igBellFilterFun_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBellFilterFun_registerNow(){
+void igBellFilterFun_arkRegister(){
  meta_registerNow((int)igBellFilterFun_register);
 }
 void igBellFilterFun_register(){
@@ -269,11 +269,11 @@ void igBellFilterFun_register(){
 }
 void *igBellFilterFun_getMetaCall(){return igBellFilterFun_getMeta();}
 void *igTriangleFilterFun_create(void *object){
- igTriangleFilterFun_registerNow();
+ igTriangleFilterFun_arkRegister();
  return meta_createInstance(igTriangleFilterFun_meta,object);
 }
 void *igTriangleFilterFun_getMeta(){
- if(!igTriangleFilterFun_meta || !(reinterpret_cast<unsigned int *>(igTriangleFilterFun_meta)[0x24/4]&4)) igTriangleFilterFun_registerNow();
+ if(!igTriangleFilterFun_meta || !(reinterpret_cast<unsigned int *>(igTriangleFilterFun_meta)[0x24/4]&4)) igTriangleFilterFun_arkRegister();
  return igTriangleFilterFun_meta;
 }
 void *igTriangleFilterFun_vtableRead(){
@@ -284,7 +284,7 @@ void *igTriangleFilterFun_vtableRead(){
  object.unknown00=igTriangleFilterFun_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTriangleFilterFun_registerNow(){
+void igTriangleFilterFun_arkRegister(){
  meta_registerNow((int)igTriangleFilterFun_register);
 }
 void igTriangleFilterFun_register(){
@@ -293,11 +293,11 @@ void igTriangleFilterFun_register(){
 }
 void *igTriangleFilterFun_getMetaCall(){return igTriangleFilterFun_getMeta();}
 void *igBoxFilterFun_create(void *object){
- igBoxFilterFun_registerNow();
+ igBoxFilterFun_arkRegister();
  return meta_createInstance(igBoxFilterFun_meta,object);
 }
 void *igBoxFilterFun_getMeta(){
- if(!igBoxFilterFun_meta || !(reinterpret_cast<unsigned int *>(igBoxFilterFun_meta)[0x24/4]&4)) igBoxFilterFun_registerNow();
+ if(!igBoxFilterFun_meta || !(reinterpret_cast<unsigned int *>(igBoxFilterFun_meta)[0x24/4]&4)) igBoxFilterFun_arkRegister();
  return igBoxFilterFun_meta;
 }
 void *igBoxFilterFun_vtableRead(){
@@ -308,7 +308,7 @@ void *igBoxFilterFun_vtableRead(){
  object.unknown00=igBoxFilterFun_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBoxFilterFun_registerNow(){
+void igBoxFilterFun_arkRegister(){
  meta_registerNow((int)igBoxFilterFun_register);
 }
 void igBoxFilterFun_register(){
@@ -317,7 +317,7 @@ void igBoxFilterFun_register(){
 }
 void *igBoxFilterFun_getMetaCall(){return igBoxFilterFun_getMeta();}
 void *igStdFilterFun_getMeta(){
- if(!igStdFilterFun_meta || !(reinterpret_cast<unsigned int *>(igStdFilterFun_meta)[0x24/4]&4)) igStdFilterFun_registerNow();
+ if(!igStdFilterFun_meta || !(reinterpret_cast<unsigned int *>(igStdFilterFun_meta)[0x24/4]&4)) igStdFilterFun_arkRegister();
  return igStdFilterFun_meta;
 }
 void *igStdFilterFun_vtableRead(){
@@ -328,7 +328,7 @@ void *igStdFilterFun_vtableRead(){
  object.unknown00=igStdFilterFun_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStdFilterFun_registerNow(){
+void igStdFilterFun_arkRegister(){
  meta_registerNow((int)igStdFilterFun_register);
 }
 void igStdFilterFun_register(){
@@ -337,10 +337,10 @@ void igStdFilterFun_register(){
 }
 void *igStdFilterFun_getMetaCall(){return igStdFilterFun_getMeta();}
 void *igSerialFilterFun_getMeta(){
- if(!igSerialFilterFun_meta || !(reinterpret_cast<unsigned int *>(igSerialFilterFun_meta)[0x24/4]&4)) igSerialFilterFun_registerNow();
+ if(!igSerialFilterFun_meta || !(reinterpret_cast<unsigned int *>(igSerialFilterFun_meta)[0x24/4]&4)) igSerialFilterFun_arkRegister();
  return igSerialFilterFun_meta;
 }
-void igSerialFilterFun_registerNow(){
+void igSerialFilterFun_arkRegister(){
  meta_registerNow((int)igSerialFilterFun_register);
 }
 void igSerialFilterFun_register(){
@@ -352,18 +352,18 @@ void *igSerialFilterFun_parentMeta(){return igFilterFun_meta;}
 void igSerialFilterFun_fieldInit(){
  void *value0=igSerialFilterFun_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FB6C,1);
- meta_setupFields(value0,lbl_8055FB78,lbl_8055FB7C,lbl_8055FB80,value1);
+ meta_appendFields(value0,igSerialFilterFun_fieldTypes,1);
+ meta_setupFields(value0,igSerialFilterFun_fieldNames,igSerialFilterFun_fieldStorage,igSerialFilterFun_fieldOffsets,value1);
 }
 void *fn_8014A834(){
  if(!igFilterFun_meta) igFilterFun_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igFilterFun_meta;
 }
 void *igFilterFun_getMeta(){
- if(!igFilterFun_meta || !(reinterpret_cast<unsigned int *>(igFilterFun_meta)[0x24/4]&4)) igFilterFun_registerNow();
+ if(!igFilterFun_meta || !(reinterpret_cast<unsigned int *>(igFilterFun_meta)[0x24/4]&4)) igFilterFun_arkRegister();
  return igFilterFun_meta;
 }
-void igFilterFun_registerNow(){
+void igFilterFun_arkRegister(){
  meta_registerNow((int)igFilterFun_register);
 }
 void igFilterFun_register(){
@@ -376,7 +376,7 @@ void *fn_8014A958(){
  return igFileInfoList_meta;
 }
 void *igFileInfoList_getMeta(){
- if(!igFileInfoList_meta || !(reinterpret_cast<unsigned int *>(igFileInfoList_meta)[0x24/4]&4)) igFileInfoList_registerNow();
+ if(!igFileInfoList_meta || !(reinterpret_cast<unsigned int *>(igFileInfoList_meta)[0x24/4]&4)) igFileInfoList_arkRegister();
  return igFileInfoList_meta;
 }
 void *igFileInfoList_vtableRead(){
@@ -389,12 +389,12 @@ void *igFileInfoList_vtableRead(){
  object.unknown00=igFileInfoList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFileInfoList_registerNow(){
+void igFileInfoList_arkRegister(){
  meta_registerNow((int)igFileInfoList_register);
 }
 void igFileInfoList_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igFileInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igFileInfoList_getMetaCall,(int)igFileInfoList_className,20,(int)igFileInfoList_vtableRead,0,0,(int)lbl_8055FB84);
+ meta_registerClass(0,(int)&igFileInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igFileInfoList_getMetaCall,(int)igFileInfoList_className,20,(int)igFileInfoList_vtableRead,0,0,(int)igFileInfoList_dependencies);
 }
 void *igFileInfoList_getMetaCall(){return igFileInfoList_getMeta();}
 void *fn_8014AAF4(){
@@ -402,7 +402,7 @@ void *fn_8014AAF4(){
  return igFileInfo_meta;
 }
 void *igFileInfo_getMeta(){
- if(!igFileInfo_meta || !(reinterpret_cast<unsigned int *>(igFileInfo_meta)[0x24/4]&4)) igFileInfo_registerNow();
+ if(!igFileInfo_meta || !(reinterpret_cast<unsigned int *>(igFileInfo_meta)[0x24/4]&4)) igFileInfo_arkRegister();
  return igFileInfo_meta;
 }
 void *igFileInfo_vtableRead(){
@@ -416,12 +416,12 @@ void *igFileInfo_vtableRead(){
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFileInfo_registerNow(){
+void igFileInfo_arkRegister(){
  meta_registerNow((int)igFileInfo_register);
 }
 void igFileInfo_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igFileInfo_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igFileInfo_getMetaCall,(int)igFileInfo_className,28,(int)igFileInfo_vtableRead,(int)igFileInfo_fieldInit,0,(int)lbl_8049F070);
+ meta_registerClass(0,(int)&igFileInfo_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igFileInfo_getMetaCall,(int)igFileInfo_className,28,(int)igFileInfo_vtableRead,(int)igFileInfo_fieldInit,0,(int)igFileInfo_dependencies);
 }
 void *igFileInfo_getMetaCall(){return igFileInfo_getMeta();}
 }

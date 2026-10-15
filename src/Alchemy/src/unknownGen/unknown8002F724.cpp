@@ -16,7 +16,7 @@ extern char igFolder_vtable[];
 extern void *igFolder_meta;
 void *igFolder_getMeta();
 void *igFolder_vtableRead();
-void igFolder_registerNow();
+void igFolder_arkRegister();
 void igFolder_register();
 void *igFolder_getMetaCall();
 }
@@ -34,11 +34,11 @@ struct UnknownGenObject8002F7B8 : UnknownGenRoot8002F7B8 {
 extern "C" {
 void *fn_8002F724(){return fn_8005068C();}
 void *igFolder_create(void *object){
- igFolder_registerNow();
+ igFolder_arkRegister();
  return meta_createInstance(igFolder_meta,object);
 }
 void *igFolder_getMeta(){
- if(!igFolder_meta || !(reinterpret_cast<unsigned int *>(igFolder_meta)[0x24/4]&4)) igFolder_registerNow();
+ if(!igFolder_meta || !(reinterpret_cast<unsigned int *>(igFolder_meta)[0x24/4]&4)) igFolder_arkRegister();
  return igFolder_meta;
 }
 void *igFolder_vtableRead(){
@@ -47,7 +47,7 @@ void *igFolder_vtableRead(){
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFolder_registerNow(){
+void igFolder_arkRegister(){
  meta_registerNow((int)igFolder_register);
 }
 void igFolder_register(){

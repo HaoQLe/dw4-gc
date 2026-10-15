@@ -21,13 +21,13 @@ extern char igInverseKinematicsSource_className[];
 extern char igInverseKinematicsSource_vtable[];
 extern char lbl_804B796C[];
 extern char lbl_804BA150[];
-extern char lbl_805604E4[8];
+extern char igJoint_dependencies[8];
 extern char lbl_805604EC[8];
-extern char lbl_805604F4[8];
-extern char lbl_805604FC[8];
-extern char lbl_80560504[8];
-extern char lbl_8056050C[8];
-extern char lbl_80560514[8];
+extern char igJoint_fieldTypes[8];
+extern char igJoint_fieldNames[8];
+extern char igJoint_fieldStorage[8];
+extern char igJoint_fieldOffsets[8];
+extern char igInverseKinematicsSource_dependencies[8];
 extern void *igTransform_meta;
 extern void *igJoint_meta;
 extern void *igInverseKinematicsSource_meta;
@@ -38,7 +38,7 @@ void *fn_801BC078();
 void igJoint_fieldInit();
 void *igInverseKinematicsSource_getMeta();
 void *igInverseKinematicsSource_vtableRead();
-void igInverseKinematicsSource_registerNow();
+void igInverseKinematicsSource_arkRegister();
 void igInverseKinematicsSource_register();
 void *igInverseKinematicsSource_getMetaCall();
 void *fn_801BC288();
@@ -48,30 +48,30 @@ struct UnknownGenObject801BC174_0 {
  char unknown04[20];
 };
 extern "C" {
-void igJoint_registerNow(){
+void igJoint_arkRegister(){
  meta_registerNow((int)igJoint_register);
 }
 void igJoint_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igJoint_meta,(int)igTransform_register,(int)fn_801BC078,(int)igJoint_getMetaCall,(int)lbl_805604EC,176,(int)igJoint_vtableRead,(int)igJoint_fieldInit,0,(int)lbl_805604E4);
+ meta_registerClass(0,(int)&igJoint_meta,(int)igTransform_register,(int)fn_801BC078,(int)igJoint_getMetaCall,(int)lbl_805604EC,176,(int)igJoint_vtableRead,(int)igJoint_fieldInit,0,(int)igJoint_dependencies);
 }
 void *igJoint_getMetaCall(){return igJoint_getMeta();}
 void *fn_801BC078(){return igTransform_meta;}
 void igJoint_fieldInit(){
  void *value0=igJoint_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_805604F4,2);
+ meta_appendFields(value0,igJoint_fieldTypes,2);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value3=fn_80218120();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_805604FC,lbl_80560504,lbl_8056050C,value1);
+ meta_setupFields(value0,igJoint_fieldNames,igJoint_fieldStorage,igJoint_fieldOffsets,value1);
 }
 void *igInverseKinematicsSource_create(void *object){
- igInverseKinematicsSource_registerNow();
+ igInverseKinematicsSource_arkRegister();
  return meta_createInstance(igInverseKinematicsSource_meta,object);
 }
 void *igInverseKinematicsSource_getMeta(){
- if(!igInverseKinematicsSource_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsSource_meta)[0x24/4]&4)) igInverseKinematicsSource_registerNow();
+ if(!igInverseKinematicsSource_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsSource_meta)[0x24/4]&4)) igInverseKinematicsSource_arkRegister();
  return igInverseKinematicsSource_meta;
 }
 void *igInverseKinematicsSource_vtableRead(){
@@ -82,12 +82,12 @@ void *igInverseKinematicsSource_vtableRead(){
  object.unknown00=igInverseKinematicsSource_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igInverseKinematicsSource_registerNow(){
+void igInverseKinematicsSource_arkRegister(){
  meta_registerNow((int)igInverseKinematicsSource_register);
 }
 void igInverseKinematicsSource_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igInverseKinematicsSource_meta,(int)igAnimationSequence_register,(int)fn_801BC288,(int)igInverseKinematicsSource_getMetaCall,(int)igInverseKinematicsSource_className,20,(int)igInverseKinematicsSource_vtableRead,(int)igInverseKinematicsSource_fieldInit,0,(int)lbl_80560514);
+ meta_registerClass(0,(int)&igInverseKinematicsSource_meta,(int)igAnimationSequence_register,(int)fn_801BC288,(int)igInverseKinematicsSource_getMetaCall,(int)igInverseKinematicsSource_className,20,(int)igInverseKinematicsSource_vtableRead,(int)igInverseKinematicsSource_fieldInit,0,(int)igInverseKinematicsSource_dependencies);
 }
 void *igInverseKinematicsSource_getMetaCall(){return igInverseKinematicsSource_getMeta();}
 void *fn_801BC288(){return igAnimationSequence_meta;}

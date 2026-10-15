@@ -16,7 +16,7 @@ void beModelCtrlSCSound_register();
 void *beModelCtrlSCSound_getMetaCall();
 }
 extern "C" {
-void beModelCtrlSCSound_registerNow(){
+void beModelCtrlSCSound_arkRegister(){
  meta_registerNow((int)beModelCtrlSCSound_register);
 }
 void beModelCtrlSCSound_register(){

@@ -15,13 +15,13 @@ extern char igPrimLengthArray_className[];
 extern void *lbl_805621F4;
 extern void *igPrimLengthArray_meta;
 void *igPrimLengthArray_getMeta();
-void igPrimLengthArray_registerNow();
+void igPrimLengthArray_arkRegister();
 void igPrimLengthArray_register();
 void *igPrimLengthArray_getMetaCall();
 }
 extern "C" {
 void *igPrimLengthArray_create(void *object){
- igPrimLengthArray_registerNow();
+ igPrimLengthArray_arkRegister();
  return meta_createInstance(igPrimLengthArray_meta,object);
 }
 void *fn_800D06E0(){
@@ -29,10 +29,10 @@ void *fn_800D06E0(){
  return igPrimLengthArray_meta;
 }
 void *igPrimLengthArray_getMeta(){
- if(!igPrimLengthArray_meta || !(reinterpret_cast<unsigned int *>(igPrimLengthArray_meta)[0x24/4]&4)) igPrimLengthArray_registerNow();
+ if(!igPrimLengthArray_meta || !(reinterpret_cast<unsigned int *>(igPrimLengthArray_meta)[0x24/4]&4)) igPrimLengthArray_arkRegister();
  return igPrimLengthArray_meta;
 }
-void igPrimLengthArray_registerNow(){
+void igPrimLengthArray_arkRegister(){
  meta_registerNow((int)igPrimLengthArray_register);
 }
 void igPrimLengthArray_register(){

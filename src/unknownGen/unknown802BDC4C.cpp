@@ -16,7 +16,7 @@ void beSvStartApi_register();
 void *beSvStartApi_getMetaCall();
 }
 extern "C" {
-void beSvStartApi_registerNow(){
+void beSvStartApi_arkRegister(){
  meta_registerNow((int)beSvStartApi_register);
 }
 void beSvStartApi_register(){

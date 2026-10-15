@@ -5,7 +5,7 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
-void igTextureCubeAttr_registerNow();
+void igTextureCubeAttr_arkRegister();
 void *fn_800C3E0C();
 extern char igVisualContextAttrDefaultManager_className[];
 extern void *lbl_805621F4;
@@ -24,7 +24,7 @@ void *fn_800AEABC(){
  return igTextureCubeAttr_meta;
 }
 void *igTextureCubeAttr_getMeta(){
- if(!igTextureCubeAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureCubeAttr_meta)[0x24/4]&4)) igTextureCubeAttr_registerNow();
+ if(!igTextureCubeAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureCubeAttr_meta)[0x24/4]&4)) igTextureCubeAttr_arkRegister();
  return igTextureCubeAttr_meta;
 }
 }

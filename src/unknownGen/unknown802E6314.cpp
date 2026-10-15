@@ -8,7 +8,7 @@ void *fn_80023CF4();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beAction2WAITCHECK_registerNow();
+void beAction2WAITCHECK_arkRegister();
 void igNamedObject_register();
 extern char beAction2FLASHSET_className[];
 extern char beAction2FLASHSET_meta[];
@@ -17,7 +17,7 @@ void beAction2FLASHSET_register();
 void *beAction2FLASHSET_getMetaCall();
 }
 extern "C" {
-void beAction2FLASHSET_registerNow(){
+void beAction2FLASHSET_arkRegister(){
  meta_registerNow((int)beAction2FLASHSET_register);
 }
 void beAction2FLASHSET_register(){
@@ -26,7 +26,7 @@ void beAction2FLASHSET_register(){
 }
 void *beAction2FLASHSET_getMetaCall(){return beAction2FLASHSET_getMeta();}
 void *beAction2WAITCHECK_getMeta(){
- if(!beAction2WAITCHECK_meta || !(reinterpret_cast<unsigned int *>(beAction2WAITCHECK_meta)[0x24/4]&4)) beAction2WAITCHECK_registerNow();
+ if(!beAction2WAITCHECK_meta || !(reinterpret_cast<unsigned int *>(beAction2WAITCHECK_meta)[0x24/4]&4)) beAction2WAITCHECK_arkRegister();
  return beAction2WAITCHECK_meta;
 }
 }

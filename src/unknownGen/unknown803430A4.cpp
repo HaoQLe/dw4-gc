@@ -15,7 +15,7 @@ void beNDMWItemBlueArmor_register();
 void *beNDMWItemBlueArmor_getMetaCall();
 }
 extern "C" {
-void beNDMWItemBlueArmor_registerNow(){
+void beNDMWItemBlueArmor_arkRegister(){
  meta_registerNow((int)beNDMWItemBlueArmor_register);
 }
 void beNDMWItemBlueArmor_register(){

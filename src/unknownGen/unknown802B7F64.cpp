@@ -13,7 +13,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void beStaticInfoCtl_registerNow();
+void beStaticInfoCtl_arkRegister();
 extern char lbl_8041CD10[];
 extern char beSwitchCtrl_className[];
 extern char lbl_804CF458[];
@@ -26,7 +26,7 @@ void beSwitchCtrl_register();
 void *beSwitchCtrl_getMetaCall();
 }
 extern "C" {
-void beSwitchCtrl_registerNow(){
+void beSwitchCtrl_arkRegister(){
  meta_registerNow((int)beSwitchCtrl_register);
 }
 void beSwitchCtrl_register(){
@@ -39,7 +39,7 @@ void *fn_802B8018(){
  return lbl_80534724;
 }
 void *beStaticInfoCtl_create(void *object){
- beStaticInfoCtl_registerNow();
+ beStaticInfoCtl_arkRegister();
  return meta_createInstance(beStaticInfoCtl_meta,object);
 }
 void *beStaticInfoCtl_metaObject(){
@@ -47,7 +47,7 @@ void *beStaticInfoCtl_metaObject(){
  return beStaticInfoCtl_meta;
 }
 void *beStaticInfoCtl_getMeta(){
- if(!beStaticInfoCtl_meta || !(reinterpret_cast<unsigned int *>(beStaticInfoCtl_meta)[0x24/4]&4)) beStaticInfoCtl_registerNow();
+ if(!beStaticInfoCtl_meta || !(reinterpret_cast<unsigned int *>(beStaticInfoCtl_meta)[0x24/4]&4)) beStaticInfoCtl_arkRegister();
  return beStaticInfoCtl_meta;
 }
 }

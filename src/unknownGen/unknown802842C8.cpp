@@ -18,8 +18,8 @@ extern char igSerialScheduler_className[];
 extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804CAFD8[];
-extern char lbl_804CB040[];
+extern char igTriggerableList_dependencies[];
+extern char igSerialScheduler_dependencies[];
 extern char lbl_804CB9E8[];
 extern char igTriggerableList_vtable[];
 extern char lbl_804CBC50[];
@@ -32,16 +32,16 @@ extern void *igInsightScheduler_meta;
 extern void *igInfoManager_meta;
 void *igTriggerableList_getMeta();
 void *igTriggerableList_vtableRead();
-void igTriggerableList_registerNow();
+void igTriggerableList_arkRegister();
 void igTriggerableList_register();
 void *igTriggerableList_getMetaCall();
 void *igTriggerable_getMeta();
-void igTriggerable_registerNow();
+void igTriggerable_arkRegister();
 void igTriggerable_register();
 void *igTriggerable_getMetaCall();
 void *igSerialScheduler_getMeta();
 void *igSerialScheduler_vtableRead();
-void igSerialScheduler_registerNow();
+void igSerialScheduler_arkRegister();
 void igSerialScheduler_register();
 void *igSerialScheduler_getMetaCall();
 void *igSerialScheduler_parentMeta();
@@ -63,7 +63,7 @@ struct UnknownGenObject802845AC : UnknownGenRoot802845AC {
 };
 extern "C" {
 void *igTriggerableList_getMeta(){
- if(!igTriggerableList_meta || !(reinterpret_cast<unsigned int *>(igTriggerableList_meta)[0x24/4]&4)) igTriggerableList_registerNow();
+ if(!igTriggerableList_meta || !(reinterpret_cast<unsigned int *>(igTriggerableList_meta)[0x24/4]&4)) igTriggerableList_arkRegister();
  return igTriggerableList_meta;
 }
 void *igTriggerableList_vtableRead(){
@@ -76,19 +76,19 @@ void *igTriggerableList_vtableRead(){
  object.unknown00=igTriggerableList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTriggerableList_registerNow(){
+void igTriggerableList_arkRegister(){
  meta_registerNow((int)igTriggerableList_register);
 }
 void igTriggerableList_register(){
  fn_80284294();
- meta_registerClass(0,(int)&igTriggerableList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igTriggerableList_getMetaCall,(int)igTriggerableList_className,20,(int)igTriggerableList_vtableRead,0,0,(int)lbl_804CAFD8);
+ meta_registerClass(0,(int)&igTriggerableList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igTriggerableList_getMetaCall,(int)igTriggerableList_className,20,(int)igTriggerableList_vtableRead,0,0,(int)igTriggerableList_dependencies);
 }
 void *igTriggerableList_getMetaCall(){return igTriggerableList_getMeta();}
 void *igTriggerable_getMeta(){
- if(!igTriggerable_meta || !(reinterpret_cast<unsigned int *>(igTriggerable_meta)[0x24/4]&4)) igTriggerable_registerNow();
+ if(!igTriggerable_meta || !(reinterpret_cast<unsigned int *>(igTriggerable_meta)[0x24/4]&4)) igTriggerable_arkRegister();
  return igTriggerable_meta;
 }
-void igTriggerable_registerNow(){
+void igTriggerable_arkRegister(){
  meta_registerNow((int)igTriggerable_register);
 }
 void igTriggerable_register(){
@@ -99,7 +99,7 @@ void *igTriggerable_getMetaCall(){return igTriggerable_getMeta();}
 void *fn_80284540(){return igMessage_meta;}
 void *fn_80284550(){return igInfoManager_meta;}
 void *igSerialScheduler_getMeta(){
- if(!igSerialScheduler_meta || !(reinterpret_cast<unsigned int *>(igSerialScheduler_meta)[0x24/4]&4)) igSerialScheduler_registerNow();
+ if(!igSerialScheduler_meta || !(reinterpret_cast<unsigned int *>(igSerialScheduler_meta)[0x24/4]&4)) igSerialScheduler_arkRegister();
  return igSerialScheduler_meta;
 }
 void *igSerialScheduler_vtableRead(){
@@ -110,12 +110,12 @@ void *igSerialScheduler_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSerialScheduler_registerNow(){
+void igSerialScheduler_arkRegister(){
  meta_registerNow((int)igSerialScheduler_register);
 }
 void igSerialScheduler_register(){
  fn_80284294();
- meta_registerClass(0,(int)&igSerialScheduler_meta,(int)igInsightScheduler_register,(int)igSerialScheduler_parentMeta,(int)igSerialScheduler_getMetaCall,(int)igSerialScheduler_className,16,(int)igSerialScheduler_vtableRead,(int)igSerialScheduler_fieldInit,0,(int)lbl_804CB040);
+ meta_registerClass(0,(int)&igSerialScheduler_meta,(int)igInsightScheduler_register,(int)igSerialScheduler_parentMeta,(int)igSerialScheduler_getMetaCall,(int)igSerialScheduler_className,16,(int)igSerialScheduler_vtableRead,(int)igSerialScheduler_fieldInit,0,(int)igSerialScheduler_dependencies);
 }
 void *igSerialScheduler_getMetaCall(){return igSerialScheduler_getMeta();}
 void *igSerialScheduler_parentMeta(){return igInsightScheduler_meta;}

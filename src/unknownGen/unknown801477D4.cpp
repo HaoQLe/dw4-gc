@@ -11,7 +11,7 @@ void igGenerateMacroTexture_fieldInit();
 void *igGenerateMacroTexture_getMeta();
 void igGenerateMacroTexture_vtableRead();
 void igOptTraverseGraph_register();
-extern char lbl_8049EB58[];
+extern char igGenerateMacroTexture_dependencies[];
 extern char igGenerateMacroTexture_className[];
 extern void *igGenerateMacroTexture_meta;
 void igGenerateMacroTexture_register();
@@ -29,12 +29,12 @@ UnknownGenHolder *fn_801477D4(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igGenerateMacroTexture_registerNow(){
+void igGenerateMacroTexture_arkRegister(){
  meta_registerNow((int)igGenerateMacroTexture_register);
 }
 void igGenerateMacroTexture_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igGenerateMacroTexture_meta,(int)igOptTraverseGraph_register,(int)fn_8013AFE4,(int)igGenerateMacroTexture_getMetaCall,(int)igGenerateMacroTexture_className,108,(int)igGenerateMacroTexture_vtableRead,(int)igGenerateMacroTexture_fieldInit,0,(int)lbl_8049EB58);
+ meta_registerClass(0,(int)&igGenerateMacroTexture_meta,(int)igOptTraverseGraph_register,(int)fn_8013AFE4,(int)igGenerateMacroTexture_getMetaCall,(int)igGenerateMacroTexture_className,108,(int)igGenerateMacroTexture_vtableRead,(int)igGenerateMacroTexture_fieldInit,0,(int)igGenerateMacroTexture_dependencies);
 }
 void *igGenerateMacroTexture_getMetaCall(){return igGenerateMacroTexture_getMeta();}
 }

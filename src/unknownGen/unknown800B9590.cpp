@@ -23,22 +23,22 @@ extern char igClippingStateAttr_vtable[];
 extern char igClearAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E610[4];
-extern char lbl_8055E614[4];
-extern char lbl_8055E618[4];
-extern char lbl_8055E61C[4];
+extern char igClippingStateAttr_fieldTypes[4];
+extern char igClippingStateAttr_fieldNames[4];
+extern char igClippingStateAttr_fieldStorage[4];
+extern char igClippingStateAttr_fieldOffsets[4];
 extern void *lbl_805621F4;
 extern void *igClippingStateAttr_meta;
 extern void *igClearAttr_meta;
 void *igClippingStateAttr_getMeta();
 void *igClippingStateAttr_vtableRead();
-void igClippingStateAttr_registerNow();
+void igClippingStateAttr_arkRegister();
 void igClippingStateAttr_register();
 void *igClippingStateAttr_getMetaCall();
 void igClippingStateAttr_fieldInit();
 void *igClearAttr_getMeta();
 void *igClearAttr_vtableRead();
-void igClearAttr_registerNow();
+void igClearAttr_arkRegister();
 void igClearAttr_register();
 void *igClearAttr_getMetaCall();
 }
@@ -56,7 +56,7 @@ void *fn_800B9590(){
  return igClippingStateAttr_meta;
 }
 void *igClippingStateAttr_getMeta(){
- if(!igClippingStateAttr_meta || !(reinterpret_cast<unsigned int *>(igClippingStateAttr_meta)[0x24/4]&4)) igClippingStateAttr_registerNow();
+ if(!igClippingStateAttr_meta || !(reinterpret_cast<unsigned int *>(igClippingStateAttr_meta)[0x24/4]&4)) igClippingStateAttr_arkRegister();
  return igClippingStateAttr_meta;
 }
 void *igClippingStateAttr_vtableRead(){
@@ -67,7 +67,7 @@ void *igClippingStateAttr_vtableRead(){
  object.unknown00=igClippingStateAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igClippingStateAttr_registerNow(){
+void igClippingStateAttr_arkRegister(){
  meta_registerNow((int)igClippingStateAttr_register);
 }
 void igClippingStateAttr_register(){
@@ -78,16 +78,16 @@ void *igClippingStateAttr_getMetaCall(){return igClippingStateAttr_getMeta();}
 void igClippingStateAttr_fieldInit(){
  void *meta=igClippingStateAttr_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_8055E610,1);
+ meta_appendFields(meta,igClippingStateAttr_fieldTypes,1);
  fn_8003EC68(meta_field(meta,field),1);
- meta_setupFields(meta,lbl_8055E614,lbl_8055E618,lbl_8055E61C,field);
+ meta_setupFields(meta,igClippingStateAttr_fieldNames,igClippingStateAttr_fieldStorage,igClippingStateAttr_fieldOffsets,field);
 }
 void *igClearAttr_create(void *object){
- igClearAttr_registerNow();
+ igClearAttr_arkRegister();
  return meta_createInstance(igClearAttr_meta,object);
 }
 void *igClearAttr_getMeta(){
- if(!igClearAttr_meta || !(reinterpret_cast<unsigned int *>(igClearAttr_meta)[0x24/4]&4)) igClearAttr_registerNow();
+ if(!igClearAttr_meta || !(reinterpret_cast<unsigned int *>(igClearAttr_meta)[0x24/4]&4)) igClearAttr_arkRegister();
  return igClearAttr_meta;
 }
 void *igClearAttr_vtableRead(){
@@ -98,7 +98,7 @@ void *igClearAttr_vtableRead(){
  object.unknown00=igClearAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igClearAttr_registerNow(){
+void igClearAttr_arkRegister(){
  meta_registerNow((int)igClearAttr_register);
 }
 void igClearAttr_register(){

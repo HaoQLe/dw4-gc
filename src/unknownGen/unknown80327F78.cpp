@@ -10,7 +10,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80326F88();
-void beNDMWStatusTitle01_registerNow();
+void beNDMWStatusTitle01_arkRegister();
 extern char beNDMWStatusTitle02_className[];
 extern char beNDMWStatusTitle02_meta[];
 extern void *beNDMWStatusTitle01_meta;
@@ -18,7 +18,7 @@ void beNDMWStatusTitle02_register();
 void *beNDMWStatusTitle02_getMetaCall();
 }
 extern "C" {
-void beNDMWStatusTitle02_registerNow(){
+void beNDMWStatusTitle02_arkRegister(){
  meta_registerNow((int)beNDMWStatusTitle02_register);
 }
 void beNDMWStatusTitle02_register(){
@@ -27,11 +27,11 @@ void beNDMWStatusTitle02_register(){
 }
 void *beNDMWStatusTitle02_getMetaCall(){return beNDMWStatusTitle02_getMeta();}
 void *beNDMWStatusTitle01_create(void *object){
- beNDMWStatusTitle01_registerNow();
+ beNDMWStatusTitle01_arkRegister();
  return meta_createInstance(beNDMWStatusTitle01_meta,object);
 }
 void *beNDMWStatusTitle01_getMeta(){
- if(!beNDMWStatusTitle01_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusTitle01_meta)[0x24/4]&4)) beNDMWStatusTitle01_registerNow();
+ if(!beNDMWStatusTitle01_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusTitle01_meta)[0x24/4]&4)) beNDMWStatusTitle01_arkRegister();
  return beNDMWStatusTitle01_meta;
 }
 }

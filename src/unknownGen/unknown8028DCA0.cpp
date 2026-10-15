@@ -18,23 +18,23 @@ extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igCollisionCellList_className[];
-extern char lbl_804CCAA8[];
+extern char igCollisionCell_dependencies[];
 extern char igCollisionCell_className[];
 extern char igCollisionCell_vtable[];
 extern char igCollisionCellList_vtable[];
 extern char lbl_804CCD70[];
-extern char lbl_805613B0[8];
+extern char igCollisionCellList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igCollisionCellList_meta;
 extern void *igCollisionCell_meta;
 void *igCollisionCellList_getMeta();
 void *igCollisionCellList_vtableRead();
-void igCollisionCellList_registerNow();
+void igCollisionCellList_arkRegister();
 void igCollisionCellList_register();
 void *igCollisionCellList_getMetaCall();
 void *igCollisionCell_getMeta();
 void *igCollisionCell_vtableRead();
-void igCollisionCell_registerNow();
+void igCollisionCell_arkRegister();
 void igCollisionCell_register();
 void *igCollisionCell_getMetaCall();
 }
@@ -61,7 +61,7 @@ void *fn_8028DCA0(){
  return igCollisionCellList_meta;
 }
 void *igCollisionCellList_getMeta(){
- if(!igCollisionCellList_meta || !(reinterpret_cast<unsigned int *>(igCollisionCellList_meta)[0x24/4]&4)) igCollisionCellList_registerNow();
+ if(!igCollisionCellList_meta || !(reinterpret_cast<unsigned int *>(igCollisionCellList_meta)[0x24/4]&4)) igCollisionCellList_arkRegister();
  return igCollisionCellList_meta;
 }
 void *igCollisionCellList_vtableRead(){
@@ -74,20 +74,20 @@ void *igCollisionCellList_vtableRead(){
  object.unknown00=igCollisionCellList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollisionCellList_registerNow(){
+void igCollisionCellList_arkRegister(){
  meta_registerNow((int)igCollisionCellList_register);
 }
 void igCollisionCellList_register(){
  fn_8028C93C();
- meta_registerClass(0,(int)&igCollisionCellList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCollisionCellList_getMetaCall,(int)igCollisionCellList_className,20,(int)igCollisionCellList_vtableRead,0,0,(int)lbl_805613B0);
+ meta_registerClass(0,(int)&igCollisionCellList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCollisionCellList_getMetaCall,(int)igCollisionCellList_className,20,(int)igCollisionCellList_vtableRead,0,0,(int)igCollisionCellList_dependencies);
 }
 void *igCollisionCellList_getMetaCall(){return igCollisionCellList_getMeta();}
 void *igCollisionCell_create(void *object){
- igCollisionCell_registerNow();
+ igCollisionCell_arkRegister();
  return meta_createInstance(igCollisionCell_meta,object);
 }
 void *igCollisionCell_getMeta(){
- if(!igCollisionCell_meta || !(reinterpret_cast<unsigned int *>(igCollisionCell_meta)[0x24/4]&4)) igCollisionCell_registerNow();
+ if(!igCollisionCell_meta || !(reinterpret_cast<unsigned int *>(igCollisionCell_meta)[0x24/4]&4)) igCollisionCell_arkRegister();
  return igCollisionCell_meta;
 }
 void *igCollisionCell_vtableRead(){
@@ -97,12 +97,12 @@ void *igCollisionCell_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCollisionCell_registerNow(){
+void igCollisionCell_arkRegister(){
  meta_registerNow((int)igCollisionCell_register);
 }
 void igCollisionCell_register(){
  fn_8028C93C();
- meta_registerClass(0,(int)&igCollisionCell_meta,(int)igObject_register,(int)fn_800237D0,(int)igCollisionCell_getMetaCall,(int)igCollisionCell_className,32,(int)igCollisionCell_vtableRead,(int)igCollisionCell_fieldInit,0,(int)lbl_804CCAA8);
+ meta_registerClass(0,(int)&igCollisionCell_meta,(int)igObject_register,(int)fn_800237D0,(int)igCollisionCell_getMetaCall,(int)igCollisionCell_className,32,(int)igCollisionCell_vtableRead,(int)igCollisionCell_fieldInit,0,(int)igCollisionCell_dependencies);
 }
 void *igCollisionCell_getMetaCall(){return igCollisionCell_getMeta();}
 }

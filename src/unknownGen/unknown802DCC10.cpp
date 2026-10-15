@@ -16,7 +16,7 @@ void beDataObjString_register();
 void *beDataObjString_getMetaCall();
 }
 extern "C" {
-void beDataObjString_registerNow(){
+void beDataObjString_arkRegister(){
  meta_registerNow((int)beDataObjString_register);
 }
 void beDataObjString_register(){

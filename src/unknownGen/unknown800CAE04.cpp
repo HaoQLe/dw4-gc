@@ -19,7 +19,7 @@ void igObject_register();
 extern char lbl_8047EC18[];
 extern char igWindow_className[];
 extern char igInterfaceManager_className[];
-extern char lbl_8055E948[8];
+extern char igInterfaceManager_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igAudioContext_meta;
 extern void *lbl_80562B2C;
@@ -33,14 +33,14 @@ extern void *igInterfaceManager_meta;
 extern void *igEventProducer_meta;
 void fn_800CAEE0();
 void *igWindow_getMeta();
-void igWindow_registerNow();
+void igWindow_arkRegister();
 void igWindow_register();
 void *igWindow_getMetaCall();
 void *fn_800CB078();
 void *fn_800CB080();
 void *igGamecubeWindow_getMetaCall();
 void *igInterfaceManager_getMeta();
-void igInterfaceManager_registerNow();
+void igInterfaceManager_arkRegister();
 void igInterfaceManager_register();
 void *igInterfaceManager_getMetaCall();
 }
@@ -77,7 +77,7 @@ void fn_800CAEE0(){
  *reinterpret_cast<unsigned char *>((lbl_80562B70+0))=1;
 }
 void *igWindow_create(void *object){
- igWindow_registerNow();
+ igWindow_arkRegister();
  return meta_createInstance(igWindow_meta,object);
 }
 void *fn_800CAF4C(){
@@ -85,10 +85,10 @@ void *fn_800CAF4C(){
  return igWindow_meta;
 }
 void *igWindow_getMeta(){
- if(!igWindow_meta || !(reinterpret_cast<unsigned int *>(igWindow_meta)[0x24/4]&4)) igWindow_registerNow();
+ if(!igWindow_meta || !(reinterpret_cast<unsigned int *>(igWindow_meta)[0x24/4]&4)) igWindow_arkRegister();
  return igWindow_meta;
 }
-void igWindow_registerNow(){
+void igWindow_arkRegister(){
  meta_registerNow((int)igWindow_register);
 }
 void igWindow_register(){
@@ -109,15 +109,15 @@ void *fn_800CB0B4(){
  return lbl_80562B9C;
 }
 void *igInterfaceManager_getMeta(){
- if(!igInterfaceManager_meta || !(reinterpret_cast<unsigned int *>(igInterfaceManager_meta)[0x24/4]&4)) igInterfaceManager_registerNow();
+ if(!igInterfaceManager_meta || !(reinterpret_cast<unsigned int *>(igInterfaceManager_meta)[0x24/4]&4)) igInterfaceManager_arkRegister();
  return igInterfaceManager_meta;
 }
-void igInterfaceManager_registerNow(){
+void igInterfaceManager_arkRegister(){
  meta_registerNow((int)igInterfaceManager_register);
 }
 void igInterfaceManager_register(){
  fn_800CAEE0();
- meta_registerClass(1,(int)&igInterfaceManager_meta,(int)igObject_register,(int)fn_800237D0,(int)igInterfaceManager_getMetaCall,(int)igInterfaceManager_className,12,0,(int)igInterfaceManager_fieldInit,0,(int)lbl_8055E948);
+ meta_registerClass(1,(int)&igInterfaceManager_meta,(int)igObject_register,(int)fn_800237D0,(int)igInterfaceManager_getMetaCall,(int)igInterfaceManager_className,12,0,(int)igInterfaceManager_fieldInit,0,(int)igInterfaceManager_dependencies);
 }
 void *igInterfaceManager_getMetaCall(){return igInterfaceManager_getMeta();}
 }

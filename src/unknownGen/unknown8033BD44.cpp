@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beNDMWLogo_registerNow();
+void beNDMWLogo_arkRegister();
 extern char lbl_80453438[];
 extern char lbl_804E2B04[];
 extern char lbl_804E2B08[];
@@ -20,7 +20,7 @@ void *fn_8033BD44(){
  return lbl_80536254;
 }
 void *beNDMWLogo_create(void *object){
- beNDMWLogo_registerNow();
+ beNDMWLogo_arkRegister();
  return meta_createInstance(beNDMWLogo_meta,object);
 }
 void *beNDMWLogo_metaObject(){
@@ -28,7 +28,7 @@ void *beNDMWLogo_metaObject(){
  return beNDMWLogo_meta;
 }
 void *beNDMWLogo_getMeta(){
- if(!beNDMWLogo_meta || !(reinterpret_cast<unsigned int *>(beNDMWLogo_meta)[0x24/4]&4)) beNDMWLogo_registerNow();
+ if(!beNDMWLogo_meta || !(reinterpret_cast<unsigned int *>(beNDMWLogo_meta)[0x24/4]&4)) beNDMWLogo_arkRegister();
  return beNDMWLogo_meta;
 }
 }

@@ -13,12 +13,12 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_803425BC();
-void beNDMWItemAbilityChip_registerNow();
+void beNDMWItemAbilityChip_arkRegister();
 extern char beNDMWItemDisk_className[];
-extern char lbl_804E3D20[];
-extern char lbl_804E3D24[];
-extern char lbl_804E3D28[];
-extern char lbl_804E3D2C[];
+extern char beNDMWItemDisk_fieldTypes[];
+extern char beNDMWItemDisk_fieldNames[];
+extern char beNDMWItemDisk_fieldStorage[];
+extern char beNDMWItemDisk_fieldOffsets[];
 extern void *beNDMWItemDisk_meta;
 extern void *beNDMWItemAbilityChip_meta;
 void beNDMWItemDisk_register();
@@ -26,7 +26,7 @@ void *beNDMWItemDisk_getMetaCall();
 void beNDMWItemDisk_fieldInit();
 }
 extern "C" {
-void beNDMWItemDisk_registerNow(){
+void beNDMWItemDisk_arkRegister(){
  meta_registerNow((int)beNDMWItemDisk_register);
 }
 void beNDMWItemDisk_register(){
@@ -37,15 +37,15 @@ void *beNDMWItemDisk_getMetaCall(){return beNDMWItemDisk_getMeta();}
 void beNDMWItemDisk_fieldInit(){
  void *meta=beNDMWItemDisk_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804E3D20,0x1);
- meta_setupFields(meta,lbl_804E3D24,lbl_804E3D28,lbl_804E3D2C,field);
+ meta_appendFields(meta,beNDMWItemDisk_fieldTypes,0x1);
+ meta_setupFields(meta,beNDMWItemDisk_fieldNames,beNDMWItemDisk_fieldStorage,beNDMWItemDisk_fieldOffsets,field);
 }
 void *beNDMWItemAbilityChip_create(void *object){
- beNDMWItemAbilityChip_registerNow();
+ beNDMWItemAbilityChip_arkRegister();
  return meta_createInstance(beNDMWItemAbilityChip_meta,object);
 }
 void *beNDMWItemAbilityChip_getMeta(){
- if(!beNDMWItemAbilityChip_meta || !(reinterpret_cast<unsigned int *>(beNDMWItemAbilityChip_meta)[0x24/4]&4)) beNDMWItemAbilityChip_registerNow();
+ if(!beNDMWItemAbilityChip_meta || !(reinterpret_cast<unsigned int *>(beNDMWItemAbilityChip_meta)[0x24/4]&4)) beNDMWItemAbilityChip_arkRegister();
  return beNDMWItemAbilityChip_meta;
 }
 }

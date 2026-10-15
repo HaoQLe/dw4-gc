@@ -17,7 +17,7 @@ extern char lbl_8055E988[8];
 extern void *lbl_80562C10;
 extern void *igController_meta;
 void *igController_getMeta();
-void igController_registerNow();
+void igController_arkRegister();
 void igController_register();
 void *igController_getMetaCall();
 }
@@ -32,10 +32,10 @@ void *fn_800CBAA0(){
  return lbl_80562C10;
 }
 void *igController_getMeta(){
- if(!igController_meta || !(reinterpret_cast<unsigned int *>(igController_meta)[0x24/4]&4)) igController_registerNow();
+ if(!igController_meta || !(reinterpret_cast<unsigned int *>(igController_meta)[0x24/4]&4)) igController_arkRegister();
  return igController_meta;
 }
-void igController_registerNow(){
+void igController_arkRegister(){
  meta_registerNow((int)igController_register);
 }
 void igController_register(){

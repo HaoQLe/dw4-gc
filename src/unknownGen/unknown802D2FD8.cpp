@@ -9,7 +9,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void beLayerInfoRam_registerNow();
+void beLayerInfoRam_arkRegister();
 extern char beLightCtrl_className[];
 extern char beLightCtrl_meta[];
 extern void *beLayerInfoRam_meta;
@@ -17,7 +17,7 @@ void beLightCtrl_register();
 void *beLightCtrl_getMetaCall();
 }
 extern "C" {
-void beLightCtrl_registerNow(){
+void beLightCtrl_arkRegister(){
  meta_registerNow((int)beLightCtrl_register);
 }
 void beLightCtrl_register(){
@@ -26,7 +26,7 @@ void beLightCtrl_register(){
 }
 void *beLightCtrl_getMetaCall(){return beLightCtrl_getMeta();}
 void *beLayerInfoRam_getMeta(){
- if(!beLayerInfoRam_meta || !(reinterpret_cast<unsigned int *>(beLayerInfoRam_meta)[0x24/4]&4)) beLayerInfoRam_registerNow();
+ if(!beLayerInfoRam_meta || !(reinterpret_cast<unsigned int *>(beLayerInfoRam_meta)[0x24/4]&4)) beLayerInfoRam_arkRegister();
  return beLayerInfoRam_meta;
 }
 }

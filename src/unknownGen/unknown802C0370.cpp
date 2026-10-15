@@ -16,7 +16,7 @@ void beSaveDataDeliver_register();
 void *beSaveDataDeliver_getMetaCall();
 }
 extern "C" {
-void beSaveDataDeliver_registerNow(){
+void beSaveDataDeliver_arkRegister(){
  meta_registerNow((int)beSaveDataDeliver_register);
 }
 void beSaveDataDeliver_register(){

@@ -26,12 +26,12 @@ extern void *igGamecubeLongTimer_meta;
 extern void *igGamecubeHostFile_meta;
 extern void *lbl_805621F4;
 void *igGamecubeLongTimer_vtableRead();
-void igGamecubeLongTimer_registerNow();
+void igGamecubeLongTimer_arkRegister();
 void igGamecubeLongTimer_register();
 void *igGamecubeLongTimer_parentMeta();
 void *igGamecubeHostFile_getMeta();
 void *igGamecubeHostFile_vtableRead();
-void igGamecubeHostFile_registerNow();
+void igGamecubeHostFile_arkRegister();
 void igGamecubeHostFile_register();
 void *igGamecubeHostFile_getMetaCall();
 }
@@ -61,7 +61,7 @@ struct UnknownGenObject8003B61C : UnknownGenObject8003B61C_1 {
 };
 extern "C" {
 void *igGamecubeLongTimer_getMeta(){
- if(!igGamecubeLongTimer_meta || !(reinterpret_cast<unsigned int *>(igGamecubeLongTimer_meta)[0x24/4]&4)) igGamecubeLongTimer_registerNow();
+ if(!igGamecubeLongTimer_meta || !(reinterpret_cast<unsigned int *>(igGamecubeLongTimer_meta)[0x24/4]&4)) igGamecubeLongTimer_arkRegister();
  return igGamecubeLongTimer_meta;
 }
 void *igGamecubeLongTimer_vtableRead(){
@@ -72,7 +72,7 @@ void *igGamecubeLongTimer_vtableRead(){
  object.unknown00=igGamecubeLongTimer_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeLongTimer_registerNow(){
+void igGamecubeLongTimer_arkRegister(){
  meta_registerNow((int)igGamecubeLongTimer_register);
 }
 void igGamecubeLongTimer_register(){
@@ -85,7 +85,7 @@ void *fn_8003B5A4(){
  return igGamecubeHostFile_meta;
 }
 void *igGamecubeHostFile_getMeta(){
- if(!igGamecubeHostFile_meta || !(reinterpret_cast<unsigned int *>(igGamecubeHostFile_meta)[0x24/4]&4)) igGamecubeHostFile_registerNow();
+ if(!igGamecubeHostFile_meta || !(reinterpret_cast<unsigned int *>(igGamecubeHostFile_meta)[0x24/4]&4)) igGamecubeHostFile_arkRegister();
  return igGamecubeHostFile_meta;
 }
 void *igGamecubeHostFile_vtableRead(){
@@ -98,7 +98,7 @@ void *igGamecubeHostFile_vtableRead(){
  object.unknown00=igGamecubeHostFile_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeHostFile_registerNow(){
+void igGamecubeHostFile_arkRegister(){
  meta_registerNow((int)igGamecubeHostFile_register);
 }
 void igGamecubeHostFile_register(){

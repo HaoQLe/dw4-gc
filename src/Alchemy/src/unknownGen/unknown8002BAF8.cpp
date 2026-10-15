@@ -16,7 +16,7 @@ void igMemoryPoolInfo_register();
 void *igMemoryPoolInfo_getMetaCall();
 }
 extern "C" {
-void igMemoryPoolInfo_registerNow(){
+void igMemoryPoolInfo_arkRegister(){
  meta_registerNow((int)igMemoryPoolInfo_register);
 }
 void igMemoryPoolInfo_register(){

@@ -25,24 +25,24 @@ extern char igTimeAttr_vtable[];
 extern char lbl_8047CD74[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055DF20[8];
-extern char lbl_8055DF38[8];
-extern char lbl_8055DF40[8];
-extern char lbl_8055DF48[8];
+extern char igVectorConstantAttr_fieldTypes[8];
+extern char igVectorConstantAttr_fieldNames[8];
+extern char igVectorConstantAttr_fieldStorage[8];
+extern char igVectorConstantAttr_fieldOffsets[8];
 extern void *lbl_805621F4;
 extern void *igVectorConstantAttr_meta;
 extern void *igTimeAttr_meta;
 extern void *igCustomStateCollectionAttr_meta;
 void *igVectorConstantAttr_getMeta();
 void *igVectorConstantAttr_vtableRead();
-void igVectorConstantAttr_registerNow();
+void igVectorConstantAttr_arkRegister();
 void igVectorConstantAttr_register();
 void *igVectorConstantAttr_getMetaCall();
 void *fn_800AD708();
 void igVectorConstantAttr_fieldInit();
 void *igTimeAttr_getMeta();
 void *igTimeAttr_vtableRead();
-void igTimeAttr_registerNow();
+void igTimeAttr_arkRegister();
 void igTimeAttr_register();
 void *igTimeAttr_getMetaCall();
 }
@@ -60,7 +60,7 @@ void *fn_800AD574(){
  return igVectorConstantAttr_meta;
 }
 void *igVectorConstantAttr_getMeta(){
- if(!igVectorConstantAttr_meta || !(reinterpret_cast<unsigned int *>(igVectorConstantAttr_meta)[0x24/4]&4)) igVectorConstantAttr_registerNow();
+ if(!igVectorConstantAttr_meta || !(reinterpret_cast<unsigned int *>(igVectorConstantAttr_meta)[0x24/4]&4)) igVectorConstantAttr_arkRegister();
  return igVectorConstantAttr_meta;
 }
 void *igVectorConstantAttr_vtableRead(){
@@ -72,7 +72,7 @@ void *igVectorConstantAttr_vtableRead(){
  object.unknown00=igVectorConstantAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVectorConstantAttr_registerNow(){
+void igVectorConstantAttr_arkRegister(){
  meta_registerNow((int)igVectorConstantAttr_register);
 }
 void igVectorConstantAttr_register(){
@@ -84,13 +84,13 @@ void *fn_800AD708(){return igCustomStateCollectionAttr_meta;}
 void igVectorConstantAttr_fieldInit(){
  void *value0=igVectorConstantAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055DF20,2);
+ meta_appendFields(value0,igVectorConstantAttr_fieldTypes,2);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+48)=(void *)fn_800C4BF8;
- meta_setupFields(value0,lbl_8055DF38,lbl_8055DF40,lbl_8055DF48,value1);
+ meta_setupFields(value0,igVectorConstantAttr_fieldNames,igVectorConstantAttr_fieldStorage,igVectorConstantAttr_fieldOffsets,value1);
 }
 void *igTimeAttr_create(void *object){
- igTimeAttr_registerNow();
+ igTimeAttr_arkRegister();
  return meta_createInstance(igTimeAttr_meta,object);
 }
 void *fn_800AD7C8(){
@@ -98,7 +98,7 @@ void *fn_800AD7C8(){
  return igTimeAttr_meta;
 }
 void *igTimeAttr_getMeta(){
- if(!igTimeAttr_meta || !(reinterpret_cast<unsigned int *>(igTimeAttr_meta)[0x24/4]&4)) igTimeAttr_registerNow();
+ if(!igTimeAttr_meta || !(reinterpret_cast<unsigned int *>(igTimeAttr_meta)[0x24/4]&4)) igTimeAttr_arkRegister();
  return igTimeAttr_meta;
 }
 void *igTimeAttr_vtableRead(){
@@ -109,7 +109,7 @@ void *igTimeAttr_vtableRead(){
  object.unknown00=igTimeAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTimeAttr_registerNow(){
+void igTimeAttr_arkRegister(){
  meta_registerNow((int)igTimeAttr_register);
 }
 void igTimeAttr_register(){

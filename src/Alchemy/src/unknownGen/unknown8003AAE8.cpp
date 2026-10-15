@@ -12,11 +12,11 @@ void *igStandardQueue_getMetaCall();
 extern char igStandardQueue_className[];
 extern char igStandardQueue_vtable[];
 extern char lbl_8047156C[];
-extern char lbl_8055D700[8];
+extern char igStandardQueue_dependencies[8];
 extern void *igQueue_meta;
 extern void *igStandardQueue_meta;
 void *igStandardQueue_vtableRead();
-void igStandardQueue_registerNow();
+void igStandardQueue_arkRegister();
 void igStandardQueue_register();
 void *igStandardQueue_parentMeta();
 }
@@ -39,7 +39,7 @@ struct UnknownGenObject8003AB24 : UnknownGenObject8003AB24_0 {
 };
 extern "C" {
 void *igStandardQueue_getMeta(){
- if(!igStandardQueue_meta || !(reinterpret_cast<unsigned int *>(igStandardQueue_meta)[0x24/4]&4)) igStandardQueue_registerNow();
+ if(!igStandardQueue_meta || !(reinterpret_cast<unsigned int *>(igStandardQueue_meta)[0x24/4]&4)) igStandardQueue_arkRegister();
  return igStandardQueue_meta;
 }
 void *igStandardQueue_vtableRead(){
@@ -52,12 +52,12 @@ void *igStandardQueue_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStandardQueue_registerNow(){
+void igStandardQueue_arkRegister(){
  meta_registerNow((int)igStandardQueue_register);
 }
 void igStandardQueue_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igStandardQueue_meta,(int)igQueue_register,(int)igStandardQueue_parentMeta,(int)igStandardQueue_getMetaCall,(int)igStandardQueue_className,44,(int)igStandardQueue_vtableRead,(int)igStandardQueue_fieldInit,0,(int)lbl_8055D700);
+ meta_registerClass(0,(int)&igStandardQueue_meta,(int)igQueue_register,(int)igStandardQueue_parentMeta,(int)igStandardQueue_getMetaCall,(int)igStandardQueue_className,44,(int)igStandardQueue_vtableRead,(int)igStandardQueue_fieldInit,0,(int)igStandardQueue_dependencies);
 }
 void *igStandardQueue_parentMeta(){return igQueue_meta;}
 }

@@ -9,17 +9,17 @@ void *meta_fieldCount(void *);
 void *beDataObjListList_metaObject();
 void *beDataObjList_metaObject();
 void *beDataBase_metaObject();
-extern char lbl_804E40A8[];
-extern char lbl_804E40D4[];
-extern char lbl_804E4100[];
-extern char lbl_804E412C[];
+extern char beNDMWGameRam_fieldTypes[];
+extern char beNDMWGameRam_fieldNames[];
+extern char beNDMWGameRam_fieldStorage[];
+extern char beNDMWGameRam_fieldOffsets[];
 extern void *beNDMWGameRam_meta;
 }
 extern "C" {
 void beNDMWGameRam_fieldInit(){
  void *value0=beNDMWGameRam_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E40A8,11);
+ meta_appendFields(value0,beNDMWGameRam_fieldTypes,11);
  void *value2=meta_field(value0,value1);
  void *value3=beDataBase_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -50,7 +50,7 @@ void beNDMWGameRam_fieldInit(){
  void *value20=meta_field(value0,(reinterpret_cast<char *>(value1)+9));
  void *value21=beDataObjListList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value20)+56)=value21;
- meta_setupFields(value0,lbl_804E40D4,lbl_804E4100,lbl_804E412C,value1);
+ meta_setupFields(value0,beNDMWGameRam_fieldNames,beNDMWGameRam_fieldStorage,beNDMWGameRam_fieldOffsets,value1);
 }
 }
 #pragma pop

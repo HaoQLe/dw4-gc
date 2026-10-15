@@ -16,7 +16,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void *fn_8011148C();
 void fn_801AA6DC();
-void igLod_registerNow();
+void igLod_arkRegister();
 void igGroup_register();
 void igObjectList_register();
 extern char igDataList_vtable[];
@@ -30,23 +30,23 @@ extern char igGroup_vtable[];
 extern char igModelViewMatrixBoneSelect_vtable[];
 extern char igModelViewMatrixBoneSelectList_vtable[];
 extern char lbl_804B7BB4[];
-extern char lbl_8056048C[8];
-extern char lbl_80560494[4];
-extern char lbl_80560498[4];
-extern char lbl_8056049C[4];
-extern char lbl_805604A0[4];
+extern char igModelViewMatrixBoneSelectList_dependencies[8];
+extern char igModelViewMatrixBoneSelect_fieldTypes[4];
+extern char igModelViewMatrixBoneSelect_fieldNames[4];
+extern char igModelViewMatrixBoneSelect_fieldStorage[4];
+extern char igModelViewMatrixBoneSelect_fieldOffsets[4];
 extern void *lbl_805621F4;
 extern void *igModelViewMatrixBoneSelectList_meta;
 extern void *igModelViewMatrixBoneSelect_meta;
 extern void *igLod_meta;
 void *igModelViewMatrixBoneSelectList_getMeta();
 void *igModelViewMatrixBoneSelectList_vtableRead();
-void igModelViewMatrixBoneSelectList_registerNow();
+void igModelViewMatrixBoneSelectList_arkRegister();
 void igModelViewMatrixBoneSelectList_register();
 void *igModelViewMatrixBoneSelectList_getMetaCall();
 void *igModelViewMatrixBoneSelect_getMeta();
 void *igModelViewMatrixBoneSelect_vtableRead();
-void igModelViewMatrixBoneSelect_registerNow();
+void igModelViewMatrixBoneSelect_arkRegister();
 void igModelViewMatrixBoneSelect_register();
 void *igModelViewMatrixBoneSelect_getMetaCall();
 void igModelViewMatrixBoneSelect_fieldInit();
@@ -85,7 +85,7 @@ void *fn_801BAB94(){
  return igModelViewMatrixBoneSelectList_meta;
 }
 void *igModelViewMatrixBoneSelectList_getMeta(){
- if(!igModelViewMatrixBoneSelectList_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixBoneSelectList_meta)[0x24/4]&4)) igModelViewMatrixBoneSelectList_registerNow();
+ if(!igModelViewMatrixBoneSelectList_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixBoneSelectList_meta)[0x24/4]&4)) igModelViewMatrixBoneSelectList_arkRegister();
  return igModelViewMatrixBoneSelectList_meta;
 }
 void *igModelViewMatrixBoneSelectList_vtableRead(){
@@ -98,16 +98,16 @@ void *igModelViewMatrixBoneSelectList_vtableRead(){
  object.unknown00=igModelViewMatrixBoneSelectList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igModelViewMatrixBoneSelectList_registerNow(){
+void igModelViewMatrixBoneSelectList_arkRegister(){
  meta_registerNow((int)igModelViewMatrixBoneSelectList_register);
 }
 void igModelViewMatrixBoneSelectList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igModelViewMatrixBoneSelectList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igModelViewMatrixBoneSelectList_getMetaCall,(int)igModelViewMatrixBoneSelectList_className,20,(int)igModelViewMatrixBoneSelectList_vtableRead,0,0,(int)lbl_8056048C);
+ meta_registerClass(0,(int)&igModelViewMatrixBoneSelectList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igModelViewMatrixBoneSelectList_getMetaCall,(int)igModelViewMatrixBoneSelectList_className,20,(int)igModelViewMatrixBoneSelectList_vtableRead,0,0,(int)igModelViewMatrixBoneSelectList_dependencies);
 }
 void *igModelViewMatrixBoneSelectList_getMetaCall(){return igModelViewMatrixBoneSelectList_getMeta();}
 void *igModelViewMatrixBoneSelect_create(void *object){
- igModelViewMatrixBoneSelect_registerNow();
+ igModelViewMatrixBoneSelect_arkRegister();
  return meta_createInstance(igModelViewMatrixBoneSelect_meta,object);
 }
 void *fn_801BAD68(){
@@ -115,7 +115,7 @@ void *fn_801BAD68(){
  return igModelViewMatrixBoneSelect_meta;
 }
 void *igModelViewMatrixBoneSelect_getMeta(){
- if(!igModelViewMatrixBoneSelect_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixBoneSelect_meta)[0x24/4]&4)) igModelViewMatrixBoneSelect_registerNow();
+ if(!igModelViewMatrixBoneSelect_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixBoneSelect_meta)[0x24/4]&4)) igModelViewMatrixBoneSelect_arkRegister();
  return igModelViewMatrixBoneSelect_meta;
 }
 void *igModelViewMatrixBoneSelect_vtableRead(){
@@ -130,7 +130,7 @@ void *igModelViewMatrixBoneSelect_vtableRead(){
  object.unknown00=igModelViewMatrixBoneSelect_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igModelViewMatrixBoneSelect_registerNow(){
+void igModelViewMatrixBoneSelect_arkRegister(){
  meta_registerNow((int)igModelViewMatrixBoneSelect_register);
 }
 void igModelViewMatrixBoneSelect_register(){
@@ -141,13 +141,13 @@ void *igModelViewMatrixBoneSelect_getMetaCall(){return igModelViewMatrixBoneSele
 void igModelViewMatrixBoneSelect_fieldInit(){
  void *value0=igModelViewMatrixBoneSelect_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560494,1);
+ meta_appendFields(value0,igModelViewMatrixBoneSelect_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  fn_80053650(value2,-1);
- meta_setupFields(value0,lbl_80560498,lbl_8056049C,lbl_805604A0,value1);
+ meta_setupFields(value0,igModelViewMatrixBoneSelect_fieldNames,igModelViewMatrixBoneSelect_fieldStorage,igModelViewMatrixBoneSelect_fieldOffsets,value1);
 }
 void *igLod_create(void *object){
- igLod_registerNow();
+ igLod_arkRegister();
  return meta_createInstance(igLod_meta,object);
 }
 void *fn_801BB0C4(){
@@ -155,7 +155,7 @@ void *fn_801BB0C4(){
  return igLod_meta;
 }
 void *igLod_getMeta(){
- if(!igLod_meta || !(reinterpret_cast<unsigned int *>(igLod_meta)[0x24/4]&4)) igLod_registerNow();
+ if(!igLod_meta || !(reinterpret_cast<unsigned int *>(igLod_meta)[0x24/4]&4)) igLod_arkRegister();
  return igLod_meta;
 }
 }

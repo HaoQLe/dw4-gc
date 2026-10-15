@@ -18,29 +18,29 @@ void *fn_800D06E0();
 void *igGeometryAttr_fieldInit();
 void igVisualAttribute_register();
 extern char igGeometryAttr1_5_className[];
-extern char lbl_8047969C[];
+extern char igGeometryAttr_dependencies[];
 extern char igGeometryAttr_className[];
 extern char igGeometryAttr1_5_vtable[];
 extern char lbl_8047C5AC[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E448[8];
-extern char lbl_8055E450[4];
-extern char lbl_8055E454[4];
-extern char lbl_8055E458[4];
-extern char lbl_8055E45C[4];
+extern char igGeometryAttr1_5_dependencies[8];
+extern char igGeometryAttr1_5_fieldTypes[4];
+extern char igGeometryAttr1_5_fieldNames[4];
+extern char igGeometryAttr1_5_fieldStorage[4];
+extern char igGeometryAttr1_5_fieldOffsets[4];
 extern void *lbl_805621F4;
 extern void *igGeometryAttr1_5_meta;
 extern void *igGeometryAttr_meta;
 void *igGeometryAttr1_5_getMeta();
 void *igGeometryAttr1_5_vtableRead();
-void igGeometryAttr1_5_registerNow();
+void igGeometryAttr1_5_arkRegister();
 void igGeometryAttr1_5_register();
 void *igGeometryAttr1_5_getMetaCall();
 void *igGeometryAttr1_5_parentMeta();
 void igGeometryAttr1_5_fieldInit();
 void *igGeometryAttr_getMeta();
-void igGeometryAttr_registerNow();
+void igGeometryAttr_arkRegister();
 void igGeometryAttr_register();
 void *igGeometryAttr_getMetaCall();
 }
@@ -67,7 +67,7 @@ struct UnknownGenObject800B690C : UnknownGenObject800B690C_0 {
 };
 extern "C" {
 void *igGeometryAttr1_5_getMeta(){
- if(!igGeometryAttr1_5_meta || !(reinterpret_cast<unsigned int *>(igGeometryAttr1_5_meta)[0x24/4]&4)) igGeometryAttr1_5_registerNow();
+ if(!igGeometryAttr1_5_meta || !(reinterpret_cast<unsigned int *>(igGeometryAttr1_5_meta)[0x24/4]&4)) igGeometryAttr1_5_arkRegister();
  return igGeometryAttr1_5_meta;
 }
 void *igGeometryAttr1_5_vtableRead(){
@@ -84,26 +84,26 @@ void *igGeometryAttr1_5_vtableRead(){
  object.unknown30.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGeometryAttr1_5_registerNow(){
+void igGeometryAttr1_5_arkRegister(){
  meta_registerNow((int)igGeometryAttr1_5_register);
 }
 void igGeometryAttr1_5_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igGeometryAttr1_5_meta,(int)igGeometryAttr_register,(int)igGeometryAttr1_5_parentMeta,(int)igGeometryAttr1_5_getMetaCall,(int)igGeometryAttr1_5_className,52,(int)igGeometryAttr1_5_vtableRead,(int)igGeometryAttr1_5_fieldInit,0,(int)lbl_8055E448);
+ meta_registerClass(0,(int)&igGeometryAttr1_5_meta,(int)igGeometryAttr_register,(int)igGeometryAttr1_5_parentMeta,(int)igGeometryAttr1_5_getMetaCall,(int)igGeometryAttr1_5_className,52,(int)igGeometryAttr1_5_vtableRead,(int)igGeometryAttr1_5_fieldInit,0,(int)igGeometryAttr1_5_dependencies);
 }
 void *igGeometryAttr1_5_getMetaCall(){return igGeometryAttr1_5_getMeta();}
 void *igGeometryAttr1_5_parentMeta(){return igGeometryAttr_meta;}
 void igGeometryAttr1_5_fieldInit(){
  void *value0=igGeometryAttr1_5_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E450,1);
+ meta_appendFields(value0,igGeometryAttr1_5_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_800D06E0();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_8055E454,lbl_8055E458,lbl_8055E45C,value1);
+ meta_setupFields(value0,igGeometryAttr1_5_fieldNames,igGeometryAttr1_5_fieldStorage,igGeometryAttr1_5_fieldOffsets,value1);
 }
 void *igGeometryAttr_create(void *object){
- igGeometryAttr_registerNow();
+ igGeometryAttr_arkRegister();
  return meta_createInstance(igGeometryAttr_meta,object);
 }
 void *fn_800B6C60(){
@@ -111,15 +111,15 @@ void *fn_800B6C60(){
  return igGeometryAttr_meta;
 }
 void *igGeometryAttr_getMeta(){
- if(!igGeometryAttr_meta || !(reinterpret_cast<unsigned int *>(igGeometryAttr_meta)[0x24/4]&4)) igGeometryAttr_registerNow();
+ if(!igGeometryAttr_meta || !(reinterpret_cast<unsigned int *>(igGeometryAttr_meta)[0x24/4]&4)) igGeometryAttr_arkRegister();
  return igGeometryAttr_meta;
 }
-void igGeometryAttr_registerNow(){
+void igGeometryAttr_arkRegister(){
  meta_registerNow((int)igGeometryAttr_register);
 }
 void igGeometryAttr_register(){
  fn_800ABC8C();
- meta_registerClass(1,(int)&igGeometryAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igGeometryAttr_getMetaCall,(int)igGeometryAttr_className,48,0,(int)igGeometryAttr_fieldInit,0,(int)lbl_8047969C);
+ meta_registerClass(1,(int)&igGeometryAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igGeometryAttr_getMetaCall,(int)igGeometryAttr_className,48,0,(int)igGeometryAttr_fieldInit,0,(int)igGeometryAttr_dependencies);
 }
 void *igGeometryAttr_getMetaCall(){return igGeometryAttr_getMeta();}
 }

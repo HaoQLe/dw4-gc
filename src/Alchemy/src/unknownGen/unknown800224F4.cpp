@@ -11,7 +11,7 @@ void igUnsignedLongMetaField_register();
 extern char lbl_80471914[];
 extern char lbl_80476F60[];
 extern void *igUnsignedLongMetaField_meta;
-void igUnsignedLongMetaField_registerNow();
+void igUnsignedLongMetaField_arkRegister();
 }
 struct UnknownGenRoot800225AC {
  void *unknown00;
@@ -30,7 +30,7 @@ struct UnknownGenObject800225AC : UnknownGenObject800225AC_0 {
 extern "C" {
 void *igUnsignedLongArrayMetaField_virtual54(void *a,void *b){
  if(*reinterpret_cast<unsigned char *>(Gap::Core::_arkCore)){
-  igUnsignedLongMetaField_registerNow();
+  igUnsignedLongMetaField_arkRegister();
   return fn_800680B4(a,b);
  }
  void *object=fn_80066DD8(0x34,0);
@@ -38,14 +38,14 @@ void *igUnsignedLongArrayMetaField_virtual54(void *a,void *b){
  return object;
 }
 void *igUnsignedLongMetaField_getMeta(){
- if(!igUnsignedLongMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedLongMetaField_meta)[0x24/4]&4)) igUnsignedLongMetaField_registerNow();
+ if(!igUnsignedLongMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedLongMetaField_meta)[0x24/4]&4)) igUnsignedLongMetaField_arkRegister();
  return igUnsignedLongMetaField_meta;
 }
 void *fn_800225AC(){
  UnknownGenObject800225AC object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igUnsignedLongMetaField_registerNow(){
+void igUnsignedLongMetaField_arkRegister(){
  meta_registerNow((int)igUnsignedLongMetaField_register);
 }
 }

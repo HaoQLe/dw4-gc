@@ -12,7 +12,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void igObject_register();
 extern char beNDMWPanelWazaInfoWork_className[];
-extern char lbl_804E23F4[];
+extern char beNDMWPanelWazaInfoWork_dependencies[];
 extern char beNDMWPanelWazaInfoWork_meta[];
 void beNDMWPanelWazaInfoWork_register();
 void *beNDMWPanelWazaInfoWork_getMetaCall();
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_80336E90(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWPanelWazaInfoWork_registerNow(){
+void beNDMWPanelWazaInfoWork_arkRegister(){
  meta_registerNow((int)beNDMWPanelWazaInfoWork_register);
 }
 void beNDMWPanelWazaInfoWork_register(){
  fn_803250AC();
- meta_registerClass(0,(int)beNDMWPanelWazaInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWPanelWazaInfoWork_getMetaCall,(int)beNDMWPanelWazaInfoWork_className,48,(int)beNDMWPanelWazaInfoWork_vtableRead,(int)beNDMWPanelWazaInfoWork_fieldInit,0,(int)lbl_804E23F4);
+ meta_registerClass(0,(int)beNDMWPanelWazaInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWPanelWazaInfoWork_getMetaCall,(int)beNDMWPanelWazaInfoWork_className,48,(int)beNDMWPanelWazaInfoWork_vtableRead,(int)beNDMWPanelWazaInfoWork_fieldInit,0,(int)beNDMWPanelWazaInfoWork_dependencies);
 }
 void *beNDMWPanelWazaInfoWork_getMetaCall(){return beNDMWPanelWazaInfoWork_getMeta();}
 }

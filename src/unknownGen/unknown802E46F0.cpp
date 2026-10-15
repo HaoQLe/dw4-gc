@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beAsTargetModelDataList_registerNow();
+void beAsTargetModelDataList_arkRegister();
 extern void *beAsTargetModelDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beAsTargetModelDataList_metaObject(){
  return beAsTargetModelDataList_meta;
 }
 void *beAsTargetModelDataList_getMeta(){
- if(!beAsTargetModelDataList_meta || !(reinterpret_cast<unsigned int *>(beAsTargetModelDataList_meta)[0x24/4]&4)) beAsTargetModelDataList_registerNow();
+ if(!beAsTargetModelDataList_meta || !(reinterpret_cast<unsigned int *>(beAsTargetModelDataList_meta)[0x24/4]&4)) beAsTargetModelDataList_arkRegister();
  return beAsTargetModelDataList_meta;
 }
 }

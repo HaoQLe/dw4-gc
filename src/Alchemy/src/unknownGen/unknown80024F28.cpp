@@ -15,7 +15,7 @@ void *igStringObjList_getMeta();
 void igStringObjList_vtableRead();
 extern char igStringObjList_className[];
 extern char igStringObj_vtable[];
-extern char lbl_8055D0B0[8];
+extern char igStringObjList_dependencies[8];
 extern void *igStringObjList_meta;
 extern void *igStringObj_meta;
 extern void *lbl_805621F4;
@@ -28,7 +28,7 @@ struct UnknownGenObject80025064_0 {
 extern "C" {
 void igStringObjList_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igStringObjList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igStringObjList_getMetaCall,(int)igStringObjList_className,20,(int)igStringObjList_vtableRead,0,0,(int)lbl_8055D0B0);
+ meta_registerClass(0,(int)&igStringObjList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igStringObjList_getMetaCall,(int)igStringObjList_className,20,(int)igStringObjList_vtableRead,0,0,(int)igStringObjList_dependencies);
 }
 void *igStringObjList_getMetaCall(){return igStringObjList_getMeta();}
 void *igStringObj_create(void *object){

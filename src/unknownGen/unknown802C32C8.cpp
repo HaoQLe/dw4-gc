@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beNumVerDataList_registerNow();
+void beNumVerDataList_arkRegister();
 extern void *beNumVerDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beNumVerDataList_metaObject(){
  return beNumVerDataList_meta;
 }
 void *beNumVerDataList_getMeta(){
- if(!beNumVerDataList_meta || !(reinterpret_cast<unsigned int *>(beNumVerDataList_meta)[0x24/4]&4)) beNumVerDataList_registerNow();
+ if(!beNumVerDataList_meta || !(reinterpret_cast<unsigned int *>(beNumVerDataList_meta)[0x24/4]&4)) beNumVerDataList_arkRegister();
  return beNumVerDataList_meta;
 }
 }

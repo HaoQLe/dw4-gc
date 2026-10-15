@@ -21,21 +21,21 @@ extern char igMemoryPoolContextInfo_className[];
 extern char igMemoryPoolContextInfo_vtable[];
 extern char igInfo_vtable[];
 extern char igNamedObject_vtable[];
-extern char lbl_8055D2DC[8];
-extern char lbl_8055D2E4[4];
-extern char lbl_8055D2E8[4];
-extern char lbl_8055D2EC[4];
-extern char lbl_8055D2F0[4];
+extern char igMemoryPoolContextInfo_dependencies[8];
+extern char igMemoryPoolContextInfo_fieldTypes[4];
+extern char igMemoryPoolContextInfo_fieldNames[4];
+extern char igMemoryPoolContextInfo_fieldStorage[4];
+extern char igMemoryPoolContextInfo_fieldOffsets[4];
 extern void *igMemoryPoolContextInfo_meta;
 extern void *igMemoryPool_meta;
 extern void *lbl_805621F4;
 void *igMemoryPoolContextInfo_getMeta();
 void *igMemoryPoolContextInfo_vtableRead();
-void igMemoryPoolContextInfo_registerNow();
+void igMemoryPoolContextInfo_arkRegister();
 void igMemoryPoolContextInfo_register();
 void *igMemoryPoolContextInfo_getMetaCall();
 void igMemoryPoolContextInfo_fieldInit();
-void igMemoryPool_registerNow();
+void igMemoryPool_arkRegister();
 }
 struct UnknownGenRoot8002BC94 {
  void *unknown00;
@@ -58,11 +58,11 @@ struct UnknownGenObject8002BC94 : UnknownGenObject8002BC94_1 {
 };
 extern "C" {
 void *igMemoryPoolContextInfo_create(void *object){
- igMemoryPoolContextInfo_registerNow();
+ igMemoryPoolContextInfo_arkRegister();
  return meta_createInstance(igMemoryPoolContextInfo_meta,object);
 }
 void *igMemoryPoolContextInfo_getMeta(){
- if(!igMemoryPoolContextInfo_meta || !(reinterpret_cast<unsigned int *>(igMemoryPoolContextInfo_meta)[0x24/4]&4)) igMemoryPoolContextInfo_registerNow();
+ if(!igMemoryPoolContextInfo_meta || !(reinterpret_cast<unsigned int *>(igMemoryPoolContextInfo_meta)[0x24/4]&4)) igMemoryPoolContextInfo_arkRegister();
  return igMemoryPoolContextInfo_meta;
 }
 void *igMemoryPoolContextInfo_vtableRead(){
@@ -74,33 +74,33 @@ void *igMemoryPoolContextInfo_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMemoryPoolContextInfo_registerNow(){
+void igMemoryPoolContextInfo_arkRegister(){
  meta_registerNow((int)igMemoryPoolContextInfo_register);
 }
 void igMemoryPoolContextInfo_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igMemoryPoolContextInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igMemoryPoolContextInfo_getMetaCall,(int)igMemoryPoolContextInfo_className,24,(int)igMemoryPoolContextInfo_vtableRead,(int)igMemoryPoolContextInfo_fieldInit,0,(int)lbl_8055D2DC);
+ meta_registerClass(0,(int)&igMemoryPoolContextInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igMemoryPoolContextInfo_getMetaCall,(int)igMemoryPoolContextInfo_className,24,(int)igMemoryPoolContextInfo_vtableRead,(int)igMemoryPoolContextInfo_fieldInit,0,(int)igMemoryPoolContextInfo_dependencies);
 }
 void *igMemoryPoolContextInfo_getMetaCall(){return igMemoryPoolContextInfo_getMeta();}
 void igMemoryPoolContextInfo_fieldInit(){
  void *value0=igMemoryPoolContextInfo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055D2E4,1);
+ meta_appendFields(value0,igMemoryPoolContextInfo_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_8002B558();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- meta_setupFields(value0,lbl_8055D2E8,lbl_8055D2EC,lbl_8055D2F0,value1);
+ meta_setupFields(value0,igMemoryPoolContextInfo_fieldNames,igMemoryPoolContextInfo_fieldStorage,igMemoryPoolContextInfo_fieldOffsets,value1);
 }
 void *fn_8002BED0(){
  if(!igMemoryPool_meta) igMemoryPool_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igMemoryPool_meta;
 }
 void *igMemoryPool_getMeta(){
- if(!igMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igMemoryPool_meta)[0x24/4]&4)) igMemoryPool_registerNow();
+ if(!igMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igMemoryPool_meta)[0x24/4]&4)) igMemoryPool_arkRegister();
  return igMemoryPool_meta;
 }
-void igMemoryPool_registerNow(){
+void igMemoryPool_arkRegister(){
  meta_registerNow((int)igMemoryPool_register);
 }
 }

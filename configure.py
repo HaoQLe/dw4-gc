@@ -339,6 +339,15 @@ cflags_rel = [
 ]
 config.linker_version = "GC/1.3.2"
 
+# Readable class-registration source (src/Meta/<Class>.cpp, written by tools/alchemymeta/metasrc.py), with
+# the same flag tags as generated units.
+meta_units_path = Path("config") / config.version / "meta_units.txt"
+meta_units = (
+    [line.split("\t") for line in meta_units_path.read_text().splitlines() if line.strip()]
+    if meta_units_path.exists()
+    else []
+)
+
 generated_units_path = Path("config") / config.version / "generated_units.txt"
 generated_units = (
     [line.split("\t") for line in generated_units_path.read_text().splitlines() if line.strip()]
@@ -863,6 +872,23 @@ config.libs = [
         "cflags": cflags_engine_size,
         "progress_category": "engine",
         "objects": [GeneratedObject(unit) for unit in generated_units if unit[0].startswith("Alchemy/")],
+    },
+    {
+        # Class registration (getMeta, register, vtableRead, fieldInit, ...), one file per class, in the
+        # identified Alchemy core range.
+        "lib": "Alchemy engine class registration",
+        "mw_version": "GC/2.6",
+        "cflags": cflags_engine_size,
+        "progress_category": "engine",
+        "objects": [GeneratedObject(unit) for unit in meta_units if unit[0].startswith("Alchemy/")],
+    },
+    {
+        # Class registration outside the identified Alchemy core range.
+        "lib": "Unclassified class registration",
+        "mw_version": "GC/2.6",
+        "cflags": cflags_engine_size,
+        "progress_category": "unclassified",
+        "objects": [GeneratedObject(unit) for unit in meta_units if not unit[0].startswith("Alchemy/")],
     },
     {
         # Generated units outside the identified Alchemy core range; ownership is unknown.

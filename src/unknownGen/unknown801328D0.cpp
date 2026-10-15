@@ -12,7 +12,7 @@ void *fn_8012FEB0();
 void igOptVisitObject_register();
 void igSpatialPartition_fieldInit();
 extern char igVertexBlending_className[];
-extern char lbl_8049C1EC[];
+extern char igSpatialPartition_dependencies[];
 extern char igSpatialPartition_className[];
 extern char igSpatialPartition_vtable[];
 extern char lbl_804A46AC[];
@@ -23,7 +23,7 @@ extern void *lbl_80563B78;
 extern void *igSpatialPartition_meta;
 void *igSpatialPartition_getMeta();
 void *igSpatialPartition_vtableRead();
-void igSpatialPartition_registerNow();
+void igSpatialPartition_arkRegister();
 void igSpatialPartition_register();
 void *igSpatialPartition_getMetaCall();
 }
@@ -56,7 +56,7 @@ void *fn_801328D0(){
  return lbl_80563B78;
 }
 void *igSpatialPartition_getMeta(){
- if(!igSpatialPartition_meta || !(reinterpret_cast<unsigned int *>(igSpatialPartition_meta)[0x24/4]&4)) igSpatialPartition_registerNow();
+ if(!igSpatialPartition_meta || !(reinterpret_cast<unsigned int *>(igSpatialPartition_meta)[0x24/4]&4)) igSpatialPartition_arkRegister();
  return igSpatialPartition_meta;
 }
 void *igSpatialPartition_vtableRead(){
@@ -85,12 +85,12 @@ UnknownGenHolder *fn_80132B48(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igSpatialPartition_registerNow(){
+void igSpatialPartition_arkRegister(){
  meta_registerNow((int)igSpatialPartition_register);
 }
 void igSpatialPartition_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igSpatialPartition_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igSpatialPartition_getMetaCall,(int)igSpatialPartition_className,96,(int)igSpatialPartition_vtableRead,(int)igSpatialPartition_fieldInit,0,(int)lbl_8049C1EC);
+ meta_registerClass(0,(int)&igSpatialPartition_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igSpatialPartition_getMetaCall,(int)igSpatialPartition_className,96,(int)igSpatialPartition_vtableRead,(int)igSpatialPartition_fieldInit,0,(int)igSpatialPartition_dependencies);
 }
 void *igSpatialPartition_getMetaCall(){return igSpatialPartition_getMeta();}
 }

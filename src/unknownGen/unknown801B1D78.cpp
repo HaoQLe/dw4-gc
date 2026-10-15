@@ -11,7 +11,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_801AA6DC();
 void *fn_801AF130();
-void igSelfShadowShader_registerNow();
+void igSelfShadowShader_arkRegister();
 void igDataList_register();
 void igObjectPool_register();
 extern char igDataList_vtable[];
@@ -51,15 +51,15 @@ extern char lbl_804B8F6C[];
 extern char igBlendMatricesAttrPool_vtable[];
 extern char lbl_804B9034[];
 extern char igObjectPool_vtable[];
-extern char lbl_805602A4[8];
-extern char lbl_805602AC[8];
-extern char lbl_805602B4[8];
-extern char lbl_805602BC[8];
-extern char lbl_805602C4[8];
-extern char lbl_805602CC[8];
-extern char lbl_805602D4[8];
-extern char lbl_805602DC[8];
-extern char lbl_805602E4[8];
+extern char igBlendMatricesAttrPool_dependencies[8];
+extern char igTextureMatrixAttrPool_dependencies[8];
+extern char igMatrixObjectPool_dependencies[8];
+extern char igVertexBlendMatrixListAttrPool_dependencies[8];
+extern char igVertexBlendMatrixAttrPool_dependencies[8];
+extern char igProjectionMatrixAttrPool_dependencies[8];
+extern char igTimeAttrPool_dependencies[8];
+extern char igModelViewMatrixAttrPool_dependencies[8];
+extern char igLightStateAttrPool_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igBlendMatricesAttrPool_meta;
 extern void *igTextureMatrixAttrPool_meta;
@@ -75,57 +75,57 @@ extern void *igTraversalFunctionList_meta;
 extern void *igSelfShadowShader_meta;
 void *igBlendMatricesAttrPool_getMeta();
 void *igBlendMatricesAttrPool_vtableRead();
-void igBlendMatricesAttrPool_registerNow();
+void igBlendMatricesAttrPool_arkRegister();
 void igBlendMatricesAttrPool_register();
 void *igBlendMatricesAttrPool_getMetaCall();
 void *igTextureMatrixAttrPool_getMeta();
 void *igTextureMatrixAttrPool_vtableRead();
-void igTextureMatrixAttrPool_registerNow();
+void igTextureMatrixAttrPool_arkRegister();
 void igTextureMatrixAttrPool_register();
 void *igTextureMatrixAttrPool_getMetaCall();
 void *igMatrixObjectPool_getMeta();
 void *igMatrixObjectPool_vtableRead();
-void igMatrixObjectPool_registerNow();
+void igMatrixObjectPool_arkRegister();
 void igMatrixObjectPool_register();
 void *igMatrixObjectPool_getMetaCall();
 void *igVertexBlendMatrixListAttrPool_getMeta();
 void *igVertexBlendMatrixListAttrPool_vtableRead();
-void igVertexBlendMatrixListAttrPool_registerNow();
+void igVertexBlendMatrixListAttrPool_arkRegister();
 void igVertexBlendMatrixListAttrPool_register();
 void *igVertexBlendMatrixListAttrPool_getMetaCall();
 void *igVertexBlendMatrixAttrPool_getMeta();
 void *igVertexBlendMatrixAttrPool_vtableRead();
-void igVertexBlendMatrixAttrPool_registerNow();
+void igVertexBlendMatrixAttrPool_arkRegister();
 void igVertexBlendMatrixAttrPool_register();
 void *igVertexBlendMatrixAttrPool_getMetaCall();
 void *igProjectionMatrixAttrPool_getMeta();
 void *igProjectionMatrixAttrPool_vtableRead();
-void igProjectionMatrixAttrPool_registerNow();
+void igProjectionMatrixAttrPool_arkRegister();
 void igProjectionMatrixAttrPool_register();
 void *igProjectionMatrixAttrPool_getMetaCall();
 void *igTimeAttrPool_getMeta();
 void *igTimeAttrPool_vtableRead();
-void igTimeAttrPool_registerNow();
+void igTimeAttrPool_arkRegister();
 void igTimeAttrPool_register();
 void *igTimeAttrPool_getMetaCall();
 void *igModelViewMatrixAttrPool_getMeta();
 void *igModelViewMatrixAttrPool_vtableRead();
-void igModelViewMatrixAttrPool_registerNow();
+void igModelViewMatrixAttrPool_arkRegister();
 void igModelViewMatrixAttrPool_register();
 void *igModelViewMatrixAttrPool_getMetaCall();
 void *igLightStateAttrPool_getMeta();
 void *igLightStateAttrPool_vtableRead();
-void igLightStateAttrPool_registerNow();
+void igLightStateAttrPool_arkRegister();
 void igLightStateAttrPool_register();
 void *igLightStateAttrPool_getMetaCall();
 void *igAttrStackManagerPopFunctionList_getMeta();
 void *igAttrStackManagerPopFunctionList_vtableRead();
-void igAttrStackManagerPopFunctionList_registerNow();
+void igAttrStackManagerPopFunctionList_arkRegister();
 void igAttrStackManagerPopFunctionList_register();
 void *igAttrStackManagerPopFunctionList_getMetaCall();
 void *igTraversalFunctionList_getMeta();
 void *igTraversalFunctionList_vtableRead();
-void igTraversalFunctionList_registerNow();
+void igTraversalFunctionList_arkRegister();
 void igTraversalFunctionList_register();
 void *igTraversalFunctionList_getMetaCall();
 }
@@ -179,7 +179,7 @@ void *fn_801B1D78(){
  return igBlendMatricesAttrPool_meta;
 }
 void *igBlendMatricesAttrPool_getMeta(){
- if(!igBlendMatricesAttrPool_meta || !(reinterpret_cast<unsigned int *>(igBlendMatricesAttrPool_meta)[0x24/4]&4)) igBlendMatricesAttrPool_registerNow();
+ if(!igBlendMatricesAttrPool_meta || !(reinterpret_cast<unsigned int *>(igBlendMatricesAttrPool_meta)[0x24/4]&4)) igBlendMatricesAttrPool_arkRegister();
  return igBlendMatricesAttrPool_meta;
 }
 void *igBlendMatricesAttrPool_vtableRead(){
@@ -193,12 +193,12 @@ void *igBlendMatricesAttrPool_vtableRead(){
  object.unknown00=igBlendMatricesAttrPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBlendMatricesAttrPool_registerNow(){
+void igBlendMatricesAttrPool_arkRegister(){
  meta_registerNow((int)igBlendMatricesAttrPool_register);
 }
 void igBlendMatricesAttrPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igBlendMatricesAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igBlendMatricesAttrPool_getMetaCall,(int)igBlendMatricesAttrPool_className,32,(int)igBlendMatricesAttrPool_vtableRead,0,0,(int)lbl_805602A4);
+ meta_registerClass(0,(int)&igBlendMatricesAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igBlendMatricesAttrPool_getMetaCall,(int)igBlendMatricesAttrPool_className,32,(int)igBlendMatricesAttrPool_vtableRead,0,0,(int)igBlendMatricesAttrPool_dependencies);
 }
 void *igBlendMatricesAttrPool_getMetaCall(){return igBlendMatricesAttrPool_getMeta();}
 void *fn_801B1F20(){
@@ -206,7 +206,7 @@ void *fn_801B1F20(){
  return igTextureMatrixAttrPool_meta;
 }
 void *igTextureMatrixAttrPool_getMeta(){
- if(!igTextureMatrixAttrPool_meta || !(reinterpret_cast<unsigned int *>(igTextureMatrixAttrPool_meta)[0x24/4]&4)) igTextureMatrixAttrPool_registerNow();
+ if(!igTextureMatrixAttrPool_meta || !(reinterpret_cast<unsigned int *>(igTextureMatrixAttrPool_meta)[0x24/4]&4)) igTextureMatrixAttrPool_arkRegister();
  return igTextureMatrixAttrPool_meta;
 }
 void *igTextureMatrixAttrPool_vtableRead(){
@@ -220,12 +220,12 @@ void *igTextureMatrixAttrPool_vtableRead(){
  object.unknown00=igTextureMatrixAttrPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTextureMatrixAttrPool_registerNow(){
+void igTextureMatrixAttrPool_arkRegister(){
  meta_registerNow((int)igTextureMatrixAttrPool_register);
 }
 void igTextureMatrixAttrPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igTextureMatrixAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igTextureMatrixAttrPool_getMetaCall,(int)igTextureMatrixAttrPool_className,32,(int)igTextureMatrixAttrPool_vtableRead,0,0,(int)lbl_805602AC);
+ meta_registerClass(0,(int)&igTextureMatrixAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igTextureMatrixAttrPool_getMetaCall,(int)igTextureMatrixAttrPool_className,32,(int)igTextureMatrixAttrPool_vtableRead,0,0,(int)igTextureMatrixAttrPool_dependencies);
 }
 void *igTextureMatrixAttrPool_getMetaCall(){return igTextureMatrixAttrPool_getMeta();}
 void *fn_801B20C8(){
@@ -233,7 +233,7 @@ void *fn_801B20C8(){
  return igMatrixObjectPool_meta;
 }
 void *igMatrixObjectPool_getMeta(){
- if(!igMatrixObjectPool_meta || !(reinterpret_cast<unsigned int *>(igMatrixObjectPool_meta)[0x24/4]&4)) igMatrixObjectPool_registerNow();
+ if(!igMatrixObjectPool_meta || !(reinterpret_cast<unsigned int *>(igMatrixObjectPool_meta)[0x24/4]&4)) igMatrixObjectPool_arkRegister();
  return igMatrixObjectPool_meta;
 }
 void *igMatrixObjectPool_vtableRead(){
@@ -247,12 +247,12 @@ void *igMatrixObjectPool_vtableRead(){
  object.unknown00=igMatrixObjectPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMatrixObjectPool_registerNow(){
+void igMatrixObjectPool_arkRegister(){
  meta_registerNow((int)igMatrixObjectPool_register);
 }
 void igMatrixObjectPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igMatrixObjectPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igMatrixObjectPool_getMetaCall,(int)igMatrixObjectPool_className,32,(int)igMatrixObjectPool_vtableRead,0,0,(int)lbl_805602B4);
+ meta_registerClass(0,(int)&igMatrixObjectPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igMatrixObjectPool_getMetaCall,(int)igMatrixObjectPool_className,32,(int)igMatrixObjectPool_vtableRead,0,0,(int)igMatrixObjectPool_dependencies);
 }
 void *igMatrixObjectPool_getMetaCall(){return igMatrixObjectPool_getMeta();}
 void *fn_801B2270(){
@@ -260,7 +260,7 @@ void *fn_801B2270(){
  return igVertexBlendMatrixListAttrPool_meta;
 }
 void *igVertexBlendMatrixListAttrPool_getMeta(){
- if(!igVertexBlendMatrixListAttrPool_meta || !(reinterpret_cast<unsigned int *>(igVertexBlendMatrixListAttrPool_meta)[0x24/4]&4)) igVertexBlendMatrixListAttrPool_registerNow();
+ if(!igVertexBlendMatrixListAttrPool_meta || !(reinterpret_cast<unsigned int *>(igVertexBlendMatrixListAttrPool_meta)[0x24/4]&4)) igVertexBlendMatrixListAttrPool_arkRegister();
  return igVertexBlendMatrixListAttrPool_meta;
 }
 void *igVertexBlendMatrixListAttrPool_vtableRead(){
@@ -274,12 +274,12 @@ void *igVertexBlendMatrixListAttrPool_vtableRead(){
  object.unknown00=igVertexBlendMatrixListAttrPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVertexBlendMatrixListAttrPool_registerNow(){
+void igVertexBlendMatrixListAttrPool_arkRegister(){
  meta_registerNow((int)igVertexBlendMatrixListAttrPool_register);
 }
 void igVertexBlendMatrixListAttrPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igVertexBlendMatrixListAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igVertexBlendMatrixListAttrPool_getMetaCall,(int)igVertexBlendMatrixListAttrPool_className,32,(int)igVertexBlendMatrixListAttrPool_vtableRead,0,0,(int)lbl_805602BC);
+ meta_registerClass(0,(int)&igVertexBlendMatrixListAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igVertexBlendMatrixListAttrPool_getMetaCall,(int)igVertexBlendMatrixListAttrPool_className,32,(int)igVertexBlendMatrixListAttrPool_vtableRead,0,0,(int)igVertexBlendMatrixListAttrPool_dependencies);
 }
 void *igVertexBlendMatrixListAttrPool_getMetaCall(){return igVertexBlendMatrixListAttrPool_getMeta();}
 void *fn_801B2418(){
@@ -287,7 +287,7 @@ void *fn_801B2418(){
  return igVertexBlendMatrixAttrPool_meta;
 }
 void *igVertexBlendMatrixAttrPool_getMeta(){
- if(!igVertexBlendMatrixAttrPool_meta || !(reinterpret_cast<unsigned int *>(igVertexBlendMatrixAttrPool_meta)[0x24/4]&4)) igVertexBlendMatrixAttrPool_registerNow();
+ if(!igVertexBlendMatrixAttrPool_meta || !(reinterpret_cast<unsigned int *>(igVertexBlendMatrixAttrPool_meta)[0x24/4]&4)) igVertexBlendMatrixAttrPool_arkRegister();
  return igVertexBlendMatrixAttrPool_meta;
 }
 void *igVertexBlendMatrixAttrPool_vtableRead(){
@@ -301,12 +301,12 @@ void *igVertexBlendMatrixAttrPool_vtableRead(){
  object.unknown00=igVertexBlendMatrixAttrPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVertexBlendMatrixAttrPool_registerNow(){
+void igVertexBlendMatrixAttrPool_arkRegister(){
  meta_registerNow((int)igVertexBlendMatrixAttrPool_register);
 }
 void igVertexBlendMatrixAttrPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igVertexBlendMatrixAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igVertexBlendMatrixAttrPool_getMetaCall,(int)igVertexBlendMatrixAttrPool_className,32,(int)igVertexBlendMatrixAttrPool_vtableRead,0,0,(int)lbl_805602C4);
+ meta_registerClass(0,(int)&igVertexBlendMatrixAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igVertexBlendMatrixAttrPool_getMetaCall,(int)igVertexBlendMatrixAttrPool_className,32,(int)igVertexBlendMatrixAttrPool_vtableRead,0,0,(int)igVertexBlendMatrixAttrPool_dependencies);
 }
 void *igVertexBlendMatrixAttrPool_getMetaCall(){return igVertexBlendMatrixAttrPool_getMeta();}
 void *fn_801B25C0(){
@@ -314,7 +314,7 @@ void *fn_801B25C0(){
  return igProjectionMatrixAttrPool_meta;
 }
 void *igProjectionMatrixAttrPool_getMeta(){
- if(!igProjectionMatrixAttrPool_meta || !(reinterpret_cast<unsigned int *>(igProjectionMatrixAttrPool_meta)[0x24/4]&4)) igProjectionMatrixAttrPool_registerNow();
+ if(!igProjectionMatrixAttrPool_meta || !(reinterpret_cast<unsigned int *>(igProjectionMatrixAttrPool_meta)[0x24/4]&4)) igProjectionMatrixAttrPool_arkRegister();
  return igProjectionMatrixAttrPool_meta;
 }
 void *igProjectionMatrixAttrPool_vtableRead(){
@@ -328,12 +328,12 @@ void *igProjectionMatrixAttrPool_vtableRead(){
  object.unknown00=igProjectionMatrixAttrPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igProjectionMatrixAttrPool_registerNow(){
+void igProjectionMatrixAttrPool_arkRegister(){
  meta_registerNow((int)igProjectionMatrixAttrPool_register);
 }
 void igProjectionMatrixAttrPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igProjectionMatrixAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igProjectionMatrixAttrPool_getMetaCall,(int)igProjectionMatrixAttrPool_className,32,(int)igProjectionMatrixAttrPool_vtableRead,0,0,(int)lbl_805602CC);
+ meta_registerClass(0,(int)&igProjectionMatrixAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igProjectionMatrixAttrPool_getMetaCall,(int)igProjectionMatrixAttrPool_className,32,(int)igProjectionMatrixAttrPool_vtableRead,0,0,(int)igProjectionMatrixAttrPool_dependencies);
 }
 void *igProjectionMatrixAttrPool_getMetaCall(){return igProjectionMatrixAttrPool_getMeta();}
 void *fn_801B2768(){
@@ -341,7 +341,7 @@ void *fn_801B2768(){
  return igTimeAttrPool_meta;
 }
 void *igTimeAttrPool_getMeta(){
- if(!igTimeAttrPool_meta || !(reinterpret_cast<unsigned int *>(igTimeAttrPool_meta)[0x24/4]&4)) igTimeAttrPool_registerNow();
+ if(!igTimeAttrPool_meta || !(reinterpret_cast<unsigned int *>(igTimeAttrPool_meta)[0x24/4]&4)) igTimeAttrPool_arkRegister();
  return igTimeAttrPool_meta;
 }
 void *igTimeAttrPool_vtableRead(){
@@ -355,12 +355,12 @@ void *igTimeAttrPool_vtableRead(){
  object.unknown00=igTimeAttrPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTimeAttrPool_registerNow(){
+void igTimeAttrPool_arkRegister(){
  meta_registerNow((int)igTimeAttrPool_register);
 }
 void igTimeAttrPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igTimeAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igTimeAttrPool_getMetaCall,(int)igTimeAttrPool_className,32,(int)igTimeAttrPool_vtableRead,0,0,(int)lbl_805602D4);
+ meta_registerClass(0,(int)&igTimeAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igTimeAttrPool_getMetaCall,(int)igTimeAttrPool_className,32,(int)igTimeAttrPool_vtableRead,0,0,(int)igTimeAttrPool_dependencies);
 }
 void *igTimeAttrPool_getMetaCall(){return igTimeAttrPool_getMeta();}
 void *fn_801B2910(){
@@ -368,7 +368,7 @@ void *fn_801B2910(){
  return igModelViewMatrixAttrPool_meta;
 }
 void *igModelViewMatrixAttrPool_getMeta(){
- if(!igModelViewMatrixAttrPool_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixAttrPool_meta)[0x24/4]&4)) igModelViewMatrixAttrPool_registerNow();
+ if(!igModelViewMatrixAttrPool_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixAttrPool_meta)[0x24/4]&4)) igModelViewMatrixAttrPool_arkRegister();
  return igModelViewMatrixAttrPool_meta;
 }
 void *igModelViewMatrixAttrPool_vtableRead(){
@@ -382,12 +382,12 @@ void *igModelViewMatrixAttrPool_vtableRead(){
  object.unknown00=igModelViewMatrixAttrPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igModelViewMatrixAttrPool_registerNow(){
+void igModelViewMatrixAttrPool_arkRegister(){
  meta_registerNow((int)igModelViewMatrixAttrPool_register);
 }
 void igModelViewMatrixAttrPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igModelViewMatrixAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igModelViewMatrixAttrPool_getMetaCall,(int)igModelViewMatrixAttrPool_className,32,(int)igModelViewMatrixAttrPool_vtableRead,0,0,(int)lbl_805602DC);
+ meta_registerClass(0,(int)&igModelViewMatrixAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igModelViewMatrixAttrPool_getMetaCall,(int)igModelViewMatrixAttrPool_className,32,(int)igModelViewMatrixAttrPool_vtableRead,0,0,(int)igModelViewMatrixAttrPool_dependencies);
 }
 void *igModelViewMatrixAttrPool_getMetaCall(){return igModelViewMatrixAttrPool_getMeta();}
 void *fn_801B2AB8(){
@@ -395,7 +395,7 @@ void *fn_801B2AB8(){
  return igLightStateAttrPool_meta;
 }
 void *igLightStateAttrPool_getMeta(){
- if(!igLightStateAttrPool_meta || !(reinterpret_cast<unsigned int *>(igLightStateAttrPool_meta)[0x24/4]&4)) igLightStateAttrPool_registerNow();
+ if(!igLightStateAttrPool_meta || !(reinterpret_cast<unsigned int *>(igLightStateAttrPool_meta)[0x24/4]&4)) igLightStateAttrPool_arkRegister();
  return igLightStateAttrPool_meta;
 }
 void *igLightStateAttrPool_vtableRead(){
@@ -409,16 +409,16 @@ void *igLightStateAttrPool_vtableRead(){
  object.unknown00=igLightStateAttrPool_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igLightStateAttrPool_registerNow(){
+void igLightStateAttrPool_arkRegister(){
  meta_registerNow((int)igLightStateAttrPool_register);
 }
 void igLightStateAttrPool_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igLightStateAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igLightStateAttrPool_getMetaCall,(int)igLightStateAttrPool_className,32,(int)igLightStateAttrPool_vtableRead,0,0,(int)lbl_805602E4);
+ meta_registerClass(0,(int)&igLightStateAttrPool_meta,(int)igObjectPool_register,(int)fn_801AF130,(int)igLightStateAttrPool_getMetaCall,(int)igLightStateAttrPool_className,32,(int)igLightStateAttrPool_vtableRead,0,0,(int)igLightStateAttrPool_dependencies);
 }
 void *igLightStateAttrPool_getMetaCall(){return igLightStateAttrPool_getMeta();}
 void *igAttrStackManagerPopFunctionList_getMeta(){
- if(!igAttrStackManagerPopFunctionList_meta || !(reinterpret_cast<unsigned int *>(igAttrStackManagerPopFunctionList_meta)[0x24/4]&4)) igAttrStackManagerPopFunctionList_registerNow();
+ if(!igAttrStackManagerPopFunctionList_meta || !(reinterpret_cast<unsigned int *>(igAttrStackManagerPopFunctionList_meta)[0x24/4]&4)) igAttrStackManagerPopFunctionList_arkRegister();
  return igAttrStackManagerPopFunctionList_meta;
 }
 void *igAttrStackManagerPopFunctionList_vtableRead(){
@@ -429,7 +429,7 @@ void *igAttrStackManagerPopFunctionList_vtableRead(){
  object.unknown00=igAttrStackManagerPopFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAttrStackManagerPopFunctionList_registerNow(){
+void igAttrStackManagerPopFunctionList_arkRegister(){
  meta_registerNow((int)igAttrStackManagerPopFunctionList_register);
 }
 void igAttrStackManagerPopFunctionList_register(){
@@ -438,7 +438,7 @@ void igAttrStackManagerPopFunctionList_register(){
 }
 void *igAttrStackManagerPopFunctionList_getMetaCall(){return igAttrStackManagerPopFunctionList_getMeta();}
 void *igTraversalFunctionList_create(void *object){
- igTraversalFunctionList_registerNow();
+ igTraversalFunctionList_arkRegister();
  return meta_createInstance(igTraversalFunctionList_meta,object);
 }
 void *fn_801B2DDC(){
@@ -446,7 +446,7 @@ void *fn_801B2DDC(){
  return igTraversalFunctionList_meta;
 }
 void *igTraversalFunctionList_getMeta(){
- if(!igTraversalFunctionList_meta || !(reinterpret_cast<unsigned int *>(igTraversalFunctionList_meta)[0x24/4]&4)) igTraversalFunctionList_registerNow();
+ if(!igTraversalFunctionList_meta || !(reinterpret_cast<unsigned int *>(igTraversalFunctionList_meta)[0x24/4]&4)) igTraversalFunctionList_arkRegister();
  return igTraversalFunctionList_meta;
 }
 void *igTraversalFunctionList_vtableRead(){
@@ -457,7 +457,7 @@ void *igTraversalFunctionList_vtableRead(){
  object.unknown00=igTraversalFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTraversalFunctionList_registerNow(){
+void igTraversalFunctionList_arkRegister(){
  meta_registerNow((int)igTraversalFunctionList_register);
 }
 void igTraversalFunctionList_register(){
@@ -466,7 +466,7 @@ void igTraversalFunctionList_register(){
 }
 void *igTraversalFunctionList_getMetaCall(){return igTraversalFunctionList_getMeta();}
 void *igSelfShadowShader_getMeta(){
- if(!igSelfShadowShader_meta || !(reinterpret_cast<unsigned int *>(igSelfShadowShader_meta)[0x24/4]&4)) igSelfShadowShader_registerNow();
+ if(!igSelfShadowShader_meta || !(reinterpret_cast<unsigned int *>(igSelfShadowShader_meta)[0x24/4]&4)) igSelfShadowShader_arkRegister();
  return igSelfShadowShader_meta;
 }
 }

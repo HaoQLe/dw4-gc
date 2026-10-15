@@ -13,12 +13,12 @@ extern char igDOFCamera_className[];
 extern char igNode_vtable[];
 extern char igDOFCamera_vtable[];
 extern char igCamera_vtable[];
-extern char lbl_805607F0[8];
+extern char igDOFCamera_dependencies[8];
 extern void *igDOFCamera_meta;
 extern void *igCamera_meta;
 void *igDOFCamera_getMeta();
 void *igDOFCamera_vtableRead();
-void igDOFCamera_registerNow();
+void igDOFCamera_arkRegister();
 void igDOFCamera_register();
 void *igDOFCamera_getMetaCall();
 void *igDOFCamera_parentMeta();
@@ -47,7 +47,7 @@ struct UnknownGenObject801C5B4C : UnknownGenObject801C5B4C_2 {
 };
 extern "C" {
 void *igDOFCamera_getMeta(){
- if(!igDOFCamera_meta || !(reinterpret_cast<unsigned int *>(igDOFCamera_meta)[0x24/4]&4)) igDOFCamera_registerNow();
+ if(!igDOFCamera_meta || !(reinterpret_cast<unsigned int *>(igDOFCamera_meta)[0x24/4]&4)) igDOFCamera_arkRegister();
  return igDOFCamera_meta;
 }
 void *igDOFCamera_vtableRead(){
@@ -61,12 +61,12 @@ void *igDOFCamera_vtableRead(){
  object.unknown00=igDOFCamera_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igDOFCamera_registerNow(){
+void igDOFCamera_arkRegister(){
  meta_registerNow((int)igDOFCamera_register);
 }
 void igDOFCamera_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igDOFCamera_meta,(int)igCamera_register,(int)igDOFCamera_parentMeta,(int)igDOFCamera_getMetaCall,(int)igDOFCamera_className,68,(int)igDOFCamera_vtableRead,(int)igDOFCamera_fieldInit,0,(int)lbl_805607F0);
+ meta_registerClass(0,(int)&igDOFCamera_meta,(int)igCamera_register,(int)igDOFCamera_parentMeta,(int)igDOFCamera_getMetaCall,(int)igDOFCamera_className,68,(int)igDOFCamera_vtableRead,(int)igDOFCamera_fieldInit,0,(int)igDOFCamera_dependencies);
 }
 void *igDOFCamera_getMetaCall(){return igDOFCamera_getMeta();}
 void *igDOFCamera_parentMeta(){return igCamera_meta;}

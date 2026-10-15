@@ -17,7 +17,7 @@ void ParticleTimer_register();
 void *ParticleTimer_getMetaCall();
 }
 extern "C" {
-void ParticleTimer_registerNow(){
+void ParticleTimer_arkRegister(){
  meta_registerNow((int)ParticleTimer_register);
 }
 void ParticleTimer_register(){

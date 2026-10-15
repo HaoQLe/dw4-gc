@@ -16,7 +16,7 @@ void beModelCtrlInfoRideOn2_register();
 void *beModelCtrlInfoRideOn2_getMetaCall();
 }
 extern "C" {
-void beModelCtrlInfoRideOn2_registerNow(){
+void beModelCtrlInfoRideOn2_arkRegister(){
  meta_registerNow((int)beModelCtrlInfoRideOn2_register);
 }
 void beModelCtrlInfoRideOn2_register(){

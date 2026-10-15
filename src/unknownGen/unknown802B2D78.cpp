@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
 extern char beWeaponInfo_className[];
-extern char lbl_804CED90[];
+extern char beWeaponInfo_dependencies[];
 extern char beWeaponInfo_meta[];
 void beWeaponInfo_register();
 void *beWeaponInfo_getMetaCall();
 }
 extern "C" {
-void beWeaponInfo_registerNow(){
+void beWeaponInfo_arkRegister(){
  meta_registerNow((int)beWeaponInfo_register);
 }
 void beWeaponInfo_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beWeaponInfo_meta,(int)beBaseInfo_register,(int)fn_802B2E3C,(int)beWeaponInfo_getMetaCall,(int)beWeaponInfo_className,40,(int)beWeaponInfo_vtableRead,(int)beWeaponInfo_fieldInit,0,(int)lbl_804CED90);
+ meta_registerClass(0,(int)beWeaponInfo_meta,(int)beBaseInfo_register,(int)fn_802B2E3C,(int)beWeaponInfo_getMetaCall,(int)beWeaponInfo_className,40,(int)beWeaponInfo_vtableRead,(int)beWeaponInfo_fieldInit,0,(int)beWeaponInfo_dependencies);
 }
 void *beWeaponInfo_getMetaCall(){return beWeaponInfo_getMeta();}
 }

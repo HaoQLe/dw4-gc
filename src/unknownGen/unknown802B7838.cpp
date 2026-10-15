@@ -16,17 +16,17 @@ void fn_80071694(void *,int);
 void *fn_801BF730();
 void *fn_80216AA0();
 extern char lbl_8041D5B0[];
-extern char lbl_804CF290[];
-extern char lbl_804CF2F8[];
-extern char lbl_804CF360[];
-extern char lbl_804CF3C8[];
+extern char beSystem_fieldTypes[];
+extern char beSystem_fieldNames[];
+extern char beSystem_fieldStorage[];
+extern char beSystem_fieldOffsets[];
 extern void *beSystem_meta;
 }
 extern "C" {
 void beSystem_fieldInit(){
  void *value0=beSystem_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CF290,26);
+ meta_appendFields(value0,beSystem_fieldTypes,26);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+3));
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_8041D5B0+0)));
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+7));
@@ -58,7 +58,7 @@ void beSystem_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value15)+52)=1;
  void *value17=meta_field(value0,(reinterpret_cast<char *>(value1)+21));
  fn_8003EC68(value17,1);
- meta_setupFields(value0,lbl_804CF2F8,lbl_804CF360,lbl_804CF3C8,value1);
+ meta_setupFields(value0,beSystem_fieldNames,beSystem_fieldStorage,beSystem_fieldOffsets,value1);
 }
 }
 #pragma pop

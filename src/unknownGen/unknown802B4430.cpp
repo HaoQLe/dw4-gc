@@ -11,17 +11,17 @@ void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *fn_800D0068();
 void *beWaterMove_metaObject();
-extern char lbl_804CEE74[];
-extern char lbl_804CEEE0[];
-extern char lbl_804CEF4C[];
-extern char lbl_804CEFB8[];
+extern char beWaterPlainInfoRam_fieldTypes[];
+extern char beWaterPlainInfoRam_fieldNames[];
+extern char beWaterPlainInfoRam_fieldStorage[];
+extern char beWaterPlainInfoRam_fieldOffsets[];
 extern void *beWaterPlainInfoRam_meta;
 }
 extern "C" {
 void beWaterPlainInfoRam_fieldInit(){
  void *value0=beWaterPlainInfoRam_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CEE74,27);
+ meta_appendFields(value0,beWaterPlainInfoRam_fieldTypes,27);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+10));
  void *value3=fn_800D0068();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -40,7 +40,7 @@ void beWaterPlainInfoRam_fieldInit(){
  void *value10=meta_field(value0,(reinterpret_cast<char *>(value1)+26));
  void *value11=beWaterMove_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value10)+56)=value11;
- meta_setupFields(value0,lbl_804CEEE0,lbl_804CEF4C,lbl_804CEFB8,value1);
+ meta_setupFields(value0,beWaterPlainInfoRam_fieldNames,beWaterPlainInfoRam_fieldStorage,beWaterPlainInfoRam_fieldOffsets,value1);
 }
 }
 #pragma pop

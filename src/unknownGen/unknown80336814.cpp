@@ -9,7 +9,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void *fn_802B2E3C();
 void fn_803250AC();
-void beNDMWPanelWazaInfoRam_registerNow();
+void beNDMWPanelWazaInfoRam_arkRegister();
 extern char beNDMWPanelWazaInfo_className[];
 extern char beNDMWPanelWazaInfo_meta[];
 extern void *beNDMWPanelWazaInfoRam_meta;
@@ -17,7 +17,7 @@ void beNDMWPanelWazaInfo_register();
 void *beNDMWPanelWazaInfo_getMetaCall();
 }
 extern "C" {
-void beNDMWPanelWazaInfo_registerNow(){
+void beNDMWPanelWazaInfo_arkRegister(){
  meta_registerNow((int)beNDMWPanelWazaInfo_register);
 }
 void beNDMWPanelWazaInfo_register(){
@@ -26,7 +26,7 @@ void beNDMWPanelWazaInfo_register(){
 }
 void *beNDMWPanelWazaInfo_getMetaCall(){return beNDMWPanelWazaInfo_getMeta();}
 void *beNDMWPanelWazaInfoRam_getMeta(){
- if(!beNDMWPanelWazaInfoRam_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelWazaInfoRam_meta)[0x24/4]&4)) beNDMWPanelWazaInfoRam_registerNow();
+ if(!beNDMWPanelWazaInfoRam_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelWazaInfoRam_meta)[0x24/4]&4)) beNDMWPanelWazaInfoRam_arkRegister();
  return beNDMWPanelWazaInfoRam_meta;
 }
 }

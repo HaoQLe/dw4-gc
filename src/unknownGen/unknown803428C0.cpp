@@ -15,12 +15,12 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_803425BC();
-void beNDMWItemDisk_registerNow();
+void beNDMWItemDisk_arkRegister();
 extern char beNDMWItemInstant_className[];
-extern char lbl_804E3D10[];
-extern char lbl_804E3D14[];
-extern char lbl_804E3D18[];
-extern char lbl_804E3D1C[];
+extern char beNDMWItemInstant_fieldTypes[];
+extern char beNDMWItemInstant_fieldNames[];
+extern char beNDMWItemInstant_fieldStorage[];
+extern char beNDMWItemInstant_fieldOffsets[];
 extern void *beNDMWItemInstant_meta;
 extern void *beNDMWItemDisk_meta;
 extern void *lbl_805621F4;
@@ -29,7 +29,7 @@ void *beNDMWItemInstant_getMetaCall();
 void beNDMWItemInstant_fieldInit();
 }
 extern "C" {
-void beNDMWItemInstant_registerNow(){
+void beNDMWItemInstant_arkRegister(){
  meta_registerNow((int)beNDMWItemInstant_register);
 }
 void beNDMWItemInstant_register(){
@@ -40,11 +40,11 @@ void *beNDMWItemInstant_getMetaCall(){return beNDMWItemInstant_getMeta();}
 void beNDMWItemInstant_fieldInit(){
  void *meta=beNDMWItemInstant_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804E3D10,0x1);
- meta_setupFields(meta,lbl_804E3D14,lbl_804E3D18,lbl_804E3D1C,field);
+ meta_appendFields(meta,beNDMWItemInstant_fieldTypes,0x1);
+ meta_setupFields(meta,beNDMWItemInstant_fieldNames,beNDMWItemInstant_fieldStorage,beNDMWItemInstant_fieldOffsets,field);
 }
 void *beNDMWItemDisk_create(void *object){
- beNDMWItemDisk_registerNow();
+ beNDMWItemDisk_arkRegister();
  return meta_createInstance(beNDMWItemDisk_meta,object);
 }
 void *beNDMWItemDisk_metaObject(){
@@ -52,7 +52,7 @@ void *beNDMWItemDisk_metaObject(){
  return beNDMWItemDisk_meta;
 }
 void *beNDMWItemDisk_getMeta(){
- if(!beNDMWItemDisk_meta || !(reinterpret_cast<unsigned int *>(beNDMWItemDisk_meta)[0x24/4]&4)) beNDMWItemDisk_registerNow();
+ if(!beNDMWItemDisk_meta || !(reinterpret_cast<unsigned int *>(beNDMWItemDisk_meta)[0x24/4]&4)) beNDMWItemDisk_arkRegister();
  return beNDMWItemDisk_meta;
 }
 }

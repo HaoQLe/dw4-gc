@@ -11,13 +11,13 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
-void beNDMWAfsStageLoad_registerNow();
+void beNDMWAfsStageLoad_arkRegister();
 void igNamedObject_register();
 extern char beNDMWAfsSetupData_className[];
-extern char lbl_804E418C[];
-extern char lbl_804E4190[];
-extern char lbl_804E4194[];
-extern char lbl_804E4198[];
+extern char beNDMWAfsSetupData_fieldTypes[];
+extern char beNDMWAfsSetupData_fieldNames[];
+extern char beNDMWAfsSetupData_fieldStorage[];
+extern char beNDMWAfsSetupData_fieldOffsets[];
 extern void *beNDMWAfsSetupData_meta;
 extern void *beNDMWAfsStageLoad_meta;
 void beNDMWAfsSetupData_register();
@@ -25,7 +25,7 @@ void *beNDMWAfsSetupData_getMetaCall();
 void beNDMWAfsSetupData_fieldInit();
 }
 extern "C" {
-void beNDMWAfsSetupData_registerNow(){
+void beNDMWAfsSetupData_arkRegister(){
  meta_registerNow((int)beNDMWAfsSetupData_register);
 }
 void beNDMWAfsSetupData_register(){
@@ -36,11 +36,11 @@ void *beNDMWAfsSetupData_getMetaCall(){return beNDMWAfsSetupData_getMeta();}
 void beNDMWAfsSetupData_fieldInit(){
  void *meta=beNDMWAfsSetupData_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804E418C,0x1);
- meta_setupFields(meta,lbl_804E4190,lbl_804E4194,lbl_804E4198,field);
+ meta_appendFields(meta,beNDMWAfsSetupData_fieldTypes,0x1);
+ meta_setupFields(meta,beNDMWAfsSetupData_fieldNames,beNDMWAfsSetupData_fieldStorage,beNDMWAfsSetupData_fieldOffsets,field);
 }
 void *beNDMWAfsStageLoad_getMeta(){
- if(!beNDMWAfsStageLoad_meta || !(reinterpret_cast<unsigned int *>(beNDMWAfsStageLoad_meta)[0x24/4]&4)) beNDMWAfsStageLoad_registerNow();
+ if(!beNDMWAfsStageLoad_meta || !(reinterpret_cast<unsigned int *>(beNDMWAfsStageLoad_meta)[0x24/4]&4)) beNDMWAfsStageLoad_arkRegister();
  return beNDMWAfsStageLoad_meta;
 }
 }

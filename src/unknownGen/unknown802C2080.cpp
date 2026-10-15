@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void bePadManager_registerNow();
+void bePadManager_arkRegister();
 extern char beParticleCtrl2_className[];
 extern char beParticleCtrl2_meta[];
 extern void *bePadManager_meta;
@@ -21,7 +21,7 @@ void beParticleCtrl2_register();
 void *beParticleCtrl2_getMetaCall();
 }
 extern "C" {
-void beParticleCtrl2_registerNow(){
+void beParticleCtrl2_arkRegister(){
  meta_registerNow((int)beParticleCtrl2_register);
 }
 void beParticleCtrl2_register(){
@@ -30,7 +30,7 @@ void beParticleCtrl2_register(){
 }
 void *beParticleCtrl2_getMetaCall(){return beParticleCtrl2_getMeta();}
 void *bePadManager_create(void *object){
- bePadManager_registerNow();
+ bePadManager_arkRegister();
  return meta_createInstance(bePadManager_meta,object);
 }
 void *bePadManager_metaObject(){
@@ -38,7 +38,7 @@ void *bePadManager_metaObject(){
  return bePadManager_meta;
 }
 void *bePadManager_getMeta(){
- if(!bePadManager_meta || !(reinterpret_cast<unsigned int *>(bePadManager_meta)[0x24/4]&4)) bePadManager_registerNow();
+ if(!bePadManager_meta || !(reinterpret_cast<unsigned int *>(bePadManager_meta)[0x24/4]&4)) bePadManager_arkRegister();
  return bePadManager_meta;
 }
 }

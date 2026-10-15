@@ -16,7 +16,7 @@ void beXboxImage24k_register();
 void *beXboxImage24k_getMetaCall();
 }
 extern "C" {
-void beXboxImage24k_registerNow(){
+void beXboxImage24k_arkRegister(){
  meta_registerNow((int)beXboxImage24k_register);
 }
 void beXboxImage24k_register(){

@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beMovie_registerNow();
+void beMovie_arkRegister();
 extern char lbl_8041CD10[];
 extern char lbl_804D0568[];
 extern char lbl_804D0578[];
@@ -20,7 +20,7 @@ void *fn_802C4E44(){
  return lbl_80534BE0;
 }
 void *beMovie_create(void *object){
- beMovie_registerNow();
+ beMovie_arkRegister();
  return meta_createInstance(beMovie_meta,object);
 }
 void *beMovie_metaObject(){
@@ -28,7 +28,7 @@ void *beMovie_metaObject(){
  return beMovie_meta;
 }
 void *beMovie_getMeta(){
- if(!beMovie_meta || !(reinterpret_cast<unsigned int *>(beMovie_meta)[0x24/4]&4)) beMovie_registerNow();
+ if(!beMovie_meta || !(reinterpret_cast<unsigned int *>(beMovie_meta)[0x24/4]&4)) beMovie_arkRegister();
  return beMovie_meta;
 }
 }

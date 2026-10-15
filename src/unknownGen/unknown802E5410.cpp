@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void beAction2InfoWork_registerNow();
+void beAction2InfoWork_arkRegister();
 extern char beActionStarter_className[];
 extern char beActionStarter_meta[];
 extern void *beAction2InfoWork_meta;
@@ -21,7 +21,7 @@ void beActionStarter_register();
 void *beActionStarter_getMetaCall();
 }
 extern "C" {
-void beActionStarter_registerNow(){
+void beActionStarter_arkRegister(){
  meta_registerNow((int)beActionStarter_register);
 }
 void beActionStarter_register(){
@@ -30,7 +30,7 @@ void beActionStarter_register(){
 }
 void *beActionStarter_getMetaCall(){return beActionStarter_getMeta();}
 void *beAction2InfoWork_create(void *object){
- beAction2InfoWork_registerNow();
+ beAction2InfoWork_arkRegister();
  return meta_createInstance(beAction2InfoWork_meta,object);
 }
 void *beAction2InfoWork_metaObject(){
@@ -38,7 +38,7 @@ void *beAction2InfoWork_metaObject(){
  return beAction2InfoWork_meta;
 }
 void *beAction2InfoWork_getMeta(){
- if(!beAction2InfoWork_meta || !(reinterpret_cast<unsigned int *>(beAction2InfoWork_meta)[0x24/4]&4)) beAction2InfoWork_registerNow();
+ if(!beAction2InfoWork_meta || !(reinterpret_cast<unsigned int *>(beAction2InfoWork_meta)[0x24/4]&4)) beAction2InfoWork_arkRegister();
  return beAction2InfoWork_meta;
 }
 }

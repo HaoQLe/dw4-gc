@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beMessengerWorkList_registerNow();
+void beMessengerWorkList_arkRegister();
 extern void *beMessengerWorkList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beMessengerWorkList_metaObject(){
  return beMessengerWorkList_meta;
 }
 void *beMessengerWorkList_getMeta(){
- if(!beMessengerWorkList_meta || !(reinterpret_cast<unsigned int *>(beMessengerWorkList_meta)[0x24/4]&4)) beMessengerWorkList_registerNow();
+ if(!beMessengerWorkList_meta || !(reinterpret_cast<unsigned int *>(beMessengerWorkList_meta)[0x24/4]&4)) beMessengerWorkList_arkRegister();
  return beMessengerWorkList_meta;
 }
 }

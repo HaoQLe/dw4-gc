@@ -8,7 +8,7 @@ void *fn_802AD8A0();
 void fn_803250AC();
 void igInsightPlugin_register();
 extern char libNdmwRuntimePlugin_className[];
-extern char lbl_804E1500[];
+extern char libNdmwRuntimePlugin_dependencies[];
 extern char libNdmwRuntimePlugin_meta[];
 void libNdmwRuntimePlugin_fieldInit();
 void *libNdmwRuntimePlugin_getMeta();
@@ -17,12 +17,12 @@ void libNdmwRuntimePlugin_register();
 void *libNdmwRuntimePlugin_getMetaCall();
 }
 extern "C" {
-void libNdmwRuntimePlugin_registerNow(){
+void libNdmwRuntimePlugin_arkRegister(){
  meta_registerNow((int)libNdmwRuntimePlugin_register);
 }
 void libNdmwRuntimePlugin_register(){
  fn_803250AC();
- meta_registerClass(0,(int)libNdmwRuntimePlugin_meta,(int)igInsightPlugin_register,(int)fn_802AD8A0,(int)libNdmwRuntimePlugin_getMetaCall,(int)libNdmwRuntimePlugin_className,92,(int)libNdmwRuntimePlugin_vtableRead,(int)libNdmwRuntimePlugin_fieldInit,0,(int)lbl_804E1500);
+ meta_registerClass(0,(int)libNdmwRuntimePlugin_meta,(int)igInsightPlugin_register,(int)fn_802AD8A0,(int)libNdmwRuntimePlugin_getMetaCall,(int)libNdmwRuntimePlugin_className,92,(int)libNdmwRuntimePlugin_vtableRead,(int)libNdmwRuntimePlugin_fieldInit,0,(int)libNdmwRuntimePlugin_dependencies);
 }
 void *libNdmwRuntimePlugin_getMetaCall(){return libNdmwRuntimePlugin_getMeta();}
 }

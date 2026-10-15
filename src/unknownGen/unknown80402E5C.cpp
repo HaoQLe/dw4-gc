@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void igObject_construct(void *);
 void fn_80402F78(void *,short);
-void igViewerStatisticsManager_registerNow();
+void igViewerStatisticsManager_arkRegister();
 extern char igViewerStatisticsManager_vtable[];
 extern void *igViewerStatisticsManager_meta;
 extern void *lbl_805621F4;
@@ -31,7 +31,7 @@ void *igViewerStatisticsManager_metaObject(){
  return igViewerStatisticsManager_meta;
 }
 void *igViewerStatisticsManager_getMeta(){
- if(!igViewerStatisticsManager_meta || !(reinterpret_cast<unsigned int *>(igViewerStatisticsManager_meta)[0x24/4]&4)) igViewerStatisticsManager_registerNow();
+ if(!igViewerStatisticsManager_meta || !(reinterpret_cast<unsigned int *>(igViewerStatisticsManager_meta)[0x24/4]&4)) igViewerStatisticsManager_arkRegister();
  return igViewerStatisticsManager_meta;
 }
 void *igViewerStatisticsManager_vtableRead(){

@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beMatCtrl_registerNow();
+void beMatCtrl_arkRegister();
 extern char lbl_8041CD10[];
 extern char lbl_804D174C[];
 extern char lbl_804D1764[];
@@ -20,7 +20,7 @@ void *fn_802D1124(){
  return lbl_805350CC;
 }
 void *beMatCtrl_create(void *object){
- beMatCtrl_registerNow();
+ beMatCtrl_arkRegister();
  return meta_createInstance(beMatCtrl_meta,object);
 }
 void *beMatCtrl_metaObject(){
@@ -28,7 +28,7 @@ void *beMatCtrl_metaObject(){
  return beMatCtrl_meta;
 }
 void *beMatCtrl_getMeta(){
- if(!beMatCtrl_meta || !(reinterpret_cast<unsigned int *>(beMatCtrl_meta)[0x24/4]&4)) beMatCtrl_registerNow();
+ if(!beMatCtrl_meta || !(reinterpret_cast<unsigned int *>(beMatCtrl_meta)[0x24/4]&4)) beMatCtrl_arkRegister();
  return beMatCtrl_meta;
 }
 }

@@ -16,7 +16,7 @@ extern char igMessage_vtable[];
 extern void *igViewportResizedMessage_meta;
 void *igViewportResizedMessage_getMeta();
 void *igViewportResizedMessage_vtableRead();
-void igViewportResizedMessage_registerNow();
+void igViewportResizedMessage_arkRegister();
 void igViewportResizedMessage_register();
 void *igViewportResizedMessage_getMetaCall();
 }
@@ -26,11 +26,11 @@ struct UnknownGenObject8028686C_0 {
 };
 extern "C" {
 void *igViewportResizedMessage_create(void *object){
- igViewportResizedMessage_registerNow();
+ igViewportResizedMessage_arkRegister();
  return meta_createInstance(igViewportResizedMessage_meta,object);
 }
 void *igViewportResizedMessage_getMeta(){
- if(!igViewportResizedMessage_meta || !(reinterpret_cast<unsigned int *>(igViewportResizedMessage_meta)[0x24/4]&4)) igViewportResizedMessage_registerNow();
+ if(!igViewportResizedMessage_meta || !(reinterpret_cast<unsigned int *>(igViewportResizedMessage_meta)[0x24/4]&4)) igViewportResizedMessage_arkRegister();
  return igViewportResizedMessage_meta;
 }
 void *igViewportResizedMessage_vtableRead(){
@@ -40,7 +40,7 @@ void *igViewportResizedMessage_vtableRead(){
  object.unknown00=igViewportResizedMessage_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igViewportResizedMessage_registerNow(){
+void igViewportResizedMessage_arkRegister(){
  meta_registerNow((int)igViewportResizedMessage_register);
 }
 void igViewportResizedMessage_register(){

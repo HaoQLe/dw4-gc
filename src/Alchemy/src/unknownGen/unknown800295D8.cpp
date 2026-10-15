@@ -16,7 +16,7 @@ extern char lbl_80476E0C[];
 extern void *igNonRefCountedObjectList_meta;
 void *igNonRefCountedObjectList_getMeta();
 void *igNonRefCountedObjectList_vtableRead();
-void igNonRefCountedObjectList_registerNow();
+void igNonRefCountedObjectList_arkRegister();
 void igNonRefCountedObjectList_register();
 void *igNonRefCountedObjectList_getMetaCall();
 }
@@ -26,7 +26,7 @@ struct UnknownGenObject80029614_0 {
 };
 extern "C" {
 void *igNonRefCountedObjectList_getMeta(){
- if(!igNonRefCountedObjectList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedObjectList_meta)[0x24/4]&4)) igNonRefCountedObjectList_registerNow();
+ if(!igNonRefCountedObjectList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedObjectList_meta)[0x24/4]&4)) igNonRefCountedObjectList_arkRegister();
  return igNonRefCountedObjectList_meta;
 }
 void *igNonRefCountedObjectList_vtableRead(){
@@ -37,7 +37,7 @@ void *igNonRefCountedObjectList_vtableRead(){
  object.unknown00=igNonRefCountedObjectList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNonRefCountedObjectList_registerNow(){
+void igNonRefCountedObjectList_arkRegister(){
  meta_registerNow((int)igNonRefCountedObjectList_register);
 }
 void igNonRefCountedObjectList_register(){

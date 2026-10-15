@@ -11,7 +11,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_801AA6DC();
 void fn_801C7E6C(void *,short);
-void igAttrStackManager_registerNow();
+void igAttrStackManager_arkRegister();
 void igNonRefCountedObjectList_register();
 extern char igDataList_vtable[];
 extern char igNonRefCountedObjectList_vtable[];
@@ -20,13 +20,13 @@ extern char igNonRefCountedAttrStackManagerList_className[];
 extern char igAttrStackManager_vtable[];
 extern char igNonRefCountedAttrStackManagerList_vtable[];
 extern char lbl_804B6BFC[];
-extern char lbl_80560858[8];
+extern char igNonRefCountedAttrStackManagerList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igNonRefCountedAttrStackManagerList_meta;
 extern void *igAttrStackManager_meta;
 void *igNonRefCountedAttrStackManagerList_getMeta();
 void *igNonRefCountedAttrStackManagerList_vtableRead();
-void igNonRefCountedAttrStackManagerList_registerNow();
+void igNonRefCountedAttrStackManagerList_arkRegister();
 void igNonRefCountedAttrStackManagerList_register();
 void *igNonRefCountedAttrStackManagerList_getMetaCall();
 }
@@ -54,11 +54,11 @@ struct UnknownGenObject801C7DE8 {
 };
 extern "C" {
 void *igNonRefCountedAttrStackManagerList_create(void *object){
- igNonRefCountedAttrStackManagerList_registerNow();
+ igNonRefCountedAttrStackManagerList_arkRegister();
  return meta_createInstance(igNonRefCountedAttrStackManagerList_meta,object);
 }
 void *igNonRefCountedAttrStackManagerList_getMeta(){
- if(!igNonRefCountedAttrStackManagerList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedAttrStackManagerList_meta)[0x24/4]&4)) igNonRefCountedAttrStackManagerList_registerNow();
+ if(!igNonRefCountedAttrStackManagerList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedAttrStackManagerList_meta)[0x24/4]&4)) igNonRefCountedAttrStackManagerList_arkRegister();
  return igNonRefCountedAttrStackManagerList_meta;
 }
 void *igNonRefCountedAttrStackManagerList_vtableRead(){
@@ -71,12 +71,12 @@ void *igNonRefCountedAttrStackManagerList_vtableRead(){
  object.unknown00=igNonRefCountedAttrStackManagerList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNonRefCountedAttrStackManagerList_registerNow(){
+void igNonRefCountedAttrStackManagerList_arkRegister(){
  meta_registerNow((int)igNonRefCountedAttrStackManagerList_register);
 }
 void igNonRefCountedAttrStackManagerList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igNonRefCountedAttrStackManagerList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igNonRefCountedAttrStackManagerList_getMetaCall,(int)igNonRefCountedAttrStackManagerList_className,20,(int)igNonRefCountedAttrStackManagerList_vtableRead,0,0,(int)lbl_80560858);
+ meta_registerClass(0,(int)&igNonRefCountedAttrStackManagerList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igNonRefCountedAttrStackManagerList_getMetaCall,(int)igNonRefCountedAttrStackManagerList_className,20,(int)igNonRefCountedAttrStackManagerList_vtableRead,0,0,(int)igNonRefCountedAttrStackManagerList_dependencies);
 }
 void *igNonRefCountedAttrStackManagerList_getMetaCall(){return igNonRefCountedAttrStackManagerList_getMeta();}
 void *fn_801C7D70(){
@@ -84,7 +84,7 @@ void *fn_801C7D70(){
  return igAttrStackManager_meta;
 }
 void *igAttrStackManager_getMeta(){
- if(!igAttrStackManager_meta || !(reinterpret_cast<unsigned int *>(igAttrStackManager_meta)[0x24/4]&4)) igAttrStackManager_registerNow();
+ if(!igAttrStackManager_meta || !(reinterpret_cast<unsigned int *>(igAttrStackManager_meta)[0x24/4]&4)) igAttrStackManager_arkRegister();
  return igAttrStackManager_meta;
 }
 void *igAttrStackManager_vtableRead(){

@@ -16,7 +16,7 @@ void beNDMWItemWaza_register();
 void *beNDMWItemWaza_getMetaCall();
 }
 extern "C" {
-void beNDMWItemWaza_registerNow(){
+void beNDMWItemWaza_arkRegister(){
  meta_registerNow((int)beNDMWItemWaza_register);
 }
 void beNDMWItemWaza_register(){

@@ -32,13 +32,13 @@ extern char lbl_804934D4[];
 extern char igGfxShaderDefine_vtable[];
 extern char igGfxShaderDefineList_vtable[];
 extern char lbl_804935F8[];
-extern char lbl_8055EC78[8];
-extern char lbl_8055EC80[8];
-extern char lbl_8055EC88[8];
-extern char lbl_8055EC98[8];
-extern char lbl_8055ECA0[8];
-extern char lbl_8055ECA8[8];
-extern char lbl_8055ECB0[8];
+extern char igGfxShaderDefineList_dependencies[8];
+extern char igGfxShaderDefine_dependencies[8];
+extern char igGfxShaderDefine_fieldTypes[8];
+extern char igGfxShaderDefine_fieldNames[8];
+extern char igGfxShaderDefine_fieldStorage[8];
+extern char igGfxShaderDefine_fieldOffsets[8];
+extern char igTextureSamplerSourceList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igObject_meta;
 extern void *igGfxShaderDefineList_meta;
@@ -47,23 +47,23 @@ extern void *igTextureSamplerSourceList_meta;
 extern void *igTextureSamplerSource_meta;
 void *igGfxShaderDefineList_getMeta();
 void *igGfxShaderDefineList_vtableRead();
-void igGfxShaderDefineList_registerNow();
+void igGfxShaderDefineList_arkRegister();
 void igGfxShaderDefineList_register();
 void *igGfxShaderDefineList_getMetaCall();
 void *igGfxShaderDefine_getMeta();
 void *igGfxShaderDefine_vtableRead();
-void igGfxShaderDefine_registerNow();
+void igGfxShaderDefine_arkRegister();
 void igGfxShaderDefine_register();
 void *igGfxShaderDefine_getMetaCall();
 void igGfxShaderDefine_fieldInit();
 void *igTextureSamplerSourceList_getMeta();
 void *igTextureSamplerSourceList_vtableRead();
-void igTextureSamplerSourceList_registerNow();
+void igTextureSamplerSourceList_arkRegister();
 void igTextureSamplerSourceList_register();
 void *igTextureSamplerSourceList_getMetaCall();
 void *igTextureSamplerSource_getMeta();
 void *igTextureSamplerSource_vtableRead();
-void igTextureSamplerSource_registerNow();
+void igTextureSamplerSource_arkRegister();
 void igTextureSamplerSource_register();
 void *igTextureSamplerSource_getMetaCall();
 }
@@ -110,7 +110,7 @@ void *fn_800D3FC4(){
  return igGfxShaderDefineList_meta;
 }
 void *igGfxShaderDefineList_getMeta(){
- if(!igGfxShaderDefineList_meta || !(reinterpret_cast<unsigned int *>(igGfxShaderDefineList_meta)[0x24/4]&4)) igGfxShaderDefineList_registerNow();
+ if(!igGfxShaderDefineList_meta || !(reinterpret_cast<unsigned int *>(igGfxShaderDefineList_meta)[0x24/4]&4)) igGfxShaderDefineList_arkRegister();
  return igGfxShaderDefineList_meta;
 }
 void *igGfxShaderDefineList_vtableRead(){
@@ -123,16 +123,16 @@ void *igGfxShaderDefineList_vtableRead(){
  object.unknown00=igGfxShaderDefineList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGfxShaderDefineList_registerNow(){
+void igGfxShaderDefineList_arkRegister(){
  meta_registerNow((int)igGfxShaderDefineList_register);
 }
 void igGfxShaderDefineList_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igGfxShaderDefineList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igGfxShaderDefineList_getMetaCall,(int)igGfxShaderDefineList_className,20,(int)igGfxShaderDefineList_vtableRead,0,0,(int)lbl_8055EC78);
+ meta_registerClass(0,(int)&igGfxShaderDefineList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igGfxShaderDefineList_getMetaCall,(int)igGfxShaderDefineList_className,20,(int)igGfxShaderDefineList_vtableRead,0,0,(int)igGfxShaderDefineList_dependencies);
 }
 void *igGfxShaderDefineList_getMetaCall(){return igGfxShaderDefineList_getMeta();}
 void *igGfxShaderDefine_getMeta(){
- if(!igGfxShaderDefine_meta || !(reinterpret_cast<unsigned int *>(igGfxShaderDefine_meta)[0x24/4]&4)) igGfxShaderDefine_registerNow();
+ if(!igGfxShaderDefine_meta || !(reinterpret_cast<unsigned int *>(igGfxShaderDefine_meta)[0x24/4]&4)) igGfxShaderDefine_arkRegister();
  return igGfxShaderDefine_meta;
 }
 void *igGfxShaderDefine_vtableRead(){
@@ -143,30 +143,30 @@ void *igGfxShaderDefine_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGfxShaderDefine_registerNow(){
+void igGfxShaderDefine_arkRegister(){
  meta_registerNow((int)igGfxShaderDefine_register);
 }
 void igGfxShaderDefine_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igGfxShaderDefine_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igGfxShaderDefine_getMetaCall,(int)igGfxShaderDefine_className,20,(int)igGfxShaderDefine_vtableRead,(int)igGfxShaderDefine_fieldInit,0,(int)lbl_8055EC80);
+ meta_registerClass(0,(int)&igGfxShaderDefine_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igGfxShaderDefine_getMetaCall,(int)igGfxShaderDefine_className,20,(int)igGfxShaderDefine_vtableRead,(int)igGfxShaderDefine_fieldInit,0,(int)igGfxShaderDefine_dependencies);
 }
 void *igGfxShaderDefine_getMetaCall(){return igGfxShaderDefine_getMeta();}
 void igGfxShaderDefine_fieldInit(){
  void *value0=igGfxShaderDefine_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055EC88,2);
+ meta_appendFields(value0,igGfxShaderDefine_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=igObject_meta;
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8003EC68(value3,1);
- meta_setupFields(value0,lbl_8055EC98,lbl_8055ECA0,lbl_8055ECA8,value1);
+ meta_setupFields(value0,igGfxShaderDefine_fieldNames,igGfxShaderDefine_fieldStorage,igGfxShaderDefine_fieldOffsets,value1);
 }
 void *fn_800D43C8(){
  if(!igTextureSamplerSourceList_meta) igTextureSamplerSourceList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igTextureSamplerSourceList_meta;
 }
 void *igTextureSamplerSourceList_getMeta(){
- if(!igTextureSamplerSourceList_meta || !(reinterpret_cast<unsigned int *>(igTextureSamplerSourceList_meta)[0x24/4]&4)) igTextureSamplerSourceList_registerNow();
+ if(!igTextureSamplerSourceList_meta || !(reinterpret_cast<unsigned int *>(igTextureSamplerSourceList_meta)[0x24/4]&4)) igTextureSamplerSourceList_arkRegister();
  return igTextureSamplerSourceList_meta;
 }
 void *igTextureSamplerSourceList_vtableRead(){
@@ -179,16 +179,16 @@ void *igTextureSamplerSourceList_vtableRead(){
  object.unknown00=igTextureSamplerSourceList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTextureSamplerSourceList_registerNow(){
+void igTextureSamplerSourceList_arkRegister(){
  meta_registerNow((int)igTextureSamplerSourceList_register);
 }
 void igTextureSamplerSourceList_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igTextureSamplerSourceList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igTextureSamplerSourceList_getMetaCall,(int)igTextureSamplerSourceList_className,20,(int)igTextureSamplerSourceList_vtableRead,0,0,(int)lbl_8055ECB0);
+ meta_registerClass(0,(int)&igTextureSamplerSourceList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igTextureSamplerSourceList_getMetaCall,(int)igTextureSamplerSourceList_className,20,(int)igTextureSamplerSourceList_vtableRead,0,0,(int)igTextureSamplerSourceList_dependencies);
 }
 void *igTextureSamplerSourceList_getMetaCall(){return igTextureSamplerSourceList_getMeta();}
 void *igTextureSamplerSource_getMeta(){
- if(!igTextureSamplerSource_meta || !(reinterpret_cast<unsigned int *>(igTextureSamplerSource_meta)[0x24/4]&4)) igTextureSamplerSource_registerNow();
+ if(!igTextureSamplerSource_meta || !(reinterpret_cast<unsigned int *>(igTextureSamplerSource_meta)[0x24/4]&4)) igTextureSamplerSource_arkRegister();
  return igTextureSamplerSource_meta;
 }
 void *igTextureSamplerSource_vtableRead(){
@@ -198,7 +198,7 @@ void *igTextureSamplerSource_vtableRead(){
  object.unknown00=igTextureSamplerSource_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTextureSamplerSource_registerNow(){
+void igTextureSamplerSource_arkRegister(){
  meta_registerNow((int)igTextureSamplerSource_register);
 }
 void igTextureSamplerSource_register(){

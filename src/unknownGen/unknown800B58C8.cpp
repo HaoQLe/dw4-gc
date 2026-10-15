@@ -23,19 +23,19 @@ extern char lbl_8047D578[];
 extern char igLightList_vtable[];
 extern char lbl_8047DC7C[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E40C[8];
-extern char lbl_8055E414[8];
+extern char igLightList_dependencies[8];
+extern char igLightAttr_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igLightList_meta;
 extern void *igLightAttr_meta;
 void *igLightList_getMeta();
 void *igLightList_vtableRead();
-void igLightList_registerNow();
+void igLightList_arkRegister();
 void igLightList_register();
 void *igLightList_getMetaCall();
 void *igLightAttr_getMeta();
 void *igLightAttr_vtableRead();
-void igLightAttr_registerNow();
+void igLightAttr_arkRegister();
 void igLightAttr_register();
 void *igLightAttr_getMetaCall();
 }
@@ -60,7 +60,7 @@ void *fn_800B58C8(){
  return igLightList_meta;
 }
 void *igLightList_getMeta(){
- if(!igLightList_meta || !(reinterpret_cast<unsigned int *>(igLightList_meta)[0x24/4]&4)) igLightList_registerNow();
+ if(!igLightList_meta || !(reinterpret_cast<unsigned int *>(igLightList_meta)[0x24/4]&4)) igLightList_arkRegister();
  return igLightList_meta;
 }
 void *igLightList_vtableRead(){
@@ -73,12 +73,12 @@ void *igLightList_vtableRead(){
  object.unknown00=igLightList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igLightList_registerNow(){
+void igLightList_arkRegister(){
  meta_registerNow((int)igLightList_register);
 }
 void igLightList_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igLightList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igLightList_getMetaCall,(int)igLightList_className,20,(int)igLightList_vtableRead,0,0,(int)lbl_8055E40C);
+ meta_registerClass(0,(int)&igLightList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igLightList_getMetaCall,(int)igLightList_className,20,(int)igLightList_vtableRead,0,0,(int)igLightList_dependencies);
 }
 void *igLightList_getMetaCall(){return igLightList_getMeta();}
 void *fn_800B5A64(){
@@ -86,7 +86,7 @@ void *fn_800B5A64(){
  return igLightAttr_meta;
 }
 void *igLightAttr_getMeta(){
- if(!igLightAttr_meta || !(reinterpret_cast<unsigned int *>(igLightAttr_meta)[0x24/4]&4)) igLightAttr_registerNow();
+ if(!igLightAttr_meta || !(reinterpret_cast<unsigned int *>(igLightAttr_meta)[0x24/4]&4)) igLightAttr_arkRegister();
  return igLightAttr_meta;
 }
 void *igLightAttr_vtableRead(){
@@ -97,12 +97,12 @@ void *igLightAttr_vtableRead(){
  object.unknown8C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igLightAttr_registerNow(){
+void igLightAttr_arkRegister(){
  meta_registerNow((int)igLightAttr_register);
 }
 void igLightAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igLightAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igLightAttr_getMetaCall,(int)igLightAttr_className,148,(int)igLightAttr_vtableRead,(int)igLightAttr_fieldInit,0,(int)lbl_8055E414);
+ meta_registerClass(0,(int)&igLightAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igLightAttr_getMetaCall,(int)igLightAttr_className,148,(int)igLightAttr_vtableRead,(int)igLightAttr_fieldInit,0,(int)igLightAttr_dependencies);
 }
 void *igLightAttr_getMetaCall(){return igLightAttr_getMeta();}
 }

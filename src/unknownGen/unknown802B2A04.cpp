@@ -27,7 +27,7 @@ UnknownGenHolder *dtor_802B2A04(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beWeaponInfoRam_registerNow(){
+void beWeaponInfoRam_arkRegister(){
  meta_registerNow((int)beWeaponInfoRam_register);
 }
 void beWeaponInfoRam_register(){

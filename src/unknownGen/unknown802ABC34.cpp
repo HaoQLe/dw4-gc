@@ -6,7 +6,7 @@ void *fn_80023CF4();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802AA788();
-void igCriMovieCodec_registerNow();
+void igCriMovieCodec_arkRegister();
 void *igMovieCodec_getMeta();
 void igMovieCodec_vtableRead();
 void igNamedObject_register();
@@ -17,7 +17,7 @@ void igMovieCodec_register();
 void *igMovieCodec_getMetaCall();
 }
 extern "C" {
-void igMovieCodec_registerNow(){
+void igMovieCodec_arkRegister(){
  meta_registerNow((int)igMovieCodec_register);
 }
 void igMovieCodec_register(){
@@ -26,7 +26,7 @@ void igMovieCodec_register(){
 }
 void *igMovieCodec_getMetaCall(){return igMovieCodec_getMeta();}
 void *igCriMovieCodec_getMeta(){
- if(!igCriMovieCodec_meta || !(reinterpret_cast<unsigned int *>(igCriMovieCodec_meta)[0x24/4]&4)) igCriMovieCodec_registerNow();
+ if(!igCriMovieCodec_meta || !(reinterpret_cast<unsigned int *>(igCriMovieCodec_meta)[0x24/4]&4)) igCriMovieCodec_arkRegister();
  return igCriMovieCodec_meta;
 }
 }

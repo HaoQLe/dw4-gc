@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beFont_registerNow();
+void beFont_arkRegister();
 extern char lbl_8041CD10[];
 extern char lbl_8041FBD8[];
 extern char lbl_804202E4[];
@@ -36,7 +36,7 @@ void *fn_802D9998(){
  return lbl_80535354;
 }
 void *beFont_create(void *object){
- beFont_registerNow();
+ beFont_arkRegister();
  return meta_createInstance(beFont_meta,object);
 }
 void *beFont_metaObject(){
@@ -44,7 +44,7 @@ void *beFont_metaObject(){
  return beFont_meta;
 }
 void *beFont_getMeta(){
- if(!beFont_meta || !(reinterpret_cast<unsigned int *>(beFont_meta)[0x24/4]&4)) beFont_registerNow();
+ if(!beFont_meta || !(reinterpret_cast<unsigned int *>(beFont_meta)[0x24/4]&4)) beFont_arkRegister();
  return beFont_meta;
 }
 }

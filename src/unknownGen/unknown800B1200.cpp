@@ -16,7 +16,7 @@ extern char lbl_8047E50C[];
 extern void *igSceneAmbientColorAttr_meta;
 void *igSceneAmbientColorAttr_getMeta();
 void *igSceneAmbientColorAttr_vtableRead();
-void igSceneAmbientColorAttr_registerNow();
+void igSceneAmbientColorAttr_arkRegister();
 void igSceneAmbientColorAttr_register();
 void *igSceneAmbientColorAttr_getMetaCall();
 }
@@ -26,7 +26,7 @@ struct UnknownGenObject800B123C_0 {
 };
 extern "C" {
 void *igSceneAmbientColorAttr_getMeta(){
- if(!igSceneAmbientColorAttr_meta || !(reinterpret_cast<unsigned int *>(igSceneAmbientColorAttr_meta)[0x24/4]&4)) igSceneAmbientColorAttr_registerNow();
+ if(!igSceneAmbientColorAttr_meta || !(reinterpret_cast<unsigned int *>(igSceneAmbientColorAttr_meta)[0x24/4]&4)) igSceneAmbientColorAttr_arkRegister();
  return igSceneAmbientColorAttr_meta;
 }
 void *igSceneAmbientColorAttr_vtableRead(){
@@ -37,7 +37,7 @@ void *igSceneAmbientColorAttr_vtableRead(){
  object.unknown00=igSceneAmbientColorAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSceneAmbientColorAttr_registerNow(){
+void igSceneAmbientColorAttr_arkRegister(){
  meta_registerNow((int)igSceneAmbientColorAttr_register);
 }
 void igSceneAmbientColorAttr_register(){

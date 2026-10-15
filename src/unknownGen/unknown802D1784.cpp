@@ -16,7 +16,7 @@ void beLuaState_register();
 void *beLuaState_getMetaCall();
 }
 extern "C" {
-void beLuaState_registerNow(){
+void beLuaState_arkRegister(){
  meta_registerNow((int)beLuaState_register);
 }
 void beLuaState_register(){

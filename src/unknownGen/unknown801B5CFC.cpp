@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igPlanarShadowShader_registerNow();
+void igPlanarShadowShader_arkRegister();
 extern void *lbl_805621F4;
 extern void *igPlanarShadowShader_meta;
 }
@@ -14,7 +14,7 @@ void *fn_801B5CFC(){
  return igPlanarShadowShader_meta;
 }
 void *igPlanarShadowShader_getMeta(){
- if(!igPlanarShadowShader_meta || !(reinterpret_cast<unsigned int *>(igPlanarShadowShader_meta)[0x24/4]&4)) igPlanarShadowShader_registerNow();
+ if(!igPlanarShadowShader_meta || !(reinterpret_cast<unsigned int *>(igPlanarShadowShader_meta)[0x24/4]&4)) igPlanarShadowShader_arkRegister();
  return igPlanarShadowShader_meta;
 }
 }

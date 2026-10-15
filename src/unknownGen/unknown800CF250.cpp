@@ -18,14 +18,14 @@ extern char igNamedObject_vtable[];
 extern char lbl_80480EC0[];
 extern char igVertexStream_className[];
 extern char igVertexStream_vtable[];
-extern char lbl_8055EA8C[8];
+extern char igVertexStream_dependencies[8];
 extern void *lbl_805621F4;
 extern void *lbl_80562D94;
 extern void *lbl_80562D98;
 extern void *igVertexStream_meta;
 void *igVertexStream_getMeta();
 void *igVertexStream_vtableRead();
-void igVertexStream_registerNow();
+void igVertexStream_arkRegister();
 void igVertexStream_register();
 void *igVertexStream_getMetaCall();
 }
@@ -58,7 +58,7 @@ void *fn_800CF2BC(){
  return lbl_80562D98;
 }
 void *igVertexStream_create(void *object){
- igVertexStream_registerNow();
+ igVertexStream_arkRegister();
  return meta_createInstance(igVertexStream_meta,object);
 }
 void *fn_800CF340(){
@@ -66,7 +66,7 @@ void *fn_800CF340(){
  return igVertexStream_meta;
 }
 void *igVertexStream_getMeta(){
- if(!igVertexStream_meta || !(reinterpret_cast<unsigned int *>(igVertexStream_meta)[0x24/4]&4)) igVertexStream_registerNow();
+ if(!igVertexStream_meta || !(reinterpret_cast<unsigned int *>(igVertexStream_meta)[0x24/4]&4)) igVertexStream_arkRegister();
  return igVertexStream_meta;
 }
 void *igVertexStream_vtableRead(){
@@ -77,12 +77,12 @@ void *igVertexStream_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVertexStream_registerNow(){
+void igVertexStream_arkRegister(){
  meta_registerNow((int)igVertexStream_register);
 }
 void igVertexStream_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igVertexStream_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igVertexStream_getMetaCall,(int)igVertexStream_className,36,(int)igVertexStream_vtableRead,(int)igVertexStream_fieldInit,0,(int)lbl_8055EA8C);
+ meta_registerClass(0,(int)&igVertexStream_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igVertexStream_getMetaCall,(int)igVertexStream_className,36,(int)igVertexStream_vtableRead,(int)igVertexStream_fieldInit,0,(int)igVertexStream_dependencies);
 }
 void *igVertexStream_getMetaCall(){return igVertexStream_getMeta();}
 }

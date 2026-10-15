@@ -23,20 +23,20 @@ void *bePadManager_metaObject();
 void *beMessenger_metaObject();
 void fn_803250AC();
 void *beNDMWWindowList_metaObject();
-void beNDMWTitle2Info_registerNow();
+void beNDMWTitle2Info_arkRegister();
 void igObjectList_register();
 void igObject_register();
 extern char beNDMWWindowList_className[];
 extern char lbl_80453220[];
 extern char beNDMWWindow_className[];
-extern char lbl_804E16A8[];
+extern char beNDMWWindowList_dependencies[];
 extern char lbl_804E16B0[];
 extern char lbl_804E16DC[];
-extern char lbl_804E1708[];
-extern char lbl_804E1724[];
-extern char lbl_804E176C[];
-extern char lbl_804E17B4[];
-extern char lbl_804E17FC[];
+extern char beNDMWWindow_dependencies[];
+extern char beNDMWWindow_fieldTypes[];
+extern char beNDMWWindow_fieldNames[];
+extern char beNDMWWindow_fieldStorage[];
+extern char beNDMWWindow_fieldOffsets[];
 extern char beNDMWWindowList_meta[];
 extern void *lbl_80535C7C;
 extern void *beNDMWWindow_meta;
@@ -46,18 +46,18 @@ void beNDMWWindowList_register();
 void *beNDMWWindowList_getMetaCall();
 void *beNDMWWindow_metaObject();
 void *beNDMWWindow_getMeta();
-void beNDMWWindow_registerNow();
+void beNDMWWindow_arkRegister();
 void beNDMWWindow_register();
 void *beNDMWWindow_getMetaCall();
 void beNDMWWindow_fieldInit();
 }
 extern "C" {
-void beNDMWWindowList_registerNow(){
+void beNDMWWindowList_arkRegister(){
  meta_registerNow((int)beNDMWWindowList_register);
 }
 void beNDMWWindowList_register(){
  fn_803250AC();
- meta_registerClass(0,(int)beNDMWWindowList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beNDMWWindowList_getMetaCall,(int)beNDMWWindowList_className,20,(int)beNDMWWindowList_vtableRead,0,0,(int)lbl_804E16A8);
+ meta_registerClass(0,(int)beNDMWWindowList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beNDMWWindowList_getMetaCall,(int)beNDMWWindowList_className,20,(int)beNDMWWindowList_vtableRead,0,0,(int)beNDMWWindowList_dependencies);
 }
 void *beNDMWWindowList_getMetaCall(){return beNDMWWindowList_getMeta();}
 void *fn_80325B44(){
@@ -69,21 +69,21 @@ void *beNDMWWindow_metaObject(){
  return beNDMWWindow_meta;
 }
 void *beNDMWWindow_getMeta(){
- if(!beNDMWWindow_meta || !(reinterpret_cast<unsigned int *>(beNDMWWindow_meta)[0x24/4]&4)) beNDMWWindow_registerNow();
+ if(!beNDMWWindow_meta || !(reinterpret_cast<unsigned int *>(beNDMWWindow_meta)[0x24/4]&4)) beNDMWWindow_arkRegister();
  return beNDMWWindow_meta;
 }
-void beNDMWWindow_registerNow(){
+void beNDMWWindow_arkRegister(){
  meta_registerNow((int)beNDMWWindow_register);
 }
 void beNDMWWindow_register(){
  fn_803250AC();
- meta_registerClass(1,(int)&beNDMWWindow_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWWindow_getMetaCall,(int)beNDMWWindow_className,80,0,(int)beNDMWWindow_fieldInit,0,(int)lbl_804E1708);
+ meta_registerClass(1,(int)&beNDMWWindow_meta,(int)igObject_register,(int)fn_800237D0,(int)beNDMWWindow_getMetaCall,(int)beNDMWWindow_className,80,0,(int)beNDMWWindow_fieldInit,0,(int)beNDMWWindow_dependencies);
 }
 void *beNDMWWindow_getMetaCall(){return beNDMWWindow_getMeta();}
 void beNDMWWindow_fieldInit(){
  void *value0=beNDMWWindow_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E1724,18);
+ meta_appendFields(value0,beNDMWWindow_fieldTypes,18);
  void *value2=meta_field(value0,value1);
  void *value3=igInsightCore_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -125,10 +125,10 @@ void beNDMWWindow_fieldInit(){
  void *value22=fn_80024B94();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value21)+56)=value22;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value21)+52)=1;
- meta_setupFields(value0,lbl_804E176C,lbl_804E17B4,lbl_804E17FC,value1);
+ meta_setupFields(value0,beNDMWWindow_fieldNames,beNDMWWindow_fieldStorage,beNDMWWindow_fieldOffsets,value1);
 }
 void *beNDMWTitle2Info_getMeta(){
- if(!beNDMWTitle2Info_meta || !(reinterpret_cast<unsigned int *>(beNDMWTitle2Info_meta)[0x24/4]&4)) beNDMWTitle2Info_registerNow();
+ if(!beNDMWTitle2Info_meta || !(reinterpret_cast<unsigned int *>(beNDMWTitle2Info_meta)[0x24/4]&4)) beNDMWTitle2Info_arkRegister();
  return beNDMWTitle2Info_meta;
 }
 }

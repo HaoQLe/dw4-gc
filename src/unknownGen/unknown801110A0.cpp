@@ -5,7 +5,7 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void igObject_construct(void *);
-void igGuiComponentNode_registerNow();
+void igGuiComponentNode_arkRegister();
 extern char igNamedObject_vtable[];
 extern char igGuiComponentNode_vtable[];
 extern char igNode_vtable[];
@@ -43,7 +43,7 @@ void *fn_801110A0(){
  return igGuiComponentNode_meta;
 }
 void *igGuiComponentNode_getMeta(){
- if(!igGuiComponentNode_meta || !(reinterpret_cast<unsigned int *>(igGuiComponentNode_meta)[0x24/4]&4)) igGuiComponentNode_registerNow();
+ if(!igGuiComponentNode_meta || !(reinterpret_cast<unsigned int *>(igGuiComponentNode_meta)[0x24/4]&4)) igGuiComponentNode_arkRegister();
  return igGuiComponentNode_meta;
 }
 void *igGuiComponentNode_vtableRead(){

@@ -9,17 +9,17 @@ void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *beNDMWItemDisk_metaObject();
 void *beNDMWItemBaseList_metaObject();
-extern char lbl_804E1E94[];
-extern char lbl_804E1EAC[];
-extern char lbl_804E1EC4[];
-extern char lbl_804E1EDC[];
+extern char beNDMWStatusCtrlDisk_fieldTypes[];
+extern char beNDMWStatusCtrlDisk_fieldNames[];
+extern char beNDMWStatusCtrlDisk_fieldStorage[];
+extern char beNDMWStatusCtrlDisk_fieldOffsets[];
 extern void *beNDMWStatusCtrlDisk_meta;
 }
 extern "C" {
 void beNDMWStatusCtrlDisk_fieldInit(){
  void *value0=beNDMWStatusCtrlDisk_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E1E94,6);
+ meta_appendFields(value0,beNDMWStatusCtrlDisk_fieldTypes,6);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value3=fn_800365B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -31,7 +31,7 @@ void beNDMWStatusCtrlDisk_fieldInit(){
  void *value6=meta_field(value0,(reinterpret_cast<char *>(value1)+4));
  void *value7=beNDMWItemDisk_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
- meta_setupFields(value0,lbl_804E1EAC,lbl_804E1EC4,lbl_804E1EDC,value1);
+ meta_setupFields(value0,beNDMWStatusCtrlDisk_fieldNames,beNDMWStatusCtrlDisk_fieldStorage,beNDMWStatusCtrlDisk_fieldOffsets,value1);
 }
 }
 #pragma pop

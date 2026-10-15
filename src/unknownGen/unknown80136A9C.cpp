@@ -19,13 +19,13 @@ extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
 extern char lbl_8055F67C[8];
 extern char lbl_8055F684[8];
-extern char lbl_8055F68C[8];
+extern char igReduceWeights_dependencies[8];
 extern void *lbl_80563CE8;
 extern void *lbl_80563CEC;
 extern void *igReduceWeights_meta;
 void *igReduceWeights_getMeta();
 void *igReduceWeights_vtableRead();
-void igReduceWeights_registerNow();
+void igReduceWeights_arkRegister();
 void igReduceWeights_register();
 void *igReduceWeights_getMetaCall();
 }
@@ -62,7 +62,7 @@ void *fn_80136AE8(){
  return lbl_80563CEC;
 }
 void *igReduceWeights_getMeta(){
- if(!igReduceWeights_meta || !(reinterpret_cast<unsigned int *>(igReduceWeights_meta)[0x24/4]&4)) igReduceWeights_registerNow();
+ if(!igReduceWeights_meta || !(reinterpret_cast<unsigned int *>(igReduceWeights_meta)[0x24/4]&4)) igReduceWeights_arkRegister();
  return igReduceWeights_meta;
 }
 void *igReduceWeights_vtableRead(){
@@ -77,12 +77,12 @@ void *igReduceWeights_vtableRead(){
  object.unknown40.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igReduceWeights_registerNow(){
+void igReduceWeights_arkRegister(){
  meta_registerNow((int)igReduceWeights_register);
 }
 void igReduceWeights_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igReduceWeights_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igReduceWeights_getMetaCall,(int)igReduceWeights_className,68,(int)igReduceWeights_vtableRead,(int)igReduceWeights_fieldInit,0,(int)lbl_8055F68C);
+ meta_registerClass(0,(int)&igReduceWeights_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igReduceWeights_getMetaCall,(int)igReduceWeights_className,68,(int)igReduceWeights_vtableRead,(int)igReduceWeights_fieldInit,0,(int)igReduceWeights_dependencies);
 }
 void *igReduceWeights_getMetaCall(){return igReduceWeights_getMeta();}
 }

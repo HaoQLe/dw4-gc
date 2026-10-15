@@ -29,23 +29,23 @@ extern char igTextureInfo_vtable[];
 extern char igTextureFunctionAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055DFD8[8];
-extern char lbl_8055DFE0[4];
-extern char lbl_8055DFE4[4];
-extern char lbl_8055DFE8[4];
-extern char lbl_8055DFEC[4];
+extern char igTextureInfo_dependencies[8];
+extern char igTextureInfo_fieldTypes[4];
+extern char igTextureInfo_fieldNames[4];
+extern char igTextureInfo_fieldStorage[4];
+extern char igTextureInfo_fieldOffsets[4];
 extern void *lbl_805621F4;
 extern void *igTextureInfo_meta;
 extern void *igTextureFunctionAttr_meta;
 void *igTextureInfo_getMeta();
 void *igTextureInfo_vtableRead();
-void igTextureInfo_registerNow();
+void igTextureInfo_arkRegister();
 void igTextureInfo_register();
 void *igTextureInfo_getMetaCall();
 void igTextureInfo_fieldInit();
 void *igTextureFunctionAttr_getMeta();
 void *igTextureFunctionAttr_vtableRead();
-void igTextureFunctionAttr_registerNow();
+void igTextureFunctionAttr_arkRegister();
 void igTextureFunctionAttr_register();
 void *igTextureFunctionAttr_getMetaCall();
 }
@@ -74,7 +74,7 @@ struct UnknownGenObject800AE80C_0 {
 };
 extern "C" {
 void *igTextureInfo_getMeta(){
- if(!igTextureInfo_meta || !(reinterpret_cast<unsigned int *>(igTextureInfo_meta)[0x24/4]&4)) igTextureInfo_registerNow();
+ if(!igTextureInfo_meta || !(reinterpret_cast<unsigned int *>(igTextureInfo_meta)[0x24/4]&4)) igTextureInfo_arkRegister();
  return igTextureInfo_meta;
 }
 void *igTextureInfo_vtableRead(){
@@ -97,26 +97,26 @@ UnknownGenHolder *dtor_800AE5A4(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igTextureInfo_registerNow(){
+void igTextureInfo_arkRegister(){
  meta_registerNow((int)igTextureInfo_register);
 }
 void igTextureInfo_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igTextureInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igTextureInfo_getMetaCall,(int)igTextureInfo_className,24,(int)igTextureInfo_vtableRead,(int)igTextureInfo_fieldInit,0,(int)lbl_8055DFD8);
+ meta_registerClass(0,(int)&igTextureInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igTextureInfo_getMetaCall,(int)igTextureInfo_className,24,(int)igTextureInfo_vtableRead,(int)igTextureInfo_fieldInit,0,(int)igTextureInfo_dependencies);
 }
 void *igTextureInfo_getMetaCall(){return igTextureInfo_getMeta();}
 void igTextureInfo_fieldInit(){
  void *value0=igTextureInfo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055DFE0,1);
+ meta_appendFields(value0,igTextureInfo_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_800BAAC4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- meta_setupFields(value0,lbl_8055DFE4,lbl_8055DFE8,lbl_8055DFEC,value1);
+ meta_setupFields(value0,igTextureInfo_fieldNames,igTextureInfo_fieldStorage,igTextureInfo_fieldOffsets,value1);
 }
 void *igTextureFunctionAttr_create(void *object){
- igTextureFunctionAttr_registerNow();
+ igTextureFunctionAttr_arkRegister();
  return meta_createInstance(igTextureFunctionAttr_meta,object);
 }
 void *fn_800AE794(){
@@ -124,7 +124,7 @@ void *fn_800AE794(){
  return igTextureFunctionAttr_meta;
 }
 void *igTextureFunctionAttr_getMeta(){
- if(!igTextureFunctionAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureFunctionAttr_meta)[0x24/4]&4)) igTextureFunctionAttr_registerNow();
+ if(!igTextureFunctionAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureFunctionAttr_meta)[0x24/4]&4)) igTextureFunctionAttr_arkRegister();
  return igTextureFunctionAttr_meta;
 }
 void *igTextureFunctionAttr_vtableRead(){
@@ -135,7 +135,7 @@ void *igTextureFunctionAttr_vtableRead(){
  object.unknown00=igTextureFunctionAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTextureFunctionAttr_registerNow(){
+void igTextureFunctionAttr_arkRegister(){
  meta_registerNow((int)igTextureFunctionAttr_register);
 }
 void igTextureFunctionAttr_register(){

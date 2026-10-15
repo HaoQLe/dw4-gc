@@ -10,17 +10,17 @@ void *fn_801C8D74();
 void *fn_801CDCF8();
 void *beModelCtrlNode2_metaObject();
 void *beAction2InfoWork_metaObject();
-extern char lbl_804D3080[];
-extern char lbl_804D3090[];
-extern char lbl_804D30A0[];
-extern char lbl_804D30B0[];
+extern char beAction2InfoRam_fieldTypes[];
+extern char beAction2InfoRam_fieldNames[];
+extern char beAction2InfoRam_fieldStorage[];
+extern char beAction2InfoRam_fieldOffsets[];
 extern void *beAction2InfoRam_meta;
 }
 extern "C" {
 void beAction2InfoRam_fieldInit(){
  void *value0=beAction2InfoRam_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D3080,4);
+ meta_appendFields(value0,beAction2InfoRam_fieldTypes,4);
  void *value2=meta_field(value0,value1);
  void *value3=beModelCtrlNode2_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -35,7 +35,7 @@ void beAction2InfoRam_fieldInit(){
  void *value8=meta_field(value0,(reinterpret_cast<char *>(value1)+3));
  void *value9=beAction2InfoWork_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
- meta_setupFields(value0,lbl_804D3090,lbl_804D30A0,lbl_804D30B0,value1);
+ meta_setupFields(value0,beAction2InfoRam_fieldNames,beAction2InfoRam_fieldStorage,beAction2InfoRam_fieldOffsets,value1);
 }
 }
 #pragma pop

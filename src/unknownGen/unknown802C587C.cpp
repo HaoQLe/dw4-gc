@@ -13,12 +13,12 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802C570C();
-void beModelCtrlSCEffect_registerNow();
+void beModelCtrlSCEffect_arkRegister();
 extern char beModelCtrlSCHitBox_className[];
-extern char lbl_804D05E8[];
-extern char lbl_804D0600[];
-extern char lbl_804D0618[];
-extern char lbl_804D0630[];
+extern char beModelCtrlSCHitBox_fieldTypes[];
+extern char beModelCtrlSCHitBox_fieldNames[];
+extern char beModelCtrlSCHitBox_fieldStorage[];
+extern char beModelCtrlSCHitBox_fieldOffsets[];
 extern void *beModelCtrlSCHitBox_meta;
 extern void *beModelCtrlSCEffect_meta;
 void beModelCtrlSCHitBox_register();
@@ -26,7 +26,7 @@ void *beModelCtrlSCHitBox_getMetaCall();
 void beModelCtrlSCHitBox_fieldInit();
 }
 extern "C" {
-void beModelCtrlSCHitBox_registerNow(){
+void beModelCtrlSCHitBox_arkRegister(){
  meta_registerNow((int)beModelCtrlSCHitBox_register);
 }
 void beModelCtrlSCHitBox_register(){
@@ -37,15 +37,15 @@ void *beModelCtrlSCHitBox_getMetaCall(){return beModelCtrlSCHitBox_getMeta();}
 void beModelCtrlSCHitBox_fieldInit(){
  void *meta=beModelCtrlSCHitBox_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D05E8,0x6);
- meta_setupFields(meta,lbl_804D0600,lbl_804D0618,lbl_804D0630,field);
+ meta_appendFields(meta,beModelCtrlSCHitBox_fieldTypes,0x6);
+ meta_setupFields(meta,beModelCtrlSCHitBox_fieldNames,beModelCtrlSCHitBox_fieldStorage,beModelCtrlSCHitBox_fieldOffsets,field);
 }
 void *beModelCtrlSCEffect_create(void *object){
- beModelCtrlSCEffect_registerNow();
+ beModelCtrlSCEffect_arkRegister();
  return meta_createInstance(beModelCtrlSCEffect_meta,object);
 }
 void *beModelCtrlSCEffect_getMeta(){
- if(!beModelCtrlSCEffect_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlSCEffect_meta)[0x24/4]&4)) beModelCtrlSCEffect_registerNow();
+ if(!beModelCtrlSCEffect_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlSCEffect_meta)[0x24/4]&4)) beModelCtrlSCEffect_arkRegister();
  return beModelCtrlSCEffect_meta;
 }
 }

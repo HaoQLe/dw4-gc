@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beXboxImage24k_registerNow();
+void beXboxImage24k_arkRegister();
 extern void *beXboxImage24k_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beXboxImage24k_metaObject(){
  return beXboxImage24k_meta;
 }
 void *beXboxImage24k_getMeta(){
- if(!beXboxImage24k_meta || !(reinterpret_cast<unsigned int *>(beXboxImage24k_meta)[0x24/4]&4)) beXboxImage24k_registerNow();
+ if(!beXboxImage24k_meta || !(reinterpret_cast<unsigned int *>(beXboxImage24k_meta)[0x24/4]&4)) beXboxImage24k_arkRegister();
  return beXboxImage24k_meta;
 }
 }

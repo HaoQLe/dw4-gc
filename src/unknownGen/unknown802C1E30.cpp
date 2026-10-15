@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beParticleCtrl2_registerNow();
+void beParticleCtrl2_arkRegister();
 extern char lbl_8041CD10[];
 extern char lbl_804D0108[];
 extern char lbl_804D0128[];
@@ -20,7 +20,7 @@ void *fn_802C1E30(){
  return lbl_80534AA4;
 }
 void *beParticleCtrl2_create(void *object){
- beParticleCtrl2_registerNow();
+ beParticleCtrl2_arkRegister();
  return meta_createInstance(beParticleCtrl2_meta,object);
 }
 void *beParticleCtrl2_metaObject(){
@@ -28,7 +28,7 @@ void *beParticleCtrl2_metaObject(){
  return beParticleCtrl2_meta;
 }
 void *beParticleCtrl2_getMeta(){
- if(!beParticleCtrl2_meta || !(reinterpret_cast<unsigned int *>(beParticleCtrl2_meta)[0x24/4]&4)) beParticleCtrl2_registerNow();
+ if(!beParticleCtrl2_meta || !(reinterpret_cast<unsigned int *>(beParticleCtrl2_meta)[0x24/4]&4)) beParticleCtrl2_arkRegister();
  return beParticleCtrl2_meta;
 }
 }

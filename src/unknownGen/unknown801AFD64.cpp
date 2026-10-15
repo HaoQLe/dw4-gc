@@ -23,18 +23,18 @@ extern char igSkeletonBoneInfo_className[];
 extern char igSkeletonBoneInfo_vtable[];
 extern char igSkeletonBoneInfoList_vtable[];
 extern char lbl_804B92C0[];
-extern char lbl_8056025C[8];
+extern char igSkeletonBoneInfoList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igSkeletonBoneInfoList_meta;
 extern void *igSkeletonBoneInfo_meta;
 void *igSkeletonBoneInfoList_getMeta();
 void *igSkeletonBoneInfoList_vtableRead();
-void igSkeletonBoneInfoList_registerNow();
+void igSkeletonBoneInfoList_arkRegister();
 void igSkeletonBoneInfoList_register();
 void *igSkeletonBoneInfoList_getMetaCall();
 void *igSkeletonBoneInfo_getMeta();
 void *igSkeletonBoneInfo_vtableRead();
-void igSkeletonBoneInfo_registerNow();
+void igSkeletonBoneInfo_arkRegister();
 void igSkeletonBoneInfo_register();
 void *igSkeletonBoneInfo_getMetaCall();
 }
@@ -62,7 +62,7 @@ void *fn_801AFD64(){
  return igSkeletonBoneInfoList_meta;
 }
 void *igSkeletonBoneInfoList_getMeta(){
- if(!igSkeletonBoneInfoList_meta || !(reinterpret_cast<unsigned int *>(igSkeletonBoneInfoList_meta)[0x24/4]&4)) igSkeletonBoneInfoList_registerNow();
+ if(!igSkeletonBoneInfoList_meta || !(reinterpret_cast<unsigned int *>(igSkeletonBoneInfoList_meta)[0x24/4]&4)) igSkeletonBoneInfoList_arkRegister();
  return igSkeletonBoneInfoList_meta;
 }
 void *igSkeletonBoneInfoList_vtableRead(){
@@ -75,20 +75,20 @@ void *igSkeletonBoneInfoList_vtableRead(){
  object.unknown00=igSkeletonBoneInfoList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSkeletonBoneInfoList_registerNow(){
+void igSkeletonBoneInfoList_arkRegister(){
  meta_registerNow((int)igSkeletonBoneInfoList_register);
 }
 void igSkeletonBoneInfoList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igSkeletonBoneInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igSkeletonBoneInfoList_getMetaCall,(int)igSkeletonBoneInfoList_className,20,(int)igSkeletonBoneInfoList_vtableRead,0,0,(int)lbl_8056025C);
+ meta_registerClass(0,(int)&igSkeletonBoneInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igSkeletonBoneInfoList_getMetaCall,(int)igSkeletonBoneInfoList_className,20,(int)igSkeletonBoneInfoList_vtableRead,0,0,(int)igSkeletonBoneInfoList_dependencies);
 }
 void *igSkeletonBoneInfoList_getMetaCall(){return igSkeletonBoneInfoList_getMeta();}
 void *igSkeletonBoneInfo_create(void *object){
- igSkeletonBoneInfo_registerNow();
+ igSkeletonBoneInfo_arkRegister();
  return meta_createInstance(igSkeletonBoneInfo_meta,object);
 }
 void *igSkeletonBoneInfo_getMeta(){
- if(!igSkeletonBoneInfo_meta || !(reinterpret_cast<unsigned int *>(igSkeletonBoneInfo_meta)[0x24/4]&4)) igSkeletonBoneInfo_registerNow();
+ if(!igSkeletonBoneInfo_meta || !(reinterpret_cast<unsigned int *>(igSkeletonBoneInfo_meta)[0x24/4]&4)) igSkeletonBoneInfo_arkRegister();
  return igSkeletonBoneInfo_meta;
 }
 void *igSkeletonBoneInfo_vtableRead(){
@@ -98,7 +98,7 @@ void *igSkeletonBoneInfo_vtableRead(){
  object.unknown00=igSkeletonBoneInfo_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSkeletonBoneInfo_registerNow(){
+void igSkeletonBoneInfo_arkRegister(){
  meta_registerNow((int)igSkeletonBoneInfo_register);
 }
 void igSkeletonBoneInfo_register(){

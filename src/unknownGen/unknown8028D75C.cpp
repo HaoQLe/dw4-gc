@@ -7,7 +7,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void igObject_construct(void *);
 void fn_8028D884(void *,short);
-void igCollisionGrid_registerNow();
+void igCollisionGrid_arkRegister();
 extern char igCollisionGrid_vtable[];
 extern void *lbl_805621F4;
 extern void *igCollisionGrid_meta;
@@ -28,7 +28,7 @@ struct UnknownGenObject8028D80C {
 };
 extern "C" {
 void *igCollisionGrid_create(void *object){
- igCollisionGrid_registerNow();
+ igCollisionGrid_arkRegister();
  return meta_createInstance(igCollisionGrid_meta,object);
 }
 void *fn_8028D794(){
@@ -36,7 +36,7 @@ void *fn_8028D794(){
  return igCollisionGrid_meta;
 }
 void *igCollisionGrid_getMeta(){
- if(!igCollisionGrid_meta || !(reinterpret_cast<unsigned int *>(igCollisionGrid_meta)[0x24/4]&4)) igCollisionGrid_registerNow();
+ if(!igCollisionGrid_meta || !(reinterpret_cast<unsigned int *>(igCollisionGrid_meta)[0x24/4]&4)) igCollisionGrid_arkRegister();
  return igCollisionGrid_meta;
 }
 void *igCollisionGrid_vtableRead(){

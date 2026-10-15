@@ -7,7 +7,7 @@ void fn_8008CE04(void *);
 void igPageMemoryPool_register();
 extern char lbl_80473AE8[];
 extern void *igPageMemoryPool_meta;
-void igPageMemoryPool_registerNow();
+void igPageMemoryPool_arkRegister();
 }
 struct UnknownGenRoot80039180 {
  void *unknown00;
@@ -24,14 +24,14 @@ struct UnknownGenObject80039180 : UnknownGenRoot80039180 {
 };
 extern "C" {
 void *igPageMemoryPool_getMeta(){
- if(!igPageMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igPageMemoryPool_meta)[0x24/4]&4)) igPageMemoryPool_registerNow();
+ if(!igPageMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igPageMemoryPool_meta)[0x24/4]&4)) igPageMemoryPool_arkRegister();
  return igPageMemoryPool_meta;
 }
 void *fn_80039180(){
  UnknownGenObject80039180 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igPageMemoryPool_registerNow(){
+void igPageMemoryPool_arkRegister(){
  meta_registerNow((int)igPageMemoryPool_register);
 }
 }

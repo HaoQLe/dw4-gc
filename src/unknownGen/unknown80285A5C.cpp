@@ -13,7 +13,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_80284294();
 void fn_80286008(void *,short);
-void igInsightCore_registerNow();
+void igInsightCore_arkRegister();
 void igObjectList_register();
 void igObject_register();
 void *igSerialScheduler_getMetaCall();
@@ -23,7 +23,7 @@ extern char igInsightPlugin_className[];
 extern char igDataList_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
-extern char lbl_804CB110[];
+extern char igInsightPluginList_dependencies[];
 extern char igInsightPluginList_vtable[];
 extern char lbl_804CB604[];
 extern char igInsightCore_vtable[];
@@ -33,17 +33,17 @@ extern void *igInsightPlugin_meta;
 extern void *igInsightCore_meta;
 extern void *lbl_805621F4;
 void *igInsightScheduler_getMeta();
-void igInsightScheduler_registerNow();
+void igInsightScheduler_arkRegister();
 void igInsightScheduler_register();
 void *igInsightScheduler_getMetaCall();
 void *fn_80285BB4();
 void *igInsightPluginList_getMeta();
 void *igInsightPluginList_vtableRead();
-void igInsightPluginList_registerNow();
+void igInsightPluginList_arkRegister();
 void igInsightPluginList_register();
 void *igInsightPluginList_getMetaCall();
 void *igInsightPlugin_getMeta();
-void igInsightPlugin_registerNow();
+void igInsightPlugin_arkRegister();
 void igInsightPlugin_register();
 void *igInsightPlugin_getMetaCall();
 }
@@ -75,10 +75,10 @@ void *igInsightScheduler_metaObject(){
  return igInsightScheduler_meta;
 }
 void *igInsightScheduler_getMeta(){
- if(!igInsightScheduler_meta || !(reinterpret_cast<unsigned int *>(igInsightScheduler_meta)[0x24/4]&4)) igInsightScheduler_registerNow();
+ if(!igInsightScheduler_meta || !(reinterpret_cast<unsigned int *>(igInsightScheduler_meta)[0x24/4]&4)) igInsightScheduler_arkRegister();
  return igInsightScheduler_meta;
 }
-void igInsightScheduler_registerNow(){
+void igInsightScheduler_arkRegister(){
  meta_registerNow((int)igInsightScheduler_register);
 }
 void igInsightScheduler_register(){
@@ -96,7 +96,7 @@ void *igInsightPluginList_metaObject(){
  return igInsightPluginList_meta;
 }
 void *igInsightPluginList_getMeta(){
- if(!igInsightPluginList_meta || !(reinterpret_cast<unsigned int *>(igInsightPluginList_meta)[0x24/4]&4)) igInsightPluginList_registerNow();
+ if(!igInsightPluginList_meta || !(reinterpret_cast<unsigned int *>(igInsightPluginList_meta)[0x24/4]&4)) igInsightPluginList_arkRegister();
  return igInsightPluginList_meta;
 }
 void *igInsightPluginList_vtableRead(){
@@ -109,19 +109,19 @@ void *igInsightPluginList_vtableRead(){
  object.unknown00=igInsightPluginList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igInsightPluginList_registerNow(){
+void igInsightPluginList_arkRegister(){
  meta_registerNow((int)igInsightPluginList_register);
 }
 void igInsightPluginList_register(){
  fn_80284294();
- meta_registerClass(0,(int)&igInsightPluginList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igInsightPluginList_getMetaCall,(int)igInsightPluginList_className,20,(int)igInsightPluginList_vtableRead,0,0,(int)lbl_804CB110);
+ meta_registerClass(0,(int)&igInsightPluginList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igInsightPluginList_getMetaCall,(int)igInsightPluginList_className,20,(int)igInsightPluginList_vtableRead,0,0,(int)igInsightPluginList_dependencies);
 }
 void *igInsightPluginList_getMetaCall(){return igInsightPluginList_getMeta();}
 void *igInsightPlugin_getMeta(){
- if(!igInsightPlugin_meta || !(reinterpret_cast<unsigned int *>(igInsightPlugin_meta)[0x24/4]&4)) igInsightPlugin_registerNow();
+ if(!igInsightPlugin_meta || !(reinterpret_cast<unsigned int *>(igInsightPlugin_meta)[0x24/4]&4)) igInsightPlugin_arkRegister();
  return igInsightPlugin_meta;
 }
-void igInsightPlugin_registerNow(){
+void igInsightPlugin_arkRegister(){
  meta_registerNow((int)igInsightPlugin_register);
 }
 void igInsightPlugin_register(){
@@ -130,7 +130,7 @@ void igInsightPlugin_register(){
 }
 void *igInsightPlugin_getMetaCall(){return igInsightPlugin_getMeta();}
 void *igInsightCore_create(void *object){
- igInsightCore_registerNow();
+ igInsightCore_arkRegister();
  return meta_createInstance(igInsightCore_meta,object);
 }
 void *igInsightCore_metaObject(){
@@ -138,7 +138,7 @@ void *igInsightCore_metaObject(){
  return igInsightCore_meta;
 }
 void *igInsightCore_getMeta(){
- if(!igInsightCore_meta || !(reinterpret_cast<unsigned int *>(igInsightCore_meta)[0x24/4]&4)) igInsightCore_registerNow();
+ if(!igInsightCore_meta || !(reinterpret_cast<unsigned int *>(igInsightCore_meta)[0x24/4]&4)) igInsightCore_arkRegister();
  return igInsightCore_meta;
 }
 void *igInsightCore_vtableRead(){

@@ -12,13 +12,13 @@ void fn_80284294();
 void igMessenger_fieldInit();
 void igObject_register();
 extern char igMessenger_className[];
-extern char lbl_804CB06C[];
+extern char igMessenger_dependencies[];
 extern char igMessenger_vtable[];
 extern void *igMessenger_meta;
 extern void *lbl_805621F4;
 void *igMessenger_getMeta();
 void *igMessenger_vtableRead();
-void igMessenger_registerNow();
+void igMessenger_arkRegister();
 void igMessenger_register();
 void *igMessenger_getMetaCall();
 }
@@ -39,7 +39,7 @@ void *igMessenger_metaObject(){
  return igMessenger_meta;
 }
 void *igMessenger_getMeta(){
- if(!igMessenger_meta || !(reinterpret_cast<unsigned int *>(igMessenger_meta)[0x24/4]&4)) igMessenger_registerNow();
+ if(!igMessenger_meta || !(reinterpret_cast<unsigned int *>(igMessenger_meta)[0x24/4]&4)) igMessenger_arkRegister();
  return igMessenger_meta;
 }
 void *igMessenger_vtableRead(){
@@ -48,12 +48,12 @@ void *igMessenger_vtableRead(){
  object.unknown08.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMessenger_registerNow(){
+void igMessenger_arkRegister(){
  meta_registerNow((int)igMessenger_register);
 }
 void igMessenger_register(){
  fn_80284294();
- meta_registerClass(0,(int)&igMessenger_meta,(int)igObject_register,(int)fn_800237D0,(int)igMessenger_getMetaCall,(int)igMessenger_className,12,(int)igMessenger_vtableRead,(int)igMessenger_fieldInit,0,(int)lbl_804CB06C);
+ meta_registerClass(0,(int)&igMessenger_meta,(int)igObject_register,(int)fn_800237D0,(int)igMessenger_getMetaCall,(int)igMessenger_className,12,(int)igMessenger_vtableRead,(int)igMessenger_fieldInit,0,(int)igMessenger_dependencies);
 }
 void *igMessenger_getMetaCall(){return igMessenger_getMeta();}
 }

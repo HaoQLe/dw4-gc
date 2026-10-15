@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beDemoManagerWorkList_registerNow();
+void beDemoManagerWorkList_arkRegister();
 extern void *beDemoManagerWorkList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beDemoManagerWorkList_metaObject(){
  return beDemoManagerWorkList_meta;
 }
 void *beDemoManagerWorkList_getMeta(){
- if(!beDemoManagerWorkList_meta || !(reinterpret_cast<unsigned int *>(beDemoManagerWorkList_meta)[0x24/4]&4)) beDemoManagerWorkList_registerNow();
+ if(!beDemoManagerWorkList_meta || !(reinterpret_cast<unsigned int *>(beDemoManagerWorkList_meta)[0x24/4]&4)) beDemoManagerWorkList_arkRegister();
  return beDemoManagerWorkList_meta;
 }
 }

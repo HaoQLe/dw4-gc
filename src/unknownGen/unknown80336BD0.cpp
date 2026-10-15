@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beNDMWPanelWazaInfoWork_registerNow();
+void beNDMWPanelWazaInfoWork_arkRegister();
 extern void *beNDMWPanelWazaInfoWork_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beNDMWPanelWazaInfoWork_create(void *object){
- beNDMWPanelWazaInfoWork_registerNow();
+ beNDMWPanelWazaInfoWork_arkRegister();
  return meta_createInstance(beNDMWPanelWazaInfoWork_meta,object);
 }
 void *beNDMWPanelWazaInfoWork_metaObject(){
@@ -19,7 +19,7 @@ void *beNDMWPanelWazaInfoWork_metaObject(){
  return beNDMWPanelWazaInfoWork_meta;
 }
 void *beNDMWPanelWazaInfoWork_getMeta(){
- if(!beNDMWPanelWazaInfoWork_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelWazaInfoWork_meta)[0x24/4]&4)) beNDMWPanelWazaInfoWork_registerNow();
+ if(!beNDMWPanelWazaInfoWork_meta || !(reinterpret_cast<unsigned int *>(beNDMWPanelWazaInfoWork_meta)[0x24/4]&4)) beNDMWPanelWazaInfoWork_arkRegister();
  return beNDMWPanelWazaInfoWork_meta;
 }
 }

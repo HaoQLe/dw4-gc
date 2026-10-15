@@ -13,7 +13,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void beHitLandDeliv_registerNow();
+void beHitLandDeliv_arkRegister();
 extern char lbl_8041CD10[];
 extern char beHitLandDelivInfo_className[];
 extern char lbl_804D1CB8[];
@@ -26,7 +26,7 @@ void beHitLandDelivInfo_register();
 void *beHitLandDelivInfo_getMetaCall();
 }
 extern "C" {
-void beHitLandDelivInfo_registerNow(){
+void beHitLandDelivInfo_arkRegister(){
  meta_registerNow((int)beHitLandDelivInfo_register);
 }
 void beHitLandDelivInfo_register(){
@@ -39,7 +39,7 @@ void *fn_802D620C(){
  return lbl_80535248;
 }
 void *beHitLandDeliv_create(void *object){
- beHitLandDeliv_registerNow();
+ beHitLandDeliv_arkRegister();
  return meta_createInstance(beHitLandDeliv_meta,object);
 }
 void *beHitLandDeliv_metaObject(){
@@ -47,7 +47,7 @@ void *beHitLandDeliv_metaObject(){
  return beHitLandDeliv_meta;
 }
 void *beHitLandDeliv_getMeta(){
- if(!beHitLandDeliv_meta || !(reinterpret_cast<unsigned int *>(beHitLandDeliv_meta)[0x24/4]&4)) beHitLandDeliv_registerNow();
+ if(!beHitLandDeliv_meta || !(reinterpret_cast<unsigned int *>(beHitLandDeliv_meta)[0x24/4]&4)) beHitLandDeliv_arkRegister();
  return beHitLandDeliv_meta;
 }
 }

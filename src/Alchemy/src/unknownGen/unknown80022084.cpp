@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
-void igUnsignedShortMetaField_registerNow();
+void igUnsignedShortMetaField_arkRegister();
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
 void *fn_800607F4(void *);
@@ -23,11 +23,11 @@ extern char igUnsignedShortArrayMetaField_className[];
 extern char igUnsignedShortArrayMetaField_vtable[];
 extern char lbl_80471914[];
 extern char lbl_80477054[];
-extern char lbl_8055CF10[8];
-extern char lbl_8055CF18[4];
-extern char lbl_8055CF24[4];
-extern char lbl_8055CF28[4];
-extern char lbl_8055CF2C[4];
+extern char igUnsignedShortArrayMetaField_dependencies[8];
+extern char igUnsignedShortArrayMetaField_fieldTypes[4];
+extern char igUnsignedShortArrayMetaField_fieldNames[4];
+extern char igUnsignedShortArrayMetaField_fieldStorage[4];
+extern char igUnsignedShortArrayMetaField_fieldOffsets[4];
 extern void *igUnsignedShortMetaField_meta;
 extern void *lbl_80561498;
 extern void *igUnsignedShortArrayMetaField_meta;
@@ -35,7 +35,7 @@ extern void *lbl_805614A0;
 extern void *lbl_805621F4;
 void *igUnsignedShortArrayMetaField_getMeta();
 void *igUnsignedShortArrayMetaField_vtableRead();
-void igUnsignedShortArrayMetaField_registerNow();
+void igUnsignedShortArrayMetaField_arkRegister();
 void igUnsignedShortArrayMetaField_register();
 void *igUnsignedShortArrayMetaField_getMetaCall();
 void *igUnsignedShortArrayMetaField_parentMeta();
@@ -73,16 +73,16 @@ void fn_800220A4(){
 }
 void *fn_8002213C(){
  if(!lbl_80561498){
-  igUnsignedShortMetaField_registerNow();
+  igUnsignedShortMetaField_arkRegister();
  }
  return lbl_80561498;
 }
 void *igUnsignedShortArrayMetaField_create(void *object){
- igUnsignedShortArrayMetaField_registerNow();
+ igUnsignedShortArrayMetaField_arkRegister();
  return meta_createInstance(igUnsignedShortArrayMetaField_meta,object);
 }
 void *igUnsignedShortArrayMetaField_getMeta(){
- if(!igUnsignedShortArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedShortArrayMetaField_meta)[0x24/4]&4)) igUnsignedShortArrayMetaField_registerNow();
+ if(!igUnsignedShortArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedShortArrayMetaField_meta)[0x24/4]&4)) igUnsignedShortArrayMetaField_arkRegister();
  return igUnsignedShortArrayMetaField_meta;
 }
 void *igUnsignedShortArrayMetaField_vtableRead(){
@@ -90,21 +90,21 @@ void *igUnsignedShortArrayMetaField_vtableRead(){
  object.unknown00=igUnsignedShortArrayMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igUnsignedShortArrayMetaField_registerNow(){
+void igUnsignedShortArrayMetaField_arkRegister(){
  meta_registerNow((int)igUnsignedShortArrayMetaField_register);
 }
 void igUnsignedShortArrayMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igUnsignedShortArrayMetaField_meta,(int)igUnsignedShortMetaField_register,(int)igUnsignedShortArrayMetaField_parentMeta,(int)igUnsignedShortArrayMetaField_getMetaCall,(int)igUnsignedShortArrayMetaField_className,56,(int)igUnsignedShortArrayMetaField_vtableRead,(int)igUnsignedShortArrayMetaField_fieldInit,0,(int)lbl_8055CF10);
+ meta_registerClass(0,(int)&igUnsignedShortArrayMetaField_meta,(int)igUnsignedShortMetaField_register,(int)igUnsignedShortArrayMetaField_parentMeta,(int)igUnsignedShortArrayMetaField_getMetaCall,(int)igUnsignedShortArrayMetaField_className,56,(int)igUnsignedShortArrayMetaField_vtableRead,(int)igUnsignedShortArrayMetaField_fieldInit,0,(int)igUnsignedShortArrayMetaField_dependencies);
 }
 void *igUnsignedShortArrayMetaField_getMetaCall(){return igUnsignedShortArrayMetaField_getMeta();}
 void *igUnsignedShortArrayMetaField_parentMeta(){return igUnsignedShortMetaField_meta;}
 void igUnsignedShortArrayMetaField_fieldInit(){
  void *meta=igUnsignedShortArrayMetaField_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_8055CF18,1);
+ meta_appendFields(meta,igUnsignedShortArrayMetaField_fieldTypes,1);
  fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,lbl_8055CF24,lbl_8055CF28,lbl_8055CF2C,field);
+ meta_setupFields(meta,igUnsignedShortArrayMetaField_fieldNames,igUnsignedShortArrayMetaField_fieldStorage,igUnsignedShortArrayMetaField_fieldOffsets,field);
 }
 void fn_800223B8(){
  if(!lbl_805614A0){

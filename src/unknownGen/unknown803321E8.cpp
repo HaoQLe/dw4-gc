@@ -13,12 +13,12 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_8032B8A4();
-void beNDMWStatusSubSlot_registerNow();
+void beNDMWStatusSubSlot_arkRegister();
 extern char beNDMWStatusCtrlFolder_className[];
-extern char lbl_804E1F0C[];
-extern char lbl_804E1F10[];
-extern char lbl_804E1F14[];
-extern char lbl_804E1F18[];
+extern char beNDMWStatusCtrlFolder_fieldTypes[];
+extern char beNDMWStatusCtrlFolder_fieldNames[];
+extern char beNDMWStatusCtrlFolder_fieldStorage[];
+extern char beNDMWStatusCtrlFolder_fieldOffsets[];
 extern void *beNDMWStatusCtrlFolder_meta;
 extern void *beNDMWStatusSubSlot_meta;
 void beNDMWStatusCtrlFolder_register();
@@ -26,7 +26,7 @@ void *beNDMWStatusCtrlFolder_getMetaCall();
 void beNDMWStatusCtrlFolder_fieldInit();
 }
 extern "C" {
-void beNDMWStatusCtrlFolder_registerNow(){
+void beNDMWStatusCtrlFolder_arkRegister(){
  meta_registerNow((int)beNDMWStatusCtrlFolder_register);
 }
 void beNDMWStatusCtrlFolder_register(){
@@ -37,15 +37,15 @@ void *beNDMWStatusCtrlFolder_getMetaCall(){return beNDMWStatusCtrlFolder_getMeta
 void beNDMWStatusCtrlFolder_fieldInit(){
  void *meta=beNDMWStatusCtrlFolder_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804E1F0C,0x1);
- meta_setupFields(meta,lbl_804E1F10,lbl_804E1F14,lbl_804E1F18,field);
+ meta_appendFields(meta,beNDMWStatusCtrlFolder_fieldTypes,0x1);
+ meta_setupFields(meta,beNDMWStatusCtrlFolder_fieldNames,beNDMWStatusCtrlFolder_fieldStorage,beNDMWStatusCtrlFolder_fieldOffsets,field);
 }
 void *beNDMWStatusSubSlot_create(void *object){
- beNDMWStatusSubSlot_registerNow();
+ beNDMWStatusSubSlot_arkRegister();
  return meta_createInstance(beNDMWStatusSubSlot_meta,object);
 }
 void *beNDMWStatusSubSlot_getMeta(){
- if(!beNDMWStatusSubSlot_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusSubSlot_meta)[0x24/4]&4)) beNDMWStatusSubSlot_registerNow();
+ if(!beNDMWStatusSubSlot_meta || !(reinterpret_cast<unsigned int *>(beNDMWStatusSubSlot_meta)[0x24/4]&4)) beNDMWStatusSubSlot_arkRegister();
  return beNDMWStatusSubSlot_meta;
 }
 }

@@ -13,14 +13,14 @@ void fn_80216620();
 void igObject_register();
 extern char igBoolObject_className[];
 extern char igBoolObject_vtable[];
-extern char lbl_80560C98[4];
-extern char lbl_80560C9C[4];
-extern char lbl_80560CA0[4];
-extern char lbl_80560CA4[4];
+extern char igBoolObject_fieldTypes[4];
+extern char igBoolObject_fieldNames[4];
+extern char igBoolObject_fieldStorage[4];
+extern char igBoolObject_fieldOffsets[4];
 extern void *igBoolObject_meta;
 void *igBoolObject_getMeta();
 void *igBoolObject_vtableRead();
-void igBoolObject_registerNow();
+void igBoolObject_arkRegister();
 void igBoolObject_register();
 void *igBoolObject_getMetaCall();
 void igBoolObject_fieldInit();
@@ -31,7 +31,7 @@ struct UnknownGenObject8021968C_0 {
 };
 extern "C" {
 void *igBoolObject_getMeta(){
- if(!igBoolObject_meta || !(reinterpret_cast<unsigned int *>(igBoolObject_meta)[0x24/4]&4)) igBoolObject_registerNow();
+ if(!igBoolObject_meta || !(reinterpret_cast<unsigned int *>(igBoolObject_meta)[0x24/4]&4)) igBoolObject_arkRegister();
  return igBoolObject_meta;
 }
 void *igBoolObject_vtableRead(){
@@ -40,7 +40,7 @@ void *igBoolObject_vtableRead(){
  object.unknown00=igBoolObject_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBoolObject_registerNow(){
+void igBoolObject_arkRegister(){
  meta_registerNow((int)igBoolObject_register);
 }
 void igBoolObject_register(){
@@ -51,8 +51,8 @@ void *igBoolObject_getMetaCall(){return igBoolObject_getMeta();}
 void igBoolObject_fieldInit(){
  void *value0=igBoolObject_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560C98,1);
- meta_setupFields(value0,lbl_80560C9C,lbl_80560CA0,lbl_80560CA4,value1);
+ meta_appendFields(value0,igBoolObject_fieldTypes,1);
+ meta_setupFields(value0,igBoolObject_fieldNames,igBoolObject_fieldStorage,igBoolObject_fieldOffsets,value1);
 }
 }
 #pragma pop

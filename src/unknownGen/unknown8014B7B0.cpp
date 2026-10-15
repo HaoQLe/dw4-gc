@@ -7,7 +7,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_801308D0();
-void igEnbayaCompressAnimations_registerNow();
+void igEnbayaCompressAnimations_arkRegister();
 void igOptBase_register();
 extern char igExposeActorSkinGraphs_className[];
 extern char lbl_804A4A04[];
@@ -18,7 +18,7 @@ extern void *igExposeActorSkinGraphs_meta;
 extern void *igEnbayaCompressAnimations_meta;
 void *igExposeActorSkinGraphs_getMeta();
 void *igExposeActorSkinGraphs_vtableRead();
-void igExposeActorSkinGraphs_registerNow();
+void igExposeActorSkinGraphs_arkRegister();
 void igExposeActorSkinGraphs_register();
 void *igExposeActorSkinGraphs_getMetaCall();
 }
@@ -39,7 +39,7 @@ struct UnknownGenObject8014B7EC : UnknownGenObject8014B7EC_0 {
 };
 extern "C" {
 void *igExposeActorSkinGraphs_getMeta(){
- if(!igExposeActorSkinGraphs_meta || !(reinterpret_cast<unsigned int *>(igExposeActorSkinGraphs_meta)[0x24/4]&4)) igExposeActorSkinGraphs_registerNow();
+ if(!igExposeActorSkinGraphs_meta || !(reinterpret_cast<unsigned int *>(igExposeActorSkinGraphs_meta)[0x24/4]&4)) igExposeActorSkinGraphs_arkRegister();
  return igExposeActorSkinGraphs_meta;
 }
 void *igExposeActorSkinGraphs_vtableRead(){
@@ -52,7 +52,7 @@ void *igExposeActorSkinGraphs_vtableRead(){
  object.unknown00=igExposeActorSkinGraphs_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igExposeActorSkinGraphs_registerNow(){
+void igExposeActorSkinGraphs_arkRegister(){
  meta_registerNow((int)igExposeActorSkinGraphs_register);
 }
 void igExposeActorSkinGraphs_register(){
@@ -61,7 +61,7 @@ void igExposeActorSkinGraphs_register(){
 }
 void *igExposeActorSkinGraphs_getMetaCall(){return igExposeActorSkinGraphs_getMeta();}
 void *igEnbayaCompressAnimations_getMeta(){
- if(!igEnbayaCompressAnimations_meta || !(reinterpret_cast<unsigned int *>(igEnbayaCompressAnimations_meta)[0x24/4]&4)) igEnbayaCompressAnimations_registerNow();
+ if(!igEnbayaCompressAnimations_meta || !(reinterpret_cast<unsigned int *>(igEnbayaCompressAnimations_meta)[0x24/4]&4)) igEnbayaCompressAnimations_arkRegister();
  return igEnbayaCompressAnimations_meta;
 }
 }

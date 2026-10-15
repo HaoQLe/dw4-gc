@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8E8[8];
+extern char igObjectPropertyForTransform_dependencies[8];
 extern void *igObjectPropertyForTransform_meta;
 void *igObjectPropertyForTransform_getMeta();
 void *igObjectPropertyForTransform_vtableRead();
-void igObjectPropertyForTransform_registerNow();
+void igObjectPropertyForTransform_arkRegister();
 void igObjectPropertyForTransform_register();
 void *igObjectPropertyForTransform_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject80140308 : UnknownGenObject80140308_1 {
 };
 extern "C" {
 void *igObjectPropertyForTransform_getMeta(){
- if(!igObjectPropertyForTransform_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForTransform_meta)[0x24/4]&4)) igObjectPropertyForTransform_registerNow();
+ if(!igObjectPropertyForTransform_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForTransform_meta)[0x24/4]&4)) igObjectPropertyForTransform_arkRegister();
  return igObjectPropertyForTransform_meta;
 }
 void *igObjectPropertyForTransform_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForTransform_vtableRead(){
  object.unknown00=igObjectPropertyForTransform_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForTransform_registerNow(){
+void igObjectPropertyForTransform_arkRegister(){
  meta_registerNow((int)igObjectPropertyForTransform_register);
 }
 void igObjectPropertyForTransform_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForTransform_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForTransform_getMetaCall,(int)igObjectPropertyForTransform_className,44,(int)igObjectPropertyForTransform_vtableRead,(int)fn_80140490,0,(int)lbl_8055F8E8);
+ meta_registerClass(0,(int)&igObjectPropertyForTransform_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForTransform_getMetaCall,(int)igObjectPropertyForTransform_className,44,(int)igObjectPropertyForTransform_vtableRead,(int)fn_80140490,0,(int)igObjectPropertyForTransform_dependencies);
 }
 void *igObjectPropertyForTransform_getMetaCall(){return igObjectPropertyForTransform_getMeta();}
 }

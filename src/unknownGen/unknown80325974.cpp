@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beNDMWWindowList_registerNow();
+void beNDMWWindowList_arkRegister();
 extern void *beNDMWWindowList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beNDMWWindowList_metaObject(){
  return beNDMWWindowList_meta;
 }
 void *beNDMWWindowList_getMeta(){
- if(!beNDMWWindowList_meta || !(reinterpret_cast<unsigned int *>(beNDMWWindowList_meta)[0x24/4]&4)) beNDMWWindowList_registerNow();
+ if(!beNDMWWindowList_meta || !(reinterpret_cast<unsigned int *>(beNDMWWindowList_meta)[0x24/4]&4)) beNDMWWindowList_arkRegister();
  return beNDMWWindowList_meta;
 }
 }

@@ -12,7 +12,7 @@ void igMovieInfo_fieldInit();
 void *igMovieInfo_getMeta();
 void igMovieInfo_vtableRead();
 extern char igMovieInfo_className[];
-extern char lbl_804CDBDC[];
+extern char igMovieInfo_dependencies[];
 extern char igMovieInfo_meta[];
 void igMovieInfo_register();
 void *igMovieInfo_getMetaCall();
@@ -40,12 +40,12 @@ UnknownGenHolder *dtor_802ACB58(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igMovieInfo_registerNow(){
+void igMovieInfo_arkRegister(){
  meta_registerNow((int)igMovieInfo_register);
 }
 void igMovieInfo_register(){
  fn_802AA788();
- meta_registerClass(0,(int)igMovieInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igMovieInfo_getMetaCall,(int)igMovieInfo_className,104,(int)igMovieInfo_vtableRead,(int)igMovieInfo_fieldInit,0,(int)lbl_804CDBDC);
+ meta_registerClass(0,(int)igMovieInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igMovieInfo_getMetaCall,(int)igMovieInfo_className,104,(int)igMovieInfo_vtableRead,(int)igMovieInfo_fieldInit,0,(int)igMovieInfo_dependencies);
 }
 void *igMovieInfo_getMetaCall(){return igMovieInfo_getMeta();}
 }

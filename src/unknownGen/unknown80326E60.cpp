@@ -27,7 +27,7 @@ UnknownGenHolder *dtor_80326E60(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beNDMWShopTitle03_registerNow(){
+void beNDMWShopTitle03_arkRegister(){
  meta_registerNow((int)beNDMWShopTitle03_register);
 }
 void beNDMWShopTitle03_register(){

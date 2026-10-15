@@ -16,7 +16,7 @@ void beHitLandResultData_register();
 void *beHitLandResultData_getMetaCall();
 }
 extern "C" {
-void beHitLandResultData_registerNow(){
+void beHitLandResultData_arkRegister(){
  meta_registerNow((int)beHitLandResultData_register);
 }
 void beHitLandResultData_register(){

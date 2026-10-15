@@ -17,7 +17,7 @@ void beCriSfpData_register();
 void *beCriSfpData_getMetaCall();
 }
 extern "C" {
-void beCriSfpData_registerNow(){
+void beCriSfpData_arkRegister(){
  meta_registerNow((int)beCriSfpData_register);
 }
 void beCriSfpData_register(){

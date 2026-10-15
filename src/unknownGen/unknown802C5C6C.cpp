@@ -14,29 +14,29 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beModelCtrlNode2_registerNow();
+void beModelCtrlNode2_arkRegister();
 void igObject_register();
 extern char lbl_8041E6AC[];
 extern char beModelCtrlSubComBase_className[];
-extern char lbl_804D06B8[];
-extern char lbl_804D06C4[];
-extern char lbl_804D06D0[];
-extern char lbl_804D06DC[];
+extern char beModelCtrlSubComBase_fieldTypes[];
+extern char beModelCtrlSubComBase_fieldNames[];
+extern char beModelCtrlSubComBase_fieldStorage[];
+extern char beModelCtrlSubComBase_fieldOffsets[];
 extern void *beModelCtrlSubComBase_meta;
 extern void *beModelCtrlNode2_meta;
 extern void *lbl_805621F4;
 void *beModelCtrlSubComBase_getMeta();
-void beModelCtrlSubComBase_registerNow();
+void beModelCtrlSubComBase_arkRegister();
 void beModelCtrlSubComBase_register();
 void *beModelCtrlSubComBase_getMetaCall();
 void beModelCtrlSubComBase_fieldInit();
 }
 extern "C" {
 void *beModelCtrlSubComBase_getMeta(){
- if(!beModelCtrlSubComBase_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlSubComBase_meta)[0x24/4]&4)) beModelCtrlSubComBase_registerNow();
+ if(!beModelCtrlSubComBase_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlSubComBase_meta)[0x24/4]&4)) beModelCtrlSubComBase_arkRegister();
  return beModelCtrlSubComBase_meta;
 }
-void beModelCtrlSubComBase_registerNow(){
+void beModelCtrlSubComBase_arkRegister(){
  meta_registerNow((int)beModelCtrlSubComBase_register);
 }
 void beModelCtrlSubComBase_register(){
@@ -47,13 +47,13 @@ void *beModelCtrlSubComBase_getMetaCall(){return beModelCtrlSubComBase_getMeta()
 void beModelCtrlSubComBase_fieldInit(){
  void *value0=beModelCtrlSubComBase_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D06B8,3);
+ meta_appendFields(value0,beModelCtrlSubComBase_fieldTypes,3);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_8041E6AC+0)));
- meta_setupFields(value0,lbl_804D06C4,lbl_804D06D0,lbl_804D06DC,value1);
+ meta_setupFields(value0,beModelCtrlSubComBase_fieldNames,beModelCtrlSubComBase_fieldStorage,beModelCtrlSubComBase_fieldOffsets,value1);
 }
 void *beModelCtrlNode2_create(void *object){
- beModelCtrlNode2_registerNow();
+ beModelCtrlNode2_arkRegister();
  return meta_createInstance(beModelCtrlNode2_meta,object);
 }
 void *beModelCtrlNode2_metaObject(){
@@ -61,7 +61,7 @@ void *beModelCtrlNode2_metaObject(){
  return beModelCtrlNode2_meta;
 }
 void *beModelCtrlNode2_getMeta(){
- if(!beModelCtrlNode2_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlNode2_meta)[0x24/4]&4)) beModelCtrlNode2_registerNow();
+ if(!beModelCtrlNode2_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlNode2_meta)[0x24/4]&4)) beModelCtrlNode2_arkRegister();
  return beModelCtrlNode2_meta;
 }
 }

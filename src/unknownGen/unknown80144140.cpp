@@ -12,7 +12,7 @@ void fn_8012FC48();
 void *fn_80143FCC();
 void igIterateGraph_fieldInit();
 void igIterator_register();
-extern char lbl_8049E55C[];
+extern char igIterateGraph_dependencies[];
 extern char igIterateGraph_className[];
 extern char igIterateGraph_vtable[];
 extern char lbl_804A9C44[];
@@ -20,7 +20,7 @@ extern void *lbl_805621F4;
 extern void *igIterateGraph_meta;
 void *igIterateGraph_getMeta();
 void *igIterateGraph_vtableRead();
-void igIterateGraph_registerNow();
+void igIterateGraph_arkRegister();
 void igIterateGraph_register();
 void *igIterateGraph_getMetaCall();
 }
@@ -38,7 +38,7 @@ struct UnknownGenObject801441F0 : UnknownGenRoot801441F0 {
 };
 extern "C" {
 void *igIterateGraph_create(void *object){
- igIterateGraph_registerNow();
+ igIterateGraph_arkRegister();
  return meta_createInstance(igIterateGraph_meta,object);
 }
 void *fn_80144178(){
@@ -46,7 +46,7 @@ void *fn_80144178(){
  return igIterateGraph_meta;
 }
 void *igIterateGraph_getMeta(){
- if(!igIterateGraph_meta || !(reinterpret_cast<unsigned int *>(igIterateGraph_meta)[0x24/4]&4)) igIterateGraph_registerNow();
+ if(!igIterateGraph_meta || !(reinterpret_cast<unsigned int *>(igIterateGraph_meta)[0x24/4]&4)) igIterateGraph_arkRegister();
  return igIterateGraph_meta;
 }
 void *igIterateGraph_vtableRead(){
@@ -57,12 +57,12 @@ void *igIterateGraph_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igIterateGraph_registerNow(){
+void igIterateGraph_arkRegister(){
  meta_registerNow((int)igIterateGraph_register);
 }
 void igIterateGraph_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igIterateGraph_meta,(int)igIterator_register,(int)fn_80143FCC,(int)igIterateGraph_getMetaCall,(int)igIterateGraph_className,20,(int)igIterateGraph_vtableRead,(int)igIterateGraph_fieldInit,0,(int)lbl_8049E55C);
+ meta_registerClass(0,(int)&igIterateGraph_meta,(int)igIterator_register,(int)fn_80143FCC,(int)igIterateGraph_getMetaCall,(int)igIterateGraph_className,20,(int)igIterateGraph_vtableRead,(int)igIterateGraph_fieldInit,0,(int)igIterateGraph_dependencies);
 }
 void *igIterateGraph_getMetaCall(){return igIterateGraph_getMeta();}
 }

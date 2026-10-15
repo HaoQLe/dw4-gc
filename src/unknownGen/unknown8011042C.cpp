@@ -13,11 +13,11 @@ void igView_register();
 extern char igActiveComponentsObserver_className[];
 extern char lbl_80495AD8[];
 extern char igActiveComponentsObserver_vtable[];
-extern char lbl_8055F08C[8];
+extern char igActiveComponentsObserver_dependencies[8];
 extern void *igActiveComponentsObserver_meta;
 void *igActiveComponentsObserver_getMeta();
 void *igActiveComponentsObserver_vtableRead();
-void igActiveComponentsObserver_registerNow();
+void igActiveComponentsObserver_arkRegister();
 void igActiveComponentsObserver_register();
 void *igActiveComponentsObserver_getMetaCall();
 }
@@ -35,11 +35,11 @@ struct UnknownGenObject801104A0 : UnknownGenRoot801104A0 {
 };
 extern "C" {
 void *igActiveComponentsObserver_create(void *object){
- igActiveComponentsObserver_registerNow();
+ igActiveComponentsObserver_arkRegister();
  return meta_createInstance(igActiveComponentsObserver_meta,object);
 }
 void *igActiveComponentsObserver_getMeta(){
- if(!igActiveComponentsObserver_meta || !(reinterpret_cast<unsigned int *>(igActiveComponentsObserver_meta)[0x24/4]&4)) igActiveComponentsObserver_registerNow();
+ if(!igActiveComponentsObserver_meta || !(reinterpret_cast<unsigned int *>(igActiveComponentsObserver_meta)[0x24/4]&4)) igActiveComponentsObserver_arkRegister();
  return igActiveComponentsObserver_meta;
 }
 void *igActiveComponentsObserver_vtableRead(){
@@ -51,12 +51,12 @@ void *igActiveComponentsObserver_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igActiveComponentsObserver_registerNow(){
+void igActiveComponentsObserver_arkRegister(){
  meta_registerNow((int)igActiveComponentsObserver_register);
 }
 void igActiveComponentsObserver_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igActiveComponentsObserver_meta,(int)igView_register,(int)fn_8010E6DC,(int)igActiveComponentsObserver_getMetaCall,(int)igActiveComponentsObserver_className,24,(int)igActiveComponentsObserver_vtableRead,(int)igActiveComponentsObserver_fieldInit,0,(int)lbl_8055F08C);
+ meta_registerClass(0,(int)&igActiveComponentsObserver_meta,(int)igView_register,(int)fn_8010E6DC,(int)igActiveComponentsObserver_getMetaCall,(int)igActiveComponentsObserver_className,24,(int)igActiveComponentsObserver_vtableRead,(int)igActiveComponentsObserver_fieldInit,0,(int)igActiveComponentsObserver_dependencies);
 }
 void *igActiveComponentsObserver_getMetaCall(){return igActiveComponentsObserver_getMeta();}
 }

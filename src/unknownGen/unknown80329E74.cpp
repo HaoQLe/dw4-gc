@@ -16,7 +16,7 @@ void beNDMWShopSelect00_register();
 void *beNDMWShopSelect00_getMetaCall();
 }
 extern "C" {
-void beNDMWShopSelect00_registerNow(){
+void beNDMWShopSelect00_arkRegister(){
  meta_registerNow((int)beNDMWShopSelect00_register);
 }
 void beNDMWShopSelect00_register(){

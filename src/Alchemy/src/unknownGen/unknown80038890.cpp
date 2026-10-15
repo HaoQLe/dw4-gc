@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void fn_80021B94();
-void igBoolMetaField_registerNow();
+void igBoolMetaField_arkRegister();
 void fn_8003EBC8(void *);
 void fn_80053650(void *,int);
 void fn_80053E6C(void *,void *);
@@ -23,11 +23,11 @@ extern char igBoolArrayMetaField_className[];
 extern char lbl_80471914[];
 extern char igBoolArrayMetaField_vtable[];
 extern char lbl_80473E30[];
-extern char lbl_8055D698[8];
-extern char lbl_8055D6A0[4];
-extern char lbl_8055D6A4[4];
-extern char lbl_8055D6A8[4];
-extern char lbl_8055D6AC[4];
+extern char igBoolArrayMetaField_dependencies[8];
+extern char igBoolArrayMetaField_fieldTypes[4];
+extern char igBoolArrayMetaField_fieldNames[4];
+extern char igBoolArrayMetaField_fieldStorage[4];
+extern char igBoolArrayMetaField_fieldOffsets[4];
 extern void *igBoolMetaField_meta;
 extern void *lbl_80561E4C;
 extern void *igBoolArrayMetaField_meta;
@@ -35,7 +35,7 @@ extern void *lbl_80561E54;
 extern void *lbl_805621F4;
 void *igBoolArrayMetaField_getMeta();
 void *igBoolArrayMetaField_vtableRead();
-void igBoolArrayMetaField_registerNow();
+void igBoolArrayMetaField_arkRegister();
 void igBoolArrayMetaField_register();
 void *igBoolArrayMetaField_getMetaCall();
 void *igBoolArrayMetaField_parentMeta();
@@ -73,16 +73,16 @@ void fn_800388B0(){
 }
 void *fn_80038948(){
  if(!lbl_80561E4C){
-  igBoolMetaField_registerNow();
+  igBoolMetaField_arkRegister();
  }
  return lbl_80561E4C;
 }
 void *igBoolArrayMetaField_create(void *object){
- igBoolArrayMetaField_registerNow();
+ igBoolArrayMetaField_arkRegister();
  return meta_createInstance(igBoolArrayMetaField_meta,object);
 }
 void *igBoolArrayMetaField_getMeta(){
- if(!igBoolArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igBoolArrayMetaField_meta)[0x24/4]&4)) igBoolArrayMetaField_registerNow();
+ if(!igBoolArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igBoolArrayMetaField_meta)[0x24/4]&4)) igBoolArrayMetaField_arkRegister();
  return igBoolArrayMetaField_meta;
 }
 void *igBoolArrayMetaField_vtableRead(){
@@ -90,21 +90,21 @@ void *igBoolArrayMetaField_vtableRead(){
  object.unknown00=igBoolArrayMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBoolArrayMetaField_registerNow(){
+void igBoolArrayMetaField_arkRegister(){
  meta_registerNow((int)igBoolArrayMetaField_register);
 }
 void igBoolArrayMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igBoolArrayMetaField_meta,(int)igBoolMetaField_register,(int)igBoolArrayMetaField_parentMeta,(int)igBoolArrayMetaField_getMetaCall,(int)igBoolArrayMetaField_className,56,(int)igBoolArrayMetaField_vtableRead,(int)igBoolArrayMetaField_fieldInit,0,(int)lbl_8055D698);
+ meta_registerClass(0,(int)&igBoolArrayMetaField_meta,(int)igBoolMetaField_register,(int)igBoolArrayMetaField_parentMeta,(int)igBoolArrayMetaField_getMetaCall,(int)igBoolArrayMetaField_className,56,(int)igBoolArrayMetaField_vtableRead,(int)igBoolArrayMetaField_fieldInit,0,(int)igBoolArrayMetaField_dependencies);
 }
 void *igBoolArrayMetaField_getMetaCall(){return igBoolArrayMetaField_getMeta();}
 void *igBoolArrayMetaField_parentMeta(){return igBoolMetaField_meta;}
 void igBoolArrayMetaField_fieldInit(){
  void *meta=igBoolArrayMetaField_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_8055D6A0,1);
+ meta_appendFields(meta,igBoolArrayMetaField_fieldTypes,1);
  fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,lbl_8055D6A4,lbl_8055D6A8,lbl_8055D6AC,field);
+ meta_setupFields(meta,igBoolArrayMetaField_fieldNames,igBoolArrayMetaField_fieldStorage,igBoolArrayMetaField_fieldOffsets,field);
 }
 void fn_80038BC4(){
  if(!lbl_80561E54){

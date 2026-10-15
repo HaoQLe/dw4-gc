@@ -5,7 +5,7 @@ extern "C" {
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
-void igSimpleShader_registerNow();
+void igSimpleShader_arkRegister();
 void *igSimpleUserInfo_getMeta();
 void igSimpleUserInfo_vtableRead();
 void igUserInfo_register();
@@ -18,7 +18,7 @@ void *igSimpleUserInfo_getMetaCall();
 void *fn_801B0404();
 }
 extern "C" {
-void igSimpleUserInfo_registerNow(){
+void igSimpleUserInfo_arkRegister(){
  meta_registerNow((int)igSimpleUserInfo_register);
 }
 void igSimpleUserInfo_register(){
@@ -28,7 +28,7 @@ void igSimpleUserInfo_register(){
 void *igSimpleUserInfo_getMetaCall(){return igSimpleUserInfo_getMeta();}
 void *fn_801B0404(){return igUserInfo_meta;}
 void *igSimpleShader_getMeta(){
- if(!igSimpleShader_meta || !(reinterpret_cast<unsigned int *>(igSimpleShader_meta)[0x24/4]&4)) igSimpleShader_registerNow();
+ if(!igSimpleShader_meta || !(reinterpret_cast<unsigned int *>(igSimpleShader_meta)[0x24/4]&4)) igSimpleShader_arkRegister();
  return igSimpleShader_meta;
 }
 }

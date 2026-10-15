@@ -18,14 +18,14 @@ extern char igBlendFunctionAttr_className[];
 extern char igBlendFunctionAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E670[8];
+extern char igBlendFunctionAttr_dependencies[8];
 extern void *lbl_805621F4;
 extern void *lbl_80562A08;
 extern void *lbl_80562A0C;
 extern void *igBlendFunctionAttr_meta;
 void *igBlendFunctionAttr_getMeta();
 void *igBlendFunctionAttr_vtableRead();
-void igBlendFunctionAttr_registerNow();
+void igBlendFunctionAttr_arkRegister();
 void igBlendFunctionAttr_register();
 void *igBlendFunctionAttr_getMetaCall();
 }
@@ -52,7 +52,7 @@ void *fn_800BA644(){
  return lbl_80562A0C;
 }
 void *igBlendFunctionAttr_create(void *object){
- igBlendFunctionAttr_registerNow();
+ igBlendFunctionAttr_arkRegister();
  return meta_createInstance(igBlendFunctionAttr_meta,object);
 }
 void *fn_800BA6C8(){
@@ -60,7 +60,7 @@ void *fn_800BA6C8(){
  return igBlendFunctionAttr_meta;
 }
 void *igBlendFunctionAttr_getMeta(){
- if(!igBlendFunctionAttr_meta || !(reinterpret_cast<unsigned int *>(igBlendFunctionAttr_meta)[0x24/4]&4)) igBlendFunctionAttr_registerNow();
+ if(!igBlendFunctionAttr_meta || !(reinterpret_cast<unsigned int *>(igBlendFunctionAttr_meta)[0x24/4]&4)) igBlendFunctionAttr_arkRegister();
  return igBlendFunctionAttr_meta;
 }
 void *igBlendFunctionAttr_vtableRead(){
@@ -71,12 +71,12 @@ void *igBlendFunctionAttr_vtableRead(){
  object.unknown18.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBlendFunctionAttr_registerNow(){
+void igBlendFunctionAttr_arkRegister(){
  meta_registerNow((int)igBlendFunctionAttr_register);
 }
 void igBlendFunctionAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igBlendFunctionAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igBlendFunctionAttr_getMetaCall,(int)igBlendFunctionAttr_className,52,(int)igBlendFunctionAttr_vtableRead,(int)igBlendFunctionAttr_fieldInit,0,(int)lbl_8055E670);
+ meta_registerClass(0,(int)&igBlendFunctionAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igBlendFunctionAttr_getMetaCall,(int)igBlendFunctionAttr_className,52,(int)igBlendFunctionAttr_vtableRead,(int)igBlendFunctionAttr_fieldInit,0,(int)igBlendFunctionAttr_dependencies);
 }
 void *igBlendFunctionAttr_getMetaCall(){return igBlendFunctionAttr_getMeta();}
 }

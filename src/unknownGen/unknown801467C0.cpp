@@ -8,7 +8,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_8012FC48();
 void *fn_801420C0();
-void igInstanceScene_registerNow();
+void igInstanceScene_arkRegister();
 void igInterfaced_register();
 extern char igVertexBlending_className[];
 extern char igInterface_className[];
@@ -27,7 +27,7 @@ extern void *lbl_805641A4;
 extern void *igInstanceScene_meta;
 void *igInterface_getMeta();
 void *igInterface_vtableRead();
-void igInterface_registerNow();
+void igInterface_arkRegister();
 void igInterface_register();
 void *igInterface_getMetaCall();
 }
@@ -37,7 +37,7 @@ struct UnknownGenObject801467FC_0 {
 };
 extern "C" {
 void *igInterface_getMeta(){
- if(!igInterface_meta || !(reinterpret_cast<unsigned int *>(igInterface_meta)[0x24/4]&4)) igInterface_registerNow();
+ if(!igInterface_meta || !(reinterpret_cast<unsigned int *>(igInterface_meta)[0x24/4]&4)) igInterface_arkRegister();
  return igInterface_meta;
 }
 void *igInterface_vtableRead(){
@@ -47,7 +47,7 @@ void *igInterface_vtableRead(){
  object.unknown00=igInterface_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igInterface_registerNow(){
+void igInterface_arkRegister(){
  meta_registerNow((int)igInterface_register);
 }
 void igInterface_register(){
@@ -77,7 +77,7 @@ void *fn_80146990(){
  return lbl_805641A4;
 }
 void *igInstanceScene_getMeta(){
- if(!igInstanceScene_meta || !(reinterpret_cast<unsigned int *>(igInstanceScene_meta)[0x24/4]&4)) igInstanceScene_registerNow();
+ if(!igInstanceScene_meta || !(reinterpret_cast<unsigned int *>(igInstanceScene_meta)[0x24/4]&4)) igInstanceScene_arkRegister();
  return igInstanceScene_meta;
 }
 }

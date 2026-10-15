@@ -16,7 +16,7 @@ void beNDMWLogoCtrlData_register();
 void *beNDMWLogoCtrlData_getMetaCall();
 }
 extern "C" {
-void beNDMWLogoCtrlData_registerNow(){
+void beNDMWLogoCtrlData_arkRegister(){
  meta_registerNow((int)beNDMWLogoCtrlData_register);
 }
 void beNDMWLogoCtrlData_register(){

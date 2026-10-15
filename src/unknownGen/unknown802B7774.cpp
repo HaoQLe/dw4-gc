@@ -11,18 +11,18 @@ void *fn_80284550();
 void fn_802B1AC8();
 void igInfoManager_register();
 extern char beSystem_className[];
-extern char lbl_804CF274[];
+extern char beSystem_dependencies[];
 extern char beSystem_meta[];
 void beSystem_register();
 void *beSystem_getMetaCall();
 }
 extern "C" {
-void beSystem_registerNow(){
+void beSystem_arkRegister(){
  meta_registerNow((int)beSystem_register);
 }
 void beSystem_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beSystem_meta,(int)igInfoManager_register,(int)fn_80284550,(int)beSystem_getMetaCall,(int)beSystem_className,104,(int)beSystem_vtableRead,(int)beSystem_fieldInit,0,(int)lbl_804CF274);
+ meta_registerClass(0,(int)beSystem_meta,(int)igInfoManager_register,(int)fn_80284550,(int)beSystem_getMetaCall,(int)beSystem_className,104,(int)beSystem_vtableRead,(int)beSystem_fieldInit,0,(int)beSystem_dependencies);
 }
 void *beSystem_getMetaCall(){return beSystem_getMeta();}
 }

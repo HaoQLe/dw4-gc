@@ -19,23 +19,23 @@ extern char igNamedObject_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igAnimationList_className[];
-extern char lbl_804B269C[];
+extern char igAnimation_dependencies[];
 extern char igAnimation_className[];
 extern char igAnimationList_vtable[];
 extern char lbl_804B5E04[];
 extern char igAnimation_vtable[];
-extern char lbl_805609F0[8];
+extern char igAnimationList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igAnimationList_meta;
 extern void *igAnimation_meta;
 void *igAnimationList_getMeta();
 void *igAnimationList_vtableRead();
-void igAnimationList_registerNow();
+void igAnimationList_arkRegister();
 void igAnimationList_register();
 void *igAnimationList_getMetaCall();
 void *igAnimation_getMeta();
 void *igAnimation_vtableRead();
-void igAnimation_registerNow();
+void igAnimation_arkRegister();
 void igAnimation_register();
 void *igAnimation_getMetaCall();
 }
@@ -65,7 +65,7 @@ struct UnknownGenObject801CC610 : UnknownGenObject801CC610_0 {
 };
 extern "C" {
 void *igAnimationList_create(void *object){
- igAnimationList_registerNow();
+ igAnimationList_arkRegister();
  return meta_createInstance(igAnimationList_meta,object);
 }
 void *fn_801CC3C4(){
@@ -73,7 +73,7 @@ void *fn_801CC3C4(){
  return igAnimationList_meta;
 }
 void *igAnimationList_getMeta(){
- if(!igAnimationList_meta || !(reinterpret_cast<unsigned int *>(igAnimationList_meta)[0x24/4]&4)) igAnimationList_registerNow();
+ if(!igAnimationList_meta || !(reinterpret_cast<unsigned int *>(igAnimationList_meta)[0x24/4]&4)) igAnimationList_arkRegister();
  return igAnimationList_meta;
 }
 void *igAnimationList_vtableRead(){
@@ -86,16 +86,16 @@ void *igAnimationList_vtableRead(){
  object.unknown00=igAnimationList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationList_registerNow(){
+void igAnimationList_arkRegister(){
  meta_registerNow((int)igAnimationList_register);
 }
 void igAnimationList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationList_getMetaCall,(int)igAnimationList_className,20,(int)igAnimationList_vtableRead,0,0,(int)lbl_805609F0);
+ meta_registerClass(0,(int)&igAnimationList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationList_getMetaCall,(int)igAnimationList_className,20,(int)igAnimationList_vtableRead,0,0,(int)igAnimationList_dependencies);
 }
 void *igAnimationList_getMetaCall(){return igAnimationList_getMeta();}
 void *igAnimation_create(void *object){
- igAnimation_registerNow();
+ igAnimation_arkRegister();
  return meta_createInstance(igAnimation_meta,object);
 }
 void *fn_801CC598(){
@@ -103,7 +103,7 @@ void *fn_801CC598(){
  return igAnimation_meta;
 }
 void *igAnimation_getMeta(){
- if(!igAnimation_meta || !(reinterpret_cast<unsigned int *>(igAnimation_meta)[0x24/4]&4)) igAnimation_registerNow();
+ if(!igAnimation_meta || !(reinterpret_cast<unsigned int *>(igAnimation_meta)[0x24/4]&4)) igAnimation_arkRegister();
  return igAnimation_meta;
 }
 void *igAnimation_vtableRead(){
@@ -117,12 +117,12 @@ void *igAnimation_vtableRead(){
  object.unknown38.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimation_registerNow(){
+void igAnimation_arkRegister(){
  meta_registerNow((int)igAnimation_register);
 }
 void igAnimation_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimation_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igAnimation_getMetaCall,(int)igAnimation_className,64,(int)igAnimation_vtableRead,(int)igAnimation_fieldInit,0,(int)lbl_804B269C);
+ meta_registerClass(0,(int)&igAnimation_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igAnimation_getMetaCall,(int)igAnimation_className,64,(int)igAnimation_vtableRead,(int)igAnimation_fieldInit,0,(int)igAnimation_dependencies);
 }
 void *igAnimation_getMetaCall(){return igAnimation_getMeta();}
 }

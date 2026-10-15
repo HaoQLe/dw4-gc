@@ -9,17 +9,17 @@ void *meta_fieldCount(void *);
 void *beSaveDataDeliver_metaObject();
 void *beMessenger_metaObject();
 void *beNDMWMcSlotList_metaObject();
-extern char lbl_804E36CC[];
-extern char lbl_804E3710[];
-extern char lbl_804E3754[];
-extern char lbl_804E3798[];
+extern char beNDMWMcUtilCtrl_fieldTypes[];
+extern char beNDMWMcUtilCtrl_fieldNames[];
+extern char beNDMWMcUtilCtrl_fieldStorage[];
+extern char beNDMWMcUtilCtrl_fieldOffsets[];
 extern void *beNDMWMcUtilCtrl_meta;
 }
 extern "C" {
 void beNDMWMcUtilCtrl_fieldInit(){
  void *value0=beNDMWMcUtilCtrl_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E36CC,17);
+ meta_appendFields(value0,beNDMWMcUtilCtrl_fieldTypes,17);
  void *value2=meta_field(value0,value1);
  void *value3=beMessenger_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -32,7 +32,7 @@ void beNDMWMcUtilCtrl_fieldInit(){
  void *value7=beNDMWMcSlotList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value6)+52)=1;
- meta_setupFields(value0,lbl_804E3710,lbl_804E3754,lbl_804E3798,value1);
+ meta_setupFields(value0,beNDMWMcUtilCtrl_fieldNames,beNDMWMcUtilCtrl_fieldStorage,beNDMWMcUtilCtrl_fieldOffsets,value1);
 }
 }
 #pragma pop

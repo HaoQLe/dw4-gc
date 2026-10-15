@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igOnOffColorChanger_registerNow();
+void igOnOffColorChanger_arkRegister();
 extern void *lbl_805621F4;
 extern void *igOnOffColorChanger_meta;
 }
@@ -14,7 +14,7 @@ void *fn_80113894(){
  return igOnOffColorChanger_meta;
 }
 void *igOnOffColorChanger_getMeta(){
- if(!igOnOffColorChanger_meta || !(reinterpret_cast<unsigned int *>(igOnOffColorChanger_meta)[0x24/4]&4)) igOnOffColorChanger_registerNow();
+ if(!igOnOffColorChanger_meta || !(reinterpret_cast<unsigned int *>(igOnOffColorChanger_meta)[0x24/4]&4)) igOnOffColorChanger_arkRegister();
  return igOnOffColorChanger_meta;
 }
 }

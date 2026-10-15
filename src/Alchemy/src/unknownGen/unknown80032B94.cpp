@@ -24,7 +24,7 @@ extern void *lbl_80561CFC;
 extern void *igDirEntry_meta;
 void *igDirEntry_getMeta();
 void *igDirEntry_vtableRead();
-void igDirEntry_registerNow();
+void igDirEntry_arkRegister();
 void igDirEntry_register();
 void *igDirEntry_getMetaCall();
 }
@@ -58,11 +58,11 @@ void *fn_80032C00(){
  return lbl_80561CFC;
 }
 void *igDirEntry_create(void *object){
- igDirEntry_registerNow();
+ igDirEntry_arkRegister();
  return meta_createInstance(igDirEntry_meta,object);
 }
 void *igDirEntry_getMeta(){
- if(!igDirEntry_meta || !(reinterpret_cast<unsigned int *>(igDirEntry_meta)[0x24/4]&4)) igDirEntry_registerNow();
+ if(!igDirEntry_meta || !(reinterpret_cast<unsigned int *>(igDirEntry_meta)[0x24/4]&4)) igDirEntry_arkRegister();
  return igDirEntry_meta;
 }
 void *igDirEntry_vtableRead(){
@@ -72,7 +72,7 @@ void *igDirEntry_vtableRead(){
  object.unknown00=igDirEntry_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igDirEntry_registerNow(){
+void igDirEntry_arkRegister(){
  meta_registerNow((int)igDirEntry_register);
 }
 void igDirEntry_register(){

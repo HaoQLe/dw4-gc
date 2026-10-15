@@ -17,11 +17,11 @@ extern char lbl_804A8808[];
 extern char lbl_804A88A4[];
 extern char lbl_804AA614[];
 extern char lbl_804AAF48[];
-extern char lbl_8055FD78[8];
+extern char igAttrEditForAttrSet_dependencies[8];
 extern void *igAttrEditForAttrSet_meta;
 void *igAttrEditForAttrSet_getMeta();
 void *igAttrEditForAttrSet_vtableRead();
-void igAttrEditForAttrSet_registerNow();
+void igAttrEditForAttrSet_arkRegister();
 void igAttrEditForAttrSet_register();
 void *igAttrEditForAttrSet_getMetaCall();
 }
@@ -45,7 +45,7 @@ struct UnknownGenObject80152E5C : UnknownGenObject80152E5C_1 {
 };
 extern "C" {
 void *igAttrEditForAttrSet_getMeta(){
- if(!igAttrEditForAttrSet_meta || !(reinterpret_cast<unsigned int *>(igAttrEditForAttrSet_meta)[0x24/4]&4)) igAttrEditForAttrSet_registerNow();
+ if(!igAttrEditForAttrSet_meta || !(reinterpret_cast<unsigned int *>(igAttrEditForAttrSet_meta)[0x24/4]&4)) igAttrEditForAttrSet_arkRegister();
  return igAttrEditForAttrSet_meta;
 }
 void *igAttrEditForAttrSet_vtableRead(){
@@ -61,12 +61,12 @@ void *igAttrEditForAttrSet_vtableRead(){
  object.unknown00=igAttrEditForAttrSet_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAttrEditForAttrSet_registerNow(){
+void igAttrEditForAttrSet_arkRegister(){
  meta_registerNow((int)igAttrEditForAttrSet_register);
 }
 void igAttrEditForAttrSet_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igAttrEditForAttrSet_meta,(int)igAttrEditForNode_register,(int)fn_80152CDC,(int)igAttrEditForAttrSet_getMetaCall,(int)igAttrEditForAttrSet_className,40,(int)igAttrEditForAttrSet_vtableRead,(int)fn_80153030,0,(int)lbl_8055FD78);
+ meta_registerClass(0,(int)&igAttrEditForAttrSet_meta,(int)igAttrEditForNode_register,(int)fn_80152CDC,(int)igAttrEditForAttrSet_getMetaCall,(int)igAttrEditForAttrSet_className,40,(int)igAttrEditForAttrSet_vtableRead,(int)fn_80153030,0,(int)igAttrEditForAttrSet_dependencies);
 }
 void *igAttrEditForAttrSet_getMetaCall(){return igAttrEditForAttrSet_getMeta();}
 }

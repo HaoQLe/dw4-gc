@@ -16,7 +16,7 @@ extern char igViewerLoadingFileMessage_vtable[];
 extern void *igViewerLoadingFileMessage_meta;
 void *igViewerLoadingFileMessage_getMeta();
 void *igViewerLoadingFileMessage_vtableRead();
-void igViewerLoadingFileMessage_registerNow();
+void igViewerLoadingFileMessage_arkRegister();
 void igViewerLoadingFileMessage_register();
 void *igViewerLoadingFileMessage_getMetaCall();
 }
@@ -32,11 +32,11 @@ struct UnknownGenObject80404F4C : UnknownGenRoot80404F4C {
 };
 extern "C" {
 void *igViewerLoadingFileMessage_create(void *object){
- igViewerLoadingFileMessage_registerNow();
+ igViewerLoadingFileMessage_arkRegister();
  return meta_createInstance(igViewerLoadingFileMessage_meta,object);
 }
 void *igViewerLoadingFileMessage_getMeta(){
- if(!igViewerLoadingFileMessage_meta || !(reinterpret_cast<unsigned int *>(igViewerLoadingFileMessage_meta)[0x24/4]&4)) igViewerLoadingFileMessage_registerNow();
+ if(!igViewerLoadingFileMessage_meta || !(reinterpret_cast<unsigned int *>(igViewerLoadingFileMessage_meta)[0x24/4]&4)) igViewerLoadingFileMessage_arkRegister();
  return igViewerLoadingFileMessage_meta;
 }
 void *igViewerLoadingFileMessage_vtableRead(){
@@ -46,7 +46,7 @@ void *igViewerLoadingFileMessage_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igViewerLoadingFileMessage_registerNow(){
+void igViewerLoadingFileMessage_arkRegister(){
  meta_registerNow((int)igViewerLoadingFileMessage_register);
 }
 void igViewerLoadingFileMessage_register(){

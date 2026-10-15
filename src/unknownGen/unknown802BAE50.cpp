@@ -9,7 +9,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void beSeInfoData_registerNow();
+void beSeInfoData_arkRegister();
 extern char beSeInfo_className[];
 extern char beSeInfo_meta[];
 extern void *beSeInfoData_meta;
@@ -17,7 +17,7 @@ void beSeInfo_register();
 void *beSeInfo_getMetaCall();
 }
 extern "C" {
-void beSeInfo_registerNow(){
+void beSeInfo_arkRegister(){
  meta_registerNow((int)beSeInfo_register);
 }
 void beSeInfo_register(){
@@ -26,7 +26,7 @@ void beSeInfo_register(){
 }
 void *beSeInfo_getMetaCall(){return beSeInfo_getMeta();}
 void *beSeInfoData_getMeta(){
- if(!beSeInfoData_meta || !(reinterpret_cast<unsigned int *>(beSeInfoData_meta)[0x24/4]&4)) beSeInfoData_registerNow();
+ if(!beSeInfoData_meta || !(reinterpret_cast<unsigned int *>(beSeInfoData_meta)[0x24/4]&4)) beSeInfoData_arkRegister();
  return beSeInfoData_meta;
 }
 }

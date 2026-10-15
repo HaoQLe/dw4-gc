@@ -8,7 +8,7 @@ void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
 void fn_80403D78(void *,short);
 void fn_80404544(void *);
-void igViewerSceneInfoManager_registerNow();
+void igViewerSceneInfoManager_arkRegister();
 extern char lbl_80461E48[];
 extern char lbl_804F0060[];
 extern char lbl_804F006C[];
@@ -26,7 +26,7 @@ void *fn_80403BE8(){
  return lbl_8055C784;
 }
 void *igViewerSceneInfoManager_create(void *object){
- igViewerSceneInfoManager_registerNow();
+ igViewerSceneInfoManager_arkRegister();
  return meta_createInstance(igViewerSceneInfoManager_meta,object);
 }
 void *igViewerSceneInfoManager_metaObject(){
@@ -34,7 +34,7 @@ void *igViewerSceneInfoManager_metaObject(){
  return igViewerSceneInfoManager_meta;
 }
 void *igViewerSceneInfoManager_getMeta(){
- if(!igViewerSceneInfoManager_meta || !(reinterpret_cast<unsigned int *>(igViewerSceneInfoManager_meta)[0x24/4]&4)) igViewerSceneInfoManager_registerNow();
+ if(!igViewerSceneInfoManager_meta || !(reinterpret_cast<unsigned int *>(igViewerSceneInfoManager_meta)[0x24/4]&4)) igViewerSceneInfoManager_arkRegister();
  return igViewerSceneInfoManager_meta;
 }
 void *fn_80403D28(){

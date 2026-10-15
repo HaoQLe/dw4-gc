@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8E0[8];
+extern char igObjectPropertyForGroup_dependencies[8];
 extern void *igObjectPropertyForGroup_meta;
 void *igObjectPropertyForGroup_getMeta();
 void *igObjectPropertyForGroup_vtableRead();
-void igObjectPropertyForGroup_registerNow();
+void igObjectPropertyForGroup_arkRegister();
 void igObjectPropertyForGroup_register();
 void *igObjectPropertyForGroup_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject80140090 : UnknownGenObject80140090_1 {
 };
 extern "C" {
 void *igObjectPropertyForGroup_getMeta(){
- if(!igObjectPropertyForGroup_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForGroup_meta)[0x24/4]&4)) igObjectPropertyForGroup_registerNow();
+ if(!igObjectPropertyForGroup_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForGroup_meta)[0x24/4]&4)) igObjectPropertyForGroup_arkRegister();
  return igObjectPropertyForGroup_meta;
 }
 void *igObjectPropertyForGroup_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForGroup_vtableRead(){
  object.unknown00=igObjectPropertyForGroup_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForGroup_registerNow(){
+void igObjectPropertyForGroup_arkRegister(){
  meta_registerNow((int)igObjectPropertyForGroup_register);
 }
 void igObjectPropertyForGroup_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForGroup_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForGroup_getMetaCall,(int)igObjectPropertyForGroup_className,44,(int)igObjectPropertyForGroup_vtableRead,(int)fn_80140218,0,(int)lbl_8055F8E0);
+ meta_registerClass(0,(int)&igObjectPropertyForGroup_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForGroup_getMetaCall,(int)igObjectPropertyForGroup_className,44,(int)igObjectPropertyForGroup_vtableRead,(int)fn_80140218,0,(int)igObjectPropertyForGroup_dependencies);
 }
 void *igObjectPropertyForGroup_getMetaCall(){return igObjectPropertyForGroup_getMeta();}
 }

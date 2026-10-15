@@ -40,11 +40,11 @@ extern char igCustomVectorState_vtable[];
 extern char lbl_80493290[];
 extern char igCustomVectorStateList_vtable[];
 extern char lbl_80493354[];
-extern char lbl_8055ECB8[4];
-extern char lbl_8055ECBC[4];
-extern char lbl_8055ECC0[4];
-extern char lbl_8055ECC4[4];
-extern char lbl_8055ECC8[8];
+extern char igDecalExt_fieldTypes[4];
+extern char igDecalExt_fieldNames[4];
+extern char igDecalExt_fieldStorage[4];
+extern char igDecalExt_fieldOffsets[4];
+extern char igCustomVectorStateList_dependencies[8];
 extern void *igExternalDirEntry_meta;
 extern void *lbl_805621F4;
 extern void *igCustomState_meta;
@@ -56,32 +56,32 @@ extern void *igCustomVectorStateList_meta;
 extern void *igCustomVectorState_meta;
 void *igGenericCapabilityManager_getMeta();
 void *igGenericCapabilityManager_vtableRead();
-void igGenericCapabilityManager_registerNow();
+void igGenericCapabilityManager_arkRegister();
 void igGenericCapabilityManager_register();
 void *igGenericCapabilityManager_getMetaCall();
 void *igExternalImageEntry_getMeta();
 void *igExternalImageEntry_vtableRead();
-void igExternalImageEntry_registerNow();
+void igExternalImageEntry_arkRegister();
 void igExternalImageEntry_register();
 void *igExternalImageEntry_getMetaCall();
 void *igExternalImageEntry_parentMeta();
 void *igDisableExt_getMeta();
-void igDisableExt_registerNow();
+void igDisableExt_arkRegister();
 void igDisableExt_register();
 void *igDisableExt_getMetaCall();
 void *igDecalExt_getMeta();
-void igDecalExt_registerNow();
+void igDecalExt_arkRegister();
 void igDecalExt_register();
 void *igDecalExt_getMetaCall();
 void igDecalExt_fieldInit();
 void *igCustomVectorStateList_getMeta();
 void *igCustomVectorStateList_vtableRead();
-void igCustomVectorStateList_registerNow();
+void igCustomVectorStateList_arkRegister();
 void igCustomVectorStateList_register();
 void *igCustomVectorStateList_getMetaCall();
 void *igCustomVectorState_getMeta();
 void *igCustomVectorState_vtableRead();
-void igCustomVectorState_registerNow();
+void igCustomVectorState_arkRegister();
 void igCustomVectorState_register();
 void *igCustomVectorState_getMetaCall();
 void *fn_800D5128();
@@ -138,11 +138,11 @@ struct UnknownGenObject800D4FC8 : UnknownGenObject800D4FC8_1 {
 };
 extern "C" {
 void *igGenericCapabilityManager_create(void *object){
- igGenericCapabilityManager_registerNow();
+ igGenericCapabilityManager_arkRegister();
  return meta_createInstance(igGenericCapabilityManager_meta,object);
 }
 void *igGenericCapabilityManager_getMeta(){
- if(!igGenericCapabilityManager_meta || !(reinterpret_cast<unsigned int *>(igGenericCapabilityManager_meta)[0x24/4]&4)) igGenericCapabilityManager_registerNow();
+ if(!igGenericCapabilityManager_meta || !(reinterpret_cast<unsigned int *>(igGenericCapabilityManager_meta)[0x24/4]&4)) igGenericCapabilityManager_arkRegister();
  return igGenericCapabilityManager_meta;
 }
 void *igGenericCapabilityManager_vtableRead(){
@@ -152,7 +152,7 @@ void *igGenericCapabilityManager_vtableRead(){
  object.unknown00=igGenericCapabilityManager_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGenericCapabilityManager_registerNow(){
+void igGenericCapabilityManager_arkRegister(){
  meta_registerNow((int)igGenericCapabilityManager_register);
 }
 void igGenericCapabilityManager_register(){
@@ -161,7 +161,7 @@ void igGenericCapabilityManager_register(){
 }
 void *igGenericCapabilityManager_getMetaCall(){return igGenericCapabilityManager_getMeta();}
 void *igExternalImageEntry_getMeta(){
- if(!igExternalImageEntry_meta || !(reinterpret_cast<unsigned int *>(igExternalImageEntry_meta)[0x24/4]&4)) igExternalImageEntry_registerNow();
+ if(!igExternalImageEntry_meta || !(reinterpret_cast<unsigned int *>(igExternalImageEntry_meta)[0x24/4]&4)) igExternalImageEntry_arkRegister();
  return igExternalImageEntry_meta;
 }
 void *igExternalImageEntry_vtableRead(){
@@ -176,7 +176,7 @@ void *igExternalImageEntry_vtableRead(){
  object.unknown00=igExternalImageEntry_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igExternalImageEntry_registerNow(){
+void igExternalImageEntry_arkRegister(){
  meta_registerNow((int)igExternalImageEntry_register);
 }
 void igExternalImageEntry_register(){
@@ -190,10 +190,10 @@ void *fn_800D4B40(){
  return igDisableExt_meta;
 }
 void *igDisableExt_getMeta(){
- if(!igDisableExt_meta || !(reinterpret_cast<unsigned int *>(igDisableExt_meta)[0x24/4]&4)) igDisableExt_registerNow();
+ if(!igDisableExt_meta || !(reinterpret_cast<unsigned int *>(igDisableExt_meta)[0x24/4]&4)) igDisableExt_arkRegister();
  return igDisableExt_meta;
 }
-void igDisableExt_registerNow(){
+void igDisableExt_arkRegister(){
  meta_registerNow((int)igDisableExt_register);
 }
 void igDisableExt_register(){
@@ -202,10 +202,10 @@ void igDisableExt_register(){
 }
 void *igDisableExt_getMetaCall(){return igDisableExt_getMeta();}
 void *igDecalExt_getMeta(){
- if(!igDecalExt_meta || !(reinterpret_cast<unsigned int *>(igDecalExt_meta)[0x24/4]&4)) igDecalExt_registerNow();
+ if(!igDecalExt_meta || !(reinterpret_cast<unsigned int *>(igDecalExt_meta)[0x24/4]&4)) igDecalExt_arkRegister();
  return igDecalExt_meta;
 }
-void igDecalExt_registerNow(){
+void igDecalExt_arkRegister(){
  meta_registerNow((int)igDecalExt_register);
 }
 void igDecalExt_register(){
@@ -216,15 +216,15 @@ void *igDecalExt_getMetaCall(){return igDecalExt_getMeta();}
 void igDecalExt_fieldInit(){
  void *value0=igDecalExt_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055ECB8,1);
- meta_setupFields(value0,lbl_8055ECBC,lbl_8055ECC0,lbl_8055ECC4,value1);
+ meta_appendFields(value0,igDecalExt_fieldTypes,1);
+ meta_setupFields(value0,igDecalExt_fieldNames,igDecalExt_fieldStorage,igDecalExt_fieldOffsets,value1);
 }
 void *igCustomVectorStateList_create(void *object){
- igCustomVectorStateList_registerNow();
+ igCustomVectorStateList_arkRegister();
  return meta_createInstance(igCustomVectorStateList_meta,object);
 }
 void *igCustomVectorStateList_getMeta(){
- if(!igCustomVectorStateList_meta || !(reinterpret_cast<unsigned int *>(igCustomVectorStateList_meta)[0x24/4]&4)) igCustomVectorStateList_registerNow();
+ if(!igCustomVectorStateList_meta || !(reinterpret_cast<unsigned int *>(igCustomVectorStateList_meta)[0x24/4]&4)) igCustomVectorStateList_arkRegister();
  return igCustomVectorStateList_meta;
 }
 void *igCustomVectorStateList_vtableRead(){
@@ -237,20 +237,20 @@ void *igCustomVectorStateList_vtableRead(){
  object.unknown00=igCustomVectorStateList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCustomVectorStateList_registerNow(){
+void igCustomVectorStateList_arkRegister(){
  meta_registerNow((int)igCustomVectorStateList_register);
 }
 void igCustomVectorStateList_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igCustomVectorStateList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCustomVectorStateList_getMetaCall,(int)igCustomVectorStateList_className,20,(int)igCustomVectorStateList_vtableRead,0,0,(int)lbl_8055ECC8);
+ meta_registerClass(0,(int)&igCustomVectorStateList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igCustomVectorStateList_getMetaCall,(int)igCustomVectorStateList_className,20,(int)igCustomVectorStateList_vtableRead,0,0,(int)igCustomVectorStateList_dependencies);
 }
 void *igCustomVectorStateList_getMetaCall(){return igCustomVectorStateList_getMeta();}
 void *igCustomVectorState_create(void *object){
- igCustomVectorState_registerNow();
+ igCustomVectorState_arkRegister();
  return meta_createInstance(igCustomVectorState_meta,object);
 }
 void *igCustomVectorState_getMeta(){
- if(!igCustomVectorState_meta || !(reinterpret_cast<unsigned int *>(igCustomVectorState_meta)[0x24/4]&4)) igCustomVectorState_registerNow();
+ if(!igCustomVectorState_meta || !(reinterpret_cast<unsigned int *>(igCustomVectorState_meta)[0x24/4]&4)) igCustomVectorState_arkRegister();
  return igCustomVectorState_meta;
 }
 void *igCustomVectorState_vtableRead(){
@@ -261,7 +261,7 @@ void *igCustomVectorState_vtableRead(){
  object.unknown00=igCustomVectorState_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCustomVectorState_registerNow(){
+void igCustomVectorState_arkRegister(){
  meta_registerNow((int)igCustomVectorState_register);
 }
 void igCustomVectorState_register(){

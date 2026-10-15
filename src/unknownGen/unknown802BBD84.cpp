@@ -13,7 +13,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void beSaveUtil_registerNow();
+void beSaveUtil_arkRegister();
 extern char lbl_8041CD10[];
 extern char beSaveUtilInfo_className[];
 extern char lbl_804CF848[];
@@ -26,7 +26,7 @@ void beSaveUtilInfo_register();
 void *beSaveUtilInfo_getMetaCall();
 }
 extern "C" {
-void beSaveUtilInfo_registerNow(){
+void beSaveUtilInfo_arkRegister(){
  meta_registerNow((int)beSaveUtilInfo_register);
 }
 void beSaveUtilInfo_register(){
@@ -39,7 +39,7 @@ void *fn_802BBE38(){
  return lbl_8053482C;
 }
 void *beSaveUtil_create(void *object){
- beSaveUtil_registerNow();
+ beSaveUtil_arkRegister();
  return meta_createInstance(beSaveUtil_meta,object);
 }
 void *beSaveUtil_metaObject(){
@@ -47,7 +47,7 @@ void *beSaveUtil_metaObject(){
  return beSaveUtil_meta;
 }
 void *beSaveUtil_getMeta(){
- if(!beSaveUtil_meta || !(reinterpret_cast<unsigned int *>(beSaveUtil_meta)[0x24/4]&4)) beSaveUtil_registerNow();
+ if(!beSaveUtil_meta || !(reinterpret_cast<unsigned int *>(beSaveUtil_meta)[0x24/4]&4)) beSaveUtil_arkRegister();
  return beSaveUtil_meta;
 }
 }

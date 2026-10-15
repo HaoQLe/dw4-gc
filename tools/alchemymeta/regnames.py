@@ -6,10 +6,16 @@ Evidence, from build/GDJEB2/analysis/meta/classes.json (extract.py) and the orig
 - `<C>_className`: the name string passed by `<C>_register` (r8); renamed only when its text is the class name.
 - `<C>_vtable`: the last vtable `<C>_vtableRead` stores into its temporary instance (the class's own; the
   earlier ones are its bases'). Skipped when several classes end with the same vtable.
-- `<C>_registerNow`: `fn_80066188(<C>_register)`, called by `<C>_getMeta` while the class is not registered.
+- `<C>_arkRegister`: `fn_80066188(<C>_register)`, called by `<C>_getMeta` while the class is not registered.
+  Alchemy's own name: five engine classes keep theirs (`arkRegister__Q33Gap4Core10igResourceFv`, ...).
 - `<C>_metaObject`: returns `<C>_meta`, first creating an unregistered metaobject (fn_80029E64) if it is null.
   Field initializers use it for a field's target class.
-- `<C>_create(pool)`: `<C>_registerNow()`, then an instance from `<C>_meta` in pool (fn_8006546C).
+- `<C>_create(pool)`: `<C>_arkRegister()`, then an instance from `<C>_meta` in pool (fn_8006546C).
+- `<C>_fieldTypes`, `<C>_fieldNames`, `<C>_fieldStorage`, `<C>_fieldOffsets`: the tables `<C>_fieldInit` passes
+  to meta_appendFields (r4: each field's type-creation function) and meta_setupFields (r4: name strings;
+  r5: the pointers each field keeps as _externalEnumStorage; r6: byte offsets).
+- `<C>_dependencies`: `<C>_register`'s last argument, a zero-terminated list of the arkRegister functions of
+  the classes C's fields refer to.
 Registration API:
 - `meta_registerClass` (fn_80066204): fills a metaobject from the class's parent, name, size and callbacks.
 - `meta_registerNow` (fn_80066188): calls a register function, then each callback in the list it returns.
@@ -78,7 +84,7 @@ def main():
     for n,ls in fns.items():
         t='\n'.join(ls)
         m=re.search(r'lis r3, (\w+)_register@ha',t)
-        if len(ls)<=10 and m and m[1] in C and 'bl fn_80066188' in t: want(n,ident(m[1])+'_registerNow');w2c[n]=ident(m[1])
+        if len(ls)<=10 and m and m[1] in C and 'bl fn_80066188' in t: want(n,ident(m[1])+'_arkRegister');w2c[n]=ident(m[1])
     for n,ls in fns.items():
         t='\n'.join(ls)
         if 'bl fn_80029E64' in t and len(ls)<=24:
@@ -87,6 +93,29 @@ def main():
         if 'bl fn_8006546C' in t and len(ls)<=16:
             ws=[x for x in re.findall(r'bl (\w+)',t) if x in w2c]
             if len(ws)==1: want(n,w2c[ws[0]]+'_create')
+    def reg_before(ls,i,reg):
+        # The symbol last loaded into reg (lis/addi or li @sda21) before instruction i.
+        for l in reversed(ls[:i]):
+            m=re.match(r'(?:addi|li) %s, (?:r\d+, )?(lbl_[0-9A-F]{8})@(?:l|sda21)$'%reg,l)
+            if m: return m[1]
+            if re.match(r'\w+\.? %s,'%reg,l) or l.startswith('bl '): return None
+        return None
+    for c in C:
+        i=ident(c)
+        fi=fns.get(i+'_fieldInit') or fns.get(c+'_fieldInit') or []
+        for k,l in enumerate(fi):
+            if l in ('bl fn_80065924','bl meta_appendFields'):
+                x=reg_before(fi,k,'r4')
+                if x: want(x,i+'_fieldTypes')
+            if l in ('bl fn_800659C0','bl meta_setupFields'):
+                for reg,suffix in (('r4','_fieldNames'),('r5','_fieldStorage'),('r6','_fieldOffsets')):
+                    x=reg_before(fi,k,reg)
+                    if x: want(x,i+suffix)
+        rg=fns.get(i+'_register') or []
+        for k,l in enumerate(rg):
+            if l=='stw r0, 0x10(r1)':
+                x=reg_before(rg,k,'r0')
+                if x: want(x,i+'_dependencies')
     taken=set(sym)-set(mapping)
     clash=[n for n in mapping.values() if n in taken]
     if clash: raise SystemExit('names already used: %s'%clash[:5])

@@ -12,7 +12,7 @@ void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beLayerCtl_registerNow();
+void beLayerCtl_arkRegister();
 void igNamedObject_register();
 extern char lbl_8041CD10[];
 extern char beLayerGroup_className[];
@@ -30,7 +30,7 @@ void beLayerGroup_register();
 void *beLayerGroup_getMetaCall();
 }
 extern "C" {
-void beLayerGroup_registerNow(){
+void beLayerGroup_arkRegister(){
  meta_registerNow((int)beLayerGroup_register);
 }
 void beLayerGroup_register(){
@@ -47,7 +47,7 @@ void *fn_802D393C(){
  return lbl_80535164;
 }
 void *beLayerCtl_create(void *object){
- beLayerCtl_registerNow();
+ beLayerCtl_arkRegister();
  return meta_createInstance(beLayerCtl_meta,object);
 }
 void *beLayerCtl_metaObject(){
@@ -55,7 +55,7 @@ void *beLayerCtl_metaObject(){
  return beLayerCtl_meta;
 }
 void *beLayerCtl_getMeta(){
- if(!beLayerCtl_meta || !(reinterpret_cast<unsigned int *>(beLayerCtl_meta)[0x24/4]&4)) beLayerCtl_registerNow();
+ if(!beLayerCtl_meta || !(reinterpret_cast<unsigned int *>(beLayerCtl_meta)[0x24/4]&4)) beLayerCtl_arkRegister();
  return beLayerCtl_meta;
 }
 }

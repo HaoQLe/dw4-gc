@@ -23,14 +23,14 @@ extern char igIntObject_vtable[];
 extern char igIntHistogram_vtable[];
 extern char lbl_804BC70C[];
 extern char igHistogramBase_vtable[];
-extern char lbl_80560C24[4];
-extern char lbl_80560C2C[4];
-extern char lbl_80560C30[4];
-extern char lbl_80560C34[4];
-extern char lbl_80560C38[4];
-extern char lbl_80560C3C[4];
-extern char lbl_80560C40[4];
-extern char lbl_80560C44[4];
+extern char igMatrixObject_fieldTypes[4];
+extern char igMatrixObject_fieldNames[4];
+extern char igMatrixObject_fieldStorage[4];
+extern char igMatrixObject_fieldOffsets[4];
+extern char igIntObject_fieldTypes[4];
+extern char igIntObject_fieldNames[4];
+extern char igIntObject_fieldStorage[4];
+extern char igIntObject_fieldOffsets[4];
 extern void *igHistogramBase_meta;
 extern void *igMatrixObject_meta;
 extern void *igIntObject_meta;
@@ -40,13 +40,13 @@ void *igMatrixObject_getMetaCall();
 void igMatrixObject_fieldInit();
 void *igIntObject_getMeta();
 void *igIntObject_vtableRead();
-void igIntObject_registerNow();
+void igIntObject_arkRegister();
 void igIntObject_register();
 void *igIntObject_getMetaCall();
 void igIntObject_fieldInit();
 void *igIntHistogram_getMeta();
 void *igIntHistogram_vtableRead();
-void igIntHistogram_registerNow();
+void igIntHistogram_arkRegister();
 void igIntHistogram_register();
 void *igIntHistogram_getMetaCall();
 void *fn_80218670();
@@ -73,7 +73,7 @@ struct UnknownGenObject80218510 : UnknownGenObject80218510_1 {
  inline ~UnknownGenObject80218510(){unknown00=igIntHistogram_vtable;}
 };
 extern "C" {
-void igMatrixObject_registerNow(){
+void igMatrixObject_arkRegister(){
  meta_registerNow((int)igMatrixObject_register);
 }
 void igMatrixObject_register(){
@@ -84,11 +84,11 @@ void *igMatrixObject_getMetaCall(){return igMatrixObject_getMeta();}
 void igMatrixObject_fieldInit(){
  void *value0=igMatrixObject_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560C24,1);
- meta_setupFields(value0,lbl_80560C2C,lbl_80560C30,lbl_80560C34,value1);
+ meta_appendFields(value0,igMatrixObject_fieldTypes,1);
+ meta_setupFields(value0,igMatrixObject_fieldNames,igMatrixObject_fieldStorage,igMatrixObject_fieldOffsets,value1);
 }
 void *igIntObject_getMeta(){
- if(!igIntObject_meta || !(reinterpret_cast<unsigned int *>(igIntObject_meta)[0x24/4]&4)) igIntObject_registerNow();
+ if(!igIntObject_meta || !(reinterpret_cast<unsigned int *>(igIntObject_meta)[0x24/4]&4)) igIntObject_arkRegister();
  return igIntObject_meta;
 }
 void *igIntObject_vtableRead(){
@@ -97,7 +97,7 @@ void *igIntObject_vtableRead(){
  object.unknown00=igIntObject_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igIntObject_registerNow(){
+void igIntObject_arkRegister(){
  meta_registerNow((int)igIntObject_register);
 }
 void igIntObject_register(){
@@ -108,15 +108,15 @@ void *igIntObject_getMetaCall(){return igIntObject_getMeta();}
 void igIntObject_fieldInit(){
  void *value0=igIntObject_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560C38,1);
- meta_setupFields(value0,lbl_80560C3C,lbl_80560C40,lbl_80560C44,value1);
+ meta_appendFields(value0,igIntObject_fieldTypes,1);
+ meta_setupFields(value0,igIntObject_fieldNames,igIntObject_fieldStorage,igIntObject_fieldOffsets,value1);
 }
 void *igIntHistogram_create(void *object){
- igIntHistogram_registerNow();
+ igIntHistogram_arkRegister();
  return meta_createInstance(igIntHistogram_meta,object);
 }
 void *igIntHistogram_getMeta(){
- if(!igIntHistogram_meta || !(reinterpret_cast<unsigned int *>(igIntHistogram_meta)[0x24/4]&4)) igIntHistogram_registerNow();
+ if(!igIntHistogram_meta || !(reinterpret_cast<unsigned int *>(igIntHistogram_meta)[0x24/4]&4)) igIntHistogram_arkRegister();
  return igIntHistogram_meta;
 }
 void *igIntHistogram_vtableRead(){
@@ -127,7 +127,7 @@ void *igIntHistogram_vtableRead(){
  object.unknown00=igIntHistogram_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igIntHistogram_registerNow(){
+void igIntHistogram_arkRegister(){
  meta_registerNow((int)igIntHistogram_register);
 }
 void igIntHistogram_register(){

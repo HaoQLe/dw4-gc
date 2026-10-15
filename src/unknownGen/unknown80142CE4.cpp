@@ -26,7 +26,7 @@ extern char igLockBaseList_className[];
 extern char igLockBase_className[];
 extern char igListenerProducerBase_className[];
 extern char igListenerManager_className[];
-extern char lbl_8049E370[];
+extern char igListenerInterface_dependencies[];
 extern char igListenerInterface_className[];
 extern char igListenerInterface_vtable[];
 extern char lbl_804A6460[];
@@ -35,7 +35,7 @@ extern char igLockBaseList_vtable[];
 extern char lbl_804A9F00[];
 extern char igInterface_vtable[];
 extern char igManager_vtable[];
-extern char lbl_8055F9A0[8];
+extern char igLockBaseList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igLockBaseList_meta;
 extern void *igLockBase_meta;
@@ -44,25 +44,25 @@ extern void *igListenerManager_meta;
 extern void *igListenerInterface_meta;
 void *igLockBaseList_getMeta();
 void *igLockBaseList_vtableRead();
-void igLockBaseList_registerNow();
+void igLockBaseList_arkRegister();
 void igLockBaseList_register();
 void *igLockBaseList_getMetaCall();
 void *igLockBase_getMeta();
-void igLockBase_registerNow();
+void igLockBase_arkRegister();
 void igLockBase_register();
 void *igLockBase_getMetaCall();
 void *igListenerProducerBase_getMeta();
-void igListenerProducerBase_registerNow();
+void igListenerProducerBase_arkRegister();
 void igListenerProducerBase_register();
 void *igListenerProducerBase_getMetaCall();
 void *igListenerManager_getMeta();
 void *igListenerManager_vtableRead();
-void igListenerManager_registerNow();
+void igListenerManager_arkRegister();
 void igListenerManager_register();
 void *igListenerManager_getMetaCall();
 void *igListenerInterface_getMeta();
 void *igListenerInterface_vtableRead();
-void igListenerInterface_registerNow();
+void igListenerInterface_arkRegister();
 void igListenerInterface_register();
 void *igListenerInterface_getMetaCall();
 }
@@ -90,7 +90,7 @@ struct UnknownGenObject8014320C : UnknownGenRoot8014320C {
 };
 extern "C" {
 void *igLockBaseList_getMeta(){
- if(!igLockBaseList_meta || !(reinterpret_cast<unsigned int *>(igLockBaseList_meta)[0x24/4]&4)) igLockBaseList_registerNow();
+ if(!igLockBaseList_meta || !(reinterpret_cast<unsigned int *>(igLockBaseList_meta)[0x24/4]&4)) igLockBaseList_arkRegister();
  return igLockBaseList_meta;
 }
 void *igLockBaseList_vtableRead(){
@@ -103,19 +103,19 @@ void *igLockBaseList_vtableRead(){
  object.unknown00=igLockBaseList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igLockBaseList_registerNow(){
+void igLockBaseList_arkRegister(){
  meta_registerNow((int)igLockBaseList_register);
 }
 void igLockBaseList_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igLockBaseList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igLockBaseList_getMetaCall,(int)igLockBaseList_className,20,(int)igLockBaseList_vtableRead,0,0,(int)lbl_8055F9A0);
+ meta_registerClass(0,(int)&igLockBaseList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igLockBaseList_getMetaCall,(int)igLockBaseList_className,20,(int)igLockBaseList_vtableRead,0,0,(int)igLockBaseList_dependencies);
 }
 void *igLockBaseList_getMetaCall(){return igLockBaseList_getMeta();}
 void *igLockBase_getMeta(){
- if(!igLockBase_meta || !(reinterpret_cast<unsigned int *>(igLockBase_meta)[0x24/4]&4)) igLockBase_registerNow();
+ if(!igLockBase_meta || !(reinterpret_cast<unsigned int *>(igLockBase_meta)[0x24/4]&4)) igLockBase_arkRegister();
  return igLockBase_meta;
 }
-void igLockBase_registerNow(){
+void igLockBase_arkRegister(){
  meta_registerNow((int)igLockBase_register);
 }
 void igLockBase_register(){
@@ -124,10 +124,10 @@ void igLockBase_register(){
 }
 void *igLockBase_getMetaCall(){return igLockBase_getMeta();}
 void *igListenerProducerBase_getMeta(){
- if(!igListenerProducerBase_meta || !(reinterpret_cast<unsigned int *>(igListenerProducerBase_meta)[0x24/4]&4)) igListenerProducerBase_registerNow();
+ if(!igListenerProducerBase_meta || !(reinterpret_cast<unsigned int *>(igListenerProducerBase_meta)[0x24/4]&4)) igListenerProducerBase_arkRegister();
  return igListenerProducerBase_meta;
 }
-void igListenerProducerBase_registerNow(){
+void igListenerProducerBase_arkRegister(){
  meta_registerNow((int)igListenerProducerBase_register);
 }
 void igListenerProducerBase_register(){
@@ -140,7 +140,7 @@ void *fn_80143014(){
  return igListenerManager_meta;
 }
 void *igListenerManager_getMeta(){
- if(!igListenerManager_meta || !(reinterpret_cast<unsigned int *>(igListenerManager_meta)[0x24/4]&4)) igListenerManager_registerNow();
+ if(!igListenerManager_meta || !(reinterpret_cast<unsigned int *>(igListenerManager_meta)[0x24/4]&4)) igListenerManager_arkRegister();
  return igListenerManager_meta;
 }
 void *igListenerManager_vtableRead(){
@@ -151,7 +151,7 @@ void *igListenerManager_vtableRead(){
  object.unknown00=igListenerManager_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igListenerManager_registerNow(){
+void igListenerManager_arkRegister(){
  meta_registerNow((int)igListenerManager_register);
 }
 void igListenerManager_register(){
@@ -164,7 +164,7 @@ void *fn_80143194(){
  return igListenerInterface_meta;
 }
 void *igListenerInterface_getMeta(){
- if(!igListenerInterface_meta || !(reinterpret_cast<unsigned int *>(igListenerInterface_meta)[0x24/4]&4)) igListenerInterface_registerNow();
+ if(!igListenerInterface_meta || !(reinterpret_cast<unsigned int *>(igListenerInterface_meta)[0x24/4]&4)) igListenerInterface_arkRegister();
  return igListenerInterface_meta;
 }
 void *igListenerInterface_vtableRead(){
@@ -178,12 +178,12 @@ void *igListenerInterface_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igListenerInterface_registerNow(){
+void igListenerInterface_arkRegister(){
  meta_registerNow((int)igListenerInterface_register);
 }
 void igListenerInterface_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igListenerInterface_meta,(int)igInterface_register,(int)fn_8013B680,(int)igListenerInterface_getMetaCall,(int)igListenerInterface_className,48,(int)igListenerInterface_vtableRead,(int)igListenerInterface_fieldInit,0,(int)lbl_8049E370);
+ meta_registerClass(0,(int)&igListenerInterface_meta,(int)igInterface_register,(int)fn_8013B680,(int)igListenerInterface_getMetaCall,(int)igListenerInterface_className,48,(int)igListenerInterface_vtableRead,(int)igListenerInterface_fieldInit,0,(int)igListenerInterface_dependencies);
 }
 void *igListenerInterface_getMetaCall(){return igListenerInterface_getMeta();}
 }

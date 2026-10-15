@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beLua_registerNow();
+void beLua_arkRegister();
 extern void *beLua_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beLua_create(void *object){
- beLua_registerNow();
+ beLua_arkRegister();
  return meta_createInstance(beLua_meta,object);
 }
 void *beLua_metaObject(){
@@ -19,7 +19,7 @@ void *beLua_metaObject(){
  return beLua_meta;
 }
 void *beLua_getMeta(){
- if(!beLua_meta || !(reinterpret_cast<unsigned int *>(beLua_meta)[0x24/4]&4)) beLua_registerNow();
+ if(!beLua_meta || !(reinterpret_cast<unsigned int *>(beLua_meta)[0x24/4]&4)) beLua_arkRegister();
  return beLua_meta;
 }
 }

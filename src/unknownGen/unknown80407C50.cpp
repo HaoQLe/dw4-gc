@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igViewManager_registerNow();
+void igViewManager_arkRegister();
 extern void *igViewManager_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *igViewManager_metaObject(){
  return igViewManager_meta;
 }
 void *igViewManager_getMeta(){
- if(!igViewManager_meta || !(reinterpret_cast<unsigned int *>(igViewManager_meta)[0x24/4]&4)) igViewManager_registerNow();
+ if(!igViewManager_meta || !(reinterpret_cast<unsigned int *>(igViewManager_meta)[0x24/4]&4)) igViewManager_arkRegister();
  return igViewManager_meta;
 }
 }

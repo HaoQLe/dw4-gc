@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
 extern char beSelectCtrlInfoWork_className[];
-extern char lbl_804CF710[];
+extern char beSelectCtrlInfoWork_dependencies[];
 extern char beSelectCtrlInfoWork_meta[];
 void beSelectCtrlInfoWork_register();
 void *beSelectCtrlInfoWork_getMetaCall();
 }
 extern "C" {
-void beSelectCtrlInfoWork_registerNow(){
+void beSelectCtrlInfoWork_arkRegister(){
  meta_registerNow((int)beSelectCtrlInfoWork_register);
 }
 void beSelectCtrlInfoWork_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beSelectCtrlInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beSelectCtrlInfoWork_getMetaCall,(int)beSelectCtrlInfoWork_className,36,(int)beSelectCtrlInfoWork_vtableRead,(int)beSelectCtrlInfoWork_fieldInit,0,(int)lbl_804CF710);
+ meta_registerClass(0,(int)beSelectCtrlInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beSelectCtrlInfoWork_getMetaCall,(int)beSelectCtrlInfoWork_className,36,(int)beSelectCtrlInfoWork_vtableRead,(int)beSelectCtrlInfoWork_fieldInit,0,(int)beSelectCtrlInfoWork_dependencies);
 }
 void *beSelectCtrlInfoWork_getMetaCall(){return beSelectCtrlInfoWork_getMeta();}
 }

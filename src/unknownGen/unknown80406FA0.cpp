@@ -4,7 +4,7 @@
 extern "C" {
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void igRotateMode_registerNow();
+void igRotateMode_arkRegister();
 extern char lbl_80462848[];
 extern char lbl_804F0A98[];
 extern char lbl_804F0AA4[];
@@ -17,11 +17,11 @@ void *fn_80406FA0(){
  return lbl_8055C9D8;
 }
 void *igRotateMode_create(void *object){
- igRotateMode_registerNow();
+ igRotateMode_arkRegister();
  return meta_createInstance(igRotateMode_meta,object);
 }
 void *igRotateMode_getMeta(){
- if(!igRotateMode_meta || !(reinterpret_cast<unsigned int *>(igRotateMode_meta)[0x24/4]&4)) igRotateMode_registerNow();
+ if(!igRotateMode_meta || !(reinterpret_cast<unsigned int *>(igRotateMode_meta)[0x24/4]&4)) igRotateMode_arkRegister();
  return igRotateMode_meta;
 }
 }

@@ -8,7 +8,7 @@ void *fn_80023CF4();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beModelCtrlJUMP_registerNow();
+void beModelCtrlJUMP_arkRegister();
 void igNamedObject_register();
 extern char beModelCtrlCTRL_className[];
 extern char beModelCtrlCTRL_meta[];
@@ -17,7 +17,7 @@ void beModelCtrlCTRL_register();
 void *beModelCtrlCTRL_getMetaCall();
 }
 extern "C" {
-void beModelCtrlCTRL_registerNow(){
+void beModelCtrlCTRL_arkRegister(){
  meta_registerNow((int)beModelCtrlCTRL_register);
 }
 void beModelCtrlCTRL_register(){
@@ -26,7 +26,7 @@ void beModelCtrlCTRL_register(){
 }
 void *beModelCtrlCTRL_getMetaCall(){return beModelCtrlCTRL_getMeta();}
 void *beModelCtrlJUMP_getMeta(){
- if(!beModelCtrlJUMP_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlJUMP_meta)[0x24/4]&4)) beModelCtrlJUMP_registerNow();
+ if(!beModelCtrlJUMP_meta || !(reinterpret_cast<unsigned int *>(beModelCtrlJUMP_meta)[0x24/4]&4)) beModelCtrlJUMP_arkRegister();
  return beModelCtrlJUMP_meta;
 }
 }

@@ -25,7 +25,7 @@ extern char igIntersectPathList_className[];
 extern char igNonRefCountedNodeList_className[];
 extern char igNodeListList_className[];
 extern char igNodeList_className[];
-extern char lbl_804ADE50[];
+extern char igNode_dependencies[];
 extern char igNode_vtable[];
 extern char igNodeList_vtable[];
 extern char lbl_804B8304[];
@@ -34,10 +34,10 @@ extern char igNonRefCountedNodeList_vtable[];
 extern char lbl_804B8430[];
 extern char igIntersectPathList_vtable[];
 extern char lbl_804B84F8[];
-extern char lbl_80560394[8];
-extern char lbl_8056039C[8];
-extern char lbl_805603A4[8];
-extern char lbl_805603AC[8];
+extern char igIntersectPathList_dependencies[8];
+extern char igNonRefCountedNodeList_dependencies[8];
+extern char igNodeListList_dependencies[8];
+extern char igNodeList_dependencies[8];
 extern char lbl_805603BC[7];
 extern void *lbl_805621F4;
 extern void *igIntersectPathList_meta;
@@ -47,27 +47,27 @@ extern void *igNodeList_meta;
 extern void *igNode_meta;
 void *igIntersectPathList_getMeta();
 void *igIntersectPathList_vtableRead();
-void igIntersectPathList_registerNow();
+void igIntersectPathList_arkRegister();
 void igIntersectPathList_register();
 void *igIntersectPathList_getMetaCall();
 void *igNonRefCountedNodeList_getMeta();
 void *igNonRefCountedNodeList_vtableRead();
-void igNonRefCountedNodeList_registerNow();
+void igNonRefCountedNodeList_arkRegister();
 void igNonRefCountedNodeList_register();
 void *igNonRefCountedNodeList_getMetaCall();
 void *igNodeListList_getMeta();
 void *igNodeListList_vtableRead();
-void igNodeListList_registerNow();
+void igNodeListList_arkRegister();
 void igNodeListList_register();
 void *igNodeListList_getMetaCall();
 void *igNodeList_getMeta();
 void *igNodeList_vtableRead();
-void igNodeList_registerNow();
+void igNodeList_arkRegister();
 void igNodeList_register();
 void *igNodeList_getMetaCall();
 void *igNode_getMeta();
 void *igNode_vtableRead();
-void igNode_registerNow();
+void igNode_arkRegister();
 void igNode_register();
 void *igNode_getMetaCall();
 }
@@ -105,7 +105,7 @@ struct UnknownGenObject801B7568 : UnknownGenObject801B7568_0 {
 };
 extern "C" {
 void *igIntersectPathList_getMeta(){
- if(!igIntersectPathList_meta || !(reinterpret_cast<unsigned int *>(igIntersectPathList_meta)[0x24/4]&4)) igIntersectPathList_registerNow();
+ if(!igIntersectPathList_meta || !(reinterpret_cast<unsigned int *>(igIntersectPathList_meta)[0x24/4]&4)) igIntersectPathList_arkRegister();
  return igIntersectPathList_meta;
 }
 void *igIntersectPathList_vtableRead(){
@@ -118,16 +118,16 @@ void *igIntersectPathList_vtableRead(){
  object.unknown00=igIntersectPathList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igIntersectPathList_registerNow(){
+void igIntersectPathList_arkRegister(){
  meta_registerNow((int)igIntersectPathList_register);
 }
 void igIntersectPathList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igIntersectPathList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igIntersectPathList_getMetaCall,(int)igIntersectPathList_className,20,(int)igIntersectPathList_vtableRead,0,0,(int)lbl_80560394);
+ meta_registerClass(0,(int)&igIntersectPathList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igIntersectPathList_getMetaCall,(int)igIntersectPathList_className,20,(int)igIntersectPathList_vtableRead,0,0,(int)igIntersectPathList_dependencies);
 }
 void *igIntersectPathList_getMetaCall(){return igIntersectPathList_getMeta();}
 void *igNonRefCountedNodeList_create(void *object){
- igNonRefCountedNodeList_registerNow();
+ igNonRefCountedNodeList_arkRegister();
  return meta_createInstance(igNonRefCountedNodeList_meta,object);
 }
 void *fn_801B6FAC(){
@@ -135,7 +135,7 @@ void *fn_801B6FAC(){
  return igNonRefCountedNodeList_meta;
 }
 void *igNonRefCountedNodeList_getMeta(){
- if(!igNonRefCountedNodeList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedNodeList_meta)[0x24/4]&4)) igNonRefCountedNodeList_registerNow();
+ if(!igNonRefCountedNodeList_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedNodeList_meta)[0x24/4]&4)) igNonRefCountedNodeList_arkRegister();
  return igNonRefCountedNodeList_meta;
 }
 void *igNonRefCountedNodeList_vtableRead(){
@@ -148,16 +148,16 @@ void *igNonRefCountedNodeList_vtableRead(){
  object.unknown00=igNonRefCountedNodeList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNonRefCountedNodeList_registerNow(){
+void igNonRefCountedNodeList_arkRegister(){
  meta_registerNow((int)igNonRefCountedNodeList_register);
 }
 void igNonRefCountedNodeList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igNonRefCountedNodeList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igNonRefCountedNodeList_getMetaCall,(int)igNonRefCountedNodeList_className,20,(int)igNonRefCountedNodeList_vtableRead,0,0,(int)lbl_8056039C);
+ meta_registerClass(0,(int)&igNonRefCountedNodeList_meta,(int)igNonRefCountedObjectList_register,(int)fn_80023FDC,(int)igNonRefCountedNodeList_getMetaCall,(int)igNonRefCountedNodeList_className,20,(int)igNonRefCountedNodeList_vtableRead,0,0,(int)igNonRefCountedNodeList_dependencies);
 }
 void *igNonRefCountedNodeList_getMetaCall(){return igNonRefCountedNodeList_getMeta();}
 void *igNodeListList_create(void *object){
- igNodeListList_registerNow();
+ igNodeListList_arkRegister();
  return meta_createInstance(igNodeListList_meta,object);
 }
 void *fn_801B7180(){
@@ -165,7 +165,7 @@ void *fn_801B7180(){
  return igNodeListList_meta;
 }
 void *igNodeListList_getMeta(){
- if(!igNodeListList_meta || !(reinterpret_cast<unsigned int *>(igNodeListList_meta)[0x24/4]&4)) igNodeListList_registerNow();
+ if(!igNodeListList_meta || !(reinterpret_cast<unsigned int *>(igNodeListList_meta)[0x24/4]&4)) igNodeListList_arkRegister();
  return igNodeListList_meta;
 }
 void *igNodeListList_vtableRead(){
@@ -178,16 +178,16 @@ void *igNodeListList_vtableRead(){
  object.unknown00=igNodeListList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNodeListList_registerNow(){
+void igNodeListList_arkRegister(){
  meta_registerNow((int)igNodeListList_register);
 }
 void igNodeListList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igNodeListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igNodeListList_getMetaCall,(int)igNodeListList_className,20,(int)igNodeListList_vtableRead,0,0,(int)lbl_805603A4);
+ meta_registerClass(0,(int)&igNodeListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igNodeListList_getMetaCall,(int)igNodeListList_className,20,(int)igNodeListList_vtableRead,0,0,(int)igNodeListList_dependencies);
 }
 void *igNodeListList_getMetaCall(){return igNodeListList_getMeta();}
 void *igNodeList_create(void *object){
- igNodeList_registerNow();
+ igNodeList_arkRegister();
  return meta_createInstance(igNodeList_meta,object);
 }
 void *fn_801B7354(){
@@ -195,7 +195,7 @@ void *fn_801B7354(){
  return igNodeList_meta;
 }
 void *igNodeList_getMeta(){
- if(!igNodeList_meta || !(reinterpret_cast<unsigned int *>(igNodeList_meta)[0x24/4]&4)) igNodeList_registerNow();
+ if(!igNodeList_meta || !(reinterpret_cast<unsigned int *>(igNodeList_meta)[0x24/4]&4)) igNodeList_arkRegister();
  return igNodeList_meta;
 }
 void *igNodeList_vtableRead(){
@@ -208,12 +208,12 @@ void *igNodeList_vtableRead(){
  object.unknown00=igNodeList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNodeList_registerNow(){
+void igNodeList_arkRegister(){
  meta_registerNow((int)igNodeList_register);
 }
 void igNodeList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igNodeList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igNodeList_getMetaCall,(int)igNodeList_className,20,(int)igNodeList_vtableRead,0,0,(int)lbl_805603AC);
+ meta_registerClass(0,(int)&igNodeList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igNodeList_getMetaCall,(int)igNodeList_className,20,(int)igNodeList_vtableRead,0,0,(int)igNodeList_dependencies);
 }
 void *igNodeList_getMetaCall(){return igNodeList_getMeta();}
 void *fn_801B74F0(){
@@ -221,7 +221,7 @@ void *fn_801B74F0(){
  return igNode_meta;
 }
 void *igNode_getMeta(){
- if(!igNode_meta || !(reinterpret_cast<unsigned int *>(igNode_meta)[0x24/4]&4)) igNode_registerNow();
+ if(!igNode_meta || !(reinterpret_cast<unsigned int *>(igNode_meta)[0x24/4]&4)) igNode_arkRegister();
  return igNode_meta;
 }
 void *igNode_vtableRead(){
@@ -233,12 +233,12 @@ void *igNode_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNode_registerNow(){
+void igNode_arkRegister(){
  meta_registerNow((int)igNode_register);
 }
 void igNode_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igNode_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igNode_getMetaCall,(int)lbl_805603BC,28,(int)igNode_vtableRead,(int)igNode_fieldInit,0,(int)lbl_804ADE50);
+ meta_registerClass(0,(int)&igNode_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igNode_getMetaCall,(int)lbl_805603BC,28,(int)igNode_vtableRead,(int)igNode_fieldInit,0,(int)igNode_dependencies);
 }
 void *igNode_getMetaCall(){return igNode_getMeta();}
 }

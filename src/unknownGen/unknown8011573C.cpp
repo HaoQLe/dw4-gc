@@ -23,22 +23,22 @@ extern char igModel_vtable[];
 extern char igActivableHolderModel_vtable[];
 extern char igSimpleChildHolderModel_vtable[];
 extern char igGuiComponentModel_vtable[];
-extern char lbl_8055F2BC[8];
-extern char lbl_8055F2C4[8];
-extern char lbl_8055F2CC[8];
-extern char lbl_8055F2D4[8];
-extern char lbl_8055F2DC[8];
+extern char igActivableHolderModel_dependencies[8];
+extern char igActivableHolderModel_fieldTypes[8];
+extern char igActivableHolderModel_fieldNames[8];
+extern char igActivableHolderModel_fieldStorage[8];
+extern char igActivableHolderModel_fieldOffsets[8];
 extern void *lbl_805621F4;
 extern void *igActivableHolderModel_meta;
 extern void *igAction_meta;
 void *igActivableHolderModel_getMeta();
 void *igActivableHolderModel_vtableRead();
-void igActivableHolderModel_registerNow();
+void igActivableHolderModel_arkRegister();
 void igActivableHolderModel_register();
 void *igActivableHolderModel_getMetaCall();
 void igActivableHolderModel_fieldInit();
 void *igAction_getMeta();
-void igAction_registerNow();
+void igAction_arkRegister();
 void igAction_register();
 void *igAction_getMetaCall();
 }
@@ -68,7 +68,7 @@ struct UnknownGenObject80115778 : UnknownGenObject80115778_2 {
 };
 extern "C" {
 void *igActivableHolderModel_getMeta(){
- if(!igActivableHolderModel_meta || !(reinterpret_cast<unsigned int *>(igActivableHolderModel_meta)[0x24/4]&4)) igActivableHolderModel_registerNow();
+ if(!igActivableHolderModel_meta || !(reinterpret_cast<unsigned int *>(igActivableHolderModel_meta)[0x24/4]&4)) igActivableHolderModel_arkRegister();
  return igActivableHolderModel_meta;
 }
 void *igActivableHolderModel_vtableRead(){
@@ -82,22 +82,22 @@ void *igActivableHolderModel_vtableRead(){
  object.unknown34.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igActivableHolderModel_registerNow(){
+void igActivableHolderModel_arkRegister(){
  meta_registerNow((int)igActivableHolderModel_register);
 }
 void igActivableHolderModel_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igActivableHolderModel_meta,(int)igSimpleChildHolderModel_register,(int)fn_8010DD30,(int)igActivableHolderModel_getMetaCall,(int)igActivableHolderModel_className,60,(int)igActivableHolderModel_vtableRead,(int)igActivableHolderModel_fieldInit,0,(int)lbl_8055F2BC);
+ meta_registerClass(0,(int)&igActivableHolderModel_meta,(int)igSimpleChildHolderModel_register,(int)fn_8010DD30,(int)igActivableHolderModel_getMetaCall,(int)igActivableHolderModel_className,60,(int)igActivableHolderModel_vtableRead,(int)igActivableHolderModel_fieldInit,0,(int)igActivableHolderModel_dependencies);
 }
 void *igActivableHolderModel_getMetaCall(){return igActivableHolderModel_getMeta();}
 void igActivableHolderModel_fieldInit(){
  void *value0=igActivableHolderModel_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F2C4,2);
+ meta_appendFields(value0,igActivableHolderModel_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80111CD4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_8055F2CC,lbl_8055F2D4,lbl_8055F2DC,value1);
+ meta_setupFields(value0,igActivableHolderModel_fieldNames,igActivableHolderModel_fieldStorage,igActivableHolderModel_fieldOffsets,value1);
 }
 void *fn_801159FC(){return igAction_meta;}
 void *fn_80115A04(){
@@ -105,10 +105,10 @@ void *fn_80115A04(){
  return igAction_meta;
 }
 void *igAction_getMeta(){
- if(!igAction_meta || !(reinterpret_cast<unsigned int *>(igAction_meta)[0x24/4]&4)) igAction_registerNow();
+ if(!igAction_meta || !(reinterpret_cast<unsigned int *>(igAction_meta)[0x24/4]&4)) igAction_arkRegister();
  return igAction_meta;
 }
-void igAction_registerNow(){
+void igAction_arkRegister(){
  meta_registerNow((int)igAction_register);
 }
 void igAction_register(){

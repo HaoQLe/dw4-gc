@@ -10,7 +10,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_80338E68();
-void beNDMWMdlEnemyInfoWork_registerNow();
+void beNDMWMdlEnemyInfoWork_arkRegister();
 extern char beNDMWMdlEnemy_className[];
 extern char beNDMWMdlEnemy_meta[];
 extern void *beNDMWMdlEnemyInfoWork_meta;
@@ -18,7 +18,7 @@ void beNDMWMdlEnemy_register();
 void *beNDMWMdlEnemy_getMetaCall();
 }
 extern "C" {
-void beNDMWMdlEnemy_registerNow(){
+void beNDMWMdlEnemy_arkRegister(){
  meta_registerNow((int)beNDMWMdlEnemy_register);
 }
 void beNDMWMdlEnemy_register(){
@@ -27,11 +27,11 @@ void beNDMWMdlEnemy_register(){
 }
 void *beNDMWMdlEnemy_getMetaCall(){return beNDMWMdlEnemy_getMeta();}
 void *beNDMWMdlEnemyInfoWork_create(void *object){
- beNDMWMdlEnemyInfoWork_registerNow();
+ beNDMWMdlEnemyInfoWork_arkRegister();
  return meta_createInstance(beNDMWMdlEnemyInfoWork_meta,object);
 }
 void *beNDMWMdlEnemyInfoWork_getMeta(){
- if(!beNDMWMdlEnemyInfoWork_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlEnemyInfoWork_meta)[0x24/4]&4)) beNDMWMdlEnemyInfoWork_registerNow();
+ if(!beNDMWMdlEnemyInfoWork_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlEnemyInfoWork_meta)[0x24/4]&4)) beNDMWMdlEnemyInfoWork_arkRegister();
  return beNDMWMdlEnemyInfoWork_meta;
 }
 }

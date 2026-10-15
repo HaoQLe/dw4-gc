@@ -19,17 +19,17 @@ extern char igSpatialPartitionDeprecated_vtable[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F560[8];
+extern char igSpatialPartitionDeprecated_dependencies[8];
 extern void *igSplitGeometries_meta;
 extern void *igSpatialPartitionDeprecated_meta;
 void *igSplitGeometries_getMeta();
 void *igSplitGeometries_vtableRead();
-void igSplitGeometries_registerNow();
+void igSplitGeometries_arkRegister();
 void igSplitGeometries_register();
 void *igSplitGeometries_getMetaCall();
 void *igSpatialPartitionDeprecated_getMeta();
 void *igSpatialPartitionDeprecated_vtableRead();
-void igSpatialPartitionDeprecated_registerNow();
+void igSpatialPartitionDeprecated_arkRegister();
 void igSpatialPartitionDeprecated_register();
 void *igSpatialPartitionDeprecated_getMetaCall();
 }
@@ -69,7 +69,7 @@ extern "C" {
 void *fn_80132324(){return fn_801A1FE8();}
 void fn_80132344(){return fn_801A2070();}
 void *igSplitGeometries_getMeta(){
- if(!igSplitGeometries_meta || !(reinterpret_cast<unsigned int *>(igSplitGeometries_meta)[0x24/4]&4)) igSplitGeometries_registerNow();
+ if(!igSplitGeometries_meta || !(reinterpret_cast<unsigned int *>(igSplitGeometries_meta)[0x24/4]&4)) igSplitGeometries_arkRegister();
  return igSplitGeometries_meta;
 }
 void *igSplitGeometries_vtableRead(){
@@ -82,7 +82,7 @@ void *igSplitGeometries_vtableRead(){
  object.unknown00=igSplitGeometries_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSplitGeometries_registerNow(){
+void igSplitGeometries_arkRegister(){
  meta_registerNow((int)igSplitGeometries_register);
 }
 void igSplitGeometries_register(){
@@ -91,7 +91,7 @@ void igSplitGeometries_register(){
 }
 void *igSplitGeometries_getMetaCall(){return igSplitGeometries_getMeta();}
 void *igSpatialPartitionDeprecated_getMeta(){
- if(!igSpatialPartitionDeprecated_meta || !(reinterpret_cast<unsigned int *>(igSpatialPartitionDeprecated_meta)[0x24/4]&4)) igSpatialPartitionDeprecated_registerNow();
+ if(!igSpatialPartitionDeprecated_meta || !(reinterpret_cast<unsigned int *>(igSpatialPartitionDeprecated_meta)[0x24/4]&4)) igSpatialPartitionDeprecated_arkRegister();
  return igSpatialPartitionDeprecated_meta;
 }
 void *igSpatialPartitionDeprecated_vtableRead(){
@@ -116,12 +116,12 @@ UnknownGenHolder *fn_801326AC(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igSpatialPartitionDeprecated_registerNow(){
+void igSpatialPartitionDeprecated_arkRegister(){
  meta_registerNow((int)igSpatialPartitionDeprecated_register);
 }
 void igSpatialPartitionDeprecated_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igSpatialPartitionDeprecated_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igSpatialPartitionDeprecated_getMetaCall,(int)igSpatialPartitionDeprecated_className,68,(int)igSpatialPartitionDeprecated_vtableRead,(int)igSpatialPartitionDeprecated_fieldInit,0,(int)lbl_8055F560);
+ meta_registerClass(0,(int)&igSpatialPartitionDeprecated_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igSpatialPartitionDeprecated_getMetaCall,(int)igSpatialPartitionDeprecated_className,68,(int)igSpatialPartitionDeprecated_vtableRead,(int)igSpatialPartitionDeprecated_fieldInit,0,(int)igSpatialPartitionDeprecated_dependencies);
 }
 void *igSpatialPartitionDeprecated_getMetaCall(){return igSpatialPartitionDeprecated_getMeta();}
 }

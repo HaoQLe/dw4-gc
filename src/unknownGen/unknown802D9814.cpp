@@ -15,7 +15,7 @@ void beFontImage_register();
 void *beFontImage_getMetaCall();
 }
 extern "C" {
-void beFontImage_registerNow(){
+void beFontImage_arkRegister(){
  meta_registerNow((int)beFontImage_register);
 }
 void beFontImage_register(){

@@ -8,17 +8,17 @@ void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *beBaseInfoRamList_metaObject();
-extern char lbl_804D13F8[];
-extern char lbl_804D1410[];
-extern char lbl_804D1428[];
-extern char lbl_804D1440[];
+extern char beMessengerWork_fieldTypes[];
+extern char beMessengerWork_fieldNames[];
+extern char beMessengerWork_fieldStorage[];
+extern char beMessengerWork_fieldOffsets[];
 extern void *beMessengerWork_meta;
 }
 extern "C" {
 void beMessengerWork_fieldInit(){
  void *value0=beMessengerWork_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D13F8,6);
+ meta_appendFields(value0,beMessengerWork_fieldTypes,6);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+4));
  void *value3=fn_800365B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -27,7 +27,7 @@ void beMessengerWork_fieldInit(){
  void *value5=beBaseInfoRamList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
- meta_setupFields(value0,lbl_804D1410,lbl_804D1428,lbl_804D1440,value1);
+ meta_setupFields(value0,beMessengerWork_fieldNames,beMessengerWork_fieldStorage,beMessengerWork_fieldOffsets,value1);
 }
 }
 #pragma pop

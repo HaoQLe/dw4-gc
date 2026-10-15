@@ -16,7 +16,7 @@ void igViewMode_register();
 void *igViewMode_getMetaCall();
 }
 extern "C" {
-void igViewMode_registerNow(){
+void igViewMode_arkRegister(){
  meta_registerNow((int)igViewMode_register);
 }
 void igViewMode_register(){

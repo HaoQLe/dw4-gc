@@ -12,17 +12,17 @@ void *beCameraMode_metaObject();
 void *igViewerSceneInfoManager_metaObject();
 void *igViewerParameters_metaObject();
 extern char lbl_8041D5B0[];
-extern char lbl_804D2BC8[];
-extern char lbl_804D2BFC[];
-extern char lbl_804D2C30[];
-extern char lbl_804D2C64[];
+extern char beCameraCtrl_fieldTypes[];
+extern char beCameraCtrl_fieldNames[];
+extern char beCameraCtrl_fieldStorage[];
+extern char beCameraCtrl_fieldOffsets[];
 extern void *beCameraCtrl_meta;
 }
 extern "C" {
 void beCameraCtrl_fieldInit(){
  void *value0=beCameraCtrl_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D2BC8,13);
+ meta_appendFields(value0,beCameraCtrl_fieldTypes,13);
  void *value2=meta_field(value0,value1);
  void *value3=igViewerSceneInfoManager_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -38,7 +38,7 @@ void beCameraCtrl_fieldInit(){
  fn_8004D4BC(value8,*reinterpret_cast<float *>((lbl_8041D5B0+0)));
  void *value9=meta_field(value0,(reinterpret_cast<char *>(value1)+12));
  fn_8003EC68(value9,1);
- meta_setupFields(value0,lbl_804D2BFC,lbl_804D2C30,lbl_804D2C64,value1);
+ meta_setupFields(value0,beCameraCtrl_fieldNames,beCameraCtrl_fieldStorage,beCameraCtrl_fieldOffsets,value1);
 }
 }
 #pragma pop

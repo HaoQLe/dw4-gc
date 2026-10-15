@@ -27,7 +27,7 @@ UnknownGenHolder *dtor_802BD63C(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beSvConnectCheck_registerNow(){
+void beSvConnectCheck_arkRegister(){
  meta_registerNow((int)beSvConnectCheck_register);
 }
 void beSvConnectCheck_register(){

@@ -13,13 +13,13 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beCriAudio_registerNow();
+void beCriAudio_arkRegister();
 void igObject_register();
 extern char beCriFxXbData_className[];
-extern char lbl_804D2714[];
-extern char lbl_804D2744[];
-extern char lbl_804D2774[];
-extern char lbl_804D27A4[];
+extern char beCriFxXbData_fieldTypes[];
+extern char beCriFxXbData_fieldNames[];
+extern char beCriFxXbData_fieldStorage[];
+extern char beCriFxXbData_fieldOffsets[];
 extern void *beCriFxXbData_meta;
 extern void *beCriAudio_meta;
 extern void *lbl_805621F4;
@@ -28,7 +28,7 @@ void *beCriFxXbData_getMetaCall();
 void beCriFxXbData_fieldInit();
 }
 extern "C" {
-void beCriFxXbData_registerNow(){
+void beCriFxXbData_arkRegister(){
  meta_registerNow((int)beCriFxXbData_register);
 }
 void beCriFxXbData_register(){
@@ -39,15 +39,15 @@ void *beCriFxXbData_getMetaCall(){return beCriFxXbData_getMeta();}
 void beCriFxXbData_fieldInit(){
  void *meta=beCriFxXbData_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D2714,0xC);
- meta_setupFields(meta,lbl_804D2744,lbl_804D2774,lbl_804D27A4,field);
+ meta_appendFields(meta,beCriFxXbData_fieldTypes,0xC);
+ meta_setupFields(meta,beCriFxXbData_fieldNames,beCriFxXbData_fieldStorage,beCriFxXbData_fieldOffsets,field);
 }
 void *beCriAudio_metaObject(){
  if(!beCriAudio_meta) beCriAudio_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return beCriAudio_meta;
 }
 void *beCriAudio_getMeta(){
- if(!beCriAudio_meta || !(reinterpret_cast<unsigned int *>(beCriAudio_meta)[0x24/4]&4)) beCriAudio_registerNow();
+ if(!beCriAudio_meta || !(reinterpret_cast<unsigned int *>(beCriAudio_meta)[0x24/4]&4)) beCriAudio_arkRegister();
  return beCriAudio_meta;
 }
 }

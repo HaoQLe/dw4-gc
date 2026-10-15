@@ -10,17 +10,17 @@ void *beMessenger_metaObject();
 void *beLua_metaObject();
 void *beDemoManagerWorkList_metaObject();
 void *beDemoManagerWork_metaObject();
-extern char lbl_804D22F4[];
-extern char lbl_804D2310[];
-extern char lbl_804D232C[];
-extern char lbl_804D2348[];
+extern char beDemoManager_fieldTypes[];
+extern char beDemoManager_fieldNames[];
+extern char beDemoManager_fieldStorage[];
+extern char beDemoManager_fieldOffsets[];
 extern void *beDemoManager_meta;
 }
 extern "C" {
 void beDemoManager_fieldInit(){
  void *value0=beDemoManager_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D22F4,7);
+ meta_appendFields(value0,beDemoManager_fieldTypes,7);
  void *value2=meta_field(value0,value1);
  void *value3=beMessenger_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -36,7 +36,7 @@ void beDemoManager_fieldInit(){
  void *value9=beDemoManagerWorkList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value8)+52)=1;
- meta_setupFields(value0,lbl_804D2310,lbl_804D232C,lbl_804D2348,value1);
+ meta_setupFields(value0,beDemoManager_fieldNames,beDemoManager_fieldStorage,beDemoManager_fieldOffsets,value1);
 }
 }
 #pragma pop

@@ -12,7 +12,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
 extern char beModelCtrlInfoWork_className[];
-extern char lbl_804D0730[];
+extern char beModelCtrlInfoWork_dependencies[];
 extern char beModelCtrlInfoWork_meta[];
 void beModelCtrlInfoWork_register();
 void *beModelCtrlInfoWork_getMetaCall();
@@ -62,12 +62,12 @@ UnknownGenHolder *dtor_802C6BE0(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beModelCtrlInfoWork_registerNow(){
+void beModelCtrlInfoWork_arkRegister(){
  meta_registerNow((int)beModelCtrlInfoWork_register);
 }
 void beModelCtrlInfoWork_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beModelCtrlInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beModelCtrlInfoWork_getMetaCall,(int)beModelCtrlInfoWork_className,236,(int)beModelCtrlInfoWork_vtableRead,(int)beModelCtrlInfoWork_fieldInit,0,(int)lbl_804D0730);
+ meta_registerClass(0,(int)beModelCtrlInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beModelCtrlInfoWork_getMetaCall,(int)beModelCtrlInfoWork_className,236,(int)beModelCtrlInfoWork_vtableRead,(int)beModelCtrlInfoWork_fieldInit,0,(int)beModelCtrlInfoWork_dependencies);
 }
 void *beModelCtrlInfoWork_getMetaCall(){return beModelCtrlInfoWork_getMeta();}
 }

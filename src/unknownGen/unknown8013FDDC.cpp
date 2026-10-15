@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8D8[8];
+extern char igObjectPropertyForSwitch_dependencies[8];
 extern void *igObjectPropertyForSwitch_meta;
 void *igObjectPropertyForSwitch_getMeta();
 void *igObjectPropertyForSwitch_vtableRead();
-void igObjectPropertyForSwitch_registerNow();
+void igObjectPropertyForSwitch_arkRegister();
 void igObjectPropertyForSwitch_register();
 void *igObjectPropertyForSwitch_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013FE18 : UnknownGenObject8013FE18_1 {
 };
 extern "C" {
 void *igObjectPropertyForSwitch_getMeta(){
- if(!igObjectPropertyForSwitch_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForSwitch_meta)[0x24/4]&4)) igObjectPropertyForSwitch_registerNow();
+ if(!igObjectPropertyForSwitch_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForSwitch_meta)[0x24/4]&4)) igObjectPropertyForSwitch_arkRegister();
  return igObjectPropertyForSwitch_meta;
 }
 void *igObjectPropertyForSwitch_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForSwitch_vtableRead(){
  object.unknown00=igObjectPropertyForSwitch_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForSwitch_registerNow(){
+void igObjectPropertyForSwitch_arkRegister(){
  meta_registerNow((int)igObjectPropertyForSwitch_register);
 }
 void igObjectPropertyForSwitch_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForSwitch_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForSwitch_getMetaCall,(int)igObjectPropertyForSwitch_className,44,(int)igObjectPropertyForSwitch_vtableRead,(int)fn_8013FFA0,0,(int)lbl_8055F8D8);
+ meta_registerClass(0,(int)&igObjectPropertyForSwitch_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForSwitch_getMetaCall,(int)igObjectPropertyForSwitch_className,44,(int)igObjectPropertyForSwitch_vtableRead,(int)fn_8013FFA0,0,(int)igObjectPropertyForSwitch_dependencies);
 }
 void *igObjectPropertyForSwitch_getMetaCall(){return igObjectPropertyForSwitch_getMeta();}
 }

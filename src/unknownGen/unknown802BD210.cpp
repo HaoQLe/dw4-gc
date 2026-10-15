@@ -16,7 +16,7 @@ void beSvPlatDataGC_register();
 void *beSvPlatDataGC_getMetaCall();
 }
 extern "C" {
-void beSvPlatDataGC_registerNow(){
+void beSvPlatDataGC_arkRegister(){
  meta_registerNow((int)beSvPlatDataGC_register);
 }
 void beSvPlatDataGC_register(){

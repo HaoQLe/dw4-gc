@@ -17,7 +17,7 @@ extern char igErrorHandler_vtable[];
 extern void *igErrorHandler_meta;
 void *igErrorHandler_getMeta();
 void *igErrorHandler_vtableRead();
-void igErrorHandler_registerNow();
+void igErrorHandler_arkRegister();
 void igErrorHandler_register();
 void *igErrorHandler_getMetaCall();
 void fn_80031310();
@@ -30,11 +30,11 @@ struct UnknownGenObject80031210_0 {
 };
 extern "C" {
 void *igErrorHandler_create(void *object){
- igErrorHandler_registerNow();
+ igErrorHandler_arkRegister();
  return meta_createInstance(igErrorHandler_meta,object);
 }
 void *igErrorHandler_getMeta(){
- if(!igErrorHandler_meta || !(reinterpret_cast<unsigned int *>(igErrorHandler_meta)[0x24/4]&4)) igErrorHandler_registerNow();
+ if(!igErrorHandler_meta || !(reinterpret_cast<unsigned int *>(igErrorHandler_meta)[0x24/4]&4)) igErrorHandler_arkRegister();
  return igErrorHandler_meta;
 }
 void *igErrorHandler_vtableRead(){
@@ -43,7 +43,7 @@ void *igErrorHandler_vtableRead(){
  object.unknown00=igErrorHandler_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igErrorHandler_registerNow(){
+void igErrorHandler_arkRegister(){
  meta_registerNow((int)igErrorHandler_register);
 }
 void igErrorHandler_register(){

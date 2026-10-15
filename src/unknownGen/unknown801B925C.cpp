@@ -13,7 +13,7 @@ void fn_801AA6DC();
 void igMorphSequence_fieldInit();
 void igObject_register();
 extern char lbl_804AAFB8[];
-extern char lbl_804AE734[];
+extern char igMorphSequence_dependencies[];
 extern char igMorphSequence_className[];
 extern char igMorphSequence_vtable[];
 extern void *lbl_805621F4;
@@ -22,7 +22,7 @@ extern void *lbl_80564CB8;
 extern void *igMorphSequence_meta;
 void *igMorphSequence_getMeta();
 void *igMorphSequence_vtableRead();
-void igMorphSequence_registerNow();
+void igMorphSequence_arkRegister();
 void igMorphSequence_register();
 void *igMorphSequence_getMetaCall();
 }
@@ -55,7 +55,7 @@ void *fn_801B92F4(){
  return igMorphSequence_meta;
 }
 void *igMorphSequence_getMeta(){
- if(!igMorphSequence_meta || !(reinterpret_cast<unsigned int *>(igMorphSequence_meta)[0x24/4]&4)) igMorphSequence_registerNow();
+ if(!igMorphSequence_meta || !(reinterpret_cast<unsigned int *>(igMorphSequence_meta)[0x24/4]&4)) igMorphSequence_arkRegister();
  return igMorphSequence_meta;
 }
 void *igMorphSequence_vtableRead(){
@@ -65,12 +65,12 @@ void *igMorphSequence_vtableRead(){
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMorphSequence_registerNow(){
+void igMorphSequence_arkRegister(){
  meta_registerNow((int)igMorphSequence_register);
 }
 void igMorphSequence_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igMorphSequence_meta,(int)igObject_register,(int)fn_800237D0,(int)igMorphSequence_getMetaCall,(int)igMorphSequence_className,64,(int)igMorphSequence_vtableRead,(int)igMorphSequence_fieldInit,0,(int)lbl_804AE734);
+ meta_registerClass(0,(int)&igMorphSequence_meta,(int)igObject_register,(int)fn_800237D0,(int)igMorphSequence_getMetaCall,(int)igMorphSequence_className,64,(int)igMorphSequence_vtableRead,(int)igMorphSequence_fieldInit,0,(int)igMorphSequence_dependencies);
 }
 void *igMorphSequence_getMetaCall(){return igMorphSequence_getMeta();}
 }

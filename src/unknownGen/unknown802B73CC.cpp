@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beSystem_registerNow();
+void beSystem_arkRegister();
 extern void *beSystem_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beSystem_create(void *object){
- beSystem_registerNow();
+ beSystem_arkRegister();
  return meta_createInstance(beSystem_meta,object);
 }
 void *beSystem_metaObject(){
@@ -19,7 +19,7 @@ void *beSystem_metaObject(){
  return beSystem_meta;
 }
 void *beSystem_getMeta(){
- if(!beSystem_meta || !(reinterpret_cast<unsigned int *>(beSystem_meta)[0x24/4]&4)) beSystem_registerNow();
+ if(!beSystem_meta || !(reinterpret_cast<unsigned int *>(beSystem_meta)[0x24/4]&4)) beSystem_arkRegister();
  return beSystem_meta;
 }
 }

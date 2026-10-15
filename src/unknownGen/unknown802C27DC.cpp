@@ -16,7 +16,7 @@ void bePadData_register();
 void *bePadData_getMetaCall();
 }
 extern "C" {
-void bePadData_registerNow(){
+void bePadData_arkRegister(){
  meta_registerNow((int)bePadData_register);
 }
 void bePadData_register(){

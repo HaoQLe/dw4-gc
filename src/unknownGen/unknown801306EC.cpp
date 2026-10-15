@@ -17,7 +17,7 @@ extern void *igStripTriangles_meta;
 extern void *igOptBase_meta;
 void *igStripTriangles_getMeta();
 void *igStripTriangles_vtableRead();
-void igStripTriangles_registerNow();
+void igStripTriangles_arkRegister();
 void igStripTriangles_register();
 void *igStripTriangles_getMetaCall();
 void *fn_801308D0();
@@ -39,7 +39,7 @@ struct UnknownGenObject80130728 : UnknownGenObject80130728_0 {
 };
 extern "C" {
 void *igStripTriangles_getMeta(){
- if(!igStripTriangles_meta || !(reinterpret_cast<unsigned int *>(igStripTriangles_meta)[0x24/4]&4)) igStripTriangles_registerNow();
+ if(!igStripTriangles_meta || !(reinterpret_cast<unsigned int *>(igStripTriangles_meta)[0x24/4]&4)) igStripTriangles_arkRegister();
  return igStripTriangles_meta;
 }
 void *igStripTriangles_vtableRead(){
@@ -52,7 +52,7 @@ void *igStripTriangles_vtableRead(){
  object.unknown00=igStripTriangles_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStripTriangles_registerNow(){
+void igStripTriangles_arkRegister(){
  meta_registerNow((int)igStripTriangles_register);
 }
 void igStripTriangles_register(){

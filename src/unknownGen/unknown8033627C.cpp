@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beNDMWSaveCtrl_registerNow();
+void beNDMWSaveCtrl_arkRegister();
 extern char lbl_80453438[];
 extern char lbl_804E23A4[];
 extern char lbl_804E23B4[];
@@ -20,7 +20,7 @@ void *fn_8033627C(){
  return lbl_8053608C;
 }
 void *beNDMWSaveCtrl_create(void *object){
- beNDMWSaveCtrl_registerNow();
+ beNDMWSaveCtrl_arkRegister();
  return meta_createInstance(beNDMWSaveCtrl_meta,object);
 }
 void *beNDMWSaveCtrl_metaObject(){
@@ -28,7 +28,7 @@ void *beNDMWSaveCtrl_metaObject(){
  return beNDMWSaveCtrl_meta;
 }
 void *beNDMWSaveCtrl_getMeta(){
- if(!beNDMWSaveCtrl_meta || !(reinterpret_cast<unsigned int *>(beNDMWSaveCtrl_meta)[0x24/4]&4)) beNDMWSaveCtrl_registerNow();
+ if(!beNDMWSaveCtrl_meta || !(reinterpret_cast<unsigned int *>(beNDMWSaveCtrl_meta)[0x24/4]&4)) beNDMWSaveCtrl_arkRegister();
  return beNDMWSaveCtrl_meta;
 }
 }

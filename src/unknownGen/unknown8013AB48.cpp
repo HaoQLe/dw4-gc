@@ -15,11 +15,11 @@ extern char igOptStatistics_vtable[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F7B8[8];
+extern char igOptStatistics_dependencies[8];
 extern void *igOptStatistics_meta;
 void *igOptStatistics_getMeta();
 void *igOptStatistics_vtableRead();
-void igOptStatistics_registerNow();
+void igOptStatistics_arkRegister();
 void igOptStatistics_register();
 void *igOptStatistics_getMetaCall();
 }
@@ -47,7 +47,7 @@ struct UnknownGenObject8013AB84 : UnknownGenObject8013AB84_1 {
 };
 extern "C" {
 void *igOptStatistics_getMeta(){
- if(!igOptStatistics_meta || !(reinterpret_cast<unsigned int *>(igOptStatistics_meta)[0x24/4]&4)) igOptStatistics_registerNow();
+ if(!igOptStatistics_meta || !(reinterpret_cast<unsigned int *>(igOptStatistics_meta)[0x24/4]&4)) igOptStatistics_arkRegister();
  return igOptStatistics_meta;
 }
 void *igOptStatistics_vtableRead(){
@@ -64,12 +64,12 @@ void *igOptStatistics_vtableRead(){
  object.unknown40.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igOptStatistics_registerNow(){
+void igOptStatistics_arkRegister(){
  meta_registerNow((int)igOptStatistics_register);
 }
 void igOptStatistics_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igOptStatistics_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igOptStatistics_getMetaCall,(int)igOptStatistics_className,68,(int)igOptStatistics_vtableRead,(int)igOptStatistics_fieldInit,0,(int)lbl_8055F7B8);
+ meta_registerClass(0,(int)&igOptStatistics_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igOptStatistics_getMetaCall,(int)igOptStatistics_className,68,(int)igOptStatistics_vtableRead,(int)igOptStatistics_fieldInit,0,(int)igOptStatistics_dependencies);
 }
 void *igOptStatistics_getMetaCall(){return igOptStatistics_getMeta();}
 }

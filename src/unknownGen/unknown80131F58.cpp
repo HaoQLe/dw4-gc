@@ -14,7 +14,7 @@ void *fn_80132324();
 void igOptBase_register();
 void igStatistics_fieldInit();
 extern char lbl_8049C00C[];
-extern char lbl_8049C020[];
+extern char igStatistics_dependencies[];
 extern char igStatistics_className[];
 extern char igStatistics_vtable[];
 extern char lbl_804A4A04[];
@@ -27,7 +27,7 @@ extern void *lbl_80563B40;
 extern void *igStatistics_meta;
 void *igStatistics_getMeta();
 void *igStatistics_vtableRead();
-void igStatistics_registerNow();
+void igStatistics_arkRegister();
 void igStatistics_register();
 void *igStatistics_getMetaCall();
 }
@@ -62,7 +62,7 @@ void *fn_80131FA0(){
  return igStatistics_meta;
 }
 void *igStatistics_getMeta(){
- if(!igStatistics_meta || !(reinterpret_cast<unsigned int *>(igStatistics_meta)[0x24/4]&4)) igStatistics_registerNow();
+ if(!igStatistics_meta || !(reinterpret_cast<unsigned int *>(igStatistics_meta)[0x24/4]&4)) igStatistics_arkRegister();
  return igStatistics_meta;
 }
 void *igStatistics_vtableRead(){
@@ -77,12 +77,12 @@ void *igStatistics_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStatistics_registerNow(){
+void igStatistics_arkRegister(){
  meta_registerNow((int)igStatistics_register);
 }
 void igStatistics_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igStatistics_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igStatistics_getMetaCall,(int)igStatistics_className,52,(int)igStatistics_vtableRead,(int)igStatistics_fieldInit,(int)fn_80132324,(int)lbl_8049C020);
+ meta_registerClass(0,(int)&igStatistics_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igStatistics_getMetaCall,(int)igStatistics_className,52,(int)igStatistics_vtableRead,(int)igStatistics_fieldInit,(int)fn_80132324,(int)igStatistics_dependencies);
 }
 void *igStatistics_getMetaCall(){return igStatistics_getMeta();}
 }

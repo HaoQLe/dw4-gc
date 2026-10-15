@@ -27,7 +27,7 @@ extern char igZFilterWeight_className[];
 extern char igGaussianSmoothImage_className[];
 extern char igSmoothImage_className[];
 extern char igZoomImage_className[];
-extern char lbl_8049EF14[];
+extern char igFilterImage_dependencies[];
 extern char igFilterImage_className[];
 extern char lbl_804A6B28[];
 extern char lbl_804A6B8C[];
@@ -38,16 +38,16 @@ extern char igZFilterWeightList_vtable[];
 extern char lbl_804A9220[];
 extern char igZFilterWeightListList_vtable[];
 extern char lbl_804A92E8[];
-extern char lbl_8055FAF8[8];
-extern char lbl_8055FB00[8];
-extern char lbl_8055FB08[4];
-extern char lbl_8055FB10[4];
-extern char lbl_8055FB14[4];
-extern char lbl_8055FB18[4];
-extern char lbl_8055FB1C[8];
-extern char lbl_8055FB34[8];
-extern char lbl_8055FB3C[8];
-extern char lbl_8055FB44[8];
+extern char igZFilterWeightListList_dependencies[8];
+extern char igZFilterWeightList_dependencies[8];
+extern char igZFilterWeightList_fieldTypes[4];
+extern char igZFilterWeightList_fieldNames[4];
+extern char igZFilterWeightList_fieldStorage[4];
+extern char igZFilterWeightList_fieldOffsets[4];
+extern char igZFilterWeight_fieldTypes[8];
+extern char igZFilterWeight_fieldNames[8];
+extern char igZFilterWeight_fieldStorage[8];
+extern char igZFilterWeight_fieldOffsets[8];
 extern void *igZFilterWeightListList_meta;
 extern void *igZFilterWeightList_meta;
 extern void *igZFilterWeight_meta;
@@ -57,39 +57,39 @@ extern void *igZoomImage_meta;
 extern void *igFilterImage_meta;
 void *igZFilterWeightListList_getMeta();
 void *igZFilterWeightListList_vtableRead();
-void igZFilterWeightListList_registerNow();
+void igZFilterWeightListList_arkRegister();
 void igZFilterWeightListList_register();
 void *igZFilterWeightListList_getMetaCall();
 void *igZFilterWeightList_getMeta();
 void *igZFilterWeightList_vtableRead();
-void igZFilterWeightList_registerNow();
+void igZFilterWeightList_arkRegister();
 void igZFilterWeightList_register();
 void *igZFilterWeightList_getMetaCall();
 void igZFilterWeightList_fieldInit();
 void *igZFilterWeight_getMeta();
 void *igZFilterWeight_vtableRead();
-void igZFilterWeight_registerNow();
+void igZFilterWeight_arkRegister();
 void igZFilterWeight_register();
 void *igZFilterWeight_getMetaCall();
 void igZFilterWeight_fieldInit();
 void *igGaussianSmoothImage_getMeta();
 void *igGaussianSmoothImage_vtableRead();
-void igGaussianSmoothImage_registerNow();
+void igGaussianSmoothImage_arkRegister();
 void igGaussianSmoothImage_register();
 void *igGaussianSmoothImage_getMetaCall();
 void *igGaussianSmoothImage_parentMeta();
 void *igSmoothImage_getMeta();
-void igSmoothImage_registerNow();
+void igSmoothImage_arkRegister();
 void igSmoothImage_register();
 void *igSmoothImage_getMetaCall();
 void *fn_80149688();
 void *igZoomImage_getMeta();
 void *igZoomImage_vtableRead();
-void igZoomImage_registerNow();
+void igZoomImage_arkRegister();
 void igZoomImage_register();
 void *igZoomImage_getMetaCall();
 void *igFilterImage_getMeta();
-void igFilterImage_registerNow();
+void igFilterImage_arkRegister();
 void igFilterImage_register();
 void *igFilterImage_getMetaCall();
 }
@@ -142,11 +142,11 @@ struct UnknownGenObject80149704 : UnknownGenObject80149704_0 {
 };
 extern "C" {
 void *igZFilterWeightListList_create(void *object){
- igZFilterWeightListList_registerNow();
+ igZFilterWeightListList_arkRegister();
  return meta_createInstance(igZFilterWeightListList_meta,object);
 }
 void *igZFilterWeightListList_getMeta(){
- if(!igZFilterWeightListList_meta || !(reinterpret_cast<unsigned int *>(igZFilterWeightListList_meta)[0x24/4]&4)) igZFilterWeightListList_registerNow();
+ if(!igZFilterWeightListList_meta || !(reinterpret_cast<unsigned int *>(igZFilterWeightListList_meta)[0x24/4]&4)) igZFilterWeightListList_arkRegister();
  return igZFilterWeightListList_meta;
 }
 void *igZFilterWeightListList_vtableRead(){
@@ -159,20 +159,20 @@ void *igZFilterWeightListList_vtableRead(){
  object.unknown00=igZFilterWeightListList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igZFilterWeightListList_registerNow(){
+void igZFilterWeightListList_arkRegister(){
  meta_registerNow((int)igZFilterWeightListList_register);
 }
 void igZFilterWeightListList_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igZFilterWeightListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igZFilterWeightListList_getMetaCall,(int)igZFilterWeightListList_className,20,(int)igZFilterWeightListList_vtableRead,0,0,(int)lbl_8055FAF8);
+ meta_registerClass(0,(int)&igZFilterWeightListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igZFilterWeightListList_getMetaCall,(int)igZFilterWeightListList_className,20,(int)igZFilterWeightListList_vtableRead,0,0,(int)igZFilterWeightListList_dependencies);
 }
 void *igZFilterWeightListList_getMetaCall(){return igZFilterWeightListList_getMeta();}
 void *igZFilterWeightList_create(void *object){
- igZFilterWeightList_registerNow();
+ igZFilterWeightList_arkRegister();
  return meta_createInstance(igZFilterWeightList_meta,object);
 }
 void *igZFilterWeightList_getMeta(){
- if(!igZFilterWeightList_meta || !(reinterpret_cast<unsigned int *>(igZFilterWeightList_meta)[0x24/4]&4)) igZFilterWeightList_registerNow();
+ if(!igZFilterWeightList_meta || !(reinterpret_cast<unsigned int *>(igZFilterWeightList_meta)[0x24/4]&4)) igZFilterWeightList_arkRegister();
  return igZFilterWeightList_meta;
 }
 void *igZFilterWeightList_vtableRead(){
@@ -185,26 +185,26 @@ void *igZFilterWeightList_vtableRead(){
  object.unknown00=igZFilterWeightList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igZFilterWeightList_registerNow(){
+void igZFilterWeightList_arkRegister(){
  meta_registerNow((int)igZFilterWeightList_register);
 }
 void igZFilterWeightList_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igZFilterWeightList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igZFilterWeightList_getMetaCall,(int)igZFilterWeightList_className,24,(int)igZFilterWeightList_vtableRead,(int)igZFilterWeightList_fieldInit,0,(int)lbl_8055FB00);
+ meta_registerClass(0,(int)&igZFilterWeightList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igZFilterWeightList_getMetaCall,(int)igZFilterWeightList_className,24,(int)igZFilterWeightList_vtableRead,(int)igZFilterWeightList_fieldInit,0,(int)igZFilterWeightList_dependencies);
 }
 void *igZFilterWeightList_getMetaCall(){return igZFilterWeightList_getMeta();}
 void igZFilterWeightList_fieldInit(){
  void *value0=igZFilterWeightList_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FB08,1);
- meta_setupFields(value0,lbl_8055FB10,lbl_8055FB14,lbl_8055FB18,value1);
+ meta_appendFields(value0,igZFilterWeightList_fieldTypes,1);
+ meta_setupFields(value0,igZFilterWeightList_fieldNames,igZFilterWeightList_fieldStorage,igZFilterWeightList_fieldOffsets,value1);
 }
 void *igZFilterWeight_create(void *object){
- igZFilterWeight_registerNow();
+ igZFilterWeight_arkRegister();
  return meta_createInstance(igZFilterWeight_meta,object);
 }
 void *igZFilterWeight_getMeta(){
- if(!igZFilterWeight_meta || !(reinterpret_cast<unsigned int *>(igZFilterWeight_meta)[0x24/4]&4)) igZFilterWeight_registerNow();
+ if(!igZFilterWeight_meta || !(reinterpret_cast<unsigned int *>(igZFilterWeight_meta)[0x24/4]&4)) igZFilterWeight_arkRegister();
  return igZFilterWeight_meta;
 }
 void *igZFilterWeight_vtableRead(){
@@ -213,7 +213,7 @@ void *igZFilterWeight_vtableRead(){
  object.unknown00=igZFilterWeight_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igZFilterWeight_registerNow(){
+void igZFilterWeight_arkRegister(){
  meta_registerNow((int)igZFilterWeight_register);
 }
 void igZFilterWeight_register(){
@@ -224,11 +224,11 @@ void *igZFilterWeight_getMetaCall(){return igZFilterWeight_getMeta();}
 void igZFilterWeight_fieldInit(){
  void *value0=igZFilterWeight_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055FB1C,2);
- meta_setupFields(value0,lbl_8055FB34,lbl_8055FB3C,lbl_8055FB44,value1);
+ meta_appendFields(value0,igZFilterWeight_fieldTypes,2);
+ meta_setupFields(value0,igZFilterWeight_fieldNames,igZFilterWeight_fieldStorage,igZFilterWeight_fieldOffsets,value1);
 }
 void *igGaussianSmoothImage_getMeta(){
- if(!igGaussianSmoothImage_meta || !(reinterpret_cast<unsigned int *>(igGaussianSmoothImage_meta)[0x24/4]&4)) igGaussianSmoothImage_registerNow();
+ if(!igGaussianSmoothImage_meta || !(reinterpret_cast<unsigned int *>(igGaussianSmoothImage_meta)[0x24/4]&4)) igGaussianSmoothImage_arkRegister();
  return igGaussianSmoothImage_meta;
 }
 void *igGaussianSmoothImage_vtableRead(){
@@ -242,7 +242,7 @@ void *igGaussianSmoothImage_vtableRead(){
  object.unknown00=igGaussianSmoothImage_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGaussianSmoothImage_registerNow(){
+void igGaussianSmoothImage_arkRegister(){
  meta_registerNow((int)igGaussianSmoothImage_register);
 }
 void igGaussianSmoothImage_register(){
@@ -252,10 +252,10 @@ void igGaussianSmoothImage_register(){
 void *igGaussianSmoothImage_getMetaCall(){return igGaussianSmoothImage_getMeta();}
 void *igGaussianSmoothImage_parentMeta(){return igSmoothImage_meta;}
 void *igSmoothImage_getMeta(){
- if(!igSmoothImage_meta || !(reinterpret_cast<unsigned int *>(igSmoothImage_meta)[0x24/4]&4)) igSmoothImage_registerNow();
+ if(!igSmoothImage_meta || !(reinterpret_cast<unsigned int *>(igSmoothImage_meta)[0x24/4]&4)) igSmoothImage_arkRegister();
  return igSmoothImage_meta;
 }
-void igSmoothImage_registerNow(){
+void igSmoothImage_arkRegister(){
  meta_registerNow((int)igSmoothImage_register);
 }
 void igSmoothImage_register(){
@@ -265,11 +265,11 @@ void igSmoothImage_register(){
 void *igSmoothImage_getMetaCall(){return igSmoothImage_getMeta();}
 void *fn_80149688(){return igFilterImage_meta;}
 void *igZoomImage_create(void *object){
- igZoomImage_registerNow();
+ igZoomImage_arkRegister();
  return meta_createInstance(igZoomImage_meta,object);
 }
 void *igZoomImage_getMeta(){
- if(!igZoomImage_meta || !(reinterpret_cast<unsigned int *>(igZoomImage_meta)[0x24/4]&4)) igZoomImage_registerNow();
+ if(!igZoomImage_meta || !(reinterpret_cast<unsigned int *>(igZoomImage_meta)[0x24/4]&4)) igZoomImage_arkRegister();
  return igZoomImage_meta;
 }
 void *igZoomImage_vtableRead(){
@@ -282,7 +282,7 @@ void *igZoomImage_vtableRead(){
  object.unknown00=igZoomImage_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igZoomImage_registerNow(){
+void igZoomImage_arkRegister(){
  meta_registerNow((int)igZoomImage_register);
 }
 void igZoomImage_register(){
@@ -291,15 +291,15 @@ void igZoomImage_register(){
 }
 void *igZoomImage_getMetaCall(){return igZoomImage_getMeta();}
 void *igFilterImage_getMeta(){
- if(!igFilterImage_meta || !(reinterpret_cast<unsigned int *>(igFilterImage_meta)[0x24/4]&4)) igFilterImage_registerNow();
+ if(!igFilterImage_meta || !(reinterpret_cast<unsigned int *>(igFilterImage_meta)[0x24/4]&4)) igFilterImage_arkRegister();
  return igFilterImage_meta;
 }
-void igFilterImage_registerNow(){
+void igFilterImage_arkRegister(){
  meta_registerNow((int)igFilterImage_register);
 }
 void igFilterImage_register(){
  fn_8012FC48();
- meta_registerClass(1,(int)&igFilterImage_meta,(int)igImageUtils_register,(int)fn_800D1DA4,(int)igFilterImage_getMetaCall,(int)igFilterImage_className,20,0,(int)igFilterImage_fieldInit,0,(int)lbl_8049EF14);
+ meta_registerClass(1,(int)&igFilterImage_meta,(int)igImageUtils_register,(int)fn_800D1DA4,(int)igFilterImage_getMetaCall,(int)igFilterImage_className,20,0,(int)igFilterImage_fieldInit,0,(int)igFilterImage_dependencies);
 }
 void *igFilterImage_getMetaCall(){return igFilterImage_getMeta();}
 }

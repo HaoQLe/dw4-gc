@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beKeyboardReceiver_registerNow();
+void beKeyboardReceiver_arkRegister();
 void *fn_80301F68();
 extern void *beKeyboardReceiver_meta;
 extern void *lbl_805621F4;
@@ -16,7 +16,7 @@ void *beKeyboardReceiver_metaObject(){
  return beKeyboardReceiver_meta;
 }
 void *beKeyboardReceiver_getMeta(){
- if(!beKeyboardReceiver_meta || !(reinterpret_cast<unsigned int *>(beKeyboardReceiver_meta)[0x24/4]&4)) beKeyboardReceiver_registerNow();
+ if(!beKeyboardReceiver_meta || !(reinterpret_cast<unsigned int *>(beKeyboardReceiver_meta)[0x24/4]&4)) beKeyboardReceiver_arkRegister();
  return beKeyboardReceiver_meta;
 }
 }

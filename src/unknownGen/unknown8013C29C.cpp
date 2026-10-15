@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F818[8];
+extern char igObjectPropertyForMultiTextureShader_dependencies[8];
 extern void *igObjectPropertyForMultiTextureShader_meta;
 void *igObjectPropertyForMultiTextureShader_getMeta();
 void *igObjectPropertyForMultiTextureShader_vtableRead();
-void igObjectPropertyForMultiTextureShader_registerNow();
+void igObjectPropertyForMultiTextureShader_arkRegister();
 void igObjectPropertyForMultiTextureShader_register();
 void *igObjectPropertyForMultiTextureShader_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013C2D8 : UnknownGenObject8013C2D8_1 {
 };
 extern "C" {
 void *igObjectPropertyForMultiTextureShader_getMeta(){
- if(!igObjectPropertyForMultiTextureShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForMultiTextureShader_meta)[0x24/4]&4)) igObjectPropertyForMultiTextureShader_registerNow();
+ if(!igObjectPropertyForMultiTextureShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForMultiTextureShader_meta)[0x24/4]&4)) igObjectPropertyForMultiTextureShader_arkRegister();
  return igObjectPropertyForMultiTextureShader_meta;
 }
 void *igObjectPropertyForMultiTextureShader_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForMultiTextureShader_vtableRead(){
  object.unknown00=igObjectPropertyForMultiTextureShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForMultiTextureShader_registerNow(){
+void igObjectPropertyForMultiTextureShader_arkRegister(){
  meta_registerNow((int)igObjectPropertyForMultiTextureShader_register);
 }
 void igObjectPropertyForMultiTextureShader_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForMultiTextureShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForMultiTextureShader_getMetaCall,(int)igObjectPropertyForMultiTextureShader_className,44,(int)igObjectPropertyForMultiTextureShader_vtableRead,(int)fn_8013C460,0,(int)lbl_8055F818);
+ meta_registerClass(0,(int)&igObjectPropertyForMultiTextureShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForMultiTextureShader_getMetaCall,(int)igObjectPropertyForMultiTextureShader_className,44,(int)igObjectPropertyForMultiTextureShader_vtableRead,(int)fn_8013C460,0,(int)igObjectPropertyForMultiTextureShader_dependencies);
 }
 void *igObjectPropertyForMultiTextureShader_getMetaCall(){return igObjectPropertyForMultiTextureShader_getMeta();}
 }

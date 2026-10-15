@@ -11,18 +11,18 @@ void *igVertexBlendMatrixListAttr_getMeta();
 void igVertexBlendMatrixListAttr_vtableRead();
 void igVisualAttribute_register();
 extern char igVertexBlendMatrixListAttr_className[];
-extern char lbl_8055DEEC[8];
+extern char igVertexBlendMatrixListAttr_dependencies[8];
 extern void *igVertexBlendMatrixListAttr_meta;
 void igVertexBlendMatrixListAttr_register();
 void *igVertexBlendMatrixListAttr_getMetaCall();
 }
 extern "C" {
-void igVertexBlendMatrixListAttr_registerNow(){
+void igVertexBlendMatrixListAttr_arkRegister(){
  meta_registerNow((int)igVertexBlendMatrixListAttr_register);
 }
 void igVertexBlendMatrixListAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igVertexBlendMatrixListAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igVertexBlendMatrixListAttr_getMetaCall,(int)igVertexBlendMatrixListAttr_className,156,(int)igVertexBlendMatrixListAttr_vtableRead,(int)igVertexBlendMatrixListAttr_fieldInit,0,(int)lbl_8055DEEC);
+ meta_registerClass(0,(int)&igVertexBlendMatrixListAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igVertexBlendMatrixListAttr_getMetaCall,(int)igVertexBlendMatrixListAttr_className,156,(int)igVertexBlendMatrixListAttr_vtableRead,(int)igVertexBlendMatrixListAttr_fieldInit,0,(int)igVertexBlendMatrixListAttr_dependencies);
 }
 void *igVertexBlendMatrixListAttr_getMetaCall(){return igVertexBlendMatrixListAttr_getMeta();}
 }

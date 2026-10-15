@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
 extern char beLuaInfo_className[];
-extern char lbl_804D1828[];
+extern char beLuaInfo_dependencies[];
 extern char beLuaInfo_meta[];
 void beLuaInfo_register();
 void *beLuaInfo_getMetaCall();
 }
 extern "C" {
-void beLuaInfo_registerNow(){
+void beLuaInfo_arkRegister(){
  meta_registerNow((int)beLuaInfo_register);
 }
 void beLuaInfo_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beLuaInfo_meta,(int)beBaseInfo_register,(int)fn_802B2E3C,(int)beLuaInfo_getMetaCall,(int)beLuaInfo_className,32,(int)beLuaInfo_vtableRead,(int)beLuaInfo_fieldInit,0,(int)lbl_804D1828);
+ meta_registerClass(0,(int)beLuaInfo_meta,(int)beBaseInfo_register,(int)fn_802B2E3C,(int)beLuaInfo_getMetaCall,(int)beLuaInfo_className,32,(int)beLuaInfo_vtableRead,(int)beLuaInfo_fieldInit,0,(int)beLuaInfo_dependencies);
 }
 void *beLuaInfo_getMetaCall(){return beLuaInfo_getMeta();}
 }

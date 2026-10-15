@@ -10,17 +10,17 @@ void *fn_8026960C();
 void *beSystem_metaObject();
 void *beLuaState_metaObject();
 void *beBaseInfoList_metaObject();
-extern char lbl_804D189C[];
-extern char lbl_804D18AC[];
-extern char lbl_804D18BC[];
-extern char lbl_804D18CC[];
+extern char beLua_fieldTypes[];
+extern char beLua_fieldNames[];
+extern char beLua_fieldStorage[];
+extern char beLua_fieldOffsets[];
 extern void *beLua_meta;
 }
 extern "C" {
 void beLua_fieldInit(){
  void *value0=beLua_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D189C,4);
+ meta_appendFields(value0,beLua_fieldTypes,4);
  void *value2=meta_field(value0,value1);
  void *value3=beSystem_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -36,7 +36,7 @@ void beLua_fieldInit(){
  void *value9=fn_8026960C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value8)+52)=1;
- meta_setupFields(value0,lbl_804D18AC,lbl_804D18BC,lbl_804D18CC,value1);
+ meta_setupFields(value0,beLua_fieldNames,beLua_fieldStorage,beLua_fieldOffsets,value1);
 }
 }
 #pragma pop

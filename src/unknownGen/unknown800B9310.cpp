@@ -20,7 +20,7 @@ extern void *lbl_805621F4;
 extern void *igColorAttr_meta;
 void *igColorAttr_getMeta();
 void *igColorAttr_vtableRead();
-void igColorAttr_registerNow();
+void igColorAttr_arkRegister();
 void igColorAttr_register();
 void *igColorAttr_getMetaCall();
 }
@@ -30,7 +30,7 @@ struct UnknownGenObject800B93C0_0 {
 };
 extern "C" {
 void *igColorAttr_create(void *object){
- igColorAttr_registerNow();
+ igColorAttr_arkRegister();
  return meta_createInstance(igColorAttr_meta,object);
 }
 void *fn_800B9348(){
@@ -38,7 +38,7 @@ void *fn_800B9348(){
  return igColorAttr_meta;
 }
 void *igColorAttr_getMeta(){
- if(!igColorAttr_meta || !(reinterpret_cast<unsigned int *>(igColorAttr_meta)[0x24/4]&4)) igColorAttr_registerNow();
+ if(!igColorAttr_meta || !(reinterpret_cast<unsigned int *>(igColorAttr_meta)[0x24/4]&4)) igColorAttr_arkRegister();
  return igColorAttr_meta;
 }
 void *igColorAttr_vtableRead(){
@@ -49,7 +49,7 @@ void *igColorAttr_vtableRead(){
  object.unknown00=igColorAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igColorAttr_registerNow(){
+void igColorAttr_arkRegister(){
  meta_registerNow((int)igColorAttr_register);
 }
 void igColorAttr_register(){

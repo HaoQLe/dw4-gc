@@ -11,13 +11,13 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beCriSfpData_registerNow();
+void beCriSfpData_arkRegister();
 void igObject_register();
 extern char beCriVolume_className[];
-extern char lbl_804D25C8[];
-extern char lbl_804D25E0[];
-extern char lbl_804D25F8[];
-extern char lbl_804D2610[];
+extern char beCriVolume_fieldTypes[];
+extern char beCriVolume_fieldNames[];
+extern char beCriVolume_fieldStorage[];
+extern char beCriVolume_fieldOffsets[];
 extern void *beCriVolume_meta;
 extern void *beCriSfpData_meta;
 void beCriVolume_register();
@@ -25,7 +25,7 @@ void *beCriVolume_getMetaCall();
 void beCriVolume_fieldInit();
 }
 extern "C" {
-void beCriVolume_registerNow(){
+void beCriVolume_arkRegister(){
  meta_registerNow((int)beCriVolume_register);
 }
 void beCriVolume_register(){
@@ -36,11 +36,11 @@ void *beCriVolume_getMetaCall(){return beCriVolume_getMeta();}
 void beCriVolume_fieldInit(){
  void *meta=beCriVolume_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D25C8,0x6);
- meta_setupFields(meta,lbl_804D25E0,lbl_804D25F8,lbl_804D2610,field);
+ meta_appendFields(meta,beCriVolume_fieldTypes,0x6);
+ meta_setupFields(meta,beCriVolume_fieldNames,beCriVolume_fieldStorage,beCriVolume_fieldOffsets,field);
 }
 void *beCriSfpData_getMeta(){
- if(!beCriSfpData_meta || !(reinterpret_cast<unsigned int *>(beCriSfpData_meta)[0x24/4]&4)) beCriSfpData_registerNow();
+ if(!beCriSfpData_meta || !(reinterpret_cast<unsigned int *>(beCriSfpData_meta)[0x24/4]&4)) beCriSfpData_arkRegister();
  return beCriSfpData_meta;
 }
 }

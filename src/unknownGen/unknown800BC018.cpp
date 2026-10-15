@@ -17,7 +17,7 @@ extern char lbl_8047E50C[];
 extern void *igTextureSwapAttr_meta;
 void *igTextureSwapAttr_getMeta();
 void *igTextureSwapAttr_vtableRead();
-void igTextureSwapAttr_registerNow();
+void igTextureSwapAttr_arkRegister();
 void igTextureSwapAttr_register();
 void *igTextureSwapAttr_getMetaCall();
 }
@@ -27,11 +27,11 @@ struct UnknownGenObject800BC08C_0 {
 };
 extern "C" {
 void *igTextureSwapAttr_create(void *object){
- igTextureSwapAttr_registerNow();
+ igTextureSwapAttr_arkRegister();
  return meta_createInstance(igTextureSwapAttr_meta,object);
 }
 void *igTextureSwapAttr_getMeta(){
- if(!igTextureSwapAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureSwapAttr_meta)[0x24/4]&4)) igTextureSwapAttr_registerNow();
+ if(!igTextureSwapAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureSwapAttr_meta)[0x24/4]&4)) igTextureSwapAttr_arkRegister();
  return igTextureSwapAttr_meta;
 }
 void *igTextureSwapAttr_vtableRead(){
@@ -42,7 +42,7 @@ void *igTextureSwapAttr_vtableRead(){
  object.unknown00=igTextureSwapAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTextureSwapAttr_registerNow(){
+void igTextureSwapAttr_arkRegister(){
  meta_registerNow((int)igTextureSwapAttr_register);
 }
 void igTextureSwapAttr_register(){

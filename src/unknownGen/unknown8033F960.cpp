@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beNDMWMcSlotList_registerNow();
+void beNDMWMcSlotList_arkRegister();
 extern void *beNDMWMcSlotList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beNDMWMcSlotList_metaObject(){
  return beNDMWMcSlotList_meta;
 }
 void *beNDMWMcSlotList_getMeta(){
- if(!beNDMWMcSlotList_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcSlotList_meta)[0x24/4]&4)) beNDMWMcSlotList_registerNow();
+ if(!beNDMWMcSlotList_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcSlotList_meta)[0x24/4]&4)) beNDMWMcSlotList_arkRegister();
  return beNDMWMcSlotList_meta;
 }
 }

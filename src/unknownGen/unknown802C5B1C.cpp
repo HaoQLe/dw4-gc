@@ -16,7 +16,7 @@ void beModelCtrlSCEffect_register();
 void *beModelCtrlSCEffect_getMetaCall();
 }
 extern "C" {
-void beModelCtrlSCEffect_registerNow(){
+void beModelCtrlSCEffect_arkRegister(){
  meta_registerNow((int)beModelCtrlSCEffect_register);
 }
 void beModelCtrlSCEffect_register(){

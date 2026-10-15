@@ -28,27 +28,27 @@ extern char lbl_8047CD74[];
 extern char lbl_8047D514[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E490[8];
-extern char lbl_8055E498[8];
-extern char lbl_8055E4A0[8];
-extern char lbl_8055E4A8[8];
+extern char igFloatConstantAttr_fieldTypes[8];
+extern char igFloatConstantAttr_fieldNames[8];
+extern char igFloatConstantAttr_fieldStorage[8];
+extern char igFloatConstantAttr_fieldOffsets[8];
 extern void *igFloatConstantAttr_meta;
 extern void *igFileAttrDefaultManager_meta;
 extern void *igDitherStateAttr_meta;
 void *igFloatConstantAttr_getMeta();
 void *igFloatConstantAttr_vtableRead();
-void igFloatConstantAttr_registerNow();
+void igFloatConstantAttr_arkRegister();
 void igFloatConstantAttr_register();
 void *igFloatConstantAttr_getMetaCall();
 void igFloatConstantAttr_fieldInit();
 void *igFileAttrDefaultManager_getMeta();
 void *igFileAttrDefaultManager_vtableRead();
-void igFileAttrDefaultManager_registerNow();
+void igFileAttrDefaultManager_arkRegister();
 void igFileAttrDefaultManager_register();
 void *igFileAttrDefaultManager_getMetaCall();
 void *igDitherStateAttr_getMeta();
 void *igDitherStateAttr_vtableRead();
-void igDitherStateAttr_registerNow();
+void igDitherStateAttr_arkRegister();
 void igDitherStateAttr_register();
 void *igDitherStateAttr_getMetaCall();
 }
@@ -66,7 +66,7 @@ struct UnknownGenObject800B7740_0 {
 };
 extern "C" {
 void *igFloatConstantAttr_getMeta(){
- if(!igFloatConstantAttr_meta || !(reinterpret_cast<unsigned int *>(igFloatConstantAttr_meta)[0x24/4]&4)) igFloatConstantAttr_registerNow();
+ if(!igFloatConstantAttr_meta || !(reinterpret_cast<unsigned int *>(igFloatConstantAttr_meta)[0x24/4]&4)) igFloatConstantAttr_arkRegister();
  return igFloatConstantAttr_meta;
 }
 void *igFloatConstantAttr_vtableRead(){
@@ -78,7 +78,7 @@ void *igFloatConstantAttr_vtableRead(){
  object.unknown00=igFloatConstantAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFloatConstantAttr_registerNow(){
+void igFloatConstantAttr_arkRegister(){
  meta_registerNow((int)igFloatConstantAttr_register);
 }
 void igFloatConstantAttr_register(){
@@ -89,13 +89,13 @@ void *igFloatConstantAttr_getMetaCall(){return igFloatConstantAttr_getMeta();}
 void igFloatConstantAttr_fieldInit(){
  void *value0=igFloatConstantAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E490,2);
+ meta_appendFields(value0,igFloatConstantAttr_fieldTypes,2);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+48)=(void *)fn_800BE528;
- meta_setupFields(value0,lbl_8055E498,lbl_8055E4A0,lbl_8055E4A8,value1);
+ meta_setupFields(value0,igFloatConstantAttr_fieldNames,igFloatConstantAttr_fieldStorage,igFloatConstantAttr_fieldOffsets,value1);
 }
 void *igFileAttrDefaultManager_getMeta(){
- if(!igFileAttrDefaultManager_meta || !(reinterpret_cast<unsigned int *>(igFileAttrDefaultManager_meta)[0x24/4]&4)) igFileAttrDefaultManager_registerNow();
+ if(!igFileAttrDefaultManager_meta || !(reinterpret_cast<unsigned int *>(igFileAttrDefaultManager_meta)[0x24/4]&4)) igFileAttrDefaultManager_arkRegister();
  return igFileAttrDefaultManager_meta;
 }
 void *igFileAttrDefaultManager_vtableRead(){
@@ -105,7 +105,7 @@ void *igFileAttrDefaultManager_vtableRead(){
  object.unknown00=igFileAttrDefaultManager_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFileAttrDefaultManager_registerNow(){
+void igFileAttrDefaultManager_arkRegister(){
  meta_registerNow((int)igFileAttrDefaultManager_register);
 }
 void igFileAttrDefaultManager_register(){
@@ -114,7 +114,7 @@ void igFileAttrDefaultManager_register(){
 }
 void *igFileAttrDefaultManager_getMetaCall(){return igFileAttrDefaultManager_getMeta();}
 void *igDitherStateAttr_getMeta(){
- if(!igDitherStateAttr_meta || !(reinterpret_cast<unsigned int *>(igDitherStateAttr_meta)[0x24/4]&4)) igDitherStateAttr_registerNow();
+ if(!igDitherStateAttr_meta || !(reinterpret_cast<unsigned int *>(igDitherStateAttr_meta)[0x24/4]&4)) igDitherStateAttr_arkRegister();
  return igDitherStateAttr_meta;
 }
 void *igDitherStateAttr_vtableRead(){
@@ -125,7 +125,7 @@ void *igDitherStateAttr_vtableRead(){
  object.unknown00=igDitherStateAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igDitherStateAttr_registerNow(){
+void igDitherStateAttr_arkRegister(){
  meta_registerNow((int)igDitherStateAttr_register);
 }
 void igDitherStateAttr_register(){

@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beSound_registerNow();
+void beSound_arkRegister();
 extern char lbl_8041CD10[];
 extern char lbl_804CF540[];
 extern char lbl_804CF59C[];
@@ -20,7 +20,7 @@ void *fn_802B8E10(){
  return lbl_80534770;
 }
 void *beSound_create(void *object){
- beSound_registerNow();
+ beSound_arkRegister();
  return meta_createInstance(beSound_meta,object);
 }
 void *beSound_metaObject(){
@@ -28,7 +28,7 @@ void *beSound_metaObject(){
  return beSound_meta;
 }
 void *beSound_getMeta(){
- if(!beSound_meta || !(reinterpret_cast<unsigned int *>(beSound_meta)[0x24/4]&4)) beSound_registerNow();
+ if(!beSound_meta || !(reinterpret_cast<unsigned int *>(beSound_meta)[0x24/4]&4)) beSound_arkRegister();
  return beSound_meta;
 }
 }

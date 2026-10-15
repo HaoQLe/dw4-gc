@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beShadow01_registerNow();
+void beShadow01_arkRegister();
 extern void *beShadow01_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beShadow01_create(void *object){
- beShadow01_registerNow();
+ beShadow01_arkRegister();
  return meta_createInstance(beShadow01_meta,object);
 }
 void *beShadow01_metaObject(){
@@ -19,7 +19,7 @@ void *beShadow01_metaObject(){
  return beShadow01_meta;
 }
 void *beShadow01_getMeta(){
- if(!beShadow01_meta || !(reinterpret_cast<unsigned int *>(beShadow01_meta)[0x24/4]&4)) beShadow01_registerNow();
+ if(!beShadow01_meta || !(reinterpret_cast<unsigned int *>(beShadow01_meta)[0x24/4]&4)) beShadow01_arkRegister();
  return beShadow01_meta;
 }
 }

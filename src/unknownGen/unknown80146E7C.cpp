@@ -10,7 +10,7 @@ void *fn_8013001C();
 void *fn_801301D4();
 void *fn_801308D0();
 void *fn_80140C3C();
-void igGenerateMacroTexture_registerNow();
+void igGenerateMacroTexture_arkRegister();
 void igLockBase_register();
 void igMessageBase_register();
 void igObjectChangedListener_register();
@@ -34,22 +34,22 @@ extern void *igHierarchyChangedEvent_meta;
 extern void *igHideActorSkinGraphs_meta;
 extern void *igGenerateMacroTexture_meta;
 void *igInstanceLock_getMeta();
-void igInstanceLock_registerNow();
+void igInstanceLock_arkRegister();
 void igInstanceLock_register();
 void *igInstanceLock_getMetaCall();
 void *igInstanceChangedListener_getMeta();
 void *igInstanceChangedListener_vtableRead();
-void igInstanceChangedListener_registerNow();
+void igInstanceChangedListener_arkRegister();
 void igInstanceChangedListener_register();
 void *igInstanceChangedListener_getMetaCall();
 void *igHierarchyChangedEvent_getMeta();
 void *igHierarchyChangedEvent_vtableRead();
-void igHierarchyChangedEvent_registerNow();
+void igHierarchyChangedEvent_arkRegister();
 void igHierarchyChangedEvent_register();
 void *igHierarchyChangedEvent_getMetaCall();
 void *igHideActorSkinGraphs_getMeta();
 void *igHideActorSkinGraphs_vtableRead();
-void igHideActorSkinGraphs_registerNow();
+void igHideActorSkinGraphs_arkRegister();
 void igHideActorSkinGraphs_register();
 void *igHideActorSkinGraphs_getMetaCall();
 }
@@ -78,10 +78,10 @@ struct UnknownGenObject8014724C : UnknownGenObject8014724C_0 {
 };
 extern "C" {
 void *igInstanceLock_getMeta(){
- if(!igInstanceLock_meta || !(reinterpret_cast<unsigned int *>(igInstanceLock_meta)[0x24/4]&4)) igInstanceLock_registerNow();
+ if(!igInstanceLock_meta || !(reinterpret_cast<unsigned int *>(igInstanceLock_meta)[0x24/4]&4)) igInstanceLock_arkRegister();
  return igInstanceLock_meta;
 }
-void igInstanceLock_registerNow(){
+void igInstanceLock_arkRegister(){
  meta_registerNow((int)igInstanceLock_register);
 }
 void igInstanceLock_register(){
@@ -90,7 +90,7 @@ void igInstanceLock_register(){
 }
 void *igInstanceLock_getMetaCall(){return igInstanceLock_getMeta();}
 void *igInstanceChangedListener_getMeta(){
- if(!igInstanceChangedListener_meta || !(reinterpret_cast<unsigned int *>(igInstanceChangedListener_meta)[0x24/4]&4)) igInstanceChangedListener_registerNow();
+ if(!igInstanceChangedListener_meta || !(reinterpret_cast<unsigned int *>(igInstanceChangedListener_meta)[0x24/4]&4)) igInstanceChangedListener_arkRegister();
  return igInstanceChangedListener_meta;
 }
 void *igInstanceChangedListener_vtableRead(){
@@ -103,7 +103,7 @@ void *igInstanceChangedListener_vtableRead(){
  object.unknown00=igInstanceChangedListener_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igInstanceChangedListener_registerNow(){
+void igInstanceChangedListener_arkRegister(){
  meta_registerNow((int)igInstanceChangedListener_register);
 }
 void igInstanceChangedListener_register(){
@@ -112,7 +112,7 @@ void igInstanceChangedListener_register(){
 }
 void *igInstanceChangedListener_getMetaCall(){return igInstanceChangedListener_getMeta();}
 void *igHierarchyChangedEvent_getMeta(){
- if(!igHierarchyChangedEvent_meta || !(reinterpret_cast<unsigned int *>(igHierarchyChangedEvent_meta)[0x24/4]&4)) igHierarchyChangedEvent_registerNow();
+ if(!igHierarchyChangedEvent_meta || !(reinterpret_cast<unsigned int *>(igHierarchyChangedEvent_meta)[0x24/4]&4)) igHierarchyChangedEvent_arkRegister();
  return igHierarchyChangedEvent_meta;
 }
 void *igHierarchyChangedEvent_vtableRead(){
@@ -124,7 +124,7 @@ void *igHierarchyChangedEvent_vtableRead(){
  object.unknown00=igHierarchyChangedEvent_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igHierarchyChangedEvent_registerNow(){
+void igHierarchyChangedEvent_arkRegister(){
  meta_registerNow((int)igHierarchyChangedEvent_register);
 }
 void igHierarchyChangedEvent_register(){
@@ -133,7 +133,7 @@ void igHierarchyChangedEvent_register(){
 }
 void *igHierarchyChangedEvent_getMetaCall(){return igHierarchyChangedEvent_getMeta();}
 void *igHideActorSkinGraphs_getMeta(){
- if(!igHideActorSkinGraphs_meta || !(reinterpret_cast<unsigned int *>(igHideActorSkinGraphs_meta)[0x24/4]&4)) igHideActorSkinGraphs_registerNow();
+ if(!igHideActorSkinGraphs_meta || !(reinterpret_cast<unsigned int *>(igHideActorSkinGraphs_meta)[0x24/4]&4)) igHideActorSkinGraphs_arkRegister();
  return igHideActorSkinGraphs_meta;
 }
 void *igHideActorSkinGraphs_vtableRead(){
@@ -146,7 +146,7 @@ void *igHideActorSkinGraphs_vtableRead(){
  object.unknown00=igHideActorSkinGraphs_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igHideActorSkinGraphs_registerNow(){
+void igHideActorSkinGraphs_arkRegister(){
  meta_registerNow((int)igHideActorSkinGraphs_register);
 }
 void igHideActorSkinGraphs_register(){
@@ -155,7 +155,7 @@ void igHideActorSkinGraphs_register(){
 }
 void *igHideActorSkinGraphs_getMetaCall(){return igHideActorSkinGraphs_getMeta();}
 void *igGenerateMacroTexture_getMeta(){
- if(!igGenerateMacroTexture_meta || !(reinterpret_cast<unsigned int *>(igGenerateMacroTexture_meta)[0x24/4]&4)) igGenerateMacroTexture_registerNow();
+ if(!igGenerateMacroTexture_meta || !(reinterpret_cast<unsigned int *>(igGenerateMacroTexture_meta)[0x24/4]&4)) igGenerateMacroTexture_arkRegister();
  return igGenerateMacroTexture_meta;
 }
 }

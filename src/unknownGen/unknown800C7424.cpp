@@ -18,7 +18,7 @@ extern void *lbl_805621F4;
 extern void *igGamecubeAudioSourceList_meta;
 void *igGamecubeAudioSourceList_getMeta();
 void *igGamecubeAudioSourceList_vtableRead();
-void igGamecubeAudioSourceList_registerNow();
+void igGamecubeAudioSourceList_arkRegister();
 void igGamecubeAudioSourceList_register();
 void *igGamecubeAudioSourceList_getMetaCall();
 }
@@ -32,7 +32,7 @@ void *fn_800C7424(){
  return igGamecubeAudioSourceList_meta;
 }
 void *igGamecubeAudioSourceList_getMeta(){
- if(!igGamecubeAudioSourceList_meta || !(reinterpret_cast<unsigned int *>(igGamecubeAudioSourceList_meta)[0x24/4]&4)) igGamecubeAudioSourceList_registerNow();
+ if(!igGamecubeAudioSourceList_meta || !(reinterpret_cast<unsigned int *>(igGamecubeAudioSourceList_meta)[0x24/4]&4)) igGamecubeAudioSourceList_arkRegister();
  return igGamecubeAudioSourceList_meta;
 }
 void *igGamecubeAudioSourceList_vtableRead(){
@@ -43,7 +43,7 @@ void *igGamecubeAudioSourceList_vtableRead(){
  object.unknown00=igGamecubeAudioSourceList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeAudioSourceList_registerNow(){
+void igGamecubeAudioSourceList_arkRegister(){
  meta_registerNow((int)igGamecubeAudioSourceList_register);
 }
 void igGamecubeAudioSourceList_register(){

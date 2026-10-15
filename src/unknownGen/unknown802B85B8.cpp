@@ -19,12 +19,12 @@ extern void *beBinDataObject_meta;
 void beStaticInfo_register();
 void *beStaticInfo_getMetaCall();
 void *beBinDataObject_getMeta();
-void beBinDataObject_registerNow();
+void beBinDataObject_arkRegister();
 void beBinDataObject_register();
 void *beBinDataObject_getMetaCall();
 }
 extern "C" {
-void beStaticInfo_registerNow(){
+void beStaticInfo_arkRegister(){
  meta_registerNow((int)beStaticInfo_register);
 }
 void beStaticInfo_register(){
@@ -33,10 +33,10 @@ void beStaticInfo_register(){
 }
 void *beStaticInfo_getMetaCall(){return beStaticInfo_getMeta();}
 void *beBinDataObject_getMeta(){
- if(!beBinDataObject_meta || !(reinterpret_cast<unsigned int *>(beBinDataObject_meta)[0x24/4]&4)) beBinDataObject_registerNow();
+ if(!beBinDataObject_meta || !(reinterpret_cast<unsigned int *>(beBinDataObject_meta)[0x24/4]&4)) beBinDataObject_arkRegister();
  return beBinDataObject_meta;
 }
-void beBinDataObject_registerNow(){
+void beBinDataObject_arkRegister(){
  meta_registerNow((int)beBinDataObject_register);
 }
 void beBinDataObject_register(){

@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beAction2_registerNow();
+void beAction2_arkRegister();
 extern char lbl_8041CA68[];
 extern char lbl_804D31B8[];
 extern char lbl_804D31D4[];
@@ -20,7 +20,7 @@ void *fn_802E71E8(){
  return lbl_80535828;
 }
 void *beAction2_create(void *object){
- beAction2_registerNow();
+ beAction2_arkRegister();
  return meta_createInstance(beAction2_meta,object);
 }
 void *beAction2_metaObject(){
@@ -28,7 +28,7 @@ void *beAction2_metaObject(){
  return beAction2_meta;
 }
 void *beAction2_getMeta(){
- if(!beAction2_meta || !(reinterpret_cast<unsigned int *>(beAction2_meta)[0x24/4]&4)) beAction2_registerNow();
+ if(!beAction2_meta || !(reinterpret_cast<unsigned int *>(beAction2_meta)[0x24/4]&4)) beAction2_arkRegister();
  return beAction2_meta;
 }
 }

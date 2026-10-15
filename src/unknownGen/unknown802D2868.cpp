@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igLightSetList_registerNow();
+void igLightSetList_arkRegister();
 extern void *igLightSetList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *igLightSetList_metaObject(){
  return igLightSetList_meta;
 }
 void *igLightSetList_getMeta(){
- if(!igLightSetList_meta || !(reinterpret_cast<unsigned int *>(igLightSetList_meta)[0x24/4]&4)) igLightSetList_registerNow();
+ if(!igLightSetList_meta || !(reinterpret_cast<unsigned int *>(igLightSetList_meta)[0x24/4]&4)) igLightSetList_arkRegister();
  return igLightSetList_meta;
 }
 }

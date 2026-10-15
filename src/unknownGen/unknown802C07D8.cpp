@@ -10,17 +10,17 @@ void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *beSvPlatBaseData_metaObject();
 void *beSaveDataDeliver_metaObject();
-extern char lbl_804CFEA4[];
-extern char lbl_804CFEEC[];
-extern char lbl_804CFF34[];
-extern char lbl_804CFF7C[];
+extern char beSvDeliver_fieldTypes[];
+extern char beSvDeliver_fieldNames[];
+extern char beSvDeliver_fieldStorage[];
+extern char beSvDeliver_fieldOffsets[];
 extern void *beSvDeliver_meta;
 }
 extern "C" {
 void beSvDeliver_fieldInit(){
  void *value0=beSvDeliver_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CFEA4,18);
+ meta_appendFields(value0,beSvDeliver_fieldTypes,18);
  void *value2=meta_field(value0,value1);
  void *value3=fn_800365B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -52,7 +52,7 @@ void beSvDeliver_fieldInit(){
  void *value16=meta_field(value0,(reinterpret_cast<char *>(value1)+17));
  void *value17=beSvPlatBaseData_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value16)+56)=value17;
- meta_setupFields(value0,lbl_804CFEEC,lbl_804CFF34,lbl_804CFF7C,value1);
+ meta_setupFields(value0,beSvDeliver_fieldNames,beSvDeliver_fieldStorage,beSvDeliver_fieldOffsets,value1);
 }
 }
 #pragma pop

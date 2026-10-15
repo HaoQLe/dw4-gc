@@ -45,17 +45,17 @@ void *beBkColor_metaObject();
 void *beActionStarter_metaObject();
 void *beAction2_metaObject();
 void *be_metaObject();
-extern char lbl_804CEB20[];
-extern char lbl_804CEBBC[];
-extern char lbl_804CEC58[];
-extern char lbl_804CECF4[];
+extern char libBecRuntimePlugin_fieldTypes[];
+extern char libBecRuntimePlugin_fieldNames[];
+extern char libBecRuntimePlugin_fieldStorage[];
+extern char libBecRuntimePlugin_fieldOffsets[];
 extern void *libBecRuntimePlugin_meta;
 }
 extern "C" {
 void libBecRuntimePlugin_fieldInit(){
  void *value0=libBecRuntimePlugin_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CEB20,39);
+ meta_appendFields(value0,libBecRuntimePlugin_fieldTypes,39);
  void *value2=meta_field(value0,value1);
  void *value3=beParticleCtrl2_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -173,7 +173,7 @@ void libBecRuntimePlugin_fieldInit(){
  void *value78=meta_field(value0,(reinterpret_cast<char *>(value1)+38));
  void *value79=beMemory_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value78)+56)=value79;
- meta_setupFields(value0,lbl_804CEBBC,lbl_804CEC58,lbl_804CECF4,value1);
+ meta_setupFields(value0,libBecRuntimePlugin_fieldNames,libBecRuntimePlugin_fieldStorage,libBecRuntimePlugin_fieldOffsets,value1);
 }
 }
 #pragma pop

@@ -9,7 +9,7 @@ void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_801AA6DC();
-void igTransformSequence1_5_registerNow();
+void igTransformSequence1_5_arkRegister();
 void igObject_register();
 extern char igTransformSourceParameters_className[];
 extern char igTransformSource_className[];
@@ -18,20 +18,20 @@ extern void *igTransformSourceParameters_meta;
 extern void *igTransformSource_meta;
 extern void *igTransformSequence1_5_meta;
 void *igTransformSourceParameters_getMeta();
-void igTransformSourceParameters_registerNow();
+void igTransformSourceParameters_arkRegister();
 void igTransformSourceParameters_register();
 void *igTransformSourceParameters_getMetaCall();
 void *igTransformSource_getMeta();
-void igTransformSource_registerNow();
+void igTransformSource_arkRegister();
 void igTransformSource_register();
 void *igTransformSource_getMetaCall();
 }
 extern "C" {
 void *igTransformSourceParameters_getMeta(){
- if(!igTransformSourceParameters_meta || !(reinterpret_cast<unsigned int *>(igTransformSourceParameters_meta)[0x24/4]&4)) igTransformSourceParameters_registerNow();
+ if(!igTransformSourceParameters_meta || !(reinterpret_cast<unsigned int *>(igTransformSourceParameters_meta)[0x24/4]&4)) igTransformSourceParameters_arkRegister();
  return igTransformSourceParameters_meta;
 }
-void igTransformSourceParameters_registerNow(){
+void igTransformSourceParameters_arkRegister(){
  meta_registerNow((int)igTransformSourceParameters_register);
 }
 void igTransformSourceParameters_register(){
@@ -44,10 +44,10 @@ void *fn_801AB2B4(){
  return igTransformSource_meta;
 }
 void *igTransformSource_getMeta(){
- if(!igTransformSource_meta || !(reinterpret_cast<unsigned int *>(igTransformSource_meta)[0x24/4]&4)) igTransformSource_registerNow();
+ if(!igTransformSource_meta || !(reinterpret_cast<unsigned int *>(igTransformSource_meta)[0x24/4]&4)) igTransformSource_arkRegister();
  return igTransformSource_meta;
 }
-void igTransformSource_registerNow(){
+void igTransformSource_arkRegister(){
  meta_registerNow((int)igTransformSource_register);
 }
 void igTransformSource_register(){
@@ -56,11 +56,11 @@ void igTransformSource_register(){
 }
 void *igTransformSource_getMetaCall(){return igTransformSource_getMeta();}
 void *igTransformSequence1_5_create(void *object){
- igTransformSequence1_5_registerNow();
+ igTransformSequence1_5_arkRegister();
  return meta_createInstance(igTransformSequence1_5_meta,object);
 }
 void *igTransformSequence1_5_getMeta(){
- if(!igTransformSequence1_5_meta || !(reinterpret_cast<unsigned int *>(igTransformSequence1_5_meta)[0x24/4]&4)) igTransformSequence1_5_registerNow();
+ if(!igTransformSequence1_5_meta || !(reinterpret_cast<unsigned int *>(igTransformSequence1_5_meta)[0x24/4]&4)) igTransformSequence1_5_arkRegister();
  return igTransformSequence1_5_meta;
 }
 }

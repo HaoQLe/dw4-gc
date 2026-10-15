@@ -8,7 +8,7 @@ void igEnumMetaField_register();
 extern char lbl_80471914[];
 extern char lbl_804758E4[];
 extern void *igEnumMetaField_meta;
-void igEnumMetaField_registerNow();
+void igEnumMetaField_arkRegister();
 }
 struct UnknownGenRoot800314D4 {
  void *unknown00;
@@ -26,14 +26,14 @@ struct UnknownGenObject800314D4 : UnknownGenObject800314D4_0 {
 };
 extern "C" {
 void *igEnumMetaField_getMeta(){
- if(!igEnumMetaField_meta || !(reinterpret_cast<unsigned int *>(igEnumMetaField_meta)[0x24/4]&4)) igEnumMetaField_registerNow();
+ if(!igEnumMetaField_meta || !(reinterpret_cast<unsigned int *>(igEnumMetaField_meta)[0x24/4]&4)) igEnumMetaField_arkRegister();
  return igEnumMetaField_meta;
 }
 void *fn_800314D4(){
  UnknownGenObject800314D4 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igEnumMetaField_registerNow(){
+void igEnumMetaField_arkRegister(){
  meta_registerNow((int)igEnumMetaField_register);
 }
 }

@@ -16,7 +16,7 @@ extern char igNamedObject_vtable[];
 extern void *igSemaphore_meta;
 extern void *igGamecubeSemaphore_meta;
 void *igGamecubeSemaphore_vtableRead();
-void igGamecubeSemaphore_registerNow();
+void igGamecubeSemaphore_arkRegister();
 void igGamecubeSemaphore_register();
 void *igGamecubeSemaphore_parentMeta();
 }
@@ -39,7 +39,7 @@ struct UnknownGenObject8003B274 : UnknownGenObject8003B274_1 {
 };
 extern "C" {
 void *igGamecubeSemaphore_getMeta(){
- if(!igGamecubeSemaphore_meta || !(reinterpret_cast<unsigned int *>(igGamecubeSemaphore_meta)[0x24/4]&4)) igGamecubeSemaphore_registerNow();
+ if(!igGamecubeSemaphore_meta || !(reinterpret_cast<unsigned int *>(igGamecubeSemaphore_meta)[0x24/4]&4)) igGamecubeSemaphore_arkRegister();
  return igGamecubeSemaphore_meta;
 }
 void *igGamecubeSemaphore_vtableRead(){
@@ -50,7 +50,7 @@ void *igGamecubeSemaphore_vtableRead(){
  object.unknown00=igGamecubeSemaphore_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeSemaphore_registerNow(){
+void igGamecubeSemaphore_arkRegister(){
  meta_registerNow((int)igGamecubeSemaphore_register);
 }
 void igGamecubeSemaphore_register(){

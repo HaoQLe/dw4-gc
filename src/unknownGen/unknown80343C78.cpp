@@ -11,17 +11,17 @@ void *beDataObjList_metaObject();
 void *beDataBase_metaObject();
 void *beNDMWShinkaObjectList_metaObject();
 void *beNDMWGameRam_metaObject();
-extern char lbl_804E3DA0[];
-extern char lbl_804E3DB8[];
-extern char lbl_804E3DD0[];
-extern char lbl_804E3DE8[];
+extern char beNDMWShinkaCtrl_fieldTypes[];
+extern char beNDMWShinkaCtrl_fieldNames[];
+extern char beNDMWShinkaCtrl_fieldStorage[];
+extern char beNDMWShinkaCtrl_fieldOffsets[];
 extern void *beNDMWShinkaCtrl_meta;
 }
 extern "C" {
 void beNDMWShinkaCtrl_fieldInit(){
  void *value0=beNDMWShinkaCtrl_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E3DA0,6);
+ meta_appendFields(value0,beNDMWShinkaCtrl_fieldTypes,6);
  void *value2=meta_field(value0,value1);
  void *value3=beMessenger_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -40,7 +40,7 @@ void beNDMWShinkaCtrl_fieldInit(){
  void *value11=beNDMWShinkaObjectList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value10)+56)=value11;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value10)+52)=1;
- meta_setupFields(value0,lbl_804E3DB8,lbl_804E3DD0,lbl_804E3DE8,value1);
+ meta_setupFields(value0,beNDMWShinkaCtrl_fieldNames,beNDMWShinkaCtrl_fieldStorage,beNDMWShinkaCtrl_fieldOffsets,value1);
 }
 }
 #pragma pop

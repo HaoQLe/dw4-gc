@@ -17,7 +17,7 @@ extern char lbl_8055F3B8[8];
 extern void *igPlane_meta;
 void *igPlane_getMeta();
 void *igPlane_vtableRead();
-void igPlane_registerNow();
+void igPlane_arkRegister();
 void igPlane_register();
 void *igPlane_getMetaCall();
 }
@@ -27,11 +27,11 @@ struct UnknownGenObject8011FBDC_0 {
 };
 extern "C" {
 void *igPlane_create(void *object){
- igPlane_registerNow();
+ igPlane_arkRegister();
  return meta_createInstance(igPlane_meta,object);
 }
 void *igPlane_getMeta(){
- if(!igPlane_meta || !(reinterpret_cast<unsigned int *>(igPlane_meta)[0x24/4]&4)) igPlane_registerNow();
+ if(!igPlane_meta || !(reinterpret_cast<unsigned int *>(igPlane_meta)[0x24/4]&4)) igPlane_arkRegister();
  return igPlane_meta;
 }
 void *igPlane_vtableRead(){
@@ -41,7 +41,7 @@ void *igPlane_vtableRead(){
  object.unknown00=igPlane_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igPlane_registerNow(){
+void igPlane_arkRegister(){
  meta_registerNow((int)igPlane_register);
 }
 void igPlane_register(){

@@ -18,14 +18,14 @@ extern char igObjectRefResolver_vtable[];
 extern char igOverrideAttrSet_className[];
 extern char igNodeRefResolver_className[];
 extern char igNodeRefResolver_vtable[];
-extern char lbl_8056038C[8];
+extern char igNodeRefResolver_dependencies[8];
 extern void *igOverrideAttrSet_meta;
 extern void *igNodeRefResolver_meta;
 void igOverrideAttrSet_register();
 void *igOverrideAttrSet_getMetaCall();
 void *igNodeRefResolver_getMeta();
 void *igNodeRefResolver_vtableRead();
-void igNodeRefResolver_registerNow();
+void igNodeRefResolver_arkRegister();
 void igNodeRefResolver_register();
 void *igNodeRefResolver_getMetaCall();
 }
@@ -52,7 +52,7 @@ struct UnknownGenObject801B6AE4 : UnknownGenObject801B6AE4_1 {
  inline ~UnknownGenObject801B6AE4(){unknown00=igNodeRefResolver_vtable;}
 };
 extern "C" {
-void igOverrideAttrSet_registerNow(){
+void igOverrideAttrSet_arkRegister(){
  meta_registerNow((int)igOverrideAttrSet_register);
 }
 void igOverrideAttrSet_register(){
@@ -61,7 +61,7 @@ void igOverrideAttrSet_register(){
 }
 void *igOverrideAttrSet_getMetaCall(){return igOverrideAttrSet_getMeta();}
 void *igNodeRefResolver_getMeta(){
- if(!igNodeRefResolver_meta || !(reinterpret_cast<unsigned int *>(igNodeRefResolver_meta)[0x24/4]&4)) igNodeRefResolver_registerNow();
+ if(!igNodeRefResolver_meta || !(reinterpret_cast<unsigned int *>(igNodeRefResolver_meta)[0x24/4]&4)) igNodeRefResolver_arkRegister();
  return igNodeRefResolver_meta;
 }
 void *igNodeRefResolver_vtableRead(){
@@ -77,12 +77,12 @@ void *igNodeRefResolver_vtableRead(){
  object.unknown1C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNodeRefResolver_registerNow(){
+void igNodeRefResolver_arkRegister(){
  meta_registerNow((int)igNodeRefResolver_register);
 }
 void igNodeRefResolver_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igNodeRefResolver_meta,(int)igObjectRefResolver_register,(int)igNodeRefResolver_parentMeta,(int)igNodeRefResolver_getMetaCall,(int)igNodeRefResolver_className,40,(int)igNodeRefResolver_vtableRead,(int)igNodeRefResolver_fieldInit,0,(int)lbl_8056038C);
+ meta_registerClass(0,(int)&igNodeRefResolver_meta,(int)igObjectRefResolver_register,(int)igNodeRefResolver_parentMeta,(int)igNodeRefResolver_getMetaCall,(int)igNodeRefResolver_className,40,(int)igNodeRefResolver_vtableRead,(int)igNodeRefResolver_fieldInit,0,(int)igNodeRefResolver_dependencies);
 }
 void *igNodeRefResolver_getMetaCall(){return igNodeRefResolver_getMeta();}
 }

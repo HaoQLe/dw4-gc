@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
 extern char beGeneraterInfoWork_className[];
-extern char lbl_804D1CE8[];
+extern char beGeneraterInfoWork_dependencies[];
 extern char beGeneraterInfoWork_meta[];
 void beGeneraterInfoWork_register();
 void *beGeneraterInfoWork_getMetaCall();
 }
 extern "C" {
-void beGeneraterInfoWork_registerNow(){
+void beGeneraterInfoWork_arkRegister(){
  meta_registerNow((int)beGeneraterInfoWork_register);
 }
 void beGeneraterInfoWork_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beGeneraterInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beGeneraterInfoWork_getMetaCall,(int)beGeneraterInfoWork_className,40,(int)beGeneraterInfoWork_vtableRead,(int)beGeneraterInfoWork_fieldInit,0,(int)lbl_804D1CE8);
+ meta_registerClass(0,(int)beGeneraterInfoWork_meta,(int)igObject_register,(int)fn_800237D0,(int)beGeneraterInfoWork_getMetaCall,(int)beGeneraterInfoWork_className,40,(int)beGeneraterInfoWork_vtableRead,(int)beGeneraterInfoWork_fieldInit,0,(int)beGeneraterInfoWork_dependencies);
 }
 void *beGeneraterInfoWork_getMetaCall(){return beGeneraterInfoWork_getMeta();}
 }

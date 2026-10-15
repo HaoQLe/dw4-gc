@@ -10,19 +10,19 @@ void fn_801B4E68();
 void igGroup_register();
 void igProjectiveShadowShader_fieldInit();
 void *igProjectiveShadowShader_getMeta();
-extern char lbl_804AD58C[];
+extern char igProjectiveShadowShader_dependencies[];
 extern char igProjectiveShadowShader_className[];
 extern void *igProjectiveShadowShader_meta;
 void igProjectiveShadowShader_register();
 void *igProjectiveShadowShader_getMetaCall();
 }
 extern "C" {
-void igProjectiveShadowShader_registerNow(){
+void igProjectiveShadowShader_arkRegister(){
  meta_registerNow((int)igProjectiveShadowShader_register);
 }
 void igProjectiveShadowShader_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igProjectiveShadowShader_meta,(int)igGroup_register,(int)fn_8011148C,(int)igProjectiveShadowShader_getMetaCall,(int)igProjectiveShadowShader_className,240,(int)fn_801B4E68,(int)igProjectiveShadowShader_fieldInit,0,(int)lbl_804AD58C);
+ meta_registerClass(0,(int)&igProjectiveShadowShader_meta,(int)igGroup_register,(int)fn_8011148C,(int)igProjectiveShadowShader_getMetaCall,(int)igProjectiveShadowShader_className,240,(int)fn_801B4E68,(int)igProjectiveShadowShader_fieldInit,0,(int)igProjectiveShadowShader_dependencies);
 }
 void *igProjectiveShadowShader_getMetaCall(){return igProjectiveShadowShader_getMeta();}
 }

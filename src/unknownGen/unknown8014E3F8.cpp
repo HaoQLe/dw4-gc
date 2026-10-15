@@ -9,7 +9,7 @@ void fn_8012FC48();
 void *fn_8012FEB0();
 void igConvertImage_fieldInit();
 void igOptVisitObject_register();
-extern char lbl_8049FAC8[];
+extern char igConvertImage_dependencies[];
 extern char igConvertImage_className[];
 extern char lbl_804A46AC[];
 extern char lbl_804A4A04[];
@@ -19,7 +19,7 @@ extern char lbl_804AAF48[];
 extern void *igConvertImage_meta;
 void *igConvertImage_getMeta();
 void *igConvertImage_vtableRead();
-void igConvertImage_registerNow();
+void igConvertImage_arkRegister();
 void igConvertImage_register();
 void *igConvertImage_getMetaCall();
 }
@@ -48,7 +48,7 @@ struct UnknownGenObject8014E434 : UnknownGenObject8014E434_1 {
 };
 extern "C" {
 void *igConvertImage_getMeta(){
- if(!igConvertImage_meta || !(reinterpret_cast<unsigned int *>(igConvertImage_meta)[0x24/4]&4)) igConvertImage_registerNow();
+ if(!igConvertImage_meta || !(reinterpret_cast<unsigned int *>(igConvertImage_meta)[0x24/4]&4)) igConvertImage_arkRegister();
  return igConvertImage_meta;
 }
 void *igConvertImage_vtableRead(){
@@ -65,12 +65,12 @@ void *igConvertImage_vtableRead(){
  object.unknown4C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igConvertImage_registerNow(){
+void igConvertImage_arkRegister(){
  meta_registerNow((int)igConvertImage_register);
 }
 void igConvertImage_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igConvertImage_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertImage_getMetaCall,(int)igConvertImage_className,84,(int)igConvertImage_vtableRead,(int)igConvertImage_fieldInit,0,(int)lbl_8049FAC8);
+ meta_registerClass(0,(int)&igConvertImage_meta,(int)igOptVisitObject_register,(int)fn_8012FEB0,(int)igConvertImage_getMetaCall,(int)igConvertImage_className,84,(int)igConvertImage_vtableRead,(int)igConvertImage_fieldInit,0,(int)igConvertImage_dependencies);
 }
 void *igConvertImage_getMetaCall(){return igConvertImage_getMeta();}
 }

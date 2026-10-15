@@ -14,13 +14,13 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beActionStarter_registerNow();
+void beActionStarter_arkRegister();
 void igNamedObject_register();
 extern char beActionStarterData_className[];
-extern char lbl_804D2EB4[];
-extern char lbl_804D2EC8[];
-extern char lbl_804D2EDC[];
-extern char lbl_804D2EF0[];
+extern char beActionStarterData_fieldTypes[];
+extern char beActionStarterData_fieldNames[];
+extern char beActionStarterData_fieldStorage[];
+extern char beActionStarterData_fieldOffsets[];
 extern void *beActionStarterData_meta;
 extern void *beActionStarter_meta;
 extern void *lbl_805621F4;
@@ -29,7 +29,7 @@ void *beActionStarterData_getMetaCall();
 void beActionStarterData_fieldInit();
 }
 extern "C" {
-void beActionStarterData_registerNow(){
+void beActionStarterData_arkRegister(){
  meta_registerNow((int)beActionStarterData_register);
 }
 void beActionStarterData_register(){
@@ -40,11 +40,11 @@ void *beActionStarterData_getMetaCall(){return beActionStarterData_getMeta();}
 void beActionStarterData_fieldInit(){
  void *meta=beActionStarterData_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D2EB4,0x5);
- meta_setupFields(meta,lbl_804D2EC8,lbl_804D2EDC,lbl_804D2EF0,field);
+ meta_appendFields(meta,beActionStarterData_fieldTypes,0x5);
+ meta_setupFields(meta,beActionStarterData_fieldNames,beActionStarterData_fieldStorage,beActionStarterData_fieldOffsets,field);
 }
 void *beActionStarter_create(void *object){
- beActionStarter_registerNow();
+ beActionStarter_arkRegister();
  return meta_createInstance(beActionStarter_meta,object);
 }
 void *beActionStarter_metaObject(){
@@ -52,7 +52,7 @@ void *beActionStarter_metaObject(){
  return beActionStarter_meta;
 }
 void *beActionStarter_getMeta(){
- if(!beActionStarter_meta || !(reinterpret_cast<unsigned int *>(beActionStarter_meta)[0x24/4]&4)) beActionStarter_registerNow();
+ if(!beActionStarter_meta || !(reinterpret_cast<unsigned int *>(beActionStarter_meta)[0x24/4]&4)) beActionStarter_arkRegister();
  return beActionStarter_meta;
 }
 }

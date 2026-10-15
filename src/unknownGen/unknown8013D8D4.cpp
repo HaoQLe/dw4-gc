@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F860[8];
+extern char igObjectPropertyForCartoonShader_dependencies[8];
 extern void *igObjectPropertyForCartoonShader_meta;
 void *igObjectPropertyForCartoonShader_getMeta();
 void *igObjectPropertyForCartoonShader_vtableRead();
-void igObjectPropertyForCartoonShader_registerNow();
+void igObjectPropertyForCartoonShader_arkRegister();
 void igObjectPropertyForCartoonShader_register();
 void *igObjectPropertyForCartoonShader_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013D910 : UnknownGenObject8013D910_1 {
 };
 extern "C" {
 void *igObjectPropertyForCartoonShader_getMeta(){
- if(!igObjectPropertyForCartoonShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForCartoonShader_meta)[0x24/4]&4)) igObjectPropertyForCartoonShader_registerNow();
+ if(!igObjectPropertyForCartoonShader_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForCartoonShader_meta)[0x24/4]&4)) igObjectPropertyForCartoonShader_arkRegister();
  return igObjectPropertyForCartoonShader_meta;
 }
 void *igObjectPropertyForCartoonShader_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForCartoonShader_vtableRead(){
  object.unknown00=igObjectPropertyForCartoonShader_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForCartoonShader_registerNow(){
+void igObjectPropertyForCartoonShader_arkRegister(){
  meta_registerNow((int)igObjectPropertyForCartoonShader_register);
 }
 void igObjectPropertyForCartoonShader_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForCartoonShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForCartoonShader_getMetaCall,(int)igObjectPropertyForCartoonShader_className,44,(int)igObjectPropertyForCartoonShader_vtableRead,(int)fn_8013DA98,0,(int)lbl_8055F860);
+ meta_registerClass(0,(int)&igObjectPropertyForCartoonShader_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForCartoonShader_getMetaCall,(int)igObjectPropertyForCartoonShader_className,44,(int)igObjectPropertyForCartoonShader_vtableRead,(int)fn_8013DA98,0,(int)igObjectPropertyForCartoonShader_dependencies);
 }
 void *igObjectPropertyForCartoonShader_getMetaCall(){return igObjectPropertyForCartoonShader_getMeta();}
 }

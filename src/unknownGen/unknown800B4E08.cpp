@@ -17,7 +17,7 @@ extern char lbl_8047E50C[];
 extern void *igMacroTextureRegionAttr_meta;
 void *igMacroTextureRegionAttr_getMeta();
 void *igMacroTextureRegionAttr_vtableRead();
-void igMacroTextureRegionAttr_registerNow();
+void igMacroTextureRegionAttr_arkRegister();
 void igMacroTextureRegionAttr_register();
 void *igMacroTextureRegionAttr_getMetaCall();
 }
@@ -27,11 +27,11 @@ struct UnknownGenObject800B4E7C_0 {
 };
 extern "C" {
 void *igMacroTextureRegionAttr_create(void *object){
- igMacroTextureRegionAttr_registerNow();
+ igMacroTextureRegionAttr_arkRegister();
  return meta_createInstance(igMacroTextureRegionAttr_meta,object);
 }
 void *igMacroTextureRegionAttr_getMeta(){
- if(!igMacroTextureRegionAttr_meta || !(reinterpret_cast<unsigned int *>(igMacroTextureRegionAttr_meta)[0x24/4]&4)) igMacroTextureRegionAttr_registerNow();
+ if(!igMacroTextureRegionAttr_meta || !(reinterpret_cast<unsigned int *>(igMacroTextureRegionAttr_meta)[0x24/4]&4)) igMacroTextureRegionAttr_arkRegister();
  return igMacroTextureRegionAttr_meta;
 }
 void *igMacroTextureRegionAttr_vtableRead(){
@@ -42,7 +42,7 @@ void *igMacroTextureRegionAttr_vtableRead(){
  object.unknown00=igMacroTextureRegionAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMacroTextureRegionAttr_registerNow(){
+void igMacroTextureRegionAttr_arkRegister(){
  meta_registerNow((int)igMacroTextureRegionAttr_register);
 }
 void igMacroTextureRegionAttr_register(){

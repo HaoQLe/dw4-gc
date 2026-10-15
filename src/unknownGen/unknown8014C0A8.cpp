@@ -8,7 +8,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_8012FC48();
 void fn_8014C2F4(void *,short);
-void igDefaultManager_registerNow();
+void igDefaultManager_arkRegister();
 void igInstanceLock_register();
 extern char igDynamicLock_className[];
 extern char lbl_804A6460[];
@@ -21,7 +21,7 @@ extern void *igDynamicLock_meta;
 extern void *igDefaultManager_meta;
 void *igDynamicLock_getMeta();
 void *igDynamicLock_vtableRead();
-void igDynamicLock_registerNow();
+void igDynamicLock_arkRegister();
 void igDynamicLock_register();
 void *igDynamicLock_getMetaCall();
 void *fn_8014C1F8();
@@ -46,7 +46,7 @@ struct UnknownGenObject8014C274 {
 };
 extern "C" {
 void *igDynamicLock_getMeta(){
- if(!igDynamicLock_meta || !(reinterpret_cast<unsigned int *>(igDynamicLock_meta)[0x24/4]&4)) igDynamicLock_registerNow();
+ if(!igDynamicLock_meta || !(reinterpret_cast<unsigned int *>(igDynamicLock_meta)[0x24/4]&4)) igDynamicLock_arkRegister();
  return igDynamicLock_meta;
 }
 void *igDynamicLock_vtableRead(){
@@ -58,7 +58,7 @@ void *igDynamicLock_vtableRead(){
  object.unknown00=igDynamicLock_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igDynamicLock_registerNow(){
+void igDynamicLock_arkRegister(){
  meta_registerNow((int)igDynamicLock_register);
 }
 void igDynamicLock_register(){
@@ -68,11 +68,11 @@ void igDynamicLock_register(){
 void *igDynamicLock_getMetaCall(){return igDynamicLock_getMeta();}
 void *fn_8014C1F8(){return igInstanceLock_meta;}
 void *igDefaultManager_create(void *object){
- igDefaultManager_registerNow();
+ igDefaultManager_arkRegister();
  return meta_createInstance(igDefaultManager_meta,object);
 }
 void *igDefaultManager_getMeta(){
- if(!igDefaultManager_meta || !(reinterpret_cast<unsigned int *>(igDefaultManager_meta)[0x24/4]&4)) igDefaultManager_registerNow();
+ if(!igDefaultManager_meta || !(reinterpret_cast<unsigned int *>(igDefaultManager_meta)[0x24/4]&4)) igDefaultManager_arkRegister();
  return igDefaultManager_meta;
 }
 void *igDefaultManager_vtableRead(){

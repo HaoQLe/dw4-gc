@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beGeneraterItemDataOneList_registerNow();
+void beGeneraterItemDataOneList_arkRegister();
 extern void *beGeneraterItemDataOneList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beGeneraterItemDataOneList_metaObject(){
  return beGeneraterItemDataOneList_meta;
 }
 void *beGeneraterItemDataOneList_getMeta(){
- if(!beGeneraterItemDataOneList_meta || !(reinterpret_cast<unsigned int *>(beGeneraterItemDataOneList_meta)[0x24/4]&4)) beGeneraterItemDataOneList_registerNow();
+ if(!beGeneraterItemDataOneList_meta || !(reinterpret_cast<unsigned int *>(beGeneraterItemDataOneList_meta)[0x24/4]&4)) beGeneraterItemDataOneList_arkRegister();
  return beGeneraterItemDataOneList_meta;
 }
 }

@@ -12,14 +12,14 @@ void igObject_construct(void *);
 void fn_801AA6DC();
 void igBoundingBoxesMaker_fieldInit();
 void igObject_register();
-extern char lbl_804B1294[];
+extern char igBoundingBoxesMaker_dependencies[];
 extern char igBoundingBoxesMaker_className[];
 extern char igBoundingBoxesMaker_vtable[];
 extern void *lbl_805621F4;
 extern void *igBoundingBoxesMaker_meta;
 void *igBoundingBoxesMaker_getMeta();
 void *igBoundingBoxesMaker_vtableRead();
-void igBoundingBoxesMaker_registerNow();
+void igBoundingBoxesMaker_arkRegister();
 void igBoundingBoxesMaker_register();
 void *igBoundingBoxesMaker_getMetaCall();
 }
@@ -39,7 +39,7 @@ struct UnknownGenObject801C6BE0 : UnknownGenRoot801C6BE0 {
 };
 extern "C" {
 void *igBoundingBoxesMaker_create(void *object){
- igBoundingBoxesMaker_registerNow();
+ igBoundingBoxesMaker_arkRegister();
  return meta_createInstance(igBoundingBoxesMaker_meta,object);
 }
 void *fn_801C6B68(){
@@ -47,7 +47,7 @@ void *fn_801C6B68(){
  return igBoundingBoxesMaker_meta;
 }
 void *igBoundingBoxesMaker_getMeta(){
- if(!igBoundingBoxesMaker_meta || !(reinterpret_cast<unsigned int *>(igBoundingBoxesMaker_meta)[0x24/4]&4)) igBoundingBoxesMaker_registerNow();
+ if(!igBoundingBoxesMaker_meta || !(reinterpret_cast<unsigned int *>(igBoundingBoxesMaker_meta)[0x24/4]&4)) igBoundingBoxesMaker_arkRegister();
  return igBoundingBoxesMaker_meta;
 }
 void *igBoundingBoxesMaker_vtableRead(){
@@ -59,12 +59,12 @@ void *igBoundingBoxesMaker_vtableRead(){
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBoundingBoxesMaker_registerNow(){
+void igBoundingBoxesMaker_arkRegister(){
  meta_registerNow((int)igBoundingBoxesMaker_register);
 }
 void igBoundingBoxesMaker_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igBoundingBoxesMaker_meta,(int)igObject_register,(int)fn_800237D0,(int)igBoundingBoxesMaker_getMetaCall,(int)igBoundingBoxesMaker_className,40,(int)igBoundingBoxesMaker_vtableRead,(int)igBoundingBoxesMaker_fieldInit,0,(int)lbl_804B1294);
+ meta_registerClass(0,(int)&igBoundingBoxesMaker_meta,(int)igObject_register,(int)fn_800237D0,(int)igBoundingBoxesMaker_getMetaCall,(int)igBoundingBoxesMaker_className,40,(int)igBoundingBoxesMaker_vtableRead,(int)igBoundingBoxesMaker_fieldInit,0,(int)igBoundingBoxesMaker_dependencies);
 }
 void *igBoundingBoxesMaker_getMetaCall(){return igBoundingBoxesMaker_getMeta();}
 }

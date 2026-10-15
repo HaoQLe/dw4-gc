@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beSvSlotDataList_registerNow();
+void beSvSlotDataList_arkRegister();
 extern void *beSvSlotDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beSvSlotDataList_metaObject(){
  return beSvSlotDataList_meta;
 }
 void *beSvSlotDataList_getMeta(){
- if(!beSvSlotDataList_meta || !(reinterpret_cast<unsigned int *>(beSvSlotDataList_meta)[0x24/4]&4)) beSvSlotDataList_registerNow();
+ if(!beSvSlotDataList_meta || !(reinterpret_cast<unsigned int *>(beSvSlotDataList_meta)[0x24/4]&4)) beSvSlotDataList_arkRegister();
  return beSvSlotDataList_meta;
 }
 }

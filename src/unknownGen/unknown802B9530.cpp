@@ -13,13 +13,13 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beShadow01InfoList_registerNow();
+void beShadow01InfoList_arkRegister();
 void igObject_register();
 extern char bePlaySE_className[];
-extern char lbl_804CF63C[];
-extern char lbl_804CF644[];
-extern char lbl_804CF64C[];
-extern char lbl_804CF654[];
+extern char bePlaySE_fieldTypes[];
+extern char bePlaySE_fieldNames[];
+extern char bePlaySE_fieldStorage[];
+extern char bePlaySE_fieldOffsets[];
 extern void *bePlaySE_meta;
 extern void *beShadow01InfoList_meta;
 extern void *lbl_805621F4;
@@ -28,7 +28,7 @@ void *bePlaySE_getMetaCall();
 void bePlaySE_fieldInit();
 }
 extern "C" {
-void bePlaySE_registerNow(){
+void bePlaySE_arkRegister(){
  meta_registerNow((int)bePlaySE_register);
 }
 void bePlaySE_register(){
@@ -39,15 +39,15 @@ void *bePlaySE_getMetaCall(){return bePlaySE_getMeta();}
 void bePlaySE_fieldInit(){
  void *meta=bePlaySE_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804CF63C,0x2);
- meta_setupFields(meta,lbl_804CF644,lbl_804CF64C,lbl_804CF654,field);
+ meta_appendFields(meta,bePlaySE_fieldTypes,0x2);
+ meta_setupFields(meta,bePlaySE_fieldNames,bePlaySE_fieldStorage,bePlaySE_fieldOffsets,field);
 }
 void *beShadow01InfoList_metaObject(){
  if(!beShadow01InfoList_meta) beShadow01InfoList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return beShadow01InfoList_meta;
 }
 void *beShadow01InfoList_getMeta(){
- if(!beShadow01InfoList_meta || !(reinterpret_cast<unsigned int *>(beShadow01InfoList_meta)[0x24/4]&4)) beShadow01InfoList_registerNow();
+ if(!beShadow01InfoList_meta || !(reinterpret_cast<unsigned int *>(beShadow01InfoList_meta)[0x24/4]&4)) beShadow01InfoList_arkRegister();
  return beShadow01InfoList_meta;
 }
 }

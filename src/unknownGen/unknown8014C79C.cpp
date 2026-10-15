@@ -5,7 +5,7 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
-void igDataTable_registerNow();
+void igDataTable_arkRegister();
 extern char igVertexBlending_className[];
 extern void *lbl_805621F4;
 extern void *lbl_805643A0;
@@ -22,7 +22,7 @@ void *fn_8014C7E8(){
  return igDataTable_meta;
 }
 void *igDataTable_getMeta(){
- if(!igDataTable_meta || !(reinterpret_cast<unsigned int *>(igDataTable_meta)[0x24/4]&4)) igDataTable_registerNow();
+ if(!igDataTable_meta || !(reinterpret_cast<unsigned int *>(igDataTable_meta)[0x24/4]&4)) igDataTable_arkRegister();
  return igDataTable_meta;
 }
 }

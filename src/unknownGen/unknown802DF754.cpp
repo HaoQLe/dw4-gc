@@ -11,18 +11,18 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void igObject_register();
 extern char beCriAudio_className[];
-extern char lbl_804D27D4[];
+extern char beCriAudio_dependencies[];
 extern char beCriAudio_meta[];
 void beCriAudio_register();
 void *beCriAudio_getMetaCall();
 }
 extern "C" {
-void beCriAudio_registerNow(){
+void beCriAudio_arkRegister(){
  meta_registerNow((int)beCriAudio_register);
 }
 void beCriAudio_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beCriAudio_meta,(int)igObject_register,(int)fn_800237D0,(int)beCriAudio_getMetaCall,(int)beCriAudio_className,24,(int)beCriAudio_vtableRead,(int)beCriAudio_fieldInit,0,(int)lbl_804D27D4);
+ meta_registerClass(0,(int)beCriAudio_meta,(int)igObject_register,(int)fn_800237D0,(int)beCriAudio_getMetaCall,(int)beCriAudio_className,24,(int)beCriAudio_vtableRead,(int)beCriAudio_fieldInit,0,(int)beCriAudio_dependencies);
 }
 void *beCriAudio_getMetaCall(){return beCriAudio_getMeta();}
 }

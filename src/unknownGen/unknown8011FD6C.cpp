@@ -105,11 +105,11 @@ extern char lbl_8049B6E0[];
 extern char igGetCenterFunctionList_vtable[];
 extern char lbl_8049B7A0[];
 extern char lbl_8049B9DC[];
-extern char lbl_8055F3D8[8];
-extern char lbl_8055F3E0[8];
+extern char igMatrix44fMetaField_dependencies[8];
+extern char igMatrix44dMetaField_dependencies[8];
 extern char lbl_8055F3E8[6];
-extern char lbl_8055F3F0[8];
-extern char lbl_8055F3F8[8];
+extern char igVec3fListList_dependencies[8];
+extern char igAABoxList_dependencies[8];
 extern char lbl_8055F400[8];
 extern void *lbl_805621F4;
 extern void *igMatrix44fMetaField_meta;
@@ -147,130 +147,130 @@ extern void *igAABoxList_meta;
 extern void *igAABox_meta;
 void *igMatrix44fMetaField_getMeta();
 void *igMatrix44fMetaField_vtableRead();
-void igMatrix44fMetaField_registerNow();
+void igMatrix44fMetaField_arkRegister();
 void igMatrix44fMetaField_register();
 void *igMatrix44fMetaField_getMetaCall();
 void *fn_8011FFD8();
 void *igMatrix44dMetaField_getMeta();
 void *igMatrix44dMetaField_vtableRead();
-void igMatrix44dMetaField_registerNow();
+void igMatrix44dMetaField_arkRegister();
 void igMatrix44dMetaField_register();
 void *igMatrix44dMetaField_getMetaCall();
 void *igGetCenterFunctionList_getMeta();
 void *igGetCenterFunctionList_vtableRead();
-void igGetCenterFunctionList_registerNow();
+void igGetCenterFunctionList_arkRegister();
 void igGetCenterFunctionList_register();
 void *igGetCenterFunctionList_getMetaCall();
 void *igIsEmptyFunctionList_getMeta();
 void *igIsEmptyFunctionList_vtableRead();
-void igIsEmptyFunctionList_registerNow();
+void igIsEmptyFunctionList_arkRegister();
 void igIsEmptyFunctionList_register();
 void *igIsEmptyFunctionList_getMetaCall();
 void *igEmptyFunctionList_getMeta();
 void *igEmptyFunctionList_vtableRead();
-void igEmptyFunctionList_registerNow();
+void igEmptyFunctionList_arkRegister();
 void igEmptyFunctionList_register();
 void *igEmptyFunctionList_getMetaCall();
 void *igTransformFunctionList_getMeta();
 void *igTransformFunctionList_vtableRead();
-void igTransformFunctionList_registerNow();
+void igTransformFunctionList_arkRegister();
 void igTransformFunctionList_register();
 void *igTransformFunctionList_getMetaCall();
 void *igContainsVecFunctionList_getMeta();
 void *igContainsVecFunctionList_vtableRead();
-void igContainsVecFunctionList_registerNow();
+void igContainsVecFunctionList_arkRegister();
 void igContainsVecFunctionList_register();
 void *igContainsVecFunctionList_getMetaCall();
 void *igExtendByVecFunctionList_getMeta();
 void *igExtendByVecFunctionList_vtableRead();
-void igExtendByVecFunctionList_registerNow();
+void igExtendByVecFunctionList_arkRegister();
 void igExtendByVecFunctionList_register();
 void *igExtendByVecFunctionList_getMetaCall();
 void *igContainsRayFunctionList_getMeta();
 void *igContainsRayFunctionList_vtableRead();
-void igContainsRayFunctionList_registerNow();
+void igContainsRayFunctionList_arkRegister();
 void igContainsRayFunctionList_register();
 void *igContainsRayFunctionList_getMetaCall();
 void *igExtendByRayFunctionList_getMeta();
 void *igExtendByRayFunctionList_vtableRead();
-void igExtendByRayFunctionList_registerNow();
+void igExtendByRayFunctionList_arkRegister();
 void igExtendByRayFunctionList_register();
 void *igExtendByRayFunctionList_getMetaCall();
 void *igRayIntersectionFunctionList_getMeta();
 void *igRayIntersectionFunctionList_vtableRead();
-void igRayIntersectionFunctionList_registerNow();
+void igRayIntersectionFunctionList_arkRegister();
 void igRayIntersectionFunctionList_register();
 void *igRayIntersectionFunctionList_getMetaCall();
 void *igContainsFunctionList_getMeta();
 void *igContainsFunctionList_vtableRead();
-void igContainsFunctionList_registerNow();
+void igContainsFunctionList_arkRegister();
 void igContainsFunctionList_register();
 void *igContainsFunctionList_getMetaCall();
 void *igExtendByFunctionList_getMeta();
 void *igExtendByFunctionList_vtableRead();
-void igExtendByFunctionList_registerNow();
+void igExtendByFunctionList_arkRegister();
 void igExtendByFunctionList_register();
 void *igExtendByFunctionList_getMetaCall();
 void *igIntersectionFunctionList_getMeta();
 void *igIntersectionFunctionList_vtableRead();
-void igIntersectionFunctionList_registerNow();
+void igIntersectionFunctionList_arkRegister();
 void igIntersectionFunctionList_register();
 void *igIntersectionFunctionList_getMetaCall();
 void *igMatrix44fList_getMeta();
 void *igMatrix44fList_vtableRead();
-void igMatrix44fList_registerNow();
+void igMatrix44fList_arkRegister();
 void igMatrix44fList_register();
 void *igMatrix44fList_getMetaCall();
 void fn_801215A4();
 void *igQuaternionfList_getMeta();
 void *igQuaternionfList_vtableRead();
-void igQuaternionfList_registerNow();
+void igQuaternionfList_arkRegister();
 void igQuaternionfList_register();
 void *igQuaternionfList_getMetaCall();
 void fn_80121820();
 void *igVec4ucList_getMeta();
 void *igVec4ucList_vtableRead();
-void igVec4ucList_registerNow();
+void igVec4ucList_arkRegister();
 void igVec4ucList_register();
 void *igVec4ucList_getMetaCall();
 void fn_80121A60();
 void *igVec4fList_getMeta();
 void *igVec4fList_vtableRead();
-void igVec4fList_registerNow();
+void igVec4fList_arkRegister();
 void igVec4fList_register();
 void *igVec4fList_getMetaCall();
 void fn_80121C68();
 void *igVec3fListList_getMeta();
 void *igVec3fListList_vtableRead();
-void igVec3fListList_registerNow();
+void igVec3fListList_arkRegister();
 void igVec3fListList_register();
 void *igVec3fListList_getMetaCall();
 void *igVec3ucList_getMeta();
 void *igVec3ucList_vtableRead();
-void igVec3ucList_registerNow();
+void igVec3ucList_arkRegister();
 void igVec3ucList_register();
 void *igVec3ucList_getMetaCall();
 void fn_8012200C();
 void *igVec3fList_getMeta();
 void *igVec3fList_vtableRead();
-void igVec3fList_registerNow();
+void igVec3fList_arkRegister();
 void igVec3fList_register();
 void *igVec3fList_getMetaCall();
 void fn_80122288();
 void *igVec2fList_getMeta();
 void *igVec2fList_vtableRead();
-void igVec2fList_registerNow();
+void igVec2fList_arkRegister();
 void igVec2fList_register();
 void *igVec2fList_getMetaCall();
 void fn_801224C8();
 void *igAABoxList_getMeta();
 void *igAABoxList_vtableRead();
-void igAABoxList_registerNow();
+void igAABoxList_arkRegister();
 void igAABoxList_register();
 void *igAABoxList_getMetaCall();
 void *igAABox_getMeta();
 void *igAABox_vtableRead();
-void igAABox_registerNow();
+void igAABox_arkRegister();
 void igAABox_register();
 void *igAABox_getMetaCall();
 }
@@ -393,11 +393,11 @@ struct UnknownGenObject80122808_0 {
 extern "C" {
 void *fn_8011FD6C(){return fn_80124538();}
 void *igMatrix44fMetaField_create(void *object){
- igMatrix44fMetaField_registerNow();
+ igMatrix44fMetaField_arkRegister();
  return meta_createInstance(igMatrix44fMetaField_meta,object);
 }
 void *igMatrix44fMetaField_getMeta(){
- if(!igMatrix44fMetaField_meta || !(reinterpret_cast<unsigned int *>(igMatrix44fMetaField_meta)[0x24/4]&4)) igMatrix44fMetaField_registerNow();
+ if(!igMatrix44fMetaField_meta || !(reinterpret_cast<unsigned int *>(igMatrix44fMetaField_meta)[0x24/4]&4)) igMatrix44fMetaField_arkRegister();
  return igMatrix44fMetaField_meta;
 }
 void *igMatrix44fMetaField_vtableRead(){
@@ -405,12 +405,12 @@ void *igMatrix44fMetaField_vtableRead(){
  object.unknown00=igMatrix44fMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMatrix44fMetaField_registerNow(){
+void igMatrix44fMetaField_arkRegister(){
  meta_registerNow((int)igMatrix44fMetaField_register);
 }
 void igMatrix44fMetaField_register(){
  fn_8011D8BC();
- meta_registerClass(0,(int)&igMatrix44fMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igMatrix44fMetaField_getMetaCall,(int)igMatrix44fMetaField_className,52,(int)igMatrix44fMetaField_vtableRead,0,0,(int)lbl_8055F3D8);
+ meta_registerClass(0,(int)&igMatrix44fMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igMatrix44fMetaField_getMetaCall,(int)igMatrix44fMetaField_className,52,(int)igMatrix44fMetaField_vtableRead,0,0,(int)igMatrix44fMetaField_dependencies);
 }
 void *igMatrix44fMetaField_getMetaCall(){return igMatrix44fMetaField_getMeta();}
 void fn_8011FF40(){
@@ -426,12 +426,12 @@ void fn_8011FF40(){
 }
 void *fn_8011FFD8(){
  if(!lbl_80563990){
-  igMatrix44fMetaField_registerNow();
+  igMatrix44fMetaField_arkRegister();
  }
  return lbl_80563990;
 }
 void *igMatrix44dMetaField_getMeta(){
- if(!igMatrix44dMetaField_meta || !(reinterpret_cast<unsigned int *>(igMatrix44dMetaField_meta)[0x24/4]&4)) igMatrix44dMetaField_registerNow();
+ if(!igMatrix44dMetaField_meta || !(reinterpret_cast<unsigned int *>(igMatrix44dMetaField_meta)[0x24/4]&4)) igMatrix44dMetaField_arkRegister();
  return igMatrix44dMetaField_meta;
 }
 void *igMatrix44dMetaField_vtableRead(){
@@ -439,12 +439,12 @@ void *igMatrix44dMetaField_vtableRead(){
  object.unknown00=igMatrix44dMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMatrix44dMetaField_registerNow(){
+void igMatrix44dMetaField_arkRegister(){
  meta_registerNow((int)igMatrix44dMetaField_register);
 }
 void igMatrix44dMetaField_register(){
  fn_8011D8BC();
- meta_registerClass(0,(int)&igMatrix44dMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igMatrix44dMetaField_getMetaCall,(int)igMatrix44dMetaField_className,52,(int)igMatrix44dMetaField_vtableRead,0,0,(int)lbl_8055F3E0);
+ meta_registerClass(0,(int)&igMatrix44dMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igMatrix44dMetaField_getMetaCall,(int)igMatrix44dMetaField_className,52,(int)igMatrix44dMetaField_vtableRead,0,0,(int)igMatrix44dMetaField_dependencies);
 }
 void *igMatrix44dMetaField_getMetaCall(){return igMatrix44dMetaField_getMeta();}
 void fn_80120184(){
@@ -460,16 +460,16 @@ void fn_80120184(){
 }
 void *fn_8012021C(){
  if(!lbl_805639A0){
-  igMatrix44dMetaField_registerNow();
+  igMatrix44dMetaField_arkRegister();
  }
  return lbl_805639A0;
 }
 void *igGetCenterFunctionList_create(void *object){
- igGetCenterFunctionList_registerNow();
+ igGetCenterFunctionList_arkRegister();
  return meta_createInstance(igGetCenterFunctionList_meta,object);
 }
 void *igGetCenterFunctionList_getMeta(){
- if(!igGetCenterFunctionList_meta || !(reinterpret_cast<unsigned int *>(igGetCenterFunctionList_meta)[0x24/4]&4)) igGetCenterFunctionList_registerNow();
+ if(!igGetCenterFunctionList_meta || !(reinterpret_cast<unsigned int *>(igGetCenterFunctionList_meta)[0x24/4]&4)) igGetCenterFunctionList_arkRegister();
  return igGetCenterFunctionList_meta;
 }
 void *igGetCenterFunctionList_vtableRead(){
@@ -480,7 +480,7 @@ void *igGetCenterFunctionList_vtableRead(){
  object.unknown00=igGetCenterFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGetCenterFunctionList_registerNow(){
+void igGetCenterFunctionList_arkRegister(){
  meta_registerNow((int)igGetCenterFunctionList_register);
 }
 void igGetCenterFunctionList_register(){
@@ -489,11 +489,11 @@ void igGetCenterFunctionList_register(){
 }
 void *igGetCenterFunctionList_getMetaCall(){return igGetCenterFunctionList_getMeta();}
 void *igIsEmptyFunctionList_create(void *object){
- igIsEmptyFunctionList_registerNow();
+ igIsEmptyFunctionList_arkRegister();
  return meta_createInstance(igIsEmptyFunctionList_meta,object);
 }
 void *igIsEmptyFunctionList_getMeta(){
- if(!igIsEmptyFunctionList_meta || !(reinterpret_cast<unsigned int *>(igIsEmptyFunctionList_meta)[0x24/4]&4)) igIsEmptyFunctionList_registerNow();
+ if(!igIsEmptyFunctionList_meta || !(reinterpret_cast<unsigned int *>(igIsEmptyFunctionList_meta)[0x24/4]&4)) igIsEmptyFunctionList_arkRegister();
  return igIsEmptyFunctionList_meta;
 }
 void *igIsEmptyFunctionList_vtableRead(){
@@ -504,7 +504,7 @@ void *igIsEmptyFunctionList_vtableRead(){
  object.unknown00=igIsEmptyFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igIsEmptyFunctionList_registerNow(){
+void igIsEmptyFunctionList_arkRegister(){
  meta_registerNow((int)igIsEmptyFunctionList_register);
 }
 void igIsEmptyFunctionList_register(){
@@ -513,11 +513,11 @@ void igIsEmptyFunctionList_register(){
 }
 void *igIsEmptyFunctionList_getMetaCall(){return igIsEmptyFunctionList_getMeta();}
 void *igEmptyFunctionList_create(void *object){
- igEmptyFunctionList_registerNow();
+ igEmptyFunctionList_arkRegister();
  return meta_createInstance(igEmptyFunctionList_meta,object);
 }
 void *igEmptyFunctionList_getMeta(){
- if(!igEmptyFunctionList_meta || !(reinterpret_cast<unsigned int *>(igEmptyFunctionList_meta)[0x24/4]&4)) igEmptyFunctionList_registerNow();
+ if(!igEmptyFunctionList_meta || !(reinterpret_cast<unsigned int *>(igEmptyFunctionList_meta)[0x24/4]&4)) igEmptyFunctionList_arkRegister();
  return igEmptyFunctionList_meta;
 }
 void *igEmptyFunctionList_vtableRead(){
@@ -528,7 +528,7 @@ void *igEmptyFunctionList_vtableRead(){
  object.unknown00=igEmptyFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igEmptyFunctionList_registerNow(){
+void igEmptyFunctionList_arkRegister(){
  meta_registerNow((int)igEmptyFunctionList_register);
 }
 void igEmptyFunctionList_register(){
@@ -537,11 +537,11 @@ void igEmptyFunctionList_register(){
 }
 void *igEmptyFunctionList_getMetaCall(){return igEmptyFunctionList_getMeta();}
 void *igTransformFunctionList_create(void *object){
- igTransformFunctionList_registerNow();
+ igTransformFunctionList_arkRegister();
  return meta_createInstance(igTransformFunctionList_meta,object);
 }
 void *igTransformFunctionList_getMeta(){
- if(!igTransformFunctionList_meta || !(reinterpret_cast<unsigned int *>(igTransformFunctionList_meta)[0x24/4]&4)) igTransformFunctionList_registerNow();
+ if(!igTransformFunctionList_meta || !(reinterpret_cast<unsigned int *>(igTransformFunctionList_meta)[0x24/4]&4)) igTransformFunctionList_arkRegister();
  return igTransformFunctionList_meta;
 }
 void *igTransformFunctionList_vtableRead(){
@@ -552,7 +552,7 @@ void *igTransformFunctionList_vtableRead(){
  object.unknown00=igTransformFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTransformFunctionList_registerNow(){
+void igTransformFunctionList_arkRegister(){
  meta_registerNow((int)igTransformFunctionList_register);
 }
 void igTransformFunctionList_register(){
@@ -561,11 +561,11 @@ void igTransformFunctionList_register(){
 }
 void *igTransformFunctionList_getMetaCall(){return igTransformFunctionList_getMeta();}
 void *igContainsVecFunctionList_create(void *object){
- igContainsVecFunctionList_registerNow();
+ igContainsVecFunctionList_arkRegister();
  return meta_createInstance(igContainsVecFunctionList_meta,object);
 }
 void *igContainsVecFunctionList_getMeta(){
- if(!igContainsVecFunctionList_meta || !(reinterpret_cast<unsigned int *>(igContainsVecFunctionList_meta)[0x24/4]&4)) igContainsVecFunctionList_registerNow();
+ if(!igContainsVecFunctionList_meta || !(reinterpret_cast<unsigned int *>(igContainsVecFunctionList_meta)[0x24/4]&4)) igContainsVecFunctionList_arkRegister();
  return igContainsVecFunctionList_meta;
 }
 void *igContainsVecFunctionList_vtableRead(){
@@ -576,7 +576,7 @@ void *igContainsVecFunctionList_vtableRead(){
  object.unknown00=igContainsVecFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igContainsVecFunctionList_registerNow(){
+void igContainsVecFunctionList_arkRegister(){
  meta_registerNow((int)igContainsVecFunctionList_register);
 }
 void igContainsVecFunctionList_register(){
@@ -585,11 +585,11 @@ void igContainsVecFunctionList_register(){
 }
 void *igContainsVecFunctionList_getMetaCall(){return igContainsVecFunctionList_getMeta();}
 void *igExtendByVecFunctionList_create(void *object){
- igExtendByVecFunctionList_registerNow();
+ igExtendByVecFunctionList_arkRegister();
  return meta_createInstance(igExtendByVecFunctionList_meta,object);
 }
 void *igExtendByVecFunctionList_getMeta(){
- if(!igExtendByVecFunctionList_meta || !(reinterpret_cast<unsigned int *>(igExtendByVecFunctionList_meta)[0x24/4]&4)) igExtendByVecFunctionList_registerNow();
+ if(!igExtendByVecFunctionList_meta || !(reinterpret_cast<unsigned int *>(igExtendByVecFunctionList_meta)[0x24/4]&4)) igExtendByVecFunctionList_arkRegister();
  return igExtendByVecFunctionList_meta;
 }
 void *igExtendByVecFunctionList_vtableRead(){
@@ -600,7 +600,7 @@ void *igExtendByVecFunctionList_vtableRead(){
  object.unknown00=igExtendByVecFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igExtendByVecFunctionList_registerNow(){
+void igExtendByVecFunctionList_arkRegister(){
  meta_registerNow((int)igExtendByVecFunctionList_register);
 }
 void igExtendByVecFunctionList_register(){
@@ -609,11 +609,11 @@ void igExtendByVecFunctionList_register(){
 }
 void *igExtendByVecFunctionList_getMetaCall(){return igExtendByVecFunctionList_getMeta();}
 void *igContainsRayFunctionList_create(void *object){
- igContainsRayFunctionList_registerNow();
+ igContainsRayFunctionList_arkRegister();
  return meta_createInstance(igContainsRayFunctionList_meta,object);
 }
 void *igContainsRayFunctionList_getMeta(){
- if(!igContainsRayFunctionList_meta || !(reinterpret_cast<unsigned int *>(igContainsRayFunctionList_meta)[0x24/4]&4)) igContainsRayFunctionList_registerNow();
+ if(!igContainsRayFunctionList_meta || !(reinterpret_cast<unsigned int *>(igContainsRayFunctionList_meta)[0x24/4]&4)) igContainsRayFunctionList_arkRegister();
  return igContainsRayFunctionList_meta;
 }
 void *igContainsRayFunctionList_vtableRead(){
@@ -624,7 +624,7 @@ void *igContainsRayFunctionList_vtableRead(){
  object.unknown00=igContainsRayFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igContainsRayFunctionList_registerNow(){
+void igContainsRayFunctionList_arkRegister(){
  meta_registerNow((int)igContainsRayFunctionList_register);
 }
 void igContainsRayFunctionList_register(){
@@ -633,11 +633,11 @@ void igContainsRayFunctionList_register(){
 }
 void *igContainsRayFunctionList_getMetaCall(){return igContainsRayFunctionList_getMeta();}
 void *igExtendByRayFunctionList_create(void *object){
- igExtendByRayFunctionList_registerNow();
+ igExtendByRayFunctionList_arkRegister();
  return meta_createInstance(igExtendByRayFunctionList_meta,object);
 }
 void *igExtendByRayFunctionList_getMeta(){
- if(!igExtendByRayFunctionList_meta || !(reinterpret_cast<unsigned int *>(igExtendByRayFunctionList_meta)[0x24/4]&4)) igExtendByRayFunctionList_registerNow();
+ if(!igExtendByRayFunctionList_meta || !(reinterpret_cast<unsigned int *>(igExtendByRayFunctionList_meta)[0x24/4]&4)) igExtendByRayFunctionList_arkRegister();
  return igExtendByRayFunctionList_meta;
 }
 void *igExtendByRayFunctionList_vtableRead(){
@@ -648,7 +648,7 @@ void *igExtendByRayFunctionList_vtableRead(){
  object.unknown00=igExtendByRayFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igExtendByRayFunctionList_registerNow(){
+void igExtendByRayFunctionList_arkRegister(){
  meta_registerNow((int)igExtendByRayFunctionList_register);
 }
 void igExtendByRayFunctionList_register(){
@@ -657,11 +657,11 @@ void igExtendByRayFunctionList_register(){
 }
 void *igExtendByRayFunctionList_getMetaCall(){return igExtendByRayFunctionList_getMeta();}
 void *igRayIntersectionFunctionList_create(void *object){
- igRayIntersectionFunctionList_registerNow();
+ igRayIntersectionFunctionList_arkRegister();
  return meta_createInstance(igRayIntersectionFunctionList_meta,object);
 }
 void *igRayIntersectionFunctionList_getMeta(){
- if(!igRayIntersectionFunctionList_meta || !(reinterpret_cast<unsigned int *>(igRayIntersectionFunctionList_meta)[0x24/4]&4)) igRayIntersectionFunctionList_registerNow();
+ if(!igRayIntersectionFunctionList_meta || !(reinterpret_cast<unsigned int *>(igRayIntersectionFunctionList_meta)[0x24/4]&4)) igRayIntersectionFunctionList_arkRegister();
  return igRayIntersectionFunctionList_meta;
 }
 void *igRayIntersectionFunctionList_vtableRead(){
@@ -672,7 +672,7 @@ void *igRayIntersectionFunctionList_vtableRead(){
  object.unknown00=igRayIntersectionFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRayIntersectionFunctionList_registerNow(){
+void igRayIntersectionFunctionList_arkRegister(){
  meta_registerNow((int)igRayIntersectionFunctionList_register);
 }
 void igRayIntersectionFunctionList_register(){
@@ -681,11 +681,11 @@ void igRayIntersectionFunctionList_register(){
 }
 void *igRayIntersectionFunctionList_getMetaCall(){return igRayIntersectionFunctionList_getMeta();}
 void *igContainsFunctionList_create(void *object){
- igContainsFunctionList_registerNow();
+ igContainsFunctionList_arkRegister();
  return meta_createInstance(igContainsFunctionList_meta,object);
 }
 void *igContainsFunctionList_getMeta(){
- if(!igContainsFunctionList_meta || !(reinterpret_cast<unsigned int *>(igContainsFunctionList_meta)[0x24/4]&4)) igContainsFunctionList_registerNow();
+ if(!igContainsFunctionList_meta || !(reinterpret_cast<unsigned int *>(igContainsFunctionList_meta)[0x24/4]&4)) igContainsFunctionList_arkRegister();
  return igContainsFunctionList_meta;
 }
 void *igContainsFunctionList_vtableRead(){
@@ -696,7 +696,7 @@ void *igContainsFunctionList_vtableRead(){
  object.unknown00=igContainsFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igContainsFunctionList_registerNow(){
+void igContainsFunctionList_arkRegister(){
  meta_registerNow((int)igContainsFunctionList_register);
 }
 void igContainsFunctionList_register(){
@@ -705,11 +705,11 @@ void igContainsFunctionList_register(){
 }
 void *igContainsFunctionList_getMetaCall(){return igContainsFunctionList_getMeta();}
 void *igExtendByFunctionList_create(void *object){
- igExtendByFunctionList_registerNow();
+ igExtendByFunctionList_arkRegister();
  return meta_createInstance(igExtendByFunctionList_meta,object);
 }
 void *igExtendByFunctionList_getMeta(){
- if(!igExtendByFunctionList_meta || !(reinterpret_cast<unsigned int *>(igExtendByFunctionList_meta)[0x24/4]&4)) igExtendByFunctionList_registerNow();
+ if(!igExtendByFunctionList_meta || !(reinterpret_cast<unsigned int *>(igExtendByFunctionList_meta)[0x24/4]&4)) igExtendByFunctionList_arkRegister();
  return igExtendByFunctionList_meta;
 }
 void *igExtendByFunctionList_vtableRead(){
@@ -720,7 +720,7 @@ void *igExtendByFunctionList_vtableRead(){
  object.unknown00=igExtendByFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igExtendByFunctionList_registerNow(){
+void igExtendByFunctionList_arkRegister(){
  meta_registerNow((int)igExtendByFunctionList_register);
 }
 void igExtendByFunctionList_register(){
@@ -729,11 +729,11 @@ void igExtendByFunctionList_register(){
 }
 void *igExtendByFunctionList_getMetaCall(){return igExtendByFunctionList_getMeta();}
 void *igIntersectionFunctionList_create(void *object){
- igIntersectionFunctionList_registerNow();
+ igIntersectionFunctionList_arkRegister();
  return meta_createInstance(igIntersectionFunctionList_meta,object);
 }
 void *igIntersectionFunctionList_getMeta(){
- if(!igIntersectionFunctionList_meta || !(reinterpret_cast<unsigned int *>(igIntersectionFunctionList_meta)[0x24/4]&4)) igIntersectionFunctionList_registerNow();
+ if(!igIntersectionFunctionList_meta || !(reinterpret_cast<unsigned int *>(igIntersectionFunctionList_meta)[0x24/4]&4)) igIntersectionFunctionList_arkRegister();
  return igIntersectionFunctionList_meta;
 }
 void *igIntersectionFunctionList_vtableRead(){
@@ -744,7 +744,7 @@ void *igIntersectionFunctionList_vtableRead(){
  object.unknown00=igIntersectionFunctionList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igIntersectionFunctionList_registerNow(){
+void igIntersectionFunctionList_arkRegister(){
  meta_registerNow((int)igIntersectionFunctionList_register);
 }
 void igIntersectionFunctionList_register(){
@@ -757,7 +757,7 @@ void *fn_8012141C(){
  return igMatrix44fList_meta;
 }
 void *igMatrix44fList_getMeta(){
- if(!igMatrix44fList_meta || !(reinterpret_cast<unsigned int *>(igMatrix44fList_meta)[0x24/4]&4)) igMatrix44fList_registerNow();
+ if(!igMatrix44fList_meta || !(reinterpret_cast<unsigned int *>(igMatrix44fList_meta)[0x24/4]&4)) igMatrix44fList_arkRegister();
  return igMatrix44fList_meta;
 }
 void *igMatrix44fList_vtableRead(){
@@ -768,7 +768,7 @@ void *igMatrix44fList_vtableRead(){
  object.unknown00=igMatrix44fList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMatrix44fList_registerNow(){
+void igMatrix44fList_arkRegister(){
  meta_registerNow((int)igMatrix44fList_register);
 }
 void igMatrix44fList_register(){
@@ -788,7 +788,7 @@ void fn_801215A4(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igQuaternionfList_create(void *object){
- igQuaternionfList_registerNow();
+ igQuaternionfList_arkRegister();
  return meta_createInstance(igQuaternionfList_meta,object);
 }
 void *fn_80121698(){
@@ -796,7 +796,7 @@ void *fn_80121698(){
  return igQuaternionfList_meta;
 }
 void *igQuaternionfList_getMeta(){
- if(!igQuaternionfList_meta || !(reinterpret_cast<unsigned int *>(igQuaternionfList_meta)[0x24/4]&4)) igQuaternionfList_registerNow();
+ if(!igQuaternionfList_meta || !(reinterpret_cast<unsigned int *>(igQuaternionfList_meta)[0x24/4]&4)) igQuaternionfList_arkRegister();
  return igQuaternionfList_meta;
 }
 void *igQuaternionfList_vtableRead(){
@@ -807,7 +807,7 @@ void *igQuaternionfList_vtableRead(){
  object.unknown00=igQuaternionfList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igQuaternionfList_registerNow(){
+void igQuaternionfList_arkRegister(){
  meta_registerNow((int)igQuaternionfList_register);
 }
 void igQuaternionfList_register(){
@@ -827,11 +827,11 @@ void fn_80121820(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igVec4ucList_create(void *object){
- igVec4ucList_registerNow();
+ igVec4ucList_arkRegister();
  return meta_createInstance(igVec4ucList_meta,object);
 }
 void *igVec4ucList_getMeta(){
- if(!igVec4ucList_meta || !(reinterpret_cast<unsigned int *>(igVec4ucList_meta)[0x24/4]&4)) igVec4ucList_registerNow();
+ if(!igVec4ucList_meta || !(reinterpret_cast<unsigned int *>(igVec4ucList_meta)[0x24/4]&4)) igVec4ucList_arkRegister();
  return igVec4ucList_meta;
 }
 void *igVec4ucList_vtableRead(){
@@ -842,7 +842,7 @@ void *igVec4ucList_vtableRead(){
  object.unknown00=igVec4ucList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVec4ucList_registerNow(){
+void igVec4ucList_arkRegister(){
  meta_registerNow((int)igVec4ucList_register);
 }
 void igVec4ucList_register(){
@@ -862,7 +862,7 @@ void fn_80121A60(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igVec4fList_getMeta(){
- if(!igVec4fList_meta || !(reinterpret_cast<unsigned int *>(igVec4fList_meta)[0x24/4]&4)) igVec4fList_registerNow();
+ if(!igVec4fList_meta || !(reinterpret_cast<unsigned int *>(igVec4fList_meta)[0x24/4]&4)) igVec4fList_arkRegister();
  return igVec4fList_meta;
 }
 void *igVec4fList_vtableRead(){
@@ -873,7 +873,7 @@ void *igVec4fList_vtableRead(){
  object.unknown00=igVec4fList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVec4fList_registerNow(){
+void igVec4fList_arkRegister(){
  meta_registerNow((int)igVec4fList_register);
 }
 void igVec4fList_register(){
@@ -897,7 +897,7 @@ void *fn_80121D24(){
  return igVec3fListList_meta;
 }
 void *igVec3fListList_getMeta(){
- if(!igVec3fListList_meta || !(reinterpret_cast<unsigned int *>(igVec3fListList_meta)[0x24/4]&4)) igVec3fListList_registerNow();
+ if(!igVec3fListList_meta || !(reinterpret_cast<unsigned int *>(igVec3fListList_meta)[0x24/4]&4)) igVec3fListList_arkRegister();
  return igVec3fListList_meta;
 }
 void *igVec3fListList_vtableRead(){
@@ -910,16 +910,16 @@ void *igVec3fListList_vtableRead(){
  object.unknown00=igVec3fListList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVec3fListList_registerNow(){
+void igVec3fListList_arkRegister(){
  meta_registerNow((int)igVec3fListList_register);
 }
 void igVec3fListList_register(){
  fn_8011D8BC();
- meta_registerClass(0,(int)&igVec3fListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igVec3fListList_getMetaCall,(int)igVec3fListList_className,20,(int)igVec3fListList_vtableRead,0,0,(int)lbl_8055F3F0);
+ meta_registerClass(0,(int)&igVec3fListList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igVec3fListList_getMetaCall,(int)igVec3fListList_className,20,(int)igVec3fListList_vtableRead,0,0,(int)igVec3fListList_dependencies);
 }
 void *igVec3fListList_getMetaCall(){return igVec3fListList_getMeta();}
 void *igVec3ucList_getMeta(){
- if(!igVec3ucList_meta || !(reinterpret_cast<unsigned int *>(igVec3ucList_meta)[0x24/4]&4)) igVec3ucList_registerNow();
+ if(!igVec3ucList_meta || !(reinterpret_cast<unsigned int *>(igVec3ucList_meta)[0x24/4]&4)) igVec3ucList_arkRegister();
  return igVec3ucList_meta;
 }
 void *igVec3ucList_vtableRead(){
@@ -930,7 +930,7 @@ void *igVec3ucList_vtableRead(){
  object.unknown00=igVec3ucList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVec3ucList_registerNow(){
+void igVec3ucList_arkRegister(){
  meta_registerNow((int)igVec3ucList_register);
 }
 void igVec3ucList_register(){
@@ -950,7 +950,7 @@ void fn_8012200C(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igVec3fList_create(void *object){
- igVec3fList_registerNow();
+ igVec3fList_arkRegister();
  return meta_createInstance(igVec3fList_meta,object);
 }
 void *fn_80122100(){
@@ -958,7 +958,7 @@ void *fn_80122100(){
  return igVec3fList_meta;
 }
 void *igVec3fList_getMeta(){
- if(!igVec3fList_meta || !(reinterpret_cast<unsigned int *>(igVec3fList_meta)[0x24/4]&4)) igVec3fList_registerNow();
+ if(!igVec3fList_meta || !(reinterpret_cast<unsigned int *>(igVec3fList_meta)[0x24/4]&4)) igVec3fList_arkRegister();
  return igVec3fList_meta;
 }
 void *igVec3fList_vtableRead(){
@@ -969,7 +969,7 @@ void *igVec3fList_vtableRead(){
  object.unknown00=igVec3fList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVec3fList_registerNow(){
+void igVec3fList_arkRegister(){
  meta_registerNow((int)igVec3fList_register);
 }
 void igVec3fList_register(){
@@ -989,11 +989,11 @@ void fn_80122288(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igVec2fList_create(void *object){
- igVec2fList_registerNow();
+ igVec2fList_arkRegister();
  return meta_createInstance(igVec2fList_meta,object);
 }
 void *igVec2fList_getMeta(){
- if(!igVec2fList_meta || !(reinterpret_cast<unsigned int *>(igVec2fList_meta)[0x24/4]&4)) igVec2fList_registerNow();
+ if(!igVec2fList_meta || !(reinterpret_cast<unsigned int *>(igVec2fList_meta)[0x24/4]&4)) igVec2fList_arkRegister();
  return igVec2fList_meta;
 }
 void *igVec2fList_vtableRead(){
@@ -1004,7 +1004,7 @@ void *igVec2fList_vtableRead(){
  object.unknown00=igVec2fList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVec2fList_registerNow(){
+void igVec2fList_arkRegister(){
  meta_registerNow((int)igVec2fList_register);
 }
 void igVec2fList_register(){
@@ -1024,7 +1024,7 @@ void fn_801224C8(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igAABoxList_create(void *object){
- igAABoxList_registerNow();
+ igAABoxList_arkRegister();
  return meta_createInstance(igAABoxList_meta,object);
 }
 void *fn_801225BC(){
@@ -1032,7 +1032,7 @@ void *fn_801225BC(){
  return igAABoxList_meta;
 }
 void *igAABoxList_getMeta(){
- if(!igAABoxList_meta || !(reinterpret_cast<unsigned int *>(igAABoxList_meta)[0x24/4]&4)) igAABoxList_registerNow();
+ if(!igAABoxList_meta || !(reinterpret_cast<unsigned int *>(igAABoxList_meta)[0x24/4]&4)) igAABoxList_arkRegister();
  return igAABoxList_meta;
 }
 void *igAABoxList_vtableRead(){
@@ -1045,16 +1045,16 @@ void *igAABoxList_vtableRead(){
  object.unknown00=igAABoxList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAABoxList_registerNow(){
+void igAABoxList_arkRegister(){
  meta_registerNow((int)igAABoxList_register);
 }
 void igAABoxList_register(){
  fn_8011D8BC();
- meta_registerClass(0,(int)&igAABoxList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAABoxList_getMetaCall,(int)igAABoxList_className,20,(int)igAABoxList_vtableRead,0,0,(int)lbl_8055F3F8);
+ meta_registerClass(0,(int)&igAABoxList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAABoxList_getMetaCall,(int)igAABoxList_className,20,(int)igAABoxList_vtableRead,0,0,(int)igAABoxList_dependencies);
 }
 void *igAABoxList_getMetaCall(){return igAABoxList_getMeta();}
 void *igAABox_create(void *object){
- igAABox_registerNow();
+ igAABox_arkRegister();
  return meta_createInstance(igAABox_meta,object);
 }
 void *fn_80122790(){
@@ -1062,7 +1062,7 @@ void *fn_80122790(){
  return igAABox_meta;
 }
 void *igAABox_getMeta(){
- if(!igAABox_meta || !(reinterpret_cast<unsigned int *>(igAABox_meta)[0x24/4]&4)) igAABox_registerNow();
+ if(!igAABox_meta || !(reinterpret_cast<unsigned int *>(igAABox_meta)[0x24/4]&4)) igAABox_arkRegister();
  return igAABox_meta;
 }
 void *igAABox_vtableRead(){
@@ -1072,7 +1072,7 @@ void *igAABox_vtableRead(){
  object.unknown00=igAABox_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAABox_registerNow(){
+void igAABox_arkRegister(){
  meta_registerNow((int)igAABox_register);
 }
 void igAABox_register(){

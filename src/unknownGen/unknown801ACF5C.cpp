@@ -18,13 +18,13 @@ extern char igTimeSwitch_className[];
 extern char igNode_vtable[];
 extern char igGroup_vtable[];
 extern char igTimeSwitch_vtable[];
-extern char lbl_80560188[8];
+extern char igTimeSwitch_dependencies[8];
 extern void *lbl_805621F4;
 extern void *lbl_80564740;
 extern void *igTimeSwitch_meta;
 void *igTimeSwitch_getMeta();
 void *igTimeSwitch_vtableRead();
-void igTimeSwitch_registerNow();
+void igTimeSwitch_arkRegister();
 void igTimeSwitch_register();
 void *igTimeSwitch_getMetaCall();
 }
@@ -64,7 +64,7 @@ void *fn_801ACFA8(){
  return igTimeSwitch_meta;
 }
 void *igTimeSwitch_getMeta(){
- if(!igTimeSwitch_meta || !(reinterpret_cast<unsigned int *>(igTimeSwitch_meta)[0x24/4]&4)) igTimeSwitch_registerNow();
+ if(!igTimeSwitch_meta || !(reinterpret_cast<unsigned int *>(igTimeSwitch_meta)[0x24/4]&4)) igTimeSwitch_arkRegister();
  return igTimeSwitch_meta;
 }
 void *igTimeSwitch_vtableRead(){
@@ -80,12 +80,12 @@ void *igTimeSwitch_vtableRead(){
  object.unknown20.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTimeSwitch_registerNow(){
+void igTimeSwitch_arkRegister(){
  meta_registerNow((int)igTimeSwitch_register);
 }
 void igTimeSwitch_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igTimeSwitch_meta,(int)igGroup_register,(int)fn_8011148C,(int)igTimeSwitch_getMetaCall,(int)igTimeSwitch_className,56,(int)igTimeSwitch_vtableRead,(int)igTimeSwitch_fieldInit,0,(int)lbl_80560188);
+ meta_registerClass(0,(int)&igTimeSwitch_meta,(int)igGroup_register,(int)fn_8011148C,(int)igTimeSwitch_getMetaCall,(int)igTimeSwitch_className,56,(int)igTimeSwitch_vtableRead,(int)igTimeSwitch_fieldInit,0,(int)igTimeSwitch_dependencies);
 }
 void *igTimeSwitch_getMetaCall(){return igTimeSwitch_getMeta();}
 }

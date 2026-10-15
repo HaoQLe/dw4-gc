@@ -19,13 +19,13 @@ extern char lbl_80471914[];
 extern char lbl_80474018[];
 extern char igTrackedElementMetaField_className[];
 extern char igTrackedElementMetaField_vtable[];
-extern char lbl_8055EBD8[8];
+extern char igTrackedElementMetaField_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igTrackedElementMetaField_meta;
 extern void *lbl_80562FE0;
 void *igTrackedElementMetaField_getMeta();
 void *igTrackedElementMetaField_vtableRead();
-void igTrackedElementMetaField_registerNow();
+void igTrackedElementMetaField_arkRegister();
 void igTrackedElementMetaField_register();
 void *igTrackedElementMetaField_getMetaCall();
 }
@@ -50,7 +50,7 @@ struct UnknownGenObject800D29B4 : UnknownGenObject800D29B4_1 {
 };
 extern "C" {
 void *igTrackedElementMetaField_getMeta(){
- if(!igTrackedElementMetaField_meta || !(reinterpret_cast<unsigned int *>(igTrackedElementMetaField_meta)[0x24/4]&4)) igTrackedElementMetaField_registerNow();
+ if(!igTrackedElementMetaField_meta || !(reinterpret_cast<unsigned int *>(igTrackedElementMetaField_meta)[0x24/4]&4)) igTrackedElementMetaField_arkRegister();
  return igTrackedElementMetaField_meta;
 }
 void *igTrackedElementMetaField_vtableRead(){
@@ -60,12 +60,12 @@ void *igTrackedElementMetaField_vtableRead(){
  object.unknown00=igTrackedElementMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTrackedElementMetaField_registerNow(){
+void igTrackedElementMetaField_arkRegister(){
  meta_registerNow((int)igTrackedElementMetaField_register);
 }
 void igTrackedElementMetaField_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igTrackedElementMetaField_meta,(int)igCompoundMetaField_register,(int)fn_80033638,(int)igTrackedElementMetaField_getMetaCall,(int)igTrackedElementMetaField_className,56,(int)igTrackedElementMetaField_vtableRead,0,0,(int)lbl_8055EBD8);
+ meta_registerClass(0,(int)&igTrackedElementMetaField_meta,(int)igCompoundMetaField_register,(int)fn_80033638,(int)igTrackedElementMetaField_getMetaCall,(int)igTrackedElementMetaField_className,56,(int)igTrackedElementMetaField_vtableRead,0,0,(int)igTrackedElementMetaField_dependencies);
 }
 void *igTrackedElementMetaField_getMetaCall(){return igTrackedElementMetaField_getMeta();}
 void fn_800D2B3C(){
@@ -81,7 +81,7 @@ void fn_800D2B3C(){
 }
 void *fn_800D2BD4(){
  if(!lbl_80562FE0){
-  igTrackedElementMetaField_registerNow();
+  igTrackedElementMetaField_arkRegister();
  }
  return lbl_80562FE0;
 }

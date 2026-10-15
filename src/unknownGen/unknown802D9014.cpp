@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beUnicodeObjList_registerNow();
+void beUnicodeObjList_arkRegister();
 extern void *beUnicodeObjList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beUnicodeObjList_metaObject(){
  return beUnicodeObjList_meta;
 }
 void *beUnicodeObjList_getMeta(){
- if(!beUnicodeObjList_meta || !(reinterpret_cast<unsigned int *>(beUnicodeObjList_meta)[0x24/4]&4)) beUnicodeObjList_registerNow();
+ if(!beUnicodeObjList_meta || !(reinterpret_cast<unsigned int *>(beUnicodeObjList_meta)[0x24/4]&4)) beUnicodeObjList_arkRegister();
  return beUnicodeObjList_meta;
 }
 }

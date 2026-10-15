@@ -16,7 +16,7 @@ void igVertexBlendMatrixAttr_register();
 void *igVertexBlendMatrixAttr_getMetaCall();
 }
 extern "C" {
-void igVertexBlendMatrixAttr_registerNow(){
+void igVertexBlendMatrixAttr_arkRegister(){
  meta_registerNow((int)igVertexBlendMatrixAttr_register);
 }
 void igVertexBlendMatrixAttr_register(){

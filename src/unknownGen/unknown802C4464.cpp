@@ -5,12 +5,12 @@ extern "C" {
 void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
-void beNodeAnim_registerNow();
+void beNodeAnim_arkRegister();
 void *fn_803116A4();
-extern char lbl_804D0470[];
-extern char lbl_804D0478[];
-extern char lbl_804D0480[];
-extern char lbl_804D0488[];
+extern char beLoadingNode_fieldTypes[];
+extern char beLoadingNode_fieldNames[];
+extern char beLoadingNode_fieldStorage[];
+extern char beLoadingNode_fieldOffsets[];
 extern void *beLoadingNode_meta;
 extern void *beNodeAnim_meta;
 }
@@ -18,12 +18,12 @@ extern "C" {
 void beLoadingNode_fieldInit(){
  void *meta=beLoadingNode_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804D0470,0x2);
- meta_setupFields(meta,lbl_804D0478,lbl_804D0480,lbl_804D0488,field);
+ meta_appendFields(meta,beLoadingNode_fieldTypes,0x2);
+ meta_setupFields(meta,beLoadingNode_fieldNames,beLoadingNode_fieldStorage,beLoadingNode_fieldOffsets,field);
 }
 void *fn_802C44E4(){return fn_803116A4();}
 void *beNodeAnim_getMeta(){
- if(!beNodeAnim_meta || !(reinterpret_cast<unsigned int *>(beNodeAnim_meta)[0x24/4]&4)) beNodeAnim_registerNow();
+ if(!beNodeAnim_meta || !(reinterpret_cast<unsigned int *>(beNodeAnim_meta)[0x24/4]&4)) beNodeAnim_arkRegister();
  return beNodeAnim_meta;
 }
 }

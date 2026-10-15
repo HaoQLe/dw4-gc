@@ -14,14 +14,14 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_8033FD10();
-void beNDMWLoadSlotPlayerList_registerNow();
+void beNDMWLoadSlotPlayerList_arkRegister();
 void igObject_register();
 extern char beNDMWMcSlotPS2_className[];
 extern char beNDMWMcSlot_className[];
-extern char lbl_804E3904[];
-extern char lbl_804E3918[];
-extern char lbl_804E392C[];
-extern char lbl_804E3940[];
+extern char beNDMWMcSlot_fieldTypes[];
+extern char beNDMWMcSlot_fieldNames[];
+extern char beNDMWMcSlot_fieldStorage[];
+extern char beNDMWMcSlot_fieldOffsets[];
 extern char beNDMWMcSlotPS2_meta[];
 extern void *beNDMWMcSlot_meta;
 extern void *beNDMWLoadSlotPlayerList_meta;
@@ -29,13 +29,13 @@ extern void *lbl_805621F4;
 void beNDMWMcSlotPS2_register();
 void *beNDMWMcSlotPS2_getMetaCall();
 void *beNDMWMcSlot_getMeta();
-void beNDMWMcSlot_registerNow();
+void beNDMWMcSlot_arkRegister();
 void beNDMWMcSlot_register();
 void *beNDMWMcSlot_getMetaCall();
 void beNDMWMcSlot_fieldInit();
 }
 extern "C" {
-void beNDMWMcSlotPS2_registerNow(){
+void beNDMWMcSlotPS2_arkRegister(){
  meta_registerNow((int)beNDMWMcSlotPS2_register);
 }
 void beNDMWMcSlotPS2_register(){
@@ -44,10 +44,10 @@ void beNDMWMcSlotPS2_register(){
 }
 void *beNDMWMcSlotPS2_getMetaCall(){return beNDMWMcSlotPS2_getMeta();}
 void *beNDMWMcSlot_getMeta(){
- if(!beNDMWMcSlot_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcSlot_meta)[0x24/4]&4)) beNDMWMcSlot_registerNow();
+ if(!beNDMWMcSlot_meta || !(reinterpret_cast<unsigned int *>(beNDMWMcSlot_meta)[0x24/4]&4)) beNDMWMcSlot_arkRegister();
  return beNDMWMcSlot_meta;
 }
-void beNDMWMcSlot_registerNow(){
+void beNDMWMcSlot_arkRegister(){
  meta_registerNow((int)beNDMWMcSlot_register);
 }
 void beNDMWMcSlot_register(){
@@ -58,15 +58,15 @@ void *beNDMWMcSlot_getMetaCall(){return beNDMWMcSlot_getMeta();}
 void beNDMWMcSlot_fieldInit(){
  void *meta=beNDMWMcSlot_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804E3904,0x5);
- meta_setupFields(meta,lbl_804E3918,lbl_804E392C,lbl_804E3940,field);
+ meta_appendFields(meta,beNDMWMcSlot_fieldTypes,0x5);
+ meta_setupFields(meta,beNDMWMcSlot_fieldNames,beNDMWMcSlot_fieldStorage,beNDMWMcSlot_fieldOffsets,field);
 }
 void *beNDMWLoadSlotPlayerList_metaObject(){
  if(!beNDMWLoadSlotPlayerList_meta) beNDMWLoadSlotPlayerList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return beNDMWLoadSlotPlayerList_meta;
 }
 void *beNDMWLoadSlotPlayerList_getMeta(){
- if(!beNDMWLoadSlotPlayerList_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadSlotPlayerList_meta)[0x24/4]&4)) beNDMWLoadSlotPlayerList_registerNow();
+ if(!beNDMWLoadSlotPlayerList_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadSlotPlayerList_meta)[0x24/4]&4)) beNDMWLoadSlotPlayerList_arkRegister();
  return beNDMWLoadSlotPlayerList_meta;
 }
 }

@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F840[8];
+extern char igObjectPropertyForModelViewMatrixBoneSelect_dependencies[8];
 extern void *igObjectPropertyForModelViewMatrixBoneSelect_meta;
 void *igObjectPropertyForModelViewMatrixBoneSelect_getMeta();
 void *igObjectPropertyForModelViewMatrixBoneSelect_vtableRead();
-void igObjectPropertyForModelViewMatrixBoneSelect_registerNow();
+void igObjectPropertyForModelViewMatrixBoneSelect_arkRegister();
 void igObjectPropertyForModelViewMatrixBoneSelect_register();
 void *igObjectPropertyForModelViewMatrixBoneSelect_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013CF30 : UnknownGenObject8013CF30_1 {
 };
 extern "C" {
 void *igObjectPropertyForModelViewMatrixBoneSelect_getMeta(){
- if(!igObjectPropertyForModelViewMatrixBoneSelect_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForModelViewMatrixBoneSelect_meta)[0x24/4]&4)) igObjectPropertyForModelViewMatrixBoneSelect_registerNow();
+ if(!igObjectPropertyForModelViewMatrixBoneSelect_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForModelViewMatrixBoneSelect_meta)[0x24/4]&4)) igObjectPropertyForModelViewMatrixBoneSelect_arkRegister();
  return igObjectPropertyForModelViewMatrixBoneSelect_meta;
 }
 void *igObjectPropertyForModelViewMatrixBoneSelect_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForModelViewMatrixBoneSelect_vtableRead(){
  object.unknown00=igObjectPropertyForModelViewMatrixBoneSelect_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForModelViewMatrixBoneSelect_registerNow(){
+void igObjectPropertyForModelViewMatrixBoneSelect_arkRegister(){
  meta_registerNow((int)igObjectPropertyForModelViewMatrixBoneSelect_register);
 }
 void igObjectPropertyForModelViewMatrixBoneSelect_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForModelViewMatrixBoneSelect_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForModelViewMatrixBoneSelect_getMetaCall,(int)igObjectPropertyForModelViewMatrixBoneSelect_className,44,(int)igObjectPropertyForModelViewMatrixBoneSelect_vtableRead,(int)fn_8013D0B8,0,(int)lbl_8055F840);
+ meta_registerClass(0,(int)&igObjectPropertyForModelViewMatrixBoneSelect_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForModelViewMatrixBoneSelect_getMetaCall,(int)igObjectPropertyForModelViewMatrixBoneSelect_className,44,(int)igObjectPropertyForModelViewMatrixBoneSelect_vtableRead,(int)fn_8013D0B8,0,(int)igObjectPropertyForModelViewMatrixBoneSelect_dependencies);
 }
 void *igObjectPropertyForModelViewMatrixBoneSelect_getMetaCall(){return igObjectPropertyForModelViewMatrixBoneSelect_getMeta();}
 }

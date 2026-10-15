@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beNDMWLoadIntf2_registerNow();
+void beNDMWLoadIntf2_arkRegister();
 extern char lbl_80453438[];
 extern char lbl_804E3514[];
 extern char lbl_804E3534[];
@@ -20,7 +20,7 @@ void *fn_8033E504(){
  return lbl_80536500;
 }
 void *beNDMWLoadIntf2_create(void *object){
- beNDMWLoadIntf2_registerNow();
+ beNDMWLoadIntf2_arkRegister();
  return meta_createInstance(beNDMWLoadIntf2_meta,object);
 }
 void *beNDMWLoadIntf2_metaObject(){
@@ -28,7 +28,7 @@ void *beNDMWLoadIntf2_metaObject(){
  return beNDMWLoadIntf2_meta;
 }
 void *beNDMWLoadIntf2_getMeta(){
- if(!beNDMWLoadIntf2_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadIntf2_meta)[0x24/4]&4)) beNDMWLoadIntf2_registerNow();
+ if(!beNDMWLoadIntf2_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadIntf2_meta)[0x24/4]&4)) beNDMWLoadIntf2_arkRegister();
  return beNDMWLoadIntf2_meta;
 }
 }

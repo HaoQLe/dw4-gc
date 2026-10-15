@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beDemoKeepMesList_registerNow();
+void beDemoKeepMesList_arkRegister();
 extern void *beDemoKeepMesList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beDemoKeepMesList_metaObject(){
  return beDemoKeepMesList_meta;
 }
 void *beDemoKeepMesList_getMeta(){
- if(!beDemoKeepMesList_meta || !(reinterpret_cast<unsigned int *>(beDemoKeepMesList_meta)[0x24/4]&4)) beDemoKeepMesList_registerNow();
+ if(!beDemoKeepMesList_meta || !(reinterpret_cast<unsigned int *>(beDemoKeepMesList_meta)[0x24/4]&4)) beDemoKeepMesList_arkRegister();
  return beDemoKeepMesList_meta;
 }
 }

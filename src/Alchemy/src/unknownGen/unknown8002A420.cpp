@@ -24,10 +24,10 @@ extern void *igMetaField_meta;
 extern void *lbl_805621F4;
 void *igMetaFieldInfo_getMeta();
 void *igMetaFieldInfo_vtableRead();
-void igMetaFieldInfo_registerNow();
+void igMetaFieldInfo_arkRegister();
 void igMetaFieldInfo_register();
 void *igMetaFieldInfo_getMetaCall();
-void igMetaField_registerNow();
+void igMetaField_arkRegister();
 }
 struct UnknownGenRoot8002A494 {
  void *unknown00;
@@ -48,11 +48,11 @@ struct UnknownGenObject8002A494 : UnknownGenObject8002A494_1 {
 };
 extern "C" {
 void *igMetaFieldInfo_create(void *object){
- igMetaFieldInfo_registerNow();
+ igMetaFieldInfo_arkRegister();
  return meta_createInstance(igMetaFieldInfo_meta,object);
 }
 void *igMetaFieldInfo_getMeta(){
- if(!igMetaFieldInfo_meta || !(reinterpret_cast<unsigned int *>(igMetaFieldInfo_meta)[0x24/4]&4)) igMetaFieldInfo_registerNow();
+ if(!igMetaFieldInfo_meta || !(reinterpret_cast<unsigned int *>(igMetaFieldInfo_meta)[0x24/4]&4)) igMetaFieldInfo_arkRegister();
  return igMetaFieldInfo_meta;
 }
 void *igMetaFieldInfo_vtableRead(){
@@ -63,7 +63,7 @@ void *igMetaFieldInfo_vtableRead(){
  object.unknown00=igMetaFieldInfo_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMetaFieldInfo_registerNow(){
+void igMetaFieldInfo_arkRegister(){
  meta_registerNow((int)igMetaFieldInfo_register);
 }
 void igMetaFieldInfo_register(){
@@ -81,10 +81,10 @@ void *fn_8002A638(){
  return igMetaField_meta;
 }
 void *igMetaField_getMeta(){
- if(!igMetaField_meta || !(reinterpret_cast<unsigned int *>(igMetaField_meta)[0x24/4]&4)) igMetaField_registerNow();
+ if(!igMetaField_meta || !(reinterpret_cast<unsigned int *>(igMetaField_meta)[0x24/4]&4)) igMetaField_arkRegister();
  return igMetaField_meta;
 }
-void igMetaField_registerNow(){
+void igMetaField_arkRegister(){
  meta_registerNow((int)igMetaField_register);
 }
 }

@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beMessengerDelayList_registerNow();
+void beMessengerDelayList_arkRegister();
 extern void *beMessengerDelayList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beMessengerDelayList_metaObject(){
  return beMessengerDelayList_meta;
 }
 void *beMessengerDelayList_getMeta(){
- if(!beMessengerDelayList_meta || !(reinterpret_cast<unsigned int *>(beMessengerDelayList_meta)[0x24/4]&4)) beMessengerDelayList_registerNow();
+ if(!beMessengerDelayList_meta || !(reinterpret_cast<unsigned int *>(beMessengerDelayList_meta)[0x24/4]&4)) beMessengerDelayList_arkRegister();
  return beMessengerDelayList_meta;
 }
 }

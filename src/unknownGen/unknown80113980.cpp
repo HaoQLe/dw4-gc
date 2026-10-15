@@ -7,7 +7,7 @@ void *fn_800607F4(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_8010CBD4();
-void igBasicColorChanger_registerNow();
+void igBasicColorChanger_arkRegister();
 void igBasicColorChanger_register();
 void *igOnOffColorChanger_getMeta();
 void igOnOffColorChanger_vtableRead();
@@ -21,7 +21,7 @@ void *igOnOffColorChanger_parentMeta();
 }
 extern "C" {
 void fn_80113980(){}
-void igOnOffColorChanger_registerNow(){
+void igOnOffColorChanger_arkRegister(){
  meta_registerNow((int)igOnOffColorChanger_register);
 }
 void igOnOffColorChanger_register(){
@@ -35,7 +35,7 @@ void *fn_80113A3C(){
  return igBasicColorChanger_meta;
 }
 void *igBasicColorChanger_getMeta(){
- if(!igBasicColorChanger_meta || !(reinterpret_cast<unsigned int *>(igBasicColorChanger_meta)[0x24/4]&4)) igBasicColorChanger_registerNow();
+ if(!igBasicColorChanger_meta || !(reinterpret_cast<unsigned int *>(igBasicColorChanger_meta)[0x24/4]&4)) igBasicColorChanger_arkRegister();
  return igBasicColorChanger_meta;
 }
 }

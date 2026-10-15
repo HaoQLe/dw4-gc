@@ -2,12 +2,12 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void igTimeTransform1_5_registerNow();
+void igTimeTransform1_5_arkRegister();
 extern void *igTimeTransform1_5_meta;
 }
 extern "C" {
 void *igTimeTransform1_5_getMeta(){
- if(!igTimeTransform1_5_meta || !(reinterpret_cast<unsigned int *>(igTimeTransform1_5_meta)[0x24/4]&4)) igTimeTransform1_5_registerNow();
+ if(!igTimeTransform1_5_meta || !(reinterpret_cast<unsigned int *>(igTimeTransform1_5_meta)[0x24/4]&4)) igTimeTransform1_5_arkRegister();
  return igTimeTransform1_5_meta;
 }
 }

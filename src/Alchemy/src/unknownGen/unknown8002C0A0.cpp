@@ -19,7 +19,7 @@ extern void *igMemoryFile_meta;
 extern void *igFile_meta;
 void *igMemoryFile_getMeta();
 void *igMemoryFile_vtableRead();
-void igMemoryFile_registerNow();
+void igMemoryFile_arkRegister();
 void igMemoryFile_register();
 void *igMemoryFile_getMetaCall();
 void *fn_8002C31C();
@@ -47,11 +47,11 @@ struct UnknownGenObject8002C134 : UnknownGenObject8002C134_1 {
 extern "C" {
 void *igArenaMemoryPool_getMetaCall(){return igArenaMemoryPool_getMeta();}
 void *igMemoryFile_create(void *object){
- igMemoryFile_registerNow();
+ igMemoryFile_arkRegister();
  return meta_createInstance(igMemoryFile_meta,object);
 }
 void *igMemoryFile_getMeta(){
- if(!igMemoryFile_meta || !(reinterpret_cast<unsigned int *>(igMemoryFile_meta)[0x24/4]&4)) igMemoryFile_registerNow();
+ if(!igMemoryFile_meta || !(reinterpret_cast<unsigned int *>(igMemoryFile_meta)[0x24/4]&4)) igMemoryFile_arkRegister();
  return igMemoryFile_meta;
 }
 void *igMemoryFile_vtableRead(){
@@ -64,7 +64,7 @@ void *igMemoryFile_vtableRead(){
  object.unknown00=igMemoryFile_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMemoryFile_registerNow(){
+void igMemoryFile_arkRegister(){
  meta_registerNow((int)igMemoryFile_register);
 }
 void igMemoryFile_register(){

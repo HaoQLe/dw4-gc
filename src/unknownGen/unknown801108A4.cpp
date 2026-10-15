@@ -11,7 +11,7 @@ void igMousePosObserver_fieldInit();
 void *igMousePosObserver_getMeta();
 void igMousePosObserver_vtableRead();
 void igView_register();
-extern char lbl_80494D74[];
+extern char igMousePosObserver_dependencies[];
 extern char igMousePosObserver_className[];
 extern void *igMousePosObserver_meta;
 void igMousePosObserver_register();
@@ -40,12 +40,12 @@ UnknownGenHolder *dtor_80110918(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igMousePosObserver_registerNow(){
+void igMousePosObserver_arkRegister(){
  meta_registerNow((int)igMousePosObserver_register);
 }
 void igMousePosObserver_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igMousePosObserver_meta,(int)igView_register,(int)fn_8010E6DC,(int)igMousePosObserver_getMetaCall,(int)igMousePosObserver_className,100,(int)igMousePosObserver_vtableRead,(int)igMousePosObserver_fieldInit,0,(int)lbl_80494D74);
+ meta_registerClass(0,(int)&igMousePosObserver_meta,(int)igView_register,(int)fn_8010E6DC,(int)igMousePosObserver_getMetaCall,(int)igMousePosObserver_className,100,(int)igMousePosObserver_vtableRead,(int)igMousePosObserver_fieldInit,0,(int)igMousePosObserver_dependencies);
 }
 void *igMousePosObserver_getMetaCall(){return igMousePosObserver_getMeta();}
 }

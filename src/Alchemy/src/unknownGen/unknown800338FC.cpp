@@ -18,7 +18,7 @@ extern void *igDataList_meta;
 extern void *lbl_805621F4;
 void *igDataList_getMeta();
 void *igDataList_vtableRead();
-void igDataList_registerNow();
+void igDataList_arkRegister();
 void igDataList_register();
 void *igDataList_getMetaCall();
 }
@@ -28,7 +28,7 @@ struct UnknownGenObject800339AC_0 {
 };
 extern "C" {
 void *igDataList_create(void *object){
- igDataList_registerNow();
+ igDataList_arkRegister();
  return meta_createInstance(igDataList_meta,object);
 }
 void *fn_80033934(){
@@ -36,7 +36,7 @@ void *fn_80033934(){
  return igDataList_meta;
 }
 void *igDataList_getMeta(){
- if(!igDataList_meta || !(reinterpret_cast<unsigned int *>(igDataList_meta)[0x24/4]&4)) igDataList_registerNow();
+ if(!igDataList_meta || !(reinterpret_cast<unsigned int *>(igDataList_meta)[0x24/4]&4)) igDataList_arkRegister();
  return igDataList_meta;
 }
 void *igDataList_vtableRead(){
@@ -45,7 +45,7 @@ void *igDataList_vtableRead(){
  object.unknown00=igDataList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igDataList_registerNow(){
+void igDataList_arkRegister(){
  meta_registerNow((int)igDataList_register);
 }
 void igDataList_register(){

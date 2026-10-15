@@ -14,12 +14,12 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F8F0[8];
+extern char igObjectPropertyForNode_dependencies[8];
 extern void *igObjectPropertyForNode_meta;
 extern void *igObjectProperty_meta;
 void *igObjectPropertyForNode_getMeta();
 void *igObjectPropertyForNode_vtableRead();
-void igObjectPropertyForNode_registerNow();
+void igObjectPropertyForNode_arkRegister();
 void igObjectPropertyForNode_register();
 void *igObjectPropertyForNode_getMetaCall();
 void *igObjectPropertyForNode_parentMeta();
@@ -40,7 +40,7 @@ struct UnknownGenObject80140580 : UnknownGenObject80140580_0 {
 };
 extern "C" {
 void *igObjectPropertyForNode_getMeta(){
- if(!igObjectPropertyForNode_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForNode_meta)[0x24/4]&4)) igObjectPropertyForNode_registerNow();
+ if(!igObjectPropertyForNode_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForNode_meta)[0x24/4]&4)) igObjectPropertyForNode_arkRegister();
  return igObjectPropertyForNode_meta;
 }
 void *igObjectPropertyForNode_vtableRead(){
@@ -53,12 +53,12 @@ void *igObjectPropertyForNode_vtableRead(){
  object.unknown00=igObjectPropertyForNode_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForNode_registerNow(){
+void igObjectPropertyForNode_arkRegister(){
  meta_registerNow((int)igObjectPropertyForNode_register);
 }
 void igObjectPropertyForNode_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForNode_meta,(int)igObjectProperty_register,(int)igObjectPropertyForNode_parentMeta,(int)igObjectPropertyForNode_getMetaCall,(int)igObjectPropertyForNode_className,44,(int)igObjectPropertyForNode_vtableRead,(int)igObjectPropertyForNode_fieldInit,0,(int)lbl_8055F8F0);
+ meta_registerClass(0,(int)&igObjectPropertyForNode_meta,(int)igObjectProperty_register,(int)igObjectPropertyForNode_parentMeta,(int)igObjectPropertyForNode_getMetaCall,(int)igObjectPropertyForNode_className,44,(int)igObjectPropertyForNode_vtableRead,(int)igObjectPropertyForNode_fieldInit,0,(int)igObjectPropertyForNode_dependencies);
 }
 void *igObjectPropertyForNode_getMetaCall(){return igObjectPropertyForNode_getMeta();}
 void *igObjectPropertyForNode_parentMeta(){return igObjectProperty_meta;}

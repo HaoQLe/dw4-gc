@@ -5,7 +5,7 @@ extern "C" {
 void *meta_createInstance(void *,void *);
 void fn_801C0640(void *,short);
 void fn_801C0C50(void *);
-void igFrustCullTraversal_registerNow();
+void igFrustCullTraversal_arkRegister();
 void *fn_801E9C84();
 extern void *igFrustCullTraversal_meta;
 }
@@ -16,11 +16,11 @@ struct UnknownGenObject801C05F8 {
 extern "C" {
 void *fn_801C0564(){return fn_801E9C84();}
 void *igFrustCullTraversal_create(void *object){
- igFrustCullTraversal_registerNow();
+ igFrustCullTraversal_arkRegister();
  return meta_createInstance(igFrustCullTraversal_meta,object);
 }
 void *igFrustCullTraversal_getMeta(){
- if(!igFrustCullTraversal_meta || !(reinterpret_cast<unsigned int *>(igFrustCullTraversal_meta)[0x24/4]&4)) igFrustCullTraversal_registerNow();
+ if(!igFrustCullTraversal_meta || !(reinterpret_cast<unsigned int *>(igFrustCullTraversal_meta)[0x24/4]&4)) igFrustCullTraversal_arkRegister();
  return igFrustCullTraversal_meta;
 }
 void *fn_801C05F8(){

@@ -14,11 +14,11 @@ extern char igSpriteAttr_className[];
 extern char igSpriteAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E158[8];
+extern char igSpriteAttr_dependencies[8];
 extern void *igSpriteAttr_meta;
 void *igSpriteAttr_getMeta();
 void *igSpriteAttr_vtableRead();
-void igSpriteAttr_registerNow();
+void igSpriteAttr_arkRegister();
 void igSpriteAttr_register();
 void *igSpriteAttr_getMetaCall();
 }
@@ -35,7 +35,7 @@ struct UnknownGenObject800B0704 : UnknownGenRoot800B0704 {
 };
 extern "C" {
 void *igSpriteAttr_getMeta(){
- if(!igSpriteAttr_meta || !(reinterpret_cast<unsigned int *>(igSpriteAttr_meta)[0x24/4]&4)) igSpriteAttr_registerNow();
+ if(!igSpriteAttr_meta || !(reinterpret_cast<unsigned int *>(igSpriteAttr_meta)[0x24/4]&4)) igSpriteAttr_arkRegister();
  return igSpriteAttr_meta;
 }
 void *igSpriteAttr_vtableRead(){
@@ -57,12 +57,12 @@ UnknownGenHolder *dtor_800B07A4(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igSpriteAttr_registerNow(){
+void igSpriteAttr_arkRegister(){
  meta_registerNow((int)igSpriteAttr_register);
 }
 void igSpriteAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igSpriteAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igSpriteAttr_getMetaCall,(int)igSpriteAttr_className,32,(int)igSpriteAttr_vtableRead,(int)igSpriteAttr_fieldInit,0,(int)lbl_8055E158);
+ meta_registerClass(0,(int)&igSpriteAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igSpriteAttr_getMetaCall,(int)igSpriteAttr_className,32,(int)igSpriteAttr_vtableRead,(int)igSpriteAttr_fieldInit,0,(int)igSpriteAttr_dependencies);
 }
 void *igSpriteAttr_getMetaCall(){return igSpriteAttr_getMeta();}
 }

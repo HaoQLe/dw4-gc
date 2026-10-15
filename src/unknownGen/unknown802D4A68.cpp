@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beHitLandModel_registerNow();
+void beHitLandModel_arkRegister();
 extern char lbl_8041CD10[];
 extern char lbl_804D1ABC[];
 extern char lbl_804D1AD0[];
@@ -20,7 +20,7 @@ void *fn_802D4A68(){
  return lbl_805351C0;
 }
 void *beHitLandModel_create(void *object){
- beHitLandModel_registerNow();
+ beHitLandModel_arkRegister();
  return meta_createInstance(beHitLandModel_meta,object);
 }
 void *beHitLandModel_metaObject(){
@@ -28,7 +28,7 @@ void *beHitLandModel_metaObject(){
  return beHitLandModel_meta;
 }
 void *beHitLandModel_getMeta(){
- if(!beHitLandModel_meta || !(reinterpret_cast<unsigned int *>(beHitLandModel_meta)[0x24/4]&4)) beHitLandModel_registerNow();
+ if(!beHitLandModel_meta || !(reinterpret_cast<unsigned int *>(beHitLandModel_meta)[0x24/4]&4)) beHitLandModel_arkRegister();
  return beHitLandModel_meta;
 }
 }

@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void igBlendMatrixSelect_registerNow();
+void igBlendMatrixSelect_arkRegister();
 extern void *lbl_805621F4;
 extern void *igBlendMatrixSelect_meta;
 }
 extern "C" {
 void *igBlendMatrixSelect_create(void *object){
- igBlendMatrixSelect_registerNow();
+ igBlendMatrixSelect_arkRegister();
  return meta_createInstance(igBlendMatrixSelect_meta,object);
 }
 void *fn_801C6F3C(){
@@ -19,7 +19,7 @@ void *fn_801C6F3C(){
  return igBlendMatrixSelect_meta;
 }
 void *igBlendMatrixSelect_getMeta(){
- if(!igBlendMatrixSelect_meta || !(reinterpret_cast<unsigned int *>(igBlendMatrixSelect_meta)[0x24/4]&4)) igBlendMatrixSelect_registerNow();
+ if(!igBlendMatrixSelect_meta || !(reinterpret_cast<unsigned int *>(igBlendMatrixSelect_meta)[0x24/4]&4)) igBlendMatrixSelect_arkRegister();
  return igBlendMatrixSelect_meta;
 }
 }

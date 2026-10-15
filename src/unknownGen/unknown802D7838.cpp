@@ -10,17 +10,17 @@ void *meta_fieldCount(void *);
 void fn_80071694(void *,int);
 void *fn_80122100();
 void *beGeneraterPlayerDataList_metaObject();
-extern char lbl_804D1DC8[];
-extern char lbl_804D1DF8[];
-extern char lbl_804D1E28[];
-extern char lbl_804D1E58[];
+extern char beGeneraterData_fieldTypes[];
+extern char beGeneraterData_fieldNames[];
+extern char beGeneraterData_fieldStorage[];
+extern char beGeneraterData_fieldOffsets[];
 extern void *beGeneraterData_meta;
 }
 extern "C" {
 void beGeneraterData_fieldInit(){
  void *value0=beGeneraterData_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D1DC8,12);
+ meta_appendFields(value0,beGeneraterData_fieldTypes,12);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+2));
  void *value3=fn_80122100();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -37,7 +37,7 @@ void beGeneraterData_fieldInit(){
  void *value9=beGeneraterPlayerDataList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value8)+52)=1;
- meta_setupFields(value0,lbl_804D1DF8,lbl_804D1E28,lbl_804D1E58,value1);
+ meta_setupFields(value0,beGeneraterData_fieldNames,beGeneraterData_fieldStorage,beGeneraterData_fieldOffsets,value1);
 }
 }
 #pragma pop

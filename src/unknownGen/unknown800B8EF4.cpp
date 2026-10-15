@@ -22,22 +22,22 @@ extern char igColorScalerStateAttr_vtable[];
 extern char igColorMaskAttr_vtable[];
 extern char lbl_8047D578[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E5BC[4];
-extern char lbl_8055E5C8[4];
-extern char lbl_8055E5CC[4];
-extern char lbl_8055E5D0[4];
+extern char igColorScalerStateAttr_fieldTypes[4];
+extern char igColorScalerStateAttr_fieldNames[4];
+extern char igColorScalerStateAttr_fieldStorage[4];
+extern char igColorScalerStateAttr_fieldOffsets[4];
 extern char lbl_8055E5D4[4];
 extern void *igColorScalerStateAttr_meta;
 extern void *igColorMaskAttr_meta;
 void *igColorScalerStateAttr_getMeta();
 void *igColorScalerStateAttr_vtableRead();
-void igColorScalerStateAttr_registerNow();
+void igColorScalerStateAttr_arkRegister();
 void igColorScalerStateAttr_register();
 void *igColorScalerStateAttr_getMetaCall();
 void igColorScalerStateAttr_fieldInit();
 void *igColorMaskAttr_getMeta();
 void *igColorMaskAttr_vtableRead();
-void igColorMaskAttr_registerNow();
+void igColorMaskAttr_arkRegister();
 void igColorMaskAttr_register();
 void *igColorMaskAttr_getMetaCall();
 }
@@ -51,7 +51,7 @@ struct UnknownGenObject800B9140_0 {
 };
 extern "C" {
 void *igColorScalerStateAttr_getMeta(){
- if(!igColorScalerStateAttr_meta || !(reinterpret_cast<unsigned int *>(igColorScalerStateAttr_meta)[0x24/4]&4)) igColorScalerStateAttr_registerNow();
+ if(!igColorScalerStateAttr_meta || !(reinterpret_cast<unsigned int *>(igColorScalerStateAttr_meta)[0x24/4]&4)) igColorScalerStateAttr_arkRegister();
  return igColorScalerStateAttr_meta;
 }
 void *igColorScalerStateAttr_vtableRead(){
@@ -62,7 +62,7 @@ void *igColorScalerStateAttr_vtableRead(){
  object.unknown00=igColorScalerStateAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igColorScalerStateAttr_registerNow(){
+void igColorScalerStateAttr_arkRegister(){
  meta_registerNow((int)igColorScalerStateAttr_register);
 }
 void igColorScalerStateAttr_register(){
@@ -73,18 +73,18 @@ void *igColorScalerStateAttr_getMetaCall(){return igColorScalerStateAttr_getMeta
 void igColorScalerStateAttr_fieldInit(){
  void *value0=igColorScalerStateAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E5BC,1);
+ meta_appendFields(value0,igColorScalerStateAttr_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E5D4);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_8003D160;
- meta_setupFields(value0,lbl_8055E5C8,lbl_8055E5CC,lbl_8055E5D0,value1);
+ meta_setupFields(value0,igColorScalerStateAttr_fieldNames,igColorScalerStateAttr_fieldStorage,igColorScalerStateAttr_fieldOffsets,value1);
 }
 void *igColorMaskAttr_create(void *object){
- igColorMaskAttr_registerNow();
+ igColorMaskAttr_arkRegister();
  return meta_createInstance(igColorMaskAttr_meta,object);
 }
 void *igColorMaskAttr_getMeta(){
- if(!igColorMaskAttr_meta || !(reinterpret_cast<unsigned int *>(igColorMaskAttr_meta)[0x24/4]&4)) igColorMaskAttr_registerNow();
+ if(!igColorMaskAttr_meta || !(reinterpret_cast<unsigned int *>(igColorMaskAttr_meta)[0x24/4]&4)) igColorMaskAttr_arkRegister();
  return igColorMaskAttr_meta;
 }
 void *igColorMaskAttr_vtableRead(){
@@ -95,7 +95,7 @@ void *igColorMaskAttr_vtableRead(){
  object.unknown00=igColorMaskAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igColorMaskAttr_registerNow(){
+void igColorMaskAttr_arkRegister(){
  meta_registerNow((int)igColorMaskAttr_register);
 }
 void igColorMaskAttr_register(){

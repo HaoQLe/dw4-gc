@@ -14,11 +14,11 @@ extern char igGamecubeMultiTextureExt_className[];
 extern char igGamecubeMultiTextureExt_vtable[];
 extern char lbl_80492CD4[];
 extern char lbl_80493EEC[];
-extern char lbl_8055EE00[8];
+extern char igGamecubeMultiTextureExt_dependencies[8];
 extern void *igMultiTextureExt_meta;
 extern void *igGamecubeMultiTextureExt_meta;
 void *igGamecubeMultiTextureExt_vtableRead();
-void igGamecubeMultiTextureExt_registerNow();
+void igGamecubeMultiTextureExt_arkRegister();
 void igGamecubeMultiTextureExt_register();
 void *igGamecubeMultiTextureExt_parentMeta();
 }
@@ -46,7 +46,7 @@ struct UnknownGenObject800D8290 : UnknownGenObject800D8290_2 {
 };
 extern "C" {
 void *igGamecubeMultiTextureExt_getMeta(){
- if(!igGamecubeMultiTextureExt_meta || !(reinterpret_cast<unsigned int *>(igGamecubeMultiTextureExt_meta)[0x24/4]&4)) igGamecubeMultiTextureExt_registerNow();
+ if(!igGamecubeMultiTextureExt_meta || !(reinterpret_cast<unsigned int *>(igGamecubeMultiTextureExt_meta)[0x24/4]&4)) igGamecubeMultiTextureExt_arkRegister();
  return igGamecubeMultiTextureExt_meta;
 }
 void *igGamecubeMultiTextureExt_vtableRead(){
@@ -59,12 +59,12 @@ void *igGamecubeMultiTextureExt_vtableRead(){
  object.unknown00=igGamecubeMultiTextureExt_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeMultiTextureExt_registerNow(){
+void igGamecubeMultiTextureExt_arkRegister(){
  meta_registerNow((int)igGamecubeMultiTextureExt_register);
 }
 void igGamecubeMultiTextureExt_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igGamecubeMultiTextureExt_meta,(int)igMultiTextureExt_register,(int)igGamecubeMultiTextureExt_parentMeta,(int)igGamecubeMultiTextureExt_getMetaCall,(int)igGamecubeMultiTextureExt_className,152,(int)igGamecubeMultiTextureExt_vtableRead,(int)fn_800D842C,0,(int)lbl_8055EE00);
+ meta_registerClass(0,(int)&igGamecubeMultiTextureExt_meta,(int)igMultiTextureExt_register,(int)igGamecubeMultiTextureExt_parentMeta,(int)igGamecubeMultiTextureExt_getMetaCall,(int)igGamecubeMultiTextureExt_className,152,(int)igGamecubeMultiTextureExt_vtableRead,(int)fn_800D842C,0,(int)igGamecubeMultiTextureExt_dependencies);
 }
 void *igGamecubeMultiTextureExt_parentMeta(){return igMultiTextureExt_meta;}
 }

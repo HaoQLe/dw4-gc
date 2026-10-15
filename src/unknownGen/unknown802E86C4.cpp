@@ -17,10 +17,10 @@ void fn_802E8264();
 void fn_802E82C4();
 extern char lbl_8041E6AC[];
 extern char lbl_8042149C[];
-extern char lbl_804D3364[];
-extern char lbl_804D33AC[];
-extern char lbl_804D33F4[];
-extern char lbl_804D343C[];
+extern char ParticleInfo_fieldTypes[];
+extern char ParticleInfo_fieldNames[];
+extern char ParticleInfo_fieldStorage[];
+extern char ParticleInfo_fieldOffsets[];
 extern char lbl_804D3484[];
 extern char lbl_804D3488[];
 extern char lbl_804D348C[];
@@ -31,7 +31,7 @@ extern "C" {
 void ParticleInfo_fieldInit(){
  void *value0=ParticleInfo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D3364,18);
+ meta_appendFields(value0,ParticleInfo_fieldTypes,18);
  void *value2=meta_field(value0,value1);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)192;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+36)=3;
@@ -66,7 +66,7 @@ void ParticleInfo_fieldInit(){
  void *value15=meta_field(value0,(reinterpret_cast<char *>(value1)+17));
  void *value16=fn_801C010C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value15)+56)=value16;
- meta_setupFields(value0,lbl_804D33AC,lbl_804D33F4,lbl_804D343C,value1);
+ meta_setupFields(value0,ParticleInfo_fieldNames,ParticleInfo_fieldStorage,ParticleInfo_fieldOffsets,value1);
 }
 }
 #pragma pop

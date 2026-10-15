@@ -22,18 +22,18 @@ void igObjectTraversal_fieldInit();
 void igObject_register();
 extern char igObjectTraversal_className[];
 extern char igOptConfiguration_className[];
-extern char lbl_8049DA90[];
+extern char igOptBase_dependencies[];
 extern char igOptBase_className[];
-extern char lbl_8049DAA8[];
+extern char igObjectTraversal_dependencies[];
 extern char igObjectTraversal_vtable[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char igOptConfiguration_vtable[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F7E8[8];
-extern char lbl_8055F7F0[8];
-extern char lbl_8055F7F8[8];
-extern char lbl_8055F800[8];
+extern char igOptBase_fieldTypes[8];
+extern char igOptBase_fieldNames[8];
+extern char igOptBase_fieldStorage[8];
+extern char igOptBase_fieldOffsets[8];
 extern void *lbl_805621F4;
 extern void *igOptConfiguration_meta;
 extern void *igOptBase_meta;
@@ -42,18 +42,18 @@ extern void *igBase_meta;
 void *fn_8013B7B0();
 void *igOptConfiguration_getMeta();
 void *igOptConfiguration_vtableRead();
-void igOptConfiguration_registerNow();
+void igOptConfiguration_arkRegister();
 void igOptConfiguration_register();
 void *igOptConfiguration_getMetaCall();
 void *igOptBase_getMeta();
-void igOptBase_registerNow();
+void igOptBase_arkRegister();
 void igOptBase_register();
 void *igOptBase_getMetaCall();
 void *fn_8013BA10();
 void igOptBase_fieldInit();
 void *igObjectTraversal_getMeta();
 void *igObjectTraversal_vtableRead();
-void igObjectTraversal_registerNow();
+void igObjectTraversal_arkRegister();
 void igObjectTraversal_register();
 void *igObjectTraversal_getMetaCall();
 }
@@ -76,7 +76,7 @@ struct UnknownGenObject8013BAEC : UnknownGenRoot8013BAEC {
 };
 extern "C" {
 void *igOptConfiguration_create(void *object){
- igOptConfiguration_registerNow();
+ igOptConfiguration_arkRegister();
  return meta_createInstance(igOptConfiguration_meta,object);
 }
 void *fn_8013B7B0(){
@@ -84,7 +84,7 @@ void *fn_8013B7B0(){
  return igOptConfiguration_meta;
 }
 void *igOptConfiguration_getMeta(){
- if(!igOptConfiguration_meta || !(reinterpret_cast<unsigned int *>(igOptConfiguration_meta)[0x24/4]&4)) igOptConfiguration_registerNow();
+ if(!igOptConfiguration_meta || !(reinterpret_cast<unsigned int *>(igOptConfiguration_meta)[0x24/4]&4)) igOptConfiguration_arkRegister();
  return igOptConfiguration_meta;
 }
 void *igOptConfiguration_vtableRead(){
@@ -93,7 +93,7 @@ void *igOptConfiguration_vtableRead(){
  object.unknown00=igOptConfiguration_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igOptConfiguration_registerNow(){
+void igOptConfiguration_arkRegister(){
  meta_registerNow((int)igOptConfiguration_register);
 }
 void igOptConfiguration_register(){
@@ -102,32 +102,32 @@ void igOptConfiguration_register(){
 }
 void *igOptConfiguration_getMetaCall(){return igOptConfiguration_getMeta();}
 void *igOptBase_getMeta(){
- if(!igOptBase_meta || !(reinterpret_cast<unsigned int *>(igOptBase_meta)[0x24/4]&4)) igOptBase_registerNow();
+ if(!igOptBase_meta || !(reinterpret_cast<unsigned int *>(igOptBase_meta)[0x24/4]&4)) igOptBase_arkRegister();
  return igOptBase_meta;
 }
-void igOptBase_registerNow(){
+void igOptBase_arkRegister(){
  meta_registerNow((int)igOptBase_register);
 }
 void igOptBase_register(){
  fn_8012FC48();
- meta_registerClass(1,(int)&igOptBase_meta,(int)igBase_register,(int)fn_8013BA10,(int)igOptBase_getMetaCall,(int)igOptBase_className,40,0,(int)igOptBase_fieldInit,0,(int)lbl_8049DA90);
+ meta_registerClass(1,(int)&igOptBase_meta,(int)igBase_register,(int)fn_8013BA10,(int)igOptBase_getMetaCall,(int)igOptBase_className,40,0,(int)igOptBase_fieldInit,0,(int)igOptBase_dependencies);
 }
 void *igOptBase_getMetaCall(){return igOptBase_getMeta();}
 void *fn_8013BA10(){return igBase_meta;}
 void igOptBase_fieldInit(){
  void *value0=igOptBase_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F7E8,2);
+ meta_appendFields(value0,igOptBase_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80026B14();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value5=fn_8013B7B0();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
- meta_setupFields(value0,lbl_8055F7F0,lbl_8055F7F8,lbl_8055F800,value1);
+ meta_setupFields(value0,igOptBase_fieldNames,igOptBase_fieldStorage,igOptBase_fieldOffsets,value1);
 }
 void *igObjectTraversal_getMeta(){
- if(!igObjectTraversal_meta || !(reinterpret_cast<unsigned int *>(igObjectTraversal_meta)[0x24/4]&4)) igObjectTraversal_registerNow();
+ if(!igObjectTraversal_meta || !(reinterpret_cast<unsigned int *>(igObjectTraversal_meta)[0x24/4]&4)) igObjectTraversal_arkRegister();
  return igObjectTraversal_meta;
 }
 void *igObjectTraversal_vtableRead(){
@@ -141,12 +141,12 @@ void *igObjectTraversal_vtableRead(){
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectTraversal_registerNow(){
+void igObjectTraversal_arkRegister(){
  meta_registerNow((int)igObjectTraversal_register);
 }
 void igObjectTraversal_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectTraversal_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igObjectTraversal_getMetaCall,(int)igObjectTraversal_className,44,(int)igObjectTraversal_vtableRead,(int)igObjectTraversal_fieldInit,0,(int)lbl_8049DAA8);
+ meta_registerClass(0,(int)&igObjectTraversal_meta,(int)igItemBase_register,(int)fn_8013496C,(int)igObjectTraversal_getMetaCall,(int)igObjectTraversal_className,44,(int)igObjectTraversal_vtableRead,(int)igObjectTraversal_fieldInit,0,(int)igObjectTraversal_dependencies);
 }
 void *igObjectTraversal_getMetaCall(){return igObjectTraversal_getMeta();}
 }

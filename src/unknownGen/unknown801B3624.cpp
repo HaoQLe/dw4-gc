@@ -11,7 +11,7 @@ void igGroup_register();
 void igSelfShadowShader_fieldInit();
 void *igSelfShadowShader_getMeta();
 void igSelfShadowShader_vtableRead();
-extern char lbl_804ACE04[];
+extern char igSelfShadowShader_dependencies[];
 extern char igSelfShadowShader_className[];
 extern void *igSelfShadowShader_meta;
 void igSelfShadowShader_register();
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_801B3624(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igSelfShadowShader_registerNow(){
+void igSelfShadowShader_arkRegister(){
  meta_registerNow((int)igSelfShadowShader_register);
 }
 void igSelfShadowShader_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igSelfShadowShader_meta,(int)igGroup_register,(int)fn_8011148C,(int)igSelfShadowShader_getMetaCall,(int)igSelfShadowShader_className,232,(int)igSelfShadowShader_vtableRead,(int)igSelfShadowShader_fieldInit,0,(int)lbl_804ACE04);
+ meta_registerClass(0,(int)&igSelfShadowShader_meta,(int)igGroup_register,(int)fn_8011148C,(int)igSelfShadowShader_getMetaCall,(int)igSelfShadowShader_className,232,(int)igSelfShadowShader_vtableRead,(int)igSelfShadowShader_fieldInit,0,(int)igSelfShadowShader_dependencies);
 }
 void *igSelfShadowShader_getMetaCall(){return igSelfShadowShader_getMeta();}
 }

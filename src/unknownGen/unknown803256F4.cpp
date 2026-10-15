@@ -27,17 +27,17 @@ void *beNDMWLoadIntf2_metaObject();
 void *beNDMWLoadCtrl2_metaObject();
 void *beNDMWGameRam_metaObject();
 void *beNDMWAfsSetup_metaObject();
-extern char lbl_804E1558[];
-extern char lbl_804E15AC[];
-extern char lbl_804E1600[];
-extern char lbl_804E1654[];
+extern char libNdmwRuntimePlugin_fieldTypes[];
+extern char libNdmwRuntimePlugin_fieldNames[];
+extern char libNdmwRuntimePlugin_fieldStorage[];
+extern char libNdmwRuntimePlugin_fieldOffsets[];
 extern void *libNdmwRuntimePlugin_meta;
 }
 extern "C" {
 void libNdmwRuntimePlugin_fieldInit(){
  void *value0=libNdmwRuntimePlugin_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E1558,21);
+ meta_appendFields(value0,libNdmwRuntimePlugin_fieldTypes,21);
  void *value2=meta_field(value0,value1);
  void *value3=beNDMWAfsSetup_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -101,7 +101,7 @@ void libNdmwRuntimePlugin_fieldInit(){
  void *value42=meta_field(value0,(reinterpret_cast<char *>(value1)+20));
  void *value43=beNDMWMdlMapCursor_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value42)+56)=value43;
- meta_setupFields(value0,lbl_804E15AC,lbl_804E1600,lbl_804E1654,value1);
+ meta_setupFields(value0,libNdmwRuntimePlugin_fieldNames,libNdmwRuntimePlugin_fieldStorage,libNdmwRuntimePlugin_fieldOffsets,value1);
 }
 }
 #pragma pop

@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beLuaDataList_registerNow();
+void beLuaDataList_arkRegister();
 extern void *beLuaDataList_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beLuaDataList_metaObject(){
  return beLuaDataList_meta;
 }
 void *beLuaDataList_getMeta(){
- if(!beLuaDataList_meta || !(reinterpret_cast<unsigned int *>(beLuaDataList_meta)[0x24/4]&4)) beLuaDataList_registerNow();
+ if(!beLuaDataList_meta || !(reinterpret_cast<unsigned int *>(beLuaDataList_meta)[0x24/4]&4)) beLuaDataList_arkRegister();
  return beLuaDataList_meta;
 }
 }

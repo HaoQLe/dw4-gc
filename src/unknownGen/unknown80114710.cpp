@@ -37,7 +37,7 @@ extern char igDataList_vtable[];
 extern char lbl_80474018[];
 extern char igNamedObject_vtable[];
 extern char igBoxModel_className[];
-extern char lbl_804956BC[];
+extern char igBitmapFont_dependencies[];
 extern char igBitmapFont_className[];
 extern char igCharMetricsList_className[];
 extern char igCharMetricsMetaField_className[];
@@ -49,17 +49,17 @@ extern char lbl_80496EC8[];
 extern char lbl_80496F28[];
 extern char igBoxModel_vtable[];
 extern char igGuiComponentModel_vtable[];
-extern char lbl_8055F224[8];
-extern char lbl_8055F22C[4];
-extern char lbl_8055F230[4];
-extern char lbl_8055F234[4];
-extern char lbl_8055F238[4];
-extern char lbl_8055F23C[8];
-extern char lbl_8055F244[8];
-extern char lbl_8055F24C[8];
-extern char lbl_8055F254[8];
+extern char igBoxModel_dependencies[8];
+extern char igBoxModel_fieldTypes[4];
+extern char igBoxModel_fieldNames[4];
+extern char igBoxModel_fieldStorage[4];
+extern char igBoxModel_fieldOffsets[4];
+extern char igBitmapFont_fieldTypes[8];
+extern char igBitmapFont_fieldNames[8];
+extern char igBitmapFont_fieldStorage[8];
+extern char igBitmapFont_fieldOffsets[8];
 extern char lbl_8055F25C[6];
-extern char lbl_8055F264[8];
+extern char igCharMetricsMetaField_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igFont_meta;
 extern void *igBoxModel_meta;
@@ -70,13 +70,13 @@ extern void *igCharMetricsMetaField_meta;
 extern void *lbl_80563850;
 void *igBoxModel_getMeta();
 void *igBoxModel_vtableRead();
-void igBoxModel_registerNow();
+void igBoxModel_arkRegister();
 void igBoxModel_register();
 void *igBoxModel_getMetaCall();
 void igBoxModel_fieldInit();
 void *igBitmapFont_getMeta();
 void *igBitmapFont_vtableRead();
-void igBitmapFont_registerNow();
+void igBitmapFont_arkRegister();
 void igBitmapFont_register();
 void *igBitmapFont_getMetaCall();
 void *igBitmapFont_parentMeta();
@@ -84,13 +84,13 @@ void igBitmapFont_fieldInit();
 void *fn_80114D4C();
 void *igCharMetricsList_getMeta();
 void *igCharMetricsList_vtableRead();
-void igCharMetricsList_registerNow();
+void igCharMetricsList_arkRegister();
 void igCharMetricsList_register();
 void *igCharMetricsList_getMetaCall();
 void fn_80114ED4();
 void *igCharMetricsMetaField_getMeta();
 void *igCharMetricsMetaField_vtableRead();
-void igCharMetricsMetaField_registerNow();
+void igCharMetricsMetaField_arkRegister();
 void igCharMetricsMetaField_register();
 void *igCharMetricsMetaField_getMetaCall();
 void *fn_801151EC();
@@ -161,7 +161,7 @@ struct UnknownGenObject80114FCC : UnknownGenObject80114FCC_1 {
 };
 extern "C" {
 void *igBoxModel_getMeta(){
- if(!igBoxModel_meta || !(reinterpret_cast<unsigned int *>(igBoxModel_meta)[0x24/4]&4)) igBoxModel_registerNow();
+ if(!igBoxModel_meta || !(reinterpret_cast<unsigned int *>(igBoxModel_meta)[0x24/4]&4)) igBoxModel_arkRegister();
  return igBoxModel_meta;
 }
 void *igBoxModel_vtableRead(){
@@ -173,30 +173,30 @@ void *igBoxModel_vtableRead(){
  object.unknown24.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igBoxModel_registerNow(){
+void igBoxModel_arkRegister(){
  meta_registerNow((int)igBoxModel_register);
 }
 void igBoxModel_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igBoxModel_meta,(int)igGuiComponentModel_register,(int)fn_8010D6A0,(int)igBoxModel_getMetaCall,(int)igBoxModel_className,40,(int)igBoxModel_vtableRead,(int)igBoxModel_fieldInit,0,(int)lbl_8055F224);
+ meta_registerClass(0,(int)&igBoxModel_meta,(int)igGuiComponentModel_register,(int)fn_8010D6A0,(int)igBoxModel_getMetaCall,(int)igBoxModel_className,40,(int)igBoxModel_vtableRead,(int)igBoxModel_fieldInit,0,(int)igBoxModel_dependencies);
 }
 void *igBoxModel_getMetaCall(){return igBoxModel_getMeta();}
 void igBoxModel_fieldInit(){
  void *value0=igBoxModel_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F22C,1);
+ meta_appendFields(value0,igBoxModel_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80111B38();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- meta_setupFields(value0,lbl_8055F230,lbl_8055F234,lbl_8055F238,value1);
+ meta_setupFields(value0,igBoxModel_fieldNames,igBoxModel_fieldStorage,igBoxModel_fieldOffsets,value1);
 }
 void *fn_80114988(){
  if(!igBitmapFont_meta) igBitmapFont_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igBitmapFont_meta;
 }
 void *igBitmapFont_getMeta(){
- if(!igBitmapFont_meta || !(reinterpret_cast<unsigned int *>(igBitmapFont_meta)[0x24/4]&4)) igBitmapFont_registerNow();
+ if(!igBitmapFont_meta || !(reinterpret_cast<unsigned int *>(igBitmapFont_meta)[0x24/4]&4)) igBitmapFont_arkRegister();
  return igBitmapFont_meta;
 }
 void *igBitmapFont_vtableRead(){
@@ -221,19 +221,19 @@ UnknownGenHolder *dtor_80114B68(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igBitmapFont_registerNow(){
+void igBitmapFont_arkRegister(){
  meta_registerNow((int)igBitmapFont_register);
 }
 void igBitmapFont_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igBitmapFont_meta,(int)igFont_register,(int)igBitmapFont_parentMeta,(int)igBitmapFont_getMetaCall,(int)igBitmapFont_className,36,(int)igBitmapFont_vtableRead,(int)igBitmapFont_fieldInit,0,(int)lbl_804956BC);
+ meta_registerClass(0,(int)&igBitmapFont_meta,(int)igFont_register,(int)igBitmapFont_parentMeta,(int)igBitmapFont_getMetaCall,(int)igBitmapFont_className,36,(int)igBitmapFont_vtableRead,(int)igBitmapFont_fieldInit,0,(int)igBitmapFont_dependencies);
 }
 void *igBitmapFont_getMetaCall(){return igBitmapFont_getMeta();}
 void *igBitmapFont_parentMeta(){return igFont_meta;}
 void igBitmapFont_fieldInit(){
  void *value0=igBitmapFont_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F23C,2);
+ meta_appendFields(value0,igBitmapFont_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_80114D4C();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -242,14 +242,14 @@ void igBitmapFont_fieldInit(){
  void *value5=fn_800AF168();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
- meta_setupFields(value0,lbl_8055F244,lbl_8055F24C,lbl_8055F254,value1);
+ meta_setupFields(value0,igBitmapFont_fieldNames,igBitmapFont_fieldStorage,igBitmapFont_fieldOffsets,value1);
 }
 void *fn_80114D4C(){
  if(!igCharMetricsList_meta) igCharMetricsList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igCharMetricsList_meta;
 }
 void *igCharMetricsList_getMeta(){
- if(!igCharMetricsList_meta || !(reinterpret_cast<unsigned int *>(igCharMetricsList_meta)[0x24/4]&4)) igCharMetricsList_registerNow();
+ if(!igCharMetricsList_meta || !(reinterpret_cast<unsigned int *>(igCharMetricsList_meta)[0x24/4]&4)) igCharMetricsList_arkRegister();
  return igCharMetricsList_meta;
 }
 void *igCharMetricsList_vtableRead(){
@@ -260,7 +260,7 @@ void *igCharMetricsList_vtableRead(){
  object.unknown00=igCharMetricsList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCharMetricsList_registerNow(){
+void igCharMetricsList_arkRegister(){
  meta_registerNow((int)igCharMetricsList_register);
 }
 void igCharMetricsList_register(){
@@ -280,7 +280,7 @@ void fn_80114ED4(){
  unknownGenDrop(reinterpret_cast<UnknownGenValue *>(field));
 }
 void *igCharMetricsMetaField_getMeta(){
- if(!igCharMetricsMetaField_meta || !(reinterpret_cast<unsigned int *>(igCharMetricsMetaField_meta)[0x24/4]&4)) igCharMetricsMetaField_registerNow();
+ if(!igCharMetricsMetaField_meta || !(reinterpret_cast<unsigned int *>(igCharMetricsMetaField_meta)[0x24/4]&4)) igCharMetricsMetaField_arkRegister();
  return igCharMetricsMetaField_meta;
 }
 void *igCharMetricsMetaField_vtableRead(){
@@ -290,12 +290,12 @@ void *igCharMetricsMetaField_vtableRead(){
  object.unknown00=igCharMetricsMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igCharMetricsMetaField_registerNow(){
+void igCharMetricsMetaField_arkRegister(){
  meta_registerNow((int)igCharMetricsMetaField_register);
 }
 void igCharMetricsMetaField_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igCharMetricsMetaField_meta,(int)igCompoundMetaField_register,(int)fn_80033638,(int)igCharMetricsMetaField_getMetaCall,(int)igCharMetricsMetaField_className,56,(int)igCharMetricsMetaField_vtableRead,0,0,(int)lbl_8055F264);
+ meta_registerClass(0,(int)&igCharMetricsMetaField_meta,(int)igCompoundMetaField_register,(int)fn_80033638,(int)igCharMetricsMetaField_getMetaCall,(int)igCharMetricsMetaField_className,56,(int)igCharMetricsMetaField_vtableRead,0,0,(int)igCharMetricsMetaField_dependencies);
 }
 void *igCharMetricsMetaField_getMetaCall(){return igCharMetricsMetaField_getMeta();}
 void fn_80115154(){
@@ -311,7 +311,7 @@ void fn_80115154(){
 }
 void *fn_801151EC(){
  if(!lbl_80563850){
-  igCharMetricsMetaField_registerNow();
+  igCharMetricsMetaField_arkRegister();
  }
  return lbl_80563850;
 }

@@ -16,7 +16,7 @@ void igCriMovieData_register();
 void *igCriMovieData_getMetaCall();
 }
 extern "C" {
-void igCriMovieData_registerNow(){
+void igCriMovieData_arkRegister(){
  meta_registerNow((int)igCriMovieData_register);
 }
 void igCriMovieData_register(){

@@ -6,17 +6,17 @@ void *meta_field(void *,void *);
 void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
-extern char lbl_804CDB44[];
-extern char lbl_804CDB58[];
-extern char lbl_804CDB6C[];
-extern char lbl_804CDB80[];
+extern char igCriMovieData_fieldTypes[];
+extern char igCriMovieData_fieldNames[];
+extern char igCriMovieData_fieldStorage[];
+extern char igCriMovieData_fieldOffsets[];
 extern void *igCriMovieData_meta;
 }
 extern "C" {
 void igCriMovieData_fieldInit(){
  void *value0=igCriMovieData_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CDB44,5);
+ meta_appendFields(value0,igCriMovieData_fieldTypes,5);
  void *value2=meta_field(value0,value1);
  *reinterpret_cast<short *>(reinterpret_cast<char *>(value2)+20)=4;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+38)=0;
@@ -30,7 +30,7 @@ void igCriMovieData_fieldInit(){
  void *value6=meta_field(value0,(reinterpret_cast<char *>(value1)+4));
  *reinterpret_cast<short *>(reinterpret_cast<char *>(value6)+20)=4;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value6)+38)=0;
- meta_setupFields(value0,lbl_804CDB58,lbl_804CDB6C,lbl_804CDB80,value1);
+ meta_setupFields(value0,igCriMovieData_fieldNames,igCriMovieData_fieldStorage,igCriMovieData_fieldOffsets,value1);
 }
 }
 #pragma pop

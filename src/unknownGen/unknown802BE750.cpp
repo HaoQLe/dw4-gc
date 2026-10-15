@@ -10,17 +10,17 @@ void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *beSvPlatBaseData_metaObject();
 void *beSaveDataDeliver_metaObject();
-extern char lbl_804CFC30[];
-extern char lbl_804CFC44[];
-extern char lbl_804CFC58[];
-extern char lbl_804CFC6C[];
+extern char beSvReadMediaApi_fieldTypes[];
+extern char beSvReadMediaApi_fieldNames[];
+extern char beSvReadMediaApi_fieldStorage[];
+extern char beSvReadMediaApi_fieldOffsets[];
 extern void *beSvReadMediaApi_meta;
 }
 extern "C" {
 void beSvReadMediaApi_fieldInit(){
  void *value0=beSvReadMediaApi_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804CFC30,5);
+ meta_appendFields(value0,beSvReadMediaApi_fieldTypes,5);
  void *value2=meta_field(value0,value1);
  void *value3=beSvPlatBaseData_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -37,7 +37,7 @@ void beSvReadMediaApi_fieldInit(){
  void *value10=fn_80028F84();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value9)+56)=value10;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value9)+52)=1;
- meta_setupFields(value0,lbl_804CFC44,lbl_804CFC58,lbl_804CFC6C,value1);
+ meta_setupFields(value0,beSvReadMediaApi_fieldNames,beSvReadMediaApi_fieldStorage,beSvReadMediaApi_fieldOffsets,value1);
 }
 }
 #pragma pop

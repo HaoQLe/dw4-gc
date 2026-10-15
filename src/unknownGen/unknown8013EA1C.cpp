@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F898[8];
+extern char igObjectPropertyForUserInfo_dependencies[8];
 extern void *igObjectPropertyForUserInfo_meta;
 void *igObjectPropertyForUserInfo_getMeta();
 void *igObjectPropertyForUserInfo_vtableRead();
-void igObjectPropertyForUserInfo_registerNow();
+void igObjectPropertyForUserInfo_arkRegister();
 void igObjectPropertyForUserInfo_register();
 void *igObjectPropertyForUserInfo_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013EA58 : UnknownGenObject8013EA58_1 {
 };
 extern "C" {
 void *igObjectPropertyForUserInfo_getMeta(){
- if(!igObjectPropertyForUserInfo_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForUserInfo_meta)[0x24/4]&4)) igObjectPropertyForUserInfo_registerNow();
+ if(!igObjectPropertyForUserInfo_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForUserInfo_meta)[0x24/4]&4)) igObjectPropertyForUserInfo_arkRegister();
  return igObjectPropertyForUserInfo_meta;
 }
 void *igObjectPropertyForUserInfo_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForUserInfo_vtableRead(){
  object.unknown00=igObjectPropertyForUserInfo_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForUserInfo_registerNow(){
+void igObjectPropertyForUserInfo_arkRegister(){
  meta_registerNow((int)igObjectPropertyForUserInfo_register);
 }
 void igObjectPropertyForUserInfo_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForUserInfo_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForUserInfo_getMetaCall,(int)igObjectPropertyForUserInfo_className,44,(int)igObjectPropertyForUserInfo_vtableRead,(int)fn_8013EBE0,0,(int)lbl_8055F898);
+ meta_registerClass(0,(int)&igObjectPropertyForUserInfo_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForUserInfo_getMetaCall,(int)igObjectPropertyForUserInfo_className,44,(int)igObjectPropertyForUserInfo_vtableRead,(int)fn_8013EBE0,0,(int)igObjectPropertyForUserInfo_dependencies);
 }
 void *igObjectPropertyForUserInfo_getMetaCall(){return igObjectPropertyForUserInfo_getMeta();}
 }

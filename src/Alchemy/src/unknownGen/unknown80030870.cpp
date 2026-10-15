@@ -13,11 +13,11 @@ extern char igExternalDirEntry_className[];
 extern char igExternalDirEntry_vtable[];
 extern char igDirEntry_vtable[];
 extern char igNamedObject_vtable[];
-extern char lbl_8055D4B4[8];
+extern char igExternalDirEntry_dependencies[8];
 extern void *igExternalDirEntry_meta;
 void *igExternalDirEntry_getMeta();
 void *igExternalDirEntry_vtableRead();
-void igExternalDirEntry_registerNow();
+void igExternalDirEntry_arkRegister();
 void igExternalDirEntry_register();
 void *igExternalDirEntry_getMetaCall();
 }
@@ -45,7 +45,7 @@ struct UnknownGenObject800308AC : UnknownGenObject800308AC_1 {
 };
 extern "C" {
 void *igExternalDirEntry_getMeta(){
- if(!igExternalDirEntry_meta || !(reinterpret_cast<unsigned int *>(igExternalDirEntry_meta)[0x24/4]&4)) igExternalDirEntry_registerNow();
+ if(!igExternalDirEntry_meta || !(reinterpret_cast<unsigned int *>(igExternalDirEntry_meta)[0x24/4]&4)) igExternalDirEntry_arkRegister();
  return igExternalDirEntry_meta;
 }
 void *igExternalDirEntry_vtableRead(){
@@ -59,12 +59,12 @@ void *igExternalDirEntry_vtableRead(){
  object.unknown28.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igExternalDirEntry_registerNow(){
+void igExternalDirEntry_arkRegister(){
  meta_registerNow((int)igExternalDirEntry_register);
 }
 void igExternalDirEntry_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igExternalDirEntry_meta,(int)igDirEntry_register,(int)fn_8002942C,(int)igExternalDirEntry_getMetaCall,(int)igExternalDirEntry_className,44,(int)igExternalDirEntry_vtableRead,(int)igExternalDirEntry_fieldInit,0,(int)lbl_8055D4B4);
+ meta_registerClass(0,(int)&igExternalDirEntry_meta,(int)igDirEntry_register,(int)fn_8002942C,(int)igExternalDirEntry_getMetaCall,(int)igExternalDirEntry_className,44,(int)igExternalDirEntry_vtableRead,(int)igExternalDirEntry_fieldInit,0,(int)igExternalDirEntry_dependencies);
 }
 void *igExternalDirEntry_getMetaCall(){return igExternalDirEntry_getMeta();}
 }

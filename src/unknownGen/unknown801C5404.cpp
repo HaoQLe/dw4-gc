@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void igCartoonShader_registerNow();
+void igCartoonShader_arkRegister();
 extern void *lbl_805621F4;
 extern void *igCartoonShader_meta;
 }
@@ -14,7 +14,7 @@ void *fn_801C5404(){
  return igCartoonShader_meta;
 }
 void *igCartoonShader_getMeta(){
- if(!igCartoonShader_meta || !(reinterpret_cast<unsigned int *>(igCartoonShader_meta)[0x24/4]&4)) igCartoonShader_registerNow();
+ if(!igCartoonShader_meta || !(reinterpret_cast<unsigned int *>(igCartoonShader_meta)[0x24/4]&4)) igCartoonShader_arkRegister();
  return igCartoonShader_meta;
 }
 }

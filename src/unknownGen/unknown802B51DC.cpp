@@ -8,7 +8,7 @@ void *fn_800237D0();
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beTransformSync_registerNow();
+void beTransformSync_arkRegister();
 void igObject_register();
 extern char beUnicode_className[];
 extern char beUnicode_meta[];
@@ -17,7 +17,7 @@ void beUnicode_register();
 void *beUnicode_getMetaCall();
 }
 extern "C" {
-void beUnicode_registerNow(){
+void beUnicode_arkRegister(){
  meta_registerNow((int)beUnicode_register);
 }
 void beUnicode_register(){
@@ -26,7 +26,7 @@ void beUnicode_register(){
 }
 void *beUnicode_getMetaCall(){return beUnicode_getMeta();}
 void *beTransformSync_getMeta(){
- if(!beTransformSync_meta || !(reinterpret_cast<unsigned int *>(beTransformSync_meta)[0x24/4]&4)) beTransformSync_registerNow();
+ if(!beTransformSync_meta || !(reinterpret_cast<unsigned int *>(beTransformSync_meta)[0x24/4]&4)) beTransformSync_arkRegister();
  return beTransformSync_meta;
 }
 }

@@ -17,7 +17,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void fn_800ABC8C();
 void *fn_800AC294();
-void igTexGenMatrixAttr_registerNow();
+void igTexGenMatrixAttr_arkRegister();
 void fn_800CE04C();
 void igObjectList_register();
 void igVisualAttribute_register();
@@ -31,11 +31,11 @@ extern char lbl_8047D578[];
 extern char igImageMipMapList_vtable[];
 extern char lbl_8047E1F8[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E0B0[8];
-extern char lbl_8055E0B8[8];
-extern char lbl_8055E0C0[8];
-extern char lbl_8055E0C8[8];
-extern char lbl_8055E0D0[8];
+extern char igImageMipMapList_dependencies[8];
+extern char igTextureAddressModeAttr_fieldTypes[8];
+extern char igTextureAddressModeAttr_fieldNames[8];
+extern char igTextureAddressModeAttr_fieldStorage[8];
+extern char igTextureAddressModeAttr_fieldOffsets[8];
 extern char lbl_8055E0D8[4];
 extern void *lbl_805621F4;
 extern void *igImageMipMapList_meta;
@@ -43,12 +43,12 @@ extern void *igTextureAddressModeAttr_meta;
 extern void *igTexGenMatrixAttr_meta;
 void *igImageMipMapList_getMeta();
 void *igImageMipMapList_vtableRead();
-void igImageMipMapList_registerNow();
+void igImageMipMapList_arkRegister();
 void igImageMipMapList_register();
 void *igImageMipMapList_getMetaCall();
 void *igTextureAddressModeAttr_getMeta();
 void *igTextureAddressModeAttr_vtableRead();
-void igTextureAddressModeAttr_registerNow();
+void igTextureAddressModeAttr_arkRegister();
 void igTextureAddressModeAttr_register();
 void *igTextureAddressModeAttr_getMetaCall();
 void igTextureAddressModeAttr_fieldInit();
@@ -67,7 +67,7 @@ void *fn_800AF954(){
  return igImageMipMapList_meta;
 }
 void *igImageMipMapList_getMeta(){
- if(!igImageMipMapList_meta || !(reinterpret_cast<unsigned int *>(igImageMipMapList_meta)[0x24/4]&4)) igImageMipMapList_registerNow();
+ if(!igImageMipMapList_meta || !(reinterpret_cast<unsigned int *>(igImageMipMapList_meta)[0x24/4]&4)) igImageMipMapList_arkRegister();
  return igImageMipMapList_meta;
 }
 void *igImageMipMapList_vtableRead(){
@@ -80,20 +80,20 @@ void *igImageMipMapList_vtableRead(){
  object.unknown00=igImageMipMapList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igImageMipMapList_registerNow(){
+void igImageMipMapList_arkRegister(){
  meta_registerNow((int)igImageMipMapList_register);
 }
 void igImageMipMapList_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igImageMipMapList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igImageMipMapList_getMetaCall,(int)igImageMipMapList_className,20,(int)igImageMipMapList_vtableRead,0,0,(int)lbl_8055E0B0);
+ meta_registerClass(0,(int)&igImageMipMapList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igImageMipMapList_getMetaCall,(int)igImageMipMapList_className,20,(int)igImageMipMapList_vtableRead,0,0,(int)igImageMipMapList_dependencies);
 }
 void *igImageMipMapList_getMetaCall(){return igImageMipMapList_getMeta();}
 void *igTextureAddressModeAttr_create(void *object){
- igTextureAddressModeAttr_registerNow();
+ igTextureAddressModeAttr_arkRegister();
  return meta_createInstance(igTextureAddressModeAttr_meta,object);
 }
 void *igTextureAddressModeAttr_getMeta(){
- if(!igTextureAddressModeAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureAddressModeAttr_meta)[0x24/4]&4)) igTextureAddressModeAttr_registerNow();
+ if(!igTextureAddressModeAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureAddressModeAttr_meta)[0x24/4]&4)) igTextureAddressModeAttr_arkRegister();
  return igTextureAddressModeAttr_meta;
 }
 void *igTextureAddressModeAttr_vtableRead(){
@@ -104,7 +104,7 @@ void *igTextureAddressModeAttr_vtableRead(){
  object.unknown00=igTextureAddressModeAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igTextureAddressModeAttr_registerNow(){
+void igTextureAddressModeAttr_arkRegister(){
  meta_registerNow((int)igTextureAddressModeAttr_register);
 }
 void igTextureAddressModeAttr_register(){
@@ -115,20 +115,20 @@ void *igTextureAddressModeAttr_getMetaCall(){return igTextureAddressModeAttr_get
 void igTextureAddressModeAttr_fieldInit(){
  void *value0=igTextureAddressModeAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E0B8,2);
+ meta_appendFields(value0,igTextureAddressModeAttr_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  fn_8003EC68(value2,1);
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  fn_80046E58(value3,lbl_8055E0D8);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+52)=(void *)fn_800CE04C;
- meta_setupFields(value0,lbl_8055E0C0,lbl_8055E0C8,lbl_8055E0D0,value1);
+ meta_setupFields(value0,igTextureAddressModeAttr_fieldNames,igTextureAddressModeAttr_fieldStorage,igTextureAddressModeAttr_fieldOffsets,value1);
 }
 void *fn_800AFD14(){
  if(!igTexGenMatrixAttr_meta) igTexGenMatrixAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igTexGenMatrixAttr_meta;
 }
 void *igTexGenMatrixAttr_getMeta(){
- if(!igTexGenMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igTexGenMatrixAttr_meta)[0x24/4]&4)) igTexGenMatrixAttr_registerNow();
+ if(!igTexGenMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igTexGenMatrixAttr_meta)[0x24/4]&4)) igTexGenMatrixAttr_arkRegister();
  return igTexGenMatrixAttr_meta;
 }
 }

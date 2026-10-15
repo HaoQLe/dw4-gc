@@ -13,7 +13,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2E3C();
-void beWaterPlain_registerNow();
+void beWaterPlain_arkRegister();
 extern char beWaterPlainInfo_className[];
 extern char lbl_8041CD10[];
 extern char lbl_804CF0BC[];
@@ -26,7 +26,7 @@ void beWaterPlainInfo_register();
 void *beWaterPlainInfo_getMetaCall();
 }
 extern "C" {
-void beWaterPlainInfo_registerNow(){
+void beWaterPlainInfo_arkRegister(){
  meta_registerNow((int)beWaterPlainInfo_register);
 }
 void beWaterPlainInfo_register(){
@@ -39,7 +39,7 @@ void *fn_802B4E44(){
  return lbl_8053461C;
 }
 void *beWaterPlain_create(void *object){
- beWaterPlain_registerNow();
+ beWaterPlain_arkRegister();
  return meta_createInstance(beWaterPlain_meta,object);
 }
 void *beWaterPlain_metaObject(){
@@ -47,7 +47,7 @@ void *beWaterPlain_metaObject(){
  return beWaterPlain_meta;
 }
 void *beWaterPlain_getMeta(){
- if(!beWaterPlain_meta || !(reinterpret_cast<unsigned int *>(beWaterPlain_meta)[0x24/4]&4)) beWaterPlain_registerNow();
+ if(!beWaterPlain_meta || !(reinterpret_cast<unsigned int *>(beWaterPlain_meta)[0x24/4]&4)) beWaterPlain_arkRegister();
  return beWaterPlain_meta;
 }
 }

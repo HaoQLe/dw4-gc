@@ -3,7 +3,7 @@
 #pragma auto_inline off
 extern "C" {
 void *fn_800635C8(void *,void *,void *,int);
-void ParticleInfo_registerNow();
+void ParticleInfo_arkRegister();
 void *fn_8031A048();
 extern char lbl_80421268[];
 extern char lbl_804212B4[];
@@ -42,7 +42,7 @@ void *fn_802E82C4(){
  return lbl_80535884;
 }
 void *ParticleInfo_getMeta(){
- if(!ParticleInfo_meta || !(reinterpret_cast<unsigned int *>(ParticleInfo_meta)[0x24/4]&4)) ParticleInfo_registerNow();
+ if(!ParticleInfo_meta || !(reinterpret_cast<unsigned int *>(ParticleInfo_meta)[0x24/4]&4)) ParticleInfo_arkRegister();
  return ParticleInfo_meta;
 }
 }

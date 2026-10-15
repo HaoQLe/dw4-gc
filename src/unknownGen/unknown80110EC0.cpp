@@ -11,18 +11,18 @@ void *igGuiSystemModel_getMeta();
 void igGuiSystemModel_vtableRead();
 void igModel_register();
 extern char igGuiSystemModel_className[];
-extern char lbl_8055F0A4[8];
+extern char igGuiSystemModel_dependencies[8];
 extern void *igGuiSystemModel_meta;
 void igGuiSystemModel_register();
 void *igGuiSystemModel_getMetaCall();
 }
 extern "C" {
-void igGuiSystemModel_registerNow(){
+void igGuiSystemModel_arkRegister(){
  meta_registerNow((int)igGuiSystemModel_register);
 }
 void igGuiSystemModel_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igGuiSystemModel_meta,(int)igModel_register,(int)fn_8010EE6C,(int)igGuiSystemModel_getMetaCall,(int)igGuiSystemModel_className,184,(int)igGuiSystemModel_vtableRead,(int)igGuiSystemModel_fieldInit,0,(int)lbl_8055F0A4);
+ meta_registerClass(0,(int)&igGuiSystemModel_meta,(int)igModel_register,(int)fn_8010EE6C,(int)igGuiSystemModel_getMetaCall,(int)igGuiSystemModel_className,184,(int)igGuiSystemModel_vtableRead,(int)igGuiSystemModel_fieldInit,0,(int)igGuiSystemModel_dependencies);
 }
 void *igGuiSystemModel_getMetaCall(){return igGuiSystemModel_getMeta();}
 }

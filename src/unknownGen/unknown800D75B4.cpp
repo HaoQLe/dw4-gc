@@ -18,7 +18,7 @@ extern char igVertexArray2_vtable[];
 extern void *igVertexArray2_meta;
 extern void *igGamecubeVertexArray2_meta;
 void *igGamecubeVertexArray2_vtableRead();
-void igGamecubeVertexArray2_registerNow();
+void igGamecubeVertexArray2_arkRegister();
 void igGamecubeVertexArray2_register();
 void *igGamecubeVertexArray2_parentMeta();
 void *fn_800D7810();
@@ -45,7 +45,7 @@ struct UnknownGenObject800D7610 : UnknownGenObject800D7610_1 {
 extern "C" {
 void *fn_800D75B4(){return fn_8010307C();}
 void *igGamecubeVertexArray2_getMeta(){
- if(!igGamecubeVertexArray2_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexArray2_meta)[0x24/4]&4)) igGamecubeVertexArray2_registerNow();
+ if(!igGamecubeVertexArray2_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexArray2_meta)[0x24/4]&4)) igGamecubeVertexArray2_arkRegister();
  return igGamecubeVertexArray2_meta;
 }
 void *igGamecubeVertexArray2_vtableRead(){
@@ -59,7 +59,7 @@ void *igGamecubeVertexArray2_vtableRead(){
  object.unknown00=igGamecubeVertexArray2_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGamecubeVertexArray2_registerNow(){
+void igGamecubeVertexArray2_arkRegister(){
  meta_registerNow((int)igGamecubeVertexArray2_register);
 }
 void igGamecubeVertexArray2_register(){

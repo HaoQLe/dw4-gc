@@ -6,7 +6,7 @@ void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *fn_800635C8(void *,void *,void *,int);
 void *meta_createInstance(void *,void *);
-void beDBManager_registerNow();
+void beDBManager_arkRegister();
 extern char lbl_8041CA68[];
 extern char lbl_804D25C0[];
 extern char lbl_804D25C4[];
@@ -20,7 +20,7 @@ void *fn_802DE390(){
  return lbl_805354C0;
 }
 void *beDBManager_create(void *object){
- beDBManager_registerNow();
+ beDBManager_arkRegister();
  return meta_createInstance(beDBManager_meta,object);
 }
 void *beDBManager_metaObject(){
@@ -28,7 +28,7 @@ void *beDBManager_metaObject(){
  return beDBManager_meta;
 }
 void *beDBManager_getMeta(){
- if(!beDBManager_meta || !(reinterpret_cast<unsigned int *>(beDBManager_meta)[0x24/4]&4)) beDBManager_registerNow();
+ if(!beDBManager_meta || !(reinterpret_cast<unsigned int *>(beDBManager_meta)[0x24/4]&4)) beDBManager_arkRegister();
  return beDBManager_meta;
 }
 }

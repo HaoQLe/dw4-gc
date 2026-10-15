@@ -26,20 +26,20 @@ extern char igVertexData_className[];
 extern char igVertexData_vtable[];
 extern char igVertexDataList_vtable[];
 extern char lbl_804940EC[];
-extern char lbl_8055EAA8[8];
-extern char lbl_8055EAB0[8];
+extern char igVertexDataList_dependencies[8];
+extern char igVertexData_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igVertexDataList_meta;
 extern void *lbl_80562DBC;
 extern void *igVertexData_meta;
 void *igVertexDataList_getMeta();
 void *igVertexDataList_vtableRead();
-void igVertexDataList_registerNow();
+void igVertexDataList_arkRegister();
 void igVertexDataList_register();
 void *igVertexDataList_getMetaCall();
 void *igVertexData_getMeta();
 void *igVertexData_vtableRead();
-void igVertexData_registerNow();
+void igVertexData_arkRegister();
 void igVertexData_register();
 void *igVertexData_getMetaCall();
 }
@@ -65,7 +65,7 @@ struct UnknownGenObject800CF970 : UnknownGenObject800CF970_0 {
 extern "C" {
 void *igGamecubeVertexStream_getMetaCall(){return igGamecubeVertexStream_getMeta();}
 void *igVertexDataList_create(void *object){
- igVertexDataList_registerNow();
+ igVertexDataList_arkRegister();
  return meta_createInstance(igVertexDataList_meta,object);
 }
 void *fn_800CF6D8(){
@@ -73,7 +73,7 @@ void *fn_800CF6D8(){
  return igVertexDataList_meta;
 }
 void *igVertexDataList_getMeta(){
- if(!igVertexDataList_meta || !(reinterpret_cast<unsigned int *>(igVertexDataList_meta)[0x24/4]&4)) igVertexDataList_registerNow();
+ if(!igVertexDataList_meta || !(reinterpret_cast<unsigned int *>(igVertexDataList_meta)[0x24/4]&4)) igVertexDataList_arkRegister();
  return igVertexDataList_meta;
 }
 void *igVertexDataList_vtableRead(){
@@ -86,12 +86,12 @@ void *igVertexDataList_vtableRead(){
  object.unknown00=igVertexDataList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVertexDataList_registerNow(){
+void igVertexDataList_arkRegister(){
  meta_registerNow((int)igVertexDataList_register);
 }
 void igVertexDataList_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igVertexDataList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igVertexDataList_getMetaCall,(int)igVertexDataList_className,20,(int)igVertexDataList_vtableRead,0,0,(int)lbl_8055EAA8);
+ meta_registerClass(0,(int)&igVertexDataList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igVertexDataList_getMetaCall,(int)igVertexDataList_className,20,(int)igVertexDataList_vtableRead,0,0,(int)igVertexDataList_dependencies);
 }
 void *igVertexDataList_getMetaCall(){return igVertexDataList_getMeta();}
 void *fn_800CF874(){
@@ -100,7 +100,7 @@ void *fn_800CF874(){
  return lbl_80562DBC;
 }
 void *igVertexData_create(void *object){
- igVertexData_registerNow();
+ igVertexData_arkRegister();
  return meta_createInstance(igVertexData_meta,object);
 }
 void *fn_800CF8F8(){
@@ -108,7 +108,7 @@ void *fn_800CF8F8(){
  return igVertexData_meta;
 }
 void *igVertexData_getMeta(){
- if(!igVertexData_meta || !(reinterpret_cast<unsigned int *>(igVertexData_meta)[0x24/4]&4)) igVertexData_registerNow();
+ if(!igVertexData_meta || !(reinterpret_cast<unsigned int *>(igVertexData_meta)[0x24/4]&4)) igVertexData_arkRegister();
  return igVertexData_meta;
 }
 void *igVertexData_vtableRead(){
@@ -119,12 +119,12 @@ void *igVertexData_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igVertexData_registerNow(){
+void igVertexData_arkRegister(){
  meta_registerNow((int)igVertexData_register);
 }
 void igVertexData_register(){
  fn_800CE2F8();
- meta_registerClass(0,(int)&igVertexData_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igVertexData_getMetaCall,(int)igVertexData_className,36,(int)igVertexData_vtableRead,(int)igVertexData_fieldInit,0,(int)lbl_8055EAB0);
+ meta_registerClass(0,(int)&igVertexData_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igVertexData_getMetaCall,(int)igVertexData_className,36,(int)igVertexData_vtableRead,(int)igVertexData_fieldInit,0,(int)igVertexData_dependencies);
 }
 void *igVertexData_getMetaCall(){return igVertexData_getMeta();}
 }

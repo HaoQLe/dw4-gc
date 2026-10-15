@@ -2,7 +2,7 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void igObjectRefMetaField_registerNow();
+void igObjectRefMetaField_arkRegister();
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 extern void *igObjectRefMetaField_meta;
@@ -14,7 +14,7 @@ void *fn_800288BC(){
  return igObjectRefMetaField_meta;
 }
 void *igObjectRefMetaField_getMeta(){
- if(!igObjectRefMetaField_meta || !(reinterpret_cast<unsigned int *>(igObjectRefMetaField_meta)[0x24/4]&4)) igObjectRefMetaField_registerNow();
+ if(!igObjectRefMetaField_meta || !(reinterpret_cast<unsigned int *>(igObjectRefMetaField_meta)[0x24/4]&4)) igObjectRefMetaField_arkRegister();
  return igObjectRefMetaField_meta;
 }
 }

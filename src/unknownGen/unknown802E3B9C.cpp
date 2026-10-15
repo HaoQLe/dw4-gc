@@ -17,17 +17,17 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *beBaseInfoRamList_metaObject();
-void beBaseInfoDataList_registerNow();
+void beBaseInfoDataList_arkRegister();
 void igInfo_register();
 void igObjectList_register();
 extern char beBaseInfoList_className[];
 extern char beBaseInfo_className[];
-extern char lbl_804D2E18[];
-extern char lbl_804D2E20[];
-extern char lbl_804D2E2C[];
-extern char lbl_804D2E34[];
-extern char lbl_804D2E3C[];
-extern char lbl_804D2E44[];
+extern char beBaseInfoList_dependencies[];
+extern char beBaseInfo_dependencies[];
+extern char beBaseInfo_fieldTypes[];
+extern char beBaseInfo_fieldNames[];
+extern char beBaseInfo_fieldStorage[];
+extern char beBaseInfo_fieldOffsets[];
 extern char beBaseInfoList_meta[];
 extern void *beBaseInfo_meta;
 extern void *beBaseInfoDataList_meta;
@@ -35,19 +35,19 @@ extern void *lbl_805621F4;
 void beBaseInfoList_register();
 void *beBaseInfoList_getMetaCall();
 void *beBaseInfo_getMeta();
-void beBaseInfo_registerNow();
+void beBaseInfo_arkRegister();
 void beBaseInfo_register();
 void *beBaseInfo_getMetaCall();
 void beBaseInfo_fieldInit();
 void *beBaseInfoDataList_metaObject();
 }
 extern "C" {
-void beBaseInfoList_registerNow(){
+void beBaseInfoList_arkRegister(){
  meta_registerNow((int)beBaseInfoList_register);
 }
 void beBaseInfoList_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beBaseInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beBaseInfoList_getMetaCall,(int)beBaseInfoList_className,20,(int)beBaseInfoList_vtableRead,0,0,(int)lbl_804D2E18);
+ meta_registerClass(0,(int)beBaseInfoList_meta,(int)igObjectList_register,(int)fn_80024180,(int)beBaseInfoList_getMetaCall,(int)beBaseInfoList_className,20,(int)beBaseInfoList_vtableRead,0,0,(int)beBaseInfoList_dependencies);
 }
 void *beBaseInfoList_getMetaCall(){return beBaseInfoList_getMeta();}
 void *beBaseInfo_metaObject(){
@@ -55,21 +55,21 @@ void *beBaseInfo_metaObject(){
  return beBaseInfo_meta;
 }
 void *beBaseInfo_getMeta(){
- if(!beBaseInfo_meta || !(reinterpret_cast<unsigned int *>(beBaseInfo_meta)[0x24/4]&4)) beBaseInfo_registerNow();
+ if(!beBaseInfo_meta || !(reinterpret_cast<unsigned int *>(beBaseInfo_meta)[0x24/4]&4)) beBaseInfo_arkRegister();
  return beBaseInfo_meta;
 }
-void beBaseInfo_registerNow(){
+void beBaseInfo_arkRegister(){
  meta_registerNow((int)beBaseInfo_register);
 }
 void beBaseInfo_register(){
  fn_802B1AC8();
- meta_registerClass(1,(int)&beBaseInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)beBaseInfo_getMetaCall,(int)beBaseInfo_className,28,0,(int)beBaseInfo_fieldInit,0,(int)lbl_804D2E20);
+ meta_registerClass(1,(int)&beBaseInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)beBaseInfo_getMetaCall,(int)beBaseInfo_className,28,0,(int)beBaseInfo_fieldInit,0,(int)beBaseInfo_dependencies);
 }
 void *beBaseInfo_getMetaCall(){return beBaseInfo_getMeta();}
 void beBaseInfo_fieldInit(){
  void *value0=beBaseInfo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D2E2C,2);
+ meta_appendFields(value0,beBaseInfo_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=beBaseInfoDataList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -77,10 +77,10 @@ void beBaseInfo_fieldInit(){
  void *value5=beBaseInfoRamList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+52)=1;
- meta_setupFields(value0,lbl_804D2E34,lbl_804D2E3C,lbl_804D2E44,value1);
+ meta_setupFields(value0,beBaseInfo_fieldNames,beBaseInfo_fieldStorage,beBaseInfo_fieldOffsets,value1);
 }
 void *beBaseInfoDataList_create(void *object){
- beBaseInfoDataList_registerNow();
+ beBaseInfoDataList_arkRegister();
  return meta_createInstance(beBaseInfoDataList_meta,object);
 }
 void *beBaseInfoDataList_metaObject(){
@@ -88,7 +88,7 @@ void *beBaseInfoDataList_metaObject(){
  return beBaseInfoDataList_meta;
 }
 void *beBaseInfoDataList_getMeta(){
- if(!beBaseInfoDataList_meta || !(reinterpret_cast<unsigned int *>(beBaseInfoDataList_meta)[0x24/4]&4)) beBaseInfoDataList_registerNow();
+ if(!beBaseInfoDataList_meta || !(reinterpret_cast<unsigned int *>(beBaseInfoDataList_meta)[0x24/4]&4)) beBaseInfoDataList_arkRegister();
  return beBaseInfoDataList_meta;
 }
 }

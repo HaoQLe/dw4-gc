@@ -7,17 +7,17 @@ void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *beModelCtrlAIDataList_metaObject();
-extern char lbl_804D0E4C[];
-extern char lbl_804D0E74[];
-extern char lbl_804D0E9C[];
-extern char lbl_804D0EC4[];
+extern char beModelCtrlAIMap_fieldTypes[];
+extern char beModelCtrlAIMap_fieldNames[];
+extern char beModelCtrlAIMap_fieldStorage[];
+extern char beModelCtrlAIMap_fieldOffsets[];
 extern void *beModelCtrlAIMap_meta;
 }
 extern "C" {
 void beModelCtrlAIMap_fieldInit(){
  void *value0=beModelCtrlAIMap_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D0E4C,10);
+ meta_appendFields(value0,beModelCtrlAIMap_fieldTypes,10);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+4));
  void *value3=beModelCtrlAIDataList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -34,7 +34,7 @@ void beModelCtrlAIMap_fieldInit(){
  void *value9=beModelCtrlAIDataList_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value8)+56)=value9;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value8)+52)=1;
- meta_setupFields(value0,lbl_804D0E74,lbl_804D0E9C,lbl_804D0EC4,value1);
+ meta_setupFields(value0,beModelCtrlAIMap_fieldNames,beModelCtrlAIMap_fieldStorage,beModelCtrlAIMap_fieldOffsets,value1);
 }
 }
 #pragma pop

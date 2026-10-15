@@ -29,30 +29,30 @@ extern char lbl_8047D578[];
 extern char igParticleAttrList_vtable[];
 extern char lbl_8047E130[];
 extern char lbl_8047E50C[];
-extern char lbl_8055E2C8[4];
-extern char lbl_8055E2CC[4];
-extern char lbl_8055E2D0[4];
-extern char lbl_8055E2D4[4];
+extern char igPixelPipelineModeAttr_fieldTypes[4];
+extern char igPixelPipelineModeAttr_fieldNames[4];
+extern char igPixelPipelineModeAttr_fieldStorage[4];
+extern char igPixelPipelineModeAttr_fieldOffsets[4];
 extern char lbl_8055E2D8[4];
-extern char lbl_8055E2DC[8];
-extern char lbl_8055E2E4[8];
+extern char igParticleAttrList_dependencies[8];
+extern char igParticleAttr_dependencies[8];
 extern void *igPixelPipelineModeAttr_meta;
 extern void *igParticleAttrList_meta;
 extern void *igParticleAttr_meta;
 void *igPixelPipelineModeAttr_getMeta();
 void *igPixelPipelineModeAttr_vtableRead();
-void igPixelPipelineModeAttr_registerNow();
+void igPixelPipelineModeAttr_arkRegister();
 void igPixelPipelineModeAttr_register();
 void *igPixelPipelineModeAttr_getMetaCall();
 void igPixelPipelineModeAttr_fieldInit();
 void *igParticleAttrList_getMeta();
 void *igParticleAttrList_vtableRead();
-void igParticleAttrList_registerNow();
+void igParticleAttrList_arkRegister();
 void igParticleAttrList_register();
 void *igParticleAttrList_getMetaCall();
 void *igParticleAttr_getMeta();
 void *igParticleAttr_vtableRead();
-void igParticleAttr_registerNow();
+void igParticleAttr_arkRegister();
 void igParticleAttr_register();
 void *igParticleAttr_getMetaCall();
 }
@@ -77,7 +77,7 @@ struct UnknownGenObject800B2E70 : UnknownGenRoot800B2E70 {
 };
 extern "C" {
 void *igPixelPipelineModeAttr_getMeta(){
- if(!igPixelPipelineModeAttr_meta || !(reinterpret_cast<unsigned int *>(igPixelPipelineModeAttr_meta)[0x24/4]&4)) igPixelPipelineModeAttr_registerNow();
+ if(!igPixelPipelineModeAttr_meta || !(reinterpret_cast<unsigned int *>(igPixelPipelineModeAttr_meta)[0x24/4]&4)) igPixelPipelineModeAttr_arkRegister();
  return igPixelPipelineModeAttr_meta;
 }
 void *igPixelPipelineModeAttr_vtableRead(){
@@ -88,7 +88,7 @@ void *igPixelPipelineModeAttr_vtableRead(){
  object.unknown00=igPixelPipelineModeAttr_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igPixelPipelineModeAttr_registerNow(){
+void igPixelPipelineModeAttr_arkRegister(){
  meta_registerNow((int)igPixelPipelineModeAttr_register);
 }
 void igPixelPipelineModeAttr_register(){
@@ -99,14 +99,14 @@ void *igPixelPipelineModeAttr_getMetaCall(){return igPixelPipelineModeAttr_getMe
 void igPixelPipelineModeAttr_fieldInit(){
  void *value0=igPixelPipelineModeAttr_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055E2C8,1);
+ meta_appendFields(value0,igPixelPipelineModeAttr_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  fn_80046E58(value2,lbl_8055E2D8);
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+52)=(void *)fn_800CDF20;
- meta_setupFields(value0,lbl_8055E2CC,lbl_8055E2D0,lbl_8055E2D4,value1);
+ meta_setupFields(value0,igPixelPipelineModeAttr_fieldNames,igPixelPipelineModeAttr_fieldStorage,igPixelPipelineModeAttr_fieldOffsets,value1);
 }
 void *igParticleAttrList_getMeta(){
- if(!igParticleAttrList_meta || !(reinterpret_cast<unsigned int *>(igParticleAttrList_meta)[0x24/4]&4)) igParticleAttrList_registerNow();
+ if(!igParticleAttrList_meta || !(reinterpret_cast<unsigned int *>(igParticleAttrList_meta)[0x24/4]&4)) igParticleAttrList_arkRegister();
  return igParticleAttrList_meta;
 }
 void *igParticleAttrList_vtableRead(){
@@ -119,16 +119,16 @@ void *igParticleAttrList_vtableRead(){
  object.unknown00=igParticleAttrList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParticleAttrList_registerNow(){
+void igParticleAttrList_arkRegister(){
  meta_registerNow((int)igParticleAttrList_register);
 }
 void igParticleAttrList_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igParticleAttrList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igParticleAttrList_getMetaCall,(int)igParticleAttrList_className,20,(int)igParticleAttrList_vtableRead,0,0,(int)lbl_8055E2DC);
+ meta_registerClass(0,(int)&igParticleAttrList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igParticleAttrList_getMetaCall,(int)igParticleAttrList_className,20,(int)igParticleAttrList_vtableRead,0,0,(int)igParticleAttrList_dependencies);
 }
 void *igParticleAttrList_getMetaCall(){return igParticleAttrList_getMeta();}
 void *igParticleAttr_getMeta(){
- if(!igParticleAttr_meta || !(reinterpret_cast<unsigned int *>(igParticleAttr_meta)[0x24/4]&4)) igParticleAttr_registerNow();
+ if(!igParticleAttr_meta || !(reinterpret_cast<unsigned int *>(igParticleAttr_meta)[0x24/4]&4)) igParticleAttr_arkRegister();
  return igParticleAttr_meta;
 }
 void *igParticleAttr_vtableRead(){
@@ -139,12 +139,12 @@ void *igParticleAttr_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igParticleAttr_registerNow(){
+void igParticleAttr_arkRegister(){
  meta_registerNow((int)igParticleAttr_register);
 }
 void igParticleAttr_register(){
  fn_800ABC8C();
- meta_registerClass(0,(int)&igParticleAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igParticleAttr_getMetaCall,(int)igParticleAttr_className,48,(int)igParticleAttr_vtableRead,(int)igParticleAttr_fieldInit,0,(int)lbl_8055E2E4);
+ meta_registerClass(0,(int)&igParticleAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igParticleAttr_getMetaCall,(int)igParticleAttr_className,48,(int)igParticleAttr_vtableRead,(int)igParticleAttr_fieldInit,0,(int)igParticleAttr_dependencies);
 }
 void *igParticleAttr_getMetaCall(){return igParticleAttr_getMeta();}
 }

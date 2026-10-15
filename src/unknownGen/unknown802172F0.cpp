@@ -21,25 +21,25 @@ extern char igNamedObject_vtable[];
 extern char igNonRefCountedObjectStack_vtable[];
 extern char lbl_80480B58[];
 extern char igObjectRefResolver_vtable[];
-extern char lbl_804BA470[];
+extern char igObjectRefResolver_dependencies[];
 extern char igObjectRefResolver_className[];
 extern char igNonRefCountedObjectStack_className[];
-extern char lbl_80560BC0[8];
-extern char lbl_80560BC8[8];
-extern char lbl_80560BD0[8];
-extern char lbl_80560BD8[8];
+extern char igObjectRefResolver_fieldTypes[8];
+extern char igObjectRefResolver_fieldNames[8];
+extern char igObjectRefResolver_fieldStorage[8];
+extern char igObjectRefResolver_fieldOffsets[8];
 extern void *igObject_meta;
 extern void *igObjectRefResolver_meta;
 extern void *igNonRefCountedObjectStack_meta;
 void *igObjectRefResolver_getMeta();
 void *igObjectRefResolver_vtableRead();
-void igObjectRefResolver_registerNow();
+void igObjectRefResolver_arkRegister();
 void igObjectRefResolver_register();
 void *igObjectRefResolver_getMetaCall();
 void igObjectRefResolver_fieldInit();
 void *igNonRefCountedObjectStack_getMeta();
 void *igNonRefCountedObjectStack_vtableRead();
-void igNonRefCountedObjectStack_registerNow();
+void igNonRefCountedObjectStack_arkRegister();
 void igNonRefCountedObjectStack_register();
 void *igNonRefCountedObjectStack_getMetaCall();
 }
@@ -65,7 +65,7 @@ struct UnknownGenObject802175E4_0 {
 };
 extern "C" {
 void *igObjectRefResolver_getMeta(){
- if(!igObjectRefResolver_meta || !(reinterpret_cast<unsigned int *>(igObjectRefResolver_meta)[0x24/4]&4)) igObjectRefResolver_registerNow();
+ if(!igObjectRefResolver_meta || !(reinterpret_cast<unsigned int *>(igObjectRefResolver_meta)[0x24/4]&4)) igObjectRefResolver_arkRegister();
  return igObjectRefResolver_meta;
 }
 void *igObjectRefResolver_vtableRead(){
@@ -77,18 +77,18 @@ void *igObjectRefResolver_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectRefResolver_registerNow(){
+void igObjectRefResolver_arkRegister(){
  meta_registerNow((int)igObjectRefResolver_register);
 }
 void igObjectRefResolver_register(){
  fn_80216620();
- meta_registerClass(0,(int)&igObjectRefResolver_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igObjectRefResolver_getMetaCall,(int)igObjectRefResolver_className,20,(int)igObjectRefResolver_vtableRead,(int)igObjectRefResolver_fieldInit,0,(int)lbl_804BA470);
+ meta_registerClass(0,(int)&igObjectRefResolver_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igObjectRefResolver_getMetaCall,(int)igObjectRefResolver_className,20,(int)igObjectRefResolver_vtableRead,(int)igObjectRefResolver_fieldInit,0,(int)igObjectRefResolver_dependencies);
 }
 void *igObjectRefResolver_getMetaCall(){return igObjectRefResolver_getMeta();}
 void igObjectRefResolver_fieldInit(){
  void *value0=igObjectRefResolver_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560BC0,2);
+ meta_appendFields(value0,igObjectRefResolver_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_800284F4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -96,10 +96,10 @@ void igObjectRefResolver_fieldInit(){
  void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=igObject_meta;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value4)+38)=0;
- meta_setupFields(value0,lbl_80560BC8,lbl_80560BD0,lbl_80560BD8,value1);
+ meta_setupFields(value0,igObjectRefResolver_fieldNames,igObjectRefResolver_fieldStorage,igObjectRefResolver_fieldOffsets,value1);
 }
 void *igNonRefCountedObjectStack_getMeta(){
- if(!igNonRefCountedObjectStack_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedObjectStack_meta)[0x24/4]&4)) igNonRefCountedObjectStack_registerNow();
+ if(!igNonRefCountedObjectStack_meta || !(reinterpret_cast<unsigned int *>(igNonRefCountedObjectStack_meta)[0x24/4]&4)) igNonRefCountedObjectStack_arkRegister();
  return igNonRefCountedObjectStack_meta;
 }
 void *igNonRefCountedObjectStack_vtableRead(){
@@ -110,7 +110,7 @@ void *igNonRefCountedObjectStack_vtableRead(){
  object.unknown00=igNonRefCountedObjectStack_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igNonRefCountedObjectStack_registerNow(){
+void igNonRefCountedObjectStack_arkRegister(){
  meta_registerNow((int)igNonRefCountedObjectStack_register);
 }
 void igNonRefCountedObjectStack_register(){

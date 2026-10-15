@@ -8,17 +8,17 @@ void *meta_field(void *,void *);
 void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
-extern char lbl_804E1C1C[];
-extern char lbl_804E1C38[];
-extern char lbl_804E1C54[];
-extern char lbl_804E1C70[];
+extern char beNDMWShopCtrlDigilabo_fieldTypes[];
+extern char beNDMWShopCtrlDigilabo_fieldNames[];
+extern char beNDMWShopCtrlDigilabo_fieldStorage[];
+extern char beNDMWShopCtrlDigilabo_fieldOffsets[];
 extern void *beNDMWShopCtrlDigilabo_meta;
 }
 extern "C" {
 void beNDMWShopCtrlDigilabo_fieldInit(){
  void *value0=beNDMWShopCtrlDigilabo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E1C1C,7);
+ meta_appendFields(value0,beNDMWShopCtrlDigilabo_fieldTypes,7);
  void *value2=meta_field(value0,value1);
  void *value3=fn_800365B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -31,7 +31,7 @@ void beNDMWShopCtrlDigilabo_fieldInit(){
  void *value7=fn_80033E74();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value6)+52)=1;
- meta_setupFields(value0,lbl_804E1C38,lbl_804E1C54,lbl_804E1C70,value1);
+ meta_setupFields(value0,beNDMWShopCtrlDigilabo_fieldNames,beNDMWShopCtrlDigilabo_fieldStorage,beNDMWShopCtrlDigilabo_fieldOffsets,value1);
 }
 }
 #pragma pop

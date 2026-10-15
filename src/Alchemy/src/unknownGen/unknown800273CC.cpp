@@ -11,10 +11,10 @@ void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *igRefMetaField_getMeta();
-extern char lbl_8055D160[8];
-extern char lbl_8055D168[8];
-extern char lbl_8055D170[8];
-extern char lbl_8055D178[8];
+extern char igRefMetaField_fieldTypes[8];
+extern char igRefMetaField_fieldNames[8];
+extern char igRefMetaField_fieldStorage[8];
+extern char igRefMetaField_fieldOffsets[8];
 extern void *igRefMetaField_meta;
 extern void *lbl_80561688;
 extern void *lbl_805621F4;
@@ -24,8 +24,8 @@ void *igRefMetaField_getMetaCall(){return igRefMetaField_getMeta();}
 void igRefMetaField_fieldInit(){
  void *value0=igRefMetaField_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055D160,2);
- meta_setupFields(value0,lbl_8055D168,lbl_8055D170,lbl_8055D178,value1);
+ meta_appendFields(value0,igRefMetaField_fieldTypes,2);
+ meta_setupFields(value0,igRefMetaField_fieldNames,igRefMetaField_fieldStorage,igRefMetaField_fieldOffsets,value1);
 }
 void fn_80027454(){
  if(!lbl_80561688){

@@ -13,14 +13,14 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void igObject_construct(void *);
 void igEventTracker_fieldInit();
 void igObject_register();
-extern char lbl_8046677C[];
+extern char igEventTracker_dependencies[];
 extern char igEventTracker_className[];
 extern char igEventTracker_vtable[];
 extern void *igEventTracker_meta;
 extern void *lbl_805621F4;
 void *igEventTracker_getMeta();
 void *igEventTracker_vtableRead();
-void igEventTracker_registerNow();
+void igEventTracker_arkRegister();
 void igEventTracker_register();
 void *igEventTracker_getMetaCall();
 }
@@ -45,7 +45,7 @@ struct UnknownGenObject80030CC8 {
 };
 extern "C" {
 void *igEventTracker_create(void *object){
- igEventTracker_registerNow();
+ igEventTracker_arkRegister();
  return meta_createInstance(igEventTracker_meta,object);
 }
 void *fn_80030C50(){
@@ -53,7 +53,7 @@ void *fn_80030C50(){
  return igEventTracker_meta;
 }
 void *igEventTracker_getMeta(){
- if(!igEventTracker_meta || !(reinterpret_cast<unsigned int *>(igEventTracker_meta)[0x24/4]&4)) igEventTracker_registerNow();
+ if(!igEventTracker_meta || !(reinterpret_cast<unsigned int *>(igEventTracker_meta)[0x24/4]&4)) igEventTracker_arkRegister();
  return igEventTracker_meta;
 }
 void *igEventTracker_vtableRead(){
@@ -76,12 +76,12 @@ void *igEventTracker_vtableRead(){
  fn_800261F4(&object,-1);
  return result;
 }
-void igEventTracker_registerNow(){
+void igEventTracker_arkRegister(){
  meta_registerNow((int)igEventTracker_register);
 }
 void igEventTracker_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igEventTracker_meta,(int)igObject_register,(int)fn_800237D0,(int)igEventTracker_getMetaCall,(int)igEventTracker_className,9520,(int)igEventTracker_vtableRead,(int)igEventTracker_fieldInit,0,(int)lbl_8046677C);
+ meta_registerClass(0,(int)&igEventTracker_meta,(int)igObject_register,(int)fn_800237D0,(int)igEventTracker_getMetaCall,(int)igEventTracker_className,9520,(int)igEventTracker_vtableRead,(int)igEventTracker_fieldInit,0,(int)igEventTracker_dependencies);
 }
 void *igEventTracker_getMetaCall(){return igEventTracker_getMeta();}
 }

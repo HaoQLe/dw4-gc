@@ -12,17 +12,17 @@ void *beNDMWPanelObjectStat_metaObject();
 void *beNDMWPanelObjectItem_metaObject();
 void *beNDMWPanelObjectWaza_metaObject();
 void *beNDMWMdlPlayerInfoWork_metaObject();
-extern char lbl_804E2410[];
-extern char lbl_804E243C[];
-extern char lbl_804E2468[];
-extern char lbl_804E2494[];
+extern char beNDMWPanelWazaInfoWork_fieldTypes[];
+extern char beNDMWPanelWazaInfoWork_fieldNames[];
+extern char beNDMWPanelWazaInfoWork_fieldStorage[];
+extern char beNDMWPanelWazaInfoWork_fieldOffsets[];
 extern void *beNDMWPanelWazaInfoWork_meta;
 }
 extern "C" {
 void beNDMWPanelWazaInfoWork_fieldInit(){
  void *value0=beNDMWPanelWazaInfoWork_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E2410,11);
+ meta_appendFields(value0,beNDMWPanelWazaInfoWork_fieldTypes,11);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+3));
  void *value3=beNDMWPanelObjectWaza_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -46,7 +46,7 @@ void beNDMWPanelWazaInfoWork_fieldInit(){
  void *value13=fn_800365B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value12)+56)=value13;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value12)+52)=1;
- meta_setupFields(value0,lbl_804E243C,lbl_804E2468,lbl_804E2494,value1);
+ meta_setupFields(value0,beNDMWPanelWazaInfoWork_fieldNames,beNDMWPanelWazaInfoWork_fieldStorage,beNDMWPanelWazaInfoWork_fieldOffsets,value1);
 }
 }
 #pragma pop

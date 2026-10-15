@@ -15,14 +15,14 @@ void *meta_fieldCount(void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
-void beWeapon_registerNow();
+void beWeapon_arkRegister();
 void igNamedObject_register();
 extern char beWeaponSeqData_className[];
 extern char lbl_8041CA68[];
-extern char lbl_804CEDD8[];
-extern char lbl_804CEDDC[];
-extern char lbl_804CEDE0[];
-extern char lbl_804CEDE4[];
+extern char beWeaponSeqData_fieldTypes[];
+extern char beWeaponSeqData_fieldNames[];
+extern char beWeaponSeqData_fieldStorage[];
+extern char beWeaponSeqData_fieldOffsets[];
 extern char lbl_804CEDE8[];
 extern char lbl_804CEDF4[];
 extern void *beWeaponSeqData_meta;
@@ -34,7 +34,7 @@ void *beWeaponSeqData_getMetaCall();
 void beWeaponSeqData_fieldInit();
 }
 extern "C" {
-void beWeaponSeqData_registerNow(){
+void beWeaponSeqData_arkRegister(){
  meta_registerNow((int)beWeaponSeqData_register);
 }
 void beWeaponSeqData_register(){
@@ -45,15 +45,15 @@ void *beWeaponSeqData_getMetaCall(){return beWeaponSeqData_getMeta();}
 void beWeaponSeqData_fieldInit(){
  void *meta=beWeaponSeqData_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_804CEDD8,0x1);
- meta_setupFields(meta,lbl_804CEDDC,lbl_804CEDE0,lbl_804CEDE4,field);
+ meta_appendFields(meta,beWeaponSeqData_fieldTypes,0x1);
+ meta_setupFields(meta,beWeaponSeqData_fieldNames,beWeaponSeqData_fieldStorage,beWeaponSeqData_fieldOffsets,field);
 }
 void *fn_802B3370(){
  if(!lbl_80534558) lbl_80534558=fn_800635C8(lbl_8041CA68,lbl_804CEDE8,lbl_804CEDF4,0x3);
  return lbl_80534558;
 }
 void *beWeapon_create(void *object){
- beWeapon_registerNow();
+ beWeapon_arkRegister();
  return meta_createInstance(beWeapon_meta,object);
 }
 void *beWeapon_metaObject(){
@@ -61,7 +61,7 @@ void *beWeapon_metaObject(){
  return beWeapon_meta;
 }
 void *beWeapon_getMeta(){
- if(!beWeapon_meta || !(reinterpret_cast<unsigned int *>(beWeapon_meta)[0x24/4]&4)) beWeapon_registerNow();
+ if(!beWeapon_meta || !(reinterpret_cast<unsigned int *>(beWeapon_meta)[0x24/4]&4)) beWeapon_arkRegister();
  return beWeapon_meta;
 }
 }

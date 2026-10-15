@@ -2,8 +2,8 @@
 #pragma push
 #pragma auto_inline off
 extern "C" {
-void *igVectorMorphing_registerNow();
-void *igVectorBlending_registerNow();
+void *igVectorMorphing_arkRegister();
+void *igVectorBlending_arkRegister();
 void fn_8012859C();
 extern char lbl_805638C4[1];
 extern char lbl_805638C5[1];
@@ -18,8 +18,8 @@ void fn_8011D8BC(){
  }
  if(!(void *)(int)*reinterpret_cast<unsigned char *>((lbl_805638C4+0))){
   *reinterpret_cast<unsigned char *>((lbl_805638C4+0))=1;
-  value0=igVectorMorphing_registerNow();
-  value1=igVectorBlending_registerNow();
+  value0=igVectorMorphing_arkRegister();
+  value1=igVectorBlending_arkRegister();
   fn_8012859C();
   return;
  } else {

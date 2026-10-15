@@ -16,7 +16,7 @@ void beActionStarterData2_register();
 void *beActionStarterData2_getMetaCall();
 }
 extern "C" {
-void beActionStarterData2_registerNow(){
+void beActionStarterData2_arkRegister(){
  meta_registerNow((int)beActionStarterData2_register);
 }
 void beActionStarterData2_register(){

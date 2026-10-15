@@ -12,11 +12,11 @@ void igMemoryDictionary_fieldInit();
 void igObject_register();
 extern char igMemoryDictionary_className[];
 extern char igMemoryDictionary_vtable[];
-extern char lbl_8055D32C[8];
+extern char igMemoryDictionary_dependencies[8];
 extern void *igMemoryDictionary_meta;
 void *igMemoryDictionary_getMeta();
 void *igMemoryDictionary_vtableRead();
-void igMemoryDictionary_registerNow();
+void igMemoryDictionary_arkRegister();
 void igMemoryDictionary_register();
 void *igMemoryDictionary_getMetaCall();
 }
@@ -33,11 +33,11 @@ struct UnknownGenObject8002CB34 : UnknownGenRoot8002CB34 {
 };
 extern "C" {
 void *igMemoryDictionary_create(void *object){
- igMemoryDictionary_registerNow();
+ igMemoryDictionary_arkRegister();
  return meta_createInstance(igMemoryDictionary_meta,object);
 }
 void *igMemoryDictionary_getMeta(){
- if(!igMemoryDictionary_meta || !(reinterpret_cast<unsigned int *>(igMemoryDictionary_meta)[0x24/4]&4)) igMemoryDictionary_registerNow();
+ if(!igMemoryDictionary_meta || !(reinterpret_cast<unsigned int *>(igMemoryDictionary_meta)[0x24/4]&4)) igMemoryDictionary_arkRegister();
  return igMemoryDictionary_meta;
 }
 void *igMemoryDictionary_vtableRead(){
@@ -46,12 +46,12 @@ void *igMemoryDictionary_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMemoryDictionary_registerNow(){
+void igMemoryDictionary_arkRegister(){
  meta_registerNow((int)igMemoryDictionary_register);
 }
 void igMemoryDictionary_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igMemoryDictionary_meta,(int)igObject_register,(int)fn_800237D0,(int)igMemoryDictionary_getMetaCall,(int)igMemoryDictionary_className,24,(int)igMemoryDictionary_vtableRead,(int)igMemoryDictionary_fieldInit,0,(int)lbl_8055D32C);
+ meta_registerClass(0,(int)&igMemoryDictionary_meta,(int)igObject_register,(int)fn_800237D0,(int)igMemoryDictionary_getMetaCall,(int)igMemoryDictionary_className,24,(int)igMemoryDictionary_vtableRead,(int)igMemoryDictionary_fieldInit,0,(int)igMemoryDictionary_dependencies);
 }
 void *igMemoryDictionary_getMetaCall(){return igMemoryDictionary_getMeta();}
 }

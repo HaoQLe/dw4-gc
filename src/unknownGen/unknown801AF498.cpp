@@ -25,7 +25,7 @@ extern char igNamedObject_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igSkinList_className[];
-extern char lbl_804AC81C[];
+extern char igSkin_dependencies[];
 extern char igSkeletonList_className[];
 extern char igSkeleton_className[];
 extern char igSkeleton_vtable[];
@@ -35,14 +35,14 @@ extern char lbl_804B9408[];
 extern char igSkin_vtable[];
 extern char igSkinList_vtable[];
 extern char lbl_804B952C[];
-extern char lbl_80560214[8];
+extern char igSkinList_dependencies[8];
 extern char lbl_8056021C[7];
-extern char lbl_80560224[8];
-extern char lbl_80560234[8];
-extern char lbl_8056023C[8];
-extern char lbl_80560244[8];
-extern char lbl_8056024C[8];
-extern char lbl_80560254[8];
+extern char igSkin_fieldTypes[8];
+extern char igSkin_fieldNames[8];
+extern char igSkin_fieldStorage[8];
+extern char igSkin_fieldOffsets[8];
+extern char igSkeletonList_dependencies[8];
+extern char igSkeleton_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igSkinList_meta;
 extern void *igSkin_meta;
@@ -51,23 +51,23 @@ extern void *igSkeleton_meta;
 extern void *igAnimationHierarchy_meta;
 void *igSkinList_getMeta();
 void *igSkinList_vtableRead();
-void igSkinList_registerNow();
+void igSkinList_arkRegister();
 void igSkinList_register();
 void *igSkinList_getMetaCall();
 void *igSkin_getMeta();
 void *igSkin_vtableRead();
-void igSkin_registerNow();
+void igSkin_arkRegister();
 void igSkin_register();
 void *igSkin_getMetaCall();
 void igSkin_fieldInit();
 void *igSkeletonList_getMeta();
 void *igSkeletonList_vtableRead();
-void igSkeletonList_registerNow();
+void igSkeletonList_arkRegister();
 void igSkeletonList_register();
 void *igSkeletonList_getMetaCall();
 void *igSkeleton_getMeta();
 void *igSkeleton_vtableRead();
-void igSkeleton_registerNow();
+void igSkeleton_arkRegister();
 void igSkeleton_register();
 void *igSkeleton_getMetaCall();
 void *igSkeleton_parentMeta();
@@ -121,7 +121,7 @@ void *fn_801AF498(){
  return igSkinList_meta;
 }
 void *igSkinList_getMeta(){
- if(!igSkinList_meta || !(reinterpret_cast<unsigned int *>(igSkinList_meta)[0x24/4]&4)) igSkinList_registerNow();
+ if(!igSkinList_meta || !(reinterpret_cast<unsigned int *>(igSkinList_meta)[0x24/4]&4)) igSkinList_arkRegister();
  return igSkinList_meta;
 }
 void *igSkinList_vtableRead(){
@@ -134,12 +134,12 @@ void *igSkinList_vtableRead(){
  object.unknown00=igSkinList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSkinList_registerNow(){
+void igSkinList_arkRegister(){
  meta_registerNow((int)igSkinList_register);
 }
 void igSkinList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igSkinList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igSkinList_getMetaCall,(int)igSkinList_className,20,(int)igSkinList_vtableRead,0,0,(int)lbl_80560214);
+ meta_registerClass(0,(int)&igSkinList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igSkinList_getMetaCall,(int)igSkinList_className,20,(int)igSkinList_vtableRead,0,0,(int)igSkinList_dependencies);
 }
 void *igSkinList_getMetaCall(){return igSkinList_getMeta();}
 void *fn_801AF634(){
@@ -147,7 +147,7 @@ void *fn_801AF634(){
  return igSkin_meta;
 }
 void *igSkin_getMeta(){
- if(!igSkin_meta || !(reinterpret_cast<unsigned int *>(igSkin_meta)[0x24/4]&4)) igSkin_registerNow();
+ if(!igSkin_meta || !(reinterpret_cast<unsigned int *>(igSkin_meta)[0x24/4]&4)) igSkin_arkRegister();
  return igSkin_meta;
 }
 void *igSkin_vtableRead(){
@@ -159,32 +159,32 @@ void *igSkin_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSkin_registerNow(){
+void igSkin_arkRegister(){
  meta_registerNow((int)igSkin_register);
 }
 void igSkin_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igSkin_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igSkin_getMetaCall,(int)lbl_8056021C,20,(int)igSkin_vtableRead,(int)igSkin_fieldInit,0,(int)lbl_804AC81C);
+ meta_registerClass(0,(int)&igSkin_meta,(int)igNamedObject_register,(int)fn_80023CF4,(int)igSkin_getMetaCall,(int)lbl_8056021C,20,(int)igSkin_vtableRead,(int)igSkin_fieldInit,0,(int)igSkin_dependencies);
 }
 void *igSkin_getMetaCall(){return igSkin_getMeta();}
 void igSkin_fieldInit(){
  void *value0=igSkin_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_80560224,2);
+ meta_appendFields(value0,igSkin_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  void *value3=fn_801B74F0();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  void *value4=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value5=fn_80122790();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value4)+56)=value5;
- meta_setupFields(value0,lbl_80560234,lbl_8056023C,lbl_80560244,value1);
+ meta_setupFields(value0,igSkin_fieldNames,igSkin_fieldStorage,igSkin_fieldOffsets,value1);
 }
 void *fn_801AF918(){
  if(!igSkeletonList_meta) igSkeletonList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igSkeletonList_meta;
 }
 void *igSkeletonList_getMeta(){
- if(!igSkeletonList_meta || !(reinterpret_cast<unsigned int *>(igSkeletonList_meta)[0x24/4]&4)) igSkeletonList_registerNow();
+ if(!igSkeletonList_meta || !(reinterpret_cast<unsigned int *>(igSkeletonList_meta)[0x24/4]&4)) igSkeletonList_arkRegister();
  return igSkeletonList_meta;
 }
 void *igSkeletonList_vtableRead(){
@@ -197,16 +197,16 @@ void *igSkeletonList_vtableRead(){
  object.unknown00=igSkeletonList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSkeletonList_registerNow(){
+void igSkeletonList_arkRegister(){
  meta_registerNow((int)igSkeletonList_register);
 }
 void igSkeletonList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igSkeletonList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igSkeletonList_getMetaCall,(int)igSkeletonList_className,20,(int)igSkeletonList_vtableRead,0,0,(int)lbl_8056024C);
+ meta_registerClass(0,(int)&igSkeletonList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igSkeletonList_getMetaCall,(int)igSkeletonList_className,20,(int)igSkeletonList_vtableRead,0,0,(int)igSkeletonList_dependencies);
 }
 void *igSkeletonList_getMetaCall(){return igSkeletonList_getMeta();}
 void *igSkeleton_getMeta(){
- if(!igSkeleton_meta || !(reinterpret_cast<unsigned int *>(igSkeleton_meta)[0x24/4]&4)) igSkeleton_registerNow();
+ if(!igSkeleton_meta || !(reinterpret_cast<unsigned int *>(igSkeleton_meta)[0x24/4]&4)) igSkeleton_arkRegister();
  return igSkeleton_meta;
 }
 void *igSkeleton_vtableRead(){
@@ -218,12 +218,12 @@ void *igSkeleton_vtableRead(){
  object.unknown10.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSkeleton_registerNow(){
+void igSkeleton_arkRegister(){
  meta_registerNow((int)igSkeleton_register);
 }
 void igSkeleton_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igSkeleton_meta,(int)igAnimationHierarchy_register,(int)igSkeleton_parentMeta,(int)igSkeleton_getMetaCall,(int)igSkeleton_className,28,(int)igSkeleton_vtableRead,(int)igSkeleton_fieldInit,0,(int)lbl_80560254);
+ meta_registerClass(0,(int)&igSkeleton_meta,(int)igAnimationHierarchy_register,(int)igSkeleton_parentMeta,(int)igSkeleton_getMetaCall,(int)igSkeleton_className,28,(int)igSkeleton_vtableRead,(int)igSkeleton_fieldInit,0,(int)igSkeleton_dependencies);
 }
 void *igSkeleton_getMetaCall(){return igSkeleton_getMeta();}
 void *igSkeleton_parentMeta(){return igAnimationHierarchy_meta;}

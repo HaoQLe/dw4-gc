@@ -11,17 +11,17 @@ void *meta_fieldCount(void *);
 void *beSystem_metaObject();
 void *beCriHandleList_metaObject();
 void *beCriHandle_metaObject();
-extern char lbl_804D2868[];
-extern char lbl_804D2898[];
-extern char lbl_804D28C8[];
-extern char lbl_804D28F8[];
+extern char beCri_fieldTypes[];
+extern char beCri_fieldNames[];
+extern char beCri_fieldStorage[];
+extern char beCri_fieldOffsets[];
 extern void *beCri_meta;
 }
 extern "C" {
 void beCri_fieldInit(){
  void *value0=beCri_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D2868,12);
+ meta_appendFields(value0,beCri_fieldTypes,12);
  void *value2=meta_field(value0,value1);
  void *value3=beSystem_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -44,7 +44,7 @@ void beCri_fieldInit(){
  void *value13=fn_80028F84();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value12)+56)=value13;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value12)+52)=1;
- meta_setupFields(value0,lbl_804D2898,lbl_804D28C8,lbl_804D28F8,value1);
+ meta_setupFields(value0,beCri_fieldNames,beCri_fieldStorage,beCri_fieldOffsets,value1);
 }
 }
 #pragma pop

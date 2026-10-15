@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beCriFxXbData_registerNow();
+void beCriFxXbData_arkRegister();
 extern void *beCriFxXbData_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beCriFxXbData_metaObject(){
  return beCriFxXbData_meta;
 }
 void *beCriFxXbData_getMeta(){
- if(!beCriFxXbData_meta || !(reinterpret_cast<unsigned int *>(beCriFxXbData_meta)[0x24/4]&4)) beCriFxXbData_registerNow();
+ if(!beCriFxXbData_meta || !(reinterpret_cast<unsigned int *>(beCriFxXbData_meta)[0x24/4]&4)) beCriFxXbData_arkRegister();
  return beCriFxXbData_meta;
 }
 }

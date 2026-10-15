@@ -9,17 +9,17 @@ void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *beMessenger_metaObject();
-extern char lbl_804E2970[];
-extern char lbl_804E2998[];
-extern char lbl_804E29C0[];
-extern char lbl_804E29E8[];
+extern char beNDMWMdlPEBaseInfoWork_fieldTypes[];
+extern char beNDMWMdlPEBaseInfoWork_fieldNames[];
+extern char beNDMWMdlPEBaseInfoWork_fieldStorage[];
+extern char beNDMWMdlPEBaseInfoWork_fieldOffsets[];
 extern void *beNDMWMdlPEBaseInfoWork_meta;
 }
 extern "C" {
 void beNDMWMdlPEBaseInfoWork_fieldInit(){
  void *value0=beNDMWMdlPEBaseInfoWork_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E2970,10);
+ meta_appendFields(value0,beNDMWMdlPEBaseInfoWork_fieldTypes,10);
  void *value2=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value3=fn_800365B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -42,7 +42,7 @@ void beNDMWMdlPEBaseInfoWork_fieldInit(){
  void *value15=beMessenger_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value14)+56)=value15;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value14)+60)=0;
- meta_setupFields(value0,lbl_804E2998,lbl_804E29C0,lbl_804E29E8,value1);
+ meta_setupFields(value0,beNDMWMdlPEBaseInfoWork_fieldNames,beNDMWMdlPEBaseInfoWork_fieldStorage,beNDMWMdlPEBaseInfoWork_fieldOffsets,value1);
 }
 }
 #pragma pop

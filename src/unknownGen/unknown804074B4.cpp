@@ -11,18 +11,18 @@ void *igFlyMode_getMeta();
 void igFlyMode_vtableRead();
 void igViewMode_register();
 extern char igFlyMode_className[];
-extern char lbl_804F0BB4[];
+extern char igFlyMode_dependencies[];
 extern char igFlyMode_meta[];
 void igFlyMode_register();
 void *igFlyMode_getMetaCall();
 }
 extern "C" {
-void igFlyMode_registerNow(){
+void igFlyMode_arkRegister(){
  meta_registerNow((int)igFlyMode_register);
 }
 void igFlyMode_register(){
  fn_80402E28();
- meta_registerClass(0,(int)igFlyMode_meta,(int)igViewMode_register,(int)fn_802E170C,(int)igFlyMode_getMetaCall,(int)igFlyMode_className,160,(int)igFlyMode_vtableRead,(int)igFlyMode_fieldInit,0,(int)lbl_804F0BB4);
+ meta_registerClass(0,(int)igFlyMode_meta,(int)igViewMode_register,(int)fn_802E170C,(int)igFlyMode_getMetaCall,(int)igFlyMode_className,160,(int)igFlyMode_vtableRead,(int)igFlyMode_fieldInit,0,(int)igFlyMode_dependencies);
 }
 void *igFlyMode_getMetaCall(){return igFlyMode_getMeta();}
 }

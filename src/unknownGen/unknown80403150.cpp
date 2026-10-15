@@ -11,18 +11,18 @@ void igViewerStatisticsManager_fieldInit();
 void *igViewerStatisticsManager_getMeta();
 void igViewerStatisticsManager_vtableRead();
 extern char igViewerStatisticsManager_className[];
-extern char lbl_804EFE48[];
+extern char igViewerStatisticsManager_dependencies[];
 extern char igViewerStatisticsManager_meta[];
 void igViewerStatisticsManager_register();
 void *igViewerStatisticsManager_getMetaCall();
 }
 extern "C" {
-void igViewerStatisticsManager_registerNow(){
+void igViewerStatisticsManager_arkRegister(){
  meta_registerNow((int)igViewerStatisticsManager_register);
 }
 void igViewerStatisticsManager_register(){
  fn_80402E28();
- meta_registerClass(0,(int)igViewerStatisticsManager_meta,(int)igObject_register,(int)fn_800237D0,(int)igViewerStatisticsManager_getMetaCall,(int)igViewerStatisticsManager_className,72,(int)igViewerStatisticsManager_vtableRead,(int)igViewerStatisticsManager_fieldInit,0,(int)lbl_804EFE48);
+ meta_registerClass(0,(int)igViewerStatisticsManager_meta,(int)igObject_register,(int)fn_800237D0,(int)igViewerStatisticsManager_getMetaCall,(int)igViewerStatisticsManager_className,72,(int)igViewerStatisticsManager_vtableRead,(int)igViewerStatisticsManager_fieldInit,0,(int)igViewerStatisticsManager_dependencies);
 }
 void *igViewerStatisticsManager_getMetaCall(){return igViewerStatisticsManager_getMeta();}
 }

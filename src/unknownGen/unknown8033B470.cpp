@@ -12,7 +12,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_803250AC();
 void *fn_803386E8();
-void beNDMWMdlEBullet_registerNow();
+void beNDMWMdlEBullet_arkRegister();
 extern char beNDMWMdlEffect_className[];
 extern char beNDMWMdlEffect_meta[];
 extern void *beNDMWMdlEBullet_meta;
@@ -21,7 +21,7 @@ void beNDMWMdlEffect_register();
 void *beNDMWMdlEffect_getMetaCall();
 }
 extern "C" {
-void beNDMWMdlEffect_registerNow(){
+void beNDMWMdlEffect_arkRegister(){
  meta_registerNow((int)beNDMWMdlEffect_register);
 }
 void beNDMWMdlEffect_register(){
@@ -30,7 +30,7 @@ void beNDMWMdlEffect_register(){
 }
 void *beNDMWMdlEffect_getMetaCall(){return beNDMWMdlEffect_getMeta();}
 void *beNDMWMdlEBullet_create(void *object){
- beNDMWMdlEBullet_registerNow();
+ beNDMWMdlEBullet_arkRegister();
  return meta_createInstance(beNDMWMdlEBullet_meta,object);
 }
 void *beNDMWMdlEBullet_metaObject(){
@@ -38,7 +38,7 @@ void *beNDMWMdlEBullet_metaObject(){
  return beNDMWMdlEBullet_meta;
 }
 void *beNDMWMdlEBullet_getMeta(){
- if(!beNDMWMdlEBullet_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlEBullet_meta)[0x24/4]&4)) beNDMWMdlEBullet_registerNow();
+ if(!beNDMWMdlEBullet_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlEBullet_meta)[0x24/4]&4)) beNDMWMdlEBullet_arkRegister();
  return beNDMWMdlEBullet_meta;
 }
 }

@@ -19,7 +19,7 @@ extern void *igScalerModel_meta;
 extern void *igGuiComponentAspect_meta;
 void *igScalerModel_getMeta();
 void *igScalerModel_vtableRead();
-void igScalerModel_registerNow();
+void igScalerModel_arkRegister();
 void igScalerModel_register();
 void *igScalerModel_getMetaCall();
 void *fn_8010DD30();
@@ -60,7 +60,7 @@ UnknownGenHolder *dtor_8010DAB8(UnknownGenHolder *object,short flags){
 }
 void *fn_8010DB2C(){return igGuiComponentAspect_meta;}
 void *igScalerModel_getMeta(){
- if(!igScalerModel_meta || !(reinterpret_cast<unsigned int *>(igScalerModel_meta)[0x24/4]&4)) igScalerModel_registerNow();
+ if(!igScalerModel_meta || !(reinterpret_cast<unsigned int *>(igScalerModel_meta)[0x24/4]&4)) igScalerModel_arkRegister();
  return igScalerModel_meta;
 }
 void *igScalerModel_vtableRead(){
@@ -73,7 +73,7 @@ void *igScalerModel_vtableRead(){
  object.unknown00=igScalerModel_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igScalerModel_registerNow(){
+void igScalerModel_arkRegister(){
  meta_registerNow((int)igScalerModel_register);
 }
 void igScalerModel_register(){

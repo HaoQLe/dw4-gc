@@ -16,11 +16,11 @@ extern char lbl_804A5C7C[];
 extern char lbl_804A6338[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F870[8];
+extern char igObjectPropertyForGeometry_dependencies[8];
 extern void *igObjectPropertyForGeometry_meta;
 void *igObjectPropertyForGeometry_getMeta();
 void *igObjectPropertyForGeometry_vtableRead();
-void igObjectPropertyForGeometry_registerNow();
+void igObjectPropertyForGeometry_arkRegister();
 void igObjectPropertyForGeometry_register();
 void *igObjectPropertyForGeometry_getMetaCall();
 }
@@ -43,7 +43,7 @@ struct UnknownGenObject8013DE00 : UnknownGenObject8013DE00_1 {
 };
 extern "C" {
 void *igObjectPropertyForGeometry_getMeta(){
- if(!igObjectPropertyForGeometry_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForGeometry_meta)[0x24/4]&4)) igObjectPropertyForGeometry_registerNow();
+ if(!igObjectPropertyForGeometry_meta || !(reinterpret_cast<unsigned int *>(igObjectPropertyForGeometry_meta)[0x24/4]&4)) igObjectPropertyForGeometry_arkRegister();
  return igObjectPropertyForGeometry_meta;
 }
 void *igObjectPropertyForGeometry_vtableRead(){
@@ -57,12 +57,12 @@ void *igObjectPropertyForGeometry_vtableRead(){
  object.unknown00=igObjectPropertyForGeometry_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObjectPropertyForGeometry_registerNow(){
+void igObjectPropertyForGeometry_arkRegister(){
  meta_registerNow((int)igObjectPropertyForGeometry_register);
 }
 void igObjectPropertyForGeometry_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igObjectPropertyForGeometry_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForGeometry_getMetaCall,(int)igObjectPropertyForGeometry_className,44,(int)igObjectPropertyForGeometry_vtableRead,(int)fn_8013DF88,0,(int)lbl_8055F870);
+ meta_registerClass(0,(int)&igObjectPropertyForGeometry_meta,(int)igObjectPropertyForNode_register,(int)fn_8013BF68,(int)igObjectPropertyForGeometry_getMetaCall,(int)igObjectPropertyForGeometry_className,44,(int)igObjectPropertyForGeometry_vtableRead,(int)fn_8013DF88,0,(int)igObjectPropertyForGeometry_dependencies);
 }
 void *igObjectPropertyForGeometry_getMetaCall(){return igObjectPropertyForGeometry_getMeta();}
 }

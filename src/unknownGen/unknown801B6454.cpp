@@ -9,14 +9,14 @@ void fn_801AA6DC();
 void *fn_801AD7BC();
 void igPlanarShadowProcessor_fieldInit();
 void igShaderProcessor_register();
-extern char lbl_804ADBC4[];
+extern char igPlanarShadowProcessor_dependencies[];
 extern char igPlanarShadowProcessor_className[];
 extern char igShaderProcessor_vtable[];
 extern char igPlanarShadowProcessor_vtable[];
 extern void *igPlanarShadowProcessor_meta;
 void *igPlanarShadowProcessor_getMeta();
 void *igPlanarShadowProcessor_vtableRead();
-void igPlanarShadowProcessor_registerNow();
+void igPlanarShadowProcessor_arkRegister();
 void igPlanarShadowProcessor_register();
 void *igPlanarShadowProcessor_getMetaCall();
 }
@@ -36,7 +36,7 @@ struct UnknownGenObject801B6490 : UnknownGenRoot801B6490 {
 };
 extern "C" {
 void *igPlanarShadowProcessor_getMeta(){
- if(!igPlanarShadowProcessor_meta || !(reinterpret_cast<unsigned int *>(igPlanarShadowProcessor_meta)[0x24/4]&4)) igPlanarShadowProcessor_registerNow();
+ if(!igPlanarShadowProcessor_meta || !(reinterpret_cast<unsigned int *>(igPlanarShadowProcessor_meta)[0x24/4]&4)) igPlanarShadowProcessor_arkRegister();
  return igPlanarShadowProcessor_meta;
 }
 void *igPlanarShadowProcessor_vtableRead(){
@@ -48,12 +48,12 @@ void *igPlanarShadowProcessor_vtableRead(){
  object.unknown3C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igPlanarShadowProcessor_registerNow(){
+void igPlanarShadowProcessor_arkRegister(){
  meta_registerNow((int)igPlanarShadowProcessor_register);
 }
 void igPlanarShadowProcessor_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igPlanarShadowProcessor_meta,(int)igShaderProcessor_register,(int)fn_801AD7BC,(int)igPlanarShadowProcessor_getMetaCall,(int)igPlanarShadowProcessor_className,64,(int)igPlanarShadowProcessor_vtableRead,(int)igPlanarShadowProcessor_fieldInit,0,(int)lbl_804ADBC4);
+ meta_registerClass(0,(int)&igPlanarShadowProcessor_meta,(int)igShaderProcessor_register,(int)fn_801AD7BC,(int)igPlanarShadowProcessor_getMetaCall,(int)igPlanarShadowProcessor_className,64,(int)igPlanarShadowProcessor_vtableRead,(int)igPlanarShadowProcessor_fieldInit,0,(int)igPlanarShadowProcessor_dependencies);
 }
 void *igPlanarShadowProcessor_getMetaCall(){return igPlanarShadowProcessor_getMeta();}
 }

@@ -11,7 +11,7 @@ void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B381C();
-void beGroupKeepList_registerNow();
+void beGroupKeepList_arkRegister();
 extern char beHitLandDeliv_className[];
 extern char beHitLandDeliv_meta[];
 extern void *beGroupKeepList_meta;
@@ -20,7 +20,7 @@ void beHitLandDeliv_register();
 void *beHitLandDeliv_getMetaCall();
 }
 extern "C" {
-void beHitLandDeliv_registerNow(){
+void beHitLandDeliv_arkRegister(){
  meta_registerNow((int)beHitLandDeliv_register);
 }
 void beHitLandDeliv_register(){
@@ -33,7 +33,7 @@ void *beGroupKeepList_metaObject(){
  return beGroupKeepList_meta;
 }
 void *beGroupKeepList_getMeta(){
- if(!beGroupKeepList_meta || !(reinterpret_cast<unsigned int *>(beGroupKeepList_meta)[0x24/4]&4)) beGroupKeepList_registerNow();
+ if(!beGroupKeepList_meta || !(reinterpret_cast<unsigned int *>(beGroupKeepList_meta)[0x24/4]&4)) beGroupKeepList_arkRegister();
  return beGroupKeepList_meta;
 }
 }

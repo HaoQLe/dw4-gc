@@ -10,13 +10,13 @@ void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
 void *bePadManager_metaObject();
-void beNDMWMdlPlayerInfoWork_registerNow();
+void beNDMWMdlPlayerInfoWork_arkRegister();
 void *beNDMWGameRam_metaObject();
 void *igViewerSceneInfoManager_metaObject();
-extern char lbl_804E2780[];
-extern char lbl_804E278C[];
-extern char lbl_804E2798[];
-extern char lbl_804E27A4[];
+extern char beNDMWMdlPlayer_fieldTypes[];
+extern char beNDMWMdlPlayer_fieldNames[];
+extern char beNDMWMdlPlayer_fieldStorage[];
+extern char beNDMWMdlPlayer_fieldOffsets[];
 extern void *beNDMWMdlPlayer_meta;
 extern void *beNDMWMdlPlayerInfoWork_meta;
 extern void *lbl_805621F4;
@@ -25,7 +25,7 @@ extern "C" {
 void beNDMWMdlPlayer_fieldInit(){
  void *value0=beNDMWMdlPlayer_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804E2780,3);
+ meta_appendFields(value0,beNDMWMdlPlayer_fieldTypes,3);
  void *value2=meta_field(value0,value1);
  void *value3=igViewerSceneInfoManager_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
@@ -38,10 +38,10 @@ void beNDMWMdlPlayer_fieldInit(){
  void *value7=beNDMWGameRam_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value6)+56)=value7;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value6)+60)=0;
- meta_setupFields(value0,lbl_804E278C,lbl_804E2798,lbl_804E27A4,value1);
+ meta_setupFields(value0,beNDMWMdlPlayer_fieldNames,beNDMWMdlPlayer_fieldStorage,beNDMWMdlPlayer_fieldOffsets,value1);
 }
 void *beNDMWMdlPlayerInfoWork_create(void *object){
- beNDMWMdlPlayerInfoWork_registerNow();
+ beNDMWMdlPlayerInfoWork_arkRegister();
  return meta_createInstance(beNDMWMdlPlayerInfoWork_meta,object);
 }
 void *beNDMWMdlPlayerInfoWork_metaObject(){
@@ -49,7 +49,7 @@ void *beNDMWMdlPlayerInfoWork_metaObject(){
  return beNDMWMdlPlayerInfoWork_meta;
 }
 void *beNDMWMdlPlayerInfoWork_getMeta(){
- if(!beNDMWMdlPlayerInfoWork_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlPlayerInfoWork_meta)[0x24/4]&4)) beNDMWMdlPlayerInfoWork_registerNow();
+ if(!beNDMWMdlPlayerInfoWork_meta || !(reinterpret_cast<unsigned int *>(beNDMWMdlPlayerInfoWork_meta)[0x24/4]&4)) beNDMWMdlPlayerInfoWork_arkRegister();
  return beNDMWMdlPlayerInfoWork_meta;
 }
 }

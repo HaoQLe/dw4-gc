@@ -5,7 +5,7 @@
 extern "C" {
 void fn_80021B94();
 void *fn_80021D70();
-void igUnsignedIntMetaField_registerNow();
+void igUnsignedIntMetaField_arkRegister();
 void *fn_80023E40();
 void *fn_80026020();
 void *meta_newMetaObject(void *);
@@ -39,7 +39,7 @@ extern char igVirtualCFuncMetaField_className[];
 extern char igUnsignedIntArrayMetaField_className[];
 extern char igUnsignedCharMetaField_className[];
 extern char igUnsignedCharArrayMetaField_className[];
-extern char lbl_804631F8[];
+extern char igThreadManager_dependencies[];
 extern char igThreadManager_className[];
 extern char lbl_804632A8[];
 extern char lbl_804632B4[];
@@ -49,22 +49,22 @@ extern char igUnsignedCharMetaField_vtable[];
 extern char igUnsignedCharArrayMetaField_vtable[];
 extern char lbl_80471914[];
 extern char lbl_80476E6C[];
-extern char lbl_8055CF58[8];
-extern char lbl_8055CF60[4];
-extern char lbl_8055CF64[4];
-extern char lbl_8055CF68[4];
-extern char lbl_8055CF6C[4];
-extern char lbl_8055CF70[8];
-extern char lbl_8055CF78[8];
-extern char lbl_8055CF80[4];
-extern char lbl_8055CF84[4];
-extern char lbl_8055CF88[4];
-extern char lbl_8055CF8C[4];
+extern char igUnsignedIntArrayMetaField_dependencies[8];
+extern char igUnsignedIntArrayMetaField_fieldTypes[4];
+extern char igUnsignedIntArrayMetaField_fieldNames[4];
+extern char igUnsignedIntArrayMetaField_fieldStorage[4];
+extern char igUnsignedIntArrayMetaField_fieldOffsets[4];
+extern char igUnsignedCharMetaField_dependencies[8];
+extern char igUnsignedCharArrayMetaField_dependencies[8];
+extern char igUnsignedCharArrayMetaField_fieldTypes[4];
+extern char igUnsignedCharArrayMetaField_fieldNames[4];
+extern char igUnsignedCharArrayMetaField_fieldStorage[4];
+extern char igUnsignedCharArrayMetaField_fieldOffsets[4];
 extern char lbl_8055CF90[8];
-extern char lbl_8055CF98[8];
-extern char lbl_8055CFA8[8];
-extern char lbl_8055CFB0[8];
-extern char lbl_8055CFB8[8];
+extern char igThreadManager_fieldTypes[8];
+extern char igThreadManager_fieldNames[8];
+extern char igThreadManager_fieldStorage[8];
+extern char igThreadManager_fieldOffsets[8];
 extern char lbl_8055CFF0[8];
 extern char lbl_8055CFF8[8];
 extern char lbl_8055D000[6];
@@ -92,32 +92,32 @@ extern void *lbl_805621F4;
 extern void *igObject_meta;
 void *igUnsignedIntArrayMetaField_getMeta();
 void *igUnsignedIntArrayMetaField_vtableRead();
-void igUnsignedIntArrayMetaField_registerNow();
+void igUnsignedIntArrayMetaField_arkRegister();
 void igUnsignedIntArrayMetaField_register();
 void *igUnsignedIntArrayMetaField_getMetaCall();
 void *igUnsignedIntArrayMetaField_parentMeta();
 void igUnsignedIntArrayMetaField_fieldInit();
 void *igUnsignedCharMetaField_getMeta();
 void *igUnsignedCharMetaField_vtableRead();
-void igUnsignedCharMetaField_registerNow();
+void igUnsignedCharMetaField_arkRegister();
 void igUnsignedCharMetaField_register();
 void *igUnsignedCharMetaField_getMetaCall();
 void *igUnsignedCharArrayMetaField_getMeta();
 void *igUnsignedCharArrayMetaField_vtableRead();
-void igUnsignedCharArrayMetaField_registerNow();
+void igUnsignedCharArrayMetaField_arkRegister();
 void igUnsignedCharArrayMetaField_register();
 void *igUnsignedCharArrayMetaField_getMetaCall();
 void *igUnsignedCharArrayMetaField_parentMeta();
 void igUnsignedCharArrayMetaField_fieldInit();
 void *igTimer_getMeta();
-void igTimer_registerNow();
+void igTimer_arkRegister();
 void igTimer_register();
 void *igTimer_getMetaCall();
 void *fn_800237D0();
 void *fn_800237D8();
 void *igLongTimer_getMetaCall();
 void *igThreadManager_getMeta();
-void igThreadManager_registerNow();
+void igThreadManager_arkRegister();
 void igThreadManager_register();
 void *igThreadManager_getMetaCall();
 void igThreadManager_fieldInit();
@@ -125,7 +125,7 @@ void *igGamecubeThreadManager_getMetaCall();
 void *fn_80023A30();
 void *fn_80023A50();
 void *igThread_getMeta();
-void igThread_registerNow();
+void igThread_arkRegister();
 void igThread_register();
 void *igThread_getMetaCall();
 void *fn_80023CF4();
@@ -193,16 +193,16 @@ void fn_80022D60(){
 }
 void *fn_80022DF8(){
  if(!lbl_805614C0){
-  igUnsignedIntMetaField_registerNow();
+  igUnsignedIntMetaField_arkRegister();
  }
  return lbl_805614C0;
 }
 void *igUnsignedIntArrayMetaField_create(void *object){
- igUnsignedIntArrayMetaField_registerNow();
+ igUnsignedIntArrayMetaField_arkRegister();
  return meta_createInstance(igUnsignedIntArrayMetaField_meta,object);
 }
 void *igUnsignedIntArrayMetaField_getMeta(){
- if(!igUnsignedIntArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedIntArrayMetaField_meta)[0x24/4]&4)) igUnsignedIntArrayMetaField_registerNow();
+ if(!igUnsignedIntArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedIntArrayMetaField_meta)[0x24/4]&4)) igUnsignedIntArrayMetaField_arkRegister();
  return igUnsignedIntArrayMetaField_meta;
 }
 void *igUnsignedIntArrayMetaField_vtableRead(){
@@ -210,21 +210,21 @@ void *igUnsignedIntArrayMetaField_vtableRead(){
  object.unknown00=igUnsignedIntArrayMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igUnsignedIntArrayMetaField_registerNow(){
+void igUnsignedIntArrayMetaField_arkRegister(){
  meta_registerNow((int)igUnsignedIntArrayMetaField_register);
 }
 void igUnsignedIntArrayMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igUnsignedIntArrayMetaField_meta,(int)igUnsignedIntMetaField_register,(int)igUnsignedIntArrayMetaField_parentMeta,(int)igUnsignedIntArrayMetaField_getMetaCall,(int)igUnsignedIntArrayMetaField_className,56,(int)igUnsignedIntArrayMetaField_vtableRead,(int)igUnsignedIntArrayMetaField_fieldInit,0,(int)lbl_8055CF58);
+ meta_registerClass(0,(int)&igUnsignedIntArrayMetaField_meta,(int)igUnsignedIntMetaField_register,(int)igUnsignedIntArrayMetaField_parentMeta,(int)igUnsignedIntArrayMetaField_getMetaCall,(int)igUnsignedIntArrayMetaField_className,56,(int)igUnsignedIntArrayMetaField_vtableRead,(int)igUnsignedIntArrayMetaField_fieldInit,0,(int)igUnsignedIntArrayMetaField_dependencies);
 }
 void *igUnsignedIntArrayMetaField_getMetaCall(){return igUnsignedIntArrayMetaField_getMeta();}
 void *igUnsignedIntArrayMetaField_parentMeta(){return igUnsignedIntMetaField_meta;}
 void igUnsignedIntArrayMetaField_fieldInit(){
  void *meta=igUnsignedIntArrayMetaField_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_8055CF60,1);
+ meta_appendFields(meta,igUnsignedIntArrayMetaField_fieldTypes,1);
  fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,lbl_8055CF64,lbl_8055CF68,lbl_8055CF6C,field);
+ meta_setupFields(meta,igUnsignedIntArrayMetaField_fieldNames,igUnsignedIntArrayMetaField_fieldStorage,igUnsignedIntArrayMetaField_fieldOffsets,field);
 }
 void fn_80023074(){
  if(!lbl_805614C8){
@@ -238,11 +238,11 @@ void fn_80023074(){
  }
 }
 void *igUnsignedCharMetaField_create(void *object){
- igUnsignedCharMetaField_registerNow();
+ igUnsignedCharMetaField_arkRegister();
  return meta_createInstance(igUnsignedCharMetaField_meta,object);
 }
 void *igUnsignedCharMetaField_getMeta(){
- if(!igUnsignedCharMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedCharMetaField_meta)[0x24/4]&4)) igUnsignedCharMetaField_registerNow();
+ if(!igUnsignedCharMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedCharMetaField_meta)[0x24/4]&4)) igUnsignedCharMetaField_arkRegister();
  return igUnsignedCharMetaField_meta;
 }
 void *igUnsignedCharMetaField_vtableRead(){
@@ -250,12 +250,12 @@ void *igUnsignedCharMetaField_vtableRead(){
  object.unknown00=igUnsignedCharMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igUnsignedCharMetaField_registerNow(){
+void igUnsignedCharMetaField_arkRegister(){
  meta_registerNow((int)igUnsignedCharMetaField_register);
 }
 void igUnsignedCharMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igUnsignedCharMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igUnsignedCharMetaField_getMetaCall,(int)igUnsignedCharMetaField_className,52,(int)igUnsignedCharMetaField_vtableRead,0,0,(int)lbl_8055CF70);
+ meta_registerClass(0,(int)&igUnsignedCharMetaField_meta,(int)igMetaField_register,(int)fn_80021D70,(int)igUnsignedCharMetaField_getMetaCall,(int)igUnsignedCharMetaField_className,52,(int)igUnsignedCharMetaField_vtableRead,0,0,(int)igUnsignedCharMetaField_dependencies);
 }
 void *igUnsignedCharMetaField_getMetaCall(){return igUnsignedCharMetaField_getMeta();}
 void fn_800232C0(){
@@ -271,16 +271,16 @@ void fn_800232C0(){
 }
 void *fn_80023358(){
  if(!lbl_805614D4){
-  igUnsignedCharMetaField_registerNow();
+  igUnsignedCharMetaField_arkRegister();
  }
  return lbl_805614D4;
 }
 void *igUnsignedCharArrayMetaField_create(void *object){
- igUnsignedCharArrayMetaField_registerNow();
+ igUnsignedCharArrayMetaField_arkRegister();
  return meta_createInstance(igUnsignedCharArrayMetaField_meta,object);
 }
 void *igUnsignedCharArrayMetaField_getMeta(){
- if(!igUnsignedCharArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedCharArrayMetaField_meta)[0x24/4]&4)) igUnsignedCharArrayMetaField_registerNow();
+ if(!igUnsignedCharArrayMetaField_meta || !(reinterpret_cast<unsigned int *>(igUnsignedCharArrayMetaField_meta)[0x24/4]&4)) igUnsignedCharArrayMetaField_arkRegister();
  return igUnsignedCharArrayMetaField_meta;
 }
 void *igUnsignedCharArrayMetaField_vtableRead(){
@@ -289,21 +289,21 @@ void *igUnsignedCharArrayMetaField_vtableRead(){
  object.unknown00=igUnsignedCharArrayMetaField_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igUnsignedCharArrayMetaField_registerNow(){
+void igUnsignedCharArrayMetaField_arkRegister(){
  meta_registerNow((int)igUnsignedCharArrayMetaField_register);
 }
 void igUnsignedCharArrayMetaField_register(){
  fn_80021B94();
- meta_registerClass(0,(int)&igUnsignedCharArrayMetaField_meta,(int)igUnsignedCharMetaField_register,(int)igUnsignedCharArrayMetaField_parentMeta,(int)igUnsignedCharArrayMetaField_getMetaCall,(int)igUnsignedCharArrayMetaField_className,56,(int)igUnsignedCharArrayMetaField_vtableRead,(int)igUnsignedCharArrayMetaField_fieldInit,0,(int)lbl_8055CF78);
+ meta_registerClass(0,(int)&igUnsignedCharArrayMetaField_meta,(int)igUnsignedCharMetaField_register,(int)igUnsignedCharArrayMetaField_parentMeta,(int)igUnsignedCharArrayMetaField_getMetaCall,(int)igUnsignedCharArrayMetaField_className,56,(int)igUnsignedCharArrayMetaField_vtableRead,(int)igUnsignedCharArrayMetaField_fieldInit,0,(int)igUnsignedCharArrayMetaField_dependencies);
 }
 void *igUnsignedCharArrayMetaField_getMetaCall(){return igUnsignedCharArrayMetaField_getMeta();}
 void *igUnsignedCharArrayMetaField_parentMeta(){return igUnsignedCharMetaField_meta;}
 void igUnsignedCharArrayMetaField_fieldInit(){
  void *meta=igUnsignedCharArrayMetaField_meta;
  void *field=meta_fieldCount(meta);
- meta_appendFields(meta,lbl_8055CF80,1);
+ meta_appendFields(meta,igUnsignedCharArrayMetaField_fieldTypes,1);
  fn_80053650(meta_field(meta,field),1);
- meta_setupFields(meta,lbl_8055CF84,lbl_8055CF88,lbl_8055CF8C,field);
+ meta_setupFields(meta,igUnsignedCharArrayMetaField_fieldNames,igUnsignedCharArrayMetaField_fieldStorage,igUnsignedCharArrayMetaField_fieldOffsets,field);
 }
 void fn_800235D8(){
  if(!lbl_805614DC){
@@ -317,7 +317,7 @@ void fn_800235D8(){
  }
 }
 void *igTimer_create(void *object){
- igTimer_registerNow();
+ igTimer_arkRegister();
  return meta_createInstance(igTimer_meta,object);
 }
 void *fn_800236A8(){
@@ -325,10 +325,10 @@ void *fn_800236A8(){
  return igTimer_meta;
 }
 void *igTimer_getMeta(){
- if(!igTimer_meta || !(reinterpret_cast<unsigned int *>(igTimer_meta)[0x24/4]&4)) igTimer_registerNow();
+ if(!igTimer_meta || !(reinterpret_cast<unsigned int *>(igTimer_meta)[0x24/4]&4)) igTimer_arkRegister();
  return igTimer_meta;
 }
-void igTimer_registerNow(){
+void igTimer_arkRegister(){
  meta_registerNow((int)igTimer_register);
 }
 void igTimer_register(){
@@ -344,26 +344,26 @@ void *fn_800237D8(){
 }
 void *igLongTimer_getMetaCall(){return igLongTimer_getMeta();}
 void *igThreadManager_create(void *object){
- igThreadManager_registerNow();
+ igThreadManager_arkRegister();
  return meta_createInstance(igThreadManager_meta,object);
 }
 void *igThreadManager_getMeta(){
- if(!igThreadManager_meta || !(reinterpret_cast<unsigned int *>(igThreadManager_meta)[0x24/4]&4)) igThreadManager_registerNow();
+ if(!igThreadManager_meta || !(reinterpret_cast<unsigned int *>(igThreadManager_meta)[0x24/4]&4)) igThreadManager_arkRegister();
  return igThreadManager_meta;
 }
-void igThreadManager_registerNow(){
+void igThreadManager_arkRegister(){
  meta_registerNow((int)igThreadManager_register);
 }
 void igThreadManager_register(){
  fn_80021B94();
- meta_registerClass(1,(int)&igThreadManager_meta,(int)igObject_register,(int)fn_800237D0,(int)igThreadManager_getMetaCall,(int)igThreadManager_className,16,0,(int)igThreadManager_fieldInit,(int)fn_80023A30,(int)lbl_804631F8);
+ meta_registerClass(1,(int)&igThreadManager_meta,(int)igObject_register,(int)fn_800237D0,(int)igThreadManager_getMetaCall,(int)igThreadManager_className,16,0,(int)igThreadManager_fieldInit,(int)fn_80023A30,(int)igThreadManager_dependencies);
 }
 void *igThreadManager_getMetaCall(){return igThreadManager_getMeta();}
 void igThreadManager_fieldInit(){
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(igThreadManager_meta)+24)=1;
  void *value0=igThreadManager_meta;
  void *value2=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055CF98,2);
+ meta_appendFields(value0,igThreadManager_fieldTypes,2);
  void *value3=meta_field(value0,value2);
  void *value4=fn_80023E40();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
@@ -372,7 +372,7 @@ void igThreadManager_fieldInit(){
  void *value6=fn_80026020();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value5)+56)=value6;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value5)+52)=1;
- meta_setupFields(value0,lbl_8055CFA8,lbl_8055CFB0,lbl_8055CFB8,value2);
+ meta_setupFields(value0,igThreadManager_fieldNames,igThreadManager_fieldStorage,igThreadManager_fieldOffsets,value2);
  void *value1=igThreadManager_meta;
  reinterpret_cast<Meta::igMetaObject *>(value1)->_abstractProxy=(void *)(void *)igGamecubeThreadManager_getMetaCall;
  fn_80065D94((void *)fn_80023A50);
@@ -410,7 +410,7 @@ void *fn_80023B4C(){
  return lbl_80561500;
 }
 void *igThread_create(void *object){
- igThread_registerNow();
+ igThread_arkRegister();
  return meta_createInstance(igThread_meta,object);
 }
 void *fn_80023BC8(){
@@ -418,10 +418,10 @@ void *fn_80023BC8(){
  return igThread_meta;
 }
 void *igThread_getMeta(){
- if(!igThread_meta || !(reinterpret_cast<unsigned int *>(igThread_meta)[0x24/4]&4)) igThread_registerNow();
+ if(!igThread_meta || !(reinterpret_cast<unsigned int *>(igThread_meta)[0x24/4]&4)) igThread_arkRegister();
  return igThread_meta;
 }
-void igThread_registerNow(){
+void igThread_arkRegister(){
  meta_registerNow((int)igThread_register);
 }
 void igThread_register(){

@@ -17,7 +17,7 @@ extern void *igGaussianFilterFun_meta;
 extern void *igSerialFilterFun_meta;
 void *igGaussianFilterFun_getMeta();
 void *igGaussianFilterFun_vtableRead();
-void igGaussianFilterFun_registerNow();
+void igGaussianFilterFun_arkRegister();
 void igGaussianFilterFun_register();
 void *igGaussianFilterFun_getMetaCall();
 void *fn_80149C04();
@@ -28,11 +28,11 @@ struct UnknownGenObject80149AF4_0 {
 };
 extern "C" {
 void *igGaussianFilterFun_create(void *object){
- igGaussianFilterFun_registerNow();
+ igGaussianFilterFun_arkRegister();
  return meta_createInstance(igGaussianFilterFun_meta,object);
 }
 void *igGaussianFilterFun_getMeta(){
- if(!igGaussianFilterFun_meta || !(reinterpret_cast<unsigned int *>(igGaussianFilterFun_meta)[0x24/4]&4)) igGaussianFilterFun_registerNow();
+ if(!igGaussianFilterFun_meta || !(reinterpret_cast<unsigned int *>(igGaussianFilterFun_meta)[0x24/4]&4)) igGaussianFilterFun_arkRegister();
  return igGaussianFilterFun_meta;
 }
 void *igGaussianFilterFun_vtableRead(){
@@ -43,7 +43,7 @@ void *igGaussianFilterFun_vtableRead(){
  object.unknown00=igGaussianFilterFun_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igGaussianFilterFun_registerNow(){
+void igGaussianFilterFun_arkRegister(){
  meta_registerNow((int)igGaussianFilterFun_register);
 }
 void igGaussianFilterFun_register(){

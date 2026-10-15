@@ -19,25 +19,25 @@ extern char igNamedObject_vtable[];
 extern char igObjectList_vtable[];
 extern char lbl_80476E0C[];
 extern char igAnimationCombinerList_className[];
-extern char lbl_804B235C[];
+extern char igAnimationCombiner_dependencies[];
 extern char igAnimationCombiner_className[];
 extern char igAnimationCombiner_vtable[];
 extern char lbl_804B5F8C[];
 extern char igAnimationCombinerList_vtable[];
 extern char lbl_804B606C[];
-extern char lbl_805609C8[8];
+extern char igAnimationCombinerList_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igAnimationSystem_meta;
 extern void *igAnimationCombinerList_meta;
 extern void *igAnimationCombiner_meta;
 void *igAnimationCombinerList_getMeta();
 void *igAnimationCombinerList_vtableRead();
-void igAnimationCombinerList_registerNow();
+void igAnimationCombinerList_arkRegister();
 void igAnimationCombinerList_register();
 void *igAnimationCombinerList_getMetaCall();
 void *igAnimationCombiner_getMeta();
 void *igAnimationCombiner_vtableRead();
-void igAnimationCombiner_registerNow();
+void igAnimationCombiner_arkRegister();
 void igAnimationCombiner_register();
 void *igAnimationCombiner_getMetaCall();
 void *igAnimationCombiner_parentMeta();
@@ -70,7 +70,7 @@ struct UnknownGenObject801CBA50 : UnknownGenObject801CBA50_1 {
 };
 extern "C" {
 void *igAnimationCombinerList_create(void *object){
- igAnimationCombinerList_registerNow();
+ igAnimationCombinerList_arkRegister();
  return meta_createInstance(igAnimationCombinerList_meta,object);
 }
 void *fn_801CB840(){
@@ -78,7 +78,7 @@ void *fn_801CB840(){
  return igAnimationCombinerList_meta;
 }
 void *igAnimationCombinerList_getMeta(){
- if(!igAnimationCombinerList_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerList_meta)[0x24/4]&4)) igAnimationCombinerList_registerNow();
+ if(!igAnimationCombinerList_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombinerList_meta)[0x24/4]&4)) igAnimationCombinerList_arkRegister();
  return igAnimationCombinerList_meta;
 }
 void *igAnimationCombinerList_vtableRead(){
@@ -91,20 +91,20 @@ void *igAnimationCombinerList_vtableRead(){
  object.unknown00=igAnimationCombinerList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationCombinerList_registerNow(){
+void igAnimationCombinerList_arkRegister(){
  meta_registerNow((int)igAnimationCombinerList_register);
 }
 void igAnimationCombinerList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationCombinerList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationCombinerList_getMetaCall,(int)igAnimationCombinerList_className,20,(int)igAnimationCombinerList_vtableRead,0,0,(int)lbl_805609C8);
+ meta_registerClass(0,(int)&igAnimationCombinerList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationCombinerList_getMetaCall,(int)igAnimationCombinerList_className,20,(int)igAnimationCombinerList_vtableRead,0,0,(int)igAnimationCombinerList_dependencies);
 }
 void *igAnimationCombinerList_getMetaCall(){return igAnimationCombinerList_getMeta();}
 void *igAnimationCombiner_create(void *object){
- igAnimationCombiner_registerNow();
+ igAnimationCombiner_arkRegister();
  return meta_createInstance(igAnimationCombiner_meta,object);
 }
 void *igAnimationCombiner_getMeta(){
- if(!igAnimationCombiner_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombiner_meta)[0x24/4]&4)) igAnimationCombiner_registerNow();
+ if(!igAnimationCombiner_meta || !(reinterpret_cast<unsigned int *>(igAnimationCombiner_meta)[0x24/4]&4)) igAnimationCombiner_arkRegister();
  return igAnimationCombiner_meta;
 }
 void *igAnimationCombiner_vtableRead(){
@@ -119,12 +119,12 @@ void *igAnimationCombiner_vtableRead(){
  object.unknown38.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationCombiner_registerNow(){
+void igAnimationCombiner_arkRegister(){
  meta_registerNow((int)igAnimationCombiner_register);
 }
 void igAnimationCombiner_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationCombiner_meta,(int)igAnimationSystem_register,(int)igAnimationCombiner_parentMeta,(int)igAnimationCombiner_getMetaCall,(int)igAnimationCombiner_className,96,(int)igAnimationCombiner_vtableRead,(int)igAnimationCombiner_fieldInit,(int)fn_801CBE9C,(int)lbl_804B235C);
+ meta_registerClass(0,(int)&igAnimationCombiner_meta,(int)igAnimationSystem_register,(int)igAnimationCombiner_parentMeta,(int)igAnimationCombiner_getMetaCall,(int)igAnimationCombiner_className,96,(int)igAnimationCombiner_vtableRead,(int)igAnimationCombiner_fieldInit,(int)fn_801CBE9C,(int)igAnimationCombiner_dependencies);
 }
 void *igAnimationCombiner_getMetaCall(){return igAnimationCombiner_getMeta();}
 void *igAnimationCombiner_parentMeta(){return igAnimationSystem_meta;}

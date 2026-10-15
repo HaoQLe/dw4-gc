@@ -36,11 +36,11 @@ extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AA8E4[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F584[8];
-extern char lbl_8055F58C[8];
-extern char lbl_8055F594[8];
-extern char lbl_8055F59C[8];
-extern char lbl_8055F5A4[8];
+extern char igScaleActors_dependencies[8];
+extern char igScaleActors_fieldTypes[8];
+extern char igScaleActors_fieldNames[8];
+extern char igScaleActors_fieldStorage[8];
+extern char igScaleActors_fieldOffsets[8];
 extern void *igTypeLock_meta;
 extern void *igSegmentLock_meta;
 extern void *igScalePs2Texture_meta;
@@ -51,29 +51,29 @@ extern void *igResizeImage_meta;
 extern char lbl_80566AEC[4];
 void *igSegmentLock_getMeta();
 void *igSegmentLock_vtableRead();
-void igSegmentLock_registerNow();
+void igSegmentLock_arkRegister();
 void igSegmentLock_register();
 void *igSegmentLock_getMetaCall();
 void *igSegmentLock_parentMeta();
 void *igScalePs2Texture_getMeta();
 void *igScalePs2Texture_vtableRead();
-void igScalePs2Texture_registerNow();
+void igScalePs2Texture_arkRegister();
 void igScalePs2Texture_register();
 void *igScalePs2Texture_getMetaCall();
 void *igScaleActors_getMeta();
 void *igScaleActors_vtableRead();
-void igScaleActors_registerNow();
+void igScaleActors_arkRegister();
 void igScaleActors_register();
 void *igScaleActors_getMetaCall();
 void igScaleActors_fieldInit();
 void *igResortTransparency_getMeta();
 void *igResortTransparency_vtableRead();
-void igResortTransparency_registerNow();
+void igResortTransparency_arkRegister();
 void igResortTransparency_register();
 void *igResortTransparency_getMetaCall();
 void *igResizeImage_getMeta();
 void *igResizeImage_vtableRead();
-void igResizeImage_registerNow();
+void igResizeImage_arkRegister();
 void igResizeImage_register();
 void *igResizeImage_getMetaCall();
 }
@@ -157,7 +157,7 @@ struct UnknownGenObject80134150 : UnknownGenObject80134150_1 {
 };
 extern "C" {
 void *igSegmentLock_getMeta(){
- if(!igSegmentLock_meta || !(reinterpret_cast<unsigned int *>(igSegmentLock_meta)[0x24/4]&4)) igSegmentLock_registerNow();
+ if(!igSegmentLock_meta || !(reinterpret_cast<unsigned int *>(igSegmentLock_meta)[0x24/4]&4)) igSegmentLock_arkRegister();
  return igSegmentLock_meta;
 }
 void *igSegmentLock_vtableRead(){
@@ -169,7 +169,7 @@ void *igSegmentLock_vtableRead(){
  object.unknown00=igSegmentLock_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igSegmentLock_registerNow(){
+void igSegmentLock_arkRegister(){
  meta_registerNow((int)igSegmentLock_register);
 }
 void igSegmentLock_register(){
@@ -179,7 +179,7 @@ void igSegmentLock_register(){
 void *igSegmentLock_getMetaCall(){return igSegmentLock_getMeta();}
 void *igSegmentLock_parentMeta(){return igTypeLock_meta;}
 void *igScalePs2Texture_getMeta(){
- if(!igScalePs2Texture_meta || !(reinterpret_cast<unsigned int *>(igScalePs2Texture_meta)[0x24/4]&4)) igScalePs2Texture_registerNow();
+ if(!igScalePs2Texture_meta || !(reinterpret_cast<unsigned int *>(igScalePs2Texture_meta)[0x24/4]&4)) igScalePs2Texture_arkRegister();
  return igScalePs2Texture_meta;
 }
 void *igScalePs2Texture_vtableRead(){
@@ -194,7 +194,7 @@ void *igScalePs2Texture_vtableRead(){
  object.unknown00=igScalePs2Texture_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igScalePs2Texture_registerNow(){
+void igScalePs2Texture_arkRegister(){
  meta_registerNow((int)igScalePs2Texture_register);
 }
 void igScalePs2Texture_register(){
@@ -203,7 +203,7 @@ void igScalePs2Texture_register(){
 }
 void *igScalePs2Texture_getMetaCall(){return igScalePs2Texture_getMeta();}
 void *igScaleActors_getMeta(){
- if(!igScaleActors_meta || !(reinterpret_cast<unsigned int *>(igScaleActors_meta)[0x24/4]&4)) igScaleActors_registerNow();
+ if(!igScaleActors_meta || !(reinterpret_cast<unsigned int *>(igScaleActors_meta)[0x24/4]&4)) igScaleActors_arkRegister();
  return igScaleActors_meta;
 }
 void *igScaleActors_vtableRead(){
@@ -217,18 +217,18 @@ void *igScaleActors_vtableRead(){
  object.unknown2C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igScaleActors_registerNow(){
+void igScaleActors_arkRegister(){
  meta_registerNow((int)igScaleActors_register);
 }
 void igScaleActors_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igScaleActors_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igScaleActors_getMetaCall,(int)igScaleActors_className,48,(int)igScaleActors_vtableRead,(int)igScaleActors_fieldInit,0,(int)lbl_8055F584);
+ meta_registerClass(0,(int)&igScaleActors_meta,(int)igOptBase_register,(int)fn_801308D0,(int)igScaleActors_getMetaCall,(int)igScaleActors_className,48,(int)igScaleActors_vtableRead,(int)igScaleActors_fieldInit,0,(int)igScaleActors_dependencies);
 }
 void *igScaleActors_getMetaCall(){return igScaleActors_getMeta();}
 void igScaleActors_fieldInit(){
  void *value0=igScaleActors_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F58C,2);
+ meta_appendFields(value0,igScaleActors_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  fn_8004D4BC(value2,*reinterpret_cast<float *>((lbl_80566AEC+0)));
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
@@ -236,10 +236,10 @@ void igScaleActors_fieldInit(){
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+52)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value3)+38)=0;
- meta_setupFields(value0,lbl_8055F594,lbl_8055F59C,lbl_8055F5A4,value1);
+ meta_setupFields(value0,igScaleActors_fieldNames,igScaleActors_fieldStorage,igScaleActors_fieldOffsets,value1);
 }
 void *igResortTransparency_getMeta(){
- if(!igResortTransparency_meta || !(reinterpret_cast<unsigned int *>(igResortTransparency_meta)[0x24/4]&4)) igResortTransparency_registerNow();
+ if(!igResortTransparency_meta || !(reinterpret_cast<unsigned int *>(igResortTransparency_meta)[0x24/4]&4)) igResortTransparency_arkRegister();
  return igResortTransparency_meta;
 }
 void *igResortTransparency_vtableRead(){
@@ -254,7 +254,7 @@ void *igResortTransparency_vtableRead(){
  object.unknown00=igResortTransparency_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igResortTransparency_registerNow(){
+void igResortTransparency_arkRegister(){
  meta_registerNow((int)igResortTransparency_register);
 }
 void igResortTransparency_register(){
@@ -268,7 +268,7 @@ void *fn_801340C8(){
  return lbl_80563C08;
 }
 void *igResizeImage_getMeta(){
- if(!igResizeImage_meta || !(reinterpret_cast<unsigned int *>(igResizeImage_meta)[0x24/4]&4)) igResizeImage_registerNow();
+ if(!igResizeImage_meta || !(reinterpret_cast<unsigned int *>(igResizeImage_meta)[0x24/4]&4)) igResizeImage_arkRegister();
  return igResizeImage_meta;
 }
 void *igResizeImage_vtableRead(){
@@ -283,7 +283,7 @@ void *igResizeImage_vtableRead(){
  object.unknown00=igResizeImage_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igResizeImage_registerNow(){
+void igResizeImage_arkRegister(){
  meta_registerNow((int)igResizeImage_register);
 }
 void igResizeImage_register(){

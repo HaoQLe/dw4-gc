@@ -11,14 +11,14 @@ void igObject_construct(void *);
 void fn_801AA6DC();
 void igMultiResolutionMeshCore_fieldInit();
 void igObject_register();
-extern char lbl_804AE564[];
+extern char igMultiResolutionMeshCore_dependencies[];
 extern char igMultiResolutionMeshCore_className[];
 extern char igMultiResolutionMeshCore_vtable[];
 extern void *lbl_805621F4;
 extern void *igMultiResolutionMeshCore_meta;
 void *igMultiResolutionMeshCore_getMeta();
 void *igMultiResolutionMeshCore_vtableRead();
-void igMultiResolutionMeshCore_registerNow();
+void igMultiResolutionMeshCore_arkRegister();
 void igMultiResolutionMeshCore_register();
 void *igMultiResolutionMeshCore_getMetaCall();
 }
@@ -42,7 +42,7 @@ void *fn_801B8EAC(){
  return igMultiResolutionMeshCore_meta;
 }
 void *igMultiResolutionMeshCore_getMeta(){
- if(!igMultiResolutionMeshCore_meta || !(reinterpret_cast<unsigned int *>(igMultiResolutionMeshCore_meta)[0x24/4]&4)) igMultiResolutionMeshCore_registerNow();
+ if(!igMultiResolutionMeshCore_meta || !(reinterpret_cast<unsigned int *>(igMultiResolutionMeshCore_meta)[0x24/4]&4)) igMultiResolutionMeshCore_arkRegister();
  return igMultiResolutionMeshCore_meta;
 }
 void *igMultiResolutionMeshCore_vtableRead(){
@@ -54,12 +54,12 @@ void *igMultiResolutionMeshCore_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMultiResolutionMeshCore_registerNow(){
+void igMultiResolutionMeshCore_arkRegister(){
  meta_registerNow((int)igMultiResolutionMeshCore_register);
 }
 void igMultiResolutionMeshCore_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igMultiResolutionMeshCore_meta,(int)igObject_register,(int)fn_800237D0,(int)igMultiResolutionMeshCore_getMetaCall,(int)igMultiResolutionMeshCore_className,80,(int)igMultiResolutionMeshCore_vtableRead,(int)igMultiResolutionMeshCore_fieldInit,0,(int)lbl_804AE564);
+ meta_registerClass(0,(int)&igMultiResolutionMeshCore_meta,(int)igObject_register,(int)fn_800237D0,(int)igMultiResolutionMeshCore_getMetaCall,(int)igMultiResolutionMeshCore_className,80,(int)igMultiResolutionMeshCore_vtableRead,(int)igMultiResolutionMeshCore_fieldInit,0,(int)igMultiResolutionMeshCore_dependencies);
 }
 void *igMultiResolutionMeshCore_getMetaCall(){return igMultiResolutionMeshCore_getMeta();}
 }

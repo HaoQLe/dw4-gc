@@ -17,7 +17,7 @@ void beNodeAnim_register();
 void *beNodeAnim_getMetaCall();
 }
 extern "C" {
-void beNodeAnim_registerNow(){
+void beNodeAnim_arkRegister(){
  meta_registerNow((int)beNodeAnim_register);
 }
 void beNodeAnim_register(){

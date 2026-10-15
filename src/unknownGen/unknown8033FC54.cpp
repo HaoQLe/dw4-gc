@@ -16,7 +16,7 @@ void beNDMWMcSlotXbox_register();
 void *beNDMWMcSlotXbox_getMetaCall();
 }
 extern "C" {
-void beNDMWMcSlotXbox_registerNow(){
+void beNDMWMcSlotXbox_arkRegister(){
  meta_registerNow((int)beNDMWMcSlotXbox_register);
 }
 void beNDMWMcSlotXbox_register(){

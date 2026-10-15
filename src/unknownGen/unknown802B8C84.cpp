@@ -16,7 +16,7 @@ void beSoundData_register();
 void *beSoundData_getMetaCall();
 }
 extern "C" {
-void beSoundData_registerNow(){
+void beSoundData_arkRegister(){
  meta_registerNow((int)beSoundData_register);
 }
 void beSoundData_register(){

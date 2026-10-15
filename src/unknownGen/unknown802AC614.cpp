@@ -8,14 +8,14 @@ void *meta_createInstance(void *,void *);
 void meta_registerNow(int);
 void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802AA788();
-void igMovieInfo_registerNow();
+void igMovieInfo_arkRegister();
 void igObjectList_register();
 void *igTextureBindAttrList_getMeta();
 void igTextureBindAttrList_vtableRead();
 extern char igTextureBindAttrList_className[];
 extern char lbl_8041BDF4[];
 extern char lbl_8041BE58[];
-extern char lbl_804CDB9C[];
+extern char igTextureBindAttrList_dependencies[];
 extern char lbl_804CDBA4[];
 extern char lbl_804CDBB0[];
 extern char lbl_804CDBBC[];
@@ -28,12 +28,12 @@ void igTextureBindAttrList_register();
 void *igTextureBindAttrList_getMetaCall();
 }
 extern "C" {
-void igTextureBindAttrList_registerNow(){
+void igTextureBindAttrList_arkRegister(){
  meta_registerNow((int)igTextureBindAttrList_register);
 }
 void igTextureBindAttrList_register(){
  fn_802AA788();
- meta_registerClass(0,(int)igTextureBindAttrList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igTextureBindAttrList_getMetaCall,(int)igTextureBindAttrList_className,20,(int)igTextureBindAttrList_vtableRead,0,0,(int)lbl_804CDB9C);
+ meta_registerClass(0,(int)igTextureBindAttrList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igTextureBindAttrList_getMetaCall,(int)igTextureBindAttrList_className,20,(int)igTextureBindAttrList_vtableRead,0,0,(int)igTextureBindAttrList_dependencies);
 }
 void *igTextureBindAttrList_getMetaCall(){return igTextureBindAttrList_getMeta();}
 void *fn_802AC6D0(){
@@ -45,11 +45,11 @@ void *fn_802AC730(){
  return lbl_80534410;
 }
 void *igMovieInfo_create(void *object){
- igMovieInfo_registerNow();
+ igMovieInfo_arkRegister();
  return meta_createInstance(igMovieInfo_meta,object);
 }
 void *igMovieInfo_getMeta(){
- if(!igMovieInfo_meta || !(reinterpret_cast<unsigned int *>(igMovieInfo_meta)[0x24/4]&4)) igMovieInfo_registerNow();
+ if(!igMovieInfo_meta || !(reinterpret_cast<unsigned int *>(igMovieInfo_meta)[0x24/4]&4)) igMovieInfo_arkRegister();
  return igMovieInfo_meta;
 }
 }

@@ -15,7 +15,7 @@ void beSvSlotPS2_register();
 void *beSvSlotPS2_getMetaCall();
 }
 extern "C" {
-void beSvSlotPS2_registerNow(){
+void beSvSlotPS2_arkRegister(){
  meta_registerNow((int)beSvSlotPS2_register);
 }
 void beSvSlotPS2_register(){

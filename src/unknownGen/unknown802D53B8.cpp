@@ -9,11 +9,11 @@ void *meta_field(void *,void *);
 void meta_appendFields(void *,void *,int);
 void meta_setupFields(void *,void *,void *,void *,void *);
 void *meta_fieldCount(void *);
-void beHitLandModelOrder_registerNow();
-extern char lbl_804D1B4C[];
-extern char lbl_804D1B50[];
-extern char lbl_804D1B54[];
-extern char lbl_804D1B58[];
+void beHitLandModelOrder_arkRegister();
+extern char beHitLandModelTraversal_fieldTypes[];
+extern char beHitLandModelTraversal_fieldNames[];
+extern char beHitLandModelTraversal_fieldStorage[];
+extern char beHitLandModelTraversal_fieldOffsets[];
 extern void *beHitLandModelTraversal_meta;
 extern void *beHitLandModelOrder_meta;
 extern void *lbl_805621F4;
@@ -23,14 +23,14 @@ extern "C" {
 void beHitLandModelTraversal_fieldInit(){
  void *value0=beHitLandModelTraversal_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_804D1B4C,1);
+ meta_appendFields(value0,beHitLandModelTraversal_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=beHitLandModelOrder_metaObject();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
- meta_setupFields(value0,lbl_804D1B50,lbl_804D1B54,lbl_804D1B58,value1);
+ meta_setupFields(value0,beHitLandModelTraversal_fieldNames,beHitLandModelTraversal_fieldStorage,beHitLandModelTraversal_fieldOffsets,value1);
 }
 void *beHitLandModelOrder_create(void *object){
- beHitLandModelOrder_registerNow();
+ beHitLandModelOrder_arkRegister();
  return meta_createInstance(beHitLandModelOrder_meta,object);
 }
 void *beHitLandModelOrder_metaObject(){
@@ -38,7 +38,7 @@ void *beHitLandModelOrder_metaObject(){
  return beHitLandModelOrder_meta;
 }
 void *beHitLandModelOrder_getMeta(){
- if(!beHitLandModelOrder_meta || !(reinterpret_cast<unsigned int *>(beHitLandModelOrder_meta)[0x24/4]&4)) beHitLandModelOrder_registerNow();
+ if(!beHitLandModelOrder_meta || !(reinterpret_cast<unsigned int *>(beHitLandModelOrder_meta)[0x24/4]&4)) beHitLandModelOrder_arkRegister();
  return beHitLandModelOrder_meta;
 }
 }

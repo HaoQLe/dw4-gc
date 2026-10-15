@@ -7,7 +7,7 @@ void meta_registerNow(int);
 void igAliasMemoryPool_register();
 extern char lbl_80473C90[];
 extern void *igAliasMemoryPool_meta;
-void igAliasMemoryPool_registerNow();
+void igAliasMemoryPool_arkRegister();
 }
 struct UnknownGenRoot80038DC0 {
  void *unknown00;
@@ -26,14 +26,14 @@ struct UnknownGenObject80038DC0 : UnknownGenRoot80038DC0 {
 };
 extern "C" {
 void *igAliasMemoryPool_getMeta(){
- if(!igAliasMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igAliasMemoryPool_meta)[0x24/4]&4)) igAliasMemoryPool_registerNow();
+ if(!igAliasMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igAliasMemoryPool_meta)[0x24/4]&4)) igAliasMemoryPool_arkRegister();
  return igAliasMemoryPool_meta;
 }
 void *fn_80038DC0(){
  UnknownGenObject80038DC0 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAliasMemoryPool_registerNow(){
+void igAliasMemoryPool_arkRegister(){
  meta_registerNow((int)igAliasMemoryPool_register);
 }
 }

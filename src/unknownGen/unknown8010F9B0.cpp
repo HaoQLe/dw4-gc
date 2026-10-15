@@ -12,7 +12,7 @@ void fn_8010CBD4();
 void *fn_8010F4FC();
 void igEventReceiver_register();
 void igGuiSystem_fieldInit();
-extern char lbl_80494B44[];
+extern char igGuiSystem_dependencies[];
 extern char igGuiSystem_className[];
 extern char igGuiSystem_vtable[];
 extern char igEventReceiver_vtable[];
@@ -20,7 +20,7 @@ extern void *lbl_805621F4;
 extern void *igGuiSystem_meta;
 void *igGuiSystem_getMeta();
 void *igGuiSystem_vtableRead();
-void igGuiSystem_registerNow();
+void igGuiSystem_arkRegister();
 void igGuiSystem_register();
 void *igGuiSystem_getMetaCall();
 }
@@ -46,7 +46,7 @@ void *fn_8010F9B0(){
  return igGuiSystem_meta;
 }
 void *igGuiSystem_getMeta(){
- if(!igGuiSystem_meta || !(reinterpret_cast<unsigned int *>(igGuiSystem_meta)[0x24/4]&4)) igGuiSystem_registerNow();
+ if(!igGuiSystem_meta || !(reinterpret_cast<unsigned int *>(igGuiSystem_meta)[0x24/4]&4)) igGuiSystem_arkRegister();
  return igGuiSystem_meta;
 }
 void *igGuiSystem_vtableRead(){
@@ -72,12 +72,12 @@ UnknownGenHolder *dtor_8010FBDC(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void igGuiSystem_registerNow(){
+void igGuiSystem_arkRegister(){
  meta_registerNow((int)igGuiSystem_register);
 }
 void igGuiSystem_register(){
  fn_8010CBD4();
- meta_registerClass(0,(int)&igGuiSystem_meta,(int)igEventReceiver_register,(int)fn_8010F4FC,(int)igGuiSystem_getMetaCall,(int)igGuiSystem_className,36,(int)igGuiSystem_vtableRead,(int)igGuiSystem_fieldInit,0,(int)lbl_80494B44);
+ meta_registerClass(0,(int)&igGuiSystem_meta,(int)igEventReceiver_register,(int)fn_8010F4FC,(int)igGuiSystem_getMetaCall,(int)igGuiSystem_className,36,(int)igGuiSystem_vtableRead,(int)igGuiSystem_fieldInit,0,(int)igGuiSystem_dependencies);
 }
 void *igGuiSystem_getMetaCall(){return igGuiSystem_getMeta();}
 }

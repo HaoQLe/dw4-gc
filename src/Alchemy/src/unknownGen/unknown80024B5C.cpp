@@ -31,7 +31,7 @@ extern void *igDataList_meta;
 extern void *lbl_805621F4;
 void *igStringRefList_getMeta();
 void *igStringRefList_vtableRead();
-void igStringRefList_registerNow();
+void igStringRefList_arkRegister();
 void igStringRefList_register();
 void *igStringRefList_getMetaCall();
 void *fn_80024D1C();
@@ -47,7 +47,7 @@ struct UnknownGenObject80024E90_0 {
 };
 extern "C" {
 void *igStringRefList_create(void *object){
- igStringRefList_registerNow();
+ igStringRefList_arkRegister();
  return meta_createInstance(igStringRefList_meta,object);
 }
 void *fn_80024B94(){
@@ -55,7 +55,7 @@ void *fn_80024B94(){
  return igStringRefList_meta;
 }
 void *igStringRefList_getMeta(){
- if(!igStringRefList_meta || !(reinterpret_cast<unsigned int *>(igStringRefList_meta)[0x24/4]&4)) igStringRefList_registerNow();
+ if(!igStringRefList_meta || !(reinterpret_cast<unsigned int *>(igStringRefList_meta)[0x24/4]&4)) igStringRefList_arkRegister();
  return igStringRefList_meta;
 }
 void *igStringRefList_vtableRead(){
@@ -66,7 +66,7 @@ void *igStringRefList_vtableRead(){
  object.unknown00=igStringRefList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStringRefList_registerNow(){
+void igStringRefList_arkRegister(){
  meta_registerNow((int)igStringRefList_register);
 }
 void igStringRefList_register(){

@@ -11,18 +11,18 @@ void *fn_80284550();
 void fn_802B1AC8();
 void igInfoManager_register();
 extern char beTimer_className[];
-extern char lbl_804CF0DC[];
+extern char beTimer_dependencies[];
 extern char beTimer_meta[];
 void beTimer_register();
 void *beTimer_getMetaCall();
 }
 extern "C" {
-void beTimer_registerNow(){
+void beTimer_arkRegister(){
  meta_registerNow((int)beTimer_register);
 }
 void beTimer_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beTimer_meta,(int)igInfoManager_register,(int)fn_80284550,(int)beTimer_getMetaCall,(int)beTimer_className,40,(int)beTimer_vtableRead,(int)beTimer_fieldInit,0,(int)lbl_804CF0DC);
+ meta_registerClass(0,(int)beTimer_meta,(int)igInfoManager_register,(int)fn_80284550,(int)beTimer_getMetaCall,(int)beTimer_className,40,(int)beTimer_vtableRead,(int)beTimer_fieldInit,0,(int)beTimer_dependencies);
 }
 void *beTimer_getMetaCall(){return beTimer_getMeta();}
 }

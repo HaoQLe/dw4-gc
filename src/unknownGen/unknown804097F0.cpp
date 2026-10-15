@@ -18,7 +18,7 @@ extern void *igActorManagerParams_meta;
 extern void *lbl_805621F4;
 void *igActorManagerParams_getMeta();
 void *igActorManagerParams_vtableRead();
-void igActorManagerParams_registerNow();
+void igActorManagerParams_arkRegister();
 void igActorManagerParams_register();
 void *igActorManagerParams_getMetaCall();
 }
@@ -42,7 +42,7 @@ void *igActorManagerParams_metaObject(){
  return igActorManagerParams_meta;
 }
 void *igActorManagerParams_getMeta(){
- if(!igActorManagerParams_meta || !(reinterpret_cast<unsigned int *>(igActorManagerParams_meta)[0x24/4]&4)) igActorManagerParams_registerNow();
+ if(!igActorManagerParams_meta || !(reinterpret_cast<unsigned int *>(igActorManagerParams_meta)[0x24/4]&4)) igActorManagerParams_arkRegister();
  return igActorManagerParams_meta;
 }
 void *igActorManagerParams_vtableRead(){
@@ -52,7 +52,7 @@ void *igActorManagerParams_vtableRead(){
  object.unknown00=igActorManagerParams_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igActorManagerParams_registerNow(){
+void igActorManagerParams_arkRegister(){
  meta_registerNow((int)igActorManagerParams_register);
 }
 void igActorManagerParams_register(){

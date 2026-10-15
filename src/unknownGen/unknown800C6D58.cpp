@@ -18,7 +18,7 @@ extern char lbl_80562B21[1];
 extern void *igAudioContext_meta;
 void fn_800C6F28();
 void *igAudioContext_getMeta();
-void igAudioContext_registerNow();
+void igAudioContext_arkRegister();
 void igAudioContext_register();
 void *igAudioContext_getMetaCall();
 }
@@ -78,7 +78,7 @@ void fn_800C6F28(){
  *reinterpret_cast<unsigned char *>((lbl_80562B20+0))=1;
 }
 void *igAudioContext_create(void *object){
- igAudioContext_registerNow();
+ igAudioContext_arkRegister();
  return meta_createInstance(igAudioContext_meta,object);
 }
 void *fn_800C6F94(){
@@ -86,10 +86,10 @@ void *fn_800C6F94(){
  return igAudioContext_meta;
 }
 void *igAudioContext_getMeta(){
- if(!igAudioContext_meta || !(reinterpret_cast<unsigned int *>(igAudioContext_meta)[0x24/4]&4)) igAudioContext_registerNow();
+ if(!igAudioContext_meta || !(reinterpret_cast<unsigned int *>(igAudioContext_meta)[0x24/4]&4)) igAudioContext_arkRegister();
  return igAudioContext_meta;
 }
-void igAudioContext_registerNow(){
+void igAudioContext_arkRegister(){
  meta_registerNow((int)igAudioContext_register);
 }
 void igAudioContext_register(){

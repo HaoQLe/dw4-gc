@@ -17,7 +17,7 @@ void *igInverseKinematicsJoint_getMetaCall();
 void *igInverseKinematicsJoint_parentMeta();
 }
 extern "C" {
-void igInverseKinematicsJoint_registerNow(){
+void igInverseKinematicsJoint_arkRegister(){
  meta_registerNow((int)igInverseKinematicsJoint_register);
 }
 void igInverseKinematicsJoint_register(){

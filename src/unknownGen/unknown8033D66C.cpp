@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beNDMWLoadIntf2DegiStateCtrl_registerNow();
+void beNDMWLoadIntf2DegiStateCtrl_arkRegister();
 extern void *beNDMWLoadIntf2DegiStateCtrl_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beNDMWLoadIntf2DegiStateCtrl_create(void *object){
- beNDMWLoadIntf2DegiStateCtrl_registerNow();
+ beNDMWLoadIntf2DegiStateCtrl_arkRegister();
  return meta_createInstance(beNDMWLoadIntf2DegiStateCtrl_meta,object);
 }
 void *beNDMWLoadIntf2DegiStateCtrl_metaObject(){
@@ -19,7 +19,7 @@ void *beNDMWLoadIntf2DegiStateCtrl_metaObject(){
  return beNDMWLoadIntf2DegiStateCtrl_meta;
 }
 void *beNDMWLoadIntf2DegiStateCtrl_getMeta(){
- if(!beNDMWLoadIntf2DegiStateCtrl_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadIntf2DegiStateCtrl_meta)[0x24/4]&4)) beNDMWLoadIntf2DegiStateCtrl_registerNow();
+ if(!beNDMWLoadIntf2DegiStateCtrl_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadIntf2DegiStateCtrl_meta)[0x24/4]&4)) beNDMWLoadIntf2DegiStateCtrl_arkRegister();
  return beNDMWLoadIntf2DegiStateCtrl_meta;
 }
 }

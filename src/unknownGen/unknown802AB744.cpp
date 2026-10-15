@@ -16,7 +16,7 @@ void igAdxAudio_register();
 void *igAdxAudio_getMetaCall();
 }
 extern "C" {
-void igAdxAudio_registerNow(){
+void igAdxAudio_arkRegister(){
  meta_registerNow((int)igAdxAudio_register);
 }
 void igAdxAudio_register(){

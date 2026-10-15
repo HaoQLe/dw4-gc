@@ -4,7 +4,7 @@
 extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
-void beMemory_registerNow();
+void beMemory_arkRegister();
 extern void *beMemory_meta;
 extern void *lbl_805621F4;
 }
@@ -14,7 +14,7 @@ void *beMemory_metaObject(){
  return beMemory_meta;
 }
 void *beMemory_getMeta(){
- if(!beMemory_meta || !(reinterpret_cast<unsigned int *>(beMemory_meta)[0x24/4]&4)) beMemory_registerNow();
+ if(!beMemory_meta || !(reinterpret_cast<unsigned int *>(beMemory_meta)[0x24/4]&4)) beMemory_arkRegister();
  return beMemory_meta;
 }
 }

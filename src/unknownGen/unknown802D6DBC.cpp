@@ -12,7 +12,7 @@ void meta_registerClass(int,int,int,int,int,int,int,int,int,int,int);
 void fn_802B1AC8();
 void *fn_802B2B2C();
 extern char beGeneraterInfoRam_className[];
-extern char lbl_804D1D80[];
+extern char beGeneraterInfoRam_dependencies[];
 extern char beGeneraterInfoRam_meta[];
 void beGeneraterInfoRam_register();
 void *beGeneraterInfoRam_getMetaCall();
@@ -29,12 +29,12 @@ UnknownGenHolder *dtor_802D6DBC(UnknownGenHolder *object,short flags){
  }
  return object;
 }
-void beGeneraterInfoRam_registerNow(){
+void beGeneraterInfoRam_arkRegister(){
  meta_registerNow((int)beGeneraterInfoRam_register);
 }
 void beGeneraterInfoRam_register(){
  fn_802B1AC8();
- meta_registerClass(0,(int)beGeneraterInfoRam_meta,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beGeneraterInfoRam_getMetaCall,(int)beGeneraterInfoRam_className,48,(int)beGeneraterInfoRam_vtableRead,(int)beGeneraterInfoRam_fieldInit,0,(int)lbl_804D1D80);
+ meta_registerClass(0,(int)beGeneraterInfoRam_meta,(int)beBaseInfoRam_register,(int)fn_802B2B2C,(int)beGeneraterInfoRam_getMetaCall,(int)beGeneraterInfoRam_className,48,(int)beGeneraterInfoRam_vtableRead,(int)beGeneraterInfoRam_fieldInit,0,(int)beGeneraterInfoRam_dependencies);
 }
 void *beGeneraterInfoRam_getMetaCall(){return beGeneraterInfoRam_getMeta();}
 }

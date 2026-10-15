@@ -7,7 +7,7 @@ void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
 void fn_802A9C04();
 void fn_802A9C08();
-void igAdxAudio_registerNow();
+void igAdxAudio_arkRegister();
 extern void *igAdxAudio_meta;
 extern void *lbl_805621F4;
 }
@@ -15,7 +15,7 @@ extern "C" {
 void fn_802AB598(){return fn_802A9C04();}
 void fn_802AB5B8(){return fn_802A9C08();}
 void *igAdxAudio_create(void *object){
- igAdxAudio_registerNow();
+ igAdxAudio_arkRegister();
  return meta_createInstance(igAdxAudio_meta,object);
 }
 void *igAdxAudio_metaObject(){
@@ -23,7 +23,7 @@ void *igAdxAudio_metaObject(){
  return igAdxAudio_meta;
 }
 void *igAdxAudio_getMeta(){
- if(!igAdxAudio_meta || !(reinterpret_cast<unsigned int *>(igAdxAudio_meta)[0x24/4]&4)) igAdxAudio_registerNow();
+ if(!igAdxAudio_meta || !(reinterpret_cast<unsigned int *>(igAdxAudio_meta)[0x24/4]&4)) igAdxAudio_arkRegister();
  return igAdxAudio_meta;
 }
 }

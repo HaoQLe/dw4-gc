@@ -16,7 +16,7 @@ void igTextureMatrixAttr_register();
 void *igTextureMatrixAttr_getMetaCall();
 }
 extern "C" {
-void igTextureMatrixAttr_registerNow(){
+void igTextureMatrixAttr_arkRegister(){
  meta_registerNow((int)igTextureMatrixAttr_register);
 }
 void igTextureMatrixAttr_register(){

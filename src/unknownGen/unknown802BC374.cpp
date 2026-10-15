@@ -15,7 +15,7 @@ void beSvPlatDataPC_register();
 void *beSvPlatDataPC_getMetaCall();
 }
 extern "C" {
-void beSvPlatDataPC_registerNow(){
+void beSvPlatDataPC_arkRegister(){
  meta_registerNow((int)beSvPlatDataPC_register);
 }
 void beSvPlatDataPC_register(){

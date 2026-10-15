@@ -11,7 +11,7 @@ void fn_801AA6DC();
 void fn_801BDB1C();
 void igIntersectTraversal_fieldInit();
 void igTraversal_register();
-extern char lbl_804AF1D0[];
+extern char igIntersectTraversal_dependencies[];
 extern char igIntersectTraversal_className[];
 extern char igTraversal_vtable[];
 extern char igIntersectTraversal_vtable[];
@@ -20,7 +20,7 @@ extern void *igTraversal_meta;
 extern void *igIntersectTraversal_meta;
 void *igIntersectTraversal_getMeta();
 void *igIntersectTraversal_vtableRead();
-void igIntersectTraversal_registerNow();
+void igIntersectTraversal_arkRegister();
 void igIntersectTraversal_register();
 void *igIntersectTraversal_getMetaCall();
 void *fn_801BD9C8();
@@ -51,7 +51,7 @@ void *fn_801BD6CC(){
  return igIntersectTraversal_meta;
 }
 void *igIntersectTraversal_getMeta(){
- if(!igIntersectTraversal_meta || !(reinterpret_cast<unsigned int *>(igIntersectTraversal_meta)[0x24/4]&4)) igIntersectTraversal_registerNow();
+ if(!igIntersectTraversal_meta || !(reinterpret_cast<unsigned int *>(igIntersectTraversal_meta)[0x24/4]&4)) igIntersectTraversal_arkRegister();
  return igIntersectTraversal_meta;
 }
 void *igIntersectTraversal_vtableRead(){
@@ -66,12 +66,12 @@ void *igIntersectTraversal_vtableRead(){
  object.unknown38.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igIntersectTraversal_registerNow(){
+void igIntersectTraversal_arkRegister(){
  meta_registerNow((int)igIntersectTraversal_register);
 }
 void igIntersectTraversal_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igIntersectTraversal_meta,(int)igTraversal_register,(int)fn_801BD9C8,(int)igIntersectTraversal_getMetaCall,(int)igIntersectTraversal_className,64,(int)igIntersectTraversal_vtableRead,(int)igIntersectTraversal_fieldInit,(int)fn_801BDB1C,(int)lbl_804AF1D0);
+ meta_registerClass(0,(int)&igIntersectTraversal_meta,(int)igTraversal_register,(int)fn_801BD9C8,(int)igIntersectTraversal_getMetaCall,(int)igIntersectTraversal_className,64,(int)igIntersectTraversal_vtableRead,(int)igIntersectTraversal_fieldInit,(int)fn_801BDB1C,(int)igIntersectTraversal_dependencies);
 }
 void *igIntersectTraversal_getMetaCall(){return igIntersectTraversal_getMeta();}
 void *fn_801BD9C8(){return igTraversal_meta;}

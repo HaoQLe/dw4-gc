@@ -16,7 +16,7 @@ void beSaveMemoryObj_register();
 void *beSaveMemoryObj_getMetaCall();
 }
 extern "C" {
-void beSaveMemoryObj_registerNow(){
+void beSaveMemoryObj_arkRegister(){
  meta_registerNow((int)beSaveMemoryObj_register);
 }
 void beSaveMemoryObj_register(){

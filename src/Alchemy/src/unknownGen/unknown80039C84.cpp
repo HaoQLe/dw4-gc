@@ -7,7 +7,7 @@ void fn_8008B264(void *);
 void igMallocMemoryPool_register();
 extern char lbl_80473790[];
 extern void *igMallocMemoryPool_meta;
-void igMallocMemoryPool_registerNow();
+void igMallocMemoryPool_arkRegister();
 }
 struct UnknownGenRoot80039CC0 {
  void *unknown00;
@@ -24,14 +24,14 @@ struct UnknownGenObject80039CC0 : UnknownGenRoot80039CC0 {
 };
 extern "C" {
 void *igMallocMemoryPool_getMeta(){
- if(!igMallocMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igMallocMemoryPool_meta)[0x24/4]&4)) igMallocMemoryPool_registerNow();
+ if(!igMallocMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igMallocMemoryPool_meta)[0x24/4]&4)) igMallocMemoryPool_arkRegister();
  return igMallocMemoryPool_meta;
 }
 void *fn_80039CC0(){
  UnknownGenObject80039CC0 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igMallocMemoryPool_registerNow(){
+void igMallocMemoryPool_arkRegister(){
  meta_registerNow((int)igMallocMemoryPool_register);
 }
 }

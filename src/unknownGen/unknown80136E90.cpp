@@ -18,29 +18,29 @@ void igOptBase_register();
 void igQuantizeImage_fieldInit();
 extern char igVertexBlending_className[];
 extern char igRebindActors_className[];
-extern char lbl_8049CCFC[];
+extern char igQuantizeImage_dependencies[];
 extern char igQuantizeImage_className[];
 extern char igRebindActors_vtable[];
 extern char igQuantizeImage_vtable[];
 extern char lbl_804A4A04[];
 extern char lbl_804A6460[];
 extern char lbl_804AAF48[];
-extern char lbl_8055F69C[4];
-extern char lbl_8055F6A0[4];
-extern char lbl_8055F6A4[4];
-extern char lbl_8055F6A8[4];
+extern char igRebindActors_fieldTypes[4];
+extern char igRebindActors_fieldNames[4];
+extern char igRebindActors_fieldStorage[4];
+extern char igRebindActors_fieldOffsets[4];
 extern void *igRebindActors_meta;
 extern void *lbl_80563D18;
 extern void *igQuantizeImage_meta;
 void *igRebindActors_getMeta();
 void *igRebindActors_vtableRead();
-void igRebindActors_registerNow();
+void igRebindActors_arkRegister();
 void igRebindActors_register();
 void *igRebindActors_getMetaCall();
 void igRebindActors_fieldInit();
 void *igQuantizeImage_getMeta();
 void *igQuantizeImage_vtableRead();
-void igQuantizeImage_registerNow();
+void igQuantizeImage_arkRegister();
 void igQuantizeImage_register();
 void *igQuantizeImage_getMetaCall();
 }
@@ -73,7 +73,7 @@ struct UnknownGenObject8013719C : UnknownGenRoot8013719C {
 };
 extern "C" {
 void *igRebindActors_getMeta(){
- if(!igRebindActors_meta || !(reinterpret_cast<unsigned int *>(igRebindActors_meta)[0x24/4]&4)) igRebindActors_registerNow();
+ if(!igRebindActors_meta || !(reinterpret_cast<unsigned int *>(igRebindActors_meta)[0x24/4]&4)) igRebindActors_arkRegister();
  return igRebindActors_meta;
 }
 void *igRebindActors_vtableRead(){
@@ -86,7 +86,7 @@ void *igRebindActors_vtableRead(){
  object.unknown00=igRebindActors_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igRebindActors_registerNow(){
+void igRebindActors_arkRegister(){
  meta_registerNow((int)igRebindActors_register);
 }
 void igRebindActors_register(){
@@ -97,8 +97,8 @@ void *igRebindActors_getMetaCall(){return igRebindActors_getMeta();}
 void igRebindActors_fieldInit(){
  void *value0=igRebindActors_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8055F69C,1);
- meta_setupFields(value0,lbl_8055F6A0,lbl_8055F6A4,lbl_8055F6A8,value1);
+ meta_appendFields(value0,igRebindActors_fieldTypes,1);
+ meta_setupFields(value0,igRebindActors_fieldNames,igRebindActors_fieldStorage,igRebindActors_fieldOffsets,value1);
 }
 void *fn_801370DC(){
  char *data=igVertexBlending_className;
@@ -106,11 +106,11 @@ void *fn_801370DC(){
  return lbl_80563D18;
 }
 void *igQuantizeImage_create(void *object){
- igQuantizeImage_registerNow();
+ igQuantizeImage_arkRegister();
  return meta_createInstance(igQuantizeImage_meta,object);
 }
 void *igQuantizeImage_getMeta(){
- if(!igQuantizeImage_meta || !(reinterpret_cast<unsigned int *>(igQuantizeImage_meta)[0x24/4]&4)) igQuantizeImage_registerNow();
+ if(!igQuantizeImage_meta || !(reinterpret_cast<unsigned int *>(igQuantizeImage_meta)[0x24/4]&4)) igQuantizeImage_arkRegister();
  return igQuantizeImage_meta;
 }
 void *igQuantizeImage_vtableRead(){
@@ -120,12 +120,12 @@ void *igQuantizeImage_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igQuantizeImage_registerNow(){
+void igQuantizeImage_arkRegister(){
  meta_registerNow((int)igQuantizeImage_register);
 }
 void igQuantizeImage_register(){
  fn_8012FC48();
- meta_registerClass(0,(int)&igQuantizeImage_meta,(int)igObject_register,(int)fn_800237D0,(int)igQuantizeImage_getMetaCall,(int)igQuantizeImage_className,24,(int)igQuantizeImage_vtableRead,(int)igQuantizeImage_fieldInit,0,(int)lbl_8049CCFC);
+ meta_registerClass(0,(int)&igQuantizeImage_meta,(int)igObject_register,(int)fn_800237D0,(int)igQuantizeImage_getMetaCall,(int)igQuantizeImage_className,24,(int)igQuantizeImage_vtableRead,(int)igQuantizeImage_fieldInit,0,(int)igQuantizeImage_dependencies);
 }
 void *igQuantizeImage_getMetaCall(){return igQuantizeImage_getMeta();}
 }

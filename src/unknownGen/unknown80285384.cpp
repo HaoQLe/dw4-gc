@@ -9,14 +9,14 @@ void fn_80284294();
 void igFilterMessageDispatcher_fieldInit();
 void igMessageDispatcher_register();
 extern char igFilterMessageDispatcher_className[];
-extern char lbl_804CB0C0[];
+extern char igFilterMessageDispatcher_dependencies[];
 extern char lbl_804CB728[];
 extern char igFilterMessageDispatcher_vtable[];
 extern void *igFilterMessageDispatcher_meta;
 extern void *igMessageDispatcher_meta;
 void *igFilterMessageDispatcher_getMeta();
 void *igFilterMessageDispatcher_vtableRead();
-void igFilterMessageDispatcher_registerNow();
+void igFilterMessageDispatcher_arkRegister();
 void igFilterMessageDispatcher_register();
 void *igFilterMessageDispatcher_getMetaCall();
 void *igFilterMessageDispatcher_parentMeta();
@@ -34,7 +34,7 @@ struct UnknownGenObject802853D0 : UnknownGenRoot802853D0 {
 };
 extern "C" {
 void *igFilterMessageDispatcher_getMeta(){
- if(!igFilterMessageDispatcher_meta || !(reinterpret_cast<unsigned int *>(igFilterMessageDispatcher_meta)[0x24/4]&4)) igFilterMessageDispatcher_registerNow();
+ if(!igFilterMessageDispatcher_meta || !(reinterpret_cast<unsigned int *>(igFilterMessageDispatcher_meta)[0x24/4]&4)) igFilterMessageDispatcher_arkRegister();
  return igFilterMessageDispatcher_meta;
 }
 void *igFilterMessageDispatcher_vtableRead(){
@@ -45,12 +45,12 @@ void *igFilterMessageDispatcher_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFilterMessageDispatcher_registerNow(){
+void igFilterMessageDispatcher_arkRegister(){
  meta_registerNow((int)igFilterMessageDispatcher_register);
 }
 void igFilterMessageDispatcher_register(){
  fn_80284294();
- meta_registerClass(0,(int)&igFilterMessageDispatcher_meta,(int)igMessageDispatcher_register,(int)igFilterMessageDispatcher_parentMeta,(int)igFilterMessageDispatcher_getMetaCall,(int)igFilterMessageDispatcher_className,16,(int)igFilterMessageDispatcher_vtableRead,(int)igFilterMessageDispatcher_fieldInit,0,(int)lbl_804CB0C0);
+ meta_registerClass(0,(int)&igFilterMessageDispatcher_meta,(int)igMessageDispatcher_register,(int)igFilterMessageDispatcher_parentMeta,(int)igFilterMessageDispatcher_getMetaCall,(int)igFilterMessageDispatcher_className,16,(int)igFilterMessageDispatcher_vtableRead,(int)igFilterMessageDispatcher_fieldInit,0,(int)igFilterMessageDispatcher_dependencies);
 }
 void *igFilterMessageDispatcher_getMetaCall(){return igFilterMessageDispatcher_getMeta();}
 void *igFilterMessageDispatcher_parentMeta(){return igMessageDispatcher_meta;}

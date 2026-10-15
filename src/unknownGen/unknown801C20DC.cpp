@@ -19,12 +19,12 @@ extern char igDOFShader_className[];
 extern char igNode_vtable[];
 extern char igGroup_vtable[];
 extern char igDOFShader_vtable[];
-extern char lbl_805606BC[8];
+extern char igDOFShader_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igDOFShader_meta;
 void *igDOFShader_getMeta();
 void *igDOFShader_vtableRead();
-void igDOFShader_registerNow();
+void igDOFShader_arkRegister();
 void igDOFShader_register();
 void *igDOFShader_getMetaCall();
 }
@@ -62,7 +62,7 @@ void *fn_801C213C(){
  return igDOFShader_meta;
 }
 void *igDOFShader_getMeta(){
- if(!igDOFShader_meta || !(reinterpret_cast<unsigned int *>(igDOFShader_meta)[0x24/4]&4)) igDOFShader_registerNow();
+ if(!igDOFShader_meta || !(reinterpret_cast<unsigned int *>(igDOFShader_meta)[0x24/4]&4)) igDOFShader_arkRegister();
  return igDOFShader_meta;
 }
 void *igDOFShader_vtableRead(){
@@ -78,12 +78,12 @@ void *igDOFShader_vtableRead(){
  object.unknown4C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igDOFShader_registerNow(){
+void igDOFShader_arkRegister(){
  meta_registerNow((int)igDOFShader_register);
 }
 void igDOFShader_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igDOFShader_meta,(int)igGroup_register,(int)fn_8011148C,(int)igDOFShader_getMetaCall,(int)igDOFShader_className,80,(int)igDOFShader_vtableRead,(int)igDOFShader_fieldInit,0,(int)lbl_805606BC);
+ meta_registerClass(0,(int)&igDOFShader_meta,(int)igGroup_register,(int)fn_8011148C,(int)igDOFShader_getMetaCall,(int)igDOFShader_className,80,(int)igDOFShader_vtableRead,(int)igDOFShader_fieldInit,0,(int)igDOFShader_dependencies);
 }
 void *igDOFShader_getMetaCall(){return igDOFShader_getMeta();}
 }

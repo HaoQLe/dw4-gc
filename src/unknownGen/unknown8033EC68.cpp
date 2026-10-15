@@ -5,13 +5,13 @@ extern "C" {
 void *meta_newMetaObject(void *);
 void *fn_800607F4(void *);
 void *meta_createInstance(void *,void *);
-void beNDMWLoadCtrl2CommonIntf_registerNow();
+void beNDMWLoadCtrl2CommonIntf_arkRegister();
 extern void *beNDMWLoadCtrl2CommonIntf_meta;
 extern void *lbl_805621F4;
 }
 extern "C" {
 void *beNDMWLoadCtrl2CommonIntf_create(void *object){
- beNDMWLoadCtrl2CommonIntf_registerNow();
+ beNDMWLoadCtrl2CommonIntf_arkRegister();
  return meta_createInstance(beNDMWLoadCtrl2CommonIntf_meta,object);
 }
 void *beNDMWLoadCtrl2CommonIntf_metaObject(){
@@ -19,7 +19,7 @@ void *beNDMWLoadCtrl2CommonIntf_metaObject(){
  return beNDMWLoadCtrl2CommonIntf_meta;
 }
 void *beNDMWLoadCtrl2CommonIntf_getMeta(){
- if(!beNDMWLoadCtrl2CommonIntf_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadCtrl2CommonIntf_meta)[0x24/4]&4)) beNDMWLoadCtrl2CommonIntf_registerNow();
+ if(!beNDMWLoadCtrl2CommonIntf_meta || !(reinterpret_cast<unsigned int *>(beNDMWLoadCtrl2CommonIntf_meta)[0x24/4]&4)) beNDMWLoadCtrl2CommonIntf_arkRegister();
  return beNDMWLoadCtrl2CommonIntf_meta;
 }
 }

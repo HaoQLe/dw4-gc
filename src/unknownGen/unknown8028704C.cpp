@@ -37,7 +37,7 @@ extern void *igFlushRenderer_meta;
 extern void *lbl_805621F4;
 void *igFlushRenderer_getMeta();
 void *igFlushRenderer_vtableRead();
-void igFlushRenderer_registerNow();
+void igFlushRenderer_arkRegister();
 void igFlushRenderer_register();
 void *igFlushRenderer_getMetaCall();
 }
@@ -61,7 +61,7 @@ void *igFlushRenderer_metaObject(){
  return igFlushRenderer_meta;
 }
 void *igFlushRenderer_getMeta(){
- if(!igFlushRenderer_meta || !(reinterpret_cast<unsigned int *>(igFlushRenderer_meta)[0x24/4]&4)) igFlushRenderer_registerNow();
+ if(!igFlushRenderer_meta || !(reinterpret_cast<unsigned int *>(igFlushRenderer_meta)[0x24/4]&4)) igFlushRenderer_arkRegister();
  return igFlushRenderer_meta;
 }
 void *igFlushRenderer_vtableRead(){
@@ -71,7 +71,7 @@ void *igFlushRenderer_vtableRead(){
  object.unknown00=igFlushRenderer_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igFlushRenderer_registerNow(){
+void igFlushRenderer_arkRegister(){
  meta_registerNow((int)igFlushRenderer_register);
 }
 void igFlushRenderer_register(){

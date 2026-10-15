@@ -16,7 +16,7 @@ void igGamecubeVertexArray1_1_register();
 void *igGamecubeVertexArray1_1_parentMeta();
 }
 extern "C" {
-void igGamecubeVertexArray1_1_registerNow(){
+void igGamecubeVertexArray1_1_arkRegister(){
  meta_registerNow((int)igGamecubeVertexArray1_1_register);
 }
 void igGamecubeVertexArray1_1_register(){

@@ -48,23 +48,23 @@ extern char lbl_804B650C[];
 extern char igAnimationToken_vtable[];
 extern char igAnimationTokenList_vtable[];
 extern char lbl_804B6630[];
-extern char lbl_80560924[8];
-extern char lbl_8056092C[4];
-extern char lbl_80560930[4];
-extern char lbl_80560934[4];
-extern char lbl_80560938[4];
-extern char lbl_8056093C[8];
-extern char lbl_80560944[8];
-extern char lbl_8056094C[8];
-extern char lbl_80560954[8];
-extern char lbl_8056095C[8];
-extern char lbl_80560964[8];
-extern char lbl_8056096C[4];
-extern char lbl_80560970[4];
-extern char lbl_80560974[4];
-extern char lbl_80560978[4];
-extern char lbl_8056097C[8];
-extern char lbl_80560994[8];
+extern char igAnimationInfo_dependencies[8];
+extern char igAnimationInfo_fieldTypes[4];
+extern char igAnimationInfo_fieldNames[4];
+extern char igAnimationInfo_fieldStorage[4];
+extern char igAnimationInfo_fieldOffsets[4];
+extern char igAnimationTokenList_dependencies[8];
+extern char igAnimationToken_dependencies[8];
+extern char igAnimationToken_fieldTypes[8];
+extern char igAnimationToken_fieldNames[8];
+extern char igAnimationToken_fieldStorage[8];
+extern char igAnimationToken_fieldOffsets[8];
+extern char igAnimationHierarchy_fieldTypes[4];
+extern char igAnimationHierarchy_fieldNames[4];
+extern char igAnimationHierarchy_fieldStorage[4];
+extern char igAnimationHierarchy_fieldOffsets[4];
+extern char igAnimationModifierList_dependencies[8];
+extern char igAnimationModifier_dependencies[8];
 extern void *lbl_805621F4;
 extern void *igAnimationSequence_meta;
 extern void *igAnimationInfo_meta;
@@ -75,40 +75,40 @@ extern void *igAnimationModifierList_meta;
 extern void *lbl_80565450;
 extern void *igAnimationModifier_meta;
 void *igAnimationSequence_getMeta();
-void igAnimationSequence_registerNow();
+void igAnimationSequence_arkRegister();
 void igAnimationSequence_register();
 void *igAnimationSequence_getMetaCall();
 void *igAnimationInfo_getMeta();
 void *igAnimationInfo_vtableRead();
-void igAnimationInfo_registerNow();
+void igAnimationInfo_arkRegister();
 void igAnimationInfo_register();
 void *igAnimationInfo_getMetaCall();
 void igAnimationInfo_fieldInit();
 void *fn_801CA050();
 void *igAnimationTokenList_getMeta();
 void *igAnimationTokenList_vtableRead();
-void igAnimationTokenList_registerNow();
+void igAnimationTokenList_arkRegister();
 void igAnimationTokenList_register();
 void *igAnimationTokenList_getMetaCall();
 void *igAnimationToken_getMeta();
 void *igAnimationToken_vtableRead();
-void igAnimationToken_registerNow();
+void igAnimationToken_arkRegister();
 void igAnimationToken_register();
 void *igAnimationToken_getMetaCall();
 void igAnimationToken_fieldInit();
 void *igAnimationHierarchy_getMeta();
-void igAnimationHierarchy_registerNow();
+void igAnimationHierarchy_arkRegister();
 void igAnimationHierarchy_register();
 void *igAnimationHierarchy_getMetaCall();
 void igAnimationHierarchy_fieldInit();
 void *igAnimationModifierList_getMeta();
 void *igAnimationModifierList_vtableRead();
-void igAnimationModifierList_registerNow();
+void igAnimationModifierList_arkRegister();
 void igAnimationModifierList_register();
 void *igAnimationModifierList_getMetaCall();
 void *igAnimationModifier_getMeta();
 void *igAnimationModifier_vtableRead();
-void igAnimationModifier_registerNow();
+void igAnimationModifier_arkRegister();
 void igAnimationModifier_register();
 void *igAnimationModifier_getMetaCall();
 }
@@ -163,10 +163,10 @@ struct UnknownGenObject801CA858 : UnknownGenRoot801CA858 {
 };
 extern "C" {
 void *igAnimationSequence_getMeta(){
- if(!igAnimationSequence_meta || !(reinterpret_cast<unsigned int *>(igAnimationSequence_meta)[0x24/4]&4)) igAnimationSequence_registerNow();
+ if(!igAnimationSequence_meta || !(reinterpret_cast<unsigned int *>(igAnimationSequence_meta)[0x24/4]&4)) igAnimationSequence_arkRegister();
  return igAnimationSequence_meta;
 }
-void igAnimationSequence_registerNow(){
+void igAnimationSequence_arkRegister(){
  meta_registerNow((int)igAnimationSequence_register);
 }
 void igAnimationSequence_register(){
@@ -175,7 +175,7 @@ void igAnimationSequence_register(){
 }
 void *igAnimationSequence_getMetaCall(){return igAnimationSequence_getMeta();}
 void *igAnimationInfo_getMeta(){
- if(!igAnimationInfo_meta || !(reinterpret_cast<unsigned int *>(igAnimationInfo_meta)[0x24/4]&4)) igAnimationInfo_registerNow();
+ if(!igAnimationInfo_meta || !(reinterpret_cast<unsigned int *>(igAnimationInfo_meta)[0x24/4]&4)) igAnimationInfo_arkRegister();
  return igAnimationInfo_meta;
 }
 void *igAnimationInfo_vtableRead(){
@@ -187,30 +187,30 @@ void *igAnimationInfo_vtableRead(){
  object.unknown14.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationInfo_registerNow(){
+void igAnimationInfo_arkRegister(){
  meta_registerNow((int)igAnimationInfo_register);
 }
 void igAnimationInfo_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igAnimationInfo_getMetaCall,(int)igAnimationInfo_className,24,(int)igAnimationInfo_vtableRead,(int)igAnimationInfo_fieldInit,0,(int)lbl_80560924);
+ meta_registerClass(0,(int)&igAnimationInfo_meta,(int)igInfo_register,(int)fn_800284EC,(int)igAnimationInfo_getMetaCall,(int)igAnimationInfo_className,24,(int)igAnimationInfo_vtableRead,(int)igAnimationInfo_fieldInit,0,(int)igAnimationInfo_dependencies);
 }
 void *igAnimationInfo_getMetaCall(){return igAnimationInfo_getMeta();}
 void igAnimationInfo_fieldInit(){
  void *value0=igAnimationInfo_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8056092C,1);
+ meta_appendFields(value0,igAnimationInfo_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_801CA050();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+56)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+52)=1;
- meta_setupFields(value0,lbl_80560930,lbl_80560934,lbl_80560938,value1);
+ meta_setupFields(value0,igAnimationInfo_fieldNames,igAnimationInfo_fieldStorage,igAnimationInfo_fieldOffsets,value1);
 }
 void *fn_801CA050(){
  if(!igAnimationTokenList_meta) igAnimationTokenList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igAnimationTokenList_meta;
 }
 void *igAnimationTokenList_getMeta(){
- if(!igAnimationTokenList_meta || !(reinterpret_cast<unsigned int *>(igAnimationTokenList_meta)[0x24/4]&4)) igAnimationTokenList_registerNow();
+ if(!igAnimationTokenList_meta || !(reinterpret_cast<unsigned int *>(igAnimationTokenList_meta)[0x24/4]&4)) igAnimationTokenList_arkRegister();
  return igAnimationTokenList_meta;
 }
 void *igAnimationTokenList_vtableRead(){
@@ -223,20 +223,20 @@ void *igAnimationTokenList_vtableRead(){
  object.unknown00=igAnimationTokenList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationTokenList_registerNow(){
+void igAnimationTokenList_arkRegister(){
  meta_registerNow((int)igAnimationTokenList_register);
 }
 void igAnimationTokenList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationTokenList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationTokenList_getMetaCall,(int)igAnimationTokenList_className,20,(int)igAnimationTokenList_vtableRead,0,0,(int)lbl_8056093C);
+ meta_registerClass(0,(int)&igAnimationTokenList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationTokenList_getMetaCall,(int)igAnimationTokenList_className,20,(int)igAnimationTokenList_vtableRead,0,0,(int)igAnimationTokenList_dependencies);
 }
 void *igAnimationTokenList_getMetaCall(){return igAnimationTokenList_getMeta();}
 void *igAnimationToken_create(void *object){
- igAnimationToken_registerNow();
+ igAnimationToken_arkRegister();
  return meta_createInstance(igAnimationToken_meta,object);
 }
 void *igAnimationToken_getMeta(){
- if(!igAnimationToken_meta || !(reinterpret_cast<unsigned int *>(igAnimationToken_meta)[0x24/4]&4)) igAnimationToken_registerNow();
+ if(!igAnimationToken_meta || !(reinterpret_cast<unsigned int *>(igAnimationToken_meta)[0x24/4]&4)) igAnimationToken_arkRegister();
  return igAnimationToken_meta;
 }
 void *igAnimationToken_vtableRead(){
@@ -246,34 +246,34 @@ void *igAnimationToken_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationToken_registerNow(){
+void igAnimationToken_arkRegister(){
  meta_registerNow((int)igAnimationToken_register);
 }
 void igAnimationToken_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationToken_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationToken_getMetaCall,(int)igAnimationToken_className,16,(int)igAnimationToken_vtableRead,(int)igAnimationToken_fieldInit,0,(int)lbl_80560944);
+ meta_registerClass(0,(int)&igAnimationToken_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationToken_getMetaCall,(int)igAnimationToken_className,16,(int)igAnimationToken_vtableRead,(int)igAnimationToken_fieldInit,0,(int)igAnimationToken_dependencies);
 }
 void *igAnimationToken_getMetaCall(){return igAnimationToken_getMeta();}
 void igAnimationToken_fieldInit(){
  void *value0=igAnimationToken_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8056094C,2);
+ meta_appendFields(value0,igAnimationToken_fieldTypes,2);
  void *value2=meta_field(value0,value1);
  fn_80071694(value2,(void *)0);
  void *value3=meta_field(value0,(reinterpret_cast<char *>(value1)+1));
  void *value4=fn_801AB2B4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value3)+56)=value4;
- meta_setupFields(value0,lbl_80560954,lbl_8056095C,lbl_80560964,value1);
+ meta_setupFields(value0,igAnimationToken_fieldNames,igAnimationToken_fieldStorage,igAnimationToken_fieldOffsets,value1);
 }
 void *fn_801CA478(){
  if(!igAnimationHierarchy_meta) igAnimationHierarchy_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igAnimationHierarchy_meta;
 }
 void *igAnimationHierarchy_getMeta(){
- if(!igAnimationHierarchy_meta || !(reinterpret_cast<unsigned int *>(igAnimationHierarchy_meta)[0x24/4]&4)) igAnimationHierarchy_registerNow();
+ if(!igAnimationHierarchy_meta || !(reinterpret_cast<unsigned int *>(igAnimationHierarchy_meta)[0x24/4]&4)) igAnimationHierarchy_arkRegister();
  return igAnimationHierarchy_meta;
 }
-void igAnimationHierarchy_registerNow(){
+void igAnimationHierarchy_arkRegister(){
  meta_registerNow((int)igAnimationHierarchy_register);
 }
 void igAnimationHierarchy_register(){
@@ -284,21 +284,21 @@ void *igAnimationHierarchy_getMetaCall(){return igAnimationHierarchy_getMeta();}
 void igAnimationHierarchy_fieldInit(){
  void *value0=igAnimationHierarchy_meta;
  void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,lbl_8056096C,1);
+ meta_appendFields(value0,igAnimationHierarchy_fieldTypes,1);
  void *value2=meta_field(value0,value1);
  void *value3=fn_8011EDB4();
  *reinterpret_cast<void * *>(reinterpret_cast<char *>(value2)+60)=value3;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+53)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+64)=1;
  *reinterpret_cast<unsigned char *>(reinterpret_cast<char *>(value2)+65)=1;
- meta_setupFields(value0,lbl_80560970,lbl_80560974,lbl_80560978,value1);
+ meta_setupFields(value0,igAnimationHierarchy_fieldNames,igAnimationHierarchy_fieldStorage,igAnimationHierarchy_fieldOffsets,value1);
 }
 void *fn_801CA634(){
  if(!igAnimationModifierList_meta) igAnimationModifierList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igAnimationModifierList_meta;
 }
 void *igAnimationModifierList_getMeta(){
- if(!igAnimationModifierList_meta || !(reinterpret_cast<unsigned int *>(igAnimationModifierList_meta)[0x24/4]&4)) igAnimationModifierList_registerNow();
+ if(!igAnimationModifierList_meta || !(reinterpret_cast<unsigned int *>(igAnimationModifierList_meta)[0x24/4]&4)) igAnimationModifierList_arkRegister();
  return igAnimationModifierList_meta;
 }
 void *igAnimationModifierList_vtableRead(){
@@ -311,12 +311,12 @@ void *igAnimationModifierList_vtableRead(){
  object.unknown00=igAnimationModifierList_vtable;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationModifierList_registerNow(){
+void igAnimationModifierList_arkRegister(){
  meta_registerNow((int)igAnimationModifierList_register);
 }
 void igAnimationModifierList_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationModifierList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationModifierList_getMetaCall,(int)igAnimationModifierList_className,20,(int)igAnimationModifierList_vtableRead,0,0,(int)lbl_8056097C);
+ meta_registerClass(0,(int)&igAnimationModifierList_meta,(int)igObjectList_register,(int)fn_80024180,(int)igAnimationModifierList_getMetaCall,(int)igAnimationModifierList_className,20,(int)igAnimationModifierList_vtableRead,0,0,(int)igAnimationModifierList_dependencies);
 }
 void *igAnimationModifierList_getMetaCall(){return igAnimationModifierList_getMeta();}
 void *fn_801CA7D0(){
@@ -325,7 +325,7 @@ void *fn_801CA7D0(){
  return lbl_80565450;
 }
 void *igAnimationModifier_getMeta(){
- if(!igAnimationModifier_meta || !(reinterpret_cast<unsigned int *>(igAnimationModifier_meta)[0x24/4]&4)) igAnimationModifier_registerNow();
+ if(!igAnimationModifier_meta || !(reinterpret_cast<unsigned int *>(igAnimationModifier_meta)[0x24/4]&4)) igAnimationModifier_arkRegister();
  return igAnimationModifier_meta;
 }
 void *igAnimationModifier_vtableRead(){
@@ -334,12 +334,12 @@ void *igAnimationModifier_vtableRead(){
  object.unknown0C.value=0;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAnimationModifier_registerNow(){
+void igAnimationModifier_arkRegister(){
  meta_registerNow((int)igAnimationModifier_register);
 }
 void igAnimationModifier_register(){
  fn_801AA6DC();
- meta_registerClass(0,(int)&igAnimationModifier_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationModifier_getMetaCall,(int)igAnimationModifier_className,20,(int)igAnimationModifier_vtableRead,(int)igAnimationModifier_fieldInit,0,(int)lbl_80560994);
+ meta_registerClass(0,(int)&igAnimationModifier_meta,(int)igObject_register,(int)fn_800237D0,(int)igAnimationModifier_getMetaCall,(int)igAnimationModifier_className,20,(int)igAnimationModifier_vtableRead,(int)igAnimationModifier_fieldInit,0,(int)igAnimationModifier_dependencies);
 }
 void *igAnimationModifier_getMetaCall(){return igAnimationModifier_getMeta();}
 }

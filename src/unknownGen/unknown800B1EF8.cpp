@@ -16,7 +16,7 @@ void igProjectionMatrixAttr_register();
 void *igProjectionMatrixAttr_getMetaCall();
 }
 extern "C" {
-void igProjectionMatrixAttr_registerNow(){
+void igProjectionMatrixAttr_arkRegister(){
  meta_registerNow((int)igProjectionMatrixAttr_register);
 }
 void igProjectionMatrixAttr_register(){

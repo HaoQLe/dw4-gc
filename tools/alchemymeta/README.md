@@ -10,6 +10,7 @@ Recovers Alchemy class metadata statically from the original DOL and turns it in
 /opt/homebrew/bin/python3 tools/alchemymeta/rename.py
 /opt/homebrew/bin/python3 tools/alchemymeta/funcindex.py
 /opt/homebrew/bin/python3 tools/alchemymeta/regnames.py
+/opt/homebrew/bin/python3 tools/alchemymeta/metasrc.py --apply
 ```
 
 | Step | What it does |
@@ -21,6 +22,7 @@ Recovers Alchemy class metadata statically from the original DOL and turns it in
 | `attribute.py` | Writes `config/GDJEB2/alchemy_class_functions.txt`: address, class, roles and name, one function per line.<br>• A role is recorded only where the code confirms it (see the tool's docstring).<br>• Functions claimed by several classes are left out.<br>• The name is `<class>_<role>`, for example `igSphere_getMeta` or `beWeapon_virtual88` (vtable byte offset 0x88). |
 | `funcindex.py` | Writes `build/GDJEB2/analysis/reg/allfns.json`: every function's instructions, disassembled from the current original split objects. |
 | `regnames.py` | Names each class's registration symbols, with the evidence for each listed in its docstring:<br>• data: `<C>_meta` (metaobject global), `<C>_vtable` (own vtable), `<C>_className` (name string, only when its text is the class name), `<C>_fieldTypes`, `<C>_fieldNames`, `<C>_fieldStorage`, `<C>_fieldOffsets` (the field-setup tables), `<C>_dependencies` (the arkRegister functions of the field target classes);<br>• functions: `<C>_arkRegister` (Alchemy's own name, kept by five engine classes), `<C>_metaObject` (the metaobject, created unregistered if absent), `<C>_create(pool)`;<br>• registration API: `meta_registerClass`, `meta_registerNow`, `meta_newMetaObject`, `meta_createInstance`, `meta_fieldCount`, `meta_field`, `meta_appendFields`, `meta_setupFields`, plus `igObject_construct` and `igObject_vtable`.<br>A class registered twice (`igModelViewMatrixBoneSelectList`) has its second set named with the metaobject's address (`igModelViewMatrixBoneSelectList_80534578_meta`). |
+| `metasrc.py` | Writes readable class-registration source, one file per class (`src/Meta/<Class>.cpp`, or `src/Alchemy/src/Meta/` in the identified Alchemy core range), using the macros and helpers of `include/meta/register.h`. A class is converted only when all its registration functions are built from generated units, translate, and compile to the original: instructions, relocations, function order, exception-index entries, and no emitted data. With `--apply` it lists the files in `config/GDJEB2/meta_units.txt`, reduces the overlapped generated units to their other functions, and rewrites `splits.txt` (exception-table ranges from the executable's exception index). `--only`, `--limit` and `--debug` (prints the first difference) help with single classes. |
 | `rename.py` | Renames every attributed function still named by its address, wherever the name appears as a whole token: `symbols.txt`, sources, headers, the generator's state files and templates. Names do not change code; the build checksum must not change. Run the generator's `emit.py` afterwards to put declarations back in its sorted order. |
 
 Check the headers with the pinned compiler:

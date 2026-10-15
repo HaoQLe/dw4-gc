@@ -41,11 +41,11 @@ for n,v in idx.items():
 for k,v in enums.items():
   c=callers.get(v['getter'],set())
   v['owner']=next(iter(c)) if len(c)==1 else None
-# Enum fields: after fetching field k (fn_800658E4 with the field-count base plus k in r4), a field
+# Enum fields: after fetching field k (meta_field with the field-count base plus k in r4), a field
 # initializer stores the enum getter's address into the field (at +0x34). The field's name is entry k of
-# the name table passed to fn_800659C0.
+# the name table passed to meta_setupFields.
 classes=json.load(open(OUT/'classes.json'))
-INDEXED,PROPS='fn_800658E4','fn_800659C0'
+INDEXED,PROPS='meta_field','meta_setupFields'
 fields={}
 for c,v in classes.items():
   fi=v.get('fieldinit')

@@ -1,8 +1,8 @@
 """Extract Alchemy class metadata statically from the original DOL.
 
-Every Alchemy class registers a metaobject through fn_80066204 (class name, instance size, parent's
-register function, callbacks) and its fields through fn_80065924 (field count and a table of field-type
-getters) followed by fn_800659C0 (tables of field names and offsets). This tool reads those calls and
+Every Alchemy class registers a metaobject through meta_registerClass (class name, instance size, parent's
+register function, callbacks) and its fields through meta_appendFields (field count and a table of field-type
+getters) followed by meta_setupFields (tables of field names and offsets). This tool reads those calls and
 tables and writes build/GDJEB2/analysis/meta/classes.json:
   {class: {register, meta, size, parent, fields: [{name, offset, type}]}}
 Function names stay unnamed in symbols.txt; this is evidence only.
@@ -13,8 +13,8 @@ import json,re,struct,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from dol import *   # idx, sym, at, cstr, word, address, calls, COUNT
-REG,APPEND,PROPS='fn_80066204','fn_80065924','fn_800659C0'
-INDEXED='fn_800658E4'
+REG,APPEND,PROPS='meta_registerClass','meta_appendFields','meta_setupFields'
+INDEXED='meta_field'
 OUT=BUILD/'analysis'/'meta'/'classes.json'
 
 classes={};fieldsets={};fieldinit={};skipped=[]

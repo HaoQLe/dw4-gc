@@ -5,7 +5,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'unknowngen'))
 import callshape
 from paths import CONFIG,RELINDEX,BUILD
 
-COUNT='fn_80065D88'
+COUNT='meta_fieldCount'
 idx=json.load(open(RELINDEX))
 sym={};at={}
 for l in open(CONFIG/'symbols.txt'):

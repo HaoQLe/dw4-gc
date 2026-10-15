@@ -20,16 +20,16 @@
 
 namespace Gap { namespace Core { class igArkCore; extern igArkCore *_arkCore; } }
 
-// The igMetaObject::_validity bit set once its class is registered.
+// The igMetaObject::_validity flag (value 4) set once its class is registered.
 enum { META_REGISTERED = 4 };
 
 extern "C" {
 void meta_registerNow(void (*registerFunction)());
-// Fills *meta. The first argument's meaning is unknown (1 for a few engine classes). unknownCallback returns a
-// global (for list classes, a metaobject); callback2 is a further function or 0; dependencies is a
-// zero-terminated list of the arkRegister functions of the classes C's fields refer to, or 0.
-void meta_registerClass(int unknown00, Meta::igMetaObject **meta, void (*parentRegister)(),
-                        void *(*unknownCallback)(), Meta::igMetaObject *(*getMetaCall)(), const char *name,
+// Fills *meta. abstract is stored to _abstractState (meta_createInstance returns null when it is 1);
+// parentMeta returns the parent's metaobject, which the class inherits from; callback2 (or 0) and the
+// zero-terminated dependencies list (usually other classes' arkRegister functions) run after registration.
+void meta_registerClass(int abstract, Meta::igMetaObject **meta, void (*parentRegister)(),
+                        void *(*parentMeta)(), Meta::igMetaObject *(*getMetaCall)(), const char *name,
                         int size, void *(*vtableRead)(), void (*fieldInit)(), void (*callback2)(),
                         void *dependencies);
 Meta::igMetaObject *meta_newMetaObject(void *pool);
@@ -39,7 +39,7 @@ extern void *lbl_805621F4;             // the pool source for new metaobjects an
 int meta_fieldCount(Meta::igMetaObject *meta);
 void *meta_field(Meta::igMetaObject *meta, int index);
 void meta_appendFields(Meta::igMetaObject *meta, void *fieldTypes, int count);
-void meta_setupFields(Meta::igMetaObject *meta, void *names, void *offsets, void *unknown, int first);
+void meta_setupFields(Meta::igMetaObject *meta, void *names, void *storage, void *offsets, int first);
 void igObject_construct(void *object);
 void fn_80066E1C(void *object);        // frees an object whose reference count reached zero
 }

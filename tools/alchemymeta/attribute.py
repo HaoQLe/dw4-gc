@@ -1,12 +1,12 @@
 """Attribute functions to Alchemy classes from the extracted metadata (tools/alchemymeta/extract.py).
 
 Roles, each checked against the code before it is recorded:
-  register    calls the metaobject registration (fn_80066204) for the class
+  register    calls the metaobject registration (meta_registerClass) for the class
   getMeta     loads the class's metaobject, registering it first if needed (called by the r7 callback)
   getMetaCall the r7 callback, which only calls getMeta
   parentMeta  the r6 callback, which only reads the parent's metaobject
   vtableRead  the r10 callback, which constructs a temporary instance and reads its vtable
-  fieldInit   appends and describes the class's reflected fields (fn_80065924/fn_800659C0)
+  fieldInit   appends and describes the class's reflected fields (meta_appendFields/meta_setupFields)
   virtual+XX  the function at byte offset XX of the class's own vtable, where it differs from the
               parent's own vtable (an override or a new virtual function)
 A function claimed by more than one class (shared code) is not attributed.

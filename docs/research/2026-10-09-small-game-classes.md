@@ -29,7 +29,7 @@ Three readable drafts compiled to the original instructions, with identical opco
 
 | Function | Size | Differing lines | Draft |
 | --- | --- | --- | --- |
-| `beWeapon_virtual8C` (message handler) | 1,440 | about 280 | `task/beweapon-8c-wip` |
+| `beWeapon_virtual8C` (message handler) | 1,440 | 122 instructions, structure exact (2026-10-15) | `task/beweapon-8c-wip` |
 | `beTimer_virtual74` (per-frame update) | 392 | **matched** | `src/Game/Bec/beTimer.cpp` |
 | `beSeCtl_virtual90` (play an action's sound) | 340 | 49 at best | `task/small-classes-wip` |
 
@@ -67,10 +67,29 @@ A search over seven independent source choices (`build/GDJEB2/analysis/hw/combo7
 
 `short`, `int` and `long long` intermediates for the delay did not reproduce the copy, and inline helpers for the four messenger calls (taking the delay as `long long`, `short` or the whole `beSeData`) made it worse (80–93 lines).
 
+## `beWeapon_virtual8C` (2026-10-15)
+
+The draft was ported to `Ref<T>`, `List.h` and `Pool.h` (`task/beweapon-8c-wip`, `941bd9f5`). In this form the instruction sequence and its length (360) match the original. Two source choices are required:
+- the `info` pointer is loaded once, before the `switch`;
+- each loop declares its own variables (`for (int i = 0; ...)`, `int count = ...`).
+
+Shared loop variables at the top initialise the second loop's offset with `mr` from the counter. The original uses two `li` instructions.
+
+**Remaining difference: register colouring only, 122 of 360 instructions.** The original puts `self` in `r31`, `ram` in `r28`, `info` in `r27` and `message` in `r21`. The draft has `ram` in `r31` and `self` in `r30`.
+
+**No effect on the colouring:**
+- eight declaration choices, 256 combinations (`id`, the lists, the attachment, the bone index and the sequence entry hoisted to the top; `info` first or last; the action in a local; a named pointer for the new bone selection);
+- a member-function form (`this` instead of `self`);
+- an inline remove helper (one more differing instruction).
+
+Moving the generate case into an inline helper changes the structure.
+
+**Allocator observation:** in a reduced test with the same shape, parameters get the lowest saved registers (`self` `r26`, `ram` `r27`). In the original, `self` gets `r31`, so the original's parameters are not coloured as plain parameters in this function. What causes that is unknown.
+
 ## Tools
 
 - `tools/hwdiff.py SOURCE [-v] [function ...]` compiles a hand-written file with the game flags and reports each function as EXACT or the number of differing lines against the original split objects.
-- `tools/hwvariants.py SOURCE VARIANTS.json functions` scores text-replacement variants of the file the same way.
+- `tools/hwvariants.py SOURCE VARIANTS.json functions [-p]` scores text-replacement variants of the file the same way. With `-p`, functions of equal length are scored by the number of instructions that differ at the same position. This still ranks variants whose registers are all shifted.
 
 ## Also identified
 

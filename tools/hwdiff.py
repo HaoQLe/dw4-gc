@@ -1,7 +1,6 @@
 """Compare a hand-written source file's functions with the original objects.
 
-Compiles SOURCE with the Game library's flags from configure.py (or --flags 'engine' for the generator's
-size profile), then disassembles every function the original split objects also define and prints, per
+Compiles SOURCE with the Game library's flags from configure.py (cflags_game), then disassembles every function the original split objects also define and prints, per
 function, EXACT or the number of differing lines. Section-symbol names (for example a string or constant
 pool) are normalized, since they differ until the unit is linked.
 

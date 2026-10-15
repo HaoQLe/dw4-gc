@@ -31,7 +31,7 @@ Every Alchemy class registers itself through a fixed set of small functions. Abo
 | `C_metaObject` | The metaobject, created unregistered if absent | 214 |
 | `C_create(pool)` | Creates an instance in a pool | 538 |
 | `C_fieldTypes`, `C_fieldNames`, `C_fieldStorage`, `C_fieldOffsets` | The field-setup tables | 539 classes |
-| `C_dependencies` | The `arkRegister` functions of the classes C's fields refer to | 853 |
+| `C_dependencies` | `register`'s last argument: callbacks run after registration, usually the `arkRegister` functions of the classes C's fields refer to (in 87 field classes, setup functions instead) | 853 |
 
 The registration API also gets names:
 - `meta_registerClass`, `meta_registerNow`, `meta_newMetaObject`, `meta_createInstance`;
@@ -46,25 +46,23 @@ All of them appear in this address order; `include/meta/register.h` documents th
 | --- | --- | --- |
 | `C_create(pool)` | `C_arkRegister()`, then an instance from `C_meta` | `META_CREATE(C)` |
 | `C_metaObject()` | `C_meta`, created by `meta_newMetaObject` (unregistered) if null | `META_METAOBJECT(C)` |
-| `C_getMeta()` | `C_meta`, registering first unless `_validity` has bit 4 | `META_GET_META(C)` |
+| `C_getMeta()` | `C_meta`, registering first unless `_validity` has the flag 4 | `META_GET_META(C)` |
 | `C_vtableRead()` | Builds a temporary instance as the constructors do and returns its vtable pointer (the core keeps the vtable pointer's offset at `_arkCore+0x394`) | Named instance structs |
 | `C_arkRegister()` | `meta_registerNow(C_register)`: registers, then runs the callbacks the registration returns | `META_ARK_REGISTER(C)` |
-| `C_register()` | A module guard (`fn_802B1AC8` for game classes, `fn_80021B94` in the core), then `meta_registerClass` | See below |
+| `C_register()` | A module guard (18 distinct guard functions, for example `fn_802B1AC8` in 303 classes, `fn_8012FC48` in 236 and `fn_80021B94` in the core; 23 classes have none), then `meta_registerClass` | See below |
 | `C_getMetaCall()` | `C_getMeta()` | `META_GET_META_CALL(C)` |
 | `C_fieldInit()` | Appends C's fields and sets each one up | Typed field code |
 
-`meta_registerClass(unknown, &C_meta, Parent_register, unknownCallback, C_getMetaCall, C_className, size, C_vtableRead, C_fieldInit, callback2, C_dependencies)`:
-- the first argument is 0, or 1 for a few engine classes;
-- `unknownCallback` returns a global, a metaobject for list classes;
-- `callback2` is a further function or 0.
-
-The meanings of these three are unknown.
+`meta_registerClass(abstract, &C_meta, Parent_register, parentMeta, C_getMetaCall, C_className, size, C_vtableRead, C_fieldInit, callback2, C_dependencies)`:
+- `abstract` is stored to `_abstractState`; `meta_createInstance` returns null when it is 1, which it is for 125 base classes;
+- `parentMeta` returns the parent's metaobject (null for `igObject`). The class takes its parent, vtable pointer offset, alignment, sizes and inherited fields from it (`fn_80065640`);
+- `callback2` (non-zero for 49 classes) and the `C_dependencies` entries go into the list `meta_registerNow` runs after registration.
 
 ### `fieldInit`
 
 1. `base = meta_fieldCount(meta)`: the inherited fields come first.
 2. `meta_appendFields(meta, C_fieldTypes, n)`: one type-creation function per field, for example `igLongMetaField_create`.
-3. For each object-reference field `k` (`meta_field(meta, base + k)`):
+3. For each object-reference field `k` (`meta_field(meta, base + k)`), among other per-field stores (for example `_invarianceFunction`):
    - `_metaObject` = the target class's `metaObject()`;
    - then either `_refCounted = false` or `_construct = true`.
 4. `meta_setupFields(meta, C_fieldNames, C_fieldStorage, C_fieldOffsets, base)` sets each field's `_fieldName`, `_externalEnumStorage` (a pointer to a per-field global next to `C_meta`), `_offset` and `_parentMetaObject`.

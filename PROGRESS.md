@@ -14,7 +14,8 @@ Updated: 2026-10-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
     - the `beWeapon` handler: the instruction sequence is exact, with 122 of 360 instructions differing in register colouring (draft `941bd9f5`).
 
     Drafts are on the local branches `task/small-classes-wip` and `task/beweapon-8c-wip`.
-  - **Next investigation:** for the handler, find what makes MWCC colour `self` first (declaration order and member form are ruled out); for `beSeCtl_virtual90`, inline messenger helpers are ruled out; next, try the request fields read through a struct copy or accessor. `beCameraMode` needs the model and matrix classes.
+  - **`beCameraMode`:** `src/Game/Bec/beCameraMode.cpp` (`virtual80`, `virtual7C`) is exact, matched code +284 bytes, to 1,532,240 (36.996758%); linked 1,530,768 (36.961216%), data +20 bytes, 16,998 functions. `virtual78` is a draft on `task/small-classes-wip` (13 scratch registers differ).
+  - **Next investigation:** for the handler, find what makes MWCC colour `self` first (declaration order and member form are ruled out); for `beSeCtl_virtual90`, inline messenger helpers are ruled out; next, try the request fields read through a struct copy or accessor. 
   - Details: [small game classes](docs/research/2026-10-09-small-game-classes.md).
 - **Enums and controller-input batch (user request 2026-10-09):** both parts verified.
   - **Enums:** 149 enums (1,284 values) extracted (`tools/alchemymeta/enums.py`) into `include/meta/enums.h`; 120 enum fields typed.

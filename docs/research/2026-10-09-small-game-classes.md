@@ -86,6 +86,42 @@ Moving the generate case into an inline helper changes the structure.
 
 **Allocator observation:** in a reduced test with the same shape, parameters get the lowest saved registers (`self` `r26`, `ram` `r27`). In the original, `self` gets `r31`, so the original's parameters are not coloured as plain parameters in this function. What causes that is unknown.
 
+## `beCameraMode` (2026-10-15)
+
+**Published:** `src/Game/Bec/beCameraMode.cpp` covers `0x802F4114..0x802F4268`. Both functions in it are exact, `virtual7C` newly matched:
+- **matched code** +284 bytes, to 1,532,240 (36.996758%);
+- **linked** 1,530,768 (36.961216%);
+- **matched data** +20 bytes, 16,998 functions;
+- `build.sha1` OK and 4,481 generated units verify.
+
+What the functions do:
+- **`virtual80`** calls the camera's vtable slot `0x90`.
+- **`virtual7C`** calls the camera's slot `0x8C`, then copies the camera's values into the view's model (an `igViewModel`):
+  - `_hfov`, then `_farPlane`, then `_nearPlane`;
+  - a zero near plane becomes far / 1000;
+  - after each store it sends a change event `{2, 0, field}` through `fn_8011BFA4`.
+
+  The field identifiers are `.bss` globals: `lbl_8055CA84` (`_hfov`), `lbl_8055CA8C` (`_farPlane`), `lbl_8055CA88` (`_nearPlane`) and `lbl_8055CA7C` (`_viewMatrix`). The names are inferred from which field each one follows.
+- **Matching details:**
+  - the field globals must be arrays, because the original uses `lis`/`addi`, not small-data addressing;
+  - the event occupies 16 bytes on the stack (a fourth word is never set);
+  - the two float constants (`lbl_80425320` = 1000, `lbl_80425324` = 0) are referenced as externs, because the unlinked `virtual78` refers to them by name;
+  - with the extern, the comparison must be written `lbl_80425324 == nearPlane` to keep the `fcmpu` operand order (with a literal it was `nearPlane == 0.0f`).
+
+**Not linked: `virtual78` (per-frame update)**, a draft at `task/small-classes-wip` `049e8629`. The control flow:
+- frozen: it only records the world time;
+- otherwise, unless ended: `step = now - _svWorldTimeL` (0 on the first frame), capped at 50,000,000; `_nowTimeL += step`, clamped to `_timeLength`, which sets `_isEnd`;
+- then the path is evaluated at `_nowTimeL` into an identity matrix (`fn_801EAAAC`);
+- three values are read from the matrix (`fn_8012947C`) and its rotation rebuilt from them (`fn_80129134`), keeping the translation;
+- `fn_8012A860` writes the rigid inverse into `_viewMatrix`; it returns an `igResult` through a hidden pointer, which needs a user-defined copy constructor;
+- a `_viewMatrix` event is sent.
+
+**Matching state:**
+- the instruction sequence is exact;
+- 13 instructions differ, all scratch registers in the time-step block: the original keeps `_svWorldTimeL`'s low word in `r8` and `now` in `r6`/`r7`; the draft has `r6` and `r7`/`r8`.
+- Required shapes: `step + _nowTimeL` (not `+=`), and the three values declared and zeroed just before `fn_8012947C`.
+- Tried without effect: about 25 forms of the step computation (ternaries, inline helpers, declaration order, a local for the last time, block forms, reversed comparisons).
+
 ## Tools
 
 - `tools/hwdiff.py SOURCE [-v] [function ...]` compiles a hand-written file with the game flags and reports each function as EXACT or the number of differing lines against the original split objects.
@@ -93,5 +129,5 @@ Moving the generate case into an inline helper changes the structure.
 
 ## Also identified
 
-- **`beCameraMode`:** `virtual7C` first calls the camera's vtable slot `0x8C`, then copies the camera's field of view, far plane and near plane (near = far / 1000 when zero), in that order, into the view's model (`igView::_model`). Each change is followed by a `{2, 0, field}` event sent to the model's listeners (`fn_8011BFA4`). `virtual78` advances the camera-path time, with the per-frame step capped at 50,000,000 time units, and evaluates the path into a matrix that `fn_8012A860` (a transposing copy) writes into the model's matrix (`_model+0xC`); the model's views are then notified. These are not written yet: they need the model and matrix classes.
+- **`beCameraMode`:** see the section below (2026-10-15).
 - **`beSeCtl_virtual7C`:** broadcasts `"ACTION_BROADCAST"`.

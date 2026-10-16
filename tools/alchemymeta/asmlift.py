@@ -222,8 +222,10 @@ def lift_vtableread(c,insns,size,sizes=None):
 # Returned types of the field-replacement helpers (see lift_fieldinit).
 RETURNS={'fn_80053998':'int'}
 
-def lift_fieldinit(c,insns):
+def lift_fieldinit(c,insns,pool=None):
+    """pool: {(base symbol, offset): name} for tables addressed from a pool (see poolsrc.py)."""
     calls,stores,frame=run(collapse_releases(insns))
+    pool=pool or {}
     names={};out=[];n=[0]
     def var(v):
         if v not in names: raise Unliftable('fieldInit value %s'%(v,))
@@ -233,6 +235,8 @@ def lift_fieldinit(c,insns):
         if v in names: return names[v]
         if v==meta: return c+'_meta'
         if v[0]=='c': return str(v[1])
+        if v[0]=='a' and (v[1],v[2]) in pool: return pool[(v[1],v[2])]
+        if v[0]=='m' and v[2]==0 and v[1].endswith('_meta'): return v[1]     # a class's metaobject
         if v[0]=='a' and v[2]==0: return v[1]
         if v[0]=='f' : return '*reinterpret_cast<float *>((%s+%d))'%(v[1],v[2])
         if v[0]=='ld' and (v[1] in names or v[1]==meta):
@@ -240,6 +244,7 @@ def lift_fieldinit(c,insns):
         raise Unliftable('fieldInit expr %s'%(v,))
     def new(v,text):
         k='v%d'%n[0];n[0]+=1;names[v]=k;out.append(text%k)
+    decls=[];vtypes={}
     # The metaobject is loaded first; later loads of it are written as the global.
     si=0
     def flush(upto):
@@ -249,8 +254,8 @@ def lift_fieldinit(c,insns):
             if base[0]=='sp': raise Unliftable('fieldInit stack store')
             typ={4:'void * *' if v[0] in ('a','ret','m') else 'int *',1:'unsigned char *',2:'short *','f':'float *'}[width]
             tgt=c+'_meta' if base==meta else var(base)
+            if v[0]=='a' and v[2]==0 and v[1].startswith('fn_'): decls.append('void %s();'%v[1])   # a function's address
             out.append(' *reinterpret_cast<%s>(reinterpret_cast<char *>(%s)+%d)=%s;'%(typ,tgt,off,expr(v)))
-    decls=[];vtypes={}
     def used(k):
         r=('ret',k)
         def has(v): return v==r or (isinstance(v,tuple) and any(has(x) for x in v if isinstance(x,tuple)))

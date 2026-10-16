@@ -4274,6 +4274,10 @@ Meta/igGamecubeAudioContext.cpp:
 unknownGen/unknown800C7354.cpp:
 	.text       start:0x800C7354 end:0x800C735C
 
+Meta/igGamecubeAudioContext_fields.cpp:
+	.text       start:0x800C735C end:0x800C7424
+	.data       start:0x8047E590 end:0x8047E95C
+
 unknownGen/unknown800C7424.cpp:
 	.text       start:0x800C7424 end:0x800C7460
 
@@ -4325,71 +4329,9 @@ unknownGen/unknown800CB078.cpp:
 Meta/igGamecubeWindow.cpp:
 	.text       start:0x800CB094 end:0x800CB0B4
 
-unknownGen/unknown800CB0B4.cpp:
-	.text       start:0x800CB0B4 end:0x800CB100
-
-Meta/igInterfaceManager.cpp:
-	.text       start:0x800CB100 end:0x800CB28C
-
-Meta/igDefaultInterfaceManager.cpp:
-	.text       start:0x800CB28C end:0x800CB2AC
-
-unknownGen/unknown800CB2AC.cpp:
-	.text       start:0x800CB2AC end:0x800CB2E8
-
-Meta/igEventProducerList.cpp:
-	.text       start:0x800CB2E8 end:0x800CB448
-
-Meta/igEventProducer.cpp:
-	.text       start:0x800CB448 end:0x800CB530
-
-unknownGen/unknown800CB530.cpp:
-	.text       start:0x800CB530 end:0x800CB574
-
-Meta/igControllerList.cpp:
-	.text       start:0x800CB574 end:0x800CB6D4
-
-Meta/igDefaultInterfaceManager_2.cpp:
-	.text       start:0x800CB6D4 end:0x800CB840
-
-unknownGen/unknown800CB840.cpp:
-	.text       start:0x800CB840 end:0x800CB848
-
-unknownGen/unknown800CB8B8.cpp:
-	.text       start:0x800CB8B8 end:0x800CB8F4
-
-Meta/igControllerManager.cpp:
-	.text       start:0x800CB8F4 end:0x800CBA80
-
-Meta/igGamecubeControllerManager.cpp:
-	.text       start:0x800CBA80 end:0x800CBAA0
-
-unknownGen/unknown800CBAA0.cpp:
-	.text       start:0x800CBAA0 end:0x800CBAEC
-
-Meta/igController.cpp:
-	.text       start:0x800CBAEC end:0x800CBC7C
-
-Meta/igGamecubeController.cpp:
-	.text       start:0x800CBC7C end:0x800CBC9C
-
-Meta/igGamecubeWindow_2.cpp:
-	.text       start:0x800CBC9C end:0x800CBE54
-
-unknownGen/unknown800CBE54.cpp:
-	.text       start:0x800CBE54 end:0x800CBE5C
-
-Meta/igGamecubeControllerManager_2.cpp:
-	.text       start:0x800CBF58 end:0x800CC0C8
-
-unknownGen/unknown800CC0C8.cpp:
-	.text       start:0x800CC0C8 end:0x800CC0D0
-
-Meta/igGamecubeController_2.cpp:
-	.text       start:0x800CC0D0 end:0x800CC280
-
-unknownGen/unknown800CC280.cpp:
-	.text       start:0x800CC280 end:0x800CC288
+Meta/igInterfaceManager_module.cpp:
+	.text       start:0x800CB0B4 end:0x800CC3A0
+	.data       start:0x8047EC18 end:0x80480268
 
 unknownGen/unknown800CC464.cpp:
 	.text       start:0x800CC464 end:0x800CC834
@@ -11424,77 +11366,9 @@ Meta/igSerialScheduler.cpp:
 unknownGen/unknown80284748.cpp:
 	.text       start:0x80284748 end:0x80284758
 
-unknownGen/unknown80284820.cpp:
-	.text       start:0x80284820 end:0x80284A10
-
-Meta/igMessage.cpp:
-	.text       start:0x80284AB8 end:0x80284C00
-
-Meta/igMessageReceiverList.cpp:
-	.text       start:0x80284C00 end:0x80284DD0
-
-Meta/igMessageReceiver.cpp:
-	.text       start:0x80284DD0 end:0x80284ECC
-
-Meta/igMessageFilterList.cpp:
-	.text       start:0x80284ECC end:0x8028509C
-
-unknownGen/unknown8028509C.cpp:
-	.text       start:0x8028509C end:0x802852BC
-
-Meta/igFilterMessageDispatcher.cpp:
-	.text       start:0x80285384 end:0x8028556C
-
-unknownGen/unknown8028556C.cpp:
-	.text       start:0x8028556C end:0x8028557C
-
-Meta/igMessageDispatcher.cpp:
-	.text       start:0x80285644 end:0x8028579C
-
-unknownGen/unknown8028579C.cpp:
-	.text       start:0x8028579C end:0x802857B8
-
-Meta/igMessageDefaultReceiver.cpp:
-	.text       start:0x802857B8 end:0x802859A0
-
-unknownGen/unknown802859A0.cpp:
-	.text       start:0x802859A0 end:0x802859B0
-
-Meta/igInsightScheduler.cpp:
-	.text       start:0x80285A5C end:0x80285BB4
-
-unknownGen/unknown80285BB4.cpp:
-	.text       start:0x80285BB4 end:0x80285BD0
-
-Meta/igInsightPluginList.cpp:
-	.text       start:0x80285BD0 end:0x80285DA0
-
-Meta/igInsightPlugin.cpp:
-	.text       start:0x80285DA0 end:0x80285E9C
-
-Meta/igInsightCore.cpp:
-	.text       start:0x80285E9C end:0x80286008
-
-unknownGen/unknown80286008.cpp:
-	.text       start:0x80286008 end:0x802862A0
-
-unknownGen/unknown802862A0.cpp:
-	.text       start:0x802862A0 end:0x80286368
-
-unknownGen/unknown80286560.cpp:
-	.text       start:0x80286560 end:0x80286738
-
-unknownGen/unknown802867E0.cpp:
-	.text       start:0x802867E0 end:0x8028697C
-
-Meta/igInfoManagerOrderedList.cpp:
-	.text       start:0x802869FC end:0x80286CC8
-
-Meta/igInfoManagerList.cpp:
-	.text       start:0x80286CC8 end:0x80286E98
-
-unknownGen/unknown80286E98.cpp:
-	.text       start:0x80286E98 end:0x80286FA4
+Meta/igSerialScheduler_module.cpp:
+	.text       start:0x80284758 end:0x8028704C
+	.data       start:0x804CAFC8 end:0x804CB2DC
 
 Meta/igFlushRenderer.cpp:
 	.text       start:0x8028704C end:0x8028723C
@@ -11562,20 +11436,9 @@ unknownGen/unknown8028B8C8.cpp:
 unknownGen/unknown8028B978.cpp:
 	.text       start:0x8028B978 end:0x8028BA04
 
-unknownGen/unknown8028C330.cpp:
-	.text       start:0x8028C330 end:0x8028C3D0
-
-unknownGen/unknown8028C3D0.cpp:
-	.text       start:0x8028C3D0 end:0x8028C40C
-
-unknownGen/unknown8028C40C.cpp:
-	.text       start:0x8028C40C end:0x8028C55C
-
-unknownGen/unknown8028C55C.cpp:
-	.text       start:0x8028C55C end:0x8028C584
-
-unknownGen/unknown8028C584.cpp:
-	.text       start:0x8028C584 end:0x8028C61C
+Meta/igSearchSceneGraph_module.cpp:
+	.text       start:0x8028C330 end:0x8028C6FC
+	.data       start:0x804CC090 end:0x804CC1B4
 
 unknownGen/unknown8028C6FC.cpp:
 	.text       start:0x8028C6FC end:0x8028C778
@@ -11583,44 +11446,9 @@ unknownGen/unknown8028C6FC.cpp:
 unknownGen/unknown8028C8FC.cpp:
 	.text       start:0x8028C8FC end:0x8028CC44
 
-Meta/igCollisionInfo.cpp:
-	.text       start:0x8028CD74 end:0x8028D01C
-
-unknownGen/unknown8028D01C.cpp:
-	.text       start:0x8028D01C end:0x8028D058
-
-Meta/igCollisionGroupList.cpp:
-	.text       start:0x8028D058 end:0x8028D1B8
-
-unknownGen/unknown8028D1B8.cpp:
-	.text       start:0x8028D1B8 end:0x8028D468
-
-Meta/igCollisionGridHelper.cpp:
-	.text       start:0x8028D4F0 end:0x8028D75C
-
-Meta/igCollisionGrid.cpp:
-	.text       start:0x8028D75C end:0x8028D794
-
-unknownGen/unknown8028D794.cpp:
-	.text       start:0x8028D794 end:0x8028D7D0
-
-Meta/igCollisionGrid_2.cpp:
-	.text       start:0x8028D7D0 end:0x8028D884
-
-unknownGen/unknown8028D884.cpp:
-	.text       start:0x8028D884 end:0x8028DA5C
-
-unknownGen/unknown8028DA5C.cpp:
-	.text       start:0x8028DA5C end:0x8028DB1C
-
-unknownGen/unknown8028DCA0.cpp:
-	.text       start:0x8028DCA0 end:0x8028DCDC
-
-Meta/igCollisionCellList.cpp:
-	.text       start:0x8028DCDC end:0x8028DE3C
-
-unknownGen/unknown8028DE3C.cpp:
-	.text       start:0x8028DE3C end:0x8028E038
+Meta/igCreateCollisionDatabase_module.cpp:
+	.text       start:0x8028CC44 end:0x8028E108
+	.data       start:0x804CC708 end:0x804CCB50
 
 Meta/igBoundingSphereMaker.cpp:
 	.text       start:0x8028E108 end:0x8028E340

@@ -98,20 +98,6 @@ struct UnknownGenObject801AC4E8_0 {
  char unknown04[20];
 };
 extern "C" {
-void igTransformRecorder_arkRegister(){
- meta_registerNow((int)igTransformRecorder_register);
-}
-void igTransformRecorder_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igTransformRecorder_meta,(int)igGroup_register,(int)fn_8011148C,(int)igTransformRecorder_getMetaCall,(int)igTransformRecorder_className,160,(int)igTransformRecorder_vtableRead,(int)igTransformRecorder_fieldInit,0,0);
-}
-void *igTransformRecorder_getMetaCall(){return igTransformRecorder_getMeta();}
-void igTransformRecorder_fieldInit(){
- void *value0=igTransformRecorder_meta;
- void *value1=meta_fieldCount(value0);
- meta_appendFields(value0,igTransformRecorder_fieldTypes,2);
- meta_setupFields(value0,igTransformRecorder_fieldNames,igTransformRecorder_fieldStorage,igTransformRecorder_fieldOffsets,value1);
-}
 void *fn_801ABFD8(){
  if(!igNonRefCountedTransformList_meta) igNonRefCountedTransformList_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igNonRefCountedTransformList_meta;

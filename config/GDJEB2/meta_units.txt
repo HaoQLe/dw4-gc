@@ -197,6 +197,7 @@ Meta/igVisualContextAttrDefaultManager_3.cpp	800ABF00	800ABF94	-
 Meta/igVisualAttribute.cpp	800ABFD0	800AC0B8	-
 Meta/igViewportAttr.cpp	800AC0FC	800AC294	-
 Meta/igVertexShaderBindAttr.cpp	800AC37C	800AC594	-
+Meta/igVertexShaderAttr.cpp	800AC5D0	800AC6A0	-
 Meta/igVertexPipelineModeAttr.cpp	800ACB30	800ACD08	-
 Meta/igVertexBlendStateAttr.cpp	800ACD08	800ACEBC	-
 Meta/igVertexBlendMatrixAttrList.cpp	800AD19C	800AD2FC	-
@@ -393,6 +394,7 @@ Meta/igDecalExt.cpp	800D4C64	800D4DBC	-
 Meta/igCustomVectorStateList.cpp	800D4DBC	800D4F54	-
 Meta/igCustomVectorState.cpp	800D4F54	800D5128	-
 Meta/igCustomMatrixStateList.cpp	800D51C0	800D5358	-
+Meta/igCustomMatrixState.cpp	800D5358	800D55B8	-
 Meta/igClut.cpp	800D55B8	800D55F0	-
 Meta/igClut_2.cpp	800D562C	800D575C	-
 Meta/igCapabilityManager.cpp	800D58A4	800D598C	-
@@ -403,7 +405,9 @@ Meta/igFileImagePng_2.cpp	800D6058	800D60D8	-
 Meta/igGamecubeVisualContext_2.cpp	800D6740	800D67E0	-
 Meta/igGamecubeVertexStream_2.cpp	800D7230	800D7474	-
 Meta/igGamecubeVertexArray2_2.cpp	800D75D4	800D7808	-
+Meta/igGamecubeVertexArray1_2.cpp	800D78B0	800D7A2C	-
 Meta/igGamecubeScissorExt_2.cpp	800D7B5C	800D7D2C	-
+Meta/igGamecubePointSpriteExt_2.cpp	800D7DF0	800D80E0	-
 Meta/igGamecubeMultiTextureExt_2.cpp	800D8254	800D8424	-
 Meta/igGamecubeIndexArray_2.cpp	800D8568	800D86D4	-
 Meta/igGamecubeImageConvert_2.cpp	800D86F0	800D881C	-
@@ -434,6 +438,7 @@ Meta/igHotKeyEventReceiver.cpp	8010F370	8010F4FC	-
 Meta/igHotKeyEventReceiver_2.cpp	8010F504	8010F58C	-
 Meta/igHotKeyBindingList.cpp	8010F5C8	8010F728	-
 Meta/igGuiSystem.cpp	8010F9EC	8010FBDC	-
+Meta/igMousePosObserver.cpp	80110720	801108A4	-
 Meta/igWindowSizeObserver.cpp	80110B48	80110CB8	-
 Meta/igGuiComponentNode.cpp	801110DC	80111290	-
 Meta/igGuiComponentNode_2.cpp	801113D0	8011148C	-
@@ -721,11 +726,13 @@ Meta/igTransformSource.cpp	801AB2F0	801AB3D8	-
 Meta/igTransformSequence1_2.cpp	801AB3D8	801AB4E0	-
 Meta/igTransformSequence1_5.cpp	801AB6FC	801AB7C0	-
 Meta/igTransformSequence.cpp	801ABA3C	801ABB34	-
+Meta/igTransformRecorder.cpp	801ABCF4	801ABFD8	-
 Meta/igNonRefCountedTransformList.cpp	801AC014	801AC174	-
 Meta/igTransformListList.cpp	801AC174	801AC2D4	-
 Meta/igTransformList.cpp	801AC310	801AC470	-
 Meta/igTransformStack.cpp	801AC4AC	801AC60C	-
 Meta/igTransform.cpp	801AC60C	801AC644	-
+Meta/igTimeTransform1_3.cpp	801ACA90	801ACC5C	-
 Meta/igTimeTransform1_5.cpp	801ACC68	801ACD20	-
 Meta/igTimeTransform1_2.cpp	801ACD28	801ACDA4	-
 Meta/igSpecialDoubleList.cpp	801AD398	801AD4F0	-
@@ -736,6 +743,7 @@ Meta/igStringValue.cpp	801ADF0C	801AE094	-
 Meta/igStringValue_2.cpp	801AE09C	801AE104	-
 Meta/igStringKey.cpp	801AE104	801AE2C4	-
 Meta/igStringKey_2.cpp	801AE2CC	801AE334	-
+Meta/igSorter.cpp	801AE370	801AE468	-
 Meta/igRenderPackageList.cpp	801AEE28	801AEF88	-
 Meta/igRenderPackagePool.cpp	801AEFC4	801AF130	-
 Meta/igRenderPackage.cpp	801AF138	801AF170	-
@@ -744,6 +752,8 @@ Meta/igSkin.cpp	801AF670	801AF918	-
 Meta/igSkeletonList.cpp	801AF954	801AFAB4	-
 Meta/igSkeleton.cpp	801AFAB4	801AFCA4	-
 Meta/igSkeletonBoneInfoList.cpp	801AFDA0	801AFF00	-
+Meta/igSimpleUserInfo.cpp	801B0148	801B0404	-
+Meta/igSimpleShader_2.cpp	801B040C	801B04F0	-
 Meta/igSimpleShader.cpp	801B0714	801B07D4	-
 Meta/igShaderProcessor.cpp	801B08CC	801B0904	-
 Meta/igShaderProcessor_2.cpp	801B0940	801B0A6C	-
@@ -774,6 +784,7 @@ Meta/igProperty_2.cpp	801B4808	801B4A64	-
 Meta/igProjectiveShadowShader.cpp	801B4E2C	801B4E68	-
 Meta/igPlanarShadowShader_2.cpp	801B5D38	801B5E34	-
 Meta/igPlanarShadowShader.cpp	801B617C	801B623C	-
+Meta/igOverrideAttrSet.cpp	801B67EC	801B6AA8	-
 Meta/igIntersectPathList.cpp	801B6E14	801B6F74	-
 Meta/igNonRefCountedNodeList.cpp	801B6F74	801B6FAC	-
 Meta/igNonRefCountedNodeList_2.cpp	801B6FE8	801B7148	-
@@ -809,6 +820,7 @@ Meta/igInverseKinematicsSolver.cpp	801BC334	801BC61C	-
 Meta/igInverseKinematicsJointList.cpp	801BC658	801BC7B8	-
 Meta/igInverseKinematicsJoint.cpp	801BC980	801BCA38	-
 Meta/igInverseKinematicsHandleList.cpp	801BCB58	801BCCB8	-
+Meta/igInverseKinematicsAnimation.cpp	801BD1CC	801BD49C	-
 Meta/igIntersectTraversal.cpp	801BD708	801BD9C8	-
 Meta/igProbe.cpp	801BDB68	801BDBA0	-
 Meta/igInterpretedShaderProcessor.cpp	801BDE9C	801BE00C	-
@@ -822,6 +834,7 @@ Meta/igIniShaderFactory.cpp	801BEBEC	801BECAC	-
 Meta/igHeap.cpp	801BEE2C	801BF030	-
 Meta/igHeapableList.cpp	801BF06C	801BF1CC	-
 Meta/igHeapable.cpp	801BF1CC	801BF368	-
+Meta/igHashedUserInfo.cpp	801BF368	801BF6F8	-
 Meta/igGroup.cpp	801BF6F8	801BF730	-
 Meta/igGroup_2.cpp	801BF76C	801BFA68	-
 Meta/igGraphPathList.cpp	801BFA68	801BFAA0	-
@@ -937,6 +950,7 @@ Meta/igInfoManagerList.cpp	80286CC8	80286E98	nosdata,speed
 Meta/igFlushRenderer.cpp	8028704C	8028723C	nosdata
 Meta/igCollisionInfo.cpp	8028CD74	8028D01C	-
 Meta/igCollisionGroupList.cpp	8028D058	8028D1B8	-
+Meta/igCollisionGridHelper.cpp	8028D4F0	8028D75C	-
 Meta/igCollisionGrid.cpp	8028D75C	8028D794	-
 Meta/igCollisionGrid_2.cpp	8028D7D0	8028D884	-
 Meta/igCollisionCellList.cpp	8028DCDC	8028DE3C	-
@@ -1066,6 +1080,7 @@ Meta/beNumVerInsideData.cpp	802C38C0	802C3AD0	eh,nosdata
 Meta/beNumberCtrlInfoList.cpp	802C3AD0	802C3C4C	eh,nosdata
 Meta/beNumberCtrlInfo.cpp	802C3C4C	802C3E9C	eh,nosdata
 Meta/beNumberCtrl.cpp	802C3EFC	802C41A0	eh,nosdata
+Meta/beLoadingNode_2.cpp	802C41A0	802C4454	eh,nosdata
 Meta/beLoadingNode.cpp	802C4464	802C44E4	eh,nosdata
 Meta/beMovieInfo.cpp	802C48C4	802C4B14	eh,nosdata
 Meta/beMovieInfoData.cpp	802C4B14	802C4E44	eh,nosdata,speed
@@ -1228,6 +1243,7 @@ Meta/beCopyModelCtrl2.cpp	802E0AE0	802E0C48	eh,nosdata,speed
 Meta/beChangePosTransformInfoRam.cpp	802E0C68	802E0EFC	eh,nosdata,speed
 Meta/beChangePosTransformInfo.cpp	802E0EFC	802E114C	eh,nosdata
 Meta/beChangePosTransform.cpp	802E114C	802E1478	eh,nosdata
+Meta/beCameraMode_2.cpp	802E1478	802E170C	eh,nosdata
 Meta/beCameraMode.cpp	802E171C	802E17F4	eh,nosdata,speed
 Meta/beCameraCtrlInfo.cpp	802E17F4	802E1B38	eh,nosdata
 Meta/beCameraDemoData.cpp	802E1B38	802E1D74	eh,nosdata,speed
@@ -1396,6 +1412,7 @@ Meta/beNDMWPanelWazaInfoWork_2.cpp	80336F04	80337108	eh,nosdata,speed
 Meta/beNDMWPanelObjectStat.cpp	80337108	80337428	eh,nosdata
 Meta/beNDMWPanelObject.cpp	80337E34	80338064	eh,nosdata,speed
 Meta/beNDMWPanelWaza.cpp	803380C4	80338420	eh,nosdata,speed
+Meta/beNDMWMdlPlayer2_2.cpp	80338420	803386E8	eh,nosdata
 Meta/beNDMWMdlPlayer2.cpp	803386F8	803387A0	eh,nosdata,speed
 Meta/beNDMWMdlPlayer2InfoWork_3.cpp	803387A0	80338904	eh,nosdata,speed
 Meta/beNDMWMdlPlayer2InfoWork.cpp	80338964	80338A20	eh,nosdata
@@ -1409,12 +1426,19 @@ Meta/beNDMWMdlPlayerInfoWork_3.cpp	80339494	80339534	eh,nosdata,speed
 Meta/beNDMWMdlPEBase.cpp	80339654	80339750	eh,nosdata,speed
 Meta/beNDMWMdlPEBaseInfoWork.cpp	80339750	8033979C	eh,nosdata,speed
 Meta/beNDMWMdlPEBaseInfoWork_2.cpp	803397EC	803399E8	eh,nosdata,speed
+Meta/beNDMWMdlPBullet.cpp	803399E8	80339CA0	eh,nosdata
+Meta/beNDMWMdlObject.cpp	80339CA0	80339F58	eh,nosdata
+Meta/beNDMWMdlMapCursor.cpp	80339F58	8033A210	eh,nosdata
+Meta/beNDMWMdlMapBase.cpp	8033A210	8033A4C8	eh,nosdata
+Meta/beNDMWMdlItem.cpp	8033A4C8	8033A8A8	eh,nosdata,speed
 Meta/beNDMWMdlItemInfoWork.cpp	8033A8A8	8033A934	eh,nosdata,speed
 Meta/beNDMWMdlItemInfoWork_2.cpp	8033AB80	8033ACF8	eh,nosdata,speed
 Meta/beNDMWMdlEnemy_2.cpp	8033ACF8	8033AE78	eh,nosdata,speed
 Meta/beNDMWMdlEnemy.cpp	8033AF8C	8033B040	eh,nosdata
 Meta/beNDMWMdlEnemyInfoWork.cpp	8033B040	8033B0CC	eh,nosdata
 Meta/beNDMWMdlEnemyInfoWork_2.cpp	8033B1B8	8033B26C	eh,nosdata
+Meta/beNDMWMdlEffect.cpp	8033B26C	8033B524	eh,nosdata
+Meta/beNDMWMdlEBullet.cpp	8033B524	8033B7DC	eh,nosdata
 Meta/beNDMWLogoInfo.cpp	8033B7DC	8033BA2C	eh,nosdata
 Meta/beNDMWLogo.cpp	8033BDA4	8033C1A8	eh,nosdata,speed
 Meta/beNDMWLoadIntf2Info.cpp	8033C1A8	8033C3F8	eh,nosdata

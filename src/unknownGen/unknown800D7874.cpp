@@ -13,9 +13,5 @@ void *fn_800D7874(){
  if(!igGamecubeVertexArray1_1_meta) igGamecubeVertexArray1_1_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igGamecubeVertexArray1_1_meta;
 }
-void *igGamecubeVertexArray1_1_getMeta(){
- if(!igGamecubeVertexArray1_1_meta || !(reinterpret_cast<unsigned int *>(igGamecubeVertexArray1_1_meta)[0x24/4]&4)) igGamecubeVertexArray1_1_arkRegister();
- return igGamecubeVertexArray1_1_meta;
-}
 }
 #pragma pop

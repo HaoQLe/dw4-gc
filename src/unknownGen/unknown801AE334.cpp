@@ -158,42 +158,5 @@ void *fn_801AE334(){
  if(!igSorter_meta) igSorter_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igSorter_meta;
 }
-void *igSorter_getMeta(){
- if(!igSorter_meta || !(reinterpret_cast<unsigned int *>(igSorter_meta)[0x24/4]&4)) igSorter_arkRegister();
- return igSorter_meta;
-}
-void *igSorter_vtableRead(){
- UnknownGenObject801AE3AC object;
- igObject_construct(&object);
- object.unknown00=igSorter_vtable;
- object.unknown08=0;
- object.unknown10=0;
- object.unknown14=0;
- object.unknown18=0;
- object.unknown1C=0;
- object.unknown20=0;
- object.unknown24=0;
- object.unknown28=0;
- object.unknown2C=0;
- object.unknown30=0;
- object.unknown34=0;
- object.unknown38=0;
- object.unknown3C=0;
- object.unknown40=0;
- object.unknown44=0;
- object.unknown48=0;
- object.unknown50=0;
- object.unknown54=0;
- object.unknown58=0;
- object.unknown5C=0;
- object.unknown60=0;
- object.unknown64=0;
- object.unknown68=0;
- object.unknown6C=0;
- object.unknown74=0;
- void *result=*reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
- fn_801AE468(&object,-1);
- return result;
-}
 }
 #pragma pop

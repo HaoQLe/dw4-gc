@@ -13,9 +13,5 @@ void *fn_801BD190(){
  if(!igInverseKinematicsAnimation_meta) igInverseKinematicsAnimation_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igInverseKinematicsAnimation_meta;
 }
-void *igInverseKinematicsAnimation_getMeta(){
- if(!igInverseKinematicsAnimation_meta || !(reinterpret_cast<unsigned int *>(igInverseKinematicsAnimation_meta)[0x24/4]&4)) igInverseKinematicsAnimation_arkRegister();
- return igInverseKinematicsAnimation_meta;
-}
 }
 #pragma pop

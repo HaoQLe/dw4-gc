@@ -13,9 +13,5 @@ void *fn_801ABCB8(){
  if(!igTransformRecorder_meta) igTransformRecorder_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igTransformRecorder_meta;
 }
-void *igTransformRecorder_getMeta(){
- if(!igTransformRecorder_meta || !(reinterpret_cast<unsigned int *>(igTransformRecorder_meta)[0x24/4]&4)) igTransformRecorder_arkRegister();
- return igTransformRecorder_meta;
-}
 }
 #pragma pop

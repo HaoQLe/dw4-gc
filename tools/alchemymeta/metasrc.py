@@ -166,38 +166,62 @@ def tr_vtableread(c,text,structs,layouts,refs):
         else: nn='Instance_'+name.replace('UnknownGenObject','')
         if nn in newname.values(): nn+='_%d'%len(newname)
         newname[name]=nn;levelclass[nn]=k
-    members={}
+    members={};ctors=[]
     for name,s in chain:
         if newname[name] in ('igObjectInstance','BaseInstance'): continue
         nn=newname[name];k=levelclass[nn]
-        lines=s.split('\n');out=[]
+        lines=s.split('\n');out=[];ctor=[]
         head=re.match(r'struct (\w+)(?: : (\w+))? \{',lines[0])
         if not head: raise Untranslatable('struct head')
         if head[2] and head[2] not in newname: raise Untranslatable('base')
         out.append('struct %s%s {'%(nn,' : '+newname[head[2]] if head[2] else ''))
         for l in lines[1:-1]:
-            mm=re.fullmatch(r' (char|UnknownGenString|UnknownGenRefMember|void \*|int|unsigned int|float|short|unsigned char) ?(unknown([0-9A-F]+))(\[\d+\])?;',l)
+            mm=re.fullmatch(r' (char|UnknownGenString|UnknownGenStringCall|UnknownGenRefMember|void \*|int|unsigned int|float|short|unsigned char) ?(unknown([0-9A-F]+))(\[\d+\])?;',l)
             if mm:
                 typ,old,off,arr=mm[1],mm[2],int(mm[3],16),mm[4] or ''
                 fname=None
-                if typ in ('UnknownGenString','UnknownGenRefMember'):
+                if typ in ('UnknownGenString','UnknownGenStringCall','UnknownGenRefMember'):
                     fname,_=member_name(c,off,layouts)
                 if old=='unknown00' and typ=='void *': fname='__vtable'
                 if fname in members.values(): fname=None   # one name per member across the chain
                 fname=fname or old
                 members[old]=fname
-                typ={'UnknownGenString':'igStringMember','UnknownGenRefMember':'igObjectRefMember'}.get(typ,typ)
+                typ={'UnknownGenString':'igStringMember','UnknownGenStringCall':'igStringMemberLookup',
+                     'UnknownGenRefMember':'igObjectRefMember'}.get(typ,typ)
                 out.append('    %s %s%s;'%(typ.rstrip(),fname,arr) if not typ.endswith('*') else '    %s%s%s;'%(typ,fname,arr))
                 continue
             mm=re.fullmatch(r' inline ~%s\(\)\{unknown00=(\w+);\}'%name,l)
             if mm: out.append('    inline ~%s() { __vtable = %s; }'%(nn,mm[1]));continue
+            mm=re.fullmatch(r' inline %s\(\)\{(.*)\}'%name,l)
+            if mm:
+                ctor.append((len(out),nn,mm[1]));out.append(None);continue
             raise Untranslatable('struct line '+l)
         out.append('};')
-        defs.append('\n'.join(out))
+        ctors.append((len(defs),out,ctor));defs.append(None)
     members['unknown00']='__vtable'
+    # Constructors, written once every member has its name.
+    for di,out,ctor in ctors:
+        for pos,nn,cbody in ctor:
+            st=[]
+            for x in re.findall(r'[^;]+;',cbody):
+                mm=re.fullmatch(r'(unknown[0-9A-F]+)(\.value)?=(\w+|-?\d+);',x)
+                if mm:
+                    if mm[1] not in members: raise Untranslatable('ctor member '+mm[1])
+                    if not re.fullmatch(r'-?\d+',mm[3]): refs.add(mm[3])
+                    st.append('%s%s = %s;'%(members[mm[1]],'._value' if mm[2] else '',mm[3]));continue
+                mm=re.fullmatch(r'(\w+)\(&(unknown[0-9A-F]+)\);',x)
+                if mm and mm[2] in members: refs.add(mm[1]);st.append('%s(&%s);'%(mm[1],members[mm[2]]));continue
+                raise Untranslatable('ctor '+x)
+            out[pos]='    inline %s()\n    {\n%s\n    }'%(nn,'\n'.join('        '+x for x in st))
+        defs[di]='\n'.join(out)
     lines=[]
     for l in body[2:-1]:
         if l==' igObject_construct(&object);': lines.append('    igObject_construct(&object);');continue
+        mm=re.fullmatch(r' (\w+)\(&object\.(unknown[0-9A-F]+)\);',l)
+        if mm:
+            # A member set up by an out-of-line function (for example fn_801285A0, a 4x4 identity matrix).
+            if mm[2] not in members: raise Untranslatable('member '+mm[2])
+            refs.add(mm[1]);lines.append('    %s(&object.%s);'%(mm[1],members[mm[2]]));continue
         mm=re.fullmatch(r' object\.(unknown[0-9A-F]+)(\.value)?=(\w+|-?\d+);',l)
         if mm:
             if mm[1] not in members: raise Untranslatable('member '+mm[1])
@@ -209,6 +233,8 @@ def tr_vtableread(c,text,structs,layouts,refs):
         if re.fullmatch(r' void \*result=\*reinterpret_cast<void \*\*>\(reinterpret_cast<char \*>\(&object\)\+reinterpret_cast<int \*>\(Gap::Core::_arkCore\)\[0x394/4\]\);',l):
             lines.append('    void *result = meta_vtableOf(&object);');continue
         if l==' return result;': lines.append('    return result;');continue
+        mm=re.fullmatch(r' (\w+)\(&object,-1\);',l)
+        if mm: refs.add(mm[1]);lines.append('    %s(&object, -1);   // the class\'s destructor'%mm[1]);continue
         raise Untranslatable('vtableRead line '+l)
     fn='void *%s_vtableRead()\n{\n    %s object;\n%s\n}'%(c,newname[top],'\n'.join(lines))
     return defs,fn
@@ -274,6 +300,8 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers):
         mm=re.fullmatch(r'\*reinterpret_cast<float \*>\(\((\w+)\+(\d+)\)\)',x)
         if mm: refs.add(mm[1]);return '*reinterpret_cast<float *>(%s + %s)'%(mm[1],mm[2])
         if re.fullmatch(r'&local0',x): return '&local0'
+        mm=re.fullmatch(r'(\w+)\(\)',x)
+        if mm: refs.add(mm[1]);return x
         mm=re.fullmatch(r'meta_field\((\w+),(.*)\)',x)
         if mm and var.get(mm[1])=='meta': return 'meta_field(meta, %s)'%expr(mm[2])
         if re.fullmatch(r'\w+',x): refs.add(x);return x
@@ -439,6 +467,11 @@ def verify(text,flags,names,expect_eti):
         if n in secs and secs[n]['size']: return 'emits %s'%n
     # Entries for this file's functions (weak copies of inline destructors have their own, which the linker
     # discards with the copies).
+    # Exception actions that name a weak copy (an inline destructor called during cleanup) keep it in the
+    # executable, which the original does not have.
+    weak={s['name'] for s in syms if s['type']==2 and s['binding']==2}
+    kept=sorted({r['symbol']['name'] for r in rels if r['section']=='extab' and r['symbol']['name'] in weak})
+    if kept: return 'extab keeps %s'%kept[0]
     neti=sum(1 for r in rels if r['section']=='extabindex' and r['offset']%12==0 and r['symbol']['name'] in names)
     if neti!=expect_eti: return 'extabindex %d, expected %d'%(neti,expect_eti)
     for n in names:
@@ -493,17 +526,31 @@ def main():
     eti=eti_entries(data);eti_fns={f for f,x in eti}
     if LIFT: allfns=json.load(open('build/GDJEB2/analysis/reg/allfns.json'))
     alts={}   # other store orders of lifted functions, tried at verification
+    chain_decls={}
     vt_sizes={k+'_vtable':v.get('size') for k,v in classes.items() if v.get('size')}
     def lift(c,n,role,classes):
         insns=allfns[n]
         if role=='register': return asmlift.lift_register(c,insns),{},[]
         if role=='getMeta': return asmlift.lift_getmeta(c,insns),{},[]
         if role=='vtableRead':
+            if any(x.startswith(('beq','bne')) for x in insns):
+                r=asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes)
+                alts[n]=[]
+                for mode in (True,'stores first','asm order'):
+                    alt=asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes,ctors=mode)
+                    if (alt[0],alt[1]) not in alts[n]: alts[n].append((alt[0],alt[1]))
+                return r
             fn,st=asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0))
             alt,_=asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0),vt_sizes)
-            if alt!=fn: alts[n]=[alt]
+            alts[n]=[alt] if alt!=fn else []
+            for mode in (True,'stores first','asm order'):
+                try:
+                    ch=asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes,ctors=mode)
+                    if (ch[0],ch[1]) not in alts[n]: alts[n].append((ch[0],ch[1]))
+                    chain_decls[n]=ch[2]
+                except asmlift.Unliftable: pass
             dt=re.findall(r'\n (\w+)\(&object,-1\);',fn)
-            return fn,st,['void %s(void *, int);'%d for d in dt]
+            return fn,st,['void %s(void *, int);'%d for d in dt]+chain_decls.get(n,[])
         if role=='fieldInit':
             fn,decls=asmlift.lift_fieldinit(c,insns)
             return fn,{},decls
@@ -547,13 +594,17 @@ def main():
         variants=[(text,tags)]
         if lifted:
             variants=[]
-            texts=[fnsrc]
+            texts=[(fnsrc,structs_by_fn)]
             for n in lifted:
-                for a in alts.get(n,[]): texts.append(dict(fnsrc,**{n:a}))
-            for fs in texts:
+                for a in alts.get(n,[]):
+                    if isinstance(a,tuple): texts.append((dict(fnsrc,**{n:a[0]}),dict(structs_by_fn,**{n:a[1]})))
+                    else: texts.append((dict(fnsrc,**{n:a}),structs_by_fn))
+            for fs,sb in texts:
                 for extra in ((),('speed',),('lmw',),('speed','lmw')):
                     tb={n:(v|set(extra) if n in lifted else v) for n,v in tags_by_fn.items()}
-                    variants.append(class_file(c,block,fs,structs_by_fn,decls_by_fn,classes,layouts,data,tb))
+                    try: variants.append(class_file(c,block,fs,sb,decls_by_fn,classes,layouts,data,tb))
+                    except Untranslatable as e:
+                        if DEBUG: print('variant of %s: %s'%(c,e))
         err=None
         for text,tags in variants:
             err=verify(text,tags,names,expect)
@@ -563,7 +614,9 @@ def main():
     ok=[];bad=collections.Counter();badex={}
     with ThreadPoolExecutor(jobs) as ex:
         for c,text,fl,err in ex.map(run,jobs_):
-            if err: k=err.split(' ')[0];bad[k]+=1;badex.setdefault(k,(c[0],err))
+            if err:
+                k=err.split(' ')[0];bad[k]+=1;badex.setdefault(k,(c[0],err))
+                if DEBUG: print('FAILED %s: %s'%(c[0],err))
             else: ok.append((c,text,fl))
     print('exact',len(ok),'failed',dict(bad))
     for k,(c,e) in badex.items(): print('  e.g.',c,e)

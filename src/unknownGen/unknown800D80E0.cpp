@@ -17,13 +17,6 @@ void igGamecubePointSpriteExt_register();
 void *igGamecubePointSpriteExt_parentMeta();
 }
 extern "C" {
-void igGamecubePointSpriteExt_arkRegister(){
- meta_registerNow((int)igGamecubePointSpriteExt_register);
-}
-void igGamecubePointSpriteExt_register(){
- fn_800CE2F8();
- meta_registerClass(0,(int)&igGamecubePointSpriteExt_meta,(int)igPointSpriteExt_register,(int)igGamecubePointSpriteExt_parentMeta,(int)igGamecubePointSpriteExt_getMetaCall,(int)igGamecubePointSpriteExt_className,508,(int)igGamecubePointSpriteExt_vtableRead,(int)fn_800D80E8,0,(int)igGamecubePointSpriteExt_dependencies);
-}
 void *igGamecubePointSpriteExt_parentMeta(){return igPointSpriteExt_meta;}
 }
 #pragma pop

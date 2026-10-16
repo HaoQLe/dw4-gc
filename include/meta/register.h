@@ -117,6 +117,17 @@ struct igStringMember {
     }
 };
 
+// A string member whose pool item is found by an out-of-line function (fn_801ACC5C, which the code of
+// some classes calls instead of computing the item's address).
+extern "C" Gap::Core::igStringPoolItem *fn_801ACC5C(const void *member);
+struct igStringMemberLookup {
+    const char *_value;
+    inline ~igStringMemberLookup()
+    {
+        if (_value) fn_801ACC5C(this)->release();
+    }
+};
+
 // Releases a reference to object (the low 23 bits of the word at +4 count references).
 static inline void meta_release(void *object)
 {

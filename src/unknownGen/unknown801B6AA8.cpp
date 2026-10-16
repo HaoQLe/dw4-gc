@@ -52,14 +52,6 @@ struct UnknownGenObject801B6AE4 : UnknownGenObject801B6AE4_1 {
  inline ~UnknownGenObject801B6AE4(){unknown00=igNodeRefResolver_vtable;}
 };
 extern "C" {
-void igOverrideAttrSet_arkRegister(){
- meta_registerNow((int)igOverrideAttrSet_register);
-}
-void igOverrideAttrSet_register(){
- fn_801AA6DC();
- meta_registerClass(0,(int)&igOverrideAttrSet_meta,(int)igAttrSet_register,(int)fn_801B623C,(int)igOverrideAttrSet_getMetaCall,(int)igOverrideAttrSet_className,40,(int)igOverrideAttrSet_vtableRead,0,0,0);
-}
-void *igOverrideAttrSet_getMetaCall(){return igOverrideAttrSet_getMeta();}
 void *igNodeRefResolver_getMeta(){
  if(!igNodeRefResolver_meta || !(reinterpret_cast<unsigned int *>(igNodeRefResolver_meta)[0x24/4]&4)) igNodeRefResolver_arkRegister();
  return igNodeRefResolver_meta;

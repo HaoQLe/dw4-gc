@@ -27,9 +27,10 @@ SAVE={'_savegpr_%d'%i for i in range(14,32)}|{'_restgpr_%d'%i for i in range(14,
 def num(s):
     return int(s,0)
 
-def run(insns):
+def run(insns,state=None):
     """Symbolic execution. Returns (calls, stores, frame size), with every call's argument values and the
-    stack arguments stored before it, and every store as (base value, offset, width, value)."""
+    stack arguments stored before it, and every store as (base value, offset, width, value). With state (a
+    dict), the register values at the end are left in it."""
     R={'r%d'%i:('init','r%d'%i) for i in range(32)};R['r0']=('init','r0')
     F={}
     calls=[];stores=[];frame=None;stack={};W=set()
@@ -38,6 +39,7 @@ def run(insns):
         if a and re.fullmatch(r'[rf]\d+',a[0]) and not op.startswith('st') and op not in ('cmplwi','cmpwi'): W.add(a[0])
         if op=='stwu' and a[0]=='r1': frame=-num(a[1].split('(')[0]);continue
         if op in ('mflr','mtlr','blr'): continue
+        if op=='addic.' and a[1]=='r1': op='addi'           # the address of a member, tested for null
         if op=='lis':
             m=re.fullmatch(r'(\w+)@ha',a[1])
             if m: R[a[0]]=('ha',m[1]);continue
@@ -54,6 +56,7 @@ def run(insns):
             if s=='r1': R[d]=('sp',k);continue
             if v[0]=='a': R[d]=('a',v[1],v[2]+k);continue
             if v[0]=='c': R[d]=('c',v[1]+k);continue
+            if v[0]=='sp': R[d]=('sp',v[1]+k);continue
             if v[0] in ('ret','m','ld'): R[d]=('add',v,k);continue
             raise Unliftable('addi %s'%(v,))
         if op=='li':
@@ -93,7 +96,9 @@ def run(insns):
                 if v==('init',a[0]): continue                       # spill of a saved register or the LR
                 if a[0]=='r0' and off==frame+4: continue
                 stack[off]=v;stores.append((('sp',0),off,width,v));continue
-            stores.append((R[m[2]],off,width,v));continue
+            b=R[m[2]]
+            if b[0]=='sp': stores.append((('sp',0),b[1]+off,width,v));continue   # through a copy of the address
+            stores.append((b,off,width,v));continue
         if op=='bl':
             t=a[0]
             if t in SAVE: continue
@@ -104,6 +109,7 @@ def run(insns):
             R['r3']=('ret',k);continue
         if op=='rlwinm' or op.startswith('b') or op.startswith('cmp'): raise Unliftable('branch')
         raise Unliftable(op)
+    if state is not None: state.update(R)
     return calls,stores,frame
 
 def lift_register(c,insns):
@@ -249,6 +255,12 @@ def lift_fieldinit(c,insns):
             if f1 is not None: raise Unliftable('float argument')
             hi=max([ARGS.index(r) for r in wr if r in ARGS],default=-1)
             if hi<0:
+                nxt=calls[k+1] if k+1<len(calls) else None
+                once=nxt and sum(1 for x in nxt[1] if x==ret)==1 and ret not in nxt[1][:1] and not any(
+                    ret in (s[0],s[3]) for s in stores) and not any(ret in c2[1] for c2 in calls[k+2:])
+                if used(k) and once and nxt[0] not in ('meta_field','meta_fieldCount','meta_appendFields','meta_setupFields'):
+                    # passed straight to the next call
+                    names[ret]='%s()'%t;decls.append('void *%s();'%t);continue
                 if used(k): new(ret,' void *%%s=%s();'%t);decls.append('void *%s();'%t)
                 else: out.append(' %s();'%t);decls.append('void %s();'%t)
                 continue
@@ -261,7 +273,192 @@ def lift_fieldinit(c,insns):
                 for r in ARGS[1:hi+1]:
                     v=args[ARGS.index(r)]
                     if v[0]!='c' and v not in names and v[0]!='a': raise Unliftable('call argument')
+                    if v in names and names[v].endswith('()'): types.append('void *');a.append(names[v]);continue
                     a.append(expr(v));types.append('int' if v[0]=='c' else 'void *')
             out.append(' %s(%s);'%(t,','.join(a)));decls.append('void %s(%s);'%(t,', '.join(types)))
     flush(len(stores))
     return 'void %s_fieldInit(){\n%s\n}'%(c,'\n'.join(out)),decls
+
+VTOF=re.compile(r'lwzx (r\d+), r\d+, r\d+$')
+RELEASE='internalRelease__Q33Gap4Core21igStringPoolContainerFPCQ33Gap4Core16igStringPoolItem'
+
+def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
+    """The temporary instance as a chain of structs whose inline destructors restore each level's vtable and
+    release its members. The members and their levels are read from the destructor code after the vtable
+    read: each level's vtable store is followed by the releases of its own members (references, strings
+    released inline, strings released through an out-of-line lookup of their pool item). Returns (function
+    text, {struct name: text}, declarations)."""
+    i=next((k for k,x in enumerate(insns) if VTOF.match(x)),None)
+    if i is None: raise Unliftable('chain vtable read')
+    R={}
+    calls,stores,frame=run(insns[:i],R)
+    obj=8
+    if not calls or calls[0][1][0]!=('sp',obj): raise Unliftable('chain construct')
+    root=calls[0][0]
+    membercalls=[]
+    for t,args,stack,ns,f1,wr in calls[1:]:
+        if args[0][0]!='sp' or args[0][1]<=obj: raise Unliftable('chain call '+t)
+        membercalls.append((ns,t,args[0][1]-obj))
+    # destructor code
+    post=insns[i+1:]
+    vts=[];members={};this=None;level=None;kinds=[];explicit=None
+    def addr(r):
+        v=R.get(r)
+        return v[1] if v and v[0]=='sp' else None
+    for ins in insns[:i]:
+        m=re.match(r'addic\. (r\d+), r1, (0x[0-9a-f]+)',ins)
+        if m: this=num(m[2])
+    cur=None
+    for ins in post:
+        op,_,rest=ins.partition(' ');a=[x.strip() for x in rest.split(',')] if rest else []
+        if op=='lis':
+            m=re.fullmatch(r'(\w+)@ha',a[1]);R[a[0]]=('ha',m[1]) if m else ('c',0);continue
+        if op=='addi':
+            m=re.fullmatch(r'(\w+)@l',a[2])
+            if m and R.get(a[1])==('ha',m[1]): R[a[0]]=('a',m[1],0);continue
+            if a[1]=='r1': R[a[0]]=('sp',num(a[2]));continue
+            R[a[0]]=('?',);continue
+        if op=='addic.':
+            if a[1]!='r1': raise Unliftable('chain addic')
+            R[a[0]]=('sp',num(a[2]));this=num(a[2]);continue
+        if op=='stw' and re.fullmatch(r'0x8\(r1\)|0x0\(r31\)',a[1]) and R.get(a[0],('?',))[0]=='a':
+            level=R[a[0]][1];vts.append(level);continue
+        if op=='cmplwi' and addr(a[0]) is not None: this=addr(a[0]);continue
+        if op=='beq' and this is not None:
+            cur=this-obj;this=None
+            if cur in members: raise Unliftable('chain member twice')
+            members[cur]=[None,level];kinds.append(cur);continue
+        if op=='bl' and a[0] in SAVE: continue
+        if op=='bl' and cur is None and explicit is None and not members:
+            explicit=a[0];continue                       # the class's out-of-line destructor, called explicitly
+        if op=='bl':
+            if cur is None: raise Unliftable('chain call outside a member')
+            k={'fn_80066E1C':'ref',RELEASE:'string','fn_801ACC5C':'stringcall'}.get(a[0])
+            if k is None: raise Unliftable('chain release '+a[0])
+            if members[cur][0] is None or members[cur][0]=='string' and k=='stringcall': members[cur][0]=k
+            elif k=='string' and members[cur][0]=='stringcall': pass
+            else: raise Unliftable('chain member kinds')
+            for r in ['r0','r3','r4','r5','r6','r7','r8','r9','r10','r11','r12']: R[r]=('?',)
+            continue
+        if op in ('lwz',):
+            R[a[0]]=('?',);continue
+        if op in ('mr',): R[a[0]]=R.get(a[1],('?',));continue
+        if op in ('li','subi','subic.','clrlwi.','stw','cmplwi','bne','beq','mtlr','blr','mflr'): 
+            if op in ('li','subi','subic.','clrlwi.'): R[a[0]]=('?',)
+            continue
+        if op=='addi' and a[0]=='r1': continue
+        raise Unliftable('chain '+op)
+    for o,(k,lv) in members.items():
+        if k is None: raise Unliftable('chain member without release')
+    # the level order, from the stores before the vtable read (the first store at the object is each level's)
+    chain=[]
+    for base,off,width,v in stores:
+        if base==('sp',0) and off==obj and v[0]=='a' and v[1] not in chain: chain.append(v[1])
+    if not chain or chain[-1]!=c+'_vtable': raise Unliftable('chain levels')
+    for o,(k,lv) in members.items():
+        if lv not in chain: raise Unliftable('chain member level')
+    # plain members: the stores at other offsets, and the members set up by calls
+    plain={}
+    for base,off,width,v in stores:
+        if base!=('sp',0) or off<obj: raise Unliftable('chain store')
+        o=off-obj
+        if o==0 or o in members: continue
+        if width!=4: raise Unliftable('chain width')
+        plain[o]='void *' if v[0]=='a' else 'int'
+    for ns,t,o in membercalls:
+        if o in members or o in plain: raise Unliftable('chain call member')
+        plain[o]=('call',t)
+    # a level's members are those below its class's size (or below the next level's released members)
+    bound={}
+    for j,vt in enumerate(chain):
+        if vt in sizes: bound[vt]=sizes[vt]
+    bound[chain[-1]]=max(size,max(list(members)+list(plain)+[0])+4)
+    owner={}
+    for o,(k,lv) in members.items(): owner[o]=lv
+    allo=sorted(set(members)|set(plain))
+    for o in allo:
+        if o in owner: continue
+        lv=None
+        for vt in chain:
+            if vt in bound and o<bound[vt]: lv=vt;break
+        if lv is None: lv=chain[-1]
+        owner[o]=lv
+    if ctors=='asm order':
+        # each plain member belongs to the level whose vtable was stored last before its store
+        cur_vt=None
+        for base,off,width,v in stores:
+            o=off-obj
+            if o==0 and v[0]=='a': cur_vt=v[1];continue
+            if o in plain and o not in members and cur_vt: owner[o]=cur_vt
+        for ns,t2,o in membercalls:
+            pass
+    # offsets must grow along the chain
+    last=-1
+    for vt in chain:
+        os=[o for o in allo if owner[o]==vt]
+        if os and min(os)<=last: raise Unliftable('chain order')
+        if os: last=max(os)
+    widths={}
+    for k,o in enumerate(allo):
+        nxt=allo[k+1] if k+1<len(allo) else bound[chain[-1]]
+        widths[o]=4 if not isinstance(plain.get(o),tuple) else nxt-o
+    rootname='UnknownGenRootL'+c
+    structs={}
+    rootctor='igObject_construct' if root=='igObject_construct' else root
+    structs[rootname]='struct %s {\n void *unknown00;\n inline void operator delete(void *){}\n inline %s(){%s(this);}\n};'%(rootname,rootname,rootctor)
+    parent=rootname;pos=4;names=[]
+    for j,vt in enumerate(chain):
+        nm='UnknownGenObjectL%s_%d'%(c,j)
+        s=['struct %s : %s {'%(nm,parent)]
+        for o in allo:
+            if owner[o]!=vt: continue
+            if o>pos: s.append(' char unknown%02X[%d];'%(pos,o-pos))
+            if o in members:
+                s.append(' %s unknown%02X;'%({'ref':'UnknownGenRefMember','string':'UnknownGenString','stringcall':'UnknownGenStringCall'}[members[o][0]],o))
+            elif isinstance(plain[o],tuple): s.append(' char unknown%02X[%d];'%(o,widths[o]))
+            else: s.append(' %sunknown%02X;'%(plain[o] if plain[o].endswith('*') else plain[o]+' ',o))
+            pos=o+widths[o]
+        end=bound.get(vt)
+        if j==len(chain)-1 and end and end>pos: s.append(' char unknown%02X[%d];'%(pos,end-pos));pos=end
+        if ctors:
+            # The level's constructor: its vtable, its members' initial values, then its members' setup calls.
+            # (in their order: a member can be set after another's setup call)
+            body=['unknown00=%s;'%vt];ev=[]
+            for si,(base,off,width,v) in enumerate(stores):
+                o=off-obj
+                if o and owner.get(o)==vt:
+                    val=str(v[1]) if v[0]=='c' else v[1] if v[0]=='a' and v[2]==0 else None
+                    if val is None: raise Unliftable('chain value')
+                    ev.append((si,1,'unknown%02X%s=%s;'%(o,'.value' if o in members else '',val)))
+            for ns,tt,o in sorted(membercalls):
+                if owner[o]==vt: ev.append((ns,0,'%s(&unknown%02X);'%(tt,o)))
+            body+=[x[2] for x in (sorted(ev,key=lambda e:-e[1]) if ctors=='stores first' else sorted(ev))]
+            s.append(' inline %s(){%s}'%(nm,''.join(body)))
+        # Only levels whose destructor restores their vtable have one (the others' are trivial).
+        if vt in vts: s.append(' inline ~%s(){unknown00=%s;}'%(nm,vt))
+        s.append('};')
+        structs[nm]='\n'.join(s);parent=nm;names.append(nm)
+    # the body: the stores and member calls in order
+    lines=[];ci=0
+    mc=[] if ctors else sorted(membercalls)
+    if ctors: stores=[]
+    for si,(base,off,width,v) in enumerate(stores):
+        while ci<len(mc) and mc[ci][0]<=si:
+            lines.append(' %s(&object.unknown%02X);'%(mc[ci][1],mc[ci][2]));ci+=1
+        o=off-obj
+        val=str(v[1]) if v[0]=='c' else v[1] if v[0]=='a' and v[2]==0 else None
+        if val is None: raise Unliftable('chain value')
+        lines.append(' object.unknown%02X%s=%s;'%(o,'.value' if o in members else '',val))
+    while ci<len(mc): lines.append(' %s(&object.unknown%02X);'%(mc[ci][1],mc[ci][2]));ci+=1
+    if explicit:
+        if not ctors: raise Unliftable('chain explicit destructor')
+        lines.append(' void *result=*reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);')
+        lines.append(' %s(&object,-1);'%explicit)
+        lines.append(' return result;')
+    else:
+        lines.append(' return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);')
+    fn='void *%s_vtableRead(){\n %s object;\n%s\n}'%(c,names[-1],'\n'.join(lines))
+    decls=['void %s(void *);'%t for t in sorted({t for ns,t,o in membercalls})]
+    if explicit: decls.append('void %s(void *, int);'%explicit)
+    if rootctor!='igObject_construct': decls.append('void %s(void *);'%rootctor)
+    return fn,structs,decls

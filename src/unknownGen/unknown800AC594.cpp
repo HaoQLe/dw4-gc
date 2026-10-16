@@ -67,28 +67,5 @@ void *fn_800AC594(){
  if(!igVertexShaderAttr_meta) igVertexShaderAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igVertexShaderAttr_meta;
 }
-void *igVertexShaderAttr_getMeta(){
- if(!igVertexShaderAttr_meta || !(reinterpret_cast<unsigned int *>(igVertexShaderAttr_meta)[0x24/4]&4)) igVertexShaderAttr_arkRegister();
- return igVertexShaderAttr_meta;
-}
-void *igVertexShaderAttr_vtableRead(){
- UnknownGenObject800AC60C object;
- igObject_construct(&object);
- object.unknown00=lbl_8047D578;
- object.unknown00=lbl_8047E50C;
- object.unknown00=igVertexShaderAttr_vtable;
- object.unknown0C=0;
- object.unknown10=0;
- object.unknown14=0;
- object.unknown18=0;
- object.unknown1C=0;
- object.unknown28=0;
- object.unknown2C=0;
- object.unknown30=0;
- object.unknown34=0;
- void *result=*reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
- fn_800AC6A0(&object,-1);
- return result;
-}
 }
 #pragma pop

@@ -1,7 +1,7 @@
 """Lift straight-line registration functions from the original instructions into the generated-source forms
 metasrc.py translates (see its tr_* functions).
 
-The generator (tools/unknowngen) never produced source for about 250 registration functions, although their
+The generator (tools/unknowngen) never produced source for about 500 registration functions, although their
 shapes are the ones it produced elsewhere. This module reads a function's original instructions
 (build/GDJEB2/analysis/reg/allfns.json, written by funcindex.py), runs them symbolically and writes the
 generated-source text for it:
@@ -11,8 +11,8 @@ generated-source text for it:
 - fieldInit: the field-setup calls and the member stores;
 - getMeta: the fixed form.
 
-Functions with branches (inline destructors, conditional field setup) or other instructions are not lifted
-(Unliftable). The text is only an intermediate: metasrc.py turns it into readable source and verifies the
+Destructor chains (lift_vtableread_chain) and the inline reference release are recognized; other branches
+and instructions are not lifted (Unliftable). The text is only an intermediate: metasrc.py turns it into readable source and verifies the
 compiled result against the original."""
 import re
 
@@ -135,7 +135,7 @@ def lift_register(c,insns):
     calls,stores,frame=run(insns)
     if not calls or calls[-1][0]!='meta_registerClass': raise Unliftable('register call')
     pre=[x[0] for x in calls[:-1]]
-    if len(pre)>1 or any(x[1][0][0]!='init' and False for x in calls[:-1]): raise Unliftable('register guard')
+    if len(pre)>1: raise Unliftable('register guard')
     t,args,stack=calls[-1][:3]
     vals=args+[stack.get(8),stack.get(0xc),stack.get(0x10)]
     def fmt(v):
@@ -157,8 +157,8 @@ def lift_getmeta(c,insns):
             'return %s_meta;}')%((c,)*5)
 
 def lift_vtableread(c,insns,size,sizes=None):
-    """sizes: vtable symbol -> the size of its class, for ordering the stores."""
-    """The plain-object form: returns (function text, {struct name: struct text})."""
+    """The plain-object form: returns (function text, {struct name: struct text}). sizes: vtable symbol -> the
+    size of its class, for ordering the stores."""
     calls,stores,frame=run(insns)
     if not calls or calls[0][0]!='igObject_construct' or calls[0][1][0]!=('sp',8): raise Unliftable('vtableRead construct')
     obj=8
@@ -449,8 +449,6 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
             o=off-obj
             if o==0 and v[0]=='a': cur_vt=v[1];continue
             if o in plain and o not in members and cur_vt: owner[o]=cur_vt
-        for ns,t2,o in membercalls:
-            pass
     # offsets must grow along the chain
     last=-1
     for vt in chain:

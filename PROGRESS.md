@@ -1,15 +1,15 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-15. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-16. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
-- **Registration lift batch (user request 2026-10-15, "continue"):** 206 of the 511 registration functions left as original assembly are now readable source, on `task/registration-lift`.
+- **Registration lift batch (user request 2026-10-15, "continue"):** 204 of the 511 registration functions left as original assembly, and 2 separate field-replacement functions, are now readable source, on `task/registration-lift`.
   - **Tools:** `tools/alchemymeta/asmlift.py` lifts straight-line `register`, `getMeta`, `vtableRead` (plain objects and destructor chains) and `fieldInit` functions (including field replacement) from the original instructions; `metasrc.py --lift` turns them into class files. `tools/alchemymeta/poolsrc.py` builds units that own their pooled data: seven so far (`Meta/*_module.cpp`, `Meta/igGamecubeAudioContext_fields.cpp`), with the field tables named in `symbols.txt`.
   - **Functional commits:** `555fa896`, `bfb3c63a`, `c0c99f7a`, `24287136`, `cd972d49`, `e99485b5`.
   - **Totals:** matched code 36.996758% → 38.123970% (+46,684 bytes), linked 36.961216% → 38.088425% (+46,684), matched data 13.849361% → 16.520205% (+40,164), complete data 240,154 → 285,458, 16,998 → 17,204 functions. `build.sha1` OK; all 3,567 remaining generated units verify.
   - **Established:** MWCC addresses a unit's own data from its `.data` start, so pooled field setups only match in a unit that defines their tables; exception actions naming a weak destructor copy keep it in the executable (now rejected); `hwdiff.py` treats `lbl_` relocation targets as one placeholder, so the checksum verifies them.
-  - **Remaining:** 323 functions, 93,272 bytes: three large pools blocked by their modules' other unmatched functions (189, 57,572 bytes); four modules blocked by a few functions (about 22 KB); `vtableRead`s needing their bases' destructor names; register colouring.
+  - **Remaining:** 307 registration functions, 89,672 bytes (279 `fieldInit`, 28 `vtableRead`): three large pools blocked by their modules' other unmatched functions (189, 57,572 bytes); four modules blocked by a few functions (about 22 KB); `vtableRead`s needing their bases' destructor names; register colouring.
   - **Next candidate (not started):** the four modules' blockers (`fn_800AC6A0`, `fn_80403D78`, `igGuiSystemModel_vtableRead`, `dtor_80111290`, the local-vector field setup in `lbl_804981F0`), each unlocking a pool unit.
   - Details: [registration lift](docs/research/2026-10-16-registration-lift.md).
 - **Class registration batch (user request 2026-10-15):** every Alchemy class's registration functions (`create`, `metaObject`, `getMeta`, `vtableRead`, `arkRegister`, `register`, `getMetaCall`, `fieldInit`) are named and, for 1,384 classes, readable source: `src/Meta/<Class>.cpp` and `src/Alchemy/src/Meta/<Class>.cpp` (569,584 code bytes) built from `include/meta/register.h`.

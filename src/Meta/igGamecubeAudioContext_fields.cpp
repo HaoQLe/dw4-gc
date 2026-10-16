@@ -1,4 +1,4 @@
-// igGamecubeAudioContext: Alchemy class registration (0x800C735C..0x800C7424). Written by tools/alchemymeta/metasrc.py.
+// igGamecubeAudioContext: field setup with its unit's data (0x800C735C..0x800C7424). Written by tools/alchemymeta/poolsrc.py (first version).
 #include <meta/register.h>
 #include <meta/igObjectRefMetaField.h>
 

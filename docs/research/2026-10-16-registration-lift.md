@@ -1,6 +1,6 @@
 # Lifting the remaining registration functions (2026-10-16)
 
-The [class registration batch](2026-10-15-class-registration.md) left 511 registration functions (135,944 bytes) built from original assembly: the generator never produced them. This batch recovers 206 of them as readable source and explains the rest.
+The [class registration batch](2026-10-15-class-registration.md) left 511 registration functions (135,944 bytes) built from original assembly: the generator never produced them. This batch recovers 204 of them, and 2 separate field-replacement functions, as readable source and explains the rest.
 
 ## Result
 
@@ -11,7 +11,7 @@ The [class registration batch](2026-10-15-class-registration.md) left 511 regist
   - complete data 240,154 → 285,458 (+45,304);
   - matched functions 16,998 → 17,204 (+206).
 - **Checks:** `build.sha1` OK after every checkpoint; all 3,567 remaining generated units verify.
-- **Remaining:** 323 registration functions, 93,272 bytes (see [Not recovered](#not-recovered)).
+- **Remaining:** 307 registration functions, 89,672 bytes: 279 `fieldInit` (83,112) and 28 `vtableRead` (6,560), counted as the 511 were (role-named functions outside any source split); see [Not recovered](#not-recovered).
 
 ## Lifting from the original instructions
 

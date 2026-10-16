@@ -4,6 +4,14 @@ Updated: 2026-10-15. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Registration lift batch (user request 2026-10-15, "continue"):** 206 of the 511 registration functions left as original assembly are now readable source, on `task/registration-lift`.
+  - **Tools:** `tools/alchemymeta/asmlift.py` lifts straight-line `register`, `getMeta`, `vtableRead` (plain objects and destructor chains) and `fieldInit` functions (including field replacement) from the original instructions; `metasrc.py --lift` turns them into class files. `tools/alchemymeta/poolsrc.py` builds units that own their pooled data: seven so far (`Meta/*_module.cpp`, `Meta/igGamecubeAudioContext_fields.cpp`), with the field tables named in `symbols.txt`.
+  - **Functional commits:** `555fa896`, `bfb3c63a`, `c0c99f7a`, `24287136`, `cd972d49`, `e99485b5`.
+  - **Totals:** matched code 36.996758% → 38.123970% (+46,684 bytes), linked 36.961216% → 38.088425% (+46,684), matched data 13.849361% → 16.520205% (+40,164), complete data 240,154 → 285,458, 16,998 → 17,204 functions. `build.sha1` OK; all 3,567 remaining generated units verify.
+  - **Established:** MWCC addresses a unit's own data from its `.data` start, so pooled field setups only match in a unit that defines their tables; exception actions naming a weak destructor copy keep it in the executable (now rejected); `hwdiff.py` treats `lbl_` relocation targets as one placeholder, so the checksum verifies them.
+  - **Remaining:** 323 functions, 93,272 bytes: three large pools blocked by their modules' other unmatched functions (189, 57,572 bytes); four modules blocked by a few functions (about 22 KB); `vtableRead`s needing their bases' destructor names; register colouring.
+  - **Next candidate (not started):** the four modules' blockers (`fn_800AC6A0`, `fn_80403D78`, `igGuiSystemModel_vtableRead`, `dtor_80111290`, the local-vector field setup in `lbl_804981F0`), each unlocking a pool unit.
+  - Details: [registration lift](docs/research/2026-10-16-registration-lift.md).
 - **Class registration batch (user request 2026-10-15):** every Alchemy class's registration functions (`create`, `metaObject`, `getMeta`, `vtableRead`, `arkRegister`, `register`, `getMetaCall`, `fieldInit`) are named and, for 1,384 classes, readable source: `src/Meta/<Class>.cpp` and `src/Alchemy/src/Meta/<Class>.cpp` (569,584 code bytes) built from `include/meta/register.h`.
   - **Tools:** `tools/alchemymeta/regnames.py` names about 9,300 symbols with recorded evidence, including `C_meta`, `C_vtable`, `C_className`, `C_arkRegister` (Alchemy's own name), the field tables, and the registration API. `metasrc.py` writes, verifies and applies the class files; `funcindex.py` indexes the original instructions. Functional commits: `91b8a87a`, `6894d30a`, `947bd5a4`, `452dff44`, `443f0c91`.
   - **Totals:** matched code unchanged at 36.996758% (1,532,240), linked at 36.961216% (1,530,768), and complete data at 240,154. Generated units 4,481 → 3,838, all verifying. `build.sha1` OK.
@@ -356,15 +364,15 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-07 at `275fe25` and compared with round-6 base `94ff74d`. The checks passed: all-source build, per-unit verification of every changed unit, pinned DOL equality (`e409a88a…`) and the independent review recorded under generator round 6. Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-16 at `e99485b5` (registration lift batch). The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 1,498,328 / 4,141,552 bytes (36.177937%) |
-| Fully linked source code | 1,496,856 / 4,141,552 bytes (36.142395%) |
-| Matched functions | 16,793 / 23,334 |
-| Completed units | 4,544 / 7,465 |
-| Matched data | 233,582 / 1,503,795 bytes (15.532835%) |
+| Matched executable code | 1,578,924 / 4,141,552 bytes (38.123970%) |
+| Fully linked source code | 1,577,452 / 4,141,552 bytes (38.088425%) |
+| Matched functions | 17,204 / 23,334 |
+| Completed units | 5,302 / 8,020 |
+| Matched data | 248,430 / 1,503,795 bytes (16.520205%) |
 
 | Generator round 6 (`94ff74d` → `275fe25`) | Before → after | Exact gain |
 | --- | --- | --- |

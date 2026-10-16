@@ -27,13 +27,20 @@ SAVE={'_savegpr_%d'%i for i in range(14,32)}|{'_restgpr_%d'%i for i in range(14,
 def num(s):
     return int(s,0)
 
+RELEASE_RE=re.compile(r'lwz (r\d+), 0x4\((r\d+)\)\nsubi r0, \1, 0x1\nstw r0, 0x4\(\2\)\nlwz r0, 0x4\(\2\)\nclrlwi\. r0, r0, 9\nbne \S+\n(?:mr r3, \2\n)?bl fn_80066E1C')
+
+def collapse_releases(insns):
+    """The inline reference release (meta_release in include/meta/register.h) as one pseudo-instruction."""
+    text='\n'.join(insns)
+    return RELEASE_RE.sub(lambda m:'release %s'%m[2],text).split('\n')
+
 def run(insns,state=None):
     """Symbolic execution. Returns (calls, stores, frame size), with every call's argument values and the
     stack arguments stored before it, and every store as (base value, offset, width, value). With state (a
     dict), the register values at the end are left in it."""
     R={'r%d'%i:('init','r%d'%i) for i in range(32)};R['r0']=('init','r0')
     F={}
-    calls=[];stores=[];frame=None;stack={};W=set()
+    calls=[];stores=[];frame=None;stack={};W=set();CTR=None
     for ins in insns:
         op,_,rest=ins.partition(' ');a=[x.strip() for x in rest.split(',')] if rest else []
         if a and re.fullmatch(r'[rf]\d+',a[0]) and not op.startswith('st') and op not in ('cmplwi','cmpwi'): W.add(a[0])
@@ -99,6 +106,18 @@ def run(insns,state=None):
             b=R[m[2]]
             if b[0]=='sp': stores.append((('sp',0),b[1]+off,width,v));continue   # through a copy of the address
             stores.append((b,off,width,v));continue
+        if op=='release':
+            calls.append(('meta_release',[R[a[0]]]+[None]*7,dict(stack),len(stores),None,{'r3'}))
+            k=len(calls)-1
+            for r in ['r0']+ARGS+['r11','r12']: R[r]=('clobbered',k)
+            W=set();continue
+        if op=='mtctr': CTR=R[a[0]];continue
+        if op=='bctrl':
+            if not (CTR[0]=='ld' and CTR[1][0]=='ld' and CTR[1][2]==0 and CTR[1][1]==R['r3']): raise Unliftable('indirect call')
+            calls.append(('VIRT%X'%CTR[2],[R[r] for r in ARGS],dict(stack),len(stores),None,set(W)))
+            W=set();k=len(calls)-1
+            for r in ['r0']+ARGS+['r11','r12']: R[r]=('clobbered',k)
+            R['r3']=('ret',k);continue
         if op=='bl':
             t=a[0]
             if t in SAVE: continue
@@ -200,8 +219,11 @@ def lift_vtableread(c,insns,size,sizes=None):
     fn='void *%s_vtableRead(){\n %s object;\n%s\n}'%(c,name,'\n'.join(lines))
     return fn,{name:'\n'.join(s)}
 
+# Returned types of the field-replacement helpers (see lift_fieldinit).
+RETURNS={'fn_80053998':'int'}
+
 def lift_fieldinit(c,insns):
-    calls,stores,frame=run(insns)
+    calls,stores,frame=run(collapse_releases(insns))
     names={};out=[];n=[0]
     def var(v):
         if v not in names: raise Unliftable('fieldInit value %s'%(v,))
@@ -213,6 +235,8 @@ def lift_fieldinit(c,insns):
         if v[0]=='c': return str(v[1])
         if v[0]=='a' and v[2]==0: return v[1]
         if v[0]=='f' : return '*reinterpret_cast<float *>((%s+%d))'%(v[1],v[2])
+        if v[0]=='ld' and (v[1] in names or v[1]==meta):
+            return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(expr(v[1]),v[2])
         raise Unliftable('fieldInit expr %s'%(v,))
     def new(v,text):
         k='v%d'%n[0];n[0]+=1;names[v]=k;out.append(text%k)
@@ -226,7 +250,7 @@ def lift_fieldinit(c,insns):
             typ={4:'void * *' if v[0] in ('a','ret','m') else 'int *',1:'unsigned char *',2:'short *','f':'float *'}[width]
             tgt=c+'_meta' if base==meta else var(base)
             out.append(' *reinterpret_cast<%s>(reinterpret_cast<char *>(%s)+%d)=%s;'%(typ,tgt,off,expr(v)))
-    decls=[]
+    decls=[];vtypes={}
     def used(k):
         r=('ret',k)
         def has(v): return v==r or (isinstance(v,tuple) and any(has(x) for x in v if isinstance(x,tuple)))
@@ -250,6 +274,22 @@ def lift_fieldinit(c,insns):
             out.append(' meta_appendFields(%s,%s,%s);'%(expr(args[0]),expr(args[1]),expr(args[2])))
         elif t=='meta_setupFields':
             out.append(' meta_setupFields(%s);'%','.join(expr(x) for x in args[:5]))
+        elif t=='meta_release':
+            out.append(' meta_release(%s);'%expr(args[0]))
+        elif t.startswith('VIRT'):
+            # a virtual call on a field (slot 0x54 returns a copy of it)
+            hi=max([ARGS.index(r) for r in wr if r in ARGS],default=0)
+            a=[expr(x) for x in args[1:hi+1]]
+            obj=args[0]
+            def has(v,r): return v==r or (isinstance(v,tuple) and any(has(x,r) for x in v if isinstance(x,tuple)))
+            later=any(has(x,obj) for c2 in calls[k+1:] for x in c2[1][:len(c2[5])+1]) or any(
+                has(s[0],obj) or has(s[3],obj) for s in stores[ns:])
+            if obj in names and not later:
+                # the copy replaces the field in the same variable
+                names[ret]=names[obj]
+                out.append(' %s=reinterpret_cast<igMetaFieldVirtuals *>(%s)->virtual%s(%s);'%(names[obj],names[obj],t[4:],','.join(a)))
+            else:
+                new(ret,' void *%%s=reinterpret_cast<igMetaFieldVirtuals *>(%s)->virtual%s(%s);'%(expr(args[0]),t[4:],','.join(a)))
         else:
             # A class's metaObject or getMeta, or a call setting up a field (the field and its value).
             if f1 is not None: raise Unliftable('float argument')
@@ -264,7 +304,13 @@ def lift_fieldinit(c,insns):
                 if used(k): new(ret,' void *%%s=%s();'%t);decls.append('void *%s();'%t)
                 else: out.append(' %s();'%t);decls.append('void %s();'%t)
                 continue
-            if used(k): raise Unliftable('call result with arguments')
+            if used(k):
+                # a call whose result is used: the field-replacement helpers
+                a=[expr(x) for x in args[:hi+1]]
+                rt=RETURNS.get(t,'void *');vtypes[ret]=rt
+                new(ret,' %s%%s=%s(%s);'%(rt if rt.endswith('*') else rt+' ',t,','.join(a)))
+                decls.append('%s%s%s(%s);'%(rt,'' if rt.endswith('*') else ' ',t,', '.join('void *' for x in a)))
+                continue
             a=[expr(args[0])];types=['void *']
             if 'r4' not in wr and hi==3 and args[2][0]=='c' and args[3][0]=='c':
                 v=((args[2][1]&0xFFFFFFFF)<<32)|(args[3][1]&0xFFFFFFFF)
@@ -274,7 +320,7 @@ def lift_fieldinit(c,insns):
                     v=args[ARGS.index(r)]
                     if v[0]!='c' and v not in names and v[0]!='a': raise Unliftable('call argument')
                     if v in names and names[v].endswith('()'): types.append('void *');a.append(names[v]);continue
-                    a.append(expr(v));types.append('int' if v[0]=='c' else 'void *')
+                    a.append(expr(v));types.append('int' if v[0]=='c' else vtypes.get(v,'void *'))
             out.append(' %s(%s);'%(t,','.join(a)));decls.append('void %s(%s);'%(t,', '.join(types)))
     flush(len(stores))
     return 'void %s_fieldInit(){\n%s\n}'%(c,'\n'.join(out)),decls

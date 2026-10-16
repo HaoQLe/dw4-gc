@@ -117,6 +117,18 @@ struct igStringMember {
     }
 };
 
+// A meta field's virtual functions, by vtable offset (the first is at +0x08). virtual54(1) returns a copy of
+// the field, which a class's field setup modifies and puts in place of the inherited one.
+class igMetaFieldVirtuals {
+public:
+    virtual void virtual08(); virtual void virtual0C(); virtual void virtual10(); virtual void virtual14();
+    virtual void virtual18(); virtual void virtual1C(); virtual void virtual20(); virtual void virtual24();
+    virtual void virtual28(); virtual void virtual2C(); virtual void virtual30(); virtual void virtual34();
+    virtual void virtual38(); virtual void virtual3C(); virtual void virtual40(); virtual void virtual44();
+    virtual void virtual48(); virtual void virtual4C(); virtual void virtual50();
+    virtual void *virtual54(int deep);
+};
+
 // A string member whose pool item is found by an out-of-line function (fn_801ACC5C, which the code of
 // some classes calls instead of computing the item's address).
 extern "C" Gap::Core::igStringPoolItem *fn_801ACC5C(const void *member);

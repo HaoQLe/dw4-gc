@@ -253,6 +253,9 @@ Alchemy/src/Meta/igStringMetaField_2.cpp:
 Alchemy/src/unknownGen/unknown80025494.cpp:
 	.text       start:0x80025494 end:0x8002549C
 
+Alchemy/src/Meta/igStringMetaField_3.cpp:
+	.text       start:0x8002549C end:0x80025628
+
 Alchemy/src/unknownGen/unknown80025628.cpp:
 	.text       start:0x80025628 end:0x800256F0
 
@@ -12646,9 +12649,14 @@ Meta/beSelectCtrlInfoRamData.cpp:
 	.text       start:0x802BA200 end:0x802BA34C
 
 unknownGen/unknown802BA34C.cpp:
-	extab       start:0x80006B78 end:0x80006B98
-	extabindex  start:0x8001452C end:0x8001455C
-	.text       start:0x802BA34C end:0x802BA484
+	extab       start:0x80006B78 end:0x80006B80
+	extabindex  start:0x8001452C end:0x80014538
+	.text       start:0x802BA34C end:0x802BA3C0
+
+Meta/beSelectCtrlInfoRamData_2.cpp:
+	extab       start:0x80006B80 end:0x80006BA0
+	extabindex  start:0x80014538 end:0x80014568
+	.text       start:0x802BA3C0 end:0x802BA5BC
 
 Meta/beSelectCtrlInfoWork.cpp:
 	extab       start:0x80006BA0 end:0x80006BE0
@@ -12718,60 +12726,30 @@ Meta/beSvPlatDataPC.cpp:
 unknownGen/unknown802BC428.cpp:
 	.text       start:0x802BC428 end:0x802BC438
 
-unknownGen/unknown802BC438.cpp:
-	extab       start:0x80006DE8 end:0x80006DF0
-	extabindex  start:0x800148D4 end:0x800148E0
-	.text       start:0x802BC438 end:0x802BC484
-
-unknownGen/unknown802BC484.cpp:
-	extab       start:0x80006DF0 end:0x80006DF8
-	extabindex  start:0x800148E0 end:0x800148EC
-	.text       start:0x802BC484 end:0x802BC568
-
-unknownGen/unknown802BC568.cpp:
-	extab       start:0x80006DF8 end:0x80006E10
-	extabindex  start:0x800148EC end:0x80014910
-	.text       start:0x802BC568 end:0x802BC62C
+Meta/beSvPlatDataXbox.cpp:
+	extab       start:0x80006DE8 end:0x80006E18
+	extabindex  start:0x800148D4 end:0x8001491C
+	.text       start:0x802BC438 end:0x802BC77C
 
 Meta/beXboxImage24k.cpp:
 	extab       start:0x80006E18 end:0x80006E50
 	extabindex  start:0x8001491C end:0x80014970
 	.text       start:0x802BC77C end:0x802BC9C0
 
-unknownGen/unknown802BC9C0.cpp:
-	extab       start:0x80006E50 end:0x80006E58
-	extabindex  start:0x80014970 end:0x8001497C
-	.text       start:0x802BC9C0 end:0x802BCA0C
-
-unknownGen/unknown802BCA0C.cpp:
-	extab       start:0x80006E58 end:0x80006E60
-	extabindex  start:0x8001497C end:0x80014988
-	.text       start:0x802BCA0C end:0x802BCC00
-
-unknownGen/unknown802BCC00.cpp:
-	extab       start:0x80006E60 end:0x80006E78
-	extabindex  start:0x80014988 end:0x800149AC
-	.text       start:0x802BCC00 end:0x802BCCC4
+Meta/beSvPlatDataPS2.cpp:
+	extab       start:0x80006E50 end:0x80006E80
+	extabindex  start:0x80014970 end:0x800149B8
+	.text       start:0x802BC9C0 end:0x802BCEF0
 
 Meta/beSvPs2McImage128k.cpp:
 	extab       start:0x80006E80 end:0x80006EB0
 	extabindex  start:0x800149B8 end:0x80014A00
 	.text       start:0x802BCEF0 end:0x802BD0E0
 
-unknownGen/unknown802BD0E0.cpp:
-	extab       start:0x80006EB0 end:0x80006EB8
-	extabindex  start:0x80014A00 end:0x80014A0C
-	.text       start:0x802BD0E0 end:0x802BD12C
-
-unknownGen/unknown802BD12C.cpp:
-	extab       start:0x80006EB8 end:0x80006EC0
-	extabindex  start:0x80014A0C end:0x80014A18
-	.text       start:0x802BD12C end:0x802BD210
-
-unknownGen/unknown802BD210.cpp:
-	extab       start:0x80006EC0 end:0x80006ED8
-	extabindex  start:0x80014A18 end:0x80014A3C
-	.text       start:0x802BD210 end:0x802BD2CC
+Meta/beSvPlatDataGC.cpp:
+	extab       start:0x80006EB0 end:0x80006EE0
+	extabindex  start:0x80014A00 end:0x80014A48
+	.text       start:0x802BD0E0 end:0x802BD440
 
 Meta/beSvConnectCheck.cpp:
 	extab       start:0x80006EE0 end:0x80006F00
@@ -13193,6 +13171,11 @@ unknownGen/unknown802C7200.cpp:
 unknownGen/unknown802C72BC.cpp:
 	.text       start:0x802C72BC end:0x802C72CC
 
+Meta/beModelCtrlInfoRideOn4.cpp:
+	extab       start:0x80007A6C end:0x80007A74
+	extabindex  start:0x80015B4C end:0x80015B58
+	.text       start:0x802C72CC end:0x802C73E8
+
 unknownGen/unknown802C73E8.cpp:
 	extab       start:0x80007A74 end:0x80007A84
 	extabindex  start:0x80015B58 end:0x80015B70
@@ -13264,84 +13247,39 @@ Meta/beModelCtrlInfoRamData.cpp:
 	.text       start:0x802C8CFC end:0x802C8E88
 
 unknownGen/unknown802C8E88.cpp:
-	extab       start:0x80007CD4 end:0x80007CF4
-	extabindex  start:0x80015E58 end:0x80015E88
-	.text       start:0x802C8E88 end:0x802C8FC0
+	extab       start:0x80007CD4 end:0x80007CDC
+	extabindex  start:0x80015E58 end:0x80015E64
+	.text       start:0x802C8E88 end:0x802C8EFC
 
-unknownGen/unknown802C9110.cpp:
-	extab       start:0x80007CFC end:0x80007D0C
-	extabindex  start:0x80015E94 end:0x80015EAC
-	.text       start:0x802C9110 end:0x802C91B0
+Meta/beModelCtrlInfoRamData_2.cpp:
+	extab       start:0x80007CDC end:0x80007CFC
+	extabindex  start:0x80015E64 end:0x80015E94
+	.text       start:0x802C8EFC end:0x802C9110
 
-unknownGen/unknown802C91B0.cpp:
-	extab       start:0x80007D0C end:0x80007D14
-	extabindex  start:0x80015EAC end:0x80015EB8
-	.text       start:0x802C91B0 end:0x802C92B0
+Meta/beModelCtrlInfoDataTrc.cpp:
+	extab       start:0x80007CFC end:0x80007D34
+	extabindex  start:0x80015E94 end:0x80015EE8
+	.text       start:0x802C9110 end:0x802C94AC
 
-unknownGen/unknown802C92B0.cpp:
-	extab       start:0x80007D14 end:0x80007D2C
-	extabindex  start:0x80015EB8 end:0x80015EDC
-	.text       start:0x802C92B0 end:0x802C9374
+Meta/beModelCtrlInfoDataSeq.cpp:
+	extab       start:0x80007D34 end:0x80007D64
+	extabindex  start:0x80015EE8 end:0x80015F30
+	.text       start:0x802C94AC end:0x802C97FC
 
-unknownGen/unknown802C94AC.cpp:
-	extab       start:0x80007D34 end:0x80007D3C
-	extabindex  start:0x80015EE8 end:0x80015EF4
-	.text       start:0x802C94AC end:0x802C94F8
+Meta/beModelCtrlInfoDataHit.cpp:
+	extab       start:0x80007D64 end:0x80007D94
+	extabindex  start:0x80015F30 end:0x80015F78
+	.text       start:0x802C97FC end:0x802C9B44
 
-unknownGen/unknown802C94F8.cpp:
-	extab       start:0x80007D3C end:0x80007D44
-	extabindex  start:0x80015EF4 end:0x80015F00
-	.text       start:0x802C94F8 end:0x802C95F8
+Meta/beModelCtrlInfoDataAIH.cpp:
+	extab       start:0x80007D94 end:0x80007DC4
+	extabindex  start:0x80015F78 end:0x80015FC0
+	.text       start:0x802C9B44 end:0x802C9E1C
 
-unknownGen/unknown802C95F8.cpp:
-	extab       start:0x80007D44 end:0x80007D5C
-	extabindex  start:0x80015F00 end:0x80015F24
-	.text       start:0x802C95F8 end:0x802C96BC
-
-unknownGen/unknown802C97FC.cpp:
-	extab       start:0x80007D64 end:0x80007D6C
-	extabindex  start:0x80015F30 end:0x80015F3C
-	.text       start:0x802C97FC end:0x802C9848
-
-unknownGen/unknown802C9848.cpp:
-	extab       start:0x80007D6C end:0x80007D74
-	extabindex  start:0x80015F3C end:0x80015F48
-	.text       start:0x802C9848 end:0x802C9948
-
-unknownGen/unknown802C9948.cpp:
-	extab       start:0x80007D74 end:0x80007D8C
-	extabindex  start:0x80015F48 end:0x80015F6C
-	.text       start:0x802C9948 end:0x802C9A0C
-
-unknownGen/unknown802C9B44.cpp:
-	extab       start:0x80007D94 end:0x80007D9C
-	extabindex  start:0x80015F78 end:0x80015F84
-	.text       start:0x802C9B44 end:0x802C9B90
-
-unknownGen/unknown802C9B90.cpp:
-	extab       start:0x80007D9C end:0x80007DA4
-	extabindex  start:0x80015F84 end:0x80015F90
-	.text       start:0x802C9B90 end:0x802C9C40
-
-unknownGen/unknown802C9C40.cpp:
-	extab       start:0x80007DA4 end:0x80007DBC
-	extabindex  start:0x80015F90 end:0x80015FB4
-	.text       start:0x802C9C40 end:0x802C9CFC
-
-unknownGen/unknown802C9E1C.cpp:
-	extab       start:0x80007DC4 end:0x80007DCC
-	extabindex  start:0x80015FC0 end:0x80015FCC
-	.text       start:0x802C9E1C end:0x802C9E68
-
-unknownGen/unknown802C9E68.cpp:
-	extab       start:0x80007DCC end:0x80007DD4
-	extabindex  start:0x80015FCC end:0x80015FD8
-	.text       start:0x802C9E68 end:0x802C9F68
-
-unknownGen/unknown802C9F68.cpp:
-	extab       start:0x80007DD4 end:0x80007DEC
-	extabindex  start:0x80015FD8 end:0x80015FFC
-	.text       start:0x802C9F68 end:0x802CA02C
+Meta/beModelCtrlInfoDataAIM.cpp:
+	extab       start:0x80007DC4 end:0x80007DF4
+	extabindex  start:0x80015FC0 end:0x80016008
+	.text       start:0x802C9E1C end:0x802CA16C
 
 Meta/beModelCtrlAIMapList.cpp:
 	extab       start:0x80007DF4 end:0x80007E24
@@ -14258,20 +14196,10 @@ Meta/beCameraBoxData.cpp:
 	extabindex  start:0x80018A80 end:0x80018AC8
 	.text       start:0x802E1D74 end:0x802E2114
 
-unknownGen/unknown802E2114.cpp:
-	extab       start:0x80009AD4 end:0x80009AE4
-	extabindex  start:0x80018AC8 end:0x80018AE0
-	.text       start:0x802E2114 end:0x802E21A0
-
-unknownGen/unknown802E21A0.cpp:
-	extab       start:0x80009AE4 end:0x80009AEC
-	extabindex  start:0x80018AE0 end:0x80018AEC
-	.text       start:0x802E21A0 end:0x802E22A0
-
-unknownGen/unknown802E22A0.cpp:
-	extab       start:0x80009AEC end:0x80009B04
-	extabindex  start:0x80018AEC end:0x80018B10
-	.text       start:0x802E22A0 end:0x802E235C
+Meta/beCameraCtrlInfoRamShake.cpp:
+	extab       start:0x80009AD4 end:0x80009B0C
+	extabindex  start:0x80018AC8 end:0x80018B1C
+	.text       start:0x802E2114 end:0x802E247C
 
 unknownGen/unknown802E247C.cpp:
 	extab       start:0x80009B0C end:0x80009B2C
@@ -15779,35 +15707,15 @@ Meta/beNDMWTitle2Info.cpp:
 	extabindex  start:0x8001B438 end:0x8001B474
 	.text       start:0x80325ED8 end:0x80326128
 
-unknownGen/unknown80326128.cpp:
-	extab       start:0x8000C260 end:0x8000C270
-	extabindex  start:0x8001B474 end:0x8001B48C
-	.text       start:0x80326128 end:0x803261B4
+Meta/beNDMWTitle2Option.cpp:
+	extab       start:0x8000C260 end:0x8000C298
+	extabindex  start:0x8001B474 end:0x8001B4C8
+	.text       start:0x80326128 end:0x80326468
 
-unknownGen/unknown803261B4.cpp:
-	extab       start:0x8000C270 end:0x8000C278
-	extabindex  start:0x8001B48C end:0x8001B498
-	.text       start:0x803261B4 end:0x80326264
-
-unknownGen/unknown80326264.cpp:
-	extab       start:0x8000C278 end:0x8000C290
-	extabindex  start:0x8001B498 end:0x8001B4BC
-	.text       start:0x80326264 end:0x80326328
-
-unknownGen/unknown80326468.cpp:
-	extab       start:0x8000C298 end:0x8000C2A8
-	extabindex  start:0x8001B4C8 end:0x8001B4E0
-	.text       start:0x80326468 end:0x803264F4
-
-unknownGen/unknown803264F4.cpp:
-	extab       start:0x8000C2A8 end:0x8000C2B0
-	extabindex  start:0x8001B4E0 end:0x8001B4EC
-	.text       start:0x803264F4 end:0x803265A4
-
-unknownGen/unknown803265A4.cpp:
-	extab       start:0x8000C2B0 end:0x8000C2C8
-	extabindex  start:0x8001B4EC end:0x8001B510
-	.text       start:0x803265A4 end:0x80326660
+Meta/beNDMWTitle2CtrlData.cpp:
+	extab       start:0x8000C298 end:0x8000C2D0
+	extabindex  start:0x8001B4C8 end:0x8001B51C
+	.text       start:0x80326468 end:0x80326780
 
 unknownGen/unknown80326780.cpp:
 	extab       start:0x8000C2D0 end:0x8000C2D8
@@ -16562,20 +16470,10 @@ Meta/beNDMWSaveIntfInfo.cpp:
 	extabindex  start:0x8001CAD0 end:0x8001CB0C
 	.text       start:0x80334B98 end:0x80334DE8
 
-unknownGen/unknown80334DE8.cpp:
-	extab       start:0x8000D170 end:0x8000D178
-	extabindex  start:0x8001CB0C end:0x8001CB18
-	.text       start:0x80334DE8 end:0x80334E34
-
-unknownGen/unknown80334E34.cpp:
-	extab       start:0x8000D178 end:0x8000D180
-	extabindex  start:0x8001CB18 end:0x8001CB24
-	.text       start:0x80334E34 end:0x80334F74
-
-unknownGen/unknown80334F74.cpp:
-	extab       start:0x8000D180 end:0x8000D198
-	extabindex  start:0x8001CB24 end:0x8001CB48
-	.text       start:0x80334F74 end:0x80335038
+Meta/beNDMWSaveIntfComMdlCtrl.cpp:
+	extab       start:0x8000D170 end:0x8000D1A0
+	extabindex  start:0x8001CB0C end:0x8001CB54
+	.text       start:0x80334DE8 end:0x803351B8
 
 Meta/beSaveIntfComMdlDataList.cpp:
 	extab       start:0x8000D1A0 end:0x8000D1D0
@@ -16587,20 +16485,10 @@ Meta/beSaveIntfComMdlData.cpp:
 	extabindex  start:0x8001CB9C end:0x8001CBE4
 	.text       start:0x80335388 end:0x803355E0
 
-unknownGen/unknown803355E0.cpp:
-	extab       start:0x8000D200 end:0x8000D210
-	extabindex  start:0x8001CBE4 end:0x8001CBFC
-	.text       start:0x803355E0 end:0x8033566C
-
-unknownGen/unknown8033566C.cpp:
-	extab       start:0x8000D210 end:0x8000D218
-	extabindex  start:0x8001CBFC end:0x8001CC08
-	.text       start:0x8033566C end:0x8033571C
-
-unknownGen/unknown8033571C.cpp:
-	extab       start:0x8000D218 end:0x8000D230
-	extabindex  start:0x8001CC08 end:0x8001CC2C
-	.text       start:0x8033571C end:0x803357D8
+Meta/beNDMWSaveIntfCtrlData.cpp:
+	extab       start:0x8000D200 end:0x8000D238
+	extabindex  start:0x8001CBE4 end:0x8001CC38
+	.text       start:0x803355E0 end:0x803358F8
 
 unknownGen/unknown803358F8.cpp:
 	extab       start:0x8000D238 end:0x8000D240
@@ -16617,20 +16505,10 @@ Meta/beNDMWSaveCtrlInfo.cpp:
 	extabindex  start:0x8001CCA4 end:0x8001CCE0
 	.text       start:0x80335D14 end:0x80335F64
 
-unknownGen/unknown80335F64.cpp:
-	extab       start:0x8000D2A8 end:0x8000D2B8
-	extabindex  start:0x8001CCE0 end:0x8001CCF8
-	.text       start:0x80335F64 end:0x80335FF0
-
-unknownGen/unknown80335FF0.cpp:
-	extab       start:0x8000D2B8 end:0x8000D2C0
-	extabindex  start:0x8001CCF8 end:0x8001CD04
-	.text       start:0x80335FF0 end:0x803360A0
-
-unknownGen/unknown803360A0.cpp:
-	extab       start:0x8000D2C0 end:0x8000D2D8
-	extabindex  start:0x8001CD04 end:0x8001CD28
-	.text       start:0x803360A0 end:0x8033615C
+Meta/beNDMWSaveCtrlCtrlData.cpp:
+	extab       start:0x8000D2A8 end:0x8000D2E0
+	extabindex  start:0x8001CCE0 end:0x8001CD34
+	.text       start:0x80335F64 end:0x8033627C
 
 unknownGen/unknown8033627C.cpp:
 	extab       start:0x8000D2E0 end:0x8000D2E8
@@ -16685,35 +16563,20 @@ Meta/beNDMWPanelObjectStat.cpp:
 unknownGen/unknown80337428.cpp:
 	.text       start:0x80337428 end:0x80337438
 
-unknownGen/unknown803375AC.cpp:
-	extab       start:0x8000D408 end:0x8000D418
-	extabindex  start:0x8001CEF0 end:0x8001CF08
-	.text       start:0x803375AC end:0x8033764C
+Meta/beNDMWPanelObjectStat_2.cpp:
+	extab       start:0x8000D400 end:0x8000D408
+	extabindex  start:0x8001CEE4 end:0x8001CEF0
+	.text       start:0x80337438 end:0x803375AC
 
-unknownGen/unknown8033764C.cpp:
-	extab       start:0x8000D418 end:0x8000D420
-	extabindex  start:0x8001CF08 end:0x8001CF14
-	.text       start:0x8033764C end:0x803377D0
+Meta/beNDMWPanelObjectItem.cpp:
+	extab       start:0x8000D408 end:0x8000D440
+	extabindex  start:0x8001CEF0 end:0x8001CF44
+	.text       start:0x803375AC end:0x803379F0
 
-unknownGen/unknown803377D0.cpp:
-	extab       start:0x8000D420 end:0x8000D438
-	extabindex  start:0x8001CF14 end:0x8001CF38
-	.text       start:0x803377D0 end:0x80337894
-
-unknownGen/unknown803379F0.cpp:
-	extab       start:0x8000D440 end:0x8000D450
-	extabindex  start:0x8001CF44 end:0x8001CF5C
-	.text       start:0x803379F0 end:0x80337A90
-
-unknownGen/unknown80337A90.cpp:
-	extab       start:0x8000D450 end:0x8000D458
-	extabindex  start:0x8001CF5C end:0x8001CF68
-	.text       start:0x80337A90 end:0x80337C14
-
-unknownGen/unknown80337C14.cpp:
-	extab       start:0x8000D458 end:0x8000D470
-	extabindex  start:0x8001CF68 end:0x8001CF8C
-	.text       start:0x80337C14 end:0x80337CD8
+Meta/beNDMWPanelObjectWaza.cpp:
+	extab       start:0x8000D440 end:0x8000D478
+	extabindex  start:0x8001CF44 end:0x8001CF98
+	.text       start:0x803379F0 end:0x80337E34
 
 Meta/beNDMWPanelObject.cpp:
 	extab       start:0x8000D478 end:0x8000D4A0
@@ -16957,20 +16820,10 @@ Meta/beNDMWLogoInfo.cpp:
 	extabindex  start:0x8001D634 end:0x8001D670
 	.text       start:0x8033B7DC end:0x8033BA2C
 
-unknownGen/unknown8033BA2C.cpp:
-	extab       start:0x8000D908 end:0x8000D918
-	extabindex  start:0x8001D670 end:0x8001D688
-	.text       start:0x8033BA2C end:0x8033BAB8
-
-unknownGen/unknown8033BAB8.cpp:
-	extab       start:0x8000D918 end:0x8000D920
-	extabindex  start:0x8001D688 end:0x8001D694
-	.text       start:0x8033BAB8 end:0x8033BB68
-
-unknownGen/unknown8033BB68.cpp:
-	extab       start:0x8000D920 end:0x8000D938
-	extabindex  start:0x8001D694 end:0x8001D6B8
-	.text       start:0x8033BB68 end:0x8033BC24
+Meta/beNDMWLogoCtrlData.cpp:
+	extab       start:0x8000D908 end:0x8000D940
+	extabindex  start:0x8001D670 end:0x8001D6C4
+	.text       start:0x8033BA2C end:0x8033BD44
 
 unknownGen/unknown8033BD44.cpp:
 	extab       start:0x8000D940 end:0x8000D948
@@ -16987,95 +16840,35 @@ Meta/beNDMWLoadIntf2Info.cpp:
 	extabindex  start:0x8001D730 end:0x8001D76C
 	.text       start:0x8033C1A8 end:0x8033C3F8
 
-unknownGen/unknown8033C3F8.cpp:
-	extab       start:0x8000D9B0 end:0x8000D9C0
-	extabindex  start:0x8001D76C end:0x8001D784
-	.text       start:0x8033C3F8 end:0x8033C484
+Meta/beNDMWLoadIntf2NameSel.cpp:
+	extab       start:0x8000D9B0 end:0x8000D9E8
+	extabindex  start:0x8001D76C end:0x8001D7C0
+	.text       start:0x8033C3F8 end:0x8033C7AC
 
-unknownGen/unknown8033C484.cpp:
-	extab       start:0x8000D9C0 end:0x8000D9C8
-	extabindex  start:0x8001D784 end:0x8001D790
-	.text       start:0x8033C484 end:0x8033C534
+Meta/beNDMWLoadIntf2ChrDataSel.cpp:
+	extab       start:0x8000D9E8 end:0x8000DA18
+	extabindex  start:0x8001D7C0 end:0x8001D808
+	.text       start:0x8033C7AC end:0x8033CB0C
 
-unknownGen/unknown8033C534.cpp:
-	extab       start:0x8000D9C8 end:0x8000D9E0
-	extabindex  start:0x8001D790 end:0x8001D7B4
-	.text       start:0x8033C534 end:0x8033C5F8
+Meta/beNDMWLoadIntf2SelSlot.cpp:
+	extab       start:0x8000DA18 end:0x8000DA50
+	extabindex  start:0x8001D808 end:0x8001D85C
+	.text       start:0x8033CB0C end:0x8033CECC
 
-unknownGen/unknown8033C7AC.cpp:
-	extab       start:0x8000D9E8 end:0x8000D9F0
-	extabindex  start:0x8001D7C0 end:0x8001D7CC
-	.text       start:0x8033C7AC end:0x8033C7F8
+Meta/beNDMWLoadIntf2Diffselect.cpp:
+	extab       start:0x8000DA50 end:0x8000DA88
+	extabindex  start:0x8001D85C end:0x8001D8B0
+	.text       start:0x8033CECC end:0x8033D28C
 
-unknownGen/unknown8033C7F8.cpp:
-	extab       start:0x8000D9F0 end:0x8000D9F8
-	extabindex  start:0x8001D7CC end:0x8001D7D8
-	.text       start:0x8033C7F8 end:0x8033C8A8
+Meta/beNDMWLoadIntf2DataSelIntf.cpp:
+	extab       start:0x8000DA88 end:0x8000DAC0
+	extabindex  start:0x8001D8B0 end:0x8001D904
+	.text       start:0x8033D28C end:0x8033D66C
 
-unknownGen/unknown8033C8A8.cpp:
-	extab       start:0x8000D9F8 end:0x8000DA10
-	extabindex  start:0x8001D7D8 end:0x8001D7FC
-	.text       start:0x8033C8A8 end:0x8033C96C
-
-unknownGen/unknown8033CB0C.cpp:
-	extab       start:0x8000DA18 end:0x8000DA28
-	extabindex  start:0x8001D808 end:0x8001D820
-	.text       start:0x8033CB0C end:0x8033CB98
-
-unknownGen/unknown8033CB98.cpp:
-	extab       start:0x8000DA28 end:0x8000DA30
-	extabindex  start:0x8001D820 end:0x8001D82C
-	.text       start:0x8033CB98 end:0x8033CC48
-
-unknownGen/unknown8033CC48.cpp:
-	extab       start:0x8000DA30 end:0x8000DA48
-	extabindex  start:0x8001D82C end:0x8001D850
-	.text       start:0x8033CC48 end:0x8033CD0C
-
-unknownGen/unknown8033CECC.cpp:
-	extab       start:0x8000DA50 end:0x8000DA60
-	extabindex  start:0x8001D85C end:0x8001D874
-	.text       start:0x8033CECC end:0x8033CF58
-
-unknownGen/unknown8033CF58.cpp:
-	extab       start:0x8000DA60 end:0x8000DA68
-	extabindex  start:0x8001D874 end:0x8001D880
-	.text       start:0x8033CF58 end:0x8033D008
-
-unknownGen/unknown8033D008.cpp:
-	extab       start:0x8000DA68 end:0x8000DA80
-	extabindex  start:0x8001D880 end:0x8001D8A4
-	.text       start:0x8033D008 end:0x8033D0CC
-
-unknownGen/unknown8033D28C.cpp:
-	extab       start:0x8000DA88 end:0x8000DA98
-	extabindex  start:0x8001D8B0 end:0x8001D8C8
-	.text       start:0x8033D28C end:0x8033D318
-
-unknownGen/unknown8033D318.cpp:
-	extab       start:0x8000DA98 end:0x8000DAA0
-	extabindex  start:0x8001D8C8 end:0x8001D8D4
-	.text       start:0x8033D318 end:0x8033D3C8
-
-unknownGen/unknown8033D3C8.cpp:
-	extab       start:0x8000DAA0 end:0x8000DAB8
-	extabindex  start:0x8001D8D4 end:0x8001D8F8
-	.text       start:0x8033D3C8 end:0x8033D48C
-
-unknownGen/unknown8033D66C.cpp:
-	extab       start:0x8000DAC0 end:0x8000DAD8
-	extabindex  start:0x8001D904 end:0x8001D928
-	.text       start:0x8033D66C end:0x8033D74C
-
-unknownGen/unknown8033D74C.cpp:
-	extab       start:0x8000DAD8 end:0x8000DAE0
-	extabindex  start:0x8001D928 end:0x8001D934
-	.text       start:0x8033D74C end:0x8033D84C
-
-unknownGen/unknown8033D84C.cpp:
-	extab       start:0x8000DAE0 end:0x8000DAF8
-	extabindex  start:0x8001D934 end:0x8001D958
-	.text       start:0x8033D84C end:0x8033D910
+Meta/beNDMWLoadIntf2DegiStateCtrl.cpp:
+	extab       start:0x8000DAC0 end:0x8000DB00
+	extabindex  start:0x8001D904 end:0x8001D964
+	.text       start:0x8033D66C end:0x8033DA50
 
 Meta/beNDMWLoadIntf2DegiStateList.cpp:
 	extab       start:0x8000DB00 end:0x8000DB30
@@ -17087,35 +16880,15 @@ Meta/beNDMWLoadIntf2DegiState.cpp:
 	extabindex  start:0x8001D9AC end:0x8001DA00
 	.text       start:0x8033DC20 end:0x8033DEC0
 
-unknownGen/unknown8033DEC0.cpp:
-	extab       start:0x8000DB68 end:0x8000DB78
-	extabindex  start:0x8001DA00 end:0x8001DA18
-	.text       start:0x8033DEC0 end:0x8033DF4C
+Meta/beNDMWLoadIntf2MakeChr.cpp:
+	extab       start:0x8000DB68 end:0x8000DBA0
+	extabindex  start:0x8001DA00 end:0x8001DA54
+	.text       start:0x8033DEC0 end:0x8033E1EC
 
-unknownGen/unknown8033DF4C.cpp:
-	extab       start:0x8000DB78 end:0x8000DB80
-	extabindex  start:0x8001DA18 end:0x8001DA24
-	.text       start:0x8033DF4C end:0x8033DFFC
-
-unknownGen/unknown8033DFFC.cpp:
-	extab       start:0x8000DB80 end:0x8000DB98
-	extabindex  start:0x8001DA24 end:0x8001DA48
-	.text       start:0x8033DFFC end:0x8033E0B8
-
-unknownGen/unknown8033E1EC.cpp:
-	extab       start:0x8000DBA0 end:0x8000DBB0
-	extabindex  start:0x8001DA54 end:0x8001DA6C
-	.text       start:0x8033E1EC end:0x8033E278
-
-unknownGen/unknown8033E278.cpp:
-	extab       start:0x8000DBB0 end:0x8000DBB8
-	extabindex  start:0x8001DA6C end:0x8001DA78
-	.text       start:0x8033E278 end:0x8033E328
-
-unknownGen/unknown8033E328.cpp:
-	extab       start:0x8000DBB8 end:0x8000DBD0
-	extabindex  start:0x8001DA78 end:0x8001DA9C
-	.text       start:0x8033E328 end:0x8033E3E4
+Meta/beNDMWLoadIntf2CtrlData.cpp:
+	extab       start:0x8000DBA0 end:0x8000DBD8
+	extabindex  start:0x8001DA54 end:0x8001DAA8
+	.text       start:0x8033E1EC end:0x8033E504
 
 unknownGen/unknown8033E504.cpp:
 	extab       start:0x8000DBD8 end:0x8000DBE0
@@ -17132,20 +16905,10 @@ Meta/beNDMWLoadCtrl2Info.cpp:
 	extabindex  start:0x8001DB14 end:0x8001DB5C
 	.text       start:0x8033E920 end:0x8033EC68
 
-unknownGen/unknown8033EC68.cpp:
-	extab       start:0x8000DC50 end:0x8000DC68
-	extabindex  start:0x8001DB5C end:0x8001DB80
-	.text       start:0x8033EC68 end:0x8033ED48
-
-unknownGen/unknown8033ED48.cpp:
-	extab       start:0x8000DC68 end:0x8000DC70
-	extabindex  start:0x8001DB80 end:0x8001DB8C
-	.text       start:0x8033ED48 end:0x8033EEE8
-
-unknownGen/unknown8033EEE8.cpp:
-	extab       start:0x8000DC70 end:0x8000DC88
-	extabindex  start:0x8001DB8C end:0x8001DBB0
-	.text       start:0x8033EEE8 end:0x8033EFAC
+Meta/beNDMWLoadCtrl2CommonIntf.cpp:
+	extab       start:0x8000DC50 end:0x8000DC90
+	extabindex  start:0x8001DB5C end:0x8001DBBC
+	.text       start:0x8033EC68 end:0x8033F1CC
 
 Meta/beNDMWMcUtilCtrl.cpp:
 	extab       start:0x8000DC90 end:0x8000DCD0
@@ -17215,35 +16978,15 @@ Meta/beNDMWDegiData.cpp:
 	extabindex  start:0x8001DF1C end:0x8001DF70
 	.text       start:0x803409B0 end:0x80340CA4
 
-unknownGen/unknown80340CA4.cpp:
-	extab       start:0x8000DF08 end:0x8000DF20
-	extabindex  start:0x8001DF70 end:0x8001DF94
-	.text       start:0x80340CA4 end:0x80340D84
+Meta/beNDMWLoadIntf2MesWin.cpp:
+	extab       start:0x8000DF08 end:0x8000DF48
+	extabindex  start:0x8001DF70 end:0x8001DFD0
+	.text       start:0x80340CA4 end:0x80341078
 
-unknownGen/unknown80340D84.cpp:
-	extab       start:0x8000DF20 end:0x8000DF28
-	extabindex  start:0x8001DF94 end:0x8001DFA0
-	.text       start:0x80340D84 end:0x80340E34
-
-unknownGen/unknown80340E34.cpp:
-	extab       start:0x8000DF28 end:0x8000DF40
-	extabindex  start:0x8001DFA0 end:0x8001DFC4
-	.text       start:0x80340E34 end:0x80340EF8
-
-unknownGen/unknown80341078.cpp:
-	extab       start:0x8000DF48 end:0x8000DF60
-	extabindex  start:0x8001DFD0 end:0x8001DFF4
-	.text       start:0x80341078 end:0x80341158
-
-unknownGen/unknown80341158.cpp:
-	extab       start:0x8000DF60 end:0x8000DF68
-	extabindex  start:0x8001DFF4 end:0x8001E000
-	.text       start:0x80341158 end:0x80341298
-
-unknownGen/unknown80341298.cpp:
-	extab       start:0x8000DF68 end:0x8000DF80
-	extabindex  start:0x8001E000 end:0x8001E024
-	.text       start:0x80341298 end:0x8034135C
+Meta/beNDMWLoadIntf2ComMdlCtrl.cpp:
+	extab       start:0x8000DF48 end:0x8000DF88
+	extabindex  start:0x8001DFD0 end:0x8001E030
+	.text       start:0x80341078 end:0x803414DC
 
 Meta/beLoadIntf2ComMdlDataList.cpp:
 	extab       start:0x8000DF88 end:0x8000DFB8
@@ -17255,35 +16998,15 @@ Meta/beLoadIntf2ComMdlData.cpp:
 	extabindex  start:0x8001E078 end:0x8001E0CC
 	.text       start:0x803416AC end:0x80341944
 
-unknownGen/unknown80341944.cpp:
-	extab       start:0x8000DFF0 end:0x8000E008
-	extabindex  start:0x8001E0CC end:0x8001E0F0
-	.text       start:0x80341944 end:0x80341A24
+Meta/beNDMWLoadIntf2TextOrder.cpp:
+	extab       start:0x8000DFF0 end:0x8000E030
+	extabindex  start:0x8001E0CC end:0x8001E12C
+	.text       start:0x80341944 end:0x80341CF8
 
-unknownGen/unknown80341A24.cpp:
-	extab       start:0x8000E008 end:0x8000E010
-	extabindex  start:0x8001E0F0 end:0x8001E0FC
-	.text       start:0x80341A24 end:0x80341AD4
-
-unknownGen/unknown80341AD4.cpp:
-	extab       start:0x8000E010 end:0x8000E028
-	extabindex  start:0x8001E0FC end:0x8001E120
-	.text       start:0x80341AD4 end:0x80341B98
-
-unknownGen/unknown80341CF8.cpp:
-	extab       start:0x8000E030 end:0x8000E040
-	extabindex  start:0x8001E12C end:0x8001E144
-	.text       start:0x80341CF8 end:0x80341D84
-
-unknownGen/unknown80341D84.cpp:
-	extab       start:0x8000E040 end:0x8000E048
-	extabindex  start:0x8001E144 end:0x8001E150
-	.text       start:0x80341D84 end:0x80341E34
-
-unknownGen/unknown80341E34.cpp:
-	extab       start:0x8000E048 end:0x8000E060
-	extabindex  start:0x8001E150 end:0x8001E174
-	.text       start:0x80341E34 end:0x80341EF0
+Meta/beNDMWLoadCtrl2CtrlData.cpp:
+	extab       start:0x8000E030 end:0x8000E068
+	extabindex  start:0x8001E12C end:0x8001E180
+	.text       start:0x80341CF8 end:0x80342024
 
 unknownGen/unknown80342024.cpp:
 	extab       start:0x8000E068 end:0x8000E070

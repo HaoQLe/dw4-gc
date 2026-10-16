@@ -292,6 +292,8 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers):
         if x in var: return var[x]
         mm=re.fullmatch(r'\(reinterpret_cast<char \*>\((\w+)\)\+(\d+)\)',x)
         if mm and var.get(mm[1])=='base': return 'base + %s'%mm[2]
+        mm=re.fullmatch(r'\*reinterpret_cast<void \*\*>\(reinterpret_cast<char \*>\((\w+)\)\+40\)',x)
+        if mm and var.get(mm[1])=='meta': return 'meta->_metaFields'
         mm=re.fullmatch(r'\(void \*\)(-?\d+|\w+)',x)
         if mm:
             if not re.fullmatch(r'-?\d+',mm[1]): refs.add(mm[1])
@@ -315,7 +317,62 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers):
             else: cur+=ch
         if cur.strip(): out.append(cur)
         return out
+    def inherited_field(sym):
+        # the field a name string names, among the class's and its ancestors' fields
+        if sym not in SYMDATA: return None,None
+        name=dol.cstr(SYMDATA[sym][1]);k=c;seen=set()
+        while k in classes and k not in seen:
+            seen.add(k)
+            for f in classes[k].get('fields') or []:
+                if f['name']==name: return name,f['type']
+            k=classes[k].get('parent')
+        return name,None
     for l in body[1:-1]:
+        # Replacing an inherited field by a modified copy: found by name (fn_800658F8 searches _metaFields),
+        # its index (fn_80053998), a copy (virtual 0x54), and the copy put at that index (fn_8006588C).
+        mm=re.fullmatch(r' void \*(\w+)=fn_800658F8\((\w+),(\w+)\);',l)
+        if mm and V(mm[2])=='meta':
+            refs.add('fn_800658F8');refs.add(mm[3])
+            fname,ft=inherited_field(mm[3])
+            stem=re.sub(r'^_+','',fname or '') or 'inherited'
+            stem=stem[0].lower()+stem[1:]
+            if not re.fullmatch(r'[A-Za-z_]\w*',stem): stem='inherited'
+            n=stem+'Field'
+            while n in var.values(): n+='_'
+            var[mm[1]]=n;vtype[n]=ft
+            if ft in layouts: headers.add(layouts[ft]['header'])
+            typ='Meta::%s *'%ft if ft in layouts else 'void *'
+            cast='static_cast<%s>(%%s)'%typ if ft in layouts else '%s'
+            out.append('    %s%s = %s;   // %s'%(typ,n,cast%('fn_800658F8(meta, %s)'%mm[3]),'"%s"'%fname if fname else 'by name'))
+            continue
+        mm=re.fullmatch(r' int (\w+)=fn_80053998\(\*reinterpret_cast<void \*\*>\(reinterpret_cast<char \*>\((\w+)\)\+40\),(\w+)\);',l)
+        if mm and V(mm[2])=='meta':
+            refs.add('fn_80053998');src=V(mm[3])
+            n=re.sub(r'Field_*$','Index',src) if re.search(r'Field_*$',src) else 'index'
+            while n in var.values(): n+='_'
+            var[mm[1]]=n
+            out.append('    int %s = fn_80053998(meta->_metaFields, %s);'%(n,src));continue
+        mm=re.fullmatch(r' (\w+)=reinterpret_cast<igMetaFieldVirtuals \*>\(\1\)->virtual54\((.*)\);',l)
+        if mm:
+            # the field's variable now holds its copy
+            src=V(mm[1]);ft=vtype.get(src)
+            call='reinterpret_cast<igMetaFieldVirtuals *>(%s)->virtual54(%s)'%(src,', '.join(expr(x) for x in split_args(mm[2])))
+            out.append('    %s = %s;   // a copy of it'%(src,'static_cast<Meta::%s *>(%s)'%(ft,call) if ft in layouts else call));continue
+        mm=re.fullmatch(r' void \*(\w+)=reinterpret_cast<igMetaFieldVirtuals \*>\((\w+)\)->virtual54\((.*)\);',l)
+        if mm:
+            src=V(mm[2]);ft=vtype.get(src)
+            n=re.sub(r'Field_*$','Copy',src) if re.search(r'Field_*$',src) else 'copy'
+            while n in var.values(): n+='_'
+            var[mm[1]]=n;vtype[n]=ft
+            call='reinterpret_cast<igMetaFieldVirtuals *>(%s)->virtual54(%s)'%(src,', '.join(expr(x) for x in split_args(mm[3])))
+            if ft in layouts: out.append('    Meta::%s *%s = static_cast<Meta::%s *>(%s);'%(ft,n,ft,call))
+            else: out.append('    void *%s = %s;'%(n,call))
+            continue
+        mm=re.fullmatch(r' void \*(\w+)=(\w+)\((.+)\);',l)
+        if mm and mm[2]!='meta_field' and mm[2]!='meta_fieldCount':
+            refs.add(mm[2]);n='value_'+mm[1]
+            var[mm[1]]=n
+            out.append('    void *%s = %s(%s);'%(n,mm[2],', '.join(expr(x) for x in split_args(mm[3]))));continue
         mm=re.fullmatch(r' void \*(\w+)=%s_meta;'%c,l)
         if mm: var[mm[1]]='meta';out.append('    Meta::igMetaObject *meta = %s_meta;'%c);continue
         mm=re.fullmatch(r' void \*(\w+)=meta_fieldCount\((\w+)\);',l)
@@ -401,7 +458,7 @@ def class_file(c,block,fnsrc,structs_by_fn,decls_by_fn,classes,layouts,data,tags
         k,role=ident_of(r,classes)
         if k: uses.add(k)
     other=[]
-    known={'meta_registerNow','meta_registerClass','meta_newMetaObject','meta_createInstance','fn_800607F4',
+    known={'meta_registerNow','meta_registerClass','meta_newMetaObject','meta_createInstance','fn_800607F4','meta_release',
            'lbl_805621F4','meta_fieldCount','meta_field','meta_appendFields','meta_setupFields','igObject_construct','fn_80066E1C'}
     for r in sorted(refs):
         k,role=ident_of(r,classes)
@@ -449,6 +506,7 @@ def class_file(c,block,fnsrc,structs_by_fn,decls_by_fn,classes,layouts,data,tags
 ORIG=None
 DEBUG=False
 LIFT=False
+SYMDATA={}
 # The identified Alchemy core range (tools/unknowngen/cycle.sh emits its units under Alchemy/).
 ALCHEMY_LO,ALCHEMY_HI=0x80020400,0x800A0000
 def verify(text,flags,names,expect_eti):
@@ -495,6 +553,8 @@ def main():
         if a=='--limit': limit=int(sys.argv[i+1])
         if a=='-j': jobs=int(sys.argv[i+1])
     funcs,data,byaddr=load_symbols()
+    global SYMDATA
+    SYMDATA=data
     layouts=json.load(open(HERE/'layouts.json'))
     rawc=json.load(open('build/GDJEB2/analysis/meta/classes.json'))
     classes={}

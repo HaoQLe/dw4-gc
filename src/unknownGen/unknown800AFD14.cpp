@@ -66,9 +66,5 @@ void *fn_800AFD14(){
  if(!igTexGenMatrixAttr_meta) igTexGenMatrixAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igTexGenMatrixAttr_meta;
 }
-void *igTexGenMatrixAttr_getMeta(){
- if(!igTexGenMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igTexGenMatrixAttr_meta)[0x24/4]&4)) igTexGenMatrixAttr_arkRegister();
- return igTexGenMatrixAttr_meta;
-}
 }
 #pragma pop

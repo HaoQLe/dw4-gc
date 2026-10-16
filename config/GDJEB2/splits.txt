@@ -406,11 +406,8 @@ Alchemy/src/unknownGen/unknown800288BC.cpp:
 Alchemy/src/Meta/igObjectRefMetaField.cpp:
 	.text       start:0x800288F8 end:0x80028934
 
-Alchemy/src/unknownGen/unknown800289F8.cpp:
-	.text       start:0x800289F8 end:0x80028A20
-
-Alchemy/src/unknownGen/unknown80028A94.cpp:
-	.text       start:0x80028A94 end:0x80028AB4
+Alchemy/src/Meta/igObjectRefMetaField_2.cpp:
+	.text       start:0x800289F8 end:0x80028AB4
 
 Alchemy/src/unknownGen/unknown80028B64.cpp:
 	.text       start:0x80028B64 end:0x80028C2C
@@ -472,20 +469,17 @@ Alchemy/src/unknownGen/unknown80029F84.cpp:
 Alchemy/src/Meta/igMetaObject.cpp:
 	.text       start:0x80029FC0 end:0x80029FFC
 
-Alchemy/src/unknownGen/unknown8002A0A8.cpp:
-	.text       start:0x8002A0A8 end:0x8002A0D0
-
-Alchemy/src/unknownGen/unknown8002A144.cpp:
-	.text       start:0x8002A144 end:0x8002A164
+Alchemy/src/Meta/igMetaObject_2.cpp:
+	.text       start:0x8002A0A8 end:0x8002A164
 
 Alchemy/src/Meta/igMetaFieldInfo.cpp:
 	.text       start:0x8002A420 end:0x8002A5EC
 
 Alchemy/src/unknownGen/unknown8002A5EC.cpp:
-	.text       start:0x8002A5EC end:0x8002A6D8
+	.text       start:0x8002A5EC end:0x8002A674
 
-Alchemy/src/unknownGen/unknown8002A744.cpp:
-	.text       start:0x8002A744 end:0x8002A764
+Alchemy/src/Meta/igMetaField.cpp:
+	.text       start:0x8002A674 end:0x8002A764
 
 Alchemy/src/unknownGen/unknown8002A960.cpp:
 	.text       start:0x8002A960 end:0x8002AB94
@@ -494,10 +488,10 @@ Alchemy/src/Meta/igMemoryRefMetaField.cpp:
 	.text       start:0x8002AD54 end:0x8002AD90
 
 Alchemy/src/unknownGen/unknown8002AD90.cpp:
-	.text       start:0x8002AD90 end:0x8002AEAC
+	.text       start:0x8002AD90 end:0x8002AE84
 
-Alchemy/src/unknownGen/unknown8002AF20.cpp:
-	.text       start:0x8002AF20 end:0x8002AF40
+Alchemy/src/Meta/igMemoryRefMetaField_2.cpp:
+	.text       start:0x8002AE84 end:0x8002AF40
 
 Alchemy/src/unknownGen/unknown8002B178.cpp:
 	.text       start:0x8002B178 end:0x8002B240
@@ -527,10 +521,10 @@ Alchemy/src/Meta/igMemoryPoolContextInfo.cpp:
 	.text       start:0x8002BC20 end:0x8002BED0
 
 Alchemy/src/unknownGen/unknown8002BED0.cpp:
-	.text       start:0x8002BED0 end:0x8002BF70
+	.text       start:0x8002BED0 end:0x8002BF0C
 
-Alchemy/src/unknownGen/unknown8002BFD8.cpp:
-	.text       start:0x8002BFD8 end:0x8002BFF8
+Alchemy/src/Meta/igMemoryPool.cpp:
+	.text       start:0x8002BF0C end:0x8002BFF8
 
 Alchemy/src/Meta/igArenaMemoryPool.cpp:
 	.text       start:0x8002C0A0 end:0x8002C0C0
@@ -1169,10 +1163,10 @@ Alchemy/src/Meta/igPageMemoryPool.cpp:
 	.text       start:0x80039144 end:0x80039180
 
 Alchemy/src/unknownGen/unknown80039180.cpp:
-	.text       start:0x80039180 end:0x80039254
+	.text       start:0x80039180 end:0x8003922C
 
-Alchemy/src/unknownGen/unknown800392C8.cpp:
-	.text       start:0x800392C8 end:0x800392E8
+Alchemy/src/Meta/igPageMemoryPool_2.cpp:
+	.text       start:0x8003922C end:0x800392E8
 
 Alchemy/src/unknownGen/unknown80039404.cpp:
 	.text       start:0x80039404 end:0x800394E8
@@ -1181,7 +1175,10 @@ Alchemy/src/Meta/igArenaMemoryPool_2.cpp:
 	.text       start:0x80039610 end:0x8003964C
 
 Alchemy/src/unknownGen/unknown8003964C.cpp:
-	.text       start:0x8003964C end:0x80039720
+	.text       start:0x8003964C end:0x800396F8
+
+Alchemy/src/Meta/igArenaMemoryPool_3.cpp:
+	.text       start:0x800396F8 end:0x80039794
 
 Alchemy/src/unknownGen/unknown80039920.cpp:
 	.text       start:0x80039920 end:0x80039AD8
@@ -1193,10 +1190,10 @@ Alchemy/src/Meta/igMallocMemoryPool.cpp:
 	.text       start:0x80039C84 end:0x80039CC0
 
 Alchemy/src/unknownGen/unknown80039CC0.cpp:
-	.text       start:0x80039CC0 end:0x80039D94
+	.text       start:0x80039CC0 end:0x80039D6C
 
-Alchemy/src/unknownGen/unknown80039E08.cpp:
-	.text       start:0x80039E08 end:0x80039E28
+Alchemy/src/Meta/igMallocMemoryPool_2.cpp:
+	.text       start:0x80039D6C end:0x80039E28
 
 Alchemy/src/Meta/igMemoryDescriptorList.cpp:
 	.text       start:0x80039F58 end:0x8003A0A4
@@ -3134,20 +3131,14 @@ Meta/igVertexPipelineModeAttr.cpp:
 Meta/igVertexBlendStateAttr.cpp:
 	.text       start:0x800ACD08 end:0x800ACEBC
 
-unknownGen/unknown800ACEBC.cpp:
-	.text       start:0x800ACEBC end:0x800ACF30
-
-unknownGen/unknown800ACFEC.cpp:
-	.text       start:0x800ACFEC end:0x800AD0A8
+Meta/igVertexBlendMatrixListAttr.cpp:
+	.text       start:0x800ACEBC end:0x800AD0A8
 
 Meta/igVertexBlendMatrixAttrList.cpp:
 	.text       start:0x800AD19C end:0x800AD2FC
 
-unknownGen/unknown800AD2FC.cpp:
-	.text       start:0x800AD2FC end:0x800AD370
-
-unknownGen/unknown800AD3D0.cpp:
-	.text       start:0x800AD3D0 end:0x800AD488
+Meta/igVertexBlendMatrixAttr.cpp:
+	.text       start:0x800AD2FC end:0x800AD488
 
 unknownGen/unknown800AD574.cpp:
 	.text       start:0x800AD574 end:0x800AD5B0
@@ -3195,10 +3186,10 @@ Meta/igTextureMatrixAttr.cpp:
 	.text       start:0x800AE1A0 end:0x800AE1D8
 
 unknownGen/unknown800AE1D8.cpp:
-	.text       start:0x800AE1D8 end:0x800AE250
+	.text       start:0x800AE1D8 end:0x800AE214
 
-unknownGen/unknown800AE2B0.cpp:
-	.text       start:0x800AE2B0 end:0x800AE368
+Meta/igTextureMatrixAttr_2.cpp:
+	.text       start:0x800AE214 end:0x800AE368
 
 Meta/igTextureInfo.cpp:
 	.text       start:0x800AE470 end:0x800AE5A4
@@ -3267,10 +3258,10 @@ Meta/igTextureAddressModeAttr.cpp:
 	.text       start:0x800AFAF0 end:0x800AFD14
 
 unknownGen/unknown800AFD14.cpp:
-	.text       start:0x800AFD14 end:0x800AFD8C
+	.text       start:0x800AFD14 end:0x800AFD50
 
-unknownGen/unknown800AFDEC.cpp:
-	.text       start:0x800AFDEC end:0x800AFEA4
+Meta/igTexGenMatrixAttr.cpp:
+	.text       start:0x800AFD50 end:0x800AFEA4
 
 Meta/igSubTextureBindAttr.cpp:
 	.text       start:0x800AFF90 end:0x800B0134
@@ -3345,10 +3336,10 @@ Meta/igProjectionMatrixAttr.cpp:
 	.text       start:0x800B1DE8 end:0x800B1E20
 
 unknownGen/unknown800B1E20.cpp:
-	.text       start:0x800B1E20 end:0x800B1E98
+	.text       start:0x800B1E20 end:0x800B1E5C
 
-unknownGen/unknown800B1EF8.cpp:
-	.text       start:0x800B1EF8 end:0x800B1FB0
+Meta/igProjectionMatrixAttr_2.cpp:
+	.text       start:0x800B1E5C end:0x800B1FB0
 
 unknownGen/unknown800B2084.cpp:
 	.text       start:0x800B2084 end:0x800B20C0
@@ -3432,10 +3423,10 @@ Meta/igModelViewMatrixAttr.cpp:
 	.text       start:0x800B4128 end:0x800B4160
 
 unknownGen/unknown800B4160.cpp:
-	.text       start:0x800B4160 end:0x800B41D8
+	.text       start:0x800B4160 end:0x800B419C
 
-unknownGen/unknown800B4238.cpp:
-	.text       start:0x800B4238 end:0x800B42F8
+Meta/igModelViewMatrixAttr_2.cpp:
+	.text       start:0x800B419C end:0x800B42F8
 
 unknownGen/unknown800B43D8.cpp:
 	.text       start:0x800B43D8 end:0x800B4418
@@ -3449,11 +3440,8 @@ unknownGen/unknown800B45E0.cpp:
 Meta/igMatrixOptStateAttr.cpp:
 	.text       start:0x800B461C end:0x800B47E4
 
-unknownGen/unknown800B47E4.cpp:
-	.text       start:0x800B47E4 end:0x800B4820
-
-unknownGen/unknown800B488C.cpp:
-	.text       start:0x800B488C end:0x800B49C4
+Meta/igMatrixConstantAttr.cpp:
+	.text       start:0x800B47E4 end:0x800B49C4
 
 Meta/igMaterialModeAttr.cpp:
 	.text       start:0x800B49C4 end:0x800B4B9C
@@ -4548,10 +4536,10 @@ unknownGen/unknown800D06E0.cpp:
 	.text       start:0x800D06E0 end:0x800D080C
 
 unknownGen/unknown800D08C8.cpp:
-	.text       start:0x800D08C8 end:0x800D09D0
+	.text       start:0x800D08C8 end:0x800D0994
 
-unknownGen/unknown800D0B24.cpp:
-	.text       start:0x800D0B24 end:0x800D0BE4
+Meta/igPointSpriteExt.cpp:
+	.text       start:0x800D0994 end:0x800D0BE4
 
 Meta/igGamecubePointSpriteExt.cpp:
 	.text       start:0x800D0E0C end:0x800D0E2C
@@ -8448,10 +8436,10 @@ Meta/igTransform.cpp:
 	.text       start:0x801AC60C end:0x801AC644
 
 unknownGen/unknown801AC644.cpp:
-	.text       start:0x801AC644 end:0x801AC6BC
+	.text       start:0x801AC644 end:0x801AC680
 
-unknownGen/unknown801AC8A8.cpp:
-	.text       start:0x801AC8A8 end:0x801AC968
+Meta/igTransform_2.cpp:
+	.text       start:0x801AC680 end:0x801AC968
 
 Meta/igTimeTransform1_3.cpp:
 	.text       start:0x801ACA90 end:0x801ACC5C
@@ -9135,10 +9123,10 @@ Meta/igGeometry.cpp:
 	.text       start:0x801C00D4 end:0x801C010C
 
 unknownGen/unknown801C010C.cpp:
-	.text       start:0x801C010C end:0x801C0184
+	.text       start:0x801C010C end:0x801C0148
 
-unknownGen/unknown801C0394.cpp:
-	.text       start:0x801C0394 end:0x801C0454
+Meta/igGeometry_2.cpp:
+	.text       start:0x801C0148 end:0x801C0454
 
 unknownGen/unknown801C0564.cpp:
 	.text       start:0x801C0564 end:0x801C0584
@@ -9309,10 +9297,10 @@ Meta/igBlendMatrixSelect.cpp:
 	.text       start:0x801C6F04 end:0x801C6F3C
 
 unknownGen/unknown801C6F3C.cpp:
-	.text       start:0x801C6F3C end:0x801C6FB4
+	.text       start:0x801C6F3C end:0x801C6F78
 
-unknownGen/unknown801C71C0.cpp:
-	.text       start:0x801C71C0 end:0x801C727C
+Meta/igBlendMatrixSelect_2.cpp:
+	.text       start:0x801C6F78 end:0x801C727C
 
 Meta/igBitMask.cpp:
 	.text       start:0x801C730C end:0x801C7344
@@ -10254,10 +10242,10 @@ Meta/igMatrixObject.cpp:
 	.text       start:0x802180E8 end:0x80218120
 
 unknownGen/unknown80218120.cpp:
-	.text       start:0x80218120 end:0x80218198
+	.text       start:0x80218120 end:0x8021815C
 
-unknownGen/unknown802181E0.cpp:
-	.text       start:0x802181E0 end:0x80218300
+Meta/igMatrixObject_2.cpp:
+	.text       start:0x8021815C end:0x80218300
 
 Meta/igIntObject.cpp:
 	.text       start:0x80218300 end:0x8021849C
@@ -18793,41 +18781,26 @@ unknownGen/unknown8040651C.cpp:
 unknownGen/unknown80406768.cpp:
 	.text       start:0x80406768 end:0x804069B8
 
-unknownGen/unknown80406AD8.cpp:
-	.text       start:0x80406AD8 end:0x80406B64
-
-unknownGen/unknown80406D60.cpp:
-	.text       start:0x80406D60 end:0x80406E24
+Meta/igPickMode.cpp:
+	.text       start:0x80406AD8 end:0x80406E24
 
 unknownGen/unknown80406FA0.cpp:
-	.text       start:0x80406FA0 end:0x8040708C
+	.text       start:0x80406FA0 end:0x80407000
 
-unknownGen/unknown804070F4.cpp:
-	.text       start:0x804070F4 end:0x804071B0
+Meta/igRotateMode.cpp:
+	.text       start:0x80407000 end:0x804071B0
 
-unknownGen/unknown8040737C.cpp:
-	.text       start:0x8040737C end:0x80407408
+Meta/igFlyMode.cpp:
+	.text       start:0x8040737C end:0x80407578
 
-unknownGen/unknown804074B4.cpp:
-	.text       start:0x804074B4 end:0x80407578
+Meta/igCameraMode.cpp:
+	.text       start:0x80407720 end:0x80407960
 
-unknownGen/unknown80407720.cpp:
-	.text       start:0x80407720 end:0x804077AC
+Meta/igViewMode.cpp:
+	.text       start:0x80407A18 end:0x80407BD0
 
-unknownGen/unknown8040789C.cpp:
-	.text       start:0x8040789C end:0x80407960
-
-unknownGen/unknown80407A18.cpp:
-	.text       start:0x80407A18 end:0x80407AB8
-
-unknownGen/unknown80407B14.cpp:
-	.text       start:0x80407B14 end:0x80407BD0
-
-unknownGen/unknown80407C50.cpp:
-	.text       start:0x80407C50 end:0x80407CF0
-
-unknownGen/unknown80407E08.cpp:
-	.text       start:0x80407E08 end:0x80407ECC
+Meta/igViewManager.cpp:
+	.text       start:0x80407C50 end:0x80407ECC
 
 unknownGen/unknown80407FB4.cpp:
 	.text       start:0x80407FB4 end:0x80408054

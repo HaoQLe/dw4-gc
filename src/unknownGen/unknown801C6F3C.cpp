@@ -14,9 +14,5 @@ void *fn_801C6F3C(){
  if(!igBlendMatrixSelect_meta) igBlendMatrixSelect_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igBlendMatrixSelect_meta;
 }
-void *igBlendMatrixSelect_getMeta(){
- if(!igBlendMatrixSelect_meta || !(reinterpret_cast<unsigned int *>(igBlendMatrixSelect_meta)[0x24/4]&4)) igBlendMatrixSelect_arkRegister();
- return igBlendMatrixSelect_meta;
-}
 }
 #pragma pop

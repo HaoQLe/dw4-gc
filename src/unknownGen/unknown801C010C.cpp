@@ -37,9 +37,5 @@ void *fn_801C010C(){
  if(!igGeometry_meta) igGeometry_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igGeometry_meta;
 }
-void *igGeometry_getMeta(){
- if(!igGeometry_meta || !(reinterpret_cast<unsigned int *>(igGeometry_meta)[0x24/4]&4)) igGeometry_arkRegister();
- return igGeometry_meta;
-}
 }
 #pragma pop

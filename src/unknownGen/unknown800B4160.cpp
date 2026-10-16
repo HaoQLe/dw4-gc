@@ -78,9 +78,5 @@ void *fn_800B4160(){
  if(!igModelViewMatrixAttr_meta) igModelViewMatrixAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igModelViewMatrixAttr_meta;
 }
-void *igModelViewMatrixAttr_getMeta(){
- if(!igModelViewMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igModelViewMatrixAttr_meta)[0x24/4]&4)) igModelViewMatrixAttr_arkRegister();
- return igModelViewMatrixAttr_meta;
-}
 }
 #pragma pop

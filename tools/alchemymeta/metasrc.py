@@ -533,13 +533,21 @@ def main():
         if role=='register': return asmlift.lift_register(c,insns),{},[]
         if role=='getMeta': return asmlift.lift_getmeta(c,insns),{},[]
         if role=='vtableRead':
-            if any(x.startswith(('beq','bne')) for x in insns):
-                r=asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes)
+            try:
+                if any(x.startswith(('beq','bne')) for x in insns): raise asmlift.Unliftable('branches')
+                asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0))
+                chain=False
+            except asmlift.Unliftable: chain=True
+            if chain:
+                forms=[]
+                for mode in (False,True,'stores first','asm order'):
+                    try: forms.append(asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes,ctors=mode))
+                    except asmlift.Unliftable as e: err=e
+                if not forms: raise err
                 alts[n]=[]
-                for mode in (True,'stores first','asm order'):
-                    alt=asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes,ctors=mode)
+                for alt in forms[1:]:
                     if (alt[0],alt[1]) not in alts[n]: alts[n].append((alt[0],alt[1]))
-                return r
+                return forms[0]
             fn,st=asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0))
             alt,_=asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0),vt_sizes)
             alts[n]=[alt] if alt!=fn else []
@@ -563,9 +571,15 @@ def main():
         if any(u is None for u in us) and not LIFT: skipped['not generated']+=1;continue
         fnsrc={};structs_by_fn={};decls_by_fn={};tags_by_fn={};lifted=[]
         try:
-            for (a,s,n,r),u in zip(block,us):
+            for j,((a,s,n,r),u) in enumerate(zip(block,us)):
                 if u is None:
-                    fnsrc[n],structs_by_fn[n],decls_by_fn[n]=lift(c,n,r,classes)
+                    try: fnsrc[n],structs_by_fn[n],decls_by_fn[n]=lift(c,n,r,classes)
+                    except asmlift.Unliftable:
+                        # The class file can end before a function that does not lift (it stays as it is)
+                        # when the functions before it include lifted ones.
+                        if not lifted: raise
+                        skipped['truncated before '+r]+=1
+                        block=block[:j];us=us[:j];break
                     # Exceptions on where the function has an exception-index entry; speed and stmw/lmw are
                     # tried at verification.
                     tags_by_fn[n]={'eh'} if a in eti_fns else set()

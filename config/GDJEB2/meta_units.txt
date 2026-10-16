@@ -52,6 +52,7 @@ Alchemy/src/Meta/igPluginRepositoryList.cpp	800280B4	80028214	-
 Alchemy/src/Meta/igPluginRepository.cpp	80028260	800284EC	-
 Alchemy/src/Meta/igObjectStringMap.cpp	80028530	8002879C	-
 Alchemy/src/Meta/igObjectRefMetaField.cpp	800288F8	80028934	-
+Alchemy/src/Meta/igObjectRefMetaField_2.cpp	800289F8	80028AB4	-
 Alchemy/src/Meta/igObjectRefArrayMetaField.cpp	80028C2C	80028E30	-
 Alchemy/src/Meta/igObjectRefArrayMetaField_2.cpp	80028E38	80028EB4	-
 Alchemy/src/Meta/igObjectList.cpp	80028F4C	80028F84	-
@@ -63,13 +64,17 @@ Alchemy/src/Meta/igNamedObjectList.cpp	80029A98	80029BF8	-
 Alchemy/src/Meta/igNamedObject.cpp	80029BF8	80029C30	-
 Alchemy/src/Meta/igNamedObject_2.cpp	80029C6C	80029E64	-
 Alchemy/src/Meta/igMetaObject.cpp	80029FC0	80029FFC	-
+Alchemy/src/Meta/igMetaObject_2.cpp	8002A0A8	8002A164	-
 Alchemy/src/Meta/igMetaFieldInfo.cpp	8002A420	8002A5EC	-
+Alchemy/src/Meta/igMetaField.cpp	8002A674	8002A764	-
 Alchemy/src/Meta/igMemoryRefMetaField.cpp	8002AD54	8002AD90	-
+Alchemy/src/Meta/igMemoryRefMetaField_2.cpp	8002AE84	8002AF40	-
 Alchemy/src/Meta/igMemoryRefArrayMetaField.cpp	8002B240	8002B43C	-
 Alchemy/src/Meta/igMemoryRefArrayMetaField_2.cpp	8002B444	8002B4C0	-
 Alchemy/src/Meta/igMemoryPoolInfoList.cpp	8002B594	8002B6F4	-
 Alchemy/src/Meta/igMemoryPoolInfo.cpp	8002B6F4	8002B80C	-
 Alchemy/src/Meta/igMemoryPoolContextInfo.cpp	8002BC20	8002BED0	-
+Alchemy/src/Meta/igMemoryPool.cpp	8002BF0C	8002BFF8	-
 Alchemy/src/Meta/igArenaMemoryPool.cpp	8002C0A0	8002C0C0	-
 Alchemy/src/Meta/igMemoryFile.cpp	8002C0C0	8002C31C	-
 Alchemy/src/Meta/igFile.cpp	8002C3B0	8002C3D0	-
@@ -177,8 +182,11 @@ Alchemy/src/Meta/igBoolArrayMetaField_2.cpp	80038B48	80038BC4	-
 Alchemy/src/Meta/igAliasMemoryPool.cpp	80038D84	80038DC0	-
 Alchemy/src/Meta/igAliasMemoryPool_2.cpp	80038E9C	80038F58	-
 Alchemy/src/Meta/igPageMemoryPool.cpp	80039144	80039180	-
+Alchemy/src/Meta/igPageMemoryPool_2.cpp	8003922C	800392E8	-
 Alchemy/src/Meta/igArenaMemoryPool_2.cpp	80039610	8003964C	-
+Alchemy/src/Meta/igArenaMemoryPool_3.cpp	800396F8	80039794	-
 Alchemy/src/Meta/igMallocMemoryPool.cpp	80039C84	80039CC0	-
+Alchemy/src/Meta/igMallocMemoryPool_2.cpp	80039D6C	80039E28	-
 Alchemy/src/Meta/igMemoryDescriptorList.cpp	80039F58	8003A0A4	-
 Alchemy/src/Meta/igMemoryDescriptorMetaField.cpp	8003A160	8003A324	-
 Alchemy/src/Meta/igProgramFile.cpp	8003A518	8003A784	-
@@ -200,7 +208,9 @@ Meta/igVertexShaderBindAttr.cpp	800AC37C	800AC594	-
 Meta/igVertexShaderAttr.cpp	800AC5D0	800AC6A0	-
 Meta/igVertexPipelineModeAttr.cpp	800ACB30	800ACD08	-
 Meta/igVertexBlendStateAttr.cpp	800ACD08	800ACEBC	-
+Meta/igVertexBlendMatrixListAttr.cpp	800ACEBC	800AD0A8	-
 Meta/igVertexBlendMatrixAttrList.cpp	800AD19C	800AD2FC	-
+Meta/igVertexBlendMatrixAttr.cpp	800AD2FC	800AD488	-
 Meta/igVectorConstantAttr.cpp	800AD5B0	800AD708	-
 Meta/igVectorConstantAttr_2.cpp	800AD710	800AD790	-
 Meta/igTimeAttr.cpp	800AD790	800AD7C8	-
@@ -211,6 +221,7 @@ Meta/igTextureStateAttr_2.cpp	800ADC70	800ADE3C	-
 Meta/igTextureMatrixStateAttr.cpp	800ADE3C	800AE040	-
 Meta/igTextureMatrixAttrList.cpp	800AE040	800AE1A0	-
 Meta/igTextureMatrixAttr.cpp	800AE1A0	800AE1D8	-
+Meta/igTextureMatrixAttr_2.cpp	800AE214	800AE368	-
 Meta/igTextureInfo.cpp	800AE470	800AE5A4	-
 Meta/igTextureInfo_2.cpp	800AE618	800AE75C	-
 Meta/igTextureFunctionAttr.cpp	800AE75C	800AE794	-
@@ -222,6 +233,7 @@ Meta/igTextureBindAttr_3.cpp	800AF2F4	800AF44C	-
 Meta/igTextureAttr.cpp	800AF46C	800AF4A4	-
 Meta/igImageMipMapList.cpp	800AF990	800AFAF0	-
 Meta/igTextureAddressModeAttr.cpp	800AFAF0	800AFD14	-
+Meta/igTexGenMatrixAttr.cpp	800AFD50	800AFEA4	-
 Meta/igSubTextureBindAttr.cpp	800AFF90	800B0134	-
 Meta/igStencilStateAttr.cpp	800B01F4	800B022C	-
 Meta/igStencilStateAttr_2.cpp	800B0268	800B041C	-
@@ -234,6 +246,7 @@ Meta/igRenderListAttr.cpp	800B1418	800B166C	-
 Meta/igRenderDestinationAttr.cpp	800B1700	800B1738	-
 Meta/igRefVertexBlendMatrixAttr.cpp	800B1BB8	800B1DE8	-
 Meta/igProjectionMatrixAttr.cpp	800B1DE8	800B1E20	-
+Meta/igProjectionMatrixAttr_2.cpp	800B1E5C	800B1FB0	-
 Meta/igPolygonModeAttr.cpp	800B20C0	800B2298	-
 Meta/igPointSpriteSizeAttr.cpp	800B2298	800B2460	-
 Meta/igPixelShaderBindAttr.cpp	800B2460	800B2678	-
@@ -250,8 +263,10 @@ Meta/igMorphDataList.cpp	800B3D44	800B3EA4	-
 Meta/igMorphData.cpp	800B3EA4	800B3F8C	-
 Meta/igModelViewMatrixAttrList.cpp	800B3FC8	800B4128	-
 Meta/igModelViewMatrixAttr.cpp	800B4128	800B4160	-
+Meta/igModelViewMatrixAttr_2.cpp	800B419C	800B42F8	-
 Meta/igMipMapAttr.cpp	800B4418	800B45E0	-
 Meta/igMatrixOptStateAttr.cpp	800B461C	800B47E4	-
+Meta/igMatrixConstantAttr.cpp	800B47E4	800B49C4	-
 Meta/igMaterialModeAttr.cpp	800B49C4	800B4B9C	-
 Meta/igLineWidthAttr.cpp	800B4FFC	800B51C4	-
 Meta/igLightingStateAttr.cpp	800B51C4	800B51FC	-
@@ -351,6 +366,7 @@ Meta/igScissorExt.cpp	800D0360	800D0450	-
 Meta/igGamecubeScissorExt.cpp	800D0464	800D0484	-
 Meta/igPrimLengthArray1_1.cpp	800D0484	800D05C4	-
 Meta/igPrimLengthArray.cpp	800D06A8	800D06E0	-
+Meta/igPointSpriteExt.cpp	800D0994	800D0BE4	-
 Meta/igGamecubePointSpriteExt.cpp	800D0E0C	800D0E2C	-
 Meta/igParticleArray.cpp	800D0EB8	800D1124	-
 Meta/igParticleFormat.cpp	800D132C	800D1364	-
@@ -732,6 +748,7 @@ Meta/igTransformListList.cpp	801AC174	801AC2D4	-
 Meta/igTransformList.cpp	801AC310	801AC470	-
 Meta/igTransformStack.cpp	801AC4AC	801AC60C	-
 Meta/igTransform.cpp	801AC60C	801AC644	-
+Meta/igTransform_2.cpp	801AC680	801AC968	-
 Meta/igTimeTransform1_3.cpp	801ACA90	801ACC5C	-
 Meta/igTimeTransform1_5.cpp	801ACC68	801ACD20	-
 Meta/igTimeTransform1_2.cpp	801ACD28	801ACDA4	-
@@ -843,6 +860,7 @@ Meta/igGraphPath.cpp	801BFC3C	801BFC74	-
 Meta/igGeometryList.cpp	801BFF00	801BFF38	-
 Meta/igGeometryList_2.cpp	801BFF74	801C00D4	-
 Meta/igGeometry.cpp	801C00D4	801C010C	-
+Meta/igGeometry_2.cpp	801C0148	801C0454	-
 Meta/igFrustCullTraversal.cpp	801C0584	801C05F8	-
 Meta/igFrustCullTraversal_2.cpp	801C0D64	801C0E28	-
 Meta/igEnvironmentMapShader2List.cpp	801C1008	801C1168	-
@@ -864,6 +882,7 @@ Meta/igDOFCamera.cpp	801C5B10	801C5D40	-
 Meta/igCamera.cpp	801C5E00	801C5E38	-
 Meta/igBoundingBoxesMaker.cpp	801C6B30	801C6B68	-
 Meta/igBlendMatrixSelect.cpp	801C6F04	801C6F3C	-
+Meta/igBlendMatrixSelect_2.cpp	801C6F78	801C727C	-
 Meta/igBitMask.cpp	801C730C	801C7344	-
 Meta/igBitMask_2.cpp	801C7380	801C7540	-
 Meta/igNonRefCountedAttrStackManagerList.cpp	801C7BD8	801C7D70	-
@@ -919,6 +938,7 @@ Meta/igNonRefCountedMatrixObjectList.cpp	80217DB4	80217F14	-
 Meta/igMatrixObjectList.cpp	80217F14	80217F4C	-
 Meta/igMatrixObjectList_2.cpp	80217F88	802180E8	-
 Meta/igMatrixObject.cpp	802180E8	80218120	-
+Meta/igMatrixObject_2.cpp	8021815C	80218300	-
 Meta/igIntObject.cpp	80218300	8021849C	-
 Meta/igIntHistogram.cpp	8021849C	80218670	-
 Meta/igFloatObject.cpp	802186E8	80218884	-
@@ -1492,6 +1512,12 @@ Meta/igStatisticsItemList.cpp	8040337C	8040354C	lmw,nosdata
 Meta/igViewerSceneInfoManager.cpp	80403C48	80403D28	nosdata
 Meta/igViewerRenderer.cpp	804053B4	8040550C	nosdata
 Meta/igViewerGuiFactory.cpp	80406228	80406344	nosdata
+Meta/igPickMode.cpp	80406AD8	80406E24	nosdata
+Meta/igRotateMode.cpp	80407000	804071B0	nosdata
+Meta/igFlyMode.cpp	8040737C	80407578	nosdata
+Meta/igCameraMode.cpp	80407720	80407960	nosdata
+Meta/igViewMode.cpp	80407A18	80407BD0	nosdata
+Meta/igViewManager.cpp	80407C50	80407ECC	nosdata
 Meta/igNormalsRenderer.cpp	804083CC	804084F4	nosdata
 Meta/igBoundingBoxRenderer.cpp	80408C90	80408DB8	nosdata
 Meta/igActorManager.cpp	804091B0	804092E0	nosdata

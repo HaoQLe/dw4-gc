@@ -61,12 +61,5 @@ void *fn_8002BED0(){
  if(!igMemoryPool_meta) igMemoryPool_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igMemoryPool_meta;
 }
-void *igMemoryPool_getMeta(){
- if(!igMemoryPool_meta || !(reinterpret_cast<unsigned int *>(igMemoryPool_meta)[0x24/4]&4)) igMemoryPool_arkRegister();
- return igMemoryPool_meta;
-}
-void igMemoryPool_arkRegister(){
- meta_registerNow((int)igMemoryPool_register);
-}
 }
 #pragma pop

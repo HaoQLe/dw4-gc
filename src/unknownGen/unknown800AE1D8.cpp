@@ -101,9 +101,5 @@ void *fn_800AE1D8(){
  if(!igTextureMatrixAttr_meta) igTextureMatrixAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igTextureMatrixAttr_meta;
 }
-void *igTextureMatrixAttr_getMeta(){
- if(!igTextureMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igTextureMatrixAttr_meta)[0x24/4]&4)) igTextureMatrixAttr_arkRegister();
- return igTextureMatrixAttr_meta;
-}
 }
 #pragma pop

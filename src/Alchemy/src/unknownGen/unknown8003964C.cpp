@@ -27,8 +27,5 @@ void *fn_8003964C(){
  UnknownGenObject8003964C object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igArenaMemoryPool_arkRegister(){
- meta_registerNow((int)igArenaMemoryPool_register);
-}
 }
 #pragma pop

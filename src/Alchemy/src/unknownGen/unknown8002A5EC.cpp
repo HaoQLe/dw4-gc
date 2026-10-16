@@ -56,12 +56,5 @@ void *fn_8002A638(){
  if(!igMetaField_meta) igMetaField_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igMetaField_meta;
 }
-void *igMetaField_getMeta(){
- if(!igMetaField_meta || !(reinterpret_cast<unsigned int *>(igMetaField_meta)[0x24/4]&4)) igMetaField_arkRegister();
- return igMetaField_meta;
-}
-void igMetaField_arkRegister(){
- meta_registerNow((int)igMetaField_register);
-}
 }
 #pragma pop

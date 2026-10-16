@@ -38,9 +38,5 @@ void *fn_800D0958(){
  if(!igPointSpriteExt_meta) igPointSpriteExt_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igPointSpriteExt_meta;
 }
-void *igPointSpriteExt_getMeta(){
- if(!igPointSpriteExt_meta || !(reinterpret_cast<unsigned int *>(igPointSpriteExt_meta)[0x24/4]&4)) igPointSpriteExt_arkRegister();
- return igPointSpriteExt_meta;
-}
 }
 #pragma pop

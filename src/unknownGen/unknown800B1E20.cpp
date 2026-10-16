@@ -53,9 +53,5 @@ void *fn_800B1E20(){
  if(!igProjectionMatrixAttr_meta) igProjectionMatrixAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igProjectionMatrixAttr_meta;
 }
-void *igProjectionMatrixAttr_getMeta(){
- if(!igProjectionMatrixAttr_meta || !(reinterpret_cast<unsigned int *>(igProjectionMatrixAttr_meta)[0x24/4]&4)) igProjectionMatrixAttr_arkRegister();
- return igProjectionMatrixAttr_meta;
-}
 }
 #pragma pop

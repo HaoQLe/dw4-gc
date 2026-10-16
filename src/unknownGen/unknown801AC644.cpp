@@ -102,9 +102,5 @@ void *fn_801AC644(){
  if(!igTransform_meta) igTransform_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igTransform_meta;
 }
-void *igTransform_getMeta(){
- if(!igTransform_meta || !(reinterpret_cast<unsigned int *>(igTransform_meta)[0x24/4]&4)) igTransform_arkRegister();
- return igTransform_meta;
-}
 }
 #pragma pop

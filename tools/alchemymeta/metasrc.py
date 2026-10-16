@@ -279,9 +279,11 @@ def tr_vtableread_pod(c,text,structs,refs,layouts):
         raise Untranslatable('pod line '+l)
     return 'void *%s_vtableRead()\n{\n%s\n}'%(c,'\n'.join(out))
 
-def tr_fieldinit(c,text,classes,layouts,refs,headers):
+def tr_fieldinit(c,text,classes,layouts,refs,headers,fn_name=None):
+    """fn_name: the function's name when it is not C_fieldInit (a separate function replacing inherited fields)."""
+    fn_name=fn_name or c+'_fieldInit'
     body=text.split('\n')
-    if body[0]!='void %s_fieldInit(){'%c: raise Untranslatable('fieldInit head')
+    if body[0]!='void %s(){'%fn_name: raise Untranslatable('fieldInit head')
     fields=classes[c].get('fields') or []
     var={};out=[];vtype={}
     def V(x):
@@ -435,7 +437,7 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers):
             if m2 and sum(len(re.findall(r'\b%s\b'%mm[1],l)) for l in out)==2:
                 folded.append('    %s->%s = %s;'%(m2[1],m2[2],mm[2]));i+=2;continue
         folded.append(out[i]);i+=1
-    return 'void %s_fieldInit()\n{\n%s\n}'%(c,'\n'.join(folded))
+    return 'void %s()\n{\n%s\n}'%(fn_name,'\n'.join(folded))
 
 # ---------------------------------------------------------------- per-class file
 
@@ -450,7 +452,7 @@ def class_file(c,block,fnsrc,structs_by_fn,decls_by_fn,classes,layouts,data,tags
             if any('UnknownGenRoot' in k for k in st):
                 d,f=tr_vtableread(c,text,st,layouts,refs);defs+=d;bodies.append(f)
             else: bodies.append(tr_vtableread_pod(c,text,st,refs,layouts))
-        elif role=='fieldInit': bodies.append(tr_fieldinit(c,text,classes,layouts,refs,headers))
+        elif role=='fieldInit': bodies.append(tr_fieldinit(c,text,classes,layouts,refs,headers,name))
         else: raise Untranslatable(role)
     own={n for a,s,n,r in block}
     declared=set();uses=set([c])

@@ -219,10 +219,12 @@ def lift_vtableread(c,insns,size,sizes=None):
     fn='void *%s_vtableRead(){\n %s object;\n%s\n}'%(c,name,'\n'.join(lines))
     return fn,{name:'\n'.join(s)}
 
-# Returned types of the field-replacement helpers (see lift_fieldinit).
+# Returned types and argument counts of the field-replacement helpers (see lift_fieldinit): the registers
+# written before a call do not always tell its arguments.
 RETURNS={'fn_80053998':'int'}
+ARITY={'fn_800658F8':2,'fn_80053998':2,'fn_8006588C':3}
 
-def lift_fieldinit(c,insns,pool=None):
+def lift_fieldinit(c,insns,pool=None,name=None):
     """pool: {(base symbol, offset): name} for tables addressed from a pool (see poolsrc.py)."""
     calls,stores,frame=run(collapse_releases(insns))
     pool=pool or {}
@@ -238,6 +240,7 @@ def lift_fieldinit(c,insns,pool=None):
         if v[0]=='a' and (v[1],v[2]) in pool: return pool[(v[1],v[2])]
         if v[0]=='m' and v[2]==0 and v[1].endswith('_meta'): return v[1]     # a class's metaobject
         if v[0]=='a' and v[2]==0: return v[1]
+        if v[0]=='f' and (v[1],v[2]) in pool: return '*reinterpret_cast<float *>(%s)'%pool[(v[1],v[2])]
         if v[0]=='f' : return '*reinterpret_cast<float *>((%s+%d))'%(v[1],v[2])
         if v[0]=='ld' and (v[1] in names or v[1]==meta):
             return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(expr(v[1]),v[2])
@@ -296,9 +299,14 @@ def lift_fieldinit(c,insns,pool=None):
             else:
                 new(ret,' void *%%s=reinterpret_cast<igMetaFieldVirtuals *>(%s)->virtual%s(%s);'%(expr(args[0]),t[4:],','.join(a)))
         else:
-            # A class's metaObject or getMeta, or a call setting up a field (the field and its value).
-            if f1 is not None: raise Unliftable('float argument')
+            # A class's metaObject or getMeta, or a call setting up a field (the field and its value, or a float
+            # value in f1).
             hi=max([ARGS.index(r) for r in wr if r in ARGS],default=-1)
+            if t in ARITY: hi=ARITY[t]-1
+            if f1 is not None:
+                if hi>0 or used(k) or f1[0]!='f': raise Unliftable('float argument')
+                out.append(' %s(%s,%s);'%(t,expr(args[0]),expr(f1)));decls.append('void %s(void *, float);'%t)
+                continue
             if hi<0:
                 nxt=calls[k+1] if k+1<len(calls) else None
                 once=nxt and sum(1 for x in nxt[1] if x==ret)==1 and ret not in nxt[1][:1] and not any(
@@ -328,7 +336,7 @@ def lift_fieldinit(c,insns,pool=None):
                     a.append(expr(v));types.append('int' if v[0]=='c' else vtypes.get(v,'void *'))
             out.append(' %s(%s);'%(t,','.join(a)));decls.append('void %s(%s);'%(t,', '.join(types)))
     flush(len(stores))
-    return 'void %s_fieldInit(){\n%s\n}'%(c,'\n'.join(out)),decls
+    return 'void %s(){\n%s\n}'%(name or c+'_fieldInit','\n'.join(out)),decls
 
 VTOF=re.compile(r'lwzx (r\d+), r\d+, r\d+$')
 RELEASE='internalRelease__Q33Gap4Core21igStringPoolContainerFPCQ33Gap4Core16igStringPoolItem'

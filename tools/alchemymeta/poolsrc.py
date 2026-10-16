@@ -116,7 +116,8 @@ def data_source(objs,relocs,defined):
             for o in range(0,size,4):
                 if o in rs:
                     t,add=rs[o];refs.add(t)
-                    items.append('(void *)%s'%t if not add else '(void *)((char *)%s + %d)'%(t,add))
+                    x=('&'+t) if t.endswith('_meta') else t    # a metaobject pointer variable: its address
+                    items.append('(void *)%s'%x if not add else '(void *)((char *)%s + %d)'%(x,add))
                 else:
                     w=int.from_bytes(b[o:o+4],'big')
                     items.append('0' if not w else '(void *)0x%X'%w)
@@ -206,7 +207,12 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
             if r[2] not in seen:
                 seen.add(r[2]);pieces.append(('unit',r[0],r[2],r[3],Path('src',r[2]).read_text()))
             continue
-        if not n.endswith('_fieldInit') or pool_base(fns[n])!=p: raise Skip('original assembly in range: '+n)
+        if not n.endswith('_fieldInit') or pool_base(fns[n])!=p:
+            # a separate function replacing a class's inherited fields (field setup without tables)
+            m=re.match(r'lwz r3, (\w+)_meta@sda21\(r0\)$',fns[n][5] if len(fns[n])>5 else '')
+            if m and any(x=='bl fn_800658F8' for x in fns[n]) and not any('meta_appendFields' in x for x in fns[n]):
+                pieces.append(('lift',a,n,{'eh'} if a in eti_fns else set(),m[1]));continue
+            raise Skip('original assembly in range: '+n)
         c=n[:-len('_fieldInit')]
         tables,cnt=pooled_tables(c,n,p,fns)
         for k,off in tables.items():
@@ -227,13 +233,19 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
     defined={nm for nm,a,s,k in dp}
     defs,refs=data_source([(nm,a,s) for nm,a,s,k in dp],relocs,defined)
     funcset={n for a,s,n in funcs}
-    ext=['void %s();'%r if r in funcset else 'extern char %s[];'%r for r in sorted(refs)]
+    def ext_decl(r):
+        if r in funcset: return 'void %s();'%r
+        # declared as the units declare it, so small objects keep their small-data addressing
+        if r.endswith('_meta'): return 'extern Meta::igMetaObject *%s;'%r
+        z=data.get(r,(None,None,0))[2]
+        return 'extern char %s[%d];'%(r,z) if z else 'extern char %s[];'%r
+    ext=[ext_decl(r) for r in sorted(refs)]
     # lifted pieces' source
     texts=[]
     for pc in pieces:
         if pc[0]=='unit': texts.append((pc[1],pc[3],pc[4],re.sub(r'\W','_',Path(pc[2]).stem)));continue
         _,a,n,tags,c=pc
-        text,decls=asmlift.lift_fieldinit(c,fns[n],pool)
+        text,decls=asmlift.lift_fieldinit(c,fns[n],pool,name=n)
         block=[(a,dict((x[2],x[1]) for x in funcs)[n],n,'fieldInit')]
         variants=[]
         for extra in ((),('speed',),('lmw',),('speed','lmw')):
@@ -242,23 +254,26 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
         texts.append((a,None,variants,n))
     names=[n for a,s,n in inrange]
     expect=sum(1 for f,x in eti if lo<=f<hi)
-    # each lifted piece's speed/lmw is tried on its own, the others kept at their first setting
-    choice=[0 if x[1] is None else None for x in texts]
+    # A lifted piece's speed/lmw setting is unknown: when its function differs, its next setting is tried.
+    piece_of={}
+    for i,pc in enumerate(pieces):
+        if pc[0]=='lift': piece_of[pc[2]]=i
     err=None
+    global DEFINED
+    DEFINED=defined
     for mod_nosdata in (False,True):
-        for attempt in range(1+4*sum(1 for c in choice if c is not None)):
-            if attempt:
-                k=(attempt-1)//4;idx=[i for i,c in enumerate(choice) if c is not None][k]
-                choice[idx]=(attempt-1)%4
-            global DEFINED
-            DEFINED=defined
+        choice=[0 if x[1] is None else None for x in texts]
+        while True:
             unit,flags=module_text(texts,choice,defined,ext,defs,mod_nosdata)
             err=check_module(unit,flags,names,base,dhi,relocs,expect)
             if not err:
                 return dict(pool=p,unit=unit,flags=flags,new=new,pieces=dp,data=(base,dhi),text=(lo,hi),
                             units=[x[2] for x in pieces if x[0]=='unit'],err=None,cls=None,
                             name=module_name(pieces,classes))
-            if err.startswith('code differs') and attempt==0 and not any(c is not None for c in choice): break
+            m=re.match(r'code differs (\w+)',err)
+            i=piece_of.get(m[1]) if m else None
+            if i is None or choice[i]>=3: break
+            choice[i]+=1
     return dict(pool=p,err=err,unit=unit)
 
 def module_name(pieces,classes):

@@ -62,10 +62,13 @@ Alchemy/src/Meta/igUnsignedShortMetaField.cpp:
 	.text       start:0x80021F30 end:0x80021F6C
 
 Alchemy/src/unknownGen/unknown80021F6C.cpp:
-	.text       start:0x80021F6C end:0x8002201C
+	.text       start:0x80021F6C end:0x80021FF4
 
-Alchemy/src/unknownGen/unknown80022084.cpp:
-	.text       start:0x80022084 end:0x8002216C
+Alchemy/src/Meta/igUnsignedShortMetaField_2.cpp:
+	.text       start:0x80021FF4 end:0x800220A4
+
+Alchemy/src/unknownGen/unknown800220A4.cpp:
+	.text       start:0x800220A4 end:0x8002216C
 
 Alchemy/src/Meta/igUnsignedShortArrayMetaField.cpp:
 	.text       start:0x8002216C end:0x80022334
@@ -86,10 +89,13 @@ Alchemy/src/Meta/igUnsignedLongMetaField.cpp:
 	.text       start:0x80022570 end:0x800225AC
 
 Alchemy/src/unknownGen/unknown800225AC.cpp:
-	.text       start:0x800225AC end:0x8002265C
+	.text       start:0x800225AC end:0x80022634
 
-Alchemy/src/unknownGen/unknown800226C4.cpp:
-	.text       start:0x800226C4 end:0x800227AC
+Alchemy/src/Meta/igUnsignedLongMetaField_2.cpp:
+	.text       start:0x80022634 end:0x800226E4
+
+Alchemy/src/unknownGen/unknown800226E4.cpp:
+	.text       start:0x800226E4 end:0x800227AC
 
 Alchemy/src/Meta/igUnsignedLongArrayMetaField.cpp:
 	.text       start:0x800227AC end:0x80022974
@@ -110,10 +116,13 @@ Alchemy/src/Meta/igUnsignedIntMetaField.cpp:
 	.text       start:0x80022BEC end:0x80022C28
 
 Alchemy/src/unknownGen/unknown80022C28.cpp:
-	.text       start:0x80022C28 end:0x80022CD8
+	.text       start:0x80022C28 end:0x80022CB0
 
-Alchemy/src/unknownGen/unknown80022D40.cpp:
-	.text       start:0x80022D40 end:0x80022E28
+Alchemy/src/Meta/igUnsignedIntMetaField_2.cpp:
+	.text       start:0x80022CB0 end:0x80022D60
+
+Alchemy/src/unknownGen/unknown80022D60.cpp:
+	.text       start:0x80022D60 end:0x80022E28
 
 Alchemy/src/Meta/igUnsignedIntArrayMetaField.cpp:
 	.text       start:0x80022E28 end:0x80022FF0
@@ -236,10 +245,13 @@ Alchemy/src/Meta/igStringMetaField.cpp:
 	.text       start:0x8002530C end:0x80025348
 
 Alchemy/src/unknownGen/unknown80025348.cpp:
-	.text       start:0x80025348 end:0x80025404
+	.text       start:0x80025348 end:0x800253DC
 
-Alchemy/src/unknownGen/unknown80025474.cpp:
-	.text       start:0x80025474 end:0x8002549C
+Alchemy/src/Meta/igStringMetaField_2.cpp:
+	.text       start:0x800253DC end:0x80025494
+
+Alchemy/src/unknownGen/unknown80025494.cpp:
+	.text       start:0x80025494 end:0x8002549C
 
 Alchemy/src/unknownGen/unknown80025628.cpp:
 	.text       start:0x80025628 end:0x800256F0
@@ -263,10 +275,13 @@ Alchemy/src/Meta/igShortMetaField.cpp:
 	.text       start:0x80025AC8 end:0x80025B04
 
 Alchemy/src/unknownGen/unknown80025B04.cpp:
-	.text       start:0x80025B04 end:0x80025BB4
+	.text       start:0x80025B04 end:0x80025B8C
 
-Alchemy/src/unknownGen/unknown80025C1C.cpp:
-	.text       start:0x80025C1C end:0x80025D04
+Alchemy/src/Meta/igShortMetaField_2.cpp:
+	.text       start:0x80025B8C end:0x80025C3C
+
+Alchemy/src/unknownGen/unknown80025C3C.cpp:
+	.text       start:0x80025C3C end:0x80025D04
 
 Alchemy/src/Meta/igShortArrayMetaField.cpp:
 	.text       start:0x80025D04 end:0x80025ECC
@@ -322,20 +337,23 @@ Alchemy/src/Meta/igRegistryValueList.cpp:
 Alchemy/src/unknownGen/unknown80027040.cpp:
 	.text       start:0x80027040 end:0x80027238
 
-Alchemy/src/unknownGen/unknown800272FC.cpp:
-	.text       start:0x800272FC end:0x80027360
+Alchemy/src/Meta/igRefMetaField.cpp:
+	.text       start:0x800272FC end:0x80027454
 
-Alchemy/src/unknownGen/unknown800273CC.cpp:
-	.text       start:0x800273CC end:0x800274EC
+Alchemy/src/unknownGen/unknown80027454.cpp:
+	.text       start:0x80027454 end:0x800274EC
 
 Alchemy/src/Meta/igRawRefMetaField.cpp:
 	.text       start:0x8002760C end:0x80027648
 
 Alchemy/src/unknownGen/unknown80027648.cpp:
-	.text       start:0x80027648 end:0x80027704
+	.text       start:0x80027648 end:0x800276DC
 
-Alchemy/src/unknownGen/unknown8002776C.cpp:
-	.text       start:0x8002776C end:0x80027854
+Alchemy/src/Meta/igRawRefMetaField_2.cpp:
+	.text       start:0x800276DC end:0x8002778C
+
+Alchemy/src/unknownGen/unknown8002778C.cpp:
+	.text       start:0x8002778C end:0x80027854
 
 Alchemy/src/Meta/igRawRefArrayMetaField.cpp:
 	.text       start:0x80027854 end:0x800279F0
@@ -353,7 +371,10 @@ Alchemy/src/Meta/igQueue.cpp:
 	.text       start:0x80027B0C end:0x80027B44
 
 Alchemy/src/unknownGen/unknown80027B44.cpp:
-	.text       start:0x80027B44 end:0x80027C70
+	.text       start:0x80027B44 end:0x80027B80
+
+Alchemy/src/Meta/igQueue_2.cpp:
+	.text       start:0x80027B80 end:0x80027D08
 
 Alchemy/src/Meta/igStandardQueue.cpp:
 	.text       start:0x80027D08 end:0x80027D28
@@ -496,8 +517,8 @@ Alchemy/src/unknownGen/unknown8002B4C0.cpp:
 Alchemy/src/Meta/igMemoryPoolInfoList.cpp:
 	.text       start:0x8002B594 end:0x8002B6F4
 
-Alchemy/src/unknownGen/unknown8002B6F4.cpp:
-	.text       start:0x8002B6F4 end:0x8002B768
+Alchemy/src/Meta/igMemoryPoolInfo.cpp:
+	.text       start:0x8002B6F4 end:0x8002B80C
 
 Alchemy/src/unknownGen/unknown8002BAF8.cpp:
 	.text       start:0x8002BAF8 end:0x8002BBB0
@@ -587,10 +608,13 @@ Alchemy/src/Meta/__internalObjectList.cpp:
 	.text       start:0x8002DCA8 end:0x8002DCE4
 
 Alchemy/src/unknownGen/unknown8002DCE4.cpp:
-	.text       start:0x8002DCE4 end:0x8002DD40
+	.text       start:0x8002DCE4 end:0x8002DD18
 
-Alchemy/src/unknownGen/unknown8002DDAC.cpp:
-	.text       start:0x8002DDAC end:0x8002DDD4
+Alchemy/src/Meta/__internalObjectList_2.cpp:
+	.text       start:0x8002DD18 end:0x8002DDCC
+
+Alchemy/src/unknownGen/unknown8002DDCC.cpp:
+	.text       start:0x8002DDCC end:0x8002DDD4
 
 Alchemy/src/unknownGen/unknown8002DFA8.cpp:
 	.text       start:0x8002DFA8 end:0x8002DFE4
@@ -599,10 +623,10 @@ Alchemy/src/Meta/__internalNonRefCountedObjectList.cpp:
 	.text       start:0x8002DFE4 end:0x8002E020
 
 Alchemy/src/unknownGen/unknown8002E020.cpp:
-	.text       start:0x8002E020 end:0x8002E07C
+	.text       start:0x8002E020 end:0x8002E054
 
-Alchemy/src/unknownGen/unknown8002E0E8.cpp:
-	.text       start:0x8002E0E8 end:0x8002E1AC
+Alchemy/src/Meta/__internalNonRefCountedObjectList_2.cpp:
+	.text       start:0x8002E054 end:0x8002E1AC
 
 Alchemy/src/unknownGen/unknown8002E250.cpp:
 	.text       start:0x8002E250 end:0x8002E2CC
@@ -611,10 +635,13 @@ Alchemy/src/Meta/igIntMetaField.cpp:
 	.text       start:0x8002E2CC end:0x8002E308
 
 Alchemy/src/unknownGen/unknown8002E308.cpp:
-	.text       start:0x8002E308 end:0x8002E3B8
+	.text       start:0x8002E308 end:0x8002E390
 
-Alchemy/src/unknownGen/unknown8002E420.cpp:
-	.text       start:0x8002E420 end:0x8002E508
+Alchemy/src/Meta/igIntMetaField_2.cpp:
+	.text       start:0x8002E390 end:0x8002E440
+
+Alchemy/src/unknownGen/unknown8002E440.cpp:
+	.text       start:0x8002E440 end:0x8002E508
 
 Alchemy/src/Meta/igIntArrayMetaField.cpp:
 	.text       start:0x8002E508 end:0x8002E6D0
@@ -644,7 +671,10 @@ Alchemy/src/Meta/igIGBFile.cpp:
 	.text       start:0x8002EBEC end:0x8002EC24
 
 Alchemy/src/unknownGen/unknown8002EC24.cpp:
-	.text       start:0x8002EC24 end:0x8002EC9C
+	.text       start:0x8002EC24 end:0x8002EC60
+
+Alchemy/src/Meta/igIGBFile_3.cpp:
+	.text       start:0x8002EC60 end:0x8002ED7C
 
 Alchemy/src/Meta/igIGBFile_2.cpp:
 	.text       start:0x8002F178 end:0x8002F23C
@@ -653,7 +683,10 @@ Alchemy/src/unknownGen/unknown8002F23C.cpp:
 	.text       start:0x8002F23C end:0x8002F244
 
 Alchemy/src/unknownGen/unknown8002F724.cpp:
-	.text       start:0x8002F724 end:0x8002F8F8
+	.text       start:0x8002F724 end:0x8002F744
+
+Alchemy/src/Meta/igFolder.cpp:
+	.text       start:0x8002F744 end:0x8002F970
 
 Alchemy/src/Meta/igGamecubeFolder.cpp:
 	.text       start:0x8002F970 end:0x8002F990
@@ -713,10 +746,13 @@ Alchemy/src/Meta/igEnumMetaField.cpp:
 	.text       start:0x80031498 end:0x800314D4
 
 Alchemy/src/unknownGen/unknown800314D4.cpp:
-	.text       start:0x800314D4 end:0x80031584
+	.text       start:0x800314D4 end:0x8003155C
 
-Alchemy/src/unknownGen/unknown800315F4.cpp:
-	.text       start:0x800315F4 end:0x80031758
+Alchemy/src/Meta/igEnumMetaField_2.cpp:
+	.text       start:0x8003155C end:0x80031690
+
+Alchemy/src/unknownGen/unknown80031690.cpp:
+	.text       start:0x80031690 end:0x80031758
 
 Alchemy/src/Meta/igEnumArrayMetaField.cpp:
 	.text       start:0x80031758 end:0x80031920
@@ -1055,10 +1091,13 @@ Alchemy/src/Meta/igCharMetaField.cpp:
 	.text       start:0x80037C3C end:0x80037C78
 
 Alchemy/src/unknownGen/unknown80037C78.cpp:
-	.text       start:0x80037C78 end:0x80037D28
+	.text       start:0x80037C78 end:0x80037D00
 
-Alchemy/src/unknownGen/unknown80037D90.cpp:
-	.text       start:0x80037D90 end:0x80037E78
+Alchemy/src/Meta/igCharMetaField_2.cpp:
+	.text       start:0x80037D00 end:0x80037DB0
+
+Alchemy/src/unknownGen/unknown80037DB0.cpp:
+	.text       start:0x80037DB0 end:0x80037E78
 
 Alchemy/src/Meta/igCharArrayMetaField.cpp:
 	.text       start:0x80037E78 end:0x80038040
@@ -1091,10 +1130,13 @@ Alchemy/src/Meta/igBoolMetaField.cpp:
 	.text       start:0x8003873C end:0x80038778
 
 Alchemy/src/unknownGen/unknown80038778.cpp:
-	.text       start:0x80038778 end:0x80038828
+	.text       start:0x80038778 end:0x80038800
 
-Alchemy/src/unknownGen/unknown80038890.cpp:
-	.text       start:0x80038890 end:0x80038978
+Alchemy/src/Meta/igBoolMetaField_2.cpp:
+	.text       start:0x80038800 end:0x800388B0
+
+Alchemy/src/unknownGen/unknown800388B0.cpp:
+	.text       start:0x800388B0 end:0x80038978
 
 Alchemy/src/Meta/igBoolArrayMetaField.cpp:
 	.text       start:0x80038978 end:0x80038B40
@@ -1112,10 +1154,13 @@ Alchemy/src/Meta/igAliasMemoryPool.cpp:
 	.text       start:0x80038D84 end:0x80038DC0
 
 Alchemy/src/unknownGen/unknown80038DC0.cpp:
-	.text       start:0x80038DC0 end:0x80038EC4
+	.text       start:0x80038DC0 end:0x80038E9C
 
-Alchemy/src/unknownGen/unknown80038F38.cpp:
-	.text       start:0x80038F38 end:0x80038F60
+Alchemy/src/Meta/igAliasMemoryPool_2.cpp:
+	.text       start:0x80038E9C end:0x80038F58
+
+Alchemy/src/unknownGen/unknown80038F58.cpp:
+	.text       start:0x80038F58 end:0x80038F60
 
 Alchemy/src/unknownGen/unknown80039074.cpp:
 	.text       start:0x80039074 end:0x800390C0
@@ -1938,7 +1983,10 @@ Alchemy/src/unknownGen/unknown80066990.cpp:
 	.text       start:0x80066990 end:0x80066A60
 
 Alchemy/src/unknownGen/unknown80066AA4.cpp:
-	.text       start:0x80066AA4 end:0x80066B08
+	.text       start:0x80066AA4 end:0x80066AE0
+
+Alchemy/src/Meta/igObject.cpp:
+	.text       start:0x80066AE0 end:0x80066B74
 
 Alchemy/src/unknownGen/unknown80066B74.cpp:
 	.text       start:0x80066B74 end:0x80066B7C
@@ -3114,7 +3162,10 @@ Meta/igTimeAttr.cpp:
 	.text       start:0x800AD790 end:0x800AD7C8
 
 unknownGen/unknown800AD7C8.cpp:
-	.text       start:0x800AD7C8 end:0x800AD950
+	.text       start:0x800AD7C8 end:0x800AD804
+
+Meta/igTimeAttr_2.cpp:
+	.text       start:0x800AD804 end:0x800AD9D0
 
 unknownGen/unknown800AD9D0.cpp:
 	.text       start:0x800AD9D0 end:0x800ADA0C
@@ -4218,7 +4269,10 @@ Meta/igAudioContext.cpp:
 	.text       start:0x800C6F5C end:0x800C6F94
 
 unknownGen/unknown800C6F94.cpp:
-	.text       start:0x800C6F94 end:0x800C70C0
+	.text       start:0x800C6F94 end:0x800C6FD0
+
+Meta/igAudioContext_2.cpp:
+	.text       start:0x800C6FD0 end:0x800C714C
 
 Meta/igGamecubeAudioContext.cpp:
 	.text       start:0x800C714C end:0x800C7354
@@ -4278,7 +4332,10 @@ Meta/igGamecubeWindow.cpp:
 	.text       start:0x800CB094 end:0x800CB0B4
 
 unknownGen/unknown800CB0B4.cpp:
-	.text       start:0x800CB0B4 end:0x800CB1F4
+	.text       start:0x800CB0B4 end:0x800CB100
+
+Meta/igInterfaceManager.cpp:
+	.text       start:0x800CB100 end:0x800CB28C
 
 Meta/igDefaultInterfaceManager.cpp:
 	.text       start:0x800CB28C end:0x800CB2AC
@@ -4305,13 +4362,19 @@ unknownGen/unknown800CB840.cpp:
 	.text       start:0x800CB840 end:0x800CB848
 
 unknownGen/unknown800CB8B8.cpp:
-	.text       start:0x800CB8B8 end:0x800CB9E8
+	.text       start:0x800CB8B8 end:0x800CB8F4
+
+Meta/igControllerManager.cpp:
+	.text       start:0x800CB8F4 end:0x800CBA80
 
 Meta/igGamecubeControllerManager.cpp:
 	.text       start:0x800CBA80 end:0x800CBAA0
 
 unknownGen/unknown800CBAA0.cpp:
-	.text       start:0x800CBAA0 end:0x800CBBDC
+	.text       start:0x800CBAA0 end:0x800CBAEC
+
+Meta/igController.cpp:
+	.text       start:0x800CBAEC end:0x800CBC7C
 
 Meta/igGamecubeController.cpp:
 	.text       start:0x800CBC7C end:0x800CBC9C
@@ -4795,6 +4858,9 @@ Meta/igGamecubeImage_2.cpp:
 
 unknownGen/unknown800D89F4.cpp:
 	.text       start:0x800D89F4 end:0x800D89FC
+
+Meta/igGamecubeImage_3.cpp:
+	.text       start:0x800D89FC end:0x800D8A90
 
 unknownGen/unknown800D8CA4.cpp:
 	.text       start:0x800D8CA4 end:0x800D8CD0
@@ -7140,7 +7206,10 @@ unknownGen/unknown8014C52C.cpp:
 	.text       start:0x8014C52C end:0x8014C5EC
 
 unknownGen/unknown8014C79C.cpp:
-	.text       start:0x8014C79C end:0x8014C860
+	.text       start:0x8014C79C end:0x8014C824
+
+Meta/igDataTable.cpp:
+	.text       start:0x8014C824 end:0x8014C8E8
 
 unknownGen/unknown8014CB04.cpp:
 	.text       start:0x8014CB04 end:0x8014CBC8
@@ -8324,8 +8393,8 @@ unknownGen/unknown801AB2B4.cpp:
 Meta/igTransformSource.cpp:
 	.text       start:0x801AB2F0 end:0x801AB3D8
 
-unknownGen/unknown801AB3D8.cpp:
-	.text       start:0x801AB3D8 end:0x801AB44C
+Meta/igTransformSequence1_2.cpp:
+	.text       start:0x801AB3D8 end:0x801AB4E0
 
 unknownGen/unknown801AB4E0.cpp:
 	.text       start:0x801AB4E0 end:0x801AB6FC
@@ -8550,7 +8619,10 @@ unknownGen/unknown801B16B4.cpp:
 	.text       start:0x801B16B4 end:0x801B17A4
 
 unknownGen/unknown801B183C.cpp:
-	.text       start:0x801B183C end:0x801B18B4
+	.text       start:0x801B183C end:0x801B1878
+
+Meta/igShader.cpp:
+	.text       start:0x801B1878 end:0x801B1950
 
 unknownGen/unknown801B1B64.cpp:
 	.text       start:0x801B1B64 end:0x801B1C24
@@ -8621,8 +8693,8 @@ unknownGen/unknown801B2DDC.cpp:
 Meta/igTraversalFunctionList_2.cpp:
 	.text       start:0x801B2E18 end:0x801B2F5C
 
-unknownGen/unknown801B2F5C.cpp:
-	.text       start:0x801B2F5C end:0x801B2F98
+Meta/igSelfShadowShader.cpp:
+	.text       start:0x801B2F5C end:0x801B3080
 
 unknownGen/unknown801B3624.cpp:
 	.text       start:0x801B3624 end:0x801B3758
@@ -8685,7 +8757,10 @@ unknownGen/unknown801B55F4.cpp:
 	.text       start:0x801B55F4 end:0x801B56B4
 
 unknownGen/unknown801B5CFC.cpp:
-	.text       start:0x801B5CFC end:0x801B5D74
+	.text       start:0x801B5CFC end:0x801B5D38
+
+Meta/igPlanarShadowShader_2.cpp:
+	.text       start:0x801B5D38 end:0x801B5E34
 
 Meta/igPlanarShadowShader.cpp:
 	.text       start:0x801B617C end:0x801B623C
@@ -8736,7 +8811,10 @@ unknownGen/unknown801B74F0.cpp:
 	.text       start:0x801B74F0 end:0x801B773C
 
 unknownGen/unknown801B7824.cpp:
-	.text       start:0x801B7824 end:0x801B789C
+	.text       start:0x801B7824 end:0x801B7860
+
+Meta/igMultiTextureShader_2.cpp:
+	.text       start:0x801B7860 end:0x801B7948
 
 unknownGen/unknown801B7948.cpp:
 	.text       start:0x801B7948 end:0x801B79DC
@@ -8774,8 +8852,8 @@ Meta/_vertexList.cpp:
 unknownGen/unknown801B84E8.cpp:
 	.text       start:0x801B84E8 end:0x801B87C4
 
-unknownGen/unknown801B8914.cpp:
-	.text       start:0x801B8914 end:0x801B8950
+Meta/igMultiResolutionMeshInstance_2.cpp:
+	.text       start:0x801B8914 end:0x801B8A0C
 
 Meta/igMultiResolutionMeshInstance.cpp:
 	.text       start:0x801B8CB0 end:0x801B8D70
@@ -8798,14 +8876,14 @@ Meta/igMorphSequenceDataList.cpp:
 unknownGen/unknown801B979C.cpp:
 	.text       start:0x801B979C end:0x801B9998
 
-unknownGen/unknown801B9A7C.cpp:
-	.text       start:0x801B9A7C end:0x801B9AB8
+Meta/igMorphInstance2.cpp:
+	.text       start:0x801B9A7C end:0x801B9B74
 
 unknownGen/unknown801B9E18.cpp:
 	.text       start:0x801B9E18 end:0x801B9ED8
 
-unknownGen/unknown801B9FB8.cpp:
-	.text       start:0x801B9FB8 end:0x801B9FF4
+Meta/igMorphInstance.cpp:
+	.text       start:0x801B9FB8 end:0x801BA0C4
 
 unknownGen/unknown801BA458.cpp:
 	.text       start:0x801BA458 end:0x801BA518
@@ -8844,7 +8922,10 @@ Meta/igLod.cpp:
 	.text       start:0x801BB08C end:0x801BB0C4
 
 unknownGen/unknown801BB0C4.cpp:
-	.text       start:0x801BB0C4 end:0x801BB13C
+	.text       start:0x801BB0C4 end:0x801BB100
+
+Meta/igLod_2.cpp:
+	.text       start:0x801BB100 end:0x801BB1D4
 
 unknownGen/unknown801BB3B8.cpp:
 	.text       start:0x801BB3B8 end:0x801BB474
@@ -8957,8 +9038,8 @@ unknownGen/unknown801BE31C.cpp:
 Meta/igInterpretedShaderData_2.cpp:
 	.text       start:0x801BE324 end:0x801BE3C4
 
-unknownGen/unknown801BE3C4.cpp:
-	.text       start:0x801BE3C4 end:0x801BE400
+Meta/igInterpretedShader_2.cpp:
+	.text       start:0x801BE3C4 end:0x801BE4B4
 
 unknownGen/unknown801BE4B4.cpp:
 	.text       start:0x801BE4B4 end:0x801BE514
@@ -8973,7 +9054,10 @@ Meta/igIniShaderManager.cpp:
 	.text       start:0x801BE6A8 end:0x801BE7E4
 
 unknownGen/unknown801BE7E4.cpp:
-	.text       start:0x801BE7E4 end:0x801BE8C0
+	.text       start:0x801BE7E4 end:0x801BE84C
+
+Meta/igIniShaderFactory_2.cpp:
+	.text       start:0x801BE84C end:0x801BE95C
 
 Meta/igIniShaderFactory.cpp:
 	.text       start:0x801BEBEC end:0x801BECAC
@@ -9123,7 +9207,10 @@ Meta/igCompiledGraph.cpp:
 	.text       start:0x801C3014 end:0x801C304C
 
 unknownGen/unknown801C304C.cpp:
-	.text       start:0x801C304C end:0x801C30C4
+	.text       start:0x801C304C end:0x801C3088
+
+Meta/igCompiledGraph_2.cpp:
+	.text       start:0x801C3088 end:0x801C3180
 
 unknownGen/unknown801C3514.cpp:
 	.text       start:0x801C3514 end:0x801C35D4
@@ -12026,19 +12113,14 @@ unknownGen/unknown802AB3B0.cpp:
 	.text       start:0x802AB3B0 end:0x802AB474
 
 unknownGen/unknown802AB598.cpp:
-	extab       start:0x80005C28 end:0x80005C50
-	extabindex  start:0x800131E8 end:0x80013224
-	.text       start:0x802AB598 end:0x802AB6B8
+	extab       start:0x80005C28 end:0x80005C38
+	extabindex  start:0x800131E8 end:0x80013200
+	.text       start:0x802AB598 end:0x802AB5D8
 
-unknownGen/unknown802AB6B8.cpp:
-	extab       start:0x80005C50 end:0x80005C58
-	extabindex  start:0x80013224 end:0x80013230
-	.text       start:0x802AB6B8 end:0x802AB744
-
-unknownGen/unknown802AB744.cpp:
-	extab       start:0x80005C58 end:0x80005C70
-	extabindex  start:0x80013230 end:0x80013254
-	.text       start:0x802AB744 end:0x802AB800
+Meta/igAdxAudio.cpp:
+	extab       start:0x80005C38 end:0x80005C78
+	extabindex  start:0x80013200 end:0x80013260
+	.text       start:0x802AB5D8 end:0x802AB8E8
 
 Meta/igMovieCodecList.cpp:
 	extab       start:0x80005C78 end:0x80005CB0
@@ -12079,9 +12161,14 @@ Meta/igTextureBindAttrList.cpp:
 	.text       start:0x802AC4C0 end:0x802AC6D0
 
 unknownGen/unknown802AC6D0.cpp:
-	extab       start:0x80005DB8 end:0x80005DD8
-	extabindex  start:0x80013440 end:0x80013470
-	.text       start:0x802AC6D0 end:0x802AC81C
+	extab       start:0x80005DB8 end:0x80005DC8
+	extabindex  start:0x80013440 end:0x80013458
+	.text       start:0x802AC6D0 end:0x802AC790
+
+Meta/igMovieInfo.cpp:
+	extab       start:0x80005DC8 end:0x80005DE0
+	extabindex  start:0x80013458 end:0x8001347C
+	.text       start:0x802AC790 end:0x802AC8B8
 
 unknownGen/unknown802ACAE4.cpp:
 	extab       start:0x80005DE8 end:0x80005E10
@@ -12447,10 +12534,10 @@ Meta/beTargetObj.cpp:
 	extabindex  start:0x80013FF8 end:0x80014058
 	.text       start:0x802B6FC0 end:0x802B73CC
 
-unknownGen/unknown802B73CC.cpp:
-	extab       start:0x80006840 end:0x80006858
-	extabindex  start:0x80014058 end:0x8001407C
-	.text       start:0x802B73CC end:0x802B74AC
+Meta/beSystem_2.cpp:
+	extab       start:0x80006840 end:0x80006860
+	extabindex  start:0x80014058 end:0x80014088
+	.text       start:0x802B73CC end:0x802B7548
 
 Meta/beSystem.cpp:
 	extab       start:0x80006868 end:0x80006888
@@ -13313,15 +13400,10 @@ Meta/beModelCtrlMOVEEX.cpp:
 	extabindex  start:0x800162CC end:0x80016314
 	.text       start:0x802CB7CC end:0x802CB9F0
 
-unknownGen/unknown802CBA3C.cpp:
-	extab       start:0x80008004 end:0x8000800C
-	extabindex  start:0x80016320 end:0x8001632C
-	.text       start:0x802CBA3C end:0x802CBAD8
-
-unknownGen/unknown802CBAD8.cpp:
-	extab       start:0x8000800C end:0x8000802C
-	extabindex  start:0x8001632C end:0x8001635C
-	.text       start:0x802CBAD8 end:0x802CBC14
+Meta/beModelCtrlMOVE.cpp:
+	extab       start:0x80007FFC end:0x8000802C
+	extabindex  start:0x80016314 end:0x8001635C
+	.text       start:0x802CB9F0 end:0x802CBC14
 
 Meta/beModelCtrlMSGBOX.cpp:
 	extab       start:0x8000802C end:0x80008054
@@ -13626,10 +13708,10 @@ Meta/beLayerCtl.cpp:
 	extabindex  start:0x80017190 end:0x800171F0
 	.text       start:0x802D399C end:0x802D3D38
 
-unknownGen/unknown802D3D38.cpp:
-	extab       start:0x800089E4 end:0x800089EC
-	extabindex  start:0x800171F0 end:0x800171FC
-	.text       start:0x802D3D38 end:0x802D3D84
+Meta/beLOA.cpp:
+	extab       start:0x800089E4 end:0x800089F4
+	extabindex  start:0x800171F0 end:0x80017208
+	.text       start:0x802D3D38 end:0x802D3E28
 
 unknownGen/unknown802D403C.cpp:
 	extab       start:0x800089FC end:0x80008A14
@@ -13794,10 +13876,10 @@ Meta/beGeneraterDataList.cpp:
 	extabindex  start:0x8001776C end:0x800177B4
 	.text       start:0x802D72E4 end:0x802D74B4
 
-unknownGen/unknown802D74B4.cpp:
-	extab       start:0x80008DF4 end:0x80008DFC
-	extabindex  start:0x800177B4 end:0x800177C0
-	.text       start:0x802D74B4 end:0x802D7500
+Meta/beGeneraterData_2.cpp:
+	extab       start:0x80008DF4 end:0x80008E04
+	extabindex  start:0x800177B4 end:0x800177CC
+	.text       start:0x802D74B4 end:0x802D7588
 
 Meta/beGeneraterData.cpp:
 	extab       start:0x80008E0C end:0x80008E2C
@@ -13878,9 +13960,14 @@ unknownGen/unknown802D98C8.cpp:
 	.text       start:0x802D98C8 end:0x802D98D8
 
 unknownGen/unknown802D98D8.cpp:
-	extab       start:0x800090B4 end:0x800090E4
-	extabindex  start:0x80017BD4 end:0x80017C1C
-	.text       start:0x802D98D8 end:0x802D9AD8
+	extab       start:0x800090B4 end:0x800090CC
+	extabindex  start:0x80017BD4 end:0x80017BF8
+	.text       start:0x802D98D8 end:0x802D99F8
+
+Meta/beFont_2.cpp:
+	extab       start:0x800090CC end:0x800090EC
+	extabindex  start:0x80017BF8 end:0x80017C28
+	.text       start:0x802D99F8 end:0x802D9B84
 
 Meta/beFont.cpp:
 	extab       start:0x800090F4 end:0x80009114
@@ -14404,20 +14491,25 @@ Meta/ParticleArray_2.cpp:
 	extabindex  start:0x8001953C end:0x80019548
 	.text       start:0x802E7B4C end:0x802E7CAC
 
-unknownGen/unknown802E7CAC.cpp:
-	extab       start:0x8000A1F4 end:0x8000A204
-	extabindex  start:0x80019548 end:0x80019560
-	.text       start:0x802E7CAC end:0x802E7D4C
+Meta/ParticleTimer.cpp:
+	extab       start:0x8000A1F4 end:0x8000A20C
+	extabindex  start:0x80019548 end:0x8001956C
+	.text       start:0x802E7CAC end:0x802E7DFC
 
-unknownGen/unknown802E7FDC.cpp:
-	extab       start:0x8000A214 end:0x8000A22C
-	extabindex  start:0x80019578 end:0x8001959C
-	.text       start:0x802E7FDC end:0x802E80A0
+Meta/ParticleTimer_2.cpp:
+	extab       start:0x8000A214 end:0x8000A234
+	extabindex  start:0x80019578 end:0x800195A8
+	.text       start:0x802E7FDC end:0x802E8184
 
 unknownGen/unknown802E8184.cpp:
-	extab       start:0x8000A234 end:0x8000A264
-	extabindex  start:0x800195A8 end:0x800195F0
-	.text       start:0x802E8184 end:0x802E8370
+	extab       start:0x8000A234 end:0x8000A25C
+	extabindex  start:0x800195A8 end:0x800195E4
+	.text       start:0x802E8184 end:0x802E8324
+
+Meta/ParticleInfo_3.cpp:
+	extab       start:0x8000A25C end:0x8000A26C
+	extabindex  start:0x800195E4 end:0x800195FC
+	.text       start:0x802E8324 end:0x802E8410
 
 Meta/ParticleInfo.cpp:
 	extab       start:0x8000A274 end:0x8000A28C
@@ -15795,10 +15887,10 @@ Meta/beNDMWWindowTitle.cpp:
 unknownGen/unknown803287A8.cpp:
 	.text       start:0x803287A8 end:0x803287B8
 
-unknownGen/unknown803287B8.cpp:
-	extab       start:0x8000C4C8 end:0x8000C4D8
-	extabindex  start:0x8001B810 end:0x8001B828
-	.text       start:0x803287B8 end:0x80328844
+Meta/beNDMWShopSelectB0_2.cpp:
+	extab       start:0x8000C4C8 end:0x8000C4E0
+	extabindex  start:0x8001B810 end:0x8001B834
+	.text       start:0x803287B8 end:0x803288E0
 
 unknownGen/unknown803288E0.cpp:
 	extab       start:0x8000C4E0 end:0x8000C4E8
@@ -15813,10 +15905,10 @@ Meta/beNDMWShopSelectB0.cpp:
 unknownGen/unknown80328C10.cpp:
 	.text       start:0x80328C10 end:0x80328C20
 
-unknownGen/unknown80328C20.cpp:
-	extab       start:0x8000C508 end:0x8000C518
-	extabindex  start:0x8001B870 end:0x8001B888
-	.text       start:0x80328C20 end:0x80328CAC
+Meta/beNDMWShopSelectA0_2.cpp:
+	extab       start:0x8000C508 end:0x8000C520
+	extabindex  start:0x8001B870 end:0x8001B894
+	.text       start:0x80328C20 end:0x80328D48
 
 unknownGen/unknown80328D48.cpp:
 	extab       start:0x8000C520 end:0x8000C528
@@ -15828,10 +15920,10 @@ Meta/beNDMWShopSelectA0.cpp:
 	extabindex  start:0x8001B8A0 end:0x8001B8C4
 	.text       start:0x80328DA8 end:0x80328E5C
 
-unknownGen/unknown80328E5C.cpp:
-	extab       start:0x8000C540 end:0x8000C550
-	extabindex  start:0x8001B8C4 end:0x8001B8DC
-	.text       start:0x80328E5C end:0x80328EE8
+Meta/beNDMWShopSelect52_2.cpp:
+	extab       start:0x8000C540 end:0x8000C558
+	extabindex  start:0x8001B8C4 end:0x8001B8E8
+	.text       start:0x80328E5C end:0x80328F84
 
 unknownGen/unknown80328F84.cpp:
 	extab       start:0x8000C558 end:0x8000C560
@@ -15843,10 +15935,10 @@ Meta/beNDMWShopSelect52.cpp:
 	extabindex  start:0x8001B8F4 end:0x8001B918
 	.text       start:0x80328FE4 end:0x80329098
 
-unknownGen/unknown80329098.cpp:
-	extab       start:0x8000C578 end:0x8000C588
-	extabindex  start:0x8001B918 end:0x8001B930
-	.text       start:0x80329098 end:0x80329124
+Meta/beNDMWShopSelect34_2.cpp:
+	extab       start:0x8000C578 end:0x8000C590
+	extabindex  start:0x8001B918 end:0x8001B93C
+	.text       start:0x80329098 end:0x803291C0
 
 unknownGen/unknown803291C0.cpp:
 	extab       start:0x8000C590 end:0x8000C598
@@ -15858,10 +15950,10 @@ Meta/beNDMWShopSelect34.cpp:
 	extabindex  start:0x8001B948 end:0x8001B96C
 	.text       start:0x80329220 end:0x803292D4
 
-unknownGen/unknown803292D4.cpp:
-	extab       start:0x8000C5B0 end:0x8000C5C0
-	extabindex  start:0x8001B96C end:0x8001B984
-	.text       start:0x803292D4 end:0x80329360
+Meta/beNDMWShopSelect11_2.cpp:
+	extab       start:0x8000C5B0 end:0x8000C5C8
+	extabindex  start:0x8001B96C end:0x8001B990
+	.text       start:0x803292D4 end:0x803293FC
 
 unknownGen/unknown803293FC.cpp:
 	extab       start:0x8000C5C8 end:0x8000C5D0
@@ -15873,10 +15965,10 @@ Meta/beNDMWShopSelect11.cpp:
 	extabindex  start:0x8001B99C end:0x8001B9C0
 	.text       start:0x8032945C end:0x80329510
 
-unknownGen/unknown80329510.cpp:
-	extab       start:0x8000C5E8 end:0x8000C5F8
-	extabindex  start:0x8001B9C0 end:0x8001B9D8
-	.text       start:0x80329510 end:0x8032959C
+Meta/beNDMWShopSelect03_2.cpp:
+	extab       start:0x8000C5E8 end:0x8000C600
+	extabindex  start:0x8001B9C0 end:0x8001B9E4
+	.text       start:0x80329510 end:0x80329638
 
 unknownGen/unknown80329638.cpp:
 	extab       start:0x8000C600 end:0x8000C608
@@ -15888,10 +15980,10 @@ Meta/beNDMWShopSelect03.cpp:
 	extabindex  start:0x8001B9F0 end:0x8001BA14
 	.text       start:0x80329698 end:0x8032974C
 
-unknownGen/unknown8032974C.cpp:
-	extab       start:0x8000C620 end:0x8000C630
-	extabindex  start:0x8001BA14 end:0x8001BA2C
-	.text       start:0x8032974C end:0x803297D8
+Meta/beNDMWShopSelect02_2.cpp:
+	extab       start:0x8000C620 end:0x8000C638
+	extabindex  start:0x8001BA14 end:0x8001BA38
+	.text       start:0x8032974C end:0x80329878
 
 unknownGen/unknown80329878.cpp:
 	extab       start:0x8000C638 end:0x8000C640
@@ -15903,10 +15995,10 @@ Meta/beNDMWShopSelect02.cpp:
 	extabindex  start:0x8001BA44 end:0x8001BA74
 	.text       start:0x8032990C end:0x80329A78
 
-unknownGen/unknown80329A78.cpp:
-	extab       start:0x8000C660 end:0x8000C670
-	extabindex  start:0x8001BA74 end:0x8001BA8C
-	.text       start:0x80329A78 end:0x80329B04
+Meta/beNDMWShopSelect01_2.cpp:
+	extab       start:0x8000C660 end:0x8000C678
+	extabindex  start:0x8001BA74 end:0x8001BA98
+	.text       start:0x80329A78 end:0x80329BA0
 
 unknownGen/unknown80329BA0.cpp:
 	extab       start:0x8000C678 end:0x8000C680
@@ -15918,20 +16010,20 @@ Meta/beNDMWShopSelect01.cpp:
 	extabindex  start:0x8001BAA4 end:0x8001BAC8
 	.text       start:0x80329C00 end:0x80329CB4
 
-unknownGen/unknown80329CB4.cpp:
-	extab       start:0x8000C698 end:0x8000C6A8
-	extabindex  start:0x8001BAC8 end:0x8001BAE0
-	.text       start:0x80329CB4 end:0x80329D40
+Meta/beNDMWShopSelect00_2.cpp:
+	extab       start:0x8000C698 end:0x8000C6B0
+	extabindex  start:0x8001BAC8 end:0x8001BAEC
+	.text       start:0x80329CB4 end:0x80329DE0
 
 Meta/beNDMWShopSelect00.cpp:
 	extab       start:0x8000C6B8 end:0x8000C6D8
 	extabindex  start:0x8001BAF8 end:0x8001BB28
 	.text       start:0x80329E74 end:0x80329FC4
 
-unknownGen/unknown80329FC4.cpp:
-	extab       start:0x8000C6D8 end:0x8000C6E8
-	extabindex  start:0x8001BB28 end:0x8001BB40
-	.text       start:0x80329FC4 end:0x8032A050
+Meta/beNDMWStatusSelectE1_2.cpp:
+	extab       start:0x8000C6D8 end:0x8000C6F0
+	extabindex  start:0x8001BB28 end:0x8001BB4C
+	.text       start:0x80329FC4 end:0x8032A0EC
 
 unknownGen/unknown8032A0EC.cpp:
 	extab       start:0x8000C6F0 end:0x8000C6F8
@@ -15943,10 +16035,10 @@ Meta/beNDMWStatusSelectE1.cpp:
 	extabindex  start:0x8001BB58 end:0x8001BB7C
 	.text       start:0x8032A14C end:0x8032A200
 
-unknownGen/unknown8032A200.cpp:
-	extab       start:0x8000C710 end:0x8000C720
-	extabindex  start:0x8001BB7C end:0x8001BB94
-	.text       start:0x8032A200 end:0x8032A28C
+Meta/beNDMWStatusSelectE0_2.cpp:
+	extab       start:0x8000C710 end:0x8000C728
+	extabindex  start:0x8001BB7C end:0x8001BBA0
+	.text       start:0x8032A200 end:0x8032A328
 
 unknownGen/unknown8032A328.cpp:
 	extab       start:0x8000C728 end:0x8000C730
@@ -15958,10 +16050,10 @@ Meta/beNDMWStatusSelectE0.cpp:
 	extabindex  start:0x8001BBAC end:0x8001BBD0
 	.text       start:0x8032A388 end:0x8032A43C
 
-unknownGen/unknown8032A43C.cpp:
-	extab       start:0x8000C748 end:0x8000C758
-	extabindex  start:0x8001BBD0 end:0x8001BBE8
-	.text       start:0x8032A43C end:0x8032A4C8
+Meta/beNDMWStatusSelect01_2.cpp:
+	extab       start:0x8000C748 end:0x8000C760
+	extabindex  start:0x8001BBD0 end:0x8001BBF4
+	.text       start:0x8032A43C end:0x8032A564
 
 unknownGen/unknown8032A564.cpp:
 	extab       start:0x8000C760 end:0x8000C768
@@ -15973,10 +16065,10 @@ Meta/beNDMWStatusSelect01.cpp:
 	extabindex  start:0x8001BC00 end:0x8001BC24
 	.text       start:0x8032A5C4 end:0x8032A678
 
-unknownGen/unknown8032A678.cpp:
-	extab       start:0x8000C780 end:0x8000C790
-	extabindex  start:0x8001BC24 end:0x8001BC3C
-	.text       start:0x8032A678 end:0x8032A704
+Meta/beNDMWStatusSelect00_2.cpp:
+	extab       start:0x8000C780 end:0x8000C798
+	extabindex  start:0x8001BC24 end:0x8001BC48
+	.text       start:0x8032A678 end:0x8032A7A0
 
 unknownGen/unknown8032A7A0.cpp:
 	extab       start:0x8000C798 end:0x8000C7A0
@@ -16028,10 +16120,10 @@ Meta/beNDMWStatusInfoWork_2.cpp:
 	extabindex  start:0x8001BD80 end:0x8001BDB0
 	.text       start:0x8032B2B4 end:0x8032B4C0
 
-unknownGen/unknown8032B4C0.cpp:
-	extab       start:0x8000C888 end:0x8000C898
-	extabindex  start:0x8001BDB0 end:0x8001BDC8
-	.text       start:0x8032B4C0 end:0x8032B54C
+Meta/beNDMWShopJunk_3.cpp:
+	extab       start:0x8000C888 end:0x8000C8A0
+	extabindex  start:0x8001BDB0 end:0x8001BDD4
+	.text       start:0x8032B4C0 end:0x8032B5E4
 
 unknownGen/unknown8032B5E4.cpp:
 	extab       start:0x8000C8A0 end:0x8000C8A8
@@ -16051,10 +16143,10 @@ Meta/beNDMWShopJunk_2.cpp:
 	extabindex  start:0x8001BE04 end:0x8001BE10
 	.text       start:0x8032B8B4 end:0x8032B954
 
-unknownGen/unknown8032B954.cpp:
-	extab       start:0x8000C8C8 end:0x8000C8D8
-	extabindex  start:0x8001BE10 end:0x8001BE28
-	.text       start:0x8032B954 end:0x8032B9E0
+Meta/beNDMWShopDevice_3.cpp:
+	extab       start:0x8000C8C8 end:0x8000C8E0
+	extabindex  start:0x8001BE10 end:0x8001BE34
+	.text       start:0x8032B954 end:0x8032BA84
 
 unknownGen/unknown8032BA84.cpp:
 	extab       start:0x8000C8E0 end:0x8000C8E8
@@ -16074,10 +16166,10 @@ Meta/beNDMWShopDevice_2.cpp:
 	extabindex  start:0x8001BE64 end:0x8001BE70
 	.text       start:0x8032BD64 end:0x8032BE04
 
-unknownGen/unknown8032BE04.cpp:
-	extab       start:0x8000C908 end:0x8000C918
-	extabindex  start:0x8001BE70 end:0x8001BE88
-	.text       start:0x8032BE04 end:0x8032BE90
+Meta/beNDMWShopCtrlXdataChip_2.cpp:
+	extab       start:0x8000C908 end:0x8000C920
+	extabindex  start:0x8001BE70 end:0x8001BE94
+	.text       start:0x8032BE04 end:0x8032BF34
 
 unknownGen/unknown8032BF34.cpp:
 	extab       start:0x8000C920 end:0x8000C928
@@ -16089,10 +16181,10 @@ Meta/beNDMWShopCtrlXdataChip.cpp:
 	extabindex  start:0x8001BEA0 end:0x8001BED0
 	.text       start:0x8032C140 end:0x8032C2AC
 
-unknownGen/unknown8032C2AC.cpp:
-	extab       start:0x8000C948 end:0x8000C958
-	extabindex  start:0x8001BED0 end:0x8001BEE8
-	.text       start:0x8032C2AC end:0x8032C338
+Meta/beNDMWShopCtrlSales_2.cpp:
+	extab       start:0x8000C948 end:0x8000C960
+	extabindex  start:0x8001BED0 end:0x8001BEF4
+	.text       start:0x8032C2AC end:0x8032C3E0
 
 unknownGen/unknown8032C3E0.cpp:
 	extab       start:0x8000C960 end:0x8000C968
@@ -16104,10 +16196,10 @@ Meta/beNDMWShopCtrlSales.cpp:
 	extabindex  start:0x8001BF00 end:0x8001BF30
 	.text       start:0x8032C61C end:0x8032C7A0
 
-unknownGen/unknown8032C7A0.cpp:
-	extab       start:0x8000C988 end:0x8000C998
-	extabindex  start:0x8001BF30 end:0x8001BF48
-	.text       start:0x8032C7A0 end:0x8032C82C
+Meta/beNDMWShopCtrlDiskSell_2.cpp:
+	extab       start:0x8000C988 end:0x8000C9A0
+	extabindex  start:0x8001BF30 end:0x8001BF54
+	.text       start:0x8032C7A0 end:0x8032C8C4
 
 unknownGen/unknown8032C8C4.cpp:
 	extab       start:0x8000C9A0 end:0x8000C9A8
@@ -16119,10 +16211,10 @@ Meta/beNDMWShopCtrlDiskSell.cpp:
 	extabindex  start:0x8001BF60 end:0x8001BF90
 	.text       start:0x8032CAC0 end:0x8032CC2C
 
-unknownGen/unknown8032CC2C.cpp:
-	extab       start:0x8000C9C8 end:0x8000C9D8
-	extabindex  start:0x8001BF90 end:0x8001BFA8
-	.text       start:0x8032CC2C end:0x8032CCB8
+Meta/beNDMWShopCtrlDeviceSell_2.cpp:
+	extab       start:0x8000C9C8 end:0x8000C9E0
+	extabindex  start:0x8001BF90 end:0x8001BFB4
+	.text       start:0x8032CC2C end:0x8032CD5C
 
 unknownGen/unknown8032CD5C.cpp:
 	extab       start:0x8000C9E0 end:0x8000C9E8
@@ -16144,10 +16236,10 @@ Meta/beNDMWShopCtrlEditBit.cpp:
 	extabindex  start:0x8001C038 end:0x8001C08C
 	.text       start:0x8032D414 end:0x8032D7DC
 
-unknownGen/unknown8032D7DC.cpp:
-	extab       start:0x8000CA70 end:0x8000CA80
-	extabindex  start:0x8001C08C end:0x8001C0A4
-	.text       start:0x8032D7DC end:0x8032D868
+Meta/beNDMWShopCtrlDigilabo_2.cpp:
+	extab       start:0x8000CA70 end:0x8000CA88
+	extabindex  start:0x8001C08C end:0x8001C0B0
+	.text       start:0x8032D7DC end:0x8032D908
 
 unknownGen/unknown8032D908.cpp:
 	extab       start:0x8000CA88 end:0x8000CA90
@@ -16164,10 +16256,10 @@ Meta/beNDMWShopCtrlA2.cpp:
 	extabindex  start:0x8001C0EC end:0x8001C134
 	.text       start:0x8032DD10 end:0x8032E050
 
-unknownGen/unknown8032E050.cpp:
-	extab       start:0x8000CAE0 end:0x8000CAF0
-	extabindex  start:0x8001C134 end:0x8001C14C
-	.text       start:0x8032E050 end:0x8032E0DC
+Meta/beNDMWShopCtrlA1_2.cpp:
+	extab       start:0x8000CAE0 end:0x8000CAF8
+	extabindex  start:0x8001C134 end:0x8001C158
+	.text       start:0x8032E050 end:0x8032E178
 
 unknownGen/unknown8032E178.cpp:
 	extab       start:0x8000CAF8 end:0x8000CB00
@@ -16179,10 +16271,10 @@ Meta/beNDMWShopCtrlA1.cpp:
 	extabindex  start:0x8001C164 end:0x8001C194
 	.text       start:0x8032E3A4 end:0x8032E530
 
-unknownGen/unknown8032E530.cpp:
-	extab       start:0x8000CB20 end:0x8000CB30
-	extabindex  start:0x8001C194 end:0x8001C1AC
-	.text       start:0x8032E530 end:0x8032E5BC
+Meta/beNDMWShopCtrlA0_2.cpp:
+	extab       start:0x8000CB20 end:0x8000CB38
+	extabindex  start:0x8001C194 end:0x8001C1B8
+	.text       start:0x8032E530 end:0x8032E658
 
 unknownGen/unknown8032E658.cpp:
 	extab       start:0x8000CB38 end:0x8000CB40
@@ -16214,10 +16306,10 @@ Meta/beNDMWShopCtrl30.cpp:
 	extabindex  start:0x8001C2A8 end:0x8001C2FC
 	.text       start:0x8032F20C end:0x8032F5D4
 
-unknownGen/unknown8032F5D4.cpp:
-	extab       start:0x8000CC10 end:0x8000CC20
-	extabindex  start:0x8001C2FC end:0x8001C314
-	.text       start:0x8032F5D4 end:0x8032F660
+Meta/beNDMWShopCtrlEvolve_2.cpp:
+	extab       start:0x8000CC10 end:0x8000CC28
+	extabindex  start:0x8001C2FC end:0x8001C320
+	.text       start:0x8032F5D4 end:0x8032F704
 
 unknownGen/unknown8032F704.cpp:
 	extab       start:0x8000CC28 end:0x8000CC30
@@ -16239,10 +16331,10 @@ Meta/beNDMWShopCtrl00.cpp:
 	extabindex  start:0x8001C3B0 end:0x8001C3F8
 	.text       start:0x8032FE44 end:0x80330184
 
-unknownGen/unknown80330184.cpp:
-	extab       start:0x8000CCB8 end:0x8000CCC8
-	extabindex  start:0x8001C3F8 end:0x8001C410
-	.text       start:0x80330184 end:0x80330210
+Meta/beNDMWStatusSubMenu_2.cpp:
+	extab       start:0x8000CCB8 end:0x8000CCD0
+	extabindex  start:0x8001C3F8 end:0x8001C41C
+	.text       start:0x80330184 end:0x803302B0
 
 unknownGen/unknown803302B0.cpp:
 	extab       start:0x8000CCD0 end:0x8000CCD8
@@ -16259,10 +16351,10 @@ Meta/beNDMWStatusSubMenu.cpp:
 	extabindex  start:0x8001C434 end:0x8001C464
 	.text       start:0x80330580 end:0x80330724
 
-unknownGen/unknown80330724.cpp:
-	extab       start:0x8000CD00 end:0x8000CD10
-	extabindex  start:0x8001C464 end:0x8001C47C
-	.text       start:0x80330724 end:0x803307B0
+Meta/beNDMWStatusCtrlSkill_2.cpp:
+	extab       start:0x8000CD00 end:0x8000CD18
+	extabindex  start:0x8001C464 end:0x8001C488
+	.text       start:0x80330724 end:0x80330858
 
 unknownGen/unknown80330858.cpp:
 	extab       start:0x8000CD18 end:0x8000CD20
@@ -16274,10 +16366,10 @@ Meta/beNDMWStatusCtrlSkill.cpp:
 	extabindex  start:0x8001C494 end:0x8001C4C4
 	.text       start:0x80330A94 end:0x80330C20
 
-unknownGen/unknown80330C20.cpp:
-	extab       start:0x8000CD40 end:0x8000CD50
-	extabindex  start:0x8001C4C4 end:0x8001C4DC
-	.text       start:0x80330C20 end:0x80330CAC
+Meta/beNDMWStatusCtrlSendBit_2.cpp:
+	extab       start:0x8000CD40 end:0x8000CD58
+	extabindex  start:0x8001C4C4 end:0x8001C4E8
+	.text       start:0x80330C20 end:0x80330D44
 
 unknownGen/unknown80330D44.cpp:
 	extab       start:0x8000CD58 end:0x8000CD60
@@ -16289,10 +16381,10 @@ Meta/beNDMWStatusCtrlSendBit.cpp:
 	extabindex  start:0x8001C4F4 end:0x8001C524
 	.text       start:0x80330F40 end:0x803310A4
 
-unknownGen/unknown803310A4.cpp:
-	extab       start:0x8000CD80 end:0x8000CD90
-	extabindex  start:0x8001C524 end:0x8001C53C
-	.text       start:0x803310A4 end:0x80331130
+Meta/beNDMWStatusCtrlBit_2.cpp:
+	extab       start:0x8000CD80 end:0x8000CD98
+	extabindex  start:0x8001C524 end:0x8001C548
+	.text       start:0x803310A4 end:0x803311C8
 
 unknownGen/unknown803311C8.cpp:
 	extab       start:0x8000CD98 end:0x8000CDA0
@@ -16304,10 +16396,10 @@ Meta/beNDMWStatusCtrlBit.cpp:
 	extabindex  start:0x8001C554 end:0x8001C584
 	.text       start:0x803313C4 end:0x80331530
 
-unknownGen/unknown80331530.cpp:
-	extab       start:0x8000CDC0 end:0x8000CDD0
-	extabindex  start:0x8001C584 end:0x8001C59C
-	.text       start:0x80331530 end:0x803315BC
+Meta/beNDMWStatusCtrlDisk_2.cpp:
+	extab       start:0x8000CDC0 end:0x8000CDD8
+	extabindex  start:0x8001C584 end:0x8001C5A8
+	.text       start:0x80331530 end:0x8033165C
 
 unknownGen/unknown8033165C.cpp:
 	extab       start:0x8000CDD8 end:0x8000CDE0
@@ -16324,10 +16416,10 @@ Meta/beNDMWStatusCtrlDisk.cpp:
 	extabindex  start:0x8001C5C0 end:0x8001C5F0
 	.text       start:0x8033192C end:0x80331AD0
 
-unknownGen/unknown80331AD0.cpp:
-	extab       start:0x8000CE08 end:0x8000CE18
-	extabindex  start:0x8001C5F0 end:0x8001C608
-	.text       start:0x80331AD0 end:0x80331B5C
+Meta/beNDMWStatusCtrlFlag_2.cpp:
+	extab       start:0x8000CE08 end:0x8000CE20
+	extabindex  start:0x8001C5F0 end:0x8001C614
+	.text       start:0x80331AD0 end:0x80331BF4
 
 unknownGen/unknown80331BF4.cpp:
 	extab       start:0x8000CE20 end:0x8000CE28
@@ -16344,10 +16436,10 @@ Meta/beNDMWStatusCtrlFolder.cpp:
 	extabindex  start:0x8001C650 end:0x8001C6A4
 	.text       start:0x80331F5C end:0x80332324
 
-unknownGen/unknown80332324.cpp:
-	extab       start:0x8000CE80 end:0x8000CE90
-	extabindex  start:0x8001C6A4 end:0x8001C6BC
-	.text       start:0x80332324 end:0x803323B0
+Meta/beNDMWStatusSubSlot_2.cpp:
+	extab       start:0x8000CE80 end:0x8000CE98
+	extabindex  start:0x8001C6A4 end:0x8001C6C8
+	.text       start:0x80332324 end:0x8033246C
 
 unknownGen/unknown8033246C.cpp:
 	extab       start:0x8000CE98 end:0x8000CEA0
@@ -16372,10 +16464,10 @@ Meta/beNDMWStatusSubSlot.cpp:
 unknownGen/unknown80332910.cpp:
 	.text       start:0x80332910 end:0x80332920
 
-unknownGen/unknown80332920.cpp:
-	extab       start:0x8000CEC8 end:0x8000CED8
-	extabindex  start:0x8001C710 end:0x8001C728
-	.text       start:0x80332920 end:0x803329AC
+Meta/beNDMWStatusMainSlot_2.cpp:
+	extab       start:0x8000CEC8 end:0x8000CEE0
+	extabindex  start:0x8001C710 end:0x8001C734
+	.text       start:0x80332920 end:0x80332A68
 
 unknownGen/unknown80332A68.cpp:
 	extab       start:0x8000CEE0 end:0x8000CEE8
@@ -16387,10 +16479,10 @@ Meta/beNDMWStatusMainSlot.cpp:
 	extabindex  start:0x8001C740 end:0x8001C764
 	.text       start:0x80332AC8 end:0x80332B7C
 
-unknownGen/unknown80332B7C.cpp:
-	extab       start:0x8000CF00 end:0x8000CF10
-	extabindex  start:0x8001C764 end:0x8001C77C
-	.text       start:0x80332B7C end:0x80332C08
+Meta/beNDMWStatusPowerSocket_2.cpp:
+	extab       start:0x8000CF00 end:0x8000CF18
+	extabindex  start:0x8001C764 end:0x8001C788
+	.text       start:0x80332B7C end:0x80332CC4
 
 unknownGen/unknown80332CC4.cpp:
 	extab       start:0x8000CF18 end:0x8000CF20
@@ -16412,10 +16504,10 @@ Meta/beNDMWStatusCtrlEquip.cpp:
 	extabindex  start:0x8001C7F4 end:0x8001C848
 	.text       start:0x80333028 end:0x803333F0
 
-unknownGen/unknown803333F0.cpp:
-	extab       start:0x8000CF98 end:0x8000CFA8
-	extabindex  start:0x8001C848 end:0x8001C860
-	.text       start:0x803333F0 end:0x8033347C
+Meta/beNDMWStatusCtrlD0_2.cpp:
+	extab       start:0x8000CF98 end:0x8000CFB0
+	extabindex  start:0x8001C848 end:0x8001C86C
+	.text       start:0x803333F0 end:0x80333524
 
 unknownGen/unknown80333524.cpp:
 	extab       start:0x8000CFB0 end:0x8000CFB8
@@ -16663,10 +16755,10 @@ Meta/beNDMWMdlPlayer2.cpp:
 	extabindex  start:0x8001D094 end:0x8001D0A0
 	.text       start:0x803386F8 end:0x803387A0
 
-unknownGen/unknown803387A0.cpp:
-	extab       start:0x8000D528 end:0x8000D538
-	extabindex  start:0x8001D0A0 end:0x8001D0B8
-	.text       start:0x803387A0 end:0x8033882C
+Meta/beNDMWMdlPlayer2InfoWork_3.cpp:
+	extab       start:0x8000D528 end:0x8000D540
+	extabindex  start:0x8001D0A0 end:0x8001D0C4
+	.text       start:0x803387A0 end:0x80338904
 
 unknownGen/unknown80338904.cpp:
 	extab       start:0x8000D540 end:0x8000D548
@@ -16687,9 +16779,14 @@ Meta/beNDMWMdlPlayer2InfoWork_2.cpp:
 	.text       start:0x80338A30 end:0x80338AB0
 
 unknownGen/unknown80338AB0.cpp:
-	extab       start:0x8000D568 end:0x8000D588
-	extabindex  start:0x8001D100 end:0x8001D130
-	.text       start:0x80338AB0 end:0x80338BF0
+	extab       start:0x8000D568 end:0x8000D570
+	extabindex  start:0x8001D100 end:0x8001D10C
+	.text       start:0x80338AB0 end:0x80338B10
+
+Meta/beNDMWMdlPlayer_3.cpp:
+	extab       start:0x8000D570 end:0x8000D590
+	extabindex  start:0x8001D10C end:0x8001D13C
+	.text       start:0x80338B10 end:0x80338C90
 
 Meta/beNDMWMdlPlayer.cpp:
 	extab       start:0x8000D598 end:0x8000D5B0
@@ -16832,10 +16929,10 @@ Meta/beNDMWMdlItemInfoWork_2.cpp:
 	extabindex  start:0x8001D49C end:0x8001D4CC
 	.text       start:0x8033AB80 end:0x8033ACF8
 
-unknownGen/unknown8033ACF8.cpp:
-	extab       start:0x8000D7F0 end:0x8000D808
-	extabindex  start:0x8001D4CC end:0x8001D4F0
-	.text       start:0x8033ACF8 end:0x8033ADD8
+Meta/beNDMWMdlEnemy_2.cpp:
+	extab       start:0x8000D7F0 end:0x8000D810
+	extabindex  start:0x8001D4CC end:0x8001D4FC
+	.text       start:0x8033ACF8 end:0x8033AE78
 
 Meta/beNDMWMdlEnemy.cpp:
 	extab       start:0x8000D818 end:0x8000D830
@@ -17315,9 +17412,14 @@ Meta/beNDMWShinkaObject.cpp:
 	.text       start:0x80343F60 end:0x803441B4
 
 unknownGen/unknown803441B4.cpp:
-	extab       start:0x8000E3A8 end:0x8000E3D0
-	extabindex  start:0x8001E660 end:0x8001E69C
-	.text       start:0x803441B4 end:0x80344354
+	extab       start:0x8000E3A8 end:0x8000E3B8
+	extabindex  start:0x8001E660 end:0x8001E678
+	.text       start:0x803441B4 end:0x80344274
+
+Meta/beNDMWGameRam_2.cpp:
+	extab       start:0x8000E3B8 end:0x8000E3D8
+	extabindex  start:0x8001E678 end:0x8001E6A8
+	.text       start:0x80344274 end:0x80344408
 
 unknownGen/unknown803446D8.cpp:
 	extab       start:0x8000E3E0 end:0x8000E3E8
@@ -18679,8 +18781,8 @@ unknownGen/unknown80404EC0.cpp:
 unknownGen/unknown80405134.cpp:
 	.text       start:0x80405134 end:0x804052EC
 
-unknownGen/unknown804053B4.cpp:
-	.text       start:0x804053B4 end:0x80405454
+Meta/igViewerRenderer.cpp:
+	.text       start:0x804053B4 end:0x8040550C
 
 unknownGen/unknown8040550C.cpp:
 	.text       start:0x8040550C end:0x80405938
@@ -18748,8 +18850,8 @@ unknownGen/unknown80407FB4.cpp:
 unknownGen/unknown80408110.cpp:
 	.text       start:0x80408110 end:0x804081CC
 
-unknownGen/unknown804083CC.cpp:
-	.text       start:0x804083CC end:0x8040846C
+Meta/igNormalsRenderer.cpp:
+	.text       start:0x804083CC end:0x804084F4
 
 unknownGen/unknown804084F4.cpp:
 	.text       start:0x804084F4 end:0x804086E0
@@ -18760,8 +18862,8 @@ unknownGen/unknown804086E0.cpp:
 unknownGen/unknown804088FC.cpp:
 	.text       start:0x804088FC end:0x80408BB0
 
-unknownGen/unknown80408C90.cpp:
-	.text       start:0x80408C90 end:0x80408D30
+Meta/igBoundingBoxRenderer.cpp:
+	.text       start:0x80408C90 end:0x80408DB8
 
 unknownGen/unknown80408DB8.cpp:
 	.text       start:0x80408DB8 end:0x80408FA4
@@ -18769,8 +18871,8 @@ unknownGen/unknown80408DB8.cpp:
 unknownGen/unknown80408FA4.cpp:
 	.text       start:0x80408FA4 end:0x80409068
 
-unknownGen/unknown804091B0.cpp:
-	.text       start:0x804091B0 end:0x8040923C
+Meta/igActorManager.cpp:
+	.text       start:0x804091B0 end:0x804092E0
 
 unknownGen/unknown8040956C.cpp:
 	.text       start:0x8040956C end:0x80409630

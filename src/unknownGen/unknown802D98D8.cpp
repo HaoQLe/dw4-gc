@@ -35,17 +35,5 @@ void *fn_802D9998(){
  if(!lbl_80535354) lbl_80535354=fn_800635C8(lbl_8041CD10,lbl_804D2080,lbl_804D20A4,0x9);
  return lbl_80535354;
 }
-void *beFont_create(void *object){
- beFont_arkRegister();
- return meta_createInstance(beFont_meta,object);
-}
-void *beFont_metaObject(){
- if(!beFont_meta) beFont_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
- return beFont_meta;
-}
-void *beFont_getMeta(){
- if(!beFont_meta || !(reinterpret_cast<unsigned int *>(beFont_meta)[0x24/4]&4)) beFont_arkRegister();
- return beFont_meta;
-}
 }
 #pragma pop

@@ -119,9 +119,5 @@ void *fn_8002EC24(){
  if(!igIGBFile_meta) igIGBFile_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igIGBFile_meta;
 }
-void *igIGBFile_getMeta(){
- if(!igIGBFile_meta || !(reinterpret_cast<unsigned int *>(igIGBFile_meta)[0x24/4]&4)) igIGBFile_arkRegister();
- return igIGBFile_meta;
-}
 }
 #pragma pop

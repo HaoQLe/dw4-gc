@@ -59,25 +59,5 @@ void *fn_800AD7C8(){
  if(!igTimeAttr_meta) igTimeAttr_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igTimeAttr_meta;
 }
-void *igTimeAttr_getMeta(){
- if(!igTimeAttr_meta || !(reinterpret_cast<unsigned int *>(igTimeAttr_meta)[0x24/4]&4)) igTimeAttr_arkRegister();
- return igTimeAttr_meta;
-}
-void *igTimeAttr_vtableRead(){
- UnknownGenObject800AD840_0 object;
- igObject_construct(&object);
- object.unknown00=lbl_8047D578;
- object.unknown00=lbl_8047E50C;
- object.unknown00=igTimeAttr_vtable;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igTimeAttr_arkRegister(){
- meta_registerNow((int)igTimeAttr_register);
-}
-void igTimeAttr_register(){
- fn_800ABC8C();
- meta_registerClass(0,(int)&igTimeAttr_meta,(int)igVisualAttribute_register,(int)fn_800AC294,(int)igTimeAttr_getMetaCall,(int)igTimeAttr_className,24,(int)igTimeAttr_vtableRead,(int)igTimeAttr_fieldInit,0,0);
-}
-void *igTimeAttr_getMetaCall(){return igTimeAttr_getMeta();}
 }
 #pragma pop

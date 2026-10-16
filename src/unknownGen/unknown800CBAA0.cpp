@@ -30,17 +30,5 @@ void *fn_800CBAA0(){
  }
  return lbl_80562C10;
 }
-void *igController_getMeta(){
- if(!igController_meta || !(reinterpret_cast<unsigned int *>(igController_meta)[0x24/4]&4)) igController_arkRegister();
- return igController_meta;
-}
-void igController_arkRegister(){
- meta_registerNow((int)igController_register);
-}
-void igController_register(){
- fn_800CAEE0();
- meta_registerClass(1,(int)&igController_meta,(int)igEventProducer_register,(int)fn_800CB078,(int)igController_getMetaCall,(int)igController_className,16,0,(int)igController_fieldInit,0,0);
-}
-void *igController_getMetaCall(){return igController_getMeta();}
 }
 #pragma pop

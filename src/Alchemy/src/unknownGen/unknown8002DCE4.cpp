@@ -21,8 +21,5 @@ void *fn_8002DCE4(){
  fn_80053CF4(&object);
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void __internalObjectList_arkRegister(){
- meta_registerNow((int)__internalObjectList_register);
-}
 }
 #pragma pop

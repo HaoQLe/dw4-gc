@@ -17,8 +17,5 @@ void *fn_80066AAC(){
  igObject_construct(&object);
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igObject_arkRegister(){
- meta_registerNow((int)igObject_register);
-}
 }
 #pragma pop

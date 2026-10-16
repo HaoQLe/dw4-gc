@@ -33,8 +33,5 @@ void *fn_80025348(){
  UnknownGenObject80025348 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igStringMetaField_arkRegister(){
- meta_registerNow((int)igStringMetaField_register);
-}
 }
 #pragma pop

@@ -29,8 +29,5 @@ void *fn_800314D4(){
  UnknownGenObject800314D4 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igEnumMetaField_arkRegister(){
- meta_registerNow((int)igEnumMetaField_register);
-}
 }
 #pragma pop

@@ -78,17 +78,5 @@ void *fn_80027B44(){
  if(!igQueue_meta) igQueue_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igQueue_meta;
 }
-void *igQueue_getMeta(){
- if(!igQueue_meta || !(reinterpret_cast<unsigned int *>(igQueue_meta)[0x24/4]&4)) igQueue_arkRegister();
- return igQueue_meta;
-}
-void igQueue_arkRegister(){
- meta_registerNow((int)igQueue_register);
-}
-void igQueue_register(){
- fn_80021B94();
- meta_registerClass(1,(int)&igQueue_meta,(int)igObject_register,(int)fn_800237D0,(int)igQueue_getMetaCall,(int)lbl_8055D1A8,12,0,(int)igQueue_fieldInit,0,(int)igQueue_dependencies);
-}
-void *igQueue_getMetaCall(){return igQueue_getMeta();}
 }
 #pragma pop

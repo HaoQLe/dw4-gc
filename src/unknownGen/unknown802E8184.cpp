@@ -41,9 +41,5 @@ void *fn_802E82C4(){
  if(!lbl_80535884) lbl_80535884=fn_800635C8(lbl_804213CC,lbl_804D3330,lbl_804D3344,0x5);
  return lbl_80535884;
 }
-void *ParticleInfo_getMeta(){
- if(!ParticleInfo_meta || !(reinterpret_cast<unsigned int *>(ParticleInfo_meta)[0x24/4]&4)) ParticleInfo_arkRegister();
- return ParticleInfo_meta;
-}
 }
 #pragma pop

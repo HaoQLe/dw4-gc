@@ -32,8 +32,5 @@ void *fn_800225AC(){
  UnknownGenObject800225AC object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igUnsignedLongMetaField_arkRegister(){
- meta_registerNow((int)igUnsignedLongMetaField_register);
-}
 }
 #pragma pop

@@ -21,9 +21,5 @@ void *fn_8014C7E8(){
  if(!igDataTable_meta) igDataTable_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igDataTable_meta;
 }
-void *igDataTable_getMeta(){
- if(!igDataTable_meta || !(reinterpret_cast<unsigned int *>(igDataTable_meta)[0x24/4]&4)) igDataTable_arkRegister();
- return igDataTable_meta;
-}
 }
 #pragma pop

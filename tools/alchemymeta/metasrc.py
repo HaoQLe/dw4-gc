@@ -21,7 +21,7 @@ from pathlib import Path
 HERE=Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE));sys.path.insert(0,str(HERE.parent/'unknowngen'));sys.path.insert(0,str(HERE.parent))
 from paths import CONFIG
-import compiler,dol,elf,hwdiff
+import asmlift,compiler,dol,elf,hwdiff
 
 ROLES=('create','metaObject','getMeta','vtableRead','arkRegister','register','getMetaCall','fieldInit')
 
@@ -95,7 +95,7 @@ def tr_simple(c,role,text):
     return '%s(%s)'%(macro,c)
 
 def tr_register(c,text,refs,forced):
-    m=re.fullmatch(r'void %s_register\(\)\{\n (\w+)\(\);\n meta_registerClass\((.*)\);\n\}'%c,text)
+    m=re.fullmatch(r'void %s_register\(\)\{\n(?: (\w+)\(\);\n)? meta_registerClass\((.*)\);\n\}'%c,text)
     if not m: raise Untranslatable('register')
     pre,args=m[1],[a.strip() for a in m[2].split(',')]
     if len(args)!=11: raise Untranslatable('register args')
@@ -114,11 +114,11 @@ def tr_register(c,text,refs,forced):
     if meta!=c+'_meta': raise Untranslatable('register meta '+meta)
     vals=[args[0],'&'+meta,ptr(args[2],'void %s();'),ptr(args[3],'void *%s();'),ptr(args[4],'Meta::igMetaObject *%s();'),ptr(args[5],''),
           '0x%X'%int(args[6]),ptr(args[7],'void *%s();'),ptr(args[8],'void %s();'),ptr(args[9],'void %s();'),ptr(args[10],'DATA')]
-    refs.add(pre)
-    body=('void %s_register()\n{\n    %s();\n    meta_registerClass(%s, %s, %s,\n'
+    if pre: refs.add(pre)
+    body=('void %s_register()\n{\n%s    meta_registerClass(%s, %s, %s,\n'
           '                       %s, %s,\n'
           '                       %s, %s,\n'
-          '                       %s, %s, %s, %s);\n}')%((c,pre)+tuple(vals))
+          '                       %s, %s, %s, %s);\n}')%((c,'    %s();\n'%pre if pre else '')+tuple(vals))
     return body
 
 def member_name(cls,off,layouts):
@@ -388,7 +388,7 @@ def class_file(c,block,fnsrc,structs_by_fn,decls_by_fn,classes,layouts,data,tags
                 if re.search(r'\b%s\b'%re.escape(r),l) and (l.startswith('extern ') or re.match(r'[\w\s\*]+\b%s\('%re.escape(r),l)): d=l;break
             if d: break
         if not d:
-            if r in data: d='extern char %s[];'%r
+            if r in data: d='extern char %s[%d];'%(r,data[r][2]) if data[r][2] else 'extern char %s[];'%r
             else: raise Untranslatable('no declaration for '+r)
         other.append(d)
     head=['// %s: Alchemy class registration (0x%08X..0x%08X). Written by tools/alchemymeta/metasrc.py.'%(c,block[0][0],block[-1][0]+block[-1][1]),
@@ -420,6 +420,9 @@ def class_file(c,block,fnsrc,structs_by_fn,decls_by_fn,classes,layouts,data,tags
 
 ORIG=None
 DEBUG=False
+LIFT=False
+# The identified Alchemy core range (tools/unknowngen/cycle.sh emits its units under Alchemy/).
+ALCHEMY_LO,ALCHEMY_HI=0x80020400,0x800A0000
 def verify(text,flags,names,expect_eti):
     global ORIG
     d=Path(tempfile.mkdtemp());c=d/'a.cpp';c.write_text(text);o=d/'a.o'
@@ -451,6 +454,8 @@ def main():
     global ORIG,DEBUG
     apply='--apply' in sys.argv
     DEBUG='--debug' in sys.argv
+    global LIFT
+    LIFT='--lift' in sys.argv
     only=None;limit=None;jobs=8
     for i,a in enumerate(sys.argv):
         if a=='--only': only=set(sys.argv[i+1].split(','))
@@ -466,6 +471,11 @@ def main():
     def unit_of(a):
         i=bisect.bisect_right(ustart,a)-1
         return units[i] if i>=0 and units[i][1]<=a<units[i][2] else None
+    mu=[(int(r[1],16),int(r[2],16)) for r in (l.split('\t') for l in open(CONFIG/'meta_units.txt')) ] if (CONFIG/'meta_units.txt').exists() else []
+    mu.sort();mstart=[s for s,e in mu]
+    def meta_of(a):
+        i=bisect.bisect_right(mstart,a)-1
+        return i>=0 and mu[i][0]<=a<mu[i][1]
     parsed={}
     def unit_parse(u):
         if u[0] not in parsed: parsed[u[0]]=parse_unit(Path('src',u[0]).read_text())
@@ -479,14 +489,40 @@ def main():
             cur[1].append((a,size,name,role))
         else: cur=None
     fidx={a:i for i,(a,s,n) in enumerate(funcs)}
+    ORIG=hwdiff.original_objects()
+    eti=eti_entries(data);eti_fns={f for f,x in eti}
+    if LIFT: allfns=json.load(open('build/GDJEB2/analysis/reg/allfns.json'))
+    alts={}   # other store orders of lifted functions, tried at verification
+    vt_sizes={k+'_vtable':v.get('size') for k,v in classes.items() if v.get('size')}
+    def lift(c,n,role,classes):
+        insns=allfns[n]
+        if role=='register': return asmlift.lift_register(c,insns),{},[]
+        if role=='getMeta': return asmlift.lift_getmeta(c,insns),{},[]
+        if role=='vtableRead':
+            fn,st=asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0))
+            alt,_=asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0),vt_sizes)
+            if alt!=fn: alts[n]=[alt]
+            dt=re.findall(r'\n (\w+)\(&object,-1\);',fn)
+            return fn,st,['void %s(void *, int);'%d for d in dt]
+        if role=='fieldInit':
+            fn,decls=asmlift.lift_fieldinit(c,insns)
+            return fn,{},decls
+        raise asmlift.Unliftable(role)
     jobs_=[];skipped=collections.Counter()
     for c,block in blocks:
         if only and c not in only: continue
         us=[unit_of(a) for a,s,n,r in block]
-        if any(u is None for u in us): skipped['not generated']+=1;continue
-        fnsrc={};structs_by_fn={};decls_by_fn={};tags_by_fn={}
+        if any(meta_of(a) for a,s,n,r in block): skipped['converted']+=1;continue
+        if any(u is None for u in us) and not LIFT: skipped['not generated']+=1;continue
+        fnsrc={};structs_by_fn={};decls_by_fn={};tags_by_fn={};lifted=[]
         try:
             for (a,s,n,r),u in zip(block,us):
+                if u is None:
+                    fnsrc[n],structs_by_fn[n],decls_by_fn[n]=lift(c,n,r,classes)
+                    # Exceptions on where the function has an exception-index entry; speed and stmw/lmw are
+                    # tried at verification.
+                    tags_by_fn[n]={'eh'} if a in eti_fns else set()
+                    lifted.append(n);continue
                 decls,structs,fns=unit_parse(u)
                 if n not in fns: raise Untranslatable('not parsed '+n)
                 fnsrc[n]=fns[n];structs_by_fn[n]=structs;decls_by_fn[n]=decls
@@ -494,21 +530,35 @@ def main():
             text,tags=class_file(c,block,fnsrc,structs_by_fn,decls_by_fn,classes,layouts,data,tags_by_fn)
         except Untranslatable as e:
             skipped['untranslatable: '+str(e).split(' ')[0]]+=1;continue
+        except asmlift.Unliftable as e:
+            skipped['unliftable: '+str(e).split(' ')[0]]+=1;continue
         start=block[0][0];last=fidx[block[-1][0]]
         end=funcs[last+1][0] if last+1<len(funcs) else block[-1][0]+block[-1][1]
-        jobs_.append((c,block,text,tags,start,end,us))
+        jobs_.append((c,block,text,tags,start,end,us,(fnsrc,structs_by_fn,decls_by_fn,tags_by_fn,lifted)))
         if limit and len(jobs_)>=limit: break
     print('blocks',len(blocks),'candidates',len(jobs_),'skipped',dict(skipped))
-    ORIG=hwdiff.original_objects()
-    eti=eti_entries(data)
     def run(job):
-        c,block,text,tags,start,end,us=job
+        c,block,text,tags,start,end,us,src=job
         names=[n for a,s,n,r in block]
         expect=sum(1 for f,x in eti if start<=f<end)
-        err=verify(text,tags,names,expect)
         key=(c,start)
-        if not err: return key,text,tags,None
-        if 'nosdata' not in tags and not verify(text,tags|{'nosdata'},names,expect): return key,text,tags|{'nosdata'},None
+        fnsrc,structs_by_fn,decls_by_fn,tags_by_fn,lifted=src
+        # Lifted functions' speed and stmw/lmw settings are not known: each combination is tried.
+        variants=[(text,tags)]
+        if lifted:
+            variants=[]
+            texts=[fnsrc]
+            for n in lifted:
+                for a in alts.get(n,[]): texts.append(dict(fnsrc,**{n:a}))
+            for fs in texts:
+                for extra in ((),('speed',),('lmw',),('speed','lmw')):
+                    tb={n:(v|set(extra) if n in lifted else v) for n,v in tags_by_fn.items()}
+                    variants.append(class_file(c,block,fs,structs_by_fn,decls_by_fn,classes,layouts,data,tb))
+        err=None
+        for text,tags in variants:
+            err=verify(text,tags,names,expect)
+            if not err: return key,text,tags,None
+            if 'nosdata' not in tags and not verify(text,tags|{'nosdata'},names,expect): return key,text,tags|{'nosdata'},None
         return key,text,None,err
     ok=[];bad=collections.Counter();badex={}
     with ThreadPoolExecutor(jobs) as ex:
@@ -558,11 +608,13 @@ def apply_changes(jobs,results,units,funcs,data,eti):
     newunits=[];removed=set();meta_units=[]
     affected=collections.defaultdict(list)
     used_names={l.split('\t')[0].lower() for l in open(CONFIG/'meta_units.txt')} if (CONFIG/'meta_units.txt').exists() else set()
-    for c,block,text,tags,start,end,us in jobs:
+    for c,block,text,tags,start,end,us,src in jobs:
+        us=[u for u in us if u]
         for u in us: affected[u[0]].append((start,end))
         # Classes in the identified Alchemy core range (whose generated units are under Alchemy/) are engine
         # code; the others stay unclassified, as their generated units were.
-        rel=('Alchemy/src/Meta/%s.cpp' if all(u[0].startswith('Alchemy/') for u in us) else 'Meta/%s.cpp')%c
+        core=all(u[0].startswith('Alchemy/') for u in us) if us else ALCHEMY_LO<=start<ALCHEMY_HI
+        rel=('Alchemy/src/Meta/%s.cpp' if core else 'Meta/%s.cpp')%c
         # Names differing only in case get a numeric suffix (the file system may ignore case).
         k=2
         while rel.lower() in used_names: rel=re.sub(r'(_\d+)?\.cpp$','_%d.cpp'%k,rel);k+=1
@@ -620,7 +672,14 @@ def apply_changes(jobs,results,units,funcs,data,eti):
         lo,hi=ranges[name]
         for i,(st,nb) in enumerate(new):
             if lo<=st<hi and i not in placed: out.append(nb);placed.add(i)
-    assert len(placed)==len(new),'unplaced units'
+    # Units over code no unit held before (original assembly) go before the first unit after them.
+    def text_start(b):
+        m=re.search(r'\.text\s+start:0x([0-9A-F]+)',b)
+        return int(m[1],16) if m else None
+    for i,(st,nb) in enumerate(new):
+        if i in placed: continue
+        k=next((j for j,b in enumerate(out) if text_start(b) is not None and text_start(b)>st),len(out))
+        out.insert(k,nb);placed.add(i)
     sp.write_text('\n\n'.join(out)+'\n')
     print('applied: %d class files, %d generated units removed, %d remnants'%(len(meta_units),len(removed),sum(1 for u in keepunits if len(u)==5)))
 

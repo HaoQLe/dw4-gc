@@ -33,27 +33,5 @@ struct UnknownGenObject8002F7B8 : UnknownGenRoot8002F7B8 {
 };
 extern "C" {
 void *fn_8002F724(){return fn_8005068C();}
-void *igFolder_create(void *object){
- igFolder_arkRegister();
- return meta_createInstance(igFolder_meta,object);
-}
-void *igFolder_getMeta(){
- if(!igFolder_meta || !(reinterpret_cast<unsigned int *>(igFolder_meta)[0x24/4]&4)) igFolder_arkRegister();
- return igFolder_meta;
-}
-void *igFolder_vtableRead(){
- UnknownGenObject8002F7B8 object;
- object.unknown00=igFolder_vtable;
- object.unknown08.value=0;
- return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
-}
-void igFolder_arkRegister(){
- meta_registerNow((int)igFolder_register);
-}
-void igFolder_register(){
- fn_80021B94();
- meta_registerClass(0,(int)&igFolder_meta,(int)igObject_register,(int)fn_800237D0,(int)igFolder_getMetaCall,(int)igFolder_className,12,(int)igFolder_vtableRead,(int)igFolder_fieldInit,0,0);
-}
-void *igFolder_getMetaCall(){return igFolder_getMeta();}
 }
 #pragma pop

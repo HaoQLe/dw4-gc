@@ -36,13 +36,5 @@ void *fn_802AC730(){
  if(!lbl_80534410) lbl_80534410=fn_800635C8(lbl_8041BE58,lbl_804CDBBC,lbl_804CDBCC,0x4);
  return lbl_80534410;
 }
-void *igMovieInfo_create(void *object){
- igMovieInfo_arkRegister();
- return meta_createInstance(igMovieInfo_meta,object);
-}
-void *igMovieInfo_getMeta(){
- if(!igMovieInfo_meta || !(reinterpret_cast<unsigned int *>(igMovieInfo_meta)[0x24/4]&4)) igMovieInfo_arkRegister();
- return igMovieInfo_meta;
-}
 }
 #pragma pop

@@ -29,8 +29,5 @@ void *fn_80038DC0(){
  UnknownGenObject80038DC0 object;
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void igAliasMemoryPool_arkRegister(){
- meta_registerNow((int)igAliasMemoryPool_register);
-}
 }
 #pragma pop

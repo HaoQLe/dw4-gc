@@ -84,9 +84,5 @@ void *fn_801BB0C4(){
  if(!igLod_meta) igLod_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igLod_meta;
 }
-void *igLod_getMeta(){
- if(!igLod_meta || !(reinterpret_cast<unsigned int *>(igLod_meta)[0x24/4]&4)) igLod_arkRegister();
- return igLod_meta;
-}
 }
 #pragma pop

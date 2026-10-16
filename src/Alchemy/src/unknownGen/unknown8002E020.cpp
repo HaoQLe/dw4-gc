@@ -21,8 +21,5 @@ void *fn_8002E020(){
  fn_800536F8(&object);
  return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);
 }
-void __internalNonRefCountedObjectList_arkRegister(){
- meta_registerNow((int)__internalNonRefCountedObjectList_register);
-}
 }
 #pragma pop

@@ -50,17 +50,5 @@ void *fn_800CB0B4(){
  if(!lbl_80562B9C) lbl_80562B9C=fn_800635C8(data+0x72C,data+0x3E4,data+0x588,0x69);
  return lbl_80562B9C;
 }
-void *igInterfaceManager_getMeta(){
- if(!igInterfaceManager_meta || !(reinterpret_cast<unsigned int *>(igInterfaceManager_meta)[0x24/4]&4)) igInterfaceManager_arkRegister();
- return igInterfaceManager_meta;
-}
-void igInterfaceManager_arkRegister(){
- meta_registerNow((int)igInterfaceManager_register);
-}
-void igInterfaceManager_register(){
- fn_800CAEE0();
- meta_registerClass(1,(int)&igInterfaceManager_meta,(int)igObject_register,(int)fn_800237D0,(int)igInterfaceManager_getMetaCall,(int)igInterfaceManager_className,12,0,(int)igInterfaceManager_fieldInit,0,(int)igInterfaceManager_dependencies);
-}
-void *igInterfaceManager_getMetaCall(){return igInterfaceManager_getMeta();}
 }
 #pragma pop

@@ -36,13 +36,5 @@ void fn_801BE7E4(){
 }
 void *fn_801BE80C(){return fn_801F2B38();}
 void *fn_801BE82C(){return fn_801F3218();}
-void *igIniShaderFactory_create(void *object){
- igIniShaderFactory_arkRegister();
- return meta_createInstance(igIniShaderFactory_meta,object);
-}
-void *igIniShaderFactory_getMeta(){
- if(!igIniShaderFactory_meta || !(reinterpret_cast<unsigned int *>(igIniShaderFactory_meta)[0x24/4]&4)) igIniShaderFactory_arkRegister();
- return igIniShaderFactory_meta;
-}
 }
 #pragma pop

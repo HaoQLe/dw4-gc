@@ -7254,7 +7254,10 @@ Meta/igTimeTransform1_2.cpp:
 	.text       start:0x801ACD28 end:0x801ACDA4
 
 unknownGen/unknown801ACDA4.cpp:
-	.text       start:0x801ACDA4 end:0x801ACED0
+	.text       start:0x801ACDA4 end:0x801ACDE0
+
+Meta/igTimeTransform.cpp:
+	.text       start:0x801ACDE0 end:0x801ACF5C
 
 unknownGen/unknown801ACF5C.cpp:
 	.text       start:0x801ACF5C end:0x801AD294

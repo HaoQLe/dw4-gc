@@ -5,11 +5,11 @@ The [registration lift](2026-10-16-registration-lift.md) left four pool units (u
 ## Result
 
 - **Totals** (from `work` at `42b69cfa`):
-  - matched code 1,578,924 → 1,637,068 bytes (38.123970% → 39.527885%, +58,144);
-  - linked code 1,577,452 → 1,635,596 (38.088425% → 39.492344%, +58,144);
+  - matched code 1,578,924 → 1,637,208 bytes (38.123970% → 39.531265%, +58,284);
+  - linked code 1,577,452 → 1,635,736 (38.088425% → 39.495724%, +58,284);
   - matched data 248,430 → 269,799 (16.520205% → 17.941208%, +21,369);
   - complete data 285,458 → 306,827;
-  - matched functions 17,204 → 17,337 (+133).
+  - matched functions 17,204 → 17,338 (+134).
 - **Checks:** `build.sha1` OK at every checkpoint; all 3,371 remaining generated units verify.
 - **New pool units:** `Meta/igViewerStatisticsManager_module.cpp` (23 field setups), `Meta/igViewportAttr_module.cpp` (33), `Meta/igTextElement_module.cpp` (16 and a hand-written compound-field setup), `Meta/igVolume_module.cpp` (2).
 - **Remaining registration functions:** 221 (64,892 bytes): 199 `fieldInit` and 22 `vtableRead`. Most are in the three large pools (`lbl_804AAFB8`, `igVertexBlending_className`, `igVirtualCFuncMetaField_className`), whose code ranges hold hundreds of other unmatched functions.
@@ -55,7 +55,7 @@ The viewer statistics unit was compiled with `-sdata 0` but with small read-only
 - `nosdata1`: `-sdata 0` only;
 - `rostr`: `-str reuse,readonly`.
 
-A unit can now own a small string literal it passes (the `""` above, in its own `.sdata2`), and its data objects of 8 bytes or less are placed in `.data` explicitly (`__declspec(section ".data")`), where MWCC would otherwise put them in small data.
+A unit can now own a small string literal it passes (the `""` above, in its own `.sdata2`). `poolsrc.py` also places a unit's data objects of 8 bytes or less in `.data` explicitly (`__declspec(section ".data")`, where MWCC would otherwise put them in small data); no committed unit has such an object yet.
 
 Data declarations follow the original's addressing rather than the section: a symbol the original reaches through `lis`/`addi` is declared unsized (for example `lbl_8055DE2C`, in `.sdata` but not addressed as small data); read-only small data (`.sdata2`) is declared `const`.
 
@@ -73,6 +73,6 @@ lbl_80562140 = container;
 
 - **Three large pools:** 189 `fieldInit` functions (57,572 bytes). Their units would have to hold every function from the first to the last user, and those ranges contain 297, 619 and 859 other unmatched functions.
 - **Other registration functions:** about 32, mostly `vtableRead` functions whose bases have out-of-line destructors (the cleanup names them, so they need their C++ names) and register-colouring differences.
-- **Two deleting destructors** (`fn_80329DE0`, `fn_8033A984`) that call another out-of-line destructor.
+- **Two deleting destructors** (`fn_80329DE0`, `fn_8033A984`) that call another out-of-line destructor (`fn_80328940`, `fn_802C64EC`); both callees are now source, so these two are reachable with a base-destructor call form.
 
 **Next:** with deleting destructors recoverable, the `vtableRead` functions that call them explicitly, and the large pools' other functions, become reachable: the remaining unmatched functions inside the three large pools' ranges are the path to their 57 KB of field setup.

@@ -547,6 +547,7 @@ Meta/igTransform_2.cpp	801AC680	801AC968	-
 Meta/igTimeTransform1_3.cpp	801ACA90	801ACC5C	-
 Meta/igTimeTransform1_5.cpp	801ACC68	801ACD20	-
 Meta/igTimeTransform1_2.cpp	801ACD28	801ACDA4	-
+Meta/igTimeTransform.cpp	801ACDE0	801ACF5C	-
 Meta/igSpecialDoubleList.cpp	801AD398	801AD4F0	-
 Meta/igTextureTransformMovieProcessor.cpp	801AD5B4	801AD7BC	-
 Meta/igSwitch.cpp	801ADB60	801ADB98	-

@@ -1710,7 +1710,7 @@ unknownGen/unknown801AC2D4.cpp	801AC2D4	801AC310	-
 unknownGen/unknown801AC470.cpp	801AC470	801AC4AC	-
 unknownGen/unknown801AC644.cpp	801AC644	801AC680	-
 unknownGen/unknown801ACD20.cpp	801ACD20	801ACD28	-
-unknownGen/unknown801ACDA4.cpp	801ACDA4	801ACED0	-
+unknownGen/unknown801ACDA4.cpp	801ACDA4	801ACDE0	-
 unknownGen/unknown801ACF5C.cpp	801ACF5C	801AD294	-
 unknownGen/unknown801AD35C.cpp	801AD35C	801AD398	-
 unknownGen/unknown801AD4F0.cpp	801AD4F0	801AD5B4	-

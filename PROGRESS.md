@@ -9,9 +9,9 @@ Updated: 2026-10-17. Development repository: [HaoQLe/dw4-gc](https://github.com/
   - **Deleting destructors:** `tools/alchemymeta/dtorsrc.py` makes 46 of 48 readable (32,096 bytes): top level in the function, bases as inline destructor chains.
   - **Also recovered:** `vtableRead`s built in the most-derived constructor, array members (`fn_800A33B8`/`fn_800A3340`), field defaults built on the stack, `long long` and `double` constants. New unit tags `nosdata1` (`-sdata 0` only) and `rostr` (read-only strings).
   - **Functional commits:** `50f0f2c6`, `e10a9405`, `8101f0e4`, `ef1b5a56`, `89d727f9`, `e2aa5c56`.
-  - **Totals:** matched code 38.123970% → 39.527885% (+58,144 bytes), linked 38.088425% → 39.492344% (+58,144), matched data 16.520205% → 17.941208% (+21,369), complete data 285,458 → 306,827, 17,204 → 17,337 functions. `build.sha1` OK; all 3,371 remaining generated units verify.
+  - **Totals:** matched code 38.123970% → 39.531265% (+58,284 bytes), linked 38.088425% → 39.495724% (+58,284), matched data 16.520205% → 17.941208% (+21,369), complete data 285,458 → 306,827, 17,204 → 17,338 functions. `build.sha1` OK; all 3,371 remaining generated units verify.
   - **Remaining registration functions:** 221 (64,892 bytes), mostly the three large pools (189 `fieldInit`, 57,572 bytes), whose ranges hold hundreds of other unmatched functions.
-  - **Next candidate (not started):** the other unmatched functions inside the large pools' ranges, starting with the smallest (`lbl_80494570`-style hand pieces and destructor-calling `vtableRead`s now that destructors are recoverable).
+  - **Next candidate (not started):** the other unmatched functions inside the three large pools' ranges (297, 619 and 859), with hand pieces where no lifter fits; also the two deleting destructors that call an out-of-line base destructor (`fn_80329DE0`, `fn_8033A984`), whose callees are now source.
   - Details: [pool blockers](docs/research/2026-10-17-pool-blockers.md).
 - **Registration lift batch (user request 2026-10-15, "continue"):** 204 of the 511 registration functions left as original assembly, and 2 separate field-replacement functions, are now readable source, on `task/registration-lift`.
   - **Tools:** `tools/alchemymeta/asmlift.py` lifts straight-line `register`, `getMeta`, `vtableRead` (plain objects and destructor chains) and `fieldInit` functions (including field replacement) from the original instructions; `metasrc.py --lift` turns them into class files. `tools/alchemymeta/poolsrc.py` builds units that own their pooled data: seven so far (`Meta/*_module.cpp`, `Meta/igGamecubeAudioContext_fields.cpp`), with the field tables named in `symbols.txt`.
@@ -373,13 +373,13 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-17 at `e2aa5c56` (pool blockers batch). The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-17 at the pool blockers batch's last commit. The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 1,637,068 / 4,141,552 bytes (39.527885%) |
-| Fully linked source code | 1,635,596 / 4,141,552 bytes (39.492344%) |
-| Matched functions | 17,337 / 23,334 |
+| Matched executable code | 1,637,208 / 4,141,552 bytes (39.531265%) |
+| Fully linked source code | 1,635,736 / 4,141,552 bytes (39.495724%) |
+| Matched functions | 17,338 / 23,334 |
 | Matched data | 269,799 / 1,503,795 bytes (17.941208%) |
 
 | Generator round 6 (`94ff74d` → `275fe25`) | Before → after | Exact gain |

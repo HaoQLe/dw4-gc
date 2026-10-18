@@ -669,6 +669,7 @@ def main():
             block=block[k:];us=us[k:]
         if any(u is None for u in us) and not LIFT: skipped['not generated']+=1;continue
         fnsrc={};structs_by_fn={};decls_by_fn={};tags_by_fn={};lifted=[]
+        asmlift.NONSMALL.clear()   # per class file: only its own functions' addressing decides declarations
         try:
             for j,((a,s,n,r),u) in enumerate(zip(block,us)):
                 if u is None:

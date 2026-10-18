@@ -189,6 +189,7 @@ def pooled_tables(c,fn,p,fns):
 
 def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
     base=data[p][1]
+    asmlift.NONSMALL.clear()   # per unit: only its own functions' addressing decides declarations
     rows=unit_rows()
     fstart=[f[0] for f in funcs]
     def fend(a):

@@ -308,7 +308,7 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers,fn_name=None):
         if mm: refs.add(mm[1]);return x
         if re.fullmatch(r'&local\[\d+\]',x): return x
         if re.fullmatch(r'\(void \*\)"(?:[^"\\]|\\.)*"',x): return x     # a string literal the unit defines
-        mm=re.fullmatch(r'\*reinterpret_cast<float \*>\((\w+)\)',x)
+        mm=re.fullmatch(r'\*reinterpret_cast<(?:const )?float \*>\((\w+)\)',x)
         if mm: refs.add(mm[1]);return x
         mm=re.fullmatch(r'meta_field\((\w+),(.*)\)',x)
         if mm and var.get(mm[1])=='meta': return 'meta_field(meta, %s)'%expr(mm[2])

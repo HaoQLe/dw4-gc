@@ -246,7 +246,7 @@ def lift_fieldinit(c,insns,pool=None,name=None):
         if v[0]=='m' and v[2]==0 and v[1].endswith('_meta'): return v[1]     # a class's metaobject
         if v[0]=='a' and v[2]==0: return v[1]
         if v[0]=='f' and (v[1],v[2]) in pool: return '*reinterpret_cast<float *>(%s)'%pool[(v[1],v[2])]
-        if v[0]=='f' and v[2]==0: return '*reinterpret_cast<float *>(%s)'%v[1]
+        if v[0]=='f' and v[2]==0: return '*reinterpret_cast<const float *>(%s)'%v[1]
         if v[0]=='f' : return '*reinterpret_cast<float *>((%s+%d))'%(v[1],v[2])
         if v[0]=='ld' and (v[1] in names or v[1]==meta):
             return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(expr(v[1]),v[2])

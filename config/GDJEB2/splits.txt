@@ -322,6 +322,9 @@ Alchemy/src/unknownGen/unknown800261F4.cpp:
 Alchemy/src/unknownGen/unknown8002648C.cpp:
 	.text       start:0x8002648C end:0x800265C0
 
+Alchemy/src/Meta/igResource_destructor.cpp:
+	.text       start:0x800265C0 end:0x80026828
+
 Alchemy/src/unknownGen/unknown80026850.cpp:
 	.text       start:0x80026850 end:0x800268E8
 
@@ -517,6 +520,9 @@ Alchemy/src/Meta/igMemoryPoolInfoList.cpp:
 Alchemy/src/Meta/igMemoryPoolInfo.cpp:
 	.text       start:0x8002B6F4 end:0x8002B80C
 
+Alchemy/src/Meta/igMemoryPoolInfo_destructor.cpp:
+	.text       start:0x8002B80C end:0x8002BAF8
+
 Alchemy/src/unknownGen/unknown8002BAF8.cpp:
 	.text       start:0x8002BAF8 end:0x8002BBB0
 
@@ -672,6 +678,9 @@ Alchemy/src/unknownGen/unknown8002EC24.cpp:
 
 Alchemy/src/Meta/igIGBFile_3.cpp:
 	.text       start:0x8002EC60 end:0x8002ED7C
+
+Alchemy/src/Meta/igIGBFile_destructor.cpp:
+	.text       start:0x8002ED7C end:0x8002F178
 
 Alchemy/src/Meta/igIGBFile_2.cpp:
 	.text       start:0x8002F178 end:0x8002F23C
@@ -3125,6 +3134,9 @@ unknownGen/unknown800AC594.cpp:
 Meta/igVertexShaderAttr.cpp:
 	.text       start:0x800AC5D0 end:0x800AC6A0
 
+Meta/igVertexShaderAttr_destructor.cpp:
+	.text       start:0x800AC6A0 end:0x800AC8A8
+
 unknownGen/unknown800AC8A8.cpp:
 	.text       start:0x800AC8A8 end:0x800AC968
 
@@ -5432,6 +5444,9 @@ unknownGen/unknown801110A0.cpp:
 Meta/igGuiComponentNode.cpp:
 	.text       start:0x801110DC end:0x80111290
 
+Meta/igGroup_destructor.cpp:
+	.text       start:0x80111290 end:0x801113D0
+
 Meta/igGuiComponentNode_2.cpp:
 	.text       start:0x801113D0 end:0x8011148C
 
@@ -6857,6 +6872,9 @@ Meta/igInterface.cpp:
 unknownGen/unknown801468F8.cpp:
 	.text       start:0x801468F8 end:0x80146A10
 
+Meta/igInstanceScene_destructor.cpp:
+	.text       start:0x80146AB4 end:0x80146C84
+
 unknownGen/unknown80146C84.cpp:
 	.text       start:0x80146C84 end:0x80146D3C
 
@@ -6874,6 +6892,9 @@ Meta/igHideActorSkinGraphs.cpp:
 
 unknownGen/unknown801473EC.cpp:
 	.text       start:0x801473EC end:0x80147428
+
+Meta/igGenerateMacroTexture_destructor.cpp:
+	.text       start:0x801474E4 end:0x801477D4
 
 unknownGen/unknown801477D4.cpp:
 	.text       start:0x801477D4 end:0x80147908
@@ -7013,6 +7034,9 @@ Meta/igExposeActorSkinGraphs.cpp:
 unknownGen/unknown8014B98C.cpp:
 	.text       start:0x8014B98C end:0x8014B9C8
 
+Meta/igEnbayaCompressAnimations_destructor.cpp:
+	.text       start:0x8014BA88 end:0x8014BDA8
+
 unknownGen/unknown8014BDA8.cpp:
 	.text       start:0x8014BDA8 end:0x8014BE68
 
@@ -7036,6 +7060,9 @@ unknownGen/unknown8014C79C.cpp:
 
 Meta/igDataTable.cpp:
 	.text       start:0x8014C824 end:0x8014C8E8
+
+Meta/igDataTable_destructor.cpp:
+	.text       start:0x8014C8E8 end:0x8014CB04
 
 unknownGen/unknown8014CB04.cpp:
 	.text       start:0x8014CB04 end:0x8014CBC8
@@ -8414,6 +8441,9 @@ unknownGen/unknown801B0404.cpp:
 Meta/igSimpleShader_2.cpp:
 	.text       start:0x801B040C end:0x801B04F0
 
+Meta/igSimpleShader_destructor.cpp:
+	.text       start:0x801B04F0 end:0x801B0714
+
 Meta/igSimpleShader.cpp:
 	.text       start:0x801B0714 end:0x801B07D4
 
@@ -8458,6 +8488,9 @@ unknownGen/unknown801B183C.cpp:
 
 Meta/igShader.cpp:
 	.text       start:0x801B1878 end:0x801B1950
+
+Meta/igShader_destructor.cpp:
+	.text       start:0x801B1950 end:0x801B1B64
 
 unknownGen/unknown801B1B64.cpp:
 	.text       start:0x801B1B64 end:0x801B1C24
@@ -8531,6 +8564,9 @@ Meta/igTraversalFunctionList_2.cpp:
 Meta/igSelfShadowShader.cpp:
 	.text       start:0x801B2F5C end:0x801B3080
 
+Meta/igSelfShadowShader_destructor.cpp:
+	.text       start:0x801B3080 end:0x801B3624
+
 unknownGen/unknown801B3624.cpp:
 	.text       start:0x801B3624 end:0x801B3758
 
@@ -8585,6 +8621,9 @@ Meta/igProjectiveShadowShader.cpp:
 unknownGen/unknown801B4E68.cpp:
 	.text       start:0x801B4E68 end:0x801B4EB0
 
+Meta/fn_801B4EB0_destructor.cpp:
+	.text       start:0x801B4EB0 end:0x801B5514
+
 unknownGen/unknown801B5514.cpp:
 	.text       start:0x801B5514 end:0x801B55F4
 
@@ -8596,6 +8635,9 @@ unknownGen/unknown801B5CFC.cpp:
 
 Meta/igPlanarShadowShader_2.cpp:
 	.text       start:0x801B5D38 end:0x801B5E34
+
+Meta/igPlanarShadowShader_destructor.cpp:
+	.text       start:0x801B5E34 end:0x801B617C
 
 Meta/igPlanarShadowShader.cpp:
 	.text       start:0x801B617C end:0x801B623C
@@ -8693,6 +8735,9 @@ unknownGen/unknown801B84E8.cpp:
 Meta/igMultiResolutionMeshInstance_2.cpp:
 	.text       start:0x801B8914 end:0x801B8A0C
 
+Meta/igMultiResolutionMeshInstance_destructor.cpp:
+	.text       start:0x801B8A0C end:0x801B8CB0
+
 Meta/igMultiResolutionMeshInstance.cpp:
 	.text       start:0x801B8CB0 end:0x801B8D70
 
@@ -8717,11 +8762,17 @@ unknownGen/unknown801B979C.cpp:
 Meta/igMorphInstance2.cpp:
 	.text       start:0x801B9A7C end:0x801B9B74
 
+Meta/igMorphInstance2_destructor.cpp:
+	.text       start:0x801B9B74 end:0x801B9E18
+
 unknownGen/unknown801B9E18.cpp:
 	.text       start:0x801B9E18 end:0x801B9ED8
 
 Meta/igMorphInstance.cpp:
 	.text       start:0x801B9FB8 end:0x801BA0C4
+
+Meta/igMorphInstance_destructor.cpp:
+	.text       start:0x801BA0C4 end:0x801BA458
 
 unknownGen/unknown801BA458.cpp:
 	.text       start:0x801BA458 end:0x801BA518
@@ -8765,6 +8816,9 @@ unknownGen/unknown801BB0C4.cpp:
 Meta/igLod_2.cpp:
 	.text       start:0x801BB100 end:0x801BB1D4
 
+Meta/igLod_destructor.cpp:
+	.text       start:0x801BB1D4 end:0x801BB3B8
+
 unknownGen/unknown801BB3B8.cpp:
 	.text       start:0x801BB3B8 end:0x801BB474
 
@@ -8788,6 +8842,9 @@ Meta/igLightSet_2.cpp:
 
 unknownGen/unknown801BBC90.cpp:
 	.text       start:0x801BBC90 end:0x801BBD08
+
+Meta/igJoint_destructor.cpp:
+	.text       start:0x801BBDC8 end:0x801BBFC0
 
 Meta/igJoint.cpp:
 	.text       start:0x801BBFC0 end:0x801BC078
@@ -8833,6 +8890,9 @@ Meta/igInverseKinematicsHandleList.cpp:
 
 unknownGen/unknown801BCCB8.cpp:
 	.text       start:0x801BCCB8 end:0x801BCCF4
+
+Meta/igInverseKinematicsHandle_destructor.cpp:
+	.text       start:0x801BCDB8 end:0x801BD010
 
 unknownGen/unknown801BD010.cpp:
 	.text       start:0x801BD010 end:0x801BD0D0
@@ -8899,6 +8959,9 @@ unknownGen/unknown801BE7E4.cpp:
 
 Meta/igIniShaderFactory_2.cpp:
 	.text       start:0x801BE84C end:0x801BE95C
+
+Meta/igIniShaderFactory_destructor.cpp:
+	.text       start:0x801BE95C end:0x801BEBEC
 
 Meta/igIniShaderFactory.cpp:
 	.text       start:0x801BEBEC end:0x801BECAC
@@ -9053,6 +9116,9 @@ unknownGen/unknown801C304C.cpp:
 Meta/igCompiledGraph_2.cpp:
 	.text       start:0x801C3088 end:0x801C3180
 
+Meta/igCompiledGraph_destructor.cpp:
+	.text       start:0x801C3180 end:0x801C3514
+
 unknownGen/unknown801C3514.cpp:
 	.text       start:0x801C3514 end:0x801C35D4
 
@@ -9104,6 +9170,9 @@ unknownGen/unknown801C50A8.cpp:
 unknownGen/unknown801C5404.cpp:
 	.text       start:0x801C5404 end:0x801C547C
 
+Meta/igCartoonShader_destructor.cpp:
+	.text       start:0x801C5540 end:0x801C5874
+
 unknownGen/unknown801C5874.cpp:
 	.text       start:0x801C5874 end:0x801C5934
 
@@ -9121,6 +9190,9 @@ unknownGen/unknown801C5E38.cpp:
 
 unknownGen/unknown801C6138.cpp:
 	.text       start:0x801C6138 end:0x801C61F8
+
+Meta/igBumpMapShader_destructor.cpp:
+	.text       start:0x801C62D8 end:0x801C675C
 
 unknownGen/unknown801C675C.cpp:
 	.text       start:0x801C675C end:0x801C681C
@@ -9371,6 +9443,9 @@ Meta/igActorList_2.cpp:
 unknownGen/unknown801CDE94.cpp:
 	.text       start:0x801CDE94 end:0x801CDF0C
 
+Meta/igActor_destructor.cpp:
+	.text       start:0x801CDFC4 end:0x801CE1D8
+
 unknownGen/unknown801CE1D8.cpp:
 	.text       start:0x801CE1D8 end:0x801CE294
 
@@ -9379,6 +9454,9 @@ unknownGen/unknown801CE580.cpp:
 
 unknownGen/unknown801CE69C.cpp:
 	.text       start:0x801CE69C end:0x801CE7C0
+
+Meta/fn_801CE7C0_destructor.cpp:
+	.text       start:0x801CE7C0 end:0x801CEBB4
 
 Meta/igGamecubeEnvironmentMapShader_2.cpp:
 	.text       start:0x801CEBB4 end:0x801CEC54
@@ -11796,6 +11874,11 @@ Meta/igMovieInfo.cpp:
 	extabindex  start:0x80013458 end:0x8001347C
 	.text       start:0x802AC790 end:0x802AC8B8
 
+Meta/igMovieInfo_destructor.cpp:
+	extab       start:0x80005DE0 end:0x80005DE8
+	extabindex  start:0x8001347C end:0x80013488
+	.text       start:0x802AC8B8 end:0x802ACAE4
+
 unknownGen/unknown802ACAE4.cpp:
 	extab       start:0x80005DE8 end:0x80005E10
 	extabindex  start:0x80013488 end:0x800134C4
@@ -12012,6 +12095,11 @@ Game/Bec/beWeaponAttachDataListRef.cpp:
 	extabindex  start:0x8001395C end:0x80013968
 	.text       start:0x802B3608 end:0x802B367C
 
+Meta/dtor_802B367C_destructor.cpp:
+	extab       start:0x8000638C end:0x80006394
+	extabindex  start:0x80013968 end:0x80013974
+	.text       start:0x802B367C end:0x802B3758
+
 Meta/beWeapon_2.cpp:
 	extab       start:0x80006394 end:0x800063AC
 	extabindex  start:0x80013974 end:0x80013998
@@ -12105,6 +12193,11 @@ unknownGen/unknown802B5290.cpp:
 	extabindex  start:0x80013CE0 end:0x80013CEC
 	.text       start:0x802B5290 end:0x802B52DC
 
+Meta/beTransformSync_destructor.cpp:
+	extab       start:0x80006600 end:0x80006608
+	extabindex  start:0x80013CF8 end:0x80013D04
+	.text       start:0x802B5394 end:0x802B558C
+
 Meta/beTransformSync.cpp:
 	extab       start:0x80006608 end:0x80006628
 	extabindex  start:0x80013D04 end:0x80013D34
@@ -12164,6 +12257,11 @@ Meta/beSystem_2.cpp:
 	extab       start:0x80006840 end:0x80006860
 	extabindex  start:0x80014058 end:0x80014088
 	.text       start:0x802B73CC end:0x802B7548
+
+Meta/beSystem_destructor.cpp:
+	extab       start:0x80006860 end:0x80006868
+	extabindex  start:0x80014088 end:0x80014094
+	.text       start:0x802B7548 end:0x802B7774
 
 Meta/beSystem.cpp:
 	extab       start:0x80006868 end:0x80006888
@@ -12753,6 +12851,11 @@ unknownGen/unknown802C5E08.cpp:
 	extabindex  start:0x800159F0 end:0x80015A14
 	.text       start:0x802C5E08 end:0x802C5EE8
 
+Meta/beModelCtrlNode2_destructor.cpp:
+	extab       start:0x80007984 end:0x8000798C
+	extabindex  start:0x80015A20 end:0x80015A2C
+	.text       start:0x802C5FA0 end:0x802C6198
+
 Meta/beModelCtrlNode2.cpp:
 	extab       start:0x8000798C end:0x800079AC
 	extabindex  start:0x80015A2C end:0x80015A5C
@@ -12767,6 +12870,11 @@ Meta/beModelCtrlInfoWork.cpp:
 	extab       start:0x800079B4 end:0x800079D4
 	extabindex  start:0x80015A68 end:0x80015A98
 	.text       start:0x802C6340 end:0x802C64EC
+
+Meta/beModelCtrlInfoWork_destructor.cpp:
+	extab       start:0x800079D4 end:0x800079DC
+	extabindex  start:0x80015A98 end:0x80015AA4
+	.text       start:0x802C64EC end:0x802C6A84
 
 unknownGen/unknown802C6A84.cpp:
 	extab       start:0x800079DC end:0x800079FC
@@ -13106,6 +13214,11 @@ Meta/beMessengerArgData.cpp:
 	extabindex  start:0x80016A04 end:0x80016A34
 	.text       start:0x802CF580 end:0x802CF6E0
 
+Meta/beMessengerArgData_destructor.cpp:
+	extab       start:0x800084BC end:0x800084C4
+	extabindex  start:0x80016A34 end:0x80016A40
+	.text       start:0x802CF6E0 end:0x802CF8E8
+
 Meta/beMessengerArgData_2.cpp:
 	extab       start:0x800084C4 end:0x800084E4
 	extabindex  start:0x80016A40 end:0x80016A70
@@ -13268,6 +13381,11 @@ Meta/beLOA.cpp:
 	extab       start:0x800089E4 end:0x800089F4
 	extabindex  start:0x800171F0 end:0x80017208
 	.text       start:0x802D3D38 end:0x802D3E28
+
+Meta/beLOA_destructor.cpp:
+	extab       start:0x800089F4 end:0x800089FC
+	extabindex  start:0x80017208 end:0x80017214
+	.text       start:0x802D3E28 end:0x802D403C
 
 unknownGen/unknown802D403C.cpp:
 	extab       start:0x800089FC end:0x80008A14
@@ -13437,6 +13555,11 @@ Meta/beGeneraterData_2.cpp:
 	extabindex  start:0x800177B4 end:0x800177CC
 	.text       start:0x802D74B4 end:0x802D7588
 
+Meta/beGeneraterData_destructor.cpp:
+	extab       start:0x80008E04 end:0x80008E0C
+	extabindex  start:0x800177CC end:0x800177D8
+	.text       start:0x802D7588 end:0x802D7774
+
 Meta/beGeneraterData.cpp:
 	extab       start:0x80008E0C end:0x80008E2C
 	extabindex  start:0x800177D8 end:0x80017808
@@ -13524,6 +13647,11 @@ Meta/beFont_2.cpp:
 	extab       start:0x800090CC end:0x800090EC
 	extabindex  start:0x80017BF8 end:0x80017C28
 	.text       start:0x802D99F8 end:0x802D9B84
+
+Meta/beFont_destructor.cpp:
+	extab       start:0x800090EC end:0x800090F4
+	extabindex  start:0x80017C28 end:0x80017C34
+	.text       start:0x802D9B84 end:0x802D9DF4
 
 Meta/beFont.cpp:
 	extab       start:0x800090F4 end:0x80009114
@@ -13753,6 +13881,11 @@ unknownGen/unknown802E0360.cpp:
 	extabindex  start:0x800187EC end:0x800187F8
 	.text       start:0x802E0360 end:0x802E03AC
 
+Meta/beCopyTransform_destructor.cpp:
+	extab       start:0x800098E8 end:0x800098F0
+	extabindex  start:0x80018804 end:0x80018810
+	.text       start:0x802E0464 end:0x802E065C
+
 Meta/beCopyTransform.cpp:
 	extab       start:0x800098F0 end:0x80009910
 	extabindex  start:0x80018810 end:0x80018840
@@ -13762,6 +13895,11 @@ unknownGen/unknown802E07C4.cpp:
 	extab       start:0x80009910 end:0x80009920
 	extabindex  start:0x80018840 end:0x80018858
 	.text       start:0x802E07C4 end:0x802E0830
+
+Meta/beCopyModelCtrl2_destructor.cpp:
+	extab       start:0x8000993C end:0x80009944
+	extabindex  start:0x80018864 end:0x80018870
+	.text       start:0x802E08E8 end:0x802E0AE0
 
 Meta/beCopyModelCtrl2.cpp:
 	extab       start:0x80009944 end:0x80009964
@@ -14037,6 +14175,11 @@ Meta/ParticleTimer.cpp:
 	extabindex  start:0x80019548 end:0x8001956C
 	.text       start:0x802E7CAC end:0x802E7DFC
 
+Meta/ParticleTimer_destructor.cpp:
+	extab       start:0x8000A20C end:0x8000A214
+	extabindex  start:0x8001956C end:0x80019578
+	.text       start:0x802E7DFC end:0x802E7FDC
+
 Meta/ParticleTimer_2.cpp:
 	extab       start:0x8000A214 end:0x8000A234
 	extabindex  start:0x80019578 end:0x800195A8
@@ -14051,6 +14194,11 @@ Meta/ParticleInfo_3.cpp:
 	extab       start:0x8000A25C end:0x8000A26C
 	extabindex  start:0x800195E4 end:0x800195FC
 	.text       start:0x802E8324 end:0x802E8410
+
+Meta/ParticleInfo_destructor.cpp:
+	extab       start:0x8000A26C end:0x8000A274
+	extabindex  start:0x800195FC end:0x80019608
+	.text       start:0x802E8410 end:0x802E85F0
 
 Meta/ParticleInfo.cpp:
 	extab       start:0x8000A274 end:0x8000A28C
@@ -15418,6 +15566,11 @@ unknownGen/unknown803288E0.cpp:
 	extabindex  start:0x8001B834 end:0x8001B840
 	.text       start:0x803288E0 end:0x80328940
 
+Meta/fn_80328940_destructor.cpp:
+	extab       start:0x8000C4E8 end:0x8000C4F0
+	extabindex  start:0x8001B840 end:0x8001B84C
+	.text       start:0x80328940 end:0x80328B5C
+
 Meta/beNDMWShopSelectB0.cpp:
 	extab       start:0x8000C4F0 end:0x8000C508
 	extabindex  start:0x8001B84C end:0x8001B870
@@ -16259,6 +16412,11 @@ Meta/beNDMWMdlPlayer_3.cpp:
 	extabindex  start:0x8001D10C end:0x8001D13C
 	.text       start:0x80338B10 end:0x80338C90
 
+Meta/beNDMWMdlPlayer_destructor.cpp:
+	extab       start:0x8000D590 end:0x8000D598
+	extabindex  start:0x8001D13C end:0x8001D148
+	.text       start:0x80338C90 end:0x80338DA4
+
 Meta/beNDMWMdlPlayer.cpp:
 	extab       start:0x8000D598 end:0x8000D5B0
 	extabindex  start:0x8001D148 end:0x8001D16C
@@ -16394,6 +16552,11 @@ Meta/beNDMWMdlEnemy_2.cpp:
 	extab       start:0x8000D7F0 end:0x8000D810
 	extabindex  start:0x8001D4CC end:0x8001D4FC
 	.text       start:0x8033ACF8 end:0x8033AE78
+
+Meta/beNDMWMdlEnemy_destructor.cpp:
+	extab       start:0x8000D810 end:0x8000D818
+	extabindex  start:0x8001D4FC end:0x8001D508
+	.text       start:0x8033AE78 end:0x8033AF8C
 
 Meta/beNDMWMdlEnemy.cpp:
 	extab       start:0x8000D818 end:0x8000D830
@@ -16736,6 +16899,11 @@ Meta/beNDMWGameRam_2.cpp:
 	extab       start:0x8000E3B8 end:0x8000E3D8
 	extabindex  start:0x8001E678 end:0x8001E6A8
 	.text       start:0x80344274 end:0x80344408
+
+Meta/beNDMWGameRam_destructor.cpp:
+	extab       start:0x8000E3D8 end:0x8000E3E0
+	extabindex  start:0x8001E6A8 end:0x8001E6B4
+	.text       start:0x80344408 end:0x803446D8
 
 unknownGen/unknown803446D8.cpp:
 	extab       start:0x8000E3E0 end:0x8000E3E8
@@ -18082,6 +18250,9 @@ Meta/igViewerSceneInfoManager.cpp:
 unknownGen/unknown80403D28.cpp:
 	.text       start:0x80403D28 end:0x80403D78
 
+Meta/fn_80403D78_destructor.cpp:
+	.text       start:0x80403D78 end:0x80404544
+
 unknownGen/unknown80404544.cpp:
 	.text       start:0x80404544 end:0x80404638
 
@@ -18174,6 +18345,9 @@ unknownGen/unknown80408FA4.cpp:
 
 Meta/igActorManager.cpp:
 	.text       start:0x804091B0 end:0x804092E0
+
+Meta/igActorManager_destructor.cpp:
+	.text       start:0x804092E0 end:0x8040956C
 
 unknownGen/unknown8040956C.cpp:
 	.text       start:0x8040956C end:0x80409630

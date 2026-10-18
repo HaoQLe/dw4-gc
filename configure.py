@@ -888,6 +888,7 @@ config.libs = [
             Object(Matching, "Game/Bec/bePlaySERef.cpp"),
             Object(NonMatching, "Game/Bec/beSoundFind.cpp"),
             Object(Matching, "Game/Bec/beSoundMeta.cpp"),
+            Object(NonMatching, "Game/Bec/beSeCtl.cpp"),
         ],
     },
     {

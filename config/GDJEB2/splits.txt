@@ -13969,6 +13969,11 @@ unknownGen/unknown80313040.cpp:
 unknownGen/unknown803130C0.cpp:
 	.text       start:0x803130C0 end:0x803130D4
 
+Game/Bec/beSeCtl.cpp:
+	extab       start:0x8000B90C end:0x8000B914
+	extabindex  start:0x8001AAC0 end:0x8001AACC
+	.text       start:0x803130D4 end:0x80313228
+
 unknownGen/unknown80313228.cpp:
 	.text       start:0x80313228 end:0x80313238
 

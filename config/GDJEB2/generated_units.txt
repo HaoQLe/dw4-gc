@@ -735,7 +735,6 @@ unknownGen/unknown800B6694.cpp	800B6694	800B67C8	-
 unknownGen/unknown800B6BA0.cpp	800B6BA0	800B6BA8	-
 unknownGen/unknown800B6C60.cpp	800B6C60	800B6D94	-
 unknownGen/unknown800B71D4.cpp	800B71D4	800B7320	-
-unknownGen/unknown800B7704.cpp	800B7704	800B7850	-
 unknownGen/unknown800B7910.cpp	800B7910	800B794C	-
 unknownGen/unknown800B80B8.cpp	800B80B8	800B80F4	-
 unknownGen/unknown800B8968.cpp	800B8968	800B89A4	-

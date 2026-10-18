@@ -212,6 +212,7 @@ Meta/igVertexBlendStateAttr.cpp	800ACD08	800ACEBC	-
 Meta/igVertexBlendMatrixListAttr.cpp	800ACEBC	800AD0A8	-
 Meta/igVertexBlendMatrixAttrList.cpp	800AD19C	800AD2FC	-
 Meta/igVertexBlendMatrixAttr.cpp	800AD2FC	800AD488	-
+Meta/igVertexBlendMatrixAttr_2.cpp	800AD488	800AD574	-
 Meta/igVectorConstantAttr.cpp	800AD5B0	800AD708	-
 Meta/igVectorConstantAttr_2.cpp	800AD710	800AD790	-
 Meta/igTimeAttr.cpp	800AD790	800AD7C8	-
@@ -235,6 +236,7 @@ Meta/igTextureAttr.cpp	800AF46C	800AF4A4	-
 Meta/igImageMipMapList.cpp	800AF990	800AFAF0	-
 Meta/igTextureAddressModeAttr.cpp	800AFAF0	800AFD14	-
 Meta/igTexGenMatrixAttr.cpp	800AFD50	800AFEA4	-
+Meta/igTexGenMatrixAttr_2.cpp	800AFEA4	800AFF90	-
 Meta/igSubTextureBindAttr.cpp	800AFF90	800B0134	-
 Meta/igStencilStateAttr.cpp	800B01F4	800B022C	-
 Meta/igStencilStateAttr_2.cpp	800B0268	800B041C	-
@@ -248,6 +250,7 @@ Meta/igRenderDestinationAttr.cpp	800B1700	800B1738	-
 Meta/igRefVertexBlendMatrixAttr.cpp	800B1BB8	800B1DE8	-
 Meta/igProjectionMatrixAttr.cpp	800B1DE8	800B1E20	-
 Meta/igProjectionMatrixAttr_2.cpp	800B1E5C	800B1FB0	-
+Meta/igProjectionMatrixAttr_3.cpp	800B1FB0	800B2084	-
 Meta/igPolygonModeAttr.cpp	800B20C0	800B2298	-
 Meta/igPointSpriteSizeAttr.cpp	800B2298	800B2460	-
 Meta/igPixelShaderBindAttr.cpp	800B2460	800B2678	-
@@ -286,6 +289,7 @@ Meta/igGenericAttrDefaultManager.cpp	800B6EB0	800B7020	-
 Meta/igFogStateAttr.cpp	800B7020	800B71D4	-
 Meta/igFloatConstantAttr.cpp	800B73F4	800B75CC	-
 Meta/igFileAttrDefaultManager.cpp	800B75CC	800B7704	-
+Meta/igDitherStateAttr.cpp	800B7704	800B78D8	-
 Meta/igDisplayListAttr.cpp	800B78D8	800B7910	-
 Meta/igDisplayListAttr_2.cpp	800B794C	800B7B60	-
 Meta/igDestinationAlphaStateAttr.cpp	800B7B60	800B7D28	-
@@ -829,6 +833,7 @@ Meta/igGeometryList.cpp	801BFF00	801BFF38	-
 Meta/igGeometryList_2.cpp	801BFF74	801C00D4	-
 Meta/igGeometry.cpp	801C00D4	801C010C	-
 Meta/igGeometry_2.cpp	801C0148	801C0454	-
+Meta/igGeometry_3.cpp	801C0454	801C0564	-
 Meta/igFrustCullTraversal.cpp	801C0584	801C05F8	-
 Meta/igFrustCullTraversal_2.cpp	801C0D64	801C0E28	-
 Meta/igEnvironmentMapShader2List.cpp	801C1008	801C1168	-

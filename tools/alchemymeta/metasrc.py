@@ -300,11 +300,14 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers,fn_name=None):
         if mm:
             if not re.fullmatch(r'-?\d+',mm[1]): refs.add(mm[1])
             return '(void *)%s'%mm[1]
-        if re.fullmatch(r'-?(0x[0-9A-Fa-f]+|\d+)',x): return x
+        if re.fullmatch(r'-?(0x[0-9A-Fa-f]+|\d+)(LL)?',x): return x
         mm=re.fullmatch(r'\*reinterpret_cast<float \*>\(\((\w+)\+(\d+)\)\)',x)
         if mm: refs.add(mm[1]);return '*reinterpret_cast<float *>(%s + %s)'%(mm[1],mm[2])
         if re.fullmatch(r'&local0',x): return '&local0'
         mm=re.fullmatch(r'(\w+)\(\)',x)
+        if mm: refs.add(mm[1]);return x
+        if re.fullmatch(r'&local\[\d+\]',x): return x
+        mm=re.fullmatch(r'\*reinterpret_cast<float \*>\((\w+)\)',x)
         if mm: refs.add(mm[1]);return x
         mm=re.fullmatch(r'meta_field\((\w+),(.*)\)',x)
         if mm and var.get(mm[1])=='meta': return 'meta_field(meta, %s)'%expr(mm[2])
@@ -330,6 +333,12 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers,fn_name=None):
             k=classes[k].get('parent')
         return name,None
     for l in body[1:-1]:
+        if l.startswith(' @@'):
+            # written as is by the lifter (a local value); its variables get their readable names
+            x=l[3:]
+            for k,v in sorted(var.items(),key=lambda kv:-len(kv[0])): x=re.sub(r'\b%s\b'%re.escape(k),v,x)
+            for s in re.findall(r'\b(lbl_[0-9A-F]{8}|fn_[0-9A-F]{8})\b',x): refs.add(s)
+            out.append(x);continue
         # Replacing an inherited field by a modified copy: found by name (fn_800658F8 searches _metaFields),
         # its index (fn_80053998), a copy (virtual 0x54), and the copy put at that index (fn_8006588C).
         mm=re.fullmatch(r' void \*(\w+)=fn_800658F8\((\w+),(\w+)\);',l)
@@ -629,7 +638,12 @@ def main():
     for c,block in blocks:
         if only and c not in only: continue
         us=[unit_of(a) for a,s,n,r in block]
-        if any(meta_of(a) for a,s,n,r in block): skipped['converted']+=1;continue
+        if any(meta_of(a) for a,s,n,r in block):
+            # functions after the class file that are still original assembly form their own block
+            k=max(i for i,(a,s,n,r) in enumerate(block) if meta_of(a))+1
+            if not LIFT or k==len(block) or any(meta_of(a) or unit_of(a) for a,s,n,r in block[k:]):
+                skipped['converted']+=1;continue
+            block=block[k:];us=us[k:]
         if any(u is None for u in us) and not LIFT: skipped['not generated']+=1;continue
         fnsrc={};structs_by_fn={};decls_by_fn={};tags_by_fn={};lifted=[]
         try:

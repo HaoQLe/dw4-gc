@@ -3143,6 +3143,9 @@ Meta/igVertexBlendMatrixAttrList.cpp:
 Meta/igVertexBlendMatrixAttr.cpp:
 	.text       start:0x800AD2FC end:0x800AD488
 
+Meta/igVertexBlendMatrixAttr_2.cpp:
+	.text       start:0x800AD488 end:0x800AD574
+
 unknownGen/unknown800AD574.cpp:
 	.text       start:0x800AD574 end:0x800AD5B0
 
@@ -3266,6 +3269,9 @@ unknownGen/unknown800AFD14.cpp:
 Meta/igTexGenMatrixAttr.cpp:
 	.text       start:0x800AFD50 end:0x800AFEA4
 
+Meta/igTexGenMatrixAttr_2.cpp:
+	.text       start:0x800AFEA4 end:0x800AFF90
+
 Meta/igSubTextureBindAttr.cpp:
 	.text       start:0x800AFF90 end:0x800B0134
 
@@ -3343,6 +3349,9 @@ unknownGen/unknown800B1E20.cpp:
 
 Meta/igProjectionMatrixAttr_2.cpp:
 	.text       start:0x800B1E5C end:0x800B1FB0
+
+Meta/igProjectionMatrixAttr_3.cpp:
+	.text       start:0x800B1FB0 end:0x800B2084
 
 unknownGen/unknown800B2084.cpp:
 	.text       start:0x800B2084 end:0x800B20C0
@@ -3539,8 +3548,8 @@ Meta/igFloatConstantAttr.cpp:
 Meta/igFileAttrDefaultManager.cpp:
 	.text       start:0x800B75CC end:0x800B7704
 
-unknownGen/unknown800B7704.cpp:
-	.text       start:0x800B7704 end:0x800B7850
+Meta/igDitherStateAttr.cpp:
+	.text       start:0x800B7704 end:0x800B78D8
 
 Meta/igDisplayListAttr.cpp:
 	.text       start:0x800B78D8 end:0x800B7910
@@ -8953,6 +8962,9 @@ unknownGen/unknown801C010C.cpp:
 
 Meta/igGeometry_2.cpp:
 	.text       start:0x801C0148 end:0x801C0454
+
+Meta/igGeometry_3.cpp:
+	.text       start:0x801C0454 end:0x801C0564
 
 unknownGen/unknown801C0564.cpp:
 	.text       start:0x801C0564 end:0x801C0584

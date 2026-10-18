@@ -241,6 +241,7 @@ def lift_fieldinit(c,insns,pool=None,name=None):
         if v[0]=='m' and v[2]==0 and v[1].endswith('_meta'): return v[1]     # a class's metaobject
         if v[0]=='a' and v[2]==0: return v[1]
         if v[0]=='f' and (v[1],v[2]) in pool: return '*reinterpret_cast<float *>(%s)'%pool[(v[1],v[2])]
+        if v[0]=='f' and v[2]==0: return '*reinterpret_cast<float *>(%s)'%v[1]
         if v[0]=='f' : return '*reinterpret_cast<float *>((%s+%d))'%(v[1],v[2])
         if v[0]=='ld' and (v[1] in names or v[1]==meta):
             return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(expr(v[1]),v[2])
@@ -250,11 +251,23 @@ def lift_fieldinit(c,insns,pool=None,name=None):
     decls=[];vtypes={}
     # The metaobject is loaded first; later loads of it are written as the global.
     si=0
+    # Values built on the stack and passed by address (a field's default vector or matrix): one local float
+    # array from r1+8, written as verbatim lines (' @@').
+    sp=[s for s in stores if s[0][0]=='sp']
+    if sp:
+        lo=min(s[1] for s in sp);hi=max(s[1]+4 for s in sp)
+        if lo!=8 or any(s[2] not in (4,'f') for s in sp): raise Unliftable('fieldInit stack layout')
+        out.append(' @@    float local[%d];'%((hi-lo)//4))
     def flush(upto):
         nonlocal si
+        # the stack stores before a call, in offset order (the source's; the stores are scheduled apart)
+        for base,off,width,v in sorted((s for s in stores[si:upto] if s[0][0]=='sp'),key=lambda s:s[1]):
+            i=(off-8)//4
+            if width=='f': out.append(' @@    local[%d] = %s;'%(i,expr(v)))
+            else: out.append(' @@    *reinterpret_cast<int *>(&local[%d]) = %s;'%(i,expr(v)))
         while si<upto:
             base,off,width,v=stores[si];si+=1
-            if base[0]=='sp': raise Unliftable('fieldInit stack store')
+            if base[0]=='sp': continue
             typ={4:'void * *' if v[0] in ('a','ret','m') else 'int *',1:'unsigned char *',2:'short *','f':'float *'}[width]
             tgt=c+'_meta' if base==meta else var(base)
             if v[0]=='a' and v[2]==0 and v[1].startswith('fn_'): decls.append('void %s();'%v[1])   # a function's address
@@ -303,8 +316,8 @@ def lift_fieldinit(c,insns,pool=None,name=None):
             # value in f1).
             hi=max([ARGS.index(r) for r in wr if r in ARGS],default=-1)
             if t in ARITY: hi=ARITY[t]-1
-            if f1 is not None:
-                if hi>0 or used(k) or f1[0]!='f': raise Unliftable('float argument')
+            if f1 is not None and hi<=0:
+                if used(k) or f1[0]!='f': raise Unliftable('float argument')
                 out.append(' %s(%s,%s);'%(t,expr(args[0]),expr(f1)));decls.append('void %s(void *, float);'%t)
                 continue
             if hi<0:
@@ -325,12 +338,15 @@ def lift_fieldinit(c,insns,pool=None,name=None):
                 decls.append('%s%s%s(%s);'%(rt,'' if rt.endswith('*') else ' ',t,', '.join('void *' for x in a)))
                 continue
             a=[expr(args[0])];types=['void *']
-            if 'r4' not in wr and hi==3 and args[2][0]=='c' and args[3][0]=='c':
+            # r4 may hold the lis half of r5's value, a temporary
+            tmp4='r4' in wr and args[1][0]=='c' and args[2][0]=='c' and args[1][1]&0xFFFF==0 and (args[1][1]^args[2][1])&0xFFFF0000==0
+            if ('r4' not in wr or tmp4) and hi==3 and args[2][0]=='c' and args[3][0]=='c':
                 v=((args[2][1]&0xFFFFFFFF)<<32)|(args[3][1]&0xFFFFFFFF)
-                a.append('0x%X'%v if v else '0');types.append('long long')   # a 64-bit value in r5:r6
+                a.append('0x%XLL'%v if v else '0');types.append('long long')   # a 64-bit value in r5:r6
             else:
                 for r in ARGS[1:hi+1]:
                     v=args[ARGS.index(r)]
+                    if v[0]=='sp' and sp and v[1]>=8: a.append('&local[%d]'%((v[1]-8)//4));types.append('void *');continue
                     if v[0]!='c' and v not in names and v[0]!='a': raise Unliftable('call argument')
                     if v in names and names[v].endswith('()'): types.append('void *');a.append(names[v]);continue
                     a.append(expr(v));types.append('int' if v[0]=='c' else vtypes.get(v,'void *'))

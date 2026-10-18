@@ -13,9 +13,5 @@ void *fn_80113894(){
  if(!igOnOffColorChanger_meta) igOnOffColorChanger_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igOnOffColorChanger_meta;
 }
-void *igOnOffColorChanger_getMeta(){
- if(!igOnOffColorChanger_meta || !(reinterpret_cast<unsigned int *>(igOnOffColorChanger_meta)[0x24/4]&4)) igOnOffColorChanger_arkRegister();
- return igOnOffColorChanger_meta;
-}
 }
 #pragma pop

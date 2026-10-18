@@ -170,7 +170,7 @@ def tr_vtableread(c,text,structs,layouts,refs):
     for name,s in chain:
         if newname[name] in ('igObjectInstance','BaseInstance'): continue
         nn=newname[name];k=levelclass[nn]
-        lines=s.split('\n');out=[];ctor=[]
+        lines=s.split('\n');out=[];ctor=[];dt=[]
         head=re.match(r'struct (\w+)(?: : (\w+))? \{',lines[0])
         if not head: raise Untranslatable('struct head')
         if head[2] and head[2] not in newname: raise Untranslatable('base')
@@ -192,15 +192,26 @@ def tr_vtableread(c,text,structs,layouts,refs):
                 continue
             mm=re.fullmatch(r' inline ~%s\(\)\{unknown00=(\w+);\}'%name,l)
             if mm: out.append('    inline ~%s() { __vtable = %s; }'%(nn,mm[1]));continue
+            mm=re.fullmatch(r' inline ~%s\(\)\{unknown00=(\w+);((?:fn_800A3340\(unknown[0-9A-F]+,\w+,\d+,\d+\);)+)\}'%name,l)
+            if mm:
+                # an array member destroyed element by element
+                refs.add(mm[1]);dt.append((len(out),nn,mm[1],mm[2]));out.append(None);continue
             mm=re.fullmatch(r' inline %s\(\)\{(.*)\}'%name,l)
             if mm:
                 ctor.append((len(out),nn,mm[1]));out.append(None);continue
             raise Untranslatable('struct line '+l)
         out.append('};')
-        ctors.append((len(defs),out,ctor));defs.append(None)
+        ctors.append((len(defs),out,ctor,dt));defs.append(None)
     members['unknown00']='__vtable'
     # Constructors, written once every member has its name.
-    for di,out,ctor in ctors:
+    for di,out,ctor,dt in ctors:
+        for pos,nn,vt,calls in dt:
+            st=[]
+            for mm in re.finditer(r'fn_800A3340\((unknown[0-9A-F]+),(\w+),(\d+),(\d+)\);',calls):
+                if mm[1] not in members: raise Untranslatable('dtor member '+mm[1])
+                refs.add('fn_800A3340');refs.add(mm[2])
+                st.append('fn_800A3340(%s, %s, %s, %s);'%(members[mm[1]],mm[2],mm[3],mm[4]))
+            out[pos]='    inline ~%s()\n    {\n        __vtable = %s;\n%s\n    }'%(nn,vt,'\n'.join('        '+x for x in st))
         for pos,nn,cbody in ctor:
             st=[]
             for x in re.findall(r'[^;]+;',cbody):
@@ -211,6 +222,11 @@ def tr_vtableread(c,text,structs,layouts,refs):
                     st.append('%s%s = %s;'%(members[mm[1]],'._value' if mm[2] else '',mm[3]));continue
                 mm=re.fullmatch(r'(\w+)\(&(unknown[0-9A-F]+)\);',x)
                 if mm and mm[2] in members: refs.add(mm[1]);st.append('%s(&%s);'%(mm[1],members[mm[2]]));continue
+                mm=re.fullmatch(r'fn_800A33B8\((unknown[0-9A-F]+),(\w+),(\w+),(\d+),(\d+)\);',x)
+                if mm and mm[1] in members:
+                    refs.add('fn_800A33B8');refs.add(mm[2])
+                    if mm[3]!='0': refs.add(mm[3])
+                    st.append('fn_800A33B8(%s, %s, %s, %s, %s);   // constructs each element'%(members[mm[1]],mm[2],mm[3],mm[4],mm[5]));continue
                 raise Untranslatable('ctor '+x)
             out[pos]='    inline %s()\n    {\n%s\n    }'%(nn,'\n'.join('        '+x for x in st))
         defs[di]='\n'.join(out)
@@ -306,9 +322,9 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers,fn_name=None):
         if re.fullmatch(r'&local0',x): return '&local0'
         mm=re.fullmatch(r'(\w+)\(\)',x)
         if mm: refs.add(mm[1]);return x
-        if re.fullmatch(r'&local\[\d+\]',x): return x
+        if re.fullmatch(r'&local\d*\[\d+\]',x): return x
         if re.fullmatch(r'\(void \*\)"(?:[^"\\]|\\.)*"',x): return x     # a string literal the unit defines
-        mm=re.fullmatch(r'\*reinterpret_cast<(?:const )?float \*>\((\w+)\)',x)
+        mm=re.fullmatch(r'\*reinterpret_cast<(?:const )?(?:float|double) \*>\((\w+)\)',x)
         if mm: refs.add(mm[1]);return x
         mm=re.fullmatch(r'meta_field\((\w+),(.*)\)',x)
         if mm and var.get(mm[1])=='meta': return 'meta_field(meta, %s)'%expr(mm[2])
@@ -613,8 +629,11 @@ def main():
             if chain:
                 forms=[]
                 for mode in (False,True,'stores first','asm order','top'):
-                    try: forms.append(asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes,ctors=mode))
-                    except asmlift.Unliftable as e: err=e
+                    try:
+                        f=asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes,ctors=mode)
+                        tr_vtableread(c,f[0],f[1],layouts,set())     # forms that do not translate are left out
+                        forms.append(f)
+                    except (asmlift.Unliftable,Untranslatable) as e: err=e
                 if not forms: raise err
                 alts[n]=[]
                 for alt in forms[1:]:

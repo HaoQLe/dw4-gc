@@ -141,14 +141,6 @@ struct UnknownGenObject8011449C : UnknownGenRoot8011449C {
  inline ~UnknownGenObject8011449C(){unknown00=igBoxAspect_vtable;}
 };
 extern "C" {
-void igBasicColorChanger_arkRegister(){
- meta_registerNow((int)igBasicColorChanger_register);
-}
-void igBasicColorChanger_register(){
- fn_8010CBD4();
- meta_registerClass(0,(int)&igBasicColorChanger_meta,(int)igColorChanger_register,(int)igBasicColorChanger_parentMeta,(int)igBasicColorChanger_getMetaCall,(int)igBasicColorChanger_className,88,(int)igBasicColorChanger_vtableRead,(int)igBasicColorChanger_fieldInit,0,0);
-}
-void *igBasicColorChanger_getMetaCall(){return igBasicColorChanger_getMeta();}
 void *igBasicColorChanger_parentMeta(){return igColorChanger_meta;}
 }
 #pragma pop

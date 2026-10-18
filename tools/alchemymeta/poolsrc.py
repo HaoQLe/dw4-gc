@@ -254,12 +254,13 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
     for pc in pieces:
         if pc[0]=='unit': texts.append((pc[1],pc[3],pc[4],re.sub(r'\W','_',Path(pc[2]).stem)));continue
         _,a,n,tags,c=pc
-        text,decls=asmlift.lift_fieldinit(c,fns[n],pool,name=n)
         block=[(a,dict((x[2],x[1]) for x in funcs)[n],n,'fieldInit')]
         variants=[]
-        for extra in ((),('speed',),('lmw',),('speed','lmw')):
-            src,fl=metasrc.class_file(c,block,{n:text},{n:{}},{n:decls},classes,layouts,syms,{n:tags|set(extra)})
-            variants.append((src,fl))
+        for lf,lg in ((False,False),(False,True),(True,False)):
+            text,decls=asmlift.lift_fieldinit(c,fns[n],pool,name=n,locals_first=lf,local_groups=lg)
+            for extra in ((),('speed',),('lmw',),('speed','lmw')):
+                src,fl=metasrc.class_file(c,block,{n:text},{n:{}},{n:decls},classes,layouts,syms,{n:tags|set(extra)})
+                if (src,fl) not in variants: variants.append((src,fl))
         texts.append((a,None,variants,n))
     names=[n for a,s,n in inrange]
     expect=sum(1 for f,x in eti if lo<=f<hi)
@@ -282,7 +283,7 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
                             name=module_name(pieces,classes))
             m=re.match(r'code differs (\w+)',err)
             i=piece_of.get(m[1]) if m else None
-            if i is None or choice[i]>=3: break
+            if i is None or choice[i]>=len(texts[i][2])-1: break
             choice[i]+=1
     return dict(pool=p,err=err,unit=unit)
 

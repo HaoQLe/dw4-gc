@@ -73,7 +73,7 @@ def run(insns,state=None):
         if op=='mr': R[a[0]]=R[a[1]];continue
         if op=='ori' and R[a[1]][0]=='c': R[a[0]]=('c',R[a[1]][1]|num(a[2]));continue
         if op=='subi' and R[a[1]][0]=='c': R[a[0]]=('c',R[a[1]][1]-num(a[2]));continue
-        if op in ('lwz','lfs'):
+        if op in ('lwz','lfs','lfd'):
             m=re.fullmatch(r'(\w+)@sda21\(r0\)',a[1]);m2=re.fullmatch(r'(\w+)@l\((r\d+)\)',a[1])
             if m: base=('a',m[1],0);off=0
             elif m2:
@@ -88,9 +88,9 @@ def run(insns,state=None):
                     if off in stack: R[a[0]]=stack[off];continue
                     # restoring a saved register
                     continue
-            if op=='lfs':
-                if base[0]!='a': raise Unliftable('lfs')
-                F[a[0]]=('f',base[1],base[2]+off);continue
+            if op in ('lfs','lfd'):
+                if base[0]!='a': raise Unliftable(op)
+                F[a[0]]=('f' if op=='lfs' else 'd',base[1],base[2]+off);continue
             R[a[0]]=('m',base[1],base[2]+off) if base[0]=='a' else ('ld',base,off);continue
         if op=='lwzx':
             R[a[0]]=('lwzx',R[a[1]],R[a[2]]);continue
@@ -229,7 +229,7 @@ USED_STRINGS=set()
 RETURNS={'fn_80053998':'int'}
 ARITY={'fn_800658F8':2,'fn_80053998':2,'fn_8006588C':3}
 
-def lift_fieldinit(c,insns,pool=None,name=None):
+def lift_fieldinit(c,insns,pool=None,name=None,locals_first=False,local_groups=False):
     """pool: {(base symbol, offset): name} for tables addressed from a pool (see poolsrc.py)."""
     calls,stores,frame=run(collapse_releases(insns))
     pool=pool or {}
@@ -247,6 +247,7 @@ def lift_fieldinit(c,insns,pool=None,name=None):
         if v[0]=='a' and v[2]==0: return v[1]
         if v[0]=='f' and (v[1],v[2]) in pool: return '*reinterpret_cast<float *>(%s)'%pool[(v[1],v[2])]
         if v[0]=='f' and v[2]==0: return '*reinterpret_cast<const float *>(%s)'%v[1]
+        if v[0]=='d' and v[2]==0: return '*reinterpret_cast<const double *>(%s)'%v[1]
         if v[0]=='f' : return '*reinterpret_cast<float *>((%s+%d))'%(v[1],v[2])
         if v[0]=='ld' and (v[1] in names or v[1]==meta):
             return '*reinterpret_cast<void **>(reinterpret_cast<char *>(%s)+%d)'%(expr(v[1]),v[2])
@@ -259,17 +260,37 @@ def lift_fieldinit(c,insns,pool=None,name=None):
     # Values built on the stack and passed by address (a field's default vector or matrix): one local float
     # array from r1+8, written as verbatim lines (' @@').
     sp=[s for s in stores if s[0][0]=='sp']
+    # with local_groups, the values stored before each call are a local array of their own (localN),
+    # declared in call order; otherwise one array from r1+8
+    groups=[]   # (lo, hi, name)
     if sp:
-        lo=min(s[1] for s in sp);hi=max(s[1]+4 for s in sp)
-        if lo!=8 or any(s[2] not in (4,'f') for s in sp): raise Unliftable('fieldInit stack layout')
-        out.append(' @@    float local[%d];'%((hi-lo)//4))
+        if any(s[2] not in (4,'f') for s in sp): raise Unliftable('fieldInit stack layout')
+        if local_groups:
+            prev=0
+            for k_,cl in enumerate(calls):
+                g=[s for s in stores[prev:cl[3]] if s[0][0]=='sp'];prev=cl[3]
+                if g: groups.append((min(s[1] for s in g),max(s[1]+4 for s in g),'local%d'%len(groups)))
+            for glo,ghi,gn in groups: out.append(' @@    float %s[%d];'%(gn,(ghi-glo)//4))
+        else:
+            lo=min(s[1] for s in sp);hi=max(s[1]+4 for s in sp)
+            if lo!=8: raise Unliftable('fieldInit stack layout')
+            groups=[(8,hi,'local')]
+            out.append(' @@    float local[%d];'%((hi-lo)//4))
+    def local_at(off):
+        for glo,ghi,gn in groups:
+            if glo<=off<ghi: return gn,(off-glo)//4
+        raise Unliftable('stack address outside the locals')
     def flush(upto):
         nonlocal si
-        # the stack stores before a call, in offset order (the source's; the stores are scheduled apart)
+        # the stack stores before a call, in offset order (the source's; the stores are scheduled apart);
+        # with locals_first, written before the field they are for is fetched (the line before)
+        ls=[]
         for base,off,width,v in sorted((s for s in stores[si:upto] if s[0][0]=='sp'),key=lambda s:s[1]):
-            i=(off-8)//4
-            if width=='f': out.append(' @@    local[%d] = %s;'%(i,expr(v)))
-            else: out.append(' @@    *reinterpret_cast<int *>(&local[%d]) = %s;'%(i,expr(v)))
+            gn,i=local_at(off)
+            if width=='f': ls.append(' @@    %s[%d] = %s;'%(gn,i,expr(v)))
+            else: ls.append(' @@    *reinterpret_cast<int *>(&%s[%d]) = %s;'%(gn,i,expr(v)))
+        if ls and locals_first and out and '=meta_field(' in out[-1]: out[-1:-1]=ls
+        else: out.extend(ls)
         while si<upto:
             base,off,width,v=stores[si];si+=1
             if base[0]=='sp': continue
@@ -324,8 +345,8 @@ def lift_fieldinit(c,insns,pool=None,name=None):
             if t in ARITY: hi=ARITY[t]-1
             if args[1][0]=='sp' and hi>1: hi=1   # (field, &local value): later registers are load temporaries
             if f1 is not None and hi<=0:
-                if used(k) or f1[0]!='f': raise Unliftable('float argument')
-                out.append(' %s(%s,%s);'%(t,expr(args[0]),expr(f1)));decls.append('void %s(void *, float);'%t)
+                if used(k) or f1[0] not in ('f','d'): raise Unliftable('float argument')
+                out.append(' %s(%s,%s);'%(t,expr(args[0]),expr(f1)));decls.append('void %s(void *, %s);'%(t,'float' if f1[0]=='f' else 'double'))
                 continue
             if hi<0:
                 nxt=calls[k+1] if k+1<len(calls) else None
@@ -353,7 +374,8 @@ def lift_fieldinit(c,insns,pool=None,name=None):
             else:
                 for r in ARGS[1:hi+1]:
                     v=args[ARGS.index(r)]
-                    if v[0]=='sp' and sp and v[1]>=8: a.append('&local[%d]'%((v[1]-8)//4));types.append('void *');continue
+                    if v[0]=='sp' and sp and v[1]>=8:
+                        gn,i=local_at(v[1]);a.append('&%s[%d]'%(gn,i));types.append('void *');continue
                     if v[0]!='c' and v not in names and v[0]!='a': raise Unliftable('call argument')
                     if v in names and names[v].endswith('()'): types.append('void *');a.append(names[v]);continue
                     e=expr(v)
@@ -361,12 +383,46 @@ def lift_fieldinit(c,insns,pool=None,name=None):
                         e='(void *)"%s"'%STRINGS[v[1]].replace('\\','\\\\').replace('"','\\"');USED_STRINGS.add(v[1])
                     elif v[0]=='a' and re.fullmatch(r'\w+',e): e='(void *)'+e     # (read-only data is declared const)
                     a.append(e);types.append('int' if v[0]=='c' else vtypes.get(v,'void *'))
+            for v in args[:hi+1]:
+                if v and v[0]=='a' and v[2]==0 and v[1].startswith('fn_'): decls.append('void %s();'%v[1])   # a function's address
             out.append(' %s(%s);'%(t,','.join(a)));decls.append('void %s(%s);'%(t,', '.join(types)))
     flush(len(stores))
+    # One declaration per function: where calls pass a constant and an address in the same position, the
+    # parameter is a pointer and the constants are cast.
+    by={}
+    for d in decls:
+        m=re.fullmatch(r'(.+?)(\w+)\((.*)\);',d)
+        by.setdefault(m[2],[]).append((m[1],[x for x in m[3].split(', ') if x]))
+    fixed=[];seen=set()
+    for d in decls:
+        m=re.fullmatch(r'(.+?)(\w+)\((.*)\);',d);f=m[2]
+        if f in seen: continue
+        seen.add(f);vs=by[f]
+        n=max(len(p) for r,p in vs)
+        ps=[]
+        for i in range(n):
+            ts={p[i] for r,p in vs if i<len(p)}
+            ps.append(ts.pop() if len(ts)==1 else 'void *')
+            if len(ts)>=1 and 'int' in ts|{ps[-1]} and ps[-1]=='void *':
+                # cast the constants passed in this position
+                for j,l in enumerate(out):
+                    mm=re.match(r' %s\((.*)\);$'%re.escape(f),l)
+                    if mm:
+                        a=[x for x in re.split(r',(?![^(]*\))',mm[1])]
+                        if i<len(a) and re.fullmatch(r'-?\d+',a[i]): a[i]='(void *)%s'%a[i];out[j]=' %s(%s);'%(f,','.join(a))
+        fixed.append('%s%s(%s);'%(vs[0][0],f,', '.join(ps)))
+    decls=fixed
     return 'void %s(){\n%s\n}'%(name or c+'_fieldInit','\n'.join(out)),decls
 
 VTOF=re.compile(r'lwzx (r\d+), r\d+, r\d+$')
 RELEASE='internalRelease__Q33Gap4Core21igStringPoolContainerFPCQ33Gap4Core16igStringPoolItem'
+
+def member_call(t,member):
+    """A member's setup call: fn(&member), or the array construction fn_800A33B8(member, construct, 0, size,
+    count)."""
+    if '|' in t:
+        f,extra=t.split('|');return '%s(%s,%s);'%(f,member,extra)
+    return '%s(&%s);'%(t,member)
 
 def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
     """The temporary instance as a chain of structs whose inline destructors restore each level's vtable and
@@ -384,10 +440,16 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
     membercalls=[]
     for t,args,stack,ns,f1,wr in calls[1:]:
         if args[0][0]!='sp' or args[0][1]<=obj: raise Unliftable('chain call '+t)
+        if t=='fn_800A33B8':
+            # an array member constructed element by element (construct, destroy, element size, count)
+            c_,d_,z_,n_=args[1:5]
+            if c_[0]!='a' or c_[2] or not (d_==('c',0) or d_[0]=='a' and not d_[2]) or z_[0]!='c' or n_[0]!='c':
+                raise Unliftable('array construction')
+            t='fn_800A33B8|%s,%s,%d,%d'%(c_[1],d_[1] if d_[0]=='a' else '0',z_[1],n_[1])
         membercalls.append((ns,t,args[0][1]-obj))
     # destructor code
     post=insns[i+1:]
-    vts=[];members={};this=None;level=None;kinds=[];explicit=None
+    vts=[];members={};this=None;level=None;kinds=[];explicit=None;arrays={}
     def addr(r):
         v=R.get(r)
         return v[1] if v and v[0]=='sp' else None
@@ -415,6 +477,13 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
             if cur in members: raise Unliftable('chain member twice')
             members[cur]=[None,level];kinds.append(cur);continue
         if op=='bl' and a[0] in SAVE: continue
+        if op=='bl' and a[0]=='fn_800A3340':
+            # an array member destroyed element by element (array, destroy, element size, count)
+            x=[R.get(r,('?',)) for r in ('r3','r4','r5','r6')]
+            if x[0][0]!='sp' or x[1][0]!='a' or x[2][0]!='c' or x[3][0]!='c': raise Unliftable('array destruction')
+            arrays[x[0][1]-obj]=(level,'fn_800A3340(unknown%02X,%s,%d,%d);'%(x[0][1]-obj,x[1][1],x[2][1],x[3][1]))
+            for r in ['r0','r3','r4','r5','r6','r7','r8','r9','r10','r11','r12']: R[r]=('?',)
+            continue
         if op=='bl' and cur is None and explicit is None and not members:
             explicit=a[0];continue                       # the class's out-of-line destructor, called explicitly
         if op=='bl':
@@ -430,7 +499,8 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
             R[a[0]]=('?',);continue
         if op in ('mr',): R[a[0]]=R.get(a[1],('?',));continue
         if op in ('li','subi','subic.','clrlwi.','stw','cmplwi','bne','beq','mtlr','blr','mflr'): 
-            if op in ('li','subi','subic.','clrlwi.'): R[a[0]]=('?',)
+            if op=='li' and re.fullmatch(r'-?0x[0-9a-f]+|-?\d+',a[1]): R[a[0]]=('c',num(a[1]))
+            elif op in ('li','subi','subic.','clrlwi.'): R[a[0]]=('?',)
             continue
         if op=='addi' and a[0]=='r1': continue
         raise Unliftable('chain '+op)
@@ -514,7 +584,7 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
                     val=str(v[1]) if v[0]=='c' else v[1] if v[0]=='a' and v[2]==0 else None
                     if val is None: raise Unliftable('chain value')
                     ev.append((si,1,'unknown%02X%s=%s;'%(o,'.value' if o in members else '',val)))
-                for ns,tt,o in sorted(membercalls): ev.append((ns,0,'%s(&unknown%02X);'%(tt,o)))
+                for ns,tt,o in sorted(membercalls): ev.append((ns,0,member_call(tt,'unknown%02X'%o)))
                 s.append(' inline %s(){%s}'%(nm,''.join(x[2] for x in sorted(ev))))
         elif ctors:
             # The level's constructor: its vtable, its members' initial values, then its members' setup calls.
@@ -527,11 +597,11 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
                     if val is None: raise Unliftable('chain value')
                     ev.append((si,1,'unknown%02X%s=%s;'%(o,'.value' if o in members else '',val)))
             for ns,tt,o in sorted(membercalls):
-                if owner[o]==vt: ev.append((ns,0,'%s(&unknown%02X);'%(tt,o)))
+                if owner[o]==vt: ev.append((ns,0,member_call(tt,'unknown%02X'%o)))
             body+=[x[2] for x in (sorted(ev,key=lambda e:-e[1]) if ctors=='stores first' else sorted(ev))]
             s.append(' inline %s(){%s}'%(nm,''.join(body)))
         # Only levels whose destructor restores their vtable have one (the others' are trivial).
-        if vt in vts: s.append(' inline ~%s(){unknown00=%s;}'%(nm,vt))
+        if vt in vts: s.append(' inline ~%s(){unknown00=%s;%s}'%(nm,vt,''.join(x for v2,x in arrays.values() if v2==vt)))
         s.append('};')
         structs[nm]='\n'.join(s);parent=nm;names.append(nm)
     # the body: the stores and member calls in order
@@ -540,12 +610,12 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
     if ctors: stores=[]
     for si,(base,off,width,v) in enumerate(stores):
         while ci<len(mc) and mc[ci][0]<=si:
-            lines.append(' %s(&object.unknown%02X);'%(mc[ci][1],mc[ci][2]));ci+=1
+            lines.append(' '+member_call(mc[ci][1],'object.unknown%02X'%mc[ci][2]));ci+=1
         o=off-obj
         val=str(v[1]) if v[0]=='c' else v[1] if v[0]=='a' and v[2]==0 else None
         if val is None: raise Unliftable('chain value')
         lines.append(' object.unknown%02X%s=%s;'%(o,'.value' if o in members else '',val))
-    while ci<len(mc): lines.append(' %s(&object.unknown%02X);'%(mc[ci][1],mc[ci][2]));ci+=1
+    while ci<len(mc): lines.append(' '+member_call(mc[ci][1],'object.unknown%02X'%mc[ci][2]));ci+=1
     if explicit:
         if not ctors: raise Unliftable('chain explicit destructor')
         lines.append(' void *result=*reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);')
@@ -554,7 +624,17 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
     else:
         lines.append(' return *reinterpret_cast<void **>(reinterpret_cast<char *>(&object)+reinterpret_cast<int *>(Gap::Core::_arkCore)[0x394/4]);')
     fn='void *%s_vtableRead(){\n %s object;\n%s\n}'%(c,names[-1],'\n'.join(lines))
-    decls=['void %s(void *);'%t for t in sorted({t for ns,t,o in membercalls})]
+    decls=[]
+    for t in sorted({t for ns,t,o in membercalls}):
+        if t.startswith('fn_800A33B8|'):
+            decls.append('void fn_800A33B8(void *array, void (*construct)(void *), void (*destroy)(void *), unsigned int size, unsigned int count);')
+            for f in t.split('|')[1].split(',')[:2]:
+                if f!='0': decls.append('void %s(void *);'%f)
+        else: decls.append('void %s(void *);'%t)
     if explicit: decls.append('void %s(void *, int);'%explicit)
+    if arrays: decls.append('void fn_800A3340(void *array, void (*destroy)(void *), unsigned int size, unsigned int count);')
+    for v2,x in arrays.values():
+        d=x.split(',')[1]
+        if 'void %s(void *);'%d not in decls: decls.append('void %s(void *);'%d)
     if rootctor!='igObject_construct': decls.append('void %s(void *);'%rootctor)
     return fn,structs,decls

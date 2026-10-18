@@ -25,9 +25,5 @@ void *fn_80113A3C(){
  if(!igBasicColorChanger_meta) igBasicColorChanger_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igBasicColorChanger_meta;
 }
-void *igBasicColorChanger_getMeta(){
- if(!igBasicColorChanger_meta || !(reinterpret_cast<unsigned int *>(igBasicColorChanger_meta)[0x24/4]&4)) igBasicColorChanger_arkRegister();
- return igBasicColorChanger_meta;
-}
 }
 #pragma pop

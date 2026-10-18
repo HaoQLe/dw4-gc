@@ -795,6 +795,7 @@ config.libs = [
         "objects": [
             Object(Matching, "Alchemy/src/igGap.cpp"),
             Object(Matching, "Alchemy/src/igCore/igArkCore.cpp"),
+            Object(Matching, "Alchemy/src/igCore/igStringObjRef.cpp"),
             Object(Matching, "Alchemy/src/igCore/igArkCoreCallbacks.cpp"),
             Object(Matching, "Alchemy/src/igCore/igArkCoreAllocation.cpp"),
             Object(Matching, "Alchemy/src/igCore/unknown8003EA0C.cpp"),
@@ -869,6 +870,15 @@ config.libs = [
             Object(Matching, "Game/Bec/bePadManager.cpp"),
             Object(Matching, "Game/Bec/beTimer.cpp"),
             Object(Matching, "Game/Bec/beCameraMode.cpp"),
+            Object(Matching, "Game/Bec/beCri.cpp"),
+            Object(NonMatching, "Game/Bec/beCriPlay.cpp"),
+            Object(Matching, "Game/Bec/beCriStop.cpp"),
+            Object(NonMatching, "Game/Bec/beCriResume.cpp"),
+            Object(Matching, "Game/Bec/beCriVolume.cpp"),
+            Object(NonMatching, "Game/Bec/beCriTransfer.cpp"),
+            Object(Matching, "Game/Bec/beCriReverb.cpp"),
+            Object(NonMatching, "Game/Bec/beCriReady.cpp"),
+            Object(Matching, "Game/Bec/beCriSoundFile.cpp"),
         ],
     },
     {

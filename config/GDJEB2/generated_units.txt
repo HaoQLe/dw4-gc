@@ -52,7 +52,6 @@ Alchemy/src/unknownGen/unknown80025ECC.cpp	80025ECC	80025ED4	-
 Alchemy/src/unknownGen/unknown80025F50.cpp	80025F50	80025FE8	-
 Alchemy/src/unknownGen/unknown80026020.cpp	80026020	8002605C	-
 Alchemy/src/unknownGen/unknown8002614C.cpp	8002614C	80026160	-
-Alchemy/src/unknownGen/unknown80026180.cpp	80026180	800261F4	-
 Alchemy/src/unknownGen/unknown800261F4.cpp	800261F4	8002648C	-
 Alchemy/src/unknownGen/unknown8002648C.cpp	8002648C	800265C0	-
 Alchemy/src/unknownGen/unknown80026850.cpp	80026850	800268E8	-
@@ -2662,12 +2661,6 @@ unknownGen/unknown802F488C.cpp	802F488C	802F48B8	eh
 unknownGen/unknown802F4C38.cpp	802F4C38	802F4C74	eh,nosdata
 unknownGen/unknown802F4C74.cpp	802F4C74	802F4CA0	eh
 unknownGen/unknown802F4EB8.cpp	802F4EB8	802F4EF4	eh,nosdata
-unknownGen/unknown802F4F48.cpp	802F4F48	802F4F58	nosdata
-unknownGen/unknown802F4F58.cpp	802F4F58	802F4F94	eh,nosdata
-unknownGen/unknown802F5174.cpp	802F5174	802F51C4	eh
-unknownGen/unknown802F65F8.cpp	802F65F8	802F6630	eh
-unknownGen/unknown802F667C.cpp	802F667C	802F66C8	eh
-unknownGen/unknown802F7324.cpp	802F7324	802F7334	nosdata
 unknownGen/unknown802F7458.cpp	802F7458	802F74CC	eh
 unknownGen/unknown802F7BDC.cpp	802F7BDC	802F7C58	eh
 unknownGen/unknown802F7C58.cpp	802F7C58	802F7D00	eh,nosdata

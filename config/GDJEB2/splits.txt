@@ -313,7 +313,7 @@ Alchemy/src/unknownGen/unknown8002614C.cpp:
 Alchemy/src/Meta/igGamecubeSemaphore.cpp:
 	.text       start:0x80026160 end:0x80026180
 
-Alchemy/src/unknownGen/unknown80026180.cpp:
+Alchemy/src/igCore/igStringObjRef.cpp:
 	.text       start:0x80026180 end:0x800261F4
 
 Alchemy/src/unknownGen/unknown800261F4.cpp:
@@ -13471,31 +13471,50 @@ unknownGen/unknown802F4EB8.cpp:
 	extabindex  start:0x80019DD0 end:0x80019DDC
 	.text       start:0x802F4EB8 end:0x802F4EF4
 
-unknownGen/unknown802F4F48.cpp:
-	.text       start:0x802F4F48 end:0x802F4F58
+Game/Bec/beCri.cpp:
+	extab       start:0x8000A91C end:0x8000A94C
+	extabindex  start:0x80019DDC end:0x80019E24
+	.text       start:0x802F4EF4 end:0x802F53B8
 
-unknownGen/unknown802F4F58.cpp:
-	extab       start:0x8000A924 end:0x8000A92C
-	extabindex  start:0x80019DE8 end:0x80019DF4
-	.text       start:0x802F4F58 end:0x802F4F94
+Game/Bec/beCriPlay.cpp:
+	extab       start:0x8000A94C end:0x8000A99C
+	extabindex  start:0x80019E24 end:0x80019E54
+	.text       start:0x802F53B8 end:0x802F5F98
 
-unknownGen/unknown802F5174.cpp:
-	extab       start:0x8000A934 end:0x8000A93C
-	extabindex  start:0x80019E00 end:0x80019E0C
-	.text       start:0x802F5174 end:0x802F51C4
+Game/Bec/beCriStop.cpp:
+	extab       start:0x8000A99C end:0x8000A9B4
+	extabindex  start:0x80019E54 end:0x80019E78
+	.text       start:0x802F5F98 end:0x802F61F8
 
-unknownGen/unknown802F65F8.cpp:
-	extab       start:0x8000A9CC end:0x8000A9D4
-	extabindex  start:0x80019E9C end:0x80019EA8
-	.text       start:0x802F65F8 end:0x802F6630
+Game/Bec/beCriResume.cpp:
+	extab       start:0x8000A9B4 end:0x8000A9BC
+	extabindex  start:0x80019E78 end:0x80019E84
+	.text       start:0x802F61F8 end:0x802F6334
 
-unknownGen/unknown802F667C.cpp:
-	extab       start:0x8000A9DC end:0x8000A9EC
-	extabindex  start:0x80019EB4 end:0x80019ECC
-	.text       start:0x802F667C end:0x802F66C8
+Game/Bec/beCriVolume.cpp:
+	extab       start:0x8000A9BC end:0x8000AA24
+	extabindex  start:0x80019E84 end:0x80019EF0
+	.text       start:0x802F6334 end:0x802F69B8
 
-unknownGen/unknown802F7324.cpp:
-	.text       start:0x802F7324 end:0x802F7334
+Game/Bec/beCriTransfer.cpp:
+	extab       start:0x8000AA24 end:0x8000AA44
+	extabindex  start:0x80019EF0 end:0x80019F20
+	.text       start:0x802F69B8 end:0x802F6F10
+
+Game/Bec/beCriReverb.cpp:
+	extab       start:0x8000AA44 end:0x8000AA4C
+	extabindex  start:0x80019F20 end:0x80019F2C
+	.text       start:0x802F6F10 end:0x802F6FB0
+
+Game/Bec/beCriReady.cpp:
+	extab       start:0x8000AA4C end:0x8000AA54
+	extabindex  start:0x80019F2C end:0x80019F38
+	.text       start:0x802F6FB0 end:0x802F7244
+
+Game/Bec/beCriSoundFile.cpp:
+	extab       start:0x8000AA54 end:0x8000AA64
+	extabindex  start:0x80019F38 end:0x80019F50
+	.text       start:0x802F7244 end:0x802F7334
 
 unknownGen/unknown802F7458.cpp:
 	extab       start:0x8000AA84 end:0x8000AA8C

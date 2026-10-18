@@ -50,7 +50,7 @@ def run(insns,state=None):
         if op=='addic.' and a[1]=='r1': op='addi'           # the address of a member, tested for null
         if op=='lis':
             m=re.fullmatch(r'(\w+)@ha',a[1])
-            if m: R[a[0]]=('ha',m[1]);continue
+            if m: R[a[0]]=('ha',m[1]);NONSMALL.add(m[1]);continue
             R[a[0]]=('c',(num(a[1])<<16)-((num(a[1])&0x8000)<<17));continue
         if op=='addi':
             d,s,imm=a
@@ -223,6 +223,8 @@ def lift_vtableread(c,insns,size,sizes=None):
 # Read-only small strings a unit defines itself (written as literals): {symbol: text}; set by poolsrc.py.
 STRINGS={}
 USED_STRINGS=set()
+# Symbols the original addresses through lis/addi (not small data), whatever their section: declared unsized.
+NONSMALL=set()
 
 # Returned types and argument counts of the field-replacement helpers (see lift_fieldinit): the registers
 # written before a call do not always tell its arguments.

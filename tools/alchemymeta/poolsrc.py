@@ -101,16 +101,24 @@ def segment(objs,relocs):
 
 def data_source(objs,relocs,defined):
     """C definitions for objects [(name, address, size)] in address order. Returns (definitions, the external
-    names they refer to)."""
+    names they refer to). Objects of 8 bytes or less are placed in .data explicitly (MWCC would put them in
+    small data)."""
     out=[];refs=set();pos=None
     for name,a,size in objs:
+        n0=len(out)
+        _emit_one(name,a,size,relocs,out,refs)
+        if size<=8: out[n0]='__declspec(section ".data") '+out[n0]
+    return out,refs-defined
+
+def _emit_one(name,a,size,relocs,out,refs):
+    if True:
         b=rd(a,size)
         rs={o:relocs[a+o] for o in range(size) if a+o in relocs}
         if any(t=='?' for t,x in rs.values()): raise ValueError('unsupported relocation in '+name)
         if rs and (any(o%4 for o in rs) or a%4 or size%4): raise ValueError('unaligned relocation in '+name)
         printable=b and b[-1]==0 and all(32<=c<127 or c in (9,10,13) for c in b[:-1]) and 0 not in b[:-1]
         if not rs and printable and size>1:
-            out.append('char %s[] = "%s";'%(name,c_string(b[:-1])));continue
+            out.append('char %s[] = "%s";'%(name,c_string(b[:-1])));return
         if size%4==0 and a%4==0 and (rs or size>=4):
             items=[]
             for o in range(0,size,4):
@@ -121,10 +129,9 @@ def data_source(objs,relocs,defined):
                 else:
                     w=int.from_bytes(b[o:o+4],'big')
                     items.append('0' if not w else '(void *)0x%X'%w)
-            out.append('void *%s[%d] = {%s};'%(name,size//4,', '.join(items)));continue
+            out.append('void *%s[%d] = {%s};'%(name,size//4,', '.join(items)));return
         if rs: raise ValueError('relocation in byte object '+name)
         out.append('unsigned char %s[%d] = {%s};'%(name,size,', '.join('0x%02X'%c for c in b)))
-    return out,refs-defined
 
 def main():
     apply='--apply' in sys.argv
@@ -207,6 +214,9 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
             if r[2] not in seen:
                 seen.add(r[2]);pieces.append(('unit',r[0],r[2],r[3],Path('src',r[2]).read_text()))
             continue
+        if (HERE/'pieces'/(n+'.cpp')).exists():
+            # written by hand (tools/alchemymeta/pieces)
+            pieces.append(('hand',a,n,{'eh'} if a in eti_fns else set()));continue
         if not n.endswith('_fieldInit') or pool_base(fns[n])!=p:
             # a separate function replacing a class's inherited fields (field setup without tables)
             m=re.match(r'lwz r3, (\w+)_meta@sda21\(r0\)$',fns[n][5] if len(fns[n])>5 else '')
@@ -222,6 +232,14 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
     syms=resymbol(data,new)
     # the unit's data: from the pool's start to the end of the last table
     dhi=max([a+s for a,s in new.values()]+[base+data[p][2]])
+    # objects hand-written pieces refer to by offset
+    for pc in pieces:
+        if pc[0]=='hand':
+            for m in re.finditer(r'@POOL\((0x[0-9A-Fa-f]+)\)',(HERE/'pieces'/(pc[2]+'.cpp')).read_text()):
+                at=base+int(m[1],16)
+                obj=[(a,s) for nm,(sec,a,s) in syms.items() if sec=='.data' and a<=at<a+s]
+                if not obj: raise Skip('no object at pool offset '+m[1])
+                dhi=max(dhi,obj[0][0]+obj[0][1])
     objs=sorted((a,s,nm) for nm,(sec,a,s) in syms.items() if sec=='.data' and base<=a<dhi)
     if not objs or objs[0][0]!=base: raise Skip('no object at the pool start')
     if objs[-1][0]+objs[-1][1]<dhi: raise Skip('data ends inside an object')
@@ -237,8 +255,9 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
         if r in funcset: return 'void %s();'%r
         # declared as the units declare it, so small objects keep their small-data addressing
         if r.endswith('_meta'): return 'extern Meta::igMetaObject *%s;'%r
-        z=data.get(r,(None,None,0))[2]
-        return 'extern char %s[%d];'%(r,z) if z else 'extern char %s[];'%r
+        sec,_,z=data.get(r,(None,None,0))
+        small=sec in ('.sdata','.sbss','.sdata2','.sbss2') and z and r not in asmlift.NONSMALL
+        return 'extern %schar %s[%s];'%('const ' if sec=='.sdata2' else '',r,z if small else '')
     ext=[ext_decl(r) for r in sorted(refs)]
     # the pool's other objects, by offset, for lifted code addressing them
     for nm,a,s,k in dp: pool.setdefault((p,a-base),nm)
@@ -253,6 +272,15 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
     texts=[]
     for pc in pieces:
         if pc[0]=='unit': texts.append((pc[1],pc[3],pc[4],re.sub(r'\W','_',Path(pc[2]).stem)));continue
+        if pc[0]=='hand':
+            _,a,n,tags=pc
+            src=(HERE/'pieces'/(n+'.cpp')).read_text()
+            def pname(m):
+                k=(p,int(m[1],16))
+                if k not in pool: raise Skip('no pool object at %s'%m[1])
+                return pool[k]
+            src=re.sub(r'@POOL\((0x[0-9A-Fa-f]+)\)',pname,src)
+            texts.append((a,None,[(src,tags|set(e)) for e in ((),('speed',),('lmw',),('speed','lmw'))],n));continue
         _,a,n,tags,c=pc
         block=[(a,dict((x[2],x[1]) for x in funcs)[n],n,'fieldInit')]
         variants=[]
@@ -267,7 +295,7 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
     # A lifted piece's speed/lmw setting is unknown: when its function differs, its next setting is tried.
     piece_of={}
     for i,pc in enumerate(pieces):
-        if pc[0]=='lift': piece_of[pc[2]]=i
+        if pc[0] in ('lift','hand'): piece_of[pc[2]]=i
     err=None
     global DEFINED
     DEFINED=defined

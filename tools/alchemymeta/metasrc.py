@@ -501,7 +501,10 @@ def class_file(c,block,fnsrc,structs_by_fn,decls_by_fn,classes,layouts,data,tags
                 if re.search(r'\b%s\b'%re.escape(r),l) and (l.startswith('extern ') or re.match(r'[\w\s\*]+\b%s\('%re.escape(r),l)): d=l;break
             if d: break
         if not d:
-            if r in data: d='extern %schar %s[%d];'%('const ' if data[r][0]=='.sdata2' else '',r,data[r][2]) if data[r][2] else 'extern char %s[];'%r
+            if r in data:
+                # sized only in a small-data section (so it gets small-data addressing there, and only there)
+                small=data[r][0] in ('.sdata','.sbss','.sdata2','.sbss2') and data[r][2] and r not in asmlift.NONSMALL
+                d='extern %schar %s[%s];'%('const ' if data[r][0]=='.sdata2' else '',r,data[r][2] if small else '')
             else: raise Untranslatable('no declaration for '+r)
         other.append(d)
     head=['// %s: Alchemy class registration (0x%08X..0x%08X). Written by tools/alchemymeta/metasrc.py.'%(c,block[0][0],block[-1][0]+block[-1][1]),

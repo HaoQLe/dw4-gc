@@ -1,13 +1,30 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-17. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
-- **Sound subsystem batch (user request 2026-10-18: game subsystems as readable C++):** in progress on `task/sound`.
-  - **Targets (16.6 KB, 39 functions):** `beCri` (`0x802F4EF4..0x802F7D0C`: `virtual5C/64/6C/70/74` and 29 helpers wrapping the CRI audio library, 12,436 bytes with the class's methods), `beSound` (`0x80314904..0x80315D2C`: `virtual88/7C/84/90`, 4,876 bytes, owning its `.rodata` strings `0x80427048..0x804270A0`), and `beSeCtl_virtual90` (340 bytes, stalled earlier on register colouring).
-  - **Known:** layouts of `beCri`, `beSound`, `beSoundInfo`, `bePlaySE`; the `beSound_Message` enum; messenger protocol (`fn_803050A8` registers, `fn_80305F58`/`fn_80306E1C`/`fn_80306FB4` request and read results); string-pool assignment and list helpers (`include/game/List.h`).
-  - **Unknowns:** the CRI library entry points the helpers call, and the message handler's (`beSound_virtual90`) cases.
+- **Sound subsystem batch (user request 2026-10-18: game subsystems as readable C++):** in progress on `task/sound`. Checkpoint published: every function of `beCri`, `beSound` and `beSeCtl_virtual90` is readable source, with the exact runs linked.
+  - **Targets (39 functions, 16.6 KB):** `beCri` (`0x802F4EF4..0x802F7D0C`), `beSound` (`0x80314904..0x80315D2C`), `beSeCtl_virtual90` (340 bytes).
+  - **Linked from source:**
+    - `beCri`: 24 functions;
+    - `beSound`: `virtual88`, `virtual80`, `virtual58`;
+    - the `Ref<bePlaySE>`, `Ref<beCriHandle>` and `Ref<igStringRefList>` destructors.
+
+    `Gap::Core::igStringRef::~igStringRef` (`0x800208AC`) is named.
+  - **NonMatching (register assignment):**
+    - `beCri`: 10 functions;
+    - `beSound`: `virtual7C` (2 lines), `virtual84` (124), the message handler `virtual90` (292 of 835), `fn_80315C94` (14);
+    - `beSeCtl_virtual90` (55).
+  - **Functional commits:** `6bcfc206`, `31578049`, `5351ed86`, `cd797d6e`, plus the handler typing at this checkpoint.
+  - **Totals:** matched code 39.531265% → 39.628910% (+4,044 bytes), linked 39.495724% → 39.593370% (+4,044), matched data 17.941208% → 17.961159% (+300), complete data 306,827 → 307,199, 17,338 → 17,355 functions. `build.sha1` OK.
+  - **Established:**
+    - the messenger argument lists (`beMessengerWork` messages, `beMessengerArgData` accessors);
+    - destructor names taken from exception tables;
+    - a local `cri` reproduces member-call evaluation order;
+    - an inline sign-clearing absolute value keeps the original stack layout.
+  - **Next investigation:** register colouring on `fn_80315C94` (the smallest case: the original gives the list and count the highest registers, mine the strength-reduced offset), then the handler's effect loop (`ctr` versus a re-read count).
+  - Details: [sound subsystem](docs/research/2026-10-18-sound-subsystem.md).
 - **Pool blockers batch (user request 2026-10-17, "continue"):** the four pool units blocked by a few functions are built, on `task/pool-blockers`.
   - **Units:** `Meta/igViewerStatisticsManager_module.cpp` (23 field setups), `Meta/igViewportAttr_module.cpp` (33), `Meta/igTextElement_module.cpp` (16, with the hand-written `fn_80115248` from `tools/alchemymeta/pieces/`), `Meta/igVolume_module.cpp` (2).
   - **Deleting destructors:** `tools/alchemymeta/dtorsrc.py` makes 46 of 48 readable (32,096 bytes): top level in the function, bases as inline destructor chains.
@@ -377,14 +394,14 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-17 at the pool blockers batch's last commit. The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-18 at the sound batch checkpoint. The checks passed: all-source build, verification of the changed generated units, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 1,637,208 / 4,141,552 bytes (39.531265%) |
-| Fully linked source code | 1,635,736 / 4,141,552 bytes (39.495724%) |
-| Matched functions | 17,338 / 23,334 |
-| Matched data | 269,799 / 1,503,795 bytes (17.941208%) |
+| Matched executable code | 1,641,252 / 4,141,552 bytes (39.628910%) |
+| Fully linked source code | 1,639,780 / 4,141,552 bytes (39.593370%) |
+| Matched functions | 17,355 / 23,334 |
+| Matched data | 270,099 / 1,503,795 bytes (17.961159%) |
 
 | Generator round 6 (`94ff74d` → `275fe25`) | Before → after | Exact gain |
 | --- | --- | --- |

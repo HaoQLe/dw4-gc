@@ -8,10 +8,10 @@ extern "C" {
 
 // Answers a "SOUND" message (beSound_Message): playing, stopping and fading sounds, readiness, effects,
 // volumes, and the loading of the binary sound data.
-bool beSound_virtual90(beSound *self, beBaseInfoRam *ram, void *message)
+bool beSound_virtual90(beSound *self, beBaseInfoRam *ram, beMessengerWork *message)
 {
     beBaseInfo *info = ram->_parentInfo;
-    switch (fn_80304FD8(self->_messenger, fn_802B8E10(), reinterpret_cast<void **>(message)[5])) {
+    switch (fn_80304FD8(self->_messenger, fn_802B8E10(), message->_message)) {
     case beSound_Message::STOP:
         if (fn_80306BB8(self->_messenger) == 0) return false;
         {

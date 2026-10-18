@@ -20,6 +20,7 @@
 #include <meta/igNamedObjectList.h>
 #include <meta/beBaseInfoDataList.h>
 #include <meta/enums.h>
+#include <meta/beMessengerWork.h>
 #include <game/Pool.h>
 #include <game/List.h>
 #include <game/Ref.h>
@@ -45,7 +46,7 @@ igObjectList *fn_80306FB4(void *messenger, int index);   // object index of the 
 void fn_802F6F10(beCri *cri, const char *name);       // sets the reverb
 extern const char lbl_80567360[1];                     // ""
 void *fn_802B8E10();                                    // the beSound_Message enum (created on first use)
-int fn_80304FD8(void *messenger, void *messageEnum, void *message);   // a message's value in an enum
+int fn_80304FD8(void *messenger, void *messageEnum, const char *message);   // a message's value in an enum
 // The request being answered: its typed argument lists, which the reply is appended to.
 int fn_80306BB8(void *messenger);                      // the number of 64-bit arguments
 long long fn_80306C54(void *messenger, int index);     // 64-bit argument index
@@ -138,7 +139,7 @@ void beSound_virtual88(beSound *self);
 void beSound_virtual7C(beSound *self, beBaseInfoRam *ram);
 void *beSound_virtual80(beSound *);
 void beSound_virtual84(beSound *self, beBaseInfoRam *ram);
-bool beSound_virtual90(beSound *self, beBaseInfoRam *ram, void *message);
+bool beSound_virtual90(beSound *self, beBaseInfoRam *ram, beMessengerWork *message);
 int fn_80315C94(beSound *, beBaseInfoRam *ram, const char *name);
 void *beSound_virtual58(beSound *);
 }

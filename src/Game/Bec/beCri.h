@@ -121,7 +121,6 @@ extern char lbl_804254B4[];   // "_dataBuffer"
 
 // This class's functions.
 void beCri_virtual5C(beCri *self);
-void *fn_802F4F48(void *);
 void beCri_virtual60(beCri *self);
 void beCri_virtual64(beCri *self);
 void beCri_virtual68(beCri *self);

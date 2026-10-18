@@ -21,6 +21,7 @@ bool beSound_virtual90(beSound *self, beBaseInfoRam *ram, beMessengerWork *messa
         break;
     case beSound_Message::PLAYatPAUSE:
         self->_cri->_pauseOnetime = true;
+        // and plays, as PLAY
     case beSound_Message::PLAY: {
         const char *name = fn_8030709C(self->_messenger, 0);
         int index = fn_80315C94(self, ram, name);

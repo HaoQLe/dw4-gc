@@ -40,9 +40,9 @@ void *fn_80054140(unsigned int size);                           // allocates
 void *fn_80053F28(void *container);                             // the string pool container's constructor
 const char *fn_80054094(void *container, const char *text);     // a pooled copy of text
 int strcmp(const char *, const char *);
-void fn_80305F58(void *messenger, const char *target, const char *command);   // a request to target
-int fn_80306E1C(void *messenger);                    // the number of objects in the reply
-igObjectList *fn_80306FB4(void *messenger, int index);   // object index of the reply
+void fn_80305F58(void *messenger, const char *target, const char *command);   // sends command to target; its answer becomes the current request's arguments
+int fn_80306E1C(void *messenger);                    // the number of object arguments of the current request
+igObjectList *fn_80306FB4(void *messenger, int index);   // object argument index of the current request
 void fn_802F6F10(beCri *cri, const char *name);       // sets the reverb
 extern const char lbl_80567360[1];                     // ""
 void *fn_802B8E10();                                    // the beSound_Message enum (created on first use)
@@ -117,7 +117,8 @@ static inline void setString(const char *&member, const char *text)
 struct FloatBits {
     unsigned char sign : 1;
 };
-// |value|, by clearing the sign bit.
+// |value|, by clearing the sign bit in the float's first byte. This is the original's code shape and assumes
+// big-endian floats (on a little-endian host the first byte holds mantissa bits).
 static inline float absolute(float value)
 {
     reinterpret_cast<FloatBits *>(&value)->sign = 0;

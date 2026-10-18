@@ -5,9 +5,9 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
 ## Resume here
 
 - **Sound subsystem batch (user request 2026-10-18: game subsystems as readable C++):** in progress on `task/sound`. Checkpoint published: every function of `beCri`, `beSound` and `beSeCtl_virtual90` is readable source, with the exact runs linked.
-  - **Targets (39 functions, 16.6 KB):** `beCri` (`0x802F4EF4..0x802F7D0C`), `beSound` (`0x80314904..0x80315D2C`), `beSeCtl_virtual90` (340 bytes).
+  - **Targets (42 functions, 14,780 bytes):** `beCri` (`0x802F4EF4..0x802F7334`, 33 functions), `beSound` (`0x80314904..0x80315D2C`, 8 with the `Ref<bePlaySE>` destructor), `beSeCtl_virtual90` (340 bytes).
   - **Linked from source:**
-    - `beCri`: 24 functions;
+    - `beCri`: 23 of 33 functions;
     - `beSound`: `virtual88`, `virtual80`, `virtual58`;
     - the `Ref<bePlaySE>`, `Ref<beCriHandle>` and `Ref<igStringRefList>` destructors.
 

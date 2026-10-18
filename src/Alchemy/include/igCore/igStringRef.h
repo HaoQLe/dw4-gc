@@ -17,7 +17,7 @@ namespace Gap {
             public:
                 inline igStringRef() : _string(NULL) {}
                 // Takes over the reference of a string the pool returned.
-                inline igStringRef(const igChar* pooled) : _string(pooled) {}
+                explicit inline igStringRef(const igChar* pooled) : _string(pooled) {}
                 inline igStringRef(const igStringRef& that) : _string(that._string)
                 {
                     if (isPooled()) getId()->addRef();

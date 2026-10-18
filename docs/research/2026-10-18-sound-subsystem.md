@@ -56,7 +56,9 @@ A request to another manager is opened with `fn_803065DC` / `fn_80305344` (targe
 | `0x80020CA0` | `Ref<igStringRefList>` | `Alchemy/src/igCore/igStringRefListRef.cpp`, cut out of a generated unit |
 | `0x80315C20` | `Ref<bePlaySE>` | `bePlaySERef.cpp` |
 
-A strong definition displaces a unit's weak copy, so the executable is unchanged. The map lists the discarded copy as an unreferenced duplicate, as it already did for `Ref<beCriHandle>`.
+A strong definition displaces a unit's weak copy, so the executable is unchanged. When a linked unit also emits a weak copy, the map lists it as an unreferenced duplicate: this batch adds two, `~igStringRef` (weak in `igArkCore.o`) and `Ref<beCriHandle>` (weak in `beCriVolume.o`).
+
+The weak copy's exception-table entries stay in that unit's object. objdiff therefore reports `beCriVolume`'s data as unmatched (0 of 212 bytes), as it does for `beWeapon` on `work`, while the executable is exact.
 
 **`igStringRef`** (`src/Alchemy/include/igCore/igStringRef.h`) gains the inline members the handler needs:
 - a constructor taking over a pooled string;

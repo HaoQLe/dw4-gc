@@ -2,7 +2,8 @@ unknownGen/unknown80020160.cpp	80020160	80020400	eh
 Alchemy/src/unknownGen/unknown80020784.cpp	80020784	800207D4	eh
 Alchemy/src/unknownGen/unknown800207E0.cpp	800207E0	8002080C	eh
 Alchemy/src/unknownGen/unknown8002092C.cpp	8002092C	800209E8	eh,speed
-Alchemy/src/unknownGen/unknown80020BB8.cpp	80020BB8	80021018	eh
+Alchemy/src/unknownGen/unknown80020BB8.cpp	80020BB8	80020CA0	eh
+Alchemy/src/unknownGen/unknown80020D14.cpp	80020D14	80021018	eh
 Alchemy/src/unknownGen/unknown80021678.cpp	80021678	800216EC	eh
 Alchemy/src/unknownGen/unknown800218F4.cpp	800218F4	80021944	-
 Alchemy/src/unknownGen/unknown80021B94.cpp	80021B94	80021BF4	-
@@ -2773,9 +2774,7 @@ unknownGen/unknown80313294.cpp	80313294	803132C0	eh
 unknownGen/unknown80314338.cpp	80314338	80314348	nosdata
 unknownGen/unknown803144C0.cpp	803144C0	803144D0	nosdata
 unknownGen/unknown803148F4.cpp	803148F4	80314904	nosdata
-unknownGen/unknown80314BF0.cpp	80314BF0	80314C00	nosdata
-unknownGen/unknown80315C20.cpp	80315C20	80315C94	eh
-unknownGen/unknown80315D1C.cpp	80315D1C	80315D40	nosdata
+unknownGen/unknown80315D2C.cpp	80315D2C	80315D40	nosdata
 unknownGen/unknown80315D40.cpp	80315D40	80315D6C	eh
 unknownGen/unknown80315D6C.cpp	80315D6C	80315D70	-
 unknownGen/unknown80315E00.cpp	80315E00	80315E10	nosdata

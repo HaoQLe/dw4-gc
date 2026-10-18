@@ -34,9 +34,19 @@ Alchemy/src/unknownGen/unknown8002092C.cpp:
 	.text       start:0x8002092C end:0x800209E8
 
 Alchemy/src/unknownGen/unknown80020BB8.cpp:
-	extab       start:0x80005710 end:0x80005748
-	extabindex  start:0x80012C00 end:0x80012C54
-	.text       start:0x80020BB8 end:0x80021018
+	extab       start:0x80005710 end:0x80005720
+	extabindex  start:0x80012C00 end:0x80012C18
+	.text       start:0x80020BB8 end:0x80020CA0
+
+Alchemy/src/igCore/igStringRefListRef.cpp:
+	extab       start:0x80005720 end:0x80005728
+	extabindex  start:0x80012C18 end:0x80012C24
+	.text       start:0x80020CA0 end:0x80020D14
+
+Alchemy/src/unknownGen/unknown80020D14.cpp:
+	extab       start:0x80005728 end:0x80005748
+	extabindex  start:0x80012C24 end:0x80012C54
+	.text       start:0x80020D14 end:0x80021018
 
 Alchemy/src/unknownGen/unknown80021678.cpp:
 	extab       start:0x80005768 end:0x80005770
@@ -13984,16 +13994,45 @@ unknownGen/unknown803144C0.cpp:
 unknownGen/unknown803148F4.cpp:
 	.text       start:0x803148F4 end:0x80314904
 
-unknownGen/unknown80314BF0.cpp:
+Game/Bec/beSound.cpp:
+	extab       start:0x8000B9A4 end:0x8000B9AC
+	extabindex  start:0x8001AB2C end:0x8001AB38
+	.text       start:0x80314904 end:0x80314AC8
+
+Game/Bec/beSoundSettings.cpp:
+	extab       start:0x8000B9AC end:0x8000B9B4
+	extabindex  start:0x8001AB38 end:0x8001AB44
+	.text       start:0x80314AC8 end:0x80314BF0
+
+Game/Bec/beSoundInfoMeta.cpp:
 	.text       start:0x80314BF0 end:0x80314C00
 
-unknownGen/unknown80315C20.cpp:
+Game/Bec/beSoundUpdate.cpp:
+	extab       start:0x8000B9B4 end:0x8000B9BC
+	extabindex  start:0x8001AB44 end:0x8001AB50
+	.text       start:0x80314C00 end:0x80314F14
+
+Game/Bec/beSoundMessage.cpp:
+	extab       start:0x8000B9BC end:0x8000BA40
+	extabindex  start:0x8001AB50 end:0x8001AB5C
+	.text       start:0x80314F14 end:0x80315C20
+	.data       start:0x804DF7F8 end:0x804DF854
+
+Game/Bec/bePlaySERef.cpp:
 	extab       start:0x8000BA40 end:0x8000BA48
 	extabindex  start:0x8001AB5C end:0x8001AB68
 	.text       start:0x80315C20 end:0x80315C94
 
-unknownGen/unknown80315D1C.cpp:
-	.text       start:0x80315D1C end:0x80315D40
+Game/Bec/beSoundFind.cpp:
+	extab       start:0x8000BA48 end:0x8000BA50
+	extabindex  start:0x8001AB68 end:0x8001AB74
+	.text       start:0x80315C94 end:0x80315D1C
+
+Game/Bec/beSoundMeta.cpp:
+	.text       start:0x80315D1C end:0x80315D2C
+
+unknownGen/unknown80315D2C.cpp:
+	.text       start:0x80315D2C end:0x80315D40
 
 unknownGen/unknown80315D40.cpp:
 	extab       start:0x8000BA50 end:0x8000BA58

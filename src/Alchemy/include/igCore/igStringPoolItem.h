@@ -20,6 +20,7 @@ namespace Gap {
 
 
             public:
+                inline void addRef() const { ++_refCount; }
                 inline void release() const { 
                     if ( --_refCount == 0) 
                         _pool->internalRelease(this);

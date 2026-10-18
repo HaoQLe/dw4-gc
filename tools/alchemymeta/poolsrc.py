@@ -240,6 +240,15 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
         z=data.get(r,(None,None,0))[2]
         return 'extern char %s[%d];'%(r,z) if z else 'extern char %s[];'%r
     ext=[ext_decl(r) for r in sorted(refs)]
+    # the pool's other objects, by offset, for lifted code addressing them
+    for nm,a,s,k in dp: pool.setdefault((p,a-base),nm)
+    # small read-only strings: a lifted function passing one defines it (the unit owns it in .sdata2)
+    asmlift.STRINGS={}
+    asmlift.USED_STRINGS=set()
+    for nm,(sec,a,s) in data.items():
+        if sec=='.sdata2' and 0<s<=8:
+            b=rd(a,s)
+            if b[-1]==0 and all(32<=c<127 for c in b[:-1]): asmlift.STRINGS[nm]=b[:-1].decode()
     # lifted pieces' source
     texts=[]
     for pc in pieces:
@@ -261,13 +270,14 @@ def build(p,us,fns,funcs,data,relocs,classes,layouts,eti,eti_fns):
     err=None
     global DEFINED
     DEFINED=defined
-    for mod_nosdata in (False,True):
+    for mod_nosdata in (False,True,'sdata1','sdata1ro'):
         choice=[0 if x[1] is None else None for x in texts]
         while True:
             unit,flags=module_text(texts,choice,defined,ext,defs,mod_nosdata)
-            err=check_module(unit,flags,names,base,dhi,relocs,expect)
+            strs=sorted((data[n][1],data[n][2],n) for n in asmlift.USED_STRINGS)
+            err=check_module(unit,flags,names,base,dhi,relocs,expect,strs)
             if not err:
-                return dict(pool=p,unit=unit,flags=flags,new=new,pieces=dp,data=(base,dhi),text=(lo,hi),
+                return dict(pool=p,unit=unit,flags=flags,new=new,pieces=dp,data=(base,dhi),text=(lo,hi),strings=strs,
                             units=[x[2] for x in pieces if x[0]=='unit'],err=None,cls=None,
                             name=module_name(pieces,classes))
             m=re.match(r'code differs (\w+)',err)
@@ -315,7 +325,7 @@ def module_text(texts,choice,defined,ext,defs,nosdata):
     unit=('// Written by tools/alchemymeta/poolsrc.py: units whose code addresses the data below from its start.\n'+
           '\n'.join(incl)+'\n\n// The unit\'s data.\nextern "C" {\n'+''.join(x+'\n' for x in ext)+'\n'.join(defs)+'\n}\n\n'+
           '\n\n'.join(bodies)+'\n')
-    flags=({'eh'} if eh else set())|({'nosdata'} if nosdata else set())
+    flags=({'eh'} if eh else set())|({'nosdata1'} if nosdata=='sdata1' else {'nosdata1','rostr'} if nosdata=='sdata1ro' else {'nosdata'} if nosdata else set())
     return unit,flags
 
 def resymbol(data,new):
@@ -334,9 +344,9 @@ def resymbol(data,new):
         syms[nm]=('.data',a,s)
     return syms
 
-def check_module(unit,flags,names,lo,hi,relocs,expect):
+def check_module(unit,flags,names,lo,hi,relocs,expect,strs=()):
     d=Path(tempfile.mkdtemp());c=d/'a.cpp';c.write_text(unit);o=d/'a.o'
-    cmd=compiler.command('eh' in flags,'nosdata' in flags,False,False)
+    cmd=compiler.command('eh' in flags,('sdata1ro' if 'rostr' in flags else 'sdata1') if 'nosdata1' in flags else 'nosdata' in flags,False,False)
     r=subprocess.run(cmd+['-c',str(c),'-o',str(o)],capture_output=True,text=True)
     if r.returncode:
         if DEBUG: print(r.stdout[-2500:])
@@ -353,8 +363,14 @@ def check_module(unit,flags,names,lo,hi,relocs,expect):
             if DEBUG:
                 import difflib;print('--- '+fn);print('\n'.join(list(difflib.unified_diff(b,a,'orig','mine',lineterm='',n=1))[:40]))
             return 'code differs '+fn
-    for n in ('.sbss','.bss','.rodata','.sdata2','.sdata'):
+    for n in ('.sbss','.bss','.rodata','.sdata'):
         if n in secs and secs[n]['size']: return 'emits %s'%n
+    # the unit's own small strings: one contiguous run in .sdata2, as in the executable
+    s2=secs.get('.sdata2');s2size=s2['size'] if s2 else 0
+    if strs:
+        lo2=strs[0][0];hi2=strs[-1][0]+strs[-1][1]
+        if s2size!=hi2-lo2 or s2['data']!=rd(lo2,hi2-lo2): return '.sdata2 strings differ'
+    elif s2size: return 'emits .sdata2'
     dsec=secs.get('.data')
     if not dsec or dsec['size']!=hi-lo: return '.data size %s, expected %d'%(dsec and dsec['size'],hi-lo)
     raw=dsec['data'];want=rd(lo,hi-lo)
@@ -422,6 +438,8 @@ def apply_units(results,data):
             block.append('\textabindex  start:0x%08X end:0x%08X'%(ia,ib))
         block.append('\t.text       start:0x%08X end:0x%08X'%(t0,end))
         block.append('\t.data       start:0x%08X end:0x%08X'%(lo,hi))
+        if r.get('strings'):
+            s=r['strings'];block.append('\t.sdata2     start:0x%08X end:0x%08X'%(s[0][0],s[-1][0]+s[-1][1]))
         def text_start(b):
             m=re.search(r'\.text\s+start:0x([0-9A-F]+)',b)
             return int(m[1],16) if m else None

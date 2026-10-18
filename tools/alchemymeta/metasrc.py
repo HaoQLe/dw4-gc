@@ -307,6 +307,7 @@ def tr_fieldinit(c,text,classes,layouts,refs,headers,fn_name=None):
         mm=re.fullmatch(r'(\w+)\(\)',x)
         if mm: refs.add(mm[1]);return x
         if re.fullmatch(r'&local\[\d+\]',x): return x
+        if re.fullmatch(r'\(void \*\)"(?:[^"\\]|\\.)*"',x): return x     # a string literal the unit defines
         mm=re.fullmatch(r'\*reinterpret_cast<float \*>\((\w+)\)',x)
         if mm: refs.add(mm[1]);return x
         mm=re.fullmatch(r'meta_field\((\w+),(.*)\)',x)
@@ -484,7 +485,7 @@ def class_file(c,block,fnsrc,structs_by_fn,decls_by_fn,classes,layouts,data,tags
                 if re.search(r'\b%s\b'%re.escape(r),l) and (l.startswith('extern ') or re.match(r'[\w\s\*]+\b%s\('%re.escape(r),l)): d=l;break
             if d: break
         if not d:
-            if r in data: d='extern char %s[%d];'%(r,data[r][2]) if data[r][2] else 'extern char %s[];'%r
+            if r in data: d='extern %schar %s[%d];'%('const ' if data[r][0]=='.sdata2' else '',r,data[r][2]) if data[r][2] else 'extern char %s[];'%r
             else: raise Untranslatable('no declaration for '+r)
         other.append(d)
     head=['// %s: Alchemy class registration (0x%08X..0x%08X). Written by tools/alchemymeta/metasrc.py.'%(c,block[0][0],block[-1][0]+block[-1][1]),
@@ -611,7 +612,7 @@ def main():
             except asmlift.Unliftable: chain=True
             if chain:
                 forms=[]
-                for mode in (False,True,'stores first','asm order'):
+                for mode in (False,True,'stores first','asm order','top'):
                     try: forms.append(asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes,ctors=mode))
                     except asmlift.Unliftable as e: err=e
                 if not forms: raise err
@@ -622,7 +623,7 @@ def main():
             fn,st=asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0))
             alt,_=asmlift.lift_vtableread(c,insns,classes.get(c,{}).get('size',0),vt_sizes)
             alts[n]=[alt] if alt!=fn else []
-            for mode in (True,'stores first','asm order'):
+            for mode in (True,'stores first','asm order','top'):
                 try:
                     ch=asmlift.lift_vtableread_chain(c,insns,classes.get(c,{}).get('size',0),vt_sizes,ctors=mode)
                     if (ch[0],ch[1]) not in alts[n]: alts[n].append((ch[0],ch[1]))

@@ -33,9 +33,5 @@ void *fn_80110CB8(){
  if(!igGuiSystemModel_meta) igGuiSystemModel_meta=meta_newMetaObject(fn_800607F4(lbl_805621F4));
  return igGuiSystemModel_meta;
 }
-void *igGuiSystemModel_getMeta(){
- if(!igGuiSystemModel_meta || !(reinterpret_cast<unsigned int *>(igGuiSystemModel_meta)[0x24/4]&4)) igGuiSystemModel_arkRegister();
- return igGuiSystemModel_meta;
-}
 }
 #pragma pop

@@ -432,6 +432,7 @@ Meta/igHotKeyBindingList.cpp	8010F5C8	8010F728	-
 Meta/igGuiSystem.cpp	8010F9EC	8010FBDC	-
 Meta/igMousePosObserver.cpp	80110720	801108A4	-
 Meta/igWindowSizeObserver.cpp	80110B48	80110CB8	-
+Meta/igGuiSystemModel.cpp	80110CF4	80110F7C	-
 Meta/igGuiComponentNode.cpp	801110DC	80111290	-
 Meta/igGroup_destructor.cpp	80111290	801113D0	-
 Meta/igGuiComponentNode_2.cpp	801113D0	8011148C	-
@@ -1523,18 +1524,4 @@ Meta/beNDMWAfsSetupData.cpp	803452CC	803454F0	eh,nosdata
 Meta/beNDMWAfsStageLoad.cpp	803454F0	80345760	eh,nosdata,speed
 Meta/beNDMWAfsSetup.cpp	80345760	80345B94	eh,nosdata,speed
 Meta/igViewerStatisticsManager.cpp	80402E5C	80402F78	nosdata
-Meta/igStatisticsItemList.cpp	8040337C	8040354C	lmw,nosdata
-Meta/igViewerSceneInfoManager.cpp	80403C48	80403D28	nosdata
-Meta/fn_80403D78_destructor.cpp	80403D78	80404544	-
-Meta/igViewerRenderer.cpp	804053B4	8040550C	nosdata
-Meta/igViewerGuiFactory.cpp	80406228	80406344	nosdata
-Meta/igPickMode.cpp	80406AD8	80406E24	nosdata
-Meta/igRotateMode.cpp	80407000	804071B0	nosdata
-Meta/igFlyMode.cpp	8040737C	80407578	nosdata
-Meta/igCameraMode.cpp	80407720	80407960	nosdata
-Meta/igViewMode.cpp	80407A18	80407BD0	nosdata
-Meta/igViewManager.cpp	80407C50	80407ECC	nosdata
-Meta/igNormalsRenderer.cpp	804083CC	804084F4	nosdata
-Meta/igBoundingBoxRenderer.cpp	80408C90	80408DB8	nosdata
-Meta/igActorManager.cpp	804091B0	804092E0	nosdata
-Meta/igActorManager_destructor.cpp	804092E0	8040956C	-
+Meta/igViewerStatisticsManager_module.cpp	80403214	80409A68	nosdata1,rostr

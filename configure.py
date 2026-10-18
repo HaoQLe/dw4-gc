@@ -355,7 +355,8 @@ generated_units = (
     else []
 )
 
-# Generated units: 'eh' functions own exception-table entries; 'nosdata' code avoids small-data addressing;
+# Generated units: 'eh' functions own exception-table entries; 'nosdata' code avoids small-data addressing
+# ('nosdata1': except for read-only small data);
 # 'speed' code was optimized for speed (-O4,p) rather than size; 'lmw' code saves registers with stmw/lmw.
 def GeneratedObject(unit: List[str]) -> Object:
     flags = unit[3].split(",") if len(unit) > 3 else []
@@ -365,6 +366,10 @@ def GeneratedObject(unit: List[str]) -> Object:
         cflags = [("-Cpp_exceptions on" if flag == "-Cpp_exceptions off" else flag) for flag in cflags]
     if "nosdata" in flags:
         cflags += ["-sdata 0", "-sdata2 0"]
+    if "nosdata1" in flags:   # small read-only data (.sdata2) still addressed through r2
+        cflags += ["-sdata 0"]
+    if "rostr" in flags:      # string literals are read-only data
+        cflags += ["-str reuse,readonly"]
     if "speed" in flags:
         cflags = [("-O4,p" if flag == "-O4,s" else flag) for flag in cflags]
     if "lmw" in flags:

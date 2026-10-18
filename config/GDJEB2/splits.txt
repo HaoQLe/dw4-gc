@@ -5433,10 +5433,10 @@ Meta/igWindowSizeObserver.cpp:
 	.text       start:0x80110B48 end:0x80110CB8
 
 unknownGen/unknown80110CB8.cpp:
-	.text       start:0x80110CB8 end:0x80110D30
+	.text       start:0x80110CB8 end:0x80110CF4
 
-unknownGen/unknown80110EC0.cpp:
-	.text       start:0x80110EC0 end:0x80110F7C
+Meta/igGuiSystemModel.cpp:
+	.text       start:0x80110CF4 end:0x80110F7C
 
 unknownGen/unknown801110A0.cpp:
 	.text       start:0x801110A0 end:0x801110DC
@@ -18232,128 +18232,10 @@ unknownGen/unknown80402F78.cpp:
 unknownGen/unknown80403150.cpp:
 	.text       start:0x80403150 end:0x80403214
 
-Meta/igStatisticsItemList.cpp:
-	.text       start:0x8040337C end:0x8040354C
-
-unknownGen/unknown8040354C.cpp:
-	.text       start:0x8040354C end:0x80403828
-
-unknownGen/unknown80403988.cpp:
-	.text       start:0x80403988 end:0x80403B2C
-
-unknownGen/unknown80403BE8.cpp:
-	.text       start:0x80403BE8 end:0x80403C48
-
-Meta/igViewerSceneInfoManager.cpp:
-	.text       start:0x80403C48 end:0x80403D28
-
-unknownGen/unknown80403D28.cpp:
-	.text       start:0x80403D28 end:0x80403D78
-
-Meta/fn_80403D78_destructor.cpp:
-	.text       start:0x80403D78 end:0x80404544
-
-unknownGen/unknown80404544.cpp:
-	.text       start:0x80404544 end:0x80404638
-
-unknownGen/unknown80404638.cpp:
-	.text       start:0x80404638 end:0x804046FC
-
-unknownGen/unknown80404C4C.cpp:
-	.text       start:0x80404C4C end:0x80404E40
-
-unknownGen/unknown80404EC0.cpp:
-	.text       start:0x80404EC0 end:0x804050A0
-
-unknownGen/unknown80405134.cpp:
-	.text       start:0x80405134 end:0x804052EC
-
-Meta/igViewerRenderer.cpp:
-	.text       start:0x804053B4 end:0x8040550C
-
-unknownGen/unknown8040550C.cpp:
-	.text       start:0x8040550C end:0x80405938
-
-unknownGen/unknown80405938.cpp:
-	.text       start:0x80405938 end:0x804059FC
-
-unknownGen/unknown80405CBC.cpp:
-	.text       start:0x80405CBC end:0x80405D5C
-
-unknownGen/unknown80405EF4.cpp:
-	.text       start:0x80405EF4 end:0x80405FB8
-
-Meta/igViewerGuiFactory.cpp:
-	.text       start:0x80406228 end:0x80406344
-
-unknownGen/unknown80406344.cpp:
-	.text       start:0x80406344 end:0x8040651C
-
-unknownGen/unknown8040651C.cpp:
-	.text       start:0x8040651C end:0x804065E0
-
-unknownGen/unknown80406768.cpp:
-	.text       start:0x80406768 end:0x804069B8
-
-Meta/igPickMode.cpp:
-	.text       start:0x80406AD8 end:0x80406E24
-
-unknownGen/unknown80406FA0.cpp:
-	.text       start:0x80406FA0 end:0x80407000
-
-Meta/igRotateMode.cpp:
-	.text       start:0x80407000 end:0x804071B0
-
-Meta/igFlyMode.cpp:
-	.text       start:0x8040737C end:0x80407578
-
-Meta/igCameraMode.cpp:
-	.text       start:0x80407720 end:0x80407960
-
-Meta/igViewMode.cpp:
-	.text       start:0x80407A18 end:0x80407BD0
-
-Meta/igViewManager.cpp:
-	.text       start:0x80407C50 end:0x80407ECC
-
-unknownGen/unknown80407FB4.cpp:
-	.text       start:0x80407FB4 end:0x80408054
-
-unknownGen/unknown80408110.cpp:
-	.text       start:0x80408110 end:0x804081CC
-
-Meta/igNormalsRenderer.cpp:
-	.text       start:0x804083CC end:0x804084F4
-
-unknownGen/unknown804084F4.cpp:
-	.text       start:0x804084F4 end:0x804086E0
-
-unknownGen/unknown804086E0.cpp:
-	.text       start:0x804086E0 end:0x804087A4
-
-unknownGen/unknown804088FC.cpp:
-	.text       start:0x804088FC end:0x80408BB0
-
-Meta/igBoundingBoxRenderer.cpp:
-	.text       start:0x80408C90 end:0x80408DB8
-
-unknownGen/unknown80408DB8.cpp:
-	.text       start:0x80408DB8 end:0x80408FA4
-
-unknownGen/unknown80408FA4.cpp:
-	.text       start:0x80408FA4 end:0x80409068
-
-Meta/igActorManager.cpp:
-	.text       start:0x804091B0 end:0x804092E0
-
-Meta/igActorManager_destructor.cpp:
-	.text       start:0x804092E0 end:0x8040956C
-
-unknownGen/unknown8040956C.cpp:
-	.text       start:0x8040956C end:0x80409630
-
-unknownGen/unknown804097F0.cpp:
-	.text       start:0x804097F0 end:0x804099E8
+Meta/igViewerStatisticsManager_module.cpp:
+	.text       start:0x80403214 end:0x80409A68
+	.data       start:0x804EFE48 end:0x804F1118
+	.sdata2     start:0x805675E0 end:0x805675E1
 
 unknownGen/unknown80409A68.cpp:
 	.text       start:0x80409A68 end:0x80409B28

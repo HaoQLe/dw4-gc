@@ -14,4 +14,5 @@ def command(exceptions=False, no_sdata=False, speed=False, lmw=False):
         "-i", "include", "-i", str(BUILD / "include"), "-DBUILD_VERSION=0", "-DVERSION_" + VERSION,
         "-cwd", "source", "-DNDEBUG=1", "-inline", "auto", "-lang=c++",
         "-i", "src/Alchemy/include", "-i", "src/Alchemy/include/igCore",
-    ] + (NO_SDATA if no_sdata else []) + (["-use_lmw_stmw", "on"] if lmw else [])
+    ] + ((["-sdata", "0"] if no_sdata in ("sdata1", "sdata1ro") else NO_SDATA) if no_sdata else []) + (
+        ["-str", "reuse,readonly"] if no_sdata == "sdata1ro" else []) + (["-use_lmw_stmw", "on"] if lmw else [])

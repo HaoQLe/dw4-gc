@@ -46,6 +46,7 @@ def run(insns,state=None):
         if a and re.fullmatch(r'[rf]\d+',a[0]) and not op.startswith('st') and op not in ('cmplwi','cmpwi'): W.add(a[0])
         if op=='stwu' and a[0]=='r1': frame=-num(a[1].split('(')[0]);continue
         if op in ('mflr','mtlr','blr'): continue
+        if op in ('stmw','lmw') and a[1].endswith('(r1)'): continue   # saving and restoring registers
         if op=='addic.' and a[1]=='r1': op='addi'           # the address of a member, tested for null
         if op=='lis':
             m=re.fullmatch(r'(\w+)@ha',a[1])
@@ -219,6 +220,10 @@ def lift_vtableread(c,insns,size,sizes=None):
     fn='void *%s_vtableRead(){\n %s object;\n%s\n}'%(c,name,'\n'.join(lines))
     return fn,{name:'\n'.join(s)}
 
+# Read-only small strings a unit defines itself (written as literals): {symbol: text}; set by poolsrc.py.
+STRINGS={}
+USED_STRINGS=set()
+
 # Returned types and argument counts of the field-replacement helpers (see lift_fieldinit): the registers
 # written before a call do not always tell its arguments.
 RETURNS={'fn_80053998':'int'}
@@ -314,8 +319,10 @@ def lift_fieldinit(c,insns,pool=None,name=None):
         else:
             # A class's metaObject or getMeta, or a call setting up a field (the field and its value, or a float
             # value in f1).
-            hi=max([ARGS.index(r) for r in wr if r in ARGS],default=-1)
+            # a register holding only an address's high half (lis for a float load) is not an argument
+            hi=max([ARGS.index(r) for r in wr if r in ARGS and args[ARGS.index(r)][0]!='ha'],default=-1)
             if t in ARITY: hi=ARITY[t]-1
+            if args[1][0]=='sp' and hi>1: hi=1   # (field, &local value): later registers are load temporaries
             if f1 is not None and hi<=0:
                 if used(k) or f1[0]!='f': raise Unliftable('float argument')
                 out.append(' %s(%s,%s);'%(t,expr(args[0]),expr(f1)));decls.append('void %s(void *, float);'%t)
@@ -349,7 +356,11 @@ def lift_fieldinit(c,insns,pool=None,name=None):
                     if v[0]=='sp' and sp and v[1]>=8: a.append('&local[%d]'%((v[1]-8)//4));types.append('void *');continue
                     if v[0]!='c' and v not in names and v[0]!='a': raise Unliftable('call argument')
                     if v in names and names[v].endswith('()'): types.append('void *');a.append(names[v]);continue
-                    a.append(expr(v));types.append('int' if v[0]=='c' else vtypes.get(v,'void *'))
+                    e=expr(v)
+                    if v[0]=='a' and v[2]==0 and v[1] in STRINGS:
+                        e='(void *)"%s"'%STRINGS[v[1]].replace('\\','\\\\').replace('"','\\"');USED_STRINGS.add(v[1])
+                    elif v[0]=='a' and re.fullmatch(r'\w+',e): e='(void *)'+e     # (read-only data is declared const)
+                    a.append(e);types.append('int' if v[0]=='c' else vtypes.get(v,'void *'))
             out.append(' %s(%s);'%(t,','.join(a)));decls.append('void %s(%s);'%(t,', '.join(types)))
     flush(len(stores))
     return 'void %s(){\n%s\n}'%(name or c+'_fieldInit','\n'.join(out)),decls
@@ -493,7 +504,19 @@ def lift_vtableread_chain(c,insns,size,sizes,ctors=False):
             pos=o+widths[o]
         end=bound.get(vt)
         if j==len(chain)-1 and end and end>pos: s.append(' char unknown%02X[%d];'%(pos,end-pos));pos=end
-        if ctors:
+        if ctors=='top':
+            # Only the most-derived level has a constructor, which builds every level in the original order
+            # (the store order as scheduled is kept; calls between them by position).
+            if j==len(chain)-1:
+                ev=[]
+                for si,(base,off,width,v) in enumerate(stores):
+                    o=off-obj
+                    val=str(v[1]) if v[0]=='c' else v[1] if v[0]=='a' and v[2]==0 else None
+                    if val is None: raise Unliftable('chain value')
+                    ev.append((si,1,'unknown%02X%s=%s;'%(o,'.value' if o in members else '',val)))
+                for ns,tt,o in sorted(membercalls): ev.append((ns,0,'%s(&unknown%02X);'%(tt,o)))
+                s.append(' inline %s(){%s}'%(nm,''.join(x[2] for x in sorted(ev))))
+        elif ctors:
             # The level's constructor: its vtable, its members' initial values, then its members' setup calls.
             # (in their order: a member can be set after another's setup call)
             body=['unknown00=%s;'%vt];ev=[]

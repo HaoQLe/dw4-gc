@@ -4,6 +4,10 @@ Updated: 2026-10-17. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Sound subsystem batch (user request 2026-10-18: game subsystems as readable C++):** in progress on `task/sound`.
+  - **Targets (16.6 KB, 39 functions):** `beCri` (`0x802F4EF4..0x802F7D0C`: `virtual5C/64/6C/70/74` and 29 helpers wrapping the CRI audio library, 12,436 bytes with the class's methods), `beSound` (`0x80314904..0x80315D2C`: `virtual88/7C/84/90`, 4,876 bytes, owning its `.rodata` strings `0x80427048..0x804270A0`), and `beSeCtl_virtual90` (340 bytes, stalled earlier on register colouring).
+  - **Known:** layouts of `beCri`, `beSound`, `beSoundInfo`, `bePlaySE`; the `beSound_Message` enum; messenger protocol (`fn_803050A8` registers, `fn_80305F58`/`fn_80306E1C`/`fn_80306FB4` request and read results); string-pool assignment and list helpers (`include/game/List.h`).
+  - **Unknowns:** the CRI library entry points the helpers call, and the message handler's (`beSound_virtual90`) cases.
 - **Pool blockers batch (user request 2026-10-17, "continue"):** the four pool units blocked by a few functions are built, on `task/pool-blockers`.
   - **Units:** `Meta/igViewerStatisticsManager_module.cpp` (23 field setups), `Meta/igViewportAttr_module.cpp` (33), `Meta/igTextElement_module.cpp` (16, with the hand-written `fn_80115248` from `tools/alchemymeta/pieces/`), `Meta/igVolume_module.cpp` (2).
   - **Deleting destructors:** `tools/alchemymeta/dtorsrc.py` makes 46 of 48 readable (32,096 bytes): top level in the function, bases as inline destructor chains.

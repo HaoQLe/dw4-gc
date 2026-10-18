@@ -2576,7 +2576,6 @@ unknownGen/unknown802DDADC.cpp	802DDADC	802DDD74	eh
 unknownGen/unknown802DE390.cpp	802DE390	802DE3F0	eh,nosdata,speed
 unknownGen/unknown802DEA84.cpp	802DEA84	802DEA94	nosdata
 unknownGen/unknown802DEB14.cpp	802DEB14	802DEB34	eh,nosdata
-unknownGen/unknown802DFFA8.cpp	802DFFA8	802E001C	eh,nosdata,speed
 unknownGen/unknown802E0360.cpp	802E0360	802E03AC	eh,nosdata
 unknownGen/unknown802E07C4.cpp	802E07C4	802E0830	eh,nosdata,speed
 unknownGen/unknown802E0C48.cpp	802E0C48	802E0C68	eh,nosdata,speed

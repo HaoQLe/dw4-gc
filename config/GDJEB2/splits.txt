@@ -12802,7 +12802,7 @@ Meta/beCri.cpp:
 	extabindex  start:0x80018744 end:0x80018774
 	.text       start:0x802DFCF0 end:0x802DFFA8
 
-unknownGen/unknown802DFFA8.cpp:
+Game/Bec/beCriHandleRef.cpp:
 	extab       start:0x80009874 end:0x8000987C
 	extabindex  start:0x80018774 end:0x80018780
 	.text       start:0x802DFFA8 end:0x802E001C

@@ -863,6 +863,7 @@ config.libs = [
         "progress_category": "game",
         "objects": [
             Object(Matching, "Game/Bec/beWeaponAttachDataListRef.cpp"),
+            Object(Matching, "Game/Bec/beCriHandleRef.cpp"),
             Object(Matching, "Game/Bec/beWeapon.cpp"),
             Object(Matching, "Game/Bec/bePadData.cpp"),
             Object(Matching, "Game/Bec/bePadManager.cpp"),

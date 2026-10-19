@@ -2666,8 +2666,6 @@ unknownGen/unknown802F7BDC.cpp	802F7BDC	802F7C58	eh
 unknownGen/unknown802F7C58.cpp	802F7C58	802F7D00	eh,nosdata
 unknownGen/unknown802F7D00.cpp	802F7D00	802F7D0C	-
 unknownGen/unknown802F825C.cpp	802F825C	802F826C	nosdata
-unknownGen/unknown802F82D8.cpp	802F82D8	802F8398	eh,nosdata
-unknownGen/unknown802F8398.cpp	802F8398	802F839C	-
 unknownGen/unknown802FA6D8.cpp	802FA6D8	802FA6E8	nosdata
 unknownGen/unknown802FA6E8.cpp	802FA6E8	802FA708	eh
 unknownGen/unknown802FA858.cpp	802FA858	802FA8EC	eh

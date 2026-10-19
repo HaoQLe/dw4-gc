@@ -13547,13 +13547,30 @@ unknownGen/unknown802F7D00.cpp:
 unknownGen/unknown802F825C.cpp:
 	.text       start:0x802F825C end:0x802F826C
 
-unknownGen/unknown802F82D8.cpp:
-	extab       start:0x8000AB24 end:0x8000AB3C
-	extabindex  start:0x80019FF8 end:0x8001A01C
-	.text       start:0x802F82D8 end:0x802F8398
+Game/Bec/beFileList.cpp:
+	extab       start:0x8000AB24 end:0x8000AB44
+	extabindex  start:0x80019FF8 end:0x8001A028
+	.text       start:0x802F82D8 end:0x802F84B4
 
-unknownGen/unknown802F8398.cpp:
-	.text       start:0x802F8398 end:0x802F839C
+Game/Bec/beFileListReset.cpp:
+	extab       start:0x8000AB44 end:0x8000AB4C
+	extabindex  start:0x8001A028 end:0x8001A034
+	.text       start:0x802F84B4 end:0x802F8A64
+
+Game/Bec/beFileListLoader.cpp:
+	extab       start:0x8000AB4C end:0x8000AC6C
+	extabindex  start:0x8001A034 end:0x8001A040
+	.text       start:0x802F8A64 end:0x802F9E98
+
+Game/Bec/beFileListLoad.cpp:
+	extab       start:0x8000AC6C end:0x8000AC94
+	extabindex  start:0x8001A040 end:0x8001A04C
+	.text       start:0x802F9E98 end:0x802FA53C
+
+Game/Bec/beFileListRead.cpp:
+	extab       start:0x8000AC94 end:0x8000AC9C
+	extabindex  start:0x8001A04C end:0x8001A058
+	.text       start:0x802FA53C end:0x802FA6D8
 
 unknownGen/unknown802FA6D8.cpp:
 	.text       start:0x802FA6D8 end:0x802FA6E8

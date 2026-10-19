@@ -54,8 +54,9 @@ bool fn_802F9E98(beFileListInfoManager *self, igStringRefList *names)
             self->_loaded++;
         }
     } else {
-        // Before the first files, the resource manager allocates from the resident pools (count 2) or this
-        // manager's pools (count 0).
+        // The resource manager's object and data pools come from the first pool source for the first two
+        // files (count 2 and 1) and from the second from the third file on; poolFor gives this manager's own
+        // pool instead when lbl_80562298 is set.
         if (self->_onetimeCount > -1) {
             if (self->_onetimeCount == 2) {
                 setPool(lbl_80562104[0]->_objectMemoryPool, poolFor(self, lbl_80562258));

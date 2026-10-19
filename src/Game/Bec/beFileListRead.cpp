@@ -6,7 +6,7 @@
 
 extern "C" {
 
-// Takes the loaded lists' infos out of the insight core and forgets them.
+// Gives the read infos to the insight core (each manager is offered them) and forgets them.
 bool fn_802FA53C(beFileListInfoManager *self)
 {
     for (int i = 0; i < self->_readInfoList->_count; i++) {

@@ -3,6 +3,7 @@
 // in several files only so that the ones matching the original can be linked while the others are not yet.
 #ifndef GAME_BEC_BECRI_H
 #define GAME_BEC_BECRI_H
+#include <meta/igResource.h>
 #include <meta/beCri.h>
 #include <meta/beCriHandle.h>
 #include <meta/beCriHandleList.h>
@@ -75,14 +76,14 @@ extern char beCriSfpData_meta[];
 extern char beCriAcxData_meta[];
 extern char igAdxFile_meta[];
 extern char igMemoryRefMetaField_meta[];
-extern void *lbl_80562104[];                 // [0]: Alchemy's resource manager (igResource)
+extern igResource *lbl_80562104[];           // [0]: Alchemy's resource manager
 void fn_803C1A94(unsigned int parameter, int value);   // CRI: sets a parameter
 int fn_802A8C18(igAdxAudio *adxt);          // an ADX stream's state (3: ready)
 void fn_802A9200(void *);
 void fn_802A9670(void *);
 void fn_802A9320(int, int);
 void fn_802A97FC(void *);
-void fn_8006F428(void *memory, const char *poolName, int);   // creates a memory pool
+void fn_8006F428(igResource *resource, const char *poolName, int);   // creates a memory pool
 void *fn_800658F8(void *meta, const char *name);           // a metaobject's field by name
 bool fn_80068128(void *object, void *meta);                // whether an object is of a class
 void fn_80062C90(void *field, const char *poolName);        // the pool a memory field allocates from

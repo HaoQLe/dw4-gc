@@ -4,8 +4,8 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- **File list batch (continuing the game subsystems, 2026-10-18):** `beFileListInfoManager`, the game's file loader, is readable source (`src/Game/Bec/beFileList*.cpp`, `beFileList.h`): 9 functions, 9,804 bytes. On `task/files`; integrated into `work` with its review.
-  - **Established:** the loader's steps (loading screen, sound data, stage files, Lua boot scripts, loading layer); Alchemy's `igResource` at `lbl_80562104` loads the files; how infos are sorted.
+- **File list batch (continuing the game subsystems, 2026-10-18):** `beFileListInfoManager`, the game's file loader, is readable source (`src/Game/Bec/beFileList*.cpp`, `beFileList.h`): 9 functions, 9,216 code bytes. Developed on `task/files`; integrated into `work` after review.
+  - **Established:** the loader's steps (loading screen `ld<stage without its first two letters>.igb`, sound data, stage files, Lua boot scripts, loading layer); Alchemy's `igResource` at `lbl_80562104` loads the files; how infos are sorted.
   - **Linked:** registration and the info queue (`virtual6C` newly matched). **NonMatching:** `virtual70` (16 lines), `virtual74` (141 of 1,293), `fn_802F9E98` (221, colouring), `fn_802FA53C` (31).
   - **Open:** early-exit loops become `ctr` loops here but not in the original (also `beSound`); post-loop reloads.
   - **Functional commit:** `6cbb2778`; shared pooled-string header `0e6c6580`.

@@ -7,14 +7,15 @@
 extern "C" {
 
 // The loader, one step per frame (_proc):
-//    0  the stage's loading screen: loadingUSA/ld<first two letters of the stage>.igb
-//    1  its infos go to the insight core; the list's sound files (a name whose part after the first '/' starts
-//       with 's') are loaded first, with BecText.igb and _common/sbiallse.igb the first time
+//    0  the stage's loading screen: loadingUSA/ld<the stage name without its first two letters>.igb
+//    1  its infos go to the insight core; the list's sound files (a name whose character after the first '/'
+//       is 's', or whose second character is when there is no '/') are loaded first, with BecText.igb and
+//       _common/sbiallse.igb the first time
 //  100  loads them; the sound manager then makes its binary list (101: until the transfer is done)
 //  102  queues the list's other files
 //    2  loads them
 //    3  runs the stage's func.lua and boot.lua (<stage>/lua)
-//    4  loads the system's resident files and waits for the loading screen; the important infos are read
+//    4  loads the system's read file list and waits for the loading screen; the important infos are read
 //   20, 21  two frames
 //    5  the read infos go to the insight core
 //    6  shows the loading layer and gives each scene's graph its layer node
@@ -148,7 +149,7 @@ void beFileListInfoManager_virtual74(beFileListInfoManager *self)
         break;
     }
     case 4: {
-        igStringRefList *resident = self->_system->_readFileList;
+        igStringRefList *readFiles = self->_system->_readFileList;
         beLoadingNode *loading = 0;
         bool shown;
         igGroup *scene = self->_sceneInfoManager->_parameters->_scene;
@@ -161,7 +162,7 @@ void beFileListInfoManager_virtual74(beFileListInfoManager *self)
         } else {
             shown = true;
         }
-        bool loaded = fn_802F9E98(self, resident);
+        bool loaded = fn_802F9E98(self, readFiles);
         if (!shown || !loaded) break;
         self->_loaded = 0;
         self->_proc = 20;

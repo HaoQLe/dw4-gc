@@ -1,4 +1,4 @@
-// beFileListInfoManager (0x802F82D8..0x802FA6E8): declarations and helpers shared by its files.
+// beFileListInfoManager (0x802F82D8..0x802FA6D8): declarations and helpers shared by its files.
 #ifndef GAME_BEC_BEFILELIST_H
 #define GAME_BEC_BEFILELIST_H
 #include <meta/beFileListInfoManager.h>
@@ -45,7 +45,7 @@ extern igResource *lbl_80562104[];        // [0]: Alchemy's resource manager (lo
 bool fn_80070130(igResource *resource, igDirectory *directory);   // whether a directory has finished loading
 void fn_80070140(igResource *resource, const char *name);         // releases a loaded file
 igDirectory *fn_8006FD34(igResource *resource, const char *name);  // starts loading a file
-extern char lbl_80562258[];               // a pool source (the resident data)
+extern char lbl_80562258[];               // a pool source
 extern char lbl_8056225C[];               // a pool source
 extern const char lbl_805672F0[1];        // ""
 extern char beLuaInfo_meta[];
@@ -55,7 +55,7 @@ extern const char *lbl_8055DC4C[];        // [0]: the text of an empty string ob
 void fn_8006F794(igResource *resource);
 void fn_8006F8CC(igResource *resource);
 void fn_80071F9C(igStringObj *string, const char *text);                     // sets the text
-void fn_80072840(igStringObj *string, int start, int length);                // keeps a part
+void fn_80072840(igStringObj *string, int start, int length);                // deletes length characters at start
 void fn_80072038(igStringObj *string, const char *text, int at, int length); // inserts text
 int strlen(const char *);
 int sprintf(char *, const char *, ...);

@@ -11425,7 +11425,7 @@ Meta/beSvConnectCheck.cpp:
 	extabindex  start:0x80014A48 end:0x80014A78
 	.text       start:0x802BD440 end:0x802BD63C
 
-unknownGen/unknown802BD63C.cpp:
+Game/Bec/beSaveMemoryObjRef.cpp:
 	extab       start:0x80006F00 end:0x80006F08
 	extabindex  start:0x80014A78 end:0x80014A84
 	.text       start:0x802BD63C end:0x802BD6B0
@@ -14216,197 +14216,101 @@ unknownGen/unknown8031F83C.cpp:
 unknownGen/unknown8031F908.cpp:
 	.text       start:0x8031F908 end:0x8031F918
 
-unknownGen/unknown8031FB38.cpp:
-	extab       start:0x8000BEF8 end:0x8000BF00
-	extabindex  start:0x8001B060 end:0x8001B06C
-	.text       start:0x8031FB38 end:0x8031FB88
+Game/Bec/beSaveCard.cpp:
+	extab       start:0x8000BED8 end:0x8000BF20
+	extabindex  start:0x8001B030 end:0x8001B09C
+	.text       start:0x8031F918 end:0x8032029C
 
-unknownGen/unknown8031FB88.cpp:
-	.text       start:0x8031FB88 end:0x8031FB98
+Game/Bec/beSaveCardStatus.cpp:
+	extab       start:0x8000BF20 end:0x8000BF28
+	extabindex  start:0x8001B09C end:0x8001B0A8
+	.text       start:0x8032029C end:0x80320604
 
-unknownGen/unknown8031FF98.cpp:
-	extab       start:0x8000BF10 end:0x8000BF18
-	extabindex  start:0x8001B084 end:0x8001B090
-	.text       start:0x8031FF98 end:0x80320004
+Game/Bec/beSaveTexture.cpp:
+	extab       start:0x8000BF28 end:0x8000BF38
+	extabindex  start:0x8001B0A8 end:0x8001B0C0
+	.text       start:0x80320604 end:0x80320834
 
-unknownGen/unknown803207D0.cpp:
-	extab       start:0x8000BF30 end:0x8000BF38
-	extabindex  start:0x8001B0B4 end:0x8001B0C0
-	.text       start:0x803207D0 end:0x80320834
+Game/Bec/beSaveFileMake.cpp:
+	extab       start:0x8000BF38 end:0x8000BF48
+	extabindex  start:0x8001B0C0 end:0x8001B0D8
+	.text       start:0x80320834 end:0x80320F60
+	.data       start:0x804E08F8 end:0x804E0970
 
-unknownGen/unknown80320F4C.cpp:
-	.text       start:0x80320F4C end:0x80320FBC
+Game/Bec/beSaveFileFind.cpp:
+	extab       start:0x8000BF48 end:0x8000BF68
+	extabindex  start:0x8001B0D8 end:0x8001B108
+	.text       start:0x80320F60 end:0x80321584
 
-unknownGen/unknown80321200.cpp:
-	.text       start:0x80321200 end:0x80321230
+Game/Bec/beSaveRead.cpp:
+	extab       start:0x8000BF68 end:0x8000BF80
+	extabindex  start:0x8001B108 end:0x8001B114
+	.text       start:0x80321584 end:0x80321670
 
-unknownGen/unknown8032141C.cpp:
-	.text       start:0x8032141C end:0x80321430
+Game/Bec/beSaveReadStep.cpp:
+	extab       start:0x8000BF80 end:0x8000BF88
+	extabindex  start:0x8001B114 end:0x8001B120
+	.text       start:0x80321670 end:0x80321C68
+	.data       start:0x804E0970 end:0x804E09C4
 
-unknownGen/unknown80321430.cpp:
-	extab       start:0x8000BF58 end:0x8000BF60
-	extabindex  start:0x8001B0F0 end:0x8001B0FC
-	.text       start:0x80321430 end:0x80321488
+Game/Bec/beSaveWrite.cpp:
+	extab       start:0x8000BF88 end:0x8000BF98
+	extabindex  start:0x8001B120 end:0x8001B138
+	.text       start:0x80321C68 end:0x80322214
+	.data       start:0x804E09C4 end:0x804E0A18
 
-unknownGen/unknown80321488.cpp:
-	extab       start:0x8000BF60 end:0x8000BF68
-	extabindex  start:0x8001B0FC end:0x8001B108
-	.text       start:0x80321488 end:0x80321570
+Game/Bec/beSaveSpace.cpp:
+	extab       start:0x8000BF98 end:0x8000BFA8
+	extabindex  start:0x8001B138 end:0x8001B150
+	.text       start:0x80322214 end:0x803225FC
 
-unknownGen/unknown80321570.cpp:
-	.text       start:0x80321570 end:0x80321584
+Game/Bec/beSaveConnect.cpp:
+	extab       start:0x8000BFA8 end:0x8000BFB8
+	extabindex  start:0x8001B150 end:0x8001B168
+	.text       start:0x803225FC end:0x80322848
 
-unknownGen/unknown80321C54.cpp:
-	.text       start:0x80321C54 end:0x80321C68
+Game/Bec/beSaveClass.cpp:
+	extab       start:0x8000BFB8 end:0x8000C010
+	extabindex  start:0x8001B168 end:0x8001B1EC
+	.text       start:0x80322848 end:0x80322D94
 
-unknownGen/unknown80322200.cpp:
-	.text       start:0x80322200 end:0x8032224C
+Game/Bec/beSaveClassRead.cpp:
+	extab       start:0x8000C010 end:0x8000C018
+	extabindex  start:0x8001B1EC end:0x8001B1F8
+	.text       start:0x80322D94 end:0x80322F58
 
-unknownGen/unknown80322558.cpp:
-	.text       start:0x80322558 end:0x803225FC
+Game/Bec/beSaveClassEnd.cpp:
+	extab       start:0x8000C018 end:0x8000C050
+	extabindex  start:0x8001B1F8 end:0x8001B24C
+	.text       start:0x80322F58 end:0x80323364
 
-unknownGen/unknown80322848.cpp:
-	.text       start:0x80322848 end:0x80322868
+Game/Bec/beSaveUtil.cpp:
+	extab       start:0x8000C050 end:0x8000C068
+	extabindex  start:0x8001B24C end:0x8001B270
+	.text       start:0x80323364 end:0x80323538
 
-unknownGen/unknown80322868.cpp:
-	extab       start:0x8000BFB8 end:0x8000BFC0
-	extabindex  start:0x8001B168 end:0x8001B174
-	.text       start:0x80322868 end:0x803228B0
+Game/Bec/beSaveUtilUpdate.cpp:
+	extab       start:0x8000C068 end:0x8000C090
+	extabindex  start:0x8001B270 end:0x8001B27C
+	.text       start:0x80323538 end:0x80323BFC
 
-unknownGen/unknown803228B0.cpp:
-	extab       start:0x8000BFC0 end:0x8000BFC8
-	extabindex  start:0x8001B174 end:0x8001B180
-	.text       start:0x803228B0 end:0x80322948
-
-unknownGen/unknown80322948.cpp:
-	.text       start:0x80322948 end:0x80322958
-
-unknownGen/unknown80322958.cpp:
-	extab       start:0x8000BFC8 end:0x8000BFD0
-	extabindex  start:0x8001B180 end:0x8001B18C
-	.text       start:0x80322958 end:0x803229A0
-
-unknownGen/unknown803229A0.cpp:
-	extab       start:0x8000BFD0 end:0x8000BFD8
-	extabindex  start:0x8001B18C end:0x8001B198
-	.text       start:0x803229A0 end:0x80322A38
-
-unknownGen/unknown80322A38.cpp:
-	.text       start:0x80322A38 end:0x80322A48
-
-unknownGen/unknown80322A48.cpp:
-	extab       start:0x8000BFD8 end:0x8000BFE0
-	extabindex  start:0x8001B198 end:0x8001B1A4
-	.text       start:0x80322A48 end:0x80322A90
-
-unknownGen/unknown80322A90.cpp:
-	extab       start:0x8000BFE0 end:0x8000BFE8
-	extabindex  start:0x8001B1A4 end:0x8001B1B0
-	.text       start:0x80322A90 end:0x80322B28
-
-unknownGen/unknown80322B28.cpp:
-	.text       start:0x80322B28 end:0x80322B38
-
-unknownGen/unknown80322B38.cpp:
-	extab       start:0x8000BFE8 end:0x8000BFF0
-	extabindex  start:0x8001B1B0 end:0x8001B1BC
-	.text       start:0x80322B38 end:0x80322B80
-
-unknownGen/unknown80322B80.cpp:
-	extab       start:0x8000BFF0 end:0x8000BFF8
-	extabindex  start:0x8001B1BC end:0x8001B1C8
-	.text       start:0x80322B80 end:0x80322C18
-
-unknownGen/unknown80322C18.cpp:
-	.text       start:0x80322C18 end:0x80322C28
-
-unknownGen/unknown80322C28.cpp:
-	extab       start:0x8000BFF8 end:0x8000C000
-	extabindex  start:0x8001B1C8 end:0x8001B1D4
-	.text       start:0x80322C28 end:0x80322C70
-
-unknownGen/unknown80322C70.cpp:
-	extab       start:0x8000C000 end:0x8000C008
-	extabindex  start:0x8001B1D4 end:0x8001B1E0
-	.text       start:0x80322C70 end:0x80322D3C
-
-unknownGen/unknown80322D3C.cpp:
-	.text       start:0x80322D3C end:0x80322D4C
-
-unknownGen/unknown80322D4C.cpp:
-	extab       start:0x8000C008 end:0x8000C010
-	extabindex  start:0x8001B1E0 end:0x8001B1EC
-	.text       start:0x80322D4C end:0x80322D94
-
-unknownGen/unknown80322F58.cpp:
-	.text       start:0x80322F58 end:0x80322F68
-
-unknownGen/unknown80322F68.cpp:
-	extab       start:0x8000C018 end:0x8000C020
-	extabindex  start:0x8001B1F8 end:0x8001B204
-	.text       start:0x80322F68 end:0x80323000
-
-unknownGen/unknown80323000.cpp:
-	.text       start:0x80323000 end:0x80323010
-
-unknownGen/unknown80323010.cpp:
-	extab       start:0x8000C020 end:0x8000C028
-	extabindex  start:0x8001B204 end:0x8001B210
-	.text       start:0x80323010 end:0x803230A8
-
-unknownGen/unknown803230A8.cpp:
-	.text       start:0x803230A8 end:0x803230B8
-
-unknownGen/unknown803230B8.cpp:
-	extab       start:0x8000C028 end:0x8000C030
-	extabindex  start:0x8001B210 end:0x8001B21C
-	.text       start:0x803230B8 end:0x80323150
-
-unknownGen/unknown80323150.cpp:
-	.text       start:0x80323150 end:0x80323160
-
-unknownGen/unknown80323160.cpp:
-	extab       start:0x8000C030 end:0x8000C038
-	extabindex  start:0x8001B21C end:0x8001B228
-	.text       start:0x80323160 end:0x803231A8
-
-unknownGen/unknown803231A8.cpp:
-	extab       start:0x8000C038 end:0x8000C040
-	extabindex  start:0x8001B228 end:0x8001B234
-	.text       start:0x803231A8 end:0x80323274
-
-unknownGen/unknown80323274.cpp:
-	.text       start:0x80323274 end:0x80323284
-
-unknownGen/unknown80323284.cpp:
-	extab       start:0x8000C040 end:0x8000C048
-	extabindex  start:0x8001B234 end:0x8001B240
-	.text       start:0x80323284 end:0x8032331C
-
-unknownGen/unknown8032331C.cpp:
-	extab       start:0x8000C048 end:0x8000C060
-	extabindex  start:0x8001B240 end:0x8001B264
-	.text       start:0x8032331C end:0x803234A8
-
-unknownGen/unknown803234A8.cpp:
-	extab       start:0x8000C060 end:0x8000C068
-	extabindex  start:0x8001B264 end:0x8001B270
-	.text       start:0x803234A8 end:0x80323538
-
-unknownGen/unknown80323BFC.cpp:
+Game/Bec/beSaveUtilRefs.cpp:
 	extab       start:0x8000C090 end:0x8000C0A0
 	extabindex  start:0x8001B27C end:0x8001B294
 	.text       start:0x80323BFC end:0x80323CE4
 
-unknownGen/unknown80323CE4.cpp:
-	.text       start:0x80323CE4 end:0x80323CF4
-
-unknownGen/unknown80323CF4.cpp:
+Game/Bec/beSaveUtilMeta.cpp:
 	extab       start:0x8000C0A0 end:0x8000C0A8
 	extabindex  start:0x8001B294 end:0x8001B2A0
-	.text       start:0x80323CF4 end:0x80323D20
+	.text       start:0x80323CE4 end:0x80323D20
 
-unknownGen/unknown803244FC.cpp:
+Game/Bec/beSaveUtilMessage.cpp:
+	extab       start:0x8000C0A8 end:0x8000C120
+	extabindex  start:0x8001B2A0 end:0x8001B2AC
+	.text       start:0x80323D20 end:0x803244FC
+	.data       start:0x804E107C end:0x804E10C4
+
+Game/Bec/beSaveApiRefs.cpp:
 	extab       start:0x8000C120 end:0x8000C158
 	extabindex  start:0x8001B2AC end:0x8001B300
 	.text       start:0x803244FC end:0x80324828

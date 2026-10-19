@@ -329,6 +329,9 @@ cflags_game = [
     *[("-Cpp_exceptions on" if flag == "-Cpp_exceptions off" else "-str reuse,readonly" if flag == "-str reuse" else flag) for flag in cflags_engine],
     "-use_lmw_stmw on",
     "-sdata2 2",
+    # the SDK headers the save layer uses (dolphin/card.h, charPipeline/texPalette.h), searched last
+    "-i include/dolsdk2004",
+    "-i include/dolsdk2004/libc",
 ]
 
 # REL flags
@@ -889,6 +892,26 @@ config.libs = [
             Object(NonMatching, "Game/Bec/beSoundFind.cpp"),
             Object(Matching, "Game/Bec/beSoundMeta.cpp"),
             Object(NonMatching, "Game/Bec/beSeCtl.cpp"),
+            Object(Matching, "Game/Bec/beSaveMemoryObjRef.cpp"),
+            Object(Matching, "Game/Bec/beSaveCard.cpp"),
+            Object(NonMatching, "Game/Bec/beSaveCardStatus.cpp"),
+            Object(Matching, "Game/Bec/beSaveTexture.cpp"),
+            Object(Matching, "Game/Bec/beSaveFileMake.cpp"),
+            Object(Matching, "Game/Bec/beSaveFileFind.cpp"),
+            Object(Matching, "Game/Bec/beSaveRead.cpp"),
+            Object(NonMatching, "Game/Bec/beSaveReadStep.cpp"),
+            Object(NonMatching, "Game/Bec/beSaveWrite.cpp"),
+            Object(Matching, "Game/Bec/beSaveSpace.cpp"),
+            Object(Matching, "Game/Bec/beSaveConnect.cpp"),
+            Object(Matching, "Game/Bec/beSaveClass.cpp"),
+            Object(NonMatching, "Game/Bec/beSaveClassRead.cpp"),
+            Object(Matching, "Game/Bec/beSaveClassEnd.cpp"),
+            Object(Matching, "Game/Bec/beSaveUtil.cpp"),
+            Object(NonMatching, "Game/Bec/beSaveUtilUpdate.cpp"),
+            Object(Matching, "Game/Bec/beSaveUtilRefs.cpp"),
+            Object(Matching, "Game/Bec/beSaveUtilMeta.cpp"),
+            Object(NonMatching, "Game/Bec/beSaveUtilMessage.cpp"),
+            Object(Matching, "Game/Bec/beSaveApiRefs.cpp"),
         ],
     },
     {

@@ -194,6 +194,10 @@ typedef struct CARDStat {
 #define CARD_STAT_BANNER_RGB5A3 2
 #define CARD_STAT_BANNER_MASK 3
 
+#define CARD_STAT_ANIM_LOOP 0x00
+#define CARD_STAT_ANIM_BOUNCE 0x04
+#define CARD_STAT_ANIM_MASK 0x04
+
 #define CARD_ENCODE_ANSI 0
 #define CARD_ENCODE_SJIS 1
 
@@ -228,7 +232,7 @@ void CARDInit(void);
 s32 CARDGetResultCode(s32 chan);
 s32 CARDCheckAsync(s32 chan, CARDCallback callback);
 s32 CARDFreeBlocks(s32 chan, s32* byteNotUsed, s32* filesNotUsed);
-s32 CARDRenameAsync(s32 chan, const char* old, const char* new, CARDCallback callback);
+s32 CARDRenameAsync(s32 chan, const char* old, const char* newName, CARDCallback callback);
 
 // CARDBios
 void CARDInit(void);
@@ -254,6 +258,9 @@ s32 CARDCreateAsync(s32 chan, const char* fileName, u32 size, CARDFileInfo* file
 s32 CARDCreate(s32 chan, const char* fileName, u32 size, CARDFileInfo* fileInfo);
 
 // CARDDelete
+// CARDFormat
+s32 CARDFormatAsync(s32 chan, CARDCallback callback);
+
 s32 CARDFastDeleteAsync(s32 chan, s32 fileNo, CARDCallback callback);
 s32 CARDFastDelete(s32 chan, s32 fileNo);
 s32 CARDDeleteAsync(s32 chan, const char* fileName, CARDCallback callback);
@@ -300,7 +307,7 @@ s32 CARDRead(CARDFileInfo*  fileInfo, void*  buf, s32 length, s32 offset);
 s32 CARDCancel(CARDFileInfo* fileInfo);
 
 // CARDRename
-s32 CARDRename(s32 chan, const char* old, const char* new);
+s32 CARDRename(s32 chan, const char* old, const char* newName);
 
 // CARDStat
 s32 CARDGetStatus(s32 chan, s32 fileNo, CARDStat* stat);

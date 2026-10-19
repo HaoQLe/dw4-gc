@@ -9,6 +9,7 @@ extern "C" {
 void fn_80069128(void *list, void *object);   // appends an object (adds a reference)
 void fn_80041C10(void *list, int index);      // removes element index, shifting later ones down
 void fn_8004155C(void *list, int capacity, int elementSize);   // sets the capacity
+void fn_80041660(void *list, int count, int elementSize);      // grows the storage to count elements
 }
 
 // The result of removing an object from a list (fn_800692E0); its meaning is unknown. It is returned through
@@ -39,6 +40,24 @@ static inline void removeAll(Meta::igObjectList *list)
         if (object) release(object);
     }
     setCount(list, 0);
+}
+
+// igIntList's inline append (a member function, as in Alchemy's own header), growing the storage when full.
+struct IntListAppend : Meta::igDataList {
+    inline void append(const int &value)
+    {
+        int count = _count;
+        if (count < _capacity) _count = count + 1;
+        else fn_80041660(this, count + 1, 4);
+        static_cast<int *>(_data)[count] = value;
+    }
+};
+static inline void appendInt(Meta::igDataList *list, const int &value) { static_cast<IntListAppend *>(list)->append(value); }
+
+// Shortens a list of plain values to newCount elements (nothing to release or clear).
+static inline void truncate(Meta::igDataList *list, int newCount)
+{
+    if (list->_count > newCount) list->_count = newCount;
 }
 
 #endif

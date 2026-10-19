@@ -17,7 +17,8 @@ def game_command():
     """compiler.command with the Game library's flags (cflags_game in configure.py)."""
     cmd=compiler.command(True,False,True,False)
     cmd=[('reuse,readonly' if x=='reuse' else x) for x in cmd]
-    return cmd+['-use_lmw_stmw','on','-sdata2','2']
+    # cflags_base's SDK include paths (the generated-unit command leaves them out)
+    return cmd+['-i','include/dolsdk2004','-i','include/dolsdk2004/libc','-use_lmw_stmw','on','-sdata2','2']
 
 def original_objects():
     """Function name -> original split object, from objdiff.json's target objects."""

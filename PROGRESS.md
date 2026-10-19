@@ -4,10 +4,13 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- **File list batch (continuing the game subsystems, 2026-10-18):** in progress on `task/files`.
-  - **Scope:** `beFileListInfoManager` (`0x802F82D8..0x802FA6E8`), the game's file loading. 12 functions, 9,804 bytes, of which 9,020 are unmatched: `virtual6C` (queue an info), `virtual70` (reset), `virtual74` (the 5,172-byte per-frame loader), `fn_802F9E98` (1,700) and `fn_802FA53C`.
-  - **Known:** the class layout (file names, info, directory, read and important lists, `_loaded`, `_proc`); infos are `beFileListInfo` (a section name and file names); the messenger protocol; Lua runs (`fn_80301FA4`); pooled strings (now `include/game/StringPool.h`).
-  - **Unknowns:** `virtual74`'s phases, and what `fn_802F9E98` builds (directories through `fn_8006FD34`).
+- **File list batch (continuing the game subsystems, 2026-10-18):** `beFileListInfoManager`, the game's file loader, is readable source (`src/Game/Bec/beFileList*.cpp`, `beFileList.h`): 9 functions, 9,804 bytes. On `task/files`; integrated into `work` with its review.
+  - **Established:** the loader's steps (loading screen, sound data, stage files, Lua boot scripts, loading layer); Alchemy's `igResource` at `lbl_80562104` loads the files; how infos are sorted.
+  - **Linked:** registration and the info queue (`virtual6C` newly matched). **NonMatching:** `virtual70` (16 lines), `virtual74` (141 of 1,293), `fn_802F9E98` (221, colouring), `fn_802FA53C` (31).
+  - **Open:** early-exit loops become `ctr` loops here but not in the original (also `beSound`); post-loop reloads.
+  - **Functional commit:** `6cbb2778`; shared pooled-string header `0e6c6580`.
+  - **Totals:** matched code 39.836950% → 39.843710% (+280 bytes), linked 39.765865% → 39.772625% (+280), matched data 18.005047% → 18.007708% (+40), 17,377 → 17,378 functions. `build.sha1` OK.
+  - Details: [file list](docs/research/2026-10-18-file-list.md).
 - **Save layer batch (user decision 2026-10-18: next game subsystem as readable C++):** closed 2026-10-18; published on `work`. 94 of the range's 95 functions are readable, typed source (`src/Game/Bec/beSave*.cpp`, `beSave.h`), and 86 link from source.
   - **Covers:**
     - memory-card mount, write and status, written with the SDK's `CARD*` API and macros;
@@ -413,14 +416,14 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-18 at the save layer batch. The checks passed: all-source build and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-18 at the file list batch. The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 1,649,868 / 4,141,552 bytes (39.836950%) |
-| Fully linked source code | 1,646,924 / 4,141,552 bytes (39.765865%) |
-| Matched functions | 17,377 / 23,334 |
-| Matched data | 270,759 / 1,503,795 bytes (18.005047%) |
+| Matched executable code | 1,650,148 / 4,141,552 bytes (39.843710%) |
+| Fully linked source code | 1,647,204 / 4,141,552 bytes (39.772625%) |
+| Matched functions | 17,378 / 23,334 |
+| Matched data | 270,799 / 1,503,795 bytes (18.007708%) |
 
 | Generator round 6 (`94ff74d` → `275fe25`) | Before → after | Exact gain |
 | --- | --- | --- |

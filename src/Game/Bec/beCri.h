@@ -75,7 +75,7 @@ extern char beCriSfpData_meta[];
 extern char beCriAcxData_meta[];
 extern char igAdxFile_meta[];
 extern char igMemoryRefMetaField_meta[];
-extern void *lbl_80562104[];                 // the memory manager
+extern void *lbl_80562104[];                 // [0]: Alchemy's resource manager (igResource)
 void fn_803C1A94(unsigned int parameter, int value);   // CRI: sets a parameter
 int fn_802A8C18(igAdxAudio *adxt);          // an ADX stream's state (3: ready)
 void fn_802A9200(void *);

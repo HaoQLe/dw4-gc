@@ -95,6 +95,19 @@ String lists return elements by value (`fn_800218F4`) and append by value (`fn_8
   - adding a call to the loop stops the `ctr` conversion but also reloads the list.
 - **`beSound_virtual7C`:** the original loads `_sndfVolume` before reloading `self->_cri` for `fn_802F7244`. Locals, casts and an inline helper were tried.
 
+**Colouring finding (`fn_80315C94`).** In the original, registers follow creation order: `list` r31, `count` r30, the byte offset r29, `i` r28. MWCC's own strength-reduced offset is coloured ahead of the locals declared before the loop (r31).
+
+Declaring the offset as a source variable after `count` gives 2 lines; the only remaining difference is that `i` is initialised before the offset. With `i` and the offset both in the `for` header, the result is 12 lines.
+
+None of the readable forms tried reproduces the original's order:
+- a reversed test (`count > i`);
+- a `found` variable with `break`;
+- re-read bounds;
+- member accessors;
+- a named or unused first parameter;
+- every GC compiler from 1.3 to 2.7, which give identical output;
+- inline modes.
+
 **Next investigation:** register colouring on `fn_80315C94`, the smallest case:
 - compare the order of virtual registers in MWCC's output for matched game loops of the same shape (`beCriVolume`, `beTimer`);
 - try parameters copied into locals before the loop.

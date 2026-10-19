@@ -4,7 +4,19 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- **Sound subsystem batch (user request 2026-10-18: game subsystems as readable C++):** in progress on `task/sound`. Checkpoint published: every function of `beCri`, `beSound` and `beSeCtl_virtual90` is readable source, with the exact runs linked.
+- **Save layer batch (user decision 2026-10-18: next game subsystem as readable C++):** in progress on `task/save`.
+  - **Scope:** `0x8031F918..0x80324838`, 95 functions (20,256 bytes), of which 27 are unmatched (15,192 bytes). The goal is readable, typed source for the whole layer, with exact runs linked and generated units replaced where the readable form is exact.
+  - **Parts:**
+    - `beSaveMemoryObj`, memory blocks from the object's pool (`fn_8031F9FC` allocate, `fn_8031FAC8` free);
+    - the GameCube memory-card helpers (`CARDProbeEx`/`CARDMountAsync`/`CARDCheck` in `fn_8031FCF0`, status and write in `fn_8032029C`, the image builders `fn_80320004`/`fn_80320604`, the word checksum `fn_8031FB98`);
+    - the save operations, each with start/step/end virtuals `5C`/`60`/`64`: `beSvFileMakeApi`, `FileFindApi`, `FormatApi`, `UseCheckApi`, `ReadMediaApi`, `WriteMediaApi`, `GetFreeSizeApi`, `StartApi`, `EndApi`, `ConnectCheck`;
+    - `beSaveUtil`, the manager that runs them from messages (`virtual84` setup, `virtual90` handler).
+  - **Why:** this is the platform boundary a PC port replaces. The engine also defines `beSvPlatDataPC`, Xbox and PS2 save data.
+  - **Unknowns:**
+    - the meaning of `beSaveApi`'s unnamed tail (`+0x3C..+0xD4`; `+0xC0` and `+0xC4` are set by the mount);
+    - the image layout written to the card;
+    - the message protocol of `beSaveUtil_virtual90`.
+- **Sound subsystem batch (user request 2026-10-18: game subsystems as readable C++):** closed 2026-10-18 by user decision (next subsystem rather than further register matching); published on `work`. Every function of `beCri`, `beSound` and `beSeCtl_virtual90` is readable source, with the exact runs linked.
   - **Targets (42 functions, 14,780 bytes):** `beCri` (`0x802F4EF4..0x802F7334`, 33 functions), `beSound` (`0x80314904..0x80315D2C`, 8 with the `Ref<bePlaySE>` destructor), `beSeCtl_virtual90` (340 bytes).
   - **Linked from source:**
     - `beCri`: 23 of 33 functions;
@@ -23,7 +35,7 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
     - destructor names taken from exception tables;
     - a local `cri` reproduces member-call evaluation order;
     - an inline sign-clearing absolute value keeps the original stack layout.
-  - **Next investigation:** register colouring on `fn_80315C94` (the smallest case: the original gives the list and count the highest registers, mine the strength-reduced offset), then the handler's effect loop (`ctr` versus a re-read count).
+  - **Remainder (readable, NonMatching):** kept as a register-colouring stall, not a hard blocker. If matching resumes, continue with register colouring on `fn_80315C94` (the smallest case: the original gives the list and count the highest registers, mine the strength-reduced offset), then the handler's effect loop (`ctr` versus a re-read count).
   - Details: [sound subsystem](docs/research/2026-10-18-sound-subsystem.md).
 - **Pool blockers batch (user request 2026-10-17, "continue"):** the four pool units blocked by a few functions are built, on `task/pool-blockers`.
   - **Units:** `Meta/igViewerStatisticsManager_module.cpp` (23 field setups), `Meta/igViewportAttr_module.cpp` (33), `Meta/igTextElement_module.cpp` (16, with the hand-written `fn_80115248` from `tools/alchemymeta/pieces/`), `Meta/igVolume_module.cpp` (2).

@@ -37,10 +37,10 @@ bool beSvGetFreeSizeApi_virtual60(beSvGetFreeSizeApi *self)
         case CARD_RESULT_READY:
             self->_memCapa = bytes;
             self->_fileCapa = files;
-            fail(self, SAVEAPI_OK, 20);
+            endAt(self, SAVEAPI_OK, 20);
             break;
         default:
-            fail(self, SAVEAPI_ERROR, 20);
+            endAt(self, SAVEAPI_ERROR, 20);
             break;
         }
         break;

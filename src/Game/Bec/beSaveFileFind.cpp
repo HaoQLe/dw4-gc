@@ -40,13 +40,13 @@ bool beSvFileFindApi_virtual60(beSvFileFindApi *self)
         switch (CARDOpen(self->_connect, plat->_fileName, &cardOf(self)->fileInfo)) {
         case CARD_RESULT_READY:
             CARDClose(&cardOf(self)->fileInfo);
-            fail(self, SAVEAPI_OK, 20);
+            endAt(self, SAVEAPI_OK, 20);
             break;
         case CARD_RESULT_NOFILE:
             finish(self, SAVEAPI_NOFILE);
             break;
         default:
-            fail(self, SAVEAPI_ERROR, 20);
+            endAt(self, SAVEAPI_ERROR, 20);
             break;
         }
         break;

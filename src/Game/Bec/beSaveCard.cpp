@@ -185,7 +185,7 @@ void fn_8031FF98(beSaveApi *api)
     api->_mountWork = 0;
 }
 
-// Builds the save image in _imageWork: the comment (64 bytes), the banner (C8 with its palette, or RGB5A3),
+// Builds the card image in _imageWork: the comment (64 bytes), the banner (C8 with its palette, or RGB5A3),
 // the icon frames (C8, or RGB5A3 when _iconType is 1) and, for C8 icons, their shared palette. The banner and
 // icons come from the texture palettes in the platform data.
 void fn_80320004(beSaveApi *api)

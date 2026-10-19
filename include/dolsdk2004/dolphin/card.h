@@ -258,9 +258,6 @@ s32 CARDCreateAsync(s32 chan, const char* fileName, u32 size, CARDFileInfo* file
 s32 CARDCreate(s32 chan, const char* fileName, u32 size, CARDFileInfo* fileInfo);
 
 // CARDDelete
-// CARDFormat
-s32 CARDFormatAsync(s32 chan, CARDCallback callback);
-
 s32 CARDFastDeleteAsync(s32 chan, s32 fileNo, CARDCallback callback);
 s32 CARDFastDelete(s32 chan, s32 fileNo);
 s32 CARDDeleteAsync(s32 chan, const char* fileName, CARDCallback callback);
@@ -271,6 +268,7 @@ s32 CARDEraseAsync(CARDFileInfo* fileInfo, s32 length, s32 offset, CARDCallback 
 s32 CARDErase(CARDFileInfo* fileInfo, s32 length, s32 offset);
 
 // CARDFormat
+s32 CARDFormatAsync(s32 chan, CARDCallback callback);
 s32 CARDFormat(s32 chan);
 
 // CARDMount

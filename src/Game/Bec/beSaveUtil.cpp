@@ -89,6 +89,8 @@ bool fn_80323364(beSaveUtil *self, beSaveUtilInfoRam *ram, beSaveApi *api)
         virtualsOf(self->_api)->start(ram->_deliver);
         ram->_deliver->_operate = self->_api->_orderType;
         ram->_deliver->_isEndOperat = false;
+        // phase 1, step 1, sub-step 1, each set with the levels below it cleared (the repeated stores are the
+        // original's)
         setRamPhase(ram, 1);
         ram->_st1 = 1;
         ram->_st3 = 0;

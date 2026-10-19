@@ -1,5 +1,6 @@
-// beSvReadMediaApi: the load's steps (0x80321670..0x80321C68). A file whose banner and icons are missing
-// gets them rewritten before the copies are read and checked.
+// beSvReadMediaApi: the load's steps (0x80321670..0x80321C68). A file whose status does not point at its
+// icons where this game writes them (icon offset 64) gets its card image and status rewritten before the
+// copies are read and checked.
 #include "beSave.h"
 #include <meta/beSvReadMediaApi.h>
 #include <meta/igObjectList.h>
@@ -34,7 +35,7 @@ bool beSvReadMediaApi_virtual60(beSvReadMediaApi *self)
             break;
         }
         break;
-    case 2:   // the file status: rewrite the banner and icons if they are missing
+    case 2:   // the file status: rewrite the card image if the icons are not at offset 64
         switch (self->_st1) {
         case 0:
             switch (CARDGetStatus(self->_connect, cardOf(self)->fileInfo.fileNo, &cardOf(self)->stat)) {
@@ -42,7 +43,7 @@ bool beSvReadMediaApi_virtual60(beSvReadMediaApi *self)
                 nextSubStep(self);
                 break;
             default:
-                fail(self, SAVEAPI_ERROR, 19);
+                endAt(self, SAVEAPI_ERROR, 19);
                 break;
             }
             break;
@@ -60,18 +61,18 @@ bool beSvReadMediaApi_virtual60(beSvReadMediaApi *self)
                 nextPhase(self);
                 break;
             case SAVE_IOERROR:
-                fail(self, SAVEAPI_IOERROR, 19);
+                endAt(self, SAVEAPI_IOERROR, 19);
                 break;
             case SAVE_BROKEN:
-                fail(self, SAVEAPI_BROKEN, 19);
+                endAt(self, SAVEAPI_BROKEN, 19);
                 break;
             case SAVE_NOCARD:
-                fail(self, SAVEAPI_NOCARD, 19);
+                endAt(self, SAVEAPI_NOCARD, 19);
                 break;
             case SAVE_RUNNING:
                 break;
             default:
-                fail(self, SAVEAPI_ERROR, 19);
+                endAt(self, SAVEAPI_ERROR, 19);
                 break;
             }
             break;
@@ -101,10 +102,10 @@ bool beSvReadMediaApi_virtual60(beSvReadMediaApi *self)
                 }
                 break;
             case CARD_RESULT_NOCARD:
-                fail(self, SAVEAPI_NOCARD, 19);
+                endAt(self, SAVEAPI_NOCARD, 19);
                 break;
             default:
-                fail(self, SAVEAPI_ERROR, 19);
+                endAt(self, SAVEAPI_ERROR, 19);
                 break;
             }
             break;

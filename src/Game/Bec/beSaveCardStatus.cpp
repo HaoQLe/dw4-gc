@@ -56,12 +56,13 @@ int fn_8032029C(beSaveApi *api)
         cardOf(api)->stat.commentAddr = 0;
         cardOf(api)->stat.iconAddr = sizeof(plat->_comment);
         switch (plat->_bannerType) {
-        case 1:
+        case CARD_STAT_BANNER_C8:
             CARDSetBannerFormat(&cardOf(api)->stat, CARD_STAT_BANNER_C8);
             break;
-        case 2:
+        case CARD_STAT_BANNER_RGB5A3:
             CARDSetBannerFormat(&cardOf(api)->stat, CARD_STAT_BANNER_RGB5A3);
-            break;        case CARD_STAT_BANNER_NONE:
+            break;
+        case CARD_STAT_BANNER_NONE:
             break;
         }
         int format;

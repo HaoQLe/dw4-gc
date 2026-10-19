@@ -1,8 +1,14 @@
-// The save layer (0x8031F918..0x80324838): memory blocks for save images, the GameCube memory-card steps
-// (mount, write and status) shared by the save operations, the operations themselves (beSv*Api: start, find,
-// make, format, use check, read, write, free size, end, connection check) and beSaveUtil, which runs them.
-// Each operation is a state machine: virtual5C starts it, virtual60 advances it each frame and returns its
-// result (0 while running), virtual64 ends it.
+// The save layer (0x8031F918..0x80324838): memory blocks, the GameCube memory-card steps (mount, write and
+// status) shared by the save operations, the operations themselves (beSv*Api: start, find, make, format, use
+// check, read, write, free size, end, connection check) and beSaveUtil, which runs them.
+// Each operation is a state machine: virtual5C starts it, virtual60 advances it each frame and returns true
+// once it has ended, virtual64 hands its result (_result) back to the request.
+// Two buffers are written to a save file: the save data (_saveWork: checksum, version word, game data; both
+// copies) and the card image (_imageWork: comment, banner, icons), which the file's status points into.
+//
+// Port notes: the checksum and the save data's words are in host byte order and the texture palettes are
+// relocated through 32-bit pointer casts, as on the GameCube; SaveCardWork and the per-slot views overlay
+// fixed offsets of the reflected classes. A port reading GameCube saves or running 64-bit has to change these.
 #ifndef GAME_BEC_BESAVE_H
 #define GAME_BEC_BESAVE_H
 #include <dolphin/card.h>
@@ -93,8 +99,8 @@ static inline void finish(beSaveApi *api, int result)
     api->_result = result;
     api->_isEnd = true;
 }
-// Fails with a result and continues at a cleanup phase.
-static inline void fail(beSaveApi *api, int result, int phase)
+// Sets a result (success or failure) and continues at a later phase (19 closes the file, 20 unmounts).
+static inline void endAt(beSaveApi *api, int result, int phase)
 {
     api->_result = result;
     goPhase(api, phase);

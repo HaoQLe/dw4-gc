@@ -48,14 +48,14 @@ The second "game subsystems" batch is the GameCube save layer (`0x8031F918..0x80
 - the write step (`0xC8`);
 - the bound texture palette (`0xCC`) and its flag (`0xD0`).
 
-**Save image.** It is written as two copies, at the platform data's two offsets:
+**Save data** (`_saveWork`). It is written as two copies, at the platform data's two offsets:
 - word 0: a checksum of the 32-bit words after it;
 - word 1: the save version, `beSvDeliver::_saveVer` as `beSvStartApi` sets it;
 - then the game data.
 
 On load, the version word is written into each copy before checksumming, so a save with another version is rejected as corrupt.
 
-**Banner and icons.** The comment (64 bytes) comes first, then:
+**Card image** (`_imageWork`: comment, banner and icons). The comment (64 bytes) comes first, then:
 - the banner: C8 with its palette, or RGB5A3;
 - the icon frames;
 - for C8 icons, their shared palette.
@@ -63,6 +63,12 @@ On load, the version word is written into each copy before checksumming, so a sa
 They are copied out of texture palettes (TPL files) in the platform data, bound by an inline copy of the SDK's `TPLBind`. The file status uses the SDK's `CARDSet*` macros. A loaded file whose icon offset is not 64 has its banner and icons rewritten.
 
 **`beSaveUtil`.** It runs one operation at a time for a save RAM. `GENERATE` starts the card library (`beSvStartApi`), `REQUEST_*` start an operation on a slot (−1 for any), `REMOVE` ends it (`beSvEndApi`), and the other messages report the request's state. `GETOPERATE` reports `_result`, as `GETRESULT` does; that is the original's behaviour. The update checks both slots every frame (`beSvConnectCheck`).
+
+## Port notes
+
+- The checksum and the save data's words are in host byte order, so GameCube saves would not load on a little-endian host as written.
+- The texture palettes are relocated through 32-bit pointer casts, and the TPL fields are big-endian.
+- `SaveCardWork` and `ConnectSlots` overlay fixed offsets of the reflected classes; 64-bit pointers move them.
 
 ## Shapes that matched
 
@@ -89,5 +95,6 @@ They are copied out of texture palettes (TPL files) in the platform data, bound 
 ## Open
 
 - **`beSaveWrite.cpp`** is exact but stays NonMatching. Its jump table (`0x804E09C4`) is 4 mod 8 and directly follows the read step's (`0x804E0970`); a unit could only own both if `beSvReadMediaApi_virtual60` matched. It links once that function does.
+- **`beSaveUtilMessage.cpp`'s jump table** (`0x804E107C`) is also 4 mod 8. When the handler matches, that unit will need to define the word before it (`lbl_804E1078`), as `beSaveFileMake.cpp` does with `lbl_804E08F8`.
 - **`beSvReadMediaApi_virtual60`** (74 lines): the original re-reads `_st0`/`_st1` before incrementing them in a path with no call, where MWCC here reuses the values it switched on. The optimizer pragmas (common subexpressions, propagation, lifetimes) do not change it.
 - **Register colouring only:** `fn_8032029C` (the icon loop's temporaries), `beSaveUtil_virtual84` (the inlined appends' list/count registers), `beSaveUtil_virtual90` (one register pair in `GENERATE`) and `beSvReadMediaApi_virtual28` (the list count reloaded after the check).

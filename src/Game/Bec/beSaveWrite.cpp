@@ -11,7 +11,7 @@ static inline int &copyIndex(beSvWriteMediaApi *self) { return *reinterpret_cast
 
 extern "C" {
 
-// Builds the save image: the checksum, the version word, then the game data.
+// Builds the save data in _saveWork: the checksum, the version word, then the game data.
 void beSvWriteMediaApi_virtual5C(beSvWriteMediaApi *self, beSvDeliver *request)
 {
     beSvPlatBaseData *plat = request->_platformData;
@@ -44,7 +44,7 @@ bool beSvWriteMediaApi_virtual60(beSvWriteMediaApi *self)
             break;
         case CARD_RESULT_NOFILE:
         default:
-            fail(self, SAVEAPI_NOFILE, 20);
+            endAt(self, SAVEAPI_NOFILE, 20);
             break;
         }
         break;
@@ -64,17 +64,17 @@ bool beSvWriteMediaApi_virtual60(beSvWriteMediaApi *self)
             }
             break;
         case CARD_RESULT_NOCARD:
-            fail(self, SAVEAPI_NOCARD, 19);
+            endAt(self, SAVEAPI_NOCARD, 19);
             break;
         case CARD_RESULT_IOERROR:
-            fail(self, SAVEAPI_IOERROR, 19);
+            endAt(self, SAVEAPI_IOERROR, 19);
             break;
         case CARD_RESULT_BUSY:
             break;
         case CARD_RESULT_WRONGDEVICE:
         case CARD_RESULT_NOFILE:
         default:
-            fail(self, SAVEAPI_ERROR, 19);
+            endAt(self, SAVEAPI_ERROR, 19);
             break;
         }
         break;
@@ -87,21 +87,21 @@ bool beSvWriteMediaApi_virtual60(beSvWriteMediaApi *self)
         case 1:
             switch (fn_8032029C(self)) {
             case SAVE_DONE:
-                fail(self, SAVEAPI_OK, 19);
+                endAt(self, SAVEAPI_OK, 19);
                 break;
             case SAVE_IOERROR:
-                fail(self, SAVEAPI_IOERROR, 19);
+                endAt(self, SAVEAPI_IOERROR, 19);
                 break;
             case SAVE_BROKEN:
-                fail(self, SAVEAPI_BROKEN, 19);
+                endAt(self, SAVEAPI_BROKEN, 19);
                 break;
             case SAVE_NOCARD:
-                fail(self, SAVEAPI_NOCARD, 19);
+                endAt(self, SAVEAPI_NOCARD, 19);
                 break;
             case SAVE_RUNNING:
                 break;
             default:
-                fail(self, SAVEAPI_ERROR, 19);
+                endAt(self, SAVEAPI_ERROR, 19);
                 break;
             }
             break;

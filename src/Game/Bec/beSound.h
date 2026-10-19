@@ -24,7 +24,7 @@
 #include <game/Pool.h>
 #include <game/List.h>
 #include <game/Ref.h>
-#include <igStringPoolItem.h>
+#include <game/StringPool.h>
 
 using namespace Meta;
 
@@ -35,10 +35,6 @@ extern char beSoundInfo_meta[];
 extern char beSound_meta[];
 void fn_803050A8(void *messenger, beBaseInfoRam *ram, const char *name, int, int);   // registers with the messenger
 void fn_802F7244(beCri *cri, int volume);                      // sets the sound-file volume
-extern void *lbl_80562140[];                                    // the string pool container, created on first use
-void *fn_80054140(unsigned int size);                           // allocates
-void *fn_80053F28(void *container);                             // the string pool container's constructor
-const char *fn_80054094(void *container, const char *text);     // a pooled copy of text
 int strcmp(const char *, const char *);
 void fn_80305F58(void *messenger, const char *target, const char *command);   // sends command to target; its answer becomes the current request's arguments
 int fn_80306E1C(void *messenger);                    // the number of object arguments of the current request
@@ -95,24 +91,6 @@ void fn_8002080C(igStringRefList *list, igStringRef string);   // appends a stri
 // An object's name, or "" when it has none.
 static inline const char *nameOf(igNamedObject *object) { return object->_name ? object->_name : lbl_80567360; }
 
-// A pooled copy of text, creating the string pool on first use.
-static inline const char *pooledString(const char *text)
-{
-    if (!lbl_80562140[0]) {
-        void *container = fn_80054140(0x10);
-        if (container) container = fn_80053F28(container);
-        lbl_80562140[0] = container;
-    }
-    return fn_80054094(lbl_80562140[0], text);
-}
-
-// Assigns a pooled string to a string member, releasing the old one.
-static inline void setString(const char *&member, const char *text)
-{
-    const char *value = pooledString(text);
-    if (member) reinterpret_cast<const Gap::Core::igStringPoolItem *>(member - 8)->release();
-    member = value;
-}
 
 struct FloatBits {
     unsigned char sign : 1;

@@ -4,6 +4,10 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **File list batch (continuing the game subsystems, 2026-10-18):** in progress on `task/files`.
+  - **Scope:** `beFileListInfoManager` (`0x802F82D8..0x802FA6E8`), the game's file loading. 12 functions, 9,804 bytes, of which 9,020 are unmatched: `virtual6C` (queue an info), `virtual70` (reset), `virtual74` (the 5,172-byte per-frame loader), `fn_802F9E98` (1,700) and `fn_802FA53C`.
+  - **Known:** the class layout (file names, info, directory, read and important lists, `_loaded`, `_proc`); infos are `beFileListInfo` (a section name and file names); the messenger protocol; Lua runs (`fn_80301FA4`); pooled strings (now `include/game/StringPool.h`).
+  - **Unknowns:** `virtual74`'s phases, and what `fn_802F9E98` builds (directories through `fn_8006FD34`).
 - **Save layer batch (user decision 2026-10-18: next game subsystem as readable C++):** closed 2026-10-18; published on `work`. 94 of the range's 95 functions are readable, typed source (`src/Game/Bec/beSave*.cpp`, `beSave.h`), and 86 link from source.
   - **Covers:**
     - memory-card mount, write and status, written with the SDK's `CARD*` API and macros;

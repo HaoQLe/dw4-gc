@@ -4,18 +4,21 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- **Save layer batch (user decision 2026-10-18: next game subsystem as readable C++):** in progress on `task/save`.
-  - **Scope:** `0x8031F918..0x80324838`, 95 functions (20,256 bytes), of which 27 are unmatched (15,192 bytes). The goal is readable, typed source for the whole layer, with exact runs linked and generated units replaced where the readable form is exact.
-  - **Parts:**
-    - `beSaveMemoryObj`, memory blocks from the object's pool (`fn_8031F9FC` allocate, `fn_8031FAC8` free);
-    - the GameCube memory-card helpers (`CARDProbeEx`/`CARDMountAsync`/`CARDCheck` in `fn_8031FCF0`, status and write in `fn_8032029C`, the image builders `fn_80320004`/`fn_80320604`, the word checksum `fn_8031FB98`);
-    - the save operations, each with start/step/end virtuals `5C`/`60`/`64`: `beSvFileMakeApi`, `FileFindApi`, `FormatApi`, `UseCheckApi`, `ReadMediaApi`, `WriteMediaApi`, `GetFreeSizeApi`, `StartApi`, `EndApi`, `ConnectCheck`;
-    - `beSaveUtil`, the manager that runs them from messages (`virtual84` setup, `virtual90` handler).
-  - **Why:** this is the platform boundary a PC port replaces. The engine also defines `beSvPlatDataPC`, Xbox and PS2 save data.
-  - **Unknowns:**
-    - the meaning of `beSaveApi`'s unnamed tail (`+0x3C..+0xD4`; `+0xC0` and `+0xC4` are set by the mount);
-    - the image layout written to the card;
-    - the message protocol of `beSaveUtil_virtual90`.
+- **Save layer batch (user decision 2026-10-18: next game subsystem as readable C++):** closed 2026-10-18; published on `work`. 94 of the range's 95 functions are readable, typed source (`src/Game/Bec/beSave*.cpp`, `beSave.h`), and 86 link from source.
+  - **Covers:**
+    - memory-card mount, write and status, written with the SDK's `CARD*` API and macros;
+    - texture-palette banner and icons;
+    - the save operations (`beSv*Api` state machines);
+    - `beSaveUtil`.
+  - **Established:**
+    - `beSaveApi`'s tail is a `CARDFileInfo`, a `CARDStat` and the step state;
+    - the operations' result codes;
+    - the save image: checksum, version word, two copies.
+  - **NonMatching (colouring/reuse):** `fn_8032029C` (77 lines), `beSvReadMediaApi_virtual60` (74) and `virtual28` (13), `beSaveUtil_virtual84` (125) and `virtual90` (22).
+  - **Blocked:** `beSaveWrite.cpp` is exact but cannot link. MWCC 8-aligns a unit's `.data`, and its jump table follows the read step's; it links once `beSvReadMediaApi_virtual60` matches.
+  - **Functional commit:** `6f1bd99c`.
+  - **Totals:** matched code 39.628910% → 39.836950% (+8,616 bytes), linked 39.593370% → 39.765865% (+7,144), matched data 17.961159% → 18.005047% (+660), 17,355 → 17,377 functions. `build.sha1` OK.
+  - Details: [save layer](docs/research/2026-10-18-save-layer.md).
 - **Sound subsystem batch (user request 2026-10-18: game subsystems as readable C++):** closed 2026-10-18 by user decision (next subsystem rather than further register matching); published on `work`. Every function of `beCri`, `beSound` and `beSeCtl_virtual90` is readable source, with the exact runs linked.
   - **Targets (42 functions, 14,780 bytes):** `beCri` (`0x802F4EF4..0x802F7334`, 33 functions), `beSound` (`0x80314904..0x80315D2C`, 8 with the `Ref<bePlaySE>` destructor), `beSeCtl_virtual90` (340 bytes).
   - **Linked from source:**
@@ -406,14 +409,14 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-18 at the sound batch checkpoint. The checks passed: all-source build, verification of the changed generated units, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-18 at the save layer batch. The checks passed: all-source build and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 1,641,252 / 4,141,552 bytes (39.628910%) |
-| Fully linked source code | 1,639,780 / 4,141,552 bytes (39.593370%) |
-| Matched functions | 17,355 / 23,334 |
-| Matched data | 270,099 / 1,503,795 bytes (17.961159%) |
+| Matched executable code | 1,649,868 / 4,141,552 bytes (39.836950%) |
+| Fully linked source code | 1,646,924 / 4,141,552 bytes (39.765865%) |
+| Matched functions | 17,377 / 23,334 |
+| Matched data | 270,759 / 1,503,795 bytes (18.005047%) |
 
 | Generator round 6 (`94ff74d` → `275fe25`) | Before → after | Exact gain |
 | --- | --- | --- |

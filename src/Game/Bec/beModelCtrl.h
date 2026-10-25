@@ -187,62 +187,135 @@ extern const char lbl_804268B4[];    // MC.Set
 
 extern "C" {
 int strcmp(const char *a, const char *b);
+int sprintf(char *, const char *, ...);
 
-// Metaobjects and other managers' classes.
+// Metaobjects (the variables holding them) and other globals.
 extern char beModelCtrlInfo_meta[];
 extern char beLua_meta[];
 extern char beTargetObj_meta[];
+extern char beModelCtrlCTRL_meta[];
+extern char beModelCtrlACTION_meta[];
+extern char beModelCtrlMOVE_meta[];
+extern char beModelCtrlMOVEEX_meta[];
+extern char beModelCtrlMOVERL_meta[];
+extern char beModelCtrlPDMOVE_meta[];
+extern char beModelCtrlWCHECK_meta[];
+extern char beModelCtrlHITBOX_meta[];
+extern char beModelCtrlMUTEKI_meta[];
+extern char beModelCtrlLABELCTRL_meta[];
+extern char beModelCtrlLUACALL_meta[];
+extern char beModelCtrlAIMAP_meta[];
+extern char beModelCtrlMSGBOX_meta[];
+extern char beModelCtrlLABEL_meta[];
+extern char beModelCtrlJUMP_meta[];
+extern char beModelCtrlSCHitBox_meta[];
 extern char lbl_80561748[];         // [0]: igNamedObject's _name field (a metafield), the key fn_800695CC compares
+extern char lbl_805646FC[];         // [0]: igTransformRecorder's matrix field (a metafield)
 extern const char lbl_80567330[1];  // ""
 extern char lbl_8056225C[];         // the pool source this file allocates from
+extern float lbl_804DEBA0[];        // 0.0f: a new pad-move entry
+extern int lbl_804DEBA4[];          // -1: a label with no offset
+extern int lbl_804DEBA8[];          // -1
 
+// Managers and object creation.
 igObject *fn_8028A730(igInsightCore *insight, void *meta);    // the manager of a class
 bool fn_802F251C(beBaseInfoManager *self, igObject *info);    // beBaseInfoManager's virtual6C: takes an info
+beBaseInfoDataList *beBaseInfoDataList_create(void *pool);
+beModelCtrlInfoRideOn *beModelCtrlInfoRideOn_create(void *pool);
+beModelCtrlMoveObject *beModelCtrlMoveObject_create(void *pool);
+igStringRefList *igStringRefList_create(void *pool);
+igIntList *igIntList_create(void *pool);
+igAABox *igAABox_create(void *pool);
 
 // Lists.
 igObject *fn_800695CC(void *list, void *field, const char *value);   // the first object whose string field equals value
-beBaseInfoDataList *beBaseInfoDataList_create(void *pool);
+int fn_8004270C(void *list, void *value, int start);           // the index of a value (compared as a word) from start, or -1
 
 // The messenger (see the sound subsystem's notes). A request is opened, its arguments appended, and sent; the
 // reply's arguments are read back.
 void fn_80305308(beMessenger *messenger, beBaseInfoRam *ram, const char *command);   // a command to a RAM's own manager
+void fn_80305344(beMessenger *messenger, const char *target, const char *infoName, int ramNo);   // opens a request to target's RAM
+void fn_80305A28(beMessenger *messenger, const char *command); // sends the request
 void fn_80305ED0(beMessenger *messenger, const char *target, const char *infoName, int ramNo, const char *command);   // a request to target's RAM, sent at once
-bool fn_80306A1C(beMessenger *messenger, int index);           // bool argument index of the reply
+void fn_80306FDC(beMessenger *messenger, const char *value);   // appends a string argument
 int fn_8030690C(beMessenger *messenger);                       // the number of bool arguments
+bool fn_80306A1C(beMessenger *messenger, int index);           // bool argument index of the reply
 int fn_80306B00(beMessenger *messenger, int index);            // integer argument index
+int fn_80306C74(beMessenger *messenger);                       // the number of vector arguments
+int fn_80306D58(beMessenger *messenger);                       // the number of matrix arguments
+int fn_80306E1C(beMessenger *messenger);                       // the number of object arguments
+igObject *fn_80306FB4(beMessenger *messenger, int index);      // object argument index
 int fn_80306FCC(beMessenger *messenger);                       // the number of string arguments
 const char *fn_8030709C(beMessenger *messenger, int index);    // string argument index
-igObject *fn_80306FB4(beMessenger *messenger, int index);      // object argument index
 
 // 4x4 matrices (float[16], rows of 4; the translation in the last row) and 3D vectors (float[3]).
 void fn_80128CF4(float *to, const float *from);                // copies a matrix
 void fn_80128D90(float *matrix, const float *translation);     // sets the translation
 void fn_80128DAC(const float *matrix, float *translation);     // gets the translation
 void fn_80128DC8(float *matrix, const float *offset);          // moves by offset in the matrix's own axes
-extern float lbl_804F8AE0[3];                                  // the zero vector
-
-beModelCtrlInfoRideOn *beModelCtrlInfoRideOn_create(void *pool);
-beModelCtrlMoveObject *beModelCtrlMoveObject_create(void *pool);
-bool fn_8031E138(beBaseInfoRam *ram, const char *name);        // whether a RAM timer exists
+void fn_801285A0(float *matrix);                               // the identity
+void fn_80128690(float *to, const float *a, const float *b);   // to = a * b
+void fn_80128774(float *matrix, const float *by);              // multiplies a matrix in place
+void fn_80129134(float *matrix, float x, float y, float z);    // sets the rotation from angles around X, Y and Z
+void fn_801292D4(float *matrix, float x, float y, float z);    // sets the rotation from angles (another order)
+void fn_801298F0(float *matrix, const float *axis, float angle);   // rotates around an axis
 void fn_8012D434(float *to, const float *vector, const float *matrix);   // a direction turned by a matrix's rotation
-extern float lbl_804F8B10[3];                                  // the forward (+Z) unit vector
-extern char beModelCtrlMOVE_meta[];
-extern char beModelCtrlMOVEEX_meta[];
-int fn_80306E1C(beMessenger *messenger);                       // the number of object arguments
-extern float lbl_804DEBA0[];                                    // 0.0f: a new pad-move entry
-extern int lbl_804DEBA4[];                                      // -1: a label with no offset
-extern int lbl_804DEBA8[];                                      // -1
-igStringRefList *igStringRefList_create(void *pool);
-igIntList *igIntList_create(void *pool);
-bool fn_8031E8BC(beBaseInfoRam *ram, const char *name);        // restarts a RAM timer
-extern char beModelCtrlSCHitBox_meta[];
+void fn_80122D04(igAABox *box, const float *matrix);           // transforms a box
+extern float lbl_804F8AE0[3];                                  // the zero vector
+extern float lbl_804F8AF8[3];                                  // the X axis
+extern float lbl_804F8B04[3];                                  // the Y axis
+extern float lbl_804F8B10[3];                                  // the Z axis (forward)
+
+// RAM timers (beBaseInfoRam's timer data), by name.
+void fn_8031DE44(beBaseInfoRam *ram, const char *name, unsigned long long nanoseconds);   // starts a timer
+bool fn_8031E138(beBaseInfoRam *ram, const char *name);        // whether a timer exists
+bool fn_8031E238(beBaseInfoRam *ram, const char *name);        // whether a timer has run out
+float fn_8031E4C4(beBaseInfoRam *ram, const char *name);       // frames since a timer was last read (restarting it)
+bool fn_8031E8BC(beBaseInfoRam *ram, const char *name);        // restarts a timer
+
+// Subcommands and Lua.
+void fn_803107E0(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram);  // runs the subcommands
 void fn_80310A68(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram, igMetaObject *meta);   // removes the subcommands of a class
 void fn_80310DAC(beModelCtrlSubCom *subCommand, igNamedObject *command);                  // adds a hit-box subcommand
-int fn_8004270C(void *list, void *value, int start);           // the index of a value (compared as a word) from start, or -1
-float fn_8031E4C4(beBaseInfoRam *ram, const char *name);       // frames since a RAM timer was last read (restarting it)
 void fn_80301FA4(beLua *lua, const char *file, const char *directory);   // runs a Lua file
-int sprintf(char *, const char *, ...);
 }
+
+// Classes by value: Alchemy's igMatrix44f (copying goes through fn_80128CF4; the default is the identity),
+// igVec3f, and igResult (kSuccess or kFailure). Each is returned through a hidden pointer, as a class with a copy
+// constructor.
+struct Matrix44 {
+    float m[16];
+    Matrix44() { fn_801285A0(m); }
+    Matrix44(const float *matrix) { fn_80128CF4(m, matrix); }
+    Matrix44(const Matrix44 &other) { fn_80128CF4(m, other.m); }
+    Matrix44 &operator=(const Matrix44 &other) { fn_80128CF4(m, other.m); return *this; }
+};
+struct Vec3f {
+    float x, y, z;
+    Vec3f(const Vec3f &other) : x(other.x), y(other.y), z(other.z) {}
+};
+struct igResult {
+    int value;
+    inline igResult(const igResult &other) : value(other.value) {}
+};
+extern "C" {
+Vec3f fn_80306D28(beMessenger *messenger, int index);          // vector argument index of the reply
+Matrix44 fn_80306DE8(beMessenger *messenger, int index);       // matrix argument index of the reply
+igResult fn_8012A92C(float *to, const float *from);            // inverts a matrix
+}
+
+// A 3D vector copied as a whole (a plain aggregate).
+struct Vec3 {
+    float x, y, z;
+};
+
+// A metafield's offset in its object (igMetaField::_offset at +8).
+struct MetaFieldView {
+    void *__vtable;
+    unsigned int _refCount;
+    int _offset;
+};
+static inline MetaFieldView *recorderMatrixField() { return *reinterpret_cast<MetaFieldView **>(lbl_805646FC); }
 
 static inline igMetaObject *metaVar(char *meta) { return *reinterpret_cast<igMetaObject **>(meta); }
 
@@ -276,12 +349,13 @@ static inline const char *nameOrEmpty(igNamedObject *object) { return object->_n
 
 using Gap::Core::igStringRef;
 extern "C" void fn_8002080C(igStringRefList *list, igStringRef string);   // appends a string (by value)
-
-// A string reference to a pooled copy of text, or null.
-#define POOLED_REF(name, text) igStringRef name(pooledOrNull(text))
+extern "C" igStringRef fn_800218F4(igStringRefList *list, int index);     // element index of a string list
 
 // A pooled copy of text, or null for null text.
 static inline const char *pooledOrNull(const char *text) { return text == 0 ? 0 : pooledString(text); }
+
+// A string reference to a pooled copy of text, or null.
+#define POOLED_REF(name, text) igStringRef name(pooledOrNull(text))
 
 // Sets element index of a string list when the index is in range, holding a new reference to the string.
 static inline void setStringAt(igStringRefList *list, int index, const igStringRef &value)
@@ -305,15 +379,6 @@ static inline int indexOf(igDataList *list, const void *value, int start)
     return -1;
 }
 
-// A 3D vector, copied as a whole.
-struct Vec3 {
-    float x, y, z;
-    bool operator!=(const Vec3 &other) const { return x != other.x || y != other.y || z != other.z; }
-};
-
-// A RAM's named data, or null; the RAM's data list is created on first use.
-extern "C" beBaseInfoData *fn_8030F8CC(beBaseInfoRam *ram, const char *name);
-
 // Creates the RAM's data list when it has none.
 static inline void ensureDataList(beBaseInfoRam *ram)
 {
@@ -325,8 +390,7 @@ static inline void ensureDataList(beBaseInfoRam *ram)
     }
 }
 
-// A model RAM's state: its "ONE" data.
-// (one is the string "ONE": MC.ONE, or kONE where the original reads it alone).
+// A model RAM's state: its "ONE" data (one is that string: MC.ONE, or kONE where the original reads it alone).
 static inline beModelCtrlInfoRamData *ramDataOf(beBaseInfoRam *ram, const char *one)
 {
     ensureDataList(ram);
@@ -354,6 +418,8 @@ public:
     virtual void beforeMove(beBaseInfoRam *ram);           // 0xC0
     virtual void vC4();
 };
+static inline beModelCtrlVirtuals *virtuals(beModelCtrl *self) { return reinterpret_cast<beModelCtrlVirtuals *>(self); }
+
 // igRandomNumber's next number (virtual 0x60).
 class igRandomVirtuals : public igObjectVirtuals {
 public:
@@ -369,16 +435,13 @@ public:
     virtual void v84(); virtual void v88(); virtual void v8C(); virtual void v90();
     virtual void setMatrix(const float *matrix);   // 0x94
 };
+static inline void setMatrix(beModelCtrlNode2 *node, const float *matrix) { reinterpret_cast<igTransformVirtuals *>(node)->setMatrix(matrix); }
 
 // A ride-on's update with the rider's matrix (virtual 0x5C).
 class beModelCtrlInfoRideOnVirtuals : public igObjectVirtuals {
 public:
     virtual void follow(const float *matrix);   // 0x5C
 };
-
-static inline void setMatrix(beModelCtrlNode2 *node, const float *matrix) { reinterpret_cast<igTransformVirtuals *>(node)->setMatrix(matrix); }
-
-static inline beModelCtrlVirtuals *virtuals(beModelCtrl *self) { return reinterpret_cast<beModelCtrlVirtuals *>(self); }
 
 // The context a model's Lua hit script reads (0x80535914): set before the script runs.
 struct ModelLuaContext {
@@ -400,65 +463,19 @@ struct ModelLuaContext {
 };
 extern "C" ModelLuaContext lbl_80535914;
 
-// A 4x4 matrix by value (Alchemy's igMatrix44f); copying goes through fn_80128CF4.
-struct Matrix44 {
-    float m[16];
-    Matrix44() {}
-    Matrix44(const Matrix44 &other) { fn_80128CF4(m, other.m); }
-};
-extern "C" Matrix44 fn_80306DE8(beMessenger *messenger, int index);   // matrix argument index of the reply
-
-// Alchemy's igResult (kSuccess or kFailure), returned through a hidden pointer like a class with a copy
-// constructor.
-struct igResult {
-    int value;
-    inline igResult(const igResult &other) : value(other.value) {}
-};
-extern "C" igResult fn_8012A92C(float *to, const float *from);   // inverts a matrix
-
-// A metafield's offset in its object (igMetaField::_offset at +8).
-struct MetaFieldView {
-    void *__vtable;
-    unsigned int _refCount;
-    int _offset;
-};
-extern "C" char lbl_805646FC[];   // [0]: igTransformRecorder's matrix field (a metafield)
-static inline MetaFieldView *recorderMatrixField() { return *reinterpret_cast<MetaFieldView **>(lbl_805646FC); }
-
 // Functions of beModelCtrl's file.
 extern "C" {
-void fn_8030B6EC(beModelCtrl *self, beBaseInfoRam *ram, const char *script, const char *kind, const char *infoName, int, int, int, int, int);
+beBaseInfoData *fn_8030F8CC(beBaseInfoRam *ram, const char *name);   // a RAM's named data, or null (the list is created on first use)
+void fn_8030949C(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo, beMessenger *messenger);
+bool fn_803095D0(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo);
 bool fn_8030A0A0(beModelCtrl *self, beBaseInfoRam *ram, beModelCtrlInfoWork *work, int mode);
 void fn_8030A1F4(beModelCtrlMoveObject *move, int mode, float value, float frames, float endTime);
 void fn_8030A254(beModelCtrlMoveObject *move);
 float fn_8030A2D8(beModelCtrlMoveObject *move, float frames);
-void fn_8030949C(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo, beMessenger *messenger);
-bool fn_803095D0(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo);
+void fn_8030B6EC(beModelCtrl *self, beBaseInfoRam *ram, const char *script, const char *kind, const char *infoName, int, int, int, int, int);
+void fn_8030C3AC(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
 void fn_8030C85C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, bool immediate);
 void fn_8030D7F4(beModelCtrl *self, beModelCtrlNode2 *node, igAABox *box);
-void fn_8030C3AC(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
-extern char beModelCtrlCTRL_meta[];
-extern char beModelCtrlACTION_meta[];
-extern char beModelCtrlMOVERL_meta[];
-extern char beModelCtrlPDMOVE_meta[];
-extern char beModelCtrlWCHECK_meta[];
-extern char beModelCtrlHITBOX_meta[];
-extern char beModelCtrlMUTEKI_meta[];
-extern char beModelCtrlLABELCTRL_meta[];
-extern char beModelCtrlLUACALL_meta[];
-extern char beModelCtrlAIMAP_meta[];
-extern char beModelCtrlMSGBOX_meta[];
-extern char beModelCtrlLABEL_meta[];
-extern char beModelCtrlJUMP_meta[];
-void fn_80129134(float *matrix, float x, float y, float z);   // sets the rotation from angles around X, Y and Z
-void fn_80128774(float *matrix, const float *by);              // multiplies a matrix in place
-void fn_80128690(float *to, const float *a, const float *b);   // to = a * b
-void fn_801285A0(float *matrix);                               // the identity
-void fn_80305344(beMessenger *messenger, const char *target, const char *infoName, int ramNo);   // opens a request to target's RAM
-void fn_80305A28(beMessenger *messenger, const char *command); // sends the request
-void fn_80306FDC(beMessenger *messenger, const char *value);   // appends a string argument
-int fn_80306D58(beMessenger *messenger);                       // the number of matrix arguments
-void fn_803107E0(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram);  // runs the subcommands
 }
 
 #endif

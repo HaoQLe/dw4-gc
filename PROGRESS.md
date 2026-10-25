@@ -16,7 +16,16 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
   - **Remaining:**
     - `beNDMWMdlPlayer` (8 functions, 8,904 bytes), `Player2` (3, 3,140), `Item` (7, 6,116), `MapBase`/`MapCursor` (6, 2,560);
     - 11 NonMatching readable functions (colouring and inline vector forms).
-  - **Next concrete step:** `beNDMWMdlPlayer_virtual98` and `virtualA0` (the player's work and input), reusing `Matrix44`/`Vec3f` and the pool-struct pattern.
+  - **After checkpoint 1 (local WIP commits, not configured yet):** readable source for `beNDMWMdlMapBase.cpp` (3 of 5 exact), `beNDMWMdlMapCursor.cpp` (3 of 4 exact) and `beNDMWMdlPlayer2.cpp` (6 of 8 exact).
+  - **Not yet:**
+    - checkpoint 1 is not integrated into `work`; its independent review was stopped at the usage limit, so it has to be rerun first;
+    - `beNDMWMdlItem` (analysed: `virtual88` empties the lock list, and `virtual98` creates the item object by category; its pool starts at `0x8045C288`);
+    - `beNDMWMdlPlayer` (8 functions).
+  - **Next concrete step:**
+    - rerun the independent review of checkpoint 1 (`a6fa3aa9`);
+    - integrate it into `work` and push;
+    - configure the map and Player2 units;
+    - continue with Item and then Player.
   - Details: [model controller](docs/research/2026-10-24-model-controller.md).
 - **File list batch (continuing the game subsystems, 2026-10-18):** `beFileListInfoManager`, the game's file loader, is readable source (`src/Game/Bec/beFileList*.cpp`, `beFileList.h`): 9 functions, 9,216 code bytes. Developed on `task/files`; integrated into `work` after review.
   - **Established:** the loader's steps (loading screen `ld<stage without its first two letters>.igb`, sound data, stage files, Lua boot scripts, loading layer); Alchemy's `igResource` at `lbl_80562104` loads the files; how infos are sorted.

@@ -16648,15 +16648,35 @@ unknownGen/unknown803AA938.cpp:
 unknownGen/unknown803AA970.cpp:
 	.text       start:0x803AA970 end:0x803AA9A0
 
-unknownGen/unknown803AAAC4.cpp:
-	extab       start:0x80012760 end:0x80012770
-	extabindex  start:0x8001FE6C end:0x8001FE84
-	.text       start:0x803AAAC4 end:0x803AAB34
+Game/Bec/beNDMWMdlItem.cpp:
+	extab       start:0x80012758 end:0x80012778
+	extabindex  start:0x8001FE60 end:0x8001FE90
+	.text       start:0x803AAA8C end:0x803AAC90
+
+Game/Bec/beNDMWMdlItemWork.cpp:
+	extab       start:0x80012778 end:0x80012878
+	extabindex  start:0x8001FE90 end:0x8001FE9C
+	.text       start:0x803AAC90 end:0x803AB450
 
 unknownGen/unknown803AB450.cpp:
 	extab       start:0x80012878 end:0x80012890
 	extabindex  start:0x8001FE9C end:0x8001FEC0
 	.text       start:0x803AB450 end:0x803AB5AC
+
+Game/Bec/beNDMWMdlItemUpdate.cpp:
+	extab       start:0x80012890 end:0x800128C0
+	extabindex  start:0x8001FEC0 end:0x8001FED8
+	.text       start:0x803AB5AC end:0x803ABFB8
+
+Game/Bec/beNDMWMdlItemExit.cpp:
+	extab       start:0x800128C0 end:0x800128D8
+	extabindex  start:0x8001FED8 end:0x8001FEE4
+	.text       start:0x803ABFB8 end:0x803AC0E8
+
+Game/Bec/beNDMWMdlItemPickUp.cpp:
+	extab       start:0x800128D8 end:0x800128F0
+	extabindex  start:0x8001FEE4 end:0x8001FEF0
+	.text       start:0x803AC0E8 end:0x803AC43C
 
 unknownGen/unknown803AC43C.cpp:
 	.text       start:0x803AC43C end:0x803AC44C

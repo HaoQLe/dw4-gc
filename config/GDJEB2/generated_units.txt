@@ -3059,7 +3059,6 @@ unknownGen/unknown803A6D44.cpp	803A6D44	803A6E64	nosdata
 unknownGen/unknown803AA658.cpp	803AA658	803AA6E8	nosdata
 unknownGen/unknown803AA938.cpp	803AA938	803AA970	eh
 unknownGen/unknown803AA970.cpp	803AA970	803AA9A0	nosdata
-unknownGen/unknown803AAAC4.cpp	803AAAC4	803AAB34	eh,nosdata
 unknownGen/unknown803AB450.cpp	803AB450	803AB5AC	eh
 unknownGen/unknown803AC43C.cpp	803AC43C	803AC44C	nosdata
 unknownGen/unknown803AC7E4.cpp	803AC7E4	803AC858	eh

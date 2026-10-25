@@ -4,26 +4,48 @@
 
 Source: `src/Game/Bec/beModelCtrl*.cpp`, `beNDMWMdl*.cpp`, with the shared header `beModelCtrl.h`.
 
-## Checkpoint result (task/subsystems-big, before the player/item/map classes)
+## Batch result (task/subsystems-big)
 
-- **Totals** (from `work` at `b7cbe7ee`):
+- **Totals** (from `work` at `b7cbe7ee`; the code and data denominators are unchanged at 4,141,552 and 1,503,795 bytes):
 
   | Measure | Before | After | Change |
   | --- | --- | --- | --- |
-  | Matched code | 1,650,148 (39.843710%) | 1,669,784 (40.317833%) | +19,636 |
-  | Linked code | 1,647,204 (39.772625%) | 1,666,840 (40.246750%) | +19,636 |
-  | Matched data | 270,799 (18.007708%) | 270,855 (18.011430%) | +56 |
-  | Complete data | 307,695 | 308,947 | +1,252 |
-  | Matched functions | 17,378 | 17,421 | +43 |
+  | Matched code | 1,650,148 (39.843710%) | 1,675,392 (40.453240%) | +25,244 (+0.609530 pp) |
+  | Linked code | 1,647,204 (39.772625%) | 1,672,332 (40.379353%) | +25,128 (+0.606728 pp) |
+  | Matched data | 270,799 (18.007708%) | 270,955 (18.018080%) | +156 (+0.010372 pp) |
+  | Complete data | 307,695 | 309,407 | +1,712 |
+  | Matched functions | 17,378 | 17,437 | +59 |
+  | Units | 7,481 (4,926 complete) | 7,410 (4,916 complete) | 42 generated units replaced (2 split remainders added) |
 
-- **Checks:**
-  - `build.sha1` OK (`e409a88a…`);
-  - all sources compile;
-  - `verify_units.py --all` passes 3,282 of 3,282;
-  - the map shows each `Ref<T>` destructor taken from its own unit, with the units' weak copies listed as unreferenced duplicates.
-- **Linked from source:** 83 functions in 19 units.
-- **Readable but NonMatching:** 11 functions (see "Open").
-- **Replaced:** 32 generated units.
+- **Checks:** `build.sha1` OK (`e409a88a…`); all sources compile; `verify_units.py --all` passes 3,272 of 3,272.
+- **Checkpoint 1** (core, bullets, effects, enemies, objects): +19,636 code bytes; reviewed independently with no blocking findings (comment fixes in `19f1a0bd`).
+- **Every target function is readable source.** Those not linked are listed under "Open".
+
+## The subclasses
+
+| Class | Role | Linked from source |
+| --- | --- | --- |
+| `beNDMWMdlEBullet`, `Effect`, `PBullet` | bullets and effects | all |
+| `beNDMWMdlEnemy`, `Object` | enemies and stage objects | kind test, RAM start |
+| `beNDMWMdlMapBase` | the map's base model, kept centred on the players' average position | kind test, RAM start, move, class |
+| `beNDMWMdlMapCursor` | a player's cursor on the map, opening and closing with its player | kind test, move, class |
+| `beNDMWMdlPlayer2` | background chips: a player's model left in the lobby, recording its stage and position (`BKCHIPSTAGE`, `BKCHIPPOS`); raising it pays out its bits and experience (`BKCHIPDATA`) | managers, kind test, RAM start, switch |
+| `beNDMWMdlItem` | dropped items, created by database category (disk, instant, important, ability chip, weapon and armour by the player's level); unnamed items are used on touch, named ones show a blinking name label to the nearest player, who picks them up with ACTION1 when there is room | kind test, RAM start, managers, label slots, `SQ_EXIT` |
+| `beNDMWMdlPlayer` | the players | managers, kind test, RAM start, attack wait checks, panel closing, number icon, background chip, class |
+
+**Players:**
+- **Turning:** a player turns with the left stick relative to the camera. Each of the eight stick directions sets a 30-frame slot; when all eight slots are still set at once (a full turn), the next attack is `SQ_ATCK2`.
+- **Buttons** (`bePadData` bits, named by use in `beNDMWMdlPlayer*.cpp`):
+  - guard: `SQ_GUARD` when pressed; while it is held, repeating a stick flick within 15 frames gives the body attack `SQ_ATCK3`;
+  - jump;
+  - the panels: emergency heal, items, techniques, status;
+  - attack: an item on the ground takes the button first (`DROPITEM ACTION1`). Otherwise it attacks once the `ATDELAY` timer has run out. The delay is the player's `ATTACKDELAY` frames, and the status panel's meter plays `SQ_DLTM01..13` at index `(delay - 22) / 4`;
+  - the status button alone opens the status window, or plays `CURSOR_NG` while a panel runs.
+- **Main lobby** (`stagML02/11/12/13`): no guard, and an attack is only a hit box.
+- **Metal:** players are metal in `dng204b1..dng205b3`.
+- **Panels:** a panel closes on OFCTRL, ONFREEZE and REMOVE, and when a `PanelCloseSeqList` sequence starts (`SQ_SDMG`, `SQ_MDMG`, `SQ_LDMG`, `SQ_DDMG`, `SQ_DEAD`, `SQ_SLEP`, `SQ_STUN`; an enum metaobject looked up by name).
+- **Work:** links HP and MP from the game RAM (`GAMERAM GETPLAYER`). At the start HP and MP are full. A player not yet in use gets `GAMESTART` with a default name (いちろう, じろう, さぶろう, しろう) and all `BASE_ISUSE` flags set. The work also equips `POWERSOCKETNAME[0]` (`PLAYERARMS GENERATE`) and sets the status panel's level, HP and MP numbers and meters.
+- **Leaving (`SQ_ERAS`):** the player leaves a background chip (`g_000bcaps`) that plays its `SQ_ENTR<n>P`.
 
 ## The controller
 
@@ -84,6 +106,12 @@ Anything else, including `GENERATE_NDSP`, is a sequence name to play. `SQ_ERAS` 
 | A `MOVEEX` axis computed as `(name[1] + t) - 'X'` | `name[1] - 'X' + t` |
 | A kind test returning `extrwi 8` | an `unsigned char` return (the original's boolean type) |
 | Reference holders created into a held slot (pool, release, create) | `Ref::releaseHeld()` followed by assigning `_object` |
+| A work stored from the new pointer, then used through a reload from its holder | `T *created = ...; Ref<T> holder(created); data->_work = created; work = holder;` (exact in the player's `virtual98`) |
+| A RAM number loaded before the info name's null test, in messenger calls | `int ramNo = ram->_ramNo;` before the call (also in the subclasses) |
+| A `.data` word read through `lis`/`addi` and reloaded in a loop | an unsized `extern int table[]` (a sized `int` goes to small data) |
+| `Gap::kSuccess` addressed with `lis`/`lwz` | `extern const igResult kSuccess__3Gap` |
+| A returned `igStringRef` used in place | `const igStringRef &name = call();` (no copy) |
+| A matrix's or vector's address taken from a returned temporary | an inline `components(const Vec3f &)` (standard C++, still exact) |
 
 ## Configuration
 
@@ -93,18 +121,21 @@ Anything else, including `GENERATE_NDSP`, is a sequence name to play. `SQ_ERAS` 
 
 ## Open
 
-- **Remaining targets:**
-  - `beNDMWMdlPlayer` (`0x8034C364..0x8034E6CC`, 8 functions, 8,904 bytes);
-  - `beNDMWMdlPlayer2` (3 functions, 3,140 bytes);
-  - `beNDMWMdlItem` (7 functions, 6,116 bytes);
-  - `beNDMWMdlMapBase`/`MapCursor` (6 functions, 2,560 bytes).
-- **NonMatching, readable:**
+- **NonMatching, readable (core):**
   - `beModelCtrl_virtual7C` (7 lines): reads the string at pool offset 0 through the bare symbol, where the original uses the base register;
   - `fn_80309C74` (16) and `fn_8030D084` (26): register colouring;
   - `fn_8030AEE0` (48): colouring and an index-plus-one store form;
   - `fn_8030BB3C` (7): reloads the map from its stack home;
   - `fn_8030C85C` (52): register order in the angle-wrapping loops;
   - `beModelCtrlInfoRideOn3/4_virtual5C` (96/57): inline vector forms;
-  - the handler `beModelCtrl_virtual8C` (206 of 1,459): mostly colouring and argument evaluation order in `SETEFFECT`;
-  - `beNDMWMdlEnemy_virtual98` and `beNDMWMdlObject_virtual98`: the original reloads the work holder after each call.
-- **Data:** the handler's jump table (`0x804DEBB0`) follows the file's `.data` words (`0x804DEBA0..0x804DEBAC`), so the handler's unit would own `.data` from `0x804DEBA0` once it matches.
+  - the handler `beModelCtrl_virtual8C` (206 of 1,459): mostly colouring and argument evaluation order in `SETEFFECT`.
+- **NonMatching, readable (subclasses):**
+  - `virtual98` of Object, MapBase and MapCursor (32 lines each; the original keeps the reloaded work in one more saved register, 144 against 150 instructions) and Enemy (65). Tried without effect: the player's raw-pointer form, a text local, a member reference and `igStringRef` assignment;
+  - `beNDMWMdlPlayer2_virtual98` (52) and `virtualC4` (134 of 450);
+  - `beNDMWMdlItem_virtual98` (29), `virtualB4` (19), `virtualBC` (17): colouring and load order;
+  - `beNDMWMdlItem_virtualA0` (453 of 536): mostly a register permutation, plus the screen projection's int to float conversions;
+  - `beNDMWMdlPlayer_virtualA0` (56 of 886): register choice in the turn slots, and `clrlwi.` against `cmplwi` for the repeated panel test;
+  - `beNDMWMdlPlayer_virtual98` (64 of 585): its two int to float conversions, plus minor colouring.
+- **Int to float conversions:** the original reads the conversion's magic double (`0x4330000080000000`) from the file's own pool (for example `+0x3C8` in the player's). In these files the strings and constants are one compiler pool. With the pool declared `extern`, MWCC emits its own constant instead. A form tried with a union and the pool's double gives `fsub`/`frsp` rather than `fsubs`. These functions need the unit to define its pool (the literals in their original order), which is a possible later step.
+- **Data:** the handler's jump table (`0x804DEBB0`) follows the file's `.data` words (`0x804DEBA0..0x804DEBAC`), so the handler's unit would own `.data` from `0x804DEBA0` once it matches. The player's tables (`0x804E7BF0..0x804E7CB4`) are its file's `.data`.
+- **Exception tables:** objdiff reports the extab/extabindex of several Matching units as unmatched because of the weak `Ref<T>` destructor copies; the DOL checksum and complete data are unaffected.

@@ -1,31 +1,36 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-10-25. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
-- **Model controller batch (user request 2026-10-24: a big game-subsystem batch, readable for the PC port):** active on `task/subsystems-big`.
+- **Model controller batch (user request 2026-10-24: a big game-subsystem batch, readable for the PC port):** closed 2026-10-25 on `task/subsystems-big`; integration into `work` follows the independent review of the commits after checkpoint 1.
   - **Targets (69 functions, 42,548 unmatched code bytes at the start):**
-    - `beModelCtrl`'s own virtuals and helpers, `0x803082A4..0x8030F9F0`;
+    - `beModelCtrl`'s own virtuals and helpers, `0x803082A4..0x8030F9C0`;
     - the `beNDMWMdl*` subclasses' virtuals: EBullet, Effect, Enemy, Object, PBullet, Player, Player2, Item, MapBase, MapCursor.
-  - **Checkpoint 1 (functional commit `a6fa3aa9`):** the whole core and the bullet/effect/enemy/object classes are readable source.
-    - **Linked:** 83 functions in 19 units.
-    - **Totals:** matched code 39.843710% → 40.317833% (+19,636 bytes), linked 39.772625% → 40.246750% (+19,636), matched data 18.007708% → 18.011430% (+56), 17,378 → 17,421 functions.
-    - **Checks:** `build.sha1` OK; `verify_units --all` 3,282/3,282.
-    - **Established:** the controller's slots, its 33 messages, the sequence commands and runner, move objects, AI, Lua hit scripts (`ModelLuaContext`), and the typed constant pool.
-  - **Remaining:**
-    - `beNDMWMdlPlayer` (8 functions, 8,904 bytes), `Player2` (3, 3,140), `Item` (7, 6,116), `MapBase`/`MapCursor` (6, 2,560);
-    - 11 NonMatching readable functions (colouring and inline vector forms).
-  - **After checkpoint 1 (local WIP commits, not configured yet):** readable source for `beNDMWMdlMapBase.cpp` (3 of 5 exact), `beNDMWMdlMapCursor.cpp` (3 of 4 exact) and `beNDMWMdlPlayer2.cpp` (6 of 8 exact).
-  - **Not yet:**
-    - checkpoint 1 is not integrated into `work`; its independent review was stopped at the usage limit, so it has to be rerun first;
-    - `beNDMWMdlItem` (analysed: `virtual88` empties the lock list, and `virtual98` creates the item object by category; its pool starts at `0x8045C288`);
-    - `beNDMWMdlPlayer` (8 functions).
+  - **Result:** every target is readable, typed source (`src/Game/Bec/beModelCtrl*.cpp`, `beNDMWMdl*.cpp`, shared header `beModelCtrl.h`). 42 generated units are replaced.
+  - **Totals** (from `work` at `b7cbe7ee`; denominators unchanged):
+    - matched code 39.843710% → 40.453240% (+0.609530 pp, +25,244 bytes);
+    - linked 39.772625% → 40.379353% (+0.606728 pp, +25,128 bytes);
+    - matched data 18.007708% → 18.018080% (+0.010372 pp, +156 bytes);
+    - 17,378 → 17,437 functions.
+  - **Checks:** `build.sha1` OK; all sources compile; `verify_units --all` 3,272/3,272. Checkpoint 1 was reviewed independently: no blocking findings, comment fixes in `19f1a0bd`.
+  - **Functional commits:**
+    - `a6fa3aa9`: core, bullets, effects, enemies, objects;
+    - `d4b1a689`: map base, map cursor, background chips;
+    - `d9282f1d`: dropped items;
+    - `19f1a0bd`: review fixes;
+    - `d6b2ea6e`: players.
+  - **Established:**
+    - the controller's slots, 33 messages, sequence commands and runner, move objects, AI and Lua hit scripts;
+    - the players' controls: buttons, full-turn second attack, body attack, panels, attack-delay meter, main lobby and metal dungeons;
+    - items (categories, pickup room), background chips, and the typed constant pools.
+  - **NonMatching remainder (readable):** 9 core functions and 12 subclass functions. Mostly register colouring. Two (the item's step and the player's work builder) also read the int-to-float magic double from the file's own constant pool, which an `extern` pool cannot reproduce (the unit would have to define its pool). This is kept as a colouring stall per the readable-source goal, not a hard blocker.
   - **Next concrete step:**
-    - rerun the independent review of checkpoint 1 (`a6fa3aa9`);
-    - integrate it into `work` and push;
-    - configure the map and Player2 units;
-    - continue with Item and then Player.
+    - fix any blocking findings of the running review;
+    - merge `task/subsystems-big` into `work`, rerun the checks and push.
+
+    If matching resumes here, the shared lead is the subclass `virtual98`s' extra saved register (Object, MapBase, MapCursor).
   - Details: [model controller](docs/research/2026-10-24-model-controller.md).
 - **File list batch (continuing the game subsystems, 2026-10-18):** `beFileListInfoManager`, the game's file loader, is readable source (`src/Game/Bec/beFileList*.cpp`, `beFileList.h`): 9 functions, 9,216 code bytes. Developed on `task/files`; integrated into `work` after review.
   - **Established:** the loader's steps (loading screen `ld<stage without its first two letters>.igb`, sound data, stage files, Lua boot scripts, loading layer); Alchemy's `igResource` at `lbl_80562104` loads the files; how infos are sorted.
@@ -439,14 +444,14 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-18 at the file list batch. The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-25 at the model controller batch (`task/subsystems-big`, `d6b2ea6e`). The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
-| Matched executable code | 1,650,148 / 4,141,552 bytes (39.843710%) |
-| Fully linked source code | 1,647,204 / 4,141,552 bytes (39.772625%) |
-| Matched functions | 17,378 / 23,334 |
-| Matched data | 270,799 / 1,503,795 bytes (18.007708%) |
+| Matched executable code | 1,675,392 / 4,141,552 bytes (40.453240%) |
+| Fully linked source code | 1,672,332 / 4,141,552 bytes (40.379353%) |
+| Matched functions | 17,437 / 23,334 |
+| Matched data | 270,955 / 1,503,795 bytes (18.018080%) |
 
 | Generator round 6 (`94ff74d` → `275fe25`) | Before → after | Exact gain |
 | --- | --- | --- |

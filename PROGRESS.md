@@ -5,13 +5,19 @@ Updated: 2026-10-18. Development repository: [HaoQLe/dw4-gc](https://github.com/
 ## Resume here
 
 - **Model controller batch (user request 2026-10-24: a big game-subsystem batch, readable for the PC port):** active on `task/subsystems-big`.
-  - **Targets (69 functions, 42,548 unmatched code bytes):**
-    - `beModelCtrl`'s own virtuals and helpers, `0x803082A4..0x8030F9F0` (44 unmatched functions, 28,620 bytes; includes the message handler `fn_8030D910`, 5,836 bytes, and `beModelCtrlInfoRideOn3/4_virtual5C`);
-    - the `beNDMWMdl*` subclasses' virtuals (EBullet, Effect, Enemy, Object, PBullet, Player, Player2, Item, MapBase, MapCursor: 25 functions, 13,928 bytes).
-  - **Why:** the model controller drives the game's characters, bullets and effects, so a PC port needs it readable; the subclasses repeat one shape (`virtual94` a name test, `virtual98` building the model's info list), and the class reuses the info-manager patterns from the file list (`Ref<T>`, `poolFor`, `beBaseInfoDataList`).
-  - **Unknowns:** the meaning of `beModelCtrl`'s slots `0x78..0xC4`; the info classes' unnamed fields; how many of the large functions (the handler, `fn_8030A6BC`, `fn_8030B014`, `beNDMWMdlPlayer_virtualA0`) match beyond readability.
-  - **Baseline** (`work` at `b7cbe7ee`): matched code 1,650,148 (39.843710%), linked 1,647,204 (39.772625%), matched data 270,799 (18.007708%), 17,378 functions.
-  - **Not in scope:** the player/enemy base functions after `beNDMWMdlItem` (`0x803AC44C..0x803B02F4`), a candidate for the next batch.
+  - **Targets (69 functions, 42,548 unmatched code bytes at the start):**
+    - `beModelCtrl`'s own virtuals and helpers, `0x803082A4..0x8030F9F0`;
+    - the `beNDMWMdl*` subclasses' virtuals: EBullet, Effect, Enemy, Object, PBullet, Player, Player2, Item, MapBase, MapCursor.
+  - **Checkpoint 1 (functional commit `a6fa3aa9`):** the whole core and the bullet/effect/enemy/object classes are readable source.
+    - **Linked:** 83 functions in 19 units.
+    - **Totals:** matched code 39.843710% → 40.317833% (+19,636 bytes), linked 39.772625% → 40.246750% (+19,636), matched data 18.007708% → 18.011430% (+56), 17,378 → 17,421 functions.
+    - **Checks:** `build.sha1` OK; `verify_units --all` 3,282/3,282.
+    - **Established:** the controller's slots, its 33 messages, the sequence commands and runner, move objects, AI, Lua hit scripts (`ModelLuaContext`), and the typed constant pool.
+  - **Remaining:**
+    - `beNDMWMdlPlayer` (8 functions, 8,904 bytes), `Player2` (3, 3,140), `Item` (7, 6,116), `MapBase`/`MapCursor` (6, 2,560);
+    - 11 NonMatching readable functions (colouring and inline vector forms).
+  - **Next concrete step:** `beNDMWMdlPlayer_virtual98` and `virtualA0` (the player's work and input), reusing `Matrix44`/`Vec3f` and the pool-struct pattern.
+  - Details: [model controller](docs/research/2026-10-24-model-controller.md).
 - **File list batch (continuing the game subsystems, 2026-10-18):** `beFileListInfoManager`, the game's file loader, is readable source (`src/Game/Bec/beFileList*.cpp`, `beFileList.h`): 9 functions, 9,216 code bytes. Developed on `task/files`; integrated into `work` after review.
   - **Established:** the loader's steps (loading screen `ld<stage without its first two letters>.igb`, sound data, stage files, Lua boot scripts, loading layer); Alchemy's `igResource` at `lbl_80562104` loads the files; how infos are sorted.
   - **Linked:** registration and the info queue (`virtual6C` newly matched). **NonMatching:** `virtual70` (16 lines), `virtual74` (141 of 1,293), `fn_802F9E98` (221, colouring), `fn_802FA53C` (31).

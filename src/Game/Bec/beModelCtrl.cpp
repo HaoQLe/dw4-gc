@@ -732,4 +732,49 @@ bool fn_8030B6B0(beModelCtrl *self, beBaseInfoRam *ram, beModelCtrlInfoWork *wor
     return true;
 }
 
+// A LUACALL command: BHit, WHit and FHit name the scripts for body, wall and floor hits; any other mode (or none)
+// runs the script now, with the mode as its kind.
+bool fn_8030B8A4(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlLUACALL *command)
+{
+    const beModelCtrlPool &mc = MC;
+    bool run = false;
+    if (!command->_modeName) run = true;
+    else if (strcmp(command->_modeName, mc.BHit) == 0) setString(work->_luaBHit, nameOrEmpty(command));
+    else if (strcmp(command->_modeName, mc.WHit) == 0) setString(work->_luaWHit, nameOrEmpty(command));
+    else if (strcmp(command->_modeName, mc.FHit) == 0) setString(work->_luaFHit, nameOrEmpty(command));
+    else run = true;
+    if (run) {
+        const char *infoName = nameOrEmpty(info);
+        const char *mode = command->_modeName;
+        fn_8030B6EC(self, ram, nameOrEmpty(command), mode, infoName, 0, 0, 0, 0, 0);
+    }
+    return true;
+}
+
+// An AIMAP command: selects the AI's map by name. A map aimed at a world position asks the "aim" Lua script for
+// it (kind WPos), which writes it through the hit context. The AI timer restarts.
+bool fn_8030BB3C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, igNamedObject *command)
+{
+    const beModelCtrlPool &mc = MC;
+    beModelCtrlInfoDataAIM *aim = static_cast<beModelCtrlInfoDataAIM *>(fn_800695CC(info->_dataList, nameField(), mc.AIM));
+    beModelCtrlAIMapList *maps = aim->_aIMapList;
+    beModelCtrlAIMap *map = static_cast<beModelCtrlAIMap *>(fn_800695CC(maps, nameField(), nameOrEmpty(command)));
+    int index = indexOf(maps, &map, 0);
+    if (work->_aI) {
+        work->_aI->_mapNo = index;
+        if (map->_targetType && strcmp(map->_targetType, mc.WPOS) == 0) {
+            ModelLuaContext *context = &lbl_80535914;
+            Vec3 position;
+            context->position = &position.x;
+            fn_8030B6EC(self, ram, mc.aim, mc.WPos, nameOrEmpty(info), 0, 0, 0, 0, 0);
+            *reinterpret_cast<Vec3 *>(work->_aI->_worldPos) = position;
+            context->position = 0;
+        }
+    }
+    fn_8031E8BC(ram, mc.AITIMER);
+    return true;
+}
+
+bool fn_8030BCB0() { return true; }
+
 }

@@ -45,6 +45,7 @@
 #include <meta/beModelCtrlMOVERL.h>
 #include <meta/beModelCtrlPDMOVE.h>
 #include <meta/beModelCtrlLABELCTRL.h>
+#include <meta/beModelCtrlLUACALL.h>
 #include <meta/igStringRefList.h>
 #include <meta/igIntList.h>
 #include <igCore/igStringRef.h>
@@ -230,6 +231,7 @@ extern int lbl_804DEBA4[];                                      // -1: a label w
 extern int lbl_804DEBA8[];                                      // -1
 igStringRefList *igStringRefList_create(void *pool);
 igIntList *igIntList_create(void *pool);
+bool fn_8031E8BC(beBaseInfoRam *ram, const char *name);        // restarts a RAM timer
 int fn_8004270C(void *list, void *value, int start);           // the index of a value (compared as a word) from start, or -1
 float fn_8031E4C4(beBaseInfoRam *ram, const char *name);       // frames since a RAM timer was last read (restarting it)
 void fn_80301FA4(beLua *lua, const char *file, const char *directory);   // runs a Lua file
@@ -278,6 +280,22 @@ static inline void setStringAt(igStringRefList *list, int index, const igStringR
         *slot = value.getString();
     }
 }
+
+// The index of the first element equal to *value from start, or -1: igObjectList's search, which fn_8004270C
+// is an out-of-line copy of.
+static inline int indexOf(igDataList *list, const void *value, int start)
+{
+    void *key = *static_cast<void *const *>(value);
+    for (int i = start; i < list->_count; i++) {
+        if (key == static_cast<void **>(list->_data)[i]) return i;
+    }
+    return -1;
+}
+
+// A 3D vector, copied as a whole.
+struct Vec3 {
+    float x, y, z;
+};
 
 // A RAM's named data, or null; the RAM's data list is created on first use.
 extern "C" beBaseInfoData *fn_8030F8CC(beBaseInfoRam *ram, const char *name);
@@ -353,6 +371,7 @@ struct ModelLuaContext {
     int argument2C;
     bool isSet;                 // 0x30
     const char *kind;           // 0x34: "BHit", "WHit", "FHit"
+    float *position;            // 0x38: where a script writes a position (the "aim" script), or null
 };
 extern "C" ModelLuaContext lbl_80535914;
 

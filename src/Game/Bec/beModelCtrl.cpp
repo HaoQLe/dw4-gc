@@ -202,7 +202,7 @@ void fn_80308A2C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, b
                 work->_directionLimiter[1] = aih->_limitRotY;
                 work->_targetDirection[1] = atan2(targetX - x, targetZ - z);
             }
-            fn_8030C85C(self, info, ram, work, 0);
+            fn_8030C85C(self, info, ram, work, false);
             work->_targetDirection[1] = work->_direction[1];
         }
     }
@@ -532,7 +532,7 @@ void fn_8030A448(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, b
         if (turn < mc.zero) size = -turn;
         work->_directionLimiter[1] = mc.f190 * size;
     }
-    fn_8030C85C(self, info, ram, work, 0);
+    fn_8030C85C(self, info, ram, work, false);
     if (item<beModelCtrlMoveObject>(moves, 0)->_isRun || item<beModelCtrlMoveObject>(moves, 1)->_isRun || item<beModelCtrlMoveObject>(moves, 2)->_isRun) {
         beModelCtrlInfoRamData *data = ramDataOf(ram, mc.ONE);
         float matrix[16];
@@ -775,7 +775,8 @@ bool fn_8030BB3C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, b
     return true;
 }
 
-bool fn_8030BCB0() { return true; }
+// An MSGBOX command: nothing to do here.
+bool fn_8030BCB0(beModelCtrl *, beModelCtrlInfo *, beModelCtrlInfoWork *, igNamedObject *) { return true; }
 
 // A SEQ command: plays the named sequence.
 bool fn_8030BCB8(beModelCtrl *self, beBaseInfoRam *ram, igNamedObject *command)
@@ -855,6 +856,123 @@ void fn_8030C334(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work)
         float left = count - fn_8031E4C4(ram, kKEIKATIMER);
         if (left < kZero) left = kZero;
         work->_mutekiCount = left;
+    }
+}
+
+// Runs the current sequence's commands from the command index, each by its class, until one waits (returns
+// false) or a JUMP plays another sequence. A LABEL waits once.
+void fn_8030C3AC(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work)
+{
+    bool jumped = false;
+    int index = work->_comIndex;
+    beModelCtrlData *data = work->_comData;
+    while (index != data->_comList->_count) {
+        igNamedObject *command = item<igNamedObject>(data->_comList, index);
+        bool next = true;
+        if (isA(command, beModelCtrlCTRL_meta)) {
+            next = fn_80308EC0(self, work, command);
+            index++;
+        } else if (isA(command, beModelCtrlACTION_meta)) {
+            next = fn_8030943C(self, info, ram, command);
+            index++;
+        } else if (isA(command, beModelCtrlMOVE_meta)) {
+            next = fn_8030A6BC(self, ram, work, command);
+            index++;
+        } else if (isA(command, beModelCtrlMOVEEX_meta)) {
+            next = fn_8030A6BC(self, ram, work, command);
+            index++;
+        } else if (isA(command, beModelCtrlMOVERL_meta)) {
+            next = fn_8030A6BC(self, ram, work, command);
+            index++;
+        } else if (isA(command, beModelCtrlPDMOVE_meta)) {
+            next = fn_8030AEE0(self, ram, work, static_cast<beModelCtrlPDMOVE *>(command));
+            index++;
+        } else if (isA(command, beModelCtrlWCHECK_meta)) {
+            next = fn_8030BCFC(self, work, command);
+            index++;
+        } else if (isA(command, beModelCtrlHITBOX_meta)) {
+            next = fn_8030C134(self, ram, work, command);
+            index++;
+        } else if (isA(command, beModelCtrlMUTEKI_meta)) {
+            next = fn_8030C1F0(self, ram, work, static_cast<beModelCtrlMUTEKI *>(command));
+            index++;
+        } else if (isA(command, beModelCtrlLABELCTRL_meta)) {
+            next = fn_8030B6B0(self, ram, work, static_cast<beModelCtrlLABELCTRL *>(command));
+            index++;
+        } else if (isA(command, beModelCtrlLUACALL_meta)) {
+            next = fn_8030B8A4(self, info, ram, work, static_cast<beModelCtrlLUACALL *>(command));
+            index++;
+        } else if (isA(command, beModelCtrlAIMAP_meta)) {
+            next = fn_8030BB3C(self, info, ram, work, command);
+            index++;
+        } else if (isA(command, beModelCtrlMSGBOX_meta)) {
+            next = fn_8030BCB0(self, info, work, command);
+            index++;
+        } else if (isA(command, beModelCtrlLABEL_meta)) {
+            if (work->_comLabelCount != 0) {
+                next = false;
+            } else {
+                index++;
+                work->_comLabelCount = 1;
+            }
+        } else if (isA(command, beModelCtrlJUMP_meta)) {
+            jumped = fn_8030BCB8(self, ram, command);
+        }
+        if (jumped || !next) break;
+    }
+    if (!jumped) work->_comIndex = index;
+}
+
+// Whether two vectors differ.
+static inline bool differs(const float *a, const float *b) { return a[0] != b[0] || a[1] != b[1] || a[2] != b[2]; }
+
+// Turns the model's direction toward its target direction, each axis by at most its limiter per frame the
+// shorter way round (immediately when immediate is set or the limiter is 0), and rotates its node to match.
+void fn_8030C85C(beModelCtrl *, beModelCtrlInfo *, beBaseInfoRam *ram, beModelCtrlInfoWork *work, bool immediate)
+{
+    const beModelCtrlPool &mc = MC;
+    float direction[3];
+    direction[0] = work->_targetDirection[0];
+    direction[1] = work->_targetDirection[1];
+    direction[2] = work->_targetDirection[2];
+    if (!immediate) {
+        for (int i = 0; i < 3; i++) {
+            float current = work->_direction[i];
+            if (current == work->_targetDirection[i]) continue;
+            if (mc.zero == work->_directionLimiter[i]) {
+                direction[i] = current;
+                continue;
+            }
+            float step = work->_directionLimiter[i] * fn_8031E4C4(ram, mc.KEIKATIMER);
+            float from = work->_direction[i];
+            float to = work->_targetDirection[i];
+            while (from < mc.zero) from += mc.twoPi;
+            while (from >= mc.twoPi) from -= mc.twoPi;
+            while (to < mc.zero) to += mc.twoPi;
+            while (to >= mc.twoPi) to -= mc.twoPi;
+            float up, down;
+            if (from <= to) {
+                down = from - (to - mc.twoPi);
+                up = to - from;
+            } else {
+                down = from - to;
+                up = to + mc.twoPi - from;
+            }
+            float turned;
+            if (up < down) turned = up > step ? from + step : to;
+            else turned = down > step ? from - step : to;
+            direction[i] = turned;
+        }
+    }
+    if (immediate || differs(direction, work->_direction)) {
+        float *matrix = ramDataOf(ram, mc.ONE)->_node->_m;
+        float translation[3];
+        fn_80128DAC(matrix, translation);
+        fn_80129134(matrix, direction[0], direction[1], direction[2]);
+        fn_80128D90(matrix, translation);
+        work->_direction[0] = direction[0];
+        work->_direction[1] = direction[1];
+        work->_direction[2] = direction[2];
     }
 }
 

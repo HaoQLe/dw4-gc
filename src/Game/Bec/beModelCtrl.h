@@ -47,6 +47,7 @@
 #include <meta/beModelCtrlLABELCTRL.h>
 #include <meta/beModelCtrlLUACALL.h>
 #include <meta/beModelCtrlMUTEKI.h>
+#include <meta/igNamedObjectList.h>
 #include <meta/igStringRefList.h>
 #include <meta/igIntList.h>
 #include <igCore/igStringRef.h>
@@ -244,6 +245,13 @@ int sprintf(char *, const char *, ...);
 
 static inline igMetaObject *metaVar(char *meta) { return *reinterpret_cast<igMetaObject **>(meta); }
 
+// Whether an object's class is exactly the class of the metaobject variable meta (read before the call).
+static inline bool isA(igObject *object, char *meta)
+{
+    igMetaObject *metaObject = metaVar(meta);
+    return metaObject == metaOf(object);
+}
+
 // igNamedObject's _name field, for fn_800695CC.
 static inline void *nameField() { return *reinterpret_cast<void **>(lbl_80561748); }
 
@@ -299,6 +307,7 @@ static inline int indexOf(igDataList *list, const void *value, int start)
 // A 3D vector, copied as a whole.
 struct Vec3 {
     float x, y, z;
+    bool operator!=(const Vec3 &other) const { return x != other.x || y != other.y || z != other.z; }
 };
 
 // A RAM's named data, or null; the RAM's data list is created on first use.
@@ -389,9 +398,23 @@ void fn_8030A254(beModelCtrlMoveObject *move);
 float fn_8030A2D8(beModelCtrlMoveObject *move, float frames);
 void fn_8030949C(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo, beMessenger *messenger);
 bool fn_803095D0(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo);
-void fn_8030C85C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, int);
+void fn_8030C85C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, bool immediate);
 void fn_8030D7F4(beModelCtrl *self, beModelCtrlNode2 *node, igAABox *box);
 void fn_8030C3AC(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
+extern char beModelCtrlCTRL_meta[];
+extern char beModelCtrlACTION_meta[];
+extern char beModelCtrlMOVERL_meta[];
+extern char beModelCtrlPDMOVE_meta[];
+extern char beModelCtrlWCHECK_meta[];
+extern char beModelCtrlHITBOX_meta[];
+extern char beModelCtrlMUTEKI_meta[];
+extern char beModelCtrlLABELCTRL_meta[];
+extern char beModelCtrlLUACALL_meta[];
+extern char beModelCtrlAIMAP_meta[];
+extern char beModelCtrlMSGBOX_meta[];
+extern char beModelCtrlLABEL_meta[];
+extern char beModelCtrlJUMP_meta[];
+void fn_80129134(float *matrix, float x, float y, float z);   // sets the rotation from angles around X, Y and Z
 }
 
 #endif

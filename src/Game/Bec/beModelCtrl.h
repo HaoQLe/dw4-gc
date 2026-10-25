@@ -48,6 +48,7 @@
 #include <meta/beModelCtrlLUACALL.h>
 #include <meta/beModelCtrlMUTEKI.h>
 #include <meta/igNamedObjectList.h>
+#include <meta/igTransformRecorder.h>
 #include <meta/igStringRefList.h>
 #include <meta/igIntList.h>
 #include <igCore/igStringRef.h>
@@ -349,7 +350,9 @@ public:
     virtual void runAI(beBaseInfoRam *ram);                // 0xA0
     virtual void step(beBaseInfoRam *ram);                 // 0xA4: the subclass's step when no check waits
     virtual void vA8(); virtual void vAC(); virtual void vB0(); virtual void vB4();
-    virtual void vB8(); virtual void vBC(); virtual void vC0(); virtual void vC4();
+    virtual void vB8(); virtual void vBC();
+    virtual void beforeMove(beBaseInfoRam *ram);           // 0xC0
+    virtual void vC4();
 };
 // igRandomNumber's next number (virtual 0x60).
 class igRandomVirtuals : public igObjectVirtuals {
@@ -366,6 +369,14 @@ public:
     virtual void v84(); virtual void v88(); virtual void v8C(); virtual void v90();
     virtual void setMatrix(const float *matrix);   // 0x94
 };
+
+// A ride-on's update with the rider's matrix (virtual 0x5C).
+class beModelCtrlInfoRideOnVirtuals : public igObjectVirtuals {
+public:
+    virtual void follow(const float *matrix);   // 0x5C
+};
+
+static inline void setMatrix(beModelCtrlNode2 *node, const float *matrix) { reinterpret_cast<igTransformVirtuals *>(node)->setMatrix(matrix); }
 
 static inline beModelCtrlVirtuals *virtuals(beModelCtrl *self) { return reinterpret_cast<beModelCtrlVirtuals *>(self); }
 
@@ -388,6 +399,31 @@ struct ModelLuaContext {
     float *position;            // 0x38: where a script writes a position (the "aim" script), or null
 };
 extern "C" ModelLuaContext lbl_80535914;
+
+// A 4x4 matrix by value (Alchemy's igMatrix44f); copying goes through fn_80128CF4.
+struct Matrix44 {
+    float m[16];
+    Matrix44() {}
+    Matrix44(const Matrix44 &other) { fn_80128CF4(m, other.m); }
+};
+extern "C" Matrix44 fn_80306DE8(beMessenger *messenger, int index);   // matrix argument index of the reply
+
+// Alchemy's igResult (kSuccess or kFailure), returned through a hidden pointer like a class with a copy
+// constructor.
+struct igResult {
+    int value;
+    inline igResult(const igResult &other) : value(other.value) {}
+};
+extern "C" igResult fn_8012A92C(float *to, const float *from);   // inverts a matrix
+
+// A metafield's offset in its object (igMetaField::_offset at +8).
+struct MetaFieldView {
+    void *__vtable;
+    unsigned int _refCount;
+    int _offset;
+};
+extern "C" char lbl_805646FC[];   // [0]: igTransformRecorder's matrix field (a metafield)
+static inline MetaFieldView *recorderMatrixField() { return *reinterpret_cast<MetaFieldView **>(lbl_805646FC); }
 
 // Functions of beModelCtrl's file.
 extern "C" {
@@ -415,6 +451,14 @@ extern char beModelCtrlMSGBOX_meta[];
 extern char beModelCtrlLABEL_meta[];
 extern char beModelCtrlJUMP_meta[];
 void fn_80129134(float *matrix, float x, float y, float z);   // sets the rotation from angles around X, Y and Z
+void fn_80128774(float *matrix, const float *by);              // multiplies a matrix in place
+void fn_80128690(float *to, const float *a, const float *b);   // to = a * b
+void fn_801285A0(float *matrix);                               // the identity
+void fn_80305344(beMessenger *messenger, const char *target, const char *infoName, int ramNo);   // opens a request to target's RAM
+void fn_80305A28(beMessenger *messenger, const char *command); // sends the request
+void fn_80306FDC(beMessenger *messenger, const char *value);   // appends a string argument
+int fn_80306D58(beMessenger *messenger);                       // the number of matrix arguments
+void fn_803107E0(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram);  // runs the subcommands
 }
 
 #endif

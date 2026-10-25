@@ -40,8 +40,9 @@ bool fn_8030A0A0(beModelCtrl *, beBaseInfoRam *, beModelCtrlInfoWork *work, int 
     return true;
 }
 
-// Starts a move: mode 0 accelerates up to value, 1 down to -value, 2 and 4 decelerate from value (4 starting
-// at value), 3 and 5 from -value (5 starting at -value); the acceleration reaches value in frames frames. A
+// Starts a move: mode 0 accelerates up to value, 1 down to -value, 2 and 3 decelerate from the current speed,
+// 4 and 5 decelerate starting at value or -value; the acceleration covers the distance value in frames frames
+// from rest. A
 // nonzero endTime stops it after that many frames.
 void fn_8030A1F4(beModelCtrlMoveObject *move, int mode, float value, float frames, float endTime)
 {

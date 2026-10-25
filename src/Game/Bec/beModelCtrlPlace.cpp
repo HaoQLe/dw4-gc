@@ -47,7 +47,7 @@ void fn_8030D610(beModelCtrl *self, beBaseInfoRam *ram)
     beModelCtrlInfoRamData *data = ramDataOf(ram, kONE);
     if (fn_80306C74(self->_messenger) != 0) {
         Matrix44 matrix(data->_node->_m);
-        fn_80128D90(matrix.m, &fn_80306D28(self->_messenger, 0).x);
+        fn_80128D90(matrix.m, components(fn_80306D28(self->_messenger, 0)));
         if (fn_80306C74(self->_messenger) == 2) {
             Vec3f degrees(fn_80306D28(self->_messenger, 1));
             fn_801292D4(matrix.m, kDegreesToRadians * degrees.x, kDegreesToRadians * degrees.y, kDegreesToRadians * degrees.z);

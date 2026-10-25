@@ -9,7 +9,7 @@ extern "C" {
 // An MSGBOX command: nothing to do here.
 bool fn_8030BCB0(beModelCtrl *, beModelCtrlInfo *, beModelCtrlInfoWork *, igNamedObject *) { return true; }
 
-// A SEQ command: plays the named sequence.
+// A JUMP command: plays the named sequence.
 bool fn_8030BCB8(beModelCtrl *self, beBaseInfoRam *ram, igNamedObject *command)
 {
     virtuals(self)->handleMessage(ram, nameOrEmpty(command));
@@ -25,8 +25,8 @@ bool fn_8030BCFC(beModelCtrl *, beModelCtrlInfoWork *work, igNamedObject *comman
 }
 
 // The wait check: TurnY and Landing wait for the vertical move, Action for the ACTION manager's command to
-// end, Moving for the translations and Rotation for the turn; then the commands continue. Without a check the
-// subclass's step runs (virtual 0xA4).
+// end, Moving for the translations and Rotation for the turn; then the commands continue. A check name this
+// class does not know is the subclass's (virtual 0xA4).
 void fn_8030BDB8(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work)
 {
     const beModelCtrlPool &mc = MC;
@@ -57,7 +57,7 @@ void fn_8030BDB8(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, b
     }
 }
 
-void beModelCtrl_virtualA4(beModelCtrl *, beBaseInfoRam *) {}             // 0xA4: the step when no check waits
+void beModelCtrl_virtualA4(beModelCtrl *, beBaseInfoRam *) {}             // 0xA4: a wait check the base class does not know
 
 // A HITBOX command: AllClear removes the hit-box subcommands, Set adds one.
 bool fn_8030C134(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work, igNamedObject *command)
@@ -93,7 +93,8 @@ void fn_8030C334(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work)
 }
 
 // Runs the current sequence's commands from the command index, each by its class, until one waits (returns
-// false) or a JUMP plays another sequence. A LABEL waits once.
+// false) or a JUMP plays another sequence. The first LABEL reached passes; a later one
+// stops the runner (without advancing) until the command index changes.
 void fn_8030C3AC(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work)
 {
     bool jumped = false;

@@ -55,8 +55,8 @@ void fn_803084B8(beModelCtrl *self, beModelCtrlInfo *, beBaseInfoRam *ram, beMod
 }
 
 // The homing AI (AIH data): turns toward the nearest target (the player for enemy bullets, else an enemy)
-// within its area, sideways (X) from the start and around Y after the first timer, then every second-frame
-// period, up to the limit count.
+// within its area: it pitches (X, from the height over the horizontal distance) every frame in states 0 to
+// 3, and turns around Y after the first timer, then every second-frame period, up to the limit count.
 void fn_80308A2C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlInfoDataAIH *aih)
 {
     const beModelCtrlPool &mc = MC;
@@ -119,7 +119,7 @@ void fn_80308A2C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, b
     }
 }
 
-// A Lua control command: onWalk, toWalk, toWait and isLive set the control state (1 to 4); onFall and noFall
+// A CTRL command: onWalk, toWalk, toWait and isLive set the control state (1 to 4); onFall and noFall
 // switch the fall check.
 bool fn_80308EC0(beModelCtrl *, beModelCtrlInfoWork *work, igNamedObject *command)
 {
@@ -212,7 +212,7 @@ void fn_80309168(beModelCtrl *self, beModelCtrlInfo *, beBaseInfoRam *ram, beMod
         virtuals(self)->handleMessage(ram, work->_keyEventName);
 }
 
-// A Lua ACTION command: sent to the ACTION manager for this RAM.
+// An ACTION command: sent to the ACTION manager for this RAM.
 bool fn_8030943C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, igNamedObject *command)
 {
     const char *name = nameOrEmpty(command);

@@ -23,7 +23,7 @@ beNDMWMdlEnemyInfoWork *beNDMWMdlEnemyInfoWork_create(void *pool);
 int fn_8031F608(igObject *database, int recNo, const char *field);   // a record's integer field
 void fn_80305F9C(beMessenger *messenger, const char *target, const char *infoName, int ramNo);   // opens a request to target's RAM
 void fn_803061BC(beMessenger *messenger, const char *command, int, int);                     // sends the request
-void fn_803AE1A4(beNDMWMdlEnemy *self, beBaseInfoRam *ram);   // beNDMWMdlPEBase's virtualB8
+void fn_803AE1A4(beNDMWMdlEnemy *self, beBaseInfoRam *ram);   // the shared step after a sequence starts (called directly; perhaps beNDMWMdlPEBase::virtualB8, no vtable found)
 
 // Builds an enemy RAM's work from its request (record number and HP); a rare enemy (by its database record's
 // RARITY) shows the rare icon. The RAM is then placed as its message says.

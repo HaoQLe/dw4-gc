@@ -1,4 +1,4 @@
-// Gap::Bec::beModelCtrl (0x803082A4..0x8030F9F0): the model controller, which runs the game's characters,
+// Gap::Bec::beModelCtrl (0x803082A4..0x8030F9C0): the model controller, which runs the game's characters,
 // bullets, effects and objects. Each model is a RAM (beBaseInfoRam) of a beModelCtrlInfo; its state is the RAM's
 // "ONE" data (beModelCtrlInfoRamData: the scene node and a beModelCtrlInfoWork). The subclasses (beNDMWMdl*)
 // choose the model kinds they take (virtual94) and build their work (virtual98).
@@ -361,6 +361,8 @@ struct Vec3 {
 };
 
 static inline const Vec3 &asVec3(const Vec3f &vector) { return *reinterpret_cast<const Vec3 *>(&vector); }
+// A vector's components as an array (also for a returned temporary, which a const reference keeps alive).
+static inline const float *components(const Vec3f &vector) { return &vector.x; }
 
 // The model controller's messages (the MsgAction enum's values).
 enum MsgAction {
@@ -474,7 +476,7 @@ public:
     virtual void makeWork(beBaseInfoRam *ram);             // 0x98: builds a RAM's work
     virtual void ramStarted(beBaseInfoRam *ram);           // 0x9C
     virtual void runAI(beBaseInfoRam *ram);                // 0xA0
-    virtual void step(beBaseInfoRam *ram);                 // 0xA4: the subclass's step when no check waits
+    virtual void step(beBaseInfoRam *ram);                 // 0xA4: a wait check the base class does not know
     virtual void controlOff(beBaseInfoRam *ram);           // 0xA8: OFCTRL
     virtual void frozen(beBaseInfoRam *ram);               // 0xAC: ONFREEZE
     virtual void removing(beBaseInfoRam *ram);             // 0xB0: REMOVE
@@ -517,7 +519,8 @@ public:
     virtual void follow(float *matrix);   // 0x5C: moves the ride with the rider's matrix (which it may change)
 };
 
-// The context a model's Lua hit script reads (0x80535914): set before the script runs.
+// The Lua call context (0x80535914), set before a script runs; also set by the material controller, the
+// generator, the demo manager and the Lua glue. The fields below are named from the model side (hypotheses).
 struct ModelLuaContext {
     beBaseInfoRam *ram;         // 0x00
     int ramNo;                  // 0x04
@@ -529,8 +532,8 @@ struct ModelLuaContext {
     int argument1C;             // 0x1C: for a bullet hit, the bullet's RAM number
     int argument20;             // 0x20: the index of the hit box
     const char *argument24;     // 0x24: the bullet's info name
-    int argument28;             // 0x28: its owner's RAM number
-    int argument2C;             // 0x2C: the owner's record number (-1 for none)
+    int argument28;             // 0x28: int 1 (with 0x24, a model RAM)
+    int argument2C;             // 0x2C: that RAM's record number (-1 for none)
     bool isSet;                 // 0x30: set before the script runs; a hit script clears it so that the model does not turn toward the bullet
     const char *kind;           // 0x34: "BHit", "WHit", "FHit"
     float *position;            // 0x38: where a script writes a position (the "aim" script), or null

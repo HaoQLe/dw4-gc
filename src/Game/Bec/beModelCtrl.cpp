@@ -578,4 +578,90 @@ void fn_8030B6EC(beModelCtrl *self, beBaseInfoRam *ram, const char *script, cons
     if (hp == work->_hp->_data) work->_hp->_data = context->hp;
 }
 
+// Appends a new move object to the work's list; move holds it.
+static inline void addMoveObject(beModelCtrl *self, beModelCtrlInfoWork *work, Ref<beModelCtrlMoveObject> &move)
+{
+    void *pool = poolFor(self, lbl_8056225C);
+    move.releaseHeld();
+    move._object = beModelCtrlMoveObject_create(pool);
+    fn_80069128(work->_moveObjectList, move._object);
+}
+
+// A move command (MOVE, MOVEEX or MOVERL data) for a model RAM. The first move command creates the four move
+// objects: X, Y and Z translation and the turn around Y. MOVE names a preset move (Stop, Move, Push, Back on Z;
+// Jump and Fall on Y); MOVEEX spells one out as four letters: T(ranslate) or R(otate), the axis, P(lus) or
+// M(inus), and A(ccelerate), D(ecelerate) or T(o speed); MOVERL named JOINT locks the model to a recorded path
+// of another model, any other MOVERL to one of its bones. A position lock ends with the model facing along its
+// node.
+bool fn_8030A6BC(beModelCtrl *self, beBaseInfoRam *ram, beModelCtrlInfoWork *work, igNamedObject *command)
+{
+    const beModelCtrlPool &mc = MC;
+    if (!fn_8031E138(ram, mc.KEIKATIMER)) fn_8031DE44(ram, mc.KEIKATIMER, 0);
+    if (work->_isPosLock) {
+        work->_isPosLock = false;
+        beModelCtrlInfoRamData *data = ramDataOf(ram, mc.ONE);
+        float forward[3];
+        fn_8012D434(forward, lbl_804F8B10, data->_node->_m);
+        work->_targetDirection[1] = work->_direction[1] = atan2(forward[0], forward[2]);
+    }
+    if (work->_moveObjectList->_count == 0) {
+        Ref<beModelCtrlMoveObject> move(0, Ref<beModelCtrlMoveObject>::adopt);
+        addMoveObject(self, work, move);   // X
+        addMoveObject(self, work, move);   // Y
+        addMoveObject(self, work, move);   // Z
+        addMoveObject(self, work, move);   // the turn around Y
+    }
+    igMetaObject *meta = metaVar(beModelCtrlMOVE_meta);
+    if (meta == metaOf(command)) {
+        beModelCtrlMOVE *move = static_cast<beModelCtrlMOVE *>(command);
+        const char *name = nameOrEmpty(move);
+        float value = move->_value;
+        float frames = move->_frame;
+        if (strcmp(name, mc.Stop) == 0) fn_8030A1F4(item<beModelCtrlMoveObject>(work->_moveObjectList, 2), 2, value, frames, mc.zero);
+        else if (strcmp(name, mc.Move) == 0) fn_8030A1F4(item<beModelCtrlMoveObject>(work->_moveObjectList, 2), 0, value, frames, mc.zero);
+        else if (strcmp(name, mc.Push) == 0) fn_8030A1F4(item<beModelCtrlMoveObject>(work->_moveObjectList, 2), 4, value, frames, mc.zero);
+        else if (strcmp(name, mc.Back) == 0) fn_8030A1F4(item<beModelCtrlMoveObject>(work->_moveObjectList, 2), 5, value, frames, mc.zero);
+        else if (strcmp(name, mc.Jump) == 0) fn_8030A1F4(item<beModelCtrlMoveObject>(work->_moveObjectList, 1), 4, value, frames, mc.zero);
+        else if (strcmp(name, mc.Fall) == 0) fn_8030A1F4(item<beModelCtrlMoveObject>(work->_moveObjectList, 1), 1, value, frames, mc.zero);
+    } else {
+    igMetaObject *exMeta = metaVar(beModelCtrlMOVEEX_meta);
+    if (exMeta == metaOf(command)) {
+        beModelCtrlMOVEEX *moveEx = static_cast<beModelCtrlMOVEEX *>(command);
+        const char *name = nameOrEmpty(moveEx);
+        int index = name[1] - 'X' + (name[0] == 'T' ? 0 : 2);
+        float value = moveEx->_value;
+        float frames = moveEx->_frame;
+        float playTime = moveEx->_playTime;
+        bool isSeqStop = moveEx->_isSeqStop;
+        float stopValue = moveEx->_stopValue;
+        float stopFrame = moveEx->_stopFrame;
+        int mode;
+        switch (name[3]) {
+        case 'A': mode = 0; break;
+        case 'D': mode = 2; break;
+        case 'T': mode = 4; break;
+        }
+        if (name[2] == 'M') mode++;
+        beModelCtrlMoveObject *object = item<beModelCtrlMoveObject>(work->_moveObjectList, index);
+        fn_8030A1F4(object, mode, value, frames, playTime);
+        object->_isSeqStop = isSeqStop;
+        object->_stopValue = stopValue;
+        object->_stopFrame = stopFrame;
+    } else if (strcmp(nameOrEmpty(command), mc.JOINT) == 0) {
+        beModelCtrlMOVERL *lock = static_cast<beModelCtrlMOVERL *>(command);
+        fn_80305ED0(self->_messenger, mc.MODELCTRL, lock->_modelName, ram->_ramNo, mc.GETTRCDATA);
+        if (fn_80306E1C(self->_messenger) == 1) {
+            work->_isPosLock = true;
+            setRef(work->_posLockTrc, static_cast<beModelCtrlInfoDataTrc *>(fn_80306FB4(self->_messenger, 0)));
+        }
+    } else {
+        beModelCtrlMOVERL *lock = static_cast<beModelCtrlMOVERL *>(command);
+        setString(work->_posLockModelName, lock->_modelName);
+        setString(work->_posLockBoneName, lock->_boneName);
+        work->_isPosLock = true;
+    }
+    }
+    return true;
+}
+
 }

@@ -40,6 +40,9 @@
 #include <meta/beDataObjInt.h>
 #include <meta/igRandomNumber.h>
 #include <meta/igAABox.h>
+#include <meta/beModelCtrlMOVE.h>
+#include <meta/beModelCtrlMOVEEX.h>
+#include <meta/beModelCtrlMOVERL.h>
 #include <meta/igFloatList.h>
 #include <game/Ref.h>
 #include <game/List.h>
@@ -210,10 +213,19 @@ void fn_80128DC8(float *matrix, const float *offset);          // moves by offse
 extern float lbl_804F8AE0[3];                                  // the zero vector
 
 beModelCtrlInfoRideOn *beModelCtrlInfoRideOn_create(void *pool);
+beModelCtrlMoveObject *beModelCtrlMoveObject_create(void *pool);
+bool fn_8031E138(beBaseInfoRam *ram, const char *name);        // whether a RAM timer exists
+void fn_8012D434(float *to, const float *vector, const float *matrix);   // a direction turned by a matrix's rotation
+extern float lbl_804F8B10[3];                                  // the forward (+Z) unit vector
+extern char beModelCtrlMOVE_meta[];
+extern char beModelCtrlMOVEEX_meta[];
+int fn_80306E1C(beMessenger *messenger);                       // the number of object arguments
 float fn_8031E4C4(beBaseInfoRam *ram, const char *name);       // frames since a RAM timer was last read (restarting it)
 void fn_80301FA4(beLua *lua, const char *file, const char *directory);   // runs a Lua file
 int sprintf(char *, const char *, ...);
 }
+
+static inline igMetaObject *metaVar(char *meta) { return *reinterpret_cast<igMetaObject **>(meta); }
 
 // igNamedObject's _name field, for fn_800695CC.
 static inline void *nameField() { return *reinterpret_cast<void **>(lbl_80561748); }

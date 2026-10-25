@@ -23,6 +23,8 @@ public:
     Ref(T *object) : _object(object) { if (object) addRef(object); }
     Ref(T *object, Adopt) : _object(object) {}   // takes over a reference already counted
     ~Ref();
+    // Releases the held reference without clearing it, before the holder takes a new object.
+    void releaseHeld() { if (_object) release(_object); }
     operator T *() const { return _object; }
     T *operator->() const { return _object; }
 };

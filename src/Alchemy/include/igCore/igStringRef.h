@@ -23,6 +23,8 @@ namespace Gap {
                     if (isPooled()) getId()->addRef();
                 }
                 inline const igChar* getString() const { return _string; }
+                // Assigns a pooled copy of string (defined with the game's string pool, game/StringPool.h).
+                inline igStringRef& operator=(const igChar* string);
             
                 inline igStringPoolItemId getId() const
                 {

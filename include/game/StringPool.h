@@ -2,6 +2,7 @@
 #ifndef GAME_STRINGPOOL_H
 #define GAME_STRINGPOOL_H
 #include <igStringPoolItem.h>
+#include <igCore/igStringRef.h>
 
 extern "C" {
 extern void *lbl_80562140[];                                    // [0]: the string pool container, created on first use
@@ -27,6 +28,15 @@ static inline void setString(const char *&member, const char *text)
     const char *value = pooledString(text);
     if (member) reinterpret_cast<const Gap::Core::igStringPoolItem *>(member - 8)->release();
     member = value;
+}
+
+// igStringRef's assignment: the new pooled string first, then the old one released.
+inline Gap::Core::igStringRef &Gap::Core::igStringRef::operator=(const igChar *string)
+{
+    const igChar *pooled = pooledString(string);
+    release();
+    _string = pooled;
+    return *this;
 }
 
 #endif

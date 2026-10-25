@@ -49,6 +49,9 @@
 #include <meta/beModelCtrlMUTEKI.h>
 #include <meta/igNamedObjectList.h>
 #include <meta/igTransformRecorder.h>
+#include <meta/igLod.h>
+#include <meta/igInsightCore.h>
+#include <meta/igNodeList.h>
 #include <meta/igStringRefList.h>
 #include <meta/igIntList.h>
 #include <igCore/igStringRef.h>
@@ -273,7 +276,38 @@ bool fn_8031E238(beBaseInfoRam *ram, const char *name);        // whether a time
 float fn_8031E4C4(beBaseInfoRam *ram, const char *name);       // frames since a timer was last read (restarting it)
 bool fn_8031E8BC(beBaseInfoRam *ram, const char *name);        // restarts a timer
 
+// Messenger requests: the current request saved and restored around a nested one.
+void fn_80306604(beMessenger *messenger);                      // saves the current request
+void fn_803067A0(beMessenger *messenger);                      // restores it
+void fn_80306964(beMessenger *messenger, bool value);          // appends a bool result
+void fn_80306A40(beMessenger *messenger, int value);           // appends an integer result
+int fn_80306A30(beMessenger *messenger);                       // the number of integer arguments
+float fn_80306BA0(beMessenger *messenger, int index);          // float argument index
+void fn_80306D68(beMessenger *messenger, const float *matrix); // appends a matrix result
+void fn_80306E2C(beMessenger *messenger, igObject *object);    // appends an object result
+igObject *fn_802CCD64();                                       // the model controller's message enum (MsgAction), created on first use
+int fn_80304FD8(beMessenger *messenger, igObject *messageEnum, const char *message);   // a message's value in an enum
+
+// Model RAMs: timers and hits.
+void fn_8031E808(beBaseInfoRam *ram, float speed);             // sets the speed of the RAM's timers (0 freezes them)
+void fn_8031EA54(beBaseInfoRam *ram);                          // removes the RAM's timers
+igDataList *fn_80307EAC(beModelCtrlInfoHitBody *body, beBaseInfoRam *ram, const float *matrix, long long time);   // the body's hit boxes at time
+bool fn_8012305C(igAABox *a, igAABox *b);                      // whether two boxes intersect
+void fn_80128D38(float *matrix, const float *translation);     // a translation matrix
+extern float lbl_804F89B8[16];                                 // the identity matrix
+extern char igLod_meta[];
+extern float lbl_804DEBAC[];                                   // 1e8f: the highest level of detail's range when forced
+beModelCtrlInfoAI *beModelCtrlInfoAI_create(void *pool);
+beModelCtrlInfoHitBody *beModelCtrlInfoHitBody_create(void *pool);
+beModelCtrlInfoRideOn2 *beModelCtrlInfoRideOn2_create(void *pool);
+beModelCtrlInfoRideOn3 *beModelCtrlInfoRideOn3_create(void *pool);
+beModelCtrlInfoRideOn4 *beModelCtrlInfoRideOn4_create(void *pool);
+beModelCtrlNode2 *beModelCtrlNode2_create(void *pool);
+
 // Subcommands and Lua.
+void fn_803108A0(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram);  // ends the subcommands
+void fn_80310B50(beModelCtrlSubCom *subCommand, const char *model, const char *sequence, const float *offset, const float *rotation, bool, bool, float);   // adds an effect subcommand
+void fn_80310FAC(beModelCtrlSubCom *subCommand, const char *sound, float);   // adds a sound subcommand
 void fn_803107E0(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram);  // runs the subcommands
 void fn_80310A68(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram, igMetaObject *meta);   // removes the subcommands of a class
 void fn_80310DAC(beModelCtrlSubCom *subCommand, igNamedObject *command);                  // adds a hit-box subcommand
@@ -307,6 +341,17 @@ igResult fn_8012A92C(float *to, const float *from);            // inverts a matr
 // A 3D vector copied as a whole (a plain aggregate).
 struct Vec3 {
     float x, y, z;
+};
+
+static inline const Vec3 &asVec3(const Vec3f &vector) { return *reinterpret_cast<const Vec3 *>(&vector); }
+
+// The model controller's messages (the MsgAction enum's values).
+enum MsgAction {
+    MSG_GENERATE, MSG_GENERATE_NDSP, MSG_REMOVE, MSG_GETINFONAME, MSG_GETINFONAME_RUN, MSG_SETMATRIX, MSG_CHKBULLET,
+    MSG_SETLABEL, MSG_SETEFFECT, MSG_SETSOUND, MSG_GETMATRIX, MSG_GETMATRIX_ALL, MSG_GETMATRIX_ACTIVE, MSG_GETTRCDATA,
+    MSG_GETHP, MSG_SETHP, MSG_GETRECNO, MSG_ACTION1, MSG_ONCTRL, MSG_OFCTRL, MSG_ONFREEZE, MSG_OFFREEZE, MSG_SETLODHIGH,
+    MSG_RESETLODHIGH, MSG_MOVETRANS, MSG_SETCONVEYOR, MSG_SETQUICKSAND, MSG_SETSLIPPEDFLOOR, MSG_ISRUN, MSG_ISSEQNAME,
+    MSG_ONHITBULLETBOX, MSG_OFHITBULLETBOX, MSG_GETSEQNAMELIST
 };
 
 // A metafield's offset in its object (igMetaField::_offset at +8).
@@ -406,17 +451,21 @@ public:
     virtual void ramStart(beBaseInfoRam *ram);             // 0x7C
     virtual igMetaObject *infoMeta();                      // 0x80: beModelCtrlInfo
     virtual void v84(); virtual void v88();
-    virtual void playSequence(beBaseInfoRam *ram, const char *sequence);   // 0x8C
+    virtual bool handleMessage(beBaseInfoRam *ram, const char *message);   // 0x8C: messages, and sequence names to play
     virtual void v90();
     virtual bool isKind(const char *kind);                 // 0x94: whether this controller takes models of kind
     virtual void makeWork(beBaseInfoRam *ram);             // 0x98: builds a RAM's work
     virtual void ramStarted(beBaseInfoRam *ram);           // 0x9C
     virtual void runAI(beBaseInfoRam *ram);                // 0xA0
     virtual void step(beBaseInfoRam *ram);                 // 0xA4: the subclass's step when no check waits
-    virtual void vA8(); virtual void vAC(); virtual void vB0(); virtual void vB4();
-    virtual void vB8(); virtual void vBC();
+    virtual void controlOff(beBaseInfoRam *ram);           // 0xA8: OFCTRL
+    virtual void frozen(beBaseInfoRam *ram);               // 0xAC: ONFREEZE
+    virtual void removing(beBaseInfoRam *ram);             // 0xB0: REMOVE
+    virtual void erasing(beBaseInfoRam *ram);              // 0xB4: SQ_ERAS
+    virtual void sequenceStarted(beBaseInfoRam *ram);      // 0xB8: after a sequence starts
+    virtual void action1(beBaseInfoRam *ram);              // 0xBC: ACTION1
     virtual void beforeMove(beBaseInfoRam *ram);           // 0xC0
-    virtual void vC4();
+    virtual bool subclassMessage(beBaseInfoRam *ram, const char *message);   // 0xC4: true when the subclass handled it
 };
 static inline beModelCtrlVirtuals *virtuals(beModelCtrl *self) { return reinterpret_cast<beModelCtrlVirtuals *>(self); }
 
@@ -437,6 +486,14 @@ public:
 };
 static inline void setMatrix(beModelCtrlNode2 *node, const float *matrix) { reinterpret_cast<igTransformVirtuals *>(node)->setMatrix(matrix); }
 
+// igLod's update after its ranges change (virtual 0x7C).
+class igLodVirtuals : public igObjectVirtuals {
+public:
+    virtual void v5C(); virtual void v60(); virtual void v64(); virtual void v68(); virtual void v6C();
+    virtual void v70(); virtual void v74(); virtual void v78();
+    virtual void rangesChanged();   // 0x7C
+};
+
 // A ride-on's update with the rider's matrix (virtual 0x5C).
 class beModelCtrlInfoRideOnVirtuals : public igObjectVirtuals {
 public:
@@ -452,12 +509,12 @@ struct ModelLuaContext {
     int hp;                     // 0x10: the script may change it
     int recNo;                  // 0x14
     const char *infoName;       // 0x18
-    int argument1C;             // 0x1C
-    int argument20;
-    int argument24;
-    int argument28;
-    int argument2C;
-    bool isSet;                 // 0x30
+    int argument1C;             // 0x1C: for a bullet hit, the bullet's RAM number
+    int argument20;             // 0x20: the index of the hit box
+    const char *argument24;     // 0x24: the bullet's info name
+    int argument28;             // 0x28: its owner's RAM number
+    int argument2C;             // 0x2C: the owner's record number (-1 for none)
+    bool isSet;                 // 0x30: set before the script runs; a hit script clears it so that the model does not turn toward the bullet
     const char *kind;           // 0x34: "BHit", "WHit", "FHit"
     float *position;            // 0x38: where a script writes a position (the "aim" script), or null
 };
@@ -472,10 +529,28 @@ bool fn_8030A0A0(beModelCtrl *self, beBaseInfoRam *ram, beModelCtrlInfoWork *wor
 void fn_8030A1F4(beModelCtrlMoveObject *move, int mode, float value, float frames, float endTime);
 void fn_8030A254(beModelCtrlMoveObject *move);
 float fn_8030A2D8(beModelCtrlMoveObject *move, float frames);
-void fn_8030B6EC(beModelCtrl *self, beBaseInfoRam *ram, const char *script, const char *kind, const char *infoName, int, int, int, int, int);
+void fn_8030B6EC(beModelCtrl *self, beBaseInfoRam *ram, const char *script, const char *kind, const char *infoName, int, int, const char *, int, int);
 void fn_8030C3AC(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
 void fn_8030C85C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, bool immediate);
 void fn_8030D7F4(beModelCtrl *self, beModelCtrlNode2 *node, igAABox *box);
+int fn_8030D084(beModelCtrl *self, beModelCtrlInfoWork *work);
+igStringRef *fn_8030F818(igStringRef *ref, const char *text);                 // igStringRef's assignment, out of line
+
+// Field setters of the reflected classes, emitted out of line in this file (a new object gains a reference
+// first; a string is pooled).
+void fn_8030F0C4(beModelCtrlInfoWork *work, beModelCtrlInfoRideOn *rideOn);   // _rideOnData
+void fn_8030F134(beModelCtrlInfoRideOn *rideOn, beModelCtrlNode2 *node);     // _modelNode
+void fn_8030F220(beModelCtrlInfoWork *work, const char *script);             // _luaFHit
+void fn_8030F2C8(beModelCtrlInfoWork *work, const char *script);             // _luaWHit
+void fn_8030F370(beModelCtrlInfoWork *work, const char *script);             // _luaBHit
+void fn_8030F418(beModelCtrlInfoWork *work, const char *check);              // _wCheckName
+void fn_8030F4C0(beModelCtrlInfoWork *work, beModelCtrlData *data);          // _comData
+void fn_8030F530(beModelCtrlInfoWork *work, const char *sequence);           // _seqCodeName
+void fn_8030F5DC(beModelCtrlInfoWork *work, beModelCtrlInfoHitBody *body);   // _hitBody
+void fn_8030F654(beModelCtrlInfoRamData *data, beModelCtrlInfoWork *work);   // _work
+void fn_8030F6C8(beModelCtrlInfoWork *work, beModelCtrlInfoAI *ai);          // _aI
+void fn_8030F738(igNode *node, igVolume *bound);                              // _bound
+void fn_8030F7A8(beModelCtrlInfoWork *work, igAABox *box);                   // _baseAABox
 }
 
 #endif

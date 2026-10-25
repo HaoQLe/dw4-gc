@@ -50,6 +50,7 @@
 #include <meta/igNamedObjectList.h>
 #include <meta/igTransformRecorder.h>
 #include <meta/igLod.h>
+#include <meta/igVolume.h>
 #include <meta/igInsightCore.h>
 #include <meta/igNodeList.h>
 #include <meta/igStringRefList.h>
@@ -263,6 +264,7 @@ void fn_80129134(float *matrix, float x, float y, float z);    // sets the rotat
 void fn_801292D4(float *matrix, float x, float y, float z);    // sets the rotation from angles (another order)
 void fn_801298F0(float *matrix, const float *axis, float angle);   // rotates around an axis
 void fn_8012D434(float *to, const float *vector, const float *matrix);   // a direction turned by a matrix's rotation
+void fn_8012D3F4(float *to, const float *from, const float *toward, float t);   // from + t * (toward - from)
 void fn_80122D04(igAABox *box, const float *matrix);           // transforms a box
 extern float lbl_804F8AE0[3];                                  // the zero vector
 extern float lbl_804F8AF8[3];                                  // the X axis
@@ -497,7 +499,7 @@ public:
 // A ride-on's update with the rider's matrix (virtual 0x5C).
 class beModelCtrlInfoRideOnVirtuals : public igObjectVirtuals {
 public:
-    virtual void follow(const float *matrix);   // 0x5C
+    virtual void follow(float *matrix);   // 0x5C: moves the ride with the rider's matrix (which it may change)
 };
 
 // The context a model's Lua hit script reads (0x80535914): set before the script runs.

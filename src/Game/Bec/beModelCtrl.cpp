@@ -1586,4 +1586,156 @@ bool fn_8030D910(beModelCtrl *self, beBaseInfoRam *ram, const char *message)
     }
 }
 
+// The base class's empty or trivial virtuals.
+void fn_803084B4(beModelCtrl *, beBaseInfoRam *) {}             // 0x9C: after a RAM starts
+void fn_8030C130(beModelCtrl *, beBaseInfoRam *) {}             // 0xA4: the step when no check waits
+void fn_8030D080(beModelCtrl *, beBaseInfoRam *) {}             // 0xC0: before the move
+void fn_8030F218(beModelCtrl *, beBaseInfoRam *) {}             // 0xBC: ACTION1
+void fn_8030F21C(beModelCtrl *, beBaseInfoRam *) {}             // 0xB8: after a sequence starts
+void fn_8030F5D8(beModelCtrl *, beBaseInfoRam *) {}             // 0xB4: SQ_ERAS
+void fn_8030F64C(beModelCtrl *, beBaseInfoRam *) {}             // 0xAC: ONFREEZE
+void fn_8030F650(beModelCtrl *, beBaseInfoRam *) {}             // 0xA8: OFCTRL
+void fn_8030F6C4(beModelCtrl *, beBaseInfoRam *) {}             // 0xB0: REMOVE
+bool fn_8030F8C4(beModelCtrl *, beBaseInfoRam *, const char *) { return false; }   // 0xC4: no subclass messages
+
+// Whether a ride-on is on the given model RAM.
+bool fn_803095D0(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo)
+{
+    if (strcmp(rideOn->_modelName, modelName) != 0) return false;
+    return ramNo == rideOn->_modelRamNo;
+}
+
+// A conveyor (RideOn2) carries the rider along its vector.
+void beModelCtrlInfoRideOn2_virtual5C(beModelCtrlInfoRideOn2 *self, float *)
+{
+    fn_80128D90(self->_oldMatrix, lbl_804F8AE0);
+    fn_80128D90(self->_modelNode->_m, self->_vector);
+}
+
+// Quicksand (RideOn3) draws the rider toward its world position: at maxSpeed within minKyori, minSpeed beyond
+// maxKyori, and in between in proportion.
+void beModelCtrlInfoRideOn3_virtual5C(beModelCtrlInfoRideOn3 *self, float *rider)
+{
+    const beModelCtrlPool &mc = MC;
+    fn_80128D90(self->_oldMatrix, lbl_804F8AE0);
+    float position[3];
+    fn_80128DAC(rider, position);
+    float toward[3];
+    toward[0] = self->_worldPosition[0];
+    toward[1] = self->_worldPosition[1];
+    toward[2] = self->_worldPosition[2];
+    toward[0] -= position[0];
+    toward[1] -= position[1];
+    toward[2] -= position[2];
+    float distance = poolSqrtf(toward[0] * toward[0] + toward[1] * toward[1] + toward[2] * toward[2], mc);
+    float scale = mc.one / distance;
+    toward[0] *= scale;
+    toward[1] *= scale;
+    toward[2] *= scale;
+    if (distance < mc.zero) distance = -distance;
+    float speed;
+    if (distance >= self->_maxKyori) speed = self->_minSpeed;
+    else if (distance <= self->_minKyori) speed = self->_maxSpeed;
+    else speed = self->_maxSpeed - (distance - self->_minKyori) / ((self->_maxKyori - self->_minKyori) / (self->_maxSpeed - self->_minSpeed));
+    toward[0] *= speed;
+    toward[1] *= speed;
+    toward[2] *= speed;
+    fn_80128D90(self->_modelNode->_m, toward);
+}
+
+// A slippery floor (RideOn4) keeps the rider sliding. The first frame starts; the second takes the rider's
+// horizontal move since the last frame as the slide (scaled to 0.6 of its direction when longer than 0.6). After
+// that the slide moves toward each frame's move by the scalar, and stops once every axis is within the limiter.
+// The floor's node carries the rider by the slide, while the rider itself stays at its last horizontal position.
+void beModelCtrlInfoRideOn4_virtual5C(beModelCtrlInfoRideOn4 *self, float *rider)
+{
+    const beModelCtrlPool &mc = MC;
+    fn_80128D90(self->_oldMatrix, lbl_804F8AE0);
+    float position[3];
+    fn_80128DAC(rider, position);
+    float height = position[1];
+    position[1] = mc.zero;
+    float old[3];
+    old[0] = self->_oldPlayerPos[0];
+    old[1] = self->_oldPlayerPos[1];
+    old[2] = self->_oldPlayerPos[2];
+    old[1] = mc.zero;
+    float move[3];
+    move[0] = position[0] - old[0];
+    move[1] = position[1] - old[1];
+    move[2] = position[2] - old[2];
+    switch (self->_isFirst) {
+    case 0:
+        fn_80128D90(self->_modelNode->_m, lbl_804F8AE0);
+        self->_isFirst = 1;
+        return;
+    case 1: {
+        move[1] = mc.zero;
+        float length = move[0] * move[0] + move[1] * move[1] + move[2] * move[2];
+        if (length >= mc.f110) {
+            float scale = mc.one / poolSqrtf(length, mc);
+            move[0] *= scale;
+            move[1] *= scale;
+            move[2] *= scale;
+            move[0] *= mc.f114;
+            move[1] *= mc.f114;
+            move[2] *= mc.f114;
+        }
+        self->_vector[0] = move[0];
+        self->_vector[1] = move[1];
+        self->_vector[2] = move[2];
+        fn_80128D90(self->_modelNode->_m, lbl_804F8AE0);
+        self->_isFirst = 2;
+        return;
+    }
+    }
+    float slide[3];
+    fn_8012D3F4(slide, self->_vector, move, self->_scalar);
+    for (int i = 0; i < 3; i++) {
+        if (i == 1) slide[i] = mc.zero;
+        if (slide[i] > self->_limitter || slide[i] < -self->_limitter) break;
+        if (i == 2) {
+            slide[0] = lbl_804F8AE0[0];
+            slide[1] = lbl_804F8AE0[1];
+            slide[2] = lbl_804F8AE0[2];
+        }
+    }
+    self->_vector[0] = slide[0];
+    self->_vector[1] = slide[1];
+    self->_vector[2] = slide[2];
+    fn_80128D90(self->_modelNode->_m, slide);
+    slide[0] += old[0];
+    slide[1] += old[1];
+    slide[2] += old[2];
+    old[1] = height;
+    fn_80128D90(rider, old);
+}
+
+// Field setters (see the header).
+void fn_8030F0C4(beModelCtrlInfoWork *work, beModelCtrlInfoRideOn *rideOn) { setRef(work->_rideOnData, rideOn); }
+void fn_8030F134(beModelCtrlInfoRideOn *rideOn, beModelCtrlNode2 *node) { setRef(rideOn->_modelNode, node); }
+void fn_8030F220(beModelCtrlInfoWork *work, const char *script) { setString(work->_luaFHit, script); }
+void fn_8030F2C8(beModelCtrlInfoWork *work, const char *script) { setString(work->_luaWHit, script); }
+void fn_8030F370(beModelCtrlInfoWork *work, const char *script) { setString(work->_luaBHit, script); }
+void fn_8030F418(beModelCtrlInfoWork *work, const char *check) { setString(work->_wCheckName, check); }
+void fn_8030F4C0(beModelCtrlInfoWork *work, beModelCtrlData *data) { setRef(work->_comData, data); }
+void fn_8030F530(beModelCtrlInfoWork *work, const char *sequence) { setString(work->_seqCodeName, sequence); }
+void fn_8030F5DC(beModelCtrlInfoWork *work, beModelCtrlInfoHitBody *body) { setRef(work->_hitBody, body); }
+void fn_8030F654(beModelCtrlInfoRamData *data, beModelCtrlInfoWork *work) { setRef(data->_work, work); }
+void fn_8030F6C8(beModelCtrlInfoWork *work, beModelCtrlInfoAI *ai) { setRef(work->_aI, ai); }
+void fn_8030F738(igNode *node, igVolume *bound) { setRef(node->_bound, bound); }
+void fn_8030F7A8(beModelCtrlInfoWork *work, igAABox *box) { setRef(work->_baseAABox, box); }
+
+igStringRef *fn_8030F818(igStringRef *ref, const char *text)
+{
+    *ref = text;
+    return ref;
+}
+
+beBaseInfoData *fn_8030F8CC(beBaseInfoRam *ram, const char *name)
+{
+    ensureDataList(ram);
+    return static_cast<beBaseInfoData *>(fn_800695CC(ram->_dataList, nameField(), name));
+}
+
 }

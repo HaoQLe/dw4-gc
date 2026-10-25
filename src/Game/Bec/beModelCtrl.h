@@ -51,6 +51,20 @@
 #include <meta/igTransformRecorder.h>
 #include <meta/igLod.h>
 #include <meta/igVolume.h>
+#include <meta/beNDMWMdlEBullet.h>
+#include <meta/beNDMWMdlEffect.h>
+#include <meta/beNDMWMdlPBullet.h>
+#include <meta/beNDMWMdlObject.h>
+#include <meta/beNDMWMdlEnemy.h>
+#include <meta/beNDMWMdlEnemyInfoWork.h>
+#include <meta/beNDMWMdlPlayer.h>
+#include <meta/beNDMWMdlPlayerInfoWork.h>
+#include <meta/beNDMWMdlPlayer2.h>
+#include <meta/beNDMWMdlPlayer2InfoWork.h>
+#include <meta/beNDMWMdlItem.h>
+#include <meta/beNDMWMdlItemInfoWork.h>
+#include <meta/beNDMWMdlMapBase.h>
+#include <meta/beNDMWMdlMapCursor.h>
 #include <meta/igInsightCore.h>
 #include <meta/igNodeList.h>
 #include <meta/igStringRefList.h>
@@ -305,6 +319,7 @@ beModelCtrlInfoRideOn2 *beModelCtrlInfoRideOn2_create(void *pool);
 beModelCtrlInfoRideOn3 *beModelCtrlInfoRideOn3_create(void *pool);
 beModelCtrlInfoRideOn4 *beModelCtrlInfoRideOn4_create(void *pool);
 beModelCtrlNode2 *beModelCtrlNode2_create(void *pool);
+beModelCtrlInfoWork *beModelCtrlInfoWork_create(void *pool);
 
 // Subcommands and Lua.
 void fn_803108A0(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram);  // ends the subcommands
@@ -536,6 +551,8 @@ void fn_8030C3AC(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, b
 void fn_8030C85C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, bool immediate);
 void fn_8030D7F4(beModelCtrl *self, beModelCtrlNode2 *node, igAABox *box);
 int fn_8030D084(beModelCtrl *self, beModelCtrlInfoWork *work);
+void fn_8030D260(beModelCtrl *self, beBaseInfoRam *ram);
+void fn_8030D610(beModelCtrl *self, beBaseInfoRam *ram);
 igStringRef *fn_8030F818(igStringRef *ref, const char *text);                 // igStringRef's assignment, out of line
 
 // Field setters of the reflected classes, emitted out of line in this file (a new object gains a reference

@@ -46,6 +46,7 @@
 #include <meta/beModelCtrlPDMOVE.h>
 #include <meta/beModelCtrlLABELCTRL.h>
 #include <meta/beModelCtrlLUACALL.h>
+#include <meta/beModelCtrlMUTEKI.h>
 #include <meta/igStringRefList.h>
 #include <meta/igIntList.h>
 #include <igCore/igStringRef.h>
@@ -232,6 +233,9 @@ extern int lbl_804DEBA8[];                                      // -1
 igStringRefList *igStringRefList_create(void *pool);
 igIntList *igIntList_create(void *pool);
 bool fn_8031E8BC(beBaseInfoRam *ram, const char *name);        // restarts a RAM timer
+extern char beModelCtrlSCHitBox_meta[];
+void fn_80310A68(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram, igMetaObject *meta);   // removes the subcommands of a class
+void fn_80310DAC(beModelCtrlSubCom *subCommand, igNamedObject *command);                  // adds a hit-box subcommand
 int fn_8004270C(void *list, void *value, int start);           // the index of a value (compared as a word) from start, or -1
 float fn_8031E4C4(beBaseInfoRam *ram, const char *name);       // frames since a RAM timer was last read (restarting it)
 void fn_80301FA4(beLua *lua, const char *file, const char *directory);   // runs a Lua file
@@ -334,7 +338,8 @@ public:
     virtual void makeWork(beBaseInfoRam *ram);             // 0x98: builds a RAM's work
     virtual void ramStarted(beBaseInfoRam *ram);           // 0x9C
     virtual void runAI(beBaseInfoRam *ram);                // 0xA0
-    virtual void vA4(); virtual void vA8(); virtual void vAC(); virtual void vB0(); virtual void vB4();
+    virtual void step(beBaseInfoRam *ram);                 // 0xA4: the subclass's step when no check waits
+    virtual void vA8(); virtual void vAC(); virtual void vB0(); virtual void vB4();
     virtual void vB8(); virtual void vBC(); virtual void vC0(); virtual void vC4();
 };
 // igRandomNumber's next number (virtual 0x60).
@@ -386,6 +391,7 @@ void fn_8030949C(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo
 bool fn_803095D0(beModelCtrlInfoRideOn *rideOn, const char *modelName, int ramNo);
 void fn_8030C85C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, int);
 void fn_8030D7F4(beModelCtrl *self, beModelCtrlNode2 *node, igAABox *box);
+void fn_8030C3AC(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
 }
 
 #endif

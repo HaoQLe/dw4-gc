@@ -777,4 +777,85 @@ bool fn_8030BB3C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, b
 
 bool fn_8030BCB0() { return true; }
 
+// A SEQ command: plays the named sequence.
+bool fn_8030BCB8(beModelCtrl *self, beBaseInfoRam *ram, igNamedObject *command)
+{
+    virtuals(self)->playSequence(ram, nameOrEmpty(command));
+    return true;
+}
+
+// A WCHECK command: the next commands wait until the named check passes (TurnY, Landing, Action, Moving,
+// Rotation).
+bool fn_8030BCFC(beModelCtrl *, beModelCtrlInfoWork *work, igNamedObject *command)
+{
+    setString(work->_wCheckName, nameOrEmpty(command));
+    return false;
+}
+
+// The wait check: TurnY and Landing wait for the vertical move, Action for the ACTION manager's command to
+// end, Moving for the translations and Rotation for the turn; then the commands continue. Without a check the
+// subclass's step runs (virtual 0xA4).
+void fn_8030BDB8(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work)
+{
+    const beModelCtrlPool &mc = MC;
+    if (strcmp(work->_wCheckName, mc.TurnY) == 0 || strcmp(work->_wCheckName, mc.Landing) == 0) {
+        if (!fn_8030A0A0(self, ram, work, 2)) {
+            setString(work->_wCheckName, 0);
+            fn_8030C3AC(self, info, ram, work);
+        }
+    } else if (strcmp(work->_wCheckName, mc.Action) == 0) {
+        int ramNo = ram->_ramNo;
+        fn_80305ED0(self->_messenger, mc.ACTION, nameOrEmpty(info), ramNo, mc.ISCOMEND);
+        if (fn_80306A1C(self->_messenger, 0)) {
+            setString(work->_wCheckName, 0);
+            fn_8030C3AC(self, info, ram, work);
+        }
+    } else if (strcmp(work->_wCheckName, mc.Moving) == 0) {
+        if (!fn_8030A0A0(self, ram, work, 0)) {
+            setString(work->_wCheckName, 0);
+            fn_8030C3AC(self, info, ram, work);
+        }
+    } else if (strcmp(work->_wCheckName, mc.Rotation) == 0) {
+        if (!fn_8030A0A0(self, ram, work, 1)) {
+            setString(work->_wCheckName, 0);
+            fn_8030C3AC(self, info, ram, work);
+        }
+    } else {
+        virtuals(self)->step(ram);
+    }
+}
+
+// A HITBOX command: AllClear removes the hit-box subcommands, Set adds one.
+bool fn_8030C134(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work, igNamedObject *command)
+{
+    if (strcmp(nameOrEmpty(command), kAllClear) == 0) fn_80310A68(work->_subCommand, ram, metaVar(beModelCtrlSCHitBox_meta));
+    else if (strcmp(nameOrEmpty(command), kSet) == 0) fn_80310DAC(work->_subCommand, command);
+    return true;
+}
+
+// A MUTEKI command: OFFWALL, ONWALL, OFFFLOOR and ONFLOOR switch the wall and floor checks; any other name makes
+// the model invincible for the command's frames.
+bool fn_8030C1F0(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlMUTEKI *command)
+{
+    const beModelCtrlPool &mc = MC;
+    if (!fn_8031E138(ram, mc.KEIKATIMER)) fn_8031DE44(ram, mc.KEIKATIMER, 0);
+    if (strcmp(nameOrEmpty(command), mc.OFFWALL) == 0) work->_isWallCheck = false;
+    else if (strcmp(nameOrEmpty(command), mc.ONWALL) == 0) work->_isWallCheck = true;
+    else if (strcmp(nameOrEmpty(command), mc.OFFFLOOR) == 0) work->_isFloorCheck = false;
+    else if (strcmp(nameOrEmpty(command), mc.ONFLOOR) == 0) work->_isFloorCheck = true;
+    else work->_mutekiCount = command->_frame;
+    return true;
+}
+
+// Counts the invincibility frames down.
+void fn_8030C334(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work)
+{
+    float count = work->_mutekiCount;
+    if (count > kZero) {
+        float left = count - fn_8031E4C4(ram, kKEIKATIMER);
+        if (left < kZero) left = kZero;
+        work->_mutekiCount = left;
+    }
+}
+
 }

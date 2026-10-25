@@ -1,5 +1,5 @@
-// Gap::Bec::beNDMWMdlMapBase: the map's base model, which stays centred on the players. This file: the kind test and the RAM start (0x803B3774..0x803B37D8).
-// opposite of the players' average position, so that the map stays centred on them.
+// Gap::Bec::beNDMWMdlMapBase: the map's base model, which stays centred on the players. This file: the kind
+// test and the RAM start (0x803B3774..0x803B37D8).
 #include "beModelCtrl.h"
 
 #pragma auto_inline off

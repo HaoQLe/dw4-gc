@@ -1,6 +1,5 @@
-// Gap::Bec::beNDMWMdlMapCursor: a player's cursor on the map, following its player over the map base. This file: the kind test (0x803B3C70..0x803B3CA8).
-// (the player RAM of the same number) over the map base, opening when the player appears and closing when it
-// goes.
+// Gap::Bec::beNDMWMdlMapCursor: a player's cursor on the map, following its player over the map base. This
+// file: the kind test (0x803B3C70..0x803B3CA8).
 #include "beModelCtrl.h"
 
 #pragma auto_inline off

@@ -1,7 +1,4 @@
 // beNDMWMdlPlayer2: a background chip's switch (0x8034EB78..0x8034ED34).
-// A chip remembers its player's stage and position in the game RAM's common data (BKCHIPSTAGE, BKCHIPPOS);
-// it switches on when a player comes near, and raising it pays out the bits and experience it holds
-// (BKCHIPDATA) to the player whose Digimon it was.
 #include "beModelCtrl.h"
 #include <meta/bePadManager.h>
 #include <meta/beDataObjInt.h>

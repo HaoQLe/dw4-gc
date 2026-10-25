@@ -1,7 +1,4 @@
 // beNDMWMdlItem: building an item RAM's work and its item object (0x803AAC90..0x803AB450).
-// category (disks, instant items, important items, ability chips, weapons and armour scaled by the player's
-// level). An unnamed item is used up when a player touches it; a named one shows its name over itself to the
-// nearest player, and that player picks it up with ACTION1 when there is room for it.
 #include "beModelCtrl.h"
 #include <meta/beNDMWItemBase.h>
 #include <meta/igViewerSceneInfoManager.h>

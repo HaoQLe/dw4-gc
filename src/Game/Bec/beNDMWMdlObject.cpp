@@ -1,4 +1,5 @@
-// Gap::Bec::beNDMWMdlObject: the model controller of stage objects. This file: the kind test and the RAM start (0x8034BE6C..0x8034BEA8).
+// Gap::Bec::beNDMWMdlObject: the model controller of stage objects. This file: the kind test and the RAM
+// start (0x8034BE6C..0x8034BEA8).
 #include "beModelCtrl.h"
 
 #pragma auto_inline off

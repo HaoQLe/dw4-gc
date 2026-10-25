@@ -1,4 +1,5 @@
-// Gap::Bec::beNDMWMdlEnemy: the model controller of enemies. This file: the kind test and the RAM start (0x8034BAE4..0x8034BB48).
+// Gap::Bec::beNDMWMdlEnemy: the model controller of enemies. This file: the kind test and the RAM start
+// (0x8034BAE4..0x8034BB48).
 #include "beModelCtrl.h"
 
 #pragma auto_inline off

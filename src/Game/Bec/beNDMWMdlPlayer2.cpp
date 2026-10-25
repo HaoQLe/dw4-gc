@@ -1,7 +1,7 @@
-// Gap::Bec::beNDMWMdlPlayer2: background chips, the players' models left in the lobby. A chip remembers its player's stage and position in the game RAM's common data (BKCHIPSTAGE, BKCHIPPOS), switches on when a player comes near, and when raised pays out the bits and experience it holds (BKCHIPDATA). This file: finding the pad manager, the kind test and the RAM start (0x8034E6DC..0x8034E784).
-// A chip remembers its player's stage and position in the game RAM's common data (BKCHIPSTAGE, BKCHIPPOS);
-// it switches on when a player comes near, and raising it pays out the bits and experience it holds
-// (BKCHIPDATA) to the player whose Digimon it was.
+// Gap::Bec::beNDMWMdlPlayer2: background chips, the players' models left in the lobby. A chip remembers its
+// player's stage and position in the game RAM's common data (BKCHIPSTAGE, BKCHIPPOS), switches on when a
+// player comes near, and when raised pays out the bits and experience it holds (BKCHIPDATA). This file:
+// finding the pad manager, the kind test and the RAM start (0x8034E6DC..0x8034E784).
 #include "beModelCtrl.h"
 #include <meta/bePadManager.h>
 #include <meta/beDataObjInt.h>

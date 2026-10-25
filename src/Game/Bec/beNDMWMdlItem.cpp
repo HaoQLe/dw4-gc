@@ -1,7 +1,8 @@
-// Gap::Bec::beNDMWMdlItem: dropped items. An item is created from its database category (disks, instant items, important items, ability chips, weapons and armour scaled by the player's level). An unnamed item is used up when a player touches it; a named one shows its name to the nearest player, who picks it up with ACTION1 when there is room. This file: the kind test, the RAM start, the managers and the label slots (0x803AAA8C..0x803AAC90).
-// category (disks, instant items, important items, ability chips, weapons and armour scaled by the player's
-// level). An unnamed item is used up when a player touches it; a named one shows its name over itself to the
-// nearest player, and that player picks it up with ACTION1 when there is room for it.
+// Gap::Bec::beNDMWMdlItem: dropped items. An item is created from its database category (disks, instant
+// items, important items, ability chips, weapons and armour scaled by the player's level). An unnamed item is
+// used up when a player touches it; a named one shows its name to the nearest player, who picks it up with
+// ACTION1 when there is room. This file: the kind test, the RAM start, the managers and the label slots
+// (0x803AAA8C..0x803AAC90).
 #include "beModelCtrl.h"
 #include <meta/beNDMWItemBase.h>
 #include <meta/igViewerSceneInfoManager.h>

@@ -1,5 +1,4 @@
 // beNDMWMdlMapBase: centring the map on the players, and the class (0x803B3A18..0x803B3C70).
-// opposite of the players' average position, so that the map stays centred on them.
 #include "beModelCtrl.h"
 
 #pragma auto_inline off

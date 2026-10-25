@@ -1,6 +1,4 @@
 // beNDMWMdlMapCursor: following the player, and the class (0x803B3EE8..0x803B41A4).
-// (the player RAM of the same number) over the map base, opening when the player appears and closing when it
-// goes.
 #include "beModelCtrl.h"
 
 #pragma auto_inline off

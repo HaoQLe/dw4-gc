@@ -1,5 +1,4 @@
 // beNDMWMdlMapBase: building the map base RAM's work (0x803B37D8..0x803B3A18).
-// opposite of the players' average position, so that the map stays centred on them.
 #include "beModelCtrl.h"
 
 #pragma auto_inline off

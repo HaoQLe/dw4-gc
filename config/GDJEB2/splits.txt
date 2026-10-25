@@ -16020,23 +16020,30 @@ Game/Bec/beNDMWMdlPBullet.cpp:
 	extabindex  start:0x8001EB64 end:0x8001EB7C
 	.text       start:0x8034C0F8 end:0x8034C2F0
 
-unknownGen/unknown8034C2F0.cpp:
-	extab       start:0x8000E854 end:0x8000E85C
-	extabindex  start:0x8001EB7C end:0x8001EB88
-	.text       start:0x8034C2F0 end:0x8034C364
+Game/Bec/beNDMWMdlPlayer.cpp:
+	extab       start:0x8000E854 end:0x8000E86C
+	extabindex  start:0x8001EB7C end:0x8001EBA0
+	.text       start:0x8034C2F0 end:0x8034C3C8
 
-unknownGen/unknown8034C39C.cpp:
-	extab       start:0x8000E864 end:0x8000E86C
-	extabindex  start:0x8001EB94 end:0x8001EBA0
-	.text       start:0x8034C39C end:0x8034C3C8
+Game/Bec/beNDMWMdlPlayerUpdate.cpp:
+	extab       start:0x8000E86C end:0x8000E89C
+	extabindex  start:0x8001EBA0 end:0x8001EBB8
+	.text       start:0x8034C3C8 end:0x8034D214
 
-unknownGen/unknown8034D1A0.cpp:
-	extab       start:0x8000E894 end:0x8000E89C
-	extabindex  start:0x8001EBAC end:0x8001EBB8
-	.text       start:0x8034D1A0 end:0x8034D214
+Game/Bec/beNDMWMdlPlayerWaitCheck.cpp:
+	extab       start:0x8000E89C end:0x8000E8B4
+	extabindex  start:0x8001EBB8 end:0x8001EBC4
+	.text       start:0x8034D214 end:0x8034D61C
 
-unknownGen/unknown8034E6CC.cpp:
-	.text       start:0x8034E6CC end:0x8034E6DC
+Game/Bec/beNDMWMdlPlayerWork.cpp:
+	extab       start:0x8000E8B4 end:0x8000E904
+	extabindex  start:0x8001EBC4 end:0x8001EBD0
+	.text       start:0x8034D61C end:0x8034DF40
+
+Game/Bec/beNDMWMdlPlayerHooks.cpp:
+	extab       start:0x8000E904 end:0x8000E97C
+	extabindex  start:0x8001EBD0 end:0x8001EC0C
+	.text       start:0x8034DF40 end:0x8034E6DC
 
 Game/Bec/beNDMWMdlPlayer2.cpp:
 	extab       start:0x8000E97C end:0x8000E994

@@ -572,4 +572,114 @@ void fn_8030F738(igNode *node, igVolume *bound);                              //
 void fn_8030F7A8(beModelCtrlInfoWork *work, igAABox *box);                   // _baseAABox
 }
 
+
+// Math and the target search used by the controller's files.
+extern "C" {
+extern int __float_nan[];
+double atan2(double y, double x);
+
+// The target search (the global target at 0x80535BA8). A search starts from a model's matrix; the found
+// target's position and its squared distance are kept for the next calls.
+bool fn_8031C67C(void *matrix, const char *kind, const char *mode);   // searches for a target of a kind ("PLAYER", "ENEMY")
+bool fn_8031C790(void *matrix, float *position);                      // takes a world position as the target
+const float *fn_8031C868();                                           // the searching model's position
+const float *fn_8031C8E0();                                           // the target's position
+float fn_8031C8EC();                                                  // the squared distance to the target
+float fn_8031C8F8(float angle);                                       // angle added to the direction to the target
+}
+
+// MSL's sqrtf, with the file's constants: three Newton steps from the hardware estimate; NaN for negative
+// input or NaN.
+static inline int fpclassifyf(float x)
+{
+    switch (*reinterpret_cast<int *>(&x) & 0x7F800000) {
+    case 0x7F800000:
+        if (*reinterpret_cast<int *>(&x) & 0x7FFFFF) return 1;   // NaN
+        return 2;                                                // infinite
+    case 0:
+        if (*reinterpret_cast<int *>(&x) & 0x7FFFFF) return 5;   // subnormal
+        return 3;                                                // zero
+    }
+    return 4;                                                    // normal
+}
+
+static inline float poolSqrtf(float x, const beModelCtrlPool &mc)
+{
+    if (x > mc.zero) {
+        double guess = __frsqrte((double)x);
+        guess = mc.sqrtHalf * guess * (mc.sqrtThree - guess * guess * x);
+        guess = mc.sqrtHalf * guess * (mc.sqrtThree - guess * guess * x);
+        guess = mc.sqrtHalf * guess * (mc.sqrtThree - guess * guess * x);
+        return (float)(x * guess);
+    } else if (x < mc.sqrtZero) {
+        return *reinterpret_cast<float *>(__float_nan);
+    } else if (fpclassifyf(x) == 1) {
+        return *reinterpret_cast<float *>(__float_nan);
+    }
+    return x;
+}
+
+// Frames (at 60 per second) as nanoseconds, for the RAM timers.
+static inline unsigned long long framesToNanoseconds(float frames, const beModelCtrlPool &mc)
+{
+    return (unsigned long long)(mc.nanosecondsPerSecond * frames / mc.framesPerSecond);
+}
+
+// Appends a new move object to the work's list; move holds it.
+static inline void addMoveObject(beModelCtrl *self, beModelCtrlInfoWork *work, Ref<beModelCtrlMoveObject> &move)
+{
+    void *pool = poolFor(self, lbl_8056225C);
+    move.releaseHeld();
+    move._object = beModelCtrlMoveObject_create(pool);
+    fn_80069128(work->_moveObjectList, move._object);
+}
+
+// Whether two vectors differ.
+static inline bool differs(const float *a, const float *b) { return a[0] != b[0] || a[1] != b[1] || a[2] != b[2]; }
+
+
+// The other functions of beModelCtrl's file.
+extern "C" {
+void beModelCtrl_virtual88(beModelCtrl *self);
+void *beModelCtrl_virtual80(beModelCtrl *);
+bool beModelCtrl_virtual6C(beModelCtrl *self, igObject *info);
+void beModelCtrl_virtual7C(beModelCtrl *self, beBaseInfoRam *ram);
+void fn_803084B8(beModelCtrl *self, beModelCtrlInfo *, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlInfoDataAIM *aim);
+void fn_80308A2C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlInfoDataAIH *aih);
+bool fn_80308EC0(beModelCtrl *, beModelCtrlInfoWork *work, igNamedObject *command);
+void beModelCtrl_virtualA0(beModelCtrl *self, beBaseInfoRam *ram);
+void fn_80309168(beModelCtrl *self, beModelCtrlInfo *, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
+bool fn_8030943C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, igNamedObject *command);
+void fn_80309C74(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
+void fn_8030A448(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
+bool fn_8030A6BC(beModelCtrl *self, beBaseInfoRam *ram, beModelCtrlInfoWork *work, igNamedObject *command);
+bool fn_8030AEE0(beModelCtrl *, beBaseInfoRam *, beModelCtrlInfoWork *work, beModelCtrlPDMOVE *command);
+void fn_8030B014(beModelCtrl *self, beBaseInfoRam *, beModelCtrlInfoWork *work, const char *sequence, const char *label);
+bool fn_8030B6B0(beModelCtrl *self, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlLABELCTRL *command);
+bool fn_8030B8A4(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlLUACALL *command);
+bool fn_8030BB3C(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work, igNamedObject *command);
+bool fn_8030BCB0(beModelCtrl *, beModelCtrlInfo *, beModelCtrlInfoWork *, igNamedObject *);
+bool fn_8030BCB8(beModelCtrl *self, beBaseInfoRam *ram, igNamedObject *command);
+bool fn_8030BCFC(beModelCtrl *, beModelCtrlInfoWork *work, igNamedObject *command);
+void fn_8030BDB8(beModelCtrl *self, beModelCtrlInfo *info, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
+bool fn_8030C134(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work, igNamedObject *command);
+bool fn_8030C1F0(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlMUTEKI *command);
+void fn_8030C334(beModelCtrl *, beBaseInfoRam *ram, beModelCtrlInfoWork *work);
+void beModelCtrl_virtual84(beModelCtrl *self, beBaseInfoRam *ram);
+bool beModelCtrl_virtual8C(beModelCtrl *self, beBaseInfoRam *ram, const char *message);
+void beModelCtrl_virtual9C(beModelCtrl *, beBaseInfoRam *);
+void beModelCtrl_virtualA4(beModelCtrl *, beBaseInfoRam *);
+void beModelCtrl_virtualC0(beModelCtrl *, beBaseInfoRam *);
+void beModelCtrl_virtualBC(beModelCtrl *, beBaseInfoRam *);
+void beModelCtrl_virtualB8(beModelCtrl *, beBaseInfoRam *);
+void beModelCtrl_virtualB4(beModelCtrl *, beBaseInfoRam *);
+void beModelCtrl_virtualAC(beModelCtrl *, beBaseInfoRam *);
+void beModelCtrl_virtualA8(beModelCtrl *, beBaseInfoRam *);
+void beModelCtrl_virtualB0(beModelCtrl *, beBaseInfoRam *);
+bool beModelCtrl_virtualC4(beModelCtrl *, beBaseInfoRam *, const char *);
+void beModelCtrlInfoRideOn2_virtual5C(beModelCtrlInfoRideOn2 *self, float *);
+void beModelCtrlInfoRideOn3_virtual5C(beModelCtrlInfoRideOn3 *self, float *rider);
+void beModelCtrlInfoRideOn4_virtual5C(beModelCtrlInfoRideOn4 *self, float *rider);
+}
+
 #endif

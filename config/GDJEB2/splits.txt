@@ -43,10 +43,15 @@ Alchemy/src/igCore/igStringRefListRef.cpp:
 	extabindex  start:0x80012C18 end:0x80012C24
 	.text       start:0x80020CA0 end:0x80020D14
 
-Alchemy/src/unknownGen/unknown80020D14.cpp:
-	extab       start:0x80005728 end:0x80005748
-	extabindex  start:0x80012C24 end:0x80012C54
-	.text       start:0x80020D14 end:0x80021018
+Alchemy/src/igCore/igIntListRef.cpp:
+	extab       start:0x80005728 end:0x80005730
+	extabindex  start:0x80012C24 end:0x80012C30
+	.text       start:0x80020D14 end:0x80020D88
+
+Alchemy/src/unknownGen/unknown80020D88.cpp:
+	extab       start:0x80005730 end:0x80005748
+	extabindex  start:0x80012C30 end:0x80012C54
+	.text       start:0x80020D88 end:0x80021018
 
 Alchemy/src/unknownGen/unknown80021678.cpp:
 	extab       start:0x80005768 end:0x80005770
@@ -4796,8 +4801,11 @@ unknownGen/unknown80119AE8.cpp:
 unknownGen/unknown80119CE0.cpp:
 	.text       start:0x80119CE0 end:0x80119D30
 
-unknownGen/unknown80119DF8.cpp:
-	.text       start:0x80119DF8 end:0x80119EA8
+Game/Bec/igAABoxRef.cpp:
+	.text       start:0x80119DF8 end:0x80119E6C
+
+unknownGen/unknown80119E6C.cpp:
+	.text       start:0x80119E6C end:0x80119EA8
 
 unknownGen/unknown8011A0F4.cpp:
 	.text       start:0x8011A0F4 end:0x8011A168
@@ -10995,7 +11003,7 @@ Meta/beWeaponInfoRam.cpp:
 	extabindex  start:0x80013800 end:0x80013818
 	.text       start:0x802B291C end:0x802B2A04
 
-unknownGen/unknown802B2A04.cpp:
+Game/Bec/beBaseInfoDataListRef.cpp:
 	extab       start:0x800062AC end:0x800062B4
 	extabindex  start:0x80013818 end:0x80013824
 	.text       start:0x802B2A04 end:0x802B2A78
@@ -11925,7 +11933,7 @@ Meta/beModelCtrlInfoRamData.cpp:
 	extabindex  start:0x80015E40 end:0x80015E58
 	.text       start:0x802C8CFC end:0x802C8E88
 
-unknownGen/unknown802C8E88.cpp:
+Game/Bec/beModelCtrlInfoWorkRef.cpp:
 	extab       start:0x80007CD4 end:0x80007CDC
 	extabindex  start:0x80015E58 end:0x80015E64
 	.text       start:0x802C8E88 end:0x802C8EFC
@@ -13800,85 +13808,90 @@ unknownGen/unknown80307E6C.cpp:
 unknownGen/unknown80307EA8.cpp:
 	.text       start:0x80307EA8 end:0x80307EAC
 
-unknownGen/unknown803082A4.cpp:
-	extab       start:0x8000B2FC end:0x8000B304
-	extabindex  start:0x8001A5B0 end:0x8001A5BC
-	.text       start:0x803082A4 end:0x80308314
+Game/Bec/beModelCtrl.cpp:
+	extab       start:0x8000B2FC end:0x8000B30C
+	extabindex  start:0x8001A5B0 end:0x8001A5C8
+	.text       start:0x803082A4 end:0x803083CC
 
-unknownGen/unknown80308314.cpp:
-	.text       start:0x80308314 end:0x80308324
+Game/Bec/beModelCtrlStart.cpp:
+	extab       start:0x8000B30C end:0x8000B314
+	extabindex  start:0x8001A5C8 end:0x8001A5D4
+	.text       start:0x803083CC end:0x803084B4
 
-unknownGen/unknown80308324.cpp:
-	extab       start:0x8000B304 end:0x8000B30C
-	extabindex  start:0x8001A5BC end:0x8001A5C8
-	.text       start:0x80308324 end:0x803083CC
+Game/Bec/beModelCtrlAI.cpp:
+	extab       start:0x8000B314 end:0x8000B3AC
+	extabindex  start:0x8001A5D4 end:0x8001A640
+	.text       start:0x803084B4 end:0x80309674
 
-unknownGen/unknown803084B4.cpp:
-	.text       start:0x803084B4 end:0x803084B8
+Game/Bec/beModelCtrlRide.cpp:
+	extab       start:0x8000B3AC end:0x8000B3D4
+	extabindex  start:0x8001A640 end:0x8001A664
+	.text       start:0x80309674 end:0x8030A0A0
 
-unknownGen/unknown803095D0.cpp:
-	extab       start:0x8000B39C end:0x8000B3A4
-	extabindex  start:0x8001A628 end:0x8001A634
-	.text       start:0x803095D0 end:0x8030962C
+Game/Bec/beModelCtrlMove.cpp:
+	extab       start:0x8000B3D4 end:0x8000B424
+	extabindex  start:0x8001A664 end:0x8001A694
+	.text       start:0x8030A0A0 end:0x8030AE6C
 
-unknownGen/unknown8030962C.cpp:
-	extab       start:0x8000B3A4 end:0x8000B3AC
-	extabindex  start:0x8001A634 end:0x8001A640
-	.text       start:0x8030962C end:0x80309674
-
-unknownGen/unknown8030AE6C.cpp:
+Game/Bec/beModelCtrlMoveObjectRef.cpp:
 	extab       start:0x8000B424 end:0x8000B42C
 	extabindex  start:0x8001A694 end:0x8001A6A0
 	.text       start:0x8030AE6C end:0x8030AEE0
 
-unknownGen/unknown8030BCB0.cpp:
-	.text       start:0x8030BCB0 end:0x8030BCB8
+Game/Bec/beModelCtrlPadMove.cpp:
+	extab       start:0x8000B42C end:0x8000B434
+	extabindex  start:0x8001A6A0 end:0x8001A6AC
+	.text       start:0x8030AEE0 end:0x8030B014
 
-unknownGen/unknown8030C130.cpp:
-	.text       start:0x8030C130 end:0x8030C134
+Game/Bec/beModelCtrlLabel.cpp:
+	extab       start:0x8000B434 end:0x8000B4D4
+	extabindex  start:0x8001A6AC end:0x8001A6DC
+	.text       start:0x8030B014 end:0x8030BB3C
 
-unknownGen/unknown8030D080.cpp:
-	.text       start:0x8030D080 end:0x8030D084
+Game/Bec/beModelCtrlAIMap.cpp:
+	extab       start:0x8000B4D4 end:0x8000B4DC
+	extabindex  start:0x8001A6DC end:0x8001A6E8
+	.text       start:0x8030BB3C end:0x8030BCB0
 
-unknownGen/unknown8030EFDC.cpp:
+Game/Bec/beModelCtrlCommand.cpp:
+	extab       start:0x8000B4DC end:0x8000B514
+	extabindex  start:0x8001A6E8 end:0x8001A73C
+	.text       start:0x8030BCB0 end:0x8030C85C
+
+Game/Bec/beModelCtrlTurn.cpp:
+	extab       start:0x8000B514 end:0x8000B52C
+	extabindex  start:0x8001A73C end:0x8001A748
+	.text       start:0x8030C85C end:0x8030CB2C
+
+Game/Bec/beModelCtrlUpdate.cpp:
+	extab       start:0x8000B52C end:0x8000B544
+	extabindex  start:0x8001A748 end:0x8001A754
+	.text       start:0x8030CB2C end:0x8030D084
+
+Game/Bec/beModelCtrlLabelIndex.cpp:
+	extab       start:0x8000B544 end:0x8000B55C
+	extabindex  start:0x8001A754 end:0x8001A760
+	.text       start:0x8030D084 end:0x8030D260
+
+Game/Bec/beModelCtrlPlace.cpp:
+	extab       start:0x8000B55C end:0x8000B5A4
+	extabindex  start:0x8001A760 end:0x8001A784
+	.text       start:0x8030D260 end:0x8030D910
+
+Game/Bec/beModelCtrlMessage.cpp:
+	extab       start:0x8000B5A4 end:0x8000B65C
+	extabindex  start:0x8001A784 end:0x8001A790
+	.text       start:0x8030D910 end:0x8030EFDC
+
+Game/Bec/beModelCtrlRideOnRefs.cpp:
 	extab       start:0x8000B65C end:0x8000B684
 	extabindex  start:0x8001A790 end:0x8001A7CC
 	.text       start:0x8030EFDC end:0x8030F218
 
-unknownGen/unknown8030F218.cpp:
-	.text       start:0x8030F218 end:0x8030F220
-
-unknownGen/unknown8030F4C0.cpp:
-	extab       start:0x8000B6A4 end:0x8000B6AC
-	extabindex  start:0x8001A7FC end:0x8001A808
-	.text       start:0x8030F4C0 end:0x8030F530
-
-unknownGen/unknown8030F5D8.cpp:
-	.text       start:0x8030F5D8 end:0x8030F5DC
-
-unknownGen/unknown8030F5DC.cpp:
-	extab       start:0x8000B6B4 end:0x8000B6BC
-	extabindex  start:0x8001A814 end:0x8001A820
-	.text       start:0x8030F5DC end:0x8030F64C
-
-unknownGen/unknown8030F64C.cpp:
-	.text       start:0x8030F64C end:0x8030F654
-
-unknownGen/unknown8030F654.cpp:
-	extab       start:0x8000B6BC end:0x8000B6C4
-	extabindex  start:0x8001A820 end:0x8001A82C
-	.text       start:0x8030F654 end:0x8030F6C4
-
-unknownGen/unknown8030F6C4.cpp:
-	.text       start:0x8030F6C4 end:0x8030F6C8
-
-unknownGen/unknown8030F6C8.cpp:
-	extab       start:0x8000B6C4 end:0x8000B6DC
-	extabindex  start:0x8001A82C end:0x8001A850
-	.text       start:0x8030F6C8 end:0x8030F818
-
-unknownGen/unknown8030F8C4.cpp:
-	.text       start:0x8030F8C4 end:0x8030F8CC
+Game/Bec/beModelCtrlFields.cpp:
+	extab       start:0x8000B684 end:0x8000B6FC
+	extabindex  start:0x8001A7CC end:0x8001A868
+	.text       start:0x8030F218 end:0x8030F9C0
 
 unknownGen/unknown8030F9C0.cpp:
 	.text       start:0x8030F9C0 end:0x8030FA00
@@ -15961,22 +15974,25 @@ unknownGen/unknown8034AE34.cpp:
 unknownGen/unknown8034B6B0.cpp:
 	.text       start:0x8034B6B0 end:0x8034B6F4
 
-unknownGen/unknown8034B72C.cpp:
-	.text       start:0x8034B72C end:0x8034B730
+Game/Bec/beNDMWMdlEBullet.cpp:
+	extab       start:0x8000E74C end:0x8000E77C
+	extabindex  start:0x8001EAE0 end:0x8001EAF8
+	.text       start:0x8034B6F4 end:0x8034B8EC
 
-unknownGen/unknown8034B8DC.cpp:
-	.text       start:0x8034B8DC end:0x8034B8EC
+Game/Bec/beNDMWMdlEffect.cpp:
+	extab       start:0x8000E77C end:0x8000E7AC
+	extabindex  start:0x8001EAF8 end:0x8001EB10
+	.text       start:0x8034B8EC end:0x8034BAE4
 
-unknownGen/unknown8034B924.cpp:
-	.text       start:0x8034B924 end:0x8034B928
+Game/Bec/beNDMWMdlEnemy.cpp:
+	extab       start:0x8000E7AC end:0x8000E7BC
+	extabindex  start:0x8001EB10 end:0x8001EB28
+	.text       start:0x8034BAE4 end:0x8034BB48
 
-unknownGen/unknown8034BAD4.cpp:
-	.text       start:0x8034BAD4 end:0x8034BAE4
-
-unknownGen/unknown8034BB1C.cpp:
-	extab       start:0x8000E7B4 end:0x8000E7BC
-	extabindex  start:0x8001EB1C end:0x8001EB28
-	.text       start:0x8034BB1C end:0x8034BB48
+Game/Bec/beNDMWMdlEnemyWork.cpp:
+	extab       start:0x8000E7BC end:0x8000E7E4
+	extabindex  start:0x8001EB28 end:0x8001EB34
+	.text       start:0x8034BB48 end:0x8034BDC8
 
 unknownGen/unknown8034BDC8.cpp:
 	extab       start:0x8000E7E4 end:0x8000E7F4
@@ -15986,17 +16002,23 @@ unknownGen/unknown8034BDC8.cpp:
 unknownGen/unknown8034BE5C.cpp:
 	.text       start:0x8034BE5C end:0x8034BE6C
 
-unknownGen/unknown8034BEA4.cpp:
-	.text       start:0x8034BEA4 end:0x8034BEA8
+Game/Bec/beNDMWMdlObject.cpp:
+	extab       start:0x8000E7F4 end:0x8000E7FC
+	extabindex  start:0x8001EB4C end:0x8001EB58
+	.text       start:0x8034BE6C end:0x8034BEA8
+
+Game/Bec/beNDMWMdlObjectWork.cpp:
+	extab       start:0x8000E7FC end:0x8000E824
+	extabindex  start:0x8001EB58 end:0x8001EB64
+	.text       start:0x8034BEA8 end:0x8034C0E8
 
 unknownGen/unknown8034C0E8.cpp:
 	.text       start:0x8034C0E8 end:0x8034C0F8
 
-unknownGen/unknown8034C130.cpp:
-	.text       start:0x8034C130 end:0x8034C134
-
-unknownGen/unknown8034C2E0.cpp:
-	.text       start:0x8034C2E0 end:0x8034C2F0
+Game/Bec/beNDMWMdlPBullet.cpp:
+	extab       start:0x8000E824 end:0x8000E854
+	extabindex  start:0x8001EB64 end:0x8001EB7C
+	.text       start:0x8034C0F8 end:0x8034C2F0
 
 unknownGen/unknown8034C2F0.cpp:
 	extab       start:0x8000E854 end:0x8000E85C

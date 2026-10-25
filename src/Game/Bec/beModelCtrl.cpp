@@ -4,8 +4,6 @@
 // The original calls every function of these files; none is inlined.
 #pragma auto_inline off
 
-using Gap::Core::igStringRef;
-
 extern "C" {
 extern int __float_nan[];
 double atan2(double y, double x);
@@ -661,6 +659,76 @@ bool fn_8030A6BC(beModelCtrl *self, beBaseInfoRam *ram, beModelCtrlInfoWork *wor
         work->_isPosLock = true;
     }
     }
+    return true;
+}
+
+// A PDMOVE command: the pad-move speed and frames for stopping (Stop: entries 0 and 1) or moving (Move: entries
+// 2 and 3); the list starts as four zeros.
+bool fn_8030AEE0(beModelCtrl *, beBaseInfoRam *, beModelCtrlInfoWork *work, beModelCtrlPDMOVE *command)
+{
+    int index = strcmp(nameOrEmpty(command), kMove) == 0 ? 2 : 0;
+    if (work->_pdMoveDataList->_count == 0) {
+        for (int i = 0; i < 4; i++) appendFloat(work->_pdMoveDataList, lbl_804DEBA0[0]);
+    }
+    float value = command->_value;
+    setValueAt(work->_pdMoveDataList, index, value);
+    float frames = command->_frame;
+    setValueAt(work->_pdMoveDataList, index + 1, frames);
+    return true;
+}
+
+// Sets a label: the sequence it belongs to and its name, with no offset yet (-1). The first label creates the
+// three lists.
+void fn_8030B014(beModelCtrl *self, beBaseInfoRam *, beModelCtrlInfoWork *work, const char *sequence, const char *label)
+{
+    igStringRefList *sequences = work->_labelSeqList;
+    igStringRefList *names = work->_labelNameList;
+    igIntList *offsets = work->_labelOffsetList;
+    if (!work->_labelSeqList) {
+        Ref<igStringRefList> strings(0, Ref<igStringRefList>::adopt);
+        Ref<igIntList> ints(0, Ref<igIntList>::adopt);
+        void *pool = poolFor(self, lbl_8056225C);
+        strings.releaseHeld();
+        strings._object = igStringRefList_create(pool);
+        setRef(work->_labelSeqList, strings._object);
+        sequences = strings;
+        pool = poolFor(self, lbl_8056225C);
+        strings.releaseHeld();
+        strings._object = igStringRefList_create(pool);
+        setRef(work->_labelNameList, strings._object);
+        names = strings;
+        pool = poolFor(self, lbl_8056225C);
+        ints.releaseHeld();
+        ints._object = igIntList_create(pool);
+        setRef(work->_labelOffsetList, ints._object);
+        offsets = ints;
+    }
+    int index;
+    {
+        POOLED_REF(key, sequence);
+        index = fn_8004270C(sequences, &key, 0);
+    }
+    if (index != -1) {
+        {
+            POOLED_REF(value, sequence);
+            setStringAt(sequences, index, value);
+        }
+        {
+            POOLED_REF(value, label);
+            setStringAt(names, index, value);
+        }
+        setValueAt<int>(offsets, index, lbl_804DEBA4[0]);
+    } else {
+        fn_8002080C(sequences, igStringRef(pooledOrNull(sequence)));
+        fn_8002080C(names, igStringRef(pooledOrNull(label)));
+        appendInt(offsets, lbl_804DEBA8[0]);
+    }
+}
+
+// A LABELCTRL command: sets a label of a sequence.
+bool fn_8030B6B0(beModelCtrl *self, beBaseInfoRam *ram, beModelCtrlInfoWork *work, beModelCtrlLABELCTRL *command)
+{
+    fn_8030B014(self, ram, work, command->_seqName, nameOrEmpty(command));
     return true;
 }
 

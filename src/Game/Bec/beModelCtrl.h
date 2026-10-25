@@ -43,6 +43,11 @@
 #include <meta/beModelCtrlMOVE.h>
 #include <meta/beModelCtrlMOVEEX.h>
 #include <meta/beModelCtrlMOVERL.h>
+#include <meta/beModelCtrlPDMOVE.h>
+#include <meta/beModelCtrlLABELCTRL.h>
+#include <meta/igStringRefList.h>
+#include <meta/igIntList.h>
+#include <igCore/igStringRef.h>
 #include <meta/igFloatList.h>
 #include <game/Ref.h>
 #include <game/List.h>
@@ -220,6 +225,12 @@ extern float lbl_804F8B10[3];                                  // the forward (+
 extern char beModelCtrlMOVE_meta[];
 extern char beModelCtrlMOVEEX_meta[];
 int fn_80306E1C(beMessenger *messenger);                       // the number of object arguments
+extern float lbl_804DEBA0[];                                    // 0.0f: a new pad-move entry
+extern int lbl_804DEBA4[];                                      // -1: a label with no offset
+extern int lbl_804DEBA8[];                                      // -1
+igStringRefList *igStringRefList_create(void *pool);
+igIntList *igIntList_create(void *pool);
+int fn_8004270C(void *list, void *value, int start);           // the index of a value (compared as a word) from start, or -1
 float fn_8031E4C4(beBaseInfoRam *ram, const char *name);       // frames since a RAM timer was last read (restarting it)
 void fn_80301FA4(beLua *lua, const char *file, const char *directory);   // runs a Lua file
 int sprintf(char *, const char *, ...);
@@ -247,6 +258,26 @@ template <class T> static inline void clearRef(T *&member)
 
 // An object's name, or "" when it has none.
 static inline const char *nameOrEmpty(igNamedObject *object) { return object->_name ? object->_name : lbl_80567330; }
+
+using Gap::Core::igStringRef;
+extern "C" void fn_8002080C(igStringRefList *list, igStringRef string);   // appends a string (by value)
+
+// A string reference to a pooled copy of text, or null.
+#define POOLED_REF(name, text) igStringRef name(pooledOrNull(text))
+
+// A pooled copy of text, or null for null text.
+static inline const char *pooledOrNull(const char *text) { return text == 0 ? 0 : pooledString(text); }
+
+// Sets element index of a string list when the index is in range, holding a new reference to the string.
+static inline void setStringAt(igStringRefList *list, int index, const igStringRef &value)
+{
+    if (list->_count != 0 && index >= 0 && index < list->_count) {
+        const char **slot = &static_cast<const char **>(list->_data)[index];
+        if (value.getString()) value.getId()->addRef();
+        if (*slot) reinterpret_cast<const Gap::Core::igStringPoolItem *>(*slot - 8)->release();
+        *slot = value.getString();
+    }
+}
 
 // A RAM's named data, or null; the RAM's data list is created on first use.
 extern "C" beBaseInfoData *fn_8030F8CC(beBaseInfoRam *ram, const char *name);

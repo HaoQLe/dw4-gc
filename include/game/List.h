@@ -54,6 +54,24 @@ struct IntListAppend : Meta::igDataList {
 };
 static inline void appendInt(Meta::igDataList *list, const int &value) { static_cast<IntListAppend *>(list)->append(value); }
 
+// igFloatList's inline append, as igIntList's.
+struct FloatListAppend : Meta::igDataList {
+    inline void append(const float &value)
+    {
+        int count = _count;
+        if (count < _capacity) _count = count + 1;
+        else fn_80041660(this, count + 1, 4);
+        static_cast<float *>(_data)[count] = value;
+    }
+};
+static inline void appendFloat(Meta::igDataList *list, const float &value) { static_cast<FloatListAppend *>(list)->append(value); }
+
+// Sets an element of a list of plain values when the index is in range.
+template <class T> static inline void setValueAt(Meta::igDataList *list, int index, const T &value)
+{
+    if (list->_count != 0 && index >= 0 && index < list->_count) static_cast<T *>(list->_data)[index] = value;
+}
+
 // Shortens a list of plain values to newCount elements (nothing to release or clear).
 static inline void truncate(Meta::igDataList *list, int newCount)
 {

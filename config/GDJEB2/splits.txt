@@ -16038,20 +16038,30 @@ unknownGen/unknown8034D1A0.cpp:
 unknownGen/unknown8034E6CC.cpp:
 	.text       start:0x8034E6CC end:0x8034E6DC
 
-unknownGen/unknown8034E6DC.cpp:
-	extab       start:0x8000E97C end:0x8000E984
-	extabindex  start:0x8001EC0C end:0x8001EC18
-	.text       start:0x8034E6DC end:0x8034E720
+Game/Bec/beNDMWMdlPlayer2.cpp:
+	extab       start:0x8000E97C end:0x8000E994
+	extabindex  start:0x8001EC0C end:0x8001EC30
+	.text       start:0x8034E6DC end:0x8034E784
 
-unknownGen/unknown8034E758.cpp:
-	extab       start:0x8000E98C end:0x8000E994
-	extabindex  start:0x8001EC24 end:0x8001EC30
-	.text       start:0x8034E758 end:0x8034E784
+Game/Bec/beNDMWMdlPlayer2Work.cpp:
+	extab       start:0x8000E994 end:0x8000E9CC
+	extabindex  start:0x8001EC30 end:0x8001EC3C
+	.text       start:0x8034E784 end:0x8034EB04
 
 unknownGen/unknown8034EB04.cpp:
 	extab       start:0x8000E9CC end:0x8000E9D4
 	extabindex  start:0x8001EC3C end:0x8001EC48
 	.text       start:0x8034EB04 end:0x8034EB78
+
+Game/Bec/beNDMWMdlPlayer2Update.cpp:
+	extab       start:0x8000E9D4 end:0x8000E9EC
+	extabindex  start:0x8001EC48 end:0x8001EC54
+	.text       start:0x8034EB78 end:0x8034ED34
+
+Game/Bec/beNDMWMdlPlayer2Message.cpp:
+	extab       start:0x8000E9EC end:0x8000EA38
+	extabindex  start:0x8001EC54 end:0x8001EC60
+	.text       start:0x8034ED34 end:0x8034F43C
 
 unknownGen/unknown8034F43C.cpp:
 	.text       start:0x8034F43C end:0x8034F44C
@@ -16757,16 +16767,35 @@ unknownGen/unknown803B36D8.cpp:
 unknownGen/unknown803B3764.cpp:
 	.text       start:0x803B3764 end:0x803B3774
 
-unknownGen/unknown803B37AC.cpp:
-	extab       start:0x80012B00 end:0x80012B08
-	extabindex  start:0x800200DC end:0x800200E8
-	.text       start:0x803B37AC end:0x803B37D8
+Game/Bec/beNDMWMdlMapBase.cpp:
+	extab       start:0x80012AF8 end:0x80012B08
+	extabindex  start:0x800200D0 end:0x800200E8
+	.text       start:0x803B3774 end:0x803B37D8
 
-unknownGen/unknown803B3C60.cpp:
-	.text       start:0x803B3C60 end:0x803B3C70
+Game/Bec/beNDMWMdlMapBaseWork.cpp:
+	extab       start:0x80012B08 end:0x80012B30
+	extabindex  start:0x800200E8 end:0x800200F4
+	.text       start:0x803B37D8 end:0x803B3A18
 
-unknownGen/unknown803B4194.cpp:
-	.text       start:0x803B4194 end:0x803B41A4
+Game/Bec/beNDMWMdlMapBaseMove.cpp:
+	extab       start:0x80012B30 end:0x80012B48
+	extabindex  start:0x800200F4 end:0x80020100
+	.text       start:0x803B3A18 end:0x803B3C70
+
+Game/Bec/beNDMWMdlMapCursor.cpp:
+	extab       start:0x80012B48 end:0x80012B50
+	extabindex  start:0x80020100 end:0x8002010C
+	.text       start:0x803B3C70 end:0x803B3CA8
+
+Game/Bec/beNDMWMdlMapCursorWork.cpp:
+	extab       start:0x80012B50 end:0x80012B78
+	extabindex  start:0x8002010C end:0x80020118
+	.text       start:0x803B3CA8 end:0x803B3EE8
+
+Game/Bec/beNDMWMdlMapCursorMove.cpp:
+	extab       start:0x80012B78 end:0x80012B90
+	extabindex  start:0x80020118 end:0x80020124
+	.text       start:0x803B3EE8 end:0x803B41A4
 
 unknownGen/unknown803B4294.cpp:
 	.text       start:0x803B4294 end:0x803B4298

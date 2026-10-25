@@ -1,4 +1,4 @@
-// Gap::Bec::beNDMWMdlMapCursor (0x803B3C70..0x803B41A4): a player's cursor on the map. It follows its player
+// Gap::Bec::beNDMWMdlMapCursor: a player's cursor on the map, following its player over the map base. This file: the kind test (0x803B3C70..0x803B3CA8).
 // (the player RAM of the same number) over the map base, opening when the player appears and closing when it
 // goes.
 #include "beModelCtrl.h"
@@ -32,83 +32,5 @@ void fn_80305F58(beMessenger *messenger, const char *target, const char *command
 
 // Takes the models of kind KIND_MAPCURSOR.
 unsigned char beNDMWMdlMapCursor_virtual94(beNDMWMdlMapCursor *, const char *kind) { return strcmp(kind, lbl_8045CF60.KIND_MAPCURSOR) == 0; }
-
-// Builds the RAM's work; a request with an integer names the hit parent (its info name and RAM number). The RAM
-// is then placed as its message says.
-void beNDMWMdlMapCursor_virtual98(beNDMWMdlMapCursor *self, beBaseInfoRam *ram)
-{
-    beModelCtrlInfoRamData *data = ramDataOf(ram, lbl_8045CF70);
-    {
-        beModelCtrlInfoWork *created = beModelCtrlInfoWork_create(poolFor(self, lbl_8056225C));
-        Ref<beModelCtrlInfoWork> work(created);
-        if (data->_work) release(data->_work);
-        data->_work = created;
-        if (fn_80306A30(self->_messenger) != 0) {
-            setString(work->_hitParentName, fn_8030709C(self->_messenger, 0));
-            work->_hitParentRamNo = fn_80306B00(self->_messenger, 0);
-        }
-    }
-    fn_8030D610(self, ram);
-}
-
-// Before the move: follows the player of the same RAM number. When the player appears the cursor plays its
-// opening sequence; when it is gone, SQ_CLOSE. While shown, the cursor sits over the player's position plus the
-// map base's, at height 0.
-void beNDMWMdlMapCursor_virtualC0(beNDMWMdlMapCursor *self, beBaseInfoRam *ram)
-{
-    const beNDMWMdlMapCursorPool &pool = lbl_8045CF60;
-    bool found = false;
-    bool shown = false;
-    float position[3];
-    position[0] = lbl_804F8AE0[0];
-    position[1] = lbl_804F8AE0[1];
-    position[2] = lbl_804F8AE0[2];
-    fn_80305F14(self->_messenger, pool.PLAYER, ram->_ramNo, pool.GETMATRIX);
-    if (fn_80306D58(self->_messenger) != 0) {
-        fn_80128DAC(fn_80306DE8(self->_messenger, 0).m, position);
-        found = true;
-    }
-    switch (ram->_st0) {
-    case 0:
-        if (found) {
-            int ramNo = ram->_ramNo;
-            const char *name = ram->_parentInfo->_name ? ram->_parentInfo->_name : lbl_80567408;
-            fn_80305ED0(self->_messenger, pool.MODELCTRL, name, ramNo, lbl_804EE8D0[ramNo]);
-            ram->_st0 = 1;
-            shown = true;
-            ram->_st3 = 0;
-            ram->_st2 = 0;
-            ram->_st1 = 0;
-        }
-        break;
-    case 1:
-        if (!found) {
-            int ramNo = ram->_ramNo;
-            const char *name = ram->_parentInfo->_name ? ram->_parentInfo->_name : lbl_80567408;
-            fn_80305ED0(self->_messenger, pool.MODELCTRL, name, ramNo, pool.SQ_CLOSE);
-            ram->_st0 = 0;
-            ram->_st3 = 0;
-            ram->_st2 = 0;
-            ram->_st1 = 0;
-        }
-        shown = true;
-        break;
-    }
-    if (shown) {
-        fn_80305F58(self->_messenger, pool.MAPBASE, pool.GETMATRIX);
-        if (fn_80306D58(self->_messenger) != 0) {
-            float base[3];
-            fn_80128DAC(fn_80306DE8(self->_messenger, 0).m, base);
-            position[0] += base[0];
-            position[1] += base[1];
-            position[2] += base[2];
-            beModelCtrlInfoRamData *data = ramDataOf(ram, pool.ONE);
-            position[1] = pool.zero;
-            fn_80128D90(data->_node->_m, position);
-        }
-    }
-}
-
-igMetaObject *beNDMWMdlMapCursor_virtual58(beNDMWMdlMapCursor *) { return metaVar(beNDMWMdlMapCursor_meta); }
 
 }

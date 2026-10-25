@@ -2915,8 +2915,6 @@ unknownGen/unknown8034C2F0.cpp	8034C2F0	8034C364	eh,nosdata
 unknownGen/unknown8034C39C.cpp	8034C39C	8034C3C8	eh
 unknownGen/unknown8034D1A0.cpp	8034D1A0	8034D214	eh
 unknownGen/unknown8034E6CC.cpp	8034E6CC	8034E6DC	nosdata
-unknownGen/unknown8034E6DC.cpp	8034E6DC	8034E720	eh,nosdata
-unknownGen/unknown8034E758.cpp	8034E758	8034E784	eh
 unknownGen/unknown8034EB04.cpp	8034EB04	8034EB78	eh
 unknownGen/unknown8034F43C.cpp	8034F43C	8034F44C	nosdata
 unknownGen/unknown8034F44C.cpp	8034F44C	8034F4A4	eh
@@ -3092,9 +3090,6 @@ unknownGen/unknown803B34EC.cpp	803B34EC	803B3560	eh
 unknownGen/unknown803B36C8.cpp	803B36C8	803B36D8	nosdata
 unknownGen/unknown803B36D8.cpp	803B36D8	803B3704	eh
 unknownGen/unknown803B3764.cpp	803B3764	803B3774	nosdata
-unknownGen/unknown803B37AC.cpp	803B37AC	803B37D8	eh
-unknownGen/unknown803B3C60.cpp	803B3C60	803B3C70	nosdata
-unknownGen/unknown803B4194.cpp	803B4194	803B41A4	nosdata
 unknownGen/unknown803B4294.cpp	803B4294	803B4298	-
 unknownGen/unknown803B554C.cpp	803B554C	803B556C	-
 unknownGen/unknown803B5ACC.cpp	803B5ACC	803B5B14	-

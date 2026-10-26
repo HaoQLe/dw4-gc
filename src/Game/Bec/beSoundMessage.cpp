@@ -33,7 +33,7 @@ bool beSound_virtual90(beSound *self, beBaseInfoRam *ram, beMessengerWork *messa
             if (fn_802F5828(self->_cri, static_cast<beSoundInfo *>(info)->_fnameList, data) == 0) {
                 fn_803065DC(self->_messenger, "SOUND");
                 fn_80306FDC(self->_messenger, nameOf(data));
-                fn_803061BC(self->_messenger, "PLAY", 0, 11);
+                fn_803061BC(self->_messenger, "PLAY", 11);
                 break;
             }
             setString(self->_currentBGM, nameOf(data));
@@ -42,7 +42,7 @@ bool beSound_virtual90(beSound *self, beBaseInfoRam *ram, beMessengerWork *messa
             if (fn_802F5828(self->_cri, static_cast<beSoundInfo *>(info)->_fnameList, data) == 0) {
                 fn_803065DC(self->_messenger, "SOUND");
                 fn_80306FDC(self->_messenger, nameOf(data));
-                fn_803061BC(self->_messenger, "PLAY", 0, 11);
+                fn_803061BC(self->_messenger, "PLAY", 11);
             }
             break;
         default: {

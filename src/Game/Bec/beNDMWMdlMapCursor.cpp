@@ -27,7 +27,6 @@ extern const char *lbl_804EE8D0[4];        // the opening sequences of cursors 0
 extern const char lbl_80567408[1];         // ""
 extern char beNDMWMdlMapCursor_meta[];
 void fn_80305F14(beMessenger *messenger, const char *target, int ramNo, const char *command);   // a request to one RAM of target, sent at once
-void fn_80305F58(beMessenger *messenger, const char *target, const char *command);              // a request to every RAM of target, sent at once
 
 // Takes the models of kind KIND_MAPCURSOR.
 unsigned char beNDMWMdlMapCursor_virtual94(beNDMWMdlMapCursor *, const char *kind) { return strcmp(kind, lbl_8045CF60.KIND_MAPCURSOR) == 0; }

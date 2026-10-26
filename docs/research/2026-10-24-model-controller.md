@@ -11,12 +11,13 @@ Source: `src/Game/Bec/beModelCtrl*.cpp`, `beNDMWMdl*.cpp`, with the shared heade
   | Measure | Before | After | Change |
   | --- | --- | --- | --- |
   | Matched code | 1,650,148 (39.843710%) | 1,675,392 (40.453240%) | +25,244 (+0.609530 pp) |
-  | Linked code | 1,647,204 (39.772625%) | 1,672,332 (40.379353%) | +25,128 (+0.606728 pp) |
-  | Matched data | 270,799 (18.007708%) | 270,955 (18.018080%) | +156 (+0.010372 pp) |
-  | Complete data | 307,695 | 309,407 | +1,712 |
+  | Linked code | 1,647,204 (39.772625%) | 1,672,448 (40.382156%) | +25,244 (+0.609531 pp) |
+  | Matched data | 270,799 (18.007708%) | 270,975 (18.019411%) | +176 (+0.011703 pp) |
+  | Complete data | 307,695 | 309,427 | +1,732 |
   | Matched functions | 17,378 | 17,437 | +59 |
-  | Units | 7,481 (4,926 complete) | 7,410 (4,916 complete) | 42 generated units replaced (2 split remainders added) |
+  | Units | 7,481 (4,926 complete) | 7,411 (4,917 complete) | 42 generated units replaced (2 split remainders added) |
 
+- **Second review** (the later commits): no blocking findings; its fixes moved the item and player declarations into private headers (`beNDMWMdlItem.h`, `beNDMWMdlPlayer.h`), the shared messenger and data-object prototypes into `beModelCtrl.h` (`fn_803061BC` takes a `long long` delay everywhere), the `Ref<beModelCtrlHITBOX>` destructor into a unit of its own, and corrected comments.
 - **Checks:** `build.sha1` OK (`e409a88a…`); all sources compile; `verify_units.py --all` passes 3,272 of 3,272.
 - **Checkpoint 1** (core, bullets, effects, enemies, objects): +19,636 code bytes; reviewed independently with no blocking findings (comment fixes in `19f1a0bd`).
 - **Every target function is readable source.** Those not linked are listed under "Open".
@@ -29,14 +30,14 @@ Source: `src/Game/Bec/beModelCtrl*.cpp`, `beNDMWMdl*.cpp`, with the shared heade
 | `beNDMWMdlEnemy`, `Object` | enemies and stage objects | kind test, RAM start |
 | `beNDMWMdlMapBase` | the map's base model, kept centred on the players' average position | kind test, RAM start, move, class |
 | `beNDMWMdlMapCursor` | a player's cursor on the map, opening and closing with its player | kind test, move, class |
-| `beNDMWMdlPlayer2` | background chips: a player's model left in the lobby, recording its stage and position (`BKCHIPSTAGE`, `BKCHIPPOS`); raising it pays out its bits and experience (`BKCHIPDATA`) | managers, kind test, RAM start, switch |
+| `beNDMWMdlPlayer2` | background chips (`g_000bcaps`), left where a player is erased; the player's bits and part of its experience are deposited in the chip (`BKCHIPBITEXP`), which records its stage and position (`BKCHIPSTAGE`, `BKCHIPPOS`), comes back on that stage (`GENESTAGE`), and when raised restores the player and pays back what it holds (`BKCHIPDATA`); hypothesis: a downed player's capsule | managers, kind test, RAM start, switch |
 | `beNDMWMdlItem` | dropped items, created by database category (disk, instant, important, ability chip, weapon and armour by the player's level); unnamed items are used on touch, named ones show a blinking name label to the nearest player, who picks them up with ACTION1 when there is room | kind test, RAM start, managers, label slots, `SQ_EXIT` |
 | `beNDMWMdlPlayer` | the players | managers, kind test, RAM start, attack wait checks, panel closing, number icon, background chip, class |
 
 **Players:**
 - **Turning:** a player turns with the left stick relative to the camera. Each of the eight stick directions sets a 30-frame slot; when all eight slots are still set at once (a full turn), the next attack is `SQ_ATCK2`.
 - **Buttons** (`bePadData` bits, named by use in `beNDMWMdlPlayer*.cpp`):
-  - guard: `SQ_GUARD` when pressed; while it is held, repeating a stick flick within 15 frames gives the body attack `SQ_ATCK3`;
+  - guard: `SQ_GUARD` when pressed; while it is held, repeating a stick flick within `bodyAttackTime` (15.0, counted down by the frame time; unit not established) gives the body attack `SQ_ATCK3`;
   - jump;
   - the panels: emergency heal, items, techniques, status;
   - attack: an item on the ground takes the button first (`DROPITEM ACTION1`). Otherwise it attacks once the `ATDELAY` timer has run out. The delay is the player's `ATTACKDELAY` frames, and the status panel's meter plays `SQ_DLTM01..13` at index `(delay - 22) / 4`;
@@ -44,8 +45,8 @@ Source: `src/Game/Bec/beModelCtrl*.cpp`, `beNDMWMdl*.cpp`, with the shared heade
 - **Main lobby** (`stagML02/11/12/13`): no guard, and an attack is only a hit box.
 - **Metal:** players are metal in `dng204b1..dng205b3`.
 - **Panels:** a panel closes on OFCTRL, ONFREEZE and REMOVE, and when a `PanelCloseSeqList` sequence starts (`SQ_SDMG`, `SQ_MDMG`, `SQ_LDMG`, `SQ_DDMG`, `SQ_DEAD`, `SQ_SLEP`, `SQ_STUN`; an enum metaobject looked up by name).
-- **Work:** links HP and MP from the game RAM (`GAMERAM GETPLAYER`). At the start HP and MP are full. A player not yet in use gets `GAMESTART` with a default name (いちろう, じろう, さぶろう, しろう) and all `BASE_ISUSE` flags set. The work also equips `POWERSOCKETNAME[0]` (`PLAYERARMS GENERATE`) and sets the status panel's level, HP and MP numbers and meters.
-- **Leaving (`SQ_ERAS`):** the player leaves a background chip (`g_000bcaps`) that plays its `SQ_ENTR<n>P`.
+- **Work:** links HP and MP from the game RAM (`GAMERAM GETPLAYER`). HP and MP are refilled when HP is 0. A player not yet in use gets `GAMESTART` with a default name (いちろう, じろう, さぶろう, しろう) and all `BASE_ISUSE` flags set. The work also equips `POWERSOCKETNAME[0]` (`PLAYERARMS GENERATE`) and sets the status panel's level, HP and MP numbers and meters.
+- **Leaving (`SQ_ERAS`):** the player leaves a background chip (`g_000bcaps`) that plays its `SQ_ENTR<n>P`; the game RAM then deposits the player's bits and a level-dependent share of its experience in it (`BKCHIPBITEXP`).
 
 ## The controller
 

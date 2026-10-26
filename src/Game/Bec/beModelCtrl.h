@@ -38,6 +38,15 @@
 #include <meta/beLua.h>
 #include <meta/beTargetObj.h>
 #include <meta/beDataObjInt.h>
+#include <meta/beDataObjIntList.h>
+#include <meta/beDataObjBool.h>
+#include <meta/beDataObjBoolList.h>
+#include <meta/beDataObjString.h>
+#include <meta/beDataObjStringList.h>
+#include <meta/beDataObjFloatList.h>
+#include <meta/beDataObjObjectList.h>
+#include <meta/bePadManager.h>
+#include <meta/bePadData.h>
 #include <meta/igRandomNumber.h>
 #include <meta/igAABox.h>
 #include <meta/beModelCtrlMOVE.h>
@@ -329,6 +338,27 @@ void fn_803107E0(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram);  // runs th
 void fn_80310A68(beModelCtrlSubCom *subCommand, beBaseInfoRam *ram, igMetaObject *meta);   // removes the subcommands of a class
 void fn_80310DAC(beModelCtrlSubCom *subCommand, igNamedObject *command);                  // adds a hit-box subcommand
 void fn_80301FA4(beLua *lua, const char *file, const char *directory);   // runs a Lua file
+// Requests: opening, arguments and sending (beMessenger).
+void fn_80305EA8(beMessenger *messenger, const char *target);   // opens a request to target
+void fn_80305F58(beMessenger *messenger, const char *target, const char *command);   // a request to every RAM of target, sent at once
+void fn_80305F9C(beMessenger *messenger, const char *target, const char *infoName, int ramNo);   // opens a request to target's RAM (sent later)
+void fn_803061BC(beMessenger *messenger, const char *command, long long delay);       // sends the opened request after delay
+void fn_8030650C(beMessenger *messenger, const char *target, const char *infoName, int ramNo, const char *command, long long delay);   // a request to target's RAM, sent after delay
+void fn_80306900(beMessenger *messenger, bool value);           // appends a bool argument
+void fn_80306B28(beMessenger *messenger, float value);          // appends a float argument
+void fn_80306C84(beMessenger *messenger, const float *vector);  // appends a vector argument
+// Managers.
+void fn_802F24B0(beBaseInfoManager *self);                      // beBaseInfoManager's virtual64
+bePadData *bePadManager_getPad(bePadManager *manager, int player);
+// The game RAM's named data objects.
+beDataObjInt *fn_8031F3CC(igObject *data, const char *name);
+beDataObjIntList *fn_8031F3FC(igObject *data, const char *name);
+beDataObjBool *fn_8031F42C(igObject *data, const char *name);
+beDataObjBoolList *fn_8031F45C(igObject *data, const char *name);
+beDataObjString *fn_8031F48C(igObject *data, const char *name);
+beDataObjStringList *fn_8031F4BC(igObject *data, const char *name);
+beDataObjObjectList *fn_8031F4EC(igObject *data, const char *name);
+beDataObjFloatList *fn_8031F51C(igObject *data, const char *name);
 }
 
 // Classes by value: Alchemy's igMatrix44f (copying goes through fn_80128CF4; the default is the identity),

@@ -56,7 +56,7 @@ void fn_80306A40(void *messenger, int value);
 void fn_80306BC8(void *messenger, long long value);
 void fn_80306FDC(void *messenger, const char *value);
 void fn_803065DC(void *messenger, const char *target); // a request to target
-void fn_803061BC(void *messenger, const char *command, int, int);   // sends the request
+void fn_803061BC(void *messenger, const char *command, long long delay);   // sends the request after delay
 extern char lbl_8056225C[];                             // this file's pool source
 bePlaySE *bePlaySE_create(void *pool);
 igStringRefList *igStringRefList_create(void *pool);

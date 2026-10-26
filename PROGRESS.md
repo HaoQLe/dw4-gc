@@ -4,17 +4,17 @@ Updated: 2026-10-25. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
-- **Model controller batch (user request 2026-10-24: a big game-subsystem batch, readable for the PC port):** closed 2026-10-25 on `task/subsystems-big`; integration into `work` follows the independent review of the commits after checkpoint 1.
+- **Model controller batch (user request 2026-10-24: a big game-subsystem batch, readable for the PC port):** closed 2026-10-25; integrated into `work`.
   - **Targets (69 functions, 42,548 unmatched code bytes at the start):**
     - `beModelCtrl`'s own virtuals and helpers, `0x803082A4..0x8030F9C0`;
     - the `beNDMWMdl*` subclasses' virtuals: EBullet, Effect, Enemy, Object, PBullet, Player, Player2, Item, MapBase, MapCursor.
   - **Result:** every target is readable, typed source (`src/Game/Bec/beModelCtrl*.cpp`, `beNDMWMdl*.cpp`, shared header `beModelCtrl.h`). 42 generated units are replaced.
   - **Totals** (from `work` at `b7cbe7ee`; denominators unchanged):
     - matched code 39.843710% → 40.453240% (+0.609530 pp, +25,244 bytes);
-    - linked 39.772625% → 40.379353% (+0.606728 pp, +25,128 bytes);
-    - matched data 18.007708% → 18.018080% (+0.010372 pp, +156 bytes);
+    - linked 39.772625% → 40.382156% (+0.609531 pp, +25,244 bytes);
+    - matched data 18.007708% → 18.019411% (+0.011703 pp, +176 bytes);
     - 17,378 → 17,437 functions.
-  - **Checks:** `build.sha1` OK; all sources compile; `verify_units --all` 3,272/3,272. Checkpoint 1 was reviewed independently: no blocking findings, comment fixes in `19f1a0bd`.
+  - **Checks:** `build.sha1` OK; all sources compile; `verify_units --all` 3,272/3,272. Both parts were reviewed independently with no blocking findings. The fixes are in `19f1a0bd` and the review-fix commit: comments, private class headers, shared prototypes, and the `Ref<beModelCtrlHITBOX>` destructor unit.
   - **Functional commits:**
     - `a6fa3aa9`: core, bullets, effects, enemies, objects;
     - `d4b1a689`: map base, map cursor, background chips;
@@ -26,11 +26,8 @@ Updated: 2026-10-25. Development repository: [HaoQLe/dw4-gc](https://github.com/
     - the players' controls: buttons, full-turn second attack, body attack, panels, attack-delay meter, main lobby and metal dungeons;
     - items (categories, pickup room), background chips, and the typed constant pools.
   - **NonMatching remainder (readable):** 9 core functions and 12 subclass functions. Mostly register colouring. Two (the item's step and the player's work builder) also read the int-to-float magic double from the file's own constant pool, which an `extern` pool cannot reproduce (the unit would have to define its pool). This is kept as a colouring stall per the readable-source goal, not a hard blocker.
-  - **Next concrete step:**
-    - fix any blocking findings of the running review;
-    - merge `task/subsystems-big` into `work`, rerun the checks and push.
-
-    If matching resumes here, the shared lead is the subclass `virtual98`s' extra saved register (Object, MapBase, MapCursor).
+  - **If matching resumes here:** the shared lead is the subclass `virtual98`s' extra saved register (Object, MapBase, MapCursor); the int-to-float cases need a unit-defined pool.
+  - **Next batch:** not selected; candidates are in the skill's arguments (`beDemoManager`, `beFont`, `beSelectCtrl`) and the game RAM (`beNDMWGameRam`, whose message handler the players and chips use).
   - Details: [model controller](docs/research/2026-10-24-model-controller.md).
 - **File list batch (continuing the game subsystems, 2026-10-18):** `beFileListInfoManager`, the game's file loader, is readable source (`src/Game/Bec/beFileList*.cpp`, `beFileList.h`): 9 functions, 9,216 code bytes. Developed on `task/files`; integrated into `work` after review.
   - **Established:** the loader's steps (loading screen `ld<stage without its first two letters>.igb`, sound data, stage files, Lua boot scripts, loading layer); Alchemy's `igResource` at `lbl_80562104` loads the files; how infos are sorted.
@@ -444,14 +441,14 @@ Throughput preference remains evidence-backed aggregate recovery, dependency reu
 
 ## Verified numeric snapshot
 
-Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-25 at the model controller batch (`task/subsystems-big`, `d6b2ea6e`). The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
+Source: local `build/GDJEB2/report.json`, refreshed on 2026-10-25 at the model controller batch (`work`). The checks passed: all-source build, verification of every generated unit, and pinned DOL equality (`e409a88a…`). Totals include inherited upstream matches.
 
 | Metric | Verified value |
 | --- | --- |
 | Matched executable code | 1,675,392 / 4,141,552 bytes (40.453240%) |
-| Fully linked source code | 1,672,332 / 4,141,552 bytes (40.379353%) |
+| Fully linked source code | 1,672,448 / 4,141,552 bytes (40.382156%) |
 | Matched functions | 17,437 / 23,334 |
-| Matched data | 270,955 / 1,503,795 bytes (18.018080%) |
+| Matched data | 270,975 / 1,503,795 bytes (18.019411%) |
 
 | Generator round 6 (`94ff74d` → `275fe25`) | Before → after | Exact gain |
 | --- | --- | --- |

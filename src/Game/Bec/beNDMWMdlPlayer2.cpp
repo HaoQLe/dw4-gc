@@ -1,6 +1,8 @@
-// Gap::Bec::beNDMWMdlPlayer2: background chips, the players' models left in the lobby. A chip remembers its
-// player's stage and position in the game RAM's common data (BKCHIPSTAGE, BKCHIPPOS), switches on when a
-// player comes near, and when raised pays out the bits and experience it holds (BKCHIPDATA). This file:
+// Gap::Bec::beNDMWMdlPlayer2: background chips (g_000bcaps), left where a player model is erased (SQ_ERAS);
+// the player's bits and part of its experience are deposited in the chip (BKCHIPBITEXP). A chip remembers its
+// player's stage and position in the game RAM's common data (BKCHIPSTAGE, BKCHIPPOS) and comes back on that
+// stage (GENESTAGE); it switches on when a player comes near, and raising it restores the player and pays back
+// what it holds (BKCHIPDATA). Hypothesis: a downed player's capsule. This file:
 // finding the pad manager, the kind test and the RAM start (0x8034E6DC..0x8034E784).
 #include "beModelCtrl.h"
 #include <meta/bePadManager.h>
@@ -55,20 +57,6 @@ extern int lbl_804E7E7C[];          // 0: a paid-out chip's experience
 extern char bePadManager_meta[];
 extern char beNDMWMdlPlayer2_meta[];
 beNDMWMdlPlayer2InfoWork *beNDMWMdlPlayer2InfoWork_create(void *pool);
-void fn_802F24B0(beBaseInfoManager *self);                   // beBaseInfoManager's virtual64
-void *bePadManager_getPad(bePadManager *manager, int index);
-void fn_80305EA8(beMessenger *messenger, const char *target);   // opens a request to target
-void fn_80305F58(beMessenger *messenger, const char *target, const char *command);   // a request to every RAM of target, sent at once
-void fn_80305F9C(beMessenger *messenger, const char *target, const char *infoName, int ramNo);   // opens a request to target's RAM
-void fn_803061BC(beMessenger *messenger, const char *command, long long delay);       // sends the request
-void fn_8030650C(beMessenger *messenger, const char *target, const char *infoName, int ramNo, const char *command, long long delay);   // a request to target's RAM, sent at once
-void fn_80306C84(beMessenger *messenger, const float *vector);   // appends a vector argument
-// The game RAM's named data objects.
-beDataObjInt *fn_8031F3CC(igObject *data, const char *name);
-beDataObjIntList *fn_8031F3FC(igObject *data, const char *name);
-beDataObjString *fn_8031F48C(igObject *data, const char *name);
-beDataObjStringList *fn_8031F4BC(igObject *data, const char *name);
-beDataObjFloatList *fn_8031F51C(igObject *data, const char *name);
 
 // Finds the pad manager.
 void beNDMWMdlPlayer2_virtual64(beNDMWMdlPlayer2 *self)

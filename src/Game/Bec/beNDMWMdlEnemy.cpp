@@ -22,8 +22,6 @@ extern const char lbl_80456C44[];   // "ENEMY"
 extern char beNDMWMdlEnemy_meta[];
 beNDMWMdlEnemyInfoWork *beNDMWMdlEnemyInfoWork_create(void *pool);
 int fn_8031F608(igObject *database, int recNo, const char *field);   // a record's integer field
-void fn_80305F9C(beMessenger *messenger, const char *target, const char *infoName, int ramNo);   // opens a request to target's RAM
-void fn_803061BC(beMessenger *messenger, const char *command, int, int);                     // sends the request
 void fn_803AE1A4(beNDMWMdlEnemy *self, beBaseInfoRam *ram);   // the shared step after a sequence starts (called directly; perhaps beNDMWMdlPEBase::virtualB8, no vtable found)
 
 // Takes the models of kind KIND_ENEMY.

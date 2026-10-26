@@ -237,8 +237,9 @@ bool beModelCtrl_virtual8C(beModelCtrl *self, beBaseInfoRam *ram, const char *me
     case MSG_CHKBULLET: {
         // A bullet against the model's hit boxes: int 0, the matrix, info name (string 0) and int 1 (with string
         // 0, a model RAM; the meanings of the ints are hypotheses: nothing found sends CHKBULLET). An invincible
-        // model is only hit when it and the sender's name both start with 'p' and it has HP. A hit runs the "hit" script with the bullet's
-        // details; unless the script clears the context flag, the model turns toward the bullet.
+        // model is only hit when it and the sender's name both start with 'p' and its HP object exists. A hit
+        // runs the "hit" script with the bullet's details; unless the script clears the context flag, the model
+        // turns toward the bullet.
         if (mc.zero != work->_mutekiCount) {
             bool playerHit = false;
             if (nameOrEmpty(info)[0] == 'p' && fn_8030709C(self->_messenger, 0)[0] == 'p' && work->_hp) playerHit = true;

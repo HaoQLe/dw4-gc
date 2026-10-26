@@ -52,20 +52,6 @@ extern int lbl_804E7E7C[];          // 0: a paid-out chip's experience
 extern char bePadManager_meta[];
 extern char beNDMWMdlPlayer2_meta[];
 beNDMWMdlPlayer2InfoWork *beNDMWMdlPlayer2InfoWork_create(void *pool);
-void fn_802F24B0(beBaseInfoManager *self);                   // beBaseInfoManager's virtual64
-void *bePadManager_getPad(bePadManager *manager, int index);
-void fn_80305EA8(beMessenger *messenger, const char *target);   // opens a request to target
-void fn_80305F58(beMessenger *messenger, const char *target, const char *command);   // a request to every RAM of target, sent at once
-void fn_80305F9C(beMessenger *messenger, const char *target, const char *infoName, int ramNo);   // opens a request to target's RAM
-void fn_803061BC(beMessenger *messenger, const char *command, long long delay);       // sends the request
-void fn_8030650C(beMessenger *messenger, const char *target, const char *infoName, int ramNo, const char *command, long long delay);   // a request to target's RAM, sent at once
-void fn_80306C84(beMessenger *messenger, const float *vector);   // appends a vector argument
-// The game RAM's named data objects.
-beDataObjInt *fn_8031F3CC(igObject *data, const char *name);
-beDataObjIntList *fn_8031F3FC(igObject *data, const char *name);
-beDataObjString *fn_8031F48C(igObject *data, const char *name);
-beDataObjStringList *fn_8031F4BC(igObject *data, const char *name);
-beDataObjFloatList *fn_8031F51C(igObject *data, const char *name);
 
 // The chips' own messages: GENERATE replaces a running chip; GENESTAGE brings back the chip of a player whose
 // stage this is; RAISE (after the first 10 frames) gives the chip back to its player: the player's Digimon
@@ -135,6 +121,7 @@ bool beNDMWMdlPlayer2_virtualC4(beNDMWMdlPlayer2 *self, beBaseInfoRam *ram, cons
         fn_8031F3CC(player, pool.BIT)->_data = bits;
         setValueAt(fn_8031F3FC(common, pool.BKCHIPDATA)->_data, bitsSlot, lbl_804E7E78[0]);
         const char *digimon = fn_8031F48C(player, pool.DIGIMONNAME)->_data;
+        // The temporary igStringRef goes, but the list still holds the pooled string.
         const char *chipDigimon = fn_800218F4(fn_8031F4BC(common, pool.BKCHIPNAME)->_data, ram->_ramNo).getString();
         if (strcmp(digimon, chipDigimon) == 0) {
             int expSlot = ram->_ramNo * 2 + 1;

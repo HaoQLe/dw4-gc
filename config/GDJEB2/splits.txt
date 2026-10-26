@@ -16026,9 +16026,14 @@ Game/Bec/beNDMWMdlPlayer.cpp:
 	.text       start:0x8034C2F0 end:0x8034C3C8
 
 Game/Bec/beNDMWMdlPlayerUpdate.cpp:
-	extab       start:0x8000E86C end:0x8000E89C
-	extabindex  start:0x8001EBA0 end:0x8001EBB8
-	.text       start:0x8034C3C8 end:0x8034D214
+	extab       start:0x8000E86C end:0x8000E894
+	extabindex  start:0x8001EBA0 end:0x8001EBAC
+	.text       start:0x8034C3C8 end:0x8034D1A0
+
+Game/Bec/beModelCtrlHITBOXRef.cpp:
+	extab       start:0x8000E894 end:0x8000E89C
+	extabindex  start:0x8001EBAC end:0x8001EBB8
+	.text       start:0x8034D1A0 end:0x8034D214
 
 Game/Bec/beNDMWMdlPlayerWaitCheck.cpp:
 	extab       start:0x8000E89C end:0x8000E8B4

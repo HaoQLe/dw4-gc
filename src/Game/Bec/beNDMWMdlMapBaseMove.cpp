@@ -21,10 +21,9 @@ extern "C" {
 extern const char lbl_8045CE90[];   // "MAPBASE"
 extern const char lbl_8045CE98[];   // "ONE"
 extern char beNDMWMdlMapBase_meta[];
-void fn_80305F58(beMessenger *messenger, const char *target, const char *command);   // a request to every RAM of target, sent at once
 
-// Before the move: the players' positions (two to four players) are averaged in X and Z, and the map moves to
-// the opposite point at height 0.
+// Before the move: the players' positions are averaged in X and Z (a single player's is taken as it is), and
+// the map moves to the opposite point at height 0.
 void beNDMWMdlMapBase_virtualC0(beNDMWMdlMapBase *self, beBaseInfoRam *ram)
 {
     const beNDMWMdlMapBasePool &pool = lbl_8045CE80;

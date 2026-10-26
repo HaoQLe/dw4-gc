@@ -21,7 +21,6 @@ extern "C" {
 extern const char lbl_8045CE90[];   // "MAPBASE"
 extern const char lbl_8045CE98[];   // "ONE"
 extern char beNDMWMdlMapBase_meta[];
-void fn_80305F58(beMessenger *messenger, const char *target, const char *command);   // a request to every RAM of target, sent at once
 
 // Builds the RAM's work; a request with an integer names the hit parent (its info name and RAM number). The RAM
 // is then placed as its message says.

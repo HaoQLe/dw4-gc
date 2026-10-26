@@ -22,7 +22,6 @@ extern "C" {
 extern const char lbl_8045CE90[];   // "MAPBASE"
 extern const char lbl_8045CE98[];   // "ONE"
 extern char beNDMWMdlMapBase_meta[];
-void fn_80305F58(beMessenger *messenger, const char *target, const char *command);   // a request to every RAM of target, sent at once
 
 // Takes the models of kind KIND_MAPBASE.
 unsigned char beNDMWMdlMapBase_virtual94(beNDMWMdlMapBase *, const char *kind) { return strcmp(kind, lbl_8045CE80.KIND_MAPBASE) == 0; }

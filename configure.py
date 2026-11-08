@@ -334,6 +334,7 @@ cflags_game = [
     "-i include/dolsdk2004/libc",
 ]
 
+
 # REL flags
 cflags_rel = [
     *cflags_base,
@@ -966,6 +967,19 @@ config.libs = [
             Object(NonMatching, "Game/Bec/beNDMWGameRamPlayer.cpp"),
             Object(NonMatching, "Game/Bec/beNDMWGameRamQuery.cpp"),
             Object(NonMatching, "Game/Bec/beNDMWGameRamMessage.cpp"),
+            Object(NonMatching, "Game/Bec/beNDMWGameRamTail80378124.cpp"),
+            Object(Matching, "Game/Bec/beNDMWGameRamTail80378270.cpp"),
+            Object(NonMatching, "Game/Bec/beNDMWGameRamTail80378290.cpp"),
+            Object(NonMatching, "Game/Bec/beNDMWGameRamTail8037833C.cpp"),
+            Object(NonMatching, "Game/Bec/beNDMWGameRamTail80378370.cpp"),
+            Object(NonMatching, "Game/Bec/beNDMWGameRamTail80378424.cpp"),
+            Object(NonMatching, "Game/Bec/beNDMWGameRamTail803784E0.cpp"),
+            Object(Matching, "Game/Bec/beNDMWGameRamTail8037858C.cpp"),
+            Object(Matching, "Game/Bec/beNDMWGameRamTail803785A4.cpp"),
+            Object(NonMatching, "Game/Bec/beNDMWGameRamTail803785D0.cpp"),
+            Object(Matching, "Game/Bec/beNDMWGameRamTail80378624.cpp"),
+            Object(Matching, "Game/Bec/beNDMWGameRamTail8037864C.cpp"),
+            Object(Matching, "Game/Bec/beNDMWGameRamTail803787D8.cpp"),
             Object(Matching, "Game/Bec/beNDMWMdlPlayer.cpp"),
             Object(NonMatching, "Game/Bec/beNDMWMdlPlayerUpdate.cpp"),
             Object(Matching, "Game/Bec/beModelCtrlHITBOXRef.cpp"),

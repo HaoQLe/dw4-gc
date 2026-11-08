@@ -16358,6 +16358,11 @@ Game/Bec/beNDMWGameRamMessage.cpp:
 	extabindex  start:0x8001F428 end:0x8001F434
 	.text       start:0x803717A4 end:0x80378124
 
+Game/Bec/beNDMWGameRamTail80378124.cpp:
+	extab       start:0x8000FAA8 end:0x8000FAB0
+	extabindex  start:0x8001F434 end:0x8001F440
+	.text       start:0x80378124 end:0x803781CC
+
 unknownGen/unknown803781CC.cpp:
 	.text       start:0x803781CC end:0x803781D4
 
@@ -16369,26 +16374,67 @@ unknownGen/unknown803781D4.cpp:
 unknownGen/unknown80378234.cpp:
 	.text       start:0x80378234 end:0x80378270
 
+Game/Bec/beNDMWGameRamTail80378270.cpp:
+	.text       start:0x80378270 end:0x80378280
+
 unknownGen/unknown80378280.cpp:
 	.text       start:0x80378280 end:0x80378290
+
+Game/Bec/beNDMWGameRamTail80378290.cpp:
+	extab       start:0x8000FAC0 end:0x8000FAC8
+	extabindex  start:0x8001F458 end:0x8001F464
+	.text       start:0x80378290 end:0x8037833C
+
+Game/Bec/beNDMWGameRamTail8037833C.cpp:
+	.text       start:0x8037833C end:0x80378370
+
+Game/Bec/beNDMWGameRamTail80378370.cpp:
+	extab       start:0x8000FAC8 end:0x8000FAD0
+	extabindex  start:0x8001F464 end:0x8001F470
+	.text       start:0x80378370 end:0x8037841C
 
 unknownGen/unknown8037841C.cpp:
 	.text       start:0x8037841C end:0x80378424
 
+Game/Bec/beNDMWGameRamTail80378424.cpp:
+	extab       start:0x8000FAD0 end:0x8000FAD8
+	extabindex  start:0x8001F470 end:0x8001F47C
+	.text       start:0x80378424 end:0x803784D0
+
 unknownGen/unknown803784D0.cpp:
 	.text       start:0x803784D0 end:0x803784E0
+
+Game/Bec/beNDMWGameRamTail803784E0.cpp:
+	extab       start:0x8000FAD8 end:0x8000FAE0
+	extabindex  start:0x8001F47C end:0x8001F488
+	.text       start:0x803784E0 end:0x8037858C
+
+Game/Bec/beNDMWGameRamTail8037858C.cpp:
+	.text       start:0x8037858C end:0x8037859C
 
 unknownGen/unknown8037859C.cpp:
 	.text       start:0x8037859C end:0x803785A4
 
+Game/Bec/beNDMWGameRamTail803785A4.cpp:
+	.text       start:0x803785A4 end:0x803785C0
+
 unknownGen/unknown803785C0.cpp:
 	.text       start:0x803785C0 end:0x803785D0
+
+Game/Bec/beNDMWGameRamTail803785D0.cpp:
+	.text       start:0x803785D0 end:0x8037860C
 
 unknownGen/unknown8037860C.cpp:
 	.text       start:0x8037860C end:0x80378624
 
+Game/Bec/beNDMWGameRamTail80378624.cpp:
+	.text       start:0x80378624 end:0x80378634
+
 unknownGen/unknown80378634.cpp:
 	.text       start:0x80378634 end:0x8037864C
+
+Game/Bec/beNDMWGameRamTail8037864C.cpp:
+	.text       start:0x8037864C end:0x8037865C
 
 unknownGen/unknown8037865C.cpp:
 	.text       start:0x8037865C end:0x8037866C
@@ -16424,6 +16470,9 @@ unknownGen/unknown8037875C.cpp:
 
 unknownGen/unknown80378794.cpp:
 	.text       start:0x80378794 end:0x803787D8
+
+Game/Bec/beNDMWGameRamTail803787D8.cpp:
+	.text       start:0x803787D8 end:0x803787E8
 
 unknownGen/unknown803787E8.cpp:
 	.text       start:0x803787E8 end:0x80378818

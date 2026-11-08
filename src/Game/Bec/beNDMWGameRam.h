@@ -26,6 +26,8 @@
 #include <meta/beUnicodeObj.h>
 #include <meta/beDataObjStringList.h>
 #include <meta/igStringRefList.h>
+#include <meta/beMessengerWork.h>
+#include <meta/enums.h>
 #include <game/StringPool.h>
 #include <game/List.h>
 #include <game/Pool.h>
@@ -129,6 +131,30 @@ extern "C" {
 beNDMWItemWaza *beNDMWItemWaza_create(void *pool);
 void fn_803B17B0(beNDMWItemWaza *technique, int record, int baseRecord);   // sets a technique up
 }
+
+// The message handler's accessors. The original calls them out of line (they are emitted after it, where the
+// handler exceeded the compiler's inlining budget); elsewhere they are inlined.
+extern "C" {
+const char *fn_803787F8(beMessengerWork *message);               // the message's name
+beDataObjList *fn_803787F0(beNDMWGameRam *self);                 // the common data list
+beDataObjListList *fn_803787E8(beNDMWGameRam *self);             // the per-player data lists
+beDataObjList *fn_803787D8(beDataObjListList *lists, int player);   // a player's data list
+int fn_803787AC(beDataObjInt *value);                            // an int's value
+const char *fn_803787A4(beDataObjString *value);                 // a string's value
+void fn_80360DEC(beDataObjInt *value, int newValue);             // sets an int's value
+bool fn_80361194(beDataObjBool *value);                          // a bool's value
+igStringRefList *fn_803781CC(beDataObjStringList *value);        // a string list's list
+igIntList *fn_8037859C(beDataObjIntList *value);                 // an int list's list
+void fn_80378124(igStringRefList *list, int index, const igStringRef &value);   // setStringAt
+void fn_8037833C(igIntList *list, int index, const int &value);  // setValueAt<int>
+void fn_803785C8(beNDMWGameRam *self, bool display);             // sets _isDispFightData
+igObject *fn_80344214();                                         // the Message enum, created on first use
+void fn_8036CE1C(beNDMWGameRam *self, int player);
+void fn_80306AB8(beMessenger *messenger);                        // clears the integer results
+}
+
+// Experience a Digimon needs to pass level (the NEXTEXP formula).
+static inline int experienceAt(int level) { return level * 200 + (level + 140) * (level * level); }
 
 // Element i of an int list.
 static inline int &intAt(igDataList *list, int i) { return static_cast<int *>(list->_data)[i]; }

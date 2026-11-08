@@ -231,14 +231,14 @@ bool fn_8036F364(beNDMWGameRam *self, int player, int delta)
 
 // Activates the player with the Digimon named model and names the player text (at most 8 characters,
 // converted to Unicode by the font manager).
-void fn_8036EC3C(beNDMWGameRam *self, int player, const char *model, const char *const &text)
+void fn_8036EC3C(beNDMWGameRam *self, int player, const char *model, const igStringRef &text)
 {
     fn_8036EB0C(self, player, model);
     beDataObjList *data = playerData(self, player);
     Ref<beUnicodeObj> name(beUnicodeObj_create(poolFor(self, lbl_80562258)), Ref<beUnicodeObj>::adopt);
     fn_802FC878(name, 8);
     {
-        Ref<beUnicodeObj> converted(fn_802FB59C(fn_8028A730(self->_insight, *reinterpret_cast<void **>(beFont_meta)), text));
+        Ref<beUnicodeObj> converted(fn_802FB59C(fn_8028A730(self->_insight, *reinterpret_cast<void **>(beFont_meta)), text.getString()));
         unsigned short *to = static_cast<unsigned short *>(name->_buffer);
         const unsigned short *from = static_cast<const unsigned short *>(converted->_buffer);
         int i = 0;

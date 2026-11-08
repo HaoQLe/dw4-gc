@@ -16353,6 +16353,11 @@ Game/Bec/beNDMWGameRamQuery.cpp:
 	extabindex  start:0x8001F410 end:0x8001F428
 	.text       start:0x80371524 end:0x803717A4
 
+Game/Bec/beNDMWGameRamMessage.cpp:
+	extab       start:0x8000F800 end:0x8000FAA8
+	extabindex  start:0x8001F428 end:0x8001F434
+	.text       start:0x803717A4 end:0x80378124
+
 unknownGen/unknown803781CC.cpp:
 	.text       start:0x803781CC end:0x803781D4
 

@@ -394,6 +394,19 @@ static inline void hudPercent(beNDMWGameRam *self, int player, const char *part,
     fn_803061BC(self->_messenger, "SETPERCENT", 1);
 }
 
+// A damage value's range.
+static inline int clampDamage(int damage)
+{
+    if (damage < 0) return 0;
+    if (damage > 99999) return 99999;
+    return damage;
+}
+
+// The enemy database's resistance fields of the weapon attack elements (fire, ice, thunder, dark).
+static const char *sEnemyWeaponResist[4] = {"RES_FIRE", "RES_ICE", "RES_THUNDER", "RES_DARK"};
+
+extern "C" bool fn_8037841C(beNDMWGameRam *self);   // _isDispFightData
+
 // The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
 static const char *sEnemyResist[5] = {"RES_FIRE", "RES_ICE", "RES_THUNDER", "RES_DARK", "RES_POISON"};
 
@@ -855,6 +868,91 @@ static void fightCalc(beNDMWGameRam *self)
         }
         fn_80306AB8(messenger);
         fn_80306A40(messenger, killerShare);
+        break;
+    }
+    case FightCom::P2EDAMAGE: {
+        // player, enemy, attack, critical (and the enemy's work): the damage of a player's hit on an enemy,
+        // answered with its element (-1 none) and whether the variance roll was the highest. A weapon hit:
+        // strength and weapon skill against the enemy's defense (less its defense down), plus an element bonus
+        // when the enemy fails its resistance roll; then HP and MP drain. A technique: its power, the
+        // player's wisdom and skill against the enemy's spirit, scaled by the enemy's element resistance.
+        // A critical adds a share growing with the skill; a random 95%-102.5% variance follows.
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        int critical = fn_80306B00(messenger, 3);
+        igObject *enemyWork = fn_80306FB4(messenger, 0);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int element = -1;
+        int kind = attackKind(attack);
+        int damage;
+        int points;
+        if (kind != 4) {
+            int weaponSkill = fn_803787AC(fn_8031F3CC(data, "WEAPONSKILLNO"));
+            int strength = fn_803787AC(fn_8031F3CC(data, "TSUYOSA"));
+            points = *fn_8037858C(fn_8037859C(fn_8031F3FC(data, "SKILL")), weaponSkill);
+            int defenseDown = fn_803784D8(enemyWork) == 0 ? 0 : intAt(fn_803784D8(enemyWork), 5);
+            damage = clampDamage((strength * 6 + points * 4) / (fn_8031F608(fn_803784E0(self), enemy, "MAMORI") - defenseDown));
+            if (damage != 0) {
+                element = fn_803787AC(fn_8031F3CC(data, "ATTACKZOKUSEI"));
+                if (element != -1) {
+                    int resist = fn_8031F608(fn_803784E0(self), enemy, sEnemyWeaponResist[element]);
+                    if (resist < (int)(randomNumber(self) % 1000)) damage += damage * (1000 - resist) / 1000;
+                }
+            }
+        } else {
+            int record;
+            fn_80371524(self, data, attack % 1000, &record);
+            damage = -fn_8031F608(fn_80378424(self), record, "HP");
+            if (damage != 0) {
+                int skill = fn_8031F608(fn_80378424(self), record, "SKILL");
+                points = *fn_8037858C(fn_8037859C(fn_8031F3FC(data, "SKILL")), skill);
+                int spirit = fn_8031F608(fn_803784E0(self), enemy, "SEISHIN");
+                int wisdom = fn_803787AC(fn_8031F3CC(data, "KASHIKOSA"));
+                damage = clampDamage((damage * 20 + wisdom * 10 + points * 5) / spirit);
+            } else {
+                damage = 0;
+            }
+            if (damage != 0) {
+                element = elementIndex(fn_8031F70C(fn_80378424(self), record, "ZOKUSEI"));
+                int resist = element >= 0 ? fn_8031F608(fn_803784E0(self), enemy, sEnemyResist[element]) : 0;
+                damage = damage * (1000 - resist) / 1000;
+            }
+        }
+        damage = clampDamage(damage);
+        bool highest = false;
+        if (damage != 0) {
+            if (critical) {
+                if (points <= 1000) damage += damage * (points / 20 + 30) / 100;
+                else if (points <= 2000) damage += damage * ((points - 1000) / 50 + 80) / 100;
+                else damage += damage * ((points - 2000) / 100 + 100) / 100;
+            }
+            if (damage != 0) {
+                int roll = randomNumber(self) & 3;
+                int spread = randomNumber(self) % (damage * 25);
+                switch (roll) {
+                case 0: damage = (damage * 950 + spread) / 1000; break;
+                case 1: damage = (damage * 975 + spread) / 1000; break;
+                case 2: damage = (damage * 1000 + spread) / 1000; break;
+                case 3:
+                    highest = true;
+                    damage = (damage * 1025 + spread) / 1000;
+                    break;
+                }
+                damage = clampDamage(damage);
+            }
+            if (kind != 4) {
+                int drain = fn_803787AC(fn_8031F3CC(data, "HPDRAIN"));
+                if (drain != 0) fn_8036F220(self, player, damage * drain / 100, -1);
+                drain = fn_803787AC(fn_8031F3CC(data, "MPDRAIN"));
+                if (drain != 0) fn_8036F364(self, player, damage * drain / 100);
+            }
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, damage);
+        fn_80306A40(messenger, element);
+        fn_80306A40(messenger, highest);
+        fn_8037841C(self);   // the fight-data display flag; its use is compiled out
         break;
     }
     case FightCom::P2ESTUNTIME: {

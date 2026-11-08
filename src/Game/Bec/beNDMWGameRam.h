@@ -28,6 +28,9 @@
 #include <meta/igStringRefList.h>
 #include <meta/beMessengerWork.h>
 #include <meta/enums.h>
+#include <meta/beSystem.h>
+#include <meta/igRandomNumber.h>
+#include <game/Virtual.h>
 #include <game/StringPool.h>
 #include <game/List.h>
 #include <game/Pool.h>
@@ -151,6 +154,29 @@ void fn_803785C8(beNDMWGameRam *self, bool display);             // sets _isDisp
 igObject *fn_80344214();                                         // the Message enum, created on first use
 void fn_8036CE1C(beNDMWGameRam *self, int player);
 void fn_80306AB8(beMessenger *messenger);                        // clears the integer results
+}
+
+// The databases, loaded on first use (out-of-line copies of database()).
+extern "C" {
+beDataBase *fn_80378290(beNDMWGameRam *self);   // enemy attacks ("eneatk")
+beDataBase *fn_80378370(beNDMWGameRam *self);   // evolution ("shinka")
+beDataBase *fn_80378424(beNDMWGameRam *self);   // player techniques ("pcTech")
+beDataBase *fn_803784E0(beNDMWGameRam *self);   // enemies ("enemy")
+igRandomNumber *fn_803784D0(beSystem *system);  // the system's random numbers
+void fn_803069D8(beMessenger *messenger);       // clears the bool results
+}
+
+// igRandomNumber's virtual functions (declarations only).
+class igRandomNumberVirtuals : public igObjectVirtuals {
+public:
+    virtual void v5C();
+    virtual unsigned int next();   // 0x60: a random number
+};
+
+// A random number from the system.
+static inline unsigned int randomNumber(beNDMWGameRam *self)
+{
+    return reinterpret_cast<igRandomNumberVirtuals *>(fn_803784D0(self->_system))->next();
 }
 
 // Experience a Digimon needs to pass level (the NEXTEXP formula).

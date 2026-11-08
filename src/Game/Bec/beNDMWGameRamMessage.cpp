@@ -244,6 +244,75 @@ static void ctrlItem(beNDMWGameRam *self)
 }
 
 extern "C" {
+igResult fn_800633C8(igObject *enumeration, const char *name, int *value);   // a name's value in an enum
+igObject *fn_803441B4();                                                    // the FightCom enum
+igIntList *fn_803784D8(igObject *enemyWork);   // (hypothesis) an enemy's status list: [3] evasion down
+}
+
+// An enemy attack's record: the message carries attacks as kind * 10000 + record.
+static inline int attackRecord(int attack) { return attack % 10000; }
+static inline int attackKind(int attack) { return attack / 10000; }
+
+// FIGHTCALC: the battle formulas (FightCom), named by the first string argument. E2P are an enemy's
+// actions on a player, P2E a player's on an enemy.
+static void fightCalc(beNDMWGameRam *self)
+{
+    beMessenger *messenger = self->_messenger;
+    int command;
+    {
+        igStringRef name(fn_8030709C(messenger, 0));
+        fn_800633C8(fn_803441B4(), name.getString(), &command);
+    }
+    switch (command) {
+    case FightCom::E2PISHITCHECK: {
+        // player, enemy, attack: whether an enemy's attack hits a player. The player's guard rate blocks
+        // that many attacks in 100; otherwise accuracy * enemy speed against player speed * (evasion + 100%).
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        bool hit = false;
+        int record = attackRecord(attack);
+        if (fn_8031F608(fn_80378290(self), record, "TYPE") != 0) {
+            hit = true;
+        } else if (fn_803787AC(fn_8031F3CC(data, "BOUGYORITSU")) <= randomNumber(self) % 100) {
+            int speed = fn_803787AC(fn_8031F3CC(data, "SUBAYASA"));
+            int evasion = fn_803787AC(fn_8031F3CC(data, "KAIHIRITSU"));
+            int enemySpeed = fn_8031F608(fn_803784E0(self), enemy, "SUBAYASA");
+            int accuracy = fn_8031F608(fn_80378290(self), record, "MEICHURITSU");
+            if (accuracy * enemySpeed / (speed * (evasion + 100) / 100) > (int)(randomNumber(self) % 100)) hit = true;
+        }
+        fn_803069D8(messenger);
+        fn_80306964(messenger, hit);
+        break;
+    }
+    case FightCom::P2EISHITCHECK: {
+        // player, enemy, attack (and the enemy's work): whether a player's attack hits an enemy, out of 10000:
+        // hit rate * (weapon skill * 20 + 6000 + speed * 30) against enemy speed * (100 - its evasion down)%.
+        // Attacks of kind 4 always hit.
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        igObject *enemyWork = fn_80306FB4(messenger, 0);
+        if (attackKind(attack) == 4) {
+            fn_80306964(messenger, true);
+            break;
+        }
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int weaponSkill = fn_803787AC(fn_8031F3CC(data, "WEAPONSKILLNO"));
+        int speed = fn_803787AC(fn_8031F3CC(data, "SUBAYASA"));
+        int skill = intAt(fn_8037859C(fn_8031F3FC(data, "SKILL")), weaponSkill);
+        int hitRate = fn_803787AC(fn_8031F3CC(data, "MEICHURITSU"));
+        int enemySpeed = fn_8031F608(fn_803784E0(self), enemy, "SUBAYASA");
+        int evasionDown = fn_803784D8(enemyWork) == 0 ? 0 : intAt(fn_803784D8(enemyWork), 3);
+        int chance = hitRate * (skill * 20 + 6000 + speed * 30) / (enemySpeed * (100 - evasionDown) / 100);
+        fn_80306964(messenger, chance > (int)(randomNumber(self) % 10000));
+        break;
+    }
+    }
+}
+
+extern "C" {
 
 // Answers a GAMERAM message (beNDMWGameRam_Message). Returns false for an unknown message.
 bool beNDMWGameRam_virtual90(beNDMWGameRam *self, beBaseInfoRam *ram, beMessengerWork *message)
@@ -370,6 +439,9 @@ bool beNDMWGameRam_virtual90(beNDMWGameRam *self, beBaseInfoRam *ram, beMessenge
     }
     case beNDMWGameRam_Message::CTRLITEM:
         ctrlItem(self);
+        return true;
+    case beNDMWGameRam_Message::FIGHTCALC:
+        fightCalc(self);
         return true;
     case beNDMWGameRam_Message::DISPFIGHTDATA:
         fn_803785C8(self, fn_80306A1C(self->_messenger, 0));

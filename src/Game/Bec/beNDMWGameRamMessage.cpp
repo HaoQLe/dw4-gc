@@ -330,13 +330,8 @@ static inline int techSkillPoints(beNDMWGameRam *self, beDataObjList *data, int 
 
 // How long a player's sleep or binding technique holds an enemy (-1: resisted): its power against the
 // enemy's spirit (out of 1000); the technique's TIME plus half the player's wisdom.
-static int playerHoldTime(beNDMWGameRam *self)
+static int playerHoldTime(beNDMWGameRam *self, beDataObjList *data, int enemy, int attack)
 {
-    beMessenger *messenger = self->_messenger;
-    int player = fn_80306B00(messenger, 0);
-    int enemy = fn_80306B00(messenger, 1);
-    int attack = fn_80306B00(messenger, 2);
-    beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
     int record;
     int points = techSkillPoints(self, data, attack, &record);
     int spirit = fn_8031F608(fn_803784E0(self), enemy, "SEISHIN");
@@ -346,6 +341,26 @@ static int playerHoldTime(beNDMWGameRam *self)
     int time = holds ? fn_8031F608(fn_80378424(self), record, "TIME") + fn_803787AC(fn_8031F3CC(data, "KASHIKOSA")) / 2 : 0;
     if (time == 0) time = -1;
     return time;
+}
+
+// How much of an enemy's stat a player's debuff technique takes, negated: the technique's value less a
+// twentieth of the player's skill points, at most 80% of the enemy's stat.
+static int playerStatDown(beNDMWGameRam *self, beDataObjList *data, int enemy, int attack, const char *stat)
+{
+    int record;
+    int points = techSkillPoints(self, data, attack, &record);
+    int limit = -fn_8031F608(fn_803784E0(self), enemy, stat) * 80 / 100;
+    int down = fn_8031F608(fn_80378424(self), record, stat) - points / 20;
+    if (down < limit) down = limit;
+    return -down;
+}
+
+// A player technique's field for an attack, negated.
+static int playerTechDown(beNDMWGameRam *self, beDataObjList *data, int attack, const char *field)
+{
+    int record;
+    fn_80371524(self, data, attackRecord(attack), &record);
+    return -fn_8031F608(fn_80378424(self), record, field);
 }
 
 // The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
@@ -648,7 +663,10 @@ static void fightCalc(beNDMWGameRam *self)
     case FightCom::P2ESLEEPTIME:
     case FightCom::P2EBINDTIME: {
         // player, enemy, attack (the original repeats this code for each).
-        int time = playerHoldTime(self);
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        int time = playerHoldTime(self, fn_803787D8(fn_803787E8(self), player), enemy, attack);
         fn_80306AB8(messenger);
         fn_80306A40(messenger, time);
         break;
@@ -680,6 +698,30 @@ static void fightCalc(beNDMWGameRam *self)
             fn_80306AB8(messenger);
             fn_80306A40(messenger, damage);
         }
+        break;
+    }
+    case FightCom::P2EATKDWNTIME:
+    case FightCom::P2EPOWDWNTIME: {
+        // query, player, enemy, attack. TIME: how long the debuff lasts (as sleep). Attack down: SUBAYASA
+        // (speed taken), CHIMEIRITSU, MAHIRITSU, KAIHIRITSU (the technique's values, negated). Power down:
+        // TSUYOSA, MAMORI (strength and defense taken).
+        igStringRef query(fn_8030709C(messenger, 1));
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        const char *name = query.getString();
+        int value;
+        if (strcmp(name, "TIME") == 0) value = playerHoldTime(self, data, enemy, attack);
+        else if (command == FightCom::P2EATKDWNTIME && strcmp(name, "SUBAYASA") == 0) value = playerStatDown(self, data, enemy, attack, "SUBAYASA");
+        else if (command == FightCom::P2EATKDWNTIME && strcmp(name, "CHIMEIRITSU") == 0) value = playerTechDown(self, data, attack, "CHIMEIRITSU");
+        else if (command == FightCom::P2EATKDWNTIME && strcmp(name, "MAHIRITSU") == 0) value = playerTechDown(self, data, attack, "MHIRITSU");
+        else if (command == FightCom::P2EATKDWNTIME && strcmp(name, "KAIHIRITSU") == 0) value = playerTechDown(self, data, attack, "KAIHIRITSU");
+        else if (command == FightCom::P2EPOWDWNTIME && strcmp(name, "TSUYOSA") == 0) value = playerStatDown(self, data, enemy, attack, "TSUYOSA");
+        else if (command == FightCom::P2EPOWDWNTIME && strcmp(name, "MAMORI") == 0) value = playerStatDown(self, data, enemy, attack, "MAMORI");
+        else break;
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, value);
         break;
     }
     case FightCom::P2ESTUNTIME: {

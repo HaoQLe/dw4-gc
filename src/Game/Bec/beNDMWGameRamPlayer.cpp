@@ -263,6 +263,89 @@ void fn_8036EFF4(beNDMWGameRam *self, int player, const char *model, const Ref<b
     fn_80069128(names, name);
 }
 
+// Growth by level band: a Digimon's level falls in the first band whose end it does not exceed; within a band
+// a value grows by the band's slope per level from the band's base (in hundredths of a growth point).
+static int sBandEnd[10] = {5, 10, 20, 30, 50, 70, 110, 150, 230, 999};
+static int sGaugeBandBase[10] = {0, 40, 140, 640, 1440, 3840, 7440, 17840, 25040, 34640};   // HP and MP
+static int sBandStart[10] = {1, 5, 10, 20, 30, 50, 70, 110, 150, 230};
+static int sGaugeBandSlope[10] = {10, 20, 50, 80, 120, 180, 260, 180, 120, 80};
+static int sStatBandBase[10] = {0, 40, 85, 165, 235, 355, 455, 615, 735, 895};               // the other stats
+static int sStatBandSlope[10] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+// The evolution database's fields for the stats strength, defense, intelligence, spirit and speed.
+static const char *sStatInitial[5] = {"STR_INI", "AC_INI", "INT_INI", "MND_INI", "DEX_INI"};
+static const char *sStatGrowth[5] = {"STR_GROW", "AC_GROW", "INT_GROW", "MND_GROW", "DEX_GROW"};
+
+// The band of a level.
+static inline int levelBand(int level)
+{
+    int band = 0;
+    while (level > sBandEnd[band]) band++;
+    return band;
+}
+
+// A Digimon's maximum HP (hp) or MP: its initial value, plus its growth times its level's band factor (in
+// hundredths), plus its upgrade count, at most 99999. digimon < 0 means the player's current Digimon.
+int fn_8036F808(beNDMWGameRam *self, int player, int digimon, bool hp)
+{
+    beDataObjList *data = playerData(self, player);
+    igIntList *upCounts;
+    int base;
+    int level;
+    if (digimon < 0) {
+        digimon = fn_8031F3CC(data, "DIGIMONNO")->_data;
+        upCounts = fn_8031F3FC(data, "UPCNT")->_data;
+        base = 0;
+        level = fn_8031F3CC(data, "LEVEL")->_data;
+    } else {
+        upCounts = fn_8031F3FC(data, "BASE_UPCNT")->_data;
+        base = digimon * 11;
+        level = intAt(fn_8031F3FC(data, "BASE_LEVEL")->_data, digimon);
+    }
+    int initial;
+    int growth;
+    int ups;
+    if (hp) {
+        initial = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, "MHP_INI");
+        growth = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, "MHP_GROW");
+        ups = intAt(upCounts, base);
+    } else {
+        initial = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, "MMP_INI");
+        growth = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, "MMP_GROW");
+        ups = intAt(upCounts, base + 1);
+    }
+    int band = levelBand(level);
+    int value = initial + (growth * (sGaugeBandBase[band] + sGaugeBandSlope[band] * (level - sBandStart[band])) / 100 + ups);
+    if (value > 99999) value = 99999;
+    return value;
+}
+
+// A Digimon's stat (0 strength, 1 defense, 2 intelligence, 3 spirit, 4 speed), as fn_8036F808 with the stat
+// band tables, at most 9999.
+int fn_8036FB80(beNDMWGameRam *self, int player, int digimon, int stat)
+{
+    beDataObjList *data = playerData(self, player);
+    igIntList *upCounts;
+    int base;
+    int level;
+    if (digimon < 0) {
+        digimon = fn_8031F3CC(data, "DIGIMONNO")->_data;
+        upCounts = fn_8031F3FC(data, "UPCNT")->_data;
+        base = 0;
+        level = fn_8031F3CC(data, "LEVEL")->_data;
+    } else {
+        upCounts = fn_8031F3FC(data, "BASE_UPCNT")->_data;
+        base = digimon * 11;
+        level = intAt(fn_8031F3FC(data, "BASE_LEVEL")->_data, digimon);
+    }
+    int initial = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, sStatInitial[stat]);
+    int growth = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, sStatGrowth[stat]);
+    int ups = intAt(upCounts, base + stat + 2);
+    int band = levelBand(level);
+    int value = initial + (growth * (sStatBandBase[band] + sStatBandSlope[band] * (level - sBandStart[band])) / 100 + ups);
+    if (value > 9999) value = 9999;
+    return value;
+}
+
 // Marks a player as not taking part and recounts the players who do (NINZU).
 void fn_8036F178(beNDMWGameRam *self, int player)
 {

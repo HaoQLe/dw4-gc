@@ -253,6 +253,22 @@ igIntList *fn_803784D8(igObject *enemyWork);   // (hypothesis) an enemy's status
 static inline int attackRecord(int attack) { return attack % 10000; }
 static inline int attackKind(int attack) { return attack / 10000; }
 
+// The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
+static const char *sEnemyResist[5] = {"RES_FIRE", "RES_ICE", "RES_THUNDER", "RES_DARK", "RES_POISON"};
+
+extern "C" void fn_80371524(beNDMWGameRam *self, igObject *data, int baseNo, int *record);
+
+// An element's index (0 fire, 1 ice, 2 thunder, 3 dark, 4 poison), or -1.
+static inline int elementIndex(const char *element)
+{
+    if (strcmp(element, "fire") == 0) return 0;
+    if (strcmp(element, "ice") == 0) return 1;
+    if (strcmp(element, "thunder") == 0) return 2;
+    if (strcmp(element, "dark") == 0) return 3;
+    if (strcmp(element, "poison") == 0) return 4;
+    return -1;
+}
+
 // FIGHTCALC: the battle formulas (FightCom), named by the first string argument. E2P are an enemy's
 // actions on a player, P2E a player's on an enemy.
 static void fightCalc(beNDMWGameRam *self)
@@ -307,6 +323,68 @@ static void fightCalc(beNDMWGameRam *self)
         int evasionDown = fn_803784D8(enemyWork) == 0 ? 0 : intAt(fn_803784D8(enemyWork), 3);
         int chance = hitRate * (skill * 20 + 6000 + speed * 30) / (enemySpeed * (100 - evasionDown) / 100);
         fn_80306964(messenger, chance > (int)(randomNumber(self) % 10000));
+        break;
+    }
+    case FightCom::P2EISCRITICAL: {
+        // player, enemy, attack: whether a player's attack is critical. A weapon attack: the critical rate
+        // out of 200. A technique (kind 4): its critical rate, against the enemy's resistance to its element
+        // (out of 1000), or out of 100 for a technique without one.
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        bool critical;
+        if (attackKind(attack) != 4) {
+            critical = fn_803787AC(fn_8031F3CC(data, "CHIMEIRITSU")) > (int)(randomNumber(self) % 200);
+        } else {
+            int record;
+            fn_80371524(self, data, attack % 1000, &record);
+            int element = elementIndex(fn_8031F70C(fn_80378424(self), record, "ZOKUSEI"));
+            int rate = fn_8031F608(fn_80378424(self), record, "CHIMEIRITSU");
+            if (element >= 0) {
+                int resist = element < 0 ? 0 : fn_8031F608(fn_803784E0(self), enemy, sEnemyResist[element]);
+                critical = (rate + 100) * (10000 / (resist * 12 / 10 + 50)) / 100 > (int)(randomNumber(self) % 1000);
+            } else {
+                critical = rate > (int)(randomNumber(self) % 100);
+            }
+        }
+        fn_80306964(messenger, critical);
+        break;
+    }
+    case FightCom::GETPATKZOKUSEI: {
+        // player, attack: the element of a player's attack: the player's attack element, or a technique's.
+        int player = fn_80306B00(messenger, 0);
+        int attack = fn_80306B00(messenger, 1);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int element;
+        if (attackKind(attack) != 4) {
+            element = fn_803787AC(fn_8031F3CC(data, "ATTACKZOKUSEI"));
+        } else {
+            int record;
+            fn_80371524(self, data, attackRecord(attack), &record);
+            element = elementIndex(fn_8031F70C(fn_80378424(self), record, "ZOKUSEI"));
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, element);
+        break;
+    }
+    case FightCom::P2ESTUNTIME: {
+        // player, enemy, enemy HP, damage: how long a player's hit stuns an enemy (0: no stun). The chance
+        // (out of 100) grows with the paralysis rate and the damage's share of the HP and falls with the
+        // enemy's stun resistance; so does the time.
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int hp = fn_80306B00(messenger, 2);
+        int damage = fn_80306B00(messenger, 3);
+        fn_80306B00(messenger, 4);
+        int paralysis = fn_803787AC(fn_8031F3CC(fn_803787D8(fn_803787E8(self), player), "MAHIRITSU"));
+        int resist = fn_8031F608(fn_803784E0(self), enemy, "RES_STUN");
+        int time = 0;
+        if ((paralysis + (damage * 50 / hp + 100) - resist) / 2 > (int)(randomNumber(self) % 100)) {
+            time = (200 - resist) * (damage * 30 / hp + paralysis * 3) / 400;
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, time);
         break;
     }
     }

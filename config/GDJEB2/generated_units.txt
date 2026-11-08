@@ -2845,7 +2845,6 @@ unknownGen/unknown803318B8.cpp	803318B8	8033192C	eh,nosdata,speed
 unknownGen/unknown80331BF4.cpp	80331BF4	80331DF0	eh
 unknownGen/unknown8033246C.cpp	8033246C	803324CC	eh
 unknownGen/unknown803324CC.cpp	803324CC	803327E8	eh
-unknownGen/unknown803327E8.cpp	803327E8	8033285C	eh,nosdata
 unknownGen/unknown80332910.cpp	80332910	80332920	nosdata
 unknownGen/unknown80332A68.cpp	80332A68	80332AC8	eh
 unknownGen/unknown80332CC4.cpp	80332CC4	80332D24	eh
@@ -2885,7 +2884,6 @@ unknownGen/unknown803425BC.cpp	803425BC	803425CC	nosdata
 unknownGen/unknown80342F9C.cpp	80342F9C	80342FAC	nosdata
 unknownGen/unknown80343158.cpp	80343158	80343168	nosdata
 unknownGen/unknown803441B4.cpp	803441B4	80344274	eh,nosdata
-unknownGen/unknown803446D8.cpp	803446D8	8034474C	eh,nosdata,speed
 unknownGen/unknown80345B94.cpp	80345B94	80345CD8	nosdata
 unknownGen/unknown80345E08.cpp	80345E08	80345E28	nosdata
 unknownGen/unknown80345E28.cpp	80345E28	80345E70	eh
@@ -2974,7 +2972,6 @@ unknownGen/unknown8036BCDC.cpp	8036BCDC	8036BD14	eh
 unknownGen/unknown8036C0C0.cpp	8036C0C0	8036C170	eh,nosdata,lmw
 unknownGen/unknown8036CAF0.cpp	8036CAF0	8036CE1C	eh
 unknownGen/unknown8036D644.cpp	8036D644	8036D7EC	eh
-unknownGen/unknown8036D93C.cpp	8036D93C	8036DA24	eh
 unknownGen/unknown8036DA24.cpp	8036DA24	8036DA28	-
 unknownGen/unknown803714B0.cpp	803714B0	80371524	eh
 unknownGen/unknown803781CC.cpp	803781CC	803781D4	-

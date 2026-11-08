@@ -15063,7 +15063,7 @@ unknownGen/unknown803324CC.cpp:
 	extabindex  start:0x8001C6D4 end:0x8001C6E0
 	.text       start:0x803324CC end:0x803327E8
 
-unknownGen/unknown803327E8.cpp:
+Game/Bec/beDataObjListRef.cpp:
 	extab       start:0x8000CEA8 end:0x8000CEB0
 	extabindex  start:0x8001C6E0 end:0x8001C6EC
 	.text       start:0x803327E8 end:0x8033285C
@@ -15843,7 +15843,7 @@ Meta/beNDMWGameRam_destructor.cpp:
 	extabindex  start:0x8001E6A8 end:0x8001E6B4
 	.text       start:0x80344408 end:0x803446D8
 
-unknownGen/unknown803446D8.cpp:
+Game/Bec/beDataObjListListRef.cpp:
 	extab       start:0x8000E3E0 end:0x8000E3E8
 	extabindex  start:0x8001E6B4 end:0x8001E6C0
 	.text       start:0x803446D8 end:0x8034474C
@@ -16320,15 +16320,20 @@ unknownGen/unknown8036CAF0.cpp:
 	extabindex  start:0x8001F26C end:0x8001F2C0
 	.text       start:0x8036CAF0 end:0x8036CE1C
 
+Game/Bec/beNDMWGameRam.cpp:
+	extab       start:0x8000F638 end:0x8000F668
+	extabindex  start:0x8001F2CC end:0x8001F2E4
+	.text       start:0x8036D224 end:0x8036D644
+
 unknownGen/unknown8036D644.cpp:
 	extab       start:0x8000F668 end:0x8000F670
 	extabindex  start:0x8001F2E4 end:0x8001F2F0
 	.text       start:0x8036D644 end:0x8036D7EC
 
-unknownGen/unknown8036D93C.cpp:
-	extab       start:0x8000F6A0 end:0x8000F6B0
-	extabindex  start:0x8001F2FC end:0x8001F314
-	.text       start:0x8036D93C end:0x8036DA24
+Game/Bec/beNDMWGameRamInfoAdd.cpp:
+	extab       start:0x8000F670 end:0x8000F6B0
+	extabindex  start:0x8001F2F0 end:0x8001F314
+	.text       start:0x8036D7EC end:0x8036DA24
 
 unknownGen/unknown8036DA24.cpp:
 	.text       start:0x8036DA24 end:0x8036DA28

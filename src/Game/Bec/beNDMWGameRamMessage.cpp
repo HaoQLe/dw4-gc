@@ -248,7 +248,11 @@ igResult fn_800633C8(igObject *enumeration, const char *name, int *value);   // 
 igObject *fn_803441B4();                                                    // the FightCom enum
 igIntList *fn_803784D8(igObject *enemyWork);
 int *fn_8037858C(igIntList *list, int index);   // element index's address
-void fn_80371524(beNDMWGameRam *self, igObject *data, int baseNo, int *record);   // (hypothesis) an enemy's status list: [3] evasion down
+void fn_80371524(beNDMWGameRam *self, igObject *data, int baseNo, int *record);
+void fn_803715AC(Ref<igIntList> *result, beNDMWGameRam *self, const char *target, int exclude, const float *position);
+bool fn_803B05F4(igObject *baseWork);                 // whether a player's status work has an ailment
+int fn_80378234(igObject *baseWork);                  // the ailment's level
+void fn_803B0620(igObject *baseWork, igObject *ram);  // cures the ailment   // (hypothesis) an enemy's status list: [3] evasion down
 }
 
 // An enemy attack's record: the message carries attacks as kind * 10000 + record.
@@ -440,6 +444,169 @@ static inline int damageVariance(beNDMWGameRam *self, int damage, bool *highest)
         return (damage * 1025 + spread) / 1000;
     }
     return damage;
+}
+
+// Support magic's raise: the HP percentage and the second RAISE value by rank (record - 50).
+static int sRaiseHp[5] = {59, 68, 77, 86, 95};
+static int sRaiseValue[5] = {100, 400, 1600, 3200, 6400};
+
+// A player model's position (its PLAYER RAM's matrix's translation).
+static inline void playerPosition(beNDMWGameRam *self, beDataObjList *data, int player, float *position)
+{
+    fn_80305ED0(self->_messenger, "PLAYER", fn_803787A4(fn_8031F48C(data, "DIGIMONNAME")), player, "GETMATRIX");
+    Matrix44 matrix = fn_80306DE8(self->_messenger, 0);
+    fn_80128DAC(matrix.m, position);
+}
+
+// Tries to cure a player's ailment with a cure technique (chance: record - code + 5 - the ailment's level,
+// out of 10), with the cure effect when shown. Returns whether it cured.
+static inline bool tryCure(beNDMWGameRam *self, int player, int record, int code, bool effect)
+{
+    beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+    fn_80305ED0(self->_messenger, "PLAYER", fn_803787A4(fn_8031F48C(data, "DIGIMONNAME")), player, "GETPEBASEWORK");
+    igObject *ram = fn_80306FB4(self->_messenger, 0);
+    igObject *baseWork = fn_80306FB4(self->_messenger, 1);
+    if (!fn_803B05F4(baseWork)) return false;
+    if (record - code + 5 - fn_80378234(baseWork) < (int)(randomNumber(self) % 10)) return false;
+    fn_803B0620(baseWork, ram);
+    if (effect) playerEffect(self, player, "PLAYER", "250curehit00", "SQ_CUREEFONLY");
+    return true;
+}
+
+// Support magic: a player's technique on itself and the players around it, by the attack's code (record %
+// 10000): 40/45 heal (45 also heals those within 30 units), 55/60 cure (60 likewise), -50/50 raise the
+// downed players (PLAYER2) around it, 65 speed up, 80 power up, 75 resist up (the caster and those around).
+static void supportMagic(beNDMWGameRam *self)
+{
+    beMessenger *messenger = self->_messenger;
+    int caster = fn_80306B00(messenger, 0);
+    int target = fn_80306B00(messenger, 1);
+    int code = fn_80306B00(messenger, 2);
+    beDataObjList *data = fn_803787D8(fn_803787E8(self), caster);
+    if (caster != target) return;
+    code = attackRecord(code);
+    if (code == 40 || code == 45) {
+        int record;
+        fn_80371524(self, data, code, &record);
+        int skill = fn_8031F608(fn_80378424(self), record, "SKILL");
+        int points = *fn_8037858C(fn_8037859C(fn_8031F3FC(data, "SKILL")), skill);
+        int amount = fn_8031F608(fn_80378424(self), record, "HP") + (points + fn_803787AC(fn_8031F3CC(data, "KASHIKOSA")));
+        fn_8036F220(self, caster, amount, -1);
+        if (code == 45) {
+            float position[3];
+            playerPosition(self, data, caster, position);
+            Ref<igIntList> nearby(0);
+            fn_803715AC(&nearby, self, "PLAYER", caster, position);
+            for (int i = 0; i < nearby->_count; i++) {
+                int player = intAt(nearby, i);
+                fn_8036F220(self, player, amount, -1);
+                playerEffect(self, player, "PLAYER", "250healhit00", "SQ_HEALEFONLY");
+            }
+        }
+    } else if (code == 55 || code == 60) {
+        int record;
+        fn_80371524(self, data, code, &record);
+        int skill = fn_8031F608(fn_80378424(self), record, "SKILL");
+        fn_8037858C(fn_8037859C(fn_8031F3FC(data, "SKILL")), skill);   // (read and unused)
+        tryCure(self, caster, record, code, false);
+        if (code == 60) {
+            float position[3];
+            playerPosition(self, data, caster, position);
+            Ref<igIntList> nearby(0);
+            fn_803715AC(&nearby, self, "PLAYER", caster, position);
+            for (int i = 0; i < nearby->_count; i++) tryCure(self, intAt(nearby, i), record, code, true);
+        }
+    } else if (code == 50 || code == -50) {
+        int hp;
+        int value;
+        if (code >= 0) {
+            int record;
+            fn_80371524(self, data, code, &record);
+            hp = sRaiseHp[record - 50];
+            value = sRaiseValue[record - 50];
+        } else {
+            hp = sRaiseHp[0];
+            value = sRaiseValue[0];
+        }
+        Matrix44 matrix;
+        float position[3];
+        fn_80305ED0(messenger, "PLAYER", fn_803787A4(fn_8031F48C(data, "DIGIMONNAME")), caster, "GETMATRIX");
+        matrix = fn_80306DE8(messenger, 0);
+        fn_80128DAC(matrix.m, position);
+        Ref<igIntList> downed(0);
+        fn_803715AC(&downed, self, "PLAYER2", -1, position);
+        for (int i = 0; i < downed->_count; i++) {
+            fn_80305344(messenger, "PLAYER2", 0, intAt(downed, i));
+            fn_80306D68(messenger, matrix.m);
+            fn_80306A40(messenger, hp);
+            fn_80306A40(messenger, value);
+            fn_80305A28(messenger, "RAISE");
+        }
+    } else if (code == 65 || code == 80 || code == 75) {
+        int record;
+        fn_80371524(self, data, code, &record);
+        beDataBase *techniques = fn_80378424(self);
+        int time;
+        int values[4];
+        const char *command;
+        if (code == 65) {
+            int skill = fn_8031F608(techniques, record, "SKILL");
+            time = fn_8031F608(fn_80378424(self), record, "TIME") + fn_803787AC(fn_8031F3CC(data, "KASHIKOSA"));
+            int points = *fn_8037858C(fn_8037859C(fn_8031F3FC(data, "SKILL")), skill);
+            values[0] = points / 5 + fn_8031F608(fn_80378424(self), record, "SUBAYASA");
+            command = "SETSPEEDUP";
+        } else if (code == 80) {
+            time = fn_8031F608(fn_80378424(self), record, "TIME") + fn_803787AC(fn_8031F3CC(data, "KASHIKOSA"));
+            int skill = fn_8031F608(fn_80378424(self), record, "SKILL");
+            int bonus = *fn_8037858C(fn_8037859C(fn_8031F3FC(data, "SKILL")), skill) / 5;
+            int maxHp = bonus + fn_8031F608(fn_80378424(self), record, "MAXHP");
+            values[0] = bonus + fn_8031F608(fn_80378424(self), record, "TSUYOSA");
+            values[1] = bonus + fn_8031F608(fn_80378424(self), record, "MAMORI");
+            values[2] = maxHp;
+            command = "SETPOWERUP";
+        } else {
+            time = fn_8031F608(techniques, record, "TIME");
+            values[0] = fn_8031F608(fn_80378424(self), record, "FIRE");
+            values[1] = fn_8031F608(fn_80378424(self), record, "ICE");
+            values[2] = fn_8031F608(fn_80378424(self), record, "THUNDER");
+            values[3] = fn_8031F608(fn_80378424(self), record, "DARK");
+            command = "SETREFRACT";
+        }
+        float position[3];
+        playerPosition(self, data, caster, position);
+        Ref<igIntList> affected(0);
+        fn_803715AC(&affected, self, "PLAYER", caster, position);
+        appendInt(affected, caster);
+        for (int i = 0; i < affected->_count; i++) {
+            int player = intAt(affected, i);
+            beDataObjList *playerData = fn_803787D8(fn_803787E8(self), player);
+            if (code == 65) {
+                int critical = fn_8031F608(fn_80378424(self), record, "CHIMEIRITSU");
+                int paralysis = fn_8031F608(fn_80378424(self), record, "MHIRITSU");
+                int evasion = fn_8031F608(fn_80378424(self), record, "KAIHIRITSU");
+                fn_80306604(messenger);
+                fn_80305344(messenger, "PLAYER", fn_803787A4(fn_8031F48C(playerData, "DIGIMONNAME")), player);
+                fn_80306A40(messenger, time);
+                fn_80306A40(messenger, values[0]);
+                fn_80306A40(messenger, critical);
+                fn_80306A40(messenger, paralysis);
+                fn_80306A40(messenger, evasion);
+            } else {
+                fn_80306604(messenger);
+                fn_80305344(messenger, "PLAYER", fn_803787A4(fn_8031F48C(playerData, "DIGIMONNAME")), player);
+                fn_80306A40(messenger, time);
+                fn_80306A40(messenger, values[0]);
+                fn_80306A40(messenger, values[1]);
+                fn_80306A40(messenger, values[2]);
+                if (code == 75) fn_80306A40(messenger, values[3]);
+            }
+            fn_80305A28(messenger, command);
+            if (player != caster) playerEffect(self, player, "PLAYER", "250uphit00", "SQ_UPEFONLY");
+            fn_803067A0(messenger);
+        }
+    }
+    fn_80306AB8(messenger);
+    fn_80306A40(messenger, 1);
 }
 
 // The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
@@ -1046,6 +1213,9 @@ static void fightCalc(beNDMWGameRam *self)
         fn_8037841C(self);
         break;
     }
+    case FightCom::P2PKOUKAMAGIC:
+        supportMagic(self);
+        break;
     case FightCom::P2ESTUNTIME: {
         // player, enemy, enemy HP, damage: how long a player's hit stuns an enemy (0: no stun). The chance
         // (out of 100) grows with the paralysis rate and the damage's share of the HP and falls with the

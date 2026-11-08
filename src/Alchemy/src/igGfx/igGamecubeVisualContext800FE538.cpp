@@ -4,11 +4,11 @@
 extern "C" {
 void igGamecubeVisualContext_virtual1F4(GcVisualContext *self, int i, int *a, int *b, int *c, int *d, bool *e)
 {
-    GcRecord144 *record = &static_cast<GcRecord144 *>(self->unknown144->_data)[i];
-    *a = record->unknown9C[0];
-    *b = record->unknown9C[1];
-    *c = record->unknown9C[2];
-    *d = record->unknown9C[3];
+    GcRecord144 *entry = &record(self->unknown144, i);
+    *a = entry->unknown9C[0];
+    *b = entry->unknown9C[1];
+    *c = entry->unknown9C[2];
+    *d = entry->unknown9C[3];
     *e = false;
 }
 }

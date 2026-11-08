@@ -2,5 +2,5 @@
 #include "igGamecubeVisualContext.h"
 
 extern "C" {
-void *igGamecubeVisualContext_virtual204(GcVisualContext *self, int i) { return self->unknown148[i]; }
+int igGamecubeVisualContext_virtual204(GcVisualContext *self, int i) { return self->unknown148[i]; }
 }

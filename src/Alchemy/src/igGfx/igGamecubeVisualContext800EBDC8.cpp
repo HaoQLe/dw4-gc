@@ -3,15 +3,7 @@
 // were already cleared this frame.
 #include "igGamecubeVisualContext.h"
 
-// Frame statistics (lbl_804F6180).
-struct GcFrameStats {
-    float frames;
-    unsigned char unknown04[0x1C];
-    int clears;   // 0x20
-};
-
 extern "C" {
-extern GcFrameStats lbl_804F6180;
 extern unsigned char lbl_804F5C60[0x520];   // scratch copy target (32-byte aligned inside)
 void GXSetDispCopyDst(unsigned short width, unsigned short height);
 void GXSetColorUpdate(unsigned char enable);

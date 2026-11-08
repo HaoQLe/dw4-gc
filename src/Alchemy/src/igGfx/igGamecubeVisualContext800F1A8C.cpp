@@ -14,15 +14,7 @@ public:
     virtual void slot74();
 };
 
-// Frame statistics (lbl_804F6180).
-struct GcFrameStats {
-    float frames;
-    unsigned char unknown04[0x1C];
-    int unknown20;
-};
-
 extern "C" {
-extern GcFrameStats lbl_804F6180;
 extern const float lbl_805668C8;   // 1.0f
 extern const float lbl_805668CC;   // 0.0f
 void GXSetDrawSync(unsigned short token);

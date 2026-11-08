@@ -80,11 +80,17 @@ struct GcRecord144 {
     unsigned char unknown28[0x8];
     Meta::igObject *unknown30;  // 0x30: a counted reference
     void *buffer;               // 0x34: GXGetTexBufferSize bytes, 32-byte aligned
-    unsigned char unknown38[0x50];
-    unsigned int flags;         // 0x88
-    unsigned char unknown8C[0x10];
-    unsigned char unknown9C[4];
-    unsigned char unknownA0[4];
+    unsigned char unknown38[0x10];
+    int unknown48;
+    unsigned char unknown4C[0x3C];
+    unsigned int flags;         // 0x88: settings changed since sent
+    Meta::igObject *unknown8C;  // 0x8C: owned when ownsUnknown8C is set
+    void *unknown90;
+    int format94;               // 0x94: chosen from the channel sizes at 0x9C
+    unsigned char unknown98[0x4];
+    unsigned char unknown9C[4]; // 0x9C: four channel sizes
+    bool ownsUnknown8C;         // 0xA0
+    unsigned char unknownA1[3];
 };
 
 // A light (0xA8 bytes), kept in the light pool at 0x4F0.
@@ -171,10 +177,45 @@ struct GcMaterial {
     GcVec4 color48;
 };
 
+// Adds n zeroed records to a pool, all of them free.
+template <class T> static inline void grow(GcPool<T> *pool, int n)
+{
+    pool->data = static_cast<T *>(fn_80056358(pool->data, (pool->count + n) * sizeof(T), 16));
+    memset(&pool->data[pool->count], 0, n * sizeof(T));
+    reserveFree(pool, n);
+    for (int i = 0; i < n; i++) pool->freeList[i] = pool->count + i;
+    pool->freeCount = n;
+    pool->count += n;
+}
+
+// Takes a free record's index (the most recently freed).
+template <class T> static inline int take(GcPool<T> *pool)
+{
+    int index = pool->freeList[pool->freeCount - 1];
+    pool->freeCount--;
+    return index;
+}
+
+// Returns a record's index to the free list.
+template <class T> static inline void freeIndex(GcPool<T> *pool, int index)
+{
+    if (index < pool->count && index >= 0) {
+        if (pool->freeCount >= pool->freeCapacity) {
+            GcMemoryPool *memory = fn_8005645C(pool);
+            pool->freeCapacity += 8;
+            pool->freeList = static_cast<unsigned short *>(memory->reallocate(pool->freeList, pool->freeCapacity * sizeof(unsigned short)));
+        }
+        pool->freeList[pool->freeCount] = index;
+        pool->freeCount++;
+    }
+}
+
+template <class T> static inline T &record(GcPool<T> *pool, int i) { return pool->data[i]; }
+
 struct GcVisualContext : Meta::igVisualContext {
     unsigned char unknown140[0x144 - 0x140];
-    Meta::igDataList *unknown144;                // 0x144: records of 0xA4 bytes
-    void *unknown148[8];                         // 0x148
+    GcPool<GcRecord144> *unknown144;             // 0x144
+    int unknown148[8];                           // 0x148: bound 0x144 record per slot (-1: none)
     unsigned char unknown168[0x1A5 - 0x168];
     bool unknown1A5[8];                          // 0x1A5
     unsigned char unknown1AD[0x1BC - 0x1AD];
@@ -192,7 +233,7 @@ struct GcVisualContext : Meta::igVisualContext {
     signed char unknown3C0[16];                  // 0x3C0
     signed char unknown3D0[16];                  // 0x3D0
     signed char unknown3E0[16];                  // 0x3E0
-    Meta::igDataList *unknown3F0;                // 0x3F0: GcRecord3F0 elements
+    GcPool<GcRecord3F0> *unknown3F0;             // 0x3F0
     int unknown3F4;                              // 0x3F4: index of the current 0x3F0 record
     unsigned int clearColor;                     // 0x3F8: packed RGBA8, sent with GXSetCopyClear
     unsigned int clearColorSent;                 // 0x3FC: the clear colour of the last copy
@@ -244,6 +285,18 @@ typedef char GcVisualContextSizeCheck[sizeof(GcVisualContext) == 0x6E8 ? 1 : -1]
 
 static inline GcLight *lightAt(GcVisualContext *self, int index) { return &self->lights->data[index]; }
 
+// Frame statistics (lbl_804F6180).
+struct GcFrameStats {
+    float frames;
+    unsigned char unknown04[0x18];
+    float unknown1C;   // counted when a 0x144 record is bound
+    int clears;        // 0x20
+    unsigned char unknown24[0x10];
+    float unknown34;   // records of kind 0x0D or 0x0E bound
+    float unknown38;   // records of kind 0x22 bound
+};
+extern "C" GcFrameStats lbl_804F6180;
+
 // Bits of GcVisualContext::dirty.
 enum {
     GC_DIRTY_01 = 0x1,
@@ -287,7 +340,9 @@ public:
     virtual void slot1B8(); virtual void slot1BC(); virtual void slot1C0(); virtual void slot1C4(); virtual void slot1C8(); virtual void slot1CC();
     virtual void slot1D0(); virtual void slot1D4(); virtual void slot1D8(); virtual void slot1DC(); virtual void slot1E0(); virtual void slot1E4();
     virtual void slot1E8(); virtual void slot1EC(); virtual void slot1F0(); virtual void slot1F4(); virtual void slot1F8(); virtual void slot1FC();
-    virtual void slot200(); virtual void slot204(); virtual void slot208(); virtual void slot20C(); virtual void slot210();
+    virtual void slot200(); virtual void slot204();
+    virtual void slot208(int);   // 0x208
+    virtual void slot20C(); virtual void slot210();
     virtual int slot214(int, int, int);   // 0x214
     virtual void slot218(); virtual void slot21C(); virtual void slot220(); virtual void slot224(); virtual void slot228(); virtual void slot22C();
     virtual void slot230(); virtual void slot234(); virtual void slot238(); virtual void slot23C(); virtual void slot240(); virtual void slot244();

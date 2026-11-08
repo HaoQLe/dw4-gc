@@ -964,6 +964,7 @@ config.libs = [
             Object(Matching, "Game/Bec/beNDMWGameRam.cpp"),
             Object(Matching, "Game/Bec/beNDMWGameRamInfoAdd.cpp"),
             Object(NonMatching, "Game/Bec/beNDMWGameRamPlayer.cpp"),
+            Object(NonMatching, "Game/Bec/beNDMWGameRamQuery.cpp"),
             Object(Matching, "Game/Bec/beNDMWMdlPlayer.cpp"),
             Object(NonMatching, "Game/Bec/beNDMWMdlPlayerUpdate.cpp"),
             Object(Matching, "Game/Bec/beModelCtrlHITBOXRef.cpp"),

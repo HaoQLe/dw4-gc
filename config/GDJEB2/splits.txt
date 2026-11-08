@@ -16348,6 +16348,11 @@ unknownGen/unknown803714B0.cpp:
 	extabindex  start:0x8001F404 end:0x8001F410
 	.text       start:0x803714B0 end:0x80371524
 
+Game/Bec/beNDMWGameRamQuery.cpp:
+	extab       start:0x8000F7E0 end:0x8000F800
+	extabindex  start:0x8001F410 end:0x8001F428
+	.text       start:0x80371524 end:0x803717A4
+
 unknownGen/unknown803781CC.cpp:
 	.text       start:0x803781CC end:0x803781D4
 

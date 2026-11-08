@@ -379,6 +379,21 @@ static const char *sSkillGrowth[6] = {"BLUNT_GROW", "SLASH_GROW", "STAB_GROW", "
 // Whether an attack kind is a technique's (its skill is the technique's; otherwise the weapon's).
 static inline bool isTechnique(int kind) { return kind == 4 || (kind >= 8 && kind < 10); }
 
+// Updates a player's HUD control (target, its part) with command after a frame: an integer for the number
+// controls, a float percentage for the meters.
+static inline void hudValue(beNDMWGameRam *self, int player, const char *part, int value)
+{
+    fn_80305F9C(self->_messenger, "NUMBERCTRL", part, player);
+    fn_80306A40(self->_messenger, value);
+    fn_803061BC(self->_messenger, "SETVALUE", 1);
+}
+static inline void hudPercent(beNDMWGameRam *self, int player, const char *part, float percent)
+{
+    fn_80305F9C(self->_messenger, "METERCTRL", part, player);
+    fn_80306B28(self->_messenger, percent);
+    fn_803061BC(self->_messenger, "SETPERCENT", 1);
+}
+
 // The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
 static const char *sEnemyResist[5] = {"RES_FIRE", "RES_ICE", "RES_THUNDER", "RES_DARK", "RES_POISON"};
 
@@ -783,6 +798,63 @@ static void fightCalc(beNDMWGameRam *self)
         fn_8036FDE8(self, player, true);
         fn_8036DF70(self, player);
         playerEffect(self, player, "MODELCTRL", "i_getitempnl01", "SQ_TECUP");
+        break;
+    }
+    case FightCom::P2EEXPUP: {
+        // killer, enemy: gives every active, living player below level 999 the enemy's experience (raised by
+        // the player's experience rate and the party's size; the killer gets twice the others' share), levels
+        // them up as far as it reaches (refilling HP and MP, with a flash and the HUD updated), and answers
+        // the killer's share.
+        int killer = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int members = fn_803787AC(fn_8031F3CC(fn_803787F0(self), "NINZU"));
+        int killerShare = 0;
+        for (int player = 0; player < 4; player++) {
+            beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+            if (!fn_80361194(fn_8031F42C(data, "ISUSE"))) continue;
+            if (fn_803787AC(fn_8031F3CC(data, "HP")) == 0) continue;
+            int level = fn_803787AC(fn_8031F3CC(data, "LEVEL"));
+            if (level == 999) continue;
+            int exp = fn_8031F608(fn_803784E0(self), enemy, "EXP");
+            int rate = fn_803787AC(fn_8031F3CC(data, "EXPRITSU"));
+            if (rate != 0) exp = exp * (rate + 100) / 100;
+            switch (members) {
+            case 2: exp = exp * 140 / 3; break;
+            case 3: exp = exp * 160 / 4; break;
+            case 4: exp = exp * 200 / 5; break;
+            default: exp = exp * 100 / 2; break;
+            }
+            if (player == killer) {
+                exp = exp / 50;
+                killerShare = exp;
+            } else {
+                exp = exp / 100;
+            }
+            exp = fn_803787AC(fn_8031F3CC(data, "EXP")) + exp;
+            fn_80360DEC(fn_8031F3CC(data, "EXP"), exp);
+            bool levelled = false;
+            while (fn_803787AC(fn_8031F3CC(data, "NEXTEXP")) <= exp) {
+                level++;
+                fn_80360DEC(fn_8031F3CC(data, "LEVEL"), level);
+                fn_8036FDE8(self, player, true);
+                fn_8036DF70(self, player);
+                levelled = true;
+                if (level == 999) break;
+            }
+            if (!levelled) continue;
+            int maxHp = fn_803787AC(fn_8031F3CC(data, "MHP"));
+            int maxMp = fn_803787AC(fn_8031F3CC(data, "MMP"));
+            playerEffect(self, player, "MODELCTRL", "i_getitempnl01", "SQ_LVUP");
+            fn_80360DEC(fn_8031F3CC(data, "HP"), maxHp);
+            fn_80360DEC(fn_8031F3CC(data, "MP"), maxMp);
+            hudValue(self, player, "lvnm", level);
+            hudPercent(self, player, "hpmt", 100.0f);
+            hudValue(self, player, "hpnm", maxHp);
+            hudPercent(self, player, "mpmt", 100.0f);
+            hudValue(self, player, "mpnm", maxMp);
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, killerShare);
         break;
     }
     case FightCom::P2ESTUNTIME: {

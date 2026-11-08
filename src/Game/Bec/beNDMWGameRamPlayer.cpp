@@ -5,6 +5,42 @@
 
 extern "C" {
 
+// The number (0-15) of the Digimon whose evolution record's MODEL_NAME is name, or 0.
+int fn_8036DA28(beNDMWGameRam *self, const char *name)
+{
+    POOLED_REF(model, name);
+    for (int digimon = 0; digimon < 16; digimon++) {
+        if (fn_8031F70C(database(self, self->_dBShinka, "shinka"), digimon, "MODEL_NAME") == model.getString()) return digimon;
+    }
+    return 0;
+}
+
+// Makes digimon the player's Digimon: its number and name, and its level, experience, skills and upgrade
+// counts from its BASE_ lists. The first player's Digimon also lends the common data its flags and counters.
+void fn_8036DBA8(beNDMWGameRam *self, int player, int digimon)
+{
+    beDataObjList *data = playerData(self, player);
+    fn_8031F3CC(data, "LEVEL");
+    fn_8031F3CC(data, "DIGIMONNO")->_data = digimon;
+    const char *name = fn_8031F70C(database(self, self->_dBShinka, "shinka"), digimon, "MODEL_NAME");
+    setString(fn_8031F48C(data, "DIGIMONNAME")->_data, name);
+    fn_8031F3CC(data, "LEVEL")->_data = intAt(fn_8031F3FC(data, "BASE_LEVEL")->_data, digimon);
+    fn_8031F3CC(data, "EXP")->_data = intAt(fn_8031F3FC(data, "BASE_EXP")->_data, digimon);
+    for (int i = 0; i < 9; i++) {
+        int skill = intAt(fn_8031F3FC(data, "BASE_SKILL")->_data, digimon * 9 + i);
+        setValueAt(fn_8031F3FC(data, "SKILL")->_data, i, skill);
+    }
+    for (int i = 0; i < 11; i++) {
+        int count = intAt(fn_8031F3FC(data, "BASE_UPCNT")->_data, digimon * 11 + i);
+        setValueAt(fn_8031F3FC(data, "UPCNT")->_data, i, count);
+    }
+    if (player == 0) {
+        setRef(fn_8031F45C(self->_commonDataList, "FLAG")->_data, fn_8031F45C(data, "BASE_FLAG")->_data);
+        setRef(fn_8031F45C(self->_commonDataList, "FLAGFOLDER")->_data, fn_8031F45C(data, "BASE_FLAGFOLDER")->_data);
+        setRef(fn_8031F3FC(self->_commonDataList, "COUNTER")->_data, fn_8031F3FC(data, "BASE_COUNTER")->_data);
+    }
+}
+
 // Saves the player's current Digimon's level, experience, skills and upgrade counts in its BASE_ lists.
 void fn_8036DF70(beNDMWGameRam *self, int player)
 {
@@ -21,6 +57,85 @@ void fn_8036DF70(beNDMWGameRam *self, int player)
     for (int i = 0; i < 11; i++) {
         int count = intAt(fn_8031F3FC(data, "UPCNT")->_data, i);
         setValueAt(fn_8031F3FC(data, "BASE_UPCNT")->_data, digimon * 11 + i, count);
+    }
+}
+
+// The evolution database's fields naming a Digimon's three starting weapons.
+static const char *sStartWeapons[3] = {"INI_WEAPON1", "INI_WEAPON2", "INI_WEAPON3"};
+
+// Empties the player's device folder and gives it its Digimon's three starting weapons.
+void fn_8036E124(beNDMWGameRam *self, int player)
+{
+    beDataObjList *data = playerData(self, player);
+    igObjectList *devices = fn_8031F4EC(data, "DEVICEFOLDER")->_data;
+    int digimon = fn_8031F3CC(data, "DIGIMONNO")->_data;
+    removeAll(devices);
+    for (int i = 0; i < 3; i++) {
+        Ref<beNDMWItemWeapon> weapon(beNDMWItemWeapon_create(poolFor(self, lbl_80562258)), Ref<beNDMWItemWeapon>::adopt);
+        fn_803B0CB4(weapon, fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, sStartWeapons[i]), 0, 0);
+        fn_80069128(devices, weapon);
+    }
+}
+
+// Equips the player's weapons (devices of kind 0) in its power socket, recording their model names. Without
+// autoEquip, the first three; with it, only the strongest (TSUYOSA) the Digimon can equip and has the skill
+// for.
+void fn_8036E3B8(beNDMWGameRam *self, int player, bool autoEquip)
+{
+    beDataObjList *data = playerData(self, player);
+    igObjectList *devices = fn_8031F4EC(data, "DEVICEFOLDER")->_data;
+    if (!autoEquip) {
+        igObjectList *socket = fn_8031F4EC(data, "POWERSOCKET")->_data;
+        igStringRefList *names = fn_8031F4BC(data, "POWERSOCKETNAME")->_data;
+        removeAll(socket);
+        clearStrings(names);
+        int count = devices->_count;
+        for (int i = 0; i < count; i++) {
+            if (socket->_count == 3) return;
+            beNDMWItemBase *device = item<beNDMWItemBase>(devices, i);
+            if (device->_kindNo == 0) {
+                fn_80069128(socket, device);
+                POOLED_REF(model, fn_803B0790(device, self, "MODEL"));
+                fn_8002080C(names, model);
+                device->_isEquip = true;
+            }
+        }
+        return;
+    }
+    int digimon = fn_8031F3CC(data, "DIGIMONNO")->_data;
+    igIntList *skills = fn_8031F3FC(data, "SKILL")->_data;
+    igObjectList *socket = fn_8031F4EC(data, "POWERSOCKET")->_data;
+    igStringRefList *names = fn_8031F4BC(data, "POWERSOCKETNAME")->_data;
+    for (int i = 0; i < devices->_count; i++) {
+        beNDMWItemBase *device = item<beNDMWItemBase>(devices, i);
+        if (device->_kindNo == 0) device->_isEquip = false;
+    }
+    fn_80068FCC(socket, 0);
+    clearStrings(names);
+    int bit = 1 << digimon;
+    int bestStrength = 0;
+    int best = -1;
+    int count = devices->_count;
+    for (int i = 0; i < count; i++) {
+        beNDMWItemBase *device = item<beNDMWItemBase>(devices, i);
+        if (device->_kindNo == 0) {
+            int fits = bit & fn_803B06F0(device, self, "SOUBI");
+            int skill = fn_803B06F0(device, self, "SKILL");
+            int points = fn_803B06F0(device, self, "SKILLPOINT");
+            if (fits && intAt(skills, skill) >= points) {
+                if (best < 0 || bestStrength < fn_803B06F0(device, self, "TSUYOSA")) {
+                    best = i;
+                    bestStrength = fn_803B06F0(device, self, "TSUYOSA");
+                }
+            }
+        }
+    }
+    if (best >= 0) {
+        beNDMWItemBase *weapon = item<beNDMWItemBase>(devices, best);
+        setObjectAt(socket, 0, weapon);
+        POOLED_REF(model, fn_803B0790(weapon, self, "MODEL"));
+        fn_8002080C(names, model);
+        weapon->_isEquip = true;
     }
 }
 
@@ -53,13 +168,13 @@ bool fn_8036E9D4(beNDMWGameRam *self, int player, int digimon)
     return false;
 }
 
-// Makes request's Digimon the player's and the player active: loads its data, equipment and stats, marks
+// Makes the Digimon named model the player's and the player active: loads its data, equipment and stats, marks
 // it in BASE_ISUSE and recounts the players (NINZU).
-void fn_8036EB0C(beNDMWGameRam *self, int player, int request)
+void fn_8036EB0C(beNDMWGameRam *self, int player, const char *model)
 {
     beDataObjList *common = self->_commonDataList;
     beDataObjList *data = playerData(self, player);
-    int digimon = fn_8036DA28(self, request);
+    int digimon = fn_8036DA28(self, model);
     fn_8036DBA8(self, player, digimon);
     fn_8036E124(self, player);
     fn_8036E3B8(self, player, 0);
@@ -112,6 +227,40 @@ bool fn_8036F364(beNDMWGameRam *self, int player, int delta)
     fn_80306A40(self->_messenger, mp);
     fn_80305A28(self->_messenger, "SETVALUE");
     return true;
+}
+
+// Activates the player with the Digimon named model and names the player text (at most 8 characters,
+// converted to Unicode by the font manager).
+void fn_8036EC3C(beNDMWGameRam *self, int player, const char *model, const char *const &text)
+{
+    fn_8036EB0C(self, player, model);
+    beDataObjList *data = playerData(self, player);
+    Ref<beUnicodeObj> name(beUnicodeObj_create(poolFor(self, lbl_80562258)), Ref<beUnicodeObj>::adopt);
+    fn_802FC878(name, 8);
+    {
+        Ref<beUnicodeObj> converted(fn_802FB59C(fn_8028A730(self->_insight, *reinterpret_cast<void **>(beFont_meta)), text));
+        unsigned short *to = static_cast<unsigned short *>(name->_buffer);
+        const unsigned short *from = static_cast<const unsigned short *>(converted->_buffer);
+        int i = 0;
+        while (i < 8) {
+            to[i] = from[i];
+            if (from[i] == 0) break;
+            i++;
+        }
+        for (; i < 8; i++) to[i] = 0;
+    }
+    igObjectList *names = fn_8031F4EC(data, "PLAYERNAME")->_data;
+    if (names->_count != 0) removeAll(names);
+    fn_80069128(names, name);
+}
+
+// Activates the player with the Digimon named model and gives it name.
+void fn_8036EFF4(beNDMWGameRam *self, int player, const char *model, const Ref<beUnicodeObj> &name)
+{
+    fn_8036EB0C(self, player, model);
+    igObjectList *names = fn_8031F4EC(playerData(self, player), "PLAYERNAME")->_data;
+    if (names->_count != 0) removeAll(names);
+    fn_80069128(names, name);
 }
 
 // Marks a player as not taking part and recounts the players who do (NINZU).

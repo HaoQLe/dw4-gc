@@ -19,6 +19,13 @@
 #include <meta/beDataObjBoolList.h>
 #include <meta/beDataObjIntList.h>
 #include <meta/beDataObjObjectList.h>
+#include <meta/beDataObjString.h>
+#include <meta/beDataBase.h>
+#include <meta/beNDMWItemWeapon.h>
+#include <meta/beUnicodeObj.h>
+#include <meta/beDataObjStringList.h>
+#include <meta/igStringRefList.h>
+#include <game/StringPool.h>
 #include <game/List.h>
 #include <game/Pool.h>
 #include <game/Ref.h>
@@ -54,11 +61,58 @@ const char *fn_803B0790(beNDMWItemBase *item, igObject *owner, const char *field
 
 extern "C" {
 extern bool lbl_80561412;           // true: the value BASE_ISUSE takes for an active player's Digimon
-int fn_8036DA28(beNDMWGameRam *self, int request);    // (below) the Digimon a request selects
+int fn_8036DA28(beNDMWGameRam *self, const char *name);   // (below) the Digimon with a model name
 void fn_8036DBA8(beNDMWGameRam *self, int player, int digimon);
 void fn_8036E124(beNDMWGameRam *self, int player);
-void fn_8036E3B8(beNDMWGameRam *self, int player, int);
+void fn_8036E3B8(beNDMWGameRam *self, int player, bool autoEquip);
 void fn_8036FDE8(beNDMWGameRam *self, int player, int);
+}
+
+extern "C" const char *fn_8031F70C(beDataBase *database, int record, const char *field);   // a record's string field
+
+// A database, requested from the DATABASE manager by name (GETDATABASE) on first use.
+static inline beDataBase *database(beNDMWGameRam *self, beDataBase *&member, const char *name)
+{
+    if (!member) {
+        fn_80305ED0(self->_messenger, "DATABASE", name, 0, "GETDATABASE");
+        beDataBase *loaded = static_cast<beDataBase *>(fn_80306FB4(self->_messenger, 0));
+        if (loaded) addRef(loaded);
+        if (member) release(member);
+        member = loaded;
+    }
+    return member;
+}
+
+extern "C" {
+extern char beFont_meta[];
+beNDMWItemWeapon *beNDMWItemWeapon_create(void *pool);
+void fn_803B0CB4(beNDMWItemWeapon *weapon, int record, int, int);   // sets a weapon up from its database record
+int fn_8031F608(beDataBase *database, int record, const char *field);   // a record's integer field
+beUnicodeObj *beUnicodeObj_create(void *pool);
+void fn_802FC878(beUnicodeObj *text, int length);                   // sizes a text's buffer (in characters)
+}
+// The font manager's conversion of text to Unicode (a new reference, returned through a hidden pointer).
+extern "C" Ref<beUnicodeObj> fn_802FB59C(igObject *font, const char *text);
+
+using Gap::Core::igStringRef;
+extern "C" void fn_8002080C(igStringRefList *list, igStringRef string);   // appends a string (by value)
+extern "C" void fn_80068FCC(igObjectList *list, int);   // (hypothesis) empties an object list
+
+// Empties a string list, releasing its strings (as beFileList.h's).
+static inline void clearStrings(igStringRefList *names)
+{
+    int count = names->_count;
+    for (int i = 0; i < count; i++) setString(static_cast<const char **>(names->_data)[i], 0);
+    names->_count = 0;
+}
+
+// Sets an element of an object list, holding a new reference (as beNDMWMdlItem.h's).
+static inline void setObjectAt(igObjectList *list, int index, igObject *object)
+{
+    if (object) addRef(object);
+    igObject *old = static_cast<igObject **>(list->_data)[index];
+    if (old) release(old);
+    if (list->_count != 0 && index >= 0 && index < list->_count) static_cast<igObject **>(list->_data)[index] = object;
 }
 
 // Element i of an int list.

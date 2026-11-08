@@ -16338,6 +16338,11 @@ Game/Bec/beNDMWGameRamInfoAdd.cpp:
 unknownGen/unknown8036DA24.cpp:
 	.text       start:0x8036DA24 end:0x8036DA28
 
+Game/Bec/beNDMWGameRamPlayer.cpp:
+	extab       start:0x8000F6B0 end:0x8000F7D8
+	extabindex  start:0x8001F314 end:0x8001F404
+	.text       start:0x8036DA28 end:0x803714B0
+
 unknownGen/unknown803714B0.cpp:
 	extab       start:0x8000F7D8 end:0x8000F7E0
 	extabindex  start:0x8001F404 end:0x8001F410

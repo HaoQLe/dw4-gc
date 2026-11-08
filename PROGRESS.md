@@ -4,6 +4,13 @@ Updated: 2026-11-07. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Game RAM batch (user choice 2026-11-07: readable game subsystem over more generator work):** active on `task/gameram`.
+  - **Targets:** `beNDMWGameRam` region `0x8036D224..0x80378818`, 40 functions, 45,100 unrecovered code bytes: the class's virtuals (`virtual64/68/6C/90`), helpers `fn_8036DA28..fn_803715AC` and `fn_80378124..fn_803787D8`.
+  - **Why:** the largest coherent candidate (beFont, beSelectCtrl and beDemoManager are 1-4 KB each); reflected layout known; players and chips already use it. `virtual90` (27,008 bytes) is the script game-state API: it reads and writes fields by name (`HP`, `MHP`, `TSUYOSA`, `FLAG`, `COUNTER`, ...) from the string pool at `0x80458F30`.
+  - **Unknowns:** the message argument API (`fn_80306xxx`), database lookups (`fn_8031Fxxx`), per-player data layout, `virtual90` register allocation (`stmw r20`); the unit must own the string pool and jump tables `0x804EB18C`/`0x804EB1E4`.
+  - **Baseline:** `gate.sh batch-baseline` (`20261107-174231`): matched code 40.453240%, linked 40.382156%, matched data 18.019411%, 17,437 functions.
+  - **Linked so far:** `virtual64`, `virtual68`, `virtual6C` and four `Ref<>` destructors (`5ead2eeb`).
+  - **Key constraint:** the original file (`fn_8036CE1C..0x80378818`) uses string literals; MWCC pools them (and its float constants) at `0x80458F30..0x80459944` in first-use order and addresses them from one base register. An extern pool struct (reference, pointer or defined copy) never reproduces that base reuse; literals do. So every function naming a field can only match in one unit covering the whole file, including `virtual90`. Until then they are readable NonMatching source with literals.
 - **Generator round 8 (user request 2026-11-07):** stopped after measurement; no game code changed. Of the 2.41 MB left, no single cause blocks more than 16%: `exit shape` (388 KB, 462 functions) splits into loop control flow (313 KB), short-circuit `while` conditions (27 KB) and small switch cases. Experiment `eadece96` on `task/generator-round8` (not run through `cycle.sh`) makes 2 more functions exact alone. Recommendation: return to readable subsystems. See [round 8 measurement](docs/research/2026-11-07-generator-round8-measurement.md).
 - **Verification tooling (user request 2026-11-07):** complete on `work`; no game code changed.
   - Project `/verify` skill (`.claude/skills/verify/`): `doctor.sh`, `gate.sh` (forces the checksum recheck; writes `summary.json`) and `unit.sh`, plus a feature map.

@@ -12,6 +12,13 @@
 #include <meta/beDataObjListList.h>
 #include <meta/beBaseInfoList.h>
 #include <meta/beBaseInfoRamList.h>
+#include <meta/beNDMWItemBase.h>
+#include <meta/igBoolList.h>
+#include <meta/igIntList.h>
+#include <meta/beDataObjBool.h>
+#include <meta/beDataObjBoolList.h>
+#include <meta/beDataObjIntList.h>
+#include <meta/beDataObjObjectList.h>
 #include <game/List.h>
 #include <game/Pool.h>
 #include <game/Ref.h>
@@ -34,6 +41,38 @@ template <class T> static inline void clearAndShrink(T *&list)
 {
     removeAll(list);
     if (list->_count <= 0) fn_8004155C(list, 0, 4);
+}
+
+// The original file's strings and constants are literals: the compiler pools them at 0x80458F30..0x80459944 in
+// first-use order and addresses them from one base register, so the functions using them can only match
+// together, in one unit covering the whole file (fn_8036CE1C..0x80378818).
+
+extern "C" {
+int fn_803B06F0(beNDMWItemBase *item, igObject *owner, const char *field);   // field of the item's database record
+const char *fn_803B0790(beNDMWItemBase *item, igObject *owner, const char *field);   // text field of the record
+}
+
+extern "C" {
+extern bool lbl_80561412;           // true: the value BASE_ISUSE takes for an active player's Digimon
+int fn_8036DA28(beNDMWGameRam *self, int request);    // (below) the Digimon a request selects
+void fn_8036DBA8(beNDMWGameRam *self, int player, int digimon);
+void fn_8036E124(beNDMWGameRam *self, int player);
+void fn_8036E3B8(beNDMWGameRam *self, int player, int);
+void fn_8036FDE8(beNDMWGameRam *self, int player, int);
+}
+
+// Element i of an int list.
+static inline int &intAt(igDataList *list, int i) { return static_cast<int *>(list->_data)[i]; }
+
+// An equipped item with a bonus (hypothesis: the amount added to the stat its SHUSEINOURYOKU names).
+struct BonusItem : beNDMWItemBase {
+    int unknown14;
+};
+
+// Player player's data list.
+static inline beDataObjList *playerData(beNDMWGameRam *self, int player)
+{
+    return item<beDataObjList>(self->_playerDataListList, player);
 }
 
 #endif

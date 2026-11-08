@@ -55,6 +55,16 @@ gate before calling anything complete. Full recipes live in
 | whole build is exact (publication gate) | `.claude/skills/verify/scripts/gate.sh <label>` |
 | what to work on next | `/opt/homebrew/bin/python3 tools/decomp.py rank --limit 30` |
 
+`unit.sh`, `decomp.py scratch` and `decomp.py verify` share exit codes, and
+`--json` on the last two prints the same verdict as JSON:
+
+| Exit | Status | Meaning | Next step |
+|---|---|---|---|
+| 0 | `exact` | bytes, sections, symbols, relocations identical | link it, run `gate.sh` |
+| 1 | `mismatch` | bytes, section attributes, function extents or relocation targets differ | keep iterating |
+| 2 | `error` | bad selector, missing file, compiler failure | fix the input, not the code |
+| 3 | `metadata` | identical except section order, symbol binding or compiler-local `@` label names (`ignored` lists which) | link it; only `gate.sh` checksum can accept it |
+
 ## Isolation
 
 - `unit.sh` / `decomp.py scratch` compile into a private temp dir and touch no
@@ -74,15 +84,18 @@ committed):
 - `gate.sh` → `<timestamp>-<label>/`: `head.txt`, `status.txt`, one log per
   step, `summary.txt` (per-step exit codes), `dol.sha1`, `report.json`,
   `progress.txt`.
-- `unit.sh` → `units/<unit>-<timestamp>.txt`: full per-section/per-function
-  objdiff percentages, the exact-verifier verdict and exit code.
+- `gate.sh` also writes `summary.json`:
+  `{"passed", "head", "steps": {name: exit}, "sha1", "evidence"}`. `passed`
+  is true only when every step ran and exited 0.
+- `unit.sh` → `units/<unit>-<timestamp>.txt` (full per-section/per-function
+  objdiff percentages, verdict, exit code) and a `.json` twin from
+  `decomp.py scratch --json`.
 
 Proof standards for this repo:
 
-- **Exact, not fuzzy.** A unit is proven only by `exact: N allocated bytes;
-  F functions; R relocations` (exit 0) or by an explained, previously-known
-  metadata exception (see `features/unit-scratch.md` Gotchas) **plus** the
-  DOL SHA-1. 100% objdiff alone is investigation evidence.
+- **Exact, not fuzzy.** A unit is proven only by exit 0 (`exact`) or exit 3
+  (`metadata`) **plus** the DOL SHA-1 after linking it. Exit 3 is never
+  enough on its own. 100% objdiff alone is investigation evidence.
 - **Link, then checksum.** Enabling `Matching` in `configure.py` is the change
   under test; prove it by `gate.sh` reporting `checksum exit=0`. Never edit
   `build.sha1`, compiler pins or flags to make a check pass.

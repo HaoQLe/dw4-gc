@@ -1,9 +1,14 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-10-25. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-11-07. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
+- **Verification tooling (user request 2026-11-07):** complete on `work`; no game code changed.
+  - Project `/verify` skill (`.claude/skills/verify/`): `doctor.sh`, `gate.sh` (forces the checksum recheck; writes `summary.json`) and `unit.sh`, plus a feature map.
+  - `decomp.py scratch`/`verify` now separate metadata-only differences (section order, symbol binding, compiler-local `@` label names) from real mismatches. Exit codes: 0 exact, 1 mismatch, 2 tool/input error, 3 metadata only. `--json` prints the verdict. Exit 3 still needs the DOL checksum after linking.
+  - Checks: `test_decomp` 26/26; on real units `igIntMetaField` exits 0, `beNDMWMdlItem` and `CARDCheck` (linked, checksum-proven) exit 3, `beModelCtrlMessage` (partial) exits 1; `gate.sh` passes with `build.sha1` OK. Report unchanged.
+  - Keep the feature map current with `/maintain-verification-skill` after each batch.
 - **Model controller batch (user request 2026-10-24: a big game-subsystem batch, readable for the PC port):** closed 2026-10-25; integrated into `work`.
   - **Targets (69 functions, 42,548 unmatched code bytes at the start):**
     - `beModelCtrl`'s own virtuals and helpers, `0x803082A4..0x8030F9C0`;

@@ -10,6 +10,7 @@ from pathlib import Path
 from tools.decomp import (
     UserInputError,
     VerificationError,
+    classify_objects,
     private_compile_command,
     rank_candidates,
     resolve_unit,
@@ -26,6 +27,7 @@ def make_elf(
     target_name="target",
     extra_function=False,
     reverse_functions=False,
+    function_binding=1,
 ):
     section_names = b"\0.text\0.rela.text\0.symtab\0.strtab\0.shstrtab\0"
     names = ["func"]
@@ -56,7 +58,7 @@ def make_elf(
         function_symbols.reverse()
     symbol_parts = [b"\0" * 16]
     symbol_parts.extend(
-        struct.pack(">IIIBBH", name, value, size, 0x12, 0, 1)
+        struct.pack(">IIIBBH", name, value, size, (function_binding << 4) | 2, 0, 1)
         for name, value, size in function_symbols
     )
     target_name_offset = strings.index(target_name.encode())
@@ -205,6 +207,63 @@ class VerifyObjectsTests(unittest.TestCase):
 
         with self.assertRaisesRegex(VerificationError, "symbol table entry size"):
             verify_objects(self.target, self.candidate)
+
+
+class ClassifyObjectsTests(unittest.TestCase):
+    def setUp(self):
+        self.tempdir = tempfile.TemporaryDirectory()
+        self.root = Path(self.tempdir.name)
+        self.target = self.root / "target.o"
+        self.candidate = self.root / "candidate.o"
+
+    def tearDown(self):
+        self.tempdir.cleanup()
+
+    def test_identical_objects_are_exact(self):
+        make_elf(self.target)
+        make_elf(self.candidate)
+
+        result = classify_objects(self.target, self.candidate)
+
+        self.assertEqual((result.status, result.exit_code), ("exact", 0))
+
+    def test_binding_only_difference_is_metadata(self):
+        make_elf(self.target, function_binding=0)
+        make_elf(self.candidate)
+
+        result = classify_objects(self.target, self.candidate)
+
+        self.assertEqual((result.status, result.exit_code), ("metadata", 3))
+        self.assertEqual(result.ignored, ("symbol-binding",))
+        self.assertIn("function symbols differ", result.detail)
+        with self.assertRaises(VerificationError):
+            verify_objects(self.target, self.candidate)
+
+    def test_byte_difference_stays_a_mismatch_despite_binding(self):
+        make_elf(self.target, function_binding=0)
+        make_elf(self.candidate, text=b"\x60\x00\x00\x01")
+
+        self.assertEqual(classify_objects(self.target, self.candidate).status, "mismatch")
+
+    def test_renamed_undefined_at_symbol_is_a_mismatch(self):
+        make_elf(self.target, target_name="@1")
+        make_elf(self.candidate, target_name="@2")
+
+        self.assertEqual(classify_objects(self.target, self.candidate).status, "mismatch")
+
+    def test_verify_json_reports_status_and_exit_code(self):
+        make_elf(self.target, function_binding=0)
+        make_elf(self.candidate)
+        output = io.StringIO()
+
+        with contextlib.redirect_stdout(output):
+            status = main(["verify", "--json", str(self.target), str(self.candidate)])
+
+        report = json.loads(output.getvalue())
+        self.assertEqual(status, 3)
+        self.assertEqual(report["status"], "metadata")
+        self.assertEqual(report["ignored"], ["symbol-binding"])
+        self.assertEqual(report["allocated_bytes"], 4)
 
 
 class UnitSelectionTests(unittest.TestCase):
@@ -380,7 +439,7 @@ class CommandTests(unittest.TestCase):
         with contextlib.redirect_stderr(errors):
             status = main(["verify", str(self.root / "missing.o"), "other.o"])
 
-        self.assertEqual(status, 1)
+        self.assertEqual(status, 2)
         self.assertIn("missing.o", errors.getvalue())
 
     def test_scratch_reports_captured_ninja_diagnostic(self):
@@ -399,7 +458,7 @@ class CommandTests(unittest.TestCase):
         with contextlib.redirect_stderr(errors):
             status = main(["scratch", "main/foo", "--root", str(self.root)])
 
-        self.assertEqual(status, 1)
+        self.assertEqual(status, 2)
         self.assertIn("No such file or directory", errors.getvalue())
 
     def test_rank_command_emits_stable_json(self):

@@ -80,6 +80,12 @@ Run the generic object check when a candidate appears exact:
   build/GDJEB2/src/path/to/unit.o
 ```
 
+`scratch` and `verify` share exit codes: 0 exact, 1 mismatch, 2 tool or
+input error, 3 metadata only (identical apart from section order, symbol
+binding or compiler-local `@` label names, which only the linked DOL checksum
+can settle). Add `--json` for a machine-readable verdict. The project
+`/verify` skill (`.claude/skills/verify/`) wraps these with saved evidence.
+
 Then perform the batch-specific gates described in `AGENTS.md`: expected
 function/range coverage, emitted-artifact review, link-map source provenance,
 all configured source compilation, report deltas, and the pinned DOL checksum.

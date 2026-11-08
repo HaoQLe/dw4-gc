@@ -49,6 +49,7 @@ class ScratchResult:
     verification: VerificationSummary = None
     verification_error: str = None
     scratch_path: str = None
+    classification: "Classification" = None
 
 
 @dataclass(frozen=True)
@@ -243,6 +244,91 @@ def verify_objects(target_path, candidate_path):
     )
 
 
+EXACT, MISMATCH, TOOL_ERROR, METADATA_ONLY = 0, 1, 2, 3
+
+
+@dataclass(frozen=True)
+class Classification:
+    """Result of an exact comparison, sorted into one of three outcomes.
+
+    "exact": verify_objects passes. "metadata": bytes, section attributes,
+    function extents and relocation targets are identical once section order,
+    symbol binding and compiler-local "@" label names are ignored; only the
+    linked DOL checksum can settle these. "mismatch": anything else.
+    """
+
+    status: str
+    detail: str = None
+    ignored: tuple = ()
+    summary: VerificationSummary = None
+
+    @property
+    def exit_code(self):
+        return {"exact": EXACT, "metadata": METADATA_ONLY, "mismatch": MISMATCH}[self.status]
+
+    def as_dict(self):
+        result = {"status": self.status, "exit_code": self.exit_code}
+        if self.detail:
+            result["detail"] = self.detail
+        if self.ignored:
+            result["ignored"] = list(self.ignored)
+        if self.summary:
+            result.update(asdict(self.summary))
+        return result
+
+
+def _unbound(symbol):
+    return symbol[:3] + symbol[4:]
+
+
+def _relocation_key(relocation):
+    symbol = _unbound(relocation[4])
+    # Defined compiler-local labels (@123, @etb_...) are renamed freely; their
+    # value, size and section still pin the target.
+    if symbol[0].startswith("@") and isinstance(symbol[-1], str):
+        symbol = ("@",) + symbol[1:]
+    return relocation[:4] + (symbol,)
+
+
+def classify_objects(target_path, candidate_path):
+    """Compare like verify_objects, separating metadata-only differences."""
+    try:
+        return Classification("exact", summary=verify_objects(target_path, candidate_path))
+    except VerificationError as error:
+        detail = str(error)
+    target = _read_elf(target_path)
+    candidate = _read_elf(candidate_path)
+    ignored = []
+    if sorted(target.sections) != sorted(candidate.sections):
+        return Classification("mismatch", detail)
+    if target.sections != candidate.sections:
+        ignored.append("section-order")
+    if sorted(map(_unbound, target.functions)) != sorted(map(_unbound, candidate.functions)):
+        return Classification("mismatch", detail)
+    if target.functions != candidate.functions:
+        ignored.append("symbol-binding")
+    target_relocations = sorted(map(_relocation_key, target.relocations))
+    if target_relocations != sorted(map(_relocation_key, candidate.relocations)):
+        return Classification("mismatch", detail)
+    if sorted(r[:4] + (_unbound(r[4]),) for r in target.relocations) != sorted(
+        r[:4] + (_unbound(r[4]),) for r in candidate.relocations
+    ):
+        ignored.append("local-label-names")
+    elif "symbol-binding" not in ignored and target.relocations != candidate.relocations:
+        ignored.append("symbol-binding")
+    return Classification(
+        "metadata",
+        detail,
+        tuple(ignored),
+        VerificationSummary(
+            allocated_sections=len(target.sections),
+            allocated_bytes=sum(section[3] for section in target.sections),
+            functions=len(target.functions),
+            relocations=len(target.relocations),
+        ),
+    )
+
+
 def resolve_unit(units, selector, require_source=False):
     """Resolve an objdiff unit using exact keys first, then a unique suffix."""
     def keys(unit):
@@ -411,18 +497,15 @@ def _run_scratch_in(root, unit, scratch_path, keep, source_override):
         for symbol in left.get("symbols", [])
         if symbol.get("name")
     )
-    try:
-        verification = verify_objects(root / unit["target_path"], candidate)
-        verification_error = None
-    except VerificationError as error:
-        verification = None
-        verification_error = str(error)
+    classification = classify_objects(root / unit["target_path"], candidate)
+    exact = classification.status == "exact"
     return ScratchResult(
         section_matches=sections,
         function_matches=functions,
-        verification=verification,
-        verification_error=verification_error,
+        verification=classification.summary if exact else None,
+        verification_error=None if exact else classification.detail,
         scratch_path=str(scratch_path) if keep else None,
+        classification=classification,
     )
 
 
@@ -465,7 +548,9 @@ def _print_rank_table(rows):
 
 def _parser():
     parser = argparse.ArgumentParser(
-        description="Private compile, exact verification, and target ranking"
+        description="Private compile, exact verification, and target ranking",
+        epilog=EXIT_CODES_HELP,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     commands = parser.add_subparsers(dest="command", required=True)
 
@@ -478,9 +563,12 @@ def _parser():
     )
     scratch.add_argument("--keep", action="store_true", help="retain the temporary directory")
 
+    scratch.add_argument("--json", action="store_true", dest="as_json")
+
     verify = commands.add_parser("verify", help="compare two relocatable objects exactly")
     verify.add_argument("target")
     verify.add_argument("candidate")
+    verify.add_argument("--json", action="store_true", dest="as_json")
 
     rank = commands.add_parser("rank", help="rank actionable units from a report")
     rank.add_argument("--report", default="build/GDJEB2/report.json")
@@ -492,44 +580,81 @@ def _parser():
     return parser
 
 
+EXIT_CODES_HELP = """exit codes (scratch, verify):
+  0  exact
+  1  mismatch: bytes, section attributes, function extents or relocation targets differ
+  2  tool or input error (bad selector, missing file, compiler failure)
+  3  metadata only: identical apart from section order, symbol binding or
+     compiler-local @label names; only the linked DOL checksum can settle it"""
+
+
+def _print_classification(classification, scratch_path=None):
+    if classification.status == "mismatch":
+        print("error: %s" % classification.detail, file=sys.stderr)
+    else:
+        summary = classification.summary
+        print(
+            "%s: %d allocated bytes in %d sections; %d functions; %d relocations"
+            % (
+                "exact" if classification.status == "exact" else "metadata-only",
+                summary.allocated_bytes,
+                summary.allocated_sections,
+                summary.functions,
+                summary.relocations,
+            )
+        )
+        if classification.ignored:
+            print(
+                "ignored: %s (strict check: %s); confirm with the DOL checksum"
+                % (", ".join(classification.ignored), classification.detail)
+            )
+    if scratch_path:
+        print("retained: %s" % scratch_path)
+
+
 def main(argv=None):
     args = _parser().parse_args(argv)
+    as_json = getattr(args, "as_json", False)
+
+    def fail(message, detail=None):
+        if as_json and args.command != "rank":
+            print(json.dumps({"status": "error", "exit_code": TOOL_ERROR, "detail": message}))
+        print("error: %s" % message, file=sys.stderr)
+        if detail:
+            print(detail, file=sys.stderr)
+        return TOOL_ERROR
+
     try:
         if args.command == "verify":
-            result = verify_objects(args.target, args.candidate)
-            print(
-                "exact: %d allocated bytes in %d sections; %d functions; %d relocations"
-                % (
-                    result.allocated_bytes,
-                    result.allocated_sections,
-                    result.functions,
-                    result.relocations,
-                )
-            )
+            classification = classify_objects(args.target, args.candidate)
+            if as_json:
+                print(json.dumps(classification.as_dict(), indent=2))
+            else:
+                _print_classification(classification)
+            return classification.exit_code
         elif args.command == "scratch":
             root = Path(args.root).resolve()
             config_path = root / args.config
             unit = resolve_unit(_load_json(config_path)["units"], args.unit, True)
             result = scratch_unit(root, unit, args.keep, args.source)
-            for name, percent in result.section_matches:
-                print("section %s: %s%%" % (name, percent))
-            for name, percent in result.function_matches:
-                print("function %s: %s%%" % (name, percent))
-            if result.verification_error:
-                print("error: %s" % result.verification_error, file=sys.stderr)
+            classification = result.classification
+            if as_json:
+                report = {"unit": unit["name"]}
+                report.update(classification.as_dict())
+                report["sections"] = dict(result.section_matches)
+                report["functions_below_100"] = {
+                    name: percent for name, percent in result.function_matches if percent < 100
+                }
                 if result.scratch_path:
-                    print("retained: %s" % result.scratch_path)
-                return 1
-            print(
-                "exact: %d allocated bytes; %d functions; %d relocations"
-                % (
-                    result.verification.allocated_bytes,
-                    result.verification.functions,
-                    result.verification.relocations,
-                )
-            )
-            if result.scratch_path:
-                print("retained: %s" % result.scratch_path)
+                    report["retained"] = result.scratch_path
+                print(json.dumps(report, indent=2))
+            else:
+                for name, percent in result.section_matches:
+                    print("section %s: %s%%" % (name, percent))
+                for name, percent in result.function_matches:
+                    print("function %s: %s%%" % (name, percent))
+                _print_classification(classification, result.scratch_path)
+            return classification.exit_code
         else:
             rows = rank_candidates(
                 _load_json(args.report),
@@ -543,16 +668,12 @@ def main(argv=None):
             else:
                 _print_rank_table(rows)
     except subprocess.CalledProcessError as error:
-        print("error: %s" % error, file=sys.stderr)
         detail = error.stderr or error.stdout
         if isinstance(detail, bytes):
             detail = detail.decode(errors="replace")
-        if detail and detail.strip():
-            print(detail.strip(), file=sys.stderr)
-        return 1
+        return fail(str(error), detail.strip() if detail and detail.strip() else None)
     except (UserInputError, VerificationError, OSError) as error:
-        print("error: %s" % error, file=sys.stderr)
-        return 1
+        return fail(str(error))
     return 0
 
 

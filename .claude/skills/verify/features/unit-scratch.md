@@ -10,6 +10,8 @@ the shared `build/`.
 
 - `objdiff`: per-section and per-function match percentages.
 - `exact`: `verify_objects`, which checks allocated bytes, section metadata, function symbols (size, binding, type) and relocations.
+- `classify`: separates metadata-only differences (exit 3) from real mismatches (exit 1). See the exit-code table in `SKILL.md`.
+- `json`: `--json` prints `{unit, status, exit_code, detail, ignored, allocated_bytes, ..., sections, functions_below_100}`.
 - `cross-worktree`: `--source <file>` compiles a same-named file from another worktree against this checkout's flags.
 
 ## How to get to it (user POV)
@@ -22,7 +24,9 @@ the shared `build/`.
 Preconditions: baseline from the README; the unit has `source_path` in `objdiff.json`.
 
 - **Clean exact unit:** `.claude/skills/verify/scripts/unit.sh main/Alchemy/src/Meta/igIntMetaField`
-  → `exact: 60 allocated bytes; 1 functions; 3 relocations`, `exit=0`.
+  → `exact: 60 allocated bytes in 1 sections; 1 functions; 3 relocations`, `exit=0`.
+- **Metadata-only unit:** `.claude/skills/verify/scripts/unit.sh main/dolsdk2004/card/CARDCheck`
+  → `metadata-only: 3944 allocated bytes ...`, `ignored: symbol-binding`, `exit=3`.
 - **In-progress unit:** same command on your unit. Non-100% sections and
   functions are printed. The full table is in the evidence file. Iterate
   until `exact:` appears.
@@ -32,17 +36,17 @@ Preconditions: baseline from the README; the unit has `source_path` in `objdiff.
 
 ## Gotchas
 
-- **Exit 1 at 100% objdiff can be a known metadata exception, not a code
-  mismatch.** Observed on 2026-11-07 for already-linked, checksum-proven units:
-  - `main/Game/Bec/beNDMWMdlItem`: `allocated section extab metadata differs`.
-    Weak-destructor exception tables; see PROGRESS.md on extab accounting.
-    The objdiff table also shows `@etb_*` / `@eti_*` at 0% while `.text`,
-    `extab` and `extabindex` sections are 100%.
-  - `main/dolsdk2004/card/CARDCheck`: `function symbols differ ... ('VerifyDir', ..., 1, ...)
-    vs (..., 0, ...)`. A symbol binding difference (original local, candidate global).
-  Treat these as needing the full-build checksum plus an explicit note. Never
-  wave through an unexplained one: compare against the unit's history in
-  PROGRESS.md / `git log -- <src>` first.
+- **Exit 3 shows up on units that are already linked and checksum-proven.**
+  Known cases, checked on 2026-11-07:
+  - `main/Game/Bec/beNDMWMdlItem`: `ignored: section-order, local-label-names`.
+    The original orders `extab`/`extabindex` before `.text` and names its
+    exception labels `@etb_*`/`@eti_*`, where MWCC emits `@195`... objdiff
+    shows those labels at 0% while all three sections are 100%.
+  - `main/dolsdk2004/card/CARDCheck`: `ignored: symbol-binding`. `VerifyDir`,
+    `VerifyFAT` and `VerifyID` are global in the original object and local
+    (static) in the source.
+  Exit 3 still needs `gate.sh` after linking. A *new* exit 3 deserves a note
+  in PROGRESS.md saying which `ignored` item it was.
 - Short selectors are often ambiguous (`error: unit selector ... is ambiguous`).
   Use the full name from `objdiff.json`.
 - Units without `source_path` raise `has no configured source`. Add the unit

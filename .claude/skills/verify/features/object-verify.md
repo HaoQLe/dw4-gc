@@ -22,10 +22,12 @@ Preconditions: both objects exist. Original split objects live under
 - **Verify a built unit:** `/opt/homebrew/bin/python3 tools/decomp.py verify build/GDJEB2/obj/Alchemy/src/Meta/igIntMetaField.o build/GDJEB2/src/Alchemy/src/Meta/igIntMetaField.o`
   → `exact: N allocated bytes in S sections; F functions; R relocations`, exit 0.
 - **Failure:** `error: <what differs>` on stderr, exit 1.
+- **Metadata only:** `metadata-only: ...` plus an `ignored:` line, exit 3. Add
+  `--json` for `{status, exit_code, detail, ignored, allocated_bytes, ...}`.
 
 ## Gotchas
 
 - `build/GDJEB2/src/*.o` reflects the last ninja run, not your working
   source. Rebuild (or use `unit.sh`) before trusting it.
-- The same known metadata exceptions as unit-scratch apply (extab metadata,
-  symbol binding). See [unit-scratch.md](unit-scratch.md).
+- The same exit-3 cases as unit-scratch apply (section order, symbol
+  binding, `@` label names). See [unit-scratch.md](unit-scratch.md).

@@ -12,12 +12,22 @@ mkdir -p "$out"
 git rev-parse HEAD >"$out/head.txt"
 git status --short >"$out/status.txt"
 
+steps=""
 step() {
   local name="$1"; shift
   "$@" >"$out/$name.log" 2>&1
   local rc=$?
   echo "$name exit=$rc" | tee -a "$out/summary.txt"
+  steps="$steps${steps:+,}\"$name\":$rc"
+  write_json "$rc"
   return $rc
+}
+# summary.json: {"passed":bool,"head":..,"steps":{name:exit},"sha1":..,"evidence":..}
+write_json() {
+  local sha=""; [ -f build/GDJEB2/main.dol ] && sha=$(shasum build/GDJEB2/main.dol | cut -d' ' -f1)
+  local passed=false; [ "$1" = 0 ] && [ "${2:-}" = done ] && passed=true
+  printf '{"passed":%s,"head":"%s","steps":{%s},"sha1":"%s","evidence":"%s"}\n' \
+    "$passed" "$(cat "$out/head.txt")" "$steps" "$sha" "$out" >"$out/summary.json"
 }
 
 step configure "$PY" configure.py --version GDJEB2 --map || exit 1
@@ -29,5 +39,6 @@ step report ninja all_source progress build/GDJEB2/report.json || exit 1
 cp build/GDJEB2/report.json "$out/report.json"
 sed -n '/^Progress:/,$p' "$out/report.log" | grep -E '^  |^Progress:' >"$out/progress.txt"
 shasum build/GDJEB2/main.dol | tee "$out/dol.sha1"
+write_json 0 done
 cat "$out/progress.txt"
-echo "evidence: $out"
+echo "evidence: $out (summary.json passed=true)"

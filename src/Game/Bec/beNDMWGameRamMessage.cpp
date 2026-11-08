@@ -407,6 +407,41 @@ static const char *sEnemyWeaponResist[4] = {"RES_FIRE", "RES_ICE", "RES_THUNDER"
 
 extern "C" bool fn_8037841C(beNDMWGameRam *self);   // _isDispFightData
 
+// A player's resistance to an enemy attack's element (0 for none), and the element's index (or -1).
+static inline int playerResist(beDataObjList *data, const char *element, int *index)
+{
+    if (strcmp(element, "fire") == 0) { *index = 0; return fn_803787AC(fn_8031F3CC(data, "HONOOTEIKO")); }
+    if (strcmp(element, "ice") == 0) { *index = 1; return fn_803787AC(fn_8031F3CC(data, "KOORITEIKO")); }
+    if (strcmp(element, "thunder") == 0) { *index = 2; return fn_803787AC(fn_8031F3CC(data, "KAMINARITEIKO")); }
+    if (strcmp(element, "dark") == 0) { *index = 3; return fn_803787AC(fn_8031F3CC(data, "YAMITEIKO")); }
+    return 0;
+}
+
+// The extra share of an element's damage a player's resistance lets through: half again plus a twentieth of
+// what it lacks of 1000, then an eightieth of what it lacks of 5000.
+static inline int elementShare(int damage, int resist)
+{
+    if (resist <= 1000) return damage * ((1000 - resist) / 20 + 50) / 100;
+    if (resist <= 5000) return damage * ((5000 - resist) / 80) / 100;
+    return 0;
+}
+
+// The random variance of a hit: 95%, 97.5%, 100% or 102.5% (*highest), plus up to 2.5%.
+static inline int damageVariance(beNDMWGameRam *self, int damage, bool *highest)
+{
+    int roll = randomNumber(self) & 3;
+    int spread = randomNumber(self) % (damage * 25);
+    switch (roll) {
+    case 0: return (damage * 950 + spread) / 1000;
+    case 1: return (damage * 975 + spread) / 1000;
+    case 2: return (damage * 1000 + spread) / 1000;
+    case 3:
+        *highest = true;
+        return (damage * 1025 + spread) / 1000;
+    }
+    return damage;
+}
+
 // The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
 static const char *sEnemyResist[5] = {"RES_FIRE", "RES_ICE", "RES_THUNDER", "RES_DARK", "RES_POISON"};
 
@@ -928,18 +963,7 @@ static void fightCalc(beNDMWGameRam *self)
                 else damage += damage * ((points - 2000) / 100 + 100) / 100;
             }
             if (damage != 0) {
-                int roll = randomNumber(self) & 3;
-                int spread = randomNumber(self) % (damage * 25);
-                switch (roll) {
-                case 0: damage = (damage * 950 + spread) / 1000; break;
-                case 1: damage = (damage * 975 + spread) / 1000; break;
-                case 2: damage = (damage * 1000 + spread) / 1000; break;
-                case 3:
-                    highest = true;
-                    damage = (damage * 1025 + spread) / 1000;
-                    break;
-                }
-                damage = clampDamage(damage);
+                damage = clampDamage(damageVariance(self, damage, &highest));
             }
             if (kind != 4) {
                 int drain = fn_803787AC(fn_8031F3CC(data, "HPDRAIN"));
@@ -953,6 +977,73 @@ static void fightCalc(beNDMWGameRam *self)
         fn_80306A40(messenger, element);
         fn_80306A40(messenger, highest);
         fn_8037841C(self);   // the fight-data display flag; its use is compiled out
+        break;
+    }
+    case FightCom::E2PDAMAGE: {
+        // player, enemy, attack (and the enemy's work): the damage of an enemy's attack on a player, answered
+        // with its element (-1 none) and whether the variance roll was the highest. By the attack's TYPE:
+        // 0 physical (the enemy's strength, less its strength down, against the player's defense; elemental
+        // bonus unless the player's resistance roll holds; criticals), 1 magic (the enemy's wisdom against the
+        // player's spirit, scaled by the player's resistance), 2 a share of the player's MHP.
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        igObject *enemyWork = fn_80306FB4(messenger, 0);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int record = attackRecord(attack);
+        int damage = 0;
+        int element = -1;
+        switch (fn_8031F608(fn_80378290(self), record, "TYPE")) {
+        case 0: {
+            int defense = fn_803787AC(fn_8031F3CC(data, "MAMORI"));
+            int strengthDown = fn_803784D8(enemyWork) == 0 ? 0 : intAt(fn_803784D8(enemyWork), 4);
+            int strength = fn_8031F608(fn_803784E0(self), enemy, "TSUYOSA") - strengthDown;
+            damage = clampDamage(strength * fn_8031F608(fn_80378290(self), record, "TSUYOSA") / defense);
+            int resist = playerResist(data, fn_8031F70C(fn_80378290(self), record, "ZOKUSEI"), &element);
+            if (resist != 0 && resist / 5 <= (int)(randomNumber(self) % 1000)) damage += elementShare(damage, resist);
+            if (damage == 0) break;
+            int criticalDown = fn_803784D8(enemyWork) == 0 ? 0 : intAt(fn_803784D8(enemyWork), 1);
+            int enemyCritical = fn_8031F608(fn_803784E0(self), enemy, "CHIMEIRITSU") - criticalDown;
+            int attackCritical = fn_8031F608(fn_80378290(self), record, "CHIMEIRITSU");
+            if ((100 - enemyCritical) * (100 - attackCritical) <= (int)(randomNumber(self) % 10000)) damage += damage * (attackCritical / 2 + 90) / 100;
+            break;
+        }
+        case 1: {
+            int power = fn_8031F608(fn_80378290(self), record, "TSUYOSA");
+            if (power == 0) break;
+            int wisdom = fn_8031F608(fn_803784E0(self), enemy, "KASHIKOSA");
+            int spirit = fn_803787AC(fn_8031F3CC(data, "SEISHIN"));
+            damage = clampDamage(wisdom * power / spirit);
+            int resist = playerResist(data, fn_8031F70C(fn_80378290(self), record, "ZOKUSEI"), &element);
+            if (resist != 0) {
+                if (resist <= 1000) damage = damage * ((1000 - resist) / 20 + 50) / 100;
+                else if (resist <= 4200) damage = damage * ((5000 - resist) / 80) / 100;
+                else damage = damage / 10;
+            }
+            if (damage == 0) break;
+            int attackCritical = fn_8031F608(fn_80378290(self), record, "CHIMEIRITSU");
+            if (attackCritical == 0) break;
+            int chance = resist <= 1000 ? (1000 - resist) + attackCritical * 100 : attackCritical * 100 - (resist - 1000) / 10;
+            // (as the original: the bonus adds the damage itself inside the percentage)
+            if (chance <= (int)(randomNumber(self) % 10000)) damage += (attackCritical / 2 + damage + 90) / 100;
+            break;
+        }
+        case 2: {
+            int percent = fn_8031F608(fn_80378290(self), record, "TSUYOSA");
+            damage = clampDamage(fn_803787AC(fn_8031F3CC(data, "MHP")) * percent / 100);
+            int resist = playerResist(data, fn_8031F70C(fn_80378290(self), record, "ZOKUSEI"), &element);
+            if (resist != 0) damage += elementShare(damage, resist);
+            break;
+        }
+        }
+        damage = clampDamage(damage);
+        bool highest = false;
+        if (damage != 0) damage = clampDamage(damageVariance(self, damage, &highest));
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, damage);
+        fn_80306A40(messenger, element);
+        fn_80306A40(messenger, highest);
+        fn_8037841C(self);
         break;
     }
     case FightCom::P2ESTUNTIME: {

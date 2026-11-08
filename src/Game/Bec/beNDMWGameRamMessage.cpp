@@ -368,6 +368,137 @@ static void fightCalc(beNDMWGameRam *self)
         fn_80306A40(messenger, element);
         break;
     }
+    case FightCom::E2PSTUNTIME: {
+        // player, enemy, attack, damage, hit kind (and the enemy's work): how long an enemy's hit stuns a player:
+        // 0 when the attack cannot stun, -1 when the player resists. By the attack's TYPE: 0 stuns on hit
+        // kinds 1-2 with the enemy's paralysis rate (less its paralysis down), 1 with the attack's own rate, 2
+        // on hit kinds 1-2 alone. The chance grows with the damage's share of the player's MHP.
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        int damage = fn_80306B00(messenger, 3);
+        int hitKind = fn_80306B00(messenger, 4);
+        igObject *enemyWork = fn_80306FB4(messenger, 0);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int record = attackRecord(attack);
+        int enemyRate = 0;
+        int attackRate = 0;
+        bool stuns = false;
+        switch (fn_8031F608(fn_80378290(self), record, "TYPE")) {
+        case 0:
+            if (hitKind >= 1 && hitKind < 3) {
+                int down = fn_803784D8(enemyWork) == 0 ? 0 : intAt(fn_803784D8(enemyWork), 2);
+                enemyRate = fn_8031F608(fn_803784E0(self), enemy, "MAHIRITSU") - down;
+                stuns = true;
+            }
+            break;
+        case 1:
+            attackRate = fn_8031F608(fn_80378290(self), record, "MAHIRITSU");
+            if (attackRate > 0) stuns = true;
+            break;
+        case 2:
+            if (hitKind >= 1 && hitKind < 3) stuns = true;
+            break;
+        }
+        int time = 0;
+        if (stuns) {
+            int maxHp = fn_803787AC(fn_8031F3CC(data, "MHP"));
+            int resist = fn_803787AC(fn_8031F3CC(data, "MAHITEIKOU"));
+            int power = damage * 50 / maxHp + (attackRate + enemyRate) + resist;
+            if ((power + 100) / 2 > (int)(randomNumber(self) % 100)) time = (power + 30) / 4;
+            if (time == 0) time = -1;
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, time);
+        break;
+    }
+    case FightCom::E2PSLEEPTIME: {
+        // player, enemy, attack: how long an enemy's sleep attack puts a player to sleep (0: not a sleep
+        // attack, -1: resisted). The enemy's wisdom against the player's spirit scales the attack's effect
+        // rank (chance out of 10000) and its effect time.
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int record = attackRecord(attack);
+        int time = 0;
+        if (strcmp(fn_8031F70C(fn_80378290(self), record, "KOUKA"), "sleep") == 0) {
+            int rank = fn_8031F608(fn_80378290(self), record, "KOUKARANK");
+            int wisdom = fn_8031F608(fn_803784E0(self), enemy, "KASHIKOSA");
+            int spirit = fn_803787AC(fn_8031F3CC(data, "SEISHIN"));
+            int factor = wisdom * 3 / spirit + 100 - spirit / 40;
+            if (rank * 5 * factor > (int)(randomNumber(self) % 10000)) time = fn_8031F608(fn_80378290(self), record, "KOUKATIME") * factor / 100;
+            if (time == 0) time = -1;
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, time);
+        break;
+    }
+    case FightCom::E2PPOISONTIME: {
+        // query ("TIME", "DAMAGE" or "GEDOKU"), player, attack: for an enemy's poison (doku) attack, how long
+        // it poisons the player (0: not poison, -1: resisted), the poison's damage per tick (the effect rank's
+        // percentage of the player's MHP), or the attack's GEDOKU value.
+        igStringRef query(fn_8030709C(messenger, 1));
+        int player = fn_80306B00(messenger, 0);
+        int attack = fn_80306B00(messenger, 1);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int record = attackRecord(attack);
+        if (strcmp(query.getString(), "TIME") == 0) {
+            int time = 0;
+            if (strcmp(fn_8031F70C(fn_80378290(self), record, "KOUKA"), "doku") == 0) {
+                int rank = fn_8031F608(fn_80378290(self), record, "KOUKARANK");
+                int resist = fn_803787AC(fn_8031F3CC(data, "DOKUTEIKOU"));
+                if (rank * 15 + resist + 30 > (int)(randomNumber(self) % 100)) time = resist / 2 + fn_8031F608(fn_80378290(self), record, "KOUKATIME");
+                if (time == 0) time = -1;
+            }
+            fn_80306AB8(messenger);
+            fn_80306A40(messenger, time);
+        } else if (strcmp(query.getString(), "DAMAGE") == 0) {
+            int maxHp = fn_803787AC(fn_8031F3CC(data, "MHP"));
+            int rank = fn_8031F608(fn_80378290(self), record, "KOUKARANK");
+            fn_80306AB8(messenger);
+            fn_80306A40(messenger, maxHp * rank / 100);
+        } else if (strcmp(query.getString(), "GEDOKU") == 0) {
+            int value = fn_8031F608(fn_80378290(self), record, "GEDOKU");
+            fn_80306AB8(messenger);
+            fn_80306A40(messenger, value);
+        }
+        break;
+    }
+    case FightCom::E2PBINDTIME: {
+        // player, enemy, attack: how long an enemy's binding (ashidome) attack holds a player (0: not binding,
+        // -1: resisted). Attacks of TYPE 2 always bind for their effect time; others as sleep.
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int record = attackRecord(attack);
+        int time = 0;
+        if (strcmp(fn_8031F70C(fn_80378290(self), record, "KOUKA"), "ashidome") == 0) {
+            int rank = fn_8031F608(fn_80378290(self), record, "KOUKARANK");
+            int type = fn_8031F608(fn_80378290(self), record, "TYPE");
+            bool binds = true;
+            if (type != 2) {
+                int wisdom = fn_8031F608(fn_803784E0(self), enemy, "KASHIKOSA");
+                int spirit = fn_803787AC(fn_8031F3CC(data, "SEISHIN"));
+                if (rank * 5 * (wisdom * 3 / spirit + 100 - spirit / 40) <= (int)(randomNumber(self) % 10000)) binds = false;
+            }
+            if (binds) {
+                if (type == 2) {
+                    time = fn_8031F608(fn_80378290(self), record, "KOUKATIME");
+                } else {
+                    int effectTime = fn_8031F608(fn_80378290(self), record, "KOUKATIME");
+                    int wisdom = fn_8031F608(fn_803784E0(self), enemy, "KASHIKOSA");
+                    int spirit = fn_803787AC(fn_8031F3CC(data, "SEISHIN"));
+                    time = effectTime * (wisdom * 3 / spirit + 100 - spirit / 40) / 100;
+                }
+            }
+            if (time == 0) time = -1;
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, time);
+        break;
+    }
     case FightCom::P2ESTUNTIME: {
         // player, enemy, enemy HP, damage: how long a player's hit stuns an enemy (0: no stun). The chance
         // (out of 100) grows with the paralysis rate and the damage's share of the HP and falls with the

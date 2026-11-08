@@ -253,6 +253,61 @@ igIntList *fn_803784D8(igObject *enemyWork);   // (hypothesis) an enemy's status
 static inline int attackRecord(int attack) { return attack % 10000; }
 static inline int attackKind(int attack) { return attack / 10000; }
 
+// The values the debuff queries reset DOWNDATA[0], [1], [4] and [5] to before recomputing a player.
+static int sNoSpeedDown = 0;
+static int sNoAccuracyDown = 0;
+static int sNoStrengthDown = 0;
+static int sNoDefenseDown = 0;
+
+// An enemy's debuff on a player (freeze, powerdown): the duration (TIME), or, for a stat query, how much of
+// the stat it takes: the effect rank plus the enemy's wisdom against the player's spirit, as a percentage
+// within 20..80 (the stat's DOWNDATA entry is cleared and the player recomputed first).
+static void enemyDebuff(beNDMWGameRam *self, const char *effect, const char *stat1, int down1, int *reset1,
+                        const char *stat2, int down2, int *reset2)
+{
+    beMessenger *messenger = self->_messenger;
+    igStringRef query(fn_8030709C(messenger, 1));
+    int player = fn_80306B00(messenger, 0);
+    int enemy = fn_80306B00(messenger, 1);
+    int attack = fn_80306B00(messenger, 2);
+    beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+    int record = attackRecord(attack);
+    if (strcmp(query.getString(), "TIME") == 0) {
+        int time = 0;
+        if (strcmp(fn_8031F70C(fn_80378290(self), record, "KOUKA"), effect) == 0) {
+            int rank = fn_8031F608(fn_80378290(self), record, "KOUKARANK");
+            int wisdom = fn_8031F608(fn_803784E0(self), enemy, "KASHIKOSA");
+            int spirit = fn_803787AC(fn_8031F3CC(data, "SEISHIN"));
+            int factor = wisdom * 3 / spirit + 100 - spirit / 40;
+            if (rank * 160 / 100 * factor > (int)(randomNumber(self) % 10000)) time = fn_8031F608(fn_80378290(self), record, "KOUKATIME") * factor / 100;
+            if (time == 0) time = -1;
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, time);
+        return;
+    }
+    const char *stat;
+    if (strcmp(query.getString(), stat1) == 0) {
+        fn_8037833C(fn_8037859C(fn_8031F3FC(data, "DOWNDATA")), down1, *reset1);
+        stat = stat1;
+    } else if (strcmp(query.getString(), stat2) == 0) {
+        fn_8037833C(fn_8037859C(fn_8031F3FC(data, "DOWNDATA")), down2, *reset2);
+        stat = stat2;
+    } else {
+        return;
+    }
+    fn_8036FDE8(self, player, true);
+    int rank = fn_8031F608(fn_80378290(self), record, "KOUKARANK");
+    int wisdom = fn_8031F608(fn_803784E0(self), enemy, "KASHIKOSA");
+    int spirit = fn_803787AC(fn_8031F3CC(data, "SEISHIN"));
+    int percent = rank + wisdom * 150 / spirit / 100 - spirit / 80;
+    if (percent < 20) percent = 20;
+    if (percent > 80) percent = 80;
+    int value = fn_803787AC(fn_8031F3CC(data, stat));
+    fn_80306AB8(messenger);
+    fn_80306A40(messenger, value * percent / 100);
+}
+
 // The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
 static const char *sEnemyResist[5] = {"RES_FIRE", "RES_ICE", "RES_THUNDER", "RES_DARK", "RES_POISON"};
 
@@ -497,6 +552,58 @@ static void fightCalc(beNDMWGameRam *self)
         }
         fn_80306AB8(messenger);
         fn_80306A40(messenger, time);
+        break;
+    }
+    case FightCom::E2PATKDWNTIME:
+        // query: "TIME", "SUBAYASA" or "MEICHURITSU" (the original repeats this code for each query).
+        enemyDebuff(self, "freeze", "SUBAYASA", 0, &sNoSpeedDown, "MEICHURITSU", 1, &sNoAccuracyDown);
+        break;
+    case FightCom::E2PPOWDWNTIME:
+        // query: "TIME", "TSUYOSA" or "MAMORI".
+        enemyDebuff(self, "powerdown", "TSUYOSA", 4, &sNoStrengthDown, "MAMORI", 5, &sNoDefenseDown);
+        break;
+    case FightCom::E2PDAMAGERANK: {
+        // player, attack, damage, HP lost (and the player's model RAM): how hard an enemy's hit staggers a
+        // player (-1 none, 0 light, 1 medium, 2 heavy, 3 no damage). By the attack's SEQUENCE: 0 by the share
+        // of MHP lost (under 10%, under 40%, more), 1 none, 2 light, 3 heavy, 4 medium. A heavy hit is medium
+        // while the model's second move object runs.
+        int player = fn_80306B00(messenger, 0);
+        int attack = fn_80306B00(messenger, 1);
+        int damage = fn_80306B00(messenger, 2);
+        int lost = fn_80306B00(messenger, 3);
+        beBaseInfoRam *model = static_cast<beBaseInfoRam *>(fn_80306FB4(messenger, 0));
+        int rank = 0;
+        if (damage <= 0) {
+            rank = 3;
+        } else {
+            beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+            int record = attackRecord(attack);
+            int strength = fn_8031F608(fn_80378290(self), record, "TSUYOSA");
+            int sequence = fn_8031F608(fn_80378290(self), record, "SEQUENCE");
+            int maxHp = fn_803787AC(fn_8031F3CC(data, "MHP"));
+            switch (sequence) {
+            case 0:
+                if (strength == 0) {
+                    rank = -1;
+                } else {
+                    int percent = lost * 100 / maxHp;
+                    if (percent < 10) rank = 0;
+                    else if (percent < 40) rank = 1;
+                    else rank = 2;
+                }
+                break;
+            case 1: rank = -1; break;
+            case 2: rank = 0; break;
+            case 3: rank = 2; break;
+            case 4: rank = 1; break;
+            }
+            if (rank == 2) {
+                beModelCtrlMoveObjectList *moves = static_cast<beModelCtrlInfoRamData *>(fn_8030F8CC(model, "ONE"))->_work->_moveObjectList;
+                if (moves->_count != 0 && item<beModelCtrlMoveObject>(moves, 1)->_isRun) rank = 1;
+            }
+        }
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, rank);
         break;
     }
     case FightCom::P2ESTUNTIME: {

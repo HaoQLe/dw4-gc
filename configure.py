@@ -862,6 +862,13 @@ config.libs = [
             Object(Matching, "Alchemy/src/igCore/unknown8004DC3C.cpp", cflags=cflags_engine_size),
             Object(Matching, "Alchemy/src/igCore/unknown8004DDC4.cpp", cflags=cflags_engine_size),
             # igGamecubeVisualContext (src/Alchemy/src/igGfx/)
+            Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800EC5E0.cpp", cflags=cflags_engine_size),
+            Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800EA908.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igGfx/igGamecubeVisualContext800FFA5C.cpp", cflags=cflags_engine_size),
+            Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800FF934.cpp", cflags=cflags_engine_size),
+            Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800DA130.cpp", cflags=cflags_engine_size),
+            Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800D9F80.cpp", cflags=cflags_engine_size),
+            Object(Matching, "Alchemy/src/igGfx/igGamecubeVisualContext800D9538.cpp", cflags=cflags_engine_size),
             Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800F8590.cpp", cflags=cflags_engine_size),
             Object(Matching, "Alchemy/src/igGfx/igGamecubeVisualContext800FEFF8.cpp", cflags=cflags_engine_size),
             Object(Matching, "Alchemy/src/igGfx/igGamecubeVisualContext800FE334.cpp", cflags=cflags_engine_size),

@@ -7,7 +7,7 @@ hand-written code with typed structures matched most on the first or second try.
 
 ## Result
 
-- 95 of 122 functions exact and linked from source (9,816 bytes, 41% of the batch), in 45 units under
+- 97 of 122 functions exact and linked from source (10,440 bytes, 43.6% of the batch), in 47 units under
   `src/Alchemy/src/igGfx/`, named by start address. Shared layout and helpers:
   `igGamecubeVisualContext.h` and `igGamecubeVisualContextMatrix.h`.
 - Covered: lights (pool, enable list, colours, direction, position), material colours, clear colour and depth,
@@ -38,19 +38,28 @@ hand-written code with typed structures matched most on the first or second try.
   result.
 - `bool result = false; switch ... result = true;` for compare-tree predicates (`virtual404`).
 
-## Remaining (27 functions, 14,136 bytes)
+- A local counted reference (`GcRef<T>`) with an inline destructor reproduces the original's release on every
+  return (`virtual41C`); the compiler also emits a weak out-of-line destructor, which the linker strips (UNUSED in
+  the map). `unit.sh` therefore exits 1 for `igGamecubeVisualContext800D9538` while the function is exact and the
+  checksum passes, as with the Game RAM `Ref<>` copies.
+- Loops over the custom lists start with a `count > 0` guard in the original (`virtual438`, `43C`).
 
-- Readable NonMatching drafts (1,888 bytes):
+## Remaining (25 functions, 13,512 bytes)
+
+- Readable NonMatching drafts (4,200 bytes):
   - `virtualB8` (372): the descriptor loads are scheduled above the free-count store;
   - `virtual13C` (368): light and count registers swapped;
   - `virtual2C0` (352): the compiler shares one `color != 0` between the two GX calls;
   - `virtual2C4` (244): `or` operand order of the packed colour;
   - `virtual118` (20): the original keeps the default-construct store before the assignment;
-  - `virtual32C` (532): the original reloads the stack count after the empty test.
-- Blocked in a synthetic unit (1,448 bytes): `virtual2E4`, `10C`, `70`, `310` convert integers to float through
-  the file's shared magic constants (`lbl_805668E0`, `lbl_805668E8`); `70` also owns function-local statics. They
-  need one unit owning that `.sdata2` pool, as for the model controller's int-to-float cases.
-- Use rodata tables (1,828 bytes): `virtual80` (`lbl_80414970`), `448`/`44C` (`lbl_80414A88`); not yet examined
-  for ownership.
-- Not started (8,972 bytes): `vtableRead`, `41C`, `428`, `438`, `43C` (igStringRef locals), `7C`, `2B0`, `24`,
-  `28`, `11C`, `128`, `408`, `40C`, `214`.
+  - `virtual32C` (532): the original reloads the stack count after the empty test;
+  - `virtual438` (432): index strength-reduced and an extra saved register;
+  - `virtual43C` (536): self and loop registers permuted;
+  - `virtual448` (296): the flag argument is loaded before the other arguments of slots 0x460/0x470;
+  - `virtual7C` (356): list and count registers around the inline append;
+  - `virtual28` (652): 99.2%, the arena flags' first bit goes through a temporary.
+- Blocked in a synthetic unit (2,652 bytes): `virtual2E4`, `10C`, `70`, `310`, `11C`, `128` convert integers to
+  float through the file's shared magic constants (`lbl_805668E0`, `lbl_805668E8`); `70` also owns function-local
+  statics. They need one unit owning that `.sdata2` pool, as for the model controller's int-to-float cases.
+- Not started (6,660 bytes): `vtableRead` (constructor and destructor chain), `428`, `24`, `2B0`, `214`, `80`
+  (rodata `lbl_80414970`), `408`/`40C` (function-local statics in `.sbss`).

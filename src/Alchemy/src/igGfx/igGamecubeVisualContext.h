@@ -220,14 +220,21 @@ struct GcVisualContext : Meta::igVisualContext {
     bool unknown1A5[8];                          // 0x1A5
     unsigned char unknown1AD[0x1BC - 0x1AD];
     int unknown1BC[8];                           // 0x1BC
-    unsigned char unknown1DC[0x300 - 0x1DC];
+    unsigned char unknown1DC[0x2C0 - 0x1DC];
+    signed char unknown2C0[16];                  // 0x2C0: per-index settings 0x2C0..0x3E0 (set from presets by slot 0x448)
+    signed char unknown2D0[16];                  // 0x2D0
+    signed char unknown2E0[16];                  // 0x2E0
+    signed char unknown2F0[16];                  // 0x2F0
     signed char unknown300[16];                  // 0x300
     signed char unknown310[16];                  // 0x310
     signed char unknown320[16];                  // 0x320
     signed char unknown330[16];                  // 0x330
     signed char unknown340[16];                  // 0x340
     signed char unknown350[16];                  // 0x350
-    unsigned char unknown360[0x3A0 - 0x360];
+    signed char unknown360[16];                  // 0x360
+    signed char unknown370[16];                  // 0x370
+    signed char unknown380[16];                  // 0x380
+    signed char unknown390[16];                  // 0x390
     signed char unknown3A0[16];                  // 0x3A0
     signed char unknown3B0[16];                  // 0x3B0
     signed char unknown3C0[16];                  // 0x3C0
@@ -278,7 +285,9 @@ struct GcVisualContext : Meta::igVisualContext {
     void *frameBuffer0;                          // 0x524: the two external frame buffers
     void *frameBuffer1;                          // 0x528
     void *frameBuffer;                           // 0x52C: the one drawn next
-    unsigned char unknown530[0x6E8 - 0x530];
+    unsigned char unknown530[0x6D8 - 0x530];
+    void *unknown6D8;                            // 0x6D8
+    unsigned char unknown6DC[0x6E8 - 0x6DC];
 };
 
 typedef char GcVisualContextSizeCheck[sizeof(GcVisualContext) == 0x6E8 ? 1 : -1];
@@ -371,9 +380,19 @@ public:
     virtual void slot41C(); virtual void slot420(); virtual void slot424(); virtual void slot428(); virtual void slot42C(); virtual void slot430();
     virtual void slot434(); virtual void slot438(); virtual void slot43C(); virtual void slot440(); virtual void slot444();
     virtual void slot448(int, int);   // 0x448
-    virtual void slot44C(); virtual void slot450(); virtual void slot454(); virtual void slot458(); virtual void slot45C(); virtual void slot460();
-    virtual void slot464(); virtual void slot468(); virtual void slot46C(); virtual void slot470(); virtual void slot474(); virtual void slot478();
-    virtual void slot47C(); virtual void slot480(); virtual void slot484();    // END SLOTS
+    virtual void slot44C();
+    virtual void slot450(int, int, int, int, int);   // 0x450
+    virtual void slot454(); virtual void slot458(); virtual void slot45C();
+    virtual void slot460(int, int, int, int, bool);   // 0x460
+    virtual void slot464();
+    virtual void slot468(int, int, int, int, int);   // 0x468
+    virtual void slot46C();
+    virtual void slot470(int, int, int, int, bool);   // 0x470
+    virtual void slot474();
+    virtual void slot478(int, int);   // 0x478
+    virtual void slot47C();
+    virtual void slot480(int, int);   // 0x480
+    virtual void slot484();    // END SLOTS
 };
 static inline GcVisualContextVirtuals *virtuals(GcVisualContext *self) { return reinterpret_cast<GcVisualContextVirtuals *>(self); }
 
@@ -406,6 +425,14 @@ void GXSetCopyClear(GXColor color, unsigned int depth);
         color.a = packed >> 24;                                       \
         GXSetCopyClear(color, lbl_80566944 * (self)->clearDepth);     \
     } while (0)
+
+// A counted local reference, released when it goes out of scope. The compiler also emits an out-of-line
+// copy of the destructor; the linker strips it (UNUSED in the map).
+template <class T> struct GcRef {
+    T *object;
+    inline GcRef(T *o) : object(o) { if (o) addRef(o); }
+    inline ~GcRef() { if (object) release(object); }
+};
 
 // Gap's result code (kSuccess, kFailure), returned through a hidden pointer.
 extern "C" int kSuccess__3Gap;

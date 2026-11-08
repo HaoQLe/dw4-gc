@@ -346,6 +346,279 @@ int fn_8036FB80(beNDMWGameRam *self, int player, int digimon, int stat)
     return value;
 }
 
+// The attack elements a power pocket chip's ZOKUSEI can name (ATTACKZOKUSEI is the index).
+static const char *sElements[4] = {"fire", "ice", "thunder", "dark"};
+// The evolution database's fields for a Digimon's six techniques: the technique record, the level that
+// unlocks it and, per rank, the points of the technique's skill the rank needs.
+static const char *sTechs[6] = {"TECH1", "TECH2", "TECH3", "TECH4", "TECH5", "TECH6"};
+static const char *sTechLevels[6] = {"TECH1_LEVEL", "TECH2_LEVEL", "TECH3_LEVEL", "TECH4_LEVEL", "TECH5_LEVEL", "TECH6_LEVEL"};
+static const char *sTechRanks[6][5] = {
+    {"TECH1_SKILL1", "TECH1_SKILL2", "TECH1_SKILL3", "TECH1_SKILL4", "TECH1_SKILL5"},
+    {"TECH2_SKILL1", "TECH2_SKILL2", "TECH2_SKILL3", "TECH2_SKILL4", "TECH2_SKILL5"},
+    {"TECH3_SKILL1", "TECH3_SKILL2", "TECH3_SKILL3", "TECH3_SKILL4", "TECH3_SKILL5"},
+    {"TECH4_SKILL1", "TECH4_SKILL2", "TECH4_SKILL3", "TECH4_SKILL4", "TECH4_SKILL5"},
+    {"TECH5_SKILL1", "TECH5_SKILL2", "TECH5_SKILL3", "TECH5_SKILL4", "TECH5_SKILL5"},
+    {"TECH6_SKILL1", "TECH6_SKILL2", "TECH6_SKILL3", "TECH6_SKILL4", "TECH6_SKILL5"},
+};
+
+// A stat's range.
+static inline int clampStat(int value)
+{
+    if (value < 1) value = 1;
+    if (value > 9999) value = 9999;
+    return value;
+}
+
+// Recomputes the player's derived data from its Digimon, level, upgrades and buffs (UPDATA/DOWNDATA):
+// maximum HP and MP (refilling them after a knockout), the five stats, the elemental resistances, the
+// technique list and the experience for the next level. With equipment, the equipped items' values are
+// added, and the combat rates, attack element, drains and weapon are recomputed too.
+void fn_8036FDE8(beNDMWGameRam *self, int player, bool equipment)
+{
+    beDataObjList *data = playerData(self, player);
+    int digimon = fn_8031F3CC(data, "DIGIMONNO")->_data;
+    int level = fn_8031F3CC(data, "LEVEL")->_data;
+    bool down = false;
+
+    int maxHp = fn_8036F808(self, player, -1, true);
+    maxHp += intAt(fn_8031F3FC(data, "UPDATA")->_data, 6);
+    if (equipment) {
+        fn_8036F5DC(self, data, &maxHp, "MAXHP", false);
+        fn_8036F734(self, data, &maxHp, "MAXHP", false);
+    }
+    if (maxHp > 99999) maxHp = 99999;
+    fn_8031F3CC(data, "MHP")->_data = maxHp;
+    int hp = fn_8031F3CC(data, "HP")->_data;
+    if (hp == 0) down = true;
+    if (hp == 0 || hp > maxHp) fn_8031F3CC(data, "HP")->_data = maxHp;
+
+    int maxMp = fn_8036F808(self, player, -1, false);
+    if (equipment) {
+        fn_8036F5DC(self, data, &maxMp, "MAXMP", false);
+        fn_8036F734(self, data, &maxMp, "MAXMP", false);
+    }
+    if (maxMp > 99999) maxMp = 99999;
+    fn_8031F3CC(data, "MMP")->_data = maxMp;
+    int mp = fn_8031F3CC(data, "MP")->_data;
+    if (down || mp > maxMp) fn_8031F3CC(data, "MP")->_data = maxMp;
+
+    int strength = fn_8036FB80(self, player, -1, 0);
+    strength += intAt(fn_8031F3FC(data, "UPDATA")->_data, 4);
+    strength -= intAt(fn_8031F3FC(data, "DOWNDATA")->_data, 4);
+    if (equipment) {
+        fn_8036F484(self, data, &strength, "TSUYOSA", true);
+        fn_8036F534(self, data, &strength, "TSUYOSA");
+        fn_8036F734(self, data, &strength, "TSUYOSA", true);
+    }
+    fn_8031F3CC(data, "TSUYOSA")->_data = clampStat(strength);
+
+    int defense = fn_8036FB80(self, player, -1, 1);
+    defense += intAt(fn_8031F3FC(data, "UPDATA")->_data, 5);
+    defense -= intAt(fn_8031F3FC(data, "DOWNDATA")->_data, 5);
+    if (equipment) {
+        fn_8036F5DC(self, data, &defense, "MAMORI", true);
+        fn_8036F734(self, data, &defense, "MAMORI", true);
+    }
+    fn_8031F3CC(data, "MAMORI")->_data = clampStat(defense);
+
+    int wisdom = fn_8036FB80(self, player, -1, 2);
+    if (equipment) {
+        fn_8036F484(self, data, &wisdom, "KASHIKOSA", false);
+        fn_8036F534(self, data, &wisdom, "KASHIKOSA");
+        fn_8036F5DC(self, data, &wisdom, "KASHIKOSA", false);
+        fn_8036F68C(self, data, &wisdom, "KASHIKOSA");
+        fn_8036F734(self, data, &wisdom, "KASHIKOSA", true);
+    }
+    fn_8031F3CC(data, "KASHIKOSA")->_data = clampStat(wisdom);
+
+    int spirit = fn_8036FB80(self, player, -1, 3);
+    if (equipment) {
+        fn_8036F484(self, data, &spirit, "SEISHIN", false);
+        fn_8036F534(self, data, &spirit, "SEISHIN");
+        fn_8036F5DC(self, data, &spirit, "SEISHIN", false);
+        fn_8036F68C(self, data, &spirit, "SEISHIN");
+        fn_8036F734(self, data, &spirit, "SEISHIN", false);
+    }
+    fn_8031F3CC(data, "SEISHIN")->_data = clampStat(spirit);
+
+    int speed = fn_8036FB80(self, player, -1, 4);
+    speed += intAt(fn_8031F3FC(data, "UPDATA")->_data, 0);
+    speed -= intAt(fn_8031F3FC(data, "DOWNDATA")->_data, 0);
+    if (equipment) {
+        fn_8036F484(self, data, &speed, "SUBAYASA", false);
+        fn_8036F534(self, data, &speed, "SUBAYASA");
+        fn_8036F5DC(self, data, &speed, "SUBAYASA", false);
+        fn_8036F68C(self, data, &speed, "SUBAYASA");
+        fn_8036F734(self, data, &speed, "SUBAYASA", true);
+    }
+    fn_8031F3CC(data, "SUBAYASA")->_data = clampStat(speed);
+
+    int fire = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, "RES_FIRE");
+    fire += intAt(fn_8031F3FC(data, "UPCNT")->_data, 7);
+    fire += intAt(fn_8031F3FC(data, "UPDATA")->_data, 7);
+    if (equipment) {
+        fn_8036F5DC(self, data, &fire, "RES_FIRE", false);
+        fn_8036F68C(self, data, &fire, "RES_FIRE");
+        fn_8036F734(self, data, &fire, "RES_FIRE", true);
+    }
+    fn_8031F3CC(data, "HONOOTEIKO")->_data = clampStat(fire);
+
+    int ice = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, "RES_ICE");
+    ice += intAt(fn_8031F3FC(data, "UPCNT")->_data, 8);
+    ice += intAt(fn_8031F3FC(data, "UPDATA")->_data, 8);
+    if (equipment) {
+        fn_8036F5DC(self, data, &ice, "RES_ICE", false);
+        fn_8036F68C(self, data, &ice, "RES_ICE");
+        fn_8036F734(self, data, &ice, "RES_ICE", true);
+    }
+    fn_8031F3CC(data, "KOORITEIKO")->_data = clampStat(ice);
+
+    int thunder = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, "RES_THUNDER");
+    thunder += intAt(fn_8031F3FC(data, "UPCNT")->_data, 9);
+    thunder += intAt(fn_8031F3FC(data, "UPDATA")->_data, 9);
+    if (equipment) {
+        fn_8036F5DC(self, data, &thunder, "RES_THUNDER", false);
+        fn_8036F68C(self, data, &thunder, "RES_THUNDER");
+        fn_8036F734(self, data, &thunder, "RES_THUNDER", true);
+    }
+    fn_8031F3CC(data, "KAMINARITEIKO")->_data = clampStat(thunder);
+
+    int dark = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, "RES_DARK");
+    dark += intAt(fn_8031F3FC(data, "UPCNT")->_data, 10);
+    dark += intAt(fn_8031F3FC(data, "UPDATA")->_data, 10);
+    if (equipment) {
+        fn_8036F5DC(self, data, &dark, "RES_DARK", false);
+        fn_8036F68C(self, data, &dark, "RES_DARK");
+        fn_8036F734(self, data, &dark, "RES_DARK", true);
+    }
+    fn_8031F3CC(data, "YAMITEIKO")->_data = clampStat(dark);
+
+    // The techniques: for each unlocked slot, the highest rank whose skill points the player has.
+    igObjectList *techniques = fn_8031F4EC(data, "WAZALIST")->_data;
+    removeAll(techniques);
+    for (int slot = 0; slot < 6; slot++) {
+        int technique = fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, sTechs[slot]);
+        int skill = fn_8031F608(database(self, self->_dBPcTech, "pcTech"), technique, "SKILL");
+        int points = intAt(fn_8031F3FC(data, "SKILL")->_data, skill);
+        if (fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, sTechLevels[slot]) > level) continue;
+        for (int rank = 4; rank >= 0; rank--) {
+            if (fn_8031F608(database(self, self->_dBShinka, "shinka"), digimon, sTechRanks[slot][rank]) <= points) {
+                Ref<beNDMWItemWaza> waza(beNDMWItemWaza_create(poolFor(self, lbl_80562258)), Ref<beNDMWItemWaza>::adopt);
+                fn_803B17B0(waza, technique + rank, technique);
+                fn_80069128(techniques, waza);
+                break;
+            }
+        }
+    }
+    fn_8031F3CC(data, "NEXTEXP")->_data = level == 999 ? 0 : level * 200 + (level + 140) * (level * level);
+
+    if (equipment) {
+        int delay = intAt(fn_8031F3FC(data, "DOWNDATA")->_data, 6);
+        fn_8036F484(self, data, &delay, "DELAY", false);
+        if (delay > 70) delay = 70;
+        fn_8031F3CC(data, "ATTACKDELAY")->_data = delay;
+
+        int hit = 0;
+        fn_8036F484(self, data, &hit, "MEICHURITSU", false);
+        fn_8031F3CC(data, "MEICHURITSU")->_data = hit;
+
+        int critical = 0;
+        critical += intAt(fn_8031F3FC(data, "UPDATA")->_data, 1);
+        critical -= intAt(fn_8031F3FC(data, "DOWNDATA")->_data, 1);
+        fn_8036F484(self, data, &critical, "CHIMEIRITSU", false);
+        fn_8036F534(self, data, &critical, "CHIMEIRITSU");
+        if (critical < 1) critical = 1;
+        fn_8031F3CC(data, "CHIMEIRITSU")->_data = critical;
+
+        int paralysis = 0;
+        fn_8036F484(self, data, &paralysis, "MAHIRITSU", false);
+        fn_8031F3CC(data, "MAHIRITSU")->_data = paralysis;
+
+        int evasion = 0;
+        evasion += intAt(fn_8031F3FC(data, "UPDATA")->_data, 3);
+        evasion -= intAt(fn_8031F3FC(data, "DOWNDATA")->_data, 3);
+        fn_8036F68C(self, data, &evasion, "CHOHATURITSU");
+        if (evasion < 1) evasion = 1;
+        fn_8031F3CC(data, "KAIHIRITSU")->_data = evasion;
+
+        int guard = 0;
+        fn_8036F5DC(self, data, &guard, "BOUGYORITSU", false);
+        fn_8031F3CC(data, "BOUGYORITSU")->_data = guard;
+
+        int paralysisResist = 0;
+        paralysisResist += intAt(fn_8031F3FC(data, "UPDATA")->_data, 2);
+        paralysisResist -= intAt(fn_8031F3FC(data, "DOWNDATA")->_data, 2);
+        fn_8036F5DC(self, data, &paralysisResist, "MAHITEIKOU", false);
+        if (paralysisResist < 1) paralysisResist = 1;
+        fn_8031F3CC(data, "MAHITEIKOU")->_data = paralysisResist;
+
+        int poisonResist = 0;
+        fn_8036F5DC(self, data, &poisonResist, "DOKUTEIKOU", false);
+        fn_8031F3CC(data, "DOKUTEIKOU")->_data = poisonResist;
+
+        int bitRate = 0;
+        fn_8036F734(self, data, &bitRate, "BITRITSU", false);
+        fn_8031F3CC(data, "BITRITSU")->_data = bitRate;
+
+        int expRate = 0;
+        fn_8036F734(self, data, &expRate, "EXPRITSU", false);
+        fn_8031F3CC(data, "EXPRITSU")->_data = expRate;
+
+        int luck = 0;
+        fn_8036F734(self, data, &luck, "LUCKRITSU", false);
+        fn_8031F3CC(data, "LUCKRITSU")->_data = luck;
+
+        // The attack element: the first power pocket chip naming one.
+        fn_8031F3CC(data, "ATTACKZOKUSEI")->_data = -1;
+        bool found = false;
+        int count = fn_8031F4EC(data, "POWERPOCKET")->_data->_count;
+        for (int i = 0; i < count; i++) {
+            beNDMWItemBase *chip = item<beNDMWItemBase>(fn_8031F4EC(data, "POWERPOCKET")->_data, i);
+            if (!chip) continue;
+            const char *element = fn_803B0790(chip, self, "ZOKUSEI");
+            for (int e = 0; e < 4; e++) {
+                if (strcmp(element, sElements[e]) == 0) {
+                    fn_8031F3CC(data, "ATTACKZOKUSEI")->_data = e;
+                    found = true;
+                    break;
+                }
+            }
+            if (found) break;
+        }
+
+        int hpDrain = 0;
+        fn_8036F534(self, data, &hpDrain, "HPDRAIN");
+        fn_8031F3CC(data, "HPDRAIN")->_data = hpDrain;
+        int mpDrain = 0;
+        fn_8036F534(self, data, &mpDrain, "MPDRAIN");
+        fn_8031F3CC(data, "MPDRAIN")->_data = mpDrain;
+        fn_8031F3CC(data, "CHOHATURITSU")->_data = fn_8031F3CC(data, "KAIHIRITSU")->_data;
+    }
+
+    // The equipped weapon's record and skill, and the socket's model names.
+    if (equipment) {
+        int weaponRecord = 0;
+        int weaponSkill = 0;
+        beNDMWItemBase *weapon = item<beNDMWItemBase>(fn_8031F4EC(data, "POWERSOCKET")->_data, 0);
+        if (weapon) {
+            weaponRecord = weapon->_recNo;
+            weaponSkill = fn_803B06F0(weapon, self, "SKILL");
+        }
+        fn_8031F3CC(data, "WEAPONRECNO")->_data = weaponRecord;
+        fn_8031F3CC(data, "WEAPONSKILLNO")->_data = weaponSkill;
+        igObjectList *socket = fn_8031F4EC(data, "POWERSOCKET")->_data;
+        igStringRefList *names = fn_8031F4BC(data, "POWERSOCKETNAME")->_data;
+        clearStrings(names);
+        for (int i = 0; i < socket->_count; i++) {
+            beNDMWItemBase *equipped = item<beNDMWItemBase>(socket, i);
+            if (equipped) {
+                POOLED_REF(model, fn_803B0790(equipped, self, "MODEL"));
+                fn_8002080C(names, model);
+            }
+        }
+    }
+}
+
 // Marks a player as not taking part and recounts the players who do (NINZU).
 void fn_8036F178(beNDMWGameRam *self, int player)
 {

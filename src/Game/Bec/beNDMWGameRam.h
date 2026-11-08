@@ -22,6 +22,7 @@
 #include <meta/beDataObjString.h>
 #include <meta/beDataBase.h>
 #include <meta/beNDMWItemWeapon.h>
+#include <meta/beNDMWItemWaza.h>
 #include <meta/beUnicodeObj.h>
 #include <meta/beDataObjStringList.h>
 #include <meta/igStringRefList.h>
@@ -65,7 +66,16 @@ int fn_8036DA28(beNDMWGameRam *self, const char *name);   // (below) the Digimon
 void fn_8036DBA8(beNDMWGameRam *self, int player, int digimon);
 void fn_8036E124(beNDMWGameRam *self, int player);
 void fn_8036E3B8(beNDMWGameRam *self, int player, bool autoEquip);
-void fn_8036FDE8(beNDMWGameRam *self, int player, int);
+void fn_8036FDE8(beNDMWGameRam *self, int player, bool equipment);
+// Sums of an equipped item field into *total (below): power socket, power pocket, main slot, main pocket,
+// sub slot; withBonus also adds a chip's bonus.
+void fn_8036F484(beNDMWGameRam *self, igObject *data, int *total, const char *field, bool withBonus);
+void fn_8036F534(beNDMWGameRam *self, igObject *data, int *total, const char *field);
+void fn_8036F5DC(beNDMWGameRam *self, igObject *data, int *total, const char *field, bool withBonus);
+void fn_8036F68C(beNDMWGameRam *self, igObject *data, int *total, const char *field);
+void fn_8036F734(beNDMWGameRam *self, igObject *data, int *total, const char *field, bool withBonus);
+int fn_8036F808(beNDMWGameRam *self, int player, int digimon, bool hp);
+int fn_8036FB80(beNDMWGameRam *self, int player, int digimon, int stat);
 }
 
 extern "C" const char *fn_8031F70C(beDataBase *database, int record, const char *field);   // a record's string field
@@ -113,6 +123,11 @@ static inline void setObjectAt(igObjectList *list, int index, igObject *object)
     igObject *old = static_cast<igObject **>(list->_data)[index];
     if (old) release(old);
     if (list->_count != 0 && index >= 0 && index < list->_count) static_cast<igObject **>(list->_data)[index] = object;
+}
+
+extern "C" {
+beNDMWItemWaza *beNDMWItemWaza_create(void *pool);
+void fn_803B17B0(beNDMWItemWaza *technique, int record, int baseRecord);   // sets a technique up
 }
 
 // Element i of an int list.

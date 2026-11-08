@@ -17,13 +17,13 @@ bool fn_8036F220(beNDMWGameRam *self, int player, int delta, int value);
 bool fn_8036F364(beNDMWGameRam *self, int player, int delta);
 }
 
-// Plays the heal effect on a player's model (after an HP or MP gain).
-static inline void healEffect(beNDMWGameRam *self, int player)
+// Plays an effect (model and sequence) on a player's Digimon, through target's RAM of it.
+static inline void playerEffect(beNDMWGameRam *self, int player, const char *target, const char *effect, const char *sequence)
 {
     const char *model = fn_803787A4(fn_8031F48C(fn_803787D8(fn_803787E8(self), player), "DIGIMONNAME"));
-    fn_80305F9C(self->_messenger, "PLAYER", model, player);
-    fn_80306FDC(self->_messenger, "250healhit00");
-    fn_80306FDC(self->_messenger, "SQ_HEALEFONLY");
+    fn_80305F9C(self->_messenger, target, model, player);
+    fn_80306FDC(self->_messenger, effect);
+    fn_80306FDC(self->_messenger, sequence);
     fn_80306B28(self->_messenger, 1.0f);
     Vec3f offset(*reinterpret_cast<const Vec3f *>(lbl_804F8AE0));
     fn_80306C84(self->_messenger, components(offset));
@@ -362,6 +362,22 @@ static int playerTechDown(beNDMWGameRam *self, beDataObjList *data, int attack, 
     fn_80371524(self, data, attackRecord(attack), &record);
     return -fn_8031F608(fn_80378424(self), record, field);
 }
+
+// Skill growth. A skill's points cap by level band (36, 107, 227); the chance (out of 100000) of a point
+// comes from sSkillChance[level band][points band][column], where the points band is the first of
+// sSkillBands not below the points.
+static short sSkillBands[22] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 100, 300, 500, 1000, 2000, 3000, 4000, 6000, 10000, 0};
+static short sSkillChance[4][21][3] = {
+    {{10, 5, 12}, {13, 7, 16}, {16, 9, 21}, {21, 12, 27}, {28, 15, 35}, {37, 20, 46}, {48, 26, 60}, {62, 34, 78}, {81, 44, 101}, {106, 58, 132}, {132, 72, 165}, {165, 91, 207}, {207, 113, 258}, {258, 142, 323}, {323, 177, 404}, {404, 222, 505}, {505, 278, 632}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    {{5, 2, 6}, {6, 3, 8}, {8, 4, 10}, {10, 6, 13}, {14, 7, 17}, {18, 10, 23}, {24, 13, 30}, {31, 17, 39}, {40, 22, 50}, {53, 29, 66}, {66, 36, 82}, {82, 45, 103}, {103, 56, 129}, {129, 71, 161}, {161, 88, 202}, {202, 111, 252}, {252, 139, 316}, {316, 173, 395}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    {{2, 1, 3}, {3, 1, 4}, {4, 2, 5}, {5, 3, 6}, {7, 4, 8}, {9, 5, 11}, {12, 7, 15}, {15, 9, 19}, {20, 12, 25}, {26, 15, 33}, {33, 19, 41}, {41, 24, 51}, {51, 31, 64}, {64, 38, 80}, {80, 48, 101}, {101, 60, 126}, {126, 75, 158}, {158, 94, 197}, {205, 123, 256}, {0, 0, 0}, {0, 0, 0}},
+    {{1, 0, 1}, {1, 0, 2}, {2, 1, 2}, {2, 1, 3}, {3, 2, 4}, {4, 2, 5}, {6, 3, 7}, {7, 4, 9}, {10, 6, 12}, {13, 7, 16}, {16, 9, 20}, {20, 12, 25}, {25, 15, 32}, {32, 19, 40}, {40, 24, 50}, {50, 30, 63}, {63, 37, 79}, {79, 47, 98}, {102, 61, 128}, {128, 77, 160}, {160, 96, 200}},
+};
+// The evolution database's growth fields of the weapon skills (blunt, slash, stab, bash, shot, crush).
+static const char *sSkillGrowth[6] = {"BLUNT_GROW", "SLASH_GROW", "STAB_GROW", "BASH_GROW", "SHOT_GROW", "CRUSH_GROW"};
+
+// Whether an attack kind is a technique's (its skill is the technique's; otherwise the weapon's).
+static inline bool isTechnique(int kind) { return kind == 4 || (kind >= 8 && kind < 10); }
 
 // The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
 static const char *sEnemyResist[5] = {"RES_FIRE", "RES_ICE", "RES_THUNDER", "RES_DARK", "RES_POISON"};
@@ -724,6 +740,51 @@ static void fightCalc(beNDMWGameRam *self)
         fn_80306A40(messenger, value);
         break;
     }
+    case FightCom::P2ESKILLUP: {
+        // player, attack, (compared with 1 but without effect), flag: may raise the skill a player's attack
+        // used by a point (with a flash on the player's model). A weapon skill's chance also grows with the
+        // Digimon's growth in it.
+        int player = fn_80306B00(messenger, 0);
+        int attack = fn_80306B00(messenger, 1);
+        int other = fn_80306B00(messenger, 2);
+        int flag = fn_80306B00(messenger, 3);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        int level = fn_803787AC(fn_8031F3CC(data, "LEVEL"));
+        int cap;
+        if (level <= 36) cap = level * 30;
+        else if (level <= 107) cap = level * 20 + 360;
+        else if (level <= 227) cap = level * 10 + 1430;
+        else cap = level * 8 + 1884;
+        int kind = attackKind(attack);
+        int skill;
+        if (!isTechnique(kind)) {
+            skill = fn_803787AC(fn_8031F3CC(data, "WEAPONSKILLNO"));
+        } else {
+            int record;
+            fn_80371524(self, data, attackRecord(attack), &record);
+            skill = fn_8031F608(fn_80378424(self), record, "SKILL");
+        }
+        int points = *fn_8037858C(fn_8037859C(fn_8031F3FC(data, "SKILL")), skill);
+        if (points >= cap) break;
+        int levelBand = level <= 36 ? 0 : level <= 107 ? 1 : level <= 227 ? 2 : 3;
+        int column = flag == 1 ? 2 : (other == 1 ? 0 : 0);
+        int band = 0;
+        while (points > sSkillBands[band]) band++;
+        int base = sSkillChance[levelBand][band][column];
+        int chance;
+        if (!isTechnique(kind)) {
+            int digimon = fn_803787AC(fn_8031F3CC(data, "DIGIMONNO"));
+            chance = base * fn_8031F608(fn_80378370(self), digimon, sSkillGrowth[skill]) * 500 / 1000;
+        } else {
+            chance = base * 100;
+        }
+        if (chance <= (int)(randomNumber(self) % 100000)) break;
+        fn_8037833C(fn_8037859C(fn_8031F3FC(data, "SKILL")), skill, points + 1);
+        fn_8036FDE8(self, player, true);
+        fn_8036DF70(self, player);
+        playerEffect(self, player, "MODELCTRL", "i_getitempnl01", "SQ_TECUP");
+        break;
+    }
     case FightCom::P2ESTUNTIME: {
         // player, enemy, enemy HP, damage: how long a player's hit stuns an enemy (0: no stun). The chance
         // (out of 100) grows with the paralysis rate and the damage's share of the HP and falls with the
@@ -831,7 +892,7 @@ bool beNDMWGameRam_virtual90(beNDMWGameRam *self, beBaseInfoRam *ram, beMessenge
         int delta = fn_80306B00(self->_messenger, 1);
         int effect = fn_80306A30(self->_messenger) < 3 ? 0 : fn_80306B00(self->_messenger, 2);
         int value = fn_80306A30(self->_messenger) < 4 ? -1 : fn_80306B00(self->_messenger, 3);
-        if (fn_8036F220(self, player, delta, value) && effect) healEffect(self, player);
+        if (fn_8036F220(self, player, delta, value) && effect) playerEffect(self, player, "PLAYER", "250healhit00", "SQ_HEALEFONLY");
         return true;
     }
     case beNDMWGameRam_Message::ADDMP: {
@@ -841,7 +902,7 @@ bool beNDMWGameRam_virtual90(beNDMWGameRam *self, beBaseInfoRam *ram, beMessenge
         int effect = 0;
         if (fn_80306A30(self->_messenger) == 3) effect = fn_80306B00(self->_messenger, 2);
         fn_8036F364(self, player, delta);
-        if (effect) healEffect(self, player);
+        if (effect) playerEffect(self, player, "PLAYER", "250healhit00", "SQ_HEALEFONLY");
         return true;
     }
     case beNDMWGameRam_Message::CTRLPLAYER: {

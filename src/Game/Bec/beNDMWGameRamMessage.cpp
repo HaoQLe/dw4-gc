@@ -246,7 +246,9 @@ static void ctrlItem(beNDMWGameRam *self)
 extern "C" {
 igResult fn_800633C8(igObject *enumeration, const char *name, int *value);   // a name's value in an enum
 igObject *fn_803441B4();                                                    // the FightCom enum
-igIntList *fn_803784D8(igObject *enemyWork);   // (hypothesis) an enemy's status list: [3] evasion down
+igIntList *fn_803784D8(igObject *enemyWork);
+int *fn_8037858C(igIntList *list, int index);   // element index's address
+void fn_80371524(beNDMWGameRam *self, igObject *data, int baseNo, int *record);   // (hypothesis) an enemy's status list: [3] evasion down
 }
 
 // An enemy attack's record: the message carries attacks as kind * 10000 + record.
@@ -308,10 +310,47 @@ static void enemyDebuff(beNDMWGameRam *self, const char *effect, const char *sta
     fn_80306A40(messenger, value * percent / 100);
 }
 
+// A player technique's power from the player's points in its skill: base plus a quarter of the points up to
+// 1000, a fifth of the points up to 2000, a tenth beyond.
+static inline int techPower(int points, int base)
+{
+    if (points <= 1000) return points / 4 + base;
+    if (points <= 2000) return (points - 1000) / 5 + base + 250;
+    return (points - 2000) / 10 + base + 450;
+}
+
+// The record of the player's technique an attack names, and the player's points in its skill.
+static inline int techSkillPoints(beNDMWGameRam *self, beDataObjList *data, int attack, int *record)
+{
+    *record = 0;
+    fn_80371524(self, data, attackRecord(attack), record);
+    int skill = fn_8031F608(fn_80378424(self), *record, "SKILL");
+    return *fn_8037858C(fn_8037859C(fn_8031F3FC(data, "SKILL")), skill);
+}
+
+// How long a player's sleep or binding technique holds an enemy (-1: resisted): its power against the
+// enemy's spirit (out of 1000); the technique's TIME plus half the player's wisdom.
+static int playerHoldTime(beNDMWGameRam *self)
+{
+    beMessenger *messenger = self->_messenger;
+    int player = fn_80306B00(messenger, 0);
+    int enemy = fn_80306B00(messenger, 1);
+    int attack = fn_80306B00(messenger, 2);
+    beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+    int record;
+    int points = techSkillPoints(self, data, attack, &record);
+    int spirit = fn_8031F608(fn_803784E0(self), enemy, "SEISHIN");
+    int chance = techPower(points, 550) * 100 / spirit;
+    bool holds = false;
+    if (chance > (int)(randomNumber(self) % 1000)) holds = true;
+    int time = holds ? fn_8031F608(fn_80378424(self), record, "TIME") + fn_803787AC(fn_8031F3CC(data, "KASHIKOSA")) / 2 : 0;
+    if (time == 0) time = -1;
+    return time;
+}
+
 // The enemy database's resistance fields, by element (fire, ice, thunder, dark, poison).
 static const char *sEnemyResist[5] = {"RES_FIRE", "RES_ICE", "RES_THUNDER", "RES_DARK", "RES_POISON"};
 
-extern "C" void fn_80371524(beNDMWGameRam *self, igObject *data, int baseNo, int *record);
 
 // An element's index (0 fire, 1 ice, 2 thunder, 3 dark, 4 poison), or -1.
 static inline int elementIndex(const char *element)
@@ -604,6 +643,43 @@ static void fightCalc(beNDMWGameRam *self)
         }
         fn_80306AB8(messenger);
         fn_80306A40(messenger, rank);
+        break;
+    }
+    case FightCom::P2ESLEEPTIME:
+    case FightCom::P2EBINDTIME: {
+        // player, enemy, attack (the original repeats this code for each).
+        int time = playerHoldTime(self);
+        fn_80306AB8(messenger);
+        fn_80306A40(messenger, time);
+        break;
+    }
+    case FightCom::P2EPOISONTIME: {
+        // query, player, enemy, attack: "TIME": how long a player's poison technique poisons an enemy (-1:
+        // resisted), its power against the enemy's poison resistance; otherwise the poison's damage per tick
+        // (minus a fifth of the technique's HP).
+        igStringRef query(fn_8030709C(messenger, 1));
+        int player = fn_80306B00(messenger, 0);
+        int enemy = fn_80306B00(messenger, 1);
+        int attack = fn_80306B00(messenger, 2);
+        beDataObjList *data = fn_803787D8(fn_803787E8(self), player);
+        if (strcmp(query.getString(), "TIME") == 0) {
+            int record;
+            int points = techSkillPoints(self, data, attack, &record);
+            int resist = fn_8031F608(fn_803784E0(self), enemy, "RES_POISON");
+            int chance = techPower(points, 750) * (1000 - resist) / 1000;
+            bool poisons = false;
+            if (chance > (int)(randomNumber(self) % 1000)) poisons = true;
+            int time = poisons ? fn_8031F608(fn_80378424(self), record, "TIME") + fn_803787AC(fn_8031F3CC(data, "KASHIKOSA")) / 2 : 0;
+            if (time == 0) time = -1;
+            fn_80306AB8(messenger);
+            fn_80306A40(messenger, time);
+        } else {
+            int record;
+            fn_80371524(self, data, attackRecord(attack), &record);
+            int damage = -(fn_8031F608(fn_80378424(self), record, "HP") / 5);
+            fn_80306AB8(messenger);
+            fn_80306A40(messenger, damage);
+        }
         break;
     }
     case FightCom::P2ESTUNTIME: {

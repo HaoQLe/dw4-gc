@@ -4,7 +4,7 @@
 extern "C" {
 extern long long lbl_80563560;            // bytes held by records
 extern int lbl_80490934[];                // bits per texel by kind (kinds below 0x10000)
-extern int lbl_80490978[];                // the same from kind 0x10000
+extern int lbl_80490978[];                // per-kind factor from kind 0x10000 (its product is halved, not divided by 8)
 void fn_800FC3EC(GcRecord144 *entry);
 
 void igGamecubeVisualContext_virtual20C(GcVisualContext *self, int i)

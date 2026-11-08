@@ -145,7 +145,6 @@ template <class T> struct GcPool {
     T *data;                       // 0x10
 };
 
-// Makes room for at least n free indices.
 // Whether index names a record in use (allocated and not on the free list).
 template <class T> static inline bool isAllocated(GcPool<T> *pool, int index)
 {
@@ -158,6 +157,7 @@ template <class T> static inline bool isAllocated(GcPool<T> *pool, int index)
     return false;
 }
 
+// Makes room for at least n free indices.
 template <class T> static inline void reserveFree(GcPool<T> *pool, int n)
 {
     if (pool->freeCapacity < n) {

@@ -1,9 +1,18 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-11-07. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-11-08. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
+- **Visual context batch (user request 2026-11-07: throughput, at least 30% of the batch verified):** active; checkpoint 2 integrated into `work`.
+  - **Targets:** the 122 unmatched `igGamecubeVisualContext` functions (`0x800D61F0..0x80101DE8`, 23,952 code bytes), chosen because they use no shared string pool. The ledger's `beNDMWStatus*` candidates were rejected: their 64 KB file shares one string pool, the Game RAM constraint again.
+  - **Result so far:** 95 functions (9,816 bytes, 41%) exact and linked from source in 45 units under `src/Alchemy/src/igGfx/` (shared layout `igGamecubeVisualContext.h`).
+  - **Totals** (baseline `20261107-233814-baseline`, checkpoint `vc-cp2`): matched code 40.512733% -> 40.749750% (+0.237017 pp, +9,816 bytes); linked 40.418373% -> 40.655388% (+0.237015 pp, +9,816 bytes); matched data unchanged (18.029253%); 17,451 -> 17,546 functions; complete units 4,924 -> 4,969.
+  - **Checks:** `gate.sh vc-cp1` and `vc-cp2` passed (`build.sha1` OK, all sources compile); every linked unit `unit.sh` exit 0.
+  - **Functional commits:** `a607f5e3` (checkpoint 1), `36fea5eb` (checkpoint 2, pool helpers; `lbl_80563560` merged into one 64-bit symbol).
+  - **Remaining (27 functions, 14,136 bytes):** 6 NonMatching drafts (`B8`, `13C`, `2C0`, `2C4`, `118`, `32C`); 4 blocked by the file's shared int-to-float constants (`2E4`, `10C`, `70`, `310`); 3 with rodata tables (`80`, `448`, `44C`); 14 not started.
+  - **Next investigation:** the not-started functions, smallest first (`vtableRead`, `41C`, `7C`, `438`/`43C` with `igStringRef` locals); then the rodata-table functions' table ownership.
+  - Details: [visual context](docs/research/2026-11-08-visual-context.md).
 - **Game RAM batch (user choice 2026-11-07: readable game subsystem over more generator work):** closed 2026-11-07; integrated into `work`.
   - **Targets:** `beNDMWGameRam` `0x8036D224..0x80378818`, 40 functions, 45,100 unrecovered code bytes at the start.
   - **Result:** every target is readable source. Linked from source: `virtual64`, `virtual68`, `virtual6C`, six tail accessors (`fn_80378270`, `fn_8037858C`, `fn_803785A4`, `fn_80378624`, `fn_8037864C`, `fn_803787D8`) and four `Ref<>` destructors (two now in their own units). Readable NonMatching: the players' helpers (20, 80-99.9% fuzzy), the query unit (2), `virtual90` with all 22 messages and all 22 `FIGHTCALC` battle formulas, the four database loaders and three bounds-checked setters.

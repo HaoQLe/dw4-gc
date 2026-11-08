@@ -5,11 +5,14 @@
 #include "igGamecubeVisualContext.h"
 
 extern "C" void fn_80128CF4(void *dst, const void *src);   // copies a 4x4 matrix
+extern "C" void fn_801285A0(void *matrix);                  // makes a 4x4 matrix the identity
 
 // A 4x4 float matrix, copied out of line.
 struct GcMatrix {
     float m[16];
+    inline GcMatrix() { fn_801285A0(this); }
     inline GcMatrix(const GcMatrix &other) { fn_80128CF4(this, &other); }
+    inline void makeIdentity() { fn_801285A0(this); }
 };
 
 extern "C" void fn_800F8118(GcMatrix *matrix);   // loads the mode-0 matrix into the hardware

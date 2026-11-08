@@ -44,7 +44,31 @@ hand-written code with typed structures matched most on the first or second try.
   checksum passes, as with the Game RAM `Ref<>` copies.
 - Loops over the custom lists start with a `count > 0` guard in the original (`virtual438`, `43C`).
 
-## Remaining (25 functions, 13,512 bytes)
+## Checkpoint 4 (2026-11-08)
+
+- `virtual214` (`800FF20C`): sets a 0x144 record's image for one level through a counted local reference. It
+  matched once the table index was its own local (`int entry = fn_800FC2E4(...)`) and the memory-pool result
+  used a variable declared at the top of the function.
+- `virtual40C` (`800FBE7C`): one statistic of the last interval, mostly divided by the frames it took. The long
+  long counters convert through `__cvt_sll_dbl` with no `frsp` before `fdivs`; no C expression gives that, so
+  the unit declares the helper as returning `float`. `lbl_80563478` and `lbl_80563480` are 64-bit counters
+  (`addc`/`adde` in `800E05A4`), merged into 8-byte symbols.
+- Compiler findings:
+  - MWCC builds a jump table only when a switch has at least four case ranges. A run of consecutive labels on
+    the default body becomes one range, so `virtual2B0`'s original needs at least two separate labels there;
+    which values they were is unknown (`case 2: case 4:` is a placeholder).
+  - A pool built with `new` whose name is an `igStringRef` member (a class with a constructor) keeps the
+    allocation result and `this` in separate registers (`cmplwi r3; beq; mr r30, r3`). A plain pointer, an
+    inline `init`, or a `new` of a POD with a constructor gives `mr. rN, r3`. The same shape is in
+    `fn_800EADD8` and `fn_800F6200`.
+  - Objects the unit defines are addressed from one base register, with struct-copy pointers made from it
+    (`addi r8, r31, 0xC74`). `virtual408` matched this only after its unit defined the whole `.bss` block
+    `0x804F5870..0x804F6520` (13 objects, every size kept); externs and an overlay struct fold every field
+    offset into the displacement.
+  - The string pool container `lbl_80562140` is small data in the engine's units; `game/StringPool.h` declares it
+    as an array, which is not, so the engine units use a local scalar declaration.
+
+## Remaining (25 functions, 13,512 bytes) at checkpoint 3
 
 - Readable NonMatching drafts (4,200 bytes):
   - `virtualB8` (372): the descriptor loads are scheduled above the free-count store;

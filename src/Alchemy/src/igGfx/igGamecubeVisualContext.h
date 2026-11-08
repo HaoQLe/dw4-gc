@@ -77,10 +77,12 @@ struct GcRecord144 {
     unsigned char unknown1C[0x4];
     int width;                  // 0x20
     int height;                 // 0x24
-    unsigned char unknown28[0x8];
-    Meta::igObject *unknown30;  // 0x30: a counted reference
+    int unknown28;              // 0x28: taken from the image's _pz when negative
+    unsigned char unknown2C[0x4];
+    Meta::igObject *unknown30;  // 0x30: the level-0 image (counted reference)
     void *buffer;               // 0x34: GXGetTexBufferSize bytes, 32-byte aligned
-    unsigned char unknown38[0x10];
+    Meta::igObject **unknown38; // 0x38: the images of levels 1.. (counted references)
+    unsigned char unknown3C[0xC];
     int unknown48;
     unsigned char unknown4C[0x3C];
     unsigned int flags;         // 0x88: settings changed since sent
@@ -125,8 +127,12 @@ public:
     virtual void slotBC(); virtual void slotC0(); virtual void slotC4(); virtual void slotC8(); virtual void slotCC();
     virtual void slotD0(); virtual void slotD4(); virtual void slotD8();
     virtual void *allocate(unsigned int size, unsigned int align);   // 0xDC
-    virtual void slotE0(); virtual void slotE4();
+    virtual void *allocateArray(int count, int size);                  // 0xE0
+    virtual void *allocateArray(int count, int size, int align);       // 0xE4
     virtual void *reallocate(void *memory, unsigned int size);   // 0xE8
+    virtual void slotEC(); virtual void slotF0(); virtual void slotF4(); virtual void slotF8(); virtual void slotFC();
+    virtual void slot100(); virtual void slot104();
+    virtual void free(void *memory);   // 0x108
 };
 extern "C" {
 void fn_80056378(void *memory);                                         // frees memory
@@ -140,7 +146,8 @@ template <class T> struct GcPool {
     unsigned short count;          // records allocated
     unsigned short freeCapacity;
     unsigned short freeCount;
-    unsigned char unknown06[0x6];
+    unsigned char unknown06[0x2];
+    const char *name;              // 0x08: a pooled string
     unsigned short *freeList;      // 0x0C
     T *data;                       // 0x10
 };
@@ -213,7 +220,9 @@ template <class T> static inline void freeIndex(GcPool<T> *pool, int index)
 template <class T> static inline T &record(GcPool<T> *pool, int i) { return pool->data[i]; }
 
 struct GcVisualContext : Meta::igVisualContext {
-    unsigned char unknown140[0x144 - 0x140];
+    unsigned char unknown140;
+    bool unknown141;                             // 0x141: cleared by the initialisation (slot 0x24)
+    unsigned char unknown142[0x144 - 0x142];
     GcPool<GcRecord144> *unknown144;             // 0x144
     int unknown148[8];                           // 0x148: bound 0x144 record per slot (-1: none)
     unsigned char unknown168[0x1A5 - 0x168];
@@ -257,9 +266,12 @@ struct GcVisualContext : Meta::igVisualContext {
     float viewportFar;                           // 0x42C
     short copyWidth;                             // 0x430: passed to GXSetDispCopyDst
     short copyHeight;                            // 0x432
-    unsigned char unknown434[0x440 - 0x434];
+    Meta::igObject *unknown434;                  // 0x434: counted references, released by the initialisation
+    Meta::igObject *unknown438;                  // 0x438
+    unsigned char unknown43C[0x440 - 0x43C];
     int unknown440;                              // 0x440
-    unsigned char unknown444[0x44C - 0x444];
+    int unknown444;                              // 0x444
+    unsigned char unknown448[0x44C - 0x448];
     GcPool<Meta::igDataList *> *unknown44C;      // 0x44C
     int unknown450;                              // 0x450
     unsigned char unknown454;                    // 0x454
@@ -278,7 +290,11 @@ struct GcVisualContext : Meta::igVisualContext {
     GcPool<GcLight> *lights;                     // 0x4F0
     unsigned char unknown4F4[0x4F8 - 0x4F4];
     GcMaterial *material;                        // 0x4F8
-    unsigned char unknown4FC[0x50B - 0x4FC];
+    unsigned char unknown4FC[0x500 - 0x4FC];
+    int unknown500;                              // 0x500
+    int unknown504;                              // 0x504
+    bool unknown508;                             // 0x508
+    unsigned char unknown509[0x50B - 0x509];
     unsigned char unknown50B[8];                 // 0x50B
     unsigned char unknown513[0x520 - 0x513];
     unsigned int dirty;                          // 0x520: state groups to send to the hardware (GC_DIRTY_*)
@@ -297,10 +313,18 @@ static inline GcLight *lightAt(GcVisualContext *self, int index) { return &self-
 // Frame statistics (lbl_804F6180).
 struct GcFrameStats {
     float frames;
-    unsigned char unknown04[0x18];
+    float unknown04;
+    float unknown08;
+    float unknown0C;
+    float unknown10;
+    float unknown14;
+    float unknown18;
     float unknown1C;   // counted when a 0x144 record is bound
     int clears;        // 0x20
-    unsigned char unknown24[0x10];
+    float unknown24;
+    float unknown28;
+    float unknown2C;
+    float unknown30;
     float unknown34;   // records of kind 0x0D or 0x0E bound
     float unknown38;   // records of kind 0x22 bound
 };

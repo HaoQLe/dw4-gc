@@ -4380,6 +4380,10 @@ Alchemy/src/igGfx/igGamecubeVisualContext800EB27C.cpp:
 Alchemy/src/igGfx/igGamecubeVisualContext800EB344.cpp:
 	.text       start:0x800EB344 end:0x800EB41C
 
+Alchemy/src/igGfx/igGamecubeVisualContext800EB8B8.cpp:
+	.text       start:0x800EB8B8 end:0x800EBC94
+	.data       start:0x804901E4 end:0x80490248
+
 unknownGen/unknown800EBD50.cpp:
 	.text       start:0x800EBD50 end:0x800EBDB0
 
@@ -4409,6 +4413,9 @@ Alchemy/src/igGfx/igGamecubeVisualContext800EC170.cpp:
 
 unknownGen/unknown800EC1E8.cpp:
 	.text       start:0x800EC1E8 end:0x800EC208
+
+Alchemy/src/igGfx/igGamecubeVisualContext800EC208.cpp:
+	.text       start:0x800EC208 end:0x800EC5E0
 
 Alchemy/src/igGfx/igGamecubeVisualContext800EC5E0.cpp:
 	.text       start:0x800EC5E0 end:0x800EC86C
@@ -4656,6 +4663,13 @@ Alchemy/src/igGfx/igGamecubeVisualContext800FBBC8.cpp:
 unknownGen/unknown800FBC18.cpp:
 	.text       start:0x800FBC18 end:0x800FBC20
 
+Alchemy/src/igGfx/igGamecubeVisualContext800FBC20.cpp:
+	.text       start:0x800FBC20 end:0x800FBE7C
+	.bss        start:0x804F5870 end:0x804F6520
+
+Alchemy/src/igGfx/igGamecubeVisualContext800FBE7C.cpp:
+	.text       start:0x800FBE7C end:0x800FC0C4
+
 unknownGen/unknown800FC170.cpp:
 	.text       start:0x800FC170 end:0x800FC1A8
 
@@ -4706,6 +4720,9 @@ Alchemy/src/igGfx/igGamecubeVisualContext800FEFF8.cpp:
 
 Alchemy/src/igGfx/igGamecubeVisualContext800FF1DC.cpp:
 	.text       start:0x800FF1DC end:0x800FF20C
+
+Alchemy/src/igGfx/igGamecubeVisualContext800FF20C.cpp:
+	.text       start:0x800FF20C end:0x800FF508
 
 Alchemy/src/igGfx/igGamecubeVisualContext800FF508.cpp:
 	.text       start:0x800FF508 end:0x800FF794

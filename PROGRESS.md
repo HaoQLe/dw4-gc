@@ -4,6 +4,7 @@ Updated: 2026-11-07. Development repository: [HaoQLe/dw4-gc](https://github.com/
 
 ## Resume here
 
+- **Generator round 8 (user request 2026-11-07):** stopped after measurement; no game code changed. Of the 2.41 MB left, no single cause blocks more than 16%: `exit shape` (388 KB, 462 functions) splits into loop control flow (313 KB), short-circuit `while` conditions (27 KB) and small switch cases. Experiment `eadece96` on `task/generator-round8` (not run through `cycle.sh`) makes 2 more functions exact alone. Recommendation: return to readable subsystems. See [round 8 measurement](docs/research/2026-11-07-generator-round8-measurement.md).
 - **Verification tooling (user request 2026-11-07):** complete on `work`; no game code changed.
   - Project `/verify` skill (`.claude/skills/verify/`): `doctor.sh`, `gate.sh` (forces the checksum recheck; writes `summary.json`) and `unit.sh`, plus a feature map.
   - `decomp.py scratch`/`verify` now separate metadata-only differences (section order, symbol binding, compiler-local `@` label names) from real mismatches. Exit codes: 0 exact, 1 mismatch, 2 tool/input error, 3 metadata only. `--json` prints the verdict. Exit 3 still needs the DOL checksum after linking.

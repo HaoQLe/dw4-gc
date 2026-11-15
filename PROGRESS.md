@@ -1,6 +1,6 @@
 # Digimon World 4 fork progress
 
-Updated: 2026-11-08. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
+Updated: 2026-11-15. Development repository: [HaoQLe/dw4-gc](https://github.com/HaoQLe/dw4-gc), default branch `work`. Work stays in this fork; upstream PRs require an explicit user request. See [AGENTS.md](AGENTS.md) for the authoritative workflow.
 
 ## Resume here
 
@@ -11,9 +11,13 @@ Updated: 2026-11-08. Development repository: [HaoQLe/dw4-gc](https://github.com/
   - **Checkpoint 4** (user request 2026-11-08: `214`, `24`, `2B0`, then `408`/`40C`; baseline `baseline-cp4`): `virtual214` and `virtual40C` exact and linked (+1,348 code bytes, 40.764816% -> 40.797363% matched and 40.670456% -> 40.703003% linked); `24`, `2B0`, `408` readable NonMatching.
   - **Checks:** `gate.sh vc-cp1..3`, `vc4-cp1`, `vc4-cp2` passed (`build.sha1` OK, all sources compile); linked units `unit.sh` exit 0 except `800D9538` and `800FF20C` (exit 1: an extra weak `GcRef` destructor, UNUSED in the map; the functions are exact). Independent reviews of checkpoints 2 and 4: no blocking findings.
   - **Functional commits:** `a607f5e3`, `36fea5eb` (pool helpers; `lbl_80563560` merged into one 64-bit symbol), checkpoint 3 (`41C`, `44C`, drafts), `d28c7791` and the checkpoint 4 ledger commit (`214`, `40C`; `lbl_80563478`/`lbl_80563480` merged into 64-bit symbols).
-  - **Remaining (23 functions, 12,164 bytes):** 14 readable NonMatching drafts; 6 blocked by the file's shared int-to-float constants (`2E4`, `10C`, `70`, `310`, `11C`, `128`); 3 not started (`vtableRead`, `428`, `80`).
+  - **Remaining (23 functions, 12,164 bytes):** 17 readable NonMatching drafts; 6 blocked by the file's shared int-to-float constants (`2E4`, `10C`, `70`, `310`, `11C`, `128`).
+  - **Checkpoint 5** (2026-11-15; baseline `baseline-cp5`, gate `vc5-cp1` passed, `build.sha1` OK): the three not-started functions are readable NonMatching drafts; no code gain. Matched data 18.251890% -> 18.258540% (+100 bytes: `virtual80`'s render-mode table, matched but not linked).
+    - `virtual428` 99.28%: register colouring plus two swapped stack slots;
+    - `virtual80` 96.6%: exact except the record search's early-exit loop, which becomes a `ctr` loop (the open file-list/sound pattern);
+    - `vtableRead` 91.7%: r31 vs r1 addressing of the temporary instance; real C++ members need C++ names for five helpers used by about 40 files.
   - **Checkpoint 4 drafts:** `virtual24` 99.53% (stack and count registers swapped at the three matrix-stack appends; 8 variants tried), `virtual2B0` 98.16% (a pure register permutation: `texFormat` gets the lowest priority instead of the second highest; 9 variants tried), `virtual408` 99.87% (only the load order of `lbl_80563520`/`lbl_80563524` differs; 6 orderings, arrays and locals tried; the `.bss` reloc names the section symbol).
-  - **Next investigation:** the not-started `vtableRead`, `428`, `80`; then the same lever for `fn_800EADD8` and `fn_800F6200` (outside the batch), which build pools with the `igStringRef`-member pattern found here.
+  - **Next investigation:** the early-exit `ctr` loop pattern (it blocks `virtual80` and drafts in two earlier batches), for example a loop whose bound reads through a pointer the body may write; then `virtual428`'s stack-slot order. The int-to-float six need one unit that owns the file's `.sdata2` pool.
   - Details: [visual context](docs/research/2026-11-08-visual-context.md).
 - **Game RAM batch (user choice 2026-11-07: readable game subsystem over more generator work):** closed 2026-11-07; integrated into `work`.
   - **Targets:** `beNDMWGameRam` `0x8036D224..0x80378818`, 40 functions, 45,100 unrecovered code bytes at the start.

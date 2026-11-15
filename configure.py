@@ -862,6 +862,9 @@ config.libs = [
             Object(Matching, "Alchemy/src/igCore/unknown8004DC3C.cpp", cflags=cflags_engine_size),
             Object(Matching, "Alchemy/src/igCore/unknown8004DDC4.cpp", cflags=cflags_engine_size),
             # igGamecubeVisualContext (src/Alchemy/src/igGfx/)
+            Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800D61F0.cpp", cflags=cflags_engine_size),
+            Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800D9778.cpp", cflags=cflags_engine_size),
+            Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800EC86C.cpp", cflags=cflags_engine_size),
             Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800EC5E0.cpp", cflags=cflags_engine_size),
             Object(NonMatching, "Alchemy/src/igGfx/igGamecubeVisualContext800EA908.cpp", cflags=cflags_engine_size),
             Object(Matching, "Alchemy/src/igGfx/igGamecubeVisualContext800FFA5C.cpp", cflags=cflags_engine_size),

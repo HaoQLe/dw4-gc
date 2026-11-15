@@ -294,7 +294,8 @@ struct GcVisualContext : Meta::igVisualContext {
     int unknown500;                              // 0x500
     int unknown504;                              // 0x504
     bool unknown508;                             // 0x508
-    unsigned char unknown509[0x50B - 0x509];
+    signed char tvFormat;                        // 0x509: render-mode group: 0 NTSC, 1 PAL, 4 MPAL, 5 EURGB60, 6 progressive
+    unsigned char unknown50A;
     unsigned char unknown50B[8];                 // 0x50B
     unsigned char unknown513[0x520 - 0x513];
     unsigned int dirty;                          // 0x520: state groups to send to the hardware (GC_DIRTY_*)
@@ -358,7 +359,10 @@ public:
     virtual void slot090(); virtual void slot094(); virtual void slot098(); virtual void slot09C(); virtual void slot0A0(); virtual void slot0A4();
     virtual void slot0A8(); virtual void slot0AC(); virtual void slot0B0(); virtual void slot0B4(); virtual void slot0B8(); virtual void slot0BC();
     virtual void slot0C0(); virtual void slot0C4(); virtual void slot0C8(); virtual void slot0CC(); virtual void slot0D0(); virtual void slot0D4();
-    virtual void slot0D8(); virtual void slot0DC(); virtual void slot0E0(); virtual void slot0E4(); virtual void slot0E8();
+    virtual void slot0D8(int);        // 0x0D8 (with the current 0x3F0 record's index)
+    virtual int slot0DC(int);         // 0x0DC
+    virtual void slot0E0(int);        // 0x0E0
+    virtual void slot0E4(); virtual void slot0E8();
     virtual void slot0EC(int);   // 0x0EC
     virtual void slot0F0(); virtual void slot0F4(); virtual void slot0F8(); virtual void slot0FC(); virtual void slot100(); virtual void slot104();
     virtual void slot108(); virtual void slot10C(); virtual void slot110(); virtual void slot114(); virtual void slot118(); virtual void slot11C();

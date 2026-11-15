@@ -87,3 +87,46 @@ hand-written code with typed structures matched most on the first or second try.
   statics. They need one unit owning that `.sdata2` pool, as for the model controller's int-to-float cases.
 - Not started (6,660 bytes): `vtableRead` (constructor and destructor chain), `428`, `24`, `2B0`, `214`, `80`
   (rodata `lbl_80414970`), `408`/`40C` (function-local statics in `.sbss`).
+
+## Checkpoint 5 (2026-11-15): the three not-started functions
+
+All three are readable NonMatching drafts; nothing new links. Baseline `baseline-cp5`, gate `vc5-cp1` (checksum
+OK). Matched data +100 bytes (the render-mode table below matches but does not link).
+
+- `vtableRead` (`800D61F0`, 252 bytes, 91.7%): builds a temporary context through the igContext (vtable
+  `lbl_80473000`), igVisualContext (`lbl_80491D8C`) and igGamecubeVisualContext inline constructors, reads its
+  vtable, then calls the out-of-line destructor `fn_800D62EC(&object, -1)`. The original keeps `&object` in r31
+  for the igVisualContext level, the member constructions and the destructor call, and uses r1 offsets for
+  the other levels' stores. Explicit calls give r1 everywhere. Real C++ members (out-of-line `igMatrix44f`
+  constructor, an element class with constructor and destructor for `_vertexArray2`, which MWCC builds with
+  `__construct_array`) give r31 everywhere and need C++ names for `fn_801285A0`, `fn_800A33B8`
+  (`__construct_array`), `fn_800D6734`, `fn_800B6694` and `fn_800D62EC`, used by about 40 files. Rejected:
+  inline matrix member, reference members with inline constructors (array form becomes `__construct_array`).
+- `virtual428` (`800D9778`, 1,324 bytes, 99.3%): adds a custom state collection named after `fn_800D965C(name)`
+  (flags 1 when the name starts with `"light."`, `lbl_8055EE38`) holding the given objects, in the first null
+  slot of the 0x130 list or appended. It then adds a custom field `"<name>.<field>"` to the 0x134 list for each
+  vector or matrix field of the objects' class. Returns the collection's index. Shapes that matched:
+  - a null search that stores its null value on the stack and reloads the list afterwards: a member function
+    `list->find(GcObjectPtr(0))`, where `GcObjectPtr` has a constructor that adds a reference (folded for
+    null) and no destructor. A destructor emits code; without the constructor body the value is optimised
+    out; a free function keeps the list in a saved register;
+  - `set(index, object)` as a member function of the list, too;
+  - a type test whose metaobject is read before the virtual call: `isA(field, meta)` inline (`meta ==
+    metaOf(object)`);
+  - the custom field in a register local next to its owning holder; the name set through
+    `setName(named, string)` taking the string object; the field name as a temporary passed to `append`;
+  - `"light."` declared with its size (`[7]`) so it is small data.
+  Remaining: register colouring (the first search's index and the returned value) and the stack slots of the
+  field-name reference and the first search's null pointer, which are swapped. Every declaration and
+  temporary form tried moves one slot or the other.
+- `virtual80` (`800EC86C`, 1,200 bytes, 96.6%): opens the display: picks a drawable 0x3F0 record (types 0..2),
+  sets its formats, allocates 64 KB for GX, `VIInit`, selects one of 25 SDK render modes from the local table
+  (`.rodata` `lbl_80414970`, owned by the unit and exact) by `tvFormat` (0x509: 0 NTSC, 1 PAL, 4 MPAL, 5
+  EURGB60, 6 progressive) and the flags at 0x500/0x504/0x508, then allocates and clears the two frame buffers
+  and sets the copy state. Everything after the record search is exact. Findings:
+  - `t == 0 || t == 1 || t == 2` folds the last two into a range check (`subi; cmplwi`); separate `if`
+    statements, as the original has, keep three `cmpwi/beq`. In a loop condition `||` did not fold;
+  - the record pointer goes through a temporary (`candidate`) before `record`;
+  - the search loop with an early exit becomes a `ctr` loop; the original re-reads the pool counts each pass.
+    This is the open pattern of the file list and sound batches; a `while`, a `goto`-written loop and a
+    `goto` exit do the same.

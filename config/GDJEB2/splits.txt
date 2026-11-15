@@ -4017,6 +4017,9 @@ Meta/igFileImagePng_2.cpp:
 unknownGen/unknown800D6178.cpp:
 	.text       start:0x800D6178 end:0x800D61F0
 
+Alchemy/src/igGfx/igGamecubeVisualContext800D61F0.cpp:
+	.text       start:0x800D61F0 end:0x800D62EC
+
 unknownGen/unknown800D62EC.cpp:
 	.text       start:0x800D62EC end:0x800D6440
 
@@ -4127,6 +4130,9 @@ unknownGen/unknown800D94B8.cpp:
 
 Alchemy/src/igGfx/igGamecubeVisualContext800D9538.cpp:
 	.text       start:0x800D9538 end:0x800D965C
+
+Alchemy/src/igGfx/igGamecubeVisualContext800D9778.cpp:
+	.text       start:0x800D9778 end:0x800D9CA4
 
 unknownGen/unknown800D9CA4.cpp:
 	.text       start:0x800D9CA4 end:0x800D9CAC
@@ -4419,6 +4425,10 @@ Alchemy/src/igGfx/igGamecubeVisualContext800EC208.cpp:
 
 Alchemy/src/igGfx/igGamecubeVisualContext800EC5E0.cpp:
 	.text       start:0x800EC5E0 end:0x800EC86C
+
+Alchemy/src/igGfx/igGamecubeVisualContext800EC86C.cpp:
+	.text       start:0x800EC86C end:0x800ECD1C
+	.rodata     start:0x80414970 end:0x804149D4
 
 unknownGen/unknown800ECD1C.cpp:
 	.text       start:0x800ECD1C end:0x800ECD50
